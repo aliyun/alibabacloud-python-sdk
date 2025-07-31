@@ -1472,6 +1472,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_data_asset_tag_with_options_async(request, runtime)
 
+    def create_data_quality_alert_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
+        """
+        @summary 创建数据质量告警规则
+        
+        @param tmp_req: CreateDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.condition):
+            body['Condition'] = request.condition
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_alert_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
+        """
+        @summary 创建数据质量告警规则
+        
+        @param tmp_req: CreateDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.condition):
+            body['Condition'] = request.condition
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
+        """
+        @summary 创建数据质量告警规则
+        
+        @param request: CreateDataQualityAlertRuleRequest
+        @return: CreateDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_alert_rule_with_options(request, runtime)
+
+    async def create_data_quality_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityAlertRuleResponse:
+        """
+        @summary 创建数据质量告警规则
+        
+        @param request: CreateDataQualityAlertRuleRequest
+        @return: CreateDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_alert_rule_with_options_async(request, runtime)
+
     def create_data_quality_evaluation_task_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.CreateDataQualityEvaluationTaskRequest,
@@ -2031,6 +2151,390 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_data_quality_rule_template_with_options_async(request, runtime)
+
+    def create_data_quality_scan_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
+        """
+        @summary 创建数据质量监控
+        
+        @param tmp_req: CreateDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityScanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityScanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compute_resource):
+            request.compute_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compute_resource, 'ComputeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compute_resource_shrink):
+            body['ComputeResource'] = request.compute_resource_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_scan_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
+        """
+        @summary 创建数据质量监控
+        
+        @param tmp_req: CreateDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityScanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityScanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compute_resource):
+            request.compute_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compute_resource, 'ComputeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compute_resource_shrink):
+            body['ComputeResource'] = request.compute_resource_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_scan(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
+        """
+        @summary 创建数据质量监控
+        
+        @param request: CreateDataQualityScanRequest
+        @return: CreateDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_scan_with_options(request, runtime)
+
+    async def create_data_quality_scan_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanResponse:
+        """
+        @summary 创建数据质量监控
+        
+        @param request: CreateDataQualityScanRequest
+        @return: CreateDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_scan_with_options_async(request, runtime)
+
+    def create_data_quality_scan_run_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param tmp_req: CreateDataQualityScanRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityScanRunResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityScanRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            body['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityScanRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityScanRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_scan_run_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param tmp_req: CreateDataQualityScanRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityScanRunResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.CreateDataQualityScanRunShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            body['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityScanRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityScanRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_scan_run(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: CreateDataQualityScanRunRequest
+        @return: CreateDataQualityScanRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_scan_run_with_options(request, runtime)
+
+    async def create_data_quality_scan_run_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityScanRunRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: CreateDataQualityScanRunRequest
+        @return: CreateDataQualityScanRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_scan_run_with_options_async(request, runtime)
+
+    def create_data_quality_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
+        """
+        @summary 创建数据质量模板
+        
+        @param request: CreateDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_quality_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
+        """
+        @summary 创建数据质量模板
+        
+        @param request: CreateDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.CreateDataQualityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_quality_template(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
+        """
+        @summary 创建数据质量模板
+        
+        @param request: CreateDataQualityTemplateRequest
+        @return: CreateDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_data_quality_template_with_options(request, runtime)
+
+    async def create_data_quality_template_async(
+        self,
+        request: dataworks_public_20240518_models.CreateDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.CreateDataQualityTemplateResponse:
+        """
+        @summary 创建数据质量模板
+        
+        @param request: CreateDataQualityTemplateRequest
+        @return: CreateDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_data_quality_template_with_options_async(request, runtime)
 
     def create_data_source_with_options(
         self,
@@ -5420,6 +5924,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_asset_tag_with_options_async(request, runtime)
 
+    def delete_data_quality_alert_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
+        """
+        @summary 删除数据质量告警规则
+        
+        @param request: DeleteDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_alert_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
+        """
+        @summary 删除数据质量告警规则
+        
+        @param request: DeleteDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
+        """
+        @summary 删除数据质量告警规则
+        
+        @param request: DeleteDataQualityAlertRuleRequest
+        @return: DeleteDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_alert_rule_with_options(request, runtime)
+
+    async def delete_data_quality_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityAlertRuleResponse:
+        """
+        @summary 删除数据质量告警规则
+        
+        @param request: DeleteDataQualityAlertRuleRequest
+        @return: DeleteDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_alert_rule_with_options_async(request, runtime)
+
     def delete_data_quality_evaluation_task_with_options(
         self,
         request: dataworks_public_20240518_models.DeleteDataQualityEvaluationTaskRequest,
@@ -5719,6 +6319,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_quality_rule_template_with_options_async(request, runtime)
+
+    def delete_data_quality_scan_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
+        """
+        @summary 删除数据质量监控
+        
+        @param request: DeleteDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityScanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_scan_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
+        """
+        @summary 删除数据质量监控
+        
+        @param request: DeleteDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityScanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_scan(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
+        """
+        @summary 删除数据质量监控
+        
+        @param request: DeleteDataQualityScanRequest
+        @return: DeleteDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_scan_with_options(request, runtime)
+
+    async def delete_data_quality_scan_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityScanResponse:
+        """
+        @summary 删除数据质量监控
+        
+        @param request: DeleteDataQualityScanRequest
+        @return: DeleteDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_scan_with_options_async(request, runtime)
+
+    def delete_data_quality_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
+        """
+        @summary 删除数据质量模板
+        
+        @param request: DeleteDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_quality_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
+        """
+        @summary 删除数据质量模板
+        
+        @param request: DeleteDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.DeleteDataQualityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_quality_template(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
+        """
+        @summary 删除数据质量模板
+        
+        @param request: DeleteDataQualityTemplateRequest
+        @return: DeleteDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_data_quality_template_with_options(request, runtime)
+
+    async def delete_data_quality_template_async(
+        self,
+        request: dataworks_public_20240518_models.DeleteDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.DeleteDataQualityTemplateResponse:
+        """
+        @summary 删除数据质量模板
+        
+        @param request: DeleteDataQualityTemplateRequest
+        @return: DeleteDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_data_quality_template_with_options_async(request, runtime)
 
     def delete_data_source_with_options(
         self,
@@ -8972,6 +9768,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dijob_log_with_options_async(request, runtime)
 
+    def get_data_quality_alert_rule_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
+        """
+        @summary 查询数据质量告警规则详情
+        
+        @param request: GetDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_alert_rule_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
+        """
+        @summary 查询数据质量告警规则详情
+        
+        @param request: GetDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
+        """
+        @summary 查询数据质量告警规则详情
+        
+        @param request: GetDataQualityAlertRuleRequest
+        @return: GetDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_alert_rule_with_options(request, runtime)
+
+    async def get_data_quality_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityAlertRuleResponse:
+        """
+        @summary 查询数据质量告警规则详情
+        
+        @param request: GetDataQualityAlertRuleRequest
+        @return: GetDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_alert_rule_with_options_async(request, runtime)
+
     def get_data_quality_evaluation_task_with_options(
         self,
         request: dataworks_public_20240518_models.GetDataQualityEvaluationTaskRequest,
@@ -9355,6 +10247,394 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_quality_rule_template_with_options_async(request, runtime)
+
+    def get_data_quality_scan_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: GetDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_scan_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: GetDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_scan(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: GetDataQualityScanRequest
+        @return: GetDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_scan_with_options(request, runtime)
+
+    async def get_data_quality_scan_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: GetDataQualityScanRequest
+        @return: GetDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_scan_with_options_async(request, runtime)
+
+    def get_data_quality_scan_run_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScanRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_scan_run_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanRunResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScanRun',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_scan_run(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunRequest
+        @return: GetDataQualityScanRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_scan_run_with_options(request, runtime)
+
+    async def get_data_quality_scan_run_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunRequest
+        @return: GetDataQualityScanRunResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_scan_run_with_options_async(request, runtime)
+
+    def get_data_quality_scan_run_log_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanRunLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScanRunLog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanRunLogResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_scan_run_log_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityScanRunLogResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityScanRunLog',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityScanRunLogResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_scan_run_log(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunLogRequest
+        @return: GetDataQualityScanRunLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_scan_run_log_with_options(request, runtime)
+
+    async def get_data_quality_scan_run_log_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityScanRunLogRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityScanRunLogResponse:
+        """
+        @summary 创建数据质量监控运行实例
+        
+        @param request: GetDataQualityScanRunLogRequest
+        @return: GetDataQualityScanRunLogResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_scan_run_log_with_options_async(request, runtime)
+
+    def get_data_quality_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: GetDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_quality_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: GetDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.GetDataQualityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_quality_template(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: GetDataQualityTemplateRequest
+        @return: GetDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_quality_template_with_options(request, runtime)
+
+    async def get_data_quality_template_async(
+        self,
+        request: dataworks_public_20240518_models.GetDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.GetDataQualityTemplateResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: GetDataQualityTemplateRequest
+        @return: GetDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_quality_template_with_options_async(request, runtime)
 
     def get_data_source_with_options(
         self,
@@ -14124,6 +15404,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_data_assets_with_options_async(request, runtime)
 
+    def list_data_quality_alert_rules_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
+        """
+        @summary 查询数据质量告警规则列表
+        
+        @param request: ListDataQualityAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityAlertRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityAlertRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityAlertRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_quality_alert_rules_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
+        """
+        @summary 查询数据质量告警规则列表
+        
+        @param request: ListDataQualityAlertRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityAlertRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityAlertRules',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityAlertRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_quality_alert_rules(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
+        """
+        @summary 查询数据质量告警规则列表
+        
+        @param request: ListDataQualityAlertRulesRequest
+        @return: ListDataQualityAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_quality_alert_rules_with_options(request, runtime)
+
+    async def list_data_quality_alert_rules_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityAlertRulesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityAlertRulesResponse:
+        """
+        @summary 查询数据质量告警规则列表
+        
+        @param request: ListDataQualityAlertRulesRequest
+        @return: ListDataQualityAlertRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_quality_alert_rules_with_options_async(request, runtime)
+
     def list_data_quality_evaluation_task_instances_with_options(
         self,
         request: dataworks_public_20240518_models.ListDataQualityEvaluationTaskInstancesRequest,
@@ -14607,6 +15999,358 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_quality_rules_with_options_async(request, runtime)
+
+    def list_data_quality_scan_runs_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
+        """
+        @summary 查询数据质量监控运行实例列表
+        
+        @param request: ListDataQualityScanRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityScanRunsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_from):
+            query['CreateTimeFrom'] = request.create_time_from
+        if not UtilClient.is_unset(request.create_time_to):
+            query['CreateTimeTo'] = request.create_time_to
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityScanRuns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityScanRunsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_quality_scan_runs_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
+        """
+        @summary 查询数据质量监控运行实例列表
+        
+        @param request: ListDataQualityScanRunsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityScanRunsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_time_from):
+            query['CreateTimeFrom'] = request.create_time_from
+        if not UtilClient.is_unset(request.create_time_to):
+            query['CreateTimeTo'] = request.create_time_to
+        if not UtilClient.is_unset(request.data_quality_scan_id):
+            query['DataQualityScanId'] = request.data_quality_scan_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityScanRuns',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityScanRunsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_quality_scan_runs(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
+        """
+        @summary 查询数据质量监控运行实例列表
+        
+        @param request: ListDataQualityScanRunsRequest
+        @return: ListDataQualityScanRunsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_quality_scan_runs_with_options(request, runtime)
+
+    async def list_data_quality_scan_runs_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScanRunsRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityScanRunsResponse:
+        """
+        @summary 查询数据质量监控运行实例列表
+        
+        @param request: ListDataQualityScanRunsRequest
+        @return: ListDataQualityScanRunsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_quality_scan_runs_with_options_async(request, runtime)
+
+    def list_data_quality_scans_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: ListDataQualityScansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityScansResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.table):
+            query['Table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityScans',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityScansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_quality_scans_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: ListDataQualityScansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityScansResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.table):
+            query['Table'] = request.table
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityScans',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityScansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_quality_scans(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScansRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: ListDataQualityScansRequest
+        @return: ListDataQualityScansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_quality_scans_with_options(request, runtime)
+
+    async def list_data_quality_scans_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityScansRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityScansResponse:
+        """
+        @summary 获取数据质量监控详情
+        
+        @param request: ListDataQualityScansRequest
+        @return: ListDataQualityScansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_quality_scans_with_options_async(request, runtime)
+
+    def list_data_quality_templates_with_options(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: ListDataQualityTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['Catalog'] = request.catalog
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityTemplates',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_quality_templates_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: ListDataQualityTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataQualityTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.catalog):
+            query['Catalog'] = request.catalog
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDataQualityTemplates',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.ListDataQualityTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_quality_templates(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: ListDataQualityTemplatesRequest
+        @return: ListDataQualityTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_quality_templates_with_options(request, runtime)
+
+    async def list_data_quality_templates_async(
+        self,
+        request: dataworks_public_20240518_models.ListDataQualityTemplatesRequest,
+    ) -> dataworks_public_20240518_models.ListDataQualityTemplatesResponse:
+        """
+        @summary 查询数据质量模板详情
+        
+        @param request: ListDataQualityTemplatesRequest
+        @return: ListDataQualityTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_quality_templates_with_options_async(request, runtime)
 
     def list_data_source_shared_rules_with_options(
         self,
@@ -22496,6 +24240,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_data_asset_tag_with_options_async(request, runtime)
 
+    def update_data_quality_alert_rule_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
+        """
+        @summary 更新数据质量告警规则
+        
+        @param tmp_req: UpdateDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.condition):
+            body['Condition'] = request.condition
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_alert_rule_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
+        """
+        @summary 更新数据质量告警规则
+        
+        @param tmp_req: UpdateDataQualityAlertRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityAlertRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityAlertRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.notification):
+            request.notification_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notification, 'Notification', 'json')
+        if not UtilClient.is_unset(tmp_req.target):
+            request.target_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target, 'Target', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.condition):
+            body['Condition'] = request.condition
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.notification_shrink):
+            body['Notification'] = request.notification_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.target_shrink):
+            body['Target'] = request.target_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityAlertRule',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_alert_rule(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
+        """
+        @summary 更新数据质量告警规则
+        
+        @param request: UpdateDataQualityAlertRuleRequest
+        @return: UpdateDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_alert_rule_with_options(request, runtime)
+
+    async def update_data_quality_alert_rule_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityAlertRuleRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityAlertRuleResponse:
+        """
+        @summary 更新数据质量告警规则
+        
+        @param request: UpdateDataQualityAlertRuleRequest
+        @return: UpdateDataQualityAlertRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_alert_rule_with_options_async(request, runtime)
+
     def update_data_quality_evaluation_task_with_options(
         self,
         tmp_req: dataworks_public_20240518_models.UpdateDataQualityEvaluationTaskRequest,
@@ -22947,6 +24815,278 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_quality_rule_template_with_options_async(request, runtime)
+
+    def update_data_quality_scan_with_options(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
+        """
+        @summary 更新数据质量监控
+        
+        @param tmp_req: UpdateDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityScanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityScanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compute_resource):
+            request.compute_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compute_resource, 'ComputeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.compute_resource_shrink):
+            body['ComputeResource'] = request.compute_resource_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityScanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_scan_with_options_async(
+        self,
+        tmp_req: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
+        """
+        @summary 更新数据质量监控
+        
+        @param tmp_req: UpdateDataQualityScanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityScanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20240518_models.UpdateDataQualityScanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.compute_resource):
+            request.compute_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.compute_resource, 'ComputeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.hooks):
+            request.hooks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hooks, 'Hooks', 'json')
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
+        if not UtilClient.is_unset(tmp_req.runtime_resource):
+            request.runtime_resource_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.runtime_resource, 'RuntimeResource', 'json')
+        if not UtilClient.is_unset(tmp_req.trigger):
+            request.trigger_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trigger, 'Trigger', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.compute_resource_shrink):
+            body['ComputeResource'] = request.compute_resource_shrink
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.hooks_shrink):
+            body['Hooks'] = request.hooks_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.owner):
+            body['Owner'] = request.owner
+        if not UtilClient.is_unset(request.parameters_shrink):
+            body['Parameters'] = request.parameters_shrink
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.runtime_resource_shrink):
+            body['RuntimeResource'] = request.runtime_resource_shrink
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.trigger_shrink):
+            body['Trigger'] = request.trigger_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityScan',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityScanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_scan(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
+        """
+        @summary 更新数据质量监控
+        
+        @param request: UpdateDataQualityScanRequest
+        @return: UpdateDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_scan_with_options(request, runtime)
+
+    async def update_data_quality_scan_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityScanRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityScanResponse:
+        """
+        @summary 更新数据质量监控
+        
+        @param request: UpdateDataQualityScanRequest
+        @return: UpdateDataQualityScanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_scan_with_options_async(request, runtime)
+
+    def update_data_quality_template_with_options(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
+        """
+        @summary 更新数据质量模板
+        
+        @param request: UpdateDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_quality_template_with_options_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
+        """
+        @summary 更新数据质量模板
+        
+        @param request: UpdateDataQualityTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataQualityTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataQualityTemplate',
+            version='2024-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20240518_models.UpdateDataQualityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_quality_template(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
+        """
+        @summary 更新数据质量模板
+        
+        @param request: UpdateDataQualityTemplateRequest
+        @return: UpdateDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_quality_template_with_options(request, runtime)
+
+    async def update_data_quality_template_async(
+        self,
+        request: dataworks_public_20240518_models.UpdateDataQualityTemplateRequest,
+    ) -> dataworks_public_20240518_models.UpdateDataQualityTemplateResponse:
+        """
+        @summary 更新数据质量模板
+        
+        @param request: UpdateDataQualityTemplateRequest
+        @return: UpdateDataQualityTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_quality_template_with_options_async(request, runtime)
 
     def update_data_source_with_options(
         self,

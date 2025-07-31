@@ -1,3 +1,25 @@
+2025-07-31 Version: 7.3.0
+- Support API CreateDataQualityAlertRule.
+- Support API CreateDataQualityScan.
+- Support API CreateDataQualityScanRun.
+- Support API CreateDataQualityTemplate.
+- Support API DeleteDataQualityAlertRule.
+- Support API DeleteDataQualityScan.
+- Support API DeleteDataQualityTemplate.
+- Support API GetDataQualityAlertRule.
+- Support API GetDataQualityScan.
+- Support API GetDataQualityScanRun.
+- Support API GetDataQualityScanRunLog.
+- Support API GetDataQualityTemplate.
+- Support API ListDataQualityAlertRules.
+- Support API ListDataQualityScanRuns.
+- Support API ListDataQualityScans.
+- Support API ListDataQualityTemplates.
+- Support API UpdateDataQualityAlertRule.
+- Support API UpdateDataQualityScan.
+- Support API UpdateDataQualityTemplate.
+
+
 2025-07-30 Version: 7.2.7
 - Update API CreateWorkflowInstances: add request parameters TagCreationPolicy.
 - Update API CreateWorkflowInstances: add request parameters Tags.

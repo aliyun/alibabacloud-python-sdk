@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, BinaryIO, Any
+from typing import List, Dict, Any, BinaryIO
 
 
 class Catalog(TeaModel):
@@ -6700,6 +6700,301 @@ class CreateDataAssetTagResponse(TeaModel):
         return self
 
 
+class CreateDataQualityAlertRuleRequestNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        # This parameter is required.
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class CreateDataQualityAlertRuleRequestNotification(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        receivers: List[CreateDataQualityAlertRuleRequestNotificationReceivers] = None,
+    ):
+        # This parameter is required.
+        self.channels = channels
+        # This parameter is required.
+        self.receivers = receivers
+
+    def validate(self):
+        if self.receivers:
+            for k in self.receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        result['Receivers'] = []
+        if self.receivers is not None:
+            for k in self.receivers:
+                result['Receivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        self.receivers = []
+        if m.get('Receivers') is not None:
+            for k in m.get('Receivers'):
+                temp_model = CreateDataQualityAlertRuleRequestNotificationReceivers()
+                self.receivers.append(temp_model.from_map(k))
+        return self
+
+
+class CreateDataQualityAlertRuleRequestTarget(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        type: str = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateDataQualityAlertRuleRequest(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notification: CreateDataQualityAlertRuleRequestNotification = None,
+        project_id: int = None,
+        target: CreateDataQualityAlertRuleRequestTarget = None,
+    ):
+        # This parameter is required.
+        self.condition = condition
+        # This parameter is required.
+        self.notification = notification
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.target = target
+
+    def validate(self):
+        if self.notification:
+            self.notification.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Notification') is not None:
+            temp_model = CreateDataQualityAlertRuleRequestNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            temp_model = CreateDataQualityAlertRuleRequestTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class CreateDataQualityAlertRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        notification_shrink: str = None,
+        project_id: int = None,
+        target_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.condition = condition
+        # This parameter is required.
+        self.notification_shrink = notification_shrink
+        # This parameter is required.
+        self.project_id = project_id
+        # This parameter is required.
+        self.target_shrink = target_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.notification_shrink is not None:
+            result['Notification'] = self.notification_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target_shrink is not None:
+            result['Target'] = self.target_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Notification') is not None:
+            self.notification_shrink = m.get('Notification')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            self.target_shrink = m.get('Target')
+        return self
+
+
+class CreateDataQualityAlertRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDataQualityAlertRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataQualityAlertRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataQualityAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical(TeaModel):
     def __init__(
         self,
@@ -9069,6 +9364,861 @@ class CreateDataQualityRuleTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDataQualityRuleTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataQualityScanRequestComputeResourceRuntime(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        hive_conf: Dict[str, Any] = None,
+        spark_conf: Dict[str, Any] = None,
+    ):
+        self.engine = engine
+        self.hive_conf = hive_conf
+        self.spark_conf = spark_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.hive_conf is not None:
+            result['HiveConf'] = self.hive_conf
+        if self.spark_conf is not None:
+            result['SparkConf'] = self.spark_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('HiveConf') is not None:
+            self.hive_conf = m.get('HiveConf')
+        if m.get('SparkConf') is not None:
+            self.spark_conf = m.get('SparkConf')
+        return self
+
+
+class CreateDataQualityScanRequestComputeResource(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        runtime: CreateDataQualityScanRequestComputeResourceRuntime = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.runtime = runtime
+
+    def validate(self):
+        if self.runtime:
+            self.runtime.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Runtime') is not None:
+            temp_model = CreateDataQualityScanRequestComputeResourceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        return self
+
+
+class CreateDataQualityScanRequestHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateDataQualityScanRequestParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateDataQualityScanRequestRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class CreateDataQualityScanRequestTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateDataQualityScanRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        compute_resource: CreateDataQualityScanRequestComputeResource = None,
+        description: str = None,
+        hooks: List[CreateDataQualityScanRequestHooks] = None,
+        name: str = None,
+        owner: str = None,
+        parameters: List[CreateDataQualityScanRequestParameters] = None,
+        project_id: int = None,
+        runtime_resource: CreateDataQualityScanRequestRuntimeResource = None,
+        spec: str = None,
+        trigger: CreateDataQualityScanRequestTrigger = None,
+    ):
+        # This parameter is required.
+        self.client_token = client_token
+        self.compute_resource = compute_resource
+        self.description = description
+        self.hooks = hooks
+        self.name = name
+        self.owner = owner
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.spec = spec
+        self.trigger = trigger
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ComputeResource') is not None:
+            temp_model = CreateDataQualityScanRequestComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = CreateDataQualityScanRequestHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = CreateDataQualityScanRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = CreateDataQualityScanRequestRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            temp_model = CreateDataQualityScanRequestTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class CreateDataQualityScanShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        compute_resource_shrink: str = None,
+        description: str = None,
+        hooks_shrink: str = None,
+        name: str = None,
+        owner: str = None,
+        parameters_shrink: str = None,
+        project_id: int = None,
+        runtime_resource_shrink: str = None,
+        spec: str = None,
+        trigger_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.client_token = client_token
+        self.compute_resource_shrink = compute_resource_shrink
+        self.description = description
+        self.hooks_shrink = hooks_shrink
+        self.name = name
+        self.owner = owner
+        self.parameters_shrink = parameters_shrink
+        self.project_id = project_id
+        self.runtime_resource_shrink = runtime_resource_shrink
+        self.spec = spec
+        self.trigger_shrink = trigger_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.compute_resource_shrink is not None:
+            result['ComputeResource'] = self.compute_resource_shrink
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hooks_shrink is not None:
+            result['Hooks'] = self.hooks_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource_shrink is not None:
+            result['RuntimeResource'] = self.runtime_resource_shrink
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger_shrink is not None:
+            result['Trigger'] = self.trigger_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ComputeResource') is not None:
+            self.compute_resource_shrink = m.get('ComputeResource')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Hooks') is not None:
+            self.hooks_shrink = m.get('Hooks')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource_shrink = m.get('RuntimeResource')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            self.trigger_shrink = m.get('Trigger')
+        return self
+
+
+class CreateDataQualityScanResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDataQualityScanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataQualityScanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataQualityScanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataQualityScanRunRequestParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateDataQualityScanRunRequestRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class CreateDataQualityScanRunRequest(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan_id: int = None,
+        parameters: List[CreateDataQualityScanRunRequestParameters] = None,
+        project_id: int = None,
+        runtime_resource: CreateDataQualityScanRunRequestRuntimeResource = None,
+    ):
+        self.data_quality_scan_id = data_quality_scan_id
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_scan_id is not None:
+            result['DataQualityScanId'] = self.data_quality_scan_id
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityScanId') is not None:
+            self.data_quality_scan_id = m.get('DataQualityScanId')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = CreateDataQualityScanRunRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = CreateDataQualityScanRunRequestRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        return self
+
+
+class CreateDataQualityScanRunShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan_id: int = None,
+        parameters_shrink: str = None,
+        project_id: int = None,
+        runtime_resource_shrink: str = None,
+    ):
+        self.data_quality_scan_id = data_quality_scan_id
+        self.parameters_shrink = parameters_shrink
+        self.project_id = project_id
+        self.runtime_resource_shrink = runtime_resource_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_scan_id is not None:
+            result['DataQualityScanId'] = self.data_quality_scan_id
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource_shrink is not None:
+            result['RuntimeResource'] = self.runtime_resource_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityScanId') is not None:
+            self.data_quality_scan_id = m.get('DataQualityScanId')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource_shrink = m.get('RuntimeResource')
+        return self
+
+
+class CreateDataQualityScanRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDataQualityScanRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataQualityScanRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataQualityScanRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDataQualityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        owner: str = None,
+        project_id: int = None,
+        spec: str = None,
+    ):
+        self.owner = owner
+        self.project_id = project_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class CreateDataQualityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        request_id: str = None,
+    ):
+        self.id = id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDataQualityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDataQualityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDataQualityTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14022,6 +15172,107 @@ class DeleteDataAssetTagResponse(TeaModel):
         return self
 
 
+class DeleteDataQualityAlertRuleRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteDataQualityAlertRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataQualityAlertRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataQualityAlertRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataQualityAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDataQualityEvaluationTaskRequest(TeaModel):
     def __init__(
         self,
@@ -14359,6 +15610,215 @@ class DeleteDataQualityRuleTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDataQualityRuleTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataQualityScanRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+    ):
+        self.description = description
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteDataQualityScanResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataQualityScanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataQualityScanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataQualityScanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDataQualityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteDataQualityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDataQualityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDataQualityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDataQualityTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20500,6 +21960,278 @@ class GetDIJobLogResponse(TeaModel):
         return self
 
 
+class GetDataQualityAlertRuleRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        receivers: List[GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers] = None,
+    ):
+        self.channels = channels
+        self.receivers = receivers
+
+    def validate(self):
+        if self.receivers:
+            for k in self.receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        result['Receivers'] = []
+        if self.receivers is not None:
+            for k in self.receivers:
+                result['Receivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        self.receivers = []
+        if m.get('Receivers') is not None:
+            for k in m.get('Receivers'):
+                temp_model = GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotificationReceivers()
+                self.receivers.append(temp_model.from_map(k))
+        return self
+
+
+class GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        type: str = None,
+    ):
+        self.ids = ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityAlertRuleResponseBodyDataQualityAlertRule(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        id: int = None,
+        notification: GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification = None,
+        project_id: int = None,
+        target: GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget = None,
+    ):
+        self.condition = condition
+        self.id = id
+        self.notification = notification
+        self.project_id = project_id
+        self.target = target
+
+    def validate(self):
+        if self.notification:
+            self.notification.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Notification') is not None:
+            temp_model = GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            temp_model = GetDataQualityAlertRuleResponseBodyDataQualityAlertRuleTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class GetDataQualityAlertRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_quality_alert_rule: GetDataQualityAlertRuleResponseBodyDataQualityAlertRule = None,
+        request_id: str = None,
+    ):
+        self.data_quality_alert_rule = data_quality_alert_rule
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_quality_alert_rule:
+            self.data_quality_alert_rule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_alert_rule is not None:
+            result['DataQualityAlertRule'] = self.data_quality_alert_rule.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityAlertRule') is not None:
+            temp_model = GetDataQualityAlertRuleResponseBodyDataQualityAlertRule()
+            self.data_quality_alert_rule = temp_model.from_map(m['DataQualityAlertRule'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDataQualityAlertRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataQualityAlertRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataQualityAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDataQualityEvaluationTaskRequest(TeaModel):
     def __init__(
         self,
@@ -23103,6 +24835,1451 @@ class GetDataQualityRuleTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDataQualityRuleTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataQualityScanRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        hive_conf: Dict[str, Any] = None,
+        spark_conf: Dict[str, Any] = None,
+    ):
+        self.engine = engine
+        self.hive_conf = hive_conf
+        self.spark_conf = spark_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.hive_conf is not None:
+            result['HiveConf'] = self.hive_conf
+        if self.spark_conf is not None:
+            result['SparkConf'] = self.spark_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('HiveConf') is not None:
+            self.hive_conf = m.get('HiveConf')
+        if m.get('SparkConf') is not None:
+            self.spark_conf = m.get('SparkConf')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanComputeResource(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        runtime: GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.runtime = runtime
+
+    def validate(self):
+        if self.runtime:
+            self.runtime.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Runtime') is not None:
+            temp_model = GetDataQualityScanResponseBodyDataQualityScanComputeResourceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScanTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityScanResponseBodyDataQualityScan(TeaModel):
+    def __init__(
+        self,
+        compute_resource: GetDataQualityScanResponseBodyDataQualityScanComputeResource = None,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        hooks: List[GetDataQualityScanResponseBodyDataQualityScanHooks] = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        parameters: List[GetDataQualityScanResponseBodyDataQualityScanParameters] = None,
+        project_id: int = None,
+        runtime_resource: GetDataQualityScanResponseBodyDataQualityScanRuntimeResource = None,
+        spec: str = None,
+        trigger: GetDataQualityScanResponseBodyDataQualityScanTrigger = None,
+    ):
+        self.compute_resource = compute_resource
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.spec = spec
+        self.trigger = trigger
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            temp_model = GetDataQualityScanResponseBodyDataQualityScanComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = GetDataQualityScanResponseBodyDataQualityScanHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetDataQualityScanResponseBodyDataQualityScanParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = GetDataQualityScanResponseBodyDataQualityScanRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            temp_model = GetDataQualityScanResponseBodyDataQualityScanTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class GetDataQualityScanResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan: GetDataQualityScanResponseBodyDataQualityScan = None,
+        request_id: str = None,
+    ):
+        self.data_quality_scan = data_quality_scan
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_quality_scan:
+            self.data_quality_scan.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_scan is not None:
+            result['DataQualityScan'] = self.data_quality_scan.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityScan') is not None:
+            temp_model = GetDataQualityScanResponseBodyDataQualityScan()
+            self.data_quality_scan = temp_model.from_map(m['DataQualityScan'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDataQualityScanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataQualityScanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataQualityScanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataQualityScanRunRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails(TeaModel):
+    def __init__(
+        self,
+        check_value: str = None,
+        reference_value: str = None,
+        status: str = None,
+    ):
+        self.check_value = check_value
+        self.reference_value = reference_value
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_value is not None:
+            result['CheckValue'] = self.check_value
+        if self.reference_value is not None:
+            result['ReferenceValue'] = self.reference_value
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckValue') is not None:
+            self.check_value = m.get('CheckValue')
+        if m.get('ReferenceValue') is not None:
+            self.reference_value = m.get('ReferenceValue')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunResults(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        details: List[GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails] = None,
+        rule: str = None,
+        sample: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.details = details
+        self.rule = rule
+        self.sample = sample
+        self.status = status
+
+    def validate(self):
+        if self.details:
+            for k in self.details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['Details'] = []
+        if self.details is not None:
+            for k in self.details:
+                result['Details'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.sample is not None:
+            result['Sample'] = self.sample
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.details = []
+        if m.get('Details') is not None:
+            for k in m.get('Details'):
+                temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunResultsDetails()
+                self.details.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('Sample') is not None:
+            self.sample = m.get('Sample')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        hive_conf: Dict[str, Any] = None,
+        spark_conf: Dict[str, Any] = None,
+    ):
+        self.engine = engine
+        self.hive_conf = hive_conf
+        self.spark_conf = spark_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.hive_conf is not None:
+            result['HiveConf'] = self.hive_conf
+        if self.spark_conf is not None:
+            result['SparkConf'] = self.spark_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('HiveConf') is not None:
+            self.hive_conf = m.get('HiveConf')
+        if m.get('SparkConf') is not None:
+            self.spark_conf = m.get('SparkConf')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        runtime: GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.runtime = runtime
+
+    def validate(self):
+        if self.runtime:
+            self.runtime.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Runtime') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResourceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRunScan(TeaModel):
+    def __init__(
+        self,
+        compute_resource: GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource = None,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        hooks: List[GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks] = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        parameters: List[GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters] = None,
+        project_id: int = None,
+        runtime_resource: GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource = None,
+        spec: str = None,
+        trigger: GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger = None,
+    ):
+        self.compute_resource = compute_resource
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.spec = spec
+        self.trigger = trigger
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScanTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class GetDataQualityScanRunResponseBodyDataQualityScanRun(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        finish_time: int = None,
+        id: int = None,
+        parameters: List[GetDataQualityScanRunResponseBodyDataQualityScanRunParameters] = None,
+        results: List[GetDataQualityScanRunResponseBodyDataQualityScanRunResults] = None,
+        scan: GetDataQualityScanRunResponseBodyDataQualityScanRunScan = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.id = id
+        self.parameters = parameters
+        self.results = results
+        self.scan = scan
+        self.status = status
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+        if self.scan:
+            self.scan.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.scan is not None:
+            result['Scan'] = self.scan.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunParameters()
+                self.parameters.append(temp_model.from_map(k))
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('Scan') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRunScan()
+            self.scan = temp_model.from_map(m['Scan'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetDataQualityScanRunResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan_run: GetDataQualityScanRunResponseBodyDataQualityScanRun = None,
+        request_id: str = None,
+    ):
+        self.data_quality_scan_run = data_quality_scan_run
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_quality_scan_run:
+            self.data_quality_scan_run.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_scan_run is not None:
+            result['DataQualityScanRun'] = self.data_quality_scan_run.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityScanRun') is not None:
+            temp_model = GetDataQualityScanRunResponseBodyDataQualityScanRun()
+            self.data_quality_scan_run = temp_model.from_map(m['DataQualityScanRun'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDataQualityScanRunResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataQualityScanRunResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataQualityScanRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataQualityScanRunLogRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        offset: int = None,
+    ):
+        self.id = id
+        self.offset = offset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        return self
+
+
+class GetDataQualityScanRunLogResponseBodyLogSegment(TeaModel):
+    def __init__(
+        self,
+        log: str = None,
+        next_offset: int = None,
+    ):
+        self.log = log
+        self.next_offset = next_offset
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log is not None:
+            result['Log'] = self.log
+        if self.next_offset is not None:
+            result['NextOffset'] = self.next_offset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Log') is not None:
+            self.log = m.get('Log')
+        if m.get('NextOffset') is not None:
+            self.next_offset = m.get('NextOffset')
+        return self
+
+
+class GetDataQualityScanRunLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_segment: GetDataQualityScanRunLogResponseBodyLogSegment = None,
+        request_id: str = None,
+    ):
+        self.log_segment = log_segment
+        self.request_id = request_id
+
+    def validate(self):
+        if self.log_segment:
+            self.log_segment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_segment is not None:
+            result['LogSegment'] = self.log_segment.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogSegment') is not None:
+            temp_model = GetDataQualityScanRunLogResponseBodyLogSegment()
+            self.log_segment = temp_model.from_map(m['LogSegment'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDataQualityScanRunLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataQualityScanRunLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataQualityScanRunLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDataQualityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class GetDataQualityTemplateResponseBodyDataQualityTemplate(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        id: str = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        owner: str = None,
+        project_id: int = None,
+        spec: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.owner = owner
+        self.project_id = project_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class GetDataQualityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data_quality_template: GetDataQualityTemplateResponseBodyDataQualityTemplate = None,
+        request_id: str = None,
+    ):
+        self.data_quality_template = data_quality_template
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data_quality_template:
+            self.data_quality_template.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_template is not None:
+            result['DataQualityTemplate'] = self.data_quality_template.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityTemplate') is not None:
+            temp_model = GetDataQualityTemplateResponseBodyDataQualityTemplate()
+            self.data_quality_template = temp_model.from_map(m['DataQualityTemplate'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDataQualityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDataQualityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDataQualityTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37665,6 +40842,358 @@ class ListDataAssetsResponse(TeaModel):
         return self
 
 
+class ListDataQualityAlertRulesRequest(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+    ):
+        self.data_quality_scan_id = data_quality_scan_id
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_quality_scan_id is not None:
+            result['DataQualityScanId'] = self.data_quality_scan_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataQualityScanId') is not None:
+            self.data_quality_scan_id = m.get('DataQualityScanId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        return self
+
+
+class ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotification(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        receivers: List[ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotificationReceivers] = None,
+    ):
+        self.channels = channels
+        self.receivers = receivers
+
+    def validate(self):
+        if self.receivers:
+            for k in self.receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        result['Receivers'] = []
+        if self.receivers is not None:
+            for k in self.receivers:
+                result['Receivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        self.receivers = []
+        if m.get('Receivers') is not None:
+            for k in m.get('Receivers'):
+                temp_model = ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotificationReceivers()
+                self.receivers.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesTarget(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        type: str = None,
+    ):
+        self.ids = ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        id: int = None,
+        notification: ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotification = None,
+        project_id: int = None,
+        target: ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesTarget = None,
+    ):
+        self.condition = condition
+        self.id = id
+        self.notification = notification
+        self.project_id = project_id
+        self.target = target
+
+    def validate(self):
+        if self.notification:
+            self.notification.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Notification') is not None:
+            temp_model = ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            temp_model = ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRulesTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class ListDataQualityAlertRulesResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_alert_rules: List[ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_alert_rules = data_quality_alert_rules
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_alert_rules:
+            for k in self.data_quality_alert_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityAlertRules'] = []
+        if self.data_quality_alert_rules is not None:
+            for k in self.data_quality_alert_rules:
+                result['DataQualityAlertRules'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_alert_rules = []
+        if m.get('DataQualityAlertRules') is not None:
+            for k in m.get('DataQualityAlertRules'):
+                temp_model = ListDataQualityAlertRulesResponseBodyPageInfoDataQualityAlertRules()
+                self.data_quality_alert_rules.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityAlertRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_info: ListDataQualityAlertRulesResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = ListDataQualityAlertRulesResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityAlertRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityAlertRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityAlertRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListDataQualityEvaluationTaskInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -41012,6 +44541,1084 @@ class ListDataQualityRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDataQualityRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityScanRunsRequest(TeaModel):
+    def __init__(
+        self,
+        create_time_from: int = None,
+        create_time_to: int = None,
+        data_quality_scan_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+        status: str = None,
+    ):
+        self.create_time_from = create_time_from
+        self.create_time_to = create_time_to
+        self.data_quality_scan_id = data_quality_scan_id
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_from is not None:
+            result['CreateTimeFrom'] = self.create_time_from
+        if self.create_time_to is not None:
+            result['CreateTimeTo'] = self.create_time_to
+        if self.data_quality_scan_id is not None:
+            result['DataQualityScanId'] = self.data_quality_scan_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeFrom') is not None:
+            self.create_time_from = m.get('CreateTimeFrom')
+        if m.get('CreateTimeTo') is not None:
+            self.create_time_to = m.get('CreateTimeTo')
+        if m.get('DataQualityScanId') is not None:
+            self.data_quality_scan_id = m.get('DataQualityScanId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        finish_time: int = None,
+        id: int = None,
+        parameters: List[ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters] = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.finish_time = finish_time
+        self.id = id
+        self.parameters = parameters
+        self.status = status
+
+    def validate(self):
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRunsParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDataQualityScanRunsResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_scan_runs: List[ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_scan_runs = data_quality_scan_runs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_scan_runs:
+            for k in self.data_quality_scan_runs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityScanRuns'] = []
+        if self.data_quality_scan_runs is not None:
+            for k in self.data_quality_scan_runs:
+                result['DataQualityScanRuns'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_scan_runs = []
+        if m.get('DataQualityScanRuns') is not None:
+            for k in m.get('DataQualityScanRuns'):
+                temp_model = ListDataQualityScanRunsResponseBodyPageInfoDataQualityScanRuns()
+                self.data_quality_scan_runs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityScanRunsResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_info: ListDataQualityScanRunsResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = ListDataQualityScanRunsResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityScanRunsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityScanRunsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityScanRunsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityScansRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+        sort_by: str = None,
+        table: str = None,
+    ):
+        self.name = name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.project_id = project_id
+        self.sort_by = sort_by
+        self.table = table
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.table is not None:
+            result['Table'] = self.table
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRuntime(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        hive_conf: str = None,
+        spark_conf: str = None,
+    ):
+        self.engine = engine
+        self.hive_conf = hive_conf
+        self.spark_conf = spark_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.hive_conf is not None:
+            result['HiveConf'] = self.hive_conf
+        if self.spark_conf is not None:
+            result['SparkConf'] = self.spark_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('HiveConf') is not None:
+            self.hive_conf = m.get('HiveConf')
+        if m.get('SparkConf') is not None:
+            self.spark_conf = m.get('SparkConf')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        runtime: ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRuntime = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.runtime = runtime
+
+    def validate(self):
+        if self.runtime:
+            self.runtime.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Runtime') is not None:
+            temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResourceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScansTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfoDataQualityScans(TeaModel):
+    def __init__(
+        self,
+        compute_resource: ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource = None,
+        create_time: int = None,
+        create_user: str = None,
+        description: str = None,
+        hooks: List[ListDataQualityScansResponseBodyPageInfoDataQualityScansHooks] = None,
+        id: int = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        name: str = None,
+        owner: str = None,
+        parameters: List[ListDataQualityScansResponseBodyPageInfoDataQualityScansParameters] = None,
+        project_id: int = None,
+        runtime_resource: ListDataQualityScansResponseBodyPageInfoDataQualityScansRuntimeResource = None,
+        trigger: ListDataQualityScansResponseBodyPageInfoDataQualityScansTrigger = None,
+    ):
+        self.compute_resource = compute_resource
+        self.create_time = create_time
+        self.create_user = create_user
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.name = name
+        self.owner = owner
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.trigger = trigger
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Trigger') is not None:
+            temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScansTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class ListDataQualityScansResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_scans: List[ListDataQualityScansResponseBodyPageInfoDataQualityScans] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_scans = data_quality_scans
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_scans:
+            for k in self.data_quality_scans:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityScans'] = []
+        if self.data_quality_scans is not None:
+            for k in self.data_quality_scans:
+                result['DataQualityScans'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_scans = []
+        if m.get('DataQualityScans') is not None:
+            for k in m.get('DataQualityScans'):
+                temp_model = ListDataQualityScansResponseBodyPageInfoDataQualityScans()
+                self.data_quality_scans.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityScansResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_info: ListDataQualityScansResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = ListDataQualityScansResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityScansResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityScansResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityScansResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataQualityTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        catalog: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: int = None,
+    ):
+        self.catalog = catalog
+        self.name = name
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.catalog is not None:
+            result['Catalog'] = self.catalog
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Catalog') is not None:
+            self.catalog = m.get('Catalog')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        return self
+
+
+class ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates(TeaModel):
+    def __init__(
+        self,
+        create_time: int = None,
+        create_user: str = None,
+        id: str = None,
+        modify_time: int = None,
+        modify_user: str = None,
+        owner: str = None,
+        project_id: int = None,
+        spec: str = None,
+    ):
+        self.create_time = create_time
+        self.create_user = create_user
+        self.id = id
+        self.modify_time = modify_time
+        self.modify_user = modify_user
+        self.owner = owner
+        self.project_id = project_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.modify_time is not None:
+            result['ModifyTime'] = self.modify_time
+        if self.modify_user is not None:
+            result['ModifyUser'] = self.modify_user
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModifyTime') is not None:
+            self.modify_time = m.get('ModifyTime')
+        if m.get('ModifyUser') is not None:
+            self.modify_user = m.get('ModifyUser')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class ListDataQualityTemplatesResponseBodyPageInfo(TeaModel):
+    def __init__(
+        self,
+        data_quality_templates: List[ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.data_quality_templates = data_quality_templates
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data_quality_templates:
+            for k in self.data_quality_templates:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataQualityTemplates'] = []
+        if self.data_quality_templates is not None:
+            for k in self.data_quality_templates:
+                result['DataQualityTemplates'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_quality_templates = []
+        if m.get('DataQualityTemplates') is not None:
+            for k in m.get('DataQualityTemplates'):
+                temp_model = ListDataQualityTemplatesResponseBodyPageInfoDataQualityTemplates()
+                self.data_quality_templates.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataQualityTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_info: ListDataQualityTemplatesResponseBodyPageInfo = None,
+        request_id: str = None,
+    ):
+        self.page_info = page_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = ListDataQualityTemplatesResponseBodyPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataQualityTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataQualityTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataQualityTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -66363,6 +70970,302 @@ class UpdateDataAssetTagResponse(TeaModel):
         return self
 
 
+class UpdateDataQualityAlertRuleRequestNotificationReceivers(TeaModel):
+    def __init__(
+        self,
+        extension: str = None,
+        receiver_type: str = None,
+        receiver_values: List[str] = None,
+    ):
+        self.extension = extension
+        # This parameter is required.
+        self.receiver_type = receiver_type
+        self.receiver_values = receiver_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extension is not None:
+            result['Extension'] = self.extension
+        if self.receiver_type is not None:
+            result['ReceiverType'] = self.receiver_type
+        if self.receiver_values is not None:
+            result['ReceiverValues'] = self.receiver_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
+        if m.get('ReceiverType') is not None:
+            self.receiver_type = m.get('ReceiverType')
+        if m.get('ReceiverValues') is not None:
+            self.receiver_values = m.get('ReceiverValues')
+        return self
+
+
+class UpdateDataQualityAlertRuleRequestNotification(TeaModel):
+    def __init__(
+        self,
+        channels: List[str] = None,
+        receivers: List[UpdateDataQualityAlertRuleRequestNotificationReceivers] = None,
+    ):
+        # This parameter is required.
+        self.channels = channels
+        self.receivers = receivers
+
+    def validate(self):
+        if self.receivers:
+            for k in self.receivers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channels is not None:
+            result['Channels'] = self.channels
+        result['Receivers'] = []
+        if self.receivers is not None:
+            for k in self.receivers:
+                result['Receivers'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channels') is not None:
+            self.channels = m.get('Channels')
+        self.receivers = []
+        if m.get('Receivers') is not None:
+            for k in m.get('Receivers'):
+                temp_model = UpdateDataQualityAlertRuleRequestNotificationReceivers()
+                self.receivers.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateDataQualityAlertRuleRequestTarget(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+        type: str = None,
+    ):
+        self.ids = ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateDataQualityAlertRuleRequest(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        id: int = None,
+        notification: UpdateDataQualityAlertRuleRequestNotification = None,
+        project_id: int = None,
+        target: UpdateDataQualityAlertRuleRequestTarget = None,
+    ):
+        self.condition = condition
+        self.id = id
+        self.notification = notification
+        self.project_id = project_id
+        self.target = target
+
+    def validate(self):
+        if self.notification:
+            self.notification.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Notification') is not None:
+            temp_model = UpdateDataQualityAlertRuleRequestNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            temp_model = UpdateDataQualityAlertRuleRequestTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
+
+
+class UpdateDataQualityAlertRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        id: int = None,
+        notification_shrink: str = None,
+        project_id: int = None,
+        target_shrink: str = None,
+    ):
+        self.condition = condition
+        self.id = id
+        self.notification_shrink = notification_shrink
+        self.project_id = project_id
+        self.target_shrink = target_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.notification_shrink is not None:
+            result['Notification'] = self.notification_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.target_shrink is not None:
+            result['Target'] = self.target_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Notification') is not None:
+            self.notification_shrink = m.get('Notification')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Target') is not None:
+            self.target_shrink = m.get('Target')
+        return self
+
+
+class UpdateDataQualityAlertRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataQualityAlertRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataQualityAlertRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataQualityAlertRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateDataQualityEvaluationTaskRequestDataQualityRulesCheckingConfigThresholdsCritical(TeaModel):
     def __init__(
         self,
@@ -68421,6 +73324,618 @@ class UpdateDataQualityRuleTemplateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateDataQualityRuleTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataQualityScanRequestComputeResourceRuntime(TeaModel):
+    def __init__(
+        self,
+        engine: str = None,
+        hive_conf: Dict[str, Any] = None,
+        spark_conf: Dict[str, Any] = None,
+    ):
+        self.engine = engine
+        self.hive_conf = hive_conf
+        self.spark_conf = spark_conf
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.hive_conf is not None:
+            result['HiveConf'] = self.hive_conf
+        if self.spark_conf is not None:
+            result['SparkConf'] = self.spark_conf
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('HiveConf') is not None:
+            self.hive_conf = m.get('HiveConf')
+        if m.get('SparkConf') is not None:
+            self.spark_conf = m.get('SparkConf')
+        return self
+
+
+class UpdateDataQualityScanRequestComputeResource(TeaModel):
+    def __init__(
+        self,
+        env_type: str = None,
+        name: str = None,
+        runtime: UpdateDataQualityScanRequestComputeResourceRuntime = None,
+    ):
+        self.env_type = env_type
+        self.name = name
+        self.runtime = runtime
+
+    def validate(self):
+        if self.runtime:
+            self.runtime.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.runtime is not None:
+            result['Runtime'] = self.runtime.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Runtime') is not None:
+            temp_model = UpdateDataQualityScanRequestComputeResourceRuntime()
+            self.runtime = temp_model.from_map(m['Runtime'])
+        return self
+
+
+class UpdateDataQualityScanRequestHooks(TeaModel):
+    def __init__(
+        self,
+        condition: str = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            self.condition = m.get('Condition')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateDataQualityScanRequestParameters(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateDataQualityScanRequestRuntimeResource(TeaModel):
+    def __init__(
+        self,
+        cu: float = None,
+        id: str = None,
+        image: str = None,
+    ):
+        self.cu = cu
+        self.id = id
+        self.image = image
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['Cu'] = self.cu
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.image is not None:
+            result['Image'] = self.image
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cu') is not None:
+            self.cu = m.get('Cu')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        return self
+
+
+class UpdateDataQualityScanRequestTrigger(TeaModel):
+    def __init__(
+        self,
+        task_ids: List[int] = None,
+        type: str = None,
+    ):
+        self.task_ids = task_ids
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_ids is not None:
+            result['TaskIds'] = self.task_ids
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskIds') is not None:
+            self.task_ids = m.get('TaskIds')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class UpdateDataQualityScanRequest(TeaModel):
+    def __init__(
+        self,
+        compute_resource: UpdateDataQualityScanRequestComputeResource = None,
+        description: str = None,
+        hooks: List[UpdateDataQualityScanRequestHooks] = None,
+        id: int = None,
+        name: str = None,
+        owner: str = None,
+        parameters: List[UpdateDataQualityScanRequestParameters] = None,
+        project_id: int = None,
+        runtime_resource: UpdateDataQualityScanRequestRuntimeResource = None,
+        spec: str = None,
+        trigger: UpdateDataQualityScanRequestTrigger = None,
+    ):
+        self.compute_resource = compute_resource
+        self.description = description
+        self.hooks = hooks
+        self.id = id
+        self.name = name
+        self.owner = owner
+        self.parameters = parameters
+        self.project_id = project_id
+        self.runtime_resource = runtime_resource
+        self.spec = spec
+        self.trigger = trigger
+
+    def validate(self):
+        if self.compute_resource:
+            self.compute_resource.validate()
+        if self.hooks:
+            for k in self.hooks:
+                if k:
+                    k.validate()
+        if self.parameters:
+            for k in self.parameters:
+                if k:
+                    k.validate()
+        if self.runtime_resource:
+            self.runtime_resource.validate()
+        if self.trigger:
+            self.trigger.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource is not None:
+            result['ComputeResource'] = self.compute_resource.to_map()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Hooks'] = []
+        if self.hooks is not None:
+            for k in self.hooks:
+                result['Hooks'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        result['Parameters'] = []
+        if self.parameters is not None:
+            for k in self.parameters:
+                result['Parameters'].append(k.to_map() if k else None)
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource is not None:
+            result['RuntimeResource'] = self.runtime_resource.to_map()
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger is not None:
+            result['Trigger'] = self.trigger.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            temp_model = UpdateDataQualityScanRequestComputeResource()
+            self.compute_resource = temp_model.from_map(m['ComputeResource'])
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.hooks = []
+        if m.get('Hooks') is not None:
+            for k in m.get('Hooks'):
+                temp_model = UpdateDataQualityScanRequestHooks()
+                self.hooks.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        self.parameters = []
+        if m.get('Parameters') is not None:
+            for k in m.get('Parameters'):
+                temp_model = UpdateDataQualityScanRequestParameters()
+                self.parameters.append(temp_model.from_map(k))
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            temp_model = UpdateDataQualityScanRequestRuntimeResource()
+            self.runtime_resource = temp_model.from_map(m['RuntimeResource'])
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            temp_model = UpdateDataQualityScanRequestTrigger()
+            self.trigger = temp_model.from_map(m['Trigger'])
+        return self
+
+
+class UpdateDataQualityScanShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        compute_resource_shrink: str = None,
+        description: str = None,
+        hooks_shrink: str = None,
+        id: int = None,
+        name: str = None,
+        owner: str = None,
+        parameters_shrink: str = None,
+        project_id: int = None,
+        runtime_resource_shrink: str = None,
+        spec: str = None,
+        trigger_shrink: str = None,
+    ):
+        self.compute_resource_shrink = compute_resource_shrink
+        self.description = description
+        self.hooks_shrink = hooks_shrink
+        self.id = id
+        self.name = name
+        self.owner = owner
+        self.parameters_shrink = parameters_shrink
+        self.project_id = project_id
+        self.runtime_resource_shrink = runtime_resource_shrink
+        self.spec = spec
+        self.trigger_shrink = trigger_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.compute_resource_shrink is not None:
+            result['ComputeResource'] = self.compute_resource_shrink
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.hooks_shrink is not None:
+            result['Hooks'] = self.hooks_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.runtime_resource_shrink is not None:
+            result['RuntimeResource'] = self.runtime_resource_shrink
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.trigger_shrink is not None:
+            result['Trigger'] = self.trigger_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComputeResource') is not None:
+            self.compute_resource_shrink = m.get('ComputeResource')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Hooks') is not None:
+            self.hooks_shrink = m.get('Hooks')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('RuntimeResource') is not None:
+            self.runtime_resource_shrink = m.get('RuntimeResource')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Trigger') is not None:
+            self.trigger_shrink = m.get('Trigger')
+        return self
+
+
+class UpdateDataQualityScanResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataQualityScanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataQualityScanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataQualityScanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateDataQualityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        owner: str = None,
+        project_id: int = None,
+        spec: str = None,
+    ):
+        self.id = id
+        self.owner = owner
+        self.project_id = project_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class UpdateDataQualityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateDataQualityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateDataQualityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateDataQualityTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
