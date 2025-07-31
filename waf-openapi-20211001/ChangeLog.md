@@ -1,3 +1,7 @@
+2025-07-31 Version: 6.1.3
+- Update API DescribeSensitiveApiStatistic: add request parameters Type.
+
+
 2025-07-29 Version: 6.1.2
 - Update API DescribeApisecRules: add request parameters Lang.
 - Update API DescribeApisecStatistics: add request parameters EndTime.

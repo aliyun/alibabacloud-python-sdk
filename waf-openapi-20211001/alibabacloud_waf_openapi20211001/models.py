@@ -28607,6 +28607,7 @@ class DescribeSensitiveApiStatisticRequest(TeaModel):
         region_id: str = None,
         resource_manager_resource_group_id: str = None,
         start_time: int = None,
+        type: str = None,
     ):
         # The ID of the hybrid cloud cluster.
         # >For hybrid cloud scenarios only, you can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the hybrid cloud clusters.
@@ -28638,6 +28639,7 @@ class DescribeSensitiveApiStatisticRequest(TeaModel):
         # 
         # >  You can query only data of the previous month, previous 3 months, previous 6 months, previous 12 months, and data generated since January 1 of last year for compliance check. You must specify a valid time range.
         self.start_time = start_time
+        self.type = type
 
     def validate(self):
         pass
@@ -28666,6 +28668,8 @@ class DescribeSensitiveApiStatisticRequest(TeaModel):
             result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -28688,6 +28692,8 @@ class DescribeSensitiveApiStatisticRequest(TeaModel):
             self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
