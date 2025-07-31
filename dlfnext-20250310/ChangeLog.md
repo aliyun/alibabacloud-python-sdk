@@ -1,3 +1,11 @@
+2025-07-31 Version: 2.5.0
+- Support API GetIcebergNamespace.
+- Support API GetIcebergTable.
+- Support API ListIcebergNamespaceDetails.
+- Support API ListIcebergSnapshots.
+- Support API ListIcebergTableDetails.
+
+
 2025-07-29 Version: 2.4.0
 - Support API GetCatalogById.
 

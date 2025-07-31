@@ -2181,6 +2181,198 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_database_summary_with_options_async(catalog_id, database, headers, runtime)
 
+    def get_iceberg_namespace_with_options(
+        self,
+        catalog_id: str,
+        namespace: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetIcebergNamespaceResponse:
+        """
+        @summary 查看iceberg数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcebergNamespaceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIcebergNamespace',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetIcebergNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_iceberg_namespace_with_options_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetIcebergNamespaceResponse:
+        """
+        @summary 查看iceberg数据库
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcebergNamespaceResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIcebergNamespace',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetIcebergNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_iceberg_namespace(
+        self,
+        catalog_id: str,
+        namespace: str,
+    ) -> dlf_next_20250310_models.GetIcebergNamespaceResponse:
+        """
+        @summary 查看iceberg数据库
+        
+        @return: GetIcebergNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_iceberg_namespace_with_options(catalog_id, namespace, headers, runtime)
+
+    async def get_iceberg_namespace_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+    ) -> dlf_next_20250310_models.GetIcebergNamespaceResponse:
+        """
+        @summary 查看iceberg数据库
+        
+        @return: GetIcebergNamespaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_iceberg_namespace_with_options_async(catalog_id, namespace, headers, runtime)
+
+    def get_iceberg_table_with_options(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetIcebergTableResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcebergTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIcebergTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetIcebergTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_iceberg_table_with_options_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.GetIcebergTableResponse:
+        """
+        @summary 查看表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcebergTableResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetIcebergTable',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/tables/{OpenApiUtilClient.get_encode_param(table)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.GetIcebergTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_iceberg_table(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetIcebergTableResponse:
+        """
+        @summary 查看表
+        
+        @return: GetIcebergTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_iceberg_table_with_options(catalog_id, namespace, table, headers, runtime)
+
+    async def get_iceberg_table_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+    ) -> dlf_next_20250310_models.GetIcebergTableResponse:
+        """
+        @summary 查看表
+        
+        @return: GetIcebergTableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_iceberg_table_with_options_async(catalog_id, namespace, table, headers, runtime)
+
     def get_region_status_with_options(
         self,
         headers: Dict[str, str],
@@ -3118,6 +3310,362 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_databases_with_options_async(catalog_id, request, headers, runtime)
+
+    def list_iceberg_namespace_details_with_options(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListIcebergNamespaceDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse:
+        """
+        @summary 查看iceberg数据库列表
+        
+        @param request: ListIcebergNamespaceDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergNamespaceDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.namespace_name_pattern):
+            query['namespaceNamePattern'] = request.namespace_name_pattern
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergNamespaceDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespace-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_iceberg_namespace_details_with_options_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListIcebergNamespaceDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse:
+        """
+        @summary 查看iceberg数据库列表
+        
+        @param request: ListIcebergNamespaceDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergNamespaceDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.namespace_name_pattern):
+            query['namespaceNamePattern'] = request.namespace_name_pattern
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergNamespaceDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespace-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_iceberg_namespace_details(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListIcebergNamespaceDetailsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse:
+        """
+        @summary 查看iceberg数据库列表
+        
+        @param request: ListIcebergNamespaceDetailsRequest
+        @return: ListIcebergNamespaceDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_iceberg_namespace_details_with_options(catalog_id, request, headers, runtime)
+
+    async def list_iceberg_namespace_details_async(
+        self,
+        catalog_id: str,
+        request: dlf_next_20250310_models.ListIcebergNamespaceDetailsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergNamespaceDetailsResponse:
+        """
+        @summary 查看iceberg数据库列表
+        
+        @param request: ListIcebergNamespaceDetailsRequest
+        @return: ListIcebergNamespaceDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_iceberg_namespace_details_with_options_async(catalog_id, request, headers, runtime)
+
+    def list_iceberg_snapshots_with_options(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        request: dlf_next_20250310_models.ListIcebergSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergSnapshotsResponse:
+        """
+        @summary 查看iceberg表快照列表
+        
+        @param request: ListIcebergSnapshotsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergSnapshotsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergSnapshots',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/tables/{OpenApiUtilClient.get_encode_param(table)}/snapshots',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_iceberg_snapshots_with_options_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        request: dlf_next_20250310_models.ListIcebergSnapshotsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergSnapshotsResponse:
+        """
+        @summary 查看iceberg表快照列表
+        
+        @param request: ListIcebergSnapshotsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergSnapshotsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergSnapshots',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/tables/{OpenApiUtilClient.get_encode_param(table)}/snapshots',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_iceberg_snapshots(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        request: dlf_next_20250310_models.ListIcebergSnapshotsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergSnapshotsResponse:
+        """
+        @summary 查看iceberg表快照列表
+        
+        @param request: ListIcebergSnapshotsRequest
+        @return: ListIcebergSnapshotsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_iceberg_snapshots_with_options(catalog_id, namespace, table, request, headers, runtime)
+
+    async def list_iceberg_snapshots_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        table: str,
+        request: dlf_next_20250310_models.ListIcebergSnapshotsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergSnapshotsResponse:
+        """
+        @summary 查看iceberg表快照列表
+        
+        @param request: ListIcebergSnapshotsRequest
+        @return: ListIcebergSnapshotsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_iceberg_snapshots_with_options_async(catalog_id, namespace, table, request, headers, runtime)
+
+    def list_iceberg_table_details_with_options(
+        self,
+        catalog_id: str,
+        namespace: str,
+        request: dlf_next_20250310_models.ListIcebergTableDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergTableDetailsResponse:
+        """
+        @summary 查看iceberg表详情列表
+        
+        @param request: ListIcebergTableDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergTableDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.table_name_pattern):
+            query['tableNamePattern'] = request.table_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergTableDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/table-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergTableDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_iceberg_table_details_with_options_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        request: dlf_next_20250310_models.ListIcebergTableDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> dlf_next_20250310_models.ListIcebergTableDetailsResponse:
+        """
+        @summary 查看iceberg表详情列表
+        
+        @param request: ListIcebergTableDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIcebergTableDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.page_token):
+            query['pageToken'] = request.page_token
+        if not UtilClient.is_unset(request.table_name_pattern):
+            query['tableNamePattern'] = request.table_name_pattern
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIcebergTableDetails',
+            version='2025-03-10',
+            protocol='HTTPS',
+            pathname=f'/iceberg/dlf/v1/{OpenApiUtilClient.get_encode_param(catalog_id)}/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/table-details',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dlf_next_20250310_models.ListIcebergTableDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_iceberg_table_details(
+        self,
+        catalog_id: str,
+        namespace: str,
+        request: dlf_next_20250310_models.ListIcebergTableDetailsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergTableDetailsResponse:
+        """
+        @summary 查看iceberg表详情列表
+        
+        @param request: ListIcebergTableDetailsRequest
+        @return: ListIcebergTableDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_iceberg_table_details_with_options(catalog_id, namespace, request, headers, runtime)
+
+    async def list_iceberg_table_details_async(
+        self,
+        catalog_id: str,
+        namespace: str,
+        request: dlf_next_20250310_models.ListIcebergTableDetailsRequest,
+    ) -> dlf_next_20250310_models.ListIcebergTableDetailsResponse:
+        """
+        @summary 查看iceberg表详情列表
+        
+        @param request: ListIcebergTableDetailsRequest
+        @return: ListIcebergTableDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_iceberg_table_details_with_options_async(catalog_id, namespace, request, headers, runtime)
 
     def list_partition_summaries_with_options(
         self,

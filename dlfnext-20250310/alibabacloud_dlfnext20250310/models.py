@@ -3708,6 +3708,88 @@ class GetDatabaseSummaryResponse(TeaModel):
         return self
 
 
+class GetIcebergNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Namespace = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Namespace()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIcebergTableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: IcebergTable = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = IcebergTable()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetRegionStatusResponseBody(TeaModel):
     def __init__(
         self,
@@ -4417,6 +4499,363 @@ class ListDatabasesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListDatabasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIcebergNamespaceDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        namespace_name_pattern: str = None,
+        page_token: str = None,
+    ):
+        self.max_results = max_results
+        self.namespace_name_pattern = namespace_name_pattern
+        self.page_token = page_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.namespace_name_pattern is not None:
+            result['namespaceNamePattern'] = self.namespace_name_pattern
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('namespaceNamePattern') is not None:
+            self.namespace_name_pattern = m.get('namespaceNamePattern')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        return self
+
+
+class ListIcebergNamespaceDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        namespace_details: List[Namespace] = None,
+        next_page_token: str = None,
+    ):
+        self.namespace_details = namespace_details
+        self.next_page_token = next_page_token
+
+    def validate(self):
+        if self.namespace_details:
+            for k in self.namespace_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['namespaceDetails'] = []
+        if self.namespace_details is not None:
+            for k in self.namespace_details:
+                result['namespaceDetails'].append(k.to_map() if k else None)
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.namespace_details = []
+        if m.get('namespaceDetails') is not None:
+            for k in m.get('namespaceDetails'):
+                temp_model = Namespace()
+                self.namespace_details.append(temp_model.from_map(k))
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        return self
+
+
+class ListIcebergNamespaceDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIcebergNamespaceDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIcebergNamespaceDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIcebergSnapshotsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        page_token: str = None,
+    ):
+        self.max_results = max_results
+        self.page_token = page_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        return self
+
+
+class ListIcebergSnapshotsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        snapshots: List[IcebergSnapshot] = None,
+    ):
+        self.next_page_token = next_page_token
+        self.snapshots = snapshots
+
+    def validate(self):
+        if self.snapshots:
+            for k in self.snapshots:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        result['snapshots'] = []
+        if self.snapshots is not None:
+            for k in self.snapshots:
+                result['snapshots'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        self.snapshots = []
+        if m.get('snapshots') is not None:
+            for k in m.get('snapshots'):
+                temp_model = IcebergSnapshot()
+                self.snapshots.append(temp_model.from_map(k))
+        return self
+
+
+class ListIcebergSnapshotsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIcebergSnapshotsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIcebergSnapshotsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIcebergTableDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        page_token: str = None,
+        table_name_pattern: str = None,
+    ):
+        self.max_results = max_results
+        self.page_token = page_token
+        self.table_name_pattern = table_name_pattern
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.page_token is not None:
+            result['pageToken'] = self.page_token
+        if self.table_name_pattern is not None:
+            result['tableNamePattern'] = self.table_name_pattern
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('pageToken') is not None:
+            self.page_token = m.get('pageToken')
+        if m.get('tableNamePattern') is not None:
+            self.table_name_pattern = m.get('tableNamePattern')
+        return self
+
+
+class ListIcebergTableDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_page_token: str = None,
+        table_details: List[IcebergTable] = None,
+    ):
+        self.next_page_token = next_page_token
+        self.table_details = table_details
+
+    def validate(self):
+        if self.table_details:
+            for k in self.table_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_page_token is not None:
+            result['nextPageToken'] = self.next_page_token
+        result['tableDetails'] = []
+        if self.table_details is not None:
+            for k in self.table_details:
+                result['tableDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextPageToken') is not None:
+            self.next_page_token = m.get('nextPageToken')
+        self.table_details = []
+        if m.get('tableDetails') is not None:
+            for k in m.get('tableDetails'):
+                temp_model = IcebergTable()
+                self.table_details.append(temp_model.from_map(k))
+        return self
+
+
+class ListIcebergTableDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIcebergTableDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIcebergTableDetailsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
