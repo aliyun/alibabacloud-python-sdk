@@ -41,6 +41,238 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_data_service_project_member_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.AddDataServiceProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.AddDataServiceProjectMemberResponse:
+        """
+        @summary 添加数据服务项目用户并设置角色。
+        
+        @param tmp_req: AddDataServiceProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataServiceProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.AddDataServiceProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_command):
+            request.add_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_command, 'AddCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.add_command_shrink):
+            body['AddCommand'] = request.add_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDataServiceProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.AddDataServiceProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_data_service_project_member_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.AddDataServiceProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.AddDataServiceProjectMemberResponse:
+        """
+        @summary 添加数据服务项目用户并设置角色。
+        
+        @param tmp_req: AddDataServiceProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataServiceProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.AddDataServiceProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_command):
+            request.add_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_command, 'AddCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.add_command_shrink):
+            body['AddCommand'] = request.add_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddDataServiceProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.AddDataServiceProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_data_service_project_member(
+        self,
+        request: dataphin_public_20230630_models.AddDataServiceProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.AddDataServiceProjectMemberResponse:
+        """
+        @summary 添加数据服务项目用户并设置角色。
+        
+        @param request: AddDataServiceProjectMemberRequest
+        @return: AddDataServiceProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_data_service_project_member_with_options(request, runtime)
+
+    async def add_data_service_project_member_async(
+        self,
+        request: dataphin_public_20230630_models.AddDataServiceProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.AddDataServiceProjectMemberResponse:
+        """
+        @summary 添加数据服务项目用户并设置角色。
+        
+        @param request: AddDataServiceProjectMemberRequest
+        @return: AddDataServiceProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_data_service_project_member_with_options_async(request, runtime)
+
+    def add_project_member_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.AddProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.AddProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param tmp_req: AddProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.AddProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_command):
+            request.add_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_command, 'AddCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.add_command_shrink):
+            body['AddCommand'] = request.add_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.AddProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_project_member_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.AddProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.AddProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param tmp_req: AddProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.AddProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_command):
+            request.add_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_command, 'AddCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.add_command_shrink):
+            body['AddCommand'] = request.add_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.AddProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_project_member(
+        self,
+        request: dataphin_public_20230630_models.AddProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.AddProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param request: AddProjectMemberRequest
+        @return: AddProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_project_member_with_options(request, runtime)
+
+    async def add_project_member_async(
+        self,
+        request: dataphin_public_20230630_models.AddProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.AddProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param request: AddProjectMemberRequest
+        @return: AddProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_project_member_with_options_async(request, runtime)
+
     def add_tenant_members_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.AddTenantMembersRequest,
@@ -377,6 +609,450 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_user_group_member_with_options_async(request, runtime)
 
+    def apply_data_service_api_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ApplyDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceApiResponse:
+        """
+        @summary 申请API权限。
+        
+        @param tmp_req: ApplyDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ApplyDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_command):
+            request.apply_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_command, 'ApplyCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.apply_command_shrink):
+            body['ApplyCommand'] = request.apply_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ApplyDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_data_service_api_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ApplyDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceApiResponse:
+        """
+        @summary 申请API权限。
+        
+        @param tmp_req: ApplyDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ApplyDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_command):
+            request.apply_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_command, 'ApplyCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.apply_command_shrink):
+            body['ApplyCommand'] = request.apply_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ApplyDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_data_service_api(
+        self,
+        request: dataphin_public_20230630_models.ApplyDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceApiResponse:
+        """
+        @summary 申请API权限。
+        
+        @param request: ApplyDataServiceApiRequest
+        @return: ApplyDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.apply_data_service_api_with_options(request, runtime)
+
+    async def apply_data_service_api_async(
+        self,
+        request: dataphin_public_20230630_models.ApplyDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceApiResponse:
+        """
+        @summary 申请API权限。
+        
+        @param request: ApplyDataServiceApiRequest
+        @return: ApplyDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_data_service_api_with_options_async(request, runtime)
+
+    def apply_data_service_app_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ApplyDataServiceAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceAppResponse:
+        """
+        @summary 申请应用权限。
+        
+        @param tmp_req: ApplyDataServiceAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyDataServiceAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ApplyDataServiceAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_command):
+            request.apply_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_command, 'ApplyCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.apply_command_shrink):
+            body['ApplyCommand'] = request.apply_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyDataServiceApp',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ApplyDataServiceAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_data_service_app_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ApplyDataServiceAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceAppResponse:
+        """
+        @summary 申请应用权限。
+        
+        @param tmp_req: ApplyDataServiceAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyDataServiceAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ApplyDataServiceAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.apply_command):
+            request.apply_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.apply_command, 'ApplyCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.apply_command_shrink):
+            body['ApplyCommand'] = request.apply_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApplyDataServiceApp',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ApplyDataServiceAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_data_service_app(
+        self,
+        request: dataphin_public_20230630_models.ApplyDataServiceAppRequest,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceAppResponse:
+        """
+        @summary 申请应用权限。
+        
+        @param request: ApplyDataServiceAppRequest
+        @return: ApplyDataServiceAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.apply_data_service_app_with_options(request, runtime)
+
+    async def apply_data_service_app_async(
+        self,
+        request: dataphin_public_20230630_models.ApplyDataServiceAppRequest,
+    ) -> dataphin_public_20230630_models.ApplyDataServiceAppResponse:
+        """
+        @summary 申请应用权限。
+        
+        @param request: ApplyDataServiceAppRequest
+        @return: ApplyDataServiceAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_data_service_app_with_options_async(request, runtime)
+
+    def check_compute_source_connectivity_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CheckComputeSourceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse:
+        """
+        @summary 项目计算源连通性检查。
+        
+        @param tmp_req: CheckComputeSourceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComputeSourceConnectivityResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CheckComputeSourceConnectivityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_command):
+            request.check_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_command, 'CheckCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.check_command_shrink):
+            body['CheckCommand'] = request.check_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckComputeSourceConnectivity',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_compute_source_connectivity_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CheckComputeSourceConnectivityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse:
+        """
+        @summary 项目计算源连通性检查。
+        
+        @param tmp_req: CheckComputeSourceConnectivityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComputeSourceConnectivityResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CheckComputeSourceConnectivityShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.check_command):
+            request.check_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.check_command, 'CheckCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.check_command_shrink):
+            body['CheckCommand'] = request.check_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckComputeSourceConnectivity',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_compute_source_connectivity(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityRequest,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse:
+        """
+        @summary 项目计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityRequest
+        @return: CheckComputeSourceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_compute_source_connectivity_with_options(request, runtime)
+
+    async def check_compute_source_connectivity_async(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityRequest,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityResponse:
+        """
+        @summary 项目计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityRequest
+        @return: CheckComputeSourceConnectivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_compute_source_connectivity_with_options_async(request, runtime)
+
+    def check_compute_source_connectivity_by_id_with_options(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse:
+        """
+        @summary 计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComputeSourceConnectivityByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckComputeSourceConnectivityById',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_compute_source_connectivity_by_id_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse:
+        """
+        @summary 计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckComputeSourceConnectivityByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckComputeSourceConnectivityById',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_compute_source_connectivity_by_id(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdRequest,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse:
+        """
+        @summary 计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityByIdRequest
+        @return: CheckComputeSourceConnectivityByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_compute_source_connectivity_by_id_with_options(request, runtime)
+
+    async def check_compute_source_connectivity_by_id_async(
+        self,
+        request: dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdRequest,
+    ) -> dataphin_public_20230630_models.CheckComputeSourceConnectivityByIdResponse:
+        """
+        @summary 计算源连通性检查。
+        
+        @param request: CheckComputeSourceConnectivityByIdRequest
+        @return: CheckComputeSourceConnectivityByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_compute_source_connectivity_by_id_with_options_async(request, runtime)
+
     def check_data_source_connectivity_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.CheckDataSourceConnectivityRequest,
@@ -588,6 +1264,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_data_source_connectivity_by_id_with_options_async(request, runtime)
+
+    def check_project_has_dependency_with_options(
+        self,
+        request: dataphin_public_20230630_models.CheckProjectHasDependencyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckProjectHasDependencyResponse:
+        """
+        @summary 检查项目是否存在依赖。
+        
+        @param request: CheckProjectHasDependencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckProjectHasDependencyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckProjectHasDependency',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckProjectHasDependencyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_project_has_dependency_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.CheckProjectHasDependencyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CheckProjectHasDependencyResponse:
+        """
+        @summary 检查项目是否存在依赖。
+        
+        @param request: CheckProjectHasDependencyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckProjectHasDependencyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckProjectHasDependency',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CheckProjectHasDependencyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_project_has_dependency(
+        self,
+        request: dataphin_public_20230630_models.CheckProjectHasDependencyRequest,
+    ) -> dataphin_public_20230630_models.CheckProjectHasDependencyResponse:
+        """
+        @summary 检查项目是否存在依赖。
+        
+        @param request: CheckProjectHasDependencyRequest
+        @return: CheckProjectHasDependencyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_project_has_dependency_with_options(request, runtime)
+
+    async def check_project_has_dependency_async(
+        self,
+        request: dataphin_public_20230630_models.CheckProjectHasDependencyRequest,
+    ) -> dataphin_public_20230630_models.CheckProjectHasDependencyResponse:
+        """
+        @summary 检查项目是否存在依赖。
+        
+        @param request: CheckProjectHasDependencyRequest
+        @return: CheckProjectHasDependencyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_project_has_dependency_with_options_async(request, runtime)
 
     def check_resource_permission_with_options(
         self,
@@ -1148,6 +1924,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_biz_unit_with_options_async(request, runtime)
+
+    def create_compute_source_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateComputeSourceResponse:
+        """
+        @summary 创建计算源。
+        
+        @param tmp_req: CreateComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateComputeSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateComputeSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_compute_source_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateComputeSourceResponse:
+        """
+        @summary 创建计算源。
+        
+        @param tmp_req: CreateComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComputeSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateComputeSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateComputeSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_compute_source(
+        self,
+        request: dataphin_public_20230630_models.CreateComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.CreateComputeSourceResponse:
+        """
+        @summary 创建计算源。
+        
+        @param request: CreateComputeSourceRequest
+        @return: CreateComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_compute_source_with_options(request, runtime)
+
+    async def create_compute_source_async(
+        self,
+        request: dataphin_public_20230630_models.CreateComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.CreateComputeSourceResponse:
+        """
+        @summary 创建计算源。
+        
+        @param request: CreateComputeSourceRequest
+        @return: CreateComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_compute_source_with_options_async(request, runtime)
 
     def create_data_domain_with_options(
         self,
@@ -1825,6 +2713,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_pipeline_node_with_options_async(request, runtime)
 
+    def create_resource_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateResourceResponse:
+        """
+        @summary 创建资源文件。
+        
+        @param tmp_req: CreateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_resource_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateResourceResponse:
+        """
+        @summary 创建资源文件。
+        
+        @param tmp_req: CreateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_resource(
+        self,
+        request: dataphin_public_20230630_models.CreateResourceRequest,
+    ) -> dataphin_public_20230630_models.CreateResourceResponse:
+        """
+        @summary 创建资源文件。
+        
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_resource_with_options(request, runtime)
+
+    async def create_resource_async(
+        self,
+        request: dataphin_public_20230630_models.CreateResourceRequest,
+    ) -> dataphin_public_20230630_models.CreateResourceResponse:
+        """
+        @summary 创建资源文件。
+        
+        @param request: CreateResourceRequest
+        @return: CreateResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_resource_with_options_async(request, runtime)
+
     def create_row_permission_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.CreateRowPermissionRequest,
@@ -2048,6 +3048,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_stream_batch_job_mapping_with_options_async(request, runtime)
+
+    def create_udf_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateUdfResponse:
+        """
+        @summary 创建自定义函数。
+        
+        @param tmp_req: CreateUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateUdfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateUdfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_udf_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.CreateUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.CreateUdfResponse:
+        """
+        @summary 创建自定义函数。
+        
+        @param tmp_req: CreateUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUdfResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.CreateUdfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_command):
+            request.create_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_command, 'CreateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.create_command_shrink):
+            body['CreateCommand'] = request.create_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.CreateUdfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_udf(
+        self,
+        request: dataphin_public_20230630_models.CreateUdfRequest,
+    ) -> dataphin_public_20230630_models.CreateUdfResponse:
+        """
+        @summary 创建自定义函数。
+        
+        @param request: CreateUdfRequest
+        @return: CreateUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_udf_with_options(request, runtime)
+
+    async def create_udf_async(
+        self,
+        request: dataphin_public_20230630_models.CreateUdfRequest,
+    ) -> dataphin_public_20230630_models.CreateUdfResponse:
+        """
+        @summary 创建自定义函数。
+        
+        @param request: CreateUdfRequest
+        @return: CreateUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_udf_with_options_async(request, runtime)
 
     def create_user_group_with_options(
         self,
@@ -2585,6 +3697,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_biz_unit_with_options_async(request, runtime)
 
+    def delete_compute_source_with_options(
+        self,
+        request: dataphin_public_20230630_models.DeleteComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteComputeSourceResponse:
+        """
+        @summary 删除计算源。
+        
+        @param request: DeleteComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteComputeSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_compute_source_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteComputeSourceResponse:
+        """
+        @summary 删除计算源。
+        
+        @param request: DeleteComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComputeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteComputeSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_compute_source(
+        self,
+        request: dataphin_public_20230630_models.DeleteComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.DeleteComputeSourceResponse:
+        """
+        @summary 删除计算源。
+        
+        @param request: DeleteComputeSourceRequest
+        @return: DeleteComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_compute_source_with_options(request, runtime)
+
+    async def delete_compute_source_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.DeleteComputeSourceResponse:
+        """
+        @summary 删除计算源。
+        
+        @param request: DeleteComputeSourceRequest
+        @return: DeleteComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_compute_source_with_options_async(request, runtime)
+
     def delete_data_domain_with_options(
         self,
         request: dataphin_public_20230630_models.DeleteDataDomainRequest,
@@ -2905,6 +4117,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_directory_with_options_async(request, runtime)
 
+    def delete_resource_with_options(
+        self,
+        request: dataphin_public_20230630_models.DeleteResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteResourceResponse:
+        """
+        @summary 删除资源文件。
+        
+        @param request: DeleteResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_resource_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteResourceResponse:
+        """
+        @summary 删除资源文件。
+        
+        @param request: DeleteResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_resource(
+        self,
+        request: dataphin_public_20230630_models.DeleteResourceRequest,
+    ) -> dataphin_public_20230630_models.DeleteResourceResponse:
+        """
+        @summary 删除资源文件。
+        
+        @param request: DeleteResourceRequest
+        @return: DeleteResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_resource_with_options(request, runtime)
+
+    async def delete_resource_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteResourceRequest,
+    ) -> dataphin_public_20230630_models.DeleteResourceResponse:
+        """
+        @summary 删除资源文件。
+        
+        @param request: DeleteResourceRequest
+        @return: DeleteResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_resource_with_options_async(request, runtime)
+
     def delete_row_permission_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.DeleteRowPermissionRequest,
@@ -3016,6 +4336,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_row_permission_with_options_async(request, runtime)
+
+    def delete_udf_with_options(
+        self,
+        request: dataphin_public_20230630_models.DeleteUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteUdfResponse:
+        """
+        @summary 删除自定义函数。
+        
+        @param request: DeleteUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteUdfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_udf_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.DeleteUdfResponse:
+        """
+        @summary 删除自定义函数。
+        
+        @param request: DeleteUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUdfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['Comment'] = request.comment
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.DeleteUdfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_udf(
+        self,
+        request: dataphin_public_20230630_models.DeleteUdfRequest,
+    ) -> dataphin_public_20230630_models.DeleteUdfResponse:
+        """
+        @summary 删除自定义函数。
+        
+        @param request: DeleteUdfRequest
+        @return: DeleteUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_udf_with_options(request, runtime)
+
+    async def delete_udf_async(
+        self,
+        request: dataphin_public_20230630_models.DeleteUdfRequest,
+    ) -> dataphin_public_20230630_models.DeleteUdfResponse:
+        """
+        @summary 删除自定义函数。
+        
+        @param request: DeleteUdfRequest
+        @return: DeleteUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_udf_with_options_async(request, runtime)
 
     def delete_user_group_with_options(
         self,
@@ -4845,6 +6273,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_queue_info_by_env_with_options_async(request, runtime)
 
+    def get_compute_source_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetComputeSourceResponse:
+        """
+        @summary 获取计算源详情。
+        
+        @param request: GetComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetComputeSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_compute_source_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetComputeSourceResponse:
+        """
+        @summary 获取计算源详情。
+        
+        @param request: GetComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetComputeSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetComputeSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_compute_source(
+        self,
+        request: dataphin_public_20230630_models.GetComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.GetComputeSourceResponse:
+        """
+        @summary 获取计算源详情。
+        
+        @param request: GetComputeSourceRequest
+        @return: GetComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_compute_source_with_options(request, runtime)
+
+    async def get_compute_source_async(
+        self,
+        request: dataphin_public_20230630_models.GetComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.GetComputeSourceResponse:
+        """
+        @summary 获取计算源详情。
+        
+        @param request: GetComputeSourceRequest
+        @return: GetComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_compute_source_with_options_async(request, runtime)
+
     def get_data_domain_info_with_options(
         self,
         request: dataphin_public_20230630_models.GetDataDomainInfoRequest,
@@ -4944,6 +6472,1338 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_data_domain_info_with_options_async(request, runtime)
+
+    def get_data_service_api_call_summary_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse:
+        """
+        @summary 运维监控Api调用汇总统计。
+        
+        @param request: GetDataServiceApiCallSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiCallSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiCallSummary',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_call_summary_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse:
+        """
+        @summary 运维监控Api调用汇总统计。
+        
+        @param request: GetDataServiceApiCallSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiCallSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiCallSummary',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_call_summary(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallSummaryRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse:
+        """
+        @summary 运维监控Api调用汇总统计。
+        
+        @param request: GetDataServiceApiCallSummaryRequest
+        @return: GetDataServiceApiCallSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_call_summary_with_options(request, runtime)
+
+    async def get_data_service_api_call_summary_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallSummaryRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallSummaryResponse:
+        """
+        @summary 运维监控Api调用汇总统计。
+        
+        @param request: GetDataServiceApiCallSummaryRequest
+        @return: GetDataServiceApiCallSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_call_summary_with_options_async(request, runtime)
+
+    def get_data_service_api_call_trend_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse:
+        """
+        @summary 运维监控Api访问趋势分析。
+        
+        @param request: GetDataServiceApiCallTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiCallTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiCallTrend',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_call_trend_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse:
+        """
+        @summary 运维监控Api访问趋势分析。
+        
+        @param request: GetDataServiceApiCallTrendRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiCallTrendResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiCallTrend',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_call_trend(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallTrendRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse:
+        """
+        @summary 运维监控Api访问趋势分析。
+        
+        @param request: GetDataServiceApiCallTrendRequest
+        @return: GetDataServiceApiCallTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_call_trend_with_options(request, runtime)
+
+    async def get_data_service_api_call_trend_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiCallTrendRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiCallTrendResponse:
+        """
+        @summary 运维监控Api访问趋势分析。
+        
+        @param request: GetDataServiceApiCallTrendRequest
+        @return: GetDataServiceApiCallTrendResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_call_trend_with_options_async(request, runtime)
+
+    def get_data_service_api_document_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiDocumentResponse:
+        """
+        @summary 获取API文档。
+        
+        @param request: GetDataServiceApiDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiDocument',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_document_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiDocumentResponse:
+        """
+        @summary 获取API文档。
+        
+        @param request: GetDataServiceApiDocumentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiDocumentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiDocument',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_document(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiDocumentRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiDocumentResponse:
+        """
+        @summary 获取API文档。
+        
+        @param request: GetDataServiceApiDocumentRequest
+        @return: GetDataServiceApiDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_document_with_options(request, runtime)
+
+    async def get_data_service_api_document_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiDocumentRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiDocumentResponse:
+        """
+        @summary 获取API文档。
+        
+        @param request: GetDataServiceApiDocumentRequest
+        @return: GetDataServiceApiDocumentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_document_with_options_async(request, runtime)
+
+    def get_data_service_api_error_impact_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiErrorImpactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse:
+        """
+        @summary 获取API异常影响汇总。
+        
+        @param request: GetDataServiceApiErrorImpactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiErrorImpactResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiErrorImpact',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_error_impact_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiErrorImpactRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse:
+        """
+        @summary 获取API异常影响汇总。
+        
+        @param request: GetDataServiceApiErrorImpactRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiErrorImpactResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiErrorImpact',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_error_impact(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiErrorImpactRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse:
+        """
+        @summary 获取API异常影响汇总。
+        
+        @param request: GetDataServiceApiErrorImpactRequest
+        @return: GetDataServiceApiErrorImpactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_error_impact_with_options(request, runtime)
+
+    async def get_data_service_api_error_impact_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiErrorImpactRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiErrorImpactResponse:
+        """
+        @summary 获取API异常影响汇总。
+        
+        @param request: GetDataServiceApiErrorImpactRequest
+        @return: GetDataServiceApiErrorImpactResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_error_impact_with_options_async(request, runtime)
+
+    def get_data_service_api_groups_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiGroupsResponse:
+        """
+        @summary 查询数据服务API分组列表。
+        
+        @param request: GetDataServiceApiGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiGroups',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_api_groups_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiGroupsResponse:
+        """
+        @summary 查询数据服务API分组列表。
+        
+        @param request: GetDataServiceApiGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceApiGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceApiGroups',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceApiGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_api_groups(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiGroupsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiGroupsResponse:
+        """
+        @summary 查询数据服务API分组列表。
+        
+        @param request: GetDataServiceApiGroupsRequest
+        @return: GetDataServiceApiGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_api_groups_with_options(request, runtime)
+
+    async def get_data_service_api_groups_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceApiGroupsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceApiGroupsResponse:
+        """
+        @summary 查询数据服务API分组列表。
+        
+        @param request: GetDataServiceApiGroupsRequest
+        @return: GetDataServiceApiGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_api_groups_with_options_async(request, runtime)
+
+    def get_data_service_app_authorized_users_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse:
+        """
+        @summary 获取应用有权限的用户列表。
+        
+        @param request: GetDataServiceAppAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppAuthorizedUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppAuthorizedUsers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_app_authorized_users_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse:
+        """
+        @summary 获取应用有权限的用户列表。
+        
+        @param request: GetDataServiceAppAuthorizedUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppAuthorizedUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppAuthorizedUsers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_app_authorized_users(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse:
+        """
+        @summary 获取应用有权限的用户列表。
+        
+        @param request: GetDataServiceAppAuthorizedUsersRequest
+        @return: GetDataServiceAppAuthorizedUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_app_authorized_users_with_options(request, runtime)
+
+    async def get_data_service_app_authorized_users_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppAuthorizedUsersResponse:
+        """
+        @summary 获取应用有权限的用户列表。
+        
+        @param request: GetDataServiceAppAuthorizedUsersRequest
+        @return: GetDataServiceAppAuthorizedUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_app_authorized_users_with_options_async(request, runtime)
+
+    def get_data_service_app_groups_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppGroupsResponse:
+        """
+        @summary 查询数据服务项目的应用分组列表。
+        
+        @param request: GetDataServiceAppGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppGroups',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_app_groups_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppGroupsResponse:
+        """
+        @summary 查询数据服务项目的应用分组列表。
+        
+        @param request: GetDataServiceAppGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppGroups',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_app_groups(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppGroupsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppGroupsResponse:
+        """
+        @summary 查询数据服务项目的应用分组列表。
+        
+        @param request: GetDataServiceAppGroupsRequest
+        @return: GetDataServiceAppGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_app_groups_with_options(request, runtime)
+
+    async def get_data_service_app_groups_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppGroupsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppGroupsResponse:
+        """
+        @summary 查询数据服务项目的应用分组列表。
+        
+        @param request: GetDataServiceAppGroupsRequest
+        @return: GetDataServiceAppGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_app_groups_with_options_async(request, runtime)
+
+    def get_data_service_apps_by_group_id_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppsByGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse:
+        """
+        @summary 查询分组下应用列表。
+        
+        @param request: GetDataServiceAppsByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppsByGroupIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppsByGroupId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_apps_by_group_id_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppsByGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse:
+        """
+        @summary 查询分组下应用列表。
+        
+        @param request: GetDataServiceAppsByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAppsByGroupIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAppsByGroupId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_apps_by_group_id(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppsByGroupIdRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse:
+        """
+        @summary 查询分组下应用列表。
+        
+        @param request: GetDataServiceAppsByGroupIdRequest
+        @return: GetDataServiceAppsByGroupIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_apps_by_group_id_with_options(request, runtime)
+
+    async def get_data_service_apps_by_group_id_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAppsByGroupIdRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAppsByGroupIdResponse:
+        """
+        @summary 查询分组下应用列表。
+        
+        @param request: GetDataServiceAppsByGroupIdRequest
+        @return: GetDataServiceAppsByGroupIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_apps_by_group_id_with_options_async(request, runtime)
+
+    def get_data_service_authorized_apps_by_group_id_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse:
+        """
+        @summary 根据App分组Id查询账号有权限的应用列表。
+        
+        @param request: GetDataServiceAuthorizedAppsByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAuthorizedAppsByGroupIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAuthorizedAppsByGroupId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_authorized_apps_by_group_id_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse:
+        """
+        @summary 根据App分组Id查询账号有权限的应用列表。
+        
+        @param request: GetDataServiceAuthorizedAppsByGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAuthorizedAppsByGroupIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAuthorizedAppsByGroupId',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_authorized_apps_by_group_id(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse:
+        """
+        @summary 根据App分组Id查询账号有权限的应用列表。
+        
+        @param request: GetDataServiceAuthorizedAppsByGroupIdRequest
+        @return: GetDataServiceAuthorizedAppsByGroupIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_authorized_apps_by_group_id_with_options(request, runtime)
+
+    async def get_data_service_authorized_apps_by_group_id_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedAppsByGroupIdResponse:
+        """
+        @summary 根据App分组Id查询账号有权限的应用列表。
+        
+        @param request: GetDataServiceAuthorizedAppsByGroupIdRequest
+        @return: GetDataServiceAuthorizedAppsByGroupIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_authorized_apps_by_group_id_with_options_async(request, runtime)
+
+    def get_data_service_authorized_projects_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse:
+        """
+        @summary 查询有权限的项目列表。
+        
+        @param request: GetDataServiceAuthorizedProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAuthorizedProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAuthorizedProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_authorized_projects_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse:
+        """
+        @summary 查询有权限的项目列表。
+        
+        @param request: GetDataServiceAuthorizedProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceAuthorizedProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceAuthorizedProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_authorized_projects(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse:
+        """
+        @summary 查询有权限的项目列表。
+        
+        @param request: GetDataServiceAuthorizedProjectsRequest
+        @return: GetDataServiceAuthorizedProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_authorized_projects_with_options(request, runtime)
+
+    async def get_data_service_authorized_projects_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceAuthorizedProjectsResponse:
+        """
+        @summary 查询有权限的项目列表。
+        
+        @param request: GetDataServiceAuthorizedProjectsRequest
+        @return: GetDataServiceAuthorizedProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_authorized_projects_with_options_async(request, runtime)
+
+    def get_data_service_my_projects_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceMyProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceMyProjectsResponse:
+        """
+        @summary 当前登录当前用户作为负责人的项目列表。
+        
+        @param request: GetDataServiceMyProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceMyProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceMyProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceMyProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_my_projects_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceMyProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceMyProjectsResponse:
+        """
+        @summary 当前登录当前用户作为负责人的项目列表。
+        
+        @param request: GetDataServiceMyProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceMyProjectsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceMyProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceMyProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_my_projects(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceMyProjectsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceMyProjectsResponse:
+        """
+        @summary 当前登录当前用户作为负责人的项目列表。
+        
+        @param request: GetDataServiceMyProjectsRequest
+        @return: GetDataServiceMyProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_my_projects_with_options(request, runtime)
+
+    async def get_data_service_my_projects_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceMyProjectsRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceMyProjectsResponse:
+        """
+        @summary 当前登录当前用户作为负责人的项目列表。
+        
+        @param request: GetDataServiceMyProjectsRequest
+        @return: GetDataServiceMyProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_my_projects_with_options_async(request, runtime)
+
+    def get_data_service_project_addable_users_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceProjectAddableUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse:
+        """
+        @summary 获取可添加到项目成员的用户列表。
+        
+        @param request: GetDataServiceProjectAddableUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceProjectAddableUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceProjectAddableUsers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_service_project_addable_users_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceProjectAddableUsersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse:
+        """
+        @summary 获取可添加到项目成员的用户列表。
+        
+        @param request: GetDataServiceProjectAddableUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataServiceProjectAddableUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataServiceProjectAddableUsers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_service_project_addable_users(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceProjectAddableUsersRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse:
+        """
+        @summary 获取可添加到项目成员的用户列表。
+        
+        @param request: GetDataServiceProjectAddableUsersRequest
+        @return: GetDataServiceProjectAddableUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_service_project_addable_users_with_options(request, runtime)
+
+    async def get_data_service_project_addable_users_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataServiceProjectAddableUsersRequest,
+    ) -> dataphin_public_20230630_models.GetDataServiceProjectAddableUsersResponse:
+        """
+        @summary 获取可添加到项目成员的用户列表。
+        
+        @param request: GetDataServiceProjectAddableUsersRequest
+        @return: GetDataServiceProjectAddableUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_service_project_addable_users_with_options_async(request, runtime)
+
+    def get_data_source_dependencies_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetDataSourceDependenciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataSourceDependenciesResponse:
+        """
+        @summary 查询数据源变更影响的集成任务及数据库SQL任务。
+        
+        @param request: GetDataSourceDependenciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceDependenciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSourceDependencies',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataSourceDependenciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_source_dependencies_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataSourceDependenciesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetDataSourceDependenciesResponse:
+        """
+        @summary 查询数据源变更影响的集成任务及数据库SQL任务。
+        
+        @param request: GetDataSourceDependenciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDataSourceDependenciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDataSourceDependencies',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetDataSourceDependenciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_source_dependencies(
+        self,
+        request: dataphin_public_20230630_models.GetDataSourceDependenciesRequest,
+    ) -> dataphin_public_20230630_models.GetDataSourceDependenciesResponse:
+        """
+        @summary 查询数据源变更影响的集成任务及数据库SQL任务。
+        
+        @param request: GetDataSourceDependenciesRequest
+        @return: GetDataSourceDependenciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_data_source_dependencies_with_options(request, runtime)
+
+    async def get_data_source_dependencies_async(
+        self,
+        request: dataphin_public_20230630_models.GetDataSourceDependenciesRequest,
+    ) -> dataphin_public_20230630_models.GetDataSourceDependenciesResponse:
+        """
+        @summary 查询数据源变更影响的集成任务及数据库SQL任务。
+        
+        @param request: GetDataSourceDependenciesRequest
+        @return: GetDataSourceDependenciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_data_source_dependencies_with_options_async(request, runtime)
 
     def get_dev_object_dependency_with_options(
         self,
@@ -5160,6 +8020,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_directory_tree_with_options_async(request, runtime)
+
+    def get_file_storage_credential_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetFileStorageCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetFileStorageCredentialResponse:
+        """
+        @summary 获取文件存储临时读写授权。
+        
+        @param request: GetFileStorageCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileStorageCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        if not UtilClient.is_unset(request.use_vpc_endpoint):
+            query['UseVpcEndpoint'] = request.use_vpc_endpoint
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileStorageCredential',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetFileStorageCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_storage_credential_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetFileStorageCredentialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetFileStorageCredentialResponse:
+        """
+        @summary 获取文件存储临时读写授权。
+        
+        @param request: GetFileStorageCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileStorageCredentialResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        if not UtilClient.is_unset(request.use_vpc_endpoint):
+            query['UseVpcEndpoint'] = request.use_vpc_endpoint
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileStorageCredential',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetFileStorageCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_storage_credential(
+        self,
+        request: dataphin_public_20230630_models.GetFileStorageCredentialRequest,
+    ) -> dataphin_public_20230630_models.GetFileStorageCredentialResponse:
+        """
+        @summary 获取文件存储临时读写授权。
+        
+        @param request: GetFileStorageCredentialRequest
+        @return: GetFileStorageCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_storage_credential_with_options(request, runtime)
+
+    async def get_file_storage_credential_async(
+        self,
+        request: dataphin_public_20230630_models.GetFileStorageCredentialRequest,
+    ) -> dataphin_public_20230630_models.GetFileStorageCredentialResponse:
+        """
+        @summary 获取文件存储临时读写授权。
+        
+        @param request: GetFileStorageCredentialRequest
+        @return: GetFileStorageCredentialResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_storage_credential_with_options_async(request, runtime)
 
     def get_instance_down_stream_with_options(
         self,
@@ -6597,6 +9565,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_physical_node_operation_log_with_options_async(request, runtime)
 
+    def get_project_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectResponse:
+        """
+        @summary 获取项目详情。
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectResponse:
+        """
+        @summary 获取项目详情。
+        
+        @param request: GetProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProject',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project(
+        self,
+        request: dataphin_public_20230630_models.GetProjectRequest,
+    ) -> dataphin_public_20230630_models.GetProjectResponse:
+        """
+        @summary 获取项目详情。
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_with_options(request, runtime)
+
+    async def get_project_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectRequest,
+    ) -> dataphin_public_20230630_models.GetProjectResponse:
+        """
+        @summary 获取项目详情。
+        
+        @param request: GetProjectRequest
+        @return: GetProjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_with_options_async(request, runtime)
+
+    def get_project_by_name_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetProjectByNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectByNameResponse:
+        """
+        @summary 通过项目名获取项目详情。
+        
+        @param request: GetProjectByNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectByName',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_by_name_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectByNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectByNameResponse:
+        """
+        @summary 通过项目名获取项目详情。
+        
+        @param request: GetProjectByNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectByName',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_by_name(
+        self,
+        request: dataphin_public_20230630_models.GetProjectByNameRequest,
+    ) -> dataphin_public_20230630_models.GetProjectByNameResponse:
+        """
+        @summary 通过项目名获取项目详情。
+        
+        @param request: GetProjectByNameRequest
+        @return: GetProjectByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_by_name_with_options(request, runtime)
+
+    async def get_project_by_name_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectByNameRequest,
+    ) -> dataphin_public_20230630_models.GetProjectByNameResponse:
+        """
+        @summary 通过项目名获取项目详情。
+        
+        @param request: GetProjectByNameRequest
+        @return: GetProjectByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_by_name_with_options_async(request, runtime)
+
     def get_project_produce_user_with_options(
         self,
         request: dataphin_public_20230630_models.GetProjectProduceUserRequest,
@@ -6696,6 +9868,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_project_produce_user_with_options_async(request, runtime)
+
+    def get_project_white_lists_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetProjectWhiteListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectWhiteListsResponse:
+        """
+        @summary 获取项目白名单。
+        
+        @param request: GetProjectWhiteListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectWhiteListsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectWhiteLists',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectWhiteListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_project_white_lists_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectWhiteListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetProjectWhiteListsResponse:
+        """
+        @summary 获取项目白名单。
+        
+        @param request: GetProjectWhiteListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectWhiteListsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetProjectWhiteLists',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetProjectWhiteListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_project_white_lists(
+        self,
+        request: dataphin_public_20230630_models.GetProjectWhiteListsRequest,
+    ) -> dataphin_public_20230630_models.GetProjectWhiteListsResponse:
+        """
+        @summary 获取项目白名单。
+        
+        @param request: GetProjectWhiteListsRequest
+        @return: GetProjectWhiteListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_project_white_lists_with_options(request, runtime)
+
+    async def get_project_white_lists_async(
+        self,
+        request: dataphin_public_20230630_models.GetProjectWhiteListsRequest,
+    ) -> dataphin_public_20230630_models.GetProjectWhiteListsResponse:
+        """
+        @summary 获取项目白名单。
+        
+        @param request: GetProjectWhiteListsRequest
+        @return: GetProjectWhiteListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_project_white_lists_with_options_async(request, runtime)
 
     def get_queue_engine_version_by_env_with_options(
         self,
@@ -6813,6 +10085,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_queue_engine_version_by_env_with_options_async(request, runtime)
 
+    def get_resource_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetResourceResponse:
+        """
+        @summary 获取资源文件详情。
+        
+        @param request: GetResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetResourceResponse:
+        """
+        @summary 获取资源文件详情。
+        
+        @param request: GetResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource(
+        self,
+        request: dataphin_public_20230630_models.GetResourceRequest,
+    ) -> dataphin_public_20230630_models.GetResourceResponse:
+        """
+        @summary 获取资源文件详情。
+        
+        @param request: GetResourceRequest
+        @return: GetResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_with_options(request, runtime)
+
+    async def get_resource_async(
+        self,
+        request: dataphin_public_20230630_models.GetResourceRequest,
+    ) -> dataphin_public_20230630_models.GetResourceResponse:
+        """
+        @summary 获取资源文件详情。
+        
+        @param request: GetResourceRequest
+        @return: GetResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_with_options_async(request, runtime)
+
+    def get_resource_by_version_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetResourceByVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetResourceByVersionResponse:
+        """
+        @summary 获取资源文件指定版本详情。
+        
+        @param request: GetResourceByVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceByVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceByVersion',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetResourceByVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_resource_by_version_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetResourceByVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetResourceByVersionResponse:
+        """
+        @summary 获取资源文件指定版本详情。
+        
+        @param request: GetResourceByVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceByVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceByVersion',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetResourceByVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_resource_by_version(
+        self,
+        request: dataphin_public_20230630_models.GetResourceByVersionRequest,
+    ) -> dataphin_public_20230630_models.GetResourceByVersionResponse:
+        """
+        @summary 获取资源文件指定版本详情。
+        
+        @param request: GetResourceByVersionRequest
+        @return: GetResourceByVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_resource_by_version_with_options(request, runtime)
+
+    async def get_resource_by_version_async(
+        self,
+        request: dataphin_public_20230630_models.GetResourceByVersionRequest,
+    ) -> dataphin_public_20230630_models.GetResourceByVersionResponse:
+        """
+        @summary 获取资源文件指定版本详情。
+        
+        @param request: GetResourceByVersionRequest
+        @return: GetResourceByVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_resource_by_version_with_options_async(request, runtime)
+
     def get_spark_local_client_info_with_options(
         self,
         request: dataphin_public_20230630_models.GetSparkLocalClientInfoRequest,
@@ -6916,6 +10400,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_local_client_info_with_options_async(request, runtime)
+
+    def get_stream_jobs_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetStreamJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetStreamJobsResponse:
+        """
+        @summary 获取dataphin实时研发任务集合
+        
+        @param request: GetStreamJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStreamJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStreamJobs',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetStreamJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stream_jobs_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetStreamJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetStreamJobsResponse:
+        """
+        @summary 获取dataphin实时研发任务集合
+        
+        @param request: GetStreamJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStreamJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.env):
+            query['Env'] = request.env
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStreamJobs',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetStreamJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stream_jobs(
+        self,
+        request: dataphin_public_20230630_models.GetStreamJobsRequest,
+    ) -> dataphin_public_20230630_models.GetStreamJobsResponse:
+        """
+        @summary 获取dataphin实时研发任务集合
+        
+        @param request: GetStreamJobsRequest
+        @return: GetStreamJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_stream_jobs_with_options(request, runtime)
+
+    async def get_stream_jobs_async(
+        self,
+        request: dataphin_public_20230630_models.GetStreamJobsRequest,
+    ) -> dataphin_public_20230630_models.GetStreamJobsResponse:
+        """
+        @summary 获取dataphin实时研发任务集合
+        
+        @param request: GetStreamJobsRequest
+        @return: GetStreamJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_stream_jobs_with_options_async(request, runtime)
 
     def get_supplement_dagrun_with_options(
         self,
@@ -7349,6 +10937,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_table_lineage_by_task_id_with_options_async(request, runtime)
 
+    def get_udf_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetUdfResponse:
+        """
+        @summary 获取自定义函数详情。
+        
+        @param request: GetUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUdfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetUdfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_udf_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetUdfResponse:
+        """
+        @summary 获取自定义函数详情。
+        
+        @param request: GetUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUdfResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetUdfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_udf(
+        self,
+        request: dataphin_public_20230630_models.GetUdfRequest,
+    ) -> dataphin_public_20230630_models.GetUdfResponse:
+        """
+        @summary 获取自定义函数详情。
+        
+        @param request: GetUdfRequest
+        @return: GetUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_udf_with_options(request, runtime)
+
+    async def get_udf_async(
+        self,
+        request: dataphin_public_20230630_models.GetUdfRequest,
+    ) -> dataphin_public_20230630_models.GetUdfResponse:
+        """
+        @summary 获取自定义函数详情。
+        
+        @param request: GetUdfRequest
+        @return: GetUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_udf_with_options_async(request, runtime)
+
+    def get_udf_by_version_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetUdfByVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetUdfByVersionResponse:
+        """
+        @summary 查询自定义函数版本详情。
+        
+        @param request: GetUdfByVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUdfByVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUdfByVersion',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetUdfByVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_udf_by_version_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetUdfByVersionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetUdfByVersionResponse:
+        """
+        @summary 查询自定义函数版本详情。
+        
+        @param request: GetUdfByVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUdfByVersionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUdfByVersion',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetUdfByVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_udf_by_version(
+        self,
+        request: dataphin_public_20230630_models.GetUdfByVersionRequest,
+    ) -> dataphin_public_20230630_models.GetUdfByVersionResponse:
+        """
+        @summary 查询自定义函数版本详情。
+        
+        @param request: GetUdfByVersionRequest
+        @return: GetUdfByVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_udf_by_version_with_options(request, runtime)
+
+    async def get_udf_by_version_async(
+        self,
+        request: dataphin_public_20230630_models.GetUdfByVersionRequest,
+    ) -> dataphin_public_20230630_models.GetUdfByVersionResponse:
+        """
+        @summary 查询自定义函数版本详情。
+        
+        @param request: GetUdfByVersionRequest
+        @return: GetUdfByVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_udf_by_version_with_options_async(request, runtime)
+
     def get_user_by_source_id_with_options(
         self,
         request: dataphin_public_20230630_models.GetUserBySourceIdRequest,
@@ -7660,6 +11460,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_users_with_options_async(request, runtime)
+
+    def grant_data_service_api_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.GrantDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GrantDataServiceApiResponse:
+        """
+        @summary API授权。
+        
+        @param tmp_req: GrantDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GrantDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.grant_command):
+            request.grant_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.grant_command, 'GrantCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.grant_command_shrink):
+            body['GrantCommand'] = request.grant_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GrantDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_data_service_api_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.GrantDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GrantDataServiceApiResponse:
+        """
+        @summary API授权。
+        
+        @param tmp_req: GrantDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.GrantDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.grant_command):
+            request.grant_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.grant_command, 'GrantCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.grant_command_shrink):
+            body['GrantCommand'] = request.grant_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GrantDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_data_service_api(
+        self,
+        request: dataphin_public_20230630_models.GrantDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.GrantDataServiceApiResponse:
+        """
+        @summary API授权。
+        
+        @param request: GrantDataServiceApiRequest
+        @return: GrantDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.grant_data_service_api_with_options(request, runtime)
+
+    async def grant_data_service_api_async(
+        self,
+        request: dataphin_public_20230630_models.GrantDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.GrantDataServiceApiResponse:
+        """
+        @summary API授权。
+        
+        @param request: GrantDataServiceApiRequest
+        @return: GrantDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.grant_data_service_api_with_options_async(request, runtime)
 
     def grant_resource_permission_with_options(
         self,
@@ -8637,6 +12553,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_biz_units_with_options_async(request, runtime)
 
+    def list_compute_sources_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListComputeSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListComputeSourcesResponse:
+        """
+        @summary 查询计算源列表。
+        
+        @param tmp_req: ListComputeSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeSourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListComputeSourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListComputeSources',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListComputeSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_compute_sources_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListComputeSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListComputeSourcesResponse:
+        """
+        @summary 查询计算源列表。
+        
+        @param tmp_req: ListComputeSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComputeSourcesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListComputeSourcesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListComputeSources',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListComputeSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_compute_sources(
+        self,
+        request: dataphin_public_20230630_models.ListComputeSourcesRequest,
+    ) -> dataphin_public_20230630_models.ListComputeSourcesResponse:
+        """
+        @summary 查询计算源列表。
+        
+        @param request: ListComputeSourcesRequest
+        @return: ListComputeSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_compute_sources_with_options(request, runtime)
+
+    async def list_compute_sources_async(
+        self,
+        request: dataphin_public_20230630_models.ListComputeSourcesRequest,
+    ) -> dataphin_public_20230630_models.ListComputeSourcesResponse:
+        """
+        @summary 查询计算源列表。
+        
+        @param request: ListComputeSourcesRequest
+        @return: ListComputeSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_compute_sources_with_options_async(request, runtime)
+
     def list_data_domains_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.ListDataDomainsRequest,
@@ -8748,6 +12776,818 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_domains_with_options_async(request, runtime)
+
+    def list_data_service_api_call_statistics_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiCallStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse:
+        """
+        @summary 查询API运维统计信息。
+        
+        @param tmp_req: ListDataServiceApiCallStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiCallStatisticsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiCallStatisticsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiCallStatistics',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_api_call_statistics_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiCallStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse:
+        """
+        @summary 查询API运维统计信息。
+        
+        @param tmp_req: ListDataServiceApiCallStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiCallStatisticsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiCallStatisticsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiCallStatistics',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_api_call_statistics(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiCallStatisticsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse:
+        """
+        @summary 查询API运维统计信息。
+        
+        @param request: ListDataServiceApiCallStatisticsRequest
+        @return: ListDataServiceApiCallStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_api_call_statistics_with_options(request, runtime)
+
+    async def list_data_service_api_call_statistics_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiCallStatisticsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallStatisticsResponse:
+        """
+        @summary 查询API运维统计信息。
+        
+        @param request: ListDataServiceApiCallStatisticsRequest
+        @return: ListDataServiceApiCallStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_api_call_statistics_with_options_async(request, runtime)
+
+    def list_data_service_api_calls_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiCallsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallsResponse:
+        """
+        @summary 分页查询数据服务调用日志。
+        
+        @param tmp_req: ListDataServiceApiCallsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiCallsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiCallsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiCalls',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiCallsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_api_calls_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiCallsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallsResponse:
+        """
+        @summary 分页查询数据服务调用日志。
+        
+        @param tmp_req: ListDataServiceApiCallsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiCallsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiCallsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiCalls',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiCallsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_api_calls(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiCallsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallsResponse:
+        """
+        @summary 分页查询数据服务调用日志。
+        
+        @param request: ListDataServiceApiCallsRequest
+        @return: ListDataServiceApiCallsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_api_calls_with_options(request, runtime)
+
+    async def list_data_service_api_calls_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiCallsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiCallsResponse:
+        """
+        @summary 分页查询数据服务调用日志。
+        
+        @param request: ListDataServiceApiCallsRequest
+        @return: ListDataServiceApiCallsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_api_calls_with_options_async(request, runtime)
+
+    def list_data_service_api_impacts_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiImpactsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiImpactsResponse:
+        """
+        @summary API影响分析列表。
+        
+        @param tmp_req: ListDataServiceApiImpactsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiImpactsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiImpactsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiImpacts',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiImpactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_api_impacts_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceApiImpactsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiImpactsResponse:
+        """
+        @summary API影响分析列表。
+        
+        @param tmp_req: ListDataServiceApiImpactsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceApiImpactsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceApiImpactsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceApiImpacts',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceApiImpactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_api_impacts(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiImpactsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiImpactsResponse:
+        """
+        @summary API影响分析列表。
+        
+        @param request: ListDataServiceApiImpactsRequest
+        @return: ListDataServiceApiImpactsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_api_impacts_with_options(request, runtime)
+
+    async def list_data_service_api_impacts_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceApiImpactsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceApiImpactsResponse:
+        """
+        @summary API影响分析列表。
+        
+        @param request: ListDataServiceApiImpactsRequest
+        @return: ListDataServiceApiImpactsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_api_impacts_with_options_async(request, runtime)
+
+    def list_data_service_authorized_apps_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceAuthorizedAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse:
+        """
+        @summary 查询当前用户有权限的应用列表。
+        
+        @param tmp_req: ListDataServiceAuthorizedAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceAuthorizedAppsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceAuthorizedAppsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceAuthorizedApps',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_authorized_apps_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceAuthorizedAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse:
+        """
+        @summary 查询当前用户有权限的应用列表。
+        
+        @param tmp_req: ListDataServiceAuthorizedAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceAuthorizedAppsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceAuthorizedAppsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceAuthorizedApps',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_authorized_apps(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceAuthorizedAppsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse:
+        """
+        @summary 查询当前用户有权限的应用列表。
+        
+        @param request: ListDataServiceAuthorizedAppsRequest
+        @return: ListDataServiceAuthorizedAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_authorized_apps_with_options(request, runtime)
+
+    async def list_data_service_authorized_apps_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceAuthorizedAppsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceAuthorizedAppsResponse:
+        """
+        @summary 查询当前用户有权限的应用列表。
+        
+        @param request: ListDataServiceAuthorizedAppsRequest
+        @return: ListDataServiceAuthorizedAppsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_authorized_apps_with_options_async(request, runtime)
+
+    def list_data_service_my_api_permissions_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceMyApiPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse:
+        """
+        @summary 获取我管理的API权限列表。
+        
+        @param tmp_req: ListDataServiceMyApiPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceMyApiPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceMyApiPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceMyApiPermissions',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_my_api_permissions_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceMyApiPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse:
+        """
+        @summary 获取我管理的API权限列表。
+        
+        @param tmp_req: ListDataServiceMyApiPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceMyApiPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceMyApiPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceMyApiPermissions',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_my_api_permissions(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceMyApiPermissionsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse:
+        """
+        @summary 获取我管理的API权限列表。
+        
+        @param request: ListDataServiceMyApiPermissionsRequest
+        @return: ListDataServiceMyApiPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_my_api_permissions_with_options(request, runtime)
+
+    async def list_data_service_my_api_permissions_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceMyApiPermissionsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyApiPermissionsResponse:
+        """
+        @summary 获取我管理的API权限列表。
+        
+        @param request: ListDataServiceMyApiPermissionsRequest
+        @return: ListDataServiceMyApiPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_my_api_permissions_with_options_async(request, runtime)
+
+    def list_data_service_my_app_permissions_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceMyAppPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse:
+        """
+        @summary 查询当前用户有权限的应用。
+        
+        @param tmp_req: ListDataServiceMyAppPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceMyAppPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceMyAppPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceMyAppPermissions',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_my_app_permissions_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServiceMyAppPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse:
+        """
+        @summary 查询当前用户有权限的应用。
+        
+        @param tmp_req: ListDataServiceMyAppPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServiceMyAppPermissionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServiceMyAppPermissionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServiceMyAppPermissions',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_my_app_permissions(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceMyAppPermissionsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse:
+        """
+        @summary 查询当前用户有权限的应用。
+        
+        @param request: ListDataServiceMyAppPermissionsRequest
+        @return: ListDataServiceMyAppPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_my_app_permissions_with_options(request, runtime)
+
+    async def list_data_service_my_app_permissions_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServiceMyAppPermissionsRequest,
+    ) -> dataphin_public_20230630_models.ListDataServiceMyAppPermissionsResponse:
+        """
+        @summary 查询当前用户有权限的应用。
+        
+        @param request: ListDataServiceMyAppPermissionsRequest
+        @return: ListDataServiceMyAppPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_my_app_permissions_with_options_async(request, runtime)
+
+    def list_data_service_published_apis_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServicePublishedApisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServicePublishedApisResponse:
+        """
+        @summary 分页查询已发布的API列表。
+        
+        @param tmp_req: ListDataServicePublishedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServicePublishedApisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServicePublishedApisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServicePublishedApis',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServicePublishedApisResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_service_published_apis_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListDataServicePublishedApisRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListDataServicePublishedApisResponse:
+        """
+        @summary 分页查询已发布的API列表。
+        
+        @param tmp_req: ListDataServicePublishedApisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataServicePublishedApisResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListDataServicePublishedApisShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataServicePublishedApis',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListDataServicePublishedApisResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_service_published_apis(
+        self,
+        request: dataphin_public_20230630_models.ListDataServicePublishedApisRequest,
+    ) -> dataphin_public_20230630_models.ListDataServicePublishedApisResponse:
+        """
+        @summary 分页查询已发布的API列表。
+        
+        @param request: ListDataServicePublishedApisRequest
+        @return: ListDataServicePublishedApisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_service_published_apis_with_options(request, runtime)
+
+    async def list_data_service_published_apis_async(
+        self,
+        request: dataphin_public_20230630_models.ListDataServicePublishedApisRequest,
+    ) -> dataphin_public_20230630_models.ListDataServicePublishedApisResponse:
+        """
+        @summary 分页查询已发布的API列表。
+        
+        @param request: ListDataServicePublishedApisRequest
+        @return: ListDataServicePublishedApisResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_service_published_apis_with_options_async(request, runtime)
 
     def list_data_source_with_config_with_options(
         self,
@@ -9320,6 +14160,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
+
+    def list_project_members_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListProjectMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListProjectMembersResponse:
+        """
+        @summary 获取项目成员列表。
+        
+        @param tmp_req: ListProjectMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListProjectMembersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectMembers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListProjectMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_members_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListProjectMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListProjectMembersResponse:
+        """
+        @summary 获取项目成员列表。
+        
+        @param tmp_req: ListProjectMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListProjectMembersShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectMembers',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListProjectMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_members(
+        self,
+        request: dataphin_public_20230630_models.ListProjectMembersRequest,
+    ) -> dataphin_public_20230630_models.ListProjectMembersResponse:
+        """
+        @summary 获取项目成员列表。
+        
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_project_members_with_options(request, runtime)
+
+    async def list_project_members_async(
+        self,
+        request: dataphin_public_20230630_models.ListProjectMembersRequest,
+    ) -> dataphin_public_20230630_models.ListProjectMembersResponse:
+        """
+        @summary 获取项目成员列表。
+        
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_project_members_with_options_async(request, runtime)
+
+    def list_projects_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表。
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表。
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.list_query):
+            request.list_query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.list_query, 'ListQuery', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.list_query_shrink):
+            body['ListQuery'] = request.list_query_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        request: dataphin_public_20230630_models.ListProjectsRequest,
+    ) -> dataphin_public_20230630_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表。
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_projects_with_options(request, runtime)
+
+    async def list_projects_async(
+        self,
+        request: dataphin_public_20230630_models.ListProjectsRequest,
+    ) -> dataphin_public_20230630_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表。
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_projects_with_options_async(request, runtime)
 
     def list_publish_records_with_options(
         self,
@@ -11005,6 +16073,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.pause_physical_node_with_options_async(request, runtime)
 
+    def publish_data_service_api_with_options(
+        self,
+        request: dataphin_public_20230630_models.PublishDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.PublishDataServiceApiResponse:
+        """
+        @summary 发布数据服务API到生产环境。
+        
+        @param request: PublishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishDataServiceApiResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.PublishDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_data_service_api_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.PublishDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.PublishDataServiceApiResponse:
+        """
+        @summary 发布数据服务API到生产环境。
+        
+        @param request: PublishDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PublishDataServiceApiResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_id):
+            query['ApiId'] = request.api_id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.version_id):
+            query['VersionId'] = request.version_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PublishDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.PublishDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_data_service_api(
+        self,
+        request: dataphin_public_20230630_models.PublishDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.PublishDataServiceApiResponse:
+        """
+        @summary 发布数据服务API到生产环境。
+        
+        @param request: PublishDataServiceApiRequest
+        @return: PublishDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.publish_data_service_api_with_options(request, runtime)
+
+    async def publish_data_service_api_async(
+        self,
+        request: dataphin_public_20230630_models.PublishDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.PublishDataServiceApiResponse:
+        """
+        @summary 发布数据服务API到生产环境。
+        
+        @param request: PublishDataServiceApiRequest
+        @return: PublishDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_data_service_api_with_options_async(request, runtime)
+
     def publish_object_list_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.PublishObjectListRequest,
@@ -11116,6 +16292,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.publish_object_list_with_options_async(request, runtime)
+
+    def remove_project_member_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.RemoveProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RemoveProjectMemberResponse:
+        """
+        @summary 删除项目成员。
+        
+        @param tmp_req: RemoveProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RemoveProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.remove_command):
+            request.remove_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_command, 'RemoveCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.remove_command_shrink):
+            body['RemoveCommand'] = request.remove_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RemoveProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_project_member_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.RemoveProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RemoveProjectMemberResponse:
+        """
+        @summary 删除项目成员。
+        
+        @param tmp_req: RemoveProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RemoveProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.remove_command):
+            request.remove_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_command, 'RemoveCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.remove_command_shrink):
+            body['RemoveCommand'] = request.remove_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RemoveProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_project_member(
+        self,
+        request: dataphin_public_20230630_models.RemoveProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.RemoveProjectMemberResponse:
+        """
+        @summary 删除项目成员。
+        
+        @param request: RemoveProjectMemberRequest
+        @return: RemoveProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_project_member_with_options(request, runtime)
+
+    async def remove_project_member_async(
+        self,
+        request: dataphin_public_20230630_models.RemoveProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.RemoveProjectMemberResponse:
+        """
+        @summary 删除项目成员。
+        
+        @param request: RemoveProjectMemberRequest
+        @return: RemoveProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_project_member_with_options_async(request, runtime)
 
     def remove_tenant_member_with_options(
         self,
@@ -11341,6 +16633,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_user_group_member_with_options_async(request, runtime)
 
+    def replace_project_white_lists_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.ReplaceProjectWhiteListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse:
+        """
+        @summary 更新项目白名单。
+        
+        @param tmp_req: ReplaceProjectWhiteListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceProjectWhiteListsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ReplaceProjectWhiteListsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.replace_command):
+            request.replace_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.replace_command, 'ReplaceCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.replace_command_shrink):
+            body['ReplaceCommand'] = request.replace_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReplaceProjectWhiteLists',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def replace_project_white_lists_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.ReplaceProjectWhiteListsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse:
+        """
+        @summary 更新项目白名单。
+        
+        @param tmp_req: ReplaceProjectWhiteListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceProjectWhiteListsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.ReplaceProjectWhiteListsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.replace_command):
+            request.replace_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.replace_command, 'ReplaceCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.replace_command_shrink):
+            body['ReplaceCommand'] = request.replace_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReplaceProjectWhiteLists',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def replace_project_white_lists(
+        self,
+        request: dataphin_public_20230630_models.ReplaceProjectWhiteListsRequest,
+    ) -> dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse:
+        """
+        @summary 更新项目白名单。
+        
+        @param request: ReplaceProjectWhiteListsRequest
+        @return: ReplaceProjectWhiteListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.replace_project_white_lists_with_options(request, runtime)
+
+    async def replace_project_white_lists_async(
+        self,
+        request: dataphin_public_20230630_models.ReplaceProjectWhiteListsRequest,
+    ) -> dataphin_public_20230630_models.ReplaceProjectWhiteListsResponse:
+        """
+        @summary 更新项目白名单。
+        
+        @param request: ReplaceProjectWhiteListsRequest
+        @return: ReplaceProjectWhiteListsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.replace_project_white_lists_with_options_async(request, runtime)
+
     def resume_physical_node_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.ResumePhysicalNodeRequest,
@@ -11456,6 +16864,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.resume_physical_node_with_options_async(request, runtime)
+
+    def revoke_data_service_api_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.RevokeDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RevokeDataServiceApiResponse:
+        """
+        @summary 回收API授权。
+        
+        @param tmp_req: RevokeDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RevokeDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.revoke_command):
+            request.revoke_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.revoke_command, 'RevokeCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.revoke_command_shrink):
+            body['RevokeCommand'] = request.revoke_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RevokeDataServiceApiResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_data_service_api_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.RevokeDataServiceApiRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RevokeDataServiceApiResponse:
+        """
+        @summary 回收API授权。
+        
+        @param tmp_req: RevokeDataServiceApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeDataServiceApiResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RevokeDataServiceApiShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.revoke_command):
+            request.revoke_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.revoke_command, 'RevokeCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not UtilClient.is_unset(request.revoke_command_shrink):
+            body['RevokeCommand'] = request.revoke_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RevokeDataServiceApi',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RevokeDataServiceApiResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_data_service_api(
+        self,
+        request: dataphin_public_20230630_models.RevokeDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.RevokeDataServiceApiResponse:
+        """
+        @summary 回收API授权。
+        
+        @param request: RevokeDataServiceApiRequest
+        @return: RevokeDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.revoke_data_service_api_with_options(request, runtime)
+
+    async def revoke_data_service_api_async(
+        self,
+        request: dataphin_public_20230630_models.RevokeDataServiceApiRequest,
+    ) -> dataphin_public_20230630_models.RevokeDataServiceApiResponse:
+        """
+        @summary 回收API授权。
+        
+        @param request: RevokeDataServiceApiRequest
+        @return: RevokeDataServiceApiResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.revoke_data_service_api_with_options_async(request, runtime)
 
     def revoke_resource_permission_with_options(
         self,
@@ -11784,230 +17308,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_task_with_options_async(request, runtime)
-
-    def sync_department_with_options(
-        self,
-        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
-        """
-        @summary 同步部门信息
-        
-        @param tmp_req: SyncDepartmentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SyncDepartmentResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.sync_department_command):
-            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.op_tenant_id):
-            query['OpTenantId'] = request.op_tenant_id
-        body = {}
-        if not UtilClient.is_unset(request.sync_department_command_shrink):
-            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SyncDepartment',
-            version='2023-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dataphin_public_20230630_models.SyncDepartmentResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def sync_department_with_options_async(
-        self,
-        tmp_req: dataphin_public_20230630_models.SyncDepartmentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
-        """
-        @summary 同步部门信息
-        
-        @param tmp_req: SyncDepartmentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SyncDepartmentResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataphin_public_20230630_models.SyncDepartmentShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.sync_department_command):
-            request.sync_department_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_command, 'SyncDepartmentCommand', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.op_tenant_id):
-            query['OpTenantId'] = request.op_tenant_id
-        body = {}
-        if not UtilClient.is_unset(request.sync_department_command_shrink):
-            body['SyncDepartmentCommand'] = request.sync_department_command_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SyncDepartment',
-            version='2023-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dataphin_public_20230630_models.SyncDepartmentResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def sync_department(
-        self,
-        request: dataphin_public_20230630_models.SyncDepartmentRequest,
-    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
-        """
-        @summary 同步部门信息
-        
-        @param request: SyncDepartmentRequest
-        @return: SyncDepartmentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.sync_department_with_options(request, runtime)
-
-    async def sync_department_async(
-        self,
-        request: dataphin_public_20230630_models.SyncDepartmentRequest,
-    ) -> dataphin_public_20230630_models.SyncDepartmentResponse:
-        """
-        @summary 同步部门信息
-        
-        @param request: SyncDepartmentRequest
-        @return: SyncDepartmentResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.sync_department_with_options_async(request, runtime)
-
-    def sync_department_user_with_options(
-        self,
-        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
-        """
-        @summary 同步部门成员信息
-        
-        @param tmp_req: SyncDepartmentUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SyncDepartmentUserResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
-            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.op_tenant_id):
-            query['OpTenantId'] = request.op_tenant_id
-        body = {}
-        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
-            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SyncDepartmentUser',
-            version='2023-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def sync_department_user_with_options_async(
-        self,
-        tmp_req: dataphin_public_20230630_models.SyncDepartmentUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
-        """
-        @summary 同步部门成员信息
-        
-        @param tmp_req: SyncDepartmentUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SyncDepartmentUserResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = dataphin_public_20230630_models.SyncDepartmentUserShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.sync_department_user_command):
-            request.sync_department_user_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sync_department_user_command, 'SyncDepartmentUserCommand', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.op_tenant_id):
-            query['OpTenantId'] = request.op_tenant_id
-        body = {}
-        if not UtilClient.is_unset(request.sync_department_user_command_shrink):
-            body['SyncDepartmentUserCommand'] = request.sync_department_user_command_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='SyncDepartmentUser',
-            version='2023-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dataphin_public_20230630_models.SyncDepartmentUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def sync_department_user(
-        self,
-        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
-    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
-        """
-        @summary 同步部门成员信息
-        
-        @param request: SyncDepartmentUserRequest
-        @return: SyncDepartmentUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.sync_department_user_with_options(request, runtime)
-
-    async def sync_department_user_async(
-        self,
-        request: dataphin_public_20230630_models.SyncDepartmentUserRequest,
-    ) -> dataphin_public_20230630_models.SyncDepartmentUserResponse:
-        """
-        @summary 同步部门成员信息
-        
-        @param request: SyncDepartmentUserRequest
-        @return: SyncDepartmentUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.sync_department_user_with_options_async(request, runtime)
 
     def update_ad_hoc_file_with_options(
         self,
@@ -12569,6 +17869,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_biz_unit_with_options_async(request, runtime)
 
+    def update_compute_source_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateComputeSourceResponse:
+        """
+        @summary 修改计算源。
+        
+        @param tmp_req: UpdateComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateComputeSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateComputeSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_compute_source_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateComputeSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateComputeSourceResponse:
+        """
+        @summary 修改计算源。
+        
+        @param tmp_req: UpdateComputeSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComputeSourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateComputeSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateComputeSource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateComputeSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_compute_source(
+        self,
+        request: dataphin_public_20230630_models.UpdateComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.UpdateComputeSourceResponse:
+        """
+        @summary 修改计算源。
+        
+        @param request: UpdateComputeSourceRequest
+        @return: UpdateComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_compute_source_with_options(request, runtime)
+
+    async def update_compute_source_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateComputeSourceRequest,
+    ) -> dataphin_public_20230630_models.UpdateComputeSourceResponse:
+        """
+        @summary 修改计算源。
+        
+        @param request: UpdateComputeSourceRequest
+        @return: UpdateComputeSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_compute_source_with_options_async(request, runtime)
+
     def update_data_domain_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.UpdateDataDomainRequest,
@@ -13121,6 +18533,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_file_name_with_options_async(request, runtime)
 
+    def update_project_member_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param tmp_req: UpdateProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateProjectMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_member_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateProjectMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param tmp_req: UpdateProjectMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectMemberResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateProjectMemberShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectMember',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateProjectMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_member(
+        self,
+        request: dataphin_public_20230630_models.UpdateProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.UpdateProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param request: UpdateProjectMemberRequest
+        @return: UpdateProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_project_member_with_options(request, runtime)
+
+    async def update_project_member_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateProjectMemberRequest,
+    ) -> dataphin_public_20230630_models.UpdateProjectMemberResponse:
+        """
+        @summary 增加项目成员。
+        
+        @param request: UpdateProjectMemberRequest
+        @return: UpdateProjectMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_project_member_with_options_async(request, runtime)
+
+    def update_resource_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateResourceResponse:
+        """
+        @summary 编辑资源文件。
+        
+        @param tmp_req: UpdateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_resource_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateResourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateResourceResponse:
+        """
+        @summary 编辑资源文件。
+        
+        @param tmp_req: UpdateResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateResource',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_resource(
+        self,
+        request: dataphin_public_20230630_models.UpdateResourceRequest,
+    ) -> dataphin_public_20230630_models.UpdateResourceResponse:
+        """
+        @summary 编辑资源文件。
+        
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_resource_with_options(request, runtime)
+
+    async def update_resource_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateResourceRequest,
+    ) -> dataphin_public_20230630_models.UpdateResourceResponse:
+        """
+        @summary 编辑资源文件。
+        
+        @param request: UpdateResourceRequest
+        @return: UpdateResourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_resource_with_options_async(request, runtime)
+
     def update_row_permission_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.UpdateRowPermissionRequest,
@@ -13233,6 +18873,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_row_permission_with_options_async(request, runtime)
 
+    def update_tenant_compute_engine_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateTenantComputeEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateTenantComputeEngineResponse:
+        """
+        @summary 修改租户计算设置。
+        
+        @param tmp_req: UpdateTenantComputeEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTenantComputeEngineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateTenantComputeEngineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTenantComputeEngine',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateTenantComputeEngineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_tenant_compute_engine_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateTenantComputeEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateTenantComputeEngineResponse:
+        """
+        @summary 修改租户计算设置。
+        
+        @param tmp_req: UpdateTenantComputeEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTenantComputeEngineResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateTenantComputeEngineShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTenantComputeEngine',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateTenantComputeEngineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_tenant_compute_engine(
+        self,
+        request: dataphin_public_20230630_models.UpdateTenantComputeEngineRequest,
+    ) -> dataphin_public_20230630_models.UpdateTenantComputeEngineResponse:
+        """
+        @summary 修改租户计算设置。
+        
+        @param request: UpdateTenantComputeEngineRequest
+        @return: UpdateTenantComputeEngineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_tenant_compute_engine_with_options(request, runtime)
+
+    async def update_tenant_compute_engine_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateTenantComputeEngineRequest,
+    ) -> dataphin_public_20230630_models.UpdateTenantComputeEngineResponse:
+        """
+        @summary 修改租户计算设置。
+        
+        @param request: UpdateTenantComputeEngineRequest
+        @return: UpdateTenantComputeEngineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_tenant_compute_engine_with_options_async(request, runtime)
+
     def update_tenant_member_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.UpdateTenantMemberRequest,
@@ -13344,6 +19096,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_tenant_member_with_options_async(request, runtime)
+
+    def update_udf_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateUdfResponse:
+        """
+        @summary 编辑自定义函数。
+        
+        @param tmp_req: UpdateUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateUdfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateUdfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_udf_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.UpdateUdfRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.UpdateUdfResponse:
+        """
+        @summary 编辑自定义函数。
+        
+        @param tmp_req: UpdateUdfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUdfResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.UpdateUdfShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.update_command):
+            request.update_command_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_command, 'UpdateCommand', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.update_command_shrink):
+            body['UpdateCommand'] = request.update_command_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUdf',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.UpdateUdfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_udf(
+        self,
+        request: dataphin_public_20230630_models.UpdateUdfRequest,
+    ) -> dataphin_public_20230630_models.UpdateUdfResponse:
+        """
+        @summary 编辑自定义函数。
+        
+        @param request: UpdateUdfRequest
+        @return: UpdateUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_udf_with_options(request, runtime)
+
+    async def update_udf_async(
+        self,
+        request: dataphin_public_20230630_models.UpdateUdfRequest,
+    ) -> dataphin_public_20230630_models.UpdateUdfResponse:
+        """
+        @summary 编辑自定义函数。
+        
+        @param request: UpdateUdfRequest
+        @return: UpdateUdfResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_udf_with_options_async(request, runtime)
 
     def update_user_group_with_options(
         self,

@@ -1,3 +1,69 @@
+2025-07-31 Version: 2.0.0
+- Support API AddDataServiceProjectMember.
+- Support API AddProjectMember.
+- Support API ApplyDataServiceApi.
+- Support API ApplyDataServiceApp.
+- Support API CheckComputeSourceConnectivity.
+- Support API CheckComputeSourceConnectivityById.
+- Support API CheckProjectHasDependency.
+- Support API CreateComputeSource.
+- Support API CreateResource.
+- Support API CreateUdf.
+- Support API DeleteComputeSource.
+- Support API DeleteResource.
+- Support API DeleteUdf.
+- Support API GetComputeSource.
+- Support API GetDataServiceApiCallSummary.
+- Support API GetDataServiceApiCallTrend.
+- Support API GetDataServiceApiDocument.
+- Support API GetDataServiceApiErrorImpact.
+- Support API GetDataServiceApiGroups.
+- Support API GetDataServiceAppAuthorizedUsers.
+- Support API GetDataServiceAppGroups.
+- Support API GetDataServiceAppsByGroupId.
+- Support API GetDataServiceAuthorizedAppsByGroupId.
+- Support API GetDataServiceAuthorizedProjects.
+- Support API GetDataServiceMyProjects.
+- Support API GetDataServiceProjectAddableUsers.
+- Support API GetDataSourceDependencies.
+- Support API GetFileStorageCredential.
+- Support API GetProject.
+- Support API GetProjectByName.
+- Support API GetProjectWhiteLists.
+- Support API GetResource.
+- Support API GetResourceByVersion.
+- Support API GetStreamJobs.
+- Support API GetUdf.
+- Support API GetUdfByVersion.
+- Support API GrantDataServiceApi.
+- Support API ListComputeSources.
+- Support API ListDataServiceApiCallStatistics.
+- Support API ListDataServiceApiCalls.
+- Support API ListDataServiceApiImpacts.
+- Support API ListDataServiceAuthorizedApps.
+- Support API ListDataServiceMyApiPermissions.
+- Support API ListDataServiceMyAppPermissions.
+- Support API ListDataServicePublishedApis.
+- Support API ListProjectMembers.
+- Support API ListProjects.
+- Support API PublishDataServiceApi.
+- Support API RemoveProjectMember.
+- Support API ReplaceProjectWhiteLists.
+- Support API RevokeDataServiceApi.
+- Support API UpdateComputeSource.
+- Support API UpdateProjectMember.
+- Support API UpdateResource.
+- Support API UpdateTenantComputeEngine.
+- Support API UpdateUdf.
+- Delete API SyncDepartment.
+- Delete API SyncDepartmentUser.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DevelopOwnerId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.DevelopOwnerName.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.OpsOwnerId.
+- Update API GetBatchTaskInfo: add response parameters Body.TaskInfo.OpsOwnerName.
+- Update API ListInstances: add request parameters ListQuery.FlowId.
+
+
 2025-04-28 Version: 1.4.0
 - Support API CreateDataServiceApi.
 - Support API CreateRowPermission.
