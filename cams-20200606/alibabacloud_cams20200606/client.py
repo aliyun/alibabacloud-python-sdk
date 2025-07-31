@@ -10149,43 +10149,49 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sender_list):
             request.sender_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sender_list, 'SenderList', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
+            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.fall_back_content):
-            body['FallBackContent'] = request.fall_back_content
+            query['FallBackContent'] = request.fall_back_content
         if not UtilClient.is_unset(request.fall_back_duration):
-            body['FallBackDuration'] = request.fall_back_duration
+            query['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
-            body['FallBackId'] = request.fall_back_id
+            query['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.fall_back_rule):
-            body['FallBackRule'] = request.fall_back_rule
+            query['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
+            query['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.label):
-            body['Label'] = request.label
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.sender_list_shrink):
-            body['SenderList'] = request.sender_list_shrink
+            query['SenderList'] = request.sender_list_shrink
         if not UtilClient.is_unset(request.tag):
-            body['Tag'] = request.tag
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
-            body['TaskId'] = request.task_id
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.ttl):
-            body['Ttl'] = request.ttl
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendChatappMassMessage',
@@ -10223,43 +10229,49 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.sender_list):
             request.sender_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sender_list, 'SenderList', 'json')
-        body = {}
+        query = {}
         if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
+            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
+            query['CustSpaceId'] = request.cust_space_id
         if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
+            query['CustWabaId'] = request.cust_waba_id
         if not UtilClient.is_unset(request.fall_back_content):
-            body['FallBackContent'] = request.fall_back_content
+            query['FallBackContent'] = request.fall_back_content
         if not UtilClient.is_unset(request.fall_back_duration):
-            body['FallBackDuration'] = request.fall_back_duration
+            query['FallBackDuration'] = request.fall_back_duration
         if not UtilClient.is_unset(request.fall_back_id):
-            body['FallBackId'] = request.fall_back_id
+            query['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.fall_back_rule):
-            body['FallBackRule'] = request.fall_back_rule
+            query['FallBackRule'] = request.fall_back_rule
         if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
+            query['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
+            query['IsvCode'] = request.isv_code
         if not UtilClient.is_unset(request.label):
-            body['Label'] = request.label
+            query['Label'] = request.label
         if not UtilClient.is_unset(request.language):
-            body['Language'] = request.language
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.sender_list_shrink):
-            body['SenderList'] = request.sender_list_shrink
+            query['SenderList'] = request.sender_list_shrink
         if not UtilClient.is_unset(request.tag):
-            body['Tag'] = request.tag
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
-            body['TaskId'] = request.task_id
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.ttl):
-            body['Ttl'] = request.ttl
+            query['Ttl'] = request.ttl
         req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendChatappMassMessage',
@@ -10335,64 +10347,68 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.template_params):
             request.template_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_params, 'TemplateParams', 'json')
         query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.context_message_id):
+            query['ContextMessageId'] = request.context_message_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.fall_back_content):
+            query['FallBackContent'] = request.fall_back_content
+        if not UtilClient.is_unset(request.fall_back_duration):
+            query['FallBackDuration'] = request.fall_back_duration
+        if not UtilClient.is_unset(request.fall_back_id):
+            query['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            query['FallBackRule'] = request.fall_back_rule
+        if not UtilClient.is_unset(request.flow_action_shrink):
+            query['FlowAction'] = request.flow_action_shrink
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.payload_shrink):
             query['Payload'] = request.payload_shrink
-        body = {}
-        if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.context_message_id):
-            body['ContextMessageId'] = request.context_message_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
-        if not UtilClient.is_unset(request.fall_back_content):
-            body['FallBackContent'] = request.fall_back_content
-        if not UtilClient.is_unset(request.fall_back_duration):
-            body['FallBackDuration'] = request.fall_back_duration
-        if not UtilClient.is_unset(request.fall_back_id):
-            body['FallBackId'] = request.fall_back_id
-        if not UtilClient.is_unset(request.fall_back_rule):
-            body['FallBackRule'] = request.fall_back_rule
-        if not UtilClient.is_unset(request.flow_action_shrink):
-            body['FlowAction'] = request.flow_action_shrink
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.label):
-            body['Label'] = request.label
-        if not UtilClient.is_unset(request.language):
-            body['Language'] = request.language
-        if not UtilClient.is_unset(request.message_type):
-            body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.product_action_shrink):
-            body['ProductAction'] = request.product_action_shrink
+            query['ProductAction'] = request.product_action_shrink
         if not UtilClient.is_unset(request.recipient_type):
-            body['RecipientType'] = request.recipient_type
+            query['RecipientType'] = request.recipient_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tag):
-            body['Tag'] = request.tag
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
-            body['TaskId'] = request.task_id
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_params_shrink):
-            body['TemplateParams'] = request.template_params_shrink
+            query['TemplateParams'] = request.template_params_shrink
         if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
+            query['To'] = request.to
         if not UtilClient.is_unset(request.tracking_data):
-            body['TrackingData'] = request.tracking_data
+            query['TrackingData'] = request.tracking_data
         if not UtilClient.is_unset(request.ttl):
-            body['Ttl'] = request.ttl
+            query['Ttl'] = request.ttl
         if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendChatappMessage',
@@ -10436,64 +10452,68 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.template_params):
             request.template_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.template_params, 'TemplateParams', 'json')
         query = {}
+        if not UtilClient.is_unset(request.channel_type):
+            query['ChannelType'] = request.channel_type
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
+        if not UtilClient.is_unset(request.context_message_id):
+            query['ContextMessageId'] = request.context_message_id
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.cust_waba_id):
+            query['CustWabaId'] = request.cust_waba_id
+        if not UtilClient.is_unset(request.fall_back_content):
+            query['FallBackContent'] = request.fall_back_content
+        if not UtilClient.is_unset(request.fall_back_duration):
+            query['FallBackDuration'] = request.fall_back_duration
+        if not UtilClient.is_unset(request.fall_back_id):
+            query['FallBackId'] = request.fall_back_id
+        if not UtilClient.is_unset(request.fall_back_rule):
+            query['FallBackRule'] = request.fall_back_rule
+        if not UtilClient.is_unset(request.flow_action_shrink):
+            query['FlowAction'] = request.flow_action_shrink
+        if not UtilClient.is_unset(request.from_):
+            query['From'] = request.from_
+        if not UtilClient.is_unset(request.isv_code):
+            query['IsvCode'] = request.isv_code
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.message_type):
+            query['MessageType'] = request.message_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.payload_shrink):
             query['Payload'] = request.payload_shrink
-        body = {}
-        if not UtilClient.is_unset(request.channel_type):
-            body['ChannelType'] = request.channel_type
-        if not UtilClient.is_unset(request.context_message_id):
-            body['ContextMessageId'] = request.context_message_id
-        if not UtilClient.is_unset(request.cust_space_id):
-            body['CustSpaceId'] = request.cust_space_id
-        if not UtilClient.is_unset(request.cust_waba_id):
-            body['CustWabaId'] = request.cust_waba_id
-        if not UtilClient.is_unset(request.fall_back_content):
-            body['FallBackContent'] = request.fall_back_content
-        if not UtilClient.is_unset(request.fall_back_duration):
-            body['FallBackDuration'] = request.fall_back_duration
-        if not UtilClient.is_unset(request.fall_back_id):
-            body['FallBackId'] = request.fall_back_id
-        if not UtilClient.is_unset(request.fall_back_rule):
-            body['FallBackRule'] = request.fall_back_rule
-        if not UtilClient.is_unset(request.flow_action_shrink):
-            body['FlowAction'] = request.flow_action_shrink
-        if not UtilClient.is_unset(request.from_):
-            body['From'] = request.from_
-        if not UtilClient.is_unset(request.isv_code):
-            body['IsvCode'] = request.isv_code
-        if not UtilClient.is_unset(request.label):
-            body['Label'] = request.label
-        if not UtilClient.is_unset(request.language):
-            body['Language'] = request.language
-        if not UtilClient.is_unset(request.message_type):
-            body['MessageType'] = request.message_type
         if not UtilClient.is_unset(request.product_action_shrink):
-            body['ProductAction'] = request.product_action_shrink
+            query['ProductAction'] = request.product_action_shrink
         if not UtilClient.is_unset(request.recipient_type):
-            body['RecipientType'] = request.recipient_type
+            query['RecipientType'] = request.recipient_type
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.tag):
-            body['Tag'] = request.tag
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.task_id):
-            body['TaskId'] = request.task_id
+            query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.template_code):
-            body['TemplateCode'] = request.template_code
+            query['TemplateCode'] = request.template_code
         if not UtilClient.is_unset(request.template_name):
-            body['TemplateName'] = request.template_name
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_params_shrink):
-            body['TemplateParams'] = request.template_params_shrink
+            query['TemplateParams'] = request.template_params_shrink
         if not UtilClient.is_unset(request.to):
-            body['To'] = request.to
+            query['To'] = request.to
         if not UtilClient.is_unset(request.tracking_data):
-            body['TrackingData'] = request.tracking_data
+            query['TrackingData'] = request.tracking_data
         if not UtilClient.is_unset(request.ttl):
-            body['Ttl'] = request.ttl
+            query['Ttl'] = request.ttl
         if not UtilClient.is_unset(request.type):
-            body['Type'] = request.type
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='SendChatappMessage',

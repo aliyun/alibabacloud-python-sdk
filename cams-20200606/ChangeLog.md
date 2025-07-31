@@ -1,3 +1,13 @@
+2025-07-31 Version: 3.1.1
+- Update API SendChatappMassMessage: add request parameters OwnerId.
+- Update API SendChatappMassMessage: add request parameters ResourceOwnerAccount.
+- Update API SendChatappMassMessage: add request parameters ResourceOwnerId.
+- Update API SendChatappMessage: add request parameters OwnerId.
+- Update API SendChatappMessage: add request parameters ResourceOwnerAccount.
+- Update API SendChatappMessage: add request parameters ResourceOwnerId.
+- Update API SendChatappMessage: add response parameters Body.AccessDeniedDetail.
+
+
 2025-07-21 Version: 3.1.0
 - Support API ListChatappMessage.
 - Support API ListFlowNodePrototypeV2.
