@@ -964,6 +964,7 @@ class CreateBackupRequest(TeaModel):
     def __init__(
         self,
         backup_method: str = None,
+        backup_retention_period: int = None,
         dbinstance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -977,6 +978,7 @@ class CreateBackupRequest(TeaModel):
         # 
         # > Only replica set instances and sharded cluster instances support this parameter. You do not need to specify this parameter for standalone instances. All standalone instances use snapshot backup.
         self.backup_method = backup_method
+        self.backup_retention_period = backup_retention_period
         # The instance ID.
         # 
         # This parameter is required.
@@ -997,6 +999,8 @@ class CreateBackupRequest(TeaModel):
         result = dict()
         if self.backup_method is not None:
             result['BackupMethod'] = self.backup_method
+        if self.backup_retention_period is not None:
+            result['BackupRetentionPeriod'] = self.backup_retention_period
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.owner_account is not None:
@@ -1013,6 +1017,8 @@ class CreateBackupRequest(TeaModel):
         m = m or dict()
         if m.get('BackupMethod') is not None:
             self.backup_method = m.get('BackupMethod')
+        if m.get('BackupRetentionPeriod') is not None:
+            self.backup_retention_period = m.get('BackupRetentionPeriod')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('OwnerAccount') is not None:
@@ -6004,18 +6010,15 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         # *   **local**: only displays zones available for instances that use local disks instances.
         # *   **default** or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
         self.storage_support = storage_support
-        # The disk type. Valid values:
+        # The storage type. Valid values:
         # 
-        # *   **cloud_essd**: PL1 Enterprise SSD (ESSD)
-        # *   **cloud_essd2**: PL2 ESSD
-        # *   **cloud_essd3**: PL3 ESSD
-        # *   **dhg_local_ssd**: local SSD
+        # *   **cloud_essd1**: PL1 Enterprise SSDs (ESSDs)
+        # *   **cloud_essd2**: PL2 ESSDs
+        # *   **cloud_essd3**: PL3 ESSDs
+        # *   **local_ssd**: local SSDs
         # 
-        # > 
-        # 
-        # *   Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1** is used by default.
-        # 
-        # *   Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd** is used by default.
+        # > *   Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1** is used by default.
+        # > *   Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd** is used by default.
         self.storage_type = storage_type
         # The zone ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/61933.html) operation to query available zones.
         self.zone_id = zone_id
@@ -7461,6 +7464,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         preferred_backup_period: str = None,
         preferred_backup_time: str = None,
         preferred_next_backup_time: str = None,
+        preserve_one_each_hour: bool = None,
         request_id: str = None,
         snapshot_backup_type: str = None,
         src_region: str = None,
@@ -7542,6 +7546,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.preferred_backup_time = preferred_backup_time
         # The time of next standard backup.
         self.preferred_next_backup_time = preferred_next_backup_time
+        self.preserve_one_each_hour = preserve_one_each_hour
         # The request ID.
         self.request_id = request_id
         # The snapshot backup type. Valid values:
@@ -7593,6 +7598,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             result['PreferredBackupTime'] = self.preferred_backup_time
         if self.preferred_next_backup_time is not None:
             result['PreferredNextBackupTime'] = self.preferred_next_backup_time
+        if self.preserve_one_each_hour is not None:
+            result['PreserveOneEachHour'] = self.preserve_one_each_hour
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.snapshot_backup_type is not None:
@@ -7635,6 +7642,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             self.preferred_backup_time = m.get('PreferredBackupTime')
         if m.get('PreferredNextBackupTime') is not None:
             self.preferred_next_backup_time = m.get('PreferredNextBackupTime')
+        if m.get('PreserveOneEachHour') is not None:
+            self.preserve_one_each_hour = m.get('PreserveOneEachHour')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('SnapshotBackupType') is not None:
@@ -8195,6 +8204,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         backup_dbnames: str = None,
         backup_download_url: str = None,
         backup_end_time: str = None,
+        backup_expire_time: str = None,
         backup_id: str = None,
         backup_intranet_download_url: str = None,
         backup_job_id: str = None,
@@ -8215,6 +8225,7 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
         self.backup_download_url = backup_download_url
         # The end time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
+        self.backup_expire_time = backup_expire_time
         # The ID of the backup set.
         self.backup_id = backup_id
         # The internal download URL of the backup set.
@@ -8281,6 +8292,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             result['BackupDownloadURL'] = self.backup_download_url
         if self.backup_end_time is not None:
             result['BackupEndTime'] = self.backup_end_time
+        if self.backup_expire_time is not None:
+            result['BackupExpireTime'] = self.backup_expire_time
         if self.backup_id is not None:
             result['BackupId'] = self.backup_id
         if self.backup_intranet_download_url is not None:
@@ -8317,6 +8330,8 @@ class DescribeBackupsResponseBodyBackupsBackup(TeaModel):
             self.backup_download_url = m.get('BackupDownloadURL')
         if m.get('BackupEndTime') is not None:
             self.backup_end_time = m.get('BackupEndTime')
+        if m.get('BackupExpireTime') is not None:
+            self.backup_expire_time = m.get('BackupExpireTime')
         if m.get('BackupId') is not None:
             self.backup_id = m.get('BackupId')
         if m.get('BackupIntranetDownloadURL') is not None:
@@ -8796,6 +8811,7 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
     def __init__(
         self,
         attach_log_status: str = None,
+        backup_expire_time: str = None,
         backups: List[DescribeClusterBackupsResponseBodyClusterBackupsBackups] = None,
         cluster_backup_end_time: str = None,
         cluster_backup_id: str = None,
@@ -8818,6 +8834,7 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         # 
         # >  If the **ClusterBackupStatus** parameter is set to OK, full backup is successful. If you want to perform point-in-time-restoration on an instance for which log backup is enabled or to implement consistency restoration, make sure that log backup is complete.
         self.attach_log_status = attach_log_status
+        self.backup_expire_time = backup_expire_time
         # The collection of the backup sets of each child node in a cluster backup set.
         self.backups = backups
         # The end of the time range within which the cluster backup is performed.
@@ -8867,6 +8884,8 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         result = dict()
         if self.attach_log_status is not None:
             result['AttachLogStatus'] = self.attach_log_status
+        if self.backup_expire_time is not None:
+            result['BackupExpireTime'] = self.backup_expire_time
         result['Backups'] = []
         if self.backups is not None:
             for k in self.backups:
@@ -8897,6 +8916,8 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         m = m or dict()
         if m.get('AttachLogStatus') is not None:
             self.attach_log_status = m.get('AttachLogStatus')
+        if m.get('BackupExpireTime') is not None:
+            self.backup_expire_time = m.get('BackupExpireTime')
         self.backups = []
         if m.get('Backups') is not None:
             for k in m.get('Backups'):
@@ -9734,6 +9755,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         node_storage: int = None,
         port: int = None,
         readonly_replicas: int = None,
+        replica_set_name: str = None,
         status: str = None,
     ):
         # The endpoint of the shard node.
@@ -9766,6 +9788,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         self.port = port
         # The number of read-only nodes in the shard node. Valid values: **0** to **5**. The value must be an integer.
         self.readonly_replicas = readonly_replicas
+        self.replica_set_name = replica_set_name
         # The status of the shard node. For more information, see [Instance states](https://help.aliyun.com/document_detail/63870.html).
         self.status = status
 
@@ -9802,6 +9825,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
             result['Port'] = self.port
         if self.readonly_replicas is not None:
             result['ReadonlyReplicas'] = self.readonly_replicas
+        if self.replica_set_name is not None:
+            result['ReplicaSetName'] = self.replica_set_name
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -9832,6 +9857,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
             self.port = m.get('Port')
         if m.get('ReadonlyReplicas') is not None:
             self.readonly_replicas = m.get('ReadonlyReplicas')
+        if m.get('ReplicaSetName') is not None:
+            self.replica_set_name = m.get('ReplicaSetName')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -9960,6 +9987,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         dbinstance_storage: int = None,
         dbinstance_type: str = None,
         destroy_time: str = None,
+        disaster_recovery_info: str = None,
         encrypted: bool = None,
         encryption_key: str = None,
         engine: str = None,
@@ -10048,6 +10076,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.dbinstance_type = dbinstance_type
         # The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.destroy_time = destroy_time
+        self.disaster_recovery_info = disaster_recovery_info
         # Indicates whether disk encryption is enabled.
         self.encrypted = encrypted
         # The Key Management Service (KMS) key used for disk encryption.
@@ -10278,6 +10307,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['DBInstanceType'] = self.dbinstance_type
         if self.destroy_time is not None:
             result['DestroyTime'] = self.destroy_time
+        if self.disaster_recovery_info is not None:
+            result['DisasterRecoveryInfo'] = self.disaster_recovery_info
         if self.encrypted is not None:
             result['Encrypted'] = self.encrypted
         if self.encryption_key is not None:
@@ -10387,6 +10418,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             self.dbinstance_type = m.get('DBInstanceType')
         if m.get('DestroyTime') is not None:
             self.destroy_time = m.get('DestroyTime')
+        if m.get('DisasterRecoveryInfo') is not None:
+            self.disaster_recovery_info = m.get('DisasterRecoveryInfo')
         if m.get('Encrypted') is not None:
             self.encrypted = m.get('Encrypted')
         if m.get('EncryptionKey') is not None:
@@ -17648,6 +17681,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         show_discount_info: bool = None,
         stand_discount_price: float = None,
         stand_price: float = None,
+        total_cost_amount: float = None,
         trade_amount: str = None,
     ):
         # The order code.
@@ -17680,6 +17714,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         self.stand_discount_price = stand_discount_price
         # The discount.
         self.stand_price = stand_price
+        self.total_cost_amount = total_cost_amount
         # The final price of the order.
         self.trade_amount = trade_amount
 
@@ -17727,6 +17762,8 @@ class DescribePriceResponseBodyOrder(TeaModel):
             result['StandDiscountPrice'] = self.stand_discount_price
         if self.stand_price is not None:
             result['StandPrice'] = self.stand_price
+        if self.total_cost_amount is not None:
+            result['TotalCostAmount'] = self.total_cost_amount
         if self.trade_amount is not None:
             result['TradeAmount'] = self.trade_amount
         return result
@@ -17766,6 +17803,8 @@ class DescribePriceResponseBodyOrder(TeaModel):
             self.stand_discount_price = m.get('StandDiscountPrice')
         if m.get('StandPrice') is not None:
             self.stand_price = m.get('StandPrice')
+        if m.get('TotalCostAmount') is not None:
+            self.total_cost_amount = m.get('TotalCostAmount')
         if m.get('TradeAmount') is not None:
             self.trade_amount = m.get('TradeAmount')
         return self
@@ -24446,6 +24485,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         owner_id: int = None,
         preferred_backup_period: str = None,
         preferred_backup_time: str = None,
+        preserve_one_each_hour: bool = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         snapshot_backup_type: str = None,
@@ -24594,6 +24634,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # >  The time range is 1 hour.
         self.preferred_backup_time = preferred_backup_time
+        self.preserve_one_each_hour = preserve_one_each_hour
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The snapshot backup type. Valid values:
@@ -24659,6 +24700,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             result['PreferredBackupPeriod'] = self.preferred_backup_period
         if self.preferred_backup_time is not None:
             result['PreferredBackupTime'] = self.preferred_backup_time
+        if self.preserve_one_each_hour is not None:
+            result['PreserveOneEachHour'] = self.preserve_one_each_hour
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -24711,6 +24754,8 @@ class ModifyBackupPolicyRequest(TeaModel):
             self.preferred_backup_period = m.get('PreferredBackupPeriod')
         if m.get('PreferredBackupTime') is not None:
             self.preferred_backup_time = m.get('PreferredBackupTime')
+        if m.get('PreserveOneEachHour') is not None:
+            self.preserve_one_each_hour = m.get('PreserveOneEachHour')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -24787,6 +24832,132 @@ class ModifyBackupPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyBackupPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBInstanceAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        dbinstance_release_protection: bool = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.dbinstance_release_protection = dbinstance_release_protection
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dbinstance_release_protection is not None:
+            result['DBInstanceReleaseProtection'] = self.dbinstance_release_protection
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('DBInstanceReleaseProtection') is not None:
+            self.dbinstance_release_protection = m.get('DBInstanceReleaseProtection')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBInstanceAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBInstanceAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBInstanceAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBInstanceAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26036,6 +26207,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sslaction: str = None,
+        switch_mode: str = None,
     ):
         # The ID of the instance.
         # 
@@ -26053,6 +26225,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # 
         # This parameter is required.
         self.sslaction = sslaction
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -26075,6 +26248,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.sslaction is not None:
             result['SSLAction'] = self.sslaction
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -26091,6 +26266,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SSLAction') is not None:
             self.sslaction = m.get('SSLAction')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 
@@ -26420,6 +26597,7 @@ class ModifyDBInstanceTDERequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_arn: str = None,
+        switch_mode: str = None,
         tdestatus: str = None,
     ):
         # The ID of the instance.
@@ -26442,6 +26620,7 @@ class ModifyDBInstanceTDERequest(TeaModel):
         # 
         # > *   `$roleName`: specifies the name of the RAM role. To view the RAM role name, log on to the RAM console. In the left-side navigation pane, choose Identities > Roles. On the Roles page, view the name of the RAM role.
         self.role_arn = role_arn
+        self.switch_mode = switch_mode
         # The TDE status. When the value of this parameter is set to **Enabled**, TDE is enabled.
         # 
         # > You cannot disable TDE after it is enabled. Proceed with caution.
@@ -26474,6 +26653,8 @@ class ModifyDBInstanceTDERequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_arn is not None:
             result['RoleARN'] = self.role_arn
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         if self.tdestatus is not None:
             result['TDEStatus'] = self.tdestatus
         return result
@@ -26496,6 +26677,8 @@ class ModifyDBInstanceTDERequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleARN') is not None:
             self.role_arn = m.get('RoleARN')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         if m.get('TDEStatus') is not None:
             self.tdestatus = m.get('TDEStatus')
         return self
@@ -27826,6 +28009,7 @@ class ModifyParametersRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        switch_mode: str = None,
     ):
         # The role of the instance. Valid values:
         # 
@@ -27855,6 +28039,7 @@ class ModifyParametersRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -27883,6 +28068,8 @@ class ModifyParametersRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -27905,6 +28092,8 @@ class ModifyParametersRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 
@@ -29236,6 +29425,7 @@ class RestartDBInstanceRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        switch_mode: str = None,
     ):
         # The instance ID.
         # 
@@ -29249,6 +29439,7 @@ class RestartDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -29271,6 +29462,8 @@ class RestartDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -29287,6 +29480,8 @@ class RestartDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 
@@ -29369,6 +29564,7 @@ class RestartNodeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_id: str = None,
+        switch_mode: str = None,
     ):
         # The instance ID.
         # 
@@ -29391,6 +29587,7 @@ class RestartNodeRequest(TeaModel):
         # 
         # This parameter is required.
         self.role_id = role_id
+        self.switch_mode = switch_mode
 
     def validate(self):
         pass
@@ -29415,6 +29612,8 @@ class RestartNodeRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_id is not None:
             result['RoleId'] = self.role_id
+        if self.switch_mode is not None:
+            result['SwitchMode'] = self.switch_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -29433,6 +29632,8 @@ class RestartNodeRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleId') is not None:
             self.role_id = m.get('RoleId')
+        if m.get('SwitchMode') is not None:
+            self.switch_mode = m.get('SwitchMode')
         return self
 
 

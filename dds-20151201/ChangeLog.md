@@ -1,3 +1,20 @@
+2025-07-31 Version: 9.1.0
+- Support API ModifyDBInstanceAttribute.
+- Update API CreateBackup: add request parameters BackupRetentionPeriod.
+- Update API DescribeBackupPolicy: add response parameters Body.PreserveOneEachHour.
+- Update API DescribeBackups: add response parameters Body.Backups.$.BackupExpireTime.
+- Update API DescribeClusterBackups: add response parameters Body.ClusterBackups.$.BackupExpireTime.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.DisasterRecoveryInfo.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstances.$.ShardList.$.ReplicaSetName.
+- Update API DescribePrice: add response parameters Body.Order.TotalCostAmount.
+- Update API ModifyBackupPolicy: add request parameters PreserveOneEachHour.
+- Update API ModifyDBInstanceSSL: add request parameters SwitchMode.
+- Update API ModifyDBInstanceTDE: add request parameters SwitchMode.
+- Update API ModifyParameters: add request parameters SwitchMode.
+- Update API RestartDBInstance: add request parameters SwitchMode.
+- Update API RestartNode: add request parameters SwitchMode.
+
+
 2025-04-09 Version: 9.0.0
 - Support API DescribeDBInstanceSpecInfo.
 - Update API DescribeActiveOperationTasks: add request parameters ResourceGroupId.
