@@ -1,3 +1,7 @@
+2025-07-31 Version: 2.1.2
+- Update API DescribeLiveStreamsNotifyRecords: add response parameters Body.NotifyRecordsInfo.$.NotifyResponse.
+
+
 2025-07-30 Version: 2.1.1
 - Update API AddLiveStreamMerge: add request parameters LiveMerger.
 - Update API AddLiveStreamMerge: add request parameters MergeParameters.

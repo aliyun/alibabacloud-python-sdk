@@ -52600,6 +52600,7 @@ class DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNot
         description: str = None,
         domain_name: str = None,
         notify_content: str = None,
+        notify_response: str = None,
         notify_result: str = None,
         notify_time: str = None,
         notify_type: str = None,
@@ -52614,6 +52615,7 @@ class DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNot
         self.domain_name = domain_name
         # The callback content.
         self.notify_content = notify_content
+        self.notify_response = notify_response
         # The callback result. Valid values:
         # 
         # *   success
@@ -52648,6 +52650,8 @@ class DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNot
             result['DomainName'] = self.domain_name
         if self.notify_content is not None:
             result['NotifyContent'] = self.notify_content
+        if self.notify_response is not None:
+            result['NotifyResponse'] = self.notify_response
         if self.notify_result is not None:
             result['NotifyResult'] = self.notify_result
         if self.notify_time is not None:
@@ -52670,6 +52674,8 @@ class DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNot
             self.domain_name = m.get('DomainName')
         if m.get('NotifyContent') is not None:
             self.notify_content = m.get('NotifyContent')
+        if m.get('NotifyResponse') is not None:
+            self.notify_response = m.get('NotifyResponse')
         if m.get('NotifyResult') is not None:
             self.notify_result = m.get('NotifyResult')
         if m.get('NotifyTime') is not None:
