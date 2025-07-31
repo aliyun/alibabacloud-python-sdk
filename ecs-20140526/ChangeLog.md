@@ -1,3 +1,14 @@
+2025-07-31 Version: 7.1.2
+- Update API DescribeInvocationResults: add response parameters Body.Invocation.InvocationResults.$.OssOutputDelivery.
+- Update API DescribeInvocationResults: add response parameters Body.Invocation.InvocationResults.$.OssOutputStatus.
+- Update API DescribeInvocationResults: add response parameters Body.Invocation.InvocationResults.$.OssOutputUri.
+- Update API DescribeInvocations: add response parameters Body.Invocations.$.OssOutputDelivery.
+- Update API DescribeInvocations: add response parameters Body.Invocations.$.InvokeInstances.$.OssOutputStatus.
+- Update API DescribeInvocations: add response parameters Body.Invocations.$.InvokeInstances.$.OssOutputUri.
+- Update API InvokeCommand: add request parameters OssOutputDelivery.
+- Update API RunCommand: add request parameters OssOutputDelivery.
+
+
 2025-07-30 Version: 7.1.1
 - Update API DescribePrice: add request parameters SchedulerOptions.DeploymentSetStrategy.
 

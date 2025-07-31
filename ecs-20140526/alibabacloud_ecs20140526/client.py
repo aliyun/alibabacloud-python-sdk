@@ -208,7 +208,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ActivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ActivateRouterInterface is deprecated
+        @deprecated OpenAPI ActivateRouterInterface is deprecated, please use Vpc::2016-04-28::ActivateRouterInterface instead.
+        
+        @summary ActivateRouterInterface
         
         @param request: ActivateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -252,7 +254,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ActivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ActivateRouterInterface is deprecated
+        @deprecated OpenAPI ActivateRouterInterface is deprecated, please use Vpc::2016-04-28::ActivateRouterInterface instead.
+        
+        @summary ActivateRouterInterface
         
         @param request: ActivateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -295,7 +299,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ActivateRouterInterfaceRequest,
     ) -> ecs_20140526_models.ActivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ActivateRouterInterface is deprecated
+        @deprecated OpenAPI ActivateRouterInterface is deprecated, please use Vpc::2016-04-28::ActivateRouterInterface instead.
+        
+        @summary ActivateRouterInterface
         
         @param request: ActivateRouterInterfaceRequest
         @return: ActivateRouterInterfaceResponse
@@ -309,7 +315,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ActivateRouterInterfaceRequest,
     ) -> ecs_20140526_models.ActivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ActivateRouterInterface is deprecated
+        @deprecated OpenAPI ActivateRouterInterface is deprecated, please use Vpc::2016-04-28::ActivateRouterInterface instead.
+        
+        @summary ActivateRouterInterface
         
         @param request: ActivateRouterInterfaceRequest
         @return: ActivateRouterInterfaceResponse
@@ -324,7 +332,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AddBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI AddBandwidthPackageIps is deprecated
+        @deprecated OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+        
+        @summary AddBandwidthPackageIps
         
         @param request: AddBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -374,7 +384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AddBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI AddBandwidthPackageIps is deprecated
+        @deprecated OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+        
+        @summary AddBandwidthPackageIps
         
         @param request: AddBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -423,7 +435,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AddBandwidthPackageIpsRequest,
     ) -> ecs_20140526_models.AddBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI AddBandwidthPackageIps is deprecated
+        @deprecated OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+        
+        @summary AddBandwidthPackageIps
         
         @param request: AddBandwidthPackageIpsRequest
         @return: AddBandwidthPackageIpsResponse
@@ -437,7 +451,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AddBandwidthPackageIpsRequest,
     ) -> ecs_20140526_models.AddBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI AddBandwidthPackageIps is deprecated
+        @deprecated OpenAPI AddBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::AddBandwidthPackageIps instead.
+        
+        @summary AddBandwidthPackageIps
         
         @param request: AddBandwidthPackageIpsRequest
         @return: AddBandwidthPackageIpsResponse
@@ -826,6 +842,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
         
+        @summary AllocateEipAddress
+        
         @description > This operation has been upgraded. We recommend that you do not use it. For information about the new version of this operation, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         
         @param request: AllocateEipAddressRequest
@@ -882,6 +900,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
         
+        @summary AllocateEipAddress
+        
         @description > This operation has been upgraded. We recommend that you do not use it. For information about the new version of this operation, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         
         @param request: AllocateEipAddressRequest
@@ -937,6 +957,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
         
+        @summary AllocateEipAddress
+        
         @description > This operation has been upgraded. We recommend that you do not use it. For information about the new version of this operation, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         
         @param request: AllocateEipAddressRequest
@@ -952,6 +974,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.AllocateEipAddressResponse:
         """
         @deprecated OpenAPI AllocateEipAddress is deprecated, please use Vpc::2016-04-28::AllocateEipAddress instead.
+        
+        @summary AllocateEipAddress
         
         @description > This operation has been upgraded. We recommend that you do not use it. For information about the new version of this operation, see [AllocateEipAddress](https://help.aliyun.com/document_detail/120192.html).
         
@@ -1602,6 +1626,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
+        @summary AssociateEipAddress
+        
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssociateEipAddressResponse
@@ -1652,6 +1678,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
+        @summary AssociateEipAddress
+        
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AssociateEipAddressResponse
@@ -1701,6 +1729,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
+        @summary AssociateEipAddress
+        
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
         Deprecated
@@ -1715,6 +1745,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI AssociateEipAddress is deprecated, please use Vpc::2016-04-28::AssociateEipAddress instead.
         
+        @summary AssociateEipAddress
+        
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
         Deprecated
@@ -1728,7 +1760,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssociateHaVipResponse:
         """
-        @deprecated OpenAPI AssociateHaVip is deprecated
+        @deprecated OpenAPI AssociateHaVip is deprecated, please use Vpc::2016-04-28::AssociateHaVip instead.
+        
+        @summary AssociateHaVip
         
         @param request: AssociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1778,7 +1812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.AssociateHaVipResponse:
         """
-        @deprecated OpenAPI AssociateHaVip is deprecated
+        @deprecated OpenAPI AssociateHaVip is deprecated, please use Vpc::2016-04-28::AssociateHaVip instead.
+        
+        @summary AssociateHaVip
         
         @param request: AssociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1827,7 +1863,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssociateHaVipRequest,
     ) -> ecs_20140526_models.AssociateHaVipResponse:
         """
-        @deprecated OpenAPI AssociateHaVip is deprecated
+        @deprecated OpenAPI AssociateHaVip is deprecated, please use Vpc::2016-04-28::AssociateHaVip instead.
+        
+        @summary AssociateHaVip
         
         @param request: AssociateHaVipRequest
         @return: AssociateHaVipResponse
@@ -1841,7 +1879,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.AssociateHaVipRequest,
     ) -> ecs_20140526_models.AssociateHaVipResponse:
         """
-        @deprecated OpenAPI AssociateHaVip is deprecated
+        @deprecated OpenAPI AssociateHaVip is deprecated, please use Vpc::2016-04-28::AssociateHaVip instead.
+        
+        @summary AssociateHaVip
         
         @param request: AssociateHaVipRequest
         @return: AssociateHaVipResponse
@@ -3772,7 +3812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CancelPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CancelPhysicalConnection is deprecated
+        @deprecated OpenAPI CancelPhysicalConnection is deprecated, please use Vpc::2016-04-28::CancelPhysicalConnection instead.
+        
+        @summary CancelPhysicalConnection
         
         @param request: CancelPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3822,7 +3864,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CancelPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CancelPhysicalConnection is deprecated
+        @deprecated OpenAPI CancelPhysicalConnection is deprecated, please use Vpc::2016-04-28::CancelPhysicalConnection instead.
+        
+        @summary CancelPhysicalConnection
         
         @param request: CancelPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3871,7 +3915,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CancelPhysicalConnectionRequest,
     ) -> ecs_20140526_models.CancelPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CancelPhysicalConnection is deprecated
+        @deprecated OpenAPI CancelPhysicalConnection is deprecated, please use Vpc::2016-04-28::CancelPhysicalConnection instead.
+        
+        @summary CancelPhysicalConnection
         
         @param request: CancelPhysicalConnectionRequest
         @return: CancelPhysicalConnectionResponse
@@ -3885,7 +3931,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CancelPhysicalConnectionRequest,
     ) -> ecs_20140526_models.CancelPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CancelPhysicalConnection is deprecated
+        @deprecated OpenAPI CancelPhysicalConnection is deprecated, please use Vpc::2016-04-28::CancelPhysicalConnection instead.
+        
+        @summary CancelPhysicalConnection
         
         @param request: CancelPhysicalConnectionRequest
         @return: CancelPhysicalConnectionResponse
@@ -4132,7 +4180,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConnectRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ConnectRouterInterface is deprecated
+        @deprecated OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
+        
+        @summary ConnectRouterInterface
         
         @param request: ConnectRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4176,7 +4226,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ConnectRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ConnectRouterInterface is deprecated
+        @deprecated OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
+        
+        @summary ConnectRouterInterface
         
         @param request: ConnectRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4219,7 +4271,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConnectRouterInterfaceRequest,
     ) -> ecs_20140526_models.ConnectRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ConnectRouterInterface is deprecated
+        @deprecated OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
+        
+        @summary ConnectRouterInterface
         
         @param request: ConnectRouterInterfaceRequest
         @return: ConnectRouterInterfaceResponse
@@ -4233,7 +4287,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ConnectRouterInterfaceRequest,
     ) -> ecs_20140526_models.ConnectRouterInterfaceResponse:
         """
-        @deprecated OpenAPI ConnectRouterInterface is deprecated
+        @deprecated OpenAPI ConnectRouterInterface is deprecated, please use Vpc::2016-04-28::ConnectRouterInterface instead.
+        
+        @summary ConnectRouterInterface
         
         @param request: ConnectRouterInterfaceRequest
         @return: ConnectRouterInterfaceResponse
@@ -6756,7 +6812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateForwardEntryResponse:
         """
-        @deprecated OpenAPI CreateForwardEntry is deprecated
+        @deprecated OpenAPI CreateForwardEntry is deprecated, please use Vpc::2016-04-28::CreateForwardEntry instead.
+        
+        @summary CreateForwardEntry
         
         @param request: CreateForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6812,7 +6870,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateForwardEntryResponse:
         """
-        @deprecated OpenAPI CreateForwardEntry is deprecated
+        @deprecated OpenAPI CreateForwardEntry is deprecated, please use Vpc::2016-04-28::CreateForwardEntry instead.
+        
+        @summary CreateForwardEntry
         
         @param request: CreateForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6867,7 +6927,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateForwardEntryRequest,
     ) -> ecs_20140526_models.CreateForwardEntryResponse:
         """
-        @deprecated OpenAPI CreateForwardEntry is deprecated
+        @deprecated OpenAPI CreateForwardEntry is deprecated, please use Vpc::2016-04-28::CreateForwardEntry instead.
+        
+        @summary CreateForwardEntry
         
         @param request: CreateForwardEntryRequest
         @return: CreateForwardEntryResponse
@@ -6881,7 +6943,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateForwardEntryRequest,
     ) -> ecs_20140526_models.CreateForwardEntryResponse:
         """
-        @deprecated OpenAPI CreateForwardEntry is deprecated
+        @deprecated OpenAPI CreateForwardEntry is deprecated, please use Vpc::2016-04-28::CreateForwardEntry instead.
+        
+        @summary CreateForwardEntry
         
         @param request: CreateForwardEntryRequest
         @return: CreateForwardEntryResponse
@@ -6896,7 +6960,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateHaVipResponse:
         """
-        @deprecated OpenAPI CreateHaVip is deprecated
+        @deprecated OpenAPI CreateHaVip is deprecated, please use Vpc::2016-04-28::CreateHaVip instead.
+        
+        @summary CreateHaVip
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6948,7 +7014,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateHaVipResponse:
         """
-        @deprecated OpenAPI CreateHaVip is deprecated
+        @deprecated OpenAPI CreateHaVip is deprecated, please use Vpc::2016-04-28::CreateHaVip instead.
+        
+        @summary CreateHaVip
         
         @param request: CreateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6999,7 +7067,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateHaVipRequest,
     ) -> ecs_20140526_models.CreateHaVipResponse:
         """
-        @deprecated OpenAPI CreateHaVip is deprecated
+        @deprecated OpenAPI CreateHaVip is deprecated, please use Vpc::2016-04-28::CreateHaVip instead.
+        
+        @summary CreateHaVip
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -7013,7 +7083,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateHaVipRequest,
     ) -> ecs_20140526_models.CreateHaVipResponse:
         """
-        @deprecated OpenAPI CreateHaVip is deprecated
+        @deprecated OpenAPI CreateHaVip is deprecated, please use Vpc::2016-04-28::CreateHaVip instead.
+        
+        @summary CreateHaVip
         
         @param request: CreateHaVipRequest
         @return: CreateHaVipResponse
@@ -9032,7 +9104,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNatGatewayResponse:
         """
-        @deprecated OpenAPI CreateNatGateway is deprecated
+        @deprecated OpenAPI CreateNatGateway is deprecated, please use Vpc::2016-04-28::CreateNatGateway instead.
+        
+        @summary CreateNatGateway
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9086,7 +9160,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateNatGatewayResponse:
         """
-        @deprecated OpenAPI CreateNatGateway is deprecated
+        @deprecated OpenAPI CreateNatGateway is deprecated, please use Vpc::2016-04-28::CreateNatGateway instead.
+        
+        @summary CreateNatGateway
         
         @param request: CreateNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9139,7 +9215,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNatGatewayRequest,
     ) -> ecs_20140526_models.CreateNatGatewayResponse:
         """
-        @deprecated OpenAPI CreateNatGateway is deprecated
+        @deprecated OpenAPI CreateNatGateway is deprecated, please use Vpc::2016-04-28::CreateNatGateway instead.
+        
+        @summary CreateNatGateway
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -9153,7 +9231,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateNatGatewayRequest,
     ) -> ecs_20140526_models.CreateNatGatewayResponse:
         """
-        @deprecated OpenAPI CreateNatGateway is deprecated
+        @deprecated OpenAPI CreateNatGateway is deprecated, please use Vpc::2016-04-28::CreateNatGateway instead.
+        
+        @summary CreateNatGateway
         
         @param request: CreateNatGatewayRequest
         @return: CreateNatGatewayResponse
@@ -9596,7 +9676,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CreatePhysicalConnection is deprecated
+        @deprecated OpenAPI CreatePhysicalConnection is deprecated, please use Vpc::2016-04-28::CreatePhysicalConnection instead.
+        
+        @summary CreatePhysicalConnection
         
         @param request: CreatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9666,7 +9748,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CreatePhysicalConnection is deprecated
+        @deprecated OpenAPI CreatePhysicalConnection is deprecated, please use Vpc::2016-04-28::CreatePhysicalConnection instead.
+        
+        @summary CreatePhysicalConnection
         
         @param request: CreatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9735,7 +9819,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePhysicalConnectionRequest,
     ) -> ecs_20140526_models.CreatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CreatePhysicalConnection is deprecated
+        @deprecated OpenAPI CreatePhysicalConnection is deprecated, please use Vpc::2016-04-28::CreatePhysicalConnection instead.
+        
+        @summary CreatePhysicalConnection
         
         @param request: CreatePhysicalConnectionRequest
         @return: CreatePhysicalConnectionResponse
@@ -9749,7 +9835,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreatePhysicalConnectionRequest,
     ) -> ecs_20140526_models.CreatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI CreatePhysicalConnection is deprecated
+        @deprecated OpenAPI CreatePhysicalConnection is deprecated, please use Vpc::2016-04-28::CreatePhysicalConnection instead.
+        
+        @summary CreatePhysicalConnection
         
         @param request: CreatePhysicalConnectionRequest
         @return: CreatePhysicalConnectionResponse
@@ -10092,7 +10180,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateRouteEntryResponse:
         """
-        @deprecated OpenAPI CreateRouteEntry is deprecated
+        @deprecated OpenAPI CreateRouteEntry is deprecated, please use Vpc::2016-04-28::CreateRouteEntry instead.
+        
+        @summary CreateRouteEntry
         
         @param request: CreateRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10148,7 +10238,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateRouteEntryResponse:
         """
-        @deprecated OpenAPI CreateRouteEntry is deprecated
+        @deprecated OpenAPI CreateRouteEntry is deprecated, please use Vpc::2016-04-28::CreateRouteEntry instead.
+        
+        @summary CreateRouteEntry
         
         @param request: CreateRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10203,7 +10295,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateRouteEntryRequest,
     ) -> ecs_20140526_models.CreateRouteEntryResponse:
         """
-        @deprecated OpenAPI CreateRouteEntry is deprecated
+        @deprecated OpenAPI CreateRouteEntry is deprecated, please use Vpc::2016-04-28::CreateRouteEntry instead.
+        
+        @summary CreateRouteEntry
         
         @param request: CreateRouteEntryRequest
         @return: CreateRouteEntryResponse
@@ -10217,7 +10311,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateRouteEntryRequest,
     ) -> ecs_20140526_models.CreateRouteEntryResponse:
         """
-        @deprecated OpenAPI CreateRouteEntry is deprecated
+        @deprecated OpenAPI CreateRouteEntry is deprecated, please use Vpc::2016-04-28::CreateRouteEntry instead.
+        
+        @summary CreateRouteEntry
         
         @param request: CreateRouteEntryRequest
         @return: CreateRouteEntryResponse
@@ -10232,7 +10328,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI CreateRouterInterface is deprecated
+        @deprecated OpenAPI CreateRouterInterface is deprecated, please use Vpc::2016-04-28::CreateRouterInterface instead.
+        
+        @summary CreateRouterInterface
         
         @param request: CreateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10320,7 +10418,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI CreateRouterInterface is deprecated
+        @deprecated OpenAPI CreateRouterInterface is deprecated, please use Vpc::2016-04-28::CreateRouterInterface instead.
+        
+        @summary CreateRouterInterface
         
         @param request: CreateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10407,7 +10507,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateRouterInterfaceRequest,
     ) -> ecs_20140526_models.CreateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI CreateRouterInterface is deprecated
+        @deprecated OpenAPI CreateRouterInterface is deprecated, please use Vpc::2016-04-28::CreateRouterInterface instead.
+        
+        @summary CreateRouterInterface
         
         @param request: CreateRouterInterfaceRequest
         @return: CreateRouterInterfaceResponse
@@ -10421,7 +10523,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateRouterInterfaceRequest,
     ) -> ecs_20140526_models.CreateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI CreateRouterInterface is deprecated
+        @deprecated OpenAPI CreateRouterInterface is deprecated, please use Vpc::2016-04-28::CreateRouterInterface instead.
+        
+        @summary CreateRouterInterface
         
         @param request: CreateRouterInterfaceRequest
         @return: CreateRouterInterfaceResponse
@@ -11494,6 +11598,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
+        @summary CreateVSwitch
+        
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateVSwitchResponse
@@ -11550,6 +11656,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
+        @summary CreateVSwitch
+        
         @param request: CreateVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateVSwitchResponse
@@ -11605,6 +11713,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
+        @summary CreateVSwitch
+        
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
         Deprecated
@@ -11619,6 +11729,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVSwitch is deprecated, please use Vpc::2016-04-28::CreateVSwitch instead.
         
+        @summary CreateVSwitch
+        
         @param request: CreateVSwitchRequest
         @return: CreateVSwitchResponse
         Deprecated
@@ -11632,7 +11744,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::CreateVirtualBorderRouter instead.
+        
+        @summary CreateVirtualBorderRouter
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11700,7 +11814,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.CreateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::CreateVirtualBorderRouter instead.
+        
+        @summary CreateVirtualBorderRouter
         
         @param request: CreateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11767,7 +11883,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.CreateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::CreateVirtualBorderRouter instead.
+        
+        @summary CreateVirtualBorderRouter
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -11781,7 +11899,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.CreateVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.CreateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI CreateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::CreateVirtualBorderRouter instead.
+        
+        @summary CreateVirtualBorderRouter
         
         @param request: CreateVirtualBorderRouterRequest
         @return: CreateVirtualBorderRouterResponse
@@ -11797,6 +11917,8 @@ class Client(OpenApiClient):
     ) -> ecs_20140526_models.CreateVpcResponse:
         """
         @deprecated OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
+        
+        @summary CreateVpc
         
         @param request: CreateVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11852,6 +11974,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
         
+        @summary CreateVpc
+        
         @param request: CreateVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateVpcResponse
@@ -11905,6 +12029,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
         
+        @summary CreateVpc
+        
         @param request: CreateVpcRequest
         @return: CreateVpcResponse
         Deprecated
@@ -11919,6 +12045,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CreateVpc is deprecated, please use Vpc::2016-04-28::CreateVpc instead.
         
+        @summary CreateVpc
+        
         @param request: CreateVpcRequest
         @return: CreateVpcResponse
         Deprecated
@@ -11932,7 +12060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeactivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeactivateRouterInterface is deprecated
+        @deprecated OpenAPI DeactivateRouterInterface is deprecated, please use Vpc::2016-04-28::DeactivateRouterInterface instead.
+        
+        @summary DeactivateRouterInterface
         
         @param request: DeactivateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11976,7 +12106,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeactivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeactivateRouterInterface is deprecated
+        @deprecated OpenAPI DeactivateRouterInterface is deprecated, please use Vpc::2016-04-28::DeactivateRouterInterface instead.
+        
+        @summary DeactivateRouterInterface
         
         @param request: DeactivateRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12019,7 +12151,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeactivateRouterInterfaceRequest,
     ) -> ecs_20140526_models.DeactivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeactivateRouterInterface is deprecated
+        @deprecated OpenAPI DeactivateRouterInterface is deprecated, please use Vpc::2016-04-28::DeactivateRouterInterface instead.
+        
+        @summary DeactivateRouterInterface
         
         @param request: DeactivateRouterInterfaceRequest
         @return: DeactivateRouterInterfaceResponse
@@ -12033,7 +12167,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeactivateRouterInterfaceRequest,
     ) -> ecs_20140526_models.DeactivateRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeactivateRouterInterface is deprecated
+        @deprecated OpenAPI DeactivateRouterInterface is deprecated, please use Vpc::2016-04-28::DeactivateRouterInterface instead.
+        
+        @summary DeactivateRouterInterface
         
         @param request: DeactivateRouterInterfaceRequest
         @return: DeactivateRouterInterfaceResponse
@@ -12412,7 +12548,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteBandwidthPackageResponse:
         """
-        @deprecated OpenAPI DeleteBandwidthPackage is deprecated
+        @deprecated OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
+        
+        @summary DeleteBandwidthPackage
         
         @param request: DeleteBandwidthPackageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12458,7 +12596,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteBandwidthPackageResponse:
         """
-        @deprecated OpenAPI DeleteBandwidthPackage is deprecated
+        @deprecated OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
+        
+        @summary DeleteBandwidthPackage
         
         @param request: DeleteBandwidthPackageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12503,7 +12643,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteBandwidthPackageRequest,
     ) -> ecs_20140526_models.DeleteBandwidthPackageResponse:
         """
-        @deprecated OpenAPI DeleteBandwidthPackage is deprecated
+        @deprecated OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
+        
+        @summary DeleteBandwidthPackage
         
         @param request: DeleteBandwidthPackageRequest
         @return: DeleteBandwidthPackageResponse
@@ -12517,7 +12659,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteBandwidthPackageRequest,
     ) -> ecs_20140526_models.DeleteBandwidthPackageResponse:
         """
-        @deprecated OpenAPI DeleteBandwidthPackage is deprecated
+        @deprecated OpenAPI DeleteBandwidthPackage is deprecated, please use Vpc::2016-04-28::DeleteBandwidthPackage instead.
+        
+        @summary DeleteBandwidthPackage
         
         @param request: DeleteBandwidthPackageRequest
         @return: DeleteBandwidthPackageResponse
@@ -13236,7 +13380,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteForwardEntryResponse:
         """
-        @deprecated OpenAPI DeleteForwardEntry is deprecated
+        @deprecated OpenAPI DeleteForwardEntry is deprecated, please use Vpc::2016-04-28::DeleteForwardEntry instead.
+        
+        @summary DeleteForwardEntry
         
         @param request: DeleteForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13284,7 +13430,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteForwardEntryResponse:
         """
-        @deprecated OpenAPI DeleteForwardEntry is deprecated
+        @deprecated OpenAPI DeleteForwardEntry is deprecated, please use Vpc::2016-04-28::DeleteForwardEntry instead.
+        
+        @summary DeleteForwardEntry
         
         @param request: DeleteForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13331,7 +13479,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteForwardEntryRequest,
     ) -> ecs_20140526_models.DeleteForwardEntryResponse:
         """
-        @deprecated OpenAPI DeleteForwardEntry is deprecated
+        @deprecated OpenAPI DeleteForwardEntry is deprecated, please use Vpc::2016-04-28::DeleteForwardEntry instead.
+        
+        @summary DeleteForwardEntry
         
         @param request: DeleteForwardEntryRequest
         @return: DeleteForwardEntryResponse
@@ -13345,7 +13495,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteForwardEntryRequest,
     ) -> ecs_20140526_models.DeleteForwardEntryResponse:
         """
-        @deprecated OpenAPI DeleteForwardEntry is deprecated
+        @deprecated OpenAPI DeleteForwardEntry is deprecated, please use Vpc::2016-04-28::DeleteForwardEntry instead.
+        
+        @summary DeleteForwardEntry
         
         @param request: DeleteForwardEntryRequest
         @return: DeleteForwardEntryResponse
@@ -13360,7 +13512,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteHaVipResponse:
         """
-        @deprecated OpenAPI DeleteHaVip is deprecated
+        @deprecated OpenAPI DeleteHaVip is deprecated, please use Vpc::2016-04-28::DeleteHaVip instead.
+        
+        @summary DeleteHaVip
         
         @param request: DeleteHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13408,7 +13562,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteHaVipResponse:
         """
-        @deprecated OpenAPI DeleteHaVip is deprecated
+        @deprecated OpenAPI DeleteHaVip is deprecated, please use Vpc::2016-04-28::DeleteHaVip instead.
+        
+        @summary DeleteHaVip
         
         @param request: DeleteHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13455,7 +13611,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteHaVipRequest,
     ) -> ecs_20140526_models.DeleteHaVipResponse:
         """
-        @deprecated OpenAPI DeleteHaVip is deprecated
+        @deprecated OpenAPI DeleteHaVip is deprecated, please use Vpc::2016-04-28::DeleteHaVip instead.
+        
+        @summary DeleteHaVip
         
         @param request: DeleteHaVipRequest
         @return: DeleteHaVipResponse
@@ -13469,7 +13627,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteHaVipRequest,
     ) -> ecs_20140526_models.DeleteHaVipResponse:
         """
-        @deprecated OpenAPI DeleteHaVip is deprecated
+        @deprecated OpenAPI DeleteHaVip is deprecated, please use Vpc::2016-04-28::DeleteHaVip instead.
+        
+        @summary DeleteHaVip
         
         @param request: DeleteHaVipRequest
         @return: DeleteHaVipResponse
@@ -14744,7 +14904,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNatGatewayResponse:
         """
-        @deprecated OpenAPI DeleteNatGateway is deprecated
+        @deprecated OpenAPI DeleteNatGateway is deprecated, please use Vpc::2016-04-28::DeleteNatGateway instead.
+        
+        @summary DeleteNatGateway
         
         @param request: DeleteNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14790,7 +14952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteNatGatewayResponse:
         """
-        @deprecated OpenAPI DeleteNatGateway is deprecated
+        @deprecated OpenAPI DeleteNatGateway is deprecated, please use Vpc::2016-04-28::DeleteNatGateway instead.
+        
+        @summary DeleteNatGateway
         
         @param request: DeleteNatGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14835,7 +14999,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNatGatewayRequest,
     ) -> ecs_20140526_models.DeleteNatGatewayResponse:
         """
-        @deprecated OpenAPI DeleteNatGateway is deprecated
+        @deprecated OpenAPI DeleteNatGateway is deprecated, please use Vpc::2016-04-28::DeleteNatGateway instead.
+        
+        @summary DeleteNatGateway
         
         @param request: DeleteNatGatewayRequest
         @return: DeleteNatGatewayResponse
@@ -14849,7 +15015,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteNatGatewayRequest,
     ) -> ecs_20140526_models.DeleteNatGatewayResponse:
         """
-        @deprecated OpenAPI DeleteNatGateway is deprecated
+        @deprecated OpenAPI DeleteNatGateway is deprecated, please use Vpc::2016-04-28::DeleteNatGateway instead.
+        
+        @summary DeleteNatGateway
         
         @param request: DeleteNatGatewayRequest
         @return: DeleteNatGatewayResponse
@@ -15172,7 +15340,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DeletePhysicalConnection is deprecated
+        @deprecated OpenAPI DeletePhysicalConnection is deprecated, please use Vpc::2016-04-28::DeletePhysicalConnection instead.
+        
+        @summary DeletePhysicalConnection
         
         @param request: DeletePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15220,7 +15390,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeletePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DeletePhysicalConnection is deprecated
+        @deprecated OpenAPI DeletePhysicalConnection is deprecated, please use Vpc::2016-04-28::DeletePhysicalConnection instead.
+        
+        @summary DeletePhysicalConnection
         
         @param request: DeletePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15267,7 +15439,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePhysicalConnectionRequest,
     ) -> ecs_20140526_models.DeletePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DeletePhysicalConnection is deprecated
+        @deprecated OpenAPI DeletePhysicalConnection is deprecated, please use Vpc::2016-04-28::DeletePhysicalConnection instead.
+        
+        @summary DeletePhysicalConnection
         
         @param request: DeletePhysicalConnectionRequest
         @return: DeletePhysicalConnectionResponse
@@ -15281,7 +15455,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeletePhysicalConnectionRequest,
     ) -> ecs_20140526_models.DeletePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DeletePhysicalConnection is deprecated
+        @deprecated OpenAPI DeletePhysicalConnection is deprecated, please use Vpc::2016-04-28::DeletePhysicalConnection instead.
+        
+        @summary DeletePhysicalConnection
         
         @param request: DeletePhysicalConnectionRequest
         @return: DeletePhysicalConnectionResponse
@@ -15544,7 +15720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteRouteEntryResponse:
         """
-        @deprecated OpenAPI DeleteRouteEntry is deprecated
+        @deprecated OpenAPI DeleteRouteEntry is deprecated, please use Vpc::2016-04-28::DeleteRouteEntry instead.
+        
+        @summary DeleteRouteEntry
         
         @param request: DeleteRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15596,7 +15774,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteRouteEntryResponse:
         """
-        @deprecated OpenAPI DeleteRouteEntry is deprecated
+        @deprecated OpenAPI DeleteRouteEntry is deprecated, please use Vpc::2016-04-28::DeleteRouteEntry instead.
+        
+        @summary DeleteRouteEntry
         
         @param request: DeleteRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15647,7 +15827,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteRouteEntryRequest,
     ) -> ecs_20140526_models.DeleteRouteEntryResponse:
         """
-        @deprecated OpenAPI DeleteRouteEntry is deprecated
+        @deprecated OpenAPI DeleteRouteEntry is deprecated, please use Vpc::2016-04-28::DeleteRouteEntry instead.
+        
+        @summary DeleteRouteEntry
         
         @param request: DeleteRouteEntryRequest
         @return: DeleteRouteEntryResponse
@@ -15661,7 +15843,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteRouteEntryRequest,
     ) -> ecs_20140526_models.DeleteRouteEntryResponse:
         """
-        @deprecated OpenAPI DeleteRouteEntry is deprecated
+        @deprecated OpenAPI DeleteRouteEntry is deprecated, please use Vpc::2016-04-28::DeleteRouteEntry instead.
+        
+        @summary DeleteRouteEntry
         
         @param request: DeleteRouteEntryRequest
         @return: DeleteRouteEntryResponse
@@ -15676,7 +15860,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeleteRouterInterface is deprecated
+        @deprecated OpenAPI DeleteRouterInterface is deprecated, please use Vpc::2016-04-28::DeleteRouterInterface instead.
+        
+        @summary DeleteRouterInterface
         
         @param request: DeleteRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15726,7 +15912,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeleteRouterInterface is deprecated
+        @deprecated OpenAPI DeleteRouterInterface is deprecated, please use Vpc::2016-04-28::DeleteRouterInterface instead.
+        
+        @summary DeleteRouterInterface
         
         @param request: DeleteRouterInterfaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15775,7 +15963,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteRouterInterfaceRequest,
     ) -> ecs_20140526_models.DeleteRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeleteRouterInterface is deprecated
+        @deprecated OpenAPI DeleteRouterInterface is deprecated, please use Vpc::2016-04-28::DeleteRouterInterface instead.
+        
+        @summary DeleteRouterInterface
         
         @param request: DeleteRouterInterfaceRequest
         @return: DeleteRouterInterfaceResponse
@@ -15789,7 +15979,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteRouterInterfaceRequest,
     ) -> ecs_20140526_models.DeleteRouterInterfaceResponse:
         """
-        @deprecated OpenAPI DeleteRouterInterface is deprecated
+        @deprecated OpenAPI DeleteRouterInterface is deprecated, please use Vpc::2016-04-28::DeleteRouterInterface instead.
+        
+        @summary DeleteRouterInterface
         
         @param request: DeleteRouterInterfaceRequest
         @return: DeleteRouterInterfaceResponse
@@ -16322,6 +16514,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
+        @summary DeleteVSwitch
+        
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteVSwitchResponse
@@ -16368,6 +16562,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
+        @summary DeleteVSwitch
+        
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteVSwitchResponse
@@ -16413,6 +16609,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
+        @summary DeleteVSwitch
+        
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
         Deprecated
@@ -16427,6 +16625,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DeleteVSwitch is deprecated, please use Vpc::2016-04-28::DeleteVSwitch instead.
         
+        @summary DeleteVSwitch
+        
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
         Deprecated
@@ -16440,7 +16640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated
+        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::DeleteVirtualBorderRouter instead.
+        
+        @summary DeleteVirtualBorderRouter
         
         @param request: DeleteVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16490,7 +16692,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DeleteVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated
+        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::DeleteVirtualBorderRouter instead.
+        
+        @summary DeleteVirtualBorderRouter
         
         @param request: DeleteVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16539,7 +16743,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.DeleteVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated
+        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::DeleteVirtualBorderRouter instead.
+        
+        @summary DeleteVirtualBorderRouter
         
         @param request: DeleteVirtualBorderRouterRequest
         @return: DeleteVirtualBorderRouterResponse
@@ -16553,7 +16759,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DeleteVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.DeleteVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated
+        @deprecated OpenAPI DeleteVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::DeleteVirtualBorderRouter instead.
+        
+        @summary DeleteVirtualBorderRouter
         
         @param request: DeleteVirtualBorderRouterRequest
         @return: DeleteVirtualBorderRouterResponse
@@ -16816,7 +17024,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccessPointsResponse:
         """
-        @deprecated OpenAPI DescribeAccessPoints is deprecated
+        @deprecated OpenAPI DescribeAccessPoints is deprecated, please use Vpc::2016-04-28::DescribeAccessPoints instead.
+        
+        @summary DescribeAccessPoints
         
         @param request: DescribeAccessPointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16866,7 +17076,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeAccessPointsResponse:
         """
-        @deprecated OpenAPI DescribeAccessPoints is deprecated
+        @deprecated OpenAPI DescribeAccessPoints is deprecated, please use Vpc::2016-04-28::DescribeAccessPoints instead.
+        
+        @summary DescribeAccessPoints
         
         @param request: DescribeAccessPointsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16915,7 +17127,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccessPointsRequest,
     ) -> ecs_20140526_models.DescribeAccessPointsResponse:
         """
-        @deprecated OpenAPI DescribeAccessPoints is deprecated
+        @deprecated OpenAPI DescribeAccessPoints is deprecated, please use Vpc::2016-04-28::DescribeAccessPoints instead.
+        
+        @summary DescribeAccessPoints
         
         @param request: DescribeAccessPointsRequest
         @return: DescribeAccessPointsResponse
@@ -16929,7 +17143,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeAccessPointsRequest,
     ) -> ecs_20140526_models.DescribeAccessPointsResponse:
         """
-        @deprecated OpenAPI DescribeAccessPoints is deprecated
+        @deprecated OpenAPI DescribeAccessPoints is deprecated, please use Vpc::2016-04-28::DescribeAccessPoints instead.
+        
+        @summary DescribeAccessPoints
         
         @param request: DescribeAccessPointsRequest
         @return: DescribeAccessPointsResponse
@@ -18324,7 +18540,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeBandwidthPackagesResponse:
         """
-        @deprecated OpenAPI DescribeBandwidthPackages is deprecated
+        @deprecated OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
+        
+        @summary DescribeBandwidthPackages
         
         @param request: DescribeBandwidthPackagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18376,7 +18594,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeBandwidthPackagesResponse:
         """
-        @deprecated OpenAPI DescribeBandwidthPackages is deprecated
+        @deprecated OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
+        
+        @summary DescribeBandwidthPackages
         
         @param request: DescribeBandwidthPackagesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18427,7 +18647,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeBandwidthPackagesRequest,
     ) -> ecs_20140526_models.DescribeBandwidthPackagesResponse:
         """
-        @deprecated OpenAPI DescribeBandwidthPackages is deprecated
+        @deprecated OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
+        
+        @summary DescribeBandwidthPackages
         
         @param request: DescribeBandwidthPackagesRequest
         @return: DescribeBandwidthPackagesResponse
@@ -18441,7 +18663,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeBandwidthPackagesRequest,
     ) -> ecs_20140526_models.DescribeBandwidthPackagesResponse:
         """
-        @deprecated OpenAPI DescribeBandwidthPackages is deprecated
+        @deprecated OpenAPI DescribeBandwidthPackages is deprecated, please use Vpc::2016-04-28::DescribeBandwidthPackages instead.
+        
+        @summary DescribeBandwidthPackages
         
         @param request: DescribeBandwidthPackagesRequest
         @return: DescribeBandwidthPackagesResponse
@@ -21574,6 +21798,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
         
+        @summary DescribeEipAddresses
+        
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEipAddressesResponse
@@ -21640,6 +21866,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
         
+        @summary DescribeEipAddresses
+        
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeEipAddressesResponse
@@ -21705,6 +21933,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
         
+        @summary DescribeEipAddresses
+        
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
         Deprecated
@@ -21719,6 +21949,8 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI DescribeEipAddresses is deprecated, please use Vpc::2016-04-28::DescribeEipAddresses instead.
         
+        @summary DescribeEipAddresses
+        
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
         Deprecated
@@ -21732,7 +21964,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeEipMonitorData
         
         @param request: DescribeEipMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21784,7 +22018,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeEipMonitorData
         
         @param request: DescribeEipMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21835,7 +22071,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeEipMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeEipMonitorData
         
         @param request: DescribeEipMonitorDataRequest
         @return: DescribeEipMonitorDataResponse
@@ -21849,7 +22087,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeEipMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeEipMonitorData
         
         @param request: DescribeEipMonitorDataRequest
         @return: DescribeEipMonitorDataResponse
@@ -22420,7 +22660,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeForwardTableEntriesResponse:
         """
-        @deprecated OpenAPI DescribeForwardTableEntries is deprecated
+        @deprecated OpenAPI DescribeForwardTableEntries is deprecated, please use Vpc::2016-04-28::DescribeForwardTableEntries instead.
+        
+        @summary DescribeForwardTableEntries
         
         @param request: DescribeForwardTableEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22472,7 +22714,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeForwardTableEntriesResponse:
         """
-        @deprecated OpenAPI DescribeForwardTableEntries is deprecated
+        @deprecated OpenAPI DescribeForwardTableEntries is deprecated, please use Vpc::2016-04-28::DescribeForwardTableEntries instead.
+        
+        @summary DescribeForwardTableEntries
         
         @param request: DescribeForwardTableEntriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22523,7 +22767,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeForwardTableEntriesRequest,
     ) -> ecs_20140526_models.DescribeForwardTableEntriesResponse:
         """
-        @deprecated OpenAPI DescribeForwardTableEntries is deprecated
+        @deprecated OpenAPI DescribeForwardTableEntries is deprecated, please use Vpc::2016-04-28::DescribeForwardTableEntries instead.
+        
+        @summary DescribeForwardTableEntries
         
         @param request: DescribeForwardTableEntriesRequest
         @return: DescribeForwardTableEntriesResponse
@@ -22537,7 +22783,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeForwardTableEntriesRequest,
     ) -> ecs_20140526_models.DescribeForwardTableEntriesResponse:
         """
-        @deprecated OpenAPI DescribeForwardTableEntries is deprecated
+        @deprecated OpenAPI DescribeForwardTableEntries is deprecated, please use Vpc::2016-04-28::DescribeForwardTableEntries instead.
+        
+        @summary DescribeForwardTableEntries
         
         @param request: DescribeForwardTableEntriesRequest
         @return: DescribeForwardTableEntriesResponse
@@ -22552,7 +22800,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeHaVipsResponse:
         """
-        @deprecated OpenAPI DescribeHaVips is deprecated
+        @deprecated OpenAPI DescribeHaVips is deprecated, please use Vpc::2016-04-28::DescribeHaVips instead.
+        
+        @summary DescribeHaVips
         
         @param request: DescribeHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22602,7 +22852,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeHaVipsResponse:
         """
-        @deprecated OpenAPI DescribeHaVips is deprecated
+        @deprecated OpenAPI DescribeHaVips is deprecated, please use Vpc::2016-04-28::DescribeHaVips instead.
+        
+        @summary DescribeHaVips
         
         @param request: DescribeHaVipsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22651,7 +22903,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeHaVipsRequest,
     ) -> ecs_20140526_models.DescribeHaVipsResponse:
         """
-        @deprecated OpenAPI DescribeHaVips is deprecated
+        @deprecated OpenAPI DescribeHaVips is deprecated, please use Vpc::2016-04-28::DescribeHaVips instead.
+        
+        @summary DescribeHaVips
         
         @param request: DescribeHaVipsRequest
         @return: DescribeHaVipsResponse
@@ -22665,7 +22919,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeHaVipsRequest,
     ) -> ecs_20140526_models.DescribeHaVipsResponse:
         """
-        @deprecated OpenAPI DescribeHaVips is deprecated
+        @deprecated OpenAPI DescribeHaVips is deprecated, please use Vpc::2016-04-28::DescribeHaVips instead.
+        
+        @summary DescribeHaVips
         
         @param request: DescribeHaVipsRequest
         @return: DescribeHaVipsResponse
@@ -27556,7 +27812,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNatGatewaysResponse:
         """
-        @deprecated OpenAPI DescribeNatGateways is deprecated
+        @deprecated OpenAPI DescribeNatGateways is deprecated, please use Vpc::2016-04-28::DescribeNatGateways instead.
+        
+        @summary DescribeNatGateways
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27608,7 +27866,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNatGatewaysResponse:
         """
-        @deprecated OpenAPI DescribeNatGateways is deprecated
+        @deprecated OpenAPI DescribeNatGateways is deprecated, please use Vpc::2016-04-28::DescribeNatGateways instead.
+        
+        @summary DescribeNatGateways
         
         @param request: DescribeNatGatewaysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27659,7 +27919,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNatGatewaysRequest,
     ) -> ecs_20140526_models.DescribeNatGatewaysResponse:
         """
-        @deprecated OpenAPI DescribeNatGateways is deprecated
+        @deprecated OpenAPI DescribeNatGateways is deprecated, please use Vpc::2016-04-28::DescribeNatGateways instead.
+        
+        @summary DescribeNatGateways
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -27673,7 +27935,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNatGatewaysRequest,
     ) -> ecs_20140526_models.DescribeNatGatewaysResponse:
         """
-        @deprecated OpenAPI DescribeNatGateways is deprecated
+        @deprecated OpenAPI DescribeNatGateways is deprecated, please use Vpc::2016-04-28::DescribeNatGateways instead.
+        
+        @summary DescribeNatGateways
         
         @param request: DescribeNatGatewaysRequest
         @return: DescribeNatGatewaysResponse
@@ -28172,7 +28436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeNewProjectEipMonitorData
         
         @param request: DescribeNewProjectEipMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28224,7 +28490,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeNewProjectEipMonitorData
         
         @param request: DescribeNewProjectEipMonitorDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28275,7 +28543,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNewProjectEipMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeNewProjectEipMonitorData
         
         @param request: DescribeNewProjectEipMonitorDataRequest
         @return: DescribeNewProjectEipMonitorDataResponse
@@ -28289,7 +28559,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeNewProjectEipMonitorDataRequest,
     ) -> ecs_20140526_models.DescribeNewProjectEipMonitorDataResponse:
         """
-        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated
+        @deprecated OpenAPI DescribeNewProjectEipMonitorData is deprecated, please use Vpc::2016-04-28::DescribeEipMonitorData instead.
+        
+        @summary DescribeNewProjectEipMonitorData
         
         @param request: DescribeNewProjectEipMonitorDataRequest
         @return: DescribeNewProjectEipMonitorDataResponse
@@ -28304,7 +28576,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePhysicalConnectionsResponse:
         """
-        @deprecated OpenAPI DescribePhysicalConnections is deprecated
+        @deprecated OpenAPI DescribePhysicalConnections is deprecated, please use Vpc::2016-04-28::DescribePhysicalConnections instead.
+        
+        @summary DescribePhysicalConnections
         
         @param request: DescribePhysicalConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28358,7 +28632,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribePhysicalConnectionsResponse:
         """
-        @deprecated OpenAPI DescribePhysicalConnections is deprecated
+        @deprecated OpenAPI DescribePhysicalConnections is deprecated, please use Vpc::2016-04-28::DescribePhysicalConnections instead.
+        
+        @summary DescribePhysicalConnections
         
         @param request: DescribePhysicalConnectionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28411,7 +28687,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePhysicalConnectionsRequest,
     ) -> ecs_20140526_models.DescribePhysicalConnectionsResponse:
         """
-        @deprecated OpenAPI DescribePhysicalConnections is deprecated
+        @deprecated OpenAPI DescribePhysicalConnections is deprecated, please use Vpc::2016-04-28::DescribePhysicalConnections instead.
+        
+        @summary DescribePhysicalConnections
         
         @param request: DescribePhysicalConnectionsRequest
         @return: DescribePhysicalConnectionsResponse
@@ -28425,7 +28703,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribePhysicalConnectionsRequest,
     ) -> ecs_20140526_models.DescribePhysicalConnectionsResponse:
         """
-        @deprecated OpenAPI DescribePhysicalConnections is deprecated
+        @deprecated OpenAPI DescribePhysicalConnections is deprecated, please use Vpc::2016-04-28::DescribePhysicalConnections instead.
+        
+        @summary DescribePhysicalConnections
         
         @param request: DescribePhysicalConnectionsRequest
         @return: DescribePhysicalConnectionsResponse
@@ -30828,7 +31108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRouterInterfacesResponse:
         """
-        @deprecated OpenAPI DescribeRouterInterfaces is deprecated
+        @deprecated OpenAPI DescribeRouterInterfaces is deprecated, please use Vpc::2016-04-28::DescribeRouterInterfaces instead.
+        
+        @summary DescribeRouterInterfaces
         
         @param request: DescribeRouterInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30876,7 +31158,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeRouterInterfacesResponse:
         """
-        @deprecated OpenAPI DescribeRouterInterfaces is deprecated
+        @deprecated OpenAPI DescribeRouterInterfaces is deprecated, please use Vpc::2016-04-28::DescribeRouterInterfaces instead.
+        
+        @summary DescribeRouterInterfaces
         
         @param request: DescribeRouterInterfacesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -30923,7 +31207,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRouterInterfacesRequest,
     ) -> ecs_20140526_models.DescribeRouterInterfacesResponse:
         """
-        @deprecated OpenAPI DescribeRouterInterfaces is deprecated
+        @deprecated OpenAPI DescribeRouterInterfaces is deprecated, please use Vpc::2016-04-28::DescribeRouterInterfaces instead.
+        
+        @summary DescribeRouterInterfaces
         
         @param request: DescribeRouterInterfacesRequest
         @return: DescribeRouterInterfacesResponse
@@ -30937,7 +31223,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeRouterInterfacesRequest,
     ) -> ecs_20140526_models.DescribeRouterInterfacesResponse:
         """
-        @deprecated OpenAPI DescribeRouterInterfaces is deprecated
+        @deprecated OpenAPI DescribeRouterInterfaces is deprecated, please use Vpc::2016-04-28::DescribeRouterInterfaces instead.
+        
+        @summary DescribeRouterInterfaces
         
         @param request: DescribeRouterInterfacesRequest
         @return: DescribeRouterInterfacesResponse
@@ -34488,7 +34776,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVSwitchesResponse:
         """
-        @deprecated OpenAPI DescribeVSwitches is deprecated
+        @deprecated OpenAPI DescribeVSwitches is deprecated, please use Vpc::2016-04-28::DescribeVSwitches instead.
+        
+        @summary DescribeVSwitches
         
         @param request: DescribeVSwitchesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34544,7 +34834,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVSwitchesResponse:
         """
-        @deprecated OpenAPI DescribeVSwitches is deprecated
+        @deprecated OpenAPI DescribeVSwitches is deprecated, please use Vpc::2016-04-28::DescribeVSwitches instead.
+        
+        @summary DescribeVSwitches
         
         @param request: DescribeVSwitchesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34599,7 +34891,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVSwitchesRequest,
     ) -> ecs_20140526_models.DescribeVSwitchesResponse:
         """
-        @deprecated OpenAPI DescribeVSwitches is deprecated
+        @deprecated OpenAPI DescribeVSwitches is deprecated, please use Vpc::2016-04-28::DescribeVSwitches instead.
+        
+        @summary DescribeVSwitches
         
         @param request: DescribeVSwitchesRequest
         @return: DescribeVSwitchesResponse
@@ -34613,7 +34907,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVSwitchesRequest,
     ) -> ecs_20140526_models.DescribeVSwitchesResponse:
         """
-        @deprecated OpenAPI DescribeVSwitches is deprecated
+        @deprecated OpenAPI DescribeVSwitches is deprecated, please use Vpc::2016-04-28::DescribeVSwitches instead.
+        
+        @summary DescribeVSwitches
         
         @param request: DescribeVSwitchesRequest
         @return: DescribeVSwitchesResponse
@@ -34628,7 +34924,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRouters instead.
+        
+        @summary DescribeVirtualBorderRouters
         
         @param request: DescribeVirtualBorderRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34676,7 +34974,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRouters instead.
+        
+        @summary DescribeVirtualBorderRouters
         
         @param request: DescribeVirtualBorderRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34723,7 +35023,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVirtualBorderRoutersRequest,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRouters instead.
+        
+        @summary DescribeVirtualBorderRouters
         
         @param request: DescribeVirtualBorderRoutersRequest
         @return: DescribeVirtualBorderRoutersResponse
@@ -34737,7 +35039,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVirtualBorderRoutersRequest,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRouters is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRouters instead.
+        
+        @summary DescribeVirtualBorderRouters
         
         @param request: DescribeVirtualBorderRoutersRequest
         @return: DescribeVirtualBorderRoutersResponse
@@ -34752,7 +35056,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRoutersForPhysicalConnection instead.
+        
+        @summary DescribeVirtualBorderRoutersForPhysicalConnection
         
         @param request: DescribeVirtualBorderRoutersForPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34802,7 +35108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRoutersForPhysicalConnection instead.
+        
+        @summary DescribeVirtualBorderRoutersForPhysicalConnection
         
         @param request: DescribeVirtualBorderRoutersForPhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34851,7 +35159,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionRequest,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRoutersForPhysicalConnection instead.
+        
+        @summary DescribeVirtualBorderRoutersForPhysicalConnection
         
         @param request: DescribeVirtualBorderRoutersForPhysicalConnectionRequest
         @return: DescribeVirtualBorderRoutersForPhysicalConnectionResponse
@@ -34865,7 +35175,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionRequest,
     ) -> ecs_20140526_models.DescribeVirtualBorderRoutersForPhysicalConnectionResponse:
         """
-        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated
+        @deprecated OpenAPI DescribeVirtualBorderRoutersForPhysicalConnection is deprecated, please use Vpc::2016-04-28::DescribeVirtualBorderRoutersForPhysicalConnection instead.
+        
+        @summary DescribeVirtualBorderRoutersForPhysicalConnection
         
         @param request: DescribeVirtualBorderRoutersForPhysicalConnectionRequest
         @return: DescribeVirtualBorderRoutersForPhysicalConnectionResponse
@@ -36256,7 +36568,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.EnablePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI EnablePhysicalConnection is deprecated
+        @deprecated OpenAPI EnablePhysicalConnection is deprecated, please use Vpc::2016-04-28::EnablePhysicalConnection instead.
+        
+        @summary EnablePhysicalConnection
         
         @param request: EnablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36306,7 +36620,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.EnablePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI EnablePhysicalConnection is deprecated
+        @deprecated OpenAPI EnablePhysicalConnection is deprecated, please use Vpc::2016-04-28::EnablePhysicalConnection instead.
+        
+        @summary EnablePhysicalConnection
         
         @param request: EnablePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36355,7 +36671,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.EnablePhysicalConnectionRequest,
     ) -> ecs_20140526_models.EnablePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI EnablePhysicalConnection is deprecated
+        @deprecated OpenAPI EnablePhysicalConnection is deprecated, please use Vpc::2016-04-28::EnablePhysicalConnection instead.
+        
+        @summary EnablePhysicalConnection
         
         @param request: EnablePhysicalConnectionRequest
         @return: EnablePhysicalConnectionResponse
@@ -36369,7 +36687,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.EnablePhysicalConnectionRequest,
     ) -> ecs_20140526_models.EnablePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI EnablePhysicalConnection is deprecated
+        @deprecated OpenAPI EnablePhysicalConnection is deprecated, please use Vpc::2016-04-28::EnablePhysicalConnection instead.
+        
+        @summary EnablePhysicalConnection
         
         @param request: EnablePhysicalConnectionRequest
         @return: EnablePhysicalConnectionResponse
@@ -38110,6 +38430,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.launcher):
             query['Launcher'] = request.launcher
+        if not UtilClient.is_unset(request.oss_output_delivery):
+            query['OssOutputDelivery'] = request.oss_output_delivery
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -38211,6 +38533,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.launcher):
             query['Launcher'] = request.launcher
+        if not UtilClient.is_unset(request.oss_output_delivery):
+            query['OssOutputDelivery'] = request.oss_output_delivery
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -39432,7 +39756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyBandwidthPackageSpecResponse:
         """
-        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated
+        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+        
+        @summary ModifyBandwidthPackageSpec
         
         @param request: ModifyBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39480,7 +39806,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyBandwidthPackageSpecResponse:
         """
-        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated
+        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+        
+        @summary ModifyBandwidthPackageSpec
         
         @param request: ModifyBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39527,7 +39855,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyBandwidthPackageSpecRequest,
     ) -> ecs_20140526_models.ModifyBandwidthPackageSpecResponse:
         """
-        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated
+        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+        
+        @summary ModifyBandwidthPackageSpec
         
         @param request: ModifyBandwidthPackageSpecRequest
         @return: ModifyBandwidthPackageSpecResponse
@@ -39541,7 +39871,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyBandwidthPackageSpecRequest,
     ) -> ecs_20140526_models.ModifyBandwidthPackageSpecResponse:
         """
-        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated
+        @deprecated OpenAPI ModifyBandwidthPackageSpec is deprecated, please use Vpc::2016-04-28::ModifyBandwidthPackageSpec instead.
+        
+        @summary ModifyBandwidthPackageSpec
         
         @param request: ModifyBandwidthPackageSpecRequest
         @return: ModifyBandwidthPackageSpecResponse
@@ -41768,7 +42100,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyEipAddressAttributeResponse:
         """
-        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated
+        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated, please use Vpc::2016-04-28::ModifyEipAddressAttribute instead.
+        
+        @summary ModifyEipAddressAttribute
         
         @param request: ModifyEipAddressAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41816,7 +42150,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyEipAddressAttributeResponse:
         """
-        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated
+        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated, please use Vpc::2016-04-28::ModifyEipAddressAttribute instead.
+        
+        @summary ModifyEipAddressAttribute
         
         @param request: ModifyEipAddressAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41863,7 +42199,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyEipAddressAttributeRequest,
     ) -> ecs_20140526_models.ModifyEipAddressAttributeResponse:
         """
-        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated
+        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated, please use Vpc::2016-04-28::ModifyEipAddressAttribute instead.
+        
+        @summary ModifyEipAddressAttribute
         
         @param request: ModifyEipAddressAttributeRequest
         @return: ModifyEipAddressAttributeResponse
@@ -41877,7 +42215,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyEipAddressAttributeRequest,
     ) -> ecs_20140526_models.ModifyEipAddressAttributeResponse:
         """
-        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated
+        @deprecated OpenAPI ModifyEipAddressAttribute is deprecated, please use Vpc::2016-04-28::ModifyEipAddressAttribute instead.
+        
+        @summary ModifyEipAddressAttribute
         
         @param request: ModifyEipAddressAttributeRequest
         @return: ModifyEipAddressAttributeResponse
@@ -42152,7 +42492,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyForwardEntryResponse:
         """
-        @deprecated OpenAPI ModifyForwardEntry is deprecated
+        @deprecated OpenAPI ModifyForwardEntry is deprecated, please use Vpc::2016-04-28::ModifyForwardEntry instead.
+        
+        @summary ModifyForwardEntry
         
         @param request: ModifyForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42210,7 +42552,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyForwardEntryResponse:
         """
-        @deprecated OpenAPI ModifyForwardEntry is deprecated
+        @deprecated OpenAPI ModifyForwardEntry is deprecated, please use Vpc::2016-04-28::ModifyForwardEntry instead.
+        
+        @summary ModifyForwardEntry
         
         @param request: ModifyForwardEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42267,7 +42611,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyForwardEntryRequest,
     ) -> ecs_20140526_models.ModifyForwardEntryResponse:
         """
-        @deprecated OpenAPI ModifyForwardEntry is deprecated
+        @deprecated OpenAPI ModifyForwardEntry is deprecated, please use Vpc::2016-04-28::ModifyForwardEntry instead.
+        
+        @summary ModifyForwardEntry
         
         @param request: ModifyForwardEntryRequest
         @return: ModifyForwardEntryResponse
@@ -42281,7 +42627,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyForwardEntryRequest,
     ) -> ecs_20140526_models.ModifyForwardEntryResponse:
         """
-        @deprecated OpenAPI ModifyForwardEntry is deprecated
+        @deprecated OpenAPI ModifyForwardEntry is deprecated, please use Vpc::2016-04-28::ModifyForwardEntry instead.
+        
+        @summary ModifyForwardEntry
         
         @param request: ModifyForwardEntryRequest
         @return: ModifyForwardEntryResponse
@@ -42296,7 +42644,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyHaVipAttributeResponse:
         """
-        @deprecated OpenAPI ModifyHaVipAttribute is deprecated
+        @deprecated OpenAPI ModifyHaVipAttribute is deprecated, please use Vpc::2016-04-28::ModifyHaVipAttribute instead.
+        
+        @summary ModifyHaVipAttribute
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42346,7 +42696,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyHaVipAttributeResponse:
         """
-        @deprecated OpenAPI ModifyHaVipAttribute is deprecated
+        @deprecated OpenAPI ModifyHaVipAttribute is deprecated, please use Vpc::2016-04-28::ModifyHaVipAttribute instead.
+        
+        @summary ModifyHaVipAttribute
         
         @param request: ModifyHaVipAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -42395,7 +42747,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyHaVipAttributeRequest,
     ) -> ecs_20140526_models.ModifyHaVipAttributeResponse:
         """
-        @deprecated OpenAPI ModifyHaVipAttribute is deprecated
+        @deprecated OpenAPI ModifyHaVipAttribute is deprecated, please use Vpc::2016-04-28::ModifyHaVipAttribute instead.
+        
+        @summary ModifyHaVipAttribute
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -42409,7 +42763,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyHaVipAttributeRequest,
     ) -> ecs_20140526_models.ModifyHaVipAttributeResponse:
         """
-        @deprecated OpenAPI ModifyHaVipAttribute is deprecated
+        @deprecated OpenAPI ModifyHaVipAttribute is deprecated, please use Vpc::2016-04-28::ModifyHaVipAttribute instead.
+        
+        @summary ModifyHaVipAttribute
         
         @param request: ModifyHaVipAttributeRequest
         @return: ModifyHaVipAttributeResponse
@@ -45788,7 +46144,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
         """
-        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated
+        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated, please use Vpc::2016-04-28::ModifyPhysicalConnectionAttribute instead.
+        
+        @summary ModifyPhysicalConnectionAttribute
         
         @param request: ModifyPhysicalConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45856,7 +46214,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
         """
-        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated
+        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated, please use Vpc::2016-04-28::ModifyPhysicalConnectionAttribute instead.
+        
+        @summary ModifyPhysicalConnectionAttribute
         
         @param request: ModifyPhysicalConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45923,7 +46283,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
     ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
         """
-        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated
+        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated, please use Vpc::2016-04-28::ModifyPhysicalConnectionAttribute instead.
+        
+        @summary ModifyPhysicalConnectionAttribute
         
         @param request: ModifyPhysicalConnectionAttributeRequest
         @return: ModifyPhysicalConnectionAttributeResponse
@@ -45937,7 +46299,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyPhysicalConnectionAttributeRequest,
     ) -> ecs_20140526_models.ModifyPhysicalConnectionAttributeResponse:
         """
-        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated
+        @deprecated OpenAPI ModifyPhysicalConnectionAttribute is deprecated, please use Vpc::2016-04-28::ModifyPhysicalConnectionAttribute instead.
+        
+        @summary ModifyPhysicalConnectionAttribute
         
         @param request: ModifyPhysicalConnectionAttributeRequest
         @return: ModifyPhysicalConnectionAttributeResponse
@@ -47040,7 +47404,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyRouterInterfaceAttributeResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceAttribute instead.
+        
+        @summary ModifyRouterInterfaceAttribute
         
         @param request: ModifyRouterInterfaceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47100,7 +47466,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyRouterInterfaceAttributeResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceAttribute instead.
+        
+        @summary ModifyRouterInterfaceAttribute
         
         @param request: ModifyRouterInterfaceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47159,7 +47527,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyRouterInterfaceAttributeRequest,
     ) -> ecs_20140526_models.ModifyRouterInterfaceAttributeResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceAttribute instead.
+        
+        @summary ModifyRouterInterfaceAttribute
         
         @param request: ModifyRouterInterfaceAttributeRequest
         @return: ModifyRouterInterfaceAttributeResponse
@@ -47173,7 +47543,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyRouterInterfaceAttributeRequest,
     ) -> ecs_20140526_models.ModifyRouterInterfaceAttributeResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceAttribute is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceAttribute instead.
+        
+        @summary ModifyRouterInterfaceAttribute
         
         @param request: ModifyRouterInterfaceAttributeRequest
         @return: ModifyRouterInterfaceAttributeResponse
@@ -47188,7 +47560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyRouterInterfaceSpecResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceSpec instead.
+        
+        @summary ModifyRouterInterfaceSpec
         
         @param request: ModifyRouterInterfaceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47240,7 +47614,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyRouterInterfaceSpecResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceSpec instead.
+        
+        @summary ModifyRouterInterfaceSpec
         
         @param request: ModifyRouterInterfaceSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -47291,7 +47667,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyRouterInterfaceSpecRequest,
     ) -> ecs_20140526_models.ModifyRouterInterfaceSpecResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceSpec instead.
+        
+        @summary ModifyRouterInterfaceSpec
         
         @param request: ModifyRouterInterfaceSpecRequest
         @return: ModifyRouterInterfaceSpecResponse
@@ -47305,7 +47683,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyRouterInterfaceSpecRequest,
     ) -> ecs_20140526_models.ModifyRouterInterfaceSpecResponse:
         """
-        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated
+        @deprecated OpenAPI ModifyRouterInterfaceSpec is deprecated, please use Vpc::2016-04-28::ModifyRouterInterfaceSpec instead.
+        
+        @summary ModifyRouterInterfaceSpec
         
         @param request: ModifyRouterInterfaceSpecRequest
         @return: ModifyRouterInterfaceSpecResponse
@@ -48784,7 +49164,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVRouterAttribute instead.
+        
+        @summary ModifyVRouterAttribute
         
         @param request: ModifyVRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48834,7 +49216,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVRouterAttribute instead.
+        
+        @summary ModifyVRouterAttribute
         
         @param request: ModifyVRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48883,7 +49267,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVRouterAttributeRequest,
     ) -> ecs_20140526_models.ModifyVRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVRouterAttribute instead.
+        
+        @summary ModifyVRouterAttribute
         
         @param request: ModifyVRouterAttributeRequest
         @return: ModifyVRouterAttributeResponse
@@ -48897,7 +49283,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVRouterAttributeRequest,
     ) -> ecs_20140526_models.ModifyVRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVRouterAttribute instead.
+        
+        @summary ModifyVRouterAttribute
         
         @param request: ModifyVRouterAttributeRequest
         @return: ModifyVRouterAttributeResponse
@@ -48912,7 +49300,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVSwitchAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated
+        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated, please use Vpc::2016-04-28::ModifyVSwitchAttribute instead.
+        
+        @summary ModifyVSwitchAttribute
         
         @param request: ModifyVSwitchAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48962,7 +49352,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVSwitchAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated
+        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated, please use Vpc::2016-04-28::ModifyVSwitchAttribute instead.
+        
+        @summary ModifyVSwitchAttribute
         
         @param request: ModifyVSwitchAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49011,7 +49403,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVSwitchAttributeRequest,
     ) -> ecs_20140526_models.ModifyVSwitchAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated
+        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated, please use Vpc::2016-04-28::ModifyVSwitchAttribute instead.
+        
+        @summary ModifyVSwitchAttribute
         
         @param request: ModifyVSwitchAttributeRequest
         @return: ModifyVSwitchAttributeResponse
@@ -49025,7 +49419,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVSwitchAttributeRequest,
     ) -> ecs_20140526_models.ModifyVSwitchAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated
+        @deprecated OpenAPI ModifyVSwitchAttribute is deprecated, please use Vpc::2016-04-28::ModifyVSwitchAttribute instead.
+        
+        @summary ModifyVSwitchAttribute
         
         @param request: ModifyVSwitchAttributeRequest
         @return: ModifyVSwitchAttributeResponse
@@ -49040,7 +49436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVirtualBorderRouterAttribute instead.
+        
+        @summary ModifyVirtualBorderRouterAttribute
         
         @param request: ModifyVirtualBorderRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49104,7 +49502,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVirtualBorderRouterAttribute instead.
+        
+        @summary ModifyVirtualBorderRouterAttribute
         
         @param request: ModifyVirtualBorderRouterAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49167,7 +49567,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVirtualBorderRouterAttributeRequest,
     ) -> ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVirtualBorderRouterAttribute instead.
+        
+        @summary ModifyVirtualBorderRouterAttribute
         
         @param request: ModifyVirtualBorderRouterAttributeRequest
         @return: ModifyVirtualBorderRouterAttributeResponse
@@ -49181,7 +49583,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVirtualBorderRouterAttributeRequest,
     ) -> ecs_20140526_models.ModifyVirtualBorderRouterAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated
+        @deprecated OpenAPI ModifyVirtualBorderRouterAttribute is deprecated, please use Vpc::2016-04-28::ModifyVirtualBorderRouterAttribute instead.
+        
+        @summary ModifyVirtualBorderRouterAttribute
         
         @param request: ModifyVirtualBorderRouterAttributeRequest
         @return: ModifyVirtualBorderRouterAttributeResponse
@@ -49196,7 +49600,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVpcAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVpcAttribute is deprecated
+        @deprecated OpenAPI ModifyVpcAttribute is deprecated, please use Vpc::2016-04-28::ModifyVpcAttribute instead.
+        
+        @summary ModifyVpcAttribute
         
         @param request: ModifyVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49250,7 +49656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyVpcAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVpcAttribute is deprecated
+        @deprecated OpenAPI ModifyVpcAttribute is deprecated, please use Vpc::2016-04-28::ModifyVpcAttribute instead.
+        
+        @summary ModifyVpcAttribute
         
         @param request: ModifyVpcAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -49303,7 +49711,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyVpcAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVpcAttribute is deprecated
+        @deprecated OpenAPI ModifyVpcAttribute is deprecated, please use Vpc::2016-04-28::ModifyVpcAttribute instead.
+        
+        @summary ModifyVpcAttribute
         
         @param request: ModifyVpcAttributeRequest
         @return: ModifyVpcAttributeResponse
@@ -49317,7 +49727,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyVpcAttributeRequest,
     ) -> ecs_20140526_models.ModifyVpcAttributeResponse:
         """
-        @deprecated OpenAPI ModifyVpcAttribute is deprecated
+        @deprecated OpenAPI ModifyVpcAttribute is deprecated, please use Vpc::2016-04-28::ModifyVpcAttribute instead.
+        
+        @summary ModifyVpcAttribute
         
         @param request: ModifyVpcAttributeRequest
         @return: ModifyVpcAttributeResponse
@@ -50452,7 +50864,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RecoverVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated
+        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::RecoverVirtualBorderRouter instead.
+        
+        @summary RecoverVirtualBorderRouter
         
         @param request: RecoverVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50502,7 +50916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RecoverVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated
+        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::RecoverVirtualBorderRouter instead.
+        
+        @summary RecoverVirtualBorderRouter
         
         @param request: RecoverVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -50551,7 +50967,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RecoverVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.RecoverVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated
+        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::RecoverVirtualBorderRouter instead.
+        
+        @summary RecoverVirtualBorderRouter
         
         @param request: RecoverVirtualBorderRouterRequest
         @return: RecoverVirtualBorderRouterResponse
@@ -50565,7 +50983,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RecoverVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.RecoverVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated
+        @deprecated OpenAPI RecoverVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::RecoverVirtualBorderRouter instead.
+        
+        @summary RecoverVirtualBorderRouter
         
         @param request: RecoverVirtualBorderRouterRequest
         @return: RecoverVirtualBorderRouterResponse
@@ -51172,7 +51592,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseEipAddressResponse:
         """
-        @deprecated OpenAPI ReleaseEipAddress is deprecated
+        @deprecated OpenAPI ReleaseEipAddress is deprecated, please use Vpc::2016-04-28::ReleaseEipAddress instead.
+        
+        @summary ReleaseEipAddress
         
         @param request: ReleaseEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51218,7 +51640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ReleaseEipAddressResponse:
         """
-        @deprecated OpenAPI ReleaseEipAddress is deprecated
+        @deprecated OpenAPI ReleaseEipAddress is deprecated, please use Vpc::2016-04-28::ReleaseEipAddress instead.
+        
+        @summary ReleaseEipAddress
         
         @param request: ReleaseEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51263,7 +51687,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseEipAddressRequest,
     ) -> ecs_20140526_models.ReleaseEipAddressResponse:
         """
-        @deprecated OpenAPI ReleaseEipAddress is deprecated
+        @deprecated OpenAPI ReleaseEipAddress is deprecated, please use Vpc::2016-04-28::ReleaseEipAddress instead.
+        
+        @summary ReleaseEipAddress
         
         @param request: ReleaseEipAddressRequest
         @return: ReleaseEipAddressResponse
@@ -51277,7 +51703,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ReleaseEipAddressRequest,
     ) -> ecs_20140526_models.ReleaseEipAddressResponse:
         """
-        @deprecated OpenAPI ReleaseEipAddress is deprecated
+        @deprecated OpenAPI ReleaseEipAddress is deprecated, please use Vpc::2016-04-28::ReleaseEipAddress instead.
+        
+        @summary ReleaseEipAddress
         
         @param request: ReleaseEipAddressRequest
         @return: ReleaseEipAddressResponse
@@ -51412,7 +51840,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RemoveBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated
+        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
+        
+        @summary RemoveBandwidthPackageIps
         
         @param request: RemoveBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51462,7 +51892,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.RemoveBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated
+        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
+        
+        @summary RemoveBandwidthPackageIps
         
         @param request: RemoveBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -51511,7 +51943,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RemoveBandwidthPackageIpsRequest,
     ) -> ecs_20140526_models.RemoveBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated
+        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
+        
+        @summary RemoveBandwidthPackageIps
         
         @param request: RemoveBandwidthPackageIpsRequest
         @return: RemoveBandwidthPackageIpsResponse
@@ -51525,7 +51959,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.RemoveBandwidthPackageIpsRequest,
     ) -> ecs_20140526_models.RemoveBandwidthPackageIpsResponse:
         """
-        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated
+        @deprecated OpenAPI RemoveBandwidthPackageIps is deprecated, please use Vpc::2016-04-28::RemoveBandwidthPackageIps instead.
+        
+        @summary RemoveBandwidthPackageIps
         
         @param request: RemoveBandwidthPackageIpsRequest
         @return: RemoveBandwidthPackageIpsResponse
@@ -54056,6 +54492,8 @@ class Client(OpenApiClient):
             query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_output_delivery):
+            query['OssOutputDelivery'] = request.oss_output_delivery
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -54173,6 +54611,8 @@ class Client(OpenApiClient):
             query['Launcher'] = request.launcher
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_output_delivery):
+            query['OssOutputDelivery'] = request.oss_output_delivery
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -56432,7 +56872,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TerminatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI TerminatePhysicalConnection is deprecated
+        @deprecated OpenAPI TerminatePhysicalConnection is deprecated, please use Vpc::2016-04-28::TerminatePhysicalConnection instead.
+        
+        @summary TerminatePhysicalConnection
         
         @param request: TerminatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56482,7 +56924,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TerminatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI TerminatePhysicalConnection is deprecated
+        @deprecated OpenAPI TerminatePhysicalConnection is deprecated, please use Vpc::2016-04-28::TerminatePhysicalConnection instead.
+        
+        @summary TerminatePhysicalConnection
         
         @param request: TerminatePhysicalConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56531,7 +56975,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TerminatePhysicalConnectionRequest,
     ) -> ecs_20140526_models.TerminatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI TerminatePhysicalConnection is deprecated
+        @deprecated OpenAPI TerminatePhysicalConnection is deprecated, please use Vpc::2016-04-28::TerminatePhysicalConnection instead.
+        
+        @summary TerminatePhysicalConnection
         
         @param request: TerminatePhysicalConnectionRequest
         @return: TerminatePhysicalConnectionResponse
@@ -56545,7 +56991,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TerminatePhysicalConnectionRequest,
     ) -> ecs_20140526_models.TerminatePhysicalConnectionResponse:
         """
-        @deprecated OpenAPI TerminatePhysicalConnection is deprecated
+        @deprecated OpenAPI TerminatePhysicalConnection is deprecated, please use Vpc::2016-04-28::TerminatePhysicalConnection instead.
+        
+        @summary TerminatePhysicalConnection
         
         @param request: TerminatePhysicalConnectionRequest
         @return: TerminatePhysicalConnectionResponse
@@ -56560,7 +57008,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TerminateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::TerminateVirtualBorderRouter instead.
+        
+        @summary TerminateVirtualBorderRouter
         
         @param request: TerminateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56610,7 +57060,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.TerminateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::TerminateVirtualBorderRouter instead.
+        
+        @summary TerminateVirtualBorderRouter
         
         @param request: TerminateVirtualBorderRouterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -56659,7 +57111,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TerminateVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.TerminateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::TerminateVirtualBorderRouter instead.
+        
+        @summary TerminateVirtualBorderRouter
         
         @param request: TerminateVirtualBorderRouterRequest
         @return: TerminateVirtualBorderRouterResponse
@@ -56673,7 +57127,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.TerminateVirtualBorderRouterRequest,
     ) -> ecs_20140526_models.TerminateVirtualBorderRouterResponse:
         """
-        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated
+        @deprecated OpenAPI TerminateVirtualBorderRouter is deprecated, please use Vpc::2016-04-28::TerminateVirtualBorderRouter instead.
+        
+        @summary TerminateVirtualBorderRouter
         
         @param request: TerminateVirtualBorderRouterRequest
         @return: TerminateVirtualBorderRouterResponse
@@ -56980,7 +57436,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassociateEipAddressResponse:
         """
-        @deprecated OpenAPI UnassociateEipAddress is deprecated
+        @deprecated OpenAPI UnassociateEipAddress is deprecated, please use Vpc::2016-04-28::UnassociateEipAddress instead.
+        
+        @summary UnassociateEipAddress
         
         @param request: UnassociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57030,7 +57488,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassociateEipAddressResponse:
         """
-        @deprecated OpenAPI UnassociateEipAddress is deprecated
+        @deprecated OpenAPI UnassociateEipAddress is deprecated, please use Vpc::2016-04-28::UnassociateEipAddress instead.
+        
+        @summary UnassociateEipAddress
         
         @param request: UnassociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57079,7 +57539,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassociateEipAddressRequest,
     ) -> ecs_20140526_models.UnassociateEipAddressResponse:
         """
-        @deprecated OpenAPI UnassociateEipAddress is deprecated
+        @deprecated OpenAPI UnassociateEipAddress is deprecated, please use Vpc::2016-04-28::UnassociateEipAddress instead.
+        
+        @summary UnassociateEipAddress
         
         @param request: UnassociateEipAddressRequest
         @return: UnassociateEipAddressResponse
@@ -57093,7 +57555,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassociateEipAddressRequest,
     ) -> ecs_20140526_models.UnassociateEipAddressResponse:
         """
-        @deprecated OpenAPI UnassociateEipAddress is deprecated
+        @deprecated OpenAPI UnassociateEipAddress is deprecated, please use Vpc::2016-04-28::UnassociateEipAddress instead.
+        
+        @summary UnassociateEipAddress
         
         @param request: UnassociateEipAddressRequest
         @return: UnassociateEipAddressResponse
@@ -57108,7 +57572,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassociateHaVipResponse:
         """
-        @deprecated OpenAPI UnassociateHaVip is deprecated
+        @deprecated OpenAPI UnassociateHaVip is deprecated, please use Vpc::2016-04-28::UnassociateHaVip instead.
+        
+        @summary UnassociateHaVip
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57160,7 +57626,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.UnassociateHaVipResponse:
         """
-        @deprecated OpenAPI UnassociateHaVip is deprecated
+        @deprecated OpenAPI UnassociateHaVip is deprecated, please use Vpc::2016-04-28::UnassociateHaVip instead.
+        
+        @summary UnassociateHaVip
         
         @param request: UnassociateHaVipRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -57211,7 +57679,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassociateHaVipRequest,
     ) -> ecs_20140526_models.UnassociateHaVipResponse:
         """
-        @deprecated OpenAPI UnassociateHaVip is deprecated
+        @deprecated OpenAPI UnassociateHaVip is deprecated, please use Vpc::2016-04-28::UnassociateHaVip instead.
+        
+        @summary UnassociateHaVip
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
@@ -57225,7 +57695,9 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.UnassociateHaVipRequest,
     ) -> ecs_20140526_models.UnassociateHaVipResponse:
         """
-        @deprecated OpenAPI UnassociateHaVip is deprecated
+        @deprecated OpenAPI UnassociateHaVip is deprecated, please use Vpc::2016-04-28::UnassociateHaVip instead.
+        
+        @summary UnassociateHaVip
         
         @param request: UnassociateHaVipRequest
         @return: UnassociateHaVipResponse
