@@ -453,6 +453,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.operate_app_service_for_partner_with_options_async(request, runtime)
 
+    def search_image_with_options(
+        self,
+        tmp_req: website_build_20250429_models.SearchImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SearchImageResponse:
+        """
+        @summary 图片检索
+        
+        @param tmp_req: SearchImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.SearchImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.color_hex):
+            query['ColorHex'] = request.color_hex
+        if not UtilClient.is_unset(request.has_person):
+            query['HasPerson'] = request.has_person
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.image_ratio):
+            query['ImageRatio'] = request.image_ratio
+        if not UtilClient.is_unset(request.max_height):
+            query['MaxHeight'] = request.max_height
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.max_width):
+            query['MaxWidth'] = request.max_width
+        if not UtilClient.is_unset(request.min_height):
+            query['MinHeight'] = request.min_height
+        if not UtilClient.is_unset(request.min_width):
+            query['MinWidth'] = request.min_width
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchImage',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SearchImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_image_with_options_async(
+        self,
+        tmp_req: website_build_20250429_models.SearchImageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SearchImageResponse:
+        """
+        @summary 图片检索
+        
+        @param tmp_req: SearchImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchImageResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = website_build_20250429_models.SearchImageShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.color_hex):
+            query['ColorHex'] = request.color_hex
+        if not UtilClient.is_unset(request.has_person):
+            query['HasPerson'] = request.has_person
+        if not UtilClient.is_unset(request.image_category):
+            query['ImageCategory'] = request.image_category
+        if not UtilClient.is_unset(request.image_ratio):
+            query['ImageRatio'] = request.image_ratio
+        if not UtilClient.is_unset(request.max_height):
+            query['MaxHeight'] = request.max_height
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.max_width):
+            query['MaxWidth'] = request.max_width
+        if not UtilClient.is_unset(request.min_height):
+            query['MinHeight'] = request.min_height
+        if not UtilClient.is_unset(request.min_width):
+            query['MinWidth'] = request.min_width
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.oss_key):
+            query['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.start):
+            query['Start'] = request.start
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchImage',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SearchImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_image(
+        self,
+        request: website_build_20250429_models.SearchImageRequest,
+    ) -> website_build_20250429_models.SearchImageResponse:
+        """
+        @summary 图片检索
+        
+        @param request: SearchImageRequest
+        @return: SearchImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_image_with_options(request, runtime)
+
+    async def search_image_async(
+        self,
+        request: website_build_20250429_models.SearchImageRequest,
+    ) -> website_build_20250429_models.SearchImageResponse:
+        """
+        @summary 图片检索
+        
+        @param request: SearchImageRequest
+        @return: SearchImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_image_with_options_async(request, runtime)
+
     def sync_app_instance_for_partner_with_options(
         self,
         tmp_req: website_build_20250429_models.SyncAppInstanceForPartnerRequest,

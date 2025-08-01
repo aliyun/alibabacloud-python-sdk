@@ -1,3 +1,7 @@
+2025-08-01 Version: 2.2.0
+- Support API SearchImage.
+
+
 2025-07-23 Version: 2.1.0
 - Support API SyncAppInstanceForPartner.
 
