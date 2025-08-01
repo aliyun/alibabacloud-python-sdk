@@ -42,6 +42,7 @@ class CreateDemandPlanRequest(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        demand_type: str = None,
         description: str = None,
         name: str = None,
         period: str = None,
@@ -52,6 +53,7 @@ class CreateDemandPlanRequest(TeaModel):
     ):
         # This parameter is required.
         self.account_id = account_id
+        self.demand_type = demand_type
         self.description = description
         # This parameter is required.
         self.name = name
@@ -75,6 +77,8 @@ class CreateDemandPlanRequest(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['accountId'] = self.account_id
+        if self.demand_type is not None:
+            result['demandType'] = self.demand_type
         if self.description is not None:
             result['description'] = self.description
         if self.name is not None:
@@ -95,6 +99,8 @@ class CreateDemandPlanRequest(TeaModel):
         m = m or dict()
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+        if m.get('demandType') is not None:
+            self.demand_type = m.get('demandType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('name') is not None:
@@ -245,6 +251,7 @@ class CreateDemandPlanV2Request(TeaModel):
     def __init__(
         self,
         account_id: str = None,
+        demand_type: str = None,
         description: str = None,
         name: str = None,
         product_type: str = None,
@@ -254,6 +261,7 @@ class CreateDemandPlanV2Request(TeaModel):
     ):
         # This parameter is required.
         self.account_id = account_id
+        self.demand_type = demand_type
         self.description = description
         # This parameter is required.
         self.name = name
@@ -275,6 +283,8 @@ class CreateDemandPlanV2Request(TeaModel):
         result = dict()
         if self.account_id is not None:
             result['accountId'] = self.account_id
+        if self.demand_type is not None:
+            result['demandType'] = self.demand_type
         if self.description is not None:
             result['description'] = self.description
         if self.name is not None:
@@ -293,6 +303,8 @@ class CreateDemandPlanV2Request(TeaModel):
         m = m or dict()
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+        if m.get('demandType') is not None:
+            self.demand_type = m.get('demandType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('name') is not None:

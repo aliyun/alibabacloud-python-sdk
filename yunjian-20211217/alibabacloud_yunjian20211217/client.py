@@ -60,6 +60,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.demand_type):
+            body['demandType'] = request.demand_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -117,6 +119,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.demand_type):
+            body['demandType'] = request.demand_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -200,6 +204,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.demand_type):
+            body['demandType'] = request.demand_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):
@@ -257,6 +263,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.account_id):
             body['accountId'] = request.account_id
+        if not UtilClient.is_unset(request.demand_type):
+            body['demandType'] = request.demand_type
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.name):

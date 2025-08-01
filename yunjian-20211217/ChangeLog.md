@@ -1,3 +1,8 @@
+2025-08-01 Version: 1.2.1
+- Update API CreateDemandPlan: add request parameters body.demandType.
+- Update API CreateDemandPlanV2: add request parameters body.demandType.
+
+
 2025-07-28 Version: 1.2.0
 - Support API PageDemandPlanWithDemandInfo.
 
