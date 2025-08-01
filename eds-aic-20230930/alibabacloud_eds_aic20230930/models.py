@@ -11509,6 +11509,107 @@ class InstallAppResponse(TeaModel):
         return self
 
 
+class InstallMonitorAgentRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        sale_mode: str = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.sale_mode = sale_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
+        return self
+
+
+class InstallMonitorAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class InstallMonitorAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: InstallMonitorAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = InstallMonitorAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPolicyGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -14775,6 +14876,7 @@ class SendFileRequest(TeaModel):
     def __init__(
         self,
         android_instance_id_list: List[str] = None,
+        auto_install: bool = None,
         source_file_path: str = None,
         target_file_name: str = None,
         upload_endpoint: str = None,
@@ -14785,6 +14887,7 @@ class SendFileRequest(TeaModel):
         # 
         # This parameter is required.
         self.android_instance_id_list = android_instance_id_list
+        self.auto_install = auto_install
         # The path to which you want to upload the pushed file in the cloud phone instance.
         # 
         # This parameter is required.
@@ -14821,6 +14924,8 @@ class SendFileRequest(TeaModel):
         result = dict()
         if self.android_instance_id_list is not None:
             result['AndroidInstanceIdList'] = self.android_instance_id_list
+        if self.auto_install is not None:
+            result['AutoInstall'] = self.auto_install
         if self.source_file_path is not None:
             result['SourceFilePath'] = self.source_file_path
         if self.target_file_name is not None:
@@ -14837,6 +14942,8 @@ class SendFileRequest(TeaModel):
         m = m or dict()
         if m.get('AndroidInstanceIdList') is not None:
             self.android_instance_id_list = m.get('AndroidInstanceIdList')
+        if m.get('AutoInstall') is not None:
+            self.auto_install = m.get('AutoInstall')
         if m.get('SourceFilePath') is not None:
             self.source_file_path = m.get('SourceFilePath')
         if m.get('TargetFileName') is not None:
@@ -15571,6 +15678,107 @@ class UninstallAppResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UninstallAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UninstallMonitorAgentRequest(TeaModel):
+    def __init__(
+        self,
+        android_instance_ids: List[str] = None,
+        sale_mode: str = None,
+    ):
+        self.android_instance_ids = android_instance_ids
+        self.sale_mode = sale_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_instance_ids is not None:
+            result['AndroidInstanceIds'] = self.android_instance_ids
+        if self.sale_mode is not None:
+            result['SaleMode'] = self.sale_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidInstanceIds') is not None:
+            self.android_instance_ids = m.get('AndroidInstanceIds')
+        if m.get('SaleMode') is not None:
+            self.sale_mode = m.get('SaleMode')
+        return self
+
+
+class UninstallMonitorAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UninstallMonitorAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UninstallMonitorAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UninstallMonitorAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

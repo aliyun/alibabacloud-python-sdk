@@ -1,3 +1,9 @@
+2025-08-01 Version: 4.11.0
+- Support API InstallMonitorAgent.
+- Support API UninstallMonitorAgent.
+- Update API SendFile: add request parameters AutoInstall.
+
+
 2025-07-28 Version: 4.10.0
 - Support API CreateSystemPropertyTemplate.
 - Support API DeleteSystemPropertyTemplates.

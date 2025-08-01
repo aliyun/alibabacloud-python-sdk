@@ -5690,6 +5690,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.install_app_with_options_async(request, runtime)
 
+    def install_monitor_agent_with_options(
+        self,
+        request: eds_aic_20230930_models.InstallMonitorAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.InstallMonitorAgentResponse:
+        """
+        @summary 安装监控插件
+        
+        @param request: InstallMonitorAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallMonitorAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.sale_mode):
+            body['SaleMode'] = request.sale_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallMonitorAgent',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.InstallMonitorAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_monitor_agent_with_options_async(
+        self,
+        request: eds_aic_20230930_models.InstallMonitorAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.InstallMonitorAgentResponse:
+        """
+        @summary 安装监控插件
+        
+        @param request: InstallMonitorAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallMonitorAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.sale_mode):
+            body['SaleMode'] = request.sale_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='InstallMonitorAgent',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.InstallMonitorAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_monitor_agent(
+        self,
+        request: eds_aic_20230930_models.InstallMonitorAgentRequest,
+    ) -> eds_aic_20230930_models.InstallMonitorAgentResponse:
+        """
+        @summary 安装监控插件
+        
+        @param request: InstallMonitorAgentRequest
+        @return: InstallMonitorAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.install_monitor_agent_with_options(request, runtime)
+
+    async def install_monitor_agent_async(
+        self,
+        request: eds_aic_20230930_models.InstallMonitorAgentRequest,
+    ) -> eds_aic_20230930_models.InstallMonitorAgentResponse:
+        """
+        @summary 安装监控插件
+        
+        @param request: InstallMonitorAgentRequest
+        @return: InstallMonitorAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.install_monitor_agent_with_options_async(request, runtime)
+
     def list_policy_groups_with_options(
         self,
         request: eds_aic_20230930_models.ListPolicyGroupsRequest,
@@ -7632,6 +7732,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.auto_install):
+            query['AutoInstall'] = request.auto_install
         if not UtilClient.is_unset(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not UtilClient.is_unset(request.target_file_name):
@@ -7679,6 +7781,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.android_instance_id_list):
             query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not UtilClient.is_unset(request.auto_install):
+            query['AutoInstall'] = request.auto_install
         if not UtilClient.is_unset(request.source_file_path):
             query['SourceFilePath'] = request.source_file_path
         if not UtilClient.is_unset(request.target_file_name):
@@ -8285,6 +8389,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_app_with_options_async(request, runtime)
+
+    def uninstall_monitor_agent_with_options(
+        self,
+        request: eds_aic_20230930_models.UninstallMonitorAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UninstallMonitorAgentResponse:
+        """
+        @summary 卸载监控插件
+        
+        @param request: UninstallMonitorAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallMonitorAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.sale_mode):
+            body['SaleMode'] = request.sale_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UninstallMonitorAgent',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UninstallMonitorAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def uninstall_monitor_agent_with_options_async(
+        self,
+        request: eds_aic_20230930_models.UninstallMonitorAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UninstallMonitorAgentResponse:
+        """
+        @summary 卸载监控插件
+        
+        @param request: UninstallMonitorAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallMonitorAgentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.android_instance_ids):
+            body['AndroidInstanceIds'] = request.android_instance_ids
+        if not UtilClient.is_unset(request.sale_mode):
+            body['SaleMode'] = request.sale_mode
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UninstallMonitorAgent',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UninstallMonitorAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def uninstall_monitor_agent(
+        self,
+        request: eds_aic_20230930_models.UninstallMonitorAgentRequest,
+    ) -> eds_aic_20230930_models.UninstallMonitorAgentResponse:
+        """
+        @summary 卸载监控插件
+        
+        @param request: UninstallMonitorAgentRequest
+        @return: UninstallMonitorAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.uninstall_monitor_agent_with_options(request, runtime)
+
+    async def uninstall_monitor_agent_async(
+        self,
+        request: eds_aic_20230930_models.UninstallMonitorAgentRequest,
+    ) -> eds_aic_20230930_models.UninstallMonitorAgentResponse:
+        """
+        @summary 卸载监控插件
+        
+        @param request: UninstallMonitorAgentRequest
+        @return: UninstallMonitorAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.uninstall_monitor_agent_with_options_async(request, runtime)
 
     def update_custom_image_name_with_options(
         self,
