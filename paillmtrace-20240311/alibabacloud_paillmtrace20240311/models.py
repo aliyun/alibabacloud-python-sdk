@@ -231,6 +231,116 @@ class ModelConfig(TeaModel):
         return self
 
 
+class QuestionAnswerAnswer(TeaModel):
+    def __init__(
+        self,
+        contexts: List[str] = None,
+        text: str = None,
+    ):
+        self.contexts = contexts
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contexts is not None:
+            result['Contexts'] = self.contexts
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Contexts') is not None:
+            self.contexts = m.get('Contexts')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class QuestionAnswerGroundTruth(TeaModel):
+    def __init__(
+        self,
+        contexts: List[str] = None,
+        text: str = None,
+    ):
+        self.contexts = contexts
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contexts is not None:
+            result['Contexts'] = self.contexts
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Contexts') is not None:
+            self.contexts = m.get('Contexts')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class QuestionAnswer(TeaModel):
+    def __init__(
+        self,
+        answer: QuestionAnswerAnswer = None,
+        ground_truth: QuestionAnswerGroundTruth = None,
+        question: str = None,
+    ):
+        self.answer = answer
+        self.ground_truth = ground_truth
+        self.question = question
+
+    def validate(self):
+        if self.answer:
+            self.answer.validate()
+        if self.ground_truth:
+            self.ground_truth.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['Answer'] = self.answer.to_map()
+        if self.ground_truth is not None:
+            result['GroundTruth'] = self.ground_truth.to_map()
+        if self.question is not None:
+            result['Question'] = self.question
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answer') is not None:
+            temp_model = QuestionAnswerAnswer()
+            self.answer = temp_model.from_map(m['Answer'])
+        if m.get('GroundTruth') is not None:
+            temp_model = QuestionAnswerGroundTruth()
+            self.ground_truth = temp_model.from_map(m['GroundTruth'])
+        if m.get('Question') is not None:
+            self.question = m.get('Question')
+        return self
+
+
 class CreateOnlineEvalTaskRequestBodyFilters(TeaModel):
     def __init__(
         self,
@@ -1917,6 +2027,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
         min_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        sort_by: str = None,
+        sort_order: str = None,
     ):
         # Search keyword. It will match on fields such as task name, application name (appName), task description, and evaluation metric name.
         self.keyword = keyword
@@ -1928,6 +2040,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
         self.page_number = page_number
         # Page size, default is 10.
         self.page_size = page_size
+        self.sort_by = sort_by
+        self.sort_order = sort_order
 
     def validate(self):
         pass
@@ -1948,6 +2062,10 @@ class ListOnlineEvalTasksRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
         return result
 
     def from_map(self, m: dict = None):
@@ -1962,6 +2080,10 @@ class ListOnlineEvalTasksRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
         return self
 
 
@@ -2013,6 +2135,7 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
         aliyun_uid: str = None,
         app_name: str = None,
         description: str = None,
+        eval_results: str = None,
         evaluation_config: EvaluationConfig = None,
         filters: List[ListOnlineEvalTasksResponseBodyTasksFilters] = None,
         gmt_create_time: str = None,
@@ -2021,6 +2144,7 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
         id: str = None,
         model_config: ModelConfig = None,
         name: str = None,
+        record_count: int = None,
         sampling_frequency_minutes: int = None,
         sampling_ratio: int = None,
         status: str = None,
@@ -2032,6 +2156,7 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
         self.app_name = app_name
         # Task description information
         self.description = description
+        self.eval_results = eval_results
         # Extract specific path values from JSON-formatted trace data as input for the evaluation operation. These JSON paths are defined in this EvaluationConfig structure.
         self.evaluation_config = evaluation_config
         # The list define the search filter conditions for the evaluation task to search a certain amount of trace data generated by the user application, which serves as input data for the evaluation operation.
@@ -2048,6 +2173,7 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
         self.model_config = model_config
         # Task name.
         self.name = name
+        self.record_count = record_count
         # The evaluation task needs to search for a certain amount of trace data generated by the user\\"s application as input data for the evaluation operation. This defines the time window for each data search.
         self.sampling_frequency_minutes = sampling_frequency_minutes
         # The percentage of the data searched within a time window that is used as input data for the evaluation. For example, 100 means all the searched data is used as input, 20 means 20% of the searched data is randomly selected as input.
@@ -2079,6 +2205,8 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
             result['AppName'] = self.app_name
         if self.description is not None:
             result['Description'] = self.description
+        if self.eval_results is not None:
+            result['EvalResults'] = self.eval_results
         if self.evaluation_config is not None:
             result['EvaluationConfig'] = self.evaluation_config.to_map()
         result['Filters'] = []
@@ -2097,6 +2225,8 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
             result['ModelConfig'] = self.model_config.to_map()
         if self.name is not None:
             result['Name'] = self.name
+        if self.record_count is not None:
+            result['RecordCount'] = self.record_count
         if self.sampling_frequency_minutes is not None:
             result['SamplingFrequencyMinutes'] = self.sampling_frequency_minutes
         if self.sampling_ratio is not None:
@@ -2115,6 +2245,8 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EvalResults') is not None:
+            self.eval_results = m.get('EvalResults')
         if m.get('EvaluationConfig') is not None:
             temp_model = EvaluationConfig()
             self.evaluation_config = temp_model.from_map(m['EvaluationConfig'])
@@ -2136,6 +2268,8 @@ class ListOnlineEvalTasksResponseBodyTasks(TeaModel):
             self.model_config = temp_model.from_map(m['ModelConfig'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('RecordCount') is not None:
+            self.record_count = m.get('RecordCount')
         if m.get('SamplingFrequencyMinutes') is not None:
             self.sampling_frequency_minutes = m.get('SamplingFrequencyMinutes')
         if m.get('SamplingRatio') is not None:
