@@ -1,3 +1,6 @@
+2025-08-01 Version: 2.10.3
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2025-07-29 Version: 2.10.2
 - Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.videoRoleRecognitionResult.
 - Update API RunVideoAnalysis: add request parameters autoRoleRecognitionVideoUrl.
