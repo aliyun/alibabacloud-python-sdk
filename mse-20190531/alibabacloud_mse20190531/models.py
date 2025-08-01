@@ -3488,6 +3488,39 @@ class AddGatewayAuthConsumerResponse(TeaModel):
         return self
 
 
+class AddGatewayDomainRequestTlsCipherSuitesConfigJSON(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        tls_cipher_suites: List[str] = None,
+    ):
+        self.config_type = config_type
+        self.tls_cipher_suites = tls_cipher_suites
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.tls_cipher_suites is not None:
+            result['TlsCipherSuites'] = self.tls_cipher_suites
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('TlsCipherSuites') is not None:
+            self.tls_cipher_suites = m.get('TlsCipherSuites')
+        return self
+
+
 class AddGatewayDomainRequest(TeaModel):
     def __init__(
         self,
@@ -3498,6 +3531,7 @@ class AddGatewayDomainRequest(TeaModel):
         must_https: bool = None,
         name: str = None,
         protocol: str = None,
+        tls_cipher_suites_config_json: AddGatewayDomainRequestTlsCipherSuitesConfigJSON = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
@@ -3525,6 +3559,109 @@ class AddGatewayDomainRequest(TeaModel):
         # *   `HTTP`
         # *   `HTTPS`
         self.protocol = protocol
+        self.tls_cipher_suites_config_json = tls_cipher_suites_config_json
+        # The maximum version of Transport Layer Security (TLS).
+        self.tls_max = tls_max
+        # The minimum version of TLS.
+        self.tls_min = tls_min
+
+    def validate(self):
+        if self.tls_cipher_suites_config_json:
+            self.tls_cipher_suites_config_json.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.must_https is not None:
+            result['MustHttps'] = self.must_https
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.tls_cipher_suites_config_json is not None:
+            result['TlsCipherSuitesConfigJSON'] = self.tls_cipher_suites_config_json.to_map()
+        if self.tls_max is not None:
+            result['TlsMax'] = self.tls_max
+        if self.tls_min is not None:
+            result['TlsMin'] = self.tls_min
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('MustHttps') is not None:
+            self.must_https = m.get('MustHttps')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TlsCipherSuitesConfigJSON') is not None:
+            temp_model = AddGatewayDomainRequestTlsCipherSuitesConfigJSON()
+            self.tls_cipher_suites_config_json = temp_model.from_map(m['TlsCipherSuitesConfigJSON'])
+        if m.get('TlsMax') is not None:
+            self.tls_max = m.get('TlsMax')
+        if m.get('TlsMin') is not None:
+            self.tls_min = m.get('TlsMin')
+        return self
+
+
+class AddGatewayDomainShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        cert_identifier: str = None,
+        gateway_unique_id: str = None,
+        http_2: str = None,
+        must_https: bool = None,
+        name: str = None,
+        protocol: str = None,
+        tls_cipher_suites_config_jsonshrink: str = None,
+        tls_max: str = None,
+        tls_min: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        self.accept_language = accept_language
+        # The ID of the certificate.
+        self.cert_identifier = cert_identifier
+        # The unique ID of the gateway.
+        self.gateway_unique_id = gateway_unique_id
+        # Specifies whether to enable `HTTP/2`.
+        # 
+        # *   `open`: enables `HTTP/2`
+        # *   `close`: disables `HTTP/2`
+        # *   `globalConfig`: uses global configurations
+        self.http_2 = http_2
+        # Specifies whether to enable HTTPS.
+        self.must_https = must_https
+        # The domain name.
+        self.name = name
+        # The type of the protocol. Valid values:
+        # 
+        # *   `HTTP`
+        # *   `HTTPS`
+        self.protocol = protocol
+        self.tls_cipher_suites_config_jsonshrink = tls_cipher_suites_config_jsonshrink
         # The maximum version of Transport Layer Security (TLS).
         self.tls_max = tls_max
         # The minimum version of TLS.
@@ -3553,6 +3690,8 @@ class AddGatewayDomainRequest(TeaModel):
             result['Name'] = self.name
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.tls_cipher_suites_config_jsonshrink is not None:
+            result['TlsCipherSuitesConfigJSON'] = self.tls_cipher_suites_config_jsonshrink
         if self.tls_max is not None:
             result['TlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -3575,6 +3714,8 @@ class AddGatewayDomainRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('TlsCipherSuitesConfigJSON') is not None:
+            self.tls_cipher_suites_config_jsonshrink = m.get('TlsCipherSuitesConfigJSON')
         if m.get('TlsMax') is not None:
             self.tls_max = m.get('TlsMax')
         if m.get('TlsMin') is not None:
@@ -13827,6 +13968,256 @@ class CreatePluginConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePluginConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSentinelBlockFallbackDefinitionRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        app_id: str = None,
+        app_name: str = None,
+        fallback_behavior: str = None,
+        language: str = None,
+        name: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        resource_classification: int = None,
+        scenario: str = None,
+        source: str = None,
+    ):
+        self.accept_language = accept_language
+        self.app_id = app_id
+        self.app_name = app_name
+        self.fallback_behavior = fallback_behavior
+        self.language = language
+        self.name = name
+        self.namespace = namespace
+        self.region_id = region_id
+        self.resource_classification = resource_classification
+        self.scenario = scenario
+        self.source = source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.fallback_behavior is not None:
+            result['FallbackBehavior'] = self.fallback_behavior
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_classification is not None:
+            result['ResourceClassification'] = self.resource_classification
+        if self.scenario is not None:
+            result['Scenario'] = self.scenario
+        if self.source is not None:
+            result['Source'] = self.source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('FallbackBehavior') is not None:
+            self.fallback_behavior = m.get('FallbackBehavior')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceClassification') is not None:
+            self.resource_classification = m.get('ResourceClassification')
+        if m.get('Scenario') is not None:
+            self.scenario = m.get('Scenario')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        return self
+
+
+class CreateSentinelBlockFallbackDefinitionResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_name: str = None,
+        fallback_behavior: str = None,
+        id: int = None,
+        name: str = None,
+        namespace: str = None,
+        resource_classification: int = None,
+        user_id: str = None,
+    ):
+        self.app_name = app_name
+        self.fallback_behavior = fallback_behavior
+        self.id = id
+        self.name = name
+        self.namespace = namespace
+        self.resource_classification = resource_classification
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.fallback_behavior is not None:
+            result['FallbackBehavior'] = self.fallback_behavior
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.resource_classification is not None:
+            result['ResourceClassification'] = self.resource_classification
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('FallbackBehavior') is not None:
+            self.fallback_behavior = m.get('FallbackBehavior')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('ResourceClassification') is not None:
+            self.resource_classification = m.get('ResourceClassification')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateSentinelBlockFallbackDefinitionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateSentinelBlockFallbackDefinitionResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateSentinelBlockFallbackDefinitionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateSentinelBlockFallbackDefinitionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSentinelBlockFallbackDefinitionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSentinelBlockFallbackDefinitionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25314,6 +25705,39 @@ class GetGatewayDomainDetailRequest(TeaModel):
         return self
 
 
+class GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        tls_cipher_suites: List[str] = None,
+    ):
+        self.config_type = config_type
+        self.tls_cipher_suites = tls_cipher_suites
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.tls_cipher_suites is not None:
+            result['TlsCipherSuites'] = self.tls_cipher_suites
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('TlsCipherSuites') is not None:
+            self.tls_cipher_suites = m.get('TlsCipherSuites')
+        return self
+
+
 class GetGatewayDomainDetailResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -25337,6 +25761,7 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
         name: str = None,
         protocol: str = None,
         sans: str = None,
+        tls_cipher_suites_config: GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
@@ -25383,13 +25808,15 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
         self.protocol = protocol
         # The name of the extended field.
         self.sans = sans
+        self.tls_cipher_suites_config = tls_cipher_suites_config
         # The maximum version of Transport Layer Security (TLS).
         self.tls_max = tls_max
         # The minimum version of TLS.
         self.tls_min = tls_min
 
     def validate(self):
-        pass
+        if self.tls_cipher_suites_config:
+            self.tls_cipher_suites_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25437,6 +25864,8 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
             result['Protocol'] = self.protocol
         if self.sans is not None:
             result['Sans'] = self.sans
+        if self.tls_cipher_suites_config is not None:
+            result['TlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
         if self.tls_max is not None:
             result['TlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -25485,6 +25914,9 @@ class GetGatewayDomainDetailResponseBodyData(TeaModel):
             self.protocol = m.get('Protocol')
         if m.get('Sans') is not None:
             self.sans = m.get('Sans')
+        if m.get('TlsCipherSuitesConfig') is not None:
+            temp_model = GetGatewayDomainDetailResponseBodyDataTlsCipherSuitesConfig()
+            self.tls_cipher_suites_config = temp_model.from_map(m['TlsCipherSuitesConfig'])
         if m.get('TlsMax') is not None:
             self.tls_max = m.get('TlsMax')
         if m.get('TlsMin') is not None:
@@ -43330,6 +43762,39 @@ class ListGatewayDomainResponseBodyDataComment(TeaModel):
         return self
 
 
+class ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        tls_cipher_suites: List[str] = None,
+    ):
+        self.config_type = config_type
+        self.tls_cipher_suites = tls_cipher_suites
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.tls_cipher_suites is not None:
+            result['TlsCipherSuites'] = self.tls_cipher_suites
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('TlsCipherSuites') is not None:
+            self.tls_cipher_suites = m.get('TlsCipherSuites')
+        return self
+
+
 class ListGatewayDomainResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -43346,6 +43811,7 @@ class ListGatewayDomainResponseBodyData(TeaModel):
         name: str = None,
         protocol: str = None,
         status: int = None,
+        tls_cipher_suites_config: ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig = None,
         tls_max: str = None,
         tls_min: str = None,
         type: str = None,
@@ -43386,6 +43852,7 @@ class ListGatewayDomainResponseBodyData(TeaModel):
         # *   5: unpublishing
         # *   6: unavailable
         self.status = status
+        self.tls_cipher_suites_config = tls_cipher_suites_config
         # The maximum version of Transport Layer Security (TLS).
         self.tls_max = tls_max
         # The minimum version of TLS.
@@ -43399,6 +43866,8 @@ class ListGatewayDomainResponseBodyData(TeaModel):
     def validate(self):
         if self.comment:
             self.comment.validate()
+        if self.tls_cipher_suites_config:
+            self.tls_cipher_suites_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -43432,6 +43901,8 @@ class ListGatewayDomainResponseBodyData(TeaModel):
             result['Protocol'] = self.protocol
         if self.status is not None:
             result['Status'] = self.status
+        if self.tls_cipher_suites_config is not None:
+            result['TlsCipherSuitesConfig'] = self.tls_cipher_suites_config.to_map()
         if self.tls_max is not None:
             result['TlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -43469,6 +43940,9 @@ class ListGatewayDomainResponseBodyData(TeaModel):
             self.protocol = m.get('Protocol')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TlsCipherSuitesConfig') is not None:
+            temp_model = ListGatewayDomainResponseBodyDataTlsCipherSuitesConfig()
+            self.tls_cipher_suites_config = temp_model.from_map(m['TlsCipherSuitesConfig'])
         if m.get('TlsMax') is not None:
             self.tls_max = m.get('TlsMax')
         if m.get('TlsMin') is not None:
@@ -64700,6 +65174,39 @@ class UpdateGatewayConfigResponse(TeaModel):
         return self
 
 
+class UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON(TeaModel):
+    def __init__(
+        self,
+        config_type: str = None,
+        tls_cipher_suites: List[str] = None,
+    ):
+        self.config_type = config_type
+        self.tls_cipher_suites = tls_cipher_suites
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.tls_cipher_suites is not None:
+            result['TlsCipherSuites'] = self.tls_cipher_suites
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('TlsCipherSuites') is not None:
+            self.tls_cipher_suites = m.get('TlsCipherSuites')
+        return self
+
+
 class UpdateGatewayDomainRequest(TeaModel):
     def __init__(
         self,
@@ -64710,6 +65217,7 @@ class UpdateGatewayDomainRequest(TeaModel):
         id: int = None,
         must_https: bool = None,
         protocol: str = None,
+        tls_cipher_suites_config_json: UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON = None,
         tls_max: str = None,
         tls_min: str = None,
     ):
@@ -64737,6 +65245,109 @@ class UpdateGatewayDomainRequest(TeaModel):
         # *   HTTPS
         # *   HTTP
         self.protocol = protocol
+        self.tls_cipher_suites_config_json = tls_cipher_suites_config_json
+        # The maximum version of Transport Layer Security (TLS).
+        self.tls_max = tls_max
+        # The minimum version of TLS.
+        self.tls_min = tls_min
+
+    def validate(self):
+        if self.tls_cipher_suites_config_json:
+            self.tls_cipher_suites_config_json.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+        if self.http_2 is not None:
+            result['Http2'] = self.http_2
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.must_https is not None:
+            result['MustHttps'] = self.must_https
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.tls_cipher_suites_config_json is not None:
+            result['TlsCipherSuitesConfigJSON'] = self.tls_cipher_suites_config_json.to_map()
+        if self.tls_max is not None:
+            result['TlsMax'] = self.tls_max
+        if self.tls_min is not None:
+            result['TlsMin'] = self.tls_min
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+        if m.get('Http2') is not None:
+            self.http_2 = m.get('Http2')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MustHttps') is not None:
+            self.must_https = m.get('MustHttps')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('TlsCipherSuitesConfigJSON') is not None:
+            temp_model = UpdateGatewayDomainRequestTlsCipherSuitesConfigJSON()
+            self.tls_cipher_suites_config_json = temp_model.from_map(m['TlsCipherSuitesConfigJSON'])
+        if m.get('TlsMax') is not None:
+            self.tls_max = m.get('TlsMax')
+        if m.get('TlsMin') is not None:
+            self.tls_min = m.get('TlsMin')
+        return self
+
+
+class UpdateGatewayDomainShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        cert_identifier: str = None,
+        gateway_unique_id: str = None,
+        http_2: str = None,
+        id: int = None,
+        must_https: bool = None,
+        protocol: str = None,
+        tls_cipher_suites_config_jsonshrink: str = None,
+        tls_max: str = None,
+        tls_min: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        self.accept_language = accept_language
+        # The ID of the certificate.
+        self.cert_identifier = cert_identifier
+        # The unique ID of the gateway.
+        self.gateway_unique_id = gateway_unique_id
+        # Specifies whether to enable `HTTP/2`.
+        # 
+        # *   `open`: `HTTP/2` is enabled.
+        # *   `close`: `HTTP/2` is disabled.
+        # *   `globalConfig`: Global configurations are used.
+        self.http_2 = http_2
+        # The ID of the domain name that you want to update.
+        self.id = id
+        # Specifies whether to forcibly use HTTPS.
+        self.must_https = must_https
+        # The type of the protocol. Valid values:
+        # 
+        # *   HTTPS
+        # *   HTTP
+        self.protocol = protocol
+        self.tls_cipher_suites_config_jsonshrink = tls_cipher_suites_config_jsonshrink
         # The maximum version of Transport Layer Security (TLS).
         self.tls_max = tls_max
         # The minimum version of TLS.
@@ -64765,6 +65376,8 @@ class UpdateGatewayDomainRequest(TeaModel):
             result['MustHttps'] = self.must_https
         if self.protocol is not None:
             result['Protocol'] = self.protocol
+        if self.tls_cipher_suites_config_jsonshrink is not None:
+            result['TlsCipherSuitesConfigJSON'] = self.tls_cipher_suites_config_jsonshrink
         if self.tls_max is not None:
             result['TlsMax'] = self.tls_max
         if self.tls_min is not None:
@@ -64787,6 +65400,8 @@ class UpdateGatewayDomainRequest(TeaModel):
             self.must_https = m.get('MustHttps')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
+        if m.get('TlsCipherSuitesConfigJSON') is not None:
+            self.tls_cipher_suites_config_jsonshrink = m.get('TlsCipherSuitesConfigJSON')
         if m.get('TlsMax') is not None:
             self.tls_max = m.get('TlsMax')
         if m.get('TlsMin') is not None:

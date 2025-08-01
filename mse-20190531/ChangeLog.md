@@ -1,3 +1,11 @@
+2025-08-01 Version: 6.20.0
+- Support API CreateSentinelBlockFallbackDefinition.
+- Update API AddGatewayDomain: add request parameters TlsCipherSuitesConfigJSON.
+- Update API GetGatewayDomainDetail: add response parameters Body.Data.TlsCipherSuitesConfig.
+- Update API ListGatewayDomain: add response parameters Body.Data.$.TlsCipherSuitesConfig.
+- Update API UpdateGatewayDomain: add request parameters TlsCipherSuitesConfigJSON.
+
+
 2025-06-19 Version: 6.19.2
 - Update API ListClusters: add request parameters VpcId.
 

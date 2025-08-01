@@ -984,17 +984,21 @@ class Client(OpenApiClient):
 
     def add_gateway_domain_with_options(
         self,
-        request: mse_20190531_models.AddGatewayDomainRequest,
+        tmp_req: mse_20190531_models.AddGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
         """
         @summary Associates a domain name with a gateway.
         
-        @param request: AddGatewayDomainRequest
+        @param tmp_req: AddGatewayDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGatewayDomainResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tls_cipher_suites_config_json):
+            request.tls_cipher_suites_config_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tls_cipher_suites_config_json, 'TlsCipherSuitesConfigJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -1010,6 +1014,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.protocol):
             query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config_jsonshrink):
+            query['TlsCipherSuitesConfigJSON'] = request.tls_cipher_suites_config_jsonshrink
         if not UtilClient.is_unset(request.tls_max):
             query['TlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -1035,17 +1041,21 @@ class Client(OpenApiClient):
 
     async def add_gateway_domain_with_options_async(
         self,
-        request: mse_20190531_models.AddGatewayDomainRequest,
+        tmp_req: mse_20190531_models.AddGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
         """
         @summary Associates a domain name with a gateway.
         
-        @param request: AddGatewayDomainRequest
+        @param tmp_req: AddGatewayDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddGatewayDomainResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.AddGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tls_cipher_suites_config_json):
+            request.tls_cipher_suites_config_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tls_cipher_suites_config_json, 'TlsCipherSuitesConfigJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -1061,6 +1071,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.protocol):
             query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config_jsonshrink):
+            query['TlsCipherSuitesConfigJSON'] = request.tls_cipher_suites_config_jsonshrink
         if not UtilClient.is_unset(request.tls_max):
             query['TlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -5353,6 +5365,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_plugin_config_with_options_async(request, runtime)
+
+    def create_sentinel_block_fallback_definition_with_options(
+        self,
+        request: mse_20190531_models.CreateSentinelBlockFallbackDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 创建行为管理
+        
+        @param request: CreateSentinelBlockFallbackDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSentinelBlockFallbackDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.fallback_behavior):
+            query['FallbackBehavior'] = request.fallback_behavior
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSentinelBlockFallbackDefinition',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sentinel_block_fallback_definition_with_options_async(
+        self,
+        request: mse_20190531_models.CreateSentinelBlockFallbackDefinitionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 创建行为管理
+        
+        @param request: CreateSentinelBlockFallbackDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSentinelBlockFallbackDefinitionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.fallback_behavior):
+            query['FallbackBehavior'] = request.fallback_behavior
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_classification):
+            query['ResourceClassification'] = request.resource_classification
+        if not UtilClient.is_unset(request.scenario):
+            query['Scenario'] = request.scenario
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSentinelBlockFallbackDefinition',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sentinel_block_fallback_definition(
+        self,
+        request: mse_20190531_models.CreateSentinelBlockFallbackDefinitionRequest,
+    ) -> mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 创建行为管理
+        
+        @param request: CreateSentinelBlockFallbackDefinitionRequest
+        @return: CreateSentinelBlockFallbackDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sentinel_block_fallback_definition_with_options(request, runtime)
+
+    async def create_sentinel_block_fallback_definition_async(
+        self,
+        request: mse_20190531_models.CreateSentinelBlockFallbackDefinitionRequest,
+    ) -> mse_20190531_models.CreateSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 创建行为管理
+        
+        @param request: CreateSentinelBlockFallbackDefinitionRequest
+        @return: CreateSentinelBlockFallbackDefinitionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sentinel_block_fallback_definition_with_options_async(request, runtime)
 
     def create_web_flow_rule_with_options(
         self,
@@ -24716,17 +24864,21 @@ class Client(OpenApiClient):
 
     def update_gateway_domain_with_options(
         self,
-        request: mse_20190531_models.UpdateGatewayDomainRequest,
+        tmp_req: mse_20190531_models.UpdateGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
         """
         @summary Modifies the information about the domain name associated with a gateway.
         
-        @param request: UpdateGatewayDomainRequest
+        @param tmp_req: UpdateGatewayDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateGatewayDomainResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tls_cipher_suites_config_json):
+            request.tls_cipher_suites_config_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tls_cipher_suites_config_json, 'TlsCipherSuitesConfigJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -24742,6 +24894,8 @@ class Client(OpenApiClient):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.protocol):
             query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config_jsonshrink):
+            query['TlsCipherSuitesConfigJSON'] = request.tls_cipher_suites_config_jsonshrink
         if not UtilClient.is_unset(request.tls_max):
             query['TlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
@@ -24767,17 +24921,21 @@ class Client(OpenApiClient):
 
     async def update_gateway_domain_with_options_async(
         self,
-        request: mse_20190531_models.UpdateGatewayDomainRequest,
+        tmp_req: mse_20190531_models.UpdateGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
         """
         @summary Modifies the information about the domain name associated with a gateway.
         
-        @param request: UpdateGatewayDomainRequest
+        @param tmp_req: UpdateGatewayDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateGatewayDomainResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = mse_20190531_models.UpdateGatewayDomainShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tls_cipher_suites_config_json):
+            request.tls_cipher_suites_config_jsonshrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tls_cipher_suites_config_json, 'TlsCipherSuitesConfigJSON', 'json')
         query = {}
         if not UtilClient.is_unset(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
@@ -24793,6 +24951,8 @@ class Client(OpenApiClient):
             query['MustHttps'] = request.must_https
         if not UtilClient.is_unset(request.protocol):
             query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.tls_cipher_suites_config_jsonshrink):
+            query['TlsCipherSuitesConfigJSON'] = request.tls_cipher_suites_config_jsonshrink
         if not UtilClient.is_unset(request.tls_max):
             query['TlsMax'] = request.tls_max
         if not UtilClient.is_unset(request.tls_min):
