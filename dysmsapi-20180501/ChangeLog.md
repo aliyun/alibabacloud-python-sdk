@@ -1,3 +1,7 @@
+2025-08-01 Version: 1.0.9
+- Update API SendMessageToGlobe: add request parameters Type.
+
+
 2024-12-10 Version: 1.0.8
 - Update API SmsConversion: add param To.
 - Update API SmsConversion: update param MessageId.

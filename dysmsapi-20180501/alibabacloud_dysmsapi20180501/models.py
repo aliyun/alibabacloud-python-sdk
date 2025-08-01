@@ -15,8 +15,9 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         type: str = None,
         validity_period: int = None,
     ):
+        # The ID of the delivery channel.
         self.channel_id = channel_id
-        # The mobile phone number of the sender. You can also specify a sender ID. The sender ID can contain both letters and digits. If it does, the ID must be between 1 to 11 characters in length. If the sender ID contains only digits, it must be 1 to 15 characters in length.
+        # The mobile phone number of the sender. You can specify the sender ID when you call the API operation. The sender ID can contain only digits and letters. If the sender ID contains letters, it can be a maximum of 11 characters in length. If the sender ID contains only digits, it can be a maximum of 15 characters in length.
         self.from_ = from_
         # The content of the message.
         # 
@@ -24,9 +25,9 @@ class BatchSendMessageToGlobeRequest(TeaModel):
         self.message = message
         # The ID of the messaging campaign. It must be 1 to 255 characters in length. The ID is the value of the TaskId field in the delivery receipt of the message.
         self.task_id = task_id
-        # The mobile phone numbers to which the message is sent. You must add the dialing code to the beginning of each mobile phone number.
+        # The mobile phone number of the recipient. You must add the dialing code to the beginning of each mobile phone number.
         # 
-        # For more information, see [Dialing codes](https://www.alibabacloud.com/help/en/short-message-service/latest/dialing-codes).
+        # For more information, see [Dialing codes](https://help.aliyun.com/document_detail/158400.html).
         # 
         # This parameter is required.
         self.to = to
@@ -93,19 +94,19 @@ class BatchSendMessageToGlobeResponseBody(TeaModel):
         response_description: str = None,
         success_count: str = None,
     ):
-        # The list of mobile phone numbers that failed to receive the message.
+        # The list of the mobile phone numbers that failed to receive the messages.
         self.failed_list = failed_list
-        # The sender ID returned.
+        # The sender ID that was returned. The API operation returns the sender ID that you have specified in the request parameters.
         self.from_ = from_
-        # The ID of the message.
+        # The ID of the sent message.
         self.message_id_list = message_id_list
         # The ID of the request.
         self.request_id = request_id
-        # The status code. If OK is returned, the request is successful. For more information, see [Error codes](https://www.alibabacloud.com/help/en/short-message-service/latest/error-codes).
+        # The HTTP status code. If OK is returned, the request is successful. For more information, see [Error codes](https://help.aliyun.com/document_detail/180674.html).
         self.response_code = response_code
         # The description of the status code.
         self.response_description = response_description
-        # The number of mobile phone numbers that received the message.
+        # The number of sent messages.
         self.success_count = success_count
 
     def validate(self):
@@ -549,6 +550,7 @@ class SendMessageToGlobeRequest(TeaModel):
         message: str = None,
         task_id: str = None,
         to: str = None,
+        type: str = None,
         validity_period: int = None,
     ):
         # The ID of the channel.
@@ -569,6 +571,7 @@ class SendMessageToGlobeRequest(TeaModel):
         # 
         # This parameter is required.
         self.to = to
+        self.type = type
         # The validity period of the message. Unit: seconds.
         self.validity_period = validity_period
 
@@ -591,6 +594,8 @@ class SendMessageToGlobeRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.to is not None:
             result['To'] = self.to
+        if self.type is not None:
+            result['Type'] = self.type
         if self.validity_period is not None:
             result['ValidityPeriod'] = self.validity_period
         return result
@@ -607,6 +612,8 @@ class SendMessageToGlobeRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('To') is not None:
             self.to = m.get('To')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('ValidityPeriod') is not None:
             self.validity_period = m.get('ValidityPeriod')
         return self
@@ -1026,6 +1033,9 @@ class SmsConversionRequest(TeaModel):
         self.delivered = delivered
         # The ID of the OTP message.
         self.message_id = message_id
+        # The mobile phone number of the recipient. You must add the dialing code to the beginning of the mobile phone number.
+        # 
+        # For more information, see [Dialing codes](https://help.aliyun.com/document_detail/158400.html).
         self.to = to
 
     def validate(self):

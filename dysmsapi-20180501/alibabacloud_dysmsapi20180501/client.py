@@ -57,12 +57,11 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to multiple recipients in countries or regions outside the Chinese mainland.
         
-        @description    You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
-        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
-        For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+        @description ## Usage notes
+        You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a small number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+        To ensure that messages can be sent on time, call the [SendMessageToGlobe](https://help.aliyun.com/document_detail/406238.html) operation.
         In each request, you can send messages to up to 1,000 mobile phone numbers.
-        ### [](#qps-)QPS limit
-        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: BatchSendMessageToGlobeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -111,12 +110,11 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to multiple recipients in countries or regions outside the Chinese mainland.
         
-        @description    You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
-        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
-        For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+        @description ## Usage notes
+        You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a small number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+        To ensure that messages can be sent on time, call the [SendMessageToGlobe](https://help.aliyun.com/document_detail/406238.html) operation.
         In each request, you can send messages to up to 1,000 mobile phone numbers.
-        ### [](#qps-)QPS limit
-        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: BatchSendMessageToGlobeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -164,12 +162,11 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to multiple recipients in countries or regions outside the Chinese mainland.
         
-        @description    You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
-        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
-        For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+        @description ## Usage notes
+        You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a small number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+        To ensure that messages can be sent on time, call the [SendMessageToGlobe](https://help.aliyun.com/document_detail/406238.html) operation.
         In each request, you can send messages to up to 1,000 mobile phone numbers.
-        ### [](#qps-)QPS limit
-        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: BatchSendMessageToGlobeRequest
         @return: BatchSendMessageToGlobeResponse
@@ -184,12 +181,11 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to multiple recipients in countries or regions outside the Chinese mainland.
         
-        @description    You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
-        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a limited number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature in the SMS console.
-        For time-sensitive related messages, we recommend that you use the [SendMessageToGlobe](https://www.alibabacloud.com/help/en/sms/developer-reference/api-dysmsapi-2018-05-01-batchsendmessagetoglobe) operation to ensure that messages are delivered on time.
+        @description ## Usage notes
+        You cannot call the BatchSendMessageToGlobe operation to send messages to the Chinese mainland.
+        You can call the BatchSendMessageToGlobe operation to send notifications and promotional messages to a small number of mobile phone numbers at a time. To send messages to a large number of mobile phone numbers at a time, use the mass messaging feature of the SMS console.
+        To ensure that messages can be sent on time, call the [SendMessageToGlobe](https://help.aliyun.com/document_detail/406238.html) operation.
         In each request, you can send messages to up to 1,000 mobile phone numbers.
-        ### [](#qps-)QPS limit
-        You can call this operation only once per second. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: BatchSendMessageToGlobeRequest
         @return: BatchSendMessageToGlobeResponse
@@ -433,10 +429,10 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to regions outside the Chinese mainland.
         
-        @description ### [](#)Usage notes
+        @description ### [](#)
         The SendMessageToGlobe API operation does not support message delivery to the Chinese mainland.
         ### [](#qps-)QPS limit
-        You can call this operation up to 30 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can call this operation up to 2,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: SendMessageToGlobeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -454,6 +450,8 @@ class Client(OpenApiClient):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.validity_period):
             query['ValidityPeriod'] = request.validity_period
         req = open_api_models.OpenApiRequest(
@@ -483,10 +481,10 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to regions outside the Chinese mainland.
         
-        @description ### [](#)Usage notes
+        @description ### [](#)
         The SendMessageToGlobe API operation does not support message delivery to the Chinese mainland.
         ### [](#qps-)QPS limit
-        You can call this operation up to 30 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can call this operation up to 2,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: SendMessageToGlobeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -504,6 +502,8 @@ class Client(OpenApiClient):
             query['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.to):
             query['To'] = request.to
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.validity_period):
             query['ValidityPeriod'] = request.validity_period
         req = open_api_models.OpenApiRequest(
@@ -532,10 +532,10 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to regions outside the Chinese mainland.
         
-        @description ### [](#)Usage notes
+        @description ### [](#)
         The SendMessageToGlobe API operation does not support message delivery to the Chinese mainland.
         ### [](#qps-)QPS limit
-        You can call this operation up to 30 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can call this operation up to 2,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: SendMessageToGlobeRequest
         @return: SendMessageToGlobeResponse
@@ -550,10 +550,10 @@ class Client(OpenApiClient):
         """
         @summary Sends a message to regions outside the Chinese mainland.
         
-        @description ### [](#)Usage notes
+        @description ### [](#)
         The SendMessageToGlobe API operation does not support message delivery to the Chinese mainland.
         ### [](#qps-)QPS limit
-        You can call this operation up to 30 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        You can call this operation up to 2,000 times per second per account. Requests that exceed this limit are dropped and you will experience service interruptions. We recommend that you take note of this limit when you call this operation.
         
         @param request: SendMessageToGlobeRequest
         @return: SendMessageToGlobeResponse
@@ -706,8 +706,8 @@ class Client(OpenApiClient):
         Verified OTP messages
         An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
         > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
-        >  Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
-        >  Manually degrade your services or use a circuit breaker to automatically degrade services.
+        >   Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+        >   Manually degrade your services or use a circuit breaker to automatically degrade services.
         
         @param request: SmsConversionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -755,8 +755,8 @@ class Client(OpenApiClient):
         Verified OTP messages
         An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
         > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
-        >  Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
-        >  Manually degrade your services or use a circuit breaker to automatically degrade services.
+        >   Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+        >   Manually degrade your services or use a circuit breaker to automatically degrade services.
         
         @param request: SmsConversionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -803,8 +803,8 @@ class Client(OpenApiClient):
         Verified OTP messages
         An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
         > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
-        >  Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
-        >  Manually degrade your services or use a circuit breaker to automatically degrade services.
+        >   Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+        >   Manually degrade your services or use a circuit breaker to automatically degrade services.
         
         @param request: SmsConversionRequest
         @return: SmsConversionResponse
@@ -824,8 +824,8 @@ class Client(OpenApiClient):
         Verified OTP messages
         An OTP conversion rate is calculated based on the following formula: OTP conversion rate = Number of verified OTP messages/Number of requested OTP messages.
         > If you call the SmsConversion operation to query OTP conversion rates, your business may be affected. We recommend that you perform the following operations:
-        >  Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
-        >  Manually degrade your services or use a circuit breaker to automatically degrade services.
+        >   Call the SmsConversion operation in an asynchronous manner by configuring queues or events.
+        >   Manually degrade your services or use a circuit breaker to automatically degrade services.
         
         @param request: SmsConversionRequest
         @return: SmsConversionResponse
