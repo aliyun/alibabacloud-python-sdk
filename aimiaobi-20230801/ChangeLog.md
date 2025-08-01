@@ -1,3 +1,28 @@
+2025-08-01 Version: 1.32.0
+- Support API ConfirmAndPostProcessAuditNote.
+- Support API DeleteAuditNote.
+- Support API DownloadAuditNote.
+- Support API GetAuditNotePostProcessingStatus.
+- Support API GetAuditNoteProcessingStatus.
+- Support API GetAvailableAuditNotes.
+- Support API SubmitAuditNote.
+- Update API AsyncCreateClipsTask: add response parameters Body.HttpStatusCode.
+- Update API AsyncCreateClipsTask: add response parameters Body.Message.
+- Update API AsyncCreateClipsTask: add response parameters Body.Success.
+- Update API AsyncCreateClipsTimeLine: add response parameters Body.HttpStatusCode.
+- Update API AsyncCreateClipsTimeLine: add response parameters Body.Message.
+- Update API AsyncCreateClipsTimeLine: add response parameters Body.Success.
+- Update API AsyncEditTimeline: add response parameters Body.HttpStatusCode.
+- Update API AsyncEditTimeline: add response parameters Body.Message.
+- Update API AsyncEditTimeline: add response parameters Body.Success.
+- Update API AsyncUploadVideo: add response parameters Body.HttpStatusCode.
+- Update API AsyncUploadVideo: add response parameters Body.Message.
+- Update API AsyncUploadVideo: add response parameters Body.Success.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.HttpStatusCode.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Message.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Success.
+
+
 2025-07-28 Version: 1.31.3
 - Generated python 2023-08-01 for AiMiaoBi.
 

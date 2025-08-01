@@ -1065,6 +1065,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clear_intervenes_with_options_async(request, runtime)
 
+    def confirm_and_post_process_audit_note_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse:
+        """
+        @summary 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+        
+        @param request: ConfirmAndPostProcessAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmAndPostProcessAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmAndPostProcessAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_and_post_process_audit_note_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse:
+        """
+        @summary 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+        
+        @param request: ConfirmAndPostProcessAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfirmAndPostProcessAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ConfirmAndPostProcessAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_and_post_process_audit_note(
+        self,
+        request: ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse:
+        """
+        @summary 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+        
+        @param request: ConfirmAndPostProcessAuditNoteRequest
+        @return: ConfirmAndPostProcessAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.confirm_and_post_process_audit_note_with_options(request, runtime)
+
+    async def confirm_and_post_process_audit_note_async(
+        self,
+        request: ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.ConfirmAndPostProcessAuditNoteResponse:
+        """
+        @summary 是否将本次提交自定义规则库得到的解析结果用于审核任务。由于解析结果可能不满足用户需求，因此我们为您提供了该接口用于二次确认。如果对提交的规则库解析满意，则可以直接将本次提交任务的 TaskId 作为入参，系统会对您上传的规则库做后处理，使它可以被用于审核。反之，您可以重新调用 SubmitAuditNote 接口上传修改之后的规则库。
+        
+        @param request: ConfirmAndPostProcessAuditNoteRequest
+        @return: ConfirmAndPostProcessAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.confirm_and_post_process_audit_note_with_options_async(request, runtime)
+
     def create_dataset_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.CreateDatasetRequest,
@@ -1436,6 +1536,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_token_with_options_async(request, runtime)
+
+    def delete_audit_note_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditNoteResponse:
+        """
+        @summary 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+        
+        @param request: DeleteAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteAuditNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_audit_note_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditNoteResponse:
+        """
+        @summary 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+        
+        @param request: DeleteAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteAuditNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_audit_note(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditNoteResponse:
+        """
+        @summary 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+        
+        @param request: DeleteAuditNoteRequest
+        @return: DeleteAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_audit_note_with_options(request, runtime)
+
+    async def delete_audit_note_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteAuditNoteResponse:
+        """
+        @summary 删除用户账户下所有可供审核使用的自定义规则库。删除后无法找回，如果您有对规则库存档的需求，请预先使用 DownloadAuditNote 接口保存需要的规则库。
+        
+        @param request: DeleteAuditNoteRequest
+        @return: DeleteAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_audit_note_with_options_async(request, runtime)
 
     def delete_audit_terms_with_options(
         self,
@@ -2712,6 +2908,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.document_extraction_with_options_async(request, runtime)
+
+    def download_audit_note_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DownloadAuditNoteResponse:
+        """
+        @summary 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+        
+        @param request: DownloadAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DownloadAuditNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_audit_note_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DownloadAuditNoteResponse:
+        """
+        @summary 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+        
+        @param request: DownloadAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DownloadAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DownloadAuditNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_audit_note(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.DownloadAuditNoteResponse:
+        """
+        @summary 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+        
+        @param request: DownloadAuditNoteRequest
+        @return: DownloadAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_audit_note_with_options(request, runtime)
+
+    async def download_audit_note_async(
+        self,
+        request: ai_miao_bi_20230801_models.DownloadAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.DownloadAuditNoteResponse:
+        """
+        @summary 您可以通过调用该接口下载结构化后的规则库，供您进行进一步处理。该接口同时拥有两个功能：下载未后处理的结构化规则库，或下载当前可用于审核的结构化规则库。具体使用方法，请参考入参说明。
+        
+        @param request: DownloadAuditNoteRequest
+        @return: DownloadAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_audit_note_with_options_async(request, runtime)
 
     def edit_audit_terms_with_options(
         self,
@@ -4585,6 +4881,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_view_point_with_options_async(request, runtime)
 
+    def get_audit_note_post_processing_status_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse:
+        """
+        @summary 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+        
+        @param request: GetAuditNotePostProcessingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditNotePostProcessingStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAuditNotePostProcessingStatus',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audit_note_post_processing_status_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse:
+        """
+        @summary 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+        
+        @param request: GetAuditNotePostProcessingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditNotePostProcessingStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAuditNotePostProcessingStatus',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audit_note_post_processing_status(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusRequest,
+    ) -> ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse:
+        """
+        @summary 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+        
+        @param request: GetAuditNotePostProcessingStatusRequest
+        @return: GetAuditNotePostProcessingStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_audit_note_post_processing_status_with_options(request, runtime)
+
+    async def get_audit_note_post_processing_status_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusRequest,
+    ) -> ai_miao_bi_20230801_models.GetAuditNotePostProcessingStatusResponse:
+        """
+        @summary 查询规则库后处理的进度。与 ConfirmAndPostProcessAuditNote 接口配合使用，供您查询当前后处理任务的状态。
+        
+        @param request: GetAuditNotePostProcessingStatusRequest
+        @return: GetAuditNotePostProcessingStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audit_note_post_processing_status_with_options_async(request, runtime)
+
+    def get_audit_note_processing_status_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse:
+        """
+        @summary 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+        
+        @param request: GetAuditNoteProcessingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditNoteProcessingStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAuditNoteProcessingStatus',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_audit_note_processing_status_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse:
+        """
+        @summary 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+        
+        @param request: GetAuditNoteProcessingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuditNoteProcessingStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAuditNoteProcessingStatus',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_audit_note_processing_status(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusRequest,
+    ) -> ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse:
+        """
+        @summary 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+        
+        @param request: GetAuditNoteProcessingStatusRequest
+        @return: GetAuditNoteProcessingStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_audit_note_processing_status_with_options(request, runtime)
+
+    async def get_audit_note_processing_status_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusRequest,
+    ) -> ai_miao_bi_20230801_models.GetAuditNoteProcessingStatusResponse:
+        """
+        @summary 查询用户上传规则库的处理状态。通过该接口，用户可以查询到当前规则库上传任务的状态，并获取到解析后的规则库文件大小、存储路径等信息。
+        
+        @param request: GetAuditNoteProcessingStatusRequest
+        @return: GetAuditNoteProcessingStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_audit_note_processing_status_with_options_async(request, runtime)
+
     def get_auto_clips_task_info_with_options(
         self,
         request: ai_miao_bi_20230801_models.GetAutoClipsTaskInfoRequest,
@@ -4684,6 +5180,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_clips_task_info_with_options_async(request, runtime)
+
+    def get_available_audit_notes_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetAvailableAuditNotesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse:
+        """
+        @summary 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+        
+        @param request: GetAvailableAuditNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailableAuditNotesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAvailableAuditNotes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_available_audit_notes_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAvailableAuditNotesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse:
+        """
+        @summary 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+        
+        @param request: GetAvailableAuditNotesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailableAuditNotesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetAvailableAuditNotes',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_available_audit_notes(
+        self,
+        request: ai_miao_bi_20230801_models.GetAvailableAuditNotesRequest,
+    ) -> ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse:
+        """
+        @summary 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+        
+        @param request: GetAvailableAuditNotesRequest
+        @return: GetAvailableAuditNotesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_available_audit_notes_with_options(request, runtime)
+
+    async def get_available_audit_notes_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetAvailableAuditNotesRequest,
+    ) -> ai_miao_bi_20230801_models.GetAvailableAuditNotesResponse:
+        """
+        @summary 查询用户当前可供审核的规则库信息，只能查询到当前可用于审核的规则库。如果您想看到自定义规则库的具体内容，请使用 DownloadAuditNote 接口。
+        
+        @param request: GetAvailableAuditNotesRequest
+        @return: GetAvailableAuditNotesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_available_audit_notes_with_options_async(request, runtime)
 
     def get_categories_by_task_id_with_options(
         self,
@@ -16672,6 +17264,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_async_task_with_options_async(request, runtime)
+
+    def submit_audit_note_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitAuditNoteResponse:
+        """
+        @summary 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+        
+        @param request: SubmitAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitAuditNoteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_audit_note_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitAuditNoteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitAuditNoteResponse:
+        """
+        @summary 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+        
+        @param request: SubmitAuditNoteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAuditNoteResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['FileKey'] = request.file_key
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitAuditNote',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitAuditNoteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_audit_note(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitAuditNoteResponse:
+        """
+        @summary 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+        
+        @param request: SubmitAuditNoteRequest
+        @return: SubmitAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_audit_note_with_options(request, runtime)
+
+    async def submit_audit_note_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitAuditNoteRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitAuditNoteResponse:
+        """
+        @summary 妙笔为您提供了与公有云“智能审校”模块中相同的上传自定义规则库的功能。由于鉴权限制，用户需要开通阿里云 OSS 服务后，将自定义规则库文件上传到 OSS 中，再使用该文件的 fileKey 作为入参才能顺利调用本接口。该接口在被调用后，会对用户的自定义规则库进行结构化处理，并生成一个 xlsx 格式的结构化解析结果。您可以调用 GetAuditNoteProcessingStatus 接口查询结构化处理状态，也可以调用 DownloadAuditNote 接口获取结构化之后的规则库。接口功能正在迭代中，预计会在未来使用可访问的文件 URL 作为入参。
+        
+        @param request: SubmitAuditNoteRequest
+        @return: SubmitAuditNoteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_audit_note_with_options_async(request, runtime)
 
     def submit_audit_task_with_options(
         self,
