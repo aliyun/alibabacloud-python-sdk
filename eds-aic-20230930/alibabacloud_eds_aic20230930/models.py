@@ -5926,6 +5926,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         rate: int = None,
         region_id: str = None,
         rendering_type: str = None,
+        server_status: str = None,
         server_type: str = None,
         session_status: str = None,
         stream_mode: int = None,
@@ -6004,6 +6005,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.region_id = region_id
         # The rendering type.
         self.rendering_type = rendering_type
+        self.server_status = server_status
         self.server_type = server_type
         # The session status.
         # 
@@ -6129,6 +6131,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['RegionId'] = self.region_id
         if self.rendering_type is not None:
             result['RenderingType'] = self.rendering_type
+        if self.server_status is not None:
+            result['ServerStatus'] = self.server_status
         if self.server_type is not None:
             result['ServerType'] = self.server_type
         if self.session_status is not None:
@@ -6238,6 +6242,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RenderingType') is not None:
             self.rendering_type = m.get('RenderingType')
+        if m.get('ServerStatus') is not None:
+            self.server_status = m.get('ServerStatus')
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
         if m.get('SessionStatus') is not None:
