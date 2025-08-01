@@ -1,3 +1,6 @@
+2025-08-01 Version: 4.11.2
+- Generated python 2023-09-30 for eds-aic.
+
 2025-08-01 Version: 4.11.1
 - Generated python 2023-09-30 for eds-aic.
 
