@@ -4500,8 +4500,10 @@ class InitialSysomRequest(TeaModel):
     def __init__(
         self,
         check_only: bool = None,
+        source: str = None,
     ):
         self.check_only = check_only
+        self.source = source
 
     def validate(self):
         pass
@@ -4514,12 +4516,16 @@ class InitialSysomRequest(TeaModel):
         result = dict()
         if self.check_only is not None:
             result['check_only'] = self.check_only
+        if self.source is not None:
+            result['source'] = self.source
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('check_only') is not None:
             self.check_only = m.get('check_only')
+        if m.get('source') is not None:
+            self.source = m.get('source')
         return self
 
 

@@ -1,3 +1,7 @@
+2025-08-01 Version: 1.11.1
+- Update API InitialSysom: add request parameters body.source.
+
+
 2025-07-08 Version: 1.11.0
 - Support API StartAIDiffAnalysis.
 - Update API StartAIAnalysis: add request parameters body.analysis_params.
