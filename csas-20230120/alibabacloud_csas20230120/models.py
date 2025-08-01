@@ -5671,11 +5671,58 @@ class CreateUserGroupResponse(TeaModel):
         return self
 
 
+class CreateWmBaseImageRequestImageControlLogoVisibleControlMargin(TeaModel):
+    def __init__(
+        self,
+        bottom: float = None,
+        left: float = None,
+        right: float = None,
+        top: float = None,
+    ):
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.top = top
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottom is not None:
+            result['Bottom'] = self.bottom
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.right is not None:
+            result['Right'] = self.right
+        if self.top is not None:
+            result['Top'] = self.top
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottom') is not None:
+            self.bottom = m.get('Bottom')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Right') is not None:
+            self.right = m.get('Right')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        return self
+
+
 class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
     def __init__(
         self,
         angle: int = None,
+        enhance: bool = None,
         logo_base_64: str = None,
+        margin: CreateWmBaseImageRequestImageControlLogoVisibleControlMargin = None,
         mode: str = None,
         opacity: int = None,
         pos_ax: float = None,
@@ -5687,7 +5734,9 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
         visible: bool = None,
     ):
         self.angle = angle
+        self.enhance = enhance
         self.logo_base_64 = logo_base_64
+        self.margin = margin
         self.mode = mode
         self.opacity = opacity
         self.pos_ax = pos_ax
@@ -5699,7 +5748,8 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
         self.visible = visible
 
     def validate(self):
-        pass
+        if self.margin:
+            self.margin.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5709,8 +5759,12 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
         result = dict()
         if self.angle is not None:
             result['Angle'] = self.angle
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.logo_base_64 is not None:
             result['LogoBase64'] = self.logo_base_64
+        if self.margin is not None:
+            result['Margin'] = self.margin.to_map()
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.opacity is not None:
@@ -5735,8 +5789,13 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
         m = m or dict()
         if m.get('Angle') is not None:
             self.angle = m.get('Angle')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('LogoBase64') is not None:
             self.logo_base_64 = m.get('LogoBase64')
+        if m.get('Margin') is not None:
+            temp_model = CreateWmBaseImageRequestImageControlLogoVisibleControlMargin()
+            self.margin = temp_model.from_map(m['Margin'])
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('Opacity') is not None:
@@ -5758,12 +5817,58 @@ class CreateWmBaseImageRequestImageControlLogoVisibleControl(TeaModel):
         return self
 
 
+class CreateWmBaseImageRequestImageControlTextVisibleControlMargin(TeaModel):
+    def __init__(
+        self,
+        bottom: float = None,
+        left: float = None,
+        right: float = None,
+        top: float = None,
+    ):
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.top = top
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottom is not None:
+            result['Bottom'] = self.bottom
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.right is not None:
+            result['Right'] = self.right
+        if self.top is not None:
+            result['Top'] = self.top
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottom') is not None:
+            self.bottom = m.get('Bottom')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Right') is not None:
+            self.right = m.get('Right')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        return self
+
+
 class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
     def __init__(
         self,
         angle: int = None,
         font_color: str = None,
         font_size: int = None,
+        margin: CreateWmBaseImageRequestImageControlTextVisibleControlMargin = None,
         mode: str = None,
         opacity: int = None,
         pos_ax: float = None,
@@ -5778,6 +5883,7 @@ class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
         self.angle = angle
         self.font_color = font_color
         self.font_size = font_size
+        self.margin = margin
         self.mode = mode
         self.opacity = opacity
         self.pos_ax = pos_ax
@@ -5790,7 +5896,8 @@ class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
         self.visible_text = visible_text
 
     def validate(self):
-        pass
+        if self.margin:
+            self.margin.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5804,6 +5911,8 @@ class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
             result['FontColor'] = self.font_color
         if self.font_size is not None:
             result['FontSize'] = self.font_size
+        if self.margin is not None:
+            result['Margin'] = self.margin.to_map()
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.opacity is not None:
@@ -5834,6 +5943,9 @@ class CreateWmBaseImageRequestImageControlTextVisibleControl(TeaModel):
             self.font_color = m.get('FontColor')
         if m.get('FontSize') is not None:
             self.font_size = m.get('FontSize')
+        if m.get('Margin') is not None:
+            temp_model = CreateWmBaseImageRequestImageControlTextVisibleControlMargin()
+            self.margin = temp_model.from_map(m['Margin'])
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('Opacity') is not None:
@@ -5907,6 +6019,7 @@ class CreateWmBaseImageRequest(TeaModel):
         wm_info_size: int = None,
         wm_info_uint: str = None,
         wm_type: str = None,
+        comment: str = None,
     ):
         # This parameter is required.
         self.height = height
@@ -5922,6 +6035,7 @@ class CreateWmBaseImageRequest(TeaModel):
         self.wm_info_uint = wm_info_uint
         # This parameter is required.
         self.wm_type = wm_type
+        self.comment = comment
 
     def validate(self):
         if self.image_control:
@@ -5951,6 +6065,8 @@ class CreateWmBaseImageRequest(TeaModel):
             result['WmInfoUint'] = self.wm_info_uint
         if self.wm_type is not None:
             result['WmType'] = self.wm_type
+        if self.comment is not None:
+            result['comment'] = self.comment
         return result
 
     def from_map(self, m: dict = None):
@@ -5974,6 +6090,8 @@ class CreateWmBaseImageRequest(TeaModel):
             self.wm_info_uint = m.get('WmInfoUint')
         if m.get('WmType') is not None:
             self.wm_type = m.get('WmType')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
         return self
 
 
@@ -5989,6 +6107,7 @@ class CreateWmBaseImageShrinkRequest(TeaModel):
         wm_info_size: int = None,
         wm_info_uint: str = None,
         wm_type: str = None,
+        comment: str = None,
     ):
         # This parameter is required.
         self.height = height
@@ -6004,6 +6123,7 @@ class CreateWmBaseImageShrinkRequest(TeaModel):
         self.wm_info_uint = wm_info_uint
         # This parameter is required.
         self.wm_type = wm_type
+        self.comment = comment
 
     def validate(self):
         pass
@@ -6032,6 +6152,8 @@ class CreateWmBaseImageShrinkRequest(TeaModel):
             result['WmInfoUint'] = self.wm_info_uint
         if self.wm_type is not None:
             result['WmType'] = self.wm_type
+        if self.comment is not None:
+            result['comment'] = self.comment
         return result
 
     def from_map(self, m: dict = None):
@@ -6054,6 +6176,8 @@ class CreateWmBaseImageShrinkRequest(TeaModel):
             self.wm_info_uint = m.get('WmInfoUint')
         if m.get('WmType') is not None:
             self.wm_type = m.get('WmType')
+        if m.get('comment') is not None:
+            self.comment = m.get('comment')
         return self
 
 
@@ -6797,6 +6921,33 @@ class CreateWmExtractTaskRequestCsvControl(TeaModel):
         return self
 
 
+class CreateWmExtractTaskRequestImageExtractParamsOpenApi(TeaModel):
+    def __init__(
+        self,
+        src_logo_base_64: str = None,
+    ):
+        self.src_logo_base_64 = src_logo_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.src_logo_base_64 is not None:
+            result['SrcLogoBase64'] = self.src_logo_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SrcLogoBase64') is not None:
+            self.src_logo_base_64 = m.get('SrcLogoBase64')
+        return self
+
+
 class CreateWmExtractTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6804,6 +6955,7 @@ class CreateWmExtractTaskRequest(TeaModel):
         document_is_capture: bool = None,
         file_url: str = None,
         filename: str = None,
+        image_extract_params_open_api: CreateWmExtractTaskRequestImageExtractParamsOpenApi = None,
         is_client_embed: bool = None,
         video_is_long: bool = None,
         video_speed: str = None,
@@ -6825,6 +6977,7 @@ class CreateWmExtractTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.filename = filename
+        self.image_extract_params_open_api = image_extract_params_open_api
         self.is_client_embed = is_client_embed
         # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
         # 
@@ -6858,6 +7011,8 @@ class CreateWmExtractTaskRequest(TeaModel):
     def validate(self):
         if self.csv_control:
             self.csv_control.validate()
+        if self.image_extract_params_open_api:
+            self.image_extract_params_open_api.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6873,6 +7028,8 @@ class CreateWmExtractTaskRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.image_extract_params_open_api is not None:
+            result['ImageExtractParamsOpenApi'] = self.image_extract_params_open_api.to_map()
         if self.is_client_embed is not None:
             result['IsClientEmbed'] = self.is_client_embed
         if self.video_is_long is not None:
@@ -6896,6 +7053,9 @@ class CreateWmExtractTaskRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('ImageExtractParamsOpenApi') is not None:
+            temp_model = CreateWmExtractTaskRequestImageExtractParamsOpenApi()
+            self.image_extract_params_open_api = temp_model.from_map(m['ImageExtractParamsOpenApi'])
         if m.get('IsClientEmbed') is not None:
             self.is_client_embed = m.get('IsClientEmbed')
         if m.get('VideoIsLong') is not None:
@@ -6916,6 +7076,7 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
         document_is_capture: bool = None,
         file_url: str = None,
         filename: str = None,
+        image_extract_params_open_api_shrink: str = None,
         is_client_embed: bool = None,
         video_is_long: bool = None,
         video_speed: str = None,
@@ -6937,6 +7098,7 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.filename = filename
+        self.image_extract_params_open_api_shrink = image_extract_params_open_api_shrink
         self.is_client_embed = is_client_embed
         # The watermark parameter for videos that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
         # 
@@ -6984,6 +7146,8 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.image_extract_params_open_api_shrink is not None:
+            result['ImageExtractParamsOpenApi'] = self.image_extract_params_open_api_shrink
         if self.is_client_embed is not None:
             result['IsClientEmbed'] = self.is_client_embed
         if self.video_is_long is not None:
@@ -7006,6 +7170,8 @@ class CreateWmExtractTaskShrinkRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('ImageExtractParamsOpenApi') is not None:
+            self.image_extract_params_open_api_shrink = m.get('ImageExtractParamsOpenApi')
         if m.get('IsClientEmbed') is not None:
             self.is_client_embed = m.get('IsClientEmbed')
         if m.get('VideoIsLong') is not None:

@@ -1680,6 +1680,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.image_control):
             request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['comment'] = request.comment
         body = {}
         if not UtilClient.is_unset(request.height):
             body['Height'] = request.height
@@ -1700,6 +1703,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1735,6 +1739,9 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.image_control):
             request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.comment):
+            query['comment'] = request.comment
         body = {}
         if not UtilClient.is_unset(request.height):
             body['Height'] = request.height
@@ -1755,6 +1762,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1972,9 +1980,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.csv_control):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
+        if not UtilClient.is_unset(tmp_req.image_extract_params_open_api):
+            request.image_extract_params_open_api_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_extract_params_open_api, 'ImageExtractParamsOpenApi', 'json')
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(request.image_extract_params_open_api_shrink):
+            query['ImageExtractParamsOpenApi'] = request.image_extract_params_open_api_shrink
         if not UtilClient.is_unset(request.is_client_embed):
             query['IsClientEmbed'] = request.is_client_embed
         body = {}
@@ -2029,9 +2041,13 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.csv_control):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
+        if not UtilClient.is_unset(tmp_req.image_extract_params_open_api):
+            request.image_extract_params_open_api_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_extract_params_open_api, 'ImageExtractParamsOpenApi', 'json')
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(request.image_extract_params_open_api_shrink):
+            query['ImageExtractParamsOpenApi'] = request.image_extract_params_open_api_shrink
         if not UtilClient.is_unset(request.is_client_embed):
             query['IsClientEmbed'] = request.is_client_embed
         body = {}

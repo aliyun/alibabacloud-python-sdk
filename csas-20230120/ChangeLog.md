@@ -1,3 +1,11 @@
+2025-08-01 Version: 1.10.3
+- Update API CreateWmBaseImage: add request parameters comment.
+- Update API CreateWmBaseImage: add request parameters ImageControl.LogoVisibleControl.Enhance.
+- Update API CreateWmBaseImage: add request parameters ImageControl.LogoVisibleControl.Margin.
+- Update API CreateWmBaseImage: add request parameters ImageControl.TextVisibleControl.Margin.
+- Update API CreateWmExtractTask: add request parameters ImageExtractParamsOpenApi.
+
+
 2025-07-18 Version: 1.10.2
 - Update API GetUserDevice: add response parameters Body.Device.SnBaseBoard.
 - Update API GetUserDevice: add response parameters Body.Device.SnBios.
