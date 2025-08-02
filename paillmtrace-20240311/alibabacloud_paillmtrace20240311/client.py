@@ -1061,6 +1061,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.max_time):
@@ -1075,6 +1077,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.sort_order):
             query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -1111,6 +1115,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.max_time):
@@ -1125,6 +1131,8 @@ class Client(OpenApiClient):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.sort_order):
             query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

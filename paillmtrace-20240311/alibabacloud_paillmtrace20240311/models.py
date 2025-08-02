@@ -2022,6 +2022,7 @@ class ListOnlineEvalTaskResultsResponse(TeaModel):
 class ListOnlineEvalTasksRequest(TeaModel):
     def __init__(
         self,
+        app_name: str = None,
         keyword: str = None,
         max_time: str = None,
         min_time: str = None,
@@ -2029,7 +2030,9 @@ class ListOnlineEvalTasksRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
         sort_order: str = None,
+        status: str = None,
     ):
+        self.app_name = app_name
         # Search keyword. It will match on fields such as task name, application name (appName), task description, and evaluation metric name.
         self.keyword = keyword
         # The UTC end time of the search time range
@@ -2042,6 +2045,7 @@ class ListOnlineEvalTasksRequest(TeaModel):
         self.page_size = page_size
         self.sort_by = sort_by
         self.sort_order = sort_order
+        self.status = status
 
     def validate(self):
         pass
@@ -2052,6 +2056,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.max_time is not None:
@@ -2066,10 +2072,14 @@ class ListOnlineEvalTasksRequest(TeaModel):
             result['SortBy'] = self.sort_by
         if self.sort_order is not None:
             result['SortOrder'] = self.sort_order
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('MaxTime') is not None:
@@ -2084,6 +2094,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
             self.sort_by = m.get('SortBy')
         if m.get('SortOrder') is not None:
             self.sort_order = m.get('SortOrder')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
