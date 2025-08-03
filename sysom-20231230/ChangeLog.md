@@ -1,3 +1,9 @@
+2025-08-03 Version: 1.11.2
+- Update API GetAbnormalEventsCount: add request parameters level.
+- Update API GetAbnormalEventsCount: add response parameters Body.data.$.eventList.
+- Update API ListAbnormalyEvents: add request parameters event.
+
+
 2025-08-01 Version: 1.11.1
 - Update API InitialSysom: add request parameters body.source.
 

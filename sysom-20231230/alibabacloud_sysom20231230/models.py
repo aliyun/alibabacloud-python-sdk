@@ -685,6 +685,7 @@ class GetAbnormalEventsCountRequest(TeaModel):
         cluster: str = None,
         end: float = None,
         instance: str = None,
+        level: str = None,
         namespace: str = None,
         pod: str = None,
         show_pod: int = None,
@@ -692,8 +693,8 @@ class GetAbnormalEventsCountRequest(TeaModel):
     ):
         self.cluster = cluster
         self.end = end
-        # This parameter is required.
         self.instance = instance
+        self.level = level
         self.namespace = namespace
         self.pod = pod
         self.show_pod = show_pod
@@ -714,6 +715,8 @@ class GetAbnormalEventsCountRequest(TeaModel):
             result['end'] = self.end
         if self.instance is not None:
             result['instance'] = self.instance
+        if self.level is not None:
+            result['level'] = self.level
         if self.namespace is not None:
             result['namespace'] = self.namespace
         if self.pod is not None:
@@ -732,6 +735,8 @@ class GetAbnormalEventsCountRequest(TeaModel):
             self.end = m.get('end')
         if m.get('instance') is not None:
             self.instance = m.get('instance')
+        if m.get('level') is not None:
+            self.level = m.get('level')
         if m.get('namespace') is not None:
             self.namespace = m.get('namespace')
         if m.get('pod') is not None:
@@ -746,9 +751,11 @@ class GetAbnormalEventsCountRequest(TeaModel):
 class GetAbnormalEventsCountResponseBodyData(TeaModel):
     def __init__(
         self,
+        event_list: List[str] = None,
         type: str = None,
         value: int = None,
     ):
+        self.event_list = event_list
         self.type = type
         self.value = value
 
@@ -761,6 +768,8 @@ class GetAbnormalEventsCountResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.event_list is not None:
+            result['eventList'] = self.event_list
         if self.type is not None:
             result['type'] = self.type
         if self.value is not None:
@@ -769,6 +778,8 @@ class GetAbnormalEventsCountResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('eventList') is not None:
+            self.event_list = m.get('eventList')
         if m.get('type') is not None:
             self.type = m.get('type')
         if m.get('value') is not None:
@@ -5288,6 +5299,7 @@ class ListAbnormalyEventsRequest(TeaModel):
         cluster: str = None,
         current: int = None,
         end: float = None,
+        event: str = None,
         instance: str = None,
         level: str = None,
         namespace: str = None,
@@ -5299,6 +5311,7 @@ class ListAbnormalyEventsRequest(TeaModel):
         self.cluster = cluster
         self.current = current
         self.end = end
+        self.event = event
         self.instance = instance
         self.level = level
         self.namespace = namespace
@@ -5322,6 +5335,8 @@ class ListAbnormalyEventsRequest(TeaModel):
             result['current'] = self.current
         if self.end is not None:
             result['end'] = self.end
+        if self.event is not None:
+            result['event'] = self.event
         if self.instance is not None:
             result['instance'] = self.instance
         if self.level is not None:
@@ -5346,6 +5361,8 @@ class ListAbnormalyEventsRequest(TeaModel):
             self.current = m.get('current')
         if m.get('end') is not None:
             self.end = m.get('end')
+        if m.get('event') is not None:
+            self.event = m.get('event')
         if m.get('instance') is not None:
             self.instance = m.get('instance')
         if m.get('level') is not None:

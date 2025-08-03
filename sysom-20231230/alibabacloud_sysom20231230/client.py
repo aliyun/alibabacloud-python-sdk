@@ -595,6 +595,8 @@ class Client(OpenApiClient):
             query['end'] = request.end
         if not UtilClient.is_unset(request.instance):
             query['instance'] = request.instance
+        if not UtilClient.is_unset(request.level):
+            query['level'] = request.level
         if not UtilClient.is_unset(request.namespace):
             query['namespace'] = request.namespace
         if not UtilClient.is_unset(request.pod):
@@ -645,6 +647,8 @@ class Client(OpenApiClient):
             query['end'] = request.end
         if not UtilClient.is_unset(request.instance):
             query['instance'] = request.instance
+        if not UtilClient.is_unset(request.level):
+            query['level'] = request.level
         if not UtilClient.is_unset(request.namespace):
             query['namespace'] = request.namespace
         if not UtilClient.is_unset(request.pod):
@@ -3351,6 +3355,8 @@ class Client(OpenApiClient):
             query['current'] = request.current
         if not UtilClient.is_unset(request.end):
             query['end'] = request.end
+        if not UtilClient.is_unset(request.event):
+            query['event'] = request.event
         if not UtilClient.is_unset(request.instance):
             query['instance'] = request.instance
         if not UtilClient.is_unset(request.level):
@@ -3407,6 +3413,8 @@ class Client(OpenApiClient):
             query['current'] = request.current
         if not UtilClient.is_unset(request.end):
             query['end'] = request.end
+        if not UtilClient.is_unset(request.event):
+            query['event'] = request.event
         if not UtilClient.is_unset(request.instance):
             query['instance'] = request.instance
         if not UtilClient.is_unset(request.level):
