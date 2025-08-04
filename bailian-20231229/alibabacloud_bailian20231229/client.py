@@ -3311,6 +3311,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_index_documents_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_index_file_details_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexFileDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndexFileDetailsResponse:
+        """
+        @summary 查询Index文件详情
+        
+        @param request: ListIndexFileDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexFileDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.document_name):
+            query['DocumentName'] = request.document_name
+        if not UtilClient.is_unset(request.document_status):
+            query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.enable_name_like):
+            query['EnableNameLike'] = request.enable_name_like
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndexFileDetails',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_index_file_detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexFileDetailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_index_file_details_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexFileDetailsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ListIndexFileDetailsResponse:
+        """
+        @summary 查询Index文件详情
+        
+        @param request: ListIndexFileDetailsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexFileDetailsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.document_name):
+            query['DocumentName'] = request.document_name
+        if not UtilClient.is_unset(request.document_status):
+            query['DocumentStatus'] = request.document_status
+        if not UtilClient.is_unset(request.enable_name_like):
+            query['EnableNameLike'] = request.enable_name_like
+        if not UtilClient.is_unset(request.index_id):
+            query['IndexId'] = request.index_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListIndexFileDetails',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/index/list_index_file_detail',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ListIndexFileDetailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_index_file_details(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexFileDetailsRequest,
+    ) -> bailian_20231229_models.ListIndexFileDetailsResponse:
+        """
+        @summary 查询Index文件详情
+        
+        @param request: ListIndexFileDetailsRequest
+        @return: ListIndexFileDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_index_file_details_with_options(workspace_id, request, headers, runtime)
+
+    async def list_index_file_details_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ListIndexFileDetailsRequest,
+    ) -> bailian_20231229_models.ListIndexFileDetailsResponse:
+        """
+        @summary 查询Index文件详情
+        
+        @param request: ListIndexFileDetailsRequest
+        @return: ListIndexFileDetailsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_index_file_details_with_options_async(workspace_id, request, headers, runtime)
+
     def list_indices_with_options(
         self,
         workspace_id: str,
@@ -4674,6 +4802,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_and_publish_agent_selective_with_options_async(workspace_id, app_code, request, headers, runtime)
+
+    def update_chunk_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.UpdateChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateChunkResponse:
+        """
+        @summary 更新切片信息
+        
+        @param request: UpdateChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChunkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chunk_id):
+            query['ChunkId'] = request.chunk_id
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.is_displayed_chunk_content):
+            query['IsDisplayedChunkContent'] = request.is_displayed_chunk_content
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.title):
+            query['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChunk',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/chunk/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_chunk_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.UpdateChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.UpdateChunkResponse:
+        """
+        @summary 更新切片信息
+        
+        @param request: UpdateChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateChunkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.chunk_id):
+            query['ChunkId'] = request.chunk_id
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.is_displayed_chunk_content):
+            query['IsDisplayedChunkContent'] = request.is_displayed_chunk_content
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.content):
+            query['content'] = request.content
+        if not UtilClient.is_unset(request.title):
+            query['title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateChunk',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/chunk/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.UpdateChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_chunk(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.UpdateChunkRequest,
+    ) -> bailian_20231229_models.UpdateChunkResponse:
+        """
+        @summary 更新切片信息
+        
+        @param request: UpdateChunkRequest
+        @return: UpdateChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_chunk_with_options(workspace_id, request, headers, runtime)
+
+    async def update_chunk_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.UpdateChunkRequest,
+    ) -> bailian_20231229_models.UpdateChunkResponse:
+        """
+        @summary 更新切片信息
+        
+        @param request: UpdateChunkRequest
+        @return: UpdateChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_chunk_with_options_async(workspace_id, request, headers, runtime)
 
     def update_file_tag_with_options(
         self,

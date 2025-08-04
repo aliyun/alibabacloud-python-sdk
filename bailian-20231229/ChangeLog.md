@@ -1,3 +1,8 @@
+2025-08-04 Version: 2.2.0
+- Support API ListIndexFileDetails.
+- Support API UpdateChunk.
+
+
 2025-07-30 Version: 2.1.1
 - Update API CreateIndex: add request parameters CreateIndexType.
 - Update API CreateIndex: add request parameters EnableRewrite.

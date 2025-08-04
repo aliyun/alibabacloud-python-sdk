@@ -6136,6 +6136,328 @@ class ListIndexDocumentsResponse(TeaModel):
         return self
 
 
+class ListIndexFileDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        document_name: str = None,
+        document_status: str = None,
+        enable_name_like: str = None,
+        index_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.document_name = document_name
+        self.document_status = document_status
+        self.enable_name_like = enable_name_like
+        self.index_id = index_id
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.document_name is not None:
+            result['DocumentName'] = self.document_name
+        if self.document_status is not None:
+            result['DocumentStatus'] = self.document_status
+        if self.enable_name_like is not None:
+            result['EnableNameLike'] = self.enable_name_like
+        if self.index_id is not None:
+            result['IndexId'] = self.index_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DocumentName') is not None:
+            self.document_name = m.get('DocumentName')
+        if m.get('DocumentStatus') is not None:
+            self.document_status = m.get('DocumentStatus')
+        if m.get('EnableNameLike') is not None:
+            self.enable_name_like = m.get('EnableNameLike')
+        if m.get('IndexId') is not None:
+            self.index_id = m.get('IndexId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListIndexFileDetailsResponseBodyDataDocuments(TeaModel):
+    def __init__(
+        self,
+        chunk_mode: str = None,
+        chunk_size: str = None,
+        code: str = None,
+        document_type: str = None,
+        enable_headers: str = None,
+        gmt_modified: int = None,
+        id: str = None,
+        message: str = None,
+        name: str = None,
+        overlap_size: str = None,
+        size: int = None,
+        source_id: str = None,
+        status: str = None,
+        separator: str = None,
+    ):
+        self.chunk_mode = chunk_mode
+        self.chunk_size = chunk_size
+        self.code = code
+        self.document_type = document_type
+        self.enable_headers = enable_headers
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.message = message
+        self.name = name
+        self.overlap_size = overlap_size
+        self.size = size
+        self.source_id = source_id
+        self.status = status
+        self.separator = separator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_mode is not None:
+            result['ChunkMode'] = self.chunk_mode
+        if self.chunk_size is not None:
+            result['ChunkSize'] = self.chunk_size
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.document_type is not None:
+            result['DocumentType'] = self.document_type
+        if self.enable_headers is not None:
+            result['EnableHeaders'] = self.enable_headers
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.overlap_size is not None:
+            result['OverlapSize'] = self.overlap_size
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.separator is not None:
+            result['separator'] = self.separator
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkMode') is not None:
+            self.chunk_mode = m.get('ChunkMode')
+        if m.get('ChunkSize') is not None:
+            self.chunk_size = m.get('ChunkSize')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DocumentType') is not None:
+            self.document_type = m.get('DocumentType')
+        if m.get('EnableHeaders') is not None:
+            self.enable_headers = m.get('EnableHeaders')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OverlapSize') is not None:
+            self.overlap_size = m.get('OverlapSize')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('separator') is not None:
+            self.separator = m.get('separator')
+        return self
+
+
+class ListIndexFileDetailsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        documents: List[ListIndexFileDetailsResponseBodyDataDocuments] = None,
+        index_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.documents = documents
+        self.index_id = index_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        if self.documents:
+            for k in self.documents:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Documents'] = []
+        if self.documents is not None:
+            for k in self.documents:
+                result['Documents'].append(k.to_map() if k else None)
+        if self.index_id is not None:
+            result['IndexId'] = self.index_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.documents = []
+        if m.get('Documents') is not None:
+            for k in m.get('Documents'):
+                temp_model = ListIndexFileDetailsResponseBodyDataDocuments()
+                self.documents.append(temp_model.from_map(k))
+        if m.get('IndexId') is not None:
+            self.index_id = m.get('IndexId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListIndexFileDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListIndexFileDetailsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListIndexFileDetailsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListIndexFileDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIndexFileDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIndexFileDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListIndicesRequest(TeaModel):
     def __init__(
         self,
@@ -9978,6 +10300,167 @@ class UpdateAndPublishAgentSelectiveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAndPublishAgentSelectiveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateChunkRequest(TeaModel):
+    def __init__(
+        self,
+        chunk_id: str = None,
+        data_id: str = None,
+        is_displayed_chunk_content: bool = None,
+        pipeline_id: str = None,
+        content: str = None,
+        title: str = None,
+    ):
+        # This parameter is required.
+        self.chunk_id = chunk_id
+        # This parameter is required.
+        self.data_id = data_id
+        # This parameter is required.
+        self.is_displayed_chunk_content = is_displayed_chunk_content
+        # This parameter is required.
+        self.pipeline_id = pipeline_id
+        # This parameter is required.
+        self.content = content
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chunk_id is not None:
+            result['ChunkId'] = self.chunk_id
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.is_displayed_chunk_content is not None:
+            result['IsDisplayedChunkContent'] = self.is_displayed_chunk_content
+        if self.pipeline_id is not None:
+            result['PipelineId'] = self.pipeline_id
+        if self.content is not None:
+            result['content'] = self.content
+        if self.title is not None:
+            result['title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChunkId') is not None:
+            self.chunk_id = m.get('ChunkId')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('IsDisplayedChunkContent') is not None:
+            self.is_displayed_chunk_content = m.get('IsDisplayedChunkContent')
+        if m.get('PipelineId') is not None:
+            self.pipeline_id = m.get('PipelineId')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        return self
+
+
+class UpdateChunkResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateChunkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateChunkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateChunkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
