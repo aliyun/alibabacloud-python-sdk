@@ -1,3 +1,20 @@
+2025-08-04 Version: 5.2.3
+- Update API CreateAppAgentTemplate: add request parameters AgentSilenceConfig.
+- Update API CreateAppAgentTemplate: add request parameters AsrConfig.VadConfig.
+- Update API CreateAppAgentTemplate: add request parameters LlmConfig.AgentAppId.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.AgentSilenceConfig.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.AsrConfig.VadConfig.
+- Update API DescribeAppAgentTemplates: add response parameters Body.Templates.$.LlmConfig.AgentAppId.
+- Update API ModifyAppAgentTemplate: add request parameters AgentSilenceConfig.
+- Update API ModifyAppAgentTemplate: add request parameters AsrConfig.VadConfig.
+- Update API ModifyAppAgentTemplate: add request parameters LlmConfig.AgentAppId.
+- Update API StartAgent: add request parameters RtcConfig.UserInactivityTimeout.
+- Update API StartAgent: add request parameters VoiceChatConfig.AgentSilenceConfig.
+- Update API StartAgent: add request parameters VoiceChatConfig.ASRConfig.VadConfig.
+- Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.AppId.
+- Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.Params.
+
+
 2025-07-22 Version: 5.2.2
 - Update API StartCloudRecord: add request parameters Annotation.
 - Update API StartCloudRecord: add request parameters RecordMode.

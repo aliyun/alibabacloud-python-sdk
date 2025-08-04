@@ -437,6 +437,78 @@ class AddRecordTemplateResponse(TeaModel):
         return self
 
 
+class CreateAppAgentTemplateRequestAgentSilenceConfig(TeaModel):
+    def __init__(
+        self,
+        alert_timeout: int = None,
+        content: str = None,
+        strategy: int = None,
+        webhook_trigger_timeout: int = None,
+    ):
+        self.alert_timeout = alert_timeout
+        self.content = content
+        self.strategy = strategy
+        self.webhook_trigger_timeout = webhook_trigger_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_timeout is not None:
+            result['AlertTimeout'] = self.alert_timeout
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.webhook_trigger_timeout is not None:
+            result['WebhookTriggerTimeout'] = self.webhook_trigger_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTimeout') is not None:
+            self.alert_timeout = m.get('AlertTimeout')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('WebhookTriggerTimeout') is not None:
+            self.webhook_trigger_timeout = m.get('WebhookTriggerTimeout')
+        return self
+
+
+class CreateAppAgentTemplateRequestAsrConfigVadConfig(TeaModel):
+    def __init__(
+        self,
+        interrupt_speech_duration: int = None,
+    ):
+        self.interrupt_speech_duration = interrupt_speech_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interrupt_speech_duration is not None:
+            result['InterruptSpeechDuration'] = self.interrupt_speech_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterruptSpeechDuration') is not None:
+            self.interrupt_speech_duration = m.get('InterruptSpeechDuration')
+        return self
+
+
 class CreateAppAgentTemplateRequestAsrConfigWordWeights(TeaModel):
     def __init__(
         self,
@@ -483,14 +555,18 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
         self,
         max_sentence_silence: int = None,
         name: str = None,
+        vad_config: CreateAppAgentTemplateRequestAsrConfigVadConfig = None,
         word_weights: List[CreateAppAgentTemplateRequestAsrConfigWordWeights] = None,
     ):
         self.max_sentence_silence = max_sentence_silence
         # This parameter is required.
         self.name = name
+        self.vad_config = vad_config
         self.word_weights = word_weights
 
     def validate(self):
+        if self.vad_config:
+            self.vad_config.validate()
         if self.word_weights:
             for k in self.word_weights:
                 if k:
@@ -506,6 +582,8 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
             result['MaxSentenceSilence'] = self.max_sentence_silence
         if self.name is not None:
             result['Name'] = self.name
+        if self.vad_config is not None:
+            result['VadConfig'] = self.vad_config.to_map()
         result['WordWeights'] = []
         if self.word_weights is not None:
             for k in self.word_weights:
@@ -518,6 +596,9 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
             self.max_sentence_silence = m.get('MaxSentenceSilence')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('VadConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestAsrConfigVadConfig()
+            self.vad_config = temp_model.from_map(m['VadConfig'])
         self.word_weights = []
         if m.get('WordWeights') is not None:
             for k in m.get('WordWeights'):
@@ -529,6 +610,7 @@ class CreateAppAgentTemplateRequestAsrConfig(TeaModel):
 class CreateAppAgentTemplateRequestLlmConfig(TeaModel):
     def __init__(
         self,
+        agent_app_id: str = None,
         api_key: str = None,
         history_depth: int = None,
         max_token: int = None,
@@ -539,6 +621,7 @@ class CreateAppAgentTemplateRequestLlmConfig(TeaModel):
         url: str = None,
         vendor: str = None,
     ):
+        self.agent_app_id = agent_app_id
         # This parameter is required.
         self.api_key = api_key
         self.history_depth = history_depth
@@ -561,6 +644,8 @@ class CreateAppAgentTemplateRequestLlmConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_app_id is not None:
+            result['AgentAppId'] = self.agent_app_id
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
         if self.history_depth is not None:
@@ -583,6 +668,8 @@ class CreateAppAgentTemplateRequestLlmConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentAppId') is not None:
+            self.agent_app_id = m.get('AgentAppId')
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
         if m.get('HistoryDepth') is not None:
@@ -678,6 +765,7 @@ class CreateAppAgentTemplateRequestTtsConfig(TeaModel):
 class CreateAppAgentTemplateRequest(TeaModel):
     def __init__(
         self,
+        agent_silence_config: CreateAppAgentTemplateRequestAgentSilenceConfig = None,
         app_id: str = None,
         asr_config: CreateAppAgentTemplateRequestAsrConfig = None,
         chat_mode: int = None,
@@ -688,6 +776,7 @@ class CreateAppAgentTemplateRequest(TeaModel):
         tts_config: CreateAppAgentTemplateRequestTtsConfig = None,
         type: int = None,
     ):
+        self.agent_silence_config = agent_silence_config
         # This parameter is required.
         self.app_id = app_id
         self.asr_config = asr_config
@@ -701,6 +790,8 @@ class CreateAppAgentTemplateRequest(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.agent_silence_config:
+            self.agent_silence_config.validate()
         if self.asr_config:
             self.asr_config.validate()
         if self.llm_config:
@@ -714,6 +805,8 @@ class CreateAppAgentTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_silence_config is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config is not None:
@@ -736,6 +829,9 @@ class CreateAppAgentTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentSilenceConfig') is not None:
+            temp_model = CreateAppAgentTemplateRequestAgentSilenceConfig()
+            self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
@@ -763,6 +859,7 @@ class CreateAppAgentTemplateRequest(TeaModel):
 class CreateAppAgentTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_silence_config_shrink: str = None,
         app_id: str = None,
         asr_config_shrink: str = None,
         chat_mode: int = None,
@@ -773,6 +870,7 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
         tts_config_shrink: str = None,
         type: int = None,
     ):
+        self.agent_silence_config_shrink = agent_silence_config_shrink
         # This parameter is required.
         self.app_id = app_id
         self.asr_config_shrink = asr_config_shrink
@@ -794,6 +892,8 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_silence_config_shrink is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config_shrink
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config_shrink is not None:
@@ -816,6 +916,8 @@ class CreateAppAgentTemplateShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentSilenceConfig') is not None:
+            self.agent_silence_config_shrink = m.get('AgentSilenceConfig')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
@@ -3999,6 +4101,78 @@ class DescribeAppAgentTemplatesRequest(TeaModel):
         return self
 
 
+class DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig(TeaModel):
+    def __init__(
+        self,
+        alert_timeout: int = None,
+        content: str = None,
+        strategy: int = None,
+        webhook_trigger_timeout: int = None,
+    ):
+        self.alert_timeout = alert_timeout
+        self.content = content
+        self.strategy = strategy
+        self.webhook_trigger_timeout = webhook_trigger_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_timeout is not None:
+            result['AlertTimeout'] = self.alert_timeout
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.webhook_trigger_timeout is not None:
+            result['WebhookTriggerTimeout'] = self.webhook_trigger_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTimeout') is not None:
+            self.alert_timeout = m.get('AlertTimeout')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('WebhookTriggerTimeout') is not None:
+            self.webhook_trigger_timeout = m.get('WebhookTriggerTimeout')
+        return self
+
+
+class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig(TeaModel):
+    def __init__(
+        self,
+        interrupt_speech_duration: int = None,
+    ):
+        self.interrupt_speech_duration = interrupt_speech_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interrupt_speech_duration is not None:
+            result['InterruptSpeechDuration'] = self.interrupt_speech_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterruptSpeechDuration') is not None:
+            self.interrupt_speech_duration = m.get('InterruptSpeechDuration')
+        return self
+
+
 class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights(TeaModel):
     def __init__(
         self,
@@ -4043,15 +4217,19 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
         self,
         max_sentence_silence: int = None,
         name: str = None,
+        vad_config: DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig = None,
         vocabulary_id: str = None,
         word_weights: List[DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights] = None,
     ):
         self.max_sentence_silence = max_sentence_silence
         self.name = name
+        self.vad_config = vad_config
         self.vocabulary_id = vocabulary_id
         self.word_weights = word_weights
 
     def validate(self):
+        if self.vad_config:
+            self.vad_config.validate()
         if self.word_weights:
             for k in self.word_weights:
                 if k:
@@ -4067,6 +4245,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
             result['MaxSentenceSilence'] = self.max_sentence_silence
         if self.name is not None:
             result['Name'] = self.name
+        if self.vad_config is not None:
+            result['VadConfig'] = self.vad_config.to_map()
         if self.vocabulary_id is not None:
             result['VocabularyId'] = self.vocabulary_id
         result['WordWeights'] = []
@@ -4081,6 +4261,9 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
             self.max_sentence_silence = m.get('MaxSentenceSilence')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('VadConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig()
+            self.vad_config = temp_model.from_map(m['VadConfig'])
         if m.get('VocabularyId') is not None:
             self.vocabulary_id = m.get('VocabularyId')
         self.word_weights = []
@@ -4094,6 +4277,7 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig(TeaModel):
 class DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig(TeaModel):
     def __init__(
         self,
+        agent_app_id: str = None,
         api_key: str = None,
         history_depth: int = None,
         max_token: int = None,
@@ -4105,6 +4289,7 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig(TeaModel):
         url: str = None,
         vendor: str = None,
     ):
+        self.agent_app_id = agent_app_id
         self.api_key = api_key
         self.history_depth = history_depth
         self.max_token = max_token
@@ -4125,6 +4310,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_app_id is not None:
+            result['AgentAppId'] = self.agent_app_id
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
         if self.history_depth is not None:
@@ -4149,6 +4336,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentAppId') is not None:
+            self.agent_app_id = m.get('AgentAppId')
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
         if m.get('HistoryDepth') is not None:
@@ -4250,6 +4439,7 @@ class DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig(TeaModel):
 class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
     def __init__(
         self,
+        agent_silence_config: DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig = None,
         asr_config: DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig = None,
         chat_mode: int = None,
         create_time: str = None,
@@ -4261,6 +4451,7 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
         tts_config: DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig = None,
         type: int = None,
     ):
+        self.agent_silence_config = agent_silence_config
         self.asr_config = asr_config
         self.chat_mode = chat_mode
         self.create_time = create_time
@@ -4273,6 +4464,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.agent_silence_config:
+            self.agent_silence_config.validate()
         if self.asr_config:
             self.asr_config.validate()
         if self.llm_config:
@@ -4286,6 +4479,8 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_silence_config is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
         if self.chat_mode is not None:
@@ -4310,6 +4505,9 @@ class DescribeAppAgentTemplatesResponseBodyTemplates(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentSilenceConfig') is not None:
+            temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig()
+            self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
         if m.get('AsrConfig') is not None:
             temp_model = DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
@@ -18504,6 +18702,78 @@ class ModifyAppAgentFunctionStatusResponse(TeaModel):
         return self
 
 
+class ModifyAppAgentTemplateRequestAgentSilenceConfig(TeaModel):
+    def __init__(
+        self,
+        alert_timeout: int = None,
+        content: str = None,
+        strategy: int = None,
+        webhook_trigger_timeout: int = None,
+    ):
+        self.alert_timeout = alert_timeout
+        self.content = content
+        self.strategy = strategy
+        self.webhook_trigger_timeout = webhook_trigger_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_timeout is not None:
+            result['AlertTimeout'] = self.alert_timeout
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.webhook_trigger_timeout is not None:
+            result['WebhookTriggerTimeout'] = self.webhook_trigger_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTimeout') is not None:
+            self.alert_timeout = m.get('AlertTimeout')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('WebhookTriggerTimeout') is not None:
+            self.webhook_trigger_timeout = m.get('WebhookTriggerTimeout')
+        return self
+
+
+class ModifyAppAgentTemplateRequestAsrConfigVadConfig(TeaModel):
+    def __init__(
+        self,
+        interrupt_speech_duration: int = None,
+    ):
+        self.interrupt_speech_duration = interrupt_speech_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interrupt_speech_duration is not None:
+            result['InterruptSpeechDuration'] = self.interrupt_speech_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterruptSpeechDuration') is not None:
+            self.interrupt_speech_duration = m.get('InterruptSpeechDuration')
+        return self
+
+
 class ModifyAppAgentTemplateRequestAsrConfigWordWeights(TeaModel):
     def __init__(
         self,
@@ -18550,16 +18820,20 @@ class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
         self,
         max_sentence_silence: int = None,
         name: str = None,
+        vad_config: ModifyAppAgentTemplateRequestAsrConfigVadConfig = None,
         vocabulary_id: str = None,
         word_weights: List[ModifyAppAgentTemplateRequestAsrConfigWordWeights] = None,
     ):
         self.max_sentence_silence = max_sentence_silence
         # This parameter is required.
         self.name = name
+        self.vad_config = vad_config
         self.vocabulary_id = vocabulary_id
         self.word_weights = word_weights
 
     def validate(self):
+        if self.vad_config:
+            self.vad_config.validate()
         if self.word_weights:
             for k in self.word_weights:
                 if k:
@@ -18575,6 +18849,8 @@ class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
             result['MaxSentenceSilence'] = self.max_sentence_silence
         if self.name is not None:
             result['Name'] = self.name
+        if self.vad_config is not None:
+            result['VadConfig'] = self.vad_config.to_map()
         if self.vocabulary_id is not None:
             result['VocabularyId'] = self.vocabulary_id
         result['WordWeights'] = []
@@ -18589,6 +18865,9 @@ class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
             self.max_sentence_silence = m.get('MaxSentenceSilence')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('VadConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestAsrConfigVadConfig()
+            self.vad_config = temp_model.from_map(m['VadConfig'])
         if m.get('VocabularyId') is not None:
             self.vocabulary_id = m.get('VocabularyId')
         self.word_weights = []
@@ -18602,6 +18881,7 @@ class ModifyAppAgentTemplateRequestAsrConfig(TeaModel):
 class ModifyAppAgentTemplateRequestLlmConfig(TeaModel):
     def __init__(
         self,
+        agent_app_id: str = None,
         api_key: str = None,
         history_depth: int = None,
         max_token: int = None,
@@ -18612,6 +18892,7 @@ class ModifyAppAgentTemplateRequestLlmConfig(TeaModel):
         url: str = None,
         vendor: str = None,
     ):
+        self.agent_app_id = agent_app_id
         # This parameter is required.
         self.api_key = api_key
         self.history_depth = history_depth
@@ -18633,6 +18914,8 @@ class ModifyAppAgentTemplateRequestLlmConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_app_id is not None:
+            result['AgentAppId'] = self.agent_app_id
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
         if self.history_depth is not None:
@@ -18655,6 +18938,8 @@ class ModifyAppAgentTemplateRequestLlmConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentAppId') is not None:
+            self.agent_app_id = m.get('AgentAppId')
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
         if m.get('HistoryDepth') is not None:
@@ -18751,6 +19036,7 @@ class ModifyAppAgentTemplateRequestTtsConfig(TeaModel):
 class ModifyAppAgentTemplateRequest(TeaModel):
     def __init__(
         self,
+        agent_silence_config: ModifyAppAgentTemplateRequestAgentSilenceConfig = None,
         app_id: str = None,
         asr_config: ModifyAppAgentTemplateRequestAsrConfig = None,
         chat_mode: int = None,
@@ -18762,6 +19048,7 @@ class ModifyAppAgentTemplateRequest(TeaModel):
         tts_config: ModifyAppAgentTemplateRequestTtsConfig = None,
         type: int = None,
     ):
+        self.agent_silence_config = agent_silence_config
         # This parameter is required.
         self.app_id = app_id
         self.asr_config = asr_config
@@ -18777,6 +19064,8 @@ class ModifyAppAgentTemplateRequest(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.agent_silence_config:
+            self.agent_silence_config.validate()
         if self.asr_config:
             self.asr_config.validate()
         if self.llm_config:
@@ -18790,6 +19079,8 @@ class ModifyAppAgentTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_silence_config is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config is not None:
@@ -18814,6 +19105,9 @@ class ModifyAppAgentTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentSilenceConfig') is not None:
+            temp_model = ModifyAppAgentTemplateRequestAgentSilenceConfig()
+            self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
@@ -18843,6 +19137,7 @@ class ModifyAppAgentTemplateRequest(TeaModel):
 class ModifyAppAgentTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
+        agent_silence_config_shrink: str = None,
         app_id: str = None,
         asr_config_shrink: str = None,
         chat_mode: int = None,
@@ -18854,6 +19149,7 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
         tts_config_shrink: str = None,
         type: int = None,
     ):
+        self.agent_silence_config_shrink = agent_silence_config_shrink
         # This parameter is required.
         self.app_id = app_id
         self.asr_config_shrink = asr_config_shrink
@@ -18877,6 +19173,8 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_silence_config_shrink is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config_shrink
         if self.app_id is not None:
             result['AppId'] = self.app_id
         if self.asr_config_shrink is not None:
@@ -18901,6 +19199,8 @@ class ModifyAppAgentTemplateShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentSilenceConfig') is not None:
+            self.agent_silence_config_shrink = m.get('AgentSilenceConfig')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
         if m.get('AsrConfig') is not None:
@@ -21184,10 +21484,12 @@ class StartAgentRequestRtcConfig(TeaModel):
         self,
         target_user_ids: List[str] = None,
         user_id: str = None,
+        user_inactivity_timeout: int = None,
     ):
         self.target_user_ids = target_user_ids
         # This parameter is required.
         self.user_id = user_id
+        self.user_inactivity_timeout = user_inactivity_timeout
 
     def validate(self):
         pass
@@ -21202,6 +21504,8 @@ class StartAgentRequestRtcConfig(TeaModel):
             result['TargetUserIds'] = self.target_user_ids
         if self.user_id is not None:
             result['UserId'] = self.user_id
+        if self.user_inactivity_timeout is not None:
+            result['UserInactivityTimeout'] = self.user_inactivity_timeout
         return result
 
     def from_map(self, m: dict = None):
@@ -21210,6 +21514,35 @@ class StartAgentRequestRtcConfig(TeaModel):
             self.target_user_ids = m.get('TargetUserIds')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        if m.get('UserInactivityTimeout') is not None:
+            self.user_inactivity_timeout = m.get('UserInactivityTimeout')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigASRConfigVadConfig(TeaModel):
+    def __init__(
+        self,
+        interrupt_speech_duration: int = None,
+    ):
+        self.interrupt_speech_duration = interrupt_speech_duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interrupt_speech_duration is not None:
+            result['InterruptSpeechDuration'] = self.interrupt_speech_duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InterruptSpeechDuration') is not None:
+            self.interrupt_speech_duration = m.get('InterruptSpeechDuration')
         return self
 
 
@@ -21220,16 +21553,19 @@ class StartAgentRequestVoiceChatConfigASRConfig(TeaModel):
         max_sentence_silence: int = None,
         semantic_punctuation_enabled: bool = None,
         source_language: str = None,
+        vad_config: StartAgentRequestVoiceChatConfigASRConfigVadConfig = None,
         vocabulary_id: str = None,
     ):
         self.language_hints = language_hints
         self.max_sentence_silence = max_sentence_silence
         self.semantic_punctuation_enabled = semantic_punctuation_enabled
         self.source_language = source_language
+        self.vad_config = vad_config
         self.vocabulary_id = vocabulary_id
 
     def validate(self):
-        pass
+        if self.vad_config:
+            self.vad_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21245,6 +21581,8 @@ class StartAgentRequestVoiceChatConfigASRConfig(TeaModel):
             result['SemanticPunctuationEnabled'] = self.semantic_punctuation_enabled
         if self.source_language is not None:
             result['SourceLanguage'] = self.source_language
+        if self.vad_config is not None:
+            result['VadConfig'] = self.vad_config.to_map()
         if self.vocabulary_id is not None:
             result['VocabularyId'] = self.vocabulary_id
         return result
@@ -21259,8 +21597,62 @@ class StartAgentRequestVoiceChatConfigASRConfig(TeaModel):
             self.semantic_punctuation_enabled = m.get('SemanticPunctuationEnabled')
         if m.get('SourceLanguage') is not None:
             self.source_language = m.get('SourceLanguage')
+        if m.get('VadConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigASRConfigVadConfig()
+            self.vad_config = temp_model.from_map(m['VadConfig'])
         if m.get('VocabularyId') is not None:
             self.vocabulary_id = m.get('VocabularyId')
+        return self
+
+
+class StartAgentRequestVoiceChatConfigAgentSilenceConfig(TeaModel):
+    def __init__(
+        self,
+        alert_timeout: int = None,
+        content: str = None,
+        enable: bool = None,
+        strategy: int = None,
+        webhook_trigger_timeout: int = None,
+    ):
+        self.alert_timeout = alert_timeout
+        self.content = content
+        self.enable = enable
+        self.strategy = strategy
+        self.webhook_trigger_timeout = webhook_trigger_timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_timeout is not None:
+            result['AlertTimeout'] = self.alert_timeout
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        if self.webhook_trigger_timeout is not None:
+            result['WebhookTriggerTimeout'] = self.webhook_trigger_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTimeout') is not None:
+            self.alert_timeout = m.get('AlertTimeout')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        if m.get('WebhookTriggerTimeout') is not None:
+            self.webhook_trigger_timeout = m.get('WebhookTriggerTimeout')
         return self
 
 
@@ -21268,9 +21660,11 @@ class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
     def __init__(
         self,
         api_key: str = None,
+        app_id: str = None,
         history_depth: int = None,
         max_token: int = None,
         model: str = None,
+        params: Dict[str, Any] = None,
         prompt: str = None,
         temperature: float = None,
         top_p: float = None,
@@ -21278,9 +21672,11 @@ class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
         vendor: str = None,
     ):
         self.api_key = api_key
+        self.app_id = app_id
         self.history_depth = history_depth
         self.max_token = max_token
         self.model = model
+        self.params = params
         self.prompt = prompt
         self.temperature = temperature
         self.top_p = top_p
@@ -21298,12 +21694,16 @@ class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
         result = dict()
         if self.api_key is not None:
             result['ApiKey'] = self.api_key
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.history_depth is not None:
             result['HistoryDepth'] = self.history_depth
         if self.max_token is not None:
             result['MaxToken'] = self.max_token
         if self.model is not None:
             result['Model'] = self.model
+        if self.params is not None:
+            result['Params'] = self.params
         if self.prompt is not None:
             result['Prompt'] = self.prompt
         if self.temperature is not None:
@@ -21320,12 +21720,16 @@ class StartAgentRequestVoiceChatConfigLLMConfig(TeaModel):
         m = m or dict()
         if m.get('ApiKey') is not None:
             self.api_key = m.get('ApiKey')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('HistoryDepth') is not None:
             self.history_depth = m.get('HistoryDepth')
         if m.get('MaxToken') is not None:
             self.max_token = m.get('MaxToken')
         if m.get('Model') is not None:
             self.model = m.get('Model')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
         if m.get('Temperature') is not None:
@@ -21412,6 +21816,7 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
     def __init__(
         self,
         asrconfig: StartAgentRequestVoiceChatConfigASRConfig = None,
+        agent_silence_config: StartAgentRequestVoiceChatConfigAgentSilenceConfig = None,
         chat_mode: int = None,
         greeting: str = None,
         interrupt_mode: int = None,
@@ -21419,6 +21824,7 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
         ttsconfig: StartAgentRequestVoiceChatConfigTTSConfig = None,
     ):
         self.asrconfig = asrconfig
+        self.agent_silence_config = agent_silence_config
         self.chat_mode = chat_mode
         self.greeting = greeting
         self.interrupt_mode = interrupt_mode
@@ -21428,6 +21834,8 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
     def validate(self):
         if self.asrconfig:
             self.asrconfig.validate()
+        if self.agent_silence_config:
+            self.agent_silence_config.validate()
         if self.llmconfig:
             self.llmconfig.validate()
         if self.ttsconfig:
@@ -21441,6 +21849,8 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
         result = dict()
         if self.asrconfig is not None:
             result['ASRConfig'] = self.asrconfig.to_map()
+        if self.agent_silence_config is not None:
+            result['AgentSilenceConfig'] = self.agent_silence_config.to_map()
         if self.chat_mode is not None:
             result['ChatMode'] = self.chat_mode
         if self.greeting is not None:
@@ -21458,6 +21868,9 @@ class StartAgentRequestVoiceChatConfig(TeaModel):
         if m.get('ASRConfig') is not None:
             temp_model = StartAgentRequestVoiceChatConfigASRConfig()
             self.asrconfig = temp_model.from_map(m['ASRConfig'])
+        if m.get('AgentSilenceConfig') is not None:
+            temp_model = StartAgentRequestVoiceChatConfigAgentSilenceConfig()
+            self.agent_silence_config = temp_model.from_map(m['AgentSilenceConfig'])
         if m.get('ChatMode') is not None:
             self.chat_mode = m.get('ChatMode')
         if m.get('Greeting') is not None:

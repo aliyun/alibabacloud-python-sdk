@@ -216,6 +216,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.CreateAppAgentTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_silence_config):
+            request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
@@ -223,6 +225,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tts_config):
             request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_silence_config_shrink):
+            query['AgentSilenceConfig'] = request.agent_silence_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
@@ -275,6 +279,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.CreateAppAgentTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_silence_config):
+            request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
@@ -282,6 +288,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tts_config):
             request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_silence_config_shrink):
+            query['AgentSilenceConfig'] = request.agent_silence_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
@@ -8898,6 +8906,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.ModifyAppAgentTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_silence_config):
+            request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
@@ -8905,6 +8915,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tts_config):
             request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_silence_config_shrink):
+            query['AgentSilenceConfig'] = request.agent_silence_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
@@ -8959,6 +8971,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.ModifyAppAgentTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_silence_config):
+            request.agent_silence_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_silence_config, 'AgentSilenceConfig', 'json')
         if not UtilClient.is_unset(tmp_req.asr_config):
             request.asr_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.asr_config, 'AsrConfig', 'json')
         if not UtilClient.is_unset(tmp_req.llm_config):
@@ -8966,6 +8980,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tts_config):
             request.tts_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tts_config, 'TtsConfig', 'json')
         query = {}
+        if not UtilClient.is_unset(request.agent_silence_config_shrink):
+            query['AgentSilenceConfig'] = request.agent_silence_config_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.asr_config_shrink):
