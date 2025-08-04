@@ -1,3 +1,7 @@
+2025-08-04 Version: 4.12.4
+- Update API DescribeDesktopInfo: add request parameters NeedExtraInfo.
+
+
 2025-07-29 Version: 4.12.3
 - Update API DescribeModificationPrice: add request parameters PromotionId.
 - Update API DescribeRenewalPrice: add request parameters PromotionId.

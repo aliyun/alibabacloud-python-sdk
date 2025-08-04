@@ -13200,6 +13200,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.need_extra_info):
+            query['NeedExtraInfo'] = request.need_extra_info
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -13237,6 +13239,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.desktop_id):
             query['DesktopId'] = request.desktop_id
+        if not UtilClient.is_unset(request.need_extra_info):
+            query['NeedExtraInfo'] = request.need_extra_info
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
