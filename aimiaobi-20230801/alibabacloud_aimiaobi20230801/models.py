@@ -16930,9 +16930,11 @@ class GetSmartAuditResultResponseBodyData(TeaModel):
     def __init__(
         self,
         error_item_details: List[GetSmartAuditResultResponseBodyDataErrorItemDetails] = None,
+        error_message: str = None,
         status: str = None,
     ):
         self.error_item_details = error_item_details
+        self.error_message = error_message
         self.status = status
 
     def validate(self):
@@ -16951,6 +16953,8 @@ class GetSmartAuditResultResponseBodyData(TeaModel):
         if self.error_item_details is not None:
             for k in self.error_item_details:
                 result['ErrorItemDetails'].append(k.to_map() if k else None)
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
         if self.status is not None:
             result['Status'] = self.status
         return result
@@ -16962,6 +16966,8 @@ class GetSmartAuditResultResponseBodyData(TeaModel):
             for k in m.get('ErrorItemDetails'):
                 temp_model = GetSmartAuditResultResponseBodyDataErrorItemDetails()
                 self.error_item_details.append(temp_model.from_map(k))
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         return self
@@ -52600,6 +52606,39 @@ class SubmitImportTermsTaskResponse(TeaModel):
         return self
 
 
+class SubmitSmartAuditRequestImageUrlList(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        url: str = None,
+    ):
+        self.id = id
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
 class SubmitSmartAuditRequestImageUrls(TeaModel):
     def __init__(
         self,
@@ -52636,17 +52675,23 @@ class SubmitSmartAuditRequestImageUrls(TeaModel):
 class SubmitSmartAuditRequest(TeaModel):
     def __init__(
         self,
+        image_url_list: List[SubmitSmartAuditRequestImageUrlList] = None,
         sub_codes: List[str] = None,
         text: str = None,
         workspace_id: str = None,
         image_urls: List[SubmitSmartAuditRequestImageUrls] = None,
     ):
+        self.image_url_list = image_url_list
         self.sub_codes = sub_codes
         self.text = text
         self.workspace_id = workspace_id
         self.image_urls = image_urls
 
     def validate(self):
+        if self.image_url_list:
+            for k in self.image_url_list:
+                if k:
+                    k.validate()
         if self.image_urls:
             for k in self.image_urls:
                 if k:
@@ -52658,6 +52703,10 @@ class SubmitSmartAuditRequest(TeaModel):
             return _map
 
         result = dict()
+        result['ImageUrlList'] = []
+        if self.image_url_list is not None:
+            for k in self.image_url_list:
+                result['ImageUrlList'].append(k.to_map() if k else None)
         if self.sub_codes is not None:
             result['SubCodes'] = self.sub_codes
         if self.text is not None:
@@ -52672,6 +52721,11 @@ class SubmitSmartAuditRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.image_url_list = []
+        if m.get('ImageUrlList') is not None:
+            for k in m.get('ImageUrlList'):
+                temp_model = SubmitSmartAuditRequestImageUrlList()
+                self.image_url_list.append(temp_model.from_map(k))
         if m.get('SubCodes') is not None:
             self.sub_codes = m.get('SubCodes')
         if m.get('Text') is not None:
@@ -52689,11 +52743,13 @@ class SubmitSmartAuditRequest(TeaModel):
 class SubmitSmartAuditShrinkRequest(TeaModel):
     def __init__(
         self,
+        image_url_list_shrink: str = None,
         sub_codes_shrink: str = None,
         text: str = None,
         workspace_id: str = None,
         image_urls_shrink: str = None,
     ):
+        self.image_url_list_shrink = image_url_list_shrink
         self.sub_codes_shrink = sub_codes_shrink
         self.text = text
         self.workspace_id = workspace_id
@@ -52708,6 +52764,8 @@ class SubmitSmartAuditShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.image_url_list_shrink is not None:
+            result['ImageUrlList'] = self.image_url_list_shrink
         if self.sub_codes_shrink is not None:
             result['SubCodes'] = self.sub_codes_shrink
         if self.text is not None:
@@ -52720,6 +52778,8 @@ class SubmitSmartAuditShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ImageUrlList') is not None:
+            self.image_url_list_shrink = m.get('ImageUrlList')
         if m.get('SubCodes') is not None:
             self.sub_codes_shrink = m.get('SubCodes')
         if m.get('Text') is not None:

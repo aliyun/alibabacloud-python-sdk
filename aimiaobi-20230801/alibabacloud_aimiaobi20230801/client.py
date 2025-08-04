@@ -18332,11 +18332,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SubmitSmartAuditShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.image_url_list):
+            request.image_url_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_url_list, 'ImageUrlList', 'json')
         if not UtilClient.is_unset(tmp_req.sub_codes):
             request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
         if not UtilClient.is_unset(tmp_req.image_urls):
             request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'imageUrls', 'json')
         body = {}
+        if not UtilClient.is_unset(request.image_url_list_shrink):
+            body['ImageUrlList'] = request.image_url_list_shrink
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
         if not UtilClient.is_unset(request.text):
@@ -18379,11 +18383,15 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ai_miao_bi_20230801_models.SubmitSmartAuditShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.image_url_list):
+            request.image_url_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_url_list, 'ImageUrlList', 'json')
         if not UtilClient.is_unset(tmp_req.sub_codes):
             request.sub_codes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_codes, 'SubCodes', 'json')
         if not UtilClient.is_unset(tmp_req.image_urls):
             request.image_urls_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_urls, 'imageUrls', 'json')
         body = {}
+        if not UtilClient.is_unset(request.image_url_list_shrink):
+            body['ImageUrlList'] = request.image_url_list_shrink
         if not UtilClient.is_unset(request.sub_codes_shrink):
             body['SubCodes'] = request.sub_codes_shrink
         if not UtilClient.is_unset(request.text):
