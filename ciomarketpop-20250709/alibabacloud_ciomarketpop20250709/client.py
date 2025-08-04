@@ -133,3 +133,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_every_one_sells_form_list_with_options_async(request, runtime)
+
+    def push_every_one_sell_msg_with_options(
+        self,
+        tmp_req: cio_market_pop_20250709_models.PushEveryOneSellMsgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cio_market_pop_20250709_models.PushEveryOneSellMsgResponse:
+        """
+        @summary 推送钉钉消息
+        
+        @param tmp_req: PushEveryOneSellMsgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushEveryOneSellMsgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cio_market_pop_20250709_models.PushEveryOneSellMsgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ding_id_list):
+            request.ding_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ding_id_list, 'DingIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ding_id_list_shrink):
+            body['DingIdList'] = request.ding_id_list_shrink
+        if not UtilClient.is_unset(request.push_msg):
+            body['PushMsg'] = request.push_msg
+        if not UtilClient.is_unset(request.push_type):
+            body['PushType'] = request.push_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushEveryOneSellMsg',
+            version='2025-07-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            cio_market_pop_20250709_models.PushEveryOneSellMsgResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_every_one_sell_msg_with_options_async(
+        self,
+        tmp_req: cio_market_pop_20250709_models.PushEveryOneSellMsgRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cio_market_pop_20250709_models.PushEveryOneSellMsgResponse:
+        """
+        @summary 推送钉钉消息
+        
+        @param tmp_req: PushEveryOneSellMsgRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushEveryOneSellMsgResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cio_market_pop_20250709_models.PushEveryOneSellMsgShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ding_id_list):
+            request.ding_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ding_id_list, 'DingIdList', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.ding_id_list_shrink):
+            body['DingIdList'] = request.ding_id_list_shrink
+        if not UtilClient.is_unset(request.push_msg):
+            body['PushMsg'] = request.push_msg
+        if not UtilClient.is_unset(request.push_type):
+            body['PushType'] = request.push_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushEveryOneSellMsg',
+            version='2025-07-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='Anonymous',
+            style='RPC',
+            req_body_type='formData',
+            body_type='string'
+        )
+        return TeaCore.from_map(
+            cio_market_pop_20250709_models.PushEveryOneSellMsgResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_every_one_sell_msg(
+        self,
+        request: cio_market_pop_20250709_models.PushEveryOneSellMsgRequest,
+    ) -> cio_market_pop_20250709_models.PushEveryOneSellMsgResponse:
+        """
+        @summary 推送钉钉消息
+        
+        @param request: PushEveryOneSellMsgRequest
+        @return: PushEveryOneSellMsgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.push_every_one_sell_msg_with_options(request, runtime)
+
+    async def push_every_one_sell_msg_async(
+        self,
+        request: cio_market_pop_20250709_models.PushEveryOneSellMsgRequest,
+    ) -> cio_market_pop_20250709_models.PushEveryOneSellMsgResponse:
+        """
+        @summary 推送钉钉消息
+        
+        @param request: PushEveryOneSellMsgRequest
+        @return: PushEveryOneSellMsgResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.push_every_one_sell_msg_with_options_async(request, runtime)

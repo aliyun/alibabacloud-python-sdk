@@ -147,3 +147,120 @@ class GetEveryOneSellsFormListResponse(TeaModel):
         return self
 
 
+class PushEveryOneSellMsgRequest(TeaModel):
+    def __init__(
+        self,
+        ding_id_list: List[str] = None,
+        push_msg: str = None,
+        push_type: str = None,
+    ):
+        self.ding_id_list = ding_id_list
+        self.push_msg = push_msg
+        self.push_type = push_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_id_list is not None:
+            result['DingIdList'] = self.ding_id_list
+        if self.push_msg is not None:
+            result['PushMsg'] = self.push_msg
+        if self.push_type is not None:
+            result['PushType'] = self.push_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingIdList') is not None:
+            self.ding_id_list = m.get('DingIdList')
+        if m.get('PushMsg') is not None:
+            self.push_msg = m.get('PushMsg')
+        if m.get('PushType') is not None:
+            self.push_type = m.get('PushType')
+        return self
+
+
+class PushEveryOneSellMsgShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ding_id_list_shrink: str = None,
+        push_msg: str = None,
+        push_type: str = None,
+    ):
+        self.ding_id_list_shrink = ding_id_list_shrink
+        self.push_msg = push_msg
+        self.push_type = push_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_id_list_shrink is not None:
+            result['DingIdList'] = self.ding_id_list_shrink
+        if self.push_msg is not None:
+            result['PushMsg'] = self.push_msg
+        if self.push_type is not None:
+            result['PushType'] = self.push_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingIdList') is not None:
+            self.ding_id_list_shrink = m.get('DingIdList')
+        if m.get('PushMsg') is not None:
+            self.push_msg = m.get('PushMsg')
+        if m.get('PushType') is not None:
+            self.push_type = m.get('PushType')
+        return self
+
+
+class PushEveryOneSellMsgResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: str = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            self.body = m.get('body')
+        return self
+
+
