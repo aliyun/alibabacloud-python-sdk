@@ -1,3 +1,24 @@
+2025-08-05 Version: 6.2.0
+- Support API AddDnsFirewallPolicy.
+- Support API AddPrivateDnsDomainName.
+- Support API CreateVpcFirewallCenManualConfigure.
+- Support API DeleteDnsFirewallPolicy.
+- Support API DeletePrivateDnsAllDomainName.
+- Support API DeletePrivateDnsDomainName.
+- Support API DeletePrivateDnsEndpoint.
+- Support API DescribeAITrafficAnalysisStatus.
+- Support API DescribeDnsFirewallPolicy.
+- Support API DescribePrivateDnsDomainNameList.
+- Support API DescribePrivateDnsEndpointDetail.
+- Support API DescribePrivateDnsEndpointList.
+- Support API ModifyControlPolicyPriority.
+- Support API ModifyDnsFirewallPolicy.
+- Support API ModifyPrivateDnsEndpoint.
+- Support API ReleaseExpiredInstance.
+- Support API UpdateAITrafficAnalysisStatus.
+- Update API DescribeRiskEventGroup: add request parameters AttackAppCategory.
+
+
 2025-05-15 Version: 6.1.1
 - Update API DescribeLogStoreInfo: add response parameters Body.RegionId.
 - Update API DescribeOutgoingDomain: add request parameters DataType.
