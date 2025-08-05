@@ -6093,10 +6093,20 @@ class GetProjectResponseBodyDataPropertiesEncryption(TeaModel):
 class GetProjectResponseBodyDataPropertiesExternalProjectProperties(TeaModel):
     def __init__(
         self,
+        external_catalog_id: str = None,
+        foreign_server_name: str = None,
+        foreign_server_type: str = None,
         is_external_catalog_bound: str = None,
+        table_format: str = None,
+        warehouse: str = None,
     ):
+        self.external_catalog_id = external_catalog_id
+        self.foreign_server_name = foreign_server_name
+        self.foreign_server_type = foreign_server_type
         # Indicates whether the external project is an external project for [data lakehouse solution 2.0](https://www.alibabacloud.com/help/zh/maxcompute/user-guide/lake-warehouse-integrated-2-0-use-guide).
         self.is_external_catalog_bound = is_external_catalog_bound
+        self.table_format = table_format
+        self.warehouse = warehouse
 
     def validate(self):
         pass
@@ -6107,14 +6117,34 @@ class GetProjectResponseBodyDataPropertiesExternalProjectProperties(TeaModel):
             return _map
 
         result = dict()
+        if self.external_catalog_id is not None:
+            result['externalCatalogId'] = self.external_catalog_id
+        if self.foreign_server_name is not None:
+            result['foreignServerName'] = self.foreign_server_name
+        if self.foreign_server_type is not None:
+            result['foreignServerType'] = self.foreign_server_type
         if self.is_external_catalog_bound is not None:
             result['isExternalCatalogBound'] = self.is_external_catalog_bound
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
+        if self.warehouse is not None:
+            result['warehouse'] = self.warehouse
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('externalCatalogId') is not None:
+            self.external_catalog_id = m.get('externalCatalogId')
+        if m.get('foreignServerName') is not None:
+            self.foreign_server_name = m.get('foreignServerName')
+        if m.get('foreignServerType') is not None:
+            self.foreign_server_type = m.get('foreignServerType')
         if m.get('isExternalCatalogBound') is not None:
             self.is_external_catalog_bound = m.get('isExternalCatalogBound')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
+        if m.get('warehouse') is not None:
+            self.warehouse = m.get('warehouse')
         return self
 
 
@@ -26249,6 +26279,261 @@ class StopMmsJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StopMmsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SumStorageMetricsByDateRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: int = None,
+        project_names: List[str] = None,
+        region: str = None,
+        start_date: int = None,
+        stats_type: str = None,
+        user_id: str = None,
+    ):
+        self.end_date = end_date
+        self.project_names = project_names
+        self.region = region
+        self.start_date = start_date
+        self.stats_type = stats_type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.project_names is not None:
+            result['projectNames'] = self.project_names
+        if self.region is not None:
+            result['region'] = self.region
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+        if self.stats_type is not None:
+            result['statsType'] = self.stats_type
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('projectNames') is not None:
+            self.project_names = m.get('projectNames')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
+        if m.get('statsType') is not None:
+            self.stats_type = m.get('statsType')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class SumStorageMetricsByDateResponseBodyDataItemStorageMetrics(TeaModel):
+    def __init__(
+        self,
+        item_name: str = None,
+        percentage: float = None,
+        usage: str = None,
+    ):
+        self.item_name = item_name
+        self.percentage = percentage
+        self.usage = usage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item_name is not None:
+            result['itemName'] = self.item_name
+        if self.percentage is not None:
+            result['percentage'] = self.percentage
+        if self.usage is not None:
+            result['usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('itemName') is not None:
+            self.item_name = m.get('itemName')
+        if m.get('percentage') is not None:
+            self.percentage = m.get('percentage')
+        if m.get('usage') is not None:
+            self.usage = m.get('usage')
+        return self
+
+
+class SumStorageMetricsByDateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        date_time: str = None,
+        item_storage_metrics: List[SumStorageMetricsByDateResponseBodyDataItemStorageMetrics] = None,
+        storage_type: str = None,
+        unit: str = None,
+        usage: str = None,
+    ):
+        self.date_time = date_time
+        self.item_storage_metrics = item_storage_metrics
+        self.storage_type = storage_type
+        self.unit = unit
+        self.usage = usage
+
+    def validate(self):
+        if self.item_storage_metrics:
+            for k in self.item_storage_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date_time is not None:
+            result['dateTime'] = self.date_time
+        result['itemStorageMetrics'] = []
+        if self.item_storage_metrics is not None:
+            for k in self.item_storage_metrics:
+                result['itemStorageMetrics'].append(k.to_map() if k else None)
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.usage is not None:
+            result['usage'] = self.usage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dateTime') is not None:
+            self.date_time = m.get('dateTime')
+        self.item_storage_metrics = []
+        if m.get('itemStorageMetrics') is not None:
+            for k in m.get('itemStorageMetrics'):
+                temp_model = SumStorageMetricsByDateResponseBodyDataItemStorageMetrics()
+                self.item_storage_metrics.append(temp_model.from_map(k))
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('usage') is not None:
+            self.usage = m.get('usage')
+        return self
+
+
+class SumStorageMetricsByDateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[SumStorageMetricsByDateResponseBodyData] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_code: int = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_code = http_code
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = SumStorageMetricsByDateResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class SumStorageMetricsByDateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SumStorageMetricsByDateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SumStorageMetricsByDateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

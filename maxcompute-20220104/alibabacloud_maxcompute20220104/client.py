@@ -8887,6 +8887,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.stop_mms_job_with_options_async(source_id, job_id, headers, runtime)
 
+    def sum_storage_metrics_by_date_with_options(
+        self,
+        request: max_compute_20220104_models.SumStorageMetricsByDateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.SumStorageMetricsByDateResponse:
+        """
+        @param request: SumStorageMetricsByDateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SumStorageMetricsByDateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_date):
+            body['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.project_names):
+            body['projectNames'] = request.project_names
+        if not UtilClient.is_unset(request.region):
+            body['region'] = request.region
+        if not UtilClient.is_unset(request.start_date):
+            body['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SumStorageMetricsByDate',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/storageMetrics/sumByDate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.SumStorageMetricsByDateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def sum_storage_metrics_by_date_with_options_async(
+        self,
+        request: max_compute_20220104_models.SumStorageMetricsByDateRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.SumStorageMetricsByDateResponse:
+        """
+        @param request: SumStorageMetricsByDateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SumStorageMetricsByDateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_date):
+            body['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.project_names):
+            body['projectNames'] = request.project_names
+        if not UtilClient.is_unset(request.region):
+            body['region'] = request.region
+        if not UtilClient.is_unset(request.start_date):
+            body['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.stats_type):
+            body['statsType'] = request.stats_type
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SumStorageMetricsByDate',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/storageMetrics/sumByDate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.SumStorageMetricsByDateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def sum_storage_metrics_by_date(
+        self,
+        request: max_compute_20220104_models.SumStorageMetricsByDateRequest,
+    ) -> max_compute_20220104_models.SumStorageMetricsByDateResponse:
+        """
+        @param request: SumStorageMetricsByDateRequest
+        @return: SumStorageMetricsByDateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.sum_storage_metrics_by_date_with_options(request, headers, runtime)
+
+    async def sum_storage_metrics_by_date_async(
+        self,
+        request: max_compute_20220104_models.SumStorageMetricsByDateRequest,
+    ) -> max_compute_20220104_models.SumStorageMetricsByDateResponse:
+        """
+        @param request: SumStorageMetricsByDateRequest
+        @return: SumStorageMetricsByDateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.sum_storage_metrics_by_date_with_options_async(request, headers, runtime)
+
     def update_compute_quota_plan_with_options(
         self,
         nickname: str,
