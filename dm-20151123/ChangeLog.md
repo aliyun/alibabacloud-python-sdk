@@ -1,3 +1,9 @@
+2025-08-05 Version: 1.6.0
+- Support API GetDedicatedIpWarmUpDetail.
+- Support API GetDedicatedIpWarmUpInfo.
+- Update API DedicatedIpList: add response parameters Body.Ips.$.IpExt.LastWarmUpTypeChangedTime.
+
+
 2025-07-28 Version: 1.5.0
 - Support API ListBlockSending.
 - Update API DescAccountSummary: add response parameters Body.IpChannelType.

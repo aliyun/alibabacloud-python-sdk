@@ -1801,11 +1801,13 @@ class DedicatedIpListResponseBodyIpsIpExt(TeaModel):
         self,
         auto_renewal: bool = None,
         has_send_mail: bool = None,
+        last_warm_up_type_changed_time: str = None,
     ):
         # Whether auto-renewal is enabled
         self.auto_renewal = auto_renewal
         # Whether an email has been sent
         self.has_send_mail = has_send_mail
+        self.last_warm_up_type_changed_time = last_warm_up_type_changed_time
 
     def validate(self):
         pass
@@ -1820,6 +1822,8 @@ class DedicatedIpListResponseBodyIpsIpExt(TeaModel):
             result['AutoRenewal'] = self.auto_renewal
         if self.has_send_mail is not None:
             result['HasSendMail'] = self.has_send_mail
+        if self.last_warm_up_type_changed_time is not None:
+            result['LastWarmUpTypeChangedTime'] = self.last_warm_up_type_changed_time
         return result
 
     def from_map(self, m: dict = None):
@@ -1828,6 +1832,8 @@ class DedicatedIpListResponseBodyIpsIpExt(TeaModel):
             self.auto_renewal = m.get('AutoRenewal')
         if m.get('HasSendMail') is not None:
             self.has_send_mail = m.get('HasSendMail')
+        if m.get('LastWarmUpTypeChangedTime') is not None:
+            self.last_warm_up_type_changed_time = m.get('LastWarmUpTypeChangedTime')
         return self
 
 
@@ -4126,6 +4132,320 @@ class DescDomainResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescDomainResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDedicatedIpWarmUpDetailRequest(TeaModel):
+    def __init__(
+        self,
+        dedicated_ip: str = None,
+        end_day_mark: int = None,
+        esp: str = None,
+        start_day_mark: int = None,
+    ):
+        self.dedicated_ip = dedicated_ip
+        self.end_day_mark = end_day_mark
+        self.esp = esp
+        self.start_day_mark = start_day_mark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dedicated_ip is not None:
+            result['DedicatedIp'] = self.dedicated_ip
+        if self.end_day_mark is not None:
+            result['EndDayMark'] = self.end_day_mark
+        if self.esp is not None:
+            result['Esp'] = self.esp
+        if self.start_day_mark is not None:
+            result['StartDayMark'] = self.start_day_mark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DedicatedIp') is not None:
+            self.dedicated_ip = m.get('DedicatedIp')
+        if m.get('EndDayMark') is not None:
+            self.end_day_mark = m.get('EndDayMark')
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
+        if m.get('StartDayMark') is not None:
+            self.start_day_mark = m.get('StartDayMark')
+        return self
+
+
+class GetDedicatedIpWarmUpDetailResponseBodyDetail(TeaModel):
+    def __init__(
+        self,
+        day_mark: int = None,
+        deliver_counts: int = None,
+        esp: str = None,
+        send_counts: int = None,
+    ):
+        self.day_mark = day_mark
+        self.deliver_counts = deliver_counts
+        self.esp = esp
+        self.send_counts = send_counts
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.day_mark is not None:
+            result['DayMark'] = self.day_mark
+        if self.deliver_counts is not None:
+            result['DeliverCounts'] = self.deliver_counts
+        if self.esp is not None:
+            result['Esp'] = self.esp
+        if self.send_counts is not None:
+            result['SendCounts'] = self.send_counts
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DayMark') is not None:
+            self.day_mark = m.get('DayMark')
+        if m.get('DeliverCounts') is not None:
+            self.deliver_counts = m.get('DeliverCounts')
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
+        if m.get('SendCounts') is not None:
+            self.send_counts = m.get('SendCounts')
+        return self
+
+
+class GetDedicatedIpWarmUpDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        detail: List[GetDedicatedIpWarmUpDetailResponseBodyDetail] = None,
+        request_id: str = None,
+    ):
+        self.detail = detail
+        self.request_id = request_id
+
+    def validate(self):
+        if self.detail:
+            for k in self.detail:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Detail'] = []
+        if self.detail is not None:
+            for k in self.detail:
+                result['Detail'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail = []
+        if m.get('Detail') is not None:
+            for k in m.get('Detail'):
+                temp_model = GetDedicatedIpWarmUpDetailResponseBodyDetail()
+                self.detail.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDedicatedIpWarmUpDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDedicatedIpWarmUpDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDedicatedIpWarmUpDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDedicatedIpWarmUpInfoRequest(TeaModel):
+    def __init__(
+        self,
+        dedicated_ip: str = None,
+    ):
+        self.dedicated_ip = dedicated_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dedicated_ip is not None:
+            result['DedicatedIp'] = self.dedicated_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DedicatedIp') is not None:
+            self.dedicated_ip = m.get('DedicatedIp')
+        return self
+
+
+class GetDedicatedIpWarmUpInfoResponseBodyInfo(TeaModel):
+    def __init__(
+        self,
+        esp: str = None,
+        finished: bool = None,
+    ):
+        self.esp = esp
+        self.finished = finished
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.esp is not None:
+            result['Esp'] = self.esp
+        if self.finished is not None:
+            result['Finished'] = self.finished
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Esp') is not None:
+            self.esp = m.get('Esp')
+        if m.get('Finished') is not None:
+            self.finished = m.get('Finished')
+        return self
+
+
+class GetDedicatedIpWarmUpInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        info: List[GetDedicatedIpWarmUpInfoResponseBodyInfo] = None,
+        request_id: str = None,
+    ):
+        self.info = info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.info:
+            for k in self.info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Info'] = []
+        if self.info is not None:
+            for k in self.info:
+                result['Info'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.info = []
+        if m.get('Info') is not None:
+            for k in m.get('Info'):
+                temp_model = GetDedicatedIpWarmUpInfoResponseBodyInfo()
+                self.info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetDedicatedIpWarmUpInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDedicatedIpWarmUpInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDedicatedIpWarmUpInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

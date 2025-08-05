@@ -3153,6 +3153,210 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.desc_domain_with_options_async(request, runtime)
 
+    def get_dedicated_ip_warm_up_detail_with_options(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpDetailResponse:
+        """
+        @summary 获取专属ip的预热详情信息
+        
+        @param request: GetDedicatedIpWarmUpDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDedicatedIpWarmUpDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.end_day_mark):
+            query['EndDayMark'] = request.end_day_mark
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
+        if not UtilClient.is_unset(request.start_day_mark):
+            query['StartDayMark'] = request.start_day_mark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDedicatedIpWarmUpDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetDedicatedIpWarmUpDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dedicated_ip_warm_up_detail_with_options_async(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpDetailResponse:
+        """
+        @summary 获取专属ip的预热详情信息
+        
+        @param request: GetDedicatedIpWarmUpDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDedicatedIpWarmUpDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        if not UtilClient.is_unset(request.end_day_mark):
+            query['EndDayMark'] = request.end_day_mark
+        if not UtilClient.is_unset(request.esp):
+            query['Esp'] = request.esp
+        if not UtilClient.is_unset(request.start_day_mark):
+            query['StartDayMark'] = request.start_day_mark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDedicatedIpWarmUpDetail',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetDedicatedIpWarmUpDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dedicated_ip_warm_up_detail(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpDetailRequest,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpDetailResponse:
+        """
+        @summary 获取专属ip的预热详情信息
+        
+        @param request: GetDedicatedIpWarmUpDetailRequest
+        @return: GetDedicatedIpWarmUpDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dedicated_ip_warm_up_detail_with_options(request, runtime)
+
+    async def get_dedicated_ip_warm_up_detail_async(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpDetailRequest,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpDetailResponse:
+        """
+        @summary 获取专属ip的预热详情信息
+        
+        @param request: GetDedicatedIpWarmUpDetailRequest
+        @return: GetDedicatedIpWarmUpDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dedicated_ip_warm_up_detail_with_options_async(request, runtime)
+
+    def get_dedicated_ip_warm_up_info_with_options(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpInfoResponse:
+        """
+        @summary 获取专属ip的预热信息
+        
+        @param request: GetDedicatedIpWarmUpInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDedicatedIpWarmUpInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDedicatedIpWarmUpInfo',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetDedicatedIpWarmUpInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dedicated_ip_warm_up_info_with_options_async(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpInfoResponse:
+        """
+        @summary 获取专属ip的预热信息
+        
+        @param request: GetDedicatedIpWarmUpInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDedicatedIpWarmUpInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dedicated_ip):
+            query['DedicatedIp'] = request.dedicated_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDedicatedIpWarmUpInfo',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetDedicatedIpWarmUpInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dedicated_ip_warm_up_info(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpInfoRequest,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpInfoResponse:
+        """
+        @summary 获取专属ip的预热信息
+        
+        @param request: GetDedicatedIpWarmUpInfoRequest
+        @return: GetDedicatedIpWarmUpInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_dedicated_ip_warm_up_info_with_options(request, runtime)
+
+    async def get_dedicated_ip_warm_up_info_async(
+        self,
+        request: dm_20151123_models.GetDedicatedIpWarmUpInfoRequest,
+    ) -> dm_20151123_models.GetDedicatedIpWarmUpInfoResponse:
+        """
+        @summary 获取专属ip的预热信息
+        
+        @param request: GetDedicatedIpWarmUpInfoRequest
+        @return: GetDedicatedIpWarmUpInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dedicated_ip_warm_up_info_with_options_async(request, runtime)
+
     def get_ip_protection_with_options(
         self,
         request: dm_20151123_models.GetIpProtectionRequest,
