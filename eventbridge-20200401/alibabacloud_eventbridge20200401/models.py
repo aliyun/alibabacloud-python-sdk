@@ -22865,14 +22865,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueu
 class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy(TeaModel):
     def __init__(
         self,
-        maximum_event_age_in_seconds: float = None,
-        maximum_retry_attempts: float = None,
         push_retry_strategy: str = None,
     ):
-        # The maximum timeout period for a retry.
-        self.maximum_event_age_in_seconds = maximum_event_age_in_seconds
-        # The maximum number of retries.
-        self.maximum_retry_attempts = maximum_retry_attempts
         # The retry policy. Valid values: BACKOFF_RETRY and EXPONENTIAL_DECAY_RETRY.
         self.push_retry_strategy = push_retry_strategy
 
@@ -22885,20 +22879,12 @@ class ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy(
             return _map
 
         result = dict()
-        if self.maximum_event_age_in_seconds is not None:
-            result['MaximumEventAgeInSeconds'] = self.maximum_event_age_in_seconds
-        if self.maximum_retry_attempts is not None:
-            result['MaximumRetryAttempts'] = self.maximum_retry_attempts
         if self.push_retry_strategy is not None:
             result['PushRetryStrategy'] = self.push_retry_strategy
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('MaximumEventAgeInSeconds') is not None:
-            self.maximum_event_age_in_seconds = m.get('MaximumEventAgeInSeconds')
-        if m.get('MaximumRetryAttempts') is not None:
-            self.maximum_retry_attempts = m.get('MaximumRetryAttempts')
         if m.get('PushRetryStrategy') is not None:
             self.push_retry_strategy = m.get('PushRetryStrategy')
         return self

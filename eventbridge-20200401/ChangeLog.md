@@ -1,3 +1,8 @@
+2025-08-05 Version: 7.0.0
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.RunOptions.RetryStrategy.MaximumEventAgeInSeconds.
+- Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.RunOptions.RetryStrategy.MaximumRetryAttempts.
+
+
 2025-06-19 Version: 6.2.2
 - Update API DiscoverEventSource: add response parameters Body.Data.SourceMySQLDiscovery.EstimatedRows.
 - Update API DiscoverEventSource: add response parameters Body.Data.SourceMySQLDiscovery.ExpireLogsDays.
