@@ -377,6 +377,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
+    def create_and_attach_policy_with_options(
+        self,
+        request: apig20240327_models.CreateAndAttachPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateAndAttachPolicyResponse:
+        """
+        @summary CreateAndAttachPolicy
+        
+        @param request: CreateAndAttachPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndAttachPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.class_name):
+            body['className'] = request.class_name
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAndAttachPolicy',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateAndAttachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_and_attach_policy_with_options_async(
+        self,
+        request: apig20240327_models.CreateAndAttachPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.CreateAndAttachPolicyResponse:
+        """
+        @summary CreateAndAttachPolicy
+        
+        @param request: CreateAndAttachPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAndAttachPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.class_name):
+            body['className'] = request.class_name
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAndAttachPolicy',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.CreateAndAttachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_and_attach_policy(
+        self,
+        request: apig20240327_models.CreateAndAttachPolicyRequest,
+    ) -> apig20240327_models.CreateAndAttachPolicyResponse:
+        """
+        @summary CreateAndAttachPolicy
+        
+        @param request: CreateAndAttachPolicyRequest
+        @return: CreateAndAttachPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_and_attach_policy_with_options(request, headers, runtime)
+
+    async def create_and_attach_policy_async(
+        self,
+        request: apig20240327_models.CreateAndAttachPolicyRequest,
+    ) -> apig20240327_models.CreateAndAttachPolicyResponse:
+        """
+        @summary CreateAndAttachPolicy
+        
+        @param request: CreateAndAttachPolicyRequest
+        @return: CreateAndAttachPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_and_attach_policy_with_options_async(request, headers, runtime)
+
     def create_consumer_with_options(
         self,
         request: apig20240327_models.CreateConsumerRequest,
@@ -6419,6 +6551,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_plugins_with_options_async(request, headers, runtime)
 
+    def list_policies_with_options(
+        self,
+        request: apig20240327_models.ListPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPoliciesResponse:
+        """
+        @summary ListPolicies
+        
+        @param request: ListPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.with_attachments):
+            query['withAttachments'] = request.with_attachments
+        if not UtilClient.is_unset(request.with_system_policy):
+            query['withSystemPolicy'] = request.with_system_policy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_policies_with_options_async(
+        self,
+        request: apig20240327_models.ListPoliciesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.ListPoliciesResponse:
+        """
+        @summary ListPolicies
+        
+        @param request: ListPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPoliciesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.attach_resource_id):
+            query['attachResourceId'] = request.attach_resource_id
+        if not UtilClient.is_unset(request.attach_resource_type):
+            query['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.environment_id):
+            query['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.with_attachments):
+            query['withAttachments'] = request.with_attachments
+        if not UtilClient.is_unset(request.with_system_policy):
+            query['withSystemPolicy'] = request.with_system_policy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPolicies',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_policies(
+        self,
+        request: apig20240327_models.ListPoliciesRequest,
+    ) -> apig20240327_models.ListPoliciesResponse:
+        """
+        @summary ListPolicies
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_policies_with_options(request, headers, runtime)
+
+    async def list_policies_async(
+        self,
+        request: apig20240327_models.ListPoliciesRequest,
+    ) -> apig20240327_models.ListPoliciesResponse:
+        """
+        @summary ListPolicies
+        
+        @param request: ListPoliciesRequest
+        @return: ListPoliciesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_policies_with_options_async(request, headers, runtime)
+
     def list_policy_classes_with_options(
         self,
         request: apig20240327_models.ListPolicyClassesRequest,
@@ -7205,7 +7461,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UndeployHttpApiResponse:
         """
-        @summary 取消部署HttpApi
+        @summary Unpublishes an HTTP API.
         
         @param request: UndeployHttpApiRequest
         @param headers: map
@@ -7250,7 +7506,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> apig20240327_models.UndeployHttpApiResponse:
         """
-        @summary 取消部署HttpApi
+        @summary Unpublishes an HTTP API.
         
         @param request: UndeployHttpApiRequest
         @param headers: map
@@ -7293,7 +7549,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UndeployHttpApiRequest,
     ) -> apig20240327_models.UndeployHttpApiResponse:
         """
-        @summary 取消部署HttpApi
+        @summary Unpublishes an HTTP API.
         
         @param request: UndeployHttpApiRequest
         @return: UndeployHttpApiResponse
@@ -7308,7 +7564,7 @@ class Client(OpenApiClient):
         request: apig20240327_models.UndeployHttpApiRequest,
     ) -> apig20240327_models.UndeployHttpApiResponse:
         """
-        @summary 取消部署HttpApi
+        @summary Unpublishes an HTTP API.
         
         @param request: UndeployHttpApiRequest
         @return: UndeployHttpApiResponse
@@ -7316,6 +7572,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.undeploy_http_api_with_options_async(http_api_id, request, headers, runtime)
+
+    def update_and_attach_policy_with_options(
+        self,
+        policy_id: str,
+        request: apig20240327_models.UpdateAndAttachPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
+        """
+        @summary UpdateAndAttachPolicy
+        
+        @param request: UpdateAndAttachPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndAttachPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndAttachPolicy',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies/{OpenApiUtilClient.get_encode_param(policy_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateAndAttachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_and_attach_policy_with_options_async(
+        self,
+        policy_id: str,
+        request: apig20240327_models.UpdateAndAttachPolicyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
+        """
+        @summary UpdateAndAttachPolicy
+        
+        @param request: UpdateAndAttachPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAndAttachPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.attach_resource_ids):
+            body['attachResourceIds'] = request.attach_resource_ids
+        if not UtilClient.is_unset(request.attach_resource_type):
+            body['attachResourceType'] = request.attach_resource_type
+        if not UtilClient.is_unset(request.config):
+            body['config'] = request.config
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.environment_id):
+            body['environmentId'] = request.environment_id
+        if not UtilClient.is_unset(request.gateway_id):
+            body['gatewayId'] = request.gateway_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAndAttachPolicy',
+            version='2024-03-27',
+            protocol='HTTPS',
+            pathname=f'/v1/policies/{OpenApiUtilClient.get_encode_param(policy_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            apig20240327_models.UpdateAndAttachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_and_attach_policy(
+        self,
+        policy_id: str,
+        request: apig20240327_models.UpdateAndAttachPolicyRequest,
+    ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
+        """
+        @summary UpdateAndAttachPolicy
+        
+        @param request: UpdateAndAttachPolicyRequest
+        @return: UpdateAndAttachPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_and_attach_policy_with_options(policy_id, request, headers, runtime)
+
+    async def update_and_attach_policy_async(
+        self,
+        policy_id: str,
+        request: apig20240327_models.UpdateAndAttachPolicyRequest,
+    ) -> apig20240327_models.UpdateAndAttachPolicyResponse:
+        """
+        @summary UpdateAndAttachPolicy
+        
+        @param request: UpdateAndAttachPolicyRequest
+        @return: UpdateAndAttachPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_and_attach_policy_with_options_async(policy_id, request, headers, runtime)
 
     def update_consumer_with_options(
         self,

@@ -1,3 +1,9 @@
+2025-08-05 Version: 4.4.0
+- Support API CreateAndAttachPolicy.
+- Support API ListPolicies.
+- Support API UpdateAndAttachPolicy.
+
+
 2025-07-25 Version: 4.3.2
 - Update API ListPolicyClasses: add request parameters attachResourceId.
 - Update API ListPolicyClasses: add request parameters gatewayId.

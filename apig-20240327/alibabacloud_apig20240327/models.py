@@ -2422,6 +2422,7 @@ class HttpApiDeployConfig(TeaModel):
         environment_id: str = None,
         gateway_id: str = None,
         gateway_info: GatewayInfo = None,
+        gateway_type: str = None,
         mock: HttpApiMockContract = None,
         policy_configs: List[HttpApiDeployConfigPolicyConfigs] = None,
         route_backend: Backend = None,
@@ -2435,6 +2436,7 @@ class HttpApiDeployConfig(TeaModel):
         self.environment_id = environment_id
         self.gateway_id = gateway_id
         self.gateway_info = gateway_info
+        self.gateway_type = gateway_type
         self.mock = mock
         self.policy_configs = policy_configs
         self.route_backend = route_backend
@@ -2487,6 +2489,8 @@ class HttpApiDeployConfig(TeaModel):
             result['gatewayId'] = self.gateway_id
         if self.gateway_info is not None:
             result['gatewayInfo'] = self.gateway_info.to_map()
+        if self.gateway_type is not None:
+            result['gatewayType'] = self.gateway_type
         if self.mock is not None:
             result['mock'] = self.mock.to_map()
         result['policyConfigs'] = []
@@ -2525,6 +2529,8 @@ class HttpApiDeployConfig(TeaModel):
         if m.get('gatewayInfo') is not None:
             temp_model = GatewayInfo()
             self.gateway_info = temp_model.from_map(m['gatewayInfo'])
+        if m.get('gatewayType') is not None:
+            self.gateway_type = m.get('gatewayType')
         if m.get('mock') is not None:
             temp_model = HttpApiMockContract()
             self.mock = temp_model.from_map(m['mock'])
@@ -6063,6 +6069,202 @@ class ChangeResourceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAndAttachPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_ids: List[str] = None,
+        attach_resource_type: str = None,
+        class_name: str = None,
+        config: str = None,
+        description: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.attach_resource_ids = attach_resource_ids
+        # This parameter is required.
+        self.attach_resource_type = attach_resource_type
+        # This parameter is required.
+        self.class_name = class_name
+        # This parameter is required.
+        self.config = config
+        self.description = description
+        self.environment_id = environment_id
+        self.gateway_id = gateway_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_ids is not None:
+            result['attachResourceIds'] = self.attach_resource_ids
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.class_name is not None:
+            result['className'] = self.class_name
+        if self.config is not None:
+            result['config'] = self.config
+        if self.description is not None:
+            result['description'] = self.description
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceIds') is not None:
+            self.attach_resource_ids = m.get('attachResourceIds')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('className') is not None:
+            self.class_name = m.get('className')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CreateAndAttachPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        attachment: Attachment = None,
+        policy_id: str = None,
+    ):
+        self.attachment = attachment
+        self.policy_id = policy_id
+
+    def validate(self):
+        if self.attachment:
+            self.attachment.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attachment is not None:
+            result['attachment'] = self.attachment.to_map()
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachment') is not None:
+            temp_model = Attachment()
+            self.attachment = temp_model.from_map(m['attachment'])
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        return self
+
+
+class CreateAndAttachPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CreateAndAttachPolicyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = CreateAndAttachPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateAndAttachPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAndAttachPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAndAttachPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17803,6 +18005,204 @@ class ListPluginsResponse(TeaModel):
         return self
 
 
+class ListPoliciesRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_id: str = None,
+        attach_resource_type: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        with_attachments: bool = None,
+        with_system_policy: bool = None,
+    ):
+        self.attach_resource_id = attach_resource_id
+        self.attach_resource_type = attach_resource_type
+        self.environment_id = environment_id
+        self.gateway_id = gateway_id
+        self.with_attachments = with_attachments
+        self.with_system_policy = with_system_policy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_id is not None:
+            result['attachResourceId'] = self.attach_resource_id
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.with_attachments is not None:
+            result['withAttachments'] = self.with_attachments
+        if self.with_system_policy is not None:
+            result['withSystemPolicy'] = self.with_system_policy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceId') is not None:
+            self.attach_resource_id = m.get('attachResourceId')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('withAttachments') is not None:
+            self.with_attachments = m.get('withAttachments')
+        if m.get('withSystemPolicy') is not None:
+            self.with_system_policy = m.get('withSystemPolicy')
+        return self
+
+
+class ListPoliciesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        items: List[PolicyInfo] = None,
+        page_number: int = None,
+        page_size: int = None,
+        total_size: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.total_size = total_size
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total_size is not None:
+            result['totalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('items') is not None:
+            for k in m.get('items'):
+                temp_model = PolicyInfo()
+                self.items.append(temp_model.from_map(k))
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('totalSize') is not None:
+            self.total_size = m.get('totalSize')
+        return self
+
+
+class ListPoliciesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ListPoliciesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = ListPoliciesResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListPoliciesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPoliciesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPoliciesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListPolicyClassesRequest(TeaModel):
     def __init__(
         self,
@@ -19227,7 +19627,7 @@ class UndeployHttpApiRequest(TeaModel):
         self.environment_id = environment_id
         self.gateway_id = gateway_id
         self.operation_id = operation_id
-        # Route ID. This must be provided when publishing the route of an HTTP API.
+        # The route ID. You must specify this parameter when you unpublish the route of an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -19341,6 +19741,152 @@ class UndeployHttpApiResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UndeployHttpApiResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAndAttachPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        attach_resource_ids: List[str] = None,
+        attach_resource_type: str = None,
+        config: str = None,
+        description: str = None,
+        environment_id: str = None,
+        gateway_id: str = None,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.attach_resource_ids = attach_resource_ids
+        # This parameter is required.
+        self.attach_resource_type = attach_resource_type
+        # This parameter is required.
+        self.config = config
+        self.description = description
+        self.environment_id = environment_id
+        self.gateway_id = gateway_id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attach_resource_ids is not None:
+            result['attachResourceIds'] = self.attach_resource_ids
+        if self.attach_resource_type is not None:
+            result['attachResourceType'] = self.attach_resource_type
+        if self.config is not None:
+            result['config'] = self.config
+        if self.description is not None:
+            result['description'] = self.description
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.gateway_id is not None:
+            result['gatewayId'] = self.gateway_id
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('attachResourceIds') is not None:
+            self.attach_resource_ids = m.get('attachResourceIds')
+        if m.get('attachResourceType') is not None:
+            self.attach_resource_type = m.get('attachResourceType')
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('gatewayId') is not None:
+            self.gateway_id = m.get('gatewayId')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class UpdateAndAttachPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateAndAttachPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAndAttachPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAndAttachPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
