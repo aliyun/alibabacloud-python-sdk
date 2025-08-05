@@ -19099,6 +19099,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         finish_time: str = None,
         group_id: str = None,
         http_status_code: int = None,
+        init_checkpoint: str = None,
         job_type: str = None,
         last_update_time: str = None,
         max_du: float = None,
@@ -19217,6 +19218,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.group_id = group_id
         # The returned HTTP status code.
         self.http_status_code = http_status_code
+        self.init_checkpoint = init_checkpoint
         # The type of the DTS task. Valid values:
         # 
         # *   **sync**: a data synchronization task.
@@ -19409,6 +19411,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['GroupId'] = self.group_id
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
+        if self.init_checkpoint is not None:
+            result['InitCheckpoint'] = self.init_checkpoint
         if self.job_type is not None:
             result['JobType'] = self.job_type
         if self.last_update_time is not None:
@@ -19534,6 +19538,8 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.group_id = m.get('GroupId')
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
+        if m.get('InitCheckpoint') is not None:
+            self.init_checkpoint = m.get('InitCheckpoint')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
         if m.get('LastUpdateTime') is not None:

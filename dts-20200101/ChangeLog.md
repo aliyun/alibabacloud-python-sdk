@@ -1,3 +1,7 @@
+2025-08-05 Version: 5.9.1
+- Update API DescribeDtsJobDetail: add response parameters Body.InitCheckpoint.
+
+
 2025-07-30 Version: 5.9.0
 - Support API CreateDocParserJob.
 - Support API DescribeDocParserJobResult.
