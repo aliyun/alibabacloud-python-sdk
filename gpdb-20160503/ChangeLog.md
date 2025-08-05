@@ -1,3 +1,7 @@
+2025-08-05 Version: 4.10.3
+- Update API UploadDocumentAsync: add request parameters SplitterModel.
+
+
 2025-07-30 Version: 4.10.2
 - Update API DescribeDocument: add response parameters Body.DocumentLoaderResultFileUrl.
 - Update API GetUploadDocumentJob: add response parameters Body.ChunkResult.DocumentLoaderResultFileUrl.

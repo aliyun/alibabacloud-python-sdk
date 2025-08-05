@@ -25301,6 +25301,8 @@ class Client(OpenApiClient):
             body['NamespacePassword'] = request.namespace_password
         if not UtilClient.is_unset(request.separators_shrink):
             body['Separators'] = request.separators_shrink
+        if not UtilClient.is_unset(request.splitter_model):
+            body['SplitterModel'] = request.splitter_model
         if not UtilClient.is_unset(request.text_splitter_name):
             body['TextSplitterName'] = request.text_splitter_name
         if not UtilClient.is_unset(request.vl_enhance):
@@ -25385,6 +25387,8 @@ class Client(OpenApiClient):
             body['NamespacePassword'] = request.namespace_password
         if not UtilClient.is_unset(request.separators_shrink):
             body['Separators'] = request.separators_shrink
+        if not UtilClient.is_unset(request.splitter_model):
+            body['SplitterModel'] = request.splitter_model
         if not UtilClient.is_unset(request.text_splitter_name):
             body['TextSplitterName'] = request.text_splitter_name
         if not UtilClient.is_unset(request.vl_enhance):

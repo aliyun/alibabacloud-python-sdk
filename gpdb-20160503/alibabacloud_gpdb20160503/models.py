@@ -45090,6 +45090,7 @@ class UploadDocumentAsyncRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         separators: List[str] = None,
+        splitter_model: str = None,
         text_splitter_name: str = None,
         vl_enhance: bool = None,
         zh_title_enhance: bool = None,
@@ -45164,6 +45165,7 @@ class UploadDocumentAsyncRequest(TeaModel):
         # 
         # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
+        self.splitter_model = splitter_model
         # The name of the splitter. Valid values:
         # 
         # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -45214,6 +45216,8 @@ class UploadDocumentAsyncRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.separators is not None:
             result['Separators'] = self.separators
+        if self.splitter_model is not None:
+            result['SplitterModel'] = self.splitter_model
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
         if self.vl_enhance is not None:
@@ -45252,6 +45256,8 @@ class UploadDocumentAsyncRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Separators') is not None:
             self.separators = m.get('Separators')
+        if m.get('SplitterModel') is not None:
+            self.splitter_model = m.get('SplitterModel')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
         if m.get('VlEnhance') is not None:
@@ -45278,6 +45284,7 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         separators: List[str] = None,
+        splitter_model: str = None,
         text_splitter_name: str = None,
         vl_enhance: bool = None,
         zh_title_enhance: bool = None,
@@ -45352,6 +45359,7 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
         # 
         # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators = separators
+        self.splitter_model = splitter_model
         # The name of the splitter. Valid values:
         # 
         # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -45402,6 +45410,8 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.separators is not None:
             result['Separators'] = self.separators
+        if self.splitter_model is not None:
+            result['SplitterModel'] = self.splitter_model
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
         if self.vl_enhance is not None:
@@ -45440,6 +45450,8 @@ class UploadDocumentAsyncAdvanceRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Separators') is not None:
             self.separators = m.get('Separators')
+        if m.get('SplitterModel') is not None:
+            self.splitter_model = m.get('SplitterModel')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
         if m.get('VlEnhance') is not None:
@@ -45466,6 +45478,7 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
         owner_id: int = None,
         region_id: str = None,
         separators_shrink: str = None,
+        splitter_model: str = None,
         text_splitter_name: str = None,
         vl_enhance: bool = None,
         zh_title_enhance: bool = None,
@@ -45540,6 +45553,7 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
         # 
         # *   In most cases, you do not need to specify this parameter. The server assigns separators based on the value of the TextSplitterName parameter.
         self.separators_shrink = separators_shrink
+        self.splitter_model = splitter_model
         # The name of the splitter. Valid values:
         # 
         # *   **ChineseRecursiveTextSplitter**: inherits from RecursiveCharacterTextSplitter, uses `["\\n\\n","\\n", "。|!|?", "\\.\\s|\\!\\s|\\?\\s", ";|;\\s", ",|,\\s"]` as separators by default, and uses regular expressions to match text.
@@ -45590,6 +45604,8 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.separators_shrink is not None:
             result['Separators'] = self.separators_shrink
+        if self.splitter_model is not None:
+            result['SplitterModel'] = self.splitter_model
         if self.text_splitter_name is not None:
             result['TextSplitterName'] = self.text_splitter_name
         if self.vl_enhance is not None:
@@ -45628,6 +45644,8 @@ class UploadDocumentAsyncShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Separators') is not None:
             self.separators_shrink = m.get('Separators')
+        if m.get('SplitterModel') is not None:
+            self.splitter_model = m.get('SplitterModel')
         if m.get('TextSplitterName') is not None:
             self.text_splitter_name = m.get('TextSplitterName')
         if m.get('VlEnhance') is not None:
