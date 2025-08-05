@@ -62112,6 +62112,39 @@ class ModifyResourceCenterPolicyResponse(TeaModel):
         return self
 
 
+class ModifyTemplateRequestDataDiskList(TeaModel):
+    def __init__(
+        self,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
 class ModifyTemplateRequestRegionConfigList(TeaModel):
     def __init__(
         self,
@@ -62247,6 +62280,7 @@ class ModifyTemplateRequest(TeaModel):
         auto_pay: bool = None,
         auto_renew: bool = None,
         charge_type: str = None,
+        data_disk_list: List[ModifyTemplateRequestDataDiskList] = None,
         default_language: str = None,
         description: str = None,
         image_id: str = None,
@@ -62268,6 +62302,7 @@ class ModifyTemplateRequest(TeaModel):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.charge_type = charge_type
+        self.data_disk_list = data_disk_list
         self.default_language = default_language
         self.description = description
         self.image_id = image_id
@@ -62288,6 +62323,10 @@ class ModifyTemplateRequest(TeaModel):
         self.user_duration = user_duration
 
     def validate(self):
+        if self.data_disk_list:
+            for k in self.data_disk_list:
+                if k:
+                    k.validate()
         if self.region_config_list:
             for k in self.region_config_list:
                 if k:
@@ -62313,6 +62352,10 @@ class ModifyTemplateRequest(TeaModel):
             result['AutoRenew'] = self.auto_renew
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        result['DataDiskList'] = []
+        if self.data_disk_list is not None:
+            for k in self.data_disk_list:
+                result['DataDiskList'].append(k.to_map() if k else None)
         if self.default_language is not None:
             result['DefaultLanguage'] = self.default_language
         if self.description is not None:
@@ -62363,6 +62406,11 @@ class ModifyTemplateRequest(TeaModel):
             self.auto_renew = m.get('AutoRenew')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        self.data_disk_list = []
+        if m.get('DataDiskList') is not None:
+            for k in m.get('DataDiskList'):
+                temp_model = ModifyTemplateRequestDataDiskList()
+                self.data_disk_list.append(temp_model.from_map(k))
         if m.get('DefaultLanguage') is not None:
             self.default_language = m.get('DefaultLanguage')
         if m.get('Description') is not None:

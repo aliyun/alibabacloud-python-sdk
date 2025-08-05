@@ -28216,6 +28216,9 @@ class Client(OpenApiClient):
             body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk_list):
+            body_flat['DataDiskList'] = request.data_disk_list
         if not UtilClient.is_unset(request.default_language):
             body['DefaultLanguage'] = request.default_language
         if not UtilClient.is_unset(request.description):
@@ -28230,7 +28233,6 @@ class Client(OpenApiClient):
             body['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.post_paid_after_used_up):
             body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
-        body_flat = {}
         if not UtilClient.is_unset(request.region_config_list):
             body_flat['RegionConfigList'] = request.region_config_list
         if not UtilClient.is_unset(request.resource_group_id):
@@ -28292,6 +28294,9 @@ class Client(OpenApiClient):
             body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk_list):
+            body_flat['DataDiskList'] = request.data_disk_list
         if not UtilClient.is_unset(request.default_language):
             body['DefaultLanguage'] = request.default_language
         if not UtilClient.is_unset(request.description):
@@ -28306,7 +28311,6 @@ class Client(OpenApiClient):
             body['PolicyGroupId'] = request.policy_group_id
         if not UtilClient.is_unset(request.post_paid_after_used_up):
             body['PostPaidAfterUsedUp'] = request.post_paid_after_used_up
-        body_flat = {}
         if not UtilClient.is_unset(request.region_config_list):
             body_flat['RegionConfigList'] = request.region_config_list
         if not UtilClient.is_unset(request.resource_group_id):
