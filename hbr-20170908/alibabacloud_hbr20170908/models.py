@@ -9734,6 +9734,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         backup_source_group_id: str = None,
         backup_type: str = None,
         bucket: str = None,
+        business_status: str = None,
         change_list_path: str = None,
         client_id: str = None,
         cluster_id: str = None,
@@ -9780,6 +9781,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.backup_type = backup_type
         # This parameter is valid only when **SourceType** is set to **OSS**. This parameter indicates the name of the OSS bucket.
         self.bucket = bucket
+        self.business_status = business_status
         # The configurations of the incremental file synchronization. This parameter is returned only for data synchronization.
         self.change_list_path = change_list_path
         # The ID of the backup client.
@@ -9908,6 +9910,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             result['BackupType'] = self.backup_type
         if self.bucket is not None:
             result['Bucket'] = self.bucket
+        if self.business_status is not None:
+            result['BusinessStatus'] = self.business_status
         if self.change_list_path is not None:
             result['ChangeListPath'] = self.change_list_path
         if self.client_id is not None:
@@ -9996,6 +10000,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             self.backup_type = m.get('BackupType')
         if m.get('Bucket') is not None:
             self.bucket = m.get('Bucket')
+        if m.get('BusinessStatus') is not None:
+            self.business_status = m.get('BusinessStatus')
         if m.get('ChangeListPath') is not None:
             self.change_list_path = m.get('ChangeListPath')
         if m.get('ClientId') is not None:
@@ -11230,6 +11236,7 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
         self,
         backup_prefix: str = None,
         backup_type: str = None,
+        business_status: str = None,
         cluster_id: str = None,
         database_name: str = None,
         disabled: bool = None,
@@ -11246,6 +11253,7 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
         # *   INCREMENTAL: incremental backup
         # *   DIFFERENTIAL: differential backup
         self.backup_type = backup_type
+        self.business_status = business_status
         # The ID of the SAP HANA instance.
         self.cluster_id = cluster_id
         # The database name.
@@ -11280,6 +11288,8 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
             result['BackupPrefix'] = self.backup_prefix
         if self.backup_type is not None:
             result['BackupType'] = self.backup_type
+        if self.business_status is not None:
+            result['BusinessStatus'] = self.business_status
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.database_name is not None:
@@ -11302,6 +11312,8 @@ class DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan(TeaModel)
             self.backup_prefix = m.get('BackupPrefix')
         if m.get('BackupType') is not None:
             self.backup_type = m.get('BackupType')
+        if m.get('BusinessStatus') is not None:
+            self.business_status = m.get('BusinessStatus')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('DatabaseName') is not None:
@@ -14161,6 +14173,7 @@ class DescribePoliciesV2ResponseBodyPoliciesRules(TeaModel):
 class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
     def __init__(
         self,
+        business_status: str = None,
         created_time: int = None,
         policy_binding_count: int = None,
         policy_description: str = None,
@@ -14170,6 +14183,7 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
         rules: List[DescribePoliciesV2ResponseBodyPoliciesRules] = None,
         updated_time: int = None,
     ):
+        self.business_status = business_status
         # The time when the backup policy was created. The value is a UNIX timestamp. Unit: seconds.
         self.created_time = created_time
         # The number of data sources that are bound to the backup policy.
@@ -14202,6 +14216,8 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.business_status is not None:
+            result['BusinessStatus'] = self.business_status
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
         if self.policy_binding_count is not None:
@@ -14224,6 +14240,8 @@ class DescribePoliciesV2ResponseBodyPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessStatus') is not None:
+            self.business_status = m.get('BusinessStatus')
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
         if m.get('PolicyBindingCount') is not None:

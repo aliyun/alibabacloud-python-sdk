@@ -113,16 +113,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.AddContainerClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.AddContainerClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.AddContainerClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def add_container_cluster_with_options_async(
         self,
@@ -162,16 +156,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.AddContainerClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.AddContainerClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.AddContainerClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def add_container_cluster(
         self,
@@ -231,16 +219,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelBackupJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelBackupJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CancelBackupJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_backup_job_with_options_async(
         self,
@@ -274,16 +256,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelBackupJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelBackupJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CancelBackupJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_backup_job(
         self,
@@ -343,16 +319,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelRestoreJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelRestoreJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CancelRestoreJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def cancel_restore_job_with_options_async(
         self,
@@ -386,16 +356,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelRestoreJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CancelRestoreJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CancelRestoreJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def cancel_restore_job(
         self,
@@ -461,16 +425,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ChangeResourceGroupResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ChangeResourceGroupResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def change_resource_group_with_options_async(
         self,
@@ -510,16 +468,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ChangeResourceGroupResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ChangeResourceGroupResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def change_resource_group(
         self,
@@ -589,16 +541,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CheckRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CheckRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CheckRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_role_with_options_async(
         self,
@@ -634,16 +580,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CheckRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CheckRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CheckRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_role(
         self,
@@ -739,16 +679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateBackupJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_backup_job_with_options_async(
         self,
@@ -818,16 +752,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateBackupJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_backup_job(
         self,
@@ -962,16 +890,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_backup_plan_with_options_async(
         self,
@@ -1080,16 +1002,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_backup_plan(
         self,
@@ -1173,16 +1089,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_clients_with_options_async(
         self,
@@ -1230,16 +1140,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_clients(
         self,
@@ -1320,16 +1224,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_hana_backup_plan_with_options_async(
         self,
@@ -1380,16 +1278,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_hana_backup_plan(
         self,
@@ -1487,16 +1379,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_hana_instance_with_options_async(
         self,
@@ -1558,16 +1444,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_hana_instance(
         self,
@@ -1665,16 +1545,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaRestoreResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaRestoreResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaRestoreResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_hana_restore_with_options_async(
         self,
@@ -1742,16 +1616,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaRestoreResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateHanaRestoreResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateHanaRestoreResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_hana_restore(
         self,
@@ -1824,16 +1692,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyBindingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyBindingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreatePolicyBindingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_bindings_with_options_async(
         self,
@@ -1876,16 +1738,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyBindingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyBindingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreatePolicyBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy_bindings(
         self,
@@ -1964,16 +1820,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyV2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyV2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreatePolicyV2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_v2with_options_async(
         self,
@@ -2020,16 +1870,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyV2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreatePolicyV2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreatePolicyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy_v2(
         self,
@@ -2115,16 +1959,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateReplicationVaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateReplicationVaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateReplicationVaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_replication_vault_with_options_async(
         self,
@@ -2174,16 +2012,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateReplicationVaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateReplicationVaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateReplicationVaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_replication_vault(
         self,
@@ -2310,16 +2142,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateRestoreJobResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateRestoreJobResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateRestoreJobResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_restore_job_with_options_async(
         self,
@@ -2416,16 +2242,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateRestoreJobResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateRestoreJobResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateRestoreJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_restore_job(
         self,
@@ -2493,16 +2313,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateTempFileUploadUrlResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateTempFileUploadUrlResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateTempFileUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_temp_file_upload_url_with_options_async(
         self,
@@ -2538,16 +2352,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateTempFileUploadUrlResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateTempFileUploadUrlResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateTempFileUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_temp_file_upload_url(
         self,
@@ -2632,16 +2440,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateVaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateVaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateVaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_vault_with_options_async(
         self,
@@ -2692,16 +2494,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateVaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.CreateVaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.CreateVaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_vault(
         self,
@@ -2775,16 +2571,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteAirEcsInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteAirEcsInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteAirEcsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_air_ecs_instance_with_options_async(
         self,
@@ -2822,16 +2612,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteAirEcsInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteAirEcsInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteAirEcsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_air_ecs_instance(
         self,
@@ -2895,16 +2679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupClientResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_backup_client_with_options_async(
         self,
@@ -2942,16 +2720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_backup_client(
         self,
@@ -3027,16 +2799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResourceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResourceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupClientResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_backup_client_resource_with_options_async(
         self,
@@ -3074,16 +2840,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResourceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupClientResourceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupClientResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_backup_client_resource(
         self,
@@ -3154,16 +2914,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_backup_plan_with_options_async(
         self,
@@ -3204,16 +2958,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_backup_plan(
         self,
@@ -3279,16 +3027,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteClientResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteClientResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteClientResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_client_with_options_async(
         self,
@@ -3322,16 +3064,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteClientResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteClientResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_client(
         self,
@@ -3391,16 +3127,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteHanaBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_hana_backup_plan_with_options_async(
         self,
@@ -3438,16 +3168,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteHanaBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_hana_backup_plan(
         self,
@@ -3513,16 +3237,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteHanaInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_hana_instance_with_options_async(
         self,
@@ -3562,16 +3280,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteHanaInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteHanaInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_hana_instance(
         self,
@@ -3643,16 +3355,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyBindingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyBindingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeletePolicyBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_binding_with_options_async(
         self,
@@ -3694,16 +3400,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyBindingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyBindingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeletePolicyBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy_binding(
         self,
@@ -3763,16 +3463,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyV2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyV2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeletePolicyV2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_v2with_options_async(
         self,
@@ -3806,16 +3500,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyV2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeletePolicyV2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeletePolicyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy_v2(
         self,
@@ -3889,16 +3577,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteSnapshotResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteSnapshotResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_snapshot_with_options_async(
         self,
@@ -3942,16 +3624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteSnapshotResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteSnapshotResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_snapshot(
         self,
@@ -4009,16 +3685,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmDiskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmDiskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmDiskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_udm_disk_with_options_async(
         self,
@@ -4050,16 +3720,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmDiskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmDiskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmDiskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_udm_disk(
         self,
@@ -4117,16 +3781,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_udm_ecs_instance_with_options_async(
         self,
@@ -4158,16 +3816,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteUdmEcsInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_udm_ecs_instance(
         self,
@@ -4232,16 +3884,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteVaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteVaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteVaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_vault_with_options_async(
         self,
@@ -4280,16 +3926,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteVaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DeleteVaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DeleteVaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_vault(
         self,
@@ -4381,16 +4021,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_clients_with_options_async(
         self,
@@ -4450,16 +4084,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_clients(
         self,
@@ -4525,16 +4153,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupJobs2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupJobs2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupJobs2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_jobs_2with_options_async(
         self,
@@ -4574,16 +4196,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupJobs2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupJobs2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupJobs2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_jobs_2(
         self,
@@ -4647,16 +4263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_backup_plans_with_options_async(
         self,
@@ -4694,16 +4304,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeBackupPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeBackupPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_backup_plans(
         self,
@@ -4777,16 +4381,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_clients_with_options_async(
         self,
@@ -4834,16 +4432,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_clients(
         self,
@@ -4913,16 +4505,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeContainerClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeContainerClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeContainerClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_container_cluster_with_options_async(
         self,
@@ -4962,16 +4548,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeContainerClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeContainerClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeContainerClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_container_cluster(
         self,
@@ -5035,16 +4615,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeCrossAccountsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeCrossAccountsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeCrossAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cross_accounts_with_options_async(
         self,
@@ -5078,16 +4652,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeCrossAccountsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeCrossAccountsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeCrossAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cross_accounts(
         self,
@@ -5155,16 +4723,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupPlansResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupPlansResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_backup_plans_with_options_async(
         self,
@@ -5206,16 +4768,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupPlansResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupPlansResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_backup_plans(
         self,
@@ -5279,16 +4835,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_backup_setting_with_options_async(
         self,
@@ -5326,16 +4876,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_backup_setting(
         self,
@@ -5431,16 +4975,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_backups_async_with_options_async(
         self,
@@ -5506,16 +5044,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaBackupsAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_backups_async(
         self,
@@ -5587,16 +5119,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaDatabasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaDatabasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaDatabasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_databases_with_options_async(
         self,
@@ -5638,16 +5164,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaDatabasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaDatabasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaDatabasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_databases(
         self,
@@ -5721,16 +5241,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_instances_with_options_async(
         self,
@@ -5774,16 +5288,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_instances(
         self,
@@ -5857,16 +5365,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRestoresResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRestoresResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaRestoresResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_restores_with_options_async(
         self,
@@ -5914,16 +5416,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRestoresResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRestoresResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaRestoresResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_restores(
         self,
@@ -5988,16 +5484,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_hana_retention_setting_with_options_async(
         self,
@@ -6036,16 +5526,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeHanaRetentionSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_hana_retention_setting(
         self,
@@ -6130,16 +5614,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ots_table_snapshots_with_options_async(
         self,
@@ -6192,16 +5670,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeOtsTableSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ots_table_snapshots(
         self,
@@ -6263,16 +5735,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePoliciesV2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePoliciesV2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribePoliciesV2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_policies_v2with_options_async(
         self,
@@ -6308,16 +5774,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePoliciesV2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePoliciesV2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribePoliciesV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_policies_v2(
         self,
@@ -6391,16 +5851,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePolicyBindingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePolicyBindingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribePolicyBindingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_policy_bindings_with_options_async(
         self,
@@ -6448,16 +5902,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePolicyBindingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribePolicyBindingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribePolicyBindingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_policy_bindings(
         self,
@@ -6519,16 +5967,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_recoverable_ots_instances_with_options_async(
         self,
@@ -6564,16 +6006,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRecoverableOtsInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_recoverable_ots_instances(
         self,
@@ -6624,16 +6060,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -6658,16 +6088,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(self) -> hbr_20170908_models.DescribeRegionsResponse:
         """
@@ -6723,16 +6147,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRestoreJobs2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRestoreJobs2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRestoreJobs2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_restore_jobs_2with_options_async(
         self,
@@ -6770,16 +6188,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRestoreJobs2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeRestoreJobs2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeRestoreJobs2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_restore_jobs_2(
         self,
@@ -6841,16 +6253,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_task_with_options_async(
         self,
@@ -6886,16 +6292,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_task(
         self,
@@ -6973,16 +6373,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeUdmSnapshotsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeUdmSnapshotsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeUdmSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_udm_snapshots_with_options_async(
         self,
@@ -7034,16 +6428,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeUdmSnapshotsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeUdmSnapshotsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeUdmSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_udm_snapshots(
         self,
@@ -7103,16 +6491,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vault_replication_regions_with_options_async(
         self,
@@ -7146,16 +6528,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeVaultReplicationRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vault_replication_regions(
         self,
@@ -7231,16 +6607,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeVaultsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_vaults_with_options_async(
         self,
@@ -7290,16 +6660,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DescribeVaultsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DescribeVaultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_vaults(
         self,
@@ -7368,16 +6732,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DetachNasFileSystemResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DetachNasFileSystemResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DetachNasFileSystemResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_nas_file_system_with_options_async(
         self,
@@ -7420,16 +6778,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DetachNasFileSystemResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DetachNasFileSystemResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DetachNasFileSystemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_nas_file_system(
         self,
@@ -7499,16 +6851,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DisableBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_backup_plan_with_options_async(
         self,
@@ -7546,16 +6892,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DisableBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_backup_plan(
         self,
@@ -7625,16 +6965,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableHanaBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableHanaBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DisableHanaBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_hana_backup_plan_with_options_async(
         self,
@@ -7674,16 +7008,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableHanaBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.DisableHanaBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.DisableHanaBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_hana_backup_plan(
         self,
@@ -7751,16 +7079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.EnableBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_backup_plan_with_options_async(
         self,
@@ -7798,16 +7120,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.EnableBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_backup_plan(
         self,
@@ -7877,16 +7193,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableHanaBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableHanaBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.EnableHanaBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_hana_backup_plan_with_options_async(
         self,
@@ -7926,16 +7236,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableHanaBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.EnableHanaBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.EnableHanaBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_hana_backup_plan(
         self,
@@ -8003,16 +7307,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecuteBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecuteBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ExecuteBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def execute_backup_plan_with_options_async(
         self,
@@ -8050,16 +7348,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecuteBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecuteBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ExecuteBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def execute_backup_plan(
         self,
@@ -8125,16 +7417,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecutePolicyV2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecutePolicyV2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ExecutePolicyV2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def execute_policy_v2with_options_async(
         self,
@@ -8174,16 +7460,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecutePolicyV2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.ExecutePolicyV2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.ExecutePolicyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def execute_policy_v2(
         self,
@@ -8247,16 +7527,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.GenerateRamPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.GenerateRamPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.GenerateRamPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_ram_policy_with_options_async(
         self,
@@ -8294,16 +7568,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.GenerateRamPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.GenerateRamPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.GenerateRamPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_ram_policy(
         self,
@@ -8361,16 +7629,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.GetTempFileDownloadLinkResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.GetTempFileDownloadLinkResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.GetTempFileDownloadLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_temp_file_download_link_with_options_async(
         self,
@@ -8402,16 +7664,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.GetTempFileDownloadLinkResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.GetTempFileDownloadLinkResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.GetTempFileDownloadLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_temp_file_download_link(
         self,
@@ -8483,16 +7739,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.InstallBackupClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.InstallBackupClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.InstallBackupClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def install_backup_clients_with_options_async(
         self,
@@ -8538,16 +7788,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.InstallBackupClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.InstallBackupClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.InstallBackupClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def install_backup_clients(
         self,
@@ -8606,16 +7850,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.OpenHbrServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.OpenHbrServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.OpenHbrServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_hbr_service_with_options_async(
         self,
@@ -8640,16 +7878,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.OpenHbrServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.OpenHbrServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.OpenHbrServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_hbr_service(self) -> hbr_20170908_models.OpenHbrServiceResponse:
         """
@@ -8713,16 +7945,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def search_historical_snapshots_with_options_async(
         self,
@@ -8768,16 +7994,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.SearchHistoricalSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def search_historical_snapshots(
         self,
@@ -8841,16 +8061,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def start_hana_database_async_with_options_async(
         self,
@@ -8888,16 +8102,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.StartHanaDatabaseAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def start_hana_database_async(
         self,
@@ -8965,16 +8173,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def stop_hana_database_async_with_options_async(
         self,
@@ -9012,16 +8214,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.StopHanaDatabaseAsyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def stop_hana_database_async(
         self,
@@ -9101,16 +8297,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallBackupClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallBackupClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UninstallBackupClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def uninstall_backup_clients_with_options_async(
         self,
@@ -9160,16 +8350,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallBackupClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallBackupClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UninstallBackupClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def uninstall_backup_clients(
         self,
@@ -9241,16 +8425,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallClientResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallClientResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UninstallClientResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def uninstall_client_with_options_async(
         self,
@@ -9288,16 +8466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallClientResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UninstallClientResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UninstallClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def uninstall_client(
         self,
@@ -9401,16 +8573,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_backup_plan_with_options_async(
         self,
@@ -9484,16 +8650,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_backup_plan(
         self,
@@ -9579,16 +8739,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateClientSettingsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateClientSettingsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateClientSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_client_settings_with_options_async(
         self,
@@ -9648,16 +8802,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateClientSettingsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateClientSettingsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateClientSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_client_settings(
         self,
@@ -9727,16 +8875,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateContainerClusterResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateContainerClusterResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateContainerClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_container_cluster_with_options_async(
         self,
@@ -9776,16 +8918,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateContainerClusterResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateContainerClusterResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateContainerClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_container_cluster(
         self,
@@ -9860,16 +8996,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupPlanResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupPlanResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaBackupPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_hana_backup_plan_with_options_async(
         self,
@@ -9918,16 +9048,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupPlanResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupPlanResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaBackupPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_hana_backup_plan(
         self,
@@ -10015,16 +9139,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaBackupSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_hana_backup_setting_with_options_async(
         self,
@@ -10076,16 +9194,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaBackupSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaBackupSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_hana_backup_setting(
         self,
@@ -10167,16 +9279,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_hana_instance_with_options_async(
         self,
@@ -10228,16 +9334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_hana_instance(
         self,
@@ -10308,16 +9408,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_hana_retention_setting_with_options_async(
         self,
@@ -10362,16 +9456,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateHanaRetentionSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_hana_retention_setting(
         self,
@@ -10459,16 +9547,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyBindingResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyBindingResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdatePolicyBindingResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_policy_binding_with_options_async(
         self,
@@ -10524,16 +9606,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyBindingResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyBindingResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdatePolicyBindingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_policy_binding(
         self,
@@ -10603,16 +9679,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyV2Response(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyV2Response(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdatePolicyV2Response(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_policy_v2with_options_async(
         self,
@@ -10656,16 +9726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyV2Response(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdatePolicyV2Response(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdatePolicyV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_policy_v2(
         self,
@@ -10735,16 +9799,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateVaultResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateVaultResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateVaultResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_vault_with_options_async(
         self,
@@ -10784,16 +9842,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateVaultResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpdateVaultResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpdateVaultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_vault(
         self,
@@ -10869,16 +9921,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeBackupClientsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeBackupClientsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpgradeBackupClientsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_backup_clients_with_options_async(
         self,
@@ -10928,16 +9974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeBackupClientsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeBackupClientsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpgradeBackupClientsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_backup_clients(
         self,
@@ -11009,16 +10049,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeClientResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeClientResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpgradeClientResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def upgrade_client_with_options_async(
         self,
@@ -11056,16 +10090,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeClientResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                hbr_20170908_models.UpgradeClientResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            hbr_20170908_models.UpgradeClientResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def upgrade_client(
         self,

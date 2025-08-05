@@ -1,3 +1,9 @@
+2025-08-05 Version: 2.1.7
+- Update API DescribeBackupPlans: add response parameters Body.BackupPlans.$.BusinessStatus.
+- Update API DescribeHanaBackupPlans: add response parameters Body.HanaBackupPlans.$.BusinessStatus.
+- Update API DescribePoliciesV2: add response parameters Body.Policies.$.BusinessStatus.
+
+
 2025-04-07 Version: 2.1.6
 - Update API DescribeBackupClients: add request parameters Filters.
 
