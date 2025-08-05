@@ -1,3 +1,6 @@
+2025-08-05 Version: 1.32.2
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2025-08-04 Version: 1.32.1
 - Update API GetSmartAuditResult: add response parameters Body.Data.ErrorMessage.
 - Update API SubmitSmartAudit: add request parameters ImageUrlList.
