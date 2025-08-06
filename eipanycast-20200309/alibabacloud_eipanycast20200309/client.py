@@ -293,6 +293,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.associate_anycast_eip_address_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: eipanycast_20200309_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eipanycast_20200309_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改AnycastEIp实例资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-03-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eipanycast_20200309_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: eipanycast_20200309_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eipanycast_20200309_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改AnycastEIp实例资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2020-03-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eipanycast_20200309_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: eipanycast_20200309_models.ChangeResourceGroupRequest,
+    ) -> eipanycast_20200309_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改AnycastEIp实例资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: eipanycast_20200309_models.ChangeResourceGroupRequest,
+    ) -> eipanycast_20200309_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改AnycastEIp实例资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def describe_anycast_eip_address_with_options(
         self,
         request: eipanycast_20200309_models.DescribeAnycastEipAddressRequest,
@@ -595,7 +699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
         """
-        @summary 查询指定接入区域已创建的Anycast EIP实例
+        @summary Queries information about Anycast elastic IP addresses (Anycast EIPs) in an access area, including instance status, maximum bandwidth, and associated resources.
         
         @param request: ListAnycastEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -656,7 +760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
         """
-        @summary 查询指定接入区域已创建的Anycast EIP实例
+        @summary Queries information about Anycast elastic IP addresses (Anycast EIPs) in an access area, including instance status, maximum bandwidth, and associated resources.
         
         @param request: ListAnycastEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -716,7 +820,7 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
         """
-        @summary 查询指定接入区域已创建的Anycast EIP实例
+        @summary Queries information about Anycast elastic IP addresses (Anycast EIPs) in an access area, including instance status, maximum bandwidth, and associated resources.
         
         @param request: ListAnycastEipAddressesRequest
         @return: ListAnycastEipAddressesResponse
@@ -729,7 +833,7 @@ class Client(OpenApiClient):
         request: eipanycast_20200309_models.ListAnycastEipAddressesRequest,
     ) -> eipanycast_20200309_models.ListAnycastEipAddressesResponse:
         """
-        @summary 查询指定接入区域已创建的Anycast EIP实例
+        @summary Queries information about Anycast elastic IP addresses (Anycast EIPs) in an access area, including instance status, maximum bandwidth, and associated resources.
         
         @param request: ListAnycastEipAddressesRequest
         @return: ListAnycastEipAddressesResponse

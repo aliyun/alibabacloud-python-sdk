@@ -414,6 +414,124 @@ class AssociateAnycastEipAddressResponse(TeaModel):
         return self
 
 
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+    ):
+        # The ID of the resource group to which you want to move the resource.
+        # > You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](https://help.aliyun.com/document_detail/158855.html)
+        # 
+        # This parameter is required.
+        self.new_resource_group_id = new_resource_group_id
+        # The resource ID.
+        # 
+        # This parameter is required.
+        self.resource_id = resource_id
+        # The type of the resource for which you want to modify the resource group. Valid value: **ANYCASTEIPADDRESS**.
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAnycastEipAddressRequest(TeaModel):
     def __init__(
         self,
@@ -660,10 +778,11 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         self.bandwidth = bandwidth
         # The BID of the account to which the Anycast EIP belongs.
         self.bid = bid
-        # The service status of the Anycast EIP. Valid values:
+        # The status of the Anycast EIP. Valid values:
         # 
-        # *   **Normal**\
-        # *   **FinancialLocked**\
+        # *   **Normal**: running as expected
+        # *   **FinancialLocked**: locked due to overdue payments
+        # *   **RiskExpired**: locked due to security reasons.
         self.business_status = business_status
         # The point in time at which the Anycast EIP was created.
         # 
@@ -691,6 +810,10 @@ class DescribeAnycastEipAddressResponseBody(TeaModel):
         # 
         # Only **international** may be returned, which indicates the areas outside the Chinese mainland.
         self.service_location = service_location
+        # Indicates whether the instance is managed. Valid values:
+        # 
+        # *   **1**: yes
+        # *   **0**: no.
         self.service_managed = service_managed
         # The status of the Anycast EIP.
         # 
@@ -1266,6 +1389,7 @@ class ListAnycastEipAddressesRequest(TeaModel):
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The access area of the Anycast EIP.
         # 
@@ -1500,6 +1624,7 @@ class ListAnycastEipAddressesResponseBodyAnycastList(TeaModel):
         self.ip_address = ip_address
         # The name of the Anycast EIP.
         self.name = name
+        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The access area of the Anycast EIP.
         # 

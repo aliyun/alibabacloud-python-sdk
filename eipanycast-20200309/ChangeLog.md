@@ -1,3 +1,7 @@
+2025-08-06 Version: 1.2.0
+- Support API ChangeResourceGroup.
+
+
 2024-07-31 Version: 1.1.3
 - Update API DescribeAnycastEipAddress: update response param.
 
