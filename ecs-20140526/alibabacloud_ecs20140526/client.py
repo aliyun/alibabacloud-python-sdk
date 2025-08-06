@@ -54840,6 +54840,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clock_options):
+            query['ClockOptions'] = request.clock_options
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):
@@ -55105,6 +55107,8 @@ class Client(OpenApiClient):
             query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.clock_options):
+            query['ClockOptions'] = request.clock_options
         if not UtilClient.is_unset(request.credit_specification):
             query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):

@@ -1,3 +1,7 @@
+2025-08-06 Version: 7.1.3
+- Update API RunInstances: add request parameters ClockOptions.
+
+
 2025-07-31 Version: 7.1.2
 - Update API DescribeInvocationResults: add response parameters Body.Invocation.InvocationResults.$.OssOutputDelivery.
 - Update API DescribeInvocationResults: add response parameters Body.Invocation.InvocationResults.$.OssOutputStatus.
