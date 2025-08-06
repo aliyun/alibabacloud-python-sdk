@@ -1,3 +1,7 @@
+2025-08-06 Version: 2.12.2
+- Update API GetInstanceList: add response parameters Body.InstanceList.$.ConfluentInstanceComponents.
+
+
 2025-07-24 Version: 2.12.1
 - Update API GetInstanceList: add response parameters Body.InstanceList.$.RecommendedPartitionCount.
 

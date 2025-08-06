@@ -7841,6 +7841,86 @@ class GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig(TeaModel)
         return self
 
 
+class GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO(TeaModel):
+    def __init__(
+        self,
+        component_type: str = None,
+        deploy_module: str = None,
+        pub_endpoint: str = None,
+        vpc_endpoint: str = None,
+    ):
+        self.component_type = component_type
+        self.deploy_module = deploy_module
+        self.pub_endpoint = pub_endpoint
+        self.vpc_endpoint = vpc_endpoint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.component_type is not None:
+            result['ComponentType'] = self.component_type
+        if self.deploy_module is not None:
+            result['DeployModule'] = self.deploy_module
+        if self.pub_endpoint is not None:
+            result['PubEndpoint'] = self.pub_endpoint
+        if self.vpc_endpoint is not None:
+            result['VpcEndpoint'] = self.vpc_endpoint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ComponentType') is not None:
+            self.component_type = m.get('ComponentType')
+        if m.get('DeployModule') is not None:
+            self.deploy_module = m.get('DeployModule')
+        if m.get('PubEndpoint') is not None:
+            self.pub_endpoint = m.get('PubEndpoint')
+        if m.get('VpcEndpoint') is not None:
+            self.vpc_endpoint = m.get('VpcEndpoint')
+        return self
+
+
+class GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents(TeaModel):
+    def __init__(
+        self,
+        confluent_instance_component_vo: List[GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO] = None,
+    ):
+        self.confluent_instance_component_vo = confluent_instance_component_vo
+
+    def validate(self):
+        if self.confluent_instance_component_vo:
+            for k in self.confluent_instance_component_vo:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ConfluentInstanceComponentVO'] = []
+        if self.confluent_instance_component_vo is not None:
+            for k in self.confluent_instance_component_vo:
+                result['ConfluentInstanceComponentVO'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.confluent_instance_component_vo = []
+        if m.get('ConfluentInstanceComponentVO') is not None:
+            for k in m.get('ConfluentInstanceComponentVO'):
+                temp_model = GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponentsConfluentInstanceComponentVO()
+                self.confluent_instance_component_vo.append(temp_model.from_map(k))
+        return self
+
+
 class GetInstanceListResponseBodyInstanceListInstanceVOTagsTagVO(TeaModel):
     def __init__(
         self,
@@ -7974,6 +8054,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         auto_create_topic_enable: bool = None,
         backup_zone_id: str = None,
         confluent_config: GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig = None,
+        confluent_instance_components: GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents = None,
         create_time: int = None,
         default_partition_num: int = None,
         deploy_type: int = None,
@@ -8030,6 +8111,7 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         self.backup_zone_id = backup_zone_id
         # The parameters that are returned for the ApsaraMQ for Confluent instance.
         self.confluent_config = confluent_config
+        self.confluent_instance_components = confluent_instance_components
         # The time when the instance was created. Unit: milliseconds.
         self.create_time = create_time
         # The number of partitions in a topic that is automatically created.
@@ -8204,6 +8286,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
     def validate(self):
         if self.confluent_config:
             self.confluent_config.validate()
+        if self.confluent_instance_components:
+            self.confluent_instance_components.validate()
         if self.tags:
             self.tags.validate()
         if self.upgrade_service_detail_info:
@@ -8227,6 +8311,8 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
             result['BackupZoneId'] = self.backup_zone_id
         if self.confluent_config is not None:
             result['ConfluentConfig'] = self.confluent_config.to_map()
+        if self.confluent_instance_components is not None:
+            result['ConfluentInstanceComponents'] = self.confluent_instance_components.to_map()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.default_partition_num is not None:
@@ -8332,6 +8418,9 @@ class GetInstanceListResponseBodyInstanceListInstanceVO(TeaModel):
         if m.get('ConfluentConfig') is not None:
             temp_model = GetInstanceListResponseBodyInstanceListInstanceVOConfluentConfig()
             self.confluent_config = temp_model.from_map(m['ConfluentConfig'])
+        if m.get('ConfluentInstanceComponents') is not None:
+            temp_model = GetInstanceListResponseBodyInstanceListInstanceVOConfluentInstanceComponents()
+            self.confluent_instance_components = temp_model.from_map(m['ConfluentInstanceComponents'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DefaultPartitionNum') is not None:
