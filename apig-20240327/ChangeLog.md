@@ -1,3 +1,6 @@
+2025-08-06 Version: 4.4.1
+- Generated python 2024-03-27 for APIG.
+
 2025-08-05 Version: 4.4.0
 - Support API CreateAndAttachPolicy.
 - Support API ListPolicies.
