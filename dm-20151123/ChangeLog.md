@@ -1,3 +1,9 @@
+2025-08-06 Version: 1.6.1
+- Update API DedicatedIpList: add response parameters Body.Ips.$.ZoneId.
+- Update API DedicatedIpNonePoolList: add response parameters Body.Ips.$.ZoneId.
+- Update API DedicatedIpPoolList: add response parameters Body.IpPools.$.Ips.$.ZoneId.
+
+
 2025-08-05 Version: 1.6.0
 - Support API GetDedicatedIpWarmUpDetail.
 - Support API GetDedicatedIpWarmUpInfo.

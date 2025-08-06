@@ -1850,6 +1850,7 @@ class DedicatedIpListResponseBodyIps(TeaModel):
         status: str = None,
         warmup_status: str = None,
         warmup_type: str = None,
+        zone_id: str = None,
     ):
         # Expiration time
         self.expired_time = expired_time
@@ -1871,6 +1872,7 @@ class DedicatedIpListResponseBodyIps(TeaModel):
         self.warmup_status = warmup_status
         # Warm-up method
         self.warmup_type = warmup_type
+        self.zone_id = zone_id
 
     def validate(self):
         if self.ip_ext:
@@ -1902,6 +1904,8 @@ class DedicatedIpListResponseBodyIps(TeaModel):
             result['WarmupStatus'] = self.warmup_status
         if self.warmup_type is not None:
             result['WarmupType'] = self.warmup_type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1927,6 +1931,8 @@ class DedicatedIpListResponseBodyIps(TeaModel):
             self.warmup_status = m.get('WarmupStatus')
         if m.get('WarmupType') is not None:
             self.warmup_type = m.get('WarmupType')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -2047,11 +2053,13 @@ class DedicatedIpNonePoolListResponseBodyIps(TeaModel):
         self,
         id: str = None,
         ip: str = None,
+        zone_id: str = None,
     ):
         # Purchased instance ID
         self.id = id
         # IP address
         self.ip = ip
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -2066,6 +2074,8 @@ class DedicatedIpNonePoolListResponseBodyIps(TeaModel):
             result['Id'] = self.id
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2074,6 +2084,8 @@ class DedicatedIpNonePoolListResponseBodyIps(TeaModel):
             self.id = m.get('Id')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -2415,11 +2427,13 @@ class DedicatedIpPoolListResponseBodyIpPoolsIps(TeaModel):
         self,
         id: str = None,
         ip: str = None,
+        zone_id: str = None,
     ):
         # Instance purchase ID
         self.id = id
         # IP address
         self.ip = ip
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -2434,6 +2448,8 @@ class DedicatedIpPoolListResponseBodyIpPoolsIps(TeaModel):
             result['Id'] = self.id
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2442,6 +2458,8 @@ class DedicatedIpPoolListResponseBodyIpPoolsIps(TeaModel):
             self.id = m.get('Id')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
