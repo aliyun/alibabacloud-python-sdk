@@ -7866,6 +7866,7 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
         callback_provisioning_config: GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig = None,
         config_operate_mode: str = None,
         instance_id: str = None,
+        network_access_endpoint_id: str = None,
         provision_jwks_endpoint: str = None,
         provision_password: bool = None,
         provision_protocol_type: str = None,
@@ -7883,6 +7884,7 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
         self.config_operate_mode = config_operate_mode
         # The ID of the instance.
         self.instance_id = instance_id
+        self.network_access_endpoint_id = network_access_endpoint_id
         # The public key endpoint for signature verification of the synchronization callback information.
         self.provision_jwks_endpoint = provision_jwks_endpoint
         # Indicates whether the password is synchronized in IDaaS user event callbacks. Valid values:
@@ -7923,6 +7925,8 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
             result['ConfigOperateMode'] = self.config_operate_mode
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
         if self.provision_jwks_endpoint is not None:
             result['ProvisionJwksEndpoint'] = self.provision_jwks_endpoint
         if self.provision_password is not None:
@@ -7946,6 +7950,8 @@ class GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig(
             self.config_operate_mode = m.get('ConfigOperateMode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
         if m.get('ProvisionJwksEndpoint') is not None:
             self.provision_jwks_endpoint = m.get('ProvisionJwksEndpoint')
         if m.get('ProvisionPassword') is not None:
@@ -25278,6 +25284,7 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
         application_id: str = None,
         callback_provisioning_config: SetApplicationProvisioningConfigRequestCallbackProvisioningConfig = None,
         instance_id: str = None,
+        network_access_endpoint_id: str = None,
         provision_password: bool = None,
         provision_protocol_type: str = None,
         scim_provisioning_config: SetApplicationProvisioningConfigRequestScimProvisioningConfig = None,
@@ -25292,6 +25299,7 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.network_access_endpoint_id = network_access_endpoint_id
         # Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values:
         # 
         # *   true: synchronize the password.
@@ -25325,6 +25333,8 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
             result['CallbackProvisioningConfig'] = self.callback_provisioning_config.to_map()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.network_access_endpoint_id is not None:
+            result['NetworkAccessEndpointId'] = self.network_access_endpoint_id
         if self.provision_password is not None:
             result['ProvisionPassword'] = self.provision_password
         if self.provision_protocol_type is not None:
@@ -25342,6 +25352,8 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
             self.callback_provisioning_config = temp_model.from_map(m['CallbackProvisioningConfig'])
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('NetworkAccessEndpointId') is not None:
+            self.network_access_endpoint_id = m.get('NetworkAccessEndpointId')
         if m.get('ProvisionPassword') is not None:
             self.provision_password = m.get('ProvisionPassword')
         if m.get('ProvisionProtocolType') is not None:

@@ -11319,6 +11319,8 @@ class Client(OpenApiClient):
             query['CallbackProvisioningConfig'] = request.callback_provisioning_config
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not UtilClient.is_unset(request.provision_password):
             query['ProvisionPassword'] = request.provision_password
         if not UtilClient.is_unset(request.provision_protocol_type):
@@ -11364,6 +11366,8 @@ class Client(OpenApiClient):
             query['CallbackProvisioningConfig'] = request.callback_provisioning_config
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_access_endpoint_id):
+            query['NetworkAccessEndpointId'] = request.network_access_endpoint_id
         if not UtilClient.is_unset(request.provision_password):
             query['ProvisionPassword'] = request.provision_password
         if not UtilClient.is_unset(request.provision_protocol_type):

@@ -1,3 +1,8 @@
+2025-08-06 Version: 2.0.1
+- Update API GetApplicationProvisioningConfig: add response parameters Body.ApplicationProvisioningConfig.NetworkAccessEndpointId.
+- Update API SetApplicationProvisioningConfig: add request parameters NetworkAccessEndpointId.
+
+
 2025-07-30 Version: 2.0.0
 - Update API CreateIdentityProvider: add request parameters ClientToken.
 - Update API CreateIdentityProvider: add request parameters DingtalkAppConfig.EncryptKey.
