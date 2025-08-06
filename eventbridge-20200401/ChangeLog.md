@@ -1,3 +1,7 @@
+2025-08-06 Version: 7.1.0
+- Support API UpdateEventStreamingBusinessOption.
+
+
 2025-08-05 Version: 7.0.0
 - Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.RunOptions.RetryStrategy.MaximumEventAgeInSeconds.
 - Update API ListEventStreamings: delete response parameters Body.Data.EventStreamings.$.RunOptions.RetryStrategy.MaximumRetryAttempts.

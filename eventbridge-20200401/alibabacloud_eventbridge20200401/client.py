@@ -5387,6 +5387,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_event_streaming_with_options_async(request, runtime)
 
+    def update_event_streaming_business_option_with_options(
+        self,
+        request: eventbridge_20200401_models.UpdateEventStreamingBusinessOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse:
+        """
+        @summary 查询事件流
+        
+        @param request: UpdateEventStreamingBusinessOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEventStreamingBusinessOptionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_mode):
+            body['BusinessMode'] = request.business_mode
+        if not UtilClient.is_unset(request.event_streaming_name):
+            body['EventStreamingName'] = request.event_streaming_name
+        if not UtilClient.is_unset(request.max_capacity_unit_count):
+            body['MaxCapacityUnitCount'] = request.max_capacity_unit_count
+        if not UtilClient.is_unset(request.min_capacity_unit_count):
+            body['MinCapacityUnitCount'] = request.min_capacity_unit_count
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventStreamingBusinessOption',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_event_streaming_business_option_with_options_async(
+        self,
+        request: eventbridge_20200401_models.UpdateEventStreamingBusinessOptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse:
+        """
+        @summary 查询事件流
+        
+        @param request: UpdateEventStreamingBusinessOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEventStreamingBusinessOptionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.business_mode):
+            body['BusinessMode'] = request.business_mode
+        if not UtilClient.is_unset(request.event_streaming_name):
+            body['EventStreamingName'] = request.event_streaming_name
+        if not UtilClient.is_unset(request.max_capacity_unit_count):
+            body['MaxCapacityUnitCount'] = request.max_capacity_unit_count
+        if not UtilClient.is_unset(request.min_capacity_unit_count):
+            body['MinCapacityUnitCount'] = request.min_capacity_unit_count
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateEventStreamingBusinessOption',
+            version='2020-04-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_event_streaming_business_option(
+        self,
+        request: eventbridge_20200401_models.UpdateEventStreamingBusinessOptionRequest,
+    ) -> eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse:
+        """
+        @summary 查询事件流
+        
+        @param request: UpdateEventStreamingBusinessOptionRequest
+        @return: UpdateEventStreamingBusinessOptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_event_streaming_business_option_with_options(request, runtime)
+
+    async def update_event_streaming_business_option_async(
+        self,
+        request: eventbridge_20200401_models.UpdateEventStreamingBusinessOptionRequest,
+    ) -> eventbridge_20200401_models.UpdateEventStreamingBusinessOptionResponse:
+        """
+        @summary 查询事件流
+        
+        @param request: UpdateEventStreamingBusinessOptionRequest
+        @return: UpdateEventStreamingBusinessOptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_event_streaming_business_option_with_options_async(request, runtime)
+
     def update_rule_with_options(
         self,
         request: eventbridge_20200401_models.UpdateRuleRequest,
