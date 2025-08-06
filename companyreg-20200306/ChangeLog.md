@@ -1,3 +1,7 @@
+2025-08-06 Version: 2.1.0
+- Support API QueryCallRecordList.
+
+
 2025-05-22 Version: 2.0.0
 - Support API SubmitIntentionForPartner.
 - Delete API QueryCommodityConfig.

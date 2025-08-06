@@ -393,6 +393,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
         """
+        @summary CreateBusinessOpportunity
+        
         @param request: CreateBusinessOpportunityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateBusinessOpportunityResponse
@@ -434,6 +436,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
         """
+        @summary CreateBusinessOpportunity
+        
         @param request: CreateBusinessOpportunityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateBusinessOpportunityResponse
@@ -474,6 +478,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
         """
+        @summary CreateBusinessOpportunity
+        
         @param request: CreateBusinessOpportunityRequest
         @return: CreateBusinessOpportunityResponse
         """
@@ -485,6 +491,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
     ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
         """
+        @summary CreateBusinessOpportunity
+        
         @param request: CreateBusinessOpportunityRequest
         @return: CreateBusinessOpportunityResponse
         """
@@ -685,6 +693,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
         """
+        @summary GenerateUploadFilePolicy
+        
         @param request: GenerateUploadFilePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GenerateUploadFilePolicyResponse
@@ -722,6 +732,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
         """
+        @summary GenerateUploadFilePolicy
+        
         @param request: GenerateUploadFilePolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GenerateUploadFilePolicyResponse
@@ -758,6 +770,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
         """
+        @summary GenerateUploadFilePolicy
+        
         @param request: GenerateUploadFilePolicyRequest
         @return: GenerateUploadFilePolicyResponse
         """
@@ -769,6 +783,8 @@ class Client(OpenApiClient):
         request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
     ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
         """
+        @summary GenerateUploadFilePolicy
+        
         @param request: GenerateUploadFilePolicyRequest
         @return: GenerateUploadFilePolicyResponse
         """
@@ -2098,6 +2114,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.query_bag_remaining_with_options_async(request, runtime)
+
+    def query_call_record_list_with_options(
+        self,
+        request: companyreg_20200306_models.QueryCallRecordListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
+        """
+        @summary 查询玄坛外呼语音文件
+        
+        @param request: QueryCallRecordListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallRecordListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.skill_type):
+            query['SkillType'] = request.skill_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCallRecordList',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.QueryCallRecordListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_call_record_list_with_options_async(
+        self,
+        request: companyreg_20200306_models.QueryCallRecordListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
+        """
+        @summary 查询玄坛外呼语音文件
+        
+        @param request: QueryCallRecordListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCallRecordListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.skill_type):
+            query['SkillType'] = request.skill_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCallRecordList',
+            version='2020-03-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            companyreg_20200306_models.QueryCallRecordListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_call_record_list(
+        self,
+        request: companyreg_20200306_models.QueryCallRecordListRequest,
+    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
+        """
+        @summary 查询玄坛外呼语音文件
+        
+        @param request: QueryCallRecordListRequest
+        @return: QueryCallRecordListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_call_record_list_with_options(request, runtime)
+
+    async def query_call_record_list_async(
+        self,
+        request: companyreg_20200306_models.QueryCallRecordListRequest,
+    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
+        """
+        @summary 查询玄坛外呼语音文件
+        
+        @param request: QueryCallRecordListRequest
+        @return: QueryCallRecordListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_call_record_list_with_options_async(request, runtime)
 
     def query_instance_with_options(
         self,
