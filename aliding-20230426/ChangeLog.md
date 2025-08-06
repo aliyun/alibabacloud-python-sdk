@@ -1,3 +1,6 @@
+2025-08-06 Version: 2.44.1
+- Generated python 2023-04-26 for aliding.
+
 2025-08-06 Version: 2.44.0
 - Support API GetCardTemplate.
 - Update API CreateTodoTask: add request parameters remindNotifyConfigs.
