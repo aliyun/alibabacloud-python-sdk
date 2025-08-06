@@ -3669,6 +3669,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.reason_codes):
@@ -3743,6 +3745,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
         if not UtilClient.is_unset(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not UtilClient.is_unset(request.reason_codes):

@@ -1066,6 +1066,147 @@ class CacheService(TeaModel):
         return self
 
 
+class CapacityLock(TeaModel):
+    def __init__(
+        self,
+        available_count: int = None,
+        crs_reservation_id: str = None,
+        description: str = None,
+        expire_time: str = None,
+        gmt_created: str = None,
+        gmt_modified: str = None,
+        id: str = None,
+        instance_type: str = None,
+        last_reconcile_attempt_time: str = None,
+        last_sync_time: str = None,
+        lock_provider: str = None,
+        locked_count: int = None,
+        operator: str = None,
+        payment_type: str = None,
+        private_pool_id: str = None,
+        requested_count: int = None,
+        status: str = None,
+        tenant_id: str = None,
+        used_count: int = None,
+        zone_id: str = None,
+    ):
+        self.available_count = available_count
+        self.crs_reservation_id = crs_reservation_id
+        self.description = description
+        self.expire_time = expire_time
+        self.gmt_created = gmt_created
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.instance_type = instance_type
+        self.last_reconcile_attempt_time = last_reconcile_attempt_time
+        self.last_sync_time = last_sync_time
+        self.lock_provider = lock_provider
+        self.locked_count = locked_count
+        self.operator = operator
+        self.payment_type = payment_type
+        self.private_pool_id = private_pool_id
+        self.requested_count = requested_count
+        self.status = status
+        self.tenant_id = tenant_id
+        self.used_count = used_count
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.available_count is not None:
+            result['availableCount'] = self.available_count
+        if self.crs_reservation_id is not None:
+            result['crsReservationId'] = self.crs_reservation_id
+        if self.description is not None:
+            result['description'] = self.description
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.gmt_created is not None:
+            result['gmtCreated'] = self.gmt_created
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.last_reconcile_attempt_time is not None:
+            result['lastReconcileAttemptTime'] = self.last_reconcile_attempt_time
+        if self.last_sync_time is not None:
+            result['lastSyncTime'] = self.last_sync_time
+        if self.lock_provider is not None:
+            result['lockProvider'] = self.lock_provider
+        if self.locked_count is not None:
+            result['lockedCount'] = self.locked_count
+        if self.operator is not None:
+            result['operator'] = self.operator
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.private_pool_id is not None:
+            result['privatePoolId'] = self.private_pool_id
+        if self.requested_count is not None:
+            result['requestedCount'] = self.requested_count
+        if self.status is not None:
+            result['status'] = self.status
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        if self.used_count is not None:
+            result['usedCount'] = self.used_count
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('availableCount') is not None:
+            self.available_count = m.get('availableCount')
+        if m.get('crsReservationId') is not None:
+            self.crs_reservation_id = m.get('crsReservationId')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('gmtCreated') is not None:
+            self.gmt_created = m.get('gmtCreated')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('lastReconcileAttemptTime') is not None:
+            self.last_reconcile_attempt_time = m.get('lastReconcileAttemptTime')
+        if m.get('lastSyncTime') is not None:
+            self.last_sync_time = m.get('lastSyncTime')
+        if m.get('lockProvider') is not None:
+            self.lock_provider = m.get('lockProvider')
+        if m.get('lockedCount') is not None:
+            self.locked_count = m.get('lockedCount')
+        if m.get('operator') is not None:
+            self.operator = m.get('operator')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('privatePoolId') is not None:
+            self.private_pool_id = m.get('privatePoolId')
+        if m.get('requestedCount') is not None:
+            self.requested_count = m.get('requestedCount')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        if m.get('usedCount') is not None:
+            self.used_count = m.get('usedCount')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
 class ChannelProperty(TeaModel):
     def __init__(
         self,
@@ -3324,6 +3465,7 @@ class QuotaConfig(TeaModel):
         sub_quota_preemption_config: SubQuotaPreemptionConfig = None,
         support_gpudrivers: List[str] = None,
         support_rdma: bool = None,
+        use_case: str = None,
         user_vpc: UserVpc = None,
     ):
         self.acs = acs
@@ -3340,6 +3482,7 @@ class QuotaConfig(TeaModel):
         self.sub_quota_preemption_config = sub_quota_preemption_config
         self.support_gpudrivers = support_gpudrivers
         self.support_rdma = support_rdma
+        self.use_case = use_case
         self.user_vpc = user_vpc
 
     def validate(self):
@@ -3398,6 +3541,8 @@ class QuotaConfig(TeaModel):
             result['SupportGPUDrivers'] = self.support_gpudrivers
         if self.support_rdma is not None:
             result['SupportRDMA'] = self.support_rdma
+        if self.use_case is not None:
+            result['UseCase'] = self.use_case
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
         return result
@@ -3441,6 +3586,8 @@ class QuotaConfig(TeaModel):
             self.support_gpudrivers = m.get('SupportGPUDrivers')
         if m.get('SupportRDMA') is not None:
             self.support_rdma = m.get('SupportRDMA')
+        if m.get('UseCase') is not None:
+            self.use_case = m.get('UseCase')
         if m.get('UserVpc') is not None:
             temp_model = UserVpc()
             self.user_vpc = temp_model.from_map(m['UserVpc'])
@@ -11468,6 +11615,7 @@ class ListNodesRequest(TeaModel):
         order_statuses: str = None,
         page_number: int = None,
         page_size: int = None,
+        payment_type: str = None,
         quota_id: str = None,
         reason_codes: str = None,
         resource_group_ids: str = None,
@@ -11488,6 +11636,7 @@ class ListNodesRequest(TeaModel):
         self.order_statuses = order_statuses
         self.page_number = page_number
         self.page_size = page_size
+        self.payment_type = payment_type
         self.quota_id = quota_id
         self.reason_codes = reason_codes
         self.resource_group_ids = resource_group_ids
@@ -11531,6 +11680,8 @@ class ListNodesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
         if self.reason_codes is not None:
@@ -11573,6 +11724,8 @@ class ListNodesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
         if m.get('ReasonCodes') is not None:

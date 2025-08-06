@@ -1,3 +1,7 @@
+2025-08-06 Version: 2.1.8
+- Update API ListNodes: add request parameters PaymentType.
+
+
 2025-07-25 Version: 2.1.7
 - Update API ListQuotas: add request parameters HasResource.
 - Update API ListResourceGroups: add request parameters HasResource.
