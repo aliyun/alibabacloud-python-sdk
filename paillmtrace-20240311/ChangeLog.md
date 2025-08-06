@@ -1,3 +1,7 @@
+2025-08-06 Version: 1.1.3
+- Update API ListOnlineEvalTasks: add request parameters SamplingMethod.
+
+
 2025-08-02 Version: 1.1.2
 - Update API ListOnlineEvalTasks: add request parameters AppName.
 - Update API ListOnlineEvalTasks: add request parameters Status.

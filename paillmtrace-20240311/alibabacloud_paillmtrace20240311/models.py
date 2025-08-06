@@ -2028,6 +2028,7 @@ class ListOnlineEvalTasksRequest(TeaModel):
         min_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        sampling_method: str = None,
         sort_by: str = None,
         sort_order: str = None,
         status: str = None,
@@ -2043,6 +2044,7 @@ class ListOnlineEvalTasksRequest(TeaModel):
         self.page_number = page_number
         # Page size, default is 10.
         self.page_size = page_size
+        self.sampling_method = sampling_method
         self.sort_by = sort_by
         self.sort_order = sort_order
         self.status = status
@@ -2068,6 +2070,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.sampling_method is not None:
+            result['SamplingMethod'] = self.sampling_method
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.sort_order is not None:
@@ -2090,6 +2094,8 @@ class ListOnlineEvalTasksRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SamplingMethod') is not None:
+            self.sampling_method = m.get('SamplingMethod')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SortOrder') is not None:
