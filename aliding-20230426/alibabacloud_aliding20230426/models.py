@@ -23020,8 +23020,12 @@ class CreateTodoTaskRequestNotifyConfigs(TeaModel):
     def __init__(
         self,
         ding_notify: str = None,
+        send_assistant_chat: str = None,
+        send_todo_apn: str = None,
     ):
         self.ding_notify = ding_notify
+        self.send_assistant_chat = send_assistant_chat
+        self.send_todo_apn = send_todo_apn
 
     def validate(self):
         pass
@@ -23034,12 +23038,53 @@ class CreateTodoTaskRequestNotifyConfigs(TeaModel):
         result = dict()
         if self.ding_notify is not None:
             result['dingNotify'] = self.ding_notify
+        if self.send_assistant_chat is not None:
+            result['sendAssistantChat'] = self.send_assistant_chat
+        if self.send_todo_apn is not None:
+            result['sendTodoApn'] = self.send_todo_apn
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('dingNotify') is not None:
             self.ding_notify = m.get('dingNotify')
+        if m.get('sendAssistantChat') is not None:
+            self.send_assistant_chat = m.get('sendAssistantChat')
+        if m.get('sendTodoApn') is not None:
+            self.send_todo_apn = m.get('sendTodoApn')
+        return self
+
+
+class CreateTodoTaskRequestRemindNotifyConfigs(TeaModel):
+    def __init__(
+        self,
+        ding_notify: str = None,
+        send_todo_apn: str = None,
+    ):
+        self.ding_notify = ding_notify
+        self.send_todo_apn = send_todo_apn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ding_notify is not None:
+            result['dingNotify'] = self.ding_notify
+        if self.send_todo_apn is not None:
+            result['sendTodoApn'] = self.send_todo_apn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('dingNotify') is not None:
+            self.ding_notify = m.get('dingNotify')
+        if m.get('sendTodoApn') is not None:
+            self.send_todo_apn = m.get('sendTodoApn')
         return self
 
 
@@ -23059,6 +23104,8 @@ class CreateTodoTaskRequest(TeaModel):
         operator_id: str = None,
         participant_ids: List[str] = None,
         priority: int = None,
+        remind_notify_configs: CreateTodoTaskRequestRemindNotifyConfigs = None,
+        reminder_time_stamp: int = None,
         source_id: str = None,
         subject: str = None,
     ):
@@ -23075,6 +23122,8 @@ class CreateTodoTaskRequest(TeaModel):
         self.operator_id = operator_id
         self.participant_ids = participant_ids
         self.priority = priority
+        self.remind_notify_configs = remind_notify_configs
+        self.reminder_time_stamp = reminder_time_stamp
         self.source_id = source_id
         # This parameter is required.
         self.subject = subject
@@ -23094,6 +23143,8 @@ class CreateTodoTaskRequest(TeaModel):
             self.detail_url.validate()
         if self.notify_configs:
             self.notify_configs.validate()
+        if self.remind_notify_configs:
+            self.remind_notify_configs.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23131,6 +23182,10 @@ class CreateTodoTaskRequest(TeaModel):
             result['participantIds'] = self.participant_ids
         if self.priority is not None:
             result['priority'] = self.priority
+        if self.remind_notify_configs is not None:
+            result['remindNotifyConfigs'] = self.remind_notify_configs.to_map()
+        if self.reminder_time_stamp is not None:
+            result['reminderTimeStamp'] = self.reminder_time_stamp
         if self.source_id is not None:
             result['sourceId'] = self.source_id
         if self.subject is not None:
@@ -23174,6 +23229,11 @@ class CreateTodoTaskRequest(TeaModel):
             self.participant_ids = m.get('participantIds')
         if m.get('priority') is not None:
             self.priority = m.get('priority')
+        if m.get('remindNotifyConfigs') is not None:
+            temp_model = CreateTodoTaskRequestRemindNotifyConfigs()
+            self.remind_notify_configs = temp_model.from_map(m['remindNotifyConfigs'])
+        if m.get('reminderTimeStamp') is not None:
+            self.reminder_time_stamp = m.get('reminderTimeStamp')
         if m.get('sourceId') is not None:
             self.source_id = m.get('sourceId')
         if m.get('subject') is not None:
@@ -23197,6 +23257,8 @@ class CreateTodoTaskShrinkRequest(TeaModel):
         operator_id: str = None,
         participant_ids_shrink: str = None,
         priority: int = None,
+        remind_notify_configs_shrink: str = None,
+        reminder_time_stamp: int = None,
         source_id: str = None,
         subject: str = None,
     ):
@@ -23213,6 +23275,8 @@ class CreateTodoTaskShrinkRequest(TeaModel):
         self.operator_id = operator_id
         self.participant_ids_shrink = participant_ids_shrink
         self.priority = priority
+        self.remind_notify_configs_shrink = remind_notify_configs_shrink
+        self.reminder_time_stamp = reminder_time_stamp
         self.source_id = source_id
         # This parameter is required.
         self.subject = subject
@@ -23252,6 +23316,10 @@ class CreateTodoTaskShrinkRequest(TeaModel):
             result['participantIds'] = self.participant_ids_shrink
         if self.priority is not None:
             result['priority'] = self.priority
+        if self.remind_notify_configs_shrink is not None:
+            result['remindNotifyConfigs'] = self.remind_notify_configs_shrink
+        if self.reminder_time_stamp is not None:
+            result['reminderTimeStamp'] = self.reminder_time_stamp
         if self.source_id is not None:
             result['sourceId'] = self.source_id
         if self.subject is not None:
@@ -23286,6 +23354,10 @@ class CreateTodoTaskShrinkRequest(TeaModel):
             self.participant_ids_shrink = m.get('participantIds')
         if m.get('priority') is not None:
             self.priority = m.get('priority')
+        if m.get('remindNotifyConfigs') is not None:
+            self.remind_notify_configs_shrink = m.get('remindNotifyConfigs')
+        if m.get('reminderTimeStamp') is not None:
+            self.reminder_time_stamp = m.get('reminderTimeStamp')
         if m.get('sourceId') is not None:
             self.source_id = m.get('sourceId')
         if m.get('subject') is not None:
@@ -34245,6 +34317,357 @@ class GetAssistantCapabilityResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAssistantCapabilityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetCardTemplateHeadersAccountContext(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        # This parameter is required.
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['accountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accountId') is not None:
+            self.account_id = m.get('accountId')
+        return self
+
+
+class GetCardTemplateHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context: GetCardTemplateHeadersAccountContext = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context = account_context
+
+    def validate(self):
+        if self.account_context:
+            self.account_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context is not None:
+            result['AccountContext'] = self.account_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            temp_model = GetCardTemplateHeadersAccountContext()
+            self.account_context = temp_model.from_map(m['AccountContext'])
+        return self
+
+
+class GetCardTemplateShrinkHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        account_context_shrink: str = None,
+    ):
+        self.common_headers = common_headers
+        self.account_context_shrink = account_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.account_context_shrink is not None:
+            result['AccountContext'] = self.account_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('AccountContext') is not None:
+            self.account_context_shrink = m.get('AccountContext')
+        return self
+
+
+class GetCardTemplateRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
+class GetCardTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+        tenant_context: GetCardTemplateRequestTenantContext = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+        self.tenant_context = tenant_context
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TenantContext') is not None:
+            temp_model = GetCardTemplateRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
+        return self
+
+
+class GetCardTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+        tenant_context_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+        self.tenant_context_shrink = tenant_context_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
+        return self
+
+
+class GetCardTemplateResponseBodyCommonVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        if_private_filed: bool = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        # Id
+        self.id = id
+        self.if_private_filed = if_private_filed
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.if_private_filed is not None:
+            result['IfPrivateFiled'] = self.if_private_filed
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IfPrivateFiled') is not None:
+            self.if_private_filed = m.get('IfPrivateFiled')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetCardTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_variable_list: List[GetCardTemplateResponseBodyCommonVariableList] = None,
+        request_id: str = None,
+        status: str = None,
+        template_id: str = None,
+        vendor_request_id: str = None,
+        vendor_type: str = None,
+    ):
+        self.common_variable_list = common_variable_list
+        self.request_id = request_id
+        self.status = status
+        self.template_id = template_id
+        self.vendor_request_id = vendor_request_id
+        self.vendor_type = vendor_type
+
+    def validate(self):
+        if self.common_variable_list:
+            for k in self.common_variable_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['commonVariableList'] = []
+        if self.common_variable_list is not None:
+            for k in self.common_variable_list:
+                result['commonVariableList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.template_id is not None:
+            result['templateId'] = self.template_id
+        if self.vendor_request_id is not None:
+            result['vendorRequestId'] = self.vendor_request_id
+        if self.vendor_type is not None:
+            result['vendorType'] = self.vendor_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.common_variable_list = []
+        if m.get('commonVariableList') is not None:
+            for k in m.get('commonVariableList'):
+                temp_model = GetCardTemplateResponseBodyCommonVariableList()
+                self.common_variable_list.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('templateId') is not None:
+            self.template_id = m.get('templateId')
+        if m.get('vendorRequestId') is not None:
+            self.vendor_request_id = m.get('vendorRequestId')
+        if m.get('vendorType') is not None:
+            self.vendor_type = m.get('vendorType')
+        return self
+
+
+class GetCardTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetCardTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetCardTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

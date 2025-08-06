@@ -7746,6 +7746,8 @@ class Client(OpenApiClient):
             request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'notifyConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.participant_ids):
             request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.remind_notify_configs):
+            request.remind_notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remind_notify_configs, 'remindNotifyConfigs', 'json')
         query = {}
         if not UtilClient.is_unset(request.operator_id):
             query['operatorId'] = request.operator_id
@@ -7774,6 +7776,10 @@ class Client(OpenApiClient):
             body['participantIds'] = request.participant_ids_shrink
         if not UtilClient.is_unset(request.priority):
             body['priority'] = request.priority
+        if not UtilClient.is_unset(request.remind_notify_configs_shrink):
+            body['remindNotifyConfigs'] = request.remind_notify_configs_shrink
+        if not UtilClient.is_unset(request.reminder_time_stamp):
+            body['reminderTimeStamp'] = request.reminder_time_stamp
         if not UtilClient.is_unset(request.source_id):
             body['sourceId'] = request.source_id
         if not UtilClient.is_unset(request.subject):
@@ -7839,6 +7845,8 @@ class Client(OpenApiClient):
             request.notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.notify_configs, 'notifyConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.participant_ids):
             request.participant_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.participant_ids, 'participantIds', 'json')
+        if not UtilClient.is_unset(tmp_req.remind_notify_configs):
+            request.remind_notify_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remind_notify_configs, 'remindNotifyConfigs', 'json')
         query = {}
         if not UtilClient.is_unset(request.operator_id):
             query['operatorId'] = request.operator_id
@@ -7867,6 +7875,10 @@ class Client(OpenApiClient):
             body['participantIds'] = request.participant_ids_shrink
         if not UtilClient.is_unset(request.priority):
             body['priority'] = request.priority
+        if not UtilClient.is_unset(request.remind_notify_configs_shrink):
+            body['remindNotifyConfigs'] = request.remind_notify_configs_shrink
+        if not UtilClient.is_unset(request.reminder_time_stamp):
+            body['reminderTimeStamp'] = request.reminder_time_stamp
         if not UtilClient.is_unset(request.source_id):
             body['sourceId'] = request.source_id
         if not UtilClient.is_unset(request.subject):
@@ -12652,6 +12664,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetAssistantCapabilityHeaders()
         return await self.get_assistant_capability_with_options_async(request, headers, runtime)
+
+    def get_card_template_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetCardTemplateRequest,
+        tmp_header: aliding_20230426_models.GetCardTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetCardTemplateResponse:
+        """
+        @param tmp_req: GetCardTemplateRequest
+        @param tmp_header: GetCardTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetCardTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetCardTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCardTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/card/getCardTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetCardTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_card_template_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetCardTemplateRequest,
+        tmp_header: aliding_20230426_models.GetCardTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetCardTemplateResponse:
+        """
+        @param tmp_req: GetCardTemplateRequest
+        @param tmp_header: GetCardTemplateHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCardTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetCardTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetCardTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetCardTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/card/getCardTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetCardTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_card_template(
+        self,
+        request: aliding_20230426_models.GetCardTemplateRequest,
+    ) -> aliding_20230426_models.GetCardTemplateResponse:
+        """
+        @param request: GetCardTemplateRequest
+        @return: GetCardTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetCardTemplateHeaders()
+        return self.get_card_template_with_options(request, headers, runtime)
+
+    async def get_card_template_async(
+        self,
+        request: aliding_20230426_models.GetCardTemplateRequest,
+    ) -> aliding_20230426_models.GetCardTemplateResponse:
+        """
+        @param request: GetCardTemplateRequest
+        @return: GetCardTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetCardTemplateHeaders()
+        return await self.get_card_template_with_options_async(request, headers, runtime)
 
     def get_conversaion_space_with_options(
         self,
