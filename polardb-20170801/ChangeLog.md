@@ -1,3 +1,9 @@
+2025-08-07 Version: 5.9.0
+- Support API DeleteApplication.
+- Support API DescribeAIDBClusterPerformance.
+- Update API DescribeParameterGroup: add request parameters DBType.
+
+
 2025-06-13 Version: 5.8.0
 - Support API DescribeHALogs.
 - Support API ReactivateDBClusterBackup.

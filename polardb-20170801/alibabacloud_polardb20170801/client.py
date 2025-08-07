@@ -3691,6 +3691,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
+    def delete_application_with_options(
+        self,
+        request: polardb_20170801_models.DeleteApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteApplicationResponse:
+        """
+        @summary 删除PolarDB应用
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplication',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_application_with_options_async(
+        self,
+        request: polardb_20170801_models.DeleteApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DeleteApplicationResponse:
+        """
+        @summary 删除PolarDB应用
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteApplication',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DeleteApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_application(
+        self,
+        request: polardb_20170801_models.DeleteApplicationRequest,
+    ) -> polardb_20170801_models.DeleteApplicationResponse:
+        """
+        @summary 删除PolarDB应用
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_application_with_options(request, runtime)
+
+    async def delete_application_async(
+        self,
+        request: polardb_20170801_models.DeleteApplicationRequest,
+    ) -> polardb_20170801_models.DeleteApplicationResponse:
+        """
+        @summary 删除PolarDB应用
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_application_with_options_async(request, runtime)
+
     def delete_backup_with_options(
         self,
         request: polardb_20170801_models.DeleteBackupRequest,
@@ -5150,6 +5246,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
+
+    def describe_aidbcluster_performance_with_options(
+        self,
+        request: polardb_20170801_models.DescribeAIDBClusterPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeAIDBClusterPerformanceResponse:
+        """
+        @summary 获取ai容器性能指标
+        
+        @param request: DescribeAIDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAIDBClusterPerformanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAIDBClusterPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAIDBClusterPerformanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_performance_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeAIDBClusterPerformanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeAIDBClusterPerformanceResponse:
+        """
+        @summary 获取ai容器性能指标
+        
+        @param request: DescribeAIDBClusterPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAIDBClusterPerformanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAIDBClusterPerformance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeAIDBClusterPerformanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_performance(
+        self,
+        request: polardb_20170801_models.DescribeAIDBClusterPerformanceRequest,
+    ) -> polardb_20170801_models.DescribeAIDBClusterPerformanceResponse:
+        """
+        @summary 获取ai容器性能指标
+        
+        @param request: DescribeAIDBClusterPerformanceRequest
+        @return: DescribeAIDBClusterPerformanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aidbcluster_performance_with_options(request, runtime)
+
+    async def describe_aidbcluster_performance_async(
+        self,
+        request: polardb_20170801_models.DescribeAIDBClusterPerformanceRequest,
+    ) -> polardb_20170801_models.DescribeAIDBClusterPerformanceResponse:
+        """
+        @summary 获取ai容器性能指标
+        
+        @param request: DescribeAIDBClusterPerformanceRequest
+        @return: DescribeAIDBClusterPerformanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aidbcluster_performance_with_options_async(request, runtime)
 
     def describe_aitask_status_with_options(
         self,
@@ -11204,6 +11412,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -11254,6 +11464,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.dbtype):
+            query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):

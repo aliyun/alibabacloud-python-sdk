@@ -5284,6 +5284,102 @@ class DeleteAccountResponse(TeaModel):
         return self
 
 
+class DeleteApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+    ):
+        # This parameter is required.
+        self.application_id = application_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        return self
+
+
+class DeleteApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteBackupRequest(TeaModel):
     def __init__(
         self,
@@ -7012,6 +7108,271 @@ class DeleteParameterGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteParameterGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAIDBClusterPerformanceRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        end_time: str = None,
+        interval: str = None,
+        key: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.end_time = end_time
+        self.interval = interval
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints(TeaModel):
+    def __init__(
+        self,
+        timestamp: int = None,
+        value: str = None,
+    ):
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys(TeaModel):
+    def __init__(
+        self,
+        dbnode_id: str = None,
+        measurement: str = None,
+        metric_name: str = None,
+        points: List[DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints] = None,
+    ):
+        self.dbnode_id = dbnode_id
+        self.measurement = measurement
+        self.metric_name = metric_name
+        self.points = points
+
+    def validate(self):
+        if self.points:
+            for k in self.points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.measurement is not None:
+            result['Measurement'] = self.measurement
+        if self.metric_name is not None:
+            result['MetricName'] = self.metric_name
+        result['Points'] = []
+        if self.points is not None:
+            for k in self.points:
+                result['Points'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('Measurement') is not None:
+            self.measurement = m.get('Measurement')
+        if m.get('MetricName') is not None:
+            self.metric_name = m.get('MetricName')
+        self.points = []
+        if m.get('Points') is not None:
+            for k in m.get('Points'):
+                temp_model = DescribeAIDBClusterPerformanceResponseBodyPerformanceKeysPoints()
+                self.points.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAIDBClusterPerformanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        dbcluster_id: str = None,
+        dbtype: str = None,
+        dbversion: str = None,
+        end_time: str = None,
+        interval: str = None,
+        performance_keys: List[DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys] = None,
+        request_id: str = None,
+        start_time: str = None,
+    ):
+        self.api_key = api_key
+        self.dbcluster_id = dbcluster_id
+        self.dbtype = dbtype
+        self.dbversion = dbversion
+        self.end_time = end_time
+        self.interval = interval
+        self.performance_keys = performance_keys
+        self.request_id = request_id
+        self.start_time = start_time
+
+    def validate(self):
+        if self.performance_keys:
+            for k in self.performance_keys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
+        if self.dbversion is not None:
+            result['DBVersion'] = self.dbversion
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        result['PerformanceKeys'] = []
+        if self.performance_keys is not None:
+            for k in self.performance_keys:
+                result['PerformanceKeys'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
+        if m.get('DBVersion') is not None:
+            self.dbversion = m.get('DBVersion')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        self.performance_keys = []
+        if m.get('PerformanceKeys') is not None:
+            for k in m.get('PerformanceKeys'):
+                temp_model = DescribeAIDBClusterPerformanceResponseBodyPerformanceKeys()
+                self.performance_keys.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeAIDBClusterPerformanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAIDBClusterPerformanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAIDBClusterPerformanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22711,6 +23072,7 @@ class DescribeMetaListResponse(TeaModel):
 class DescribeParameterGroupRequest(TeaModel):
     def __init__(
         self,
+        dbtype: str = None,
         owner_account: str = None,
         owner_id: int = None,
         parameter_group_id: str = None,
@@ -22719,6 +23081,7 @@ class DescribeParameterGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.dbtype = dbtype
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the parameter template.
@@ -22747,6 +23110,8 @@ class DescribeParameterGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dbtype is not None:
+            result['DBType'] = self.dbtype
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -22765,6 +23130,8 @@ class DescribeParameterGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBType') is not None:
+            self.dbtype = m.get('DBType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
