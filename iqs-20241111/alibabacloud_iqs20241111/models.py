@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class AISearchQuery(TeaModel):
@@ -1020,8 +1020,10 @@ class SearchCredits(TeaModel):
     def __init__(
         self,
         generic_text_search: int = None,
+        lite_advanced_text_search: int = None,
     ):
         self.generic_text_search = generic_text_search
+        self.lite_advanced_text_search = lite_advanced_text_search
 
     def validate(self):
         pass
@@ -1034,12 +1036,16 @@ class SearchCredits(TeaModel):
         result = dict()
         if self.generic_text_search is not None:
             result['genericTextSearch'] = self.generic_text_search
+        if self.lite_advanced_text_search is not None:
+            result['liteAdvancedTextSearch'] = self.lite_advanced_text_search
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('genericTextSearch') is not None:
             self.generic_text_search = m.get('genericTextSearch')
+        if m.get('liteAdvancedTextSearch') is not None:
+            self.lite_advanced_text_search = m.get('liteAdvancedTextSearch')
         return self
 
 
@@ -1150,6 +1156,7 @@ class UnifiedOriginalQuery(TeaModel):
 class UnifiedPageItem(TeaModel):
     def __init__(
         self,
+        host_authority_score: float = None,
         host_logo: str = None,
         hostname: str = None,
         images: List[str] = None,
@@ -1162,6 +1169,7 @@ class UnifiedPageItem(TeaModel):
         summary: str = None,
         title: str = None,
     ):
+        self.host_authority_score = host_authority_score
         self.host_logo = host_logo
         self.hostname = hostname
         self.images = images
@@ -1183,6 +1191,8 @@ class UnifiedPageItem(TeaModel):
             return _map
 
         result = dict()
+        if self.host_authority_score is not None:
+            result['hostAuthorityScore'] = self.host_authority_score
         if self.host_logo is not None:
             result['hostLogo'] = self.host_logo
         if self.hostname is not None:
@@ -1209,6 +1219,8 @@ class UnifiedPageItem(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('hostAuthorityScore') is not None:
+            self.host_authority_score = m.get('hostAuthorityScore')
         if m.get('hostLogo') is not None:
             self.host_logo = m.get('hostLogo')
         if m.get('hostname') is not None:
@@ -1374,6 +1386,7 @@ class UnifiedSearchInformation(TeaModel):
 class UnifiedSearchInput(TeaModel):
     def __init__(
         self,
+        advanced_params: Dict[str, Any] = None,
         category: str = None,
         contents: RequestContents = None,
         engine_type: str = None,
@@ -1381,6 +1394,7 @@ class UnifiedSearchInput(TeaModel):
         query: str = None,
         time_range: str = None,
     ):
+        self.advanced_params = advanced_params
         self.category = category
         self.contents = contents
         self.engine_type = engine_type
@@ -1398,6 +1412,8 @@ class UnifiedSearchInput(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_params is not None:
+            result['advancedParams'] = self.advanced_params
         if self.category is not None:
             result['category'] = self.category
         if self.contents is not None:
@@ -1414,6 +1430,8 @@ class UnifiedSearchInput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('advancedParams') is not None:
+            self.advanced_params = m.get('advancedParams')
         if m.get('category') is not None:
             self.category = m.get('category')
         if m.get('contents') is not None:
