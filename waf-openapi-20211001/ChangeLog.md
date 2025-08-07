@@ -1,3 +1,10 @@
+2025-08-07 Version: 6.2.0
+- Support API DescribeDefenseSceneConfig.
+- Support API ModifyDefenseSceneConfig.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.BackUpBackendList.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.BackendList.
+
+
 2025-07-31 Version: 6.1.3
 - Update API DescribeSensitiveApiStatistic: add request parameters Type.
 

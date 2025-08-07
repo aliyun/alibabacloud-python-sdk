@@ -8127,6 +8127,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_rules_with_options_async(request, runtime)
 
+    def describe_defense_scene_config_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse:
+        """
+        @summary 查询用户防护场景的配置
+        
+        @param request: DescribeDefenseSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseSceneConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_defense_scene_config_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse:
+        """
+        @summary 查询用户防护场景的配置
+        
+        @param request: DescribeDefenseSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseSceneConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_defense_scene_config(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseSceneConfigRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse:
+        """
+        @summary 查询用户防护场景的配置
+        
+        @param request: DescribeDefenseSceneConfigRequest
+        @return: DescribeDefenseSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_defense_scene_config_with_options(request, runtime)
+
+    async def describe_defense_scene_config_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseSceneConfigRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseSceneConfigResponse:
+        """
+        @summary 查询用户防护场景的配置
+        
+        @param request: DescribeDefenseSceneConfigRequest
+        @return: DescribeDefenseSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_defense_scene_config_with_options_async(request, runtime)
+
     def describe_defense_template_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeDefenseTemplateRequest,
@@ -18582,6 +18694,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_defense_rule_status_with_options_async(request, runtime)
+
+    def modify_defense_scene_config_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse:
+        """
+        @summary 修改用户防护场景的配置
+        
+        @param request: ModifyDefenseSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDefenseSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseSceneConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_defense_scene_config_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseSceneConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse:
+        """
+        @summary 修改用户防护场景的配置
+        
+        @param request: ModifyDefenseSceneConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDefenseSceneConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_key):
+            query['ConfigKey'] = request.config_key
+        if not UtilClient.is_unset(request.config_value):
+            query['ConfigValue'] = request.config_value
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDefenseSceneConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_defense_scene_config(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseSceneConfigRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse:
+        """
+        @summary 修改用户防护场景的配置
+        
+        @param request: ModifyDefenseSceneConfigRequest
+        @return: ModifyDefenseSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_defense_scene_config_with_options(request, runtime)
+
+    async def modify_defense_scene_config_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyDefenseSceneConfigRequest,
+    ) -> waf_openapi_20211001_models.ModifyDefenseSceneConfigResponse:
+        """
+        @summary 修改用户防护场景的配置
+        
+        @param request: ModifyDefenseSceneConfigRequest
+        @return: ModifyDefenseSceneConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_defense_scene_config_with_options_async(request, runtime)
 
     def modify_defense_template_with_options(
         self,

@@ -15402,6 +15402,134 @@ class DescribeDefenseRulesResponse(TeaModel):
         return self
 
 
+class DescribeDefenseSceneConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_key: str = None,
+        defense_scene: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_key = config_key
+        # This parameter is required.
+        self.defense_scene = defense_scene
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.defense_scene is not None:
+            result['DefenseScene'] = self.defense_scene
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('DefenseScene') is not None:
+            self.defense_scene = m.get('DefenseScene')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeDefenseSceneConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_value: str = None,
+        request_id: str = None,
+    ):
+        self.config_value = config_value
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDefenseSceneConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDefenseSceneConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDefenseSceneConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDefenseTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -16681,6 +16809,8 @@ class DescribeDomainDetailResponseBodyRedirectRequestHeaders(TeaModel):
 class DescribeDomainDetailResponseBodyRedirect(TeaModel):
     def __init__(
         self,
+        back_up_backend_list: List[str] = None,
+        backend_list: List[str] = None,
         backends: List[DescribeDomainDetailResponseBodyRedirectBackends] = None,
         backup_backends: List[DescribeDomainDetailResponseBodyRedirectBackupBackends] = None,
         connect_timeout: int = None,
@@ -16697,6 +16827,8 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         write_timeout: int = None,
         xff_proto: bool = None,
     ):
+        self.back_up_backend_list = back_up_backend_list
+        self.backend_list = backend_list
         # An array of addresses of origin servers.
         self.backends = backends
         # An array of HTTPS listener ports.
@@ -16771,6 +16903,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             return _map
 
         result = dict()
+        if self.back_up_backend_list is not None:
+            result['BackUpBackendList'] = self.back_up_backend_list
+        if self.backend_list is not None:
+            result['BackendList'] = self.backend_list
         result['Backends'] = []
         if self.backends is not None:
             for k in self.backends:
@@ -16811,6 +16947,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackUpBackendList') is not None:
+            self.back_up_backend_list = m.get('BackUpBackendList')
+        if m.get('BackendList') is not None:
+            self.backend_list = m.get('BackendList')
         self.backends = []
         if m.get('Backends') is not None:
             for k in m.get('Backends'):
@@ -36867,6 +37007,135 @@ class ModifyDefenseRuleStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDefenseRuleStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDefenseSceneConfigRequest(TeaModel):
+    def __init__(
+        self,
+        config_key: str = None,
+        config_value: str = None,
+        defense_scene: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.config_key = config_key
+        # This parameter is required.
+        self.config_value = config_value
+        # This parameter is required.
+        self.defense_scene = defense_scene
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_key is not None:
+            result['ConfigKey'] = self.config_key
+        if self.config_value is not None:
+            result['ConfigValue'] = self.config_value
+        if self.defense_scene is not None:
+            result['DefenseScene'] = self.defense_scene
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigKey') is not None:
+            self.config_key = m.get('ConfigKey')
+        if m.get('ConfigValue') is not None:
+            self.config_value = m.get('ConfigValue')
+        if m.get('DefenseScene') is not None:
+            self.defense_scene = m.get('DefenseScene')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class ModifyDefenseSceneConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDefenseSceneConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDefenseSceneConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDefenseSceneConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
