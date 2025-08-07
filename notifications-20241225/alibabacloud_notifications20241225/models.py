@@ -1468,23 +1468,41 @@ class ReadMessageListRequest(TeaModel):
         title: str = None,
         uid_type: str = None,
     ):
+        # 语言，默认为简体中文
         self.accept_language = accept_language
+        # 系统参数，无需填写
         self.app_name = app_name
+        # 系统参数，无需填写
         self.biz_name = biz_name
+        # 系统参数，无需填写
         self.caller_protocol = caller_protocol
+        # 消息类目ID
         self.class_id = class_id
+        # 系统参数，无需填写
         self.client_source = client_source
+        # 消息内容，用于模糊搜索
         self.content = content
+        # 系统参数，无需填写
         self.cookies = cookies
+        # 栏位 nav代表控制台topbar
         self.loc = loc
+        # 系统参数，无需填写
         self.max_results = max_results
+        # 系统参数，无需填写
         self.next_token = next_token
+        # 分页查询页码
         self.page = page
+        # 分页查询大小
         self.page_size = page_size
+        # 系统参数，无需填写
         self.src_url = src_url
+        # 消息状态，已读为1，未读为0
         self.status = status
+        # 系统参数，无需填写
         self.tenant_code = tenant_code
+        # 消息标题，用于模糊搜索
         self.title = title
+        # 系统参数，无需填写
         self.uid_type = uid_type
 
     def validate(self):
@@ -1590,19 +1608,32 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
         msg_id: int = None,
         status: int = None,
         title: str = None,
+        titleh: str = None,
     ):
+        # CategoryName
         self.category_name = category_name
+        # Class
         self.class_ = class_
+        # ClassId
         self.class_id = class_id
+        # 内容
         self.content = content
+        # 删除
         self.deleted = deleted
+        # 创建时间
         self.gmt_created = gmt_created
         self.gmt_update = gmt_update
+        # massId
         self.mass_id = mass_id
+        # 描述
         self.memo = memo
+        # 消息id
         self.msg_id = msg_id
+        # 状态
         self.status = status
+        # 标题
         self.title = title
+        self.titleh = titleh
 
     def validate(self):
         pass
@@ -1637,6 +1668,8 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
             result['Status'] = self.status
         if self.title is not None:
             result['Title'] = self.title
+        if self.titleh is not None:
+            result['Titleh'] = self.titleh
         return result
 
     def from_map(self, m: dict = None):
@@ -1665,6 +1698,8 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
             self.status = m.get('Status')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('Titleh') is not None:
+            self.titleh = m.get('Titleh')
         return self
 
 
@@ -1678,11 +1713,17 @@ class ReadMessageListResponseBodyData(TeaModel):
         page_size: int = None,
         rows: List[ReadMessageListResponseBodyDataRows] = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # If excess return values exist, this parameter is returned.
         self.next_token = next_token
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The number of rows updated or returned on PolarDB-X 2.0 compute nodes.
         self.rows = rows
 
     def validate(self):
@@ -1742,10 +1783,18 @@ class ReadMessageListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code. The value Success indicates that the request is successful. Other values indicate that the request failed. For more information about error codes, see Error codes.
         self.code = code
+        # Data
         self.data = data
+        # message
         self.message = message
+        # 唯一请求id
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The call was successful.
+        # *   **false**: The call failed.
         self.success = success
 
     def validate(self):
@@ -2213,6 +2262,7 @@ class ReadNumGroupTotalRequest(TeaModel):
         cookies: str = None,
         src_url: str = None,
         tenant_code: str = None,
+        title: str = None,
         uid_type: str = None,
     ):
         self.accept_language = accept_language
@@ -2223,6 +2273,7 @@ class ReadNumGroupTotalRequest(TeaModel):
         self.cookies = cookies
         self.src_url = src_url
         self.tenant_code = tenant_code
+        self.title = title
         self.uid_type = uid_type
 
     def validate(self):
@@ -2250,6 +2301,8 @@ class ReadNumGroupTotalRequest(TeaModel):
             result['SrcUrl'] = self.src_url
         if self.tenant_code is not None:
             result['TenantCode'] = self.tenant_code
+        if self.title is not None:
+            result['Title'] = self.title
         if self.uid_type is not None:
             result['UidType'] = self.uid_type
         return result
@@ -2272,6 +2325,8 @@ class ReadNumGroupTotalRequest(TeaModel):
             self.src_url = m.get('SrcUrl')
         if m.get('TenantCode') is not None:
             self.tenant_code = m.get('TenantCode')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
         if m.get('UidType') is not None:
             self.uid_type = m.get('UidType')
         return self

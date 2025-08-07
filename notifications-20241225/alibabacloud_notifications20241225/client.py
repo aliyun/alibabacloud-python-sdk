@@ -1287,6 +1287,8 @@ class Client(OpenApiClient):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
             body['TenantCode'] = request.tenant_code
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         if not UtilClient.is_unset(request.uid_type):
             body['UidType'] = request.uid_type
         req = open_api_models.OpenApiRequest(
@@ -1338,6 +1340,8 @@ class Client(OpenApiClient):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
             body['TenantCode'] = request.tenant_code
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
         if not UtilClient.is_unset(request.uid_type):
             body['UidType'] = request.uid_type
         req = open_api_models.OpenApiRequest(
