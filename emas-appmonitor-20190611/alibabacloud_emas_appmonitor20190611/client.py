@@ -63,6 +63,8 @@ class Client(OpenApiClient):
             body['ClientTime'] = request.client_time
         if not UtilClient.is_unset(request.did):
             body['Did'] = request.did
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
         if not UtilClient.is_unset(request.force):
             body['Force'] = request.force
         if not UtilClient.is_unset(request.os):
@@ -110,6 +112,8 @@ class Client(OpenApiClient):
             body['ClientTime'] = request.client_time
         if not UtilClient.is_unset(request.did):
             body['Did'] = request.did
+        if not UtilClient.is_unset(request.digest_hash):
+            body['DigestHash'] = request.digest_hash
         if not UtilClient.is_unset(request.force):
             body['Force'] = request.force
         if not UtilClient.is_unset(request.os):

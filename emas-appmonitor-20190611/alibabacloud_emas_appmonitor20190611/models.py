@@ -337,6 +337,7 @@ class GetErrorRequest(TeaModel):
         biz_module: str = None,
         client_time: int = None,
         did: str = None,
+        digest_hash: str = None,
         force: bool = None,
         os: str = None,
         uuid: str = None,
@@ -349,6 +350,7 @@ class GetErrorRequest(TeaModel):
         # This parameter is required.
         self.client_time = client_time
         self.did = did
+        self.digest_hash = digest_hash
         self.force = force
         self.os = os
         self.uuid = uuid
@@ -370,6 +372,8 @@ class GetErrorRequest(TeaModel):
             result['ClientTime'] = self.client_time
         if self.did is not None:
             result['Did'] = self.did
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
         if self.force is not None:
             result['Force'] = self.force
         if self.os is not None:
@@ -388,6 +392,8 @@ class GetErrorRequest(TeaModel):
             self.client_time = m.get('ClientTime')
         if m.get('Did') is not None:
             self.did = m.get('Did')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
         if m.get('Force') is not None:
             self.force = m.get('Force')
         if m.get('Os') is not None:
@@ -522,6 +528,7 @@ class GetErrorResponseBodyModel(TeaModel):
         speed_flags: str = None,
         stack: str = None,
         status: str = None,
+        structured_stack: str = None,
         summary: str = None,
         symbolic_file_type: str = None,
         sys_log: str = None,
@@ -673,6 +680,7 @@ class GetErrorResponseBodyModel(TeaModel):
         self.speed_flags = speed_flags
         self.stack = stack
         self.status = status
+        self.structured_stack = structured_stack
         self.summary = summary
         self.symbolic_file_type = symbolic_file_type
         self.sys_log = sys_log
@@ -950,6 +958,8 @@ class GetErrorResponseBodyModel(TeaModel):
             result['Stack'] = self.stack
         if self.status is not None:
             result['Status'] = self.status
+        if self.structured_stack is not None:
+            result['StructuredStack'] = self.structured_stack
         if self.summary is not None:
             result['Summary'] = self.summary
         if self.symbolic_file_type is not None:
@@ -1236,6 +1246,8 @@ class GetErrorResponseBodyModel(TeaModel):
             self.stack = m.get('Stack')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StructuredStack') is not None:
+            self.structured_stack = m.get('StructuredStack')
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
         if m.get('SymbolicFileType') is not None:
@@ -1670,11 +1682,13 @@ class GetErrorsResponseBodyModelItems(TeaModel):
         self,
         client_time: int = None,
         did: str = None,
+        digest_hash: str = None,
         utdid: str = None,
         uuid: str = None,
     ):
         self.client_time = client_time
         self.did = did
+        self.digest_hash = digest_hash
         # Utdid
         self.utdid = utdid
         self.uuid = uuid
@@ -1692,6 +1706,8 @@ class GetErrorsResponseBodyModelItems(TeaModel):
             result['ClientTime'] = self.client_time
         if self.did is not None:
             result['Did'] = self.did
+        if self.digest_hash is not None:
+            result['DigestHash'] = self.digest_hash
         if self.utdid is not None:
             result['Utdid'] = self.utdid
         if self.uuid is not None:
@@ -1704,6 +1720,8 @@ class GetErrorsResponseBodyModelItems(TeaModel):
             self.client_time = m.get('ClientTime')
         if m.get('Did') is not None:
             self.did = m.get('Did')
+        if m.get('DigestHash') is not None:
+            self.digest_hash = m.get('DigestHash')
         if m.get('Utdid') is not None:
             self.utdid = m.get('Utdid')
         if m.get('Uuid') is not None:
@@ -2144,6 +2162,10 @@ class GetIssueResponseBodyModel(TeaModel):
     def __init__(
         self,
         affected_versions: List[str] = None,
+        alloc_size_max: int = None,
+        alloc_size_pct_50: int = None,
+        alloc_size_pct_70: int = None,
+        alloc_size_pct_90: int = None,
         crux_stack: str = None,
         digest_hash: str = None,
         error_column: int = None,
@@ -2159,6 +2181,7 @@ class GetIssueResponseBodyModel(TeaModel):
         error_rate: float = None,
         error_rate_growth_rate: float = None,
         error_type: str = None,
+        event_time: int = None,
         first_version: str = None,
         gmt_create: int = None,
         gmt_latest: int = None,
@@ -2171,6 +2194,10 @@ class GetIssueResponseBodyModel(TeaModel):
         tags: List[str] = None,
     ):
         self.affected_versions = affected_versions
+        self.alloc_size_max = alloc_size_max
+        self.alloc_size_pct_50 = alloc_size_pct_50
+        self.alloc_size_pct_70 = alloc_size_pct_70
+        self.alloc_size_pct_90 = alloc_size_pct_90
         self.crux_stack = crux_stack
         self.digest_hash = digest_hash
         self.error_column = error_column
@@ -2186,6 +2213,7 @@ class GetIssueResponseBodyModel(TeaModel):
         self.error_rate = error_rate
         self.error_rate_growth_rate = error_rate_growth_rate
         self.error_type = error_type
+        self.event_time = event_time
         self.first_version = first_version
         self.gmt_create = gmt_create
         self.gmt_latest = gmt_latest
@@ -2208,6 +2236,14 @@ class GetIssueResponseBodyModel(TeaModel):
         result = dict()
         if self.affected_versions is not None:
             result['AffectedVersions'] = self.affected_versions
+        if self.alloc_size_max is not None:
+            result['AllocSizeMax'] = self.alloc_size_max
+        if self.alloc_size_pct_50 is not None:
+            result['AllocSizePct50'] = self.alloc_size_pct_50
+        if self.alloc_size_pct_70 is not None:
+            result['AllocSizePct70'] = self.alloc_size_pct_70
+        if self.alloc_size_pct_90 is not None:
+            result['AllocSizePct90'] = self.alloc_size_pct_90
         if self.crux_stack is not None:
             result['CruxStack'] = self.crux_stack
         if self.digest_hash is not None:
@@ -2238,6 +2274,8 @@ class GetIssueResponseBodyModel(TeaModel):
             result['ErrorRateGrowthRate'] = self.error_rate_growth_rate
         if self.error_type is not None:
             result['ErrorType'] = self.error_type
+        if self.event_time is not None:
+            result['EventTime'] = self.event_time
         if self.first_version is not None:
             result['FirstVersion'] = self.first_version
         if self.gmt_create is not None:
@@ -2264,6 +2302,14 @@ class GetIssueResponseBodyModel(TeaModel):
         m = m or dict()
         if m.get('AffectedVersions') is not None:
             self.affected_versions = m.get('AffectedVersions')
+        if m.get('AllocSizeMax') is not None:
+            self.alloc_size_max = m.get('AllocSizeMax')
+        if m.get('AllocSizePct50') is not None:
+            self.alloc_size_pct_50 = m.get('AllocSizePct50')
+        if m.get('AllocSizePct70') is not None:
+            self.alloc_size_pct_70 = m.get('AllocSizePct70')
+        if m.get('AllocSizePct90') is not None:
+            self.alloc_size_pct_90 = m.get('AllocSizePct90')
         if m.get('CruxStack') is not None:
             self.crux_stack = m.get('CruxStack')
         if m.get('DigestHash') is not None:
@@ -2294,6 +2340,8 @@ class GetIssueResponseBodyModel(TeaModel):
             self.error_rate_growth_rate = m.get('ErrorRateGrowthRate')
         if m.get('ErrorType') is not None:
             self.error_type = m.get('ErrorType')
+        if m.get('EventTime') is not None:
+            self.event_time = m.get('EventTime')
         if m.get('FirstVersion') is not None:
             self.first_version = m.get('FirstVersion')
         if m.get('GmtCreate') is not None:
@@ -2744,6 +2792,10 @@ class GetIssuesResponseBodyModelItems(TeaModel):
     def __init__(
         self,
         affected_user_count: int = None,
+        alloc_size_max: int = None,
+        alloc_size_pct_50: int = None,
+        alloc_size_pct_70: int = None,
+        alloc_size_pct_90: int = None,
         digest_hash: str = None,
         dom_score: str = None,
         error_column: int = None,
@@ -2762,6 +2814,10 @@ class GetIssuesResponseBodyModelItems(TeaModel):
         status: int = None,
     ):
         self.affected_user_count = affected_user_count
+        self.alloc_size_max = alloc_size_max
+        self.alloc_size_pct_50 = alloc_size_pct_50
+        self.alloc_size_pct_70 = alloc_size_pct_70
+        self.alloc_size_pct_90 = alloc_size_pct_90
         self.digest_hash = digest_hash
         self.dom_score = dom_score
         self.error_column = error_column
@@ -2790,6 +2846,14 @@ class GetIssuesResponseBodyModelItems(TeaModel):
         result = dict()
         if self.affected_user_count is not None:
             result['AffectedUserCount'] = self.affected_user_count
+        if self.alloc_size_max is not None:
+            result['AllocSizeMax'] = self.alloc_size_max
+        if self.alloc_size_pct_50 is not None:
+            result['AllocSizePct50'] = self.alloc_size_pct_50
+        if self.alloc_size_pct_70 is not None:
+            result['AllocSizePct70'] = self.alloc_size_pct_70
+        if self.alloc_size_pct_90 is not None:
+            result['AllocSizePct90'] = self.alloc_size_pct_90
         if self.digest_hash is not None:
             result['DigestHash'] = self.digest_hash
         if self.dom_score is not None:
@@ -2828,6 +2892,14 @@ class GetIssuesResponseBodyModelItems(TeaModel):
         m = m or dict()
         if m.get('AffectedUserCount') is not None:
             self.affected_user_count = m.get('AffectedUserCount')
+        if m.get('AllocSizeMax') is not None:
+            self.alloc_size_max = m.get('AllocSizeMax')
+        if m.get('AllocSizePct50') is not None:
+            self.alloc_size_pct_50 = m.get('AllocSizePct50')
+        if m.get('AllocSizePct70') is not None:
+            self.alloc_size_pct_70 = m.get('AllocSizePct70')
+        if m.get('AllocSizePct90') is not None:
+            self.alloc_size_pct_90 = m.get('AllocSizePct90')
         if m.get('DigestHash') is not None:
             self.digest_hash = m.get('DigestHash')
         if m.get('DomScore') is not None:
