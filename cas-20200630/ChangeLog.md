@@ -1,3 +1,6 @@
+2025-08-07 Version: 1.1.5
+- Generated python 2020-06-30 for cas.
+
 2025-07-30 Version: 1.1.4
 - Update API CreateRootCACertificate: add request parameters ClientToken.
 - Update API DescribeCACertificate: add response parameters Body.Certificate.FullAlgorithm.
