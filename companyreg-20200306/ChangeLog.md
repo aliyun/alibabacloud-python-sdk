@@ -1,3 +1,8 @@
+2025-08-07 Version: 2.1.1
+- Update API QueryCallRecordList: add response parameters Body.Data.$.ContactDisposition.
+- Update API QueryCallRecordList: add response parameters Body.Data.$.taskId.
+
+
 2025-08-06 Version: 2.1.0
 - Support API QueryCallRecordList.
 

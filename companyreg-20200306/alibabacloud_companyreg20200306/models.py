@@ -3449,13 +3449,17 @@ class QueryCallRecordListRequest(TeaModel):
 class QueryCallRecordListResponseBodyData(TeaModel):
     def __init__(
         self,
+        contact_disposition: str = None,
         duration: int = None,
         signature_url: str = None,
         start_time: int = None,
+        task_id: str = None,
     ):
+        self.contact_disposition = contact_disposition
         self.duration = duration
         self.signature_url = signature_url
         self.start_time = start_time
+        self.task_id = task_id
 
     def validate(self):
         pass
@@ -3466,22 +3470,30 @@ class QueryCallRecordListResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.contact_disposition is not None:
+            result['ContactDisposition'] = self.contact_disposition
         if self.duration is not None:
             result['Duration'] = self.duration
         if self.signature_url is not None:
             result['SignatureUrl'] = self.signature_url
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ContactDisposition') is not None:
+            self.contact_disposition = m.get('ContactDisposition')
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
         if m.get('SignatureUrl') is not None:
             self.signature_url = m.get('SignatureUrl')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
         return self
 
 
