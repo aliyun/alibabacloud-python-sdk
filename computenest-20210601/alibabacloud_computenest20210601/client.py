@@ -493,6 +493,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.continue_deploy_service_instance_with_options_async(request, runtime)
 
+    def create_backup_with_options(
+        self,
+        request: compute_nest_20210601_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateBackupResponse:
+        """
+        @summary Create backup for Compute Nest instance
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_backup_with_options_async(
+        self,
+        request: compute_nest_20210601_models.CreateBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateBackupResponse:
+        """
+        @summary Create backup for Compute Nest instance
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_backup(
+        self,
+        request: compute_nest_20210601_models.CreateBackupRequest,
+    ) -> compute_nest_20210601_models.CreateBackupResponse:
+        """
+        @summary Create backup for Compute Nest instance
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_backup_with_options(request, runtime)
+
+    async def create_backup_async(
+        self,
+        request: compute_nest_20210601_models.CreateBackupRequest,
+    ) -> compute_nest_20210601_models.CreateBackupResponse:
+        """
+        @summary Create backup for Compute Nest instance
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateBackupRequest
+        @return: CreateBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_backup_with_options_async(request, runtime)
+
+    def create_restore_task_with_options(
+        self,
+        request: compute_nest_20210601_models.CreateRestoreTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateRestoreTaskResponse:
+        """
+        @summary Create restore task
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestoreTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRestoreTask',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateRestoreTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_restore_task_with_options_async(
+        self,
+        request: compute_nest_20210601_models.CreateRestoreTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.CreateRestoreTaskResponse:
+        """
+        @summary Create restore task
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateRestoreTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRestoreTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.service_instance_id):
+            query['ServiceInstanceId'] = request.service_instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRestoreTask',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.CreateRestoreTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_restore_task(
+        self,
+        request: compute_nest_20210601_models.CreateRestoreTaskRequest,
+    ) -> compute_nest_20210601_models.CreateRestoreTaskResponse:
+        """
+        @summary Create restore task
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateRestoreTaskRequest
+        @return: CreateRestoreTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_restore_task_with_options(request, runtime)
+
+    async def create_restore_task_async(
+        self,
+        request: compute_nest_20210601_models.CreateRestoreTaskRequest,
+    ) -> compute_nest_20210601_models.CreateRestoreTaskResponse:
+        """
+        @summary Create restore task
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: CreateRestoreTaskRequest
+        @return: CreateRestoreTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_restore_task_with_options_async(request, runtime)
+
     def create_service_instance_with_options(
         self,
         tmp_req: compute_nest_20210601_models.CreateServiceInstanceRequest,
@@ -784,6 +1008,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_usage_with_options_async(request, runtime)
+
+    def delete_backup_with_options(
+        self,
+        request: compute_nest_20210601_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.DeleteBackupResponse:
+        """
+        @summary Delete Compute Nest instance backups.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.DeleteBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_backup_with_options_async(
+        self,
+        request: compute_nest_20210601_models.DeleteBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.DeleteBackupResponse:
+        """
+        @summary Delete Compute Nest instance backups.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: DeleteBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.DeleteBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_backup(
+        self,
+        request: compute_nest_20210601_models.DeleteBackupRequest,
+    ) -> compute_nest_20210601_models.DeleteBackupResponse:
+        """
+        @summary Delete Compute Nest instance backups.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_backup_with_options(request, runtime)
+
+    async def delete_backup_async(
+        self,
+        request: compute_nest_20210601_models.DeleteBackupRequest,
+    ) -> compute_nest_20210601_models.DeleteBackupResponse:
+        """
+        @summary Delete Compute Nest instance backups.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: DeleteBackupRequest
+        @return: DeleteBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_backup_with_options_async(request, runtime)
 
     def delete_service_instances_with_options(
         self,
@@ -1204,6 +1536,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.generate_service_policy_with_options_async(request, runtime)
+
+    def get_backup_with_options(
+        self,
+        request: compute_nest_20210601_models.GetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetBackupResponse:
+        """
+        @summary Queries the information about backup task.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: GetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_backup_with_options_async(
+        self,
+        request: compute_nest_20210601_models.GetBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetBackupResponse:
+        """
+        @summary Queries the information about backup task.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: GetBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBackupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBackup',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_backup(
+        self,
+        request: compute_nest_20210601_models.GetBackupRequest,
+    ) -> compute_nest_20210601_models.GetBackupResponse:
+        """
+        @summary Queries the information about backup task.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: GetBackupRequest
+        @return: GetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_backup_with_options(request, runtime)
+
+    async def get_backup_async(
+        self,
+        request: compute_nest_20210601_models.GetBackupRequest,
+    ) -> compute_nest_20210601_models.GetBackupResponse:
+        """
+        @summary Queries the information about backup task.
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: GetBackupRequest
+        @return: GetBackupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_backup_with_options_async(request, runtime)
 
     def get_service_with_options(
         self,
@@ -2049,6 +2489,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_information_with_options_async(request, runtime)
 
+    def list_backups_with_options(
+        self,
+        request: compute_nest_20210601_models.ListBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListBackupsResponse:
+        """
+        @summary Query and list Compute Nest instance backups
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_backups_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListBackupsResponse:
+        """
+        @summary Query and list Compute Nest instance backups
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListBackupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBackupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBackups',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_backups(
+        self,
+        request: compute_nest_20210601_models.ListBackupsRequest,
+    ) -> compute_nest_20210601_models.ListBackupsResponse:
+        """
+        @summary Query and list Compute Nest instance backups
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListBackupsRequest
+        @return: ListBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_backups_with_options(request, runtime)
+
+    async def list_backups_async(
+        self,
+        request: compute_nest_20210601_models.ListBackupsRequest,
+    ) -> compute_nest_20210601_models.ListBackupsResponse:
+        """
+        @summary Query and list Compute Nest instance backups
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListBackupsRequest
+        @return: ListBackupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_backups_with_options_async(request, runtime)
+
     def list_policies_with_options(
         self,
         request: compute_nest_20210601_models.ListPoliciesRequest,
@@ -2152,6 +2708,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_policies_with_options_async(request, runtime)
+
+    def list_restore_tasks_with_options(
+        self,
+        request: compute_nest_20210601_models.ListRestoreTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListRestoreTasksResponse:
+        """
+        @summary Query and list restore tasks
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListRestoreTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRestoreTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRestoreTasks',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListRestoreTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_restore_tasks_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ListRestoreTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ListRestoreTasksResponse:
+        """
+        @summary Query and list restore tasks
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListRestoreTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRestoreTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRestoreTasks',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ListRestoreTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_restore_tasks(
+        self,
+        request: compute_nest_20210601_models.ListRestoreTasksRequest,
+    ) -> compute_nest_20210601_models.ListRestoreTasksResponse:
+        """
+        @summary Query and list restore tasks
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListRestoreTasksRequest
+        @return: ListRestoreTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_restore_tasks_with_options(request, runtime)
+
+    async def list_restore_tasks_async(
+        self,
+        request: compute_nest_20210601_models.ListRestoreTasksRequest,
+    ) -> compute_nest_20210601_models.ListRestoreTasksResponse:
+        """
+        @summary Query and list restore tasks
+        
+        @description ### [](#)Prerequisites
+        Please ensure that the service provider has enabled the configuration change feature and completed the change parameter settings.
+        
+        @param request: ListRestoreTasksRequest
+        @return: ListRestoreTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_restore_tasks_with_options_async(request, runtime)
 
     def list_service_categories_with_options(
         self,

@@ -1,3 +1,14 @@
+2025-08-07 Version: 4.2.0
+- Support API CreateBackup.
+- Support API CreateRestoreTask.
+- Support API DeleteBackup.
+- Support API GetBackup.
+- Support API ListBackups.
+- Support API ListRestoreTasks.
+- Update API GetServiceEstimateCost: add response parameters Body.Commodity.Result.SubOrders.SubOrder.$.ModuleInstance.$.ModuleNameEn.
+- Update API GetServiceEstimateCost: add response parameters Body.Commodity.Result.SubOrders.SubOrder.$.ModuleInstance.$.PriceUnitEn.
+
+
 2025-07-24 Version: 4.1.5
 - Update API CreateServiceInstance: add request parameters Commodity.QuotationId.
 - Update API GetServiceEstimateCost: add request parameters Commodity.QuotationId.
