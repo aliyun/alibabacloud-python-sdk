@@ -3547,12 +3547,10 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
         image: str = None,
         prolog_script: str = None,
         script: str = None,
-        user_name: str = None,
     ):
         self.image = image
         self.prolog_script = prolog_script
         self.script = script
-        self.user_name = user_name
 
     def validate(self):
         pass
@@ -3569,8 +3567,6 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             result['PrologScript'] = self.prolog_script
         if self.script is not None:
             result['Script'] = self.script
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
         return result
 
     def from_map(self, m: dict = None):
@@ -3581,8 +3577,6 @@ class GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM(TeaModel):
             self.prolog_script = m.get('PrologScript')
         if m.get('Script') is not None:
             self.script = m.get('Script')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
         return self
 
 
@@ -4283,10 +4277,12 @@ class ListExecutorsResponseBodyExecutorsResource(TeaModel):
         self,
         cores: float = None,
         disks: List[ListExecutorsResponseBodyExecutorsResourceDisks] = None,
+        instance_type: str = None,
         memory: float = None,
     ):
         self.cores = cores
         self.disks = disks
+        self.instance_type = instance_type
         self.memory = memory
 
     def validate(self):
@@ -4307,6 +4303,8 @@ class ListExecutorsResponseBodyExecutorsResource(TeaModel):
         if self.disks is not None:
             for k in self.disks:
                 result['Disks'].append(k.to_map() if k else None)
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
         if self.memory is not None:
             result['Memory'] = self.memory
         return result
@@ -4320,6 +4318,8 @@ class ListExecutorsResponseBodyExecutorsResource(TeaModel):
             for k in m.get('Disks'):
                 temp_model = ListExecutorsResponseBodyExecutorsResourceDisks()
                 self.disks.append(temp_model.from_map(k))
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         return self
@@ -5003,16 +5003,20 @@ class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
         failed: int = None,
         initing: int = None,
         pending: int = None,
+        restarting: int = None,
         running: int = None,
         succeeded: int = None,
+        suspended: int = None,
     ):
         self.deleted = deleted
         self.exception = exception
         self.failed = failed
         self.initing = initing
         self.pending = pending
+        self.restarting = restarting
         self.running = running
         self.succeeded = succeeded
+        self.suspended = suspended
 
     def validate(self):
         pass
@@ -5033,10 +5037,14 @@ class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
             result['Initing'] = self.initing
         if self.pending is not None:
             result['Pending'] = self.pending
+        if self.restarting is not None:
+            result['Restarting'] = self.restarting
         if self.running is not None:
             result['Running'] = self.running
         if self.succeeded is not None:
             result['Succeeded'] = self.succeeded
+        if self.suspended is not None:
+            result['Suspended'] = self.suspended
         return result
 
     def from_map(self, m: dict = None):
@@ -5051,10 +5059,14 @@ class ListJobExecutorsResponseBodyExecutorStatus(TeaModel):
             self.initing = m.get('Initing')
         if m.get('Pending') is not None:
             self.pending = m.get('Pending')
+        if m.get('Restarting') is not None:
+            self.restarting = m.get('Restarting')
         if m.get('Running') is not None:
             self.running = m.get('Running')
         if m.get('Succeeded') is not None:
             self.succeeded = m.get('Succeeded')
+        if m.get('Suspended') is not None:
+            self.suspended = m.get('Suspended')
         return self
 
 

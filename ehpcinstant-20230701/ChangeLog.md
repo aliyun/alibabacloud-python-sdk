@@ -1,3 +1,10 @@
+2025-08-07 Version: 3.0.0
+- Update API GetJob: delete response parameters Body.JobInfo.Tasks.$.TaskSpec.TaskExecutor.$.VM.UserName.
+- Update API ListExecutors: add response parameters Body.Executors.$.Resource.InstanceType.
+- Update API ListJobExecutors: add response parameters Body.ExecutorStatus.Restarting.
+- Update API ListJobExecutors: add response parameters Body.ExecutorStatus.Suspended.
+
+
 2025-07-29 Version: 2.0.8
 - Update API CreateJob: add request parameters DependencyPolicy.
 - Update API CreateJob: add request parameters Tasks.$.TaskSpec.RetryPolicy.
