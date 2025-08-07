@@ -7465,18 +7465,14 @@ class GetMiningTaskResultRequest(TeaModel):
         return self
 
 
-class GetMiningTaskResultResponseBodyData(TeaModel):
+class GetMiningTaskResultResponseBodyDataFilePathList(TeaModel):
     def __init__(
         self,
-        file_path: str = None,
-        file_path_md: str = None,
-        task_id: str = None,
-        task_status: str = None,
+        file_type: str = None,
+        file_url: str = None,
     ):
-        self.file_path = file_path
-        self.file_path_md = file_path_md
-        self.task_id = task_id
-        self.task_status = task_status
+        self.file_type = file_type
+        self.file_url = file_url
 
     def validate(self):
         pass
@@ -7487,8 +7483,54 @@ class GetMiningTaskResultResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        return self
+
+
+class GetMiningTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_path: str = None,
+        file_path_list: List[GetMiningTaskResultResponseBodyDataFilePathList] = None,
+        file_path_md: str = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.file_path = file_path
+        self.file_path_list = file_path_list
+        self.file_path_md = file_path_md
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        if self.file_path_list:
+            for k in self.file_path_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.file_path is not None:
             result['FilePath'] = self.file_path
+        result['FilePathList'] = []
+        if self.file_path_list is not None:
+            for k in self.file_path_list:
+                result['FilePathList'].append(k.to_map() if k else None)
         if self.file_path_md is not None:
             result['FilePathMd'] = self.file_path_md
         if self.task_id is not None:
@@ -7501,6 +7543,11 @@ class GetMiningTaskResultResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('FilePath') is not None:
             self.file_path = m.get('FilePath')
+        self.file_path_list = []
+        if m.get('FilePathList') is not None:
+            for k in m.get('FilePathList'):
+                temp_model = GetMiningTaskResultResponseBodyDataFilePathList()
+                self.file_path_list.append(temp_model.from_map(k))
         if m.get('FilePathMd') is not None:
             self.file_path_md = m.get('FilePathMd')
         if m.get('TaskId') is not None:

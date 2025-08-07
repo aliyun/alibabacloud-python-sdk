@@ -1,3 +1,7 @@
+2025-08-07 Version: 8.4.1
+- Update API GetMiningTaskResult: add response parameters Body.Data.FilePathList.
+
+
 2025-07-30 Version: 8.4.0
 - Support API CreateMiningTask.
 - Support API GetMiningTaskResult.
