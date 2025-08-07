@@ -22,25 +22,23 @@ import os
 from setuptools import setup, find_packages
 
 """
-setup module for alibabacloud_dlfnext20250310.
+setup module for tea_python_tests.
 
-Created on 31/07/2025
+Created on *
 
-@author: Alibaba Cloud SDK
+@author: Alibaba
 """
 
 PACKAGE = "alibabacloud_dlfnext20250310"
-NAME = "alibabacloud_dlfnext20250310" or "alibabacloud-package"
-DESCRIPTION = "Alibaba Cloud DlfNext (20250310) SDK Library for Python"
-AUTHOR = "Alibaba Cloud SDK"
+NAME = "alibabacloud_dlfnext20250310"
+DESCRIPTION = ""
+AUTHOR = "Alibaba"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
-URL = "https://github.com/aliyun/alibabacloud-python-sdk"
+URL = "https://github.com/"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
-    "alibabacloud_tea_util>=0.3.13, <1.0.0",
-    "alibabacloud_tea_openapi>=0.3.15, <1.0.0",
-    "alibabacloud_openapi_util>=0.2.2, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.4, <1.0.0"
+    "darabonba-core>=1.0.0, <2.0.0",
+    "alibabacloud_tea_openapi>=0.4.0, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
@@ -58,7 +56,7 @@ setup(
     author_email=AUTHOR_EMAIL,
     license="Apache License 2.0",
     url=URL,
-    keywords=["alibabacloud","dlfnext20250310"],
+    keywords=["tea","python","tests"],
     packages=find_packages(exclude=["tests*"]),
     include_package_data=True,
     platforms="any",
@@ -71,9 +69,9 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Topic :: Software Development"
     )
 )

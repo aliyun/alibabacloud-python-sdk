@@ -1,3 +1,32 @@
+2025-08-07 Version: 3.0.0
+- Support API AlterReceiver.
+- Support API AlterShare.
+- Support API AlterShareReceivers.
+- Support API AlterShareResources.
+- Support API CreateReceiver.
+- Support API CreateShare.
+- Support API DropReceiver.
+- Support API DropShare.
+- Support API GetReceiver.
+- Support API GetShare.
+- Support API GetTableSnapshot.
+- Support API ListProvidedShares.
+- Support API ListReceivedShares.
+- Support API ListReceivers.
+- Support API ListShareReceivers.
+- Support API ListShareResources.
+- Support API ListSnapshots.
+- Support API RollbackTable.
+- Update API CreateCatalog: add request parameters body.isShared.
+- Update API CreateCatalog: add request parameters body.shareId.
+- Update API GetCatalogSummary: add request parameters date.
+- Update API GetCatalogSummary: add request The number of query or body parameters has changed from zero to many.
+- Update API GetDatabaseSummary: add request parameters date.
+- Update API GetDatabaseSummary: add request The number of query or body parameters has changed from zero to many.
+- Update API GetTableSummary: add request parameters date.
+- Update API GetTableSummary: add request The number of query or body parameters has changed from zero to many.
+
+
 2025-07-31 Version: 2.5.0
 - Support API GetIcebergNamespace.
 - Support API GetIcebergTable.
