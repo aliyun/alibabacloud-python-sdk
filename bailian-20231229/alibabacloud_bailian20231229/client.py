@@ -1501,6 +1501,126 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_category_with_options_async(category_id, workspace_id, headers, runtime)
 
+    def delete_chunk_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.DeleteChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteChunkResponse:
+        """
+        @summary 删除切片信息
+        
+        @param tmp_req: DeleteChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChunkResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.DeleteChunkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.chunk_ids_shrink):
+            query['ChunkIds'] = request.chunk_ids_shrink
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChunk',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/chunk/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_chunk_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.DeleteChunkRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.DeleteChunkResponse:
+        """
+        @summary 删除切片信息
+        
+        @param tmp_req: DeleteChunkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChunkResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.DeleteChunkShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.chunk_ids):
+            request.chunk_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.chunk_ids, 'ChunkIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.chunk_ids_shrink):
+            query['ChunkIds'] = request.chunk_ids_shrink
+        if not UtilClient.is_unset(request.pipeline_id):
+            query['PipelineId'] = request.pipeline_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteChunk',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/chunk/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.DeleteChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_chunk(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteChunkRequest,
+    ) -> bailian_20231229_models.DeleteChunkResponse:
+        """
+        @summary 删除切片信息
+        
+        @param request: DeleteChunkRequest
+        @return: DeleteChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_chunk_with_options(workspace_id, request, headers, runtime)
+
+    async def delete_chunk_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.DeleteChunkRequest,
+    ) -> bailian_20231229_models.DeleteChunkResponse:
+        """
+        @summary 删除切片信息
+        
+        @param request: DeleteChunkRequest
+        @return: DeleteChunkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_chunk_with_options_async(workspace_id, request, headers, runtime)
+
     def delete_file_with_options(
         self,
         file_id: str,

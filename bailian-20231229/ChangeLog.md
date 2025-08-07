@@ -1,3 +1,7 @@
+2025-08-07 Version: 2.3.0
+- Support API DeleteChunk.
+
+
 2025-08-04 Version: 2.2.0
 - Support API ListIndexFileDetails.
 - Support API UpdateChunk.
