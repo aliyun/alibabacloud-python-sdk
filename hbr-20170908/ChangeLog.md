@@ -1,3 +1,6 @@
+2025-08-07 Version: 2.1.8
+- Generated python 2017-09-08 for hbr.
+
 2025-08-05 Version: 2.1.7
 - Update API DescribeBackupPlans: add response parameters Body.BackupPlans.$.BusinessStatus.
 - Update API DescribeHanaBackupPlans: add response parameters Body.HanaBackupPlans.$.BusinessStatus.
