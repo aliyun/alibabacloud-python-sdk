@@ -1,3 +1,25 @@
+2025-08-08 Version: 3.0.0
+- Support API CancelAiCallDetails.
+- Support API CreateAiCallTask.
+- Support API ImportTaskNumberDatas.
+- Support API ListAvailableTts.
+- Support API LlmSmartCallEncrypt.
+- Support API QueryAiCallDetailPage.
+- Support API QueryAiCallTaskDetail.
+- Support API QueryAiCallTaskPage.
+- Support API QueryConversationDetailInfo.
+- Support API StartAiCallTask.
+- Support API StopAiCallTask.
+- Support API UpdateAiCallTask.
+- Update API LlmSmartCall: add request parameters BizParam.
+- Update API LlmSmartCall: add request parameters CustomerLineCode.
+- Update API LlmSmartCall: add request parameters Extension.
+- Update API LlmSmartCall: add request parameters SessionTimeout.
+- Update API LlmSmartCall: add request parameters TtsSpeed.
+- Update API LlmSmartCall: add request parameters TtsVoiceCode.
+- Update API LlmSmartCall: add request parameters TtsVolume.
+
+
 2025-02-11 Version: 2.1.0
 - Support API HangupOperate.
 

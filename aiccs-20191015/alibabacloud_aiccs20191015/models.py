@@ -1594,6 +1594,285 @@ class BatchCreateQualityProjectsResponse(TeaModel):
         return self
 
 
+class CancelAiCallDetailsRequest(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        detail_id_list: List[str] = None,
+        owner_id: int = None,
+        phone_numbers: List[str] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        self.batch_id = batch_id
+        self.detail_id_list = detail_id_list
+        self.owner_id = owner_id
+        self.phone_numbers = phone_numbers
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.detail_id_list is not None:
+            result['DetailIdList'] = self.detail_id_list
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers is not None:
+            result['PhoneNumbers'] = self.phone_numbers
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('DetailIdList') is not None:
+            self.detail_id_list = m.get('DetailIdList')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CancelAiCallDetailsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        detail_id_list_shrink: str = None,
+        owner_id: int = None,
+        phone_numbers_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        self.batch_id = batch_id
+        self.detail_id_list_shrink = detail_id_list_shrink
+        self.owner_id = owner_id
+        self.phone_numbers_shrink = phone_numbers_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.detail_id_list_shrink is not None:
+            result['DetailIdList'] = self.detail_id_list_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_numbers_shrink is not None:
+            result['PhoneNumbers'] = self.phone_numbers_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('DetailIdList') is not None:
+            self.detail_id_list_shrink = m.get('DetailIdList')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumbers') is not None:
+            self.phone_numbers_shrink = m.get('PhoneNumbers')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CancelAiCallDetailsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_details: Dict[str, Any] = None,
+        result_code: str = None,
+        succeed_count: int = None,
+        total_count: int = None,
+    ):
+        self.failed_count = failed_count
+        self.failed_details = failed_details
+        self.result_code = result_code
+        self.succeed_count = succeed_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.failed_details is not None:
+            result['FailedDetails'] = self.failed_details
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.succeed_count is not None:
+            result['SucceedCount'] = self.succeed_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('FailedDetails') is not None:
+            self.failed_details = m.get('FailedDetails')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('SucceedCount') is not None:
+            self.succeed_count = m.get('SucceedCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class CancelAiCallDetailsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: CancelAiCallDetailsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CancelAiCallDetailsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CancelAiCallDetailsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelAiCallDetailsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelAiCallDetailsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelTaskRequest(TeaModel):
     def __init__(
         self,
@@ -2166,6 +2445,338 @@ class CreateAgentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAiCallTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        call_day: List[str] = None,
+        call_retry_interval: int = None,
+        call_retry_reason: List[str] = None,
+        call_retry_times: int = None,
+        call_time: List[str] = None,
+        miss_call_retry: bool = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_type: str = None,
+        task_cps: int = None,
+        task_name: str = None,
+        task_start_time: int = None,
+        virtual_number: str = None,
+    ):
+        # This parameter is required.
+        self.agent_id = agent_id
+        # This parameter is required.
+        self.call_day = call_day
+        self.call_retry_interval = call_retry_interval
+        self.call_retry_reason = call_retry_reason
+        self.call_retry_times = call_retry_times
+        # This parameter is required.
+        self.call_time = call_time
+        self.miss_call_retry = miss_call_retry
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_type = start_type
+        self.task_cps = task_cps
+        # This parameter is required.
+        self.task_name = task_name
+        self.task_start_time = task_start_time
+        # This parameter is required.
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.call_day is not None:
+            result['CallDay'] = self.call_day
+        if self.call_retry_interval is not None:
+            result['CallRetryInterval'] = self.call_retry_interval
+        if self.call_retry_reason is not None:
+            result['CallRetryReason'] = self.call_retry_reason
+        if self.call_retry_times is not None:
+            result['CallRetryTimes'] = self.call_retry_times
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+        if self.miss_call_retry is not None:
+            result['MissCallRetry'] = self.miss_call_retry
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_type is not None:
+            result['StartType'] = self.start_type
+        if self.task_cps is not None:
+            result['TaskCps'] = self.task_cps
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_start_time is not None:
+            result['TaskStartTime'] = self.task_start_time
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('CallDay') is not None:
+            self.call_day = m.get('CallDay')
+        if m.get('CallRetryInterval') is not None:
+            self.call_retry_interval = m.get('CallRetryInterval')
+        if m.get('CallRetryReason') is not None:
+            self.call_retry_reason = m.get('CallRetryReason')
+        if m.get('CallRetryTimes') is not None:
+            self.call_retry_times = m.get('CallRetryTimes')
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
+        if m.get('MissCallRetry') is not None:
+            self.miss_call_retry = m.get('MissCallRetry')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartType') is not None:
+            self.start_type = m.get('StartType')
+        if m.get('TaskCps') is not None:
+            self.task_cps = m.get('TaskCps')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskStartTime') is not None:
+            self.task_start_time = m.get('TaskStartTime')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class CreateAiCallTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        call_day_shrink: str = None,
+        call_retry_interval: int = None,
+        call_retry_reason_shrink: str = None,
+        call_retry_times: int = None,
+        call_time_shrink: str = None,
+        miss_call_retry: bool = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_type: str = None,
+        task_cps: int = None,
+        task_name: str = None,
+        task_start_time: int = None,
+        virtual_number: str = None,
+    ):
+        # This parameter is required.
+        self.agent_id = agent_id
+        # This parameter is required.
+        self.call_day_shrink = call_day_shrink
+        self.call_retry_interval = call_retry_interval
+        self.call_retry_reason_shrink = call_retry_reason_shrink
+        self.call_retry_times = call_retry_times
+        # This parameter is required.
+        self.call_time_shrink = call_time_shrink
+        self.miss_call_retry = miss_call_retry
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_type = start_type
+        self.task_cps = task_cps
+        # This parameter is required.
+        self.task_name = task_name
+        self.task_start_time = task_start_time
+        # This parameter is required.
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.call_day_shrink is not None:
+            result['CallDay'] = self.call_day_shrink
+        if self.call_retry_interval is not None:
+            result['CallRetryInterval'] = self.call_retry_interval
+        if self.call_retry_reason_shrink is not None:
+            result['CallRetryReason'] = self.call_retry_reason_shrink
+        if self.call_retry_times is not None:
+            result['CallRetryTimes'] = self.call_retry_times
+        if self.call_time_shrink is not None:
+            result['CallTime'] = self.call_time_shrink
+        if self.miss_call_retry is not None:
+            result['MissCallRetry'] = self.miss_call_retry
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_type is not None:
+            result['StartType'] = self.start_type
+        if self.task_cps is not None:
+            result['TaskCps'] = self.task_cps
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_start_time is not None:
+            result['TaskStartTime'] = self.task_start_time
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('CallDay') is not None:
+            self.call_day_shrink = m.get('CallDay')
+        if m.get('CallRetryInterval') is not None:
+            self.call_retry_interval = m.get('CallRetryInterval')
+        if m.get('CallRetryReason') is not None:
+            self.call_retry_reason_shrink = m.get('CallRetryReason')
+        if m.get('CallRetryTimes') is not None:
+            self.call_retry_times = m.get('CallRetryTimes')
+        if m.get('CallTime') is not None:
+            self.call_time_shrink = m.get('CallTime')
+        if m.get('MissCallRetry') is not None:
+            self.miss_call_retry = m.get('MissCallRetry')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartType') is not None:
+            self.start_type = m.get('StartType')
+        if m.get('TaskCps') is not None:
+            self.task_cps = m.get('TaskCps')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskStartTime') is not None:
+            self.task_start_time = m.get('TaskStartTime')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class CreateAiCallTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAiCallTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAiCallTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAiCallTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19816,6 +20427,234 @@ class HotlineSessionQueryResponse(TeaModel):
         return self
 
 
+class ImportTaskNumberDatasRequest(TeaModel):
+    def __init__(
+        self,
+        data_type: str = None,
+        oss_file_name: str = None,
+        owner_id: int = None,
+        phone_number_list: List[Dict[str, Any]] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.data_type = data_type
+        self.oss_file_name = oss_file_name
+        self.owner_id = owner_id
+        self.phone_number_list = phone_number_list
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.oss_file_name is not None:
+            result['OssFileName'] = self.oss_file_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number_list is not None:
+            result['PhoneNumberList'] = self.phone_number_list
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('OssFileName') is not None:
+            self.oss_file_name = m.get('OssFileName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumberList') is not None:
+            self.phone_number_list = m.get('PhoneNumberList')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ImportTaskNumberDatasShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        data_type: str = None,
+        oss_file_name: str = None,
+        owner_id: int = None,
+        phone_number_list_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.data_type = data_type
+        self.oss_file_name = oss_file_name
+        self.owner_id = owner_id
+        self.phone_number_list_shrink = phone_number_list_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.oss_file_name is not None:
+            result['OssFileName'] = self.oss_file_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.phone_number_list_shrink is not None:
+            result['PhoneNumberList'] = self.phone_number_list_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('OssFileName') is not None:
+            self.oss_file_name = m.get('OssFileName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PhoneNumberList') is not None:
+            self.phone_number_list_shrink = m.get('PhoneNumberList')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ImportTaskNumberDatasResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ImportTaskNumberDatasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportTaskNumberDatasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportTaskNumberDatasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class InsertAiOutboundPhoneNumsRequestDetails(TeaModel):
     def __init__(
         self,
@@ -20802,6 +21641,214 @@ class ListAiccsRobotResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAiccsRobotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAvailableTtsRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tts_voice_code: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # 复刻音色编码
+        self.tts_voice_code = tts_voice_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tts_voice_code is not None:
+            result['TtsVoiceCode'] = self.tts_voice_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TtsVoiceCode') is not None:
+            self.tts_voice_code = m.get('TtsVoiceCode')
+        return self
+
+
+class ListAvailableTtsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tts_audition_file_url: str = None,
+        tts_engine: str = None,
+        tts_style: str = None,
+        tts_voice_code: str = None,
+        tts_voice_name: str = None,
+    ):
+        # 音色试听文件
+        self.tts_audition_file_url = tts_audition_file_url
+        # 音色平台CosyVoice/Volcano
+        self.tts_engine = tts_engine
+        # 音色cosy类型 cosyvoice-v2-XXXX-XXXX
+        self.tts_style = tts_style
+        # 音色编码
+        self.tts_voice_code = tts_voice_code
+        # 音色名称
+        self.tts_voice_name = tts_voice_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tts_audition_file_url is not None:
+            result['TtsAuditionFileUrl'] = self.tts_audition_file_url
+        if self.tts_engine is not None:
+            result['TtsEngine'] = self.tts_engine
+        if self.tts_style is not None:
+            result['TtsStyle'] = self.tts_style
+        if self.tts_voice_code is not None:
+            result['TtsVoiceCode'] = self.tts_voice_code
+        if self.tts_voice_name is not None:
+            result['TtsVoiceName'] = self.tts_voice_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TtsAuditionFileUrl') is not None:
+            self.tts_audition_file_url = m.get('TtsAuditionFileUrl')
+        if m.get('TtsEngine') is not None:
+            self.tts_engine = m.get('TtsEngine')
+        if m.get('TtsStyle') is not None:
+            self.tts_style = m.get('TtsStyle')
+        if m.get('TtsVoiceCode') is not None:
+            self.tts_voice_code = m.get('TtsVoiceCode')
+        if m.get('TtsVoiceName') is not None:
+            self.tts_voice_name = m.get('TtsVoiceName')
+        return self
+
+
+class ListAvailableTtsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[ListAvailableTtsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAvailableTtsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListAvailableTtsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAvailableTtsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAvailableTtsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -23532,20 +24579,34 @@ class LlmSmartCallRequest(TeaModel):
     def __init__(
         self,
         application_code: str = None,
+        biz_param: Dict[str, Any] = None,
         called_number: str = None,
         caller_number: str = None,
+        customer_line_code: str = None,
+        extension: str = None,
         out_id: str = None,
         prompt_param: Dict[str, Any] = None,
+        session_timeout: int = None,
         start_word_param: Dict[str, Any] = None,
+        tts_speed: int = None,
+        tts_voice_code: str = None,
+        tts_volume: int = None,
     ):
         # This parameter is required.
         self.application_code = application_code
+        self.biz_param = biz_param
         # This parameter is required.
         self.called_number = called_number
         self.caller_number = caller_number
+        self.customer_line_code = customer_line_code
+        self.extension = extension
         self.out_id = out_id
         self.prompt_param = prompt_param
+        self.session_timeout = session_timeout
         self.start_word_param = start_word_param
+        self.tts_speed = tts_speed
+        self.tts_voice_code = tts_voice_code
+        self.tts_volume = tts_volume
 
     def validate(self):
         pass
@@ -23558,32 +24619,60 @@ class LlmSmartCallRequest(TeaModel):
         result = dict()
         if self.application_code is not None:
             result['ApplicationCode'] = self.application_code
+        if self.biz_param is not None:
+            result['BizParam'] = self.biz_param
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
         if self.caller_number is not None:
             result['CallerNumber'] = self.caller_number
+        if self.customer_line_code is not None:
+            result['CustomerLineCode'] = self.customer_line_code
+        if self.extension is not None:
+            result['Extension'] = self.extension
         if self.out_id is not None:
             result['OutId'] = self.out_id
         if self.prompt_param is not None:
             result['PromptParam'] = self.prompt_param
+        if self.session_timeout is not None:
+            result['SessionTimeout'] = self.session_timeout
         if self.start_word_param is not None:
             result['StartWordParam'] = self.start_word_param
+        if self.tts_speed is not None:
+            result['TtsSpeed'] = self.tts_speed
+        if self.tts_voice_code is not None:
+            result['TtsVoiceCode'] = self.tts_voice_code
+        if self.tts_volume is not None:
+            result['TtsVolume'] = self.tts_volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApplicationCode') is not None:
             self.application_code = m.get('ApplicationCode')
+        if m.get('BizParam') is not None:
+            self.biz_param = m.get('BizParam')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
         if m.get('CallerNumber') is not None:
             self.caller_number = m.get('CallerNumber')
+        if m.get('CustomerLineCode') is not None:
+            self.customer_line_code = m.get('CustomerLineCode')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
         if m.get('PromptParam') is not None:
             self.prompt_param = m.get('PromptParam')
+        if m.get('SessionTimeout') is not None:
+            self.session_timeout = m.get('SessionTimeout')
         if m.get('StartWordParam') is not None:
             self.start_word_param = m.get('StartWordParam')
+        if m.get('TtsSpeed') is not None:
+            self.tts_speed = m.get('TtsSpeed')
+        if m.get('TtsVoiceCode') is not None:
+            self.tts_voice_code = m.get('TtsVoiceCode')
+        if m.get('TtsVolume') is not None:
+            self.tts_volume = m.get('TtsVolume')
         return self
 
 
@@ -23591,20 +24680,34 @@ class LlmSmartCallShrinkRequest(TeaModel):
     def __init__(
         self,
         application_code: str = None,
+        biz_param_shrink: str = None,
         called_number: str = None,
         caller_number: str = None,
+        customer_line_code: str = None,
+        extension: str = None,
         out_id: str = None,
         prompt_param_shrink: str = None,
+        session_timeout: int = None,
         start_word_param_shrink: str = None,
+        tts_speed: int = None,
+        tts_voice_code: str = None,
+        tts_volume: int = None,
     ):
         # This parameter is required.
         self.application_code = application_code
+        self.biz_param_shrink = biz_param_shrink
         # This parameter is required.
         self.called_number = called_number
         self.caller_number = caller_number
+        self.customer_line_code = customer_line_code
+        self.extension = extension
         self.out_id = out_id
         self.prompt_param_shrink = prompt_param_shrink
+        self.session_timeout = session_timeout
         self.start_word_param_shrink = start_word_param_shrink
+        self.tts_speed = tts_speed
+        self.tts_voice_code = tts_voice_code
+        self.tts_volume = tts_volume
 
     def validate(self):
         pass
@@ -23617,32 +24720,60 @@ class LlmSmartCallShrinkRequest(TeaModel):
         result = dict()
         if self.application_code is not None:
             result['ApplicationCode'] = self.application_code
+        if self.biz_param_shrink is not None:
+            result['BizParam'] = self.biz_param_shrink
         if self.called_number is not None:
             result['CalledNumber'] = self.called_number
         if self.caller_number is not None:
             result['CallerNumber'] = self.caller_number
+        if self.customer_line_code is not None:
+            result['CustomerLineCode'] = self.customer_line_code
+        if self.extension is not None:
+            result['Extension'] = self.extension
         if self.out_id is not None:
             result['OutId'] = self.out_id
         if self.prompt_param_shrink is not None:
             result['PromptParam'] = self.prompt_param_shrink
+        if self.session_timeout is not None:
+            result['SessionTimeout'] = self.session_timeout
         if self.start_word_param_shrink is not None:
             result['StartWordParam'] = self.start_word_param_shrink
+        if self.tts_speed is not None:
+            result['TtsSpeed'] = self.tts_speed
+        if self.tts_voice_code is not None:
+            result['TtsVoiceCode'] = self.tts_voice_code
+        if self.tts_volume is not None:
+            result['TtsVolume'] = self.tts_volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApplicationCode') is not None:
             self.application_code = m.get('ApplicationCode')
+        if m.get('BizParam') is not None:
+            self.biz_param_shrink = m.get('BizParam')
         if m.get('CalledNumber') is not None:
             self.called_number = m.get('CalledNumber')
         if m.get('CallerNumber') is not None:
             self.caller_number = m.get('CallerNumber')
+        if m.get('CustomerLineCode') is not None:
+            self.customer_line_code = m.get('CustomerLineCode')
+        if m.get('Extension') is not None:
+            self.extension = m.get('Extension')
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
         if m.get('PromptParam') is not None:
             self.prompt_param_shrink = m.get('PromptParam')
+        if m.get('SessionTimeout') is not None:
+            self.session_timeout = m.get('SessionTimeout')
         if m.get('StartWordParam') is not None:
             self.start_word_param_shrink = m.get('StartWordParam')
+        if m.get('TtsSpeed') is not None:
+            self.tts_speed = m.get('TtsSpeed')
+        if m.get('TtsVoiceCode') is not None:
+            self.tts_voice_code = m.get('TtsVoiceCode')
+        if m.get('TtsVolume') is not None:
+            self.tts_volume = m.get('TtsVolume')
         return self
 
 
@@ -23729,6 +24860,289 @@ class LlmSmartCallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LlmSmartCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class LlmSmartCallEncryptRequest(TeaModel):
+    def __init__(
+        self,
+        application_code: str = None,
+        caller_number: str = None,
+        encrypt_called_number: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        prompt_param: Dict[str, Any] = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_word_param: Dict[str, Any] = None,
+    ):
+        # This parameter is required.
+        self.application_code = application_code
+        # This parameter is required.
+        self.caller_number = caller_number
+        # This parameter is required.
+        self.encrypt_called_number = encrypt_called_number
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.prompt_param = prompt_param
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_word_param = start_word_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_code is not None:
+            result['ApplicationCode'] = self.application_code
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
+        if self.encrypt_called_number is not None:
+            result['EncryptCalledNumber'] = self.encrypt_called_number
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_param is not None:
+            result['PromptParam'] = self.prompt_param
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_word_param is not None:
+            result['StartWordParam'] = self.start_word_param
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationCode') is not None:
+            self.application_code = m.get('ApplicationCode')
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
+        if m.get('EncryptCalledNumber') is not None:
+            self.encrypt_called_number = m.get('EncryptCalledNumber')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParam') is not None:
+            self.prompt_param = m.get('PromptParam')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartWordParam') is not None:
+            self.start_word_param = m.get('StartWordParam')
+        return self
+
+
+class LlmSmartCallEncryptShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_code: str = None,
+        caller_number: str = None,
+        encrypt_called_number: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        prompt_param_shrink: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_word_param_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.application_code = application_code
+        # This parameter is required.
+        self.caller_number = caller_number
+        # This parameter is required.
+        self.encrypt_called_number = encrypt_called_number
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.prompt_param_shrink = prompt_param_shrink
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_word_param_shrink = start_word_param_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_code is not None:
+            result['ApplicationCode'] = self.application_code
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
+        if self.encrypt_called_number is not None:
+            result['EncryptCalledNumber'] = self.encrypt_called_number
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.prompt_param_shrink is not None:
+            result['PromptParam'] = self.prompt_param_shrink
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_word_param_shrink is not None:
+            result['StartWordParam'] = self.start_word_param_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationCode') is not None:
+            self.application_code = m.get('ApplicationCode')
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
+        if m.get('EncryptCalledNumber') is not None:
+            self.encrypt_called_number = m.get('EncryptCalledNumber')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PromptParam') is not None:
+            self.prompt_param_shrink = m.get('PromptParam')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartWordParam') is not None:
+            self.start_word_param_shrink = m.get('StartWordParam')
+        return self
+
+
+class LlmSmartCallEncryptResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        call_id: str = None,
+    ):
+        self.call_id = call_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+        return self
+
+
+class LlmSmartCallEncryptResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: LlmSmartCallEncryptResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = LlmSmartCallEncryptResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class LlmSmartCallEncryptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: LlmSmartCallEncryptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = LlmSmartCallEncryptResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -24065,6 +25479,1380 @@ class MakeDoubleCallResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = MakeDoubleCallResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAiCallDetailPageRequest(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        call_result: str = None,
+        called_number: str = None,
+        end_calling_time: int = None,
+        end_imported_time: int = None,
+        major_intent: str = None,
+        max_conversation_duration: int = None,
+        min_conversation_duration: int = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_calling_time: int = None,
+        start_imported_time: int = None,
+        status: int = None,
+        task_id: str = None,
+    ):
+        self.batch_id = batch_id
+        self.call_result = call_result
+        self.called_number = called_number
+        self.end_calling_time = end_calling_time
+        self.end_imported_time = end_imported_time
+        self.major_intent = major_intent
+        self.max_conversation_duration = max_conversation_duration
+        self.min_conversation_duration = min_conversation_duration
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.start_calling_time = start_calling_time
+        self.start_imported_time = start_imported_time
+        # This parameter is required.
+        self.status = status
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.call_result is not None:
+            result['CallResult'] = self.call_result
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.end_calling_time is not None:
+            result['EndCallingTime'] = self.end_calling_time
+        if self.end_imported_time is not None:
+            result['EndImportedTime'] = self.end_imported_time
+        if self.major_intent is not None:
+            result['MajorIntent'] = self.major_intent
+        if self.max_conversation_duration is not None:
+            result['MaxConversationDuration'] = self.max_conversation_duration
+        if self.min_conversation_duration is not None:
+            result['MinConversationDuration'] = self.min_conversation_duration
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_calling_time is not None:
+            result['StartCallingTime'] = self.start_calling_time
+        if self.start_imported_time is not None:
+            result['StartImportedTime'] = self.start_imported_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('CallResult') is not None:
+            self.call_result = m.get('CallResult')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('EndCallingTime') is not None:
+            self.end_calling_time = m.get('EndCallingTime')
+        if m.get('EndImportedTime') is not None:
+            self.end_imported_time = m.get('EndImportedTime')
+        if m.get('MajorIntent') is not None:
+            self.major_intent = m.get('MajorIntent')
+        if m.get('MaxConversationDuration') is not None:
+            self.max_conversation_duration = m.get('MaxConversationDuration')
+        if m.get('MinConversationDuration') is not None:
+            self.min_conversation_duration = m.get('MinConversationDuration')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartCallingTime') is not None:
+            self.start_calling_time = m.get('StartCallingTime')
+        if m.get('StartImportedTime') is not None:
+            self.start_imported_time = m.get('StartImportedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class QueryAiCallDetailPageResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        call_result: str = None,
+        called_number: str = None,
+        calling_time: int = None,
+        conversation_duration: int = None,
+        conversation_record: str = None,
+        conversation_turn_count: int = None,
+        detail_id: str = None,
+        failed_reason: str = None,
+        imported_time: int = None,
+        major_intent: str = None,
+        options: str = None,
+        recording_file_path: str = None,
+        task_id: str = None,
+    ):
+        self.batch_id = batch_id
+        self.call_result = call_result
+        self.called_number = called_number
+        self.calling_time = calling_time
+        self.conversation_duration = conversation_duration
+        self.conversation_record = conversation_record
+        self.conversation_turn_count = conversation_turn_count
+        self.detail_id = detail_id
+        self.failed_reason = failed_reason
+        self.imported_time = imported_time
+        self.major_intent = major_intent
+        self.options = options
+        self.recording_file_path = recording_file_path
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.call_result is not None:
+            result['CallResult'] = self.call_result
+        if self.called_number is not None:
+            result['CalledNumber'] = self.called_number
+        if self.calling_time is not None:
+            result['CallingTime'] = self.calling_time
+        if self.conversation_duration is not None:
+            result['ConversationDuration'] = self.conversation_duration
+        if self.conversation_record is not None:
+            result['ConversationRecord'] = self.conversation_record
+        if self.conversation_turn_count is not None:
+            result['ConversationTurnCount'] = self.conversation_turn_count
+        if self.detail_id is not None:
+            result['DetailId'] = self.detail_id
+        if self.failed_reason is not None:
+            result['FailedReason'] = self.failed_reason
+        if self.imported_time is not None:
+            result['ImportedTime'] = self.imported_time
+        if self.major_intent is not None:
+            result['MajorIntent'] = self.major_intent
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.recording_file_path is not None:
+            result['RecordingFilePath'] = self.recording_file_path
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('CallResult') is not None:
+            self.call_result = m.get('CallResult')
+        if m.get('CalledNumber') is not None:
+            self.called_number = m.get('CalledNumber')
+        if m.get('CallingTime') is not None:
+            self.calling_time = m.get('CallingTime')
+        if m.get('ConversationDuration') is not None:
+            self.conversation_duration = m.get('ConversationDuration')
+        if m.get('ConversationRecord') is not None:
+            self.conversation_record = m.get('ConversationRecord')
+        if m.get('ConversationTurnCount') is not None:
+            self.conversation_turn_count = m.get('ConversationTurnCount')
+        if m.get('DetailId') is not None:
+            self.detail_id = m.get('DetailId')
+        if m.get('FailedReason') is not None:
+            self.failed_reason = m.get('FailedReason')
+        if m.get('ImportedTime') is not None:
+            self.imported_time = m.get('ImportedTime')
+        if m.get('MajorIntent') is not None:
+            self.major_intent = m.get('MajorIntent')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('RecordingFilePath') is not None:
+            self.recording_file_path = m.get('RecordingFilePath')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class QueryAiCallDetailPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[QueryAiCallDetailPageResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QueryAiCallDetailPageResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryAiCallDetailPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryAiCallDetailPageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryAiCallDetailPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAiCallDetailPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAiCallDetailPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAiCallDetailPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAiCallTaskDetailRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class QueryAiCallTaskDetailResponseBodyDataCallTimes(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryAiCallTaskDetailResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_name: str = None,
+        call_days: List[str] = None,
+        call_times: List[QueryAiCallTaskDetailResponseBodyDataCallTimes] = None,
+        caller_number: str = None,
+        concurrent_count: int = None,
+        real_start_time: int = None,
+        retry_count: int = None,
+        retry_enable: bool = None,
+        retry_interval: int = None,
+        retry_reasons: List[str] = None,
+        start_time: int = None,
+        start_type: str = None,
+        task_id: str = None,
+        task_name: str = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.call_days = call_days
+        self.call_times = call_times
+        self.caller_number = caller_number
+        self.concurrent_count = concurrent_count
+        self.real_start_time = real_start_time
+        self.retry_count = retry_count
+        self.retry_enable = retry_enable
+        self.retry_interval = retry_interval
+        self.retry_reasons = retry_reasons
+        self.start_time = start_time
+        self.start_type = start_type
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        if self.call_times:
+            for k in self.call_times:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.call_days is not None:
+            result['CallDays'] = self.call_days
+        result['CallTimes'] = []
+        if self.call_times is not None:
+            for k in self.call_times:
+                result['CallTimes'].append(k.to_map() if k else None)
+        if self.caller_number is not None:
+            result['CallerNumber'] = self.caller_number
+        if self.concurrent_count is not None:
+            result['ConcurrentCount'] = self.concurrent_count
+        if self.real_start_time is not None:
+            result['RealStartTime'] = self.real_start_time
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        if self.retry_enable is not None:
+            result['RetryEnable'] = self.retry_enable
+        if self.retry_interval is not None:
+            result['RetryInterval'] = self.retry_interval
+        if self.retry_reasons is not None:
+            result['RetryReasons'] = self.retry_reasons
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.start_type is not None:
+            result['StartType'] = self.start_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('CallDays') is not None:
+            self.call_days = m.get('CallDays')
+        self.call_times = []
+        if m.get('CallTimes') is not None:
+            for k in m.get('CallTimes'):
+                temp_model = QueryAiCallTaskDetailResponseBodyDataCallTimes()
+                self.call_times.append(temp_model.from_map(k))
+        if m.get('CallerNumber') is not None:
+            self.caller_number = m.get('CallerNumber')
+        if m.get('ConcurrentCount') is not None:
+            self.concurrent_count = m.get('ConcurrentCount')
+        if m.get('RealStartTime') is not None:
+            self.real_start_time = m.get('RealStartTime')
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        if m.get('RetryEnable') is not None:
+            self.retry_enable = m.get('RetryEnable')
+        if m.get('RetryInterval') is not None:
+            self.retry_interval = m.get('RetryInterval')
+        if m.get('RetryReasons') is not None:
+            self.retry_reasons = m.get('RetryReasons')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('StartType') is not None:
+            self.start_type = m.get('StartType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class QueryAiCallTaskDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryAiCallTaskDetailResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryAiCallTaskDetailResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAiCallTaskDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAiCallTaskDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAiCallTaskDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAiCallTaskPageRequest(TeaModel):
+    def __init__(
+        self,
+        agent_name: str = None,
+        owner_id: int = None,
+        page_no: int = None,
+        page_size: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+        task_id: str = None,
+        task_name: str = None,
+    ):
+        self.agent_name = agent_name
+        self.owner_id = owner_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.status = status
+        self.task_id = task_id
+        self.task_name = task_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        return self
+
+
+class QueryAiCallTaskPageResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        agent_name: str = None,
+        calling_count: int = None,
+        complete_rate: str = None,
+        concurrent_count: int = None,
+        create_time: int = None,
+        day_call_count: int = None,
+        day_connect_rate: str = None,
+        day_import_count: int = None,
+        failed_count: int = None,
+        history_connect_rate: str = None,
+        real_start_time: int = None,
+        start_failed_reason: str = None,
+        start_time: int = None,
+        status: int = None,
+        succeed_count: int = None,
+        task_id: str = None,
+        task_name: str = None,
+        total_call_count: int = None,
+        total_count: int = None,
+    ):
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.calling_count = calling_count
+        self.complete_rate = complete_rate
+        self.concurrent_count = concurrent_count
+        self.create_time = create_time
+        self.day_call_count = day_call_count
+        self.day_connect_rate = day_connect_rate
+        self.day_import_count = day_import_count
+        self.failed_count = failed_count
+        self.history_connect_rate = history_connect_rate
+        self.real_start_time = real_start_time
+        self.start_failed_reason = start_failed_reason
+        self.start_time = start_time
+        self.status = status
+        self.succeed_count = succeed_count
+        self.task_id = task_id
+        self.task_name = task_name
+        self.total_call_count = total_call_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['AgentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['AgentName'] = self.agent_name
+        if self.calling_count is not None:
+            result['CallingCount'] = self.calling_count
+        if self.complete_rate is not None:
+            result['CompleteRate'] = self.complete_rate
+        if self.concurrent_count is not None:
+            result['ConcurrentCount'] = self.concurrent_count
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.day_call_count is not None:
+            result['DayCallCount'] = self.day_call_count
+        if self.day_connect_rate is not None:
+            result['DayConnectRate'] = self.day_connect_rate
+        if self.day_import_count is not None:
+            result['DayImportCount'] = self.day_import_count
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+        if self.history_connect_rate is not None:
+            result['HistoryConnectRate'] = self.history_connect_rate
+        if self.real_start_time is not None:
+            result['RealStartTime'] = self.real_start_time
+        if self.start_failed_reason is not None:
+            result['StartFailedReason'] = self.start_failed_reason
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.succeed_count is not None:
+            result['SucceedCount'] = self.succeed_count
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.total_call_count is not None:
+            result['TotalCallCount'] = self.total_call_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentId') is not None:
+            self.agent_id = m.get('AgentId')
+        if m.get('AgentName') is not None:
+            self.agent_name = m.get('AgentName')
+        if m.get('CallingCount') is not None:
+            self.calling_count = m.get('CallingCount')
+        if m.get('CompleteRate') is not None:
+            self.complete_rate = m.get('CompleteRate')
+        if m.get('ConcurrentCount') is not None:
+            self.concurrent_count = m.get('ConcurrentCount')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DayCallCount') is not None:
+            self.day_call_count = m.get('DayCallCount')
+        if m.get('DayConnectRate') is not None:
+            self.day_connect_rate = m.get('DayConnectRate')
+        if m.get('DayImportCount') is not None:
+            self.day_import_count = m.get('DayImportCount')
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+        if m.get('HistoryConnectRate') is not None:
+            self.history_connect_rate = m.get('HistoryConnectRate')
+        if m.get('RealStartTime') is not None:
+            self.real_start_time = m.get('RealStartTime')
+        if m.get('StartFailedReason') is not None:
+            self.start_failed_reason = m.get('StartFailedReason')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SucceedCount') is not None:
+            self.succeed_count = m.get('SucceedCount')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TotalCallCount') is not None:
+            self.total_call_count = m.get('TotalCallCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QueryAiCallTaskPageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[QueryAiCallTaskPageResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QueryAiCallTaskPageResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryAiCallTaskPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryAiCallTaskPageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryAiCallTaskPageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAiCallTaskPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAiCallTaskPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAiCallTaskPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryConversationDetailInfoRequest(TeaModel):
+    def __init__(
+        self,
+        batch_id: str = None,
+        detail_id: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        # This parameter is required.
+        self.batch_id = batch_id
+        # This parameter is required.
+        self.detail_id = detail_id
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.detail_id is not None:
+            result['DetailId'] = self.detail_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('DetailId') is not None:
+            self.detail_id = m.get('DetailId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class QueryConversationDetailInfoResponseBodyDataOutputTags(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        output_tag_description: str = None,
+        output_tag_name: str = None,
+        output_tag_value: str = None,
+    ):
+        self.id = id
+        self.output_tag_description = output_tag_description
+        self.output_tag_name = output_tag_name
+        self.output_tag_value = output_tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.output_tag_description is not None:
+            result['OutputTagDescription'] = self.output_tag_description
+        if self.output_tag_name is not None:
+            result['OutputTagName'] = self.output_tag_name
+        if self.output_tag_value is not None:
+            result['OutputTagValue'] = self.output_tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OutputTagDescription') is not None:
+            self.output_tag_description = m.get('OutputTagDescription')
+        if m.get('OutputTagName') is not None:
+            self.output_tag_name = m.get('OutputTagName')
+        if m.get('OutputTagValue') is not None:
+            self.output_tag_value = m.get('OutputTagValue')
+        return self
+
+
+class QueryConversationDetailInfoResponseBodyDataVariables(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        key: str = None,
+        name: str = None,
+        required: bool = None,
+        value: str = None,
+    ):
+        self.id = id
+        self.key = key
+        self.name = name
+        self.required = required
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryConversationDetailInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        conversation_record: str = None,
+        output_tags: List[QueryConversationDetailInfoResponseBodyDataOutputTags] = None,
+        pick_up_time: int = None,
+        recording_file_download_url: str = None,
+        variables: List[QueryConversationDetailInfoResponseBodyDataVariables] = None,
+    ):
+        self.conversation_record = conversation_record
+        self.output_tags = output_tags
+        self.pick_up_time = pick_up_time
+        self.recording_file_download_url = recording_file_download_url
+        self.variables = variables
+
+    def validate(self):
+        if self.output_tags:
+            for k in self.output_tags:
+                if k:
+                    k.validate()
+        if self.variables:
+            for k in self.variables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.conversation_record is not None:
+            result['ConversationRecord'] = self.conversation_record
+        result['OutputTags'] = []
+        if self.output_tags is not None:
+            for k in self.output_tags:
+                result['OutputTags'].append(k.to_map() if k else None)
+        if self.pick_up_time is not None:
+            result['PickUpTime'] = self.pick_up_time
+        if self.recording_file_download_url is not None:
+            result['RecordingFileDownloadUrl'] = self.recording_file_download_url
+        result['Variables'] = []
+        if self.variables is not None:
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConversationRecord') is not None:
+            self.conversation_record = m.get('ConversationRecord')
+        self.output_tags = []
+        if m.get('OutputTags') is not None:
+            for k in m.get('OutputTags'):
+                temp_model = QueryConversationDetailInfoResponseBodyDataOutputTags()
+                self.output_tags.append(temp_model.from_map(k))
+        if m.get('PickUpTime') is not None:
+            self.pick_up_time = m.get('PickUpTime')
+        if m.get('RecordingFileDownloadUrl') is not None:
+            self.recording_file_download_url = m.get('RecordingFileDownloadUrl')
+        self.variables = []
+        if m.get('Variables') is not None:
+            for k in m.get('Variables'):
+                temp_model = QueryConversationDetailInfoResponseBodyDataVariables()
+                self.variables.append(temp_model.from_map(k))
+        return self
+
+
+class QueryConversationDetailInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: QueryConversationDetailInfoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryConversationDetailInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryConversationDetailInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryConversationDetailInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryConversationDetailInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28077,6 +30865,150 @@ class SendHotlineHeartBeatResponse(TeaModel):
         return self
 
 
+class StartAiCallTaskRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StartAiCallTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartAiCallTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartAiCallTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartAiCallTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StartAiOutboundTaskRequest(TeaModel):
     def __init__(
         self,
@@ -29088,6 +32020,150 @@ class StartTaskResponse(TeaModel):
         return self
 
 
+class StopAiCallTaskRequest(TeaModel):
+    def __init__(
+        self,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        task_id: str = None,
+    ):
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class StopAiCallTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StopAiCallTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopAiCallTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopAiCallTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopAiOutboundTaskRequest(TeaModel):
     def __init__(
         self,
@@ -30046,6 +33122,326 @@ class UpdateAgentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAiCallTaskRequest(TeaModel):
+    def __init__(
+        self,
+        call_day: List[str] = None,
+        call_retry_interval: int = None,
+        call_retry_reason: List[str] = None,
+        call_retry_times: int = None,
+        call_time: List[str] = None,
+        miss_call_retry: bool = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_type: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        task_start_time: int = None,
+        virtual_number: str = None,
+    ):
+        # This parameter is required.
+        self.call_day = call_day
+        self.call_retry_interval = call_retry_interval
+        self.call_retry_reason = call_retry_reason
+        self.call_retry_times = call_retry_times
+        # This parameter is required.
+        self.call_time = call_time
+        self.miss_call_retry = miss_call_retry
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_type = start_type
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.task_name = task_name
+        self.task_start_time = task_start_time
+        # This parameter is required.
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_day is not None:
+            result['CallDay'] = self.call_day
+        if self.call_retry_interval is not None:
+            result['CallRetryInterval'] = self.call_retry_interval
+        if self.call_retry_reason is not None:
+            result['CallRetryReason'] = self.call_retry_reason
+        if self.call_retry_times is not None:
+            result['CallRetryTimes'] = self.call_retry_times
+        if self.call_time is not None:
+            result['CallTime'] = self.call_time
+        if self.miss_call_retry is not None:
+            result['MissCallRetry'] = self.miss_call_retry
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_type is not None:
+            result['StartType'] = self.start_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_start_time is not None:
+            result['TaskStartTime'] = self.task_start_time
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallDay') is not None:
+            self.call_day = m.get('CallDay')
+        if m.get('CallRetryInterval') is not None:
+            self.call_retry_interval = m.get('CallRetryInterval')
+        if m.get('CallRetryReason') is not None:
+            self.call_retry_reason = m.get('CallRetryReason')
+        if m.get('CallRetryTimes') is not None:
+            self.call_retry_times = m.get('CallRetryTimes')
+        if m.get('CallTime') is not None:
+            self.call_time = m.get('CallTime')
+        if m.get('MissCallRetry') is not None:
+            self.miss_call_retry = m.get('MissCallRetry')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartType') is not None:
+            self.start_type = m.get('StartType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskStartTime') is not None:
+            self.task_start_time = m.get('TaskStartTime')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class UpdateAiCallTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        call_day_shrink: str = None,
+        call_retry_interval: int = None,
+        call_retry_reason_shrink: str = None,
+        call_retry_times: int = None,
+        call_time_shrink: str = None,
+        miss_call_retry: bool = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        start_type: str = None,
+        task_id: str = None,
+        task_name: str = None,
+        task_start_time: int = None,
+        virtual_number: str = None,
+    ):
+        # This parameter is required.
+        self.call_day_shrink = call_day_shrink
+        self.call_retry_interval = call_retry_interval
+        self.call_retry_reason_shrink = call_retry_reason_shrink
+        self.call_retry_times = call_retry_times
+        # This parameter is required.
+        self.call_time_shrink = call_time_shrink
+        self.miss_call_retry = miss_call_retry
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.start_type = start_type
+        # This parameter is required.
+        self.task_id = task_id
+        # This parameter is required.
+        self.task_name = task_name
+        self.task_start_time = task_start_time
+        # This parameter is required.
+        self.virtual_number = virtual_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.call_day_shrink is not None:
+            result['CallDay'] = self.call_day_shrink
+        if self.call_retry_interval is not None:
+            result['CallRetryInterval'] = self.call_retry_interval
+        if self.call_retry_reason_shrink is not None:
+            result['CallRetryReason'] = self.call_retry_reason_shrink
+        if self.call_retry_times is not None:
+            result['CallRetryTimes'] = self.call_retry_times
+        if self.call_time_shrink is not None:
+            result['CallTime'] = self.call_time_shrink
+        if self.miss_call_retry is not None:
+            result['MissCallRetry'] = self.miss_call_retry
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_type is not None:
+            result['StartType'] = self.start_type
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.task_start_time is not None:
+            result['TaskStartTime'] = self.task_start_time
+        if self.virtual_number is not None:
+            result['VirtualNumber'] = self.virtual_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallDay') is not None:
+            self.call_day_shrink = m.get('CallDay')
+        if m.get('CallRetryInterval') is not None:
+            self.call_retry_interval = m.get('CallRetryInterval')
+        if m.get('CallRetryReason') is not None:
+            self.call_retry_reason_shrink = m.get('CallRetryReason')
+        if m.get('CallRetryTimes') is not None:
+            self.call_retry_times = m.get('CallRetryTimes')
+        if m.get('CallTime') is not None:
+            self.call_time_shrink = m.get('CallTime')
+        if m.get('MissCallRetry') is not None:
+            self.miss_call_retry = m.get('MissCallRetry')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartType') is not None:
+            self.start_type = m.get('StartType')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('TaskStartTime') is not None:
+            self.task_start_time = m.get('TaskStartTime')
+        if m.get('VirtualNumber') is not None:
+            self.virtual_number = m.get('VirtualNumber')
+        return self
+
+
+class UpdateAiCallTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: bool = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateAiCallTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAiCallTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAiCallTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
