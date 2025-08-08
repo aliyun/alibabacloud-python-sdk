@@ -818,13 +818,21 @@ class BatchGetAcpConnectionTicketResponse(TeaModel):
 class ChangeCloudPhoneNodeRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
+        down_bandwidth_limit: int = None,
         instance_type: str = None,
         node_id: str = None,
         phone_count: int = None,
+        phone_data_volume: int = None,
+        up_bandwidth_limit: int = None,
     ):
+        self.auto_pay = auto_pay
+        self.down_bandwidth_limit = down_bandwidth_limit
         self.instance_type = instance_type
         self.node_id = node_id
         self.phone_count = phone_count
+        self.phone_data_volume = phone_data_volume
+        self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):
         pass
@@ -835,22 +843,38 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.down_bandwidth_limit is not None:
+            result['DownBandwidthLimit'] = self.down_bandwidth_limit
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.phone_count is not None:
             result['PhoneCount'] = self.phone_count
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
+        if self.up_bandwidth_limit is not None:
+            result['UpBandwidthLimit'] = self.up_bandwidth_limit
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('DownBandwidthLimit') is not None:
+            self.down_bandwidth_limit = m.get('DownBandwidthLimit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('PhoneCount') is not None:
             self.phone_count = m.get('PhoneCount')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('UpBandwidthLimit') is not None:
+            self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         return self
 
 
@@ -858,8 +882,10 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        phone_data_volume: int = None,
     ):
         self.instance_id = instance_id
+        self.phone_data_volume = phone_data_volume
 
     def validate(self):
         pass
@@ -872,12 +898,16 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
         return self
 
 
@@ -886,9 +916,11 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
         self,
         instance_infos: List[ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos] = None,
         node_id: str = None,
+        share_data_volume: int = None,
     ):
         self.instance_infos = instance_infos
         self.node_id = node_id
+        self.share_data_volume = share_data_volume
 
     def validate(self):
         if self.instance_infos:
@@ -908,6 +940,8 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
                 result['InstanceInfos'].append(k.to_map() if k else None)
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.share_data_volume is not None:
+            result['ShareDataVolume'] = self.share_data_volume
         return result
 
     def from_map(self, m: dict = None):
@@ -919,6 +953,8 @@ class ChangeCloudPhoneNodeResponseBodyNodeInfos(TeaModel):
                 self.instance_infos.append(temp_model.from_map(k))
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('ShareDataVolume') is not None:
+            self.share_data_volume = m.get('ShareDataVolume')
         return self
 
 
@@ -926,9 +962,11 @@ class ChangeCloudPhoneNodeResponseBody(TeaModel):
     def __init__(
         self,
         node_infos: List[ChangeCloudPhoneNodeResponseBodyNodeInfos] = None,
+        order_id: str = None,
         request_id: str = None,
     ):
         self.node_infos = node_infos
+        self.order_id = order_id
         self.request_id = request_id
 
     def validate(self):
@@ -947,6 +985,8 @@ class ChangeCloudPhoneNodeResponseBody(TeaModel):
         if self.node_infos is not None:
             for k in self.node_infos:
                 result['NodeInfos'].append(k.to_map() if k else None)
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -958,6 +998,8 @@ class ChangeCloudPhoneNodeResponseBody(TeaModel):
             for k in m.get('NodeInfos'):
                 temp_model = ChangeCloudPhoneNodeResponseBodyNodeInfos()
                 self.node_infos.append(temp_model.from_map(k))
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -7300,6 +7342,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
     def __init__(
         self,
         bandwidth_package_id: str = None,
+        bandwidth_package_status: str = None,
         bandwidth_package_type: str = None,
         biz_tags: List[DescribeCloudPhoneNodesResponseBodyNodeModelBizTags] = None,
         charge_type: str = None,
@@ -7325,6 +7368,7 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         v_switch_id: str = None,
     ):
         self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_status = bandwidth_package_status
         self.bandwidth_package_type = bandwidth_package_type
         self.biz_tags = biz_tags
         # The billing method.
@@ -7386,6 +7430,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         result = dict()
         if self.bandwidth_package_id is not None:
             result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_status is not None:
+            result['BandwidthPackageStatus'] = self.bandwidth_package_status
         if self.bandwidth_package_type is not None:
             result['BandwidthPackageType'] = self.bandwidth_package_type
         result['BizTags'] = []
@@ -7442,6 +7488,8 @@ class DescribeCloudPhoneNodesResponseBodyNodeModel(TeaModel):
         m = m or dict()
         if m.get('BandwidthPackageId') is not None:
             self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageStatus') is not None:
+            self.bandwidth_package_status = m.get('BandwidthPackageStatus')
         if m.get('BandwidthPackageType') is not None:
             self.bandwidth_package_type = m.get('BandwidthPackageType')
         self.biz_tags = []
@@ -10687,11 +10735,13 @@ class ExpandDataVolumeRequest(TeaModel):
         auto_pay: bool = None,
         biz_region_id: str = None,
         node_ids: List[str] = None,
+        phone_data_volume: int = None,
         share_data_volume: int = None,
     ):
         self.auto_pay = auto_pay
         self.biz_region_id = biz_region_id
         self.node_ids = node_ids
+        self.phone_data_volume = phone_data_volume
         self.share_data_volume = share_data_volume
 
     def validate(self):
@@ -10709,6 +10759,8 @@ class ExpandDataVolumeRequest(TeaModel):
             result['BizRegionId'] = self.biz_region_id
         if self.node_ids is not None:
             result['NodeIds'] = self.node_ids
+        if self.phone_data_volume is not None:
+            result['PhoneDataVolume'] = self.phone_data_volume
         if self.share_data_volume is not None:
             result['ShareDataVolume'] = self.share_data_volume
         return result
@@ -10721,6 +10773,8 @@ class ExpandDataVolumeRequest(TeaModel):
             self.biz_region_id = m.get('BizRegionId')
         if m.get('NodeIds') is not None:
             self.node_ids = m.get('NodeIds')
+        if m.get('PhoneDataVolume') is not None:
+            self.phone_data_volume = m.get('PhoneDataVolume')
         if m.get('ShareDataVolume') is not None:
             self.share_data_volume = m.get('ShareDataVolume')
         return self
@@ -12141,6 +12195,239 @@ class ListPolicyGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListPolicyGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListTagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        region_id: str = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[ListTagResourcesRequestTag] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponseBodyTagResources(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        resource_type: str = None,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
+class ListTagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
+    ):
+        self.next_token = next_token
+        self.request_id = request_id
+        self.tag_resources = tag_resources
+
+    def validate(self):
+        if self.tag_resources:
+            for k in self.tag_resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TagResources'] = []
+        if self.tag_resources is not None:
+            for k in self.tag_resources:
+                result['TagResources'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tag_resources = []
+        if m.get('TagResources') is not None:
+            for k in m.get('TagResources'):
+                temp_model = ListTagResourcesResponseBodyTagResources()
+                self.tag_resources.append(temp_model.from_map(k))
+        return self
+
+
+class ListTagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15570,6 +15857,157 @@ class StopAndroidInstanceResponse(TeaModel):
         return self
 
 
+class TagResourcesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class TagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag: List[TagResourcesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        # This parameter is required.
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = TagResourcesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class TagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UninstallAppRequest(TeaModel):
     def __init__(
         self,
@@ -15785,6 +16223,121 @@ class UninstallMonitorAgentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UninstallMonitorAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UntagResourcesRequest(TeaModel):
+    def __init__(
+        self,
+        all: bool = None,
+        resource_id: List[str] = None,
+        resource_type: str = None,
+        tag_key: List[str] = None,
+    ):
+        self.all = all
+        # This parameter is required.
+        self.resource_id = resource_id
+        # This parameter is required.
+        self.resource_type = resource_type
+        self.tag_key = tag_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.all is not None:
+            result['All'] = self.all
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        return self
+
+
+class UntagResourcesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UntagResourcesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UntagResourcesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UntagResourcesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -528,12 +528,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.phone_count):
             query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -567,12 +575,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.down_bandwidth_limit):
+            query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.instance_type):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.phone_count):
             query['PhoneCount'] = request.phone_count
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.up_bandwidth_limit):
+            query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5058,6 +5074,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.node_ids):
             query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.share_data_volume):
             query['ShareDataVolume'] = request.share_data_volume
         req = open_api_models.OpenApiRequest(
@@ -5099,6 +5117,8 @@ class Client(OpenApiClient):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.node_ids):
             query['NodeIds'] = request.node_ids
+        if not UtilClient.is_unset(request.phone_data_volume):
+            query['PhoneDataVolume'] = request.phone_data_volume
         if not UtilClient.is_unset(request.share_data_volume):
             query['ShareDataVolume'] = request.share_data_volume
         req = open_api_models.OpenApiRequest(
@@ -5901,6 +5921,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_policy_groups_with_options_async(request, runtime)
+
+    def list_tag_resources_with_options(
+        self,
+        request: eds_aic_20230930_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tag_resources_with_options_async(
+        self,
+        request: eds_aic_20230930_models.ListTagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tag_resources(
+        self,
+        request: eds_aic_20230930_models.ListTagResourcesRequest,
+    ) -> eds_aic_20230930_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tag_resources_with_options(request, runtime)
+
+    async def list_tag_resources_async(
+        self,
+        request: eds_aic_20230930_models.ListTagResourcesRequest,
+    ) -> eds_aic_20230930_models.ListTagResourcesResponse:
+        """
+        @summary 查询资源标签
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tag_resources_with_options_async(request, runtime)
 
     def modify_android_instance_with_options(
         self,
@@ -8278,6 +8414,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_android_instance_with_options_async(request, runtime)
 
+    def tag_resources_with_options(
+        self,
+        request: eds_aic_20230930_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.TagResourcesResponse:
+        """
+        @summary 给资源打标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tag_resources_with_options_async(
+        self,
+        request: eds_aic_20230930_models.TagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.TagResourcesResponse:
+        """
+        @summary 给资源打标签
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tag_resources(
+        self,
+        request: eds_aic_20230930_models.TagResourcesRequest,
+    ) -> eds_aic_20230930_models.TagResourcesResponse:
+        """
+        @summary 给资源打标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tag_resources_with_options(request, runtime)
+
+    async def tag_resources_async(
+        self,
+        request: eds_aic_20230930_models.TagResourcesRequest,
+    ) -> eds_aic_20230930_models.TagResourcesResponse:
+        """
+        @summary 给资源打标签
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tag_resources_with_options_async(request, runtime)
+
     def uninstall_app_with_options(
         self,
         request: eds_aic_20230930_models.UninstallAppRequest,
@@ -8489,6 +8729,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.uninstall_monitor_agent_with_options_async(request, runtime)
+
+    def untag_resources_with_options(
+        self,
+        request: eds_aic_20230930_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UntagResourcesResponse:
+        """
+        @summary 删除资源标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def untag_resources_with_options_async(
+        self,
+        request: eds_aic_20230930_models.UntagResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eds_aic_20230930_models.UntagResourcesResponse:
+        """
+        @summary 删除资源标签
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.tag_key):
+            query['TagKey'] = request.tag_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UntagResources',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eds_aic_20230930_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def untag_resources(
+        self,
+        request: eds_aic_20230930_models.UntagResourcesRequest,
+    ) -> eds_aic_20230930_models.UntagResourcesResponse:
+        """
+        @summary 删除资源标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.untag_resources_with_options(request, runtime)
+
+    async def untag_resources_async(
+        self,
+        request: eds_aic_20230930_models.UntagResourcesRequest,
+    ) -> eds_aic_20230930_models.UntagResourcesResponse:
+        """
+        @summary 删除资源标签
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.untag_resources_with_options_async(request, runtime)
 
     def update_custom_image_name_with_options(
         self,

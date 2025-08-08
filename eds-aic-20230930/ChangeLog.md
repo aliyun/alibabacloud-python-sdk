@@ -1,3 +1,18 @@
+2025-08-08 Version: 4.12.0
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+- Update API ChangeCloudPhoneNode: add request parameters AutoPay.
+- Update API ChangeCloudPhoneNode: add request parameters DownBandwidthLimit.
+- Update API ChangeCloudPhoneNode: add request parameters PhoneDataVolume.
+- Update API ChangeCloudPhoneNode: add request parameters UpBandwidthLimit.
+- Update API ChangeCloudPhoneNode: add response parameters Body.OrderId.
+- Update API ChangeCloudPhoneNode: add response parameters Body.NodeInfos.$.ShareDataVolume.
+- Update API ChangeCloudPhoneNode: add response parameters Body.NodeInfos.$.InstanceInfos.$.PhoneDataVolume.
+- Update API DescribeCloudPhoneNodes: add response parameters Body.NodeModel.$.BandwidthPackageStatus.
+- Update API ExpandDataVolume: add request parameters PhoneDataVolume.
+
+
 2025-08-06 Version: 4.11.5
 - Generated python 2023-09-30 for eds-aic.
 
