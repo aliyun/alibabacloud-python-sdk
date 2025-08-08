@@ -231,12 +231,14 @@ class CancelPushSchedulerRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        tenant_id: str = None,
         type: int = None,
         unique_ids: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
+        self.tenant_id = tenant_id
         self.type = type
         # This parameter is required.
         self.unique_ids = unique_ids
@@ -254,6 +256,8 @@ class CancelPushSchedulerRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.type is not None:
             result['Type'] = self.type
         if self.unique_ids is not None:
@@ -266,6 +270,8 @@ class CancelPushSchedulerRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UniqueIds') is not None:
@@ -1127,7 +1133,7 @@ class CreateLinkRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
-        cors: str = None,
+        cors: bool = None,
         domain: str = None,
         dynamicfield: str = None,
         target_url: str = None,
@@ -1307,722 +1313,6 @@ class CreateLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateLinkResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateMasCrowdRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_mas_crowd_create_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_mas_crowd_create_json_str = mpaas_mappcenter_mcdp_mas_crowd_create_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_mas_crowd_create_json_str is not None:
-            result['MpaasMappcenterMcdpMasCrowdCreateJsonStr'] = self.mpaas_mappcenter_mcdp_mas_crowd_create_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpMasCrowdCreateJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_mas_crowd_create_json_str = m.get('MpaasMappcenterMcdpMasCrowdCreateJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateMasCrowdResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateMasCrowdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: CreateMasCrowdResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = CreateMasCrowdResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CreateMasCrowdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMasCrowdResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMasCrowdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateMasFunnelRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_mas_funnel_create_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_mas_funnel_create_json_str = mpaas_mappcenter_mcdp_mas_funnel_create_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_mas_funnel_create_json_str is not None:
-            result['MpaasMappcenterMcdpMasFunnelCreateJsonStr'] = self.mpaas_mappcenter_mcdp_mas_funnel_create_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpMasFunnelCreateJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_mas_funnel_create_json_str = m.get('MpaasMappcenterMcdpMasFunnelCreateJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateMasFunnelResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateMasFunnelResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: CreateMasFunnelResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = CreateMasFunnelResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CreateMasFunnelResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMasFunnelResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMasFunnelResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateMcdpEventRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_event_create_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_event_create_json_str = mpaas_mappcenter_mcdp_event_create_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_event_create_json_str is not None:
-            result['MpaasMappcenterMcdpEventCreateJsonStr'] = self.mpaas_mappcenter_mcdp_event_create_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpEventCreateJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_event_create_json_str = m.get('MpaasMappcenterMcdpEventCreateJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateMcdpEventResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateMcdpEventResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: CreateMcdpEventResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = CreateMcdpEventResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CreateMcdpEventResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMcdpEventResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMcdpEventResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateMcdpEventAttributeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_event_attribute_create_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_event_attribute_create_json_str = mpaas_mappcenter_mcdp_event_attribute_create_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_event_attribute_create_json_str is not None:
-            result['MpaasMappcenterMcdpEventAttributeCreateJsonStr'] = self.mpaas_mappcenter_mcdp_event_attribute_create_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpEventAttributeCreateJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_event_attribute_create_json_str = m.get('MpaasMappcenterMcdpEventAttributeCreateJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateMcdpEventAttributeResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateMcdpEventAttributeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: CreateMcdpEventAttributeResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = CreateMcdpEventAttributeResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CreateMcdpEventAttributeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMcdpEventAttributeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMcdpEventAttributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5150,188 +4440,6 @@ class CreateMdsMiniprogramTaskResponse(TeaModel):
         return self
 
 
-class CreateMsaEnhanceRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_msa_enhance_create_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        # This parameter is required.
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_msa_enhance_create_json_str = mpaas_mappcenter_msa_enhance_create_json_str
-        # This parameter is required.
-        self.tenant_id = tenant_id
-        # This parameter is required.
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_msa_enhance_create_json_str is not None:
-            result['MpaasMappcenterMsaEnhanceCreateJsonStr'] = self.mpaas_mappcenter_msa_enhance_create_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMsaEnhanceCreateJsonStr') is not None:
-            self.mpaas_mappcenter_msa_enhance_create_json_str = m.get('MpaasMappcenterMsaEnhanceCreateJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class CreateMsaEnhanceResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class CreateMsaEnhanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: CreateMsaEnhanceResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = CreateMsaEnhanceResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class CreateMsaEnhanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMsaEnhanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMsaEnhanceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateOpenGlobalDataRequest(TeaModel):
     def __init__(
         self,
@@ -5344,6 +4452,7 @@ class CreateOpenGlobalDataRequest(TeaModel):
         min_uid: int = None,
         os_type: str = None,
         payload: str = None,
+        tenant_id: str = None,
         third_msg_id: str = None,
         uids: str = None,
         valid_time_end: int = None,
@@ -5362,6 +4471,7 @@ class CreateOpenGlobalDataRequest(TeaModel):
         self.os_type = os_type
         # This parameter is required.
         self.payload = payload
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.third_msg_id = third_msg_id
         self.uids = uids
@@ -5397,6 +4507,8 @@ class CreateOpenGlobalDataRequest(TeaModel):
             result['OsType'] = self.os_type
         if self.payload is not None:
             result['Payload'] = self.payload
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_msg_id is not None:
             result['ThirdMsgId'] = self.third_msg_id
         if self.uids is not None:
@@ -5429,6 +4541,8 @@ class CreateOpenGlobalDataRequest(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('Payload') is not None:
             self.payload = m.get('Payload')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdMsgId') is not None:
             self.third_msg_id = m.get('ThirdMsgId')
         if m.get('Uids') is not None:
@@ -5540,6 +4654,7 @@ class CreateOpenSingleDataRequest(TeaModel):
         link_token: str = None,
         os_type: str = None,
         payload: str = None,
+        tenant_id: str = None,
         third_msg_id: str = None,
         valid_time_end: int = None,
         valid_time_start: int = None,
@@ -5558,6 +4673,7 @@ class CreateOpenSingleDataRequest(TeaModel):
         self.os_type = os_type
         # This parameter is required.
         self.payload = payload
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.third_msg_id = third_msg_id
         self.valid_time_end = valid_time_end
@@ -5592,6 +4708,8 @@ class CreateOpenSingleDataRequest(TeaModel):
             result['OsType'] = self.os_type
         if self.payload is not None:
             result['Payload'] = self.payload
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_msg_id is not None:
             result['ThirdMsgId'] = self.third_msg_id
         if self.valid_time_end is not None:
@@ -5622,6 +4740,8 @@ class CreateOpenSingleDataRequest(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('Payload') is not None:
             self.payload = m.get('Payload')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdMsgId') is not None:
             self.third_msg_id = m.get('ThirdMsgId')
         if m.get('ValidTimeEnd') is not None:
@@ -6292,543 +5412,6 @@ class DeleteMcdpCrowdResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMcdpCrowdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteMcdpEventAttributeByIdRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_event_attribute_delete_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_event_attribute_delete_json_str = mpaas_mappcenter_mcdp_event_attribute_delete_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_event_attribute_delete_json_str is not None:
-            result['MpaasMappcenterMcdpEventAttributeDeleteJsonStr'] = self.mpaas_mappcenter_mcdp_event_attribute_delete_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpEventAttributeDeleteJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_event_attribute_delete_json_str = m.get('MpaasMappcenterMcdpEventAttributeDeleteJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class DeleteMcdpEventAttributeByIdResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeleteMcdpEventAttributeByIdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: DeleteMcdpEventAttributeByIdResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = DeleteMcdpEventAttributeByIdResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class DeleteMcdpEventAttributeByIdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteMcdpEventAttributeByIdResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteMcdpEventAttributeByIdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteMcdpEventByIdRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_event_delete_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_event_delete_json_str = mpaas_mappcenter_mcdp_event_delete_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_event_delete_json_str is not None:
-            result['MpaasMappcenterMcdpEventDeleteJsonStr'] = self.mpaas_mappcenter_mcdp_event_delete_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpEventDeleteJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_event_delete_json_str = m.get('MpaasMappcenterMcdpEventDeleteJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class DeleteMcdpEventByIdResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeleteMcdpEventByIdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: DeleteMcdpEventByIdResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = DeleteMcdpEventByIdResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class DeleteMcdpEventByIdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteMcdpEventByIdResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteMcdpEventByIdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DeleteMcdpMaterialRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mappcenter_mcdp_material_delete_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        # This parameter is required.
-        self.mpaas_mappcenter_mcdp_material_delete_json_str = mpaas_mappcenter_mcdp_material_delete_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mappcenter_mcdp_material_delete_json_str is not None:
-            result['MpaasMappcenterMcdpMaterialDeleteJsonStr'] = self.mpaas_mappcenter_mcdp_material_delete_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMappcenterMcdpMaterialDeleteJsonStr') is not None:
-            self.mpaas_mappcenter_mcdp_material_delete_json_str = m.get('MpaasMappcenterMcdpMaterialDeleteJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class DeleteMcdpMaterialResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class DeleteMcdpMaterialResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: DeleteMcdpMaterialResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = DeleteMcdpMaterialResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class DeleteMcdpMaterialResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteMcdpMaterialResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteMcdpMaterialResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17819,193 +16402,6 @@ class ListMgsApiResponse(TeaModel):
         return self
 
 
-class LogMsaQueryRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        id: str = None,
-        onex_flag: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        # This parameter is required.
-        self.app_id = app_id
-        self.id = id
-        self.onex_flag = onex_flag
-        # This parameter is required.
-        self.tenant_id = tenant_id
-        # This parameter is required.
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.id is not None:
-            result['Id'] = self.id
-        if self.onex_flag is not None:
-            result['OnexFlag'] = self.onex_flag
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('Id') is not None:
-            self.id = m.get('Id')
-        if m.get('OnexFlag') is not None:
-            self.onex_flag = m.get('OnexFlag')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class LogMsaQueryResponseBodyResultContent(TeaModel):
-    def __init__(
-        self,
-        code: str = None,
-        data: str = None,
-        message: str = None,
-        success: bool = None,
-    ):
-        self.code = code
-        self.data = data
-        self.message = message
-        self.success = success
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.data is not None:
-            result['Data'] = self.data
-        if self.message is not None:
-            result['Message'] = self.message
-        if self.success is not None:
-            result['Success'] = self.success
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Data') is not None:
-            self.data = m.get('Data')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
-        return self
-
-
-class LogMsaQueryResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: LogMsaQueryResponseBodyResultContent = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        if self.result_content:
-            self.result_content.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content.to_map()
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            temp_model = LogMsaQueryResponseBodyResultContent()
-            self.result_content = temp_model.from_map(m['ResultContent'])
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class LogMsaQueryResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: LogMsaQueryResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = LogMsaQueryResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class MTRSOCRServiceRequest(TeaModel):
     def __init__(
         self,
@@ -18163,1387 +16559,6 @@ class MTRSOCRServiceResponse(TeaModel):
         return self
 
 
-class OpenApiAddActiveCodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_add_active_code_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_add_active_code_req_json_str = mpaas_mqcp_open_api_add_active_code_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_add_active_code_req_json_str is not None:
-            result['MpaasMqcpOpenApiAddActiveCodeReqJsonStr'] = self.mpaas_mqcp_open_api_add_active_code_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiAddActiveCodeReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_add_active_code_req_json_str = m.get('MpaasMqcpOpenApiAddActiveCodeReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiAddActiveCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiAddActiveCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiAddActiveCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiAddActiveCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiAddActiveSceneRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_add_active_scene_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_add_active_scene_req_json_str = mpaas_mqcp_open_api_add_active_scene_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_add_active_scene_req_json_str is not None:
-            result['MpaasMqcpOpenApiAddActiveSceneReqJsonStr'] = self.mpaas_mqcp_open_api_add_active_scene_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiAddActiveSceneReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_add_active_scene_req_json_str = m.get('MpaasMqcpOpenApiAddActiveSceneReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiAddActiveSceneResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiAddActiveSceneResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiAddActiveSceneResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiAddActiveSceneResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiCallbackRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_callback_request_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_callback_request_json_str = mpaas_mqcp_open_api_callback_request_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_callback_request_json_str is not None:
-            result['MpaasMqcpOpenApiCallbackRequestJsonStr'] = self.mpaas_mqcp_open_api_callback_request_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiCallbackRequestJsonStr') is not None:
-            self.mpaas_mqcp_open_api_callback_request_json_str = m.get('MpaasMqcpOpenApiCallbackRequestJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiCallbackResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiCallbackResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiCallbackResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiCallbackResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiDecodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_decode_request_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_decode_request_json_str = mpaas_mqcp_open_api_decode_request_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_decode_request_json_str is not None:
-            result['MpaasMqcpOpenApiDecodeRequestJsonStr'] = self.mpaas_mqcp_open_api_decode_request_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiDecodeRequestJsonStr') is not None:
-            self.mpaas_mqcp_open_api_decode_request_json_str = m.get('MpaasMqcpOpenApiDecodeRequestJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiDecodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiDecodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiDecodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiDecodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiDeleteActiveCodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_delete_active_code_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_delete_active_code_req_json_str = mpaas_mqcp_open_api_delete_active_code_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_delete_active_code_req_json_str is not None:
-            result['MpaasMqcpOpenApiDeleteActiveCodeReqJsonStr'] = self.mpaas_mqcp_open_api_delete_active_code_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiDeleteActiveCodeReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_delete_active_code_req_json_str = m.get('MpaasMqcpOpenApiDeleteActiveCodeReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiDeleteActiveCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiDeleteActiveCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiDeleteActiveCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiDeleteActiveCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiEncodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_encode_request_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_encode_request_json_str = mpaas_mqcp_open_api_encode_request_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_encode_request_json_str is not None:
-            result['MpaasMqcpOpenApiEncodeRequestJsonStr'] = self.mpaas_mqcp_open_api_encode_request_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiEncodeRequestJsonStr') is not None:
-            self.mpaas_mqcp_open_api_encode_request_json_str = m.get('MpaasMqcpOpenApiEncodeRequestJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiEncodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiEncodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiEncodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiEncodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiQueryActiveCodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_query_active_code_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_query_active_code_req_json_str = mpaas_mqcp_open_api_query_active_code_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_query_active_code_req_json_str is not None:
-            result['MpaasMqcpOpenApiQueryActiveCodeReqJsonStr'] = self.mpaas_mqcp_open_api_query_active_code_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiQueryActiveCodeReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_query_active_code_req_json_str = m.get('MpaasMqcpOpenApiQueryActiveCodeReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiQueryActiveCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-        result_message: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-        self.result_message = result_message
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        if self.result_message is not None:
-            result['ResultMessage'] = self.result_message
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        if m.get('ResultMessage') is not None:
-            self.result_message = m.get('ResultMessage')
-        return self
-
-
-class OpenApiQueryActiveCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiQueryActiveCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiQueryActiveCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiQueryActiveSceneRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_query_active_scene_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_query_active_scene_req_json_str = mpaas_mqcp_open_api_query_active_scene_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_query_active_scene_req_json_str is not None:
-            result['MpaasMqcpOpenApiQueryActiveSceneReqJsonStr'] = self.mpaas_mqcp_open_api_query_active_scene_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiQueryActiveSceneReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_query_active_scene_req_json_str = m.get('MpaasMqcpOpenApiQueryActiveSceneReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiQueryActiveSceneResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiQueryActiveSceneResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiQueryActiveSceneResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiQueryActiveSceneResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiUniqueEncodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_unique_encode_request_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_unique_encode_request_json_str = mpaas_mqcp_open_api_unique_encode_request_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_unique_encode_request_json_str is not None:
-            result['MpaasMqcpOpenApiUniqueEncodeRequestJsonStr'] = self.mpaas_mqcp_open_api_unique_encode_request_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiUniqueEncodeRequestJsonStr') is not None:
-            self.mpaas_mqcp_open_api_unique_encode_request_json_str = m.get('MpaasMqcpOpenApiUniqueEncodeRequestJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiUniqueEncodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiUniqueEncodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiUniqueEncodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiUniqueEncodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiUpdateActiveCodeRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_update_active_code_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_update_active_code_req_json_str = mpaas_mqcp_open_api_update_active_code_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_update_active_code_req_json_str is not None:
-            result['MpaasMqcpOpenApiUpdateActiveCodeReqJsonStr'] = self.mpaas_mqcp_open_api_update_active_code_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiUpdateActiveCodeReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_update_active_code_req_json_str = m.get('MpaasMqcpOpenApiUpdateActiveCodeReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiUpdateActiveCodeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiUpdateActiveCodeResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiUpdateActiveCodeResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiUpdateActiveCodeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class OpenApiUpdateActiveSceneRequest(TeaModel):
-    def __init__(
-        self,
-        app_id: str = None,
-        mpaas_mqcp_open_api_update_active_scene_req_json_str: str = None,
-        tenant_id: str = None,
-        workspace_id: str = None,
-    ):
-        self.app_id = app_id
-        self.mpaas_mqcp_open_api_update_active_scene_req_json_str = mpaas_mqcp_open_api_update_active_scene_req_json_str
-        self.tenant_id = tenant_id
-        self.workspace_id = workspace_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.app_id is not None:
-            result['AppId'] = self.app_id
-        if self.mpaas_mqcp_open_api_update_active_scene_req_json_str is not None:
-            result['MpaasMqcpOpenApiUpdateActiveSceneReqJsonStr'] = self.mpaas_mqcp_open_api_update_active_scene_req_json_str
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
-        if self.workspace_id is not None:
-            result['WorkspaceId'] = self.workspace_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AppId') is not None:
-            self.app_id = m.get('AppId')
-        if m.get('MpaasMqcpOpenApiUpdateActiveSceneReqJsonStr') is not None:
-            self.mpaas_mqcp_open_api_update_active_scene_req_json_str = m.get('MpaasMqcpOpenApiUpdateActiveSceneReqJsonStr')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
-        if m.get('WorkspaceId') is not None:
-            self.workspace_id = m.get('WorkspaceId')
-        return self
-
-
-class OpenApiUpdateActiveSceneResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_code: str = None,
-        result_content: str = None,
-    ):
-        self.request_id = request_id
-        self.result_code = result_code
-        self.result_content = result_content
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_code is not None:
-            result['ResultCode'] = self.result_code
-        if self.result_content is not None:
-            result['ResultContent'] = self.result_content
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('ResultCode') is not None:
-            self.result_code = m.get('ResultCode')
-        if m.get('ResultContent') is not None:
-            self.result_content = m.get('ResultContent')
-        return self
-
-
-class OpenApiUpdateActiveSceneResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: OpenApiUpdateActiveSceneResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = OpenApiUpdateActiveSceneResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class PushBindRequest(TeaModel):
     def __init__(
         self,
@@ -19551,6 +16566,7 @@ class PushBindRequest(TeaModel):
         delivery_token: str = None,
         os_type: int = None,
         phone_number: str = None,
+        tenant_id: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
@@ -19561,6 +16577,7 @@ class PushBindRequest(TeaModel):
         # This parameter is required.
         self.os_type = os_type
         self.phone_number = phone_number
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.user_id = user_id
         # This parameter is required.
@@ -19583,6 +16600,8 @@ class PushBindRequest(TeaModel):
             result['OsType'] = self.os_type
         if self.phone_number is not None:
             result['PhoneNumber'] = self.phone_number
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.workspace_id is not None:
@@ -19599,6 +16618,8 @@ class PushBindRequest(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('PhoneNumber') is not None:
             self.phone_number = m.get('PhoneNumber')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
@@ -19755,7 +16776,10 @@ class PushBroadcastRequest(TeaModel):
         task_name: str = None,
         template_key_value: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category: Dict[str, Any] = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         un_bind_period: int = None,
         workspace_id: str = None,
     ):
@@ -19783,7 +16807,10 @@ class PushBroadcastRequest(TeaModel):
         self.template_key_value = template_key_value
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category = third_channel_category
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         self.un_bind_period = un_bind_period
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -19835,8 +16862,14 @@ class PushBroadcastRequest(TeaModel):
             result['TemplateKeyValue'] = self.template_key_value
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category is not None:
             result['ThirdChannelCategory'] = self.third_channel_category
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.un_bind_period is not None:
             result['UnBindPeriod'] = self.un_bind_period
         if self.workspace_id is not None:
@@ -19883,8 +16916,14 @@ class PushBroadcastRequest(TeaModel):
             self.template_key_value = m.get('TemplateKeyValue')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('UnBindPeriod') is not None:
             self.un_bind_period = m.get('UnBindPeriod')
         if m.get('WorkspaceId') is not None:
@@ -19914,7 +16953,10 @@ class PushBroadcastShrinkRequest(TeaModel):
         task_name: str = None,
         template_key_value: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category_shrink: str = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         un_bind_period: int = None,
         workspace_id: str = None,
     ):
@@ -19942,7 +16984,10 @@ class PushBroadcastShrinkRequest(TeaModel):
         self.template_key_value = template_key_value
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category_shrink = third_channel_category_shrink
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         self.un_bind_period = un_bind_period
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -19994,8 +17039,14 @@ class PushBroadcastShrinkRequest(TeaModel):
             result['TemplateKeyValue'] = self.template_key_value
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category_shrink is not None:
             result['ThirdChannelCategory'] = self.third_channel_category_shrink
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.un_bind_period is not None:
             result['UnBindPeriod'] = self.un_bind_period
         if self.workspace_id is not None:
@@ -20042,8 +17093,14 @@ class PushBroadcastShrinkRequest(TeaModel):
             self.template_key_value = m.get('TemplateKeyValue')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category_shrink = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('UnBindPeriod') is not None:
             self.un_bind_period = m.get('UnBindPeriod')
         if m.get('WorkspaceId') is not None:
@@ -20246,7 +17303,10 @@ class PushMultipleRequest(TeaModel):
         target_msg: List[PushMultipleRequestTargetMsg] = None,
         task_name: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category: Dict[str, Any] = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -20272,7 +17332,10 @@ class PushMultipleRequest(TeaModel):
         self.task_name = task_name
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category = third_channel_category
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -20326,8 +17389,14 @@ class PushMultipleRequest(TeaModel):
             result['TaskName'] = self.task_name
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category is not None:
             result['ThirdChannelCategory'] = self.third_channel_category
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -20373,8 +17442,14 @@ class PushMultipleRequest(TeaModel):
             self.task_name = m.get('TaskName')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -20448,7 +17523,10 @@ class PushMultipleShrinkRequest(TeaModel):
         target_msg: List[PushMultipleShrinkRequestTargetMsg] = None,
         task_name: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category_shrink: str = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -20474,7 +17552,10 @@ class PushMultipleShrinkRequest(TeaModel):
         self.task_name = task_name
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category_shrink = third_channel_category_shrink
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -20528,8 +17609,14 @@ class PushMultipleShrinkRequest(TeaModel):
             result['TaskName'] = self.task_name
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category_shrink is not None:
             result['ThirdChannelCategory'] = self.third_channel_category_shrink
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -20575,8 +17662,14 @@ class PushMultipleShrinkRequest(TeaModel):
             self.task_name = m.get('TaskName')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category_shrink = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -20722,6 +17815,7 @@ class PushReportRequest(TeaModel):
         model: str = None,
         os_type: int = None,
         push_version: str = None,
+        tenant_id: str = None,
         third_channel: int = None,
         third_channel_device_token: str = None,
         workspace_id: str = None,
@@ -20739,6 +17833,7 @@ class PushReportRequest(TeaModel):
         # This parameter is required.
         self.os_type = os_type
         self.push_version = push_version
+        self.tenant_id = tenant_id
         self.third_channel = third_channel
         self.third_channel_device_token = third_channel_device_token
         # This parameter is required.
@@ -20773,6 +17868,8 @@ class PushReportRequest(TeaModel):
             result['OsType'] = self.os_type
         if self.push_version is not None:
             result['PushVersion'] = self.push_version
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel is not None:
             result['ThirdChannel'] = self.third_channel
         if self.third_channel_device_token is not None:
@@ -20803,6 +17900,8 @@ class PushReportRequest(TeaModel):
             self.os_type = m.get('OsType')
         if m.get('PushVersion') is not None:
             self.push_version = m.get('PushVersion')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannel') is not None:
             self.third_channel = m.get('ThirdChannel')
         if m.get('ThirdChannelDeviceToken') is not None:
@@ -20967,8 +18066,11 @@ class PushSimpleRequest(TeaModel):
         strategy_type: int = None,
         target_msgkey: str = None,
         task_name: str = None,
+        tenant_id: str = None,
         third_channel_category: Dict[str, Any] = None,
         title: str = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         uri: str = None,
         workspace_id: str = None,
     ):
@@ -21002,9 +18104,12 @@ class PushSimpleRequest(TeaModel):
         # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
+        self.tenant_id = tenant_id
         self.third_channel_category = third_channel_category
         # This parameter is required.
         self.title = title
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         self.uri = uri
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -21068,10 +18173,16 @@ class PushSimpleRequest(TeaModel):
             result['TargetMsgkey'] = self.target_msgkey
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category is not None:
             result['ThirdChannelCategory'] = self.third_channel_category
         if self.title is not None:
             result['Title'] = self.title
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.workspace_id is not None:
@@ -21130,10 +18241,16 @@ class PushSimpleRequest(TeaModel):
             self.target_msgkey = m.get('TargetMsgkey')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category = m.get('ThirdChannelCategory')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('WorkspaceId') is not None:
@@ -21169,8 +18286,11 @@ class PushSimpleShrinkRequest(TeaModel):
         strategy_type: int = None,
         target_msgkey: str = None,
         task_name: str = None,
+        tenant_id: str = None,
         third_channel_category_shrink: str = None,
         title: str = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         uri: str = None,
         workspace_id: str = None,
     ):
@@ -21204,9 +18324,12 @@ class PushSimpleShrinkRequest(TeaModel):
         # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
+        self.tenant_id = tenant_id
         self.third_channel_category_shrink = third_channel_category_shrink
         # This parameter is required.
         self.title = title
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         self.uri = uri
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -21270,10 +18393,16 @@ class PushSimpleShrinkRequest(TeaModel):
             result['TargetMsgkey'] = self.target_msgkey
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category_shrink is not None:
             result['ThirdChannelCategory'] = self.third_channel_category_shrink
         if self.title is not None:
             result['Title'] = self.title
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.uri is not None:
             result['Uri'] = self.uri
         if self.workspace_id is not None:
@@ -21332,10 +18461,16 @@ class PushSimpleShrinkRequest(TeaModel):
             self.target_msgkey = m.get('TargetMsgkey')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category_shrink = m.get('ThirdChannelCategory')
         if m.get('Title') is not None:
             self.title = m.get('Title')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
         if m.get('WorkspaceId') is not None:
@@ -21496,7 +18631,10 @@ class PushTemplateRequest(TeaModel):
         task_name: str = None,
         template_key_value: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category: Dict[str, Any] = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -21527,7 +18665,10 @@ class PushTemplateRequest(TeaModel):
         self.template_key_value = template_key_value
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category = third_channel_category
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -21586,8 +18727,14 @@ class PushTemplateRequest(TeaModel):
             result['TemplateKeyValue'] = self.template_key_value
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category is not None:
             result['ThirdChannelCategory'] = self.third_channel_category
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -21640,8 +18787,14 @@ class PushTemplateRequest(TeaModel):
             self.template_key_value = m.get('TemplateKeyValue')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -21673,7 +18826,10 @@ class PushTemplateShrinkRequest(TeaModel):
         task_name: str = None,
         template_key_value: str = None,
         template_name: str = None,
+        tenant_id: str = None,
         third_channel_category_shrink: str = None,
+        transparent_message_payload: Any = None,
+        transparent_message_urgency: str = None,
         workspace_id: str = None,
     ):
         self.activity_content_state = activity_content_state
@@ -21704,7 +18860,10 @@ class PushTemplateShrinkRequest(TeaModel):
         self.template_key_value = template_key_value
         # This parameter is required.
         self.template_name = template_name
+        self.tenant_id = tenant_id
         self.third_channel_category_shrink = third_channel_category_shrink
+        self.transparent_message_payload = transparent_message_payload
+        self.transparent_message_urgency = transparent_message_urgency
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -21763,8 +18922,14 @@ class PushTemplateShrinkRequest(TeaModel):
             result['TemplateKeyValue'] = self.template_key_value
         if self.template_name is not None:
             result['TemplateName'] = self.template_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.third_channel_category_shrink is not None:
             result['ThirdChannelCategory'] = self.third_channel_category_shrink
+        if self.transparent_message_payload is not None:
+            result['TransparentMessagePayload'] = self.transparent_message_payload
+        if self.transparent_message_urgency is not None:
+            result['TransparentMessageUrgency'] = self.transparent_message_urgency
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -21817,8 +18982,14 @@ class PushTemplateShrinkRequest(TeaModel):
             self.template_key_value = m.get('TemplateKeyValue')
         if m.get('TemplateName') is not None:
             self.template_name = m.get('TemplateName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdChannelCategory') is not None:
             self.third_channel_category_shrink = m.get('ThirdChannelCategory')
+        if m.get('TransparentMessagePayload') is not None:
+            self.transparent_message_payload = m.get('TransparentMessagePayload')
+        if m.get('TransparentMessageUrgency') is not None:
+            self.transparent_message_urgency = m.get('TransparentMessageUrgency')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -21956,6 +19127,7 @@ class PushUnBindRequest(TeaModel):
         self,
         app_id: str = None,
         delivery_token: str = None,
+        tenant_id: str = None,
         user_id: str = None,
         workspace_id: str = None,
     ):
@@ -21963,6 +19135,7 @@ class PushUnBindRequest(TeaModel):
         self.app_id = app_id
         # This parameter is required.
         self.delivery_token = delivery_token
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.user_id = user_id
         # This parameter is required.
@@ -21981,6 +19154,8 @@ class PushUnBindRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.delivery_token is not None:
             result['DeliveryToken'] = self.delivery_token
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.workspace_id is not None:
@@ -21993,6 +19168,8 @@ class PushUnBindRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('DeliveryToken') is not None:
             self.delivery_token = m.get('DeliveryToken')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkspaceId') is not None:
@@ -22134,8 +19311,8 @@ class QueryInfoFromMdpRequest(TeaModel):
         mobile: str = None,
         mobile_md_5: str = None,
         mobile_sha_256: str = None,
+        mobile_sm_3: str = None,
         risk_scene: str = None,
-        tenant_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
@@ -22143,9 +19320,9 @@ class QueryInfoFromMdpRequest(TeaModel):
         self.mobile = mobile
         self.mobile_md_5 = mobile_md_5
         self.mobile_sha_256 = mobile_sha_256
+        self.mobile_sm_3 = mobile_sm_3
         # This parameter is required.
         self.risk_scene = risk_scene
-        self.tenant_id = tenant_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -22166,10 +19343,10 @@ class QueryInfoFromMdpRequest(TeaModel):
             result['MobileMd5'] = self.mobile_md_5
         if self.mobile_sha_256 is not None:
             result['MobileSha256'] = self.mobile_sha_256
+        if self.mobile_sm_3 is not None:
+            result['MobileSm3'] = self.mobile_sm_3
         if self.risk_scene is not None:
             result['RiskScene'] = self.risk_scene
-        if self.tenant_id is not None:
-            result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -22184,10 +19361,10 @@ class QueryInfoFromMdpRequest(TeaModel):
             self.mobile_md_5 = m.get('MobileMd5')
         if m.get('MobileSha256') is not None:
             self.mobile_sha_256 = m.get('MobileSha256')
+        if m.get('MobileSm3') is not None:
+            self.mobile_sm_3 = m.get('MobileSm3')
         if m.get('RiskScene') is not None:
             self.risk_scene = m.get('RiskScene')
-        if m.get('TenantId') is not None:
-            self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -27234,6 +24411,7 @@ class QueryPushAnalysisCoreIndexRequest(TeaModel):
         platform: str = None,
         start_time: int = None,
         task_id: str = None,
+        tenant_id: str = None,
         type: str = None,
         workspace_id: str = None,
     ):
@@ -27246,6 +24424,7 @@ class QueryPushAnalysisCoreIndexRequest(TeaModel):
         # This parameter is required.
         self.start_time = start_time
         self.task_id = task_id
+        self.tenant_id = tenant_id
         self.type = type
         # This parameter is required.
         self.workspace_id = workspace_id
@@ -27271,6 +24450,8 @@ class QueryPushAnalysisCoreIndexRequest(TeaModel):
             result['StartTime'] = self.start_time
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.type is not None:
             result['Type'] = self.type
         if self.workspace_id is not None:
@@ -27291,6 +24472,8 @@ class QueryPushAnalysisCoreIndexRequest(TeaModel):
             self.start_time = m.get('StartTime')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('WorkspaceId') is not None:
@@ -27489,12 +24672,14 @@ class QueryPushAnalysisTaskDetailRequest(TeaModel):
         self,
         app_id: str = None,
         task_id: str = None,
+        tenant_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         # This parameter is required.
         self.task_id = task_id
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -27511,6 +24696,8 @@ class QueryPushAnalysisTaskDetailRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -27521,6 +24708,8 @@ class QueryPushAnalysisTaskDetailRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -27715,6 +24904,7 @@ class QueryPushAnalysisTaskListRequest(TeaModel):
         start_time: int = None,
         task_id: str = None,
         task_name: str = None,
+        tenant_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
@@ -27725,6 +24915,7 @@ class QueryPushAnalysisTaskListRequest(TeaModel):
         self.start_time = start_time
         self.task_id = task_id
         self.task_name = task_name
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -27749,6 +24940,8 @@ class QueryPushAnalysisTaskListRequest(TeaModel):
             result['TaskId'] = self.task_id
         if self.task_name is not None:
             result['TaskName'] = self.task_name
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -27767,6 +24960,8 @@ class QueryPushAnalysisTaskListRequest(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -28031,6 +25226,7 @@ class QueryPushSchedulerListRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         start_time: int = None,
+        tenant_id: str = None,
         type: int = None,
         unique_id: str = None,
         workspace_id: str = None,
@@ -28043,6 +25239,7 @@ class QueryPushSchedulerListRequest(TeaModel):
         self.page_size = page_size
         # This parameter is required.
         self.start_time = start_time
+        self.tenant_id = tenant_id
         self.type = type
         self.unique_id = unique_id
         # This parameter is required.
@@ -28067,6 +25264,8 @@ class QueryPushSchedulerListRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.type is not None:
             result['Type'] = self.type
         if self.unique_id is not None:
@@ -28087,6 +25286,8 @@ class QueryPushSchedulerListRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UniqueId') is not None:
@@ -28347,6 +25548,7 @@ class RevokePushMessageRequest(TeaModel):
         app_id: str = None,
         message_id: str = None,
         target_id: str = None,
+        tenant_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
@@ -28355,6 +25557,7 @@ class RevokePushMessageRequest(TeaModel):
         self.message_id = message_id
         # This parameter is required.
         self.target_id = target_id
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -28373,6 +25576,8 @@ class RevokePushMessageRequest(TeaModel):
             result['MessageId'] = self.message_id
         if self.target_id is not None:
             result['TargetId'] = self.target_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -28385,6 +25590,8 @@ class RevokePushMessageRequest(TeaModel):
             self.message_id = m.get('MessageId')
         if m.get('TargetId') is not None:
             self.target_id = m.get('TargetId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -28522,12 +25729,14 @@ class RevokePushTaskRequest(TeaModel):
         self,
         app_id: str = None,
         task_id: str = None,
+        tenant_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
         # This parameter is required.
         self.task_id = task_id
+        self.tenant_id = tenant_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -28544,6 +25753,8 @@ class RevokePushTaskRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.task_id is not None:
             result['TaskId'] = self.task_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -28554,6 +25765,8 @@ class RevokePushTaskRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -29510,6 +26723,201 @@ class StartUserAppAsyncEnhanceInMsaResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartUserAppAsyncEnhanceInMsaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateLinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        cors: bool = None,
+        domain: str = None,
+        dynamicfield: str = None,
+        target_url: str = None,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.cors = cors
+        self.domain = domain
+        self.dynamicfield = dynamicfield
+        # This parameter is required.
+        self.target_url = target_url
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.cors is not None:
+            result['Cors'] = self.cors
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.dynamicfield is not None:
+            result['Dynamicfield'] = self.dynamicfield
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Cors') is not None:
+            self.cors = m.get('Cors')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Dynamicfield') is not None:
+            self.dynamicfield = m.get('Dynamicfield')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class UpdateLinkResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        target: str = None,
+        version: str = None,
+    ):
+        self.data = data
+        self.target = target
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class UpdateLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_code: str = None,
+        result_content: UpdateLinkResponseBodyResultContent = None,
+        result_message: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_content = result_content
+        self.result_message = result_message
+
+    def validate(self):
+        if self.result_content:
+            self.result_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.result_content is not None:
+            result['ResultContent'] = self.result_content.to_map()
+        if self.result_message is not None:
+            result['ResultMessage'] = self.result_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('ResultContent') is not None:
+            temp_model = UpdateLinkResponseBodyResultContent()
+            self.result_content = temp_model.from_map(m['ResultContent'])
+        if m.get('ResultMessage') is not None:
+            self.result_message = m.get('ResultMessage')
+        return self
+
+
+class UpdateLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateLinkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -211,6 +211,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.unique_ids):
@@ -250,6 +252,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.app_id):
             body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.unique_ids):
@@ -840,406 +844,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_link_with_options_async(request, runtime)
-
-    def create_mas_crowd_with_options(
-        self,
-        request: m_paa_s20201028_models.CreateMasCrowdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
-        """
-        @param request: CreateMasCrowdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMasCrowdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_mas_crowd_create_json_str):
-            body['MpaasMappcenterMcdpMasCrowdCreateJsonStr'] = request.mpaas_mappcenter_mcdp_mas_crowd_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMasCrowd',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMasCrowdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_mas_crowd_with_options_async(
-        self,
-        request: m_paa_s20201028_models.CreateMasCrowdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
-        """
-        @param request: CreateMasCrowdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMasCrowdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_mas_crowd_create_json_str):
-            body['MpaasMappcenterMcdpMasCrowdCreateJsonStr'] = request.mpaas_mappcenter_mcdp_mas_crowd_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMasCrowd',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMasCrowdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_mas_crowd(
-        self,
-        request: m_paa_s20201028_models.CreateMasCrowdRequest,
-    ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
-        """
-        @param request: CreateMasCrowdRequest
-        @return: CreateMasCrowdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_mas_crowd_with_options(request, runtime)
-
-    async def create_mas_crowd_async(
-        self,
-        request: m_paa_s20201028_models.CreateMasCrowdRequest,
-    ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
-        """
-        @param request: CreateMasCrowdRequest
-        @return: CreateMasCrowdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_mas_crowd_with_options_async(request, runtime)
-
-    def create_mas_funnel_with_options(
-        self,
-        request: m_paa_s20201028_models.CreateMasFunnelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
-        """
-        @param request: CreateMasFunnelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMasFunnelResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_mas_funnel_create_json_str):
-            body['MpaasMappcenterMcdpMasFunnelCreateJsonStr'] = request.mpaas_mappcenter_mcdp_mas_funnel_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMasFunnel',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMasFunnelResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_mas_funnel_with_options_async(
-        self,
-        request: m_paa_s20201028_models.CreateMasFunnelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
-        """
-        @param request: CreateMasFunnelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMasFunnelResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_mas_funnel_create_json_str):
-            body['MpaasMappcenterMcdpMasFunnelCreateJsonStr'] = request.mpaas_mappcenter_mcdp_mas_funnel_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMasFunnel',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMasFunnelResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_mas_funnel(
-        self,
-        request: m_paa_s20201028_models.CreateMasFunnelRequest,
-    ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
-        """
-        @param request: CreateMasFunnelRequest
-        @return: CreateMasFunnelResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_mas_funnel_with_options(request, runtime)
-
-    async def create_mas_funnel_async(
-        self,
-        request: m_paa_s20201028_models.CreateMasFunnelRequest,
-    ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
-        """
-        @param request: CreateMasFunnelRequest
-        @return: CreateMasFunnelResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_mas_funnel_with_options_async(request, runtime)
-
-    def create_mcdp_event_with_options(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
-        """
-        @param request: CreateMcdpEventRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMcdpEventResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_create_json_str):
-            body['MpaasMappcenterMcdpEventCreateJsonStr'] = request.mpaas_mappcenter_mcdp_event_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMcdpEvent',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMcdpEventResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_mcdp_event_with_options_async(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
-        """
-        @param request: CreateMcdpEventRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMcdpEventResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_create_json_str):
-            body['MpaasMappcenterMcdpEventCreateJsonStr'] = request.mpaas_mappcenter_mcdp_event_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMcdpEvent',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMcdpEventResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_mcdp_event(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventRequest,
-    ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
-        """
-        @param request: CreateMcdpEventRequest
-        @return: CreateMcdpEventResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_mcdp_event_with_options(request, runtime)
-
-    async def create_mcdp_event_async(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventRequest,
-    ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
-        """
-        @param request: CreateMcdpEventRequest
-        @return: CreateMcdpEventResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_mcdp_event_with_options_async(request, runtime)
-
-    def create_mcdp_event_attribute_with_options(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
-        """
-        @param request: CreateMcdpEventAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMcdpEventAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_attribute_create_json_str):
-            body['MpaasMappcenterMcdpEventAttributeCreateJsonStr'] = request.mpaas_mappcenter_mcdp_event_attribute_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMcdpEventAttribute',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMcdpEventAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_mcdp_event_attribute_with_options_async(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
-        """
-        @param request: CreateMcdpEventAttributeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMcdpEventAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_attribute_create_json_str):
-            body['MpaasMappcenterMcdpEventAttributeCreateJsonStr'] = request.mpaas_mappcenter_mcdp_event_attribute_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMcdpEventAttribute',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMcdpEventAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_mcdp_event_attribute(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
-    ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
-        """
-        @param request: CreateMcdpEventAttributeRequest
-        @return: CreateMcdpEventAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_mcdp_event_attribute_with_options(request, runtime)
-
-    async def create_mcdp_event_attribute_async(
-        self,
-        request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
-    ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
-        """
-        @param request: CreateMcdpEventAttributeRequest
-        @return: CreateMcdpEventAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_mcdp_event_attribute_with_options_async(request, runtime)
 
     def create_mcdp_group_with_options(
         self,
@@ -3017,106 +2621,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_mds_miniprogram_task_with_options_async(request, runtime)
 
-    def create_msa_enhance_with_options(
-        self,
-        request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
-        """
-        @param request: CreateMsaEnhanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMsaEnhanceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_msa_enhance_create_json_str):
-            body['MpaasMappcenterMsaEnhanceCreateJsonStr'] = request.mpaas_mappcenter_msa_enhance_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMsaEnhance',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMsaEnhanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_msa_enhance_with_options_async(
-        self,
-        request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
-        """
-        @param request: CreateMsaEnhanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMsaEnhanceResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_msa_enhance_create_json_str):
-            body['MpaasMappcenterMsaEnhanceCreateJsonStr'] = request.mpaas_mappcenter_msa_enhance_create_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateMsaEnhance',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.CreateMsaEnhanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_msa_enhance(
-        self,
-        request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
-    ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
-        """
-        @param request: CreateMsaEnhanceRequest
-        @return: CreateMsaEnhanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_msa_enhance_with_options(request, runtime)
-
-    async def create_msa_enhance_async(
-        self,
-        request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
-    ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
-        """
-        @param request: CreateMsaEnhanceRequest
-        @return: CreateMsaEnhanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_msa_enhance_with_options_async(request, runtime)
-
     def create_open_global_data_with_options(
         self,
         request: m_paa_s20201028_models.CreateOpenGlobalDataRequest,
@@ -3147,6 +2651,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.payload):
             body['Payload'] = request.payload
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_msg_id):
             body['ThirdMsgId'] = request.third_msg_id
         if not UtilClient.is_unset(request.uids):
@@ -3206,6 +2712,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.payload):
             body['Payload'] = request.payload
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_msg_id):
             body['ThirdMsgId'] = request.third_msg_id
         if not UtilClient.is_unset(request.uids):
@@ -3287,6 +2795,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.payload):
             body['Payload'] = request.payload
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_msg_id):
             body['ThirdMsgId'] = request.third_msg_id
         if not UtilClient.is_unset(request.valid_time_end):
@@ -3344,6 +2854,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.payload):
             body['Payload'] = request.payload
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_msg_id):
             body['ThirdMsgId'] = request.third_msg_id
         if not UtilClient.is_unset(request.valid_time_end):
@@ -3696,306 +3208,6 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_crowd_with_options_async(request, runtime)
-
-    def delete_mcdp_event_attribute_by_id_with_options(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
-        """
-        @param request: DeleteMcdpEventAttributeByIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpEventAttributeByIdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_attribute_delete_json_str):
-            body['MpaasMappcenterMcdpEventAttributeDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_event_attribute_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpEventAttributeById',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_mcdp_event_attribute_by_id_with_options_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
-        """
-        @param request: DeleteMcdpEventAttributeByIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpEventAttributeByIdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_attribute_delete_json_str):
-            body['MpaasMappcenterMcdpEventAttributeDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_event_attribute_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpEventAttributeById',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_mcdp_event_attribute_by_id(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
-        """
-        @param request: DeleteMcdpEventAttributeByIdRequest
-        @return: DeleteMcdpEventAttributeByIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_mcdp_event_attribute_by_id_with_options(request, runtime)
-
-    async def delete_mcdp_event_attribute_by_id_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
-        """
-        @param request: DeleteMcdpEventAttributeByIdRequest
-        @return: DeleteMcdpEventAttributeByIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_mcdp_event_attribute_by_id_with_options_async(request, runtime)
-
-    def delete_mcdp_event_by_id_with_options(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
-        """
-        @param request: DeleteMcdpEventByIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpEventByIdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_delete_json_str):
-            body['MpaasMappcenterMcdpEventDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_event_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpEventById',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpEventByIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_mcdp_event_by_id_with_options_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
-        """
-        @param request: DeleteMcdpEventByIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpEventByIdResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_event_delete_json_str):
-            body['MpaasMappcenterMcdpEventDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_event_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpEventById',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpEventByIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_mcdp_event_by_id(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
-        """
-        @param request: DeleteMcdpEventByIdRequest
-        @return: DeleteMcdpEventByIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_mcdp_event_by_id_with_options(request, runtime)
-
-    async def delete_mcdp_event_by_id_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
-        """
-        @param request: DeleteMcdpEventByIdRequest
-        @return: DeleteMcdpEventByIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_mcdp_event_by_id_with_options_async(request, runtime)
-
-    def delete_mcdp_material_with_options(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
-        """
-        @param request: DeleteMcdpMaterialRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpMaterialResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_material_delete_json_str):
-            body['MpaasMappcenterMcdpMaterialDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_material_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpMaterial',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpMaterialResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_mcdp_material_with_options_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
-        """
-        @param request: DeleteMcdpMaterialRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteMcdpMaterialResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mappcenter_mcdp_material_delete_json_str):
-            body['MpaasMappcenterMcdpMaterialDeleteJsonStr'] = request.mpaas_mappcenter_mcdp_material_delete_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DeleteMcdpMaterial',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.DeleteMcdpMaterialResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_mcdp_material(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
-        """
-        @param request: DeleteMcdpMaterialRequest
-        @return: DeleteMcdpMaterialResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_mcdp_material_with_options(request, runtime)
-
-    async def delete_mcdp_material_async(
-        self,
-        request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
-    ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
-        """
-        @param request: DeleteMcdpMaterialRequest
-        @return: DeleteMcdpMaterialResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_mcdp_material_with_options_async(request, runtime)
 
     def delete_mcdp_zone_with_options(
         self,
@@ -7269,110 +6481,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_mgs_api_with_options_async(request, runtime)
 
-    def log_msa_query_with_options(
-        self,
-        request: m_paa_s20201028_models.LogMsaQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.LogMsaQueryResponse:
-        """
-        @param request: LogMsaQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LogMsaQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.id):
-            body['Id'] = request.id
-        if not UtilClient.is_unset(request.onex_flag):
-            body['OnexFlag'] = request.onex_flag
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='LogMsaQuery',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.LogMsaQueryResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def log_msa_query_with_options_async(
-        self,
-        request: m_paa_s20201028_models.LogMsaQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.LogMsaQueryResponse:
-        """
-        @param request: LogMsaQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LogMsaQueryResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.id):
-            body['Id'] = request.id
-        if not UtilClient.is_unset(request.onex_flag):
-            body['OnexFlag'] = request.onex_flag
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='LogMsaQuery',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.LogMsaQueryResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def log_msa_query(
-        self,
-        request: m_paa_s20201028_models.LogMsaQueryRequest,
-    ) -> m_paa_s20201028_models.LogMsaQueryResponse:
-        """
-        @param request: LogMsaQueryRequest
-        @return: LogMsaQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.log_msa_query_with_options(request, runtime)
-
-    async def log_msa_query_async(
-        self,
-        request: m_paa_s20201028_models.LogMsaQueryRequest,
-    ) -> m_paa_s20201028_models.LogMsaQueryResponse:
-        """
-        @param request: LogMsaQueryRequest
-        @return: LogMsaQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.log_msa_query_with_options_async(request, runtime)
-
     def m_trsocrservice_with_options(
         self,
         request: m_paa_s20201028_models.MTRSOCRServiceRequest,
@@ -7489,1194 +6597,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.m_trsocrservice_with_options_async(request, runtime)
 
-    def open_api_add_active_code_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
-        """
-        @summary 新增主扫码
-        
-        @param request: OpenApiAddActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiAddActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_add_active_code_req_json_str):
-            body['MpaasMqcpOpenApiAddActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_add_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiAddActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiAddActiveCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_add_active_code_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
-        """
-        @summary 新增主扫码
-        
-        @param request: OpenApiAddActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiAddActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_add_active_code_req_json_str):
-            body['MpaasMqcpOpenApiAddActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_add_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiAddActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiAddActiveCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_add_active_code(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
-        """
-        @summary 新增主扫码
-        
-        @param request: OpenApiAddActiveCodeRequest
-        @return: OpenApiAddActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_add_active_code_with_options(request, runtime)
-
-    async def open_api_add_active_code_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
-        """
-        @summary 新增主扫码
-        
-        @param request: OpenApiAddActiveCodeRequest
-        @return: OpenApiAddActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_add_active_code_with_options_async(request, runtime)
-
-    def open_api_add_active_scene_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
-        """
-        @summary 新增场景
-        
-        @param request: OpenApiAddActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiAddActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_add_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiAddActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_add_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiAddActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiAddActiveSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_add_active_scene_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
-        """
-        @summary 新增场景
-        
-        @param request: OpenApiAddActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiAddActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_add_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiAddActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_add_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiAddActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiAddActiveSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_add_active_scene(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
-        """
-        @summary 新增场景
-        
-        @param request: OpenApiAddActiveSceneRequest
-        @return: OpenApiAddActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_add_active_scene_with_options(request, runtime)
-
-    async def open_api_add_active_scene_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
-        """
-        @summary 新增场景
-        
-        @param request: OpenApiAddActiveSceneRequest
-        @return: OpenApiAddActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_add_active_scene_with_options_async(request, runtime)
-
-    def open_api_callback_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiCallbackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
-        """
-        @summary 用户注册
-        
-        @param request: OpenApiCallbackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiCallbackResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_callback_request_json_str):
-            body['MpaasMqcpOpenApiCallbackRequestJsonStr'] = request.mpaas_mqcp_open_api_callback_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiCallback',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiCallbackResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_callback_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiCallbackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
-        """
-        @summary 用户注册
-        
-        @param request: OpenApiCallbackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiCallbackResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_callback_request_json_str):
-            body['MpaasMqcpOpenApiCallbackRequestJsonStr'] = request.mpaas_mqcp_open_api_callback_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiCallback',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiCallbackResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_callback(
-        self,
-        request: m_paa_s20201028_models.OpenApiCallbackRequest,
-    ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
-        """
-        @summary 用户注册
-        
-        @param request: OpenApiCallbackRequest
-        @return: OpenApiCallbackResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_callback_with_options(request, runtime)
-
-    async def open_api_callback_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiCallbackRequest,
-    ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
-        """
-        @summary 用户注册
-        
-        @param request: OpenApiCallbackRequest
-        @return: OpenApiCallbackResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_callback_with_options_async(request, runtime)
-
-    def open_api_decode_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiDecodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
-        """
-        @summary 解码
-        
-        @param request: OpenApiDecodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiDecodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_decode_request_json_str):
-            body['MpaasMqcpOpenApiDecodeRequestJsonStr'] = request.mpaas_mqcp_open_api_decode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiDecode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiDecodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_decode_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiDecodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
-        """
-        @summary 解码
-        
-        @param request: OpenApiDecodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiDecodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_decode_request_json_str):
-            body['MpaasMqcpOpenApiDecodeRequestJsonStr'] = request.mpaas_mqcp_open_api_decode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiDecode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiDecodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_decode(
-        self,
-        request: m_paa_s20201028_models.OpenApiDecodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
-        """
-        @summary 解码
-        
-        @param request: OpenApiDecodeRequest
-        @return: OpenApiDecodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_decode_with_options(request, runtime)
-
-    async def open_api_decode_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiDecodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
-        """
-        @summary 解码
-        
-        @param request: OpenApiDecodeRequest
-        @return: OpenApiDecodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_decode_with_options_async(request, runtime)
-
-    def open_api_delete_active_code_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
-        """
-        @summary 删除主扫码
-        
-        @param request: OpenApiDeleteActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiDeleteActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_delete_active_code_req_json_str):
-            body['MpaasMqcpOpenApiDeleteActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_delete_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiDeleteActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_delete_active_code_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
-        """
-        @summary 删除主扫码
-        
-        @param request: OpenApiDeleteActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiDeleteActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_delete_active_code_req_json_str):
-            body['MpaasMqcpOpenApiDeleteActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_delete_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiDeleteActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_delete_active_code(
-        self,
-        request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
-        """
-        @summary 删除主扫码
-        
-        @param request: OpenApiDeleteActiveCodeRequest
-        @return: OpenApiDeleteActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_delete_active_code_with_options(request, runtime)
-
-    async def open_api_delete_active_code_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
-        """
-        @summary 删除主扫码
-        
-        @param request: OpenApiDeleteActiveCodeRequest
-        @return: OpenApiDeleteActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_delete_active_code_with_options_async(request, runtime)
-
-    def open_api_encode_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiEncodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
-        """
-        @summary 编码
-        
-        @param request: OpenApiEncodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiEncodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_encode_request_json_str):
-            body['MpaasMqcpOpenApiEncodeRequestJsonStr'] = request.mpaas_mqcp_open_api_encode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiEncode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiEncodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_encode_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiEncodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
-        """
-        @summary 编码
-        
-        @param request: OpenApiEncodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiEncodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_encode_request_json_str):
-            body['MpaasMqcpOpenApiEncodeRequestJsonStr'] = request.mpaas_mqcp_open_api_encode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiEncode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiEncodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_encode(
-        self,
-        request: m_paa_s20201028_models.OpenApiEncodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
-        """
-        @summary 编码
-        
-        @param request: OpenApiEncodeRequest
-        @return: OpenApiEncodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_encode_with_options(request, runtime)
-
-    async def open_api_encode_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiEncodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
-        """
-        @summary 编码
-        
-        @param request: OpenApiEncodeRequest
-        @return: OpenApiEncodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_encode_with_options_async(request, runtime)
-
-    def open_api_query_active_code_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
-        """
-        @summary 主扫码查询
-        
-        @param request: OpenApiQueryActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiQueryActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_query_active_code_req_json_str):
-            body['MpaasMqcpOpenApiQueryActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_query_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiQueryActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiQueryActiveCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_query_active_code_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
-        """
-        @summary 主扫码查询
-        
-        @param request: OpenApiQueryActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiQueryActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_query_active_code_req_json_str):
-            body['MpaasMqcpOpenApiQueryActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_query_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiQueryActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiQueryActiveCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_query_active_code(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
-        """
-        @summary 主扫码查询
-        
-        @param request: OpenApiQueryActiveCodeRequest
-        @return: OpenApiQueryActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_query_active_code_with_options(request, runtime)
-
-    async def open_api_query_active_code_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
-        """
-        @summary 主扫码查询
-        
-        @param request: OpenApiQueryActiveCodeRequest
-        @return: OpenApiQueryActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_query_active_code_with_options_async(request, runtime)
-
-    def open_api_query_active_scene_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
-        """
-        @summary 查询场景
-        
-        @param request: OpenApiQueryActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiQueryActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_query_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiQueryActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_query_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiQueryActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiQueryActiveSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_query_active_scene_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
-        """
-        @summary 查询场景
-        
-        @param request: OpenApiQueryActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiQueryActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_query_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiQueryActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_query_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiQueryActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiQueryActiveSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_query_active_scene(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
-        """
-        @summary 查询场景
-        
-        @param request: OpenApiQueryActiveSceneRequest
-        @return: OpenApiQueryActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_query_active_scene_with_options(request, runtime)
-
-    async def open_api_query_active_scene_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
-        """
-        @summary 查询场景
-        
-        @param request: OpenApiQueryActiveSceneRequest
-        @return: OpenApiQueryActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_query_active_scene_with_options_async(request, runtime)
-
-    def open_api_unique_encode_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
-        """
-        @summary 生成唯一被扫码
-        
-        @param request: OpenApiUniqueEncodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUniqueEncodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_unique_encode_request_json_str):
-            body['MpaasMqcpOpenApiUniqueEncodeRequestJsonStr'] = request.mpaas_mqcp_open_api_unique_encode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUniqueEncode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUniqueEncodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_unique_encode_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
-        """
-        @summary 生成唯一被扫码
-        
-        @param request: OpenApiUniqueEncodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUniqueEncodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_unique_encode_request_json_str):
-            body['MpaasMqcpOpenApiUniqueEncodeRequestJsonStr'] = request.mpaas_mqcp_open_api_unique_encode_request_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUniqueEncode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUniqueEncodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_unique_encode(
-        self,
-        request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
-        """
-        @summary 生成唯一被扫码
-        
-        @param request: OpenApiUniqueEncodeRequest
-        @return: OpenApiUniqueEncodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_unique_encode_with_options(request, runtime)
-
-    async def open_api_unique_encode_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
-        """
-        @summary 生成唯一被扫码
-        
-        @param request: OpenApiUniqueEncodeRequest
-        @return: OpenApiUniqueEncodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_unique_encode_with_options_async(request, runtime)
-
-    def open_api_update_active_code_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
-        """
-        @summary 更新主扫码
-        
-        @param request: OpenApiUpdateActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUpdateActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_update_active_code_req_json_str):
-            body['MpaasMqcpOpenApiUpdateActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_update_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUpdateActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_update_active_code_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
-        """
-        @summary 更新主扫码
-        
-        @param request: OpenApiUpdateActiveCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUpdateActiveCodeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_update_active_code_req_json_str):
-            body['MpaasMqcpOpenApiUpdateActiveCodeReqJsonStr'] = request.mpaas_mqcp_open_api_update_active_code_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUpdateActiveCode',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_update_active_code(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
-        """
-        @summary 更新主扫码
-        
-        @param request: OpenApiUpdateActiveCodeRequest
-        @return: OpenApiUpdateActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_update_active_code_with_options(request, runtime)
-
-    async def open_api_update_active_code_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
-        """
-        @summary 更新主扫码
-        
-        @param request: OpenApiUpdateActiveCodeRequest
-        @return: OpenApiUpdateActiveCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_update_active_code_with_options_async(request, runtime)
-
-    def open_api_update_active_scene_with_options(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
-        """
-        @summary 更新场景
-        
-        @param request: OpenApiUpdateActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUpdateActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_update_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiUpdateActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_update_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUpdateActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_api_update_active_scene_with_options_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
-        """
-        @summary 更新场景
-        
-        @param request: OpenApiUpdateActiveSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenApiUpdateActiveSceneResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.app_id):
-            body['AppId'] = request.app_id
-        if not UtilClient.is_unset(request.mpaas_mqcp_open_api_update_active_scene_req_json_str):
-            body['MpaasMqcpOpenApiUpdateActiveSceneReqJsonStr'] = request.mpaas_mqcp_open_api_update_active_scene_req_json_str
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='OpenApiUpdateActiveScene',
-            version='2020-10-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_api_update_active_scene(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
-        """
-        @summary 更新场景
-        
-        @param request: OpenApiUpdateActiveSceneRequest
-        @return: OpenApiUpdateActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_api_update_active_scene_with_options(request, runtime)
-
-    async def open_api_update_active_scene_async(
-        self,
-        request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
-    ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
-        """
-        @summary 更新场景
-        
-        @param request: OpenApiUpdateActiveSceneRequest
-        @return: OpenApiUpdateActiveSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_api_update_active_scene_with_options_async(request, runtime)
-
     def push_bind_with_options(
         self,
         request: m_paa_s20201028_models.PushBindRequest,
@@ -8697,6 +6617,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.phone_number):
             body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -8740,6 +6662,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.phone_number):
             body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -8839,8 +6763,14 @@ class Client(OpenApiClient):
             body['TemplateKeyValue'] = request.template_key_value
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.un_bind_period):
             body['UnBindPeriod'] = request.un_bind_period
         if not UtilClient.is_unset(request.workspace_id):
@@ -8918,8 +6848,14 @@ class Client(OpenApiClient):
             body['TemplateKeyValue'] = request.template_key_value
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.un_bind_period):
             body['UnBindPeriod'] = request.un_bind_period
         if not UtilClient.is_unset(request.workspace_id):
@@ -9017,8 +6953,14 @@ class Client(OpenApiClient):
             body['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9092,8 +7034,14 @@ class Client(OpenApiClient):
             body['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9169,6 +7117,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.push_version):
             body['PushVersion'] = request.push_version
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel):
             body['ThirdChannel'] = request.third_channel
         if not UtilClient.is_unset(request.third_channel_device_token):
@@ -9226,6 +7176,8 @@ class Client(OpenApiClient):
             body['OsType'] = request.os_type
         if not UtilClient.is_unset(request.push_version):
             body['PushVersion'] = request.push_version
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel):
             body['ThirdChannel'] = request.third_channel
         if not UtilClient.is_unset(request.third_channel_device_token):
@@ -9279,6 +7231,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
         """
+        @summary 极简推送
+        
         @param tmp_req: PushSimpleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushSimpleResponse
@@ -9339,10 +7293,16 @@ class Client(OpenApiClient):
             body['TargetMsgkey'] = request.target_msgkey
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.workspace_id):
@@ -9372,6 +7332,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
         """
+        @summary 极简推送
+        
         @param tmp_req: PushSimpleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushSimpleResponse
@@ -9432,10 +7394,16 @@ class Client(OpenApiClient):
             body['TargetMsgkey'] = request.target_msgkey
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.uri):
             body['Uri'] = request.uri
         if not UtilClient.is_unset(request.workspace_id):
@@ -9464,6 +7432,8 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushSimpleRequest,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
         """
+        @summary 极简推送
+        
         @param request: PushSimpleRequest
         @return: PushSimpleResponse
         """
@@ -9475,6 +7445,8 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushSimpleRequest,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
         """
+        @summary 极简推送
+        
         @param request: PushSimpleRequest
         @return: PushSimpleResponse
         """
@@ -9543,8 +7515,14 @@ class Client(OpenApiClient):
             body['TemplateKeyValue'] = request.template_key_value
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9628,8 +7606,14 @@ class Client(OpenApiClient):
             body['TemplateKeyValue'] = request.template_key_value
         if not UtilClient.is_unset(request.template_name):
             body['TemplateName'] = request.template_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.third_channel_category_shrink):
             body['ThirdChannelCategory'] = request.third_channel_category_shrink
+        if not UtilClient.is_unset(request.transparent_message_payload):
+            body['TransparentMessagePayload'] = request.transparent_message_payload
+        if not UtilClient.is_unset(request.transparent_message_urgency):
+            body['TransparentMessageUrgency'] = request.transparent_message_urgency
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9689,6 +7673,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.delivery_token):
             body['DeliveryToken'] = request.delivery_token
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -9728,6 +7714,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.delivery_token):
             body['DeliveryToken'] = request.delivery_token
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_id):
             body['UserId'] = request.user_id
         if not UtilClient.is_unset(request.workspace_id):
@@ -9795,10 +7783,10 @@ class Client(OpenApiClient):
             body['MobileMd5'] = request.mobile_md_5
         if not UtilClient.is_unset(request.mobile_sha_256):
             body['MobileSha256'] = request.mobile_sha_256
+        if not UtilClient.is_unset(request.mobile_sm_3):
+            body['MobileSm3'] = request.mobile_sm_3
         if not UtilClient.is_unset(request.risk_scene):
             body['RiskScene'] = request.risk_scene
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9842,10 +7830,10 @@ class Client(OpenApiClient):
             body['MobileMd5'] = request.mobile_md_5
         if not UtilClient.is_unset(request.mobile_sha_256):
             body['MobileSha256'] = request.mobile_sha_256
+        if not UtilClient.is_unset(request.mobile_sm_3):
+            body['MobileSm3'] = request.mobile_sm_3
         if not UtilClient.is_unset(request.risk_scene):
             body['RiskScene'] = request.risk_scene
-        if not UtilClient.is_unset(request.tenant_id):
-            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11189,6 +9177,8 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
@@ -11236,6 +9226,8 @@ class Client(OpenApiClient):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
@@ -11297,6 +9289,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11334,6 +9328,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11401,6 +9397,8 @@ class Client(OpenApiClient):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11446,6 +9444,8 @@ class Client(OpenApiClient):
             body['TaskId'] = request.task_id
         if not UtilClient.is_unset(request.task_name):
             body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11511,6 +9511,8 @@ class Client(OpenApiClient):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.unique_id):
@@ -11558,6 +9560,8 @@ class Client(OpenApiClient):
             body['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         if not UtilClient.is_unset(request.unique_id):
@@ -11623,6 +9627,8 @@ class Client(OpenApiClient):
             body['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.target_id):
             body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11662,6 +9668,8 @@ class Client(OpenApiClient):
             body['MessageId'] = request.message_id
         if not UtilClient.is_unset(request.target_id):
             body['TargetId'] = request.target_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11721,6 +9729,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -11758,6 +9768,8 @@ class Client(OpenApiClient):
             body['AppId'] = request.app_id
         if not UtilClient.is_unset(request.task_id):
             body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -12164,6 +10176,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_user_app_async_enhance_in_msa_with_options_async(request, runtime)
+
+    def update_link_with_options(
+        self,
+        request: m_paa_s20201028_models.UpdateLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UpdateLinkResponse:
+        """
+        @summary 更新短链
+        
+        @param request: UpdateLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cors):
+            body['Cors'] = request.cors
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamicfield):
+            body['Dynamicfield'] = request.dynamicfield
+        if not UtilClient.is_unset(request.target_url):
+            body['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UpdateLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_link_with_options_async(
+        self,
+        request: m_paa_s20201028_models.UpdateLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.UpdateLinkResponse:
+        """
+        @summary 更新短链
+        
+        @param request: UpdateLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cors):
+            body['Cors'] = request.cors
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamicfield):
+            body['Dynamicfield'] = request.dynamicfield
+        if not UtilClient.is_unset(request.target_url):
+            body['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.UpdateLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_link(
+        self,
+        request: m_paa_s20201028_models.UpdateLinkRequest,
+    ) -> m_paa_s20201028_models.UpdateLinkResponse:
+        """
+        @summary 更新短链
+        
+        @param request: UpdateLinkRequest
+        @return: UpdateLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_link_with_options(request, runtime)
+
+    async def update_link_async(
+        self,
+        request: m_paa_s20201028_models.UpdateLinkRequest,
+    ) -> m_paa_s20201028_models.UpdateLinkResponse:
+        """
+        @summary 更新短链
+        
+        @param request: UpdateLinkRequest
+        @return: UpdateLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_link_with_options_async(request, runtime)
 
     def update_mcube_whitelist_with_options(
         self,
