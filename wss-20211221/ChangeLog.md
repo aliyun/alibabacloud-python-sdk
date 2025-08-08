@@ -1,3 +1,7 @@
+2025-08-08 Version: 1.3.3
+- Update API DescribePackageDeductions: add response parameters Body.Deductions.$.GroupResourceType.
+
+
 2025-06-23 Version: 1.3.2
 - Update API DescribePackageDeductions: add request parameters ResourceTypes.
 - Update API DescribePackageDeductions: add response parameters Body.Deductions.$.InstanceId.

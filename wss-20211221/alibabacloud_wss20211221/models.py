@@ -1418,6 +1418,7 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
         desktop_name: str = None,
         desktop_type: str = None,
         end_time: str = None,
+        group_resource_type: str = None,
         instance_id: str = None,
         instance_state: str = None,
         instance_type: str = None,
@@ -1436,6 +1437,7 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
         self.desktop_name = desktop_name
         self.desktop_type = desktop_type
         self.end_time = end_time
+        self.group_resource_type = group_resource_type
         self.instance_id = instance_id
         self.instance_state = instance_state
         self.instance_type = instance_type
@@ -1468,6 +1470,8 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             result['DesktopType'] = self.desktop_type
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.group_resource_type is not None:
+            result['GroupResourceType'] = self.group_resource_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.instance_state is not None:
@@ -1506,6 +1510,8 @@ class DescribePackageDeductionsResponseBodyDeductions(TeaModel):
             self.desktop_type = m.get('DesktopType')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('GroupResourceType') is not None:
+            self.group_resource_type = m.get('GroupResourceType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceState') is not None:
