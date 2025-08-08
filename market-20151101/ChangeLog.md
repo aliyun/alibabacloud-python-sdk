@@ -1,3 +1,10 @@
+2025-08-08 Version: 4.2.0
+- Support API ConfirmNotification.
+- Support API DescribeFailedNotifications.
+- Support API DescribeInvoiceForIsv.
+- Support API ModifyInvoiceForIsv.
+
+
 2025-02-11 Version: 4.1.0
 - Support API DescribeImageInstanceForIsv.
 

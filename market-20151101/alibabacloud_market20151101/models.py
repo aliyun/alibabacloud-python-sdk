@@ -245,6 +245,109 @@ class AutoRenewInstanceResponse(TeaModel):
         return self
 
 
+class ConfirmNotificationRequest(TeaModel):
+    def __init__(
+        self,
+        notification_request_id: str = None,
+    ):
+        # This parameter is required.
+        self.notification_request_id = notification_request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.notification_request_id is not None:
+            result['NotificationRequestId'] = self.notification_request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotificationRequestId') is not None:
+            self.notification_request_id = m.get('NotificationRequestId')
+        return self
+
+
+class ConfirmNotificationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ConfirmNotificationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfirmNotificationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfirmNotificationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOrderRequest(TeaModel):
     def __init__(
         self,
@@ -1518,6 +1621,187 @@ class DescribeDistributionProductsLinkResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDistributionProductsLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeFailedNotificationsRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeFailedNotificationsResponseBodyNotificationList(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        create_time: int = None,
+        message: str = None,
+        notification_request_id: str = None,
+    ):
+        self.action = action
+        self.create_time = create_time
+        self.message = message
+        self.notification_request_id = notification_request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.notification_request_id is not None:
+            result['NotificationRequestId'] = self.notification_request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NotificationRequestId') is not None:
+            self.notification_request_id = m.get('NotificationRequestId')
+        return self
+
+
+class DescribeFailedNotificationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        notification_list: List[DescribeFailedNotificationsResponseBodyNotificationList] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.notification_list = notification_list
+        self.page_number = page_number
+        self.page_size = page_size
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.notification_list:
+            for k in self.notification_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NotificationList'] = []
+        if self.notification_list is not None:
+            for k in self.notification_list:
+                result['NotificationList'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.notification_list = []
+        if m.get('NotificationList') is not None:
+            for k in m.get('NotificationList'):
+                temp_model = DescribeFailedNotificationsResponseBodyNotificationList()
+                self.notification_list.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeFailedNotificationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFailedNotificationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFailedNotificationsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3054,6 +3338,531 @@ class DescribeInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInvoiceForIsvRequest(TeaModel):
+    def __init__(
+        self,
+        create_time_end: str = None,
+        create_time_start: str = None,
+        invoice_id: int = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_index: int = None,
+        page_size: int = None,
+        status: int = None,
+        type: int = None,
+        user_id: int = None,
+    ):
+        self.create_time_end = create_time_end
+        self.create_time_start = create_time_start
+        self.invoice_id = invoice_id
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_index = page_index
+        self.page_size = page_size
+        self.status = status
+        self.type = type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time_end is not None:
+            result['CreateTimeEnd'] = self.create_time_end
+        if self.create_time_start is not None:
+            result['CreateTimeStart'] = self.create_time_start
+        if self.invoice_id is not None:
+            result['InvoiceId'] = self.invoice_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_index is not None:
+            result['PageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTimeEnd') is not None:
+            self.create_time_end = m.get('CreateTimeEnd')
+        if m.get('CreateTimeStart') is not None:
+            self.create_time_start = m.get('CreateTimeStart')
+        if m.get('InvoiceId') is not None:
+            self.invoice_id = m.get('InvoiceId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageIndex') is not None:
+            self.page_index = m.get('PageIndex')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class DescribeInvoiceForIsvResponseBodyResultEvaluateList(TeaModel):
+    def __init__(
+        self,
+        agent: bool = None,
+        amount: str = None,
+        biz_time_str: str = None,
+        id: str = None,
+        order_type: str = None,
+        out_biz_id: str = None,
+        real_aliyun_pk: str = None,
+    ):
+        self.agent = agent
+        self.amount = amount
+        self.biz_time_str = biz_time_str
+        self.id = id
+        self.order_type = order_type
+        self.out_biz_id = out_biz_id
+        self.real_aliyun_pk = real_aliyun_pk
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent is not None:
+            result['Agent'] = self.agent
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.biz_time_str is not None:
+            result['BizTimeStr'] = self.biz_time_str
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.out_biz_id is not None:
+            result['OutBizId'] = self.out_biz_id
+        if self.real_aliyun_pk is not None:
+            result['RealAliyunPk'] = self.real_aliyun_pk
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Agent') is not None:
+            self.agent = m.get('Agent')
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('BizTimeStr') is not None:
+            self.biz_time_str = m.get('BizTimeStr')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('OutBizId') is not None:
+            self.out_biz_id = m.get('OutBizId')
+        if m.get('RealAliyunPk') is not None:
+            self.real_aliyun_pk = m.get('RealAliyunPk')
+        return self
+
+
+class DescribeInvoiceForIsvResponseBodyResultInvoiceList(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        invoice_amount: str = None,
+    ):
+        self.id = id
+        self.invoice_amount = invoice_amount
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.invoice_amount is not None:
+            result['InvoiceAmount'] = self.invoice_amount
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InvoiceAmount') is not None:
+            self.invoice_amount = m.get('InvoiceAmount')
+        return self
+
+
+class DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto(TeaModel):
+    def __init__(
+        self,
+        tax_number: str = None,
+    ):
+        self.tax_number = tax_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tax_number is not None:
+            result['TaxNumber'] = self.tax_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaxNumber') is not None:
+            self.tax_number = m.get('TaxNumber')
+        return self
+
+
+class DescribeInvoiceForIsvResponseBodyResultUserAddressDto(TeaModel):
+    def __init__(
+        self,
+        addressee: str = None,
+        aliyun_pk: str = None,
+        biz_type: str = None,
+        delivery_address: str = None,
+        emails: str = None,
+        phone: str = None,
+        postal_code: str = None,
+    ):
+        self.addressee = addressee
+        self.aliyun_pk = aliyun_pk
+        self.biz_type = biz_type
+        self.delivery_address = delivery_address
+        self.emails = emails
+        self.phone = phone
+        self.postal_code = postal_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addressee is not None:
+            result['Addressee'] = self.addressee
+        if self.aliyun_pk is not None:
+            result['AliyunPk'] = self.aliyun_pk
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.delivery_address is not None:
+            result['DeliveryAddress'] = self.delivery_address
+        if self.emails is not None:
+            result['Emails'] = self.emails
+        if self.phone is not None:
+            result['Phone'] = self.phone
+        if self.postal_code is not None:
+            result['PostalCode'] = self.postal_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Addressee') is not None:
+            self.addressee = m.get('Addressee')
+        if m.get('AliyunPk') is not None:
+            self.aliyun_pk = m.get('AliyunPk')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('DeliveryAddress') is not None:
+            self.delivery_address = m.get('DeliveryAddress')
+        if m.get('Emails') is not None:
+            self.emails = m.get('Emails')
+        if m.get('Phone') is not None:
+            self.phone = m.get('Phone')
+        if m.get('PostalCode') is not None:
+            self.postal_code = m.get('PostalCode')
+        return self
+
+
+class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        create_time_str: str = None,
+        evaluate_list: List[DescribeInvoiceForIsvResponseBodyResultEvaluateList] = None,
+        id: str = None,
+        invoice_id: str = None,
+        invoice_list: List[DescribeInvoiceForIsvResponseBodyResultInvoiceList] = None,
+        material_type: str = None,
+        modified_time: str = None,
+        modified_time_str: str = None,
+        price: str = None,
+        receipt_user_info_dto: DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto = None,
+        status: str = None,
+        title: str = None,
+        type: str = None,
+        user_address_dto: DescribeInvoiceForIsvResponseBodyResultUserAddressDto = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.create_time_str = create_time_str
+        self.evaluate_list = evaluate_list
+        self.id = id
+        self.invoice_id = invoice_id
+        self.invoice_list = invoice_list
+        self.material_type = material_type
+        self.modified_time = modified_time
+        self.modified_time_str = modified_time_str
+        self.price = price
+        self.receipt_user_info_dto = receipt_user_info_dto
+        self.status = status
+        self.title = title
+        self.type = type
+        self.user_address_dto = user_address_dto
+
+    def validate(self):
+        if self.evaluate_list:
+            for k in self.evaluate_list:
+                if k:
+                    k.validate()
+        if self.invoice_list:
+            for k in self.invoice_list:
+                if k:
+                    k.validate()
+        if self.receipt_user_info_dto:
+            self.receipt_user_info_dto.validate()
+        if self.user_address_dto:
+            self.user_address_dto.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['AliyunPk'] = self.aliyun_pk
+        if self.create_time_str is not None:
+            result['CreateTimeStr'] = self.create_time_str
+        result['EvaluateList'] = []
+        if self.evaluate_list is not None:
+            for k in self.evaluate_list:
+                result['EvaluateList'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.invoice_id is not None:
+            result['InvoiceId'] = self.invoice_id
+        result['InvoiceList'] = []
+        if self.invoice_list is not None:
+            for k in self.invoice_list:
+                result['InvoiceList'].append(k.to_map() if k else None)
+        if self.material_type is not None:
+            result['MaterialType'] = self.material_type
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.modified_time_str is not None:
+            result['ModifiedTimeStr'] = self.modified_time_str
+        if self.price is not None:
+            result['Price'] = self.price
+        if self.receipt_user_info_dto is not None:
+            result['ReceiptUserInfoDto'] = self.receipt_user_info_dto.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_address_dto is not None:
+            result['UserAddressDto'] = self.user_address_dto.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunPk') is not None:
+            self.aliyun_pk = m.get('AliyunPk')
+        if m.get('CreateTimeStr') is not None:
+            self.create_time_str = m.get('CreateTimeStr')
+        self.evaluate_list = []
+        if m.get('EvaluateList') is not None:
+            for k in m.get('EvaluateList'):
+                temp_model = DescribeInvoiceForIsvResponseBodyResultEvaluateList()
+                self.evaluate_list.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InvoiceId') is not None:
+            self.invoice_id = m.get('InvoiceId')
+        self.invoice_list = []
+        if m.get('InvoiceList') is not None:
+            for k in m.get('InvoiceList'):
+                temp_model = DescribeInvoiceForIsvResponseBodyResultInvoiceList()
+                self.invoice_list.append(temp_model.from_map(k))
+        if m.get('MaterialType') is not None:
+            self.material_type = m.get('MaterialType')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('ModifiedTimeStr') is not None:
+            self.modified_time_str = m.get('ModifiedTimeStr')
+        if m.get('Price') is not None:
+            self.price = m.get('Price')
+        if m.get('ReceiptUserInfoDto') is not None:
+            temp_model = DescribeInvoiceForIsvResponseBodyResultReceiptUserInfoDto()
+            self.receipt_user_info_dto = temp_model.from_map(m['ReceiptUserInfoDto'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserAddressDto') is not None:
+            temp_model = DescribeInvoiceForIsvResponseBodyResultUserAddressDto()
+            self.user_address_dto = temp_model.from_map(m['UserAddressDto'])
+        return self
+
+
+class DescribeInvoiceForIsvResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        count: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        result: List[DescribeInvoiceForIsvResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.count = count
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = DescribeInvoiceForIsvResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeInvoiceForIsvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInvoiceForIsvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInvoiceForIsvResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6612,6 +7421,156 @@ class FinishCurrentProjectNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = FinishCurrentProjectNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInvoiceForIsvRequest(TeaModel):
+    def __init__(
+        self,
+        check_notice: str = None,
+        electron_url: str = None,
+        invoice_id: int = None,
+        number: str = None,
+        operate_type: int = None,
+        type: int = None,
+    ):
+        self.check_notice = check_notice
+        self.electron_url = electron_url
+        self.invoice_id = invoice_id
+        self.number = number
+        # This parameter is required.
+        self.operate_type = operate_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_notice is not None:
+            result['CheckNotice'] = self.check_notice
+        if self.electron_url is not None:
+            result['ElectronUrl'] = self.electron_url
+        if self.invoice_id is not None:
+            result['InvoiceId'] = self.invoice_id
+        if self.number is not None:
+            result['Number'] = self.number
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckNotice') is not None:
+            self.check_notice = m.get('CheckNotice')
+        if m.get('ElectronUrl') is not None:
+            self.electron_url = m.get('ElectronUrl')
+        if m.get('InvoiceId') is not None:
+            self.invoice_id = m.get('InvoiceId')
+        if m.get('Number') is not None:
+            self.number = m.get('Number')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ModifyInvoiceForIsvResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class ModifyInvoiceForIsvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInvoiceForIsvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInvoiceForIsvResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
