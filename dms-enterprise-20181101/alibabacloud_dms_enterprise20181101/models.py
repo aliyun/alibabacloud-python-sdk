@@ -14716,6 +14716,141 @@ class CreateUploadOSSFileJobResponse(TeaModel):
         return self
 
 
+class CreateWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        region_id: str = None,
+        vpc_id: str = None,
+        workspace_name: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # This parameter is required.
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        return self
+
+
+class CreateWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        workspace_id: int = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAbacAuthorizationRequest(TeaModel):
     def __init__(
         self,
@@ -17704,6 +17839,115 @@ class DeleteUserResponse(TeaModel):
         return self
 
 
+class DeleteWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDifyAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -19864,6 +20108,7 @@ class ExecuteScriptRequest(TeaModel):
         self,
         db_id: int = None,
         logic: bool = None,
+        real_login_user_uid: str = None,
         script: str = None,
         tid: int = None,
     ):
@@ -19877,6 +20122,7 @@ class ExecuteScriptRequest(TeaModel):
         # 
         # This parameter is required.
         self.logic = logic
+        self.real_login_user_uid = real_login_user_uid
         # The SQL statements to be executed. Data query language (DQL) statements, data definition language (DDL) statements, and data manipulation language (DML) statements are supported. The control mode of the instance that you want to query determines whether you can execute DDL and DML statements.
         # 
         # This parameter is required.
@@ -19899,6 +20145,8 @@ class ExecuteScriptRequest(TeaModel):
             result['DbId'] = self.db_id
         if self.logic is not None:
             result['Logic'] = self.logic
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.script is not None:
             result['Script'] = self.script
         if self.tid is not None:
@@ -19911,6 +20159,8 @@ class ExecuteScriptRequest(TeaModel):
             self.db_id = m.get('DbId')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Script') is not None:
             self.script = m.get('Script')
         if m.get('Tid') is not None:
@@ -20331,6 +20581,7 @@ class GenerateSqlFromNLRequest(TeaModel):
         level: str = None,
         model: str = None,
         question: str = None,
+        real_login_user_uid: str = None,
         table_names: str = None,
     ):
         # This parameter is required.
@@ -20341,6 +20592,7 @@ class GenerateSqlFromNLRequest(TeaModel):
         self.model = model
         # This parameter is required.
         self.question = question
+        self.real_login_user_uid = real_login_user_uid
         self.table_names = table_names
 
     def validate(self):
@@ -20364,6 +20616,8 @@ class GenerateSqlFromNLRequest(TeaModel):
             result['Model'] = self.model
         if self.question is not None:
             result['Question'] = self.question
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.table_names is not None:
             result['TableNames'] = self.table_names
         return result
@@ -20382,6 +20636,8 @@ class GenerateSqlFromNLRequest(TeaModel):
             self.model = m.get('Model')
         if m.get('Question') is not None:
             self.question = m.get('Question')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('TableNames') is not None:
             self.table_names = m.get('TableNames')
         return self
@@ -28379,6 +28635,7 @@ class GetDatabaseRequest(TeaModel):
         self,
         host: str = None,
         port: int = None,
+        real_login_user_uid: str = None,
         schema_name: str = None,
         sid: str = None,
         tid: int = None,
@@ -28391,6 +28648,7 @@ class GetDatabaseRequest(TeaModel):
         # 
         # This parameter is required.
         self.port = port
+        self.real_login_user_uid = real_login_user_uid
         # The name of the database.
         # 
         # This parameter is required.
@@ -28415,6 +28673,8 @@ class GetDatabaseRequest(TeaModel):
             result['Host'] = self.host
         if self.port is not None:
             result['Port'] = self.port
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
         if self.sid is not None:
@@ -28429,6 +28689,8 @@ class GetDatabaseRequest(TeaModel):
             self.host = m.get('Host')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
         if m.get('Sid') is not None:
@@ -29365,6 +29627,7 @@ class GetInstanceRequest(TeaModel):
         self,
         host: str = None,
         port: int = None,
+        real_login_user_uid: str = None,
         sid: str = None,
         tid: int = None,
     ):
@@ -29376,6 +29639,7 @@ class GetInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.port = port
+        self.real_login_user_uid = real_login_user_uid
         # The system ID (SID) of the database instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) operation to obtain the SID.
         self.sid = sid
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
@@ -29394,6 +29658,8 @@ class GetInstanceRequest(TeaModel):
             result['Host'] = self.host
         if self.port is not None:
             result['Port'] = self.port
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.sid is not None:
             result['Sid'] = self.sid
         if self.tid is not None:
@@ -29406,6 +29672,8 @@ class GetInstanceRequest(TeaModel):
             self.host = m.get('Host')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Sid') is not None:
             self.sid = m.get('Sid')
         if m.get('Tid') is not None:
@@ -30835,9 +31103,11 @@ class GetMetaTableColumnResponse(TeaModel):
 class GetMetaTableDetailInfoRequest(TeaModel):
     def __init__(
         self,
+        real_login_user_uid: str = None,
         table_guid: str = None,
         tid: int = None,
     ):
+        self.real_login_user_uid = real_login_user_uid
         # The GUID of the table in Data Management (DMS).
         # 
         # > 
@@ -30862,6 +31132,8 @@ class GetMetaTableDetailInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.table_guid is not None:
             result['TableGuid'] = self.table_guid
         if self.tid is not None:
@@ -30870,6 +31142,8 @@ class GetMetaTableDetailInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('TableGuid') is not None:
             self.table_guid = m.get('TableGuid')
         if m.get('Tid') is not None:
@@ -39736,6 +40010,191 @@ class GetUserUploadFileJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetUserUploadFileJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: int = None,
+    ):
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetWorkspaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        owner_id: str = None,
+        region_id: str = None,
+        service_account_id: str = None,
+        tid: int = None,
+        vpc_id: str = None,
+        workspace_id: int = None,
+        workspace_name: str = None,
+    ):
+        self.description = description
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.service_account_id = service_account_id
+        self.tid = tid
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.service_account_id is not None:
+            result['ServiceAccountId'] = self.service_account_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ServiceAccountId') is not None:
+            self.service_account_id = m.get('ServiceAccountId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        return self
+
+
+class GetWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetWorkspaceResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetWorkspaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetWorkspaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -49135,6 +49594,7 @@ class ListInstancesRequest(TeaModel):
         net_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        real_login_user_uid: str = None,
         region: str = None,
         search_key: str = None,
         tid: int = None,
@@ -49173,6 +49633,7 @@ class ListInstancesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. The number cannot exceed 100.
         self.page_size = page_size
+        self.real_login_user_uid = real_login_user_uid
         self.region = region
         # The keyword that is used to search for database instances.
         self.search_key = search_key
@@ -49202,6 +49663,8 @@ class ListInstancesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.region is not None:
             result['Region'] = self.region
         if self.search_key is not None:
@@ -49226,6 +49689,8 @@ class ListInstancesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('SearchKey') is not None:
@@ -55968,6 +56433,7 @@ class ListTablesRequest(TeaModel):
         database_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        real_login_user_uid: str = None,
         return_guid: bool = None,
         search_name: str = None,
         tid: int = None,
@@ -55980,6 +56446,7 @@ class ListTablesRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.real_login_user_uid = real_login_user_uid
         # Specifies whether to return the GUID of a table. Valid values:
         # 
         # *   **true**: returns the GUID of a table.
@@ -56005,6 +56472,8 @@ class ListTablesRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.return_guid is not None:
             result['ReturnGuid'] = self.return_guid
         if self.search_name is not None:
@@ -56021,6 +56490,8 @@ class ListTablesRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('ReturnGuid') is not None:
             self.return_guid = m.get('ReturnGuid')
         if m.get('SearchName') is not None:
@@ -60578,6 +61049,363 @@ class ListWorkFlowTemplatesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListWorkFlowTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWorkspacesRequest(TeaModel):
+    def __init__(
+        self,
+        already_joined: bool = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        search_key: str = None,
+        service_account_id: int = None,
+        vpc_id: str = None,
+        workspace_id: int = None,
+    ):
+        self.already_joined = already_joined
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.search_key = search_key
+        self.service_account_id = service_account_id
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.already_joined is not None:
+            result['AlreadyJoined'] = self.already_joined
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.service_account_id is not None:
+            result['ServiceAccountId'] = self.service_account_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlreadyJoined') is not None:
+            self.already_joined = m.get('AlreadyJoined')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('ServiceAccountId') is not None:
+            self.service_account_id = m.get('ServiceAccountId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListWorkspacesResponseBodyDataBaseWorkspaces(TeaModel):
+    def __init__(
+        self,
+        already_joined: bool = None,
+        creator_id: int = None,
+        creator_nick_name: str = None,
+        creator_uid: str = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        name: str = None,
+        owner_id: int = None,
+        owner_nick_name: str = None,
+        owner_uid: str = None,
+        region: str = None,
+        service_account_id: int = None,
+        service_account_nick_name: str = None,
+        service_account_uid: str = None,
+        tenant_id: int = None,
+        vpc_id: str = None,
+        workspace_id: int = None,
+        workspace_name: str = None,
+    ):
+        self.already_joined = already_joined
+        self.creator_id = creator_id
+        self.creator_nick_name = creator_nick_name
+        self.creator_uid = creator_uid
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.name = name
+        self.owner_id = owner_id
+        self.owner_nick_name = owner_nick_name
+        self.owner_uid = owner_uid
+        self.region = region
+        self.service_account_id = service_account_id
+        self.service_account_nick_name = service_account_nick_name
+        self.service_account_uid = service_account_uid
+        self.tenant_id = tenant_id
+        self.vpc_id = vpc_id
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.already_joined is not None:
+            result['AlreadyJoined'] = self.already_joined
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_nick_name is not None:
+            result['CreatorNickName'] = self.creator_nick_name
+        if self.creator_uid is not None:
+            result['CreatorUid'] = self.creator_uid
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.owner_nick_name is not None:
+            result['OwnerNickName'] = self.owner_nick_name
+        if self.owner_uid is not None:
+            result['OwnerUid'] = self.owner_uid
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.service_account_id is not None:
+            result['ServiceAccountId'] = self.service_account_id
+        if self.service_account_nick_name is not None:
+            result['ServiceAccountNickName'] = self.service_account_nick_name
+        if self.service_account_uid is not None:
+            result['ServiceAccountUid'] = self.service_account_uid
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlreadyJoined') is not None:
+            self.already_joined = m.get('AlreadyJoined')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorNickName') is not None:
+            self.creator_nick_name = m.get('CreatorNickName')
+        if m.get('CreatorUid') is not None:
+            self.creator_uid = m.get('CreatorUid')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('OwnerNickName') is not None:
+            self.owner_nick_name = m.get('OwnerNickName')
+        if m.get('OwnerUid') is not None:
+            self.owner_uid = m.get('OwnerUid')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ServiceAccountId') is not None:
+            self.service_account_id = m.get('ServiceAccountId')
+        if m.get('ServiceAccountNickName') is not None:
+            self.service_account_nick_name = m.get('ServiceAccountNickName')
+        if m.get('ServiceAccountUid') is not None:
+            self.service_account_uid = m.get('ServiceAccountUid')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        return self
+
+
+class ListWorkspacesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        base_workspaces: List[ListWorkspacesResponseBodyDataBaseWorkspaces] = None,
+    ):
+        self.base_workspaces = base_workspaces
+
+    def validate(self):
+        if self.base_workspaces:
+            for k in self.base_workspaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BaseWorkspaces'] = []
+        if self.base_workspaces is not None:
+            for k in self.base_workspaces:
+                result['BaseWorkspaces'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.base_workspaces = []
+        if m.get('BaseWorkspaces') is not None:
+            for k in m.get('BaseWorkspaces'):
+                temp_model = ListWorkspacesResponseBodyDataBaseWorkspaces()
+                self.base_workspaces.append(temp_model.from_map(k))
+        return self
+
+
+class ListWorkspacesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListWorkspacesResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListWorkspacesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWorkspacesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkspacesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkspacesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -65516,6 +66344,7 @@ class SearchDatabaseRequest(TeaModel):
         env_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        real_login_user_uid: str = None,
         search_key: str = None,
         search_range: str = None,
         search_target: str = None,
@@ -65529,6 +66358,7 @@ class SearchDatabaseRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
+        self.real_login_user_uid = real_login_user_uid
         # The keyword that is used to search for databases.
         self.search_key = search_key
         # The query range based on permissions. Valid values:
@@ -65564,6 +66394,8 @@ class SearchDatabaseRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         if self.search_key is not None:
             result['SearchKey'] = self.search_key
         if self.search_range is not None:
@@ -65584,6 +66416,8 @@ class SearchDatabaseRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         if m.get('SearchKey') is not None:
             self.search_key = m.get('SearchKey')
         if m.get('SearchRange') is not None:
@@ -66719,6 +67553,7 @@ class SimplyAddInstanceRequest(TeaModel):
         instance_id: str = None,
         instance_region: str = None,
         port: int = None,
+        real_login_user_uid: str = None,
     ):
         # This parameter is required.
         self.database_password = database_password
@@ -66728,6 +67563,7 @@ class SimplyAddInstanceRequest(TeaModel):
         self.instance_id = instance_id
         self.instance_region = instance_region
         self.port = port
+        self.real_login_user_uid = real_login_user_uid
 
     def validate(self):
         pass
@@ -66750,6 +67586,8 @@ class SimplyAddInstanceRequest(TeaModel):
             result['InstanceRegion'] = self.instance_region
         if self.port is not None:
             result['Port'] = self.port
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
         return result
 
     def from_map(self, m: dict = None):
@@ -66766,6 +67604,8 @@ class SimplyAddInstanceRequest(TeaModel):
             self.instance_region = m.get('InstanceRegion')
         if m.get('Port') is not None:
             self.port = m.get('Port')
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
         return self
 
 
@@ -73200,6 +74040,132 @@ class UpdateUserResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateUserResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateWorkspaceRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        description: str = None,
+        workspace_id: int = None,
+        workspace_name: str = None,
+    ):
+        self.client_token = client_token
+        self.description = description
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        self.workspace_name = workspace_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        if self.workspace_name is not None:
+            result['WorkspaceName'] = self.workspace_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        if m.get('WorkspaceName') is not None:
+            self.workspace_name = m.get('WorkspaceName')
+        return self
+
+
+class UpdateWorkspaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateWorkspaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateWorkspaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateWorkspaceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

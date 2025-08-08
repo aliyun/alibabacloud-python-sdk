@@ -1,3 +1,20 @@
+2025-08-08 Version: 1.75.0
+- Support API CreateWorkspace.
+- Support API DeleteWorkspace.
+- Support API GetWorkspace.
+- Support API ListWorkspaces.
+- Support API UpdateWorkspace.
+- Update API ExecuteScript: add request parameters RealLoginUserUid.
+- Update API GenerateSqlFromNL: add request parameters RealLoginUserUid.
+- Update API GetDatabase: add request parameters RealLoginUserUid.
+- Update API GetInstance: add request parameters RealLoginUserUid.
+- Update API GetMetaTableDetailInfo: add request parameters RealLoginUserUid.
+- Update API ListInstances: add request parameters RealLoginUserUid.
+- Update API ListTables: add request parameters RealLoginUserUid.
+- Update API SearchDatabase: add request parameters RealLoginUserUid.
+- Update API SimplyAddInstance: add request parameters RealLoginUserUid.
+
+
 2025-07-17 Version: 1.74.1
 - Update API GenerateSqlFromNL: add request parameters TableNames.
 

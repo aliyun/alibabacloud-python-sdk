@@ -6559,6 +6559,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_ossfile_job_with_options_async(request, runtime)
 
+    def create_workspace_with_options(
+        self,
+        request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_workspace_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.CreateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_workspace(
+        self,
+        request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_workspace_with_options(request, runtime)
+
+    async def create_workspace_async(
+        self,
+        request: dms_enterprise_20181101_models.CreateWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_workspace_with_options_async(request, runtime)
+
     def delete_abac_authorization_with_options(
         self,
         request: dms_enterprise_20181101_models.DeleteAbacAuthorizationRequest,
@@ -8835,6 +8951,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
+    def delete_workspace_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_workspace_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_workspace(
+        self,
+        request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @return: DeleteWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_workspace_with_options(request, runtime)
+
+    async def delete_workspace_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.DeleteWorkspaceResponse:
+        """
+        @summary 删除工作空间
+        
+        @param request: DeleteWorkspaceRequest
+        @return: DeleteWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_workspace_with_options_async(request, runtime)
+
     def describe_dify_attribute_with_options(
         self,
         request: dms_enterprise_20181101_models.DescribeDifyAttributeRequest,
@@ -10243,6 +10455,8 @@ class Client(OpenApiClient):
             query['DbId'] = request.db_id
         if not UtilClient.is_unset(request.logic):
             query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.script):
             query['Script'] = request.script
         if not UtilClient.is_unset(request.tid):
@@ -10286,6 +10500,8 @@ class Client(OpenApiClient):
             query['DbId'] = request.db_id
         if not UtilClient.is_unset(request.logic):
             query['Logic'] = request.logic
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.script):
             query['Script'] = request.script
         if not UtilClient.is_unset(request.tid):
@@ -10581,6 +10797,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.question):
             query['Question'] = request.question
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.table_names):
             query['TableNames'] = request.table_names
         req = open_api_models.OpenApiRequest(
@@ -10636,6 +10854,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not UtilClient.is_unset(request.question):
             query['Question'] = request.question
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.table_names):
             query['TableNames'] = request.table_names
         req = open_api_models.OpenApiRequest(
@@ -13673,6 +13893,8 @@ class Client(OpenApiClient):
             query['Host'] = request.host
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.sid):
@@ -13716,6 +13938,8 @@ class Client(OpenApiClient):
             query['Host'] = request.host
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.schema_name):
             query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.sid):
@@ -13989,6 +14213,8 @@ class Client(OpenApiClient):
             query['Host'] = request.host
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.sid):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.tid):
@@ -14030,6 +14256,8 @@ class Client(OpenApiClient):
             query['Host'] = request.host
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.sid):
             query['Sid'] = request.sid
         if not UtilClient.is_unset(request.tid):
@@ -14519,6 +14747,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
         if not UtilClient.is_unset(request.tid):
@@ -14558,6 +14788,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.table_guid):
             query['TableGuid'] = request.table_guid
         if not UtilClient.is_unset(request.tid):
@@ -17686,6 +17918,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_upload_file_job_with_options_async(request, runtime)
+
+    def get_workspace_with_options(
+        self,
+        request: dms_enterprise_20181101_models.GetWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
+        """
+        @summary 获取空间描述
+        
+        @param request: GetWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_workspace_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
+        """
+        @summary 获取空间描述
+        
+        @param request: GetWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_workspace(
+        self,
+        request: dms_enterprise_20181101_models.GetWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
+        """
+        @summary 获取空间描述
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_workspace_with_options(request, runtime)
+
+    async def get_workspace_async(
+        self,
+        request: dms_enterprise_20181101_models.GetWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.GetWorkspaceResponse:
+        """
+        @summary 获取空间描述
+        
+        @param request: GetWorkspaceRequest
+        @return: GetWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_workspace_with_options_async(request, runtime)
 
     def grant_template_authority_with_options(
         self,
@@ -22243,6 +22571,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.search_key):
@@ -22296,6 +22626,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.search_key):
@@ -24605,6 +24937,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.return_guid):
             query['ReturnGuid'] = request.return_guid
         if not UtilClient.is_unset(request.search_name):
@@ -24652,6 +24986,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.return_guid):
             query['ReturnGuid'] = request.return_guid
         if not UtilClient.is_unset(request.search_name):
@@ -26226,6 +26562,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_work_flow_templates_with_options_async(request, runtime)
+
+    def list_workspaces_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListWorkspacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
+        """
+        @summary 搜索工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.already_joined):
+            query['AlreadyJoined'] = request.already_joined
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.service_account_id):
+            query['ServiceAccountId'] = request.service_account_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkspacesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspaces_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListWorkspacesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
+        """
+        @summary 搜索工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.already_joined):
+            query['AlreadyJoined'] = request.already_joined
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['Region'] = request.region
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.service_account_id):
+            query['ServiceAccountId'] = request.service_account_id
+        if not UtilClient.is_unset(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaces',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListWorkspacesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspaces(
+        self,
+        request: dms_enterprise_20181101_models.ListWorkspacesRequest,
+    ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
+        """
+        @summary 搜索工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_workspaces_with_options(request, runtime)
+
+    async def list_workspaces_async(
+        self,
+        request: dms_enterprise_20181101_models.ListWorkspacesRequest,
+    ) -> dms_enterprise_20181101_models.ListWorkspacesResponse:
+        """
+        @summary 搜索工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workspaces_with_options_async(request, runtime)
 
     def make_task_flow_instance_success_with_options(
         self,
@@ -29353,6 +29817,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.search_range):
@@ -29402,6 +29868,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not UtilClient.is_unset(request.search_key):
             query['SearchKey'] = request.search_key
         if not UtilClient.is_unset(request.search_range):
@@ -29853,6 +30321,8 @@ class Client(OpenApiClient):
             query['InstanceRegion'] = request.instance_region
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29898,6 +30368,8 @@ class Client(OpenApiClient):
             query['InstanceRegion'] = request.instance_region
         if not UtilClient.is_unset(request.port):
             query['Port'] = request.port
+        if not UtilClient.is_unset(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -34106,3 +34578,115 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)
+
+    def update_workspace_with_options(
+        self,
+        request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_workspace_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWorkspace',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.UpdateWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_workspace(
+        self,
+        request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @return: UpdateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_workspace_with_options(request, runtime)
+
+    async def update_workspace_async(
+        self,
+        request: dms_enterprise_20181101_models.UpdateWorkspaceRequest,
+    ) -> dms_enterprise_20181101_models.UpdateWorkspaceResponse:
+        """
+        @summary 修改工作空间
+        
+        @param request: UpdateWorkspaceRequest
+        @return: UpdateWorkspaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_workspace_with_options_async(request, runtime)
