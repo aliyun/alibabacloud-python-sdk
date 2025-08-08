@@ -2796,6 +2796,328 @@ class GetFoTaskStatusResponse(TeaModel):
         return self
 
 
+class GetLinkageAttributesTemplateRequestInstances(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        node_name: str = None,
+        node_type: str = None,
+    ):
+        self.id = id
+        self.node_name = node_name
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class GetLinkageAttributesTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        area_id: str = None,
+        instances: List[GetLinkageAttributesTemplateRequestInstances] = None,
+        max_results: int = None,
+        next_token: str = None,
+        target_variable: str = None,
+        template_id: str = None,
+        variables: Dict[str, Any] = None,
+    ):
+        self.area_id = area_id
+        self.instances = instances
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.target_variable = target_variable
+        # This parameter is required.
+        self.template_id = template_id
+        self.variables = variables
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.target_variable is not None:
+            result['TargetVariable'] = self.target_variable
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.variables is not None:
+            result['Variables'] = self.variables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = GetLinkageAttributesTemplateRequestInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TargetVariable') is not None:
+            self.target_variable = m.get('TargetVariable')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Variables') is not None:
+            self.variables = m.get('Variables')
+        return self
+
+
+class GetLinkageAttributesTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        area_id: str = None,
+        instances_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        target_variable: str = None,
+        template_id: str = None,
+        variables_shrink: str = None,
+    ):
+        self.area_id = area_id
+        self.instances_shrink = instances_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.target_variable = target_variable
+        # This parameter is required.
+        self.template_id = template_id
+        self.variables_shrink = variables_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.area_id is not None:
+            result['AreaId'] = self.area_id
+        if self.instances_shrink is not None:
+            result['Instances'] = self.instances_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.target_variable is not None:
+            result['TargetVariable'] = self.target_variable
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.variables_shrink is not None:
+            result['Variables'] = self.variables_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AreaId') is not None:
+            self.area_id = m.get('AreaId')
+        if m.get('Instances') is not None:
+            self.instances_shrink = m.get('Instances')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('TargetVariable') is not None:
+            self.target_variable = m.get('TargetVariable')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Variables') is not None:
+            self.variables_shrink = m.get('Variables')
+        return self
+
+
+class GetLinkageAttributesTemplateResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        next_token: str = None,
+        optional_values: str = None,
+        total_count: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.next_token = next_token
+        self.optional_values = optional_values
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.optional_values is not None:
+            result['OptionalValues'] = self.optional_values
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OptionalValues') is not None:
+            self.optional_values = m.get('OptionalValues')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetLinkageAttributesTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: GetLinkageAttributesTemplateResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetLinkageAttributesTemplateResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLinkageAttributesTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLinkageAttributesTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLinkageAttributesTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetPotentialFailZonesRequest(TeaModel):
     def __init__(
         self,

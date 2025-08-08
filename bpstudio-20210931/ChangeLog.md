@@ -1,3 +1,7 @@
+2025-08-08 Version: 7.1.0
+- Support API GetLinkageAttributesTemplate.
+
+
 2025-07-23 Version: 7.0.4
 - Update API GetTemplate: add response parameters Body.Data.DocumentUrl.
 - Update API ListTemplate: add response parameters Body.Data.$.Description.

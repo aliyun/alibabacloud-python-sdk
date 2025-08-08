@@ -1465,6 +1465,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_fo_task_status_with_options_async(request, runtime)
 
+    def get_linkage_attributes_template_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.GetLinkageAttributesTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetLinkageAttributesTemplateResponse:
+        """
+        @summary 获取模板变参可选值
+        
+        @param tmp_req: GetLinkageAttributesTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkageAttributesTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.GetLinkageAttributesTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instances):
+            request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.target_variable):
+            body['TargetVariable'] = request.target_variable
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLinkageAttributesTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetLinkageAttributesTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_linkage_attributes_template_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.GetLinkageAttributesTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetLinkageAttributesTemplateResponse:
+        """
+        @summary 获取模板变参可选值
+        
+        @param tmp_req: GetLinkageAttributesTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLinkageAttributesTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.GetLinkageAttributesTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instances):
+            request.instances_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instances, 'Instances', 'json')
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.area_id):
+            body['AreaId'] = request.area_id
+        if not UtilClient.is_unset(request.instances_shrink):
+            body['Instances'] = request.instances_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.target_variable):
+            body['TargetVariable'] = request.target_variable
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetLinkageAttributesTemplate',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetLinkageAttributesTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_linkage_attributes_template(
+        self,
+        request: bpstudio_20210931_models.GetLinkageAttributesTemplateRequest,
+    ) -> bpstudio_20210931_models.GetLinkageAttributesTemplateResponse:
+        """
+        @summary 获取模板变参可选值
+        
+        @param request: GetLinkageAttributesTemplateRequest
+        @return: GetLinkageAttributesTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_linkage_attributes_template_with_options(request, runtime)
+
+    async def get_linkage_attributes_template_async(
+        self,
+        request: bpstudio_20210931_models.GetLinkageAttributesTemplateRequest,
+    ) -> bpstudio_20210931_models.GetLinkageAttributesTemplateResponse:
+        """
+        @summary 获取模板变参可选值
+        
+        @param request: GetLinkageAttributesTemplateRequest
+        @return: GetLinkageAttributesTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_linkage_attributes_template_with_options_async(request, runtime)
+
     def get_potential_fail_zones_with_options(
         self,
         request: bpstudio_20210931_models.GetPotentialFailZonesRequest,
