@@ -5158,6 +5158,7 @@ class CreateLifecycleHookResponse(TeaModel):
 class CreateNotificationConfigurationRequest(TeaModel):
     def __init__(
         self,
+        message_encoding: str = None,
         notification_arn: str = None,
         notification_types: List[str] = None,
         owner_id: int = None,
@@ -5166,6 +5167,7 @@ class CreateNotificationConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
+        self.message_encoding = message_encoding
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
         # 
         # *   If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
@@ -5207,6 +5209,8 @@ class CreateNotificationConfigurationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.message_encoding is not None:
+            result['MessageEncoding'] = self.message_encoding
         if self.notification_arn is not None:
             result['NotificationArn'] = self.notification_arn
         if self.notification_types is not None:
@@ -5225,6 +5229,8 @@ class CreateNotificationConfigurationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MessageEncoding') is not None:
+            self.message_encoding = m.get('MessageEncoding')
         if m.get('NotificationArn') is not None:
             self.notification_arn = m.get('NotificationArn')
         if m.get('NotificationTypes') is not None:
@@ -18548,11 +18554,13 @@ class DescribeNotificationConfigurationsRequest(TeaModel):
 class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels(TeaModel):
     def __init__(
         self,
+        message_encoding: str = None,
         notification_arn: str = None,
         notification_types: List[str] = None,
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
+        self.message_encoding = message_encoding
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The value is in one of the following formats:
         # 
         # *   If you specify CloudMonitor as the notification recipient, the value is in the acs:ess:{region-id}:{account-id}:cloudmonitor format.
@@ -18582,6 +18590,8 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
             return _map
 
         result = dict()
+        if self.message_encoding is not None:
+            result['MessageEncoding'] = self.message_encoding
         if self.notification_arn is not None:
             result['NotificationArn'] = self.notification_arn
         if self.notification_types is not None:
@@ -18594,6 +18604,8 @@ class DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMod
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MessageEncoding') is not None:
+            self.message_encoding = m.get('MessageEncoding')
         if m.get('NotificationArn') is not None:
             self.notification_arn = m.get('NotificationArn')
         if m.get('NotificationTypes') is not None:
@@ -32010,6 +32022,7 @@ class ModifyLifecycleHookResponse(TeaModel):
 class ModifyNotificationConfigurationRequest(TeaModel):
     def __init__(
         self,
+        message_encoding: str = None,
         notification_arn: str = None,
         notification_types: List[str] = None,
         owner_id: int = None,
@@ -32018,6 +32031,7 @@ class ModifyNotificationConfigurationRequest(TeaModel):
         scaling_group_id: str = None,
         time_zone: str = None,
     ):
+        self.message_encoding = message_encoding
         # The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
         # 
         # *   If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
@@ -32057,6 +32071,8 @@ class ModifyNotificationConfigurationRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.message_encoding is not None:
+            result['MessageEncoding'] = self.message_encoding
         if self.notification_arn is not None:
             result['NotificationArn'] = self.notification_arn
         if self.notification_types is not None:
@@ -32075,6 +32091,8 @@ class ModifyNotificationConfigurationRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MessageEncoding') is not None:
+            self.message_encoding = m.get('MessageEncoding')
         if m.get('NotificationArn') is not None:
             self.notification_arn = m.get('NotificationArn')
         if m.get('NotificationTypes') is not None:
@@ -37736,7 +37754,7 @@ class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(TeaMo
         key: str = None,
         value: str = None,
     ):
-        # The name of the environment variable. The name must be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the `[0-9a-zA-Z]` format.
+        # The name of the environment variable. The name must be 1 to 128 characters in length. Format requirement: `[0-9a-zA-Z]` and underscores (_). It cannot start with a digit.
         self.key = key
         # The value of the environment variable. The value can be up to 256 characters in length.
         self.value = value
@@ -37775,17 +37793,17 @@ class ScaleWithAdjustmentRequestOverridesContainerOverrides(TeaModel):
         memory: float = None,
         name: str = None,
     ):
-        # The arguments that correspond to the startup commands of the container. You can specify up to 10 arguments.
+        # The argument that corresponds to the startup command of the container. You can specify up to 10 arguments.
         self.args = args
         # The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
         self.commands = commands
-        # The number of vCPUs that you want to allocate to the container.
+        # The number of vCPUs that you want to allocate to the container. Unit: vCPUs.
         self.cpu = cpu
         # The information about the environment variables.
         self.environment_vars = environment_vars
         # The memory size that you want to allocate to the container. Unit: GiB.
         self.memory = memory
-        # The container name. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
+        # The name of container N. If you specify ContainerOverrides, you must also specify Name. ContainerOverrides takes effect only when the container name specified by Name matches that specified in the scaling configuration.
         self.name = name
 
     def validate(self):
@@ -37846,7 +37864,7 @@ class ScaleWithAdjustmentRequestOverrides(TeaModel):
     ):
         # The list of parameters that you want to use to override specific configurations for containers.
         self.container_overrides = container_overrides
-        # The number of vCPUs that you want to allocate to the instance.
+        # The number of vCPUs that you want to allocate to the instance. Unit: vCPUs.
         self.cpu = cpu
         # The memory size that you want to allocate to the instance. Unit: GiB.
         self.memory = memory
@@ -37929,6 +37947,12 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The execution mode. Valid values:
+        # 
+        # *   None: If this is not specified, auto scaling is performed.
+        # *   PlanOnly: Scaling is not triggered. Only elastic planning is performed. The planning result is returned in PlanResult, including the instance type, zone ID, billing type, and number of created instances.
+        # 
+        # Default value: None.
         self.execution_mode = execution_mode
         # The context of the lifecycle hook.
         self.lifecycle_hook_context = lifecycle_hook_context
@@ -37937,18 +37961,19 @@ class ScaleWithAdjustmentRequest(TeaModel):
         # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides = overrides
         self.owner_id = owner_id
+        # Whether the current scale-out task supports concurrency.
         self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+        # Specifies whether to trigger the scaling task in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid Values:
         # 
-        # *   true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
-        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
+        # *   true: triggers the scaling task in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+        # *   false: does not trigger the scaling task in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
         # 
-        # >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+        # >  For more information, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 
         # Default value: false.
         self.sync_activity = sync_activity
@@ -38063,6 +38088,12 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         self.adjustment_value = adjustment_value
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The execution mode. Valid values:
+        # 
+        # *   None: If this is not specified, auto scaling is performed.
+        # *   PlanOnly: Scaling is not triggered. Only elastic planning is performed. The planning result is returned in PlanResult, including the instance type, zone ID, billing type, and number of created instances.
+        # 
+        # Default value: None.
         self.execution_mode = execution_mode
         # The context of the lifecycle hook.
         self.lifecycle_hook_context_shrink = lifecycle_hook_context_shrink
@@ -38071,18 +38102,19 @@ class ScaleWithAdjustmentShrinkRequest(TeaModel):
         # The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
         self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
+        # Whether the current scale-out task supports concurrency.
         self.parallel_task = parallel_task
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
         # 
         # This parameter is required.
         self.scaling_group_id = scaling_group_id
-        # Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+        # Specifies whether to trigger the scaling task in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid Values:
         # 
-        # *   true: triggers the scaling activity in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
-        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
+        # *   true: triggers the scaling task in a synchronous manner. A scaling activity is triggered at the time when the scaling rule is executed.
+        # *   false: does not trigger the scaling task in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number and determines whether to trigger the scaling activity based on the check result.
         # 
-        # >  For more information about the expected number of instances feature, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
+        # >  For more information, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
         # 
         # Default value: false.
         self.sync_activity = sync_activity
@@ -38164,10 +38196,22 @@ class ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations(TeaModel):
         spot_strategy: str = None,
         zone_id: str = None,
     ):
+        # The number of instances.
         self.amount = amount
+        # The billing method of the instance. Valid values:
+        # 
+        # *   **Prepaid**: subscription.
+        # *   **Postpaid**: pay-as-you-go.
         self.instance_charge_type = instance_charge_type
+        # The instance type.
         self.instance_type = instance_type
+        # The spot policy of instances. Valid values:
+        # 
+        # *   NoSpot: The instances are created as pay-as-you-go instances.
+        # *   SpotWithPriceLimit: The instances are created as spot instances for which you can specify the maximum hourly price.
+        # *   SpotAsPriceGo: The instances are spot instances for which the market price at the time of purchase is automatically used as the bid price.
         self.spot_strategy = spot_strategy
+        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -38211,6 +38255,7 @@ class ScaleWithAdjustmentResponseBodyPlanResult(TeaModel):
         self,
         resource_allocations: List[ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations] = None,
     ):
+        # The resource allocation information in the elastic planning result.
         self.resource_allocations = resource_allocations
 
     def validate(self):
@@ -38255,6 +38300,7 @@ class ScaleWithAdjustmentResponseBody(TeaModel):
         # 
         # This parameter is applicable to only scaling groups that have an expected number of instances.
         self.activity_type = activity_type
+        # The elastic planning result returned when the ExecutionMode is set to PlanOnly.
         self.plan_result = plan_result
         # The ID of the request.
         self.request_id = request_id

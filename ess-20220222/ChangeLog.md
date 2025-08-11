@@ -1,3 +1,9 @@
+2025-08-11 Version: 1.10.18
+- Update API CreateNotificationConfiguration: add request parameters MessageEncoding.
+- Update API DescribeNotificationConfigurations: add response parameters Body.NotificationConfigurationModels.$.MessageEncoding.
+- Update API ModifyNotificationConfiguration: add request parameters MessageEncoding.
+
+
 2025-07-25 Version: 1.10.17
 - Update API ScaleWithAdjustment: add request parameters Overrides.UserData.
 

@@ -2545,6 +2545,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.message_encoding):
+            query['MessageEncoding'] = request.message_encoding
         if not UtilClient.is_unset(request.notification_arn):
             query['NotificationArn'] = request.notification_arn
         if not UtilClient.is_unset(request.notification_types):
@@ -2596,6 +2598,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.message_encoding):
+            query['MessageEncoding'] = request.message_encoding
         if not UtilClient.is_unset(request.notification_arn):
             query['NotificationArn'] = request.notification_arn
         if not UtilClient.is_unset(request.notification_types):
@@ -10833,6 +10837,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.message_encoding):
+            query['MessageEncoding'] = request.message_encoding
         if not UtilClient.is_unset(request.notification_arn):
             query['NotificationArn'] = request.notification_arn
         if not UtilClient.is_unset(request.notification_types):
@@ -10880,6 +10886,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.message_encoding):
+            query['MessageEncoding'] = request.message_encoding
         if not UtilClient.is_unset(request.notification_arn):
             query['NotificationArn'] = request.notification_arn
         if not UtilClient.is_unset(request.notification_types):
