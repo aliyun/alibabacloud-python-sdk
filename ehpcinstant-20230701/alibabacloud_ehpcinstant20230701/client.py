@@ -2077,6 +2077,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_image_with_options_async(request, runtime)
 
+    def synchronize_app_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.SynchronizeAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
+        """
+        @summary 应用跨地域同步
+        
+        @param tmp_req: SynchronizeAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.SynchronizeAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.target_region_ids):
+            request.target_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target_region_ids, 'TargetRegionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.target_region_ids_shrink):
+            query['TargetRegionIds'] = request.target_region_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SynchronizeApp',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.SynchronizeAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def synchronize_app_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.SynchronizeAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
+        """
+        @summary 应用跨地域同步
+        
+        @param tmp_req: SynchronizeAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SynchronizeAppResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.SynchronizeAppShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.target_region_ids):
+            request.target_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.target_region_ids, 'TargetRegionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.target_region_ids_shrink):
+            query['TargetRegionIds'] = request.target_region_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SynchronizeApp',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.SynchronizeAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def synchronize_app(
+        self,
+        request: ehpc_instant_20230701_models.SynchronizeAppRequest,
+    ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
+        """
+        @summary 应用跨地域同步
+        
+        @param request: SynchronizeAppRequest
+        @return: SynchronizeAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.synchronize_app_with_options(request, runtime)
+
+    async def synchronize_app_async(
+        self,
+        request: ehpc_instant_20230701_models.SynchronizeAppRequest,
+    ) -> ehpc_instant_20230701_models.SynchronizeAppResponse:
+        """
+        @summary 应用跨地域同步
+        
+        @param request: SynchronizeAppRequest
+        @return: SynchronizeAppResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.synchronize_app_with_options_async(request, runtime)
+
     def tag_resources_with_options(
         self,
         request: ehpc_instant_20230701_models.TagResourcesRequest,

@@ -1,3 +1,7 @@
+2025-08-11 Version: 3.1.0
+- Support API SynchronizeApp.
+
+
 2025-08-07 Version: 3.0.0
 - Update API GetJob: delete response parameters Body.JobInfo.Tasks.$.TaskSpec.TaskExecutor.$.VM.UserName.
 - Update API ListExecutors: add response parameters Body.Executors.$.Resource.InstanceType.
