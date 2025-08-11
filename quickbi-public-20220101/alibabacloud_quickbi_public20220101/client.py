@@ -6551,6 +6551,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_cube_performance_with_options_async(request, runtime)
 
+    def query_dashboard_nl_2sql_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
+        """
+        @summary 查询仪表板的问数资源信息
+        
+        @param request: QueryDashboardNl2sqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDashboardNl2sqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDashboardNl2sql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDashboardNl2sqlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_dashboard_nl_2sql_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
+        """
+        @summary 查询仪表板的问数资源信息
+        
+        @param request: QueryDashboardNl2sqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDashboardNl2sqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryDashboardNl2sql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryDashboardNl2sqlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_dashboard_nl_2sql(
+        self,
+        request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
+    ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
+        """
+        @summary 查询仪表板的问数资源信息
+        
+        @param request: QueryDashboardNl2sqlRequest
+        @return: QueryDashboardNl2sqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_dashboard_nl_2sql_with_options(request, runtime)
+
+    async def query_dashboard_nl_2sql_async(
+        self,
+        request: quickbi_public_20220101_models.QueryDashboardNl2sqlRequest,
+    ) -> quickbi_public_20220101_models.QueryDashboardNl2sqlResponse:
+        """
+        @summary 查询仪表板的问数资源信息
+        
+        @param request: QueryDashboardNl2sqlRequest
+        @return: QueryDashboardNl2sqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_dashboard_nl_2sql_with_options_async(request, runtime)
+
     def query_data_with_options(
         self,
         request: quickbi_public_20220101_models.QueryDataRequest,
@@ -7725,6 +7825,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_embedded_status_with_options_async(request, runtime)
 
+    def query_last_acceleration_engine_job_with_options(
+        self,
+        request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
+        """
+        @summary 通过数据集ID查询最近一次加速任务
+        
+        @param request: QueryLastAccelerationEngineJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLastAccelerationEngineJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLastAccelerationEngineJob',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_last_acceleration_engine_job_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
+        """
+        @summary 通过数据集ID查询最近一次加速任务
+        
+        @param request: QueryLastAccelerationEngineJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLastAccelerationEngineJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryLastAccelerationEngineJob',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_last_acceleration_engine_job(
+        self,
+        request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
+    ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
+        """
+        @summary 通过数据集ID查询最近一次加速任务
+        
+        @param request: QueryLastAccelerationEngineJobRequest
+        @return: QueryLastAccelerationEngineJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_last_acceleration_engine_job_with_options(request, runtime)
+
+    async def query_last_acceleration_engine_job_async(
+        self,
+        request: quickbi_public_20220101_models.QueryLastAccelerationEngineJobRequest,
+    ) -> quickbi_public_20220101_models.QueryLastAccelerationEngineJobResponse:
+        """
+        @summary 通过数据集ID查询最近一次加速任务
+        
+        @param request: QueryLastAccelerationEngineJobRequest
+        @return: QueryLastAccelerationEngineJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_last_acceleration_engine_job_with_options_async(request, runtime)
+
     def query_llm_cube_with_theme_list_by_user_id_with_options(
         self,
         request: quickbi_public_20220101_models.QueryLlmCubeWithThemeListByUserIdRequest,
@@ -8139,7 +8335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
         """
-        @summary 查询用户有权查看的作品列表(新)
+        @summary Query list of works user has permission to view (new)
         
         @param request: QueryReadableResourcesListByUserIdV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -8178,7 +8374,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
         """
-        @summary 查询用户有权查看的作品列表(新)
+        @summary Query list of works user has permission to view (new)
         
         @param request: QueryReadableResourcesListByUserIdV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -8216,7 +8412,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
         """
-        @summary 查询用户有权查看的作品列表(新)
+        @summary Query list of works user has permission to view (new)
         
         @param request: QueryReadableResourcesListByUserIdV2Request
         @return: QueryReadableResourcesListByUserIdV2Response
@@ -8229,7 +8425,7 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Request,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdV2Response:
         """
-        @summary 查询用户有权查看的作品列表(新)
+        @summary Query list of works user has permission to view (new)
         
         @param request: QueryReadableResourcesListByUserIdV2Request
         @return: QueryReadableResourcesListByUserIdV2Response

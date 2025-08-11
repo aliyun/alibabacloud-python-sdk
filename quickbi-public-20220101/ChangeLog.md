@@ -1,3 +1,10 @@
+2025-08-11 Version: 1.12.0
+- Support API QueryDashboardNl2sql.
+- Support API QueryLastAccelerationEngineJob.
+- Update API ListPortalMenuAuthorization: add response parameters Body.Result.$.Receivers.$.AuthPointsValue.
+- Update API QueryData: add response parameters Body.Result.Headers.$.OriginalColumn.
+
+
 2025-07-14 Version: 1.11.0
 - Support API QueryReadableResourcesListByUserIdV2.
 

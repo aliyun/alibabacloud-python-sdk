@@ -7692,9 +7692,10 @@ class ListOrganizationRolesResponseBody(TeaModel):
         self.request_id = request_id
         # Returns the list of organization roles.
         self.result = result
-        # 是否请求成功。取值范围：
-        # - true：请求成功
-        # - false：请求失败
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -7807,9 +7808,11 @@ class ListPortalMenuAuthorizationRequest(TeaModel):
 class ListPortalMenuAuthorizationResponseBodyResultReceivers(TeaModel):
     def __init__(
         self,
+        auth_points_value: int = None,
         receiver_id: str = None,
         receiver_type: int = None,
     ):
+        self.auth_points_value = auth_points_value
         # The ID of the authorization object.
         self.receiver_id = receiver_id
         # The type of the authorization object. Valid values:
@@ -7827,6 +7830,8 @@ class ListPortalMenuAuthorizationResponseBodyResultReceivers(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_points_value is not None:
+            result['AuthPointsValue'] = self.auth_points_value
         if self.receiver_id is not None:
             result['ReceiverId'] = self.receiver_id
         if self.receiver_type is not None:
@@ -7835,6 +7840,8 @@ class ListPortalMenuAuthorizationResponseBodyResultReceivers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthPointsValue') is not None:
+            self.auth_points_value = m.get('AuthPointsValue')
         if m.get('ReceiverId') is not None:
             self.receiver_id = m.get('ReceiverId')
         if m.get('ReceiverType') is not None:
@@ -11845,6 +11852,174 @@ class QueryCubePerformanceResponse(TeaModel):
         return self
 
 
+class QueryDashboardNl2sqlRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.user_id = user_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class QueryDashboardNl2sqlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        authorities: List[str] = None,
+        dashboard_name: str = None,
+        dashboard_nl_2sql_id: str = None,
+        owner_id: str = None,
+    ):
+        self.authorities = authorities
+        self.dashboard_name = dashboard_name
+        self.dashboard_nl_2sql_id = dashboard_nl_2sql_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authorities is not None:
+            result['Authorities'] = self.authorities
+        if self.dashboard_name is not None:
+            result['DashboardName'] = self.dashboard_name
+        if self.dashboard_nl_2sql_id is not None:
+            result['DashboardNl2sqlId'] = self.dashboard_nl_2sql_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Authorities') is not None:
+            self.authorities = m.get('Authorities')
+        if m.get('DashboardName') is not None:
+            self.dashboard_name = m.get('DashboardName')
+        if m.get('DashboardNl2sqlId') is not None:
+            self.dashboard_nl_2sql_id = m.get('DashboardNl2sqlId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class QueryDashboardNl2sqlResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[QueryDashboardNl2sqlResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = QueryDashboardNl2sqlResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryDashboardNl2sqlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDashboardNl2sqlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDashboardNl2sqlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryDataRequest(TeaModel):
     def __init__(
         self,
@@ -11931,6 +12106,7 @@ class QueryDataResponseBodyResultHeaders(TeaModel):
         data_type: str = None,
         granularity: str = None,
         label: str = None,
+        original_column: str = None,
         type: str = None,
     ):
         # Aggregation operator. Only present for measure fields, such as SUM, AVG, and MAX.
@@ -11958,6 +12134,7 @@ class QueryDataResponseBodyResultHeaders(TeaModel):
         self.granularity = granularity
         # Field alias, which serves as the key in the map data rows of the `values` parameter.
         self.label = label
+        self.original_column = original_column
         # Field type, used to distinguish between dimension and measure fields.
         # - Dimension: dimension
         # - Measure: measure
@@ -11982,6 +12159,8 @@ class QueryDataResponseBodyResultHeaders(TeaModel):
             result['Granularity'] = self.granularity
         if self.label is not None:
             result['Label'] = self.label
+        if self.original_column is not None:
+            result['OriginalColumn'] = self.original_column
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -11998,6 +12177,8 @@ class QueryDataResponseBodyResultHeaders(TeaModel):
             self.granularity = m.get('Granularity')
         if m.get('Label') is not None:
             self.label = m.get('Label')
+        if m.get('OriginalColumn') is not None:
+            self.original_column = m.get('OriginalColumn')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -12554,7 +12735,7 @@ class QueryDataServiceResponseBodyResultHeaders(TeaModel):
         # 
         # - Geographic granularity: COUNTRY (country level), PROVINCE (province level), CITY (city level), XIAN (district/county level), REGION (region)
         self.granularity = granularity
-        # 字段别名，结果参数values中map数据行的key。
+        # Alias for the field, serving as the key in the map data row of the values parameter.
         self.label = label
         # Field type, used to distinguish between dimension and measure fields.
         self.type = type
@@ -14574,10 +14755,10 @@ class QueryDatasetSmartqStatusResponseBody(TeaModel):
         # - true: Request succeeded
         # - false: Request failed
         self.result = result
-        # 是否请求成功。取值范围：
+        # Indicates whether the request is successful. Valid values:
         # 
-        # - true：请求成功
-        # - false：请求失败
+        # *   true: The request was successful.
+        # *   false: The request failed.
         self.success = success
 
     def validate(self):
@@ -15087,6 +15268,161 @@ class QueryEmbeddedStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryEmbeddedStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryLastAccelerationEngineJobRequest(TeaModel):
+    def __init__(
+        self,
+        cube_id: str = None,
+    ):
+        # This parameter is required.
+        self.cube_id = cube_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cube_id is not None:
+            result['CubeId'] = self.cube_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CubeId') is not None:
+            self.cube_id = m.get('CubeId')
+        return self
+
+
+class QueryLastAccelerationEngineJobResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        job_history_id: str = None,
+        status: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.job_history_id = job_history_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.job_history_id is not None:
+            result['JobHistoryId'] = self.job_history_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('JobHistoryId') is not None:
+            self.job_history_id = m.get('JobHistoryId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class QueryLastAccelerationEngineJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: QueryLastAccelerationEngineJobResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = QueryLastAccelerationEngineJobResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryLastAccelerationEngineJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryLastAccelerationEngineJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryLastAccelerationEngineJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16140,9 +16476,20 @@ class QueryReadableResourcesListByUserIdV2Request(TeaModel):
         work_type: str = None,
         workspace_id: str = None,
     ):
+        # User ID.
+        # 
         # This parameter is required.
         self.user_id = user_id
+        # Work type. Possible values:
+        # - DATAPRODUCT: Data Portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
+        # - dashboardOfflineQuery: Self-service Data Extraction
+        # - SCREEN: Data Wall
+        # - DATAFORM: Data Entry
+        # - ANALYSIS: Ad-hoc Analysis
         self.work_type = work_type
+        # Workspace ID.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16181,9 +16528,13 @@ class QueryReadableResourcesListByUserIdV2ResponseBodyResultDirectory(TeaModel):
         path_id: str = None,
         path_name: str = None,
     ):
+        # The ID of the directory to which it belongs.
         self.id = id
+        # The name of the directory to which it belongs.
         self.name = name
+        # The hierarchical structure of directory IDs, separated by『/』.
         self.path_id = path_id
+        # The hierarchical structure of directory names, separated by『/』.
         self.path_name = path_name
 
     def validate(self):
@@ -16237,20 +16588,49 @@ class QueryReadableResourcesListByUserIdV2ResponseBodyResult(TeaModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # Timestamp of creation in milliseconds.
         self.create_time = create_time
+        # Work remarks.
         self.description = description
+        # The directory structure where the work is located.
         self.directory = directory
+        # Alibaba Cloud account name of the modifier.
         self.modify_name = modify_name
+        # Timestamp of the last modification in milliseconds.
         self.modify_time = modify_time
+        # The UserID of the work owner in Quick BI.
         self.owner_id = owner_id
+        # Alibaba Cloud account name of the owner.
         self.owner_name = owner_name
+        # Security policy for collaborative work. Values: - 0: Private - 12: Authorize specific members - 1 or 11: Authorize all space members
+        # >- If you are using the old version of permissions, the return value is 1. - If you are using the new version of permissions, the return value is 11.
         self.security_level = security_level
+        # Report status. Possible values:
+        # - 0: Unpublished
+        # - 1: Published
+        # - 2: Modified but not published
+        # - 3: Offline
         self.status = status
+        # Third-party embedding status. Possible values:
+        # - 0: Embedding not enabled
+        # - 1: Embedding enabled
         self.third_part_auth_flag = third_part_auth_flag
+        # The name of the work.
         self.work_name = work_name
+        # Work type. Possible values:
+        # - DATAPRODUCT: Data Portal
+        # - PAGE: Dashboard
+        # - REPORT: Spreadsheet
+        # - dashboardOfflineQuery: Self-service Data Extraction
+        # - SCREEN: Data Wall
+        # - DATAFORM: Data Entry
+        # - ANALYSIS: Ad-hoc Analysis
         self.work_type = work_type
+        # The ID of the work.
         self.works_id = works_id
+        # ID of the workspace to which the work belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the work belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -16338,8 +16718,13 @@ class QueryReadableResourcesListByUserIdV2ResponseBody(TeaModel):
         result: List[QueryReadableResourcesListByUserIdV2ResponseBodyResult] = None,
         success: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returns the query result.
         self.result = result
+        # Indicates whether the request was successful. Possible values:
+        # - true: Request succeeded
+        # - false: Request failed
         self.success = success
 
     def validate(self):
@@ -18134,8 +18519,7 @@ class QueryUserInfoByAccountRequest(TeaModel):
         # 
         # This parameter is required.
         self.account = account
-        # 当查询子账号出现重复报错时，输入主账号的账号名，
-        # 例如zhangsan@test.onaliyun.com。
+        # When a duplicate error occurs while querying the sub-account, enter the primary account\\"s username, for example, zhangsan@test.onaliyun.com.
         self.parent_account_name = parent_account_name
 
     def validate(self):
@@ -18196,7 +18580,7 @@ class QueryUserInfoByAccountResponseBodyResult(TeaModel):
         self.nick_name = nick_name
         # The phone number of the alert contact.
         self.phone = phone
-        # 用户绑定的组织角色ID列表。
+        # List of organization role IDs bound to the user.
         self.role_id_list = role_id_list
         # The UserID in the Quick BI.
         self.user_id = user_id
@@ -20133,9 +20517,9 @@ class QueryWorksByOrganizationResponseBodyResultData(TeaModel):
         self.directory = directory
         # Timestamp (in milliseconds) when the work was created.
         self.gmt_create = gmt_create
-        # 作品修改的毫秒级时间戳。
+        # Millisecond-level timestamp of the work modification.
         self.gmt_modify = gmt_modify
-        # 作品修改者的阿里云账户名。
+        # The Alibaba Cloud account name of the work modifier.
         self.modify_name = modify_name
         # The UserID of the work\\"s owner in Quick BI.
         self.owner_id = owner_id
