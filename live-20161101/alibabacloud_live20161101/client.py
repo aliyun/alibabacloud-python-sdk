@@ -50438,10 +50438,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.max_idle_time):
+            query['MaxIdleTime'] = request.max_idle_time
         if not UtilClient.is_unset(request.mix_layout_params_shrink):
             query['MixLayoutParams'] = request.mix_layout_params_shrink
         if not UtilClient.is_unset(request.mix_transcode_params_shrink):
             query['MixTranscodeParams'] = request.mix_transcode_params_shrink
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.record_params_shrink):
@@ -50499,10 +50503,14 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.max_idle_time):
+            query['MaxIdleTime'] = request.max_idle_time
         if not UtilClient.is_unset(request.mix_layout_params_shrink):
             query['MixLayoutParams'] = request.mix_layout_params_shrink
         if not UtilClient.is_unset(request.mix_transcode_params_shrink):
             query['MixTranscodeParams'] = request.mix_transcode_params_shrink
+        if not UtilClient.is_unset(request.notify_auth_key):
+            query['NotifyAuthKey'] = request.notify_auth_key
         if not UtilClient.is_unset(request.notify_url):
             query['NotifyUrl'] = request.notify_url
         if not UtilClient.is_unset(request.record_params_shrink):

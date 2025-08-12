@@ -44366,6 +44366,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
         description: str = None,
         domain_name: str = None,
         notify_content: str = None,
+        notify_response: str = None,
         notify_result: str = None,
         notify_time: str = None,
         notify_type: str = None,
@@ -44380,6 +44381,7 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
         self.domain_name = domain_name
         # The callback content.
         self.notify_content = notify_content
+        self.notify_response = notify_response
         # The callback result. Valid values:
         # 
         # *   success
@@ -44419,6 +44421,8 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
             result['DomainName'] = self.domain_name
         if self.notify_content is not None:
             result['NotifyContent'] = self.notify_content
+        if self.notify_response is not None:
+            result['NotifyResponse'] = self.notify_response
         if self.notify_result is not None:
             result['NotifyResult'] = self.notify_result
         if self.notify_time is not None:
@@ -44441,6 +44445,8 @@ class DescribeLiveRecordNotifyRecordsResponseBodyCallbackList(TeaModel):
             self.domain_name = m.get('DomainName')
         if m.get('NotifyContent') is not None:
             self.notify_content = m.get('NotifyContent')
+        if m.get('NotifyResponse') is not None:
+            self.notify_response = m.get('NotifyResponse')
         if m.get('NotifyResult') is not None:
             self.notify_result = m.get('NotifyResult')
         if m.get('NotifyTime') is not None:
@@ -59266,19 +59272,63 @@ class DescribeRtcCloudRecordingFilesRequest(TeaModel):
         return self
 
 
+class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList(TeaModel):
+    def __init__(
+        self,
+        media_ids: List[str] = None,
+        merged_ids: List[str] = None,
+        stream: str = None,
+    ):
+        self.media_ids = media_ids
+        self.merged_ids = merged_ids
+        self.stream = stream
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_ids is not None:
+            result['MediaIds'] = self.media_ids
+        if self.merged_ids is not None:
+            result['MergedIds'] = self.merged_ids
+        if self.stream is not None:
+            result['Stream'] = self.stream
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaIds') is not None:
+            self.media_ids = m.get('MediaIds')
+        if m.get('MergedIds') is not None:
+            self.merged_ids = m.get('MergedIds')
+        if m.get('Stream') is not None:
+            self.stream = m.get('Stream')
+        return self
+
+
 class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList(TeaModel):
     def __init__(
         self,
         hls_file_list: List[str] = None,
         mp_3file_list: List[str] = None,
         mp_4file_list: List[str] = None,
+        vod_media_list: List[DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList] = None,
     ):
         self.hls_file_list = hls_file_list
         self.mp_3file_list = mp_3file_list
         self.mp_4file_list = mp_4file_list
+        self.vod_media_list = vod_media_list
 
     def validate(self):
-        pass
+        if self.vod_media_list:
+            for k in self.vod_media_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -59292,6 +59342,10 @@ class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList(TeaModel)
             result['Mp3FileList'] = self.mp_3file_list
         if self.mp_4file_list is not None:
             result['Mp4FileList'] = self.mp_4file_list
+        result['VodMediaList'] = []
+        if self.vod_media_list is not None:
+            for k in self.vod_media_list:
+                result['VodMediaList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -59302,6 +59356,11 @@ class DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList(TeaModel)
             self.mp_3file_list = m.get('Mp3FileList')
         if m.get('Mp4FileList') is not None:
             self.mp_4file_list = m.get('Mp4FileList')
+        self.vod_media_list = []
+        if m.get('VodMediaList') is not None:
+            for k in m.get('VodMediaList'):
+                temp_model = DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList()
+                self.vod_media_list.append(temp_model.from_map(k))
         return self
 
 
@@ -85573,10 +85632,12 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(TeaModel):
     def __init__(
         self,
         file_name_pattern: str = None,
+        file_path_prefix: List[str] = None,
         format: str = None,
         slice_name_pattern: str = None,
     ):
         self.file_name_pattern = file_name_pattern
+        self.file_path_prefix = file_path_prefix
         # This parameter is required.
         self.format = format
         self.slice_name_pattern = slice_name_pattern
@@ -85592,6 +85653,8 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(TeaModel):
         result = dict()
         if self.file_name_pattern is not None:
             result['FileNamePattern'] = self.file_name_pattern
+        if self.file_path_prefix is not None:
+            result['FilePathPrefix'] = self.file_path_prefix
         if self.format is not None:
             result['Format'] = self.format
         if self.slice_name_pattern is not None:
@@ -85602,6 +85665,8 @@ class StartRtcCloudRecordingRequestStorageParamsFileInfo(TeaModel):
         m = m or dict()
         if m.get('FileNamePattern') is not None:
             self.file_name_pattern = m.get('FileNamePattern')
+        if m.get('FilePathPrefix') is not None:
+            self.file_path_prefix = m.get('FilePathPrefix')
         if m.get('Format') is not None:
             self.format = m.get('Format')
         if m.get('SliceNamePattern') is not None:
@@ -85644,17 +85709,64 @@ class StartRtcCloudRecordingRequestStorageParamsOSSParams(TeaModel):
         return self
 
 
+class StartRtcCloudRecordingRequestStorageParamsVodParams(TeaModel):
+    def __init__(
+        self,
+        auto_compose: int = None,
+        compose_vod_transcode_group_id: str = None,
+        storage_location: str = None,
+        vod_transcode_group_id: str = None,
+    ):
+        self.auto_compose = auto_compose
+        self.compose_vod_transcode_group_id = compose_vod_transcode_group_id
+        self.storage_location = storage_location
+        self.vod_transcode_group_id = vod_transcode_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_compose is not None:
+            result['AutoCompose'] = self.auto_compose
+        if self.compose_vod_transcode_group_id is not None:
+            result['ComposeVodTranscodeGroupId'] = self.compose_vod_transcode_group_id
+        if self.storage_location is not None:
+            result['StorageLocation'] = self.storage_location
+        if self.vod_transcode_group_id is not None:
+            result['VodTranscodeGroupId'] = self.vod_transcode_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCompose') is not None:
+            self.auto_compose = m.get('AutoCompose')
+        if m.get('ComposeVodTranscodeGroupId') is not None:
+            self.compose_vod_transcode_group_id = m.get('ComposeVodTranscodeGroupId')
+        if m.get('StorageLocation') is not None:
+            self.storage_location = m.get('StorageLocation')
+        if m.get('VodTranscodeGroupId') is not None:
+            self.vod_transcode_group_id = m.get('VodTranscodeGroupId')
+        return self
+
+
 class StartRtcCloudRecordingRequestStorageParams(TeaModel):
     def __init__(
         self,
         file_info: List[StartRtcCloudRecordingRequestStorageParamsFileInfo] = None,
         ossparams: StartRtcCloudRecordingRequestStorageParamsOSSParams = None,
         storage_type: int = None,
+        vod_params: StartRtcCloudRecordingRequestStorageParamsVodParams = None,
     ):
         self.file_info = file_info
         self.ossparams = ossparams
         # This parameter is required.
         self.storage_type = storage_type
+        self.vod_params = vod_params
 
     def validate(self):
         if self.file_info:
@@ -85663,6 +85775,8 @@ class StartRtcCloudRecordingRequestStorageParams(TeaModel):
                     k.validate()
         if self.ossparams:
             self.ossparams.validate()
+        if self.vod_params:
+            self.vod_params.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -85678,6 +85792,8 @@ class StartRtcCloudRecordingRequestStorageParams(TeaModel):
             result['OSSParams'] = self.ossparams.to_map()
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
+        if self.vod_params is not None:
+            result['VodParams'] = self.vod_params.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -85692,6 +85808,9 @@ class StartRtcCloudRecordingRequestStorageParams(TeaModel):
             self.ossparams = temp_model.from_map(m['OSSParams'])
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
+        if m.get('VodParams') is not None:
+            temp_model = StartRtcCloudRecordingRequestStorageParamsVodParams()
+            self.vod_params = temp_model.from_map(m['VodParams'])
         return self
 
 
@@ -85776,8 +85895,10 @@ class StartRtcCloudRecordingRequest(TeaModel):
         self,
         app_id: str = None,
         channel_id: str = None,
+        max_idle_time: int = None,
         mix_layout_params: StartRtcCloudRecordingRequestMixLayoutParams = None,
         mix_transcode_params: StartRtcCloudRecordingRequestMixTranscodeParams = None,
+        notify_auth_key: str = None,
         notify_url: str = None,
         record_params: StartRtcCloudRecordingRequestRecordParams = None,
         storage_params: StartRtcCloudRecordingRequestStorageParams = None,
@@ -85787,8 +85908,10 @@ class StartRtcCloudRecordingRequest(TeaModel):
         self.app_id = app_id
         # This parameter is required.
         self.channel_id = channel_id
+        self.max_idle_time = max_idle_time
         self.mix_layout_params = mix_layout_params
         self.mix_transcode_params = mix_transcode_params
+        self.notify_auth_key = notify_auth_key
         self.notify_url = notify_url
         # This parameter is required.
         self.record_params = record_params
@@ -85819,10 +85942,14 @@ class StartRtcCloudRecordingRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.mix_layout_params is not None:
             result['MixLayoutParams'] = self.mix_layout_params.to_map()
         if self.mix_transcode_params is not None:
             result['MixTranscodeParams'] = self.mix_transcode_params.to_map()
+        if self.notify_auth_key is not None:
+            result['NotifyAuthKey'] = self.notify_auth_key
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.record_params is not None:
@@ -85839,12 +85966,16 @@ class StartRtcCloudRecordingRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('MixLayoutParams') is not None:
             temp_model = StartRtcCloudRecordingRequestMixLayoutParams()
             self.mix_layout_params = temp_model.from_map(m['MixLayoutParams'])
         if m.get('MixTranscodeParams') is not None:
             temp_model = StartRtcCloudRecordingRequestMixTranscodeParams()
             self.mix_transcode_params = temp_model.from_map(m['MixTranscodeParams'])
+        if m.get('NotifyAuthKey') is not None:
+            self.notify_auth_key = m.get('NotifyAuthKey')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('RecordParams') is not None:
@@ -85864,8 +85995,10 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
         self,
         app_id: str = None,
         channel_id: str = None,
+        max_idle_time: int = None,
         mix_layout_params_shrink: str = None,
         mix_transcode_params_shrink: str = None,
+        notify_auth_key: str = None,
         notify_url: str = None,
         record_params_shrink: str = None,
         storage_params_shrink: str = None,
@@ -85875,8 +86008,10 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
         self.app_id = app_id
         # This parameter is required.
         self.channel_id = channel_id
+        self.max_idle_time = max_idle_time
         self.mix_layout_params_shrink = mix_layout_params_shrink
         self.mix_transcode_params_shrink = mix_transcode_params_shrink
+        self.notify_auth_key = notify_auth_key
         self.notify_url = notify_url
         # This parameter is required.
         self.record_params_shrink = record_params_shrink
@@ -85898,10 +86033,14 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.channel_id is not None:
             result['ChannelId'] = self.channel_id
+        if self.max_idle_time is not None:
+            result['MaxIdleTime'] = self.max_idle_time
         if self.mix_layout_params_shrink is not None:
             result['MixLayoutParams'] = self.mix_layout_params_shrink
         if self.mix_transcode_params_shrink is not None:
             result['MixTranscodeParams'] = self.mix_transcode_params_shrink
+        if self.notify_auth_key is not None:
+            result['NotifyAuthKey'] = self.notify_auth_key
         if self.notify_url is not None:
             result['NotifyUrl'] = self.notify_url
         if self.record_params_shrink is not None:
@@ -85918,10 +86057,14 @@ class StartRtcCloudRecordingShrinkRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ChannelId') is not None:
             self.channel_id = m.get('ChannelId')
+        if m.get('MaxIdleTime') is not None:
+            self.max_idle_time = m.get('MaxIdleTime')
         if m.get('MixLayoutParams') is not None:
             self.mix_layout_params_shrink = m.get('MixLayoutParams')
         if m.get('MixTranscodeParams') is not None:
             self.mix_transcode_params_shrink = m.get('MixTranscodeParams')
+        if m.get('NotifyAuthKey') is not None:
+            self.notify_auth_key = m.get('NotifyAuthKey')
         if m.get('NotifyUrl') is not None:
             self.notify_url = m.get('NotifyUrl')
         if m.get('RecordParams') is not None:

@@ -1,3 +1,12 @@
+2025-08-12 Version: 2.1.3
+- Update API DescribeLiveRecordNotifyRecords: add response parameters Body.CallbackList.$.NotifyResponse.
+- Update API DescribeRtcCloudRecordingFiles: add response parameters Body.TaskInfo.RecordFileList.VodMediaList.
+- Update API StartRtcCloudRecording: add request parameters MaxIdleTime.
+- Update API StartRtcCloudRecording: add request parameters NotifyAuthKey.
+- Update API StartRtcCloudRecording: add request parameters StorageParams.VodParams.
+- Update API StartRtcCloudRecording: add request parameters StorageParams.FileInfo.$.FilePathPrefix.
+
+
 2025-07-31 Version: 2.1.2
 - Update API DescribeLiveStreamsNotifyRecords: add response parameters Body.NotifyRecordsInfo.$.NotifyResponse.
 
