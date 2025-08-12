@@ -850,10 +850,10 @@ class CreateListenerRequest(TeaModel):
         self.alpn_enabled = alpn_enabled
         # The ALPN policy. Valid values:
         # 
-        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than that of HTTP 1.0.
         # *   **HTTP2Only**: uses only HTTP 2.0.
-        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than that of HTTP 1.0, and the priority of HTTP 1.0 is higher than that of HTTP 2.0.
+        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than that of HTTP 1.1, and the priority of HTTP 1.1 is higher than that of HTTP 1.0.
         # 
         # >  This parameter is required if **AlpnEnabled** is set to true.
         self.alpn_policy = alpn_policy
@@ -878,7 +878,7 @@ class CreateListenerRequest(TeaModel):
         self.client_token = client_token
         # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
         # 
         # *   **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
         # *   **false** (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
@@ -1148,10 +1148,10 @@ class CreateListenerShrinkRequest(TeaModel):
         self.alpn_enabled = alpn_enabled
         # The ALPN policy. Valid values:
         # 
-        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than that of HTTP 1.0.
         # *   **HTTP2Only**: uses only HTTP 2.0.
-        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than that of HTTP 1.0, and the priority of HTTP 1.0 is higher than that of HTTP 2.0.
+        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than that of HTTP 1.1, and the priority of HTTP 1.1 is higher than that of HTTP 1.0.
         # 
         # >  This parameter is required if **AlpnEnabled** is set to true.
         self.alpn_policy = alpn_policy
@@ -1176,7 +1176,7 @@ class CreateListenerShrinkRequest(TeaModel):
         self.client_token = client_token
         # The maximum number of new connections per second supported by the listener in each zone (virtual IP address). Valid values: **0** to **1000000**. **0** indicates that the number of connections is unlimited.
         self.cps = cps
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
         # 
         # *   **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
         # *   **false** (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
@@ -1697,15 +1697,15 @@ class CreateLoadBalancerRequest(TeaModel):
         vpc_id: str = None,
         zone_mappings: List[CreateLoadBalancerRequestZoneMappings] = None,
     ):
-        # The IP version of the NLB instance. Valid values:
+        # The version of IP addresses used for the NLB instance. Valid values:
         # 
-        # *   **ipv4** (default): IPv4
-        # *   **DualStack**: dual-stack
+        # *   **ipv4** (default)
+        # *   **DualStack**\
         self.address_ip_version = address_ip_version
-        # The type of the IPv4 address used by the NLB instance. Valid values:
+        # The type of IPv4 addresses used for the NLB instance. Valid values are:
         # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the instance is resolved to the public IP address. The instance is accessible over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the instance is resolved to the private IP address. The instance is accessible only within the virtual private cloud (VPC) where the instance is deployed.
+        # *   **Internet**: The nodes of an Internet-facing NLB instance have public IP addresses. The DNS name of an Internet-facing NLB instance is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing NLB instances can route requests from clients over the Internet.
+        # *   **Intranet**: The nodes of an internal-facing NLB instance have only private IP addresses. The DNS name of an internal-facing NLB instance is publicly resolvable to the private IP addresses of the nodes. Therefore, internal-facing NLB instances can route requests only from clients with access to the virtual private cloud (VPC) for the NLB instance.
         # 
         # >  To enable a public IPv6 address for a dual-stack NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
         # 
@@ -1721,10 +1721,10 @@ class CreateLoadBalancerRequest(TeaModel):
         self.client_token = client_token
         # The configuration of the deletion protection feature.
         self.deletion_protection_config = deletion_protection_config
-        # Specifies whether to perform a dry run. Valid values:
+        # Perform a dry run without actually making the request. Valid values are:
         # 
-        # *   **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
-        # *   **false** (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: Perform only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the check, an error message specifying the issue is returned. If the request passes, the `DryRunOperation` error code is returned.
+        # *   **false** (default): Check the request and perform the operation. If the request passes the check, a 2xx HTTP status code is returned, and the operation is performed.
         self.dry_run = dry_run
         # The billing settings of the NLB instance.
         self.load_balancer_billing_config = load_balancer_billing_config
@@ -1732,7 +1732,7 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # It must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
         self.load_balancer_name = load_balancer_name
-        # The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
+        # The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which indicates an NLB instance.
         self.load_balancer_type = load_balancer_type
         # The configuration of the configuration read-only mode.
         self.modification_protection_config = modification_protection_config
@@ -1989,7 +1989,7 @@ class CreateSecurityPolicyRequest(TeaModel):
         tag: List[CreateSecurityPolicyRequestTag] = None,
         tls_versions: List[str] = None,
     ):
-        # The cipher suites supported by the security policy. Valid values of this parameter vary based on TlsVersions. A security policy supports up to 32 cipher suites.
+        # The cipher suites supported by the security policy. Valid values of this parameter vary based on the value of TlsVersions. You can specify up to 32 cipher suites.
         # 
         # TLSv1.0 and TLSv1.1 support the following cipher suites:
         # 
@@ -2224,7 +2224,7 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # Default value: **0**. If you set this parameter to 0, the port that the backend server uses to provide services is also used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. Unit: seconds Valid values: **1** to **300** Default value: **5**.
+        # The timeout period for a health check response. Unit: seconds. Valid values: **1** to **300**. Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that is used for health checks. Valid values:
         # 
@@ -2244,8 +2244,11 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         # 
         # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_code = health_check_http_code
+        # The HTTP version used for health checks. Valid values: **HTTP1.0** (default) and **HTTP1.1**.
+        # 
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval at which health checks are performed. Unit: seconds Default value: **5**\
+        # The interval at which health checks are performed. Unit: seconds. Default value: **5**.
         # 
         # *   If you set **HealthCheckType** to **TCP** or **HTTP**, valid values are **1** to **50**.
         # *   If you set **HealthCheckType** to **UDP**, valid values are **1** to **300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
@@ -2266,9 +2269,9 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         self.health_check_url = health_check_url
         # The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail** to **success**.
         # 
-        # Valid values: **2** to **10**\
+        # Valid values: **2** to **10**.
         # 
-        # Default value: **2**\
+        # Default value: **2**.
         self.healthy_threshold = healthy_threshold
         # The HTTP method that is used for health checks. Valid values: **GET** (default) and **HEAD**.
         # 
@@ -2276,9 +2279,9 @@ class CreateServerGroupRequestHealthCheckConfig(TeaModel):
         self.http_check_method = http_check_method
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success** to **fail**.
         # 
-        # Valid values: **2** to **10**\
+        # Valid values: **2** to **10**.
         # 
-        # Default value: **2**\
+        # Default value: **2**.
         self.unhealthy_threshold = unhealthy_threshold
 
     def validate(self):
@@ -2419,7 +2422,7 @@ class CreateServerGroupRequest(TeaModel):
         self.address_ipversion = address_ipversion
         # Specifies whether to enable multi-port forwarding. Valid values:
         # 
-        # *   **true:**\
+        # *   **true**\
         # *   **false** (default)
         self.any_port_enabled = any_port_enabled
         # The client token used to ensure the idempotence of the request.
@@ -2430,10 +2433,10 @@ class CreateServerGroupRequest(TeaModel):
         self.client_token = client_token
         # Specifies whether to enable connection draining. Valid values:
         # 
-        # *   **true:**\
+        # *   **true**\
         # *   **false** (default)
         self.connection_drain_enabled = connection_drain_enabled
-        # Specifies a timeout period for connection draining. Unit: seconds Valid values: **0** to **900**.
+        # Specifies a timeout period for connection draining. Unit: seconds. Valid values: **0** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
         # Specifies whether to perform a dry run. Valid values:
         # 
@@ -5839,6 +5842,164 @@ class GetLoadBalancerAttributeResponse(TeaModel):
         return self
 
 
+class ListAsynJobsRequest(TeaModel):
+    def __init__(
+        self,
+        job_ids: List[str] = None,
+    ):
+        # The task IDs.
+        self.job_ids = job_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_ids is not None:
+            result['JobIds'] = self.job_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobIds') is not None:
+            self.job_ids = m.get('JobIds')
+        return self
+
+
+class ListAsynJobsResponseBodyJobs(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        status: str = None,
+    ):
+        # The task ID.
+        self.id = id
+        # The status of the task. Valid values:
+        # 
+        # *   Succeeded: The task is successful.
+        # *   Failed: The task fails.
+        # *   Processing: The task is being processed.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAsynJobsResponseBody(TeaModel):
+    def __init__(
+        self,
+        jobs: List[ListAsynJobsResponseBodyJobs] = None,
+        request_id: str = None,
+        total_count: str = None,
+    ):
+        # The queried tasks.
+        self.jobs = jobs
+        # Id of the request
+        self.request_id = request_id
+        # The number of entries returned.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = ListAsynJobsResponseBodyJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAsynJobsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAsynJobsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAsynJobsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListListenerCertificatesRequest(TeaModel):
     def __init__(
         self,
@@ -7751,9 +7912,9 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         tags: List[ListSecurityPolicyResponseBodySecurityPoliciesTags] = None,
         tls_version: str = None,
     ):
-        # The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
+        # The cipher suites supported by the security policy. Valid values of this parameter vary based on the value of TlsVersions. A security policy supports up to 32 cipher suites.
         # 
-        # TLS 1.0 and TLS 1.1 support the following cipher suites:
+        # TLSv1.0 and TLSv1.1 support the following cipher suites:
         # 
         # *   **ECDHE-ECDSA-AES128-SHA**\
         # *   **ECDHE-ECDSA-AES256-SHA**\
@@ -7763,7 +7924,7 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         # *   **AES256-SHA**\
         # *   **DES-CBC3-SHA**\
         # 
-        # TLS 1.2 supports the following cipher suites:
+        # TLSv1.2 supports the following cipher suites:
         # 
         # *   **ECDHE-ECDSA-AES128-SHA**\
         # *   **ECDHE-ECDSA-AES256-SHA**\
@@ -7785,7 +7946,7 @@ class ListSecurityPolicyResponseBodySecurityPolicies(TeaModel):
         # *   **AES128-SHA256**\
         # *   **AES256-SHA256**\
         # 
-        # TLS 1.3 supports the following cipher suites:
+        # TLSv1.3 supports the following cipher suites:
         # 
         # *   **TLS_AES_128_GCM_SHA256**\
         # *   **TLS_AES_256_GCM_SHA384**\
@@ -8445,6 +8606,9 @@ class ListServerGroupsResponseBodyServerGroupsHealthCheck(TeaModel):
         # 
         # > This parameter takes effect only when **HealthCheckType** is set to **HTTP**.
         self.health_check_http_code = health_check_http_code
+        # The version of the HTTP protocol. Valid values: **HTTP1.0** and **HTTP1.1**.
+        # 
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_version = health_check_http_version
         # The interval at which health checks are performed. Unit: seconds. Default value: **5**.
         # 
@@ -11092,12 +11256,12 @@ class UpdateListenerAttributeRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.alpn_enabled = alpn_enabled
-        # The ALPN policy. Valid values:
+        # The name of the ALPN policy. The following are the possible values:
         # 
-        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
-        # *   **HTTP2Only**: uses only HTTP 2.0.
-        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP1Only**: Negotiate only HTTP/1.\\*. The ALPN preference list is HTTP/1.1, HTTP/1.0.
+        # *   **HTTP2Only**: Negotiate only HTTP/2. The ALPN preference list is HTTP/2.
+        # *   **HTTP2Optional**: Prefer HTTP/1.\\* over HTTP/2. The ALPN preference list is HTTP/1.1, HTTP/1.0, HTTP/2.
+        # *   **HTTP2Preferred**: Prefer HTTP/2 over HTTP/1.\\*. The ALPN preference list is HTTP/2, HTTP/1.1, HTTP/1.0.
         # 
         # >  This parameter is required if AlpnEnabled is set to true.
         self.alpn_policy = alpn_policy
@@ -11290,12 +11454,12 @@ class UpdateListenerAttributeShrinkRequest(TeaModel):
         # *   **true**\
         # *   **false**\
         self.alpn_enabled = alpn_enabled
-        # The ALPN policy. Valid values:
+        # The name of the ALPN policy. The following are the possible values:
         # 
-        # *   **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
-        # *   **HTTP2Only**: uses only HTTP 2.0.
-        # *   **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-        # *   **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+        # *   **HTTP1Only**: Negotiate only HTTP/1.\\*. The ALPN preference list is HTTP/1.1, HTTP/1.0.
+        # *   **HTTP2Only**: Negotiate only HTTP/2. The ALPN preference list is HTTP/2.
+        # *   **HTTP2Optional**: Prefer HTTP/1.\\* over HTTP/2. The ALPN preference list is HTTP/1.1, HTTP/1.0, HTTP/2.
+        # *   **HTTP2Preferred**: Prefer HTTP/2 over HTTP/1.\\*. The ALPN preference list is HTTP/2, HTTP/1.1, HTTP/1.0.
         # 
         # >  This parameter is required if AlpnEnabled is set to true.
         self.alpn_policy = alpn_policy
@@ -11603,8 +11767,8 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
     ):
         # The new network type. Valid values:
         # 
-        # *   **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance is accessible over the Internet.
-        # *   **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+        # *   **Internet**: The nodes of an Internet-facing NLB instance have public IP addresses. The DNS name of an Internet-facing NLB instance is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing NLB instances can route requests from clients over the Internet.
+        # *   **Intranet**: The nodes of an internal-facing NLB instance have only private IP addresses. The DNS name of an internal-facing NLB instance is publicly resolvable to the private IP addresses of the nodes. Therefore, internal-facing NLB instances can route requests only from clients with access to the virtual private cloud (VPC) for the NLB instance.
         # 
         # This parameter is required.
         self.address_type = address_type
@@ -11614,10 +11778,10 @@ class UpdateLoadBalancerAddressTypeConfigRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, the value of **RequestId** is used.**** **RequestId** of each request is different.
         self.client_token = client_token
-        # Specifies whether to perform a dry run, without sending the actual request. Valid values:
+        # Perform a dry run without actually making the request. Valid values are:
         # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: Perform only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the check, an error message specifying the issue is returned. If the request passes, the `DryRunOperation` error code is returned.
+        # *   **false** (default): Check the request and perform the operation. If the request passes the check, a 2xx HTTP status code is returned, and the operation is performed.
         self.dry_run = dry_run
         # The ID of the NLB instance.
         # 
@@ -12314,7 +12478,7 @@ class UpdateSecurityPolicyAttributeRequest(TeaModel):
         security_policy_name: str = None,
         tls_versions: List[str] = None,
     ):
-        # The supported cipher suites. Valid values of this parameter vary base on the value of TlsVersions. You can specify up to 32 cipher suites.
+        # The cipher suites supported by the security policy. Valid values of this parameter vary based on the value of TlsVersions. You can specify up to 32 cipher suites.
         # 
         # TLSv1.0 and TLSv1.1 support the following cipher suites:
         # 
@@ -12529,7 +12693,7 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
     ):
         # The backend port that is used for health checks. Valid values: **0** to **65535**. If you set this parameter to **0**, the port that the backend server uses to provide services is also used for health checks.
         self.health_check_connect_port = health_check_connect_port
-        # The timeout period for a health check response. Unit: seconds. Valid values: **1 to 300**. Default value: **5**\
+        # The timeout period for a health check response. Unit: seconds. Valid values: **1 to 300**. Default value: **5**.
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name used for health checks. Valid values:
         # 
@@ -12549,15 +12713,18 @@ class UpdateServerGroupAttributeRequestHealthCheckConfig(TeaModel):
         # 
         # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_code = health_check_http_code
+        # The version of the HTTP protocol. Valid values: **HTTP1.0** and **HTTP1.1**.
+        # 
+        # >  This parameter takes effect only if you set **HealthCheckType** to **HTTP**.
         self.health_check_http_version = health_check_http_version
-        # The interval at which health checks are performed. Unit: seconds. Default value: **5**\
+        # The interval at which health checks are performed. Unit: seconds. Default value: **5**.
         # 
         # *   If you set **HealthCheckType** to **TCP** or **HTTP**, valid values are **1 to 50**.
         # *   If you set **HealthCheckType** to **UDP**, valid values are **1 to 300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
         self.health_check_interval = health_check_interval
         # The request string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
         self.health_check_req = health_check_req
-        # The protocol that you want to use for health checks. Valid values:
+        # The protocol that is used for health checks. Valid values:
         # 
         # *   **TCP**\
         # *   **HTTP**\

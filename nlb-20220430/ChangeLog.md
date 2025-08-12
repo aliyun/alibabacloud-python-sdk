@@ -1,3 +1,7 @@
+2025-08-12 Version: 4.1.0
+- Support API ListAsynJobs.
+
+
 2025-04-09 Version: 4.0.1
 - Update API CreateServerGroup: add request parameters HealthCheckConfig.HealthCheckHttpVersion.
 - Update API ListServerGroups: add response parameters Body.ServerGroups.$.HealthCheck.HealthCheckHttpVersion.
