@@ -1,3 +1,7 @@
+2025-08-12 Version: 1.1.4
+- Update API ListTracesDatas: add request parameters SessionId.
+
+
 2025-08-06 Version: 1.1.3
 - Update API ListOnlineEvalTasks: add request parameters SamplingMethod.
 

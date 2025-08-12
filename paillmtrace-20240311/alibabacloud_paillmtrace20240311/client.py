@@ -1237,6 +1237,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.sort_order):
@@ -1321,6 +1323,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.session_id):
+            query['SessionId'] = request.session_id
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.sort_order):

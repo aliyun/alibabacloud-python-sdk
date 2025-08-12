@@ -2497,6 +2497,7 @@ class ListTracesDatasRequest(TeaModel):
         owner_sub_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        session_id: str = None,
         sort_by: str = None,
         sort_order: str = None,
         span_ids: List[str] = None,
@@ -2531,6 +2532,7 @@ class ListTracesDatasRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        self.session_id = session_id
         # The field used to sort the returned results. Valid values: StartTime and Duration.
         self.sort_by = sort_by
         # The sorting order. Valid values:
@@ -2594,6 +2596,8 @@ class ListTracesDatasRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.sort_order is not None:
@@ -2641,6 +2645,8 @@ class ListTracesDatasRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SortOrder') is not None:
@@ -2673,6 +2679,7 @@ class ListTracesDatasShrinkRequest(TeaModel):
         owner_sub_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        session_id: str = None,
         sort_by: str = None,
         sort_order: str = None,
         span_ids_shrink: str = None,
@@ -2707,6 +2714,7 @@ class ListTracesDatasShrinkRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 20. Maximum value: 100.
         self.page_size = page_size
+        self.session_id = session_id
         # The field used to sort the returned results. Valid values: StartTime and Duration.
         self.sort_by = sort_by
         # The sorting order. Valid values:
@@ -2765,6 +2773,8 @@ class ListTracesDatasShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.sort_order is not None:
@@ -2809,6 +2819,8 @@ class ListTracesDatasShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SortOrder') is not None:
