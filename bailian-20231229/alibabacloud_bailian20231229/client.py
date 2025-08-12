@@ -2391,6 +2391,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_file_with_options_async(workspace_id, file_id, headers, runtime)
 
+    def get_alipay_transfer_status_with_options(
+        self,
+        request: bailian_20231229_models.GetAlipayTransferStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAlipayTransferStatusResponse:
+        """
+        @summary 查询支付宝打赏状态
+        
+        @param request: GetAlipayTransferStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayTransferStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['code'] = request.code
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspace_id'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlipayTransferStatus',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/alipay/transfer/status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAlipayTransferStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alipay_transfer_status_with_options_async(
+        self,
+        request: bailian_20231229_models.GetAlipayTransferStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAlipayTransferStatusResponse:
+        """
+        @summary 查询支付宝打赏状态
+        
+        @param request: GetAlipayTransferStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayTransferStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['code'] = request.code
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspace_id'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlipayTransferStatus',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/alipay/transfer/status',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAlipayTransferStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alipay_transfer_status(
+        self,
+        request: bailian_20231229_models.GetAlipayTransferStatusRequest,
+    ) -> bailian_20231229_models.GetAlipayTransferStatusResponse:
+        """
+        @summary 查询支付宝打赏状态
+        
+        @param request: GetAlipayTransferStatusRequest
+        @return: GetAlipayTransferStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_alipay_transfer_status_with_options(request, headers, runtime)
+
+    async def get_alipay_transfer_status_async(
+        self,
+        request: bailian_20231229_models.GetAlipayTransferStatusRequest,
+    ) -> bailian_20231229_models.GetAlipayTransferStatusResponse:
+        """
+        @summary 查询支付宝打赏状态
+        
+        @param request: GetAlipayTransferStatusRequest
+        @return: GetAlipayTransferStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_alipay_transfer_status_with_options_async(request, headers, runtime)
+
+    def get_alipay_url_with_options(
+        self,
+        request: bailian_20231229_models.GetAlipayUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAlipayUrlResponse:
+        """
+        @summary 支付宝打赏链接
+        
+        @param request: GetAlipayUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['app_id'] = request.app_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspace_id'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlipayUrl',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/alipay/transfer/url',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAlipayUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alipay_url_with_options_async(
+        self,
+        request: bailian_20231229_models.GetAlipayUrlRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAlipayUrlResponse:
+        """
+        @summary 支付宝打赏链接
+        
+        @param request: GetAlipayUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlipayUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['app_id'] = request.app_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['workspace_id'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlipayUrl',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/alipay/transfer/url',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAlipayUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alipay_url(
+        self,
+        request: bailian_20231229_models.GetAlipayUrlRequest,
+    ) -> bailian_20231229_models.GetAlipayUrlResponse:
+        """
+        @summary 支付宝打赏链接
+        
+        @param request: GetAlipayUrlRequest
+        @return: GetAlipayUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_alipay_url_with_options(request, headers, runtime)
+
+    async def get_alipay_url_async(
+        self,
+        request: bailian_20231229_models.GetAlipayUrlRequest,
+    ) -> bailian_20231229_models.GetAlipayUrlResponse:
+        """
+        @summary 支付宝打赏链接
+        
+        @param request: GetAlipayUrlRequest
+        @return: GetAlipayUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_alipay_url_with_options_async(request, headers, runtime)
+
     def get_index_job_status_with_options(
         self,
         workspace_id: str,

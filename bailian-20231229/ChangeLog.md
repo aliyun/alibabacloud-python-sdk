@@ -1,3 +1,8 @@
+2025-08-12 Version: 2.4.0
+- Support API GetAlipayTransferStatus.
+- Support API GetAlipayUrl.
+
+
 2025-08-07 Version: 2.3.0
 - Support API DeleteChunk.
 
