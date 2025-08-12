@@ -1648,7 +1648,7 @@ class Client(OpenApiClient):
 
     def describe_orgs_with_options(
         self,
-        request: eds_user_20210308_models.DescribeOrgsRequest,
+        tmp_req: eds_user_20210308_models.DescribeOrgsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeOrgsResponse:
         """
@@ -1656,11 +1656,15 @@ class Client(OpenApiClient):
         
         @description An organization is in a tree structure. The root organization ID is in the following format: org-aliyun-wy-org-id.
         
-        @param request: DescribeOrgsRequest
+        @param tmp_req: DescribeOrgsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOrgsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_user_20210308_models.DescribeOrgsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.show_extras):
+            request.show_extras_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.show_extras, 'ShowExtras', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
@@ -1670,6 +1674,8 @@ class Client(OpenApiClient):
             query['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.parent_org_id):
             query['ParentOrgId'] = request.parent_org_id
+        if not UtilClient.is_unset(request.show_extras_shrink):
+            query['ShowExtras'] = request.show_extras_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1691,7 +1697,7 @@ class Client(OpenApiClient):
 
     async def describe_orgs_with_options_async(
         self,
-        request: eds_user_20210308_models.DescribeOrgsRequest,
+        tmp_req: eds_user_20210308_models.DescribeOrgsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_user_20210308_models.DescribeOrgsResponse:
         """
@@ -1699,11 +1705,15 @@ class Client(OpenApiClient):
         
         @description An organization is in a tree structure. The root organization ID is in the following format: org-aliyun-wy-org-id.
         
-        @param request: DescribeOrgsRequest
+        @param tmp_req: DescribeOrgsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeOrgsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_user_20210308_models.DescribeOrgsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.show_extras):
+            request.show_extras_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.show_extras, 'ShowExtras', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
@@ -1713,6 +1723,8 @@ class Client(OpenApiClient):
             query['OrgName'] = request.org_name
         if not UtilClient.is_unset(request.parent_org_id):
             query['ParentOrgId'] = request.parent_org_id
+        if not UtilClient.is_unset(request.show_extras_shrink):
+            query['ShowExtras'] = request.show_extras_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

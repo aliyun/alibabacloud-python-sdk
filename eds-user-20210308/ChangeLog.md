@@ -1,3 +1,8 @@
+2025-08-12 Version: 1.6.2
+- Update API DescribeOrgs: add request parameters ShowExtras.
+- Update API DescribeOrgs: add response parameters Body.Orgs.$.OrgNamePath.
+
+
 2025-07-30 Version: 1.6.1
 - Update API CreateGroup: add request parameters Description.
 - Update API DescribeGroupUser: add request parameters Filter.
