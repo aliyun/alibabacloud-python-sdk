@@ -705,6 +705,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -742,6 +744,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(

@@ -753,12 +753,14 @@ class CreateApplicationClientSecretRequest(TeaModel):
     def __init__(
         self,
         application_id: str = None,
+        expiration_time: int = None,
         instance_id: str = None,
     ):
         # The ID of the application for which you want to create a client key.
         # 
         # This parameter is required.
         self.application_id = application_id
+        self.expiration_time = expiration_time
         # The ID of the instance.
         # 
         # This parameter is required.
@@ -775,6 +777,8 @@ class CreateApplicationClientSecretRequest(TeaModel):
         result = dict()
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         return result
@@ -783,6 +787,8 @@ class CreateApplicationClientSecretRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -8288,6 +8294,7 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig(TeaMo
     def __init__(
         self,
         access_token_effective_time: int = None,
+        allowed_public_client: str = None,
         code_effective_time: int = None,
         custom_claims: List[GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfigCustomClaims] = None,
         grant_scopes: List[str] = None,
@@ -8305,6 +8312,7 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig(TeaMo
     ):
         # The validity period of the issued access token. Unit: seconds. Default value: 1200.
         self.access_token_effective_time = access_token_effective_time
+        self.allowed_public_client = allowed_public_client
         # The validity period of the issued code. Unit: seconds. Default value: 60.
         self.code_effective_time = code_effective_time
         # The custom claims that are returned for the ID token.
@@ -8348,6 +8356,8 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig(TeaMo
         result = dict()
         if self.access_token_effective_time is not None:
             result['AccessTokenEffectiveTime'] = self.access_token_effective_time
+        if self.allowed_public_client is not None:
+            result['AllowedPublicClient'] = self.allowed_public_client
         if self.code_effective_time is not None:
             result['CodeEffectiveTime'] = self.code_effective_time
         result['CustomClaims'] = []
@@ -8384,6 +8394,8 @@ class GetApplicationSsoConfigResponseBodyApplicationSsoConfigOidcSsoConfig(TeaMo
         m = m or dict()
         if m.get('AccessTokenEffectiveTime') is not None:
             self.access_token_effective_time = m.get('AccessTokenEffectiveTime')
+        if m.get('AllowedPublicClient') is not None:
+            self.allowed_public_client = m.get('AllowedPublicClient')
         if m.get('CodeEffectiveTime') is not None:
             self.code_effective_time = m.get('CodeEffectiveTime')
         self.custom_claims = []
@@ -15720,6 +15732,7 @@ class ListApplicationClientSecretsResponseBodyApplicationClientSecrets(TeaModel)
         application_id: str = None,
         client_id: str = None,
         client_secret: str = None,
+        expiration_time: int = None,
         instance_id: str = None,
         last_used_time: int = None,
         secret_id: str = None,
@@ -15731,6 +15744,7 @@ class ListApplicationClientSecretsResponseBodyApplicationClientSecrets(TeaModel)
         self.client_id = client_id
         # The client key secret of the application. The value is not masked.
         self.client_secret = client_secret
+        self.expiration_time = expiration_time
         # The ID of the instance.
         self.instance_id = instance_id
         # The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
@@ -15758,6 +15772,8 @@ class ListApplicationClientSecretsResponseBodyApplicationClientSecrets(TeaModel)
             result['ClientId'] = self.client_id
         if self.client_secret is not None:
             result['ClientSecret'] = self.client_secret
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.last_used_time is not None:
@@ -15776,6 +15792,8 @@ class ListApplicationClientSecretsResponseBodyApplicationClientSecrets(TeaModel)
             self.client_id = m.get('ClientId')
         if m.get('ClientSecret') is not None:
             self.client_secret = m.get('ClientSecret')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('LastUsedTime') is not None:
@@ -23808,6 +23826,7 @@ class ObtainApplicationClientSecretResponseBodyApplicationClientSecret(TeaModel)
         application_id: str = None,
         client_id: str = None,
         client_secret: str = None,
+        expiration_time: int = None,
         instance_id: str = None,
         last_used_time: int = None,
         secret_id: str = None,
@@ -23819,6 +23838,7 @@ class ObtainApplicationClientSecretResponseBodyApplicationClientSecret(TeaModel)
         self.client_id = client_id
         # The client key secret of the application.
         self.client_secret = client_secret
+        self.expiration_time = expiration_time
         # The ID of the instance.
         self.instance_id = instance_id
         # The time when the client key was last used. The value is a UNIX timestamp. Unit: milliseconds.
@@ -23846,6 +23866,8 @@ class ObtainApplicationClientSecretResponseBodyApplicationClientSecret(TeaModel)
             result['ClientId'] = self.client_id
         if self.client_secret is not None:
             result['ClientSecret'] = self.client_secret
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.last_used_time is not None:
@@ -23864,6 +23886,8 @@ class ObtainApplicationClientSecretResponseBodyApplicationClientSecret(TeaModel)
             self.client_id = m.get('ClientId')
         if m.get('ClientSecret') is not None:
             self.client_secret = m.get('ClientSecret')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('LastUsedTime') is not None:
@@ -25594,6 +25618,7 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(TeaModel):
     def __init__(
         self,
         access_token_effective_time: int = None,
+        allowed_public_client: bool = None,
         code_effective_time: int = None,
         custom_claims: List[SetApplicationSsoConfigRequestOidcSsoConfigCustomClaims] = None,
         grant_scopes: List[str] = None,
@@ -25611,6 +25636,7 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(TeaModel):
     ):
         # The validity period of the issued access token. Unit: seconds. Default value: 1200.
         self.access_token_effective_time = access_token_effective_time
+        self.allowed_public_client = allowed_public_client
         # The validity period of the issued code. Unit: seconds. Default value: 60.
         self.code_effective_time = code_effective_time
         # The custom claims that are returned for the ID token.
@@ -25654,6 +25680,8 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(TeaModel):
         result = dict()
         if self.access_token_effective_time is not None:
             result['AccessTokenEffectiveTime'] = self.access_token_effective_time
+        if self.allowed_public_client is not None:
+            result['AllowedPublicClient'] = self.allowed_public_client
         if self.code_effective_time is not None:
             result['CodeEffectiveTime'] = self.code_effective_time
         result['CustomClaims'] = []
@@ -25690,6 +25718,8 @@ class SetApplicationSsoConfigRequestOidcSsoConfig(TeaModel):
         m = m or dict()
         if m.get('AccessTokenEffectiveTime') is not None:
             self.access_token_effective_time = m.get('AccessTokenEffectiveTime')
+        if m.get('AllowedPublicClient') is not None:
+            self.allowed_public_client = m.get('AllowedPublicClient')
         if m.get('CodeEffectiveTime') is not None:
             self.code_effective_time = m.get('CodeEffectiveTime')
         self.custom_claims = []
