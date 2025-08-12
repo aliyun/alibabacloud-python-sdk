@@ -14205,10 +14205,12 @@ class LlmStreamChatRequest(TeaModel):
         messages: Any = None,
         temperature: float = None,
         top_p: float = None,
+        type: str = None,
     ):
         self.messages = messages
         self.temperature = temperature
         self.top_p = top_p
+        self.type = type
 
     def validate(self):
         pass
@@ -14225,6 +14227,8 @@ class LlmStreamChatRequest(TeaModel):
             result['Temperature'] = self.temperature
         if self.top_p is not None:
             result['TopP'] = self.top_p
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -14235,6 +14239,8 @@ class LlmStreamChatRequest(TeaModel):
             self.temperature = m.get('Temperature')
         if m.get('TopP') is not None:
             self.top_p = m.get('TopP')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 

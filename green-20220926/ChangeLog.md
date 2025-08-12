@@ -1,3 +1,7 @@
+2025-08-12 Version: 1.5.1
+- Update API LlmStreamChat: add request parameters Type.
+
+
 2025-07-31 Version: 1.5.0
 - Support API CreateOnlineTest.
 - Support API DeleteOnlineTest.

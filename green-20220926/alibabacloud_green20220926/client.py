@@ -7445,6 +7445,8 @@ class Client(OpenApiClient):
             body['Temperature'] = request.temperature
         if not UtilClient.is_unset(request.top_p):
             body['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -7484,6 +7486,8 @@ class Client(OpenApiClient):
             body['Temperature'] = request.temperature
         if not UtilClient.is_unset(request.top_p):
             body['TopP'] = request.top_p
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
