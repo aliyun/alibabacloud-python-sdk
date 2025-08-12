@@ -1029,9 +1029,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
@@ -1077,9 +1077,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
@@ -1124,9 +1124,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
@@ -1142,9 +1142,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
@@ -1161,9 +1161,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description ## [](#)Prerequisites
+        @description ### [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        ## [](#)Description
+        ### [](#)Operation description
         This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
@@ -1205,9 +1205,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description ## [](#)Prerequisites
+        @description ### [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        ## [](#)Description
+        ### [](#)Operation description
         This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
@@ -1248,9 +1248,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description ## [](#)Prerequisites
+        @description ### [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        ## [](#)Description
+        ### [](#)Operation description
         This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
@@ -1266,9 +1266,9 @@ class Client(OpenApiClient):
         """
         @summary Creates a Logstore group of Hybrid Cloud Monitoring.
         
-        @description ## [](#)Prerequisites
+        @description ### [](#)Prerequisites
         Simple Log Service is activated. A project and a Logstore are created in Simple Log Service. For more information, see [Getting Started](https://help.aliyun.com/document_detail/54604.html).
-        ## [](#)Description
+        ### [](#)Operation description
         This topic provides an example on how to create a Logstore group named `Logstore_test`. The region ID is `cn-hangzhou`. The project is `aliyun-project`. The Logstore is `Logstore-ECS`. The response shows that the Logstore group is created.
         
         @param request: CreateHybridMonitorSLSGroupRequest
@@ -2386,7 +2386,7 @@ class Client(OpenApiClient):
         @summary Creates a policy to pause alert notifications for an application group.
         
         @description If the policy is valid, no alert notifications are sent for the application group.
-        This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
+        This topic describes how to create a `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
         
         @param request: CreateMonitorGroupNotifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2430,7 +2430,7 @@ class Client(OpenApiClient):
         @summary Creates a policy to pause alert notifications for an application group.
         
         @description If the policy is valid, no alert notifications are sent for the application group.
-        This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
+        This topic describes how to create a `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
         
         @param request: CreateMonitorGroupNotifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2473,7 +2473,7 @@ class Client(OpenApiClient):
         @summary Creates a policy to pause alert notifications for an application group.
         
         @description If the policy is valid, no alert notifications are sent for the application group.
-        This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
+        This topic describes how to create a `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
         
         @param request: CreateMonitorGroupNotifyPolicyRequest
         @return: CreateMonitorGroupNotifyPolicyResponse
@@ -2489,7 +2489,7 @@ class Client(OpenApiClient):
         @summary Creates a policy to pause alert notifications for an application group.
         
         @description If the policy is valid, no alert notifications are sent for the application group.
-        This topic describes how to create the `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
+        This topic describes how to create a `PauseNotify` policy to pause alert notifications for the `7301***` application group. The StartTime parameter is set to `1622949300000` and the EndTime parameter is set to `1623208500000`. This indicates that the policy is valid from `2021-06-06 11:15:00 UTC+8` to `2021-06-09 11:15:00 UTC+8`.
         
         @param request: CreateMonitorGroupNotifyPolicyRequest
         @return: CreateMonitorGroupNotifyPolicyResponse
@@ -2503,7 +2503,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitoringAgentProcessResponse:
         """
-        @summary Creates a task to monitor a specified process.
+        @summary Creates a task to monitor a process.
         
         @param request: CreateMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2542,7 +2542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateMonitoringAgentProcessResponse:
         """
-        @summary Creates a task to monitor a specified process.
+        @summary Creates a task to monitor a process.
         
         @param request: CreateMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2580,7 +2580,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.CreateMonitoringAgentProcessResponse:
         """
-        @summary Creates a task to monitor a specified process.
+        @summary Creates a task to monitor a process.
         
         @param request: CreateMonitoringAgentProcessRequest
         @return: CreateMonitoringAgentProcessResponse
@@ -2593,7 +2593,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.CreateMonitoringAgentProcessResponse:
         """
-        @summary Creates a task to monitor a specified process.
+        @summary Creates a task to monitor a process.
         
         @param request: CreateMonitoringAgentProcessRequest
         @return: CreateMonitoringAgentProcessResponse
@@ -2991,7 +2991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteContactGroupResponse:
         """
-        @summary Deletes an alert group.
+        @summary Deletes an alert contact group.
         
         @param request: DeleteContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3026,7 +3026,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteContactGroupResponse:
         """
-        @summary Deletes an alert group.
+        @summary Deletes an alert contact group.
         
         @param request: DeleteContactGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3060,7 +3060,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteContactGroupRequest,
     ) -> cms_20190101_models.DeleteContactGroupResponse:
         """
-        @summary Deletes an alert group.
+        @summary Deletes an alert contact group.
         
         @param request: DeleteContactGroupRequest
         @return: DeleteContactGroupResponse
@@ -3073,7 +3073,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteContactGroupRequest,
     ) -> cms_20190101_models.DeleteContactGroupResponse:
         """
-        @summary Deletes an alert group.
+        @summary Deletes an alert contact group.
         
         @param request: DeleteContactGroupRequest
         @return: DeleteContactGroupResponse
@@ -3391,7 +3391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteEventRulesResponse:
         """
-        @summary Deletes one or more event-triggered alert rules.
+        @summary Deletes event-triggered alert rules.
         
         @param request: DeleteEventRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3426,7 +3426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteEventRulesResponse:
         """
-        @summary Deletes one or more event-triggered alert rules.
+        @summary Deletes event-triggered alert rules.
         
         @param request: DeleteEventRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3460,7 +3460,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteEventRulesRequest,
     ) -> cms_20190101_models.DeleteEventRulesResponse:
         """
-        @summary Deletes one or more event-triggered alert rules.
+        @summary Deletes event-triggered alert rules.
         
         @param request: DeleteEventRulesRequest
         @return: DeleteEventRulesResponse
@@ -3473,7 +3473,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteEventRulesRequest,
     ) -> cms_20190101_models.DeleteEventRulesResponse:
         """
-        @summary Deletes one or more event-triggered alert rules.
+        @summary Deletes event-triggered alert rules.
         
         @param request: DeleteEventRulesRequest
         @return: DeleteEventRulesResponse
@@ -3779,7 +3779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHostAvailabilityResponse:
         """
-        @summary Deletes one or more availability monitoring tasks.
+        @summary Deletes availability monitoring tasks.
         
         @param request: DeleteHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3814,7 +3814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteHostAvailabilityResponse:
         """
-        @summary Deletes one or more availability monitoring tasks.
+        @summary Deletes availability monitoring tasks.
         
         @param request: DeleteHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3848,7 +3848,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHostAvailabilityRequest,
     ) -> cms_20190101_models.DeleteHostAvailabilityResponse:
         """
-        @summary Deletes one or more availability monitoring tasks.
+        @summary Deletes availability monitoring tasks.
         
         @param request: DeleteHostAvailabilityRequest
         @return: DeleteHostAvailabilityResponse
@@ -3861,7 +3861,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteHostAvailabilityRequest,
     ) -> cms_20190101_models.DeleteHostAvailabilityResponse:
         """
-        @summary Deletes one or more availability monitoring tasks.
+        @summary Deletes availability monitoring tasks.
         
         @param request: DeleteHostAvailabilityRequest
         @return: DeleteHostAvailabilityResponse
@@ -4879,7 +4879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse:
         """
-        @summary Deletes a rule that is used to dynamically add instances of a service that meet the rule to an application group.
+        @summary Deletes a rule that is used to dynamically add the instances of a service to an application group.
         
         @param request: DeleteMonitorGroupDynamicRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4916,7 +4916,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse:
         """
-        @summary Deletes a rule that is used to dynamically add instances of a service that meet the rule to an application group.
+        @summary Deletes a rule that is used to dynamically add the instances of a service to an application group.
         
         @param request: DeleteMonitorGroupDynamicRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4952,7 +4952,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteMonitorGroupDynamicRuleRequest,
     ) -> cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse:
         """
-        @summary Deletes a rule that is used to dynamically add instances of a service that meet the rule to an application group.
+        @summary Deletes a rule that is used to dynamically add the instances of a service to an application group.
         
         @param request: DeleteMonitorGroupDynamicRuleRequest
         @return: DeleteMonitorGroupDynamicRuleResponse
@@ -4965,7 +4965,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DeleteMonitorGroupDynamicRuleRequest,
     ) -> cms_20190101_models.DeleteMonitorGroupDynamicRuleResponse:
         """
-        @summary Deletes a rule that is used to dynamically add instances of a service that meet the rule to an application group.
+        @summary Deletes a rule that is used to dynamically add the instances of a service to an application group.
         
         @param request: DeleteMonitorGroupDynamicRuleRequest
         @return: DeleteMonitorGroupDynamicRuleResponse
@@ -6567,7 +6567,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventAttributeResponse:
         """
-        @summary Queries the details of a custom event that occurred in a specified time period.
+        @summary Queries the details of a custom event.
         
         @param request: DescribeCustomEventAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6616,7 +6616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventAttributeResponse:
         """
-        @summary Queries the details of a custom event that occurred in a specified time period.
+        @summary Queries the details of a custom event.
         
         @param request: DescribeCustomEventAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6664,7 +6664,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventAttributeRequest,
     ) -> cms_20190101_models.DescribeCustomEventAttributeResponse:
         """
-        @summary Queries the details of a custom event that occurred in a specified time period.
+        @summary Queries the details of a custom event.
         
         @param request: DescribeCustomEventAttributeRequest
         @return: DescribeCustomEventAttributeResponse
@@ -6677,7 +6677,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventAttributeRequest,
     ) -> cms_20190101_models.DescribeCustomEventAttributeResponse:
         """
-        @summary Queries the details of a custom event that occurred in a specified time period.
+        @summary Queries the details of a custom event.
         
         @param request: DescribeCustomEventAttributeRequest
         @return: DescribeCustomEventAttributeResponse
@@ -6691,9 +6691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
         """
-        @summary Queries the number of times that a custom event occurred in a specified time period.
+        @summary Queries the number of times that a custom event occurred within a period of time.
         
-        @description >  This operation counts the number of times that a custom event occurred for each service.
+        @description >  This operation queries the number of times that a custom event occurred for each service.
         
         @param request: DescribeCustomEventCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6738,9 +6738,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
         """
-        @summary Queries the number of times that a custom event occurred in a specified time period.
+        @summary Queries the number of times that a custom event occurred within a period of time.
         
-        @description >  This operation counts the number of times that a custom event occurred for each service.
+        @description >  This operation queries the number of times that a custom event occurred for each service.
         
         @param request: DescribeCustomEventCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6784,9 +6784,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventCountRequest,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
         """
-        @summary Queries the number of times that a custom event occurred in a specified time period.
+        @summary Queries the number of times that a custom event occurred within a period of time.
         
-        @description >  This operation counts the number of times that a custom event occurred for each service.
+        @description >  This operation queries the number of times that a custom event occurred for each service.
         
         @param request: DescribeCustomEventCountRequest
         @return: DescribeCustomEventCountResponse
@@ -6799,9 +6799,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventCountRequest,
     ) -> cms_20190101_models.DescribeCustomEventCountResponse:
         """
-        @summary Queries the number of times that a custom event occurred in a specified time period.
+        @summary Queries the number of times that a custom event occurred within a period of time.
         
-        @description >  This operation counts the number of times that a custom event occurred for each service.
+        @description >  This operation queries the number of times that a custom event occurred for each service.
         
         @param request: DescribeCustomEventCountRequest
         @return: DescribeCustomEventCountResponse
@@ -6815,7 +6815,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventHistogramResponse:
         """
-        @summary Queries the number of times that a custom event occurred during each interval of a time period.
+        @summary Queries the number of times that a custom event occurred during each interval within a period of time.
         
         @param request: DescribeCustomEventHistogramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6862,7 +6862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeCustomEventHistogramResponse:
         """
-        @summary Queries the number of times that a custom event occurred during each interval of a time period.
+        @summary Queries the number of times that a custom event occurred during each interval within a period of time.
         
         @param request: DescribeCustomEventHistogramRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6908,7 +6908,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventHistogramRequest,
     ) -> cms_20190101_models.DescribeCustomEventHistogramResponse:
         """
-        @summary Queries the number of times that a custom event occurred during each interval of a time period.
+        @summary Queries the number of times that a custom event occurred during each interval within a period of time.
         
         @param request: DescribeCustomEventHistogramRequest
         @return: DescribeCustomEventHistogramResponse
@@ -6921,7 +6921,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeCustomEventHistogramRequest,
     ) -> cms_20190101_models.DescribeCustomEventHistogramResponse:
         """
-        @summary Queries the number of times that a custom event occurred during each interval of a time period.
+        @summary Queries the number of times that a custom event occurred during each interval within a period of time.
         
         @param request: DescribeCustomEventHistogramRequest
         @return: DescribeCustomEventHistogramResponse
@@ -7949,11 +7949,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the monitoring data in a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of monitoring data that is returned in each call cannot exceed 1.5 MB. If the returned data reaches the upper limit, the query fails. You must reset the query conditions.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example to show how to query the monitoring data of the `AliyunEcs_cpu_total` metric in the `default-aliyun` namespace from `1653804865` (14:14:25 on May 29, 2022) to `1653805225` (14:20:25 on May 29, 2022).
         
         @param request: DescribeHybridMonitorDataListRequest
@@ -7999,11 +7999,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the monitoring data in a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of monitoring data that is returned in each call cannot exceed 1.5 MB. If the returned data reaches the upper limit, the query fails. You must reset the query conditions.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example to show how to query the monitoring data of the `AliyunEcs_cpu_total` metric in the `default-aliyun` namespace from `1653804865` (14:14:25 on May 29, 2022) to `1653805225` (14:20:25 on May 29, 2022).
         
         @param request: DescribeHybridMonitorDataListRequest
@@ -8048,11 +8048,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the monitoring data in a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of monitoring data that is returned in each call cannot exceed 1.5 MB. If the returned data reaches the upper limit, the query fails. You must reset the query conditions.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example to show how to query the monitoring data of the `AliyunEcs_cpu_total` metric in the `default-aliyun` namespace from `1653804865` (14:14:25 on May 29, 2022) to `1653805225` (14:20:25 on May 29, 2022).
         
         @param request: DescribeHybridMonitorDataListRequest
@@ -8068,11 +8068,11 @@ class Client(OpenApiClient):
         """
         @summary Queries the monitoring data in a namespace.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of monitoring data that is returned in each call cannot exceed 1.5 MB. If the returned data reaches the upper limit, the query fails. You must reset the query conditions.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example to show how to query the monitoring data of the `AliyunEcs_cpu_total` metric in the `default-aliyun` namespace from `1653804865` (14:14:25 on May 29, 2022) to `1653805225` (14:20:25 on May 29, 2022).
         
         @param request: DescribeHybridMonitorDataListRequest
@@ -8659,13 +8659,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
         """
-        @summary Queries the monitoring data of a metric for a specified cloud service.
+        @summary Queries the monitoring data of a metric for a cloud service.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. If the free quota is used up, you are automatically charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Description
         >  Different from [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html), the DescribeMetricData operation provides statistical features. You can set the Dimension parameter to `{"instanceId": "i-abcdefgh12***"}` to aggregate all data of your Alibaba Cloud account.
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
         
         @param request: DescribeMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8714,13 +8715,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
         """
-        @summary Queries the monitoring data of a metric for a specified cloud service.
+        @summary Queries the monitoring data of a metric for a cloud service.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. If the free quota is used up, you are automatically charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Description
         >  Different from [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html), the DescribeMetricData operation provides statistical features. You can set the Dimension parameter to `{"instanceId": "i-abcdefgh12***"}` to aggregate all data of your Alibaba Cloud account.
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
         
         @param request: DescribeMetricDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8768,13 +8770,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricDataRequest,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
         """
-        @summary Queries the monitoring data of a metric for a specified cloud service.
+        @summary Queries the monitoring data of a metric for a cloud service.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. If the free quota is used up, you are automatically charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Description
         >  Different from [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html), the DescribeMetricData operation provides statistical features. You can set the Dimension parameter to `{"instanceId": "i-abcdefgh12***"}` to aggregate all data of your Alibaba Cloud account.
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
         
         @param request: DescribeMetricDataRequest
         @return: DescribeMetricDataResponse
@@ -8787,13 +8790,14 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricDataRequest,
     ) -> cms_20190101_models.DescribeMetricDataResponse:
         """
-        @summary Queries the monitoring data of a metric for a specified cloud service.
+        @summary Queries the monitoring data of a metric for a cloud service.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. If the free quota is used up, you are automatically charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Description
         >  Different from [DescribeMetricList](https://help.aliyun.com/document_detail/51936.html), the DescribeMetricData operation provides statistical features. You can set the Dimension parameter to `{"instanceId": "i-abcdefgh12***"}` to aggregate all data of your Alibaba Cloud account.
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`.
         
         @param request: DescribeMetricDataRequest
         @return: DescribeMetricDataResponse
@@ -8810,14 +8814,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         >  If `Throttling.User` or `Request was denied due to user flow control` is returned when you call an API operation, the API operation is throttled. For more information about how to handle the issue, see [How do I handle the throttling of a query API?](https://help.aliyun.com/document_detail/2615031.html)
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` parameter is greater than or equal to 300 seconds.
+        ### [](#)Operation description
         This topic provides an example on how to query the latest monitoring data of the `CPUUtilization` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12***` of the account `123456789876****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
         
         @param request: DescribeMetricLastRequest
@@ -8872,14 +8877,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         >  If `Throttling.User` or `Request was denied due to user flow control` is returned when you call an API operation, the API operation is throttled. For more information about how to handle the issue, see [How do I handle the throttling of a query API?](https://help.aliyun.com/document_detail/2615031.html)
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` parameter is greater than or equal to 300 seconds.
+        ### [](#)Operation description
         This topic provides an example on how to query the latest monitoring data of the `CPUUtilization` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12***` of the account `123456789876****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
         
         @param request: DescribeMetricLastRequest
@@ -8933,14 +8939,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         >  If `Throttling.User` or `Request was denied due to user flow control` is returned when you call an API operation, the API operation is throttled. For more information about how to handle the issue, see [How do I handle the throttling of a query API?](https://help.aliyun.com/document_detail/2615031.html)
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` parameter is greater than or equal to 300 seconds.
+        ### [](#)Operation description
         This topic provides an example on how to query the latest monitoring data of the `CPUUtilization` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12***` of the account `123456789876****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
         
         @param request: DescribeMetricLastRequest
@@ -8957,14 +8964,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 50 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         >  If `Throttling.User` or `Request was denied due to user flow control` is returned when you call an API operation, the API operation is throttled. For more information about how to handle the issue, see [How do I handle the throttling of a query API?](https://help.aliyun.com/document_detail/2615031.html)
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` parameter is greater than or equal to 300 seconds.
+        ### [](#)Operation description
         This topic provides an example on how to query the latest monitoring data of the `CPUUtilization` metric for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The returned result indicates that the monitoring data for the instance `i-abcdefgh12***` of the account `123456789876****` is queried at an interval of 60 seconds. The maximum, minimum, and average values of the metric are 100, 93.1, and 99.52.
         
         @param request: DescribeMetricLastRequest
@@ -9954,14 +9962,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric for a cloud service. The data can be sorted by a specified order.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in the descending order based on the `Average` field.
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` is greater than or equal to 300 seconds.
+        ### [](#)Operation description
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in descending order based on the `Average` field.
         
         @param request: DescribeMetricTopRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10017,14 +10026,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric for a cloud service. The data can be sorted by a specified order.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in the descending order based on the `Average` field.
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` is greater than or equal to 300 seconds.
+        ### [](#)Operation description
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in descending order based on the `Average` field.
         
         @param request: DescribeMetricTopRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10079,14 +10089,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric for a cloud service. The data can be sorted by a specified order.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in the descending order based on the `Average` field.
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` is greater than or equal to 300 seconds.
+        ### [](#)Operation description
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in descending order based on the `Average` field.
         
         @param request: DescribeMetricTopRequest
         @return: DescribeMetricTopResponse
@@ -10102,14 +10113,15 @@ class Client(OpenApiClient):
         @summary Queries the latest monitoring data of a metric for a cloud service. The data can be sorted by a specified order.
         
         @description ### [](#)Limits
-        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the RAM users within the account share the quota.
+        The total free quota is 1 million calls per month for the DescribeMetricLast, DescribeMetricList, DescribeMetricData, and DescribeMetricTop operations. If the free quota is used up and CloudMonitor Basic (pay-as-you-go) is not activated, these API operations can no longer be called as expected. If you have activated CloudMonitor Basic (pay-as-you-go), these API operations can still be called even if the free quota is used up. After the free quota is used up, you are charged for the excess usage based on the pay-as-you-go billing method. For more information about how to activate CloudMonitor Basic (pay-as-you-go), see [Enable the pay-as-you-go billing method](https://common-buy.aliyun.com/?spm=a2c4g.11186623.0.0.6c8f3481IbSHgG\\&commodityCode=cms_basic_public_cn\\&from_biz_channel=help_bill).
+        Each API operation can be called up to 10 times per second. An Alibaba Cloud account and the Resource Access Management (RAM) users within the account share the quota.
         ### [](#)Precautions
         The storage duration of the monitoring data of each cloud service is related to the `Period` parameter (statistical period). A larger value of the `Period` parameter indicates that the monitoring data is distributed in a larger time range and the storage duration of the monitoring data is longer. The following list describes the specific relationships:
-        If the value of the `Period` parameter is less than 60 seconds, the storage duration is seven days.
-        If the value of the `Period` parameter is 60 seconds, the storage duration is 31 days.
-        If the value of the `Period` parameter is 300 seconds, the storage duration is 91 days.
-        ### [](#)Description
-        This topic provides an example to show how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in the descending order based on the `Average` field.
+        The storage duration is 7 days if the value of the `Period` parameter is less than 60 seconds.
+        The storage duration is 31 days if the value of the `Period` parameter is 60 seconds.
+        The storage duration is 91 days if the value of the `Period` is greater than or equal to 300 seconds.
+        ### [](#)Operation description
+        This topic provides an example on how to query the monitoring data of the `cpu_idle` metric in the last 60 seconds for Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. The monitoring data is sorted in descending order based on the `Average` field.
         
         @param request: DescribeMetricTopRequest
         @return: DescribeMetricTopResponse
@@ -10997,6 +11009,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         """
+        @summary Queries the configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringAgentConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMonitoringAgentConfigResponse
@@ -11025,6 +11039,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         """
+        @summary Queries the configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringAgentConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMonitoringAgentConfigResponse
@@ -11052,6 +11068,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         """
+        @summary Queries the configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringAgentConfigRequest
         @return: DescribeMonitoringAgentConfigResponse
         """
@@ -11063,6 +11081,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringAgentConfigRequest,
     ) -> cms_20190101_models.DescribeMonitoringAgentConfigResponse:
         """
+        @summary Queries the configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringAgentConfigRequest
         @return: DescribeMonitoringAgentConfigResponse
         """
@@ -11415,6 +11435,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         """
+        @summary Queries the global configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMonitoringConfigResponse
@@ -11443,6 +11465,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         """
+        @summary Queries the global configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeMonitoringConfigResponse
@@ -11470,6 +11494,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringConfigRequest,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         """
+        @summary Queries the global configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringConfigRequest
         @return: DescribeMonitoringConfigResponse
         """
@@ -11481,6 +11507,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMonitoringConfigRequest,
     ) -> cms_20190101_models.DescribeMonitoringConfigResponse:
         """
+        @summary Queries the global configurations of the CloudMonitor agent.
+        
         @param request: DescribeMonitoringConfigRequest
         @return: DescribeMonitoringConfigResponse
         """
@@ -11493,6 +11521,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
         """
+        @summary Queries the keys of all tags that are attached to cloud resources in a region.
+        
         @description >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
         
         @param request: DescribeProductResourceTagKeyListRequest
@@ -11528,6 +11558,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
         """
+        @summary Queries the keys of all tags that are attached to cloud resources in a region.
+        
         @description >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
         
         @param request: DescribeProductResourceTagKeyListRequest
@@ -11562,6 +11594,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
         """
+        @summary Queries the keys of all tags that are attached to cloud resources in a region.
+        
         @description >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
         
         @param request: DescribeProductResourceTagKeyListRequest
@@ -11575,6 +11609,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeProductResourceTagKeyListRequest,
     ) -> cms_20190101_models.DescribeProductResourceTagKeyListResponse:
         """
+        @summary Queries the keys of all tags that are attached to cloud resources in a region.
+        
         @description >  If a tag is attached to multiple cloud resources in the region, the key of the tag is returned only once.
         
         @param request: DescribeProductResourceTagKeyListRequest
@@ -12149,6 +12185,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page):
@@ -12196,6 +12234,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page):
@@ -13153,6 +13193,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
         """
+        @summary Queries the meta information about system events.
+        
         @param request: DescribeSystemEventMetaListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSystemEventMetaListResponse
@@ -13181,6 +13223,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
         """
+        @summary Queries the meta information about system events.
+        
         @param request: DescribeSystemEventMetaListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSystemEventMetaListResponse
@@ -13208,6 +13252,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSystemEventMetaListRequest,
     ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
         """
+        @summary Queries the meta information about system events.
+        
         @param request: DescribeSystemEventMetaListRequest
         @return: DescribeSystemEventMetaListResponse
         """
@@ -13219,6 +13265,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeSystemEventMetaListRequest,
     ) -> cms_20190101_models.DescribeSystemEventMetaListResponse:
         """
+        @summary Queries the meta information about system events.
+        
         @param request: DescribeSystemEventMetaListRequest
         @return: DescribeSystemEventMetaListResponse
         """
@@ -13231,6 +13279,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagKeyListResponse:
         """
+        @summary Queries tag keys.
+        
         @param request: DescribeTagKeyListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTagKeyListResponse
@@ -13266,6 +13316,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagKeyListResponse:
         """
+        @summary Queries tag keys.
+        
         @param request: DescribeTagKeyListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeTagKeyListResponse
@@ -13300,6 +13352,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagKeyListRequest,
     ) -> cms_20190101_models.DescribeTagKeyListResponse:
         """
+        @summary Queries tag keys.
+        
         @param request: DescribeTagKeyListRequest
         @return: DescribeTagKeyListResponse
         """
@@ -13311,6 +13365,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagKeyListRequest,
     ) -> cms_20190101_models.DescribeTagKeyListResponse:
         """
+        @summary Queries tag keys.
+        
         @param request: DescribeTagKeyListRequest
         @return: DescribeTagKeyListResponse
         """
@@ -13323,6 +13379,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
         """
+        @summary Queries the tag values corresponding to a specified tag key.
+        
         @description This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
         
         @param request: DescribeTagValueListRequest
@@ -13362,6 +13420,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
         """
+        @summary Queries the tag values corresponding to a specified tag key.
+        
         @description This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
         
         @param request: DescribeTagValueListRequest
@@ -13400,6 +13460,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagValueListRequest,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
         """
+        @summary Queries the tag values corresponding to a specified tag key.
+        
         @description This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
         
         @param request: DescribeTagValueListRequest
@@ -13413,6 +13475,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeTagValueListRequest,
     ) -> cms_20190101_models.DescribeTagValueListResponse:
         """
+        @summary Queries the tag values corresponding to a specified tag key.
+        
         @description This topic provides an example of how to query the tag values corresponding to `tagKey1`. The return results are `tagValue1` and `tagValue2`.
         
         @param request: DescribeTagValueListRequest
@@ -13427,6 +13491,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse:
         """
+        @summary Queries unhealthy instances detected by availability monitoring tasks.
+        
         @param request: DescribeUnhealthyHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUnhealthyHostAvailabilityResponse
@@ -13460,6 +13526,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse:
         """
+        @summary Queries unhealthy instances detected by availability monitoring tasks.
+        
         @param request: DescribeUnhealthyHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeUnhealthyHostAvailabilityResponse
@@ -13492,6 +13560,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeUnhealthyHostAvailabilityRequest,
     ) -> cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse:
         """
+        @summary Queries unhealthy instances detected by availability monitoring tasks.
+        
         @param request: DescribeUnhealthyHostAvailabilityRequest
         @return: DescribeUnhealthyHostAvailabilityResponse
         """
@@ -13503,6 +13573,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeUnhealthyHostAvailabilityRequest,
     ) -> cms_20190101_models.DescribeUnhealthyHostAvailabilityResponse:
         """
+        @summary Queries unhealthy instances detected by availability monitoring tasks.
+        
         @param request: DescribeUnhealthyHostAvailabilityRequest
         @return: DescribeUnhealthyHostAvailabilityResponse
         """
@@ -13515,6 +13587,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableActiveMetricRuleResponse:
         """
+        @summary Disables the initiative alert feature for a cloud service.
+        
         @param request: DisableActiveMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableActiveMetricRuleResponse
@@ -13548,6 +13622,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableActiveMetricRuleResponse:
         """
+        @summary Disables the initiative alert feature for a cloud service.
+        
         @param request: DisableActiveMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableActiveMetricRuleResponse
@@ -13580,6 +13656,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableActiveMetricRuleRequest,
     ) -> cms_20190101_models.DisableActiveMetricRuleResponse:
         """
+        @summary Disables the initiative alert feature for a cloud service.
+        
         @param request: DisableActiveMetricRuleRequest
         @return: DisableActiveMetricRuleResponse
         """
@@ -13591,6 +13669,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableActiveMetricRuleRequest,
     ) -> cms_20190101_models.DisableActiveMetricRuleResponse:
         """
+        @summary Disables the initiative alert feature for a cloud service.
+        
         @param request: DisableActiveMetricRuleRequest
         @return: DisableActiveMetricRuleResponse
         """
@@ -13691,6 +13771,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableHostAvailabilityResponse:
         """
+        @summary Disables availability monitoring tasks.
+        
         @param request: DisableHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableHostAvailabilityResponse
@@ -13724,6 +13806,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DisableHostAvailabilityResponse:
         """
+        @summary Disables availability monitoring tasks.
+        
         @param request: DisableHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DisableHostAvailabilityResponse
@@ -13756,6 +13840,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableHostAvailabilityRequest,
     ) -> cms_20190101_models.DisableHostAvailabilityResponse:
         """
+        @summary Disables availability monitoring tasks.
+        
         @param request: DisableHostAvailabilityRequest
         @return: DisableHostAvailabilityResponse
         """
@@ -13767,6 +13853,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DisableHostAvailabilityRequest,
     ) -> cms_20190101_models.DisableHostAvailabilityResponse:
         """
+        @summary Disables availability monitoring tasks.
+        
         @param request: DisableHostAvailabilityRequest
         @return: DisableHostAvailabilityResponse
         """
@@ -13971,6 +14059,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableActiveMetricRuleResponse:
         """
+        @summary Enables the initiative alert feature for a cloud service.
+        
         @param request: EnableActiveMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableActiveMetricRuleResponse
@@ -14004,6 +14094,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableActiveMetricRuleResponse:
         """
+        @summary Enables the initiative alert feature for a cloud service.
+        
         @param request: EnableActiveMetricRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableActiveMetricRuleResponse
@@ -14036,6 +14128,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableActiveMetricRuleRequest,
     ) -> cms_20190101_models.EnableActiveMetricRuleResponse:
         """
+        @summary Enables the initiative alert feature for a cloud service.
+        
         @param request: EnableActiveMetricRuleRequest
         @return: EnableActiveMetricRuleResponse
         """
@@ -14047,6 +14141,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableActiveMetricRuleRequest,
     ) -> cms_20190101_models.EnableActiveMetricRuleResponse:
         """
+        @summary Enables the initiative alert feature for a cloud service.
+        
         @param request: EnableActiveMetricRuleRequest
         @return: EnableActiveMetricRuleResponse
         """
@@ -14147,6 +14243,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableHostAvailabilityResponse:
         """
+        @summary Enables availability monitoring tasks.
+        
         @param request: EnableHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableHostAvailabilityResponse
@@ -14180,6 +14278,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableHostAvailabilityResponse:
         """
+        @summary Enables availability monitoring tasks.
+        
         @param request: EnableHostAvailabilityRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EnableHostAvailabilityResponse
@@ -14212,6 +14312,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableHostAvailabilityRequest,
     ) -> cms_20190101_models.EnableHostAvailabilityResponse:
         """
+        @summary Enables availability monitoring tasks.
+        
         @param request: EnableHostAvailabilityRequest
         @return: EnableHostAvailabilityResponse
         """
@@ -14223,6 +14325,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableHostAvailabilityRequest,
     ) -> cms_20190101_models.EnableHostAvailabilityResponse:
         """
+        @summary Enables availability monitoring tasks.
+        
         @param request: EnableHostAvailabilityRequest
         @return: EnableHostAvailabilityResponse
         """
@@ -14335,7 +14439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableMetricRulesResponse:
         """
-        @summary Enables one or more alert rules.
+        @summary Enables alert rules.
         
         @param request: EnableMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14370,7 +14474,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.EnableMetricRulesResponse:
         """
-        @summary Enables one or more alert rules.
+        @summary Enables alert rules.
         
         @param request: EnableMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14404,7 +14508,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableMetricRulesRequest,
     ) -> cms_20190101_models.EnableMetricRulesResponse:
         """
-        @summary Enables one or more alert rules.
+        @summary Enables alert rules.
         
         @param request: EnableMetricRulesRequest
         @return: EnableMetricRulesResponse
@@ -14417,7 +14521,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.EnableMetricRulesRequest,
     ) -> cms_20190101_models.EnableMetricRulesResponse:
         """
-        @summary Enables one or more alert rules.
+        @summary Enables alert rules.
         
         @param request: EnableMetricRulesRequest
         @return: EnableMetricRulesResponse
@@ -14527,6 +14631,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
         """
+        @summary InstallMonitoringAgent
+        
         @description ## Prerequisites
         The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](https://help.aliyun.com/document_detail/64601.html).
         
@@ -14567,6 +14673,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
         """
+        @summary InstallMonitoringAgent
+        
         @description ## Prerequisites
         The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](https://help.aliyun.com/document_detail/64601.html).
         
@@ -14606,6 +14714,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.InstallMonitoringAgentRequest,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
         """
+        @summary InstallMonitoringAgent
+        
         @description ## Prerequisites
         The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](https://help.aliyun.com/document_detail/64601.html).
         
@@ -14620,6 +14730,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.InstallMonitoringAgentRequest,
     ) -> cms_20190101_models.InstallMonitoringAgentResponse:
         """
+        @summary InstallMonitoringAgent
+        
         @description ## Prerequisites
         The Cloud Assistant client is installed on an ECS instance. For more information about how to install the Cloud Assistant client, see [Overview](https://help.aliyun.com/document_detail/64601.html).
         
@@ -15671,6 +15783,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
+        @summary ModifyMonitorGroupInstances
+        
         @param request: ModifyMonitorGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyMonitorGroupInstancesResponse
@@ -15706,6 +15820,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
+        @summary ModifyMonitorGroupInstances
+        
         @param request: ModifyMonitorGroupInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyMonitorGroupInstancesResponse
@@ -15740,6 +15856,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
+        @summary ModifyMonitorGroupInstances
+        
         @param request: ModifyMonitorGroupInstancesRequest
         @return: ModifyMonitorGroupInstancesResponse
         """
@@ -15751,6 +15869,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.ModifyMonitorGroupInstancesRequest,
     ) -> cms_20190101_models.ModifyMonitorGroupInstancesResponse:
         """
+        @summary ModifyMonitorGroupInstances
+        
         @param request: ModifyMonitorGroupInstancesRequest
         @return: ModifyMonitorGroupInstancesResponse
         """
@@ -15893,90 +16013,14 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_site_monitor_with_options_async(request, runtime)
 
-    def open_cms_service_with_options(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.OpenCmsServiceResponse:
-        """
-        @deprecated OpenAPI OpenCmsService is deprecated
-        
-        @param request: OpenCmsServiceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenCmsServiceResponse
-        Deprecated
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='OpenCmsService',
-            version='2019-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cms_20190101_models.OpenCmsServiceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def open_cms_service_with_options_async(
-        self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cms_20190101_models.OpenCmsServiceResponse:
-        """
-        @deprecated OpenAPI OpenCmsService is deprecated
-        
-        @param request: OpenCmsServiceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OpenCmsServiceResponse
-        Deprecated
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='OpenCmsService',
-            version='2019-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            cms_20190101_models.OpenCmsServiceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def open_cms_service(self) -> cms_20190101_models.OpenCmsServiceResponse:
-        """
-        @deprecated OpenAPI OpenCmsService is deprecated
-        
-        @return: OpenCmsServiceResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.open_cms_service_with_options(runtime)
-
-    async def open_cms_service_async(self) -> cms_20190101_models.OpenCmsServiceResponse:
-        """
-        @deprecated OpenAPI OpenCmsService is deprecated
-        
-        @return: OpenCmsServiceResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.open_cms_service_with_options_async(runtime)
-
     def put_contact_with_options(
         self,
         request: cms_20190101_models.PutContactRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactResponse:
         """
+        @summary Creates or modifies an alert contact.
+        
         @param request: PutContactRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutContactResponse
@@ -16016,6 +16060,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactResponse:
         """
+        @summary Creates or modifies an alert contact.
+        
         @param request: PutContactRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PutContactResponse
@@ -16054,6 +16100,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactRequest,
     ) -> cms_20190101_models.PutContactResponse:
         """
+        @summary Creates or modifies an alert contact.
+        
         @param request: PutContactRequest
         @return: PutContactResponse
         """
@@ -16065,6 +16113,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactRequest,
     ) -> cms_20190101_models.PutContactResponse:
         """
+        @summary Creates or modifies an alert contact.
+        
         @param request: PutContactRequest
         @return: PutContactResponse
         """
@@ -16077,7 +16127,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactGroupResponse:
         """
-        @summary 添加或者修改报警联系人组
+        @summary Creates or modifies an alert contact group.
         
         @description This topic provides an example on how to create an alert contact group named `ECS_Group`.
         
@@ -16120,7 +16170,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutContactGroupResponse:
         """
-        @summary 添加或者修改报警联系人组
+        @summary Creates or modifies an alert contact group.
         
         @description This topic provides an example on how to create an alert contact group named `ECS_Group`.
         
@@ -16162,7 +16212,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactGroupRequest,
     ) -> cms_20190101_models.PutContactGroupResponse:
         """
-        @summary 添加或者修改报警联系人组
+        @summary Creates or modifies an alert contact group.
         
         @description This topic provides an example on how to create an alert contact group named `ECS_Group`.
         
@@ -16177,7 +16227,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutContactGroupRequest,
     ) -> cms_20190101_models.PutContactGroupResponse:
         """
-        @summary 添加或者修改报警联系人组
+        @summary Creates or modifies an alert contact group.
         
         @description This topic provides an example on how to create an alert contact group named `ECS_Group`.
         
@@ -16425,6 +16475,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricResponse:
         """
+        @summary Reports monitoring data.
+        
         @description >  We recommend that you call the [PutHybridMonitorMetricData](https://help.aliyun.com/document_detail/383455.html) operation of Hybrid Cloud Monitoring to report monitoring data.
         
         @param request: PutCustomMetricRequest
@@ -16460,6 +16512,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricResponse:
         """
+        @summary Reports monitoring data.
+        
         @description >  We recommend that you call the [PutHybridMonitorMetricData](https://help.aliyun.com/document_detail/383455.html) operation of Hybrid Cloud Monitoring to report monitoring data.
         
         @param request: PutCustomMetricRequest
@@ -16494,6 +16548,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRequest,
     ) -> cms_20190101_models.PutCustomMetricResponse:
         """
+        @summary Reports monitoring data.
+        
         @description >  We recommend that you call the [PutHybridMonitorMetricData](https://help.aliyun.com/document_detail/383455.html) operation of Hybrid Cloud Monitoring to report monitoring data.
         
         @param request: PutCustomMetricRequest
@@ -16507,6 +16563,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRequest,
     ) -> cms_20190101_models.PutCustomMetricResponse:
         """
+        @summary Reports monitoring data.
+        
         @description >  We recommend that you call the [PutHybridMonitorMetricData](https://help.aliyun.com/document_detail/383455.html) operation of Hybrid Cloud Monitoring to report monitoring data.
         
         @param request: PutCustomMetricRequest
@@ -16521,6 +16579,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @description Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](https://help.aliyun.com/document_detail/115004.html).
         
         @param request: PutCustomMetricRuleRequest
@@ -16586,6 +16646,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @description Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](https://help.aliyun.com/document_detail/115004.html).
         
         @param request: PutCustomMetricRuleRequest
@@ -16650,6 +16712,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRuleRequest,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @description Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](https://help.aliyun.com/document_detail/115004.html).
         
         @param request: PutCustomMetricRuleRequest
@@ -16663,6 +16727,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutCustomMetricRuleRequest,
     ) -> cms_20190101_models.PutCustomMetricRuleResponse:
         """
+        @summary Creates a custom alert rule.
+        
         @description Before you call this operation, call the PutCustomMetric operation to report custom monitoring data. For more information, see [PutCustomMetric](https://help.aliyun.com/document_detail/115004.html).
         
         @param request: PutCustomMetricRuleRequest
@@ -17343,11 +17409,11 @@ class Client(OpenApiClient):
         """
         @summary Imports the monitoring data of a metric to a namespace of Hybrid Cloud Monitoring.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of the monitoring data that you import at a time must be less than or equal to 1 MB.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to import the monitoring data of the `CPU_Usage` metric to the `default-aliyun` namespace of Hybrid Cloud Monitoring.
         
         @param request: PutHybridMonitorMetricDataRequest
@@ -17387,11 +17453,11 @@ class Client(OpenApiClient):
         """
         @summary Imports the monitoring data of a metric to a namespace of Hybrid Cloud Monitoring.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of the monitoring data that you import at a time must be less than or equal to 1 MB.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to import the monitoring data of the `CPU_Usage` metric to the `default-aliyun` namespace of Hybrid Cloud Monitoring.
         
         @param request: PutHybridMonitorMetricDataRequest
@@ -17430,11 +17496,11 @@ class Client(OpenApiClient):
         """
         @summary Imports the monitoring data of a metric to a namespace of Hybrid Cloud Monitoring.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of the monitoring data that you import at a time must be less than or equal to 1 MB.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to import the monitoring data of the `CPU_Usage` metric to the `default-aliyun` namespace of Hybrid Cloud Monitoring.
         
         @param request: PutHybridMonitorMetricDataRequest
@@ -17450,11 +17516,11 @@ class Client(OpenApiClient):
         """
         @summary Imports the monitoring data of a metric to a namespace of Hybrid Cloud Monitoring.
         
-        @description # [](#)Prerequisites
+        @description ## [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](https://help.aliyun.com/document_detail/250773.html).
-        # [](#)Limits
+        ## [](#)Limits
         The size of the monitoring data that you import at a time must be less than or equal to 1 MB.
-        # [](#)Description
+        ## [](#)Operation description
         This topic provides an example on how to import the monitoring data of the `CPU_Usage` metric to the `default-aliyun` namespace of Hybrid Cloud Monitoring.
         
         @param request: PutHybridMonitorMetricDataRequest
@@ -18333,7 +18399,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
         """
-        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
+        @summary Debugs a system event of an Alibaba Cloud service.
+        
+        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after the system event triggers an alert.
         
         @param request: SendDryRunSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18374,7 +18442,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
         """
-        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
+        @summary Debugs a system event of an Alibaba Cloud service.
+        
+        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after the system event triggers an alert.
         
         @param request: SendDryRunSystemEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18414,7 +18484,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.SendDryRunSystemEventRequest,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
         """
-        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
+        @summary Debugs a system event of an Alibaba Cloud service.
+        
+        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after the system event triggers an alert.
         
         @param request: SendDryRunSystemEventRequest
         @return: SendDryRunSystemEventResponse
@@ -18427,7 +18499,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.SendDryRunSystemEventRequest,
     ) -> cms_20190101_models.SendDryRunSystemEventResponse:
         """
-        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after an alert is triggered by the system event.
+        @summary Debugs a system event of an Alibaba Cloud service.
+        
+        @description This operation is used to test whether a system event can be triggered as expected. You can call this operation to simulate a system event and check whether an expected response is returned after the system event triggers an alert.
         
         @param request: SendDryRunSystemEventRequest
         @return: SendDryRunSystemEventResponse
@@ -18441,7 +18515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
         """
-        @description >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](https://help.aliyun.com/document_detail/183482.html).
+        @summary Uninstalls the CloudMonitor agent from a third-party host.
+        
+        @description >  This API operation is not applicable to Elastic Compute Service (ECS) instances. To uninstall the agent from an ECS instance, see [Install and uninstall the CloudMonitor agent](https://help.aliyun.com/document_detail/183482.html).
         
         @param request: UninstallMonitoringAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18476,7 +18552,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
         """
-        @description >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](https://help.aliyun.com/document_detail/183482.html).
+        @summary Uninstalls the CloudMonitor agent from a third-party host.
+        
+        @description >  This API operation is not applicable to Elastic Compute Service (ECS) instances. To uninstall the agent from an ECS instance, see [Install and uninstall the CloudMonitor agent](https://help.aliyun.com/document_detail/183482.html).
         
         @param request: UninstallMonitoringAgentRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18510,7 +18588,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
         """
-        @description >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](https://help.aliyun.com/document_detail/183482.html).
+        @summary Uninstalls the CloudMonitor agent from a third-party host.
+        
+        @description >  This API operation is not applicable to Elastic Compute Service (ECS) instances. To uninstall the agent from an ECS instance, see [Install and uninstall the CloudMonitor agent](https://help.aliyun.com/document_detail/183482.html).
         
         @param request: UninstallMonitoringAgentRequest
         @return: UninstallMonitoringAgentResponse
@@ -18523,7 +18603,9 @@ class Client(OpenApiClient):
         request: cms_20190101_models.UninstallMonitoringAgentRequest,
     ) -> cms_20190101_models.UninstallMonitoringAgentResponse:
         """
-        @description >  This API operation is not applicable to ECS instances. To uninstall the agent from an ECS instance, see [Install and uninstall the Cloud Monitor agent](https://help.aliyun.com/document_detail/183482.html).
+        @summary Uninstalls the CloudMonitor agent from a third-party host.
+        
+        @description >  This API operation is not applicable to Elastic Compute Service (ECS) instances. To uninstall the agent from an ECS instance, see [Install and uninstall the CloudMonitor agent](https://help.aliyun.com/document_detail/183482.html).
         
         @param request: UninstallMonitoringAgentRequest
         @return: UninstallMonitoringAgentResponse

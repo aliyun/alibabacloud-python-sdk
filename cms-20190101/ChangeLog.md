@@ -1,3 +1,22 @@
+2025-08-12 Version: 4.0.0
+- Delete API OpenCmsService.
+- Update API DescribeHybridMonitorNamespaceList: add response parameters Body.DescribeHybridMonitorNamespace.$.Detail.PrometheusInstanceId.
+- Update API DescribeMetricRuleList: add response parameters Body.Alarms.$.GmtCreate.
+- Update API DescribeMetricRuleList: add response parameters Body.Alarms.$.GmtUpdate.
+- Update API DescribeMetricRuleList: add response parameters Body.Alarms.$.ProductCategory.
+- Update API DescribeMetricRuleTemplateAttribute: add response parameters Body.Resource.AlertTemplates.$.SilenceTime.
+- Update API DescribeMonitorGroups: add response parameters Body.Resources.$.TemplateInfos.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.auth_info.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.config_variables.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.hops.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.icmp_timeout_millis.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.steps.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.trace_region.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.trace_type.
+- Update API DescribeSiteMonitorAttribute: delete response parameters Body.SiteMonitors.OptionJson.authentication.
+- Update API DescribeSiteMonitorList: add request parameters AgentGroup.
+
+
 2024-11-29 Version: 3.1.4
 - Update API DescribeSiteMonitorAttribute: update response param.
 
