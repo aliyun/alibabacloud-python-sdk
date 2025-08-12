@@ -6449,16 +6449,12 @@ class CreateTicketResponse(TeaModel):
         return self
 
 
-class CreateUmodelRequestCommonSchemaRef(TeaModel):
+class CreateUmodelRequest(TeaModel):
     def __init__(
         self,
-        group: str = None,
-        items: List[str] = None,
-        version: str = None,
+        description: str = None,
     ):
-        self.group = group
-        self.items = items
-        self.version = version
+        self.description = description
 
     def validate(self):
         pass
@@ -6469,61 +6465,12 @@ class CreateUmodelRequestCommonSchemaRef(TeaModel):
             return _map
 
         result = dict()
-        if self.group is not None:
-            result['group'] = self.group
-        if self.items is not None:
-            result['items'] = self.items
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('group') is not None:
-            self.group = m.get('group')
-        if m.get('items') is not None:
-            self.items = m.get('items')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
-class CreateUmodelRequest(TeaModel):
-    def __init__(
-        self,
-        common_schema_ref: List[CreateUmodelRequestCommonSchemaRef] = None,
-        description: str = None,
-    ):
-        self.common_schema_ref = common_schema_ref
-        self.description = description
-
-    def validate(self):
-        if self.common_schema_ref:
-            for k in self.common_schema_ref:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['commonSchemaRef'] = []
-        if self.common_schema_ref is not None:
-            for k in self.common_schema_ref:
-                result['commonSchemaRef'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.common_schema_ref = []
-        if m.get('commonSchemaRef') is not None:
-            for k in m.get('commonSchemaRef'):
-                temp_model = CreateUmodelRequestCommonSchemaRef()
-                self.common_schema_ref.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         return self
@@ -7548,11 +7495,9 @@ class GetUmodelResponseBodyCommonSchemaRef(TeaModel):
     def __init__(
         self,
         group: str = None,
-        items: List[str] = None,
         version: str = None,
     ):
         self.group = group
-        self.items = items
         self.version = version
 
     def validate(self):
@@ -7566,8 +7511,6 @@ class GetUmodelResponseBodyCommonSchemaRef(TeaModel):
         result = dict()
         if self.group is not None:
             result['group'] = self.group
-        if self.items is not None:
-            result['items'] = self.items
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -7576,8 +7519,6 @@ class GetUmodelResponseBodyCommonSchemaRef(TeaModel):
         m = m or dict()
         if m.get('group') is not None:
             self.group = m.get('group')
-        if m.get('items') is not None:
-            self.items = m.get('items')
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
@@ -9334,16 +9275,12 @@ class UpdateServiceResponse(TeaModel):
         return self
 
 
-class UpdateUmodelRequestCommonSchemaRef(TeaModel):
+class UpdateUmodelRequest(TeaModel):
     def __init__(
         self,
-        group: str = None,
-        items: List[str] = None,
-        version: str = None,
+        description: str = None,
     ):
-        self.group = group
-        self.items = items
-        self.version = version
+        self.description = description
 
     def validate(self):
         pass
@@ -9354,61 +9291,12 @@ class UpdateUmodelRequestCommonSchemaRef(TeaModel):
             return _map
 
         result = dict()
-        if self.group is not None:
-            result['group'] = self.group
-        if self.items is not None:
-            result['items'] = self.items
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('group') is not None:
-            self.group = m.get('group')
-        if m.get('items') is not None:
-            self.items = m.get('items')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
-class UpdateUmodelRequest(TeaModel):
-    def __init__(
-        self,
-        common_schema_ref: List[UpdateUmodelRequestCommonSchemaRef] = None,
-        description: str = None,
-    ):
-        self.common_schema_ref = common_schema_ref
-        self.description = description
-
-    def validate(self):
-        if self.common_schema_ref:
-            for k in self.common_schema_ref:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['commonSchemaRef'] = []
-        if self.common_schema_ref is not None:
-            for k in self.common_schema_ref:
-                result['commonSchemaRef'].append(k.to_map() if k else None)
         if self.description is not None:
             result['description'] = self.description
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.common_schema_ref = []
-        if m.get('commonSchemaRef') is not None:
-            for k in m.get('commonSchemaRef'):
-                temp_model = UpdateUmodelRequestCommonSchemaRef()
-                self.common_schema_ref.append(temp_model.from_map(k))
         if m.get('description') is not None:
             self.description = m.get('description')
         return self

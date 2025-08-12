@@ -1,3 +1,9 @@
+2025-08-12 Version: 3.0.0
+- Update API CreateUmodel: delete request parameters body.commonSchemaRef.
+- Update API GetUmodel: delete response parameters Body.commonSchemaRef.$.items.
+- Update API UpdateUmodel: delete request parameters body.commonSchemaRef.
+
+
 2025-07-25 Version: 2.3.0
 - Support API CreateTicket.
 

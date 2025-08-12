@@ -536,8 +536,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.common_schema_ref):
-            body['commonSchemaRef'] = request.common_schema_ref
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
@@ -577,8 +575,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.common_schema_ref):
-            body['commonSchemaRef'] = request.common_schema_ref
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
@@ -2440,8 +2436,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.common_schema_ref):
-            body['commonSchemaRef'] = request.common_schema_ref
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
@@ -2481,8 +2475,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.common_schema_ref):
-            body['commonSchemaRef'] = request.common_schema_ref
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         req = open_api_models.OpenApiRequest(
