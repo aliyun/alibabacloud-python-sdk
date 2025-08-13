@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('xtee', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -42,13 +41,333 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_sample_data_by_csv_with_options(
+        self,
+        request: xtee_20210910_models.AddSampleDataByCsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.AddSampleDataByCsvResponse:
+        """
+        @summary Add Sample Data via CSV
+        
+        @param request: AddSampleDataByCsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSampleDataByCsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_uuid):
+            query['sampleBatchUuid'] = request.sample_batch_uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSampleDataByCsv',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.AddSampleDataByCsvResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_sample_data_by_csv_with_options_async(
+        self,
+        request: xtee_20210910_models.AddSampleDataByCsvRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.AddSampleDataByCsvResponse:
+        """
+        @summary Add Sample Data via CSV
+        
+        @param request: AddSampleDataByCsvRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSampleDataByCsvResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_uuid):
+            query['sampleBatchUuid'] = request.sample_batch_uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSampleDataByCsv',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.AddSampleDataByCsvResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_sample_data_by_csv(
+        self,
+        request: xtee_20210910_models.AddSampleDataByCsvRequest,
+    ) -> xtee_20210910_models.AddSampleDataByCsvResponse:
+        """
+        @summary Add Sample Data via CSV
+        
+        @param request: AddSampleDataByCsvRequest
+        @return: AddSampleDataByCsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_sample_data_by_csv_with_options(request, runtime)
+
+    async def add_sample_data_by_csv_async(
+        self,
+        request: xtee_20210910_models.AddSampleDataByCsvRequest,
+    ) -> xtee_20210910_models.AddSampleDataByCsvResponse:
+        """
+        @summary Add Sample Data via CSV
+        
+        @param request: AddSampleDataByCsvRequest
+        @return: AddSampleDataByCsvResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_sample_data_by_csv_with_options_async(request, runtime)
+
+    def add_sample_data_by_text_with_options(
+        self,
+        request: xtee_20210910_models.AddSampleDataByTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.AddSampleDataByTextResponse:
+        """
+        @summary Add list data through a text box for samples
+        
+        @param request: AddSampleDataByTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSampleDataByTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_uuid):
+            query['sampleBatchUuid'] = request.sample_batch_uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSampleDataByText',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.AddSampleDataByTextResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_sample_data_by_text_with_options_async(
+        self,
+        request: xtee_20210910_models.AddSampleDataByTextRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.AddSampleDataByTextResponse:
+        """
+        @summary Add list data through a text box for samples
+        
+        @param request: AddSampleDataByTextRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSampleDataByTextResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_uuid):
+            query['sampleBatchUuid'] = request.sample_batch_uuid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSampleDataByText',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.AddSampleDataByTextResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_sample_data_by_text(
+        self,
+        request: xtee_20210910_models.AddSampleDataByTextRequest,
+    ) -> xtee_20210910_models.AddSampleDataByTextResponse:
+        """
+        @summary Add list data through a text box for samples
+        
+        @param request: AddSampleDataByTextRequest
+        @return: AddSampleDataByTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_sample_data_by_text_with_options(request, runtime)
+
+    async def add_sample_data_by_text_async(
+        self,
+        request: xtee_20210910_models.AddSampleDataByTextRequest,
+    ) -> xtee_20210910_models.AddSampleDataByTextResponse:
+        """
+        @summary Add list data through a text box for samples
+        
+        @param request: AddSampleDataByTextRequest
+        @return: AddSampleDataByTextResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_sample_data_by_text_with_options_async(request, runtime)
+
+    def batch_delete_sample_data_with_options(
+        self,
+        request: xtee_20210910_models.BatchDeleteSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.BatchDeleteSampleDataResponse:
+        """
+        @summary Batch Delete Sample List Data
+        
+        @param request: BatchDeleteSampleDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteSampleDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.uuids):
+            query['uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteSampleData',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.BatchDeleteSampleDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_sample_data_with_options_async(
+        self,
+        request: xtee_20210910_models.BatchDeleteSampleDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.BatchDeleteSampleDataResponse:
+        """
+        @summary Batch Delete Sample List Data
+        
+        @param request: BatchDeleteSampleDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteSampleDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.uuids):
+            query['uuids'] = request.uuids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchDeleteSampleData',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.BatchDeleteSampleDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_sample_data(
+        self,
+        request: xtee_20210910_models.BatchDeleteSampleDataRequest,
+    ) -> xtee_20210910_models.BatchDeleteSampleDataResponse:
+        """
+        @summary Batch Delete Sample List Data
+        
+        @param request: BatchDeleteSampleDataRequest
+        @return: BatchDeleteSampleDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_delete_sample_data_with_options(request, runtime)
+
+    async def batch_delete_sample_data_async(
+        self,
+        request: xtee_20210910_models.BatchDeleteSampleDataRequest,
+    ) -> xtee_20210910_models.BatchDeleteSampleDataResponse:
+        """
+        @summary Batch Delete Sample List Data
+        
+        @param request: BatchDeleteSampleDataRequest
+        @return: BatchDeleteSampleDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_delete_sample_data_with_options_async(request, runtime)
+
     def bind_variable_with_options(
         self,
         request: xtee_20210910_models.BindVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.BindVariableResponse:
         """
-        @summary 变量绑定操作
+        @summary Variable binding operation
         
         @param request: BindVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -115,7 +434,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.BindVariableResponse:
         """
-        @summary 变量绑定操作
+        @summary Variable binding operation
         
         @param request: BindVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -181,7 +500,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.BindVariableRequest,
     ) -> xtee_20210910_models.BindVariableResponse:
         """
-        @summary 变量绑定操作
+        @summary Variable binding operation
         
         @param request: BindVariableRequest
         @return: BindVariableResponse
@@ -194,7 +513,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.BindVariableRequest,
     ) -> xtee_20210910_models.BindVariableResponse:
         """
-        @summary 变量绑定操作
+        @summary Variable binding operation
         
         @param request: BindVariableRequest
         @return: BindVariableResponse
@@ -202,13 +521,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_variable_with_options_async(request, runtime)
 
+    def check_copy_rule_variable_with_options(
+        self,
+        request: xtee_20210910_models.CheckCopyRuleVariableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CheckCopyRuleVariableResponse:
+        """
+        @summary Policy Replication Lineage Check
+        
+        @param request: CheckCopyRuleVariableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCopyRuleVariableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCopyRuleVariable',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CheckCopyRuleVariableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_copy_rule_variable_with_options_async(
+        self,
+        request: xtee_20210910_models.CheckCopyRuleVariableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CheckCopyRuleVariableResponse:
+        """
+        @summary Policy Replication Lineage Check
+        
+        @param request: CheckCopyRuleVariableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckCopyRuleVariableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCopyRuleVariable',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CheckCopyRuleVariableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_copy_rule_variable(
+        self,
+        request: xtee_20210910_models.CheckCopyRuleVariableRequest,
+    ) -> xtee_20210910_models.CheckCopyRuleVariableResponse:
+        """
+        @summary Policy Replication Lineage Check
+        
+        @param request: CheckCopyRuleVariableRequest
+        @return: CheckCopyRuleVariableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_copy_rule_variable_with_options(request, runtime)
+
+    async def check_copy_rule_variable_async(
+        self,
+        request: xtee_20210910_models.CheckCopyRuleVariableRequest,
+    ) -> xtee_20210910_models.CheckCopyRuleVariableResponse:
+        """
+        @summary Policy Replication Lineage Check
+        
+        @param request: CheckCopyRuleVariableRequest
+        @return: CheckCopyRuleVariableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_copy_rule_variable_with_options_async(request, runtime)
+
     def check_cust_variable_limit_with_options(
         self,
         request: xtee_20210910_models.CheckCustVariableLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckCustVariableLimitResponse:
         """
-        @summary 校验累计变量数目是否超过限定值
+        @summary Check if the cumulative number of variables exceeds the limit
         
         @param request: CheckCustVariableLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -247,7 +682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckCustVariableLimitResponse:
         """
-        @summary 校验累计变量数目是否超过限定值
+        @summary Check if the cumulative number of variables exceeds the limit
         
         @param request: CheckCustVariableLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -285,7 +720,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckCustVariableLimitRequest,
     ) -> xtee_20210910_models.CheckCustVariableLimitResponse:
         """
-        @summary 校验累计变量数目是否超过限定值
+        @summary Check if the cumulative number of variables exceeds the limit
         
         @param request: CheckCustVariableLimitRequest
         @return: CheckCustVariableLimitResponse
@@ -298,7 +733,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckCustVariableLimitRequest,
     ) -> xtee_20210910_models.CheckCustVariableLimitResponse:
         """
-        @summary 校验累计变量数目是否超过限定值
+        @summary Check if the cumulative number of variables exceeds the limit
         
         @param request: CheckCustVariableLimitRequest
         @return: CheckCustVariableLimitResponse
@@ -312,7 +747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckExpressionVariableLimitResponse:
         """
-        @summary 校验创建变量是否超过上限
+        @summary Check if Creating Variables Exceeds the Limit
         
         @param request: CheckExpressionVariableLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -349,7 +784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckExpressionVariableLimitResponse:
         """
-        @summary 校验创建变量是否超过上限
+        @summary Check if Creating Variables Exceeds the Limit
         
         @param request: CheckExpressionVariableLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -385,7 +820,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckExpressionVariableLimitRequest,
     ) -> xtee_20210910_models.CheckExpressionVariableLimitResponse:
         """
-        @summary 校验创建变量是否超过上限
+        @summary Check if Creating Variables Exceeds the Limit
         
         @param request: CheckExpressionVariableLimitRequest
         @return: CheckExpressionVariableLimitResponse
@@ -398,7 +833,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckExpressionVariableLimitRequest,
     ) -> xtee_20210910_models.CheckExpressionVariableLimitResponse:
         """
-        @summary 校验创建变量是否超过上限
+        @summary Check if Creating Variables Exceeds the Limit
         
         @param request: CheckExpressionVariableLimitRequest
         @return: CheckExpressionVariableLimitResponse
@@ -412,7 +847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckFieldLimitResponse:
         """
-        @summary 校验字段数目是否操过限定值
+        @summary Check if the number of fields exceeds the limit
         
         @param request: CheckFieldLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -451,7 +886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckFieldLimitResponse:
         """
-        @summary 校验字段数目是否操过限定值
+        @summary Check if the number of fields exceeds the limit
         
         @param request: CheckFieldLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -489,7 +924,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckFieldLimitRequest,
     ) -> xtee_20210910_models.CheckFieldLimitResponse:
         """
-        @summary 校验字段数目是否操过限定值
+        @summary Check if the number of fields exceeds the limit
         
         @param request: CheckFieldLimitRequest
         @return: CheckFieldLimitResponse
@@ -502,7 +937,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckFieldLimitRequest,
     ) -> xtee_20210910_models.CheckFieldLimitResponse:
         """
-        @summary 校验字段数目是否操过限定值
+        @summary Check if the number of fields exceeds the limit
         
         @param request: CheckFieldLimitRequest
         @return: CheckFieldLimitResponse
@@ -510,113 +945,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_field_limit_with_options_async(request, runtime)
 
-    def check_permission_with_options(
-        self,
-        request: xtee_20210910_models.CheckPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CheckPermissionResponse:
-        """
-        @summary 运营权限检查
-        
-        @param request: CheckPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckPermissionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckPermission',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CheckPermissionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_permission_with_options_async(
-        self,
-        request: xtee_20210910_models.CheckPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CheckPermissionResponse:
-        """
-        @summary 运营权限检查
-        
-        @param request: CheckPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckPermissionResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckPermission',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CheckPermissionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_permission(
-        self,
-        request: xtee_20210910_models.CheckPermissionRequest,
-    ) -> xtee_20210910_models.CheckPermissionResponse:
-        """
-        @summary 运营权限检查
-        
-        @param request: CheckPermissionRequest
-        @return: CheckPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.check_permission_with_options(request, runtime)
-
-    async def check_permission_async(
-        self,
-        request: xtee_20210910_models.CheckPermissionRequest,
-    ) -> xtee_20210910_models.CheckPermissionResponse:
-        """
-        @summary 运营权限检查
-        
-        @param request: CheckPermissionRequest
-        @return: CheckPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.check_permission_with_options_async(request, runtime)
-
     def check_usage_variable_with_options(
         self,
         request: xtee_20210910_models.CheckUsageVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckUsageVariableResponse:
         """
-        @summary 校验变量引用
+        @summary Validate Variable Reference
         
         @param request: CheckUsageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -655,7 +990,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CheckUsageVariableResponse:
         """
-        @summary 校验变量引用
+        @summary Validate Variable Reference
         
         @param request: CheckUsageVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -693,7 +1028,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckUsageVariableRequest,
     ) -> xtee_20210910_models.CheckUsageVariableResponse:
         """
-        @summary 校验变量引用
+        @summary Validate Variable Reference
         
         @param request: CheckUsageVariableRequest
         @return: CheckUsageVariableResponse
@@ -706,7 +1041,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CheckUsageVariableRequest,
     ) -> xtee_20210910_models.CheckUsageVariableResponse:
         """
-        @summary 校验变量引用
+        @summary Validate Variable Reference
         
         @param request: CheckUsageVariableRequest
         @return: CheckUsageVariableResponse
@@ -714,31 +1049,37 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_usage_variable_with_options_async(request, runtime)
 
-    def clear_name_list_with_options(
+    def compare_copy_rule_variable_with_options(
         self,
-        request: xtee_20210910_models.ClearNameListRequest,
+        request: xtee_20210910_models.CompareCopyRuleVariableRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ClearNameListResponse:
+    ) -> xtee_20210910_models.CompareCopyRuleVariableResponse:
         """
-        @summary 清除名单
+        @summary Policy Comparison
         
-        @param request: ClearNameListRequest
+        @param request: CompareCopyRuleVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ClearNameListResponse
+        @return: CompareCopyRuleVariableResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.variable_id):
-            query['variableId'] = request.variable_id
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ClearNameList',
+            action='CompareCopyRuleVariable',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -749,35 +1090,41 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.ClearNameListResponse(),
+            xtee_20210910_models.CompareCopyRuleVariableResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def clear_name_list_with_options_async(
+    async def compare_copy_rule_variable_with_options_async(
         self,
-        request: xtee_20210910_models.ClearNameListRequest,
+        request: xtee_20210910_models.CompareCopyRuleVariableRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ClearNameListResponse:
+    ) -> xtee_20210910_models.CompareCopyRuleVariableResponse:
         """
-        @summary 清除名单
+        @summary Policy Comparison
         
-        @param request: ClearNameListRequest
+        @param request: CompareCopyRuleVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ClearNameListResponse
+        @return: CompareCopyRuleVariableResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.variable_id):
-            query['variableId'] = request.variable_id
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ClearNameList',
+            action='CompareCopyRuleVariable',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -788,35 +1135,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.ClearNameListResponse(),
+            xtee_20210910_models.CompareCopyRuleVariableResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def clear_name_list(
+    def compare_copy_rule_variable(
         self,
-        request: xtee_20210910_models.ClearNameListRequest,
-    ) -> xtee_20210910_models.ClearNameListResponse:
+        request: xtee_20210910_models.CompareCopyRuleVariableRequest,
+    ) -> xtee_20210910_models.CompareCopyRuleVariableResponse:
         """
-        @summary 清除名单
+        @summary Policy Comparison
         
-        @param request: ClearNameListRequest
-        @return: ClearNameListResponse
+        @param request: CompareCopyRuleVariableRequest
+        @return: CompareCopyRuleVariableResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.clear_name_list_with_options(request, runtime)
+        return self.compare_copy_rule_variable_with_options(request, runtime)
 
-    async def clear_name_list_async(
+    async def compare_copy_rule_variable_async(
         self,
-        request: xtee_20210910_models.ClearNameListRequest,
-    ) -> xtee_20210910_models.ClearNameListResponse:
+        request: xtee_20210910_models.CompareCopyRuleVariableRequest,
+    ) -> xtee_20210910_models.CompareCopyRuleVariableResponse:
         """
-        @summary 清除名单
+        @summary Policy Comparison
         
-        @param request: ClearNameListRequest
-        @return: ClearNameListResponse
+        @param request: CompareCopyRuleVariableRequest
+        @return: CompareCopyRuleVariableResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.clear_name_list_with_options_async(request, runtime)
+        return await self.compare_copy_rule_variable_with_options_async(request, runtime)
 
     def create_analysis_condition_favorite_with_options(
         self,
@@ -824,7 +1171,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAnalysisConditionFavoriteResponse:
         """
-        @summary 新增查询条件
+        @summary Add Query Conditions
         
         @param request: CreateAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -877,7 +1224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAnalysisConditionFavoriteResponse:
         """
-        @summary 新增查询条件
+        @summary Add Query Conditions
         
         @param request: CreateAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -929,7 +1276,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.CreateAnalysisConditionFavoriteResponse:
         """
-        @summary 新增查询条件
+        @summary Add Query Conditions
         
         @param request: CreateAnalysisConditionFavoriteRequest
         @return: CreateAnalysisConditionFavoriteResponse
@@ -942,7 +1289,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.CreateAnalysisConditionFavoriteResponse:
         """
-        @summary 新增查询条件
+        @summary Add Query Conditions
         
         @param request: CreateAnalysisConditionFavoriteRequest
         @return: CreateAnalysisConditionFavoriteResponse
@@ -956,7 +1303,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAnalysisExportTaskResponse:
         """
-        @summary 新建导出任务
+        @summary Create Export Task
         
         @param request: CreateAnalysisExportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1013,7 +1360,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAnalysisExportTaskResponse:
         """
-        @summary 新建导出任务
+        @summary Create Export Task
         
         @param request: CreateAnalysisExportTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1069,7 +1416,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAnalysisExportTaskRequest,
     ) -> xtee_20210910_models.CreateAnalysisExportTaskResponse:
         """
-        @summary 新建导出任务
+        @summary Create Export Task
         
         @param request: CreateAnalysisExportTaskRequest
         @return: CreateAnalysisExportTaskResponse
@@ -1082,7 +1429,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAnalysisExportTaskRequest,
     ) -> xtee_20210910_models.CreateAnalysisExportTaskResponse:
         """
-        @summary 新建导出任务
+        @summary Create Export Task
         
         @param request: CreateAnalysisExportTaskRequest
         @return: CreateAnalysisExportTaskResponse
@@ -1096,7 +1443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAppKeyResponse:
         """
-        @summary 创建appKey
+        @summary Create AppKey
         
         @param request: CreateAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1133,7 +1480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateAppKeyResponse:
         """
-        @summary 创建appKey
+        @summary Create AppKey
         
         @param request: CreateAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1169,7 +1516,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAppKeyRequest,
     ) -> xtee_20210910_models.CreateAppKeyResponse:
         """
-        @summary 创建appKey
+        @summary Create AppKey
         
         @param request: CreateAppKeyRequest
         @return: CreateAppKeyResponse
@@ -1182,7 +1529,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateAppKeyRequest,
     ) -> xtee_20210910_models.CreateAppKeyResponse:
         """
-        @summary 创建appKey
+        @summary Create AppKey
         
         @param request: CreateAppKeyRequest
         @return: CreateAppKeyResponse
@@ -1190,125 +1537,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_app_key_with_options_async(request, runtime)
 
-    def create_authorization_user_with_options(
-        self,
-        request: xtee_20210910_models.CreateAuthorizationUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateAuthorizationUserResponse:
-        """
-        @summary 新增用户授权
-        
-        @param request: CreateAuthorizationUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthorizationUserResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.bind_id):
-            query['bindId'] = request.bind_id
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_template_id):
-            query['eventTemplateId'] = request.event_template_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAuthorizationUser',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateAuthorizationUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_authorization_user_with_options_async(
-        self,
-        request: xtee_20210910_models.CreateAuthorizationUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateAuthorizationUserResponse:
-        """
-        @summary 新增用户授权
-        
-        @param request: CreateAuthorizationUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthorizationUserResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.bind_id):
-            query['bindId'] = request.bind_id
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_template_id):
-            query['eventTemplateId'] = request.event_template_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateAuthorizationUser',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateAuthorizationUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_authorization_user(
-        self,
-        request: xtee_20210910_models.CreateAuthorizationUserRequest,
-    ) -> xtee_20210910_models.CreateAuthorizationUserResponse:
-        """
-        @summary 新增用户授权
-        
-        @param request: CreateAuthorizationUserRequest
-        @return: CreateAuthorizationUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_authorization_user_with_options(request, runtime)
-
-    async def create_authorization_user_async(
-        self,
-        request: xtee_20210910_models.CreateAuthorizationUserRequest,
-    ) -> xtee_20210910_models.CreateAuthorizationUserResponse:
-        """
-        @summary 新增用户授权
-        
-        @param request: CreateAuthorizationUserRequest
-        @return: CreateAuthorizationUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_authorization_user_with_options_async(request, runtime)
-
     def create_cust_variable_with_options(
         self,
         request: xtee_20210910_models.CreateCustVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateCustVariableResponse:
         """
-        @summary 创建累计变量
+        @summary Create Accumulative Variable
         
         @param request: CreateCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1371,7 +1606,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateCustVariableResponse:
         """
-        @summary 创建累计变量
+        @summary Create Accumulative Variable
         
         @param request: CreateCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1433,7 +1668,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateCustVariableRequest,
     ) -> xtee_20210910_models.CreateCustVariableResponse:
         """
-        @summary 创建累计变量
+        @summary Create Accumulative Variable
         
         @param request: CreateCustVariableRequest
         @return: CreateCustVariableResponse
@@ -1446,7 +1681,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateCustVariableRequest,
     ) -> xtee_20210910_models.CreateCustVariableResponse:
         """
-        @summary 创建累计变量
+        @summary Create Accumulative Variable
         
         @param request: CreateCustVariableRequest
         @return: CreateCustVariableResponse
@@ -1460,7 +1695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateDataSourceResponse:
         """
-        @summary 新增数据源
+        @summary Add Data Source
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1505,7 +1740,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateDataSourceResponse:
         """
-        @summary 新增数据源
+        @summary Add Data Source
         
         @param request: CreateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1549,7 +1784,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateDataSourceRequest,
     ) -> xtee_20210910_models.CreateDataSourceResponse:
         """
-        @summary 新增数据源
+        @summary Add Data Source
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -1562,7 +1797,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateDataSourceRequest,
     ) -> xtee_20210910_models.CreateDataSourceResponse:
         """
-        @summary 新增数据源
+        @summary Add Data Source
         
         @param request: CreateDataSourceRequest
         @return: CreateDataSourceResponse
@@ -1576,7 +1811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateEventResponse:
         """
-        @summary 创建事件
+        @summary Create Event
         
         @param request: CreateEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1627,7 +1862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateEventResponse:
         """
-        @summary 创建事件
+        @summary Create Event
         
         @param request: CreateEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1677,7 +1912,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateEventRequest,
     ) -> xtee_20210910_models.CreateEventResponse:
         """
-        @summary 创建事件
+        @summary Create Event
         
         @param request: CreateEventRequest
         @return: CreateEventResponse
@@ -1690,7 +1925,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateEventRequest,
     ) -> xtee_20210910_models.CreateEventResponse:
         """
-        @summary 创建事件
+        @summary Create Event
         
         @param request: CreateEventRequest
         @return: CreateEventResponse
@@ -1704,7 +1939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateExpressionVariableResponse:
         """
-        @summary 创建自定义变量
+        @summary Create Custom Variable
         
         @param request: CreateExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1757,7 +1992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateExpressionVariableResponse:
         """
-        @summary 创建自定义变量
+        @summary Create Custom Variable
         
         @param request: CreateExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1809,7 +2044,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateExpressionVariableRequest,
     ) -> xtee_20210910_models.CreateExpressionVariableResponse:
         """
-        @summary 创建自定义变量
+        @summary Create Custom Variable
         
         @param request: CreateExpressionVariableRequest
         @return: CreateExpressionVariableResponse
@@ -1822,7 +2057,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateExpressionVariableRequest,
     ) -> xtee_20210910_models.CreateExpressionVariableResponse:
         """
-        @summary 创建自定义变量
+        @summary Create Custom Variable
         
         @param request: CreateExpressionVariableRequest
         @return: CreateExpressionVariableResponse
@@ -1836,7 +2071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateFieldResponse:
         """
-        @summary 新增字段
+        @summary Add New Field
         
         @param request: CreateFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1887,7 +2122,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateFieldResponse:
         """
-        @summary 新增字段
+        @summary Add New Field
         
         @param request: CreateFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1937,7 +2172,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateFieldRequest,
     ) -> xtee_20210910_models.CreateFieldResponse:
         """
-        @summary 新增字段
+        @summary Add New Field
         
         @param request: CreateFieldRequest
         @return: CreateFieldResponse
@@ -1950,7 +2185,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateFieldRequest,
     ) -> xtee_20210910_models.CreateFieldResponse:
         """
-        @summary 新增字段
+        @summary Add New Field
         
         @param request: CreateFieldRequest
         @return: CreateFieldResponse
@@ -1958,145 +2193,43 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_field_with_options_async(request, runtime)
 
-    def create_group_sign_with_options(
+    def create_model_with_options(
         self,
-        request: xtee_20210910_models.CreateGroupSignRequest,
+        request: xtee_20210910_models.CreateModelRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateGroupSignResponse:
+    ) -> xtee_20210910_models.CreateModelResponse:
         """
-        @summary 社群打标
+        @summary Submit Task
         
-        @param request: CreateGroupSignRequest
+        @param request: CreateModelRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGroupSignResponse
+        @return: CreateModelResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.sign_list):
-            query['SignList'] = request.sign_list
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGroupSign',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateGroupSignResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_group_sign_with_options_async(
-        self,
-        request: xtee_20210910_models.CreateGroupSignRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateGroupSignResponse:
-        """
-        @summary 社群打标
-        
-        @param request: CreateGroupSignRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateGroupSignResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.sign_list):
-            query['SignList'] = request.sign_list
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateGroupSign',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateGroupSignResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_group_sign(
-        self,
-        request: xtee_20210910_models.CreateGroupSignRequest,
-    ) -> xtee_20210910_models.CreateGroupSignResponse:
-        """
-        @summary 社群打标
-        
-        @param request: CreateGroupSignRequest
-        @return: CreateGroupSignResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_group_sign_with_options(request, runtime)
-
-    async def create_group_sign_async(
-        self,
-        request: xtee_20210910_models.CreateGroupSignRequest,
-    ) -> xtee_20210910_models.CreateGroupSignResponse:
-        """
-        @summary 社群打标
-        
-        @param request: CreateGroupSignRequest
-        @return: CreateGroupSignResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_group_sign_with_options_async(request, runtime)
-
-    def create_monitor_task_with_options(
-        self,
-        request: xtee_20210910_models.CreateMonitorTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateMonitorTaskResponse:
-        """
-        @summary 创建监控任务
-        
-        @param request: CreateMonitorTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMonitorTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.biz_type):
-            query['bizType'] = request.biz_type
-        if not UtilClient.is_unset(request.cycle_type):
-            query['cycleType'] = request.cycle_type
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.buc_id):
+            query['BucId'] = request.buc_id
+        if not UtilClient.is_unset(request.counts):
+            query['Counts'] = request.counts
+        if not UtilClient.is_unset(request.file_md5):
+            query['FileMD5'] = request.file_md5
         if not UtilClient.is_unset(request.file_path):
-            query['filePath'] = request.file_path
-        if not UtilClient.is_unset(request.listday_str):
-            query['listdayStr'] = request.listday_str
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.model_scene):
+            query['ModelScene'] = request.model_scene
+        if not UtilClient.is_unset(request.parameter_num):
+            query['ParameterNum'] = request.parameter_num
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.user_local_file_name):
+            query['UserLocalFileName'] = request.user_local_file_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateMonitorTask',
+            action='CreateModel',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -2107,45 +2240,47 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.CreateMonitorTaskResponse(),
+            xtee_20210910_models.CreateModelResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_monitor_task_with_options_async(
+    async def create_model_with_options_async(
         self,
-        request: xtee_20210910_models.CreateMonitorTaskRequest,
+        request: xtee_20210910_models.CreateModelRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateMonitorTaskResponse:
+    ) -> xtee_20210910_models.CreateModelResponse:
         """
-        @summary 创建监控任务
+        @summary Submit Task
         
-        @param request: CreateMonitorTaskRequest
+        @param request: CreateModelRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateMonitorTaskResponse
+        @return: CreateModelResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.biz_type):
-            query['bizType'] = request.biz_type
-        if not UtilClient.is_unset(request.cycle_type):
-            query['cycleType'] = request.cycle_type
-        if not UtilClient.is_unset(request.end_time):
-            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.buc_id):
+            query['BucId'] = request.buc_id
+        if not UtilClient.is_unset(request.counts):
+            query['Counts'] = request.counts
+        if not UtilClient.is_unset(request.file_md5):
+            query['FileMD5'] = request.file_md5
         if not UtilClient.is_unset(request.file_path):
-            query['filePath'] = request.file_path
-        if not UtilClient.is_unset(request.listday_str):
-            query['listdayStr'] = request.listday_str
+            query['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.model_scene):
+            query['ModelScene'] = request.model_scene
+        if not UtilClient.is_unset(request.parameter_num):
+            query['ParameterNum'] = request.parameter_num
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.start_time):
-            query['startTime'] = request.start_time
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.user_local_file_name):
+            query['UserLocalFileName'] = request.user_local_file_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateMonitorTask',
+            action='CreateModel',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -2156,163 +2291,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.CreateMonitorTaskResponse(),
+            xtee_20210910_models.CreateModelResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_monitor_task(
+    def create_model(
         self,
-        request: xtee_20210910_models.CreateMonitorTaskRequest,
-    ) -> xtee_20210910_models.CreateMonitorTaskResponse:
+        request: xtee_20210910_models.CreateModelRequest,
+    ) -> xtee_20210910_models.CreateModelResponse:
         """
-        @summary 创建监控任务
+        @summary Submit Task
         
-        @param request: CreateMonitorTaskRequest
-        @return: CreateMonitorTaskResponse
+        @param request: CreateModelRequest
+        @return: CreateModelResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.create_monitor_task_with_options(request, runtime)
+        return self.create_model_with_options(request, runtime)
 
-    async def create_monitor_task_async(
+    async def create_model_async(
         self,
-        request: xtee_20210910_models.CreateMonitorTaskRequest,
-    ) -> xtee_20210910_models.CreateMonitorTaskResponse:
+        request: xtee_20210910_models.CreateModelRequest,
+    ) -> xtee_20210910_models.CreateModelResponse:
         """
-        @summary 创建监控任务
+        @summary Submit Task
         
-        @param request: CreateMonitorTaskRequest
-        @return: CreateMonitorTaskResponse
+        @param request: CreateModelRequest
+        @return: CreateModelResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.create_monitor_task_with_options_async(request, runtime)
-
-    def create_poc_with_options(
-        self,
-        request: xtee_20210910_models.CreatePocRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreatePocResponse:
-        """
-        @summary 创建poc
-        
-        @param request: CreatePocRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePocResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.config_str):
-            query['configStr'] = request.config_str
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
-            query['fileType'] = request.file_type
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.service_name):
-            query['serviceName'] = request.service_name
-        if not UtilClient.is_unset(request.task_name):
-            query['taskName'] = request.task_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreatePoc',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreatePocResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_poc_with_options_async(
-        self,
-        request: xtee_20210910_models.CreatePocRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreatePocResponse:
-        """
-        @summary 创建poc
-        
-        @param request: CreatePocRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePocResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.config_str):
-            query['configStr'] = request.config_str
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
-            query['fileType'] = request.file_type
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.service_name):
-            query['serviceName'] = request.service_name
-        if not UtilClient.is_unset(request.task_name):
-            query['taskName'] = request.task_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreatePoc',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreatePocResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_poc(
-        self,
-        request: xtee_20210910_models.CreatePocRequest,
-    ) -> xtee_20210910_models.CreatePocResponse:
-        """
-        @summary 创建poc
-        
-        @param request: CreatePocRequest
-        @return: CreatePocResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_poc_with_options(request, runtime)
-
-    async def create_poc_async(
-        self,
-        request: xtee_20210910_models.CreatePocRequest,
-    ) -> xtee_20210910_models.CreatePocResponse:
-        """
-        @summary 创建poc
-        
-        @param request: CreatePocRequest
-        @return: CreatePocResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_poc_with_options_async(request, runtime)
+        return await self.create_model_with_options_async(request, runtime)
 
     def create_poc_ev_with_options(
         self,
@@ -2320,7 +2327,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreatePocEvResponse:
         """
-        @summary 创建poc
+        @summary Create POC
         
         @param request: CreatePocEvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2375,7 +2382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreatePocEvResponse:
         """
-        @summary 创建poc
+        @summary Create POC
         
         @param request: CreatePocEvRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2429,7 +2436,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreatePocEvRequest,
     ) -> xtee_20210910_models.CreatePocEvResponse:
         """
-        @summary 创建poc
+        @summary Create POC
         
         @param request: CreatePocEvRequest
         @return: CreatePocEvResponse
@@ -2442,7 +2449,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreatePocEvRequest,
     ) -> xtee_20210910_models.CreatePocEvResponse:
         """
-        @summary 创建poc
+        @summary Create POC
         
         @param request: CreatePocEvRequest
         @return: CreatePocEvResponse
@@ -2456,7 +2463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateQueryVariableResponse:
         """
-        @summary 自定义查询变量新增
+        @summary Add New Custom Query Variable
         
         @param request: CreateQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2511,7 +2518,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateQueryVariableResponse:
         """
-        @summary 自定义查询变量新增
+        @summary Add New Custom Query Variable
         
         @param request: CreateQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2565,7 +2572,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateQueryVariableRequest,
     ) -> xtee_20210910_models.CreateQueryVariableResponse:
         """
-        @summary 自定义查询变量新增
+        @summary Add New Custom Query Variable
         
         @param request: CreateQueryVariableRequest
         @return: CreateQueryVariableResponse
@@ -2578,7 +2585,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateQueryVariableRequest,
     ) -> xtee_20210910_models.CreateQueryVariableResponse:
         """
-        @summary 自定义查询变量新增
+        @summary Add New Custom Query Variable
         
         @param request: CreateQueryVariableRequest
         @return: CreateQueryVariableResponse
@@ -2592,7 +2599,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRecommendEventRuleResponse:
         """
-        @summary 创建推荐事件策略
+        @summary Create Recommended Event Strategy
         
         @param request: CreateRecommendEventRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2637,7 +2644,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRecommendEventRuleResponse:
         """
-        @summary 创建推荐事件策略
+        @summary Create Recommended Event Strategy
         
         @param request: CreateRecommendEventRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2681,7 +2688,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRecommendEventRuleRequest,
     ) -> xtee_20210910_models.CreateRecommendEventRuleResponse:
         """
-        @summary 创建推荐事件策略
+        @summary Create Recommended Event Strategy
         
         @param request: CreateRecommendEventRuleRequest
         @return: CreateRecommendEventRuleResponse
@@ -2694,7 +2701,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRecommendEventRuleRequest,
     ) -> xtee_20210910_models.CreateRecommendEventRuleResponse:
         """
-        @summary 创建推荐事件策略
+        @summary Create Recommended Event Strategy
         
         @param request: CreateRecommendEventRuleRequest
         @return: CreateRecommendEventRuleResponse
@@ -2708,7 +2715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRecommendTaskResponse:
         """
-        @summary 创建推荐任务
+        @summary Create Recommendation Task
         
         @param request: CreateRecommendTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2753,7 +2760,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRecommendTaskResponse:
         """
-        @summary 创建推荐任务
+        @summary Create Recommendation Task
         
         @param request: CreateRecommendTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2797,7 +2804,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRecommendTaskRequest,
     ) -> xtee_20210910_models.CreateRecommendTaskResponse:
         """
-        @summary 创建推荐任务
+        @summary Create Recommendation Task
         
         @param request: CreateRecommendTaskRequest
         @return: CreateRecommendTaskResponse
@@ -2810,7 +2817,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRecommendTaskRequest,
     ) -> xtee_20210910_models.CreateRecommendTaskResponse:
         """
-        @summary 创建推荐任务
+        @summary Create Recommendation Task
         
         @param request: CreateRecommendTaskRequest
         @return: CreateRecommendTaskResponse
@@ -2818,125 +2825,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_recommend_task_with_options_async(request, runtime)
 
-    def create_replenish_task_with_options(
-        self,
-        request: xtee_20210910_models.CreateReplenishTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateReplenishTaskResponse:
-        """
-        @summary 补充上传
-        
-        @param request: CreateReplenishTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateReplenishTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_file_name):
-            query['ClientFileName'] = request.client_file_name
-        if not UtilClient.is_unset(request.client_path):
-            query['ClientPath'] = request.client_path
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateReplenishTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateReplenishTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_replenish_task_with_options_async(
-        self,
-        request: xtee_20210910_models.CreateReplenishTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateReplenishTaskResponse:
-        """
-        @summary 补充上传
-        
-        @param request: CreateReplenishTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateReplenishTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_file_name):
-            query['ClientFileName'] = request.client_file_name
-        if not UtilClient.is_unset(request.client_path):
-            query['ClientPath'] = request.client_path
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateReplenishTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateReplenishTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_replenish_task(
-        self,
-        request: xtee_20210910_models.CreateReplenishTaskRequest,
-    ) -> xtee_20210910_models.CreateReplenishTaskResponse:
-        """
-        @summary 补充上传
-        
-        @param request: CreateReplenishTaskRequest
-        @return: CreateReplenishTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_replenish_task_with_options(request, runtime)
-
-    async def create_replenish_task_async(
-        self,
-        request: xtee_20210910_models.CreateReplenishTaskRequest,
-    ) -> xtee_20210910_models.CreateReplenishTaskResponse:
-        """
-        @summary 补充上传
-        
-        @param request: CreateReplenishTaskRequest
-        @return: CreateReplenishTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_replenish_task_with_options_async(request, runtime)
-
     def create_rule_with_options(
         self,
         request: xtee_20210910_models.CreateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRuleResponse:
         """
-        @summary 创建策略&版本
+        @summary Create Policy & Version
         
         @param request: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2962,12 +2857,16 @@ class Client(OpenApiClient):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_actions):
             query['ruleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_body):
+            query['ruleBody'] = request.rule_body
         if not UtilClient.is_unset(request.rule_expressions):
             query['ruleExpressions'] = request.rule_expressions
         if not UtilClient.is_unset(request.rule_name):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['ruleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2993,7 +2892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateRuleResponse:
         """
-        @summary 创建策略&版本
+        @summary Create Policy & Version
         
         @param request: CreateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3019,12 +2918,16 @@ class Client(OpenApiClient):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_actions):
             query['ruleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_body):
+            query['ruleBody'] = request.rule_body
         if not UtilClient.is_unset(request.rule_expressions):
             query['ruleExpressions'] = request.rule_expressions
         if not UtilClient.is_unset(request.rule_name):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['ruleType'] = request.rule_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3049,7 +2952,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRuleRequest,
     ) -> xtee_20210910_models.CreateRuleResponse:
         """
-        @summary 创建策略&版本
+        @summary Create Policy & Version
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -3062,7 +2965,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateRuleRequest,
     ) -> xtee_20210910_models.CreateRuleResponse:
         """
-        @summary 创建策略&版本
+        @summary Create Policy & Version
         
         @param request: CreateRuleRequest
         @return: CreateRuleResponse
@@ -3076,7 +2979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleResponse:
         """
-        @summary 添加样本
+        @summary Add Sample
         
         @param request: CreateSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3127,7 +3030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleResponse:
         """
-        @summary 添加样本
+        @summary Add Sample
         
         @param request: CreateSampleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3177,7 +3080,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleRequest,
     ) -> xtee_20210910_models.CreateSampleResponse:
         """
-        @summary 添加样本
+        @summary Add Sample
         
         @param request: CreateSampleRequest
         @return: CreateSampleResponse
@@ -3190,7 +3093,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleRequest,
     ) -> xtee_20210910_models.CreateSampleResponse:
         """
-        @summary 添加样本
+        @summary Add Sample
         
         @param request: CreateSampleRequest
         @return: CreateSampleResponse
@@ -3204,7 +3107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleApiResponse:
         """
-        @summary 用户级别单API创建样本批
+        @summary User-level Single API to Create Sample Batches
         
         @param request: CreateSampleApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3249,7 +3152,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleApiResponse:
         """
-        @summary 用户级别单API创建样本批
+        @summary User-level Single API to Create Sample Batches
         
         @param request: CreateSampleApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3293,7 +3196,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleApiRequest,
     ) -> xtee_20210910_models.CreateSampleApiResponse:
         """
-        @summary 用户级别单API创建样本批
+        @summary User-level Single API to Create Sample Batches
         
         @param request: CreateSampleApiRequest
         @return: CreateSampleApiResponse
@@ -3306,7 +3209,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleApiRequest,
     ) -> xtee_20210910_models.CreateSampleApiResponse:
         """
-        @summary 用户级别单API创建样本批
+        @summary User-level Single API to Create Sample Batches
         
         @param request: CreateSampleApiRequest
         @return: CreateSampleApiResponse
@@ -3314,13 +3217,141 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_sample_api_with_options_async(request, runtime)
 
+    def create_sample_batch_with_options(
+        self,
+        request: xtee_20210910_models.CreateSampleBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CreateSampleBatchResponse:
+        """
+        @summary Create Sample Batch
+        
+        @param request: CreateSampleBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSampleBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_type):
+            query['sampleBatchType'] = request.sample_batch_type
+        if not UtilClient.is_unset(request.service_list):
+            query['serviceList'] = request.service_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSampleBatch',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CreateSampleBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sample_batch_with_options_async(
+        self,
+        request: xtee_20210910_models.CreateSampleBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.CreateSampleBatchResponse:
+        """
+        @summary Create Sample Batch
+        
+        @param request: CreateSampleBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSampleBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
+        if not UtilClient.is_unset(request.data_type):
+            query['dataType'] = request.data_type
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.description):
+            query['description'] = request.description
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_batch_type):
+            query['sampleBatchType'] = request.sample_batch_type
+        if not UtilClient.is_unset(request.service_list):
+            query['serviceList'] = request.service_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSampleBatch',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.CreateSampleBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sample_batch(
+        self,
+        request: xtee_20210910_models.CreateSampleBatchRequest,
+    ) -> xtee_20210910_models.CreateSampleBatchResponse:
+        """
+        @summary Create Sample Batch
+        
+        @param request: CreateSampleBatchRequest
+        @return: CreateSampleBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sample_batch_with_options(request, runtime)
+
+    async def create_sample_batch_async(
+        self,
+        request: xtee_20210910_models.CreateSampleBatchRequest,
+    ) -> xtee_20210910_models.CreateSampleBatchResponse:
+        """
+        @summary Create Sample Batch
+        
+        @param request: CreateSampleBatchRequest
+        @return: CreateSampleBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sample_batch_with_options_async(request, runtime)
+
     def create_sample_data_with_options(
         self,
         request: xtee_20210910_models.CreateSampleDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleDataResponse:
         """
-        @summary 创建样本数据
+        @summary Create Sample Data
         
         @param request: CreateSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3371,7 +3402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSampleDataResponse:
         """
-        @summary 创建样本数据
+        @summary Create Sample Data
         
         @param request: CreateSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3421,7 +3452,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleDataRequest,
     ) -> xtee_20210910_models.CreateSampleDataResponse:
         """
-        @summary 创建样本数据
+        @summary Create Sample Data
         
         @param request: CreateSampleDataRequest
         @return: CreateSampleDataResponse
@@ -3434,7 +3465,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSampleDataRequest,
     ) -> xtee_20210910_models.CreateSampleDataResponse:
         """
-        @summary 创建样本数据
+        @summary Create Sample Data
         
         @param request: CreateSampleDataRequest
         @return: CreateSampleDataResponse
@@ -3448,7 +3479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSimulationTaskResponse:
         """
-        @summary 创建任务
+        @summary Create Task
         
         @param request: CreateSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3503,7 +3534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.CreateSimulationTaskResponse:
         """
-        @summary 创建任务
+        @summary Create Task
         
         @param request: CreateSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3557,7 +3588,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSimulationTaskRequest,
     ) -> xtee_20210910_models.CreateSimulationTaskResponse:
         """
-        @summary 创建任务
+        @summary Create Task
         
         @param request: CreateSimulationTaskRequest
         @return: CreateSimulationTaskResponse
@@ -3570,7 +3601,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.CreateSimulationTaskRequest,
     ) -> xtee_20210910_models.CreateSimulationTaskResponse:
         """
-        @summary 创建任务
+        @summary Create Task
         
         @param request: CreateSimulationTaskRequest
         @return: CreateSimulationTaskResponse
@@ -3578,37 +3609,47 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_simulation_task_with_options_async(request, runtime)
 
-    def create_task_with_options(
+    def deep_copy_rule_with_options(
         self,
-        request: xtee_20210910_models.CreateTaskRequest,
+        request: xtee_20210910_models.DeepCopyRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateTaskResponse:
+    ) -> xtee_20210910_models.DeepCopyRuleResponse:
         """
-        @summary 创建任务
+        @summary Policy Replication
         
-        @param request: CreateTaskRequest
+        @param request: DeepCopyRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTaskResponse
+        @return: DeepCopyRuleResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.client_file_name):
-            query['ClientFileName'] = request.client_file_name
-        if not UtilClient.is_unset(request.client_path):
-            query['ClientPath'] = request.client_path
-        if not UtilClient.is_unset(request.describe):
-            query['Describe'] = request.describe
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
+        if not UtilClient.is_unset(request.cust_insert_info):
+            query['CustInsertInfo'] = request.cust_insert_info
+        if not UtilClient.is_unset(request.cust_write_info):
+            query['CustWriteInfo'] = request.cust_write_info
+        if not UtilClient.is_unset(request.expression_variable_info):
+            query['ExpressionVariableInfo'] = request.expression_variable_info
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.scene_name):
-            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.query_expression_variable_info):
+            query['QueryExpressionVariableInfo'] = request.query_expression_variable_info
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
+        if not UtilClient.is_unset(request.target_event_name):
+            query['TargetEventName'] = request.target_event_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateTask',
+            action='DeepCopyRule',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -3619,41 +3660,51 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.CreateTaskResponse(),
+            xtee_20210910_models.DeepCopyRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_task_with_options_async(
+    async def deep_copy_rule_with_options_async(
         self,
-        request: xtee_20210910_models.CreateTaskRequest,
+        request: xtee_20210910_models.DeepCopyRuleRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateTaskResponse:
+    ) -> xtee_20210910_models.DeepCopyRuleResponse:
         """
-        @summary 创建任务
+        @summary Policy Replication
         
-        @param request: CreateTaskRequest
+        @param request: DeepCopyRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTaskResponse
+        @return: DeepCopyRuleResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.client_file_name):
-            query['ClientFileName'] = request.client_file_name
-        if not UtilClient.is_unset(request.client_path):
-            query['ClientPath'] = request.client_path
-        if not UtilClient.is_unset(request.describe):
-            query['Describe'] = request.describe
+        if not UtilClient.is_unset(request.create_type):
+            query['CreateType'] = request.create_type
+        if not UtilClient.is_unset(request.cust_insert_info):
+            query['CustInsertInfo'] = request.cust_insert_info
+        if not UtilClient.is_unset(request.cust_write_info):
+            query['CustWriteInfo'] = request.cust_write_info
+        if not UtilClient.is_unset(request.expression_variable_info):
+            query['ExpressionVariableInfo'] = request.expression_variable_info
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.scene_name):
-            query['SceneName'] = request.scene_name
+        if not UtilClient.is_unset(request.query_expression_variable_info):
+            query['QueryExpressionVariableInfo'] = request.query_expression_variable_info
         if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.source_rule_id):
+            query['SourceRuleId'] = request.source_rule_id
+        if not UtilClient.is_unset(request.source_rule_ids):
+            query['SourceRuleIds'] = request.source_rule_ids
+        if not UtilClient.is_unset(request.target_event_code):
+            query['TargetEventCode'] = request.target_event_code
+        if not UtilClient.is_unset(request.target_event_name):
+            query['TargetEventName'] = request.target_event_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='CreateTask',
+            action='DeepCopyRule',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -3664,171 +3715,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.CreateTaskResponse(),
+            xtee_20210910_models.DeepCopyRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_task(
+    def deep_copy_rule(
         self,
-        request: xtee_20210910_models.CreateTaskRequest,
-    ) -> xtee_20210910_models.CreateTaskResponse:
+        request: xtee_20210910_models.DeepCopyRuleRequest,
+    ) -> xtee_20210910_models.DeepCopyRuleResponse:
         """
-        @summary 创建任务
+        @summary Policy Replication
         
-        @param request: CreateTaskRequest
-        @return: CreateTaskResponse
+        @param request: DeepCopyRuleRequest
+        @return: DeepCopyRuleResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.create_task_with_options(request, runtime)
+        return self.deep_copy_rule_with_options(request, runtime)
 
-    async def create_task_async(
+    async def deep_copy_rule_async(
         self,
-        request: xtee_20210910_models.CreateTaskRequest,
-    ) -> xtee_20210910_models.CreateTaskResponse:
+        request: xtee_20210910_models.DeepCopyRuleRequest,
+    ) -> xtee_20210910_models.DeepCopyRuleResponse:
         """
-        @summary 创建任务
+        @summary Policy Replication
         
-        @param request: CreateTaskRequest
-        @return: CreateTaskResponse
+        @param request: DeepCopyRuleRequest
+        @return: DeepCopyRuleResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.create_task_with_options_async(request, runtime)
-
-    def create_template_with_options(
-        self,
-        request: xtee_20210910_models.CreateTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateTemplateResponse:
-        """
-        @summary 创建模版
-        
-        @param request: CreateTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.event_name):
-            query['eventName'] = request.event_name
-        if not UtilClient.is_unset(request.logic_expression):
-            query['logicExpression'] = request.logic_expression
-        if not UtilClient.is_unset(request.memo):
-            query['memo'] = request.memo
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.rule_actions):
-            query['ruleActions'] = request.rule_actions
-        if not UtilClient.is_unset(request.rule_expressions):
-            query['ruleExpressions'] = request.rule_expressions
-        if not UtilClient.is_unset(request.rule_name):
-            query['ruleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_status):
-            query['ruleStatus'] = request.rule_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_template_with_options_async(
-        self,
-        request: xtee_20210910_models.CreateTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.CreateTemplateResponse:
-        """
-        @summary 创建模版
-        
-        @param request: CreateTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.event_name):
-            query['eventName'] = request.event_name
-        if not UtilClient.is_unset(request.logic_expression):
-            query['logicExpression'] = request.logic_expression
-        if not UtilClient.is_unset(request.memo):
-            query['memo'] = request.memo
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.rule_actions):
-            query['ruleActions'] = request.rule_actions
-        if not UtilClient.is_unset(request.rule_expressions):
-            query['ruleExpressions'] = request.rule_expressions
-        if not UtilClient.is_unset(request.rule_name):
-            query['ruleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_status):
-            query['ruleStatus'] = request.rule_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CreateTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.CreateTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_template(
-        self,
-        request: xtee_20210910_models.CreateTemplateRequest,
-    ) -> xtee_20210910_models.CreateTemplateResponse:
-        """
-        @summary 创建模版
-        
-        @param request: CreateTemplateRequest
-        @return: CreateTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.create_template_with_options(request, runtime)
-
-    async def create_template_async(
-        self,
-        request: xtee_20210910_models.CreateTemplateRequest,
-    ) -> xtee_20210910_models.CreateTemplateResponse:
-        """
-        @summary 创建模版
-        
-        @param request: CreateTemplateRequest
-        @return: CreateTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.create_template_with_options_async(request, runtime)
+        return await self.deep_copy_rule_with_options_async(request, runtime)
 
     def delete_analysis_condition_favorite_with_options(
         self,
@@ -3836,7 +3751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteAnalysisConditionFavoriteResponse:
         """
-        @summary 删除查询条件
+        @summary Delete Query Condition
         
         @param request: DeleteAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3875,7 +3790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteAnalysisConditionFavoriteResponse:
         """
-        @summary 删除查询条件
+        @summary Delete Query Condition
         
         @param request: DeleteAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3913,7 +3828,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.DeleteAnalysisConditionFavoriteResponse:
         """
-        @summary 删除查询条件
+        @summary Delete Query Condition
         
         @param request: DeleteAnalysisConditionFavoriteRequest
         @return: DeleteAnalysisConditionFavoriteResponse
@@ -3926,7 +3841,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.DeleteAnalysisConditionFavoriteResponse:
         """
-        @summary 删除查询条件
+        @summary Delete Query Condition
         
         @param request: DeleteAnalysisConditionFavoriteRequest
         @return: DeleteAnalysisConditionFavoriteResponse
@@ -3934,125 +3849,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_analysis_condition_favorite_with_options_async(request, runtime)
 
-    def delete_auth_user_with_options(
-        self,
-        request: xtee_20210910_models.DeleteAuthUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DeleteAuthUserResponse:
-        """
-        @summary 删除用户授权
-        
-        @param request: DeleteAuthUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAuthUserResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAuthUser',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DeleteAuthUserResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_auth_user_with_options_async(
-        self,
-        request: xtee_20210910_models.DeleteAuthUserRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DeleteAuthUserResponse:
-        """
-        @summary 删除用户授权
-        
-        @param request: DeleteAuthUserRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAuthUserResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DeleteAuthUser',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DeleteAuthUserResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_auth_user(
-        self,
-        request: xtee_20210910_models.DeleteAuthUserRequest,
-    ) -> xtee_20210910_models.DeleteAuthUserResponse:
-        """
-        @summary 删除用户授权
-        
-        @param request: DeleteAuthUserRequest
-        @return: DeleteAuthUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.delete_auth_user_with_options(request, runtime)
-
-    async def delete_auth_user_async(
-        self,
-        request: xtee_20210910_models.DeleteAuthUserRequest,
-    ) -> xtee_20210910_models.DeleteAuthUserResponse:
-        """
-        @summary 删除用户授权
-        
-        @param request: DeleteAuthUserRequest
-        @return: DeleteAuthUserResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.delete_auth_user_with_options_async(request, runtime)
-
     def delete_by_pass_shunt_event_with_options(
         self,
         request: xtee_20210910_models.DeleteByPassShuntEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteByPassShuntEventResponse:
         """
-        @summary 删除旁路事件
+        @summary Delete Bypass Event
         
         @param request: DeleteByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4091,7 +3894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteByPassShuntEventResponse:
         """
-        @summary 删除旁路事件
+        @summary Delete Bypass Event
         
         @param request: DeleteByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4129,7 +3932,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteByPassShuntEventRequest,
     ) -> xtee_20210910_models.DeleteByPassShuntEventResponse:
         """
-        @summary 删除旁路事件
+        @summary Delete Bypass Event
         
         @param request: DeleteByPassShuntEventRequest
         @return: DeleteByPassShuntEventResponse
@@ -4142,7 +3945,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteByPassShuntEventRequest,
     ) -> xtee_20210910_models.DeleteByPassShuntEventResponse:
         """
-        @summary 删除旁路事件
+        @summary Delete Bypass Event
         
         @param request: DeleteByPassShuntEventRequest
         @return: DeleteByPassShuntEventResponse
@@ -4156,7 +3959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteCustVariableResponse:
         """
-        @summary 删除累计变量
+        @summary Delete Accumulated Variable
         
         @param request: DeleteCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4199,7 +4002,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteCustVariableResponse:
         """
-        @summary 删除累计变量
+        @summary Delete Accumulated Variable
         
         @param request: DeleteCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4241,7 +4044,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteCustVariableRequest,
     ) -> xtee_20210910_models.DeleteCustVariableResponse:
         """
-        @summary 删除累计变量
+        @summary Delete Accumulated Variable
         
         @param request: DeleteCustVariableRequest
         @return: DeleteCustVariableResponse
@@ -4254,7 +4057,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteCustVariableRequest,
     ) -> xtee_20210910_models.DeleteCustVariableResponse:
         """
-        @summary 删除累计变量
+        @summary Delete Accumulated Variable
         
         @param request: DeleteCustVariableRequest
         @return: DeleteCustVariableResponse
@@ -4268,7 +4071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteDataSourceResponse:
         """
-        @summary 删除数据源
+        @summary Delete Data Source
         
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4307,7 +4110,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteDataSourceResponse:
         """
-        @summary 删除数据源
+        @summary Delete Data Source
         
         @param request: DeleteDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4345,7 +4148,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteDataSourceRequest,
     ) -> xtee_20210910_models.DeleteDataSourceResponse:
         """
-        @summary 删除数据源
+        @summary Delete Data Source
         
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
@@ -4358,7 +4161,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteDataSourceRequest,
     ) -> xtee_20210910_models.DeleteDataSourceResponse:
         """
-        @summary 删除数据源
+        @summary Delete Data Source
         
         @param request: DeleteDataSourceRequest
         @return: DeleteDataSourceResponse
@@ -4366,13 +4169,121 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_with_options_async(request, runtime)
 
+    def delete_event_field_with_options(
+        self,
+        request: xtee_20210910_models.DeleteEventFieldRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DeleteEventFieldResponse:
+        """
+        @summary Delete Event Field
+        
+        @param request: DeleteEventFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventFieldResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.event_code):
+            query['eventCode'] = request.event_code
+        if not UtilClient.is_unset(request.field_name):
+            query['fieldName'] = request.field_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventField',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DeleteEventFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_event_field_with_options_async(
+        self,
+        request: xtee_20210910_models.DeleteEventFieldRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DeleteEventFieldResponse:
+        """
+        @summary Delete Event Field
+        
+        @param request: DeleteEventFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventFieldResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.event_code):
+            query['eventCode'] = request.event_code
+        if not UtilClient.is_unset(request.field_name):
+            query['fieldName'] = request.field_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteEventField',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DeleteEventFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_event_field(
+        self,
+        request: xtee_20210910_models.DeleteEventFieldRequest,
+    ) -> xtee_20210910_models.DeleteEventFieldResponse:
+        """
+        @summary Delete Event Field
+        
+        @param request: DeleteEventFieldRequest
+        @return: DeleteEventFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_event_field_with_options(request, runtime)
+
+    async def delete_event_field_async(
+        self,
+        request: xtee_20210910_models.DeleteEventFieldRequest,
+    ) -> xtee_20210910_models.DeleteEventFieldResponse:
+        """
+        @summary Delete Event Field
+        
+        @param request: DeleteEventFieldRequest
+        @return: DeleteEventFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_event_field_with_options_async(request, runtime)
+
     def delete_expression_variable_with_options(
         self,
         request: xtee_20210910_models.DeleteExpressionVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteExpressionVariableResponse:
         """
-        @summary 删除自定义变量
+        @summary Delete Custom Variable
         
         @param request: DeleteExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4413,7 +4324,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteExpressionVariableResponse:
         """
-        @summary 删除自定义变量
+        @summary Delete Custom Variable
         
         @param request: DeleteExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4453,7 +4364,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteExpressionVariableRequest,
     ) -> xtee_20210910_models.DeleteExpressionVariableResponse:
         """
-        @summary 删除自定义变量
+        @summary Delete Custom Variable
         
         @param request: DeleteExpressionVariableRequest
         @return: DeleteExpressionVariableResponse
@@ -4466,7 +4377,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteExpressionVariableRequest,
     ) -> xtee_20210910_models.DeleteExpressionVariableResponse:
         """
-        @summary 删除自定义变量
+        @summary Delete Custom Variable
         
         @param request: DeleteExpressionVariableRequest
         @return: DeleteExpressionVariableResponse
@@ -4588,7 +4499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteNameListResponse:
         """
-        @summary 删除名单
+        @summary Delete Name List
         
         @param request: DeleteNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4627,7 +4538,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteNameListResponse:
         """
-        @summary 删除名单
+        @summary Delete Name List
         
         @param request: DeleteNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4665,7 +4576,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteNameListRequest,
     ) -> xtee_20210910_models.DeleteNameListResponse:
         """
-        @summary 删除名单
+        @summary Delete Name List
         
         @param request: DeleteNameListRequest
         @return: DeleteNameListResponse
@@ -4678,7 +4589,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteNameListRequest,
     ) -> xtee_20210910_models.DeleteNameListResponse:
         """
-        @summary 删除名单
+        @summary Delete Name List
         
         @param request: DeleteNameListRequest
         @return: DeleteNameListResponse
@@ -4692,7 +4603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteNameListDataResponse:
         """
-        @summary 删除(伪)名单变量数据
+        @summary Delete (pseudo) name list variable data
         
         @param request: DeleteNameListDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4731,7 +4642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteNameListDataResponse:
         """
-        @summary 删除(伪)名单变量数据
+        @summary Delete (pseudo) name list variable data
         
         @param request: DeleteNameListDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4769,7 +4680,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteNameListDataRequest,
     ) -> xtee_20210910_models.DeleteNameListDataResponse:
         """
-        @summary 删除(伪)名单变量数据
+        @summary Delete (pseudo) name list variable data
         
         @param request: DeleteNameListDataRequest
         @return: DeleteNameListDataResponse
@@ -4782,7 +4693,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteNameListDataRequest,
     ) -> xtee_20210910_models.DeleteNameListDataResponse:
         """
-        @summary 删除(伪)名单变量数据
+        @summary Delete (pseudo) name list variable data
         
         @param request: DeleteNameListDataRequest
         @return: DeleteNameListDataResponse
@@ -4796,7 +4707,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteQueryVariableResponse:
         """
-        @summary 查询变量删除
+        @summary Delete Query Variable
         
         @param request: DeleteQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4835,7 +4746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteQueryVariableResponse:
         """
-        @summary 查询变量删除
+        @summary Delete Query Variable
         
         @param request: DeleteQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4873,7 +4784,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteQueryVariableRequest,
     ) -> xtee_20210910_models.DeleteQueryVariableResponse:
         """
-        @summary 查询变量删除
+        @summary Delete Query Variable
         
         @param request: DeleteQueryVariableRequest
         @return: DeleteQueryVariableResponse
@@ -4886,7 +4797,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteQueryVariableRequest,
     ) -> xtee_20210910_models.DeleteQueryVariableResponse:
         """
-        @summary 查询变量删除
+        @summary Delete Query Variable
         
         @param request: DeleteQueryVariableRequest
         @return: DeleteQueryVariableResponse
@@ -4900,7 +4811,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteRuleResponse:
         """
-        @summary 删除策略版本
+        @summary Delete Policy Version
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4943,7 +4854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteRuleResponse:
         """
-        @summary 删除策略版本
+        @summary Delete Policy Version
         
         @param request: DeleteRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4985,7 +4896,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteRuleRequest,
     ) -> xtee_20210910_models.DeleteRuleResponse:
         """
-        @summary 删除策略版本
+        @summary Delete Policy Version
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -4998,7 +4909,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteRuleRequest,
     ) -> xtee_20210910_models.DeleteRuleResponse:
         """
-        @summary 删除策略版本
+        @summary Delete Policy Version
         
         @param request: DeleteRuleRequest
         @return: DeleteRuleResponse
@@ -5012,7 +4923,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteSampleBatchResponse:
         """
-        @summary 批量删除样本
+        @summary Batch Delete Samples
         
         @param request: DeleteSampleBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5053,7 +4964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteSampleBatchResponse:
         """
-        @summary 批量删除样本
+        @summary Batch Delete Samples
         
         @param request: DeleteSampleBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5093,7 +5004,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteSampleBatchRequest,
     ) -> xtee_20210910_models.DeleteSampleBatchResponse:
         """
-        @summary 批量删除样本
+        @summary Batch Delete Samples
         
         @param request: DeleteSampleBatchRequest
         @return: DeleteSampleBatchResponse
@@ -5106,7 +5017,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteSampleBatchRequest,
     ) -> xtee_20210910_models.DeleteSampleBatchResponse:
         """
-        @summary 批量删除样本
+        @summary Batch Delete Samples
         
         @param request: DeleteSampleBatchRequest
         @return: DeleteSampleBatchResponse
@@ -5114,13 +5025,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sample_batch_with_options_async(request, runtime)
 
+    def delete_sample_batch_meta_with_options(
+        self,
+        request: xtee_20210910_models.DeleteSampleBatchMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DeleteSampleBatchMetaResponse:
+        """
+        @summary Sample Deletion
+        
+        @param request: DeleteSampleBatchMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSampleBatchMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSampleBatchMeta',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DeleteSampleBatchMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sample_batch_meta_with_options_async(
+        self,
+        request: xtee_20210910_models.DeleteSampleBatchMetaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DeleteSampleBatchMetaResponse:
+        """
+        @summary Sample Deletion
+        
+        @param request: DeleteSampleBatchMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSampleBatchMetaResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSampleBatchMeta',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DeleteSampleBatchMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sample_batch_meta(
+        self,
+        request: xtee_20210910_models.DeleteSampleBatchMetaRequest,
+    ) -> xtee_20210910_models.DeleteSampleBatchMetaResponse:
+        """
+        @summary Sample Deletion
+        
+        @param request: DeleteSampleBatchMetaRequest
+        @return: DeleteSampleBatchMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_sample_batch_meta_with_options(request, runtime)
+
+    async def delete_sample_batch_meta_async(
+        self,
+        request: xtee_20210910_models.DeleteSampleBatchMetaRequest,
+    ) -> xtee_20210910_models.DeleteSampleBatchMetaResponse:
+        """
+        @summary Sample Deletion
+        
+        @param request: DeleteSampleBatchMetaRequest
+        @return: DeleteSampleBatchMetaResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_sample_batch_meta_with_options_async(request, runtime)
+
     def delete_sample_data_with_options(
         self,
         request: xtee_20210910_models.DeleteSampleDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteSampleDataResponse:
         """
-        @summary 删除样本数据
+        @summary Delete Sample Data
         
         @param request: DeleteSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5159,7 +5174,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DeleteSampleDataResponse:
         """
-        @summary 删除样本数据
+        @summary Delete Sample Data
         
         @param request: DeleteSampleDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5197,7 +5212,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteSampleDataRequest,
     ) -> xtee_20210910_models.DeleteSampleDataResponse:
         """
-        @summary 删除样本数据
+        @summary Delete Sample Data
         
         @param request: DeleteSampleDataRequest
         @return: DeleteSampleDataResponse
@@ -5210,7 +5225,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DeleteSampleDataRequest,
     ) -> xtee_20210910_models.DeleteSampleDataResponse:
         """
-        @summary 删除样本数据
+        @summary Delete Sample Data
         
         @param request: DeleteSampleDataRequest
         @return: DeleteSampleDataResponse
@@ -5218,31 +5233,31 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_sample_data_with_options_async(request, runtime)
 
-    def delete_task_with_options(
+    def delete_self_bind_variable_with_options(
         self,
-        request: xtee_20210910_models.DeleteTaskRequest,
+        request: xtee_20210910_models.DeleteSelfBindVariableRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DeleteTaskResponse:
+    ) -> xtee_20210910_models.DeleteSelfBindVariableResponse:
         """
-        @summary 删除社群任务
+        @summary Delete Custom System Variable
         
-        @param request: DeleteTaskRequest
+        @param request: DeleteSelfBindVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteTaskResponse
+        @return: DeleteSelfBindVariableResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteTask',
+            action='DeleteSelfBindVariable',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -5253,35 +5268,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.DeleteTaskResponse(),
+            xtee_20210910_models.DeleteSelfBindVariableResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_task_with_options_async(
+    async def delete_self_bind_variable_with_options_async(
         self,
-        request: xtee_20210910_models.DeleteTaskRequest,
+        request: xtee_20210910_models.DeleteSelfBindVariableRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DeleteTaskResponse:
+    ) -> xtee_20210910_models.DeleteSelfBindVariableResponse:
         """
-        @summary 删除社群任务
+        @summary Delete Custom System Variable
         
-        @param request: DeleteTaskRequest
+        @param request: DeleteSelfBindVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteTaskResponse
+        @return: DeleteSelfBindVariableResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.task_id):
-            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DeleteTask',
+            action='DeleteSelfBindVariable',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -5292,35 +5307,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.DeleteTaskResponse(),
+            xtee_20210910_models.DeleteSelfBindVariableResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_task(
+    def delete_self_bind_variable(
         self,
-        request: xtee_20210910_models.DeleteTaskRequest,
-    ) -> xtee_20210910_models.DeleteTaskResponse:
+        request: xtee_20210910_models.DeleteSelfBindVariableRequest,
+    ) -> xtee_20210910_models.DeleteSelfBindVariableResponse:
         """
-        @summary 删除社群任务
+        @summary Delete Custom System Variable
         
-        @param request: DeleteTaskRequest
-        @return: DeleteTaskResponse
+        @param request: DeleteSelfBindVariableRequest
+        @return: DeleteSelfBindVariableResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.delete_task_with_options(request, runtime)
+        return self.delete_self_bind_variable_with_options(request, runtime)
 
-    async def delete_task_async(
+    async def delete_self_bind_variable_async(
         self,
-        request: xtee_20210910_models.DeleteTaskRequest,
-    ) -> xtee_20210910_models.DeleteTaskResponse:
+        request: xtee_20210910_models.DeleteSelfBindVariableRequest,
+    ) -> xtee_20210910_models.DeleteSelfBindVariableResponse:
         """
-        @summary 删除社群任务
+        @summary Delete Custom System Variable
         
-        @param request: DeleteTaskRequest
-        @return: DeleteTaskResponse
+        @param request: DeleteSelfBindVariableRequest
+        @return: DeleteSelfBindVariableResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.delete_task_with_options_async(request, runtime)
+        return await self.delete_self_bind_variable_with_options_async(request, runtime)
 
     def describe_advance_search_left_variable_list_with_options(
         self,
@@ -5436,7 +5451,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAdvanceSearchPageListResponse:
         """
-        @summary 高级查询
+        @summary Advanced Query
         
         @param request: DescribeAdvanceSearchPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5489,7 +5504,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAdvanceSearchPageListResponse:
         """
-        @summary 高级查询
+        @summary Advanced Query
         
         @param request: DescribeAdvanceSearchPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5541,7 +5556,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAdvanceSearchPageListRequest,
     ) -> xtee_20210910_models.DescribeAdvanceSearchPageListResponse:
         """
-        @summary 高级查询
+        @summary Advanced Query
         
         @param request: DescribeAdvanceSearchPageListRequest
         @return: DescribeAdvanceSearchPageListResponse
@@ -5554,7 +5569,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAdvanceSearchPageListRequest,
     ) -> xtee_20210910_models.DescribeAdvanceSearchPageListResponse:
         """
-        @summary 高级查询
+        @summary Advanced Query
         
         @param request: DescribeAdvanceSearchPageListRequest
         @return: DescribeAdvanceSearchPageListResponse
@@ -5668,7 +5683,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAllEventNameAndCodeResponse:
         """
-        @summary 事件列表查询
+        @summary Event List Query
         
         @param request: DescribeAllEventNameAndCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5707,7 +5722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAllEventNameAndCodeResponse:
         """
-        @summary 事件列表查询
+        @summary Event List Query
         
         @param request: DescribeAllEventNameAndCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5745,7 +5760,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAllEventNameAndCodeRequest,
     ) -> xtee_20210910_models.DescribeAllEventNameAndCodeResponse:
         """
-        @summary 事件列表查询
+        @summary Event List Query
         
         @param request: DescribeAllEventNameAndCodeRequest
         @return: DescribeAllEventNameAndCodeResponse
@@ -5758,7 +5773,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAllEventNameAndCodeRequest,
     ) -> xtee_20210910_models.DescribeAllEventNameAndCodeResponse:
         """
-        @summary 事件列表查询
+        @summary Event List Query
         
         @param request: DescribeAllEventNameAndCodeRequest
         @return: DescribeAllEventNameAndCodeResponse
@@ -5772,7 +5787,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAllRootVariableResponse:
         """
-        @summary 自定义表达式测试时，展示所有的根变量
+        @summary Display all root variables when testing custom expressions
         
         @param request: DescribeAllRootVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5825,7 +5840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAllRootVariableResponse:
         """
-        @summary 自定义表达式测试时，展示所有的根变量
+        @summary Display all root variables when testing custom expressions
         
         @param request: DescribeAllRootVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5877,7 +5892,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAllRootVariableRequest,
     ) -> xtee_20210910_models.DescribeAllRootVariableResponse:
         """
-        @summary 自定义表达式测试时，展示所有的根变量
+        @summary Display all root variables when testing custom expressions
         
         @param request: DescribeAllRootVariableRequest
         @return: DescribeAllRootVariableResponse
@@ -5890,7 +5905,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAllRootVariableRequest,
     ) -> xtee_20210910_models.DescribeAllRootVariableResponse:
         """
-        @summary 自定义表达式测试时，展示所有的根变量
+        @summary Display all root variables when testing custom expressions
         
         @param request: DescribeAllRootVariableRequest
         @return: DescribeAllRootVariableResponse
@@ -5904,7 +5919,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisColumnFieldListResponse:
         """
-        @summary 展示所有字段
+        @summary Display All Fields
         
         @param request: DescribeAnalysisColumnFieldListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5941,7 +5956,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisColumnFieldListResponse:
         """
-        @summary 展示所有字段
+        @summary Display All Fields
         
         @param request: DescribeAnalysisColumnFieldListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5977,7 +5992,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisColumnFieldListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisColumnFieldListResponse:
         """
-        @summary 展示所有字段
+        @summary Display All Fields
         
         @param request: DescribeAnalysisColumnFieldListRequest
         @return: DescribeAnalysisColumnFieldListResponse
@@ -5990,7 +6005,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisColumnFieldListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisColumnFieldListResponse:
         """
-        @summary 展示所有字段
+        @summary Display All Fields
         
         @param request: DescribeAnalysisColumnFieldListRequest
         @return: DescribeAnalysisColumnFieldListResponse
@@ -6004,7 +6019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisColumnListResponse:
         """
-        @summary 查询自定义列
+        @summary Query Custom Columns
         
         @param request: DescribeAnalysisColumnListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6041,7 +6056,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisColumnListResponse:
         """
-        @summary 查询自定义列
+        @summary Query Custom Columns
         
         @param request: DescribeAnalysisColumnListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6077,7 +6092,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisColumnListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisColumnListResponse:
         """
-        @summary 查询自定义列
+        @summary Query Custom Columns
         
         @param request: DescribeAnalysisColumnListRequest
         @return: DescribeAnalysisColumnListResponse
@@ -6090,7 +6105,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisColumnListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisColumnListResponse:
         """
-        @summary 查询自定义列
+        @summary Query Custom Columns
         
         @param request: DescribeAnalysisColumnListRequest
         @return: DescribeAnalysisColumnListResponse
@@ -6104,7 +6119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisConditionFavoriteListResponse:
         """
-        @summary 查询条件列表
+        @summary Query Condition List
         
         @param request: DescribeAnalysisConditionFavoriteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6141,7 +6156,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisConditionFavoriteListResponse:
         """
-        @summary 查询条件列表
+        @summary Query Condition List
         
         @param request: DescribeAnalysisConditionFavoriteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6177,7 +6192,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisConditionFavoriteListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisConditionFavoriteListResponse:
         """
-        @summary 查询条件列表
+        @summary Query Condition List
         
         @param request: DescribeAnalysisConditionFavoriteListRequest
         @return: DescribeAnalysisConditionFavoriteListResponse
@@ -6190,7 +6205,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisConditionFavoriteListRequest,
     ) -> xtee_20210910_models.DescribeAnalysisConditionFavoriteListResponse:
         """
-        @summary 查询条件列表
+        @summary Query Condition List
         
         @param request: DescribeAnalysisConditionFavoriteListRequest
         @return: DescribeAnalysisConditionFavoriteListResponse
@@ -6204,7 +6219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlResponse:
         """
-        @summary 下载查询结果
+        @summary Download Query Results
         
         @param request: DescribeAnalysisExportTaskDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6241,7 +6256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlResponse:
         """
-        @summary 下载查询结果
+        @summary Download Query Results
         
         @param request: DescribeAnalysisExportTaskDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6277,7 +6292,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlResponse:
         """
-        @summary 下载查询结果
+        @summary Download Query Results
         
         @param request: DescribeAnalysisExportTaskDownloadUrlRequest
         @return: DescribeAnalysisExportTaskDownloadUrlResponse
@@ -6290,7 +6305,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeAnalysisExportTaskDownloadUrlResponse:
         """
-        @summary 下载查询结果
+        @summary Download Query Results
         
         @param request: DescribeAnalysisExportTaskDownloadUrlRequest
         @return: DescribeAnalysisExportTaskDownloadUrlResponse
@@ -6304,7 +6319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiResponse:
         """
-        @summary 得到api详情
+        @summary Get API Details
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6347,7 +6362,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiResponse:
         """
-        @summary 得到api详情
+        @summary Get API Details
         
         @param request: DescribeApiRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6389,7 +6404,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiRequest,
     ) -> xtee_20210910_models.DescribeApiResponse:
         """
-        @summary 得到api详情
+        @summary Get API Details
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -6402,7 +6417,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiRequest,
     ) -> xtee_20210910_models.DescribeApiResponse:
         """
-        @summary 得到api详情
+        @summary Get API Details
         
         @param request: DescribeApiRequest
         @return: DescribeApiResponse
@@ -6416,7 +6431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiGroupsResponse:
         """
-        @summary 得到api分组包括用户购买的以及自定义的
+        @summary Get API groups including those purchased by the user and custom ones
         
         @param request: DescribeApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6455,7 +6470,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiGroupsResponse:
         """
-        @summary 得到api分组包括用户购买的以及自定义的
+        @summary Get API groups including those purchased by the user and custom ones
         
         @param request: DescribeApiGroupsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6493,7 +6508,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiGroupsRequest,
     ) -> xtee_20210910_models.DescribeApiGroupsResponse:
         """
-        @summary 得到api分组包括用户购买的以及自定义的
+        @summary Get API groups including those purchased by the user and custom ones
         
         @param request: DescribeApiGroupsRequest
         @return: DescribeApiGroupsResponse
@@ -6506,7 +6521,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiGroupsRequest,
     ) -> xtee_20210910_models.DescribeApiGroupsResponse:
         """
-        @summary 得到api分组包括用户购买的以及自定义的
+        @summary Get API groups including those purchased by the user and custom ones
         
         @param request: DescribeApiGroupsRequest
         @return: DescribeApiGroupsResponse
@@ -6520,7 +6535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiLimitResponse:
         """
-        @summary 查询创建api任务的limit信息
+        @summary Query the limit information for creating API tasks
         
         @param request: DescribeApiLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6557,7 +6572,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiLimitResponse:
         """
-        @summary 查询创建api任务的limit信息
+        @summary Query the limit information for creating API tasks
         
         @param request: DescribeApiLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6593,7 +6608,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiLimitRequest,
     ) -> xtee_20210910_models.DescribeApiLimitResponse:
         """
-        @summary 查询创建api任务的limit信息
+        @summary Query the limit information for creating API tasks
         
         @param request: DescribeApiLimitRequest
         @return: DescribeApiLimitResponse
@@ -6606,7 +6621,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiLimitRequest,
     ) -> xtee_20210910_models.DescribeApiLimitResponse:
         """
-        @summary 查询创建api任务的limit信息
+        @summary Query the limit information for creating API tasks
         
         @param request: DescribeApiLimitRequest
         @return: DescribeApiLimitResponse
@@ -6620,7 +6635,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiNameListResponse:
         """
-        @summary 获取api服务名称
+        @summary Get API Service Name
         
         @param request: DescribeApiNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6657,7 +6672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiNameListResponse:
         """
-        @summary 获取api服务名称
+        @summary Get API Service Name
         
         @param request: DescribeApiNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6693,7 +6708,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiNameListRequest,
     ) -> xtee_20210910_models.DescribeApiNameListResponse:
         """
-        @summary 获取api服务名称
+        @summary Get API Service Name
         
         @param request: DescribeApiNameListRequest
         @return: DescribeApiNameListResponse
@@ -6706,7 +6721,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiNameListRequest,
     ) -> xtee_20210910_models.DescribeApiNameListResponse:
         """
-        @summary 获取api服务名称
+        @summary Get API Service Name
         
         @param request: DescribeApiNameListRequest
         @return: DescribeApiNameListResponse
@@ -6720,7 +6735,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiVariableResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeApiVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6759,7 +6774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApiVariableResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeApiVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6797,7 +6812,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiVariableRequest,
     ) -> xtee_20210910_models.DescribeApiVariableResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeApiVariableRequest
         @return: DescribeApiVariableResponse
@@ -6810,7 +6825,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApiVariableRequest,
     ) -> xtee_20210910_models.DescribeApiVariableResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeApiVariableRequest
         @return: DescribeApiVariableResponse
@@ -6824,7 +6839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApisResponse:
         """
-        @summary 得到api列表包括用户购买的以及自定义的
+        @summary Get API list including purchased and customized APIs
         
         @param request: DescribeApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6867,7 +6882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeApisResponse:
         """
-        @summary 得到api列表包括用户购买的以及自定义的
+        @summary Get API list including purchased and customized APIs
         
         @param request: DescribeApisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6909,7 +6924,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApisRequest,
     ) -> xtee_20210910_models.DescribeApisResponse:
         """
-        @summary 得到api列表包括用户购买的以及自定义的
+        @summary Get API list including purchased and customized APIs
         
         @param request: DescribeApisRequest
         @return: DescribeApisResponse
@@ -6922,7 +6937,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeApisRequest,
     ) -> xtee_20210910_models.DescribeApisResponse:
         """
-        @summary 得到api列表包括用户购买的以及自定义的
+        @summary Get API list including purchased and customized APIs
         
         @param request: DescribeApisRequest
         @return: DescribeApisResponse
@@ -6936,7 +6951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAppKeyPageResponse:
         """
-        @summary 查询appKey列表
+        @summary Query appKey List
         
         @param request: DescribeAppKeyPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6977,7 +6992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAppKeyPageResponse:
         """
-        @summary 查询appKey列表
+        @summary Query appKey List
         
         @param request: DescribeAppKeyPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7017,7 +7032,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAppKeyPageRequest,
     ) -> xtee_20210910_models.DescribeAppKeyPageResponse:
         """
-        @summary 查询appKey列表
+        @summary Query appKey List
         
         @param request: DescribeAppKeyPageRequest
         @return: DescribeAppKeyPageResponse
@@ -7030,7 +7045,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAppKeyPageRequest,
     ) -> xtee_20210910_models.DescribeAppKeyPageResponse:
         """
-        @summary 查询appKey列表
+        @summary Query appKey List
         
         @param request: DescribeAppKeyPageRequest
         @return: DescribeAppKeyPageResponse
@@ -7044,7 +7059,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditConfigResponse:
         """
-        @summary 审批开关
+        @summary Approval Switch
         
         @param request: DescribeAuditConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7083,7 +7098,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditConfigResponse:
         """
-        @summary 审批开关
+        @summary Approval Switch
         
         @param request: DescribeAuditConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7121,7 +7136,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditConfigRequest,
     ) -> xtee_20210910_models.DescribeAuditConfigResponse:
         """
-        @summary 审批开关
+        @summary Approval Switch
         
         @param request: DescribeAuditConfigRequest
         @return: DescribeAuditConfigResponse
@@ -7134,7 +7149,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditConfigRequest,
     ) -> xtee_20210910_models.DescribeAuditConfigResponse:
         """
-        @summary 审批开关
+        @summary Approval Switch
         
         @param request: DescribeAuditConfigRequest
         @return: DescribeAuditConfigResponse
@@ -7148,7 +7163,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditDetailsResponse:
         """
-        @summary 审批详情
+        @summary Approval Details
         
         @param request: DescribeAuditDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7187,7 +7202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditDetailsResponse:
         """
-        @summary 审批详情
+        @summary Approval Details
         
         @param request: DescribeAuditDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7225,7 +7240,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditDetailsRequest,
     ) -> xtee_20210910_models.DescribeAuditDetailsResponse:
         """
-        @summary 审批详情
+        @summary Approval Details
         
         @param request: DescribeAuditDetailsRequest
         @return: DescribeAuditDetailsResponse
@@ -7238,7 +7253,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditDetailsRequest,
     ) -> xtee_20210910_models.DescribeAuditDetailsResponse:
         """
-        @summary 审批详情
+        @summary Approval Details
         
         @param request: DescribeAuditDetailsRequest
         @return: DescribeAuditDetailsResponse
@@ -7252,7 +7267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditPageListResponse:
         """
-        @summary 审核列表展示、查询
+        @summary Display and Query of Audit List
         
         @param request: DescribeAuditPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7299,7 +7314,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuditPageListResponse:
         """
-        @summary 审核列表展示、查询
+        @summary Display and Query of Audit List
         
         @param request: DescribeAuditPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7345,7 +7360,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditPageListRequest,
     ) -> xtee_20210910_models.DescribeAuditPageListResponse:
         """
-        @summary 审核列表展示、查询
+        @summary Display and Query of Audit List
         
         @param request: DescribeAuditPageListRequest
         @return: DescribeAuditPageListResponse
@@ -7358,7 +7373,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuditPageListRequest,
     ) -> xtee_20210910_models.DescribeAuditPageListResponse:
         """
-        @summary 审核列表展示、查询
+        @summary Display and Query of Audit List
         
         @param request: DescribeAuditPageListRequest
         @return: DescribeAuditPageListResponse
@@ -7372,7 +7387,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthEventNameListResponse:
         """
-        @summary 查询当前用户的事件名列表
+        @summary Query the list of event names for the current user
         
         @param request: DescribeAuthEventNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7409,7 +7424,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthEventNameListResponse:
         """
-        @summary 查询当前用户的事件名列表
+        @summary Query the list of event names for the current user
         
         @param request: DescribeAuthEventNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7445,7 +7460,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthEventNameListRequest,
     ) -> xtee_20210910_models.DescribeAuthEventNameListResponse:
         """
-        @summary 查询当前用户的事件名列表
+        @summary Query the list of event names for the current user
         
         @param request: DescribeAuthEventNameListRequest
         @return: DescribeAuthEventNameListResponse
@@ -7458,7 +7473,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthEventNameListRequest,
     ) -> xtee_20210910_models.DescribeAuthEventNameListResponse:
         """
-        @summary 查询当前用户的事件名列表
+        @summary Query the list of event names for the current user
         
         @param request: DescribeAuthEventNameListRequest
         @return: DescribeAuthEventNameListResponse
@@ -7684,7 +7699,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthScenePageListResponse:
         """
-        @summary 场景列表
+        @summary Scene List
         
         @param request: DescribeAuthScenePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7723,7 +7738,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthScenePageListResponse:
         """
-        @summary 场景列表
+        @summary Scene List
         
         @param request: DescribeAuthScenePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7761,7 +7776,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthScenePageListRequest,
     ) -> xtee_20210910_models.DescribeAuthScenePageListResponse:
         """
-        @summary 场景列表
+        @summary Scene List
         
         @param request: DescribeAuthScenePageListRequest
         @return: DescribeAuthScenePageListResponse
@@ -7774,7 +7789,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthScenePageListRequest,
     ) -> xtee_20210910_models.DescribeAuthScenePageListResponse:
         """
-        @summary 场景列表
+        @summary Scene List
         
         @param request: DescribeAuthScenePageListRequest
         @return: DescribeAuthScenePageListResponse
@@ -7788,7 +7803,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthStatusResponse:
         """
-        @summary 查看是否授权
+        @summary Check Authorization
         
         @param request: DescribeAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7825,7 +7840,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAuthStatusResponse:
         """
-        @summary 查看是否授权
+        @summary Check Authorization
         
         @param request: DescribeAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7861,7 +7876,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthStatusRequest,
     ) -> xtee_20210910_models.DescribeAuthStatusResponse:
         """
-        @summary 查看是否授权
+        @summary Check Authorization
         
         @param request: DescribeAuthStatusRequest
         @return: DescribeAuthStatusResponse
@@ -7874,7 +7889,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAuthStatusRequest,
     ) -> xtee_20210910_models.DescribeAuthStatusResponse:
         """
-        @summary 查看是否授权
+        @summary Check Authorization
         
         @param request: DescribeAuthStatusRequest
         @return: DescribeAuthStatusResponse
@@ -7888,7 +7903,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAvgExecuteCostReportResponse:
         """
-        @summary 平均执行耗时
+        @summary Average Execution Time
         
         @param request: DescribeAvgExecuteCostReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7925,7 +7940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeAvgExecuteCostReportResponse:
         """
-        @summary 平均执行耗时
+        @summary Average Execution Time
         
         @param request: DescribeAvgExecuteCostReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7961,7 +7976,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAvgExecuteCostReportRequest,
     ) -> xtee_20210910_models.DescribeAvgExecuteCostReportResponse:
         """
-        @summary 平均执行耗时
+        @summary Average Execution Time
         
         @param request: DescribeAvgExecuteCostReportRequest
         @return: DescribeAvgExecuteCostReportResponse
@@ -7974,7 +7989,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeAvgExecuteCostReportRequest,
     ) -> xtee_20210910_models.DescribeAvgExecuteCostReportResponse:
         """
-        @summary 平均执行耗时
+        @summary Average Execution Time
         
         @param request: DescribeAvgExecuteCostReportRequest
         @return: DescribeAvgExecuteCostReportResponse
@@ -7988,7 +8003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeBasicSearchPageListResponse:
         """
-        @summary 基础查询
+        @summary Basic Query
         
         @param request: DescribeBasicSearchPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8039,7 +8054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeBasicSearchPageListResponse:
         """
-        @summary 基础查询
+        @summary Basic Query
         
         @param request: DescribeBasicSearchPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8089,7 +8104,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeBasicSearchPageListRequest,
     ) -> xtee_20210910_models.DescribeBasicSearchPageListResponse:
         """
-        @summary 基础查询
+        @summary Basic Query
         
         @param request: DescribeBasicSearchPageListRequest
         @return: DescribeBasicSearchPageListResponse
@@ -8102,7 +8117,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeBasicSearchPageListRequest,
     ) -> xtee_20210910_models.DescribeBasicSearchPageListResponse:
         """
-        @summary 基础查询
+        @summary Basic Query
         
         @param request: DescribeBasicSearchPageListRequest
         @return: DescribeBasicSearchPageListResponse
@@ -8228,7 +8243,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeByPassShuntEventResponse:
         """
-        @summary 查看旁路事件
+        @summary View Bypass Event
         
         @param request: DescribeByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8267,7 +8282,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeByPassShuntEventResponse:
         """
-        @summary 查看旁路事件
+        @summary View Bypass Event
         
         @param request: DescribeByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8305,7 +8320,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeByPassShuntEventRequest,
     ) -> xtee_20210910_models.DescribeByPassShuntEventResponse:
         """
-        @summary 查看旁路事件
+        @summary View Bypass Event
         
         @param request: DescribeByPassShuntEventRequest
         @return: DescribeByPassShuntEventResponse
@@ -8318,7 +8333,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeByPassShuntEventRequest,
     ) -> xtee_20210910_models.DescribeByPassShuntEventResponse:
         """
-        @summary 查看旁路事件
+        @summary View Bypass Event
         
         @param request: DescribeByPassShuntEventRequest
         @return: DescribeByPassShuntEventResponse
@@ -8332,7 +8347,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariableConfigListResponse:
         """
-        @summary 查询自定义累计变量的类型配置
+        @summary Query the type configuration of custom accumulated variables
         
         @param request: DescribeCustVariableConfigListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8373,7 +8388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariableConfigListResponse:
         """
-        @summary 查询自定义累计变量的类型配置
+        @summary Query the type configuration of custom accumulated variables
         
         @param request: DescribeCustVariableConfigListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8413,7 +8428,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariableConfigListRequest,
     ) -> xtee_20210910_models.DescribeCustVariableConfigListResponse:
         """
-        @summary 查询自定义累计变量的类型配置
+        @summary Query the type configuration of custom accumulated variables
         
         @param request: DescribeCustVariableConfigListRequest
         @return: DescribeCustVariableConfigListResponse
@@ -8426,7 +8441,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariableConfigListRequest,
     ) -> xtee_20210910_models.DescribeCustVariableConfigListResponse:
         """
-        @summary 查询自定义累计变量的类型配置
+        @summary Query the type configuration of custom accumulated variables
         
         @param request: DescribeCustVariableConfigListRequest
         @return: DescribeCustVariableConfigListResponse
@@ -8440,7 +8455,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariableDetailResponse:
         """
-        @summary 累计变量详情
+        @summary Cumulative Variable Details
         
         @param request: DescribeCustVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8479,7 +8494,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariableDetailResponse:
         """
-        @summary 累计变量详情
+        @summary Cumulative Variable Details
         
         @param request: DescribeCustVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8517,7 +8532,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeCustVariableDetailResponse:
         """
-        @summary 累计变量详情
+        @summary Cumulative Variable Details
         
         @param request: DescribeCustVariableDetailRequest
         @return: DescribeCustVariableDetailResponse
@@ -8530,7 +8545,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeCustVariableDetailResponse:
         """
-        @summary 累计变量详情
+        @summary Cumulative Variable Details
         
         @param request: DescribeCustVariableDetailRequest
         @return: DescribeCustVariableDetailResponse
@@ -8544,7 +8559,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariablePageResponse:
         """
-        @summary 查询自定义累计变量列表
+        @summary Query Custom Accumulated Variable List
+        
+        @description List Query of Accumulated Variables
         
         @param request: DescribeCustVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8591,7 +8608,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeCustVariablePageResponse:
         """
-        @summary 查询自定义累计变量列表
+        @summary Query Custom Accumulated Variable List
+        
+        @description List Query of Accumulated Variables
         
         @param request: DescribeCustVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8637,7 +8656,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariablePageRequest,
     ) -> xtee_20210910_models.DescribeCustVariablePageResponse:
         """
-        @summary 查询自定义累计变量列表
+        @summary Query Custom Accumulated Variable List
+        
+        @description List Query of Accumulated Variables
         
         @param request: DescribeCustVariablePageRequest
         @return: DescribeCustVariablePageResponse
@@ -8650,7 +8671,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeCustVariablePageRequest,
     ) -> xtee_20210910_models.DescribeCustVariablePageResponse:
         """
-        @summary 查询自定义累计变量列表
+        @summary Query Custom Accumulated Variable List
+        
+        @description List Query of Accumulated Variables
         
         @param request: DescribeCustVariablePageRequest
         @return: DescribeCustVariablePageResponse
@@ -8664,7 +8687,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourceDataDownloadUrlResponse:
         """
-        @summary 获取数据源数据下载链接
+        @summary Get Data Source Data Download Link
         
         @param request: DescribeDataSourceDataDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8703,7 +8726,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourceDataDownloadUrlResponse:
         """
-        @summary 获取数据源数据下载链接
+        @summary Get Data Source Data Download Link
         
         @param request: DescribeDataSourceDataDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8741,7 +8764,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourceDataDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeDataSourceDataDownloadUrlResponse:
         """
-        @summary 获取数据源数据下载链接
+        @summary Get Data Source Data Download Link
         
         @param request: DescribeDataSourceDataDownloadUrlRequest
         @return: DescribeDataSourceDataDownloadUrlResponse
@@ -8754,7 +8777,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourceDataDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeDataSourceDataDownloadUrlResponse:
         """
-        @summary 获取数据源数据下载链接
+        @summary Get Data Source Data Download Link
         
         @param request: DescribeDataSourceDataDownloadUrlRequest
         @return: DescribeDataSourceDataDownloadUrlResponse
@@ -8768,7 +8791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourceFieldsResponse:
         """
-        @summary 获取数据源所有字段
+        @summary Retrieve all fields of a data source
         
         @param request: DescribeDataSourceFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8807,7 +8830,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourceFieldsResponse:
         """
-        @summary 获取数据源所有字段
+        @summary Retrieve all fields of a data source
         
         @param request: DescribeDataSourceFieldsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8845,7 +8868,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourceFieldsRequest,
     ) -> xtee_20210910_models.DescribeDataSourceFieldsResponse:
         """
-        @summary 获取数据源所有字段
+        @summary Retrieve all fields of a data source
         
         @param request: DescribeDataSourceFieldsRequest
         @return: DescribeDataSourceFieldsResponse
@@ -8858,7 +8881,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourceFieldsRequest,
     ) -> xtee_20210910_models.DescribeDataSourceFieldsResponse:
         """
-        @summary 获取数据源所有字段
+        @summary Retrieve all fields of a data source
         
         @param request: DescribeDataSourceFieldsRequest
         @return: DescribeDataSourceFieldsResponse
@@ -8872,7 +8895,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourcePageListResponse:
         """
-        @summary 数据源列表接口
+        @summary Data Source List Interface
         
         @param request: DescribeDataSourcePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8919,7 +8942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDataSourcePageListResponse:
         """
-        @summary 数据源列表接口
+        @summary Data Source List Interface
         
         @param request: DescribeDataSourcePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8965,7 +8988,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourcePageListRequest,
     ) -> xtee_20210910_models.DescribeDataSourcePageListResponse:
         """
-        @summary 数据源列表接口
+        @summary Data Source List Interface
         
         @param request: DescribeDataSourcePageListRequest
         @return: DescribeDataSourcePageListResponse
@@ -8978,7 +9001,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDataSourcePageListRequest,
     ) -> xtee_20210910_models.DescribeDataSourcePageListResponse:
         """
-        @summary 数据源列表接口
+        @summary Data Source List Interface
         
         @param request: DescribeDataSourcePageListRequest
         @return: DescribeDataSourcePageListResponse
@@ -8992,7 +9015,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDecisionResultFluctuationResponse:
         """
-        @summary 决策结果波动检测
+        @summary Decision Result Fluctuation Detection
         
         @param request: DescribeDecisionResultFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9031,7 +9054,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDecisionResultFluctuationResponse:
         """
-        @summary 决策结果波动检测
+        @summary Decision Result Fluctuation Detection
         
         @param request: DescribeDecisionResultFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9069,7 +9092,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDecisionResultFluctuationRequest,
     ) -> xtee_20210910_models.DescribeDecisionResultFluctuationResponse:
         """
-        @summary 决策结果波动检测
+        @summary Decision Result Fluctuation Detection
         
         @param request: DescribeDecisionResultFluctuationRequest
         @return: DescribeDecisionResultFluctuationResponse
@@ -9082,7 +9105,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDecisionResultFluctuationRequest,
     ) -> xtee_20210910_models.DescribeDecisionResultFluctuationResponse:
         """
-        @summary 决策结果波动检测
+        @summary Decision Result Fluctuation Detection
         
         @param request: DescribeDecisionResultFluctuationRequest
         @return: DescribeDecisionResultFluctuationResponse
@@ -9096,7 +9119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDecisionResultTrendResponse:
         """
-        @summary 决策结果波动趋势
+        @summary Decision Result Fluctuation Trend
         
         @param request: DescribeDecisionResultTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9139,7 +9162,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDecisionResultTrendResponse:
         """
-        @summary 决策结果波动趋势
+        @summary Decision Result Fluctuation Trend
         
         @param request: DescribeDecisionResultTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9181,7 +9204,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDecisionResultTrendRequest,
     ) -> xtee_20210910_models.DescribeDecisionResultTrendResponse:
         """
-        @summary 决策结果波动趋势
+        @summary Decision Result Fluctuation Trend
         
         @param request: DescribeDecisionResultTrendRequest
         @return: DescribeDecisionResultTrendResponse
@@ -9194,7 +9217,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDecisionResultTrendRequest,
     ) -> xtee_20210910_models.DescribeDecisionResultTrendResponse:
         """
-        @summary 决策结果波动趋势
+        @summary Decision Result Fluctuation Trend
         
         @param request: DescribeDecisionResultTrendRequest
         @return: DescribeDecisionResultTrendResponse
@@ -9208,7 +9231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDetailStartResponse:
         """
-        @summary 详细统计
+        @summary Detailed Statistics
         
         @param request: DescribeDetailStartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9251,7 +9274,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDetailStartResponse:
         """
-        @summary 详细统计
+        @summary Detailed Statistics
         
         @param request: DescribeDetailStartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9293,7 +9316,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDetailStartRequest,
     ) -> xtee_20210910_models.DescribeDetailStartResponse:
         """
-        @summary 详细统计
+        @summary Detailed Statistics
         
         @param request: DescribeDetailStartRequest
         @return: DescribeDetailStartResponse
@@ -9306,7 +9329,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDetailStartRequest,
     ) -> xtee_20210910_models.DescribeDetailStartResponse:
         """
-        @summary 详细统计
+        @summary Detailed Statistics
         
         @param request: DescribeDetailStartRequest
         @return: DescribeDetailStartResponse
@@ -9320,7 +9343,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDownloadUrlResponse:
         """
-        @summary 下载
+        @summary Download
         
         @param request: DescribeDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9363,7 +9386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeDownloadUrlResponse:
         """
-        @summary 下载
+        @summary Download
         
         @param request: DescribeDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9405,7 +9428,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeDownloadUrlResponse:
         """
-        @summary 下载
+        @summary Download
         
         @param request: DescribeDownloadUrlRequest
         @return: DescribeDownloadUrlResponse
@@ -9418,7 +9441,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeDownloadUrlResponse:
         """
-        @summary 下载
+        @summary Download
         
         @param request: DescribeDownloadUrlRequest
         @return: DescribeDownloadUrlResponse
@@ -9432,7 +9455,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventBaseInfoByEventCodeResponse:
         """
-        @summary 查询事件详情
+        @summary Query Event Details
         
         @param request: DescribeEventBaseInfoByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9473,7 +9496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventBaseInfoByEventCodeResponse:
         """
-        @summary 查询事件详情
+        @summary Query Event Details
         
         @param request: DescribeEventBaseInfoByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9513,7 +9536,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventBaseInfoByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeEventBaseInfoByEventCodeResponse:
         """
-        @summary 查询事件详情
+        @summary Query Event Details
         
         @param request: DescribeEventBaseInfoByEventCodeRequest
         @return: DescribeEventBaseInfoByEventCodeResponse
@@ -9526,7 +9549,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventBaseInfoByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeEventBaseInfoByEventCodeResponse:
         """
-        @summary 查询事件详情
+        @summary Query Event Details
         
         @param request: DescribeEventBaseInfoByEventCodeRequest
         @return: DescribeEventBaseInfoByEventCodeResponse
@@ -9540,7 +9563,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeEventCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9579,7 +9602,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeEventCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9617,7 +9640,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventCountRequest,
     ) -> xtee_20210910_models.DescribeEventCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeEventCountRequest
         @return: DescribeEventCountResponse
@@ -9630,7 +9653,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventCountRequest,
     ) -> xtee_20210910_models.DescribeEventCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeEventCountRequest
         @return: DescribeEventCountResponse
@@ -9644,7 +9667,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventDetailByRequestIdResponse:
         """
-        @summary 根据requestId查询事件详情
+        @summary Query event details based on the request ID
         
         @param request: DescribeEventDetailByRequestIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9687,7 +9710,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventDetailByRequestIdResponse:
         """
-        @summary 根据requestId查询事件详情
+        @summary Query event details based on the request ID
         
         @param request: DescribeEventDetailByRequestIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9729,7 +9752,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventDetailByRequestIdRequest,
     ) -> xtee_20210910_models.DescribeEventDetailByRequestIdResponse:
         """
-        @summary 根据requestId查询事件详情
+        @summary Query event details based on the request ID
         
         @param request: DescribeEventDetailByRequestIdRequest
         @return: DescribeEventDetailByRequestIdResponse
@@ -9742,7 +9765,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventDetailByRequestIdRequest,
     ) -> xtee_20210910_models.DescribeEventDetailByRequestIdResponse:
         """
-        @summary 根据requestId查询事件详情
+        @summary Query event details based on the request ID
         
         @param request: DescribeEventDetailByRequestIdRequest
         @return: DescribeEventDetailByRequestIdResponse
@@ -9756,7 +9779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventLogDetailResponse:
         """
-        @summary 查询事件历史详情
+        @summary Query Event History Details
         
         @param request: DescribeEventLogDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9795,7 +9818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventLogDetailResponse:
         """
-        @summary 查询事件历史详情
+        @summary Query Event History Details
         
         @param request: DescribeEventLogDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9833,7 +9856,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventLogDetailRequest,
     ) -> xtee_20210910_models.DescribeEventLogDetailResponse:
         """
-        @summary 查询事件历史详情
+        @summary Query Event History Details
         
         @param request: DescribeEventLogDetailRequest
         @return: DescribeEventLogDetailResponse
@@ -9846,7 +9869,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventLogDetailRequest,
     ) -> xtee_20210910_models.DescribeEventLogDetailResponse:
         """
-        @summary 查询事件历史详情
+        @summary Query Event History Details
         
         @param request: DescribeEventLogDetailRequest
         @return: DescribeEventLogDetailResponse
@@ -10072,7 +10095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventPageListResponse:
         """
-        @summary 事件分页查询
+        @summary Paged Query for Events
         
         @param request: DescribeEventPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10121,7 +10144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventPageListResponse:
         """
-        @summary 事件分页查询
+        @summary Paged Query for Events
         
         @param request: DescribeEventPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10169,7 +10192,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventPageListRequest,
     ) -> xtee_20210910_models.DescribeEventPageListResponse:
         """
-        @summary 事件分页查询
+        @summary Paged Query for Events
         
         @param request: DescribeEventPageListRequest
         @return: DescribeEventPageListResponse
@@ -10182,7 +10205,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventPageListRequest,
     ) -> xtee_20210910_models.DescribeEventPageListResponse:
         """
-        @summary 事件分页查询
+        @summary Paged Query for Events
         
         @param request: DescribeEventPageListRequest
         @return: DescribeEventPageListResponse
@@ -10196,7 +10219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventResultBarChartResponse:
         """
-        @summary 风险大盘
+        @summary Risk Dashboard
         
         @param request: DescribeEventResultBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10239,7 +10262,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventResultBarChartResponse:
         """
-        @summary 风险大盘
+        @summary Risk Dashboard
         
         @param request: DescribeEventResultBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10281,7 +10304,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventResultBarChartRequest,
     ) -> xtee_20210910_models.DescribeEventResultBarChartResponse:
         """
-        @summary 风险大盘
+        @summary Risk Dashboard
         
         @param request: DescribeEventResultBarChartRequest
         @return: DescribeEventResultBarChartResponse
@@ -10294,7 +10317,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventResultBarChartRequest,
     ) -> xtee_20210910_models.DescribeEventResultBarChartResponse:
         """
-        @summary 风险大盘
+        @summary Risk Dashboard
         
         @param request: DescribeEventResultBarChartRequest
         @return: DescribeEventResultBarChartResponse
@@ -10308,7 +10331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventResultListResponse:
         """
-        @summary 事件概览列表
+        @summary Event Overview List
         
         @param request: DescribeEventResultListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10353,7 +10376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventResultListResponse:
         """
-        @summary 事件概览列表
+        @summary Event Overview List
         
         @param request: DescribeEventResultListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10397,7 +10420,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventResultListRequest,
     ) -> xtee_20210910_models.DescribeEventResultListResponse:
         """
-        @summary 事件概览列表
+        @summary Event Overview List
         
         @param request: DescribeEventResultListRequest
         @return: DescribeEventResultListResponse
@@ -10410,7 +10433,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventResultListRequest,
     ) -> xtee_20210910_models.DescribeEventResultListResponse:
         """
-        @summary 事件概览列表
+        @summary Event Overview List
         
         @param request: DescribeEventResultListRequest
         @return: DescribeEventResultListResponse
@@ -10424,7 +10447,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventTaskHistoryResponse:
         """
-        @summary 查询策略下载列表
+        @summary Query Policy Download List
         
         @param request: DescribeEventTaskHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10461,7 +10484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventTaskHistoryResponse:
         """
-        @summary 查询策略下载列表
+        @summary Query Policy Download List
         
         @param request: DescribeEventTaskHistoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10497,7 +10520,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventTaskHistoryRequest,
     ) -> xtee_20210910_models.DescribeEventTaskHistoryResponse:
         """
-        @summary 查询策略下载列表
+        @summary Query Policy Download List
         
         @param request: DescribeEventTaskHistoryRequest
         @return: DescribeEventTaskHistoryResponse
@@ -10510,7 +10533,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventTaskHistoryRequest,
     ) -> xtee_20210910_models.DescribeEventTaskHistoryResponse:
         """
-        @summary 查询策略下载列表
+        @summary Query Policy Download List
         
         @param request: DescribeEventTaskHistoryRequest
         @return: DescribeEventTaskHistoryResponse
@@ -10524,7 +10547,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventTotalCountReportResponse:
         """
-        @summary 调用事件次数
+        @summary Event Invocation Count
         
         @param request: DescribeEventTotalCountReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10561,7 +10584,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventTotalCountReportResponse:
         """
-        @summary 调用事件次数
+        @summary Event Invocation Count
         
         @param request: DescribeEventTotalCountReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10597,7 +10620,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventTotalCountReportRequest,
     ) -> xtee_20210910_models.DescribeEventTotalCountReportResponse:
         """
-        @summary 调用事件次数
+        @summary Event Invocation Count
         
         @param request: DescribeEventTotalCountReportRequest
         @return: DescribeEventTotalCountReportResponse
@@ -10610,7 +10633,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventTotalCountReportRequest,
     ) -> xtee_20210910_models.DescribeEventTotalCountReportResponse:
         """
-        @summary 调用事件次数
+        @summary Event Invocation Count
         
         @param request: DescribeEventTotalCountReportRequest
         @return: DescribeEventTotalCountReportResponse
@@ -10624,7 +10647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventUploadPolicyResponse:
         """
-        @summary 批量导入策略
+        @summary Batch Import Policy
         
         @param request: DescribeEventUploadPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10661,7 +10684,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventUploadPolicyResponse:
         """
-        @summary 批量导入策略
+        @summary Batch Import Policy
         
         @param request: DescribeEventUploadPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10697,7 +10720,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventUploadPolicyRequest,
     ) -> xtee_20210910_models.DescribeEventUploadPolicyResponse:
         """
-        @summary 批量导入策略
+        @summary Batch Import Policy
         
         @param request: DescribeEventUploadPolicyRequest
         @return: DescribeEventUploadPolicyResponse
@@ -10710,7 +10733,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventUploadPolicyRequest,
     ) -> xtee_20210910_models.DescribeEventUploadPolicyResponse:
         """
-        @summary 批量导入策略
+        @summary Batch Import Policy
         
         @param request: DescribeEventUploadPolicyRequest
         @return: DescribeEventUploadPolicyResponse
@@ -10844,7 +10867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateBindResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateBindRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10887,7 +10910,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateBindResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateBindRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10929,7 +10952,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableTemplateBindRequest,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateBindResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateBindRequest
         @return: DescribeEventVariableTemplateBindResponse
@@ -10942,7 +10965,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableTemplateBindRequest,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateBindResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateBindRequest
         @return: DescribeEventVariableTemplateBindResponse
@@ -10956,7 +10979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateListResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10999,7 +11022,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateListResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11041,7 +11064,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableTemplateListRequest,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateListResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateListRequest
         @return: DescribeEventVariableTemplateListResponse
@@ -11054,7 +11077,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableTemplateListRequest,
     ) -> xtee_20210910_models.DescribeEventVariableTemplateListResponse:
         """
-        @summary 查询事件模版
+        @summary Query Event Template
         
         @param request: DescribeEventVariableTemplateListRequest
         @return: DescribeEventVariableTemplateListResponse
@@ -11068,7 +11091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventsVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query Event Variables
         
         @param request: DescribeEventsVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11113,7 +11136,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventsVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query Event Variables
         
         @param request: DescribeEventsVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11157,7 +11180,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventsVariableListRequest,
     ) -> xtee_20210910_models.DescribeEventsVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query Event Variables
         
         @param request: DescribeEventsVariableListRequest
         @return: DescribeEventsVariableListResponse
@@ -11170,7 +11193,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventsVariableListRequest,
     ) -> xtee_20210910_models.DescribeEventsVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query Event Variables
         
         @param request: DescribeEventsVariableListRequest
         @return: DescribeEventsVariableListResponse
@@ -11292,7 +11315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExistNameResponse:
         """
-        @summary 校验字段名是否重复(基于用户单位)
+        @summary Validate if the field name is duplicated (based on user\\"s organization)
         
         @param request: DescribeExistNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11331,7 +11354,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExistNameResponse:
         """
-        @summary 校验字段名是否重复(基于用户单位)
+        @summary Validate if the field name is duplicated (based on user\\"s organization)
         
         @param request: DescribeExistNameRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11369,7 +11392,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExistNameRequest,
     ) -> xtee_20210910_models.DescribeExistNameResponse:
         """
-        @summary 校验字段名是否重复(基于用户单位)
+        @summary Validate if the field name is duplicated (based on user\\"s organization)
         
         @param request: DescribeExistNameRequest
         @return: DescribeExistNameResponse
@@ -11382,7 +11405,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExistNameRequest,
     ) -> xtee_20210910_models.DescribeExistNameResponse:
         """
-        @summary 校验字段名是否重复(基于用户单位)
+        @summary Validate if the field name is duplicated (based on user\\"s organization)
         
         @param request: DescribeExistNameRequest
         @return: DescribeExistNameResponse
@@ -11396,7 +11419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExistSceneResponse:
         """
-        @summary 场景是否存在
+        @summary Check if Scene Exists
         
         @param request: DescribeExistSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11435,7 +11458,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExistSceneResponse:
         """
-        @summary 场景是否存在
+        @summary Check if Scene Exists
         
         @param request: DescribeExistSceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11473,7 +11496,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExistSceneRequest,
     ) -> xtee_20210910_models.DescribeExistSceneResponse:
         """
-        @summary 场景是否存在
+        @summary Check if Scene Exists
         
         @param request: DescribeExistSceneRequest
         @return: DescribeExistSceneResponse
@@ -11486,7 +11509,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExistSceneRequest,
     ) -> xtee_20210910_models.DescribeExistSceneResponse:
         """
-        @summary 场景是否存在
+        @summary Check if Scene Exists
         
         @param request: DescribeExistSceneRequest
         @return: DescribeExistSceneResponse
@@ -11500,7 +11523,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariableDetailResponse:
         """
-        @summary 自定义变量详情
+        @summary Custom Variable Details
         
         @param request: DescribeExpressionVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11539,7 +11562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariableDetailResponse:
         """
-        @summary 自定义变量详情
+        @summary Custom Variable Details
         
         @param request: DescribeExpressionVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11577,7 +11600,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariableDetailResponse:
         """
-        @summary 自定义变量详情
+        @summary Custom Variable Details
         
         @param request: DescribeExpressionVariableDetailRequest
         @return: DescribeExpressionVariableDetailResponse
@@ -11590,7 +11613,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariableDetailResponse:
         """
-        @summary 自定义变量详情
+        @summary Custom Variable Details
         
         @param request: DescribeExpressionVariableDetailRequest
         @return: DescribeExpressionVariableDetailResponse
@@ -11604,7 +11627,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariableFunctionListResponse:
         """
-        @summary 函数列表
+        @summary Function List
         
         @param request: DescribeExpressionVariableFunctionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11641,7 +11664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariableFunctionListResponse:
         """
-        @summary 函数列表
+        @summary Function List
         
         @param request: DescribeExpressionVariableFunctionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11677,7 +11700,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariableFunctionListRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariableFunctionListResponse:
         """
-        @summary 函数列表
+        @summary Function List
         
         @param request: DescribeExpressionVariableFunctionListRequest
         @return: DescribeExpressionVariableFunctionListResponse
@@ -11690,7 +11713,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariableFunctionListRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariableFunctionListResponse:
         """
-        @summary 函数列表
+        @summary Function List
         
         @param request: DescribeExpressionVariableFunctionListRequest
         @return: DescribeExpressionVariableFunctionListResponse
@@ -11704,7 +11727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary 自定义变量分页查询
+        @summary Paged Query for Custom Variables
         
         @param request: DescribeExpressionVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11753,7 +11776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary 自定义变量分页查询
+        @summary Paged Query for Custom Variables
         
         @param request: DescribeExpressionVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11801,7 +11824,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariablePageRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary 自定义变量分页查询
+        @summary Paged Query for Custom Variables
         
         @param request: DescribeExpressionVariablePageRequest
         @return: DescribeExpressionVariablePageResponse
@@ -11814,7 +11837,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariablePageRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary 自定义变量分页查询
+        @summary Paged Query for Custom Variables
         
         @param request: DescribeExpressionVariablePageRequest
         @return: DescribeExpressionVariablePageResponse
@@ -11828,7 +11851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldByIdResponse:
         """
-        @summary 获取字段详情
+        @summary Get Field Details
         
         @param request: DescribeFieldByIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11867,7 +11890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldByIdResponse:
         """
-        @summary 获取字段详情
+        @summary Get Field Details
         
         @param request: DescribeFieldByIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11905,7 +11928,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldByIdRequest,
     ) -> xtee_20210910_models.DescribeFieldByIdResponse:
         """
-        @summary 获取字段详情
+        @summary Get Field Details
         
         @param request: DescribeFieldByIdRequest
         @return: DescribeFieldByIdResponse
@@ -11918,7 +11941,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldByIdRequest,
     ) -> xtee_20210910_models.DescribeFieldByIdResponse:
         """
-        @summary 获取字段详情
+        @summary Get Field Details
         
         @param request: DescribeFieldByIdRequest
         @return: DescribeFieldByIdResponse
@@ -11932,7 +11955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldListResponse:
         """
-        @summary 查询字段列表
+        @summary Query Field List
         
         @param request: DescribeFieldListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11973,7 +11996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldListResponse:
         """
-        @summary 查询字段列表
+        @summary Query Field List
         
         @param request: DescribeFieldListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12013,7 +12036,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldListRequest,
     ) -> xtee_20210910_models.DescribeFieldListResponse:
         """
-        @summary 查询字段列表
+        @summary Query Field List
         
         @param request: DescribeFieldListRequest
         @return: DescribeFieldListResponse
@@ -12026,7 +12049,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldListRequest,
     ) -> xtee_20210910_models.DescribeFieldListResponse:
         """
-        @summary 查询字段列表
+        @summary Query Field List
         
         @param request: DescribeFieldListRequest
         @return: DescribeFieldListResponse
@@ -12040,7 +12063,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldPageResponse:
         """
-        @summary 查询字段分页列表
+        @summary Query paged list of fields
         
         @param request: DescribeFieldPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12095,7 +12118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeFieldPageResponse:
         """
-        @summary 查询字段分页列表
+        @summary Query paged list of fields
         
         @param request: DescribeFieldPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12149,7 +12172,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldPageRequest,
     ) -> xtee_20210910_models.DescribeFieldPageResponse:
         """
-        @summary 查询字段分页列表
+        @summary Query paged list of fields
         
         @param request: DescribeFieldPageRequest
         @return: DescribeFieldPageResponse
@@ -12162,7 +12185,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeFieldPageRequest,
     ) -> xtee_20210910_models.DescribeFieldPageResponse:
         """
-        @summary 查询字段分页列表
+        @summary Query paged list of fields
         
         @param request: DescribeFieldPageRequest
         @return: DescribeFieldPageResponse
@@ -12176,7 +12199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupAccountPageResponse:
         """
-        @summary 社群账户列表
+        @summary Community Account List
         
         @param request: DescribeGroupAccountPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12231,7 +12254,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupAccountPageResponse:
         """
-        @summary 社群账户列表
+        @summary Community Account List
         
         @param request: DescribeGroupAccountPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12285,7 +12308,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupAccountPageRequest,
     ) -> xtee_20210910_models.DescribeGroupAccountPageResponse:
         """
-        @summary 社群账户列表
+        @summary Community Account List
         
         @param request: DescribeGroupAccountPageRequest
         @return: DescribeGroupAccountPageResponse
@@ -12298,7 +12321,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupAccountPageRequest,
     ) -> xtee_20210910_models.DescribeGroupAccountPageResponse:
         """
-        @summary 社群账户列表
+        @summary Community Account List
         
         @param request: DescribeGroupAccountPageRequest
         @return: DescribeGroupAccountPageResponse
@@ -12312,7 +12335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupConditionListResponse:
         """
-        @summary 社群列表查询条件
+        @summary Community List Query Conditions
         
         @param request: DescribeGroupConditionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12349,7 +12372,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupConditionListResponse:
         """
-        @summary 社群列表查询条件
+        @summary Community List Query Conditions
         
         @param request: DescribeGroupConditionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12385,7 +12408,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupConditionListRequest,
     ) -> xtee_20210910_models.DescribeGroupConditionListResponse:
         """
-        @summary 社群列表查询条件
+        @summary Community List Query Conditions
         
         @param request: DescribeGroupConditionListRequest
         @return: DescribeGroupConditionListResponse
@@ -12398,7 +12421,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupConditionListRequest,
     ) -> xtee_20210910_models.DescribeGroupConditionListResponse:
         """
-        @summary 社群列表查询条件
+        @summary Community List Query Conditions
         
         @param request: DescribeGroupConditionListRequest
         @return: DescribeGroupConditionListResponse
@@ -12412,7 +12435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupPageResponse:
         """
-        @summary 社群列表
+        @summary Community List
         
         @param request: DescribeGroupPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12461,7 +12484,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupPageResponse:
         """
-        @summary 社群列表
+        @summary Community List
         
         @param request: DescribeGroupPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12509,7 +12532,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupPageRequest,
     ) -> xtee_20210910_models.DescribeGroupPageResponse:
         """
-        @summary 社群列表
+        @summary Community List
         
         @param request: DescribeGroupPageRequest
         @return: DescribeGroupPageResponse
@@ -12522,7 +12545,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupPageRequest,
     ) -> xtee_20210910_models.DescribeGroupPageResponse:
         """
-        @summary 社群列表
+        @summary Community List
         
         @param request: DescribeGroupPageRequest
         @return: DescribeGroupPageResponse
@@ -12536,7 +12559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupStatisticsByTodayResponse:
         """
-        @summary 当日发现的风险社群
+        @summary Risk Communities Discovered Today
         
         @param request: DescribeGroupStatisticsByTodayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12573,7 +12596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupStatisticsByTodayResponse:
         """
-        @summary 当日发现的风险社群
+        @summary Risk Communities Discovered Today
         
         @param request: DescribeGroupStatisticsByTodayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12609,7 +12632,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupStatisticsByTodayRequest,
     ) -> xtee_20210910_models.DescribeGroupStatisticsByTodayResponse:
         """
-        @summary 当日发现的风险社群
+        @summary Risk Communities Discovered Today
         
         @param request: DescribeGroupStatisticsByTodayRequest
         @return: DescribeGroupStatisticsByTodayResponse
@@ -12622,7 +12645,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupStatisticsByTodayRequest,
     ) -> xtee_20210910_models.DescribeGroupStatisticsByTodayResponse:
         """
-        @summary 当日发现的风险社群
+        @summary Risk Communities Discovered Today
         
         @param request: DescribeGroupStatisticsByTodayRequest
         @return: DescribeGroupStatisticsByTodayResponse
@@ -12636,7 +12659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupTrendResponse:
         """
-        @summary 风险社群的近期趋势
+        @summary Recent Trends in Risk Communities
         
         @param request: DescribeGroupTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12675,7 +12698,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeGroupTrendResponse:
         """
-        @summary 风险社群的近期趋势
+        @summary Recent Trends in Risk Communities
         
         @param request: DescribeGroupTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12713,7 +12736,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupTrendRequest,
     ) -> xtee_20210910_models.DescribeGroupTrendResponse:
         """
-        @summary 风险社群的近期趋势
+        @summary Recent Trends in Risk Communities
         
         @param request: DescribeGroupTrendRequest
         @return: DescribeGroupTrendResponse
@@ -12726,7 +12749,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeGroupTrendRequest,
     ) -> xtee_20210910_models.DescribeGroupTrendResponse:
         """
-        @summary 风险社群的近期趋势
+        @summary Recent Trends in Risk Communities
         
         @param request: DescribeGroupTrendRequest
         @return: DescribeGroupTrendResponse
@@ -12740,7 +12763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHasRuleNameByEventCodeResponse:
         """
-        @summary 查询事件名下的策略名是否存在
+        @summary Check if the policy name under the event name exists
         
         @param request: DescribeHasRuleNameByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12783,7 +12806,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHasRuleNameByEventCodeResponse:
         """
-        @summary 查询事件名下的策略名是否存在
+        @summary Check if the policy name under the event name exists
         
         @param request: DescribeHasRuleNameByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12825,7 +12848,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHasRuleNameByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeHasRuleNameByEventCodeResponse:
         """
-        @summary 查询事件名下的策略名是否存在
+        @summary Check if the policy name under the event name exists
         
         @param request: DescribeHasRuleNameByEventCodeRequest
         @return: DescribeHasRuleNameByEventCodeResponse
@@ -12838,7 +12861,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHasRuleNameByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeHasRuleNameByEventCodeResponse:
         """
-        @summary 查询事件名下的策略名是否存在
+        @summary Check if the policy name under the event name exists
         
         @param request: DescribeHasRuleNameByEventCodeRequest
         @return: DescribeHasRuleNameByEventCodeResponse
@@ -12852,7 +12875,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHighRiskPieChartResponse:
         """
-        @summary 风险地图概览图表(饼图)
+        @summary Risk Map Overview Chart (Pie Chart)
         
         @param request: DescribeHighRiskPieChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12895,7 +12918,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHighRiskPieChartResponse:
         """
-        @summary 风险地图概览图表(饼图)
+        @summary Risk Map Overview Chart (Pie Chart)
         
         @param request: DescribeHighRiskPieChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12937,7 +12960,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHighRiskPieChartRequest,
     ) -> xtee_20210910_models.DescribeHighRiskPieChartResponse:
         """
-        @summary 风险地图概览图表(饼图)
+        @summary Risk Map Overview Chart (Pie Chart)
         
         @param request: DescribeHighRiskPieChartRequest
         @return: DescribeHighRiskPieChartResponse
@@ -12950,7 +12973,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHighRiskPieChartRequest,
     ) -> xtee_20210910_models.DescribeHighRiskPieChartResponse:
         """
-        @summary 风险地图概览图表(饼图)
+        @summary Risk Map Overview Chart (Pie Chart)
         
         @param request: DescribeHighRiskPieChartRequest
         @return: DescribeHighRiskPieChartResponse
@@ -12964,7 +12987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleFluctuationResponse:
         """
-        @summary 策略命中波动检测
+        @summary Policy Hit Fluctuation Detection
         
         @param request: DescribeHitRuleFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13005,7 +13028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleFluctuationResponse:
         """
-        @summary 策略命中波动检测
+        @summary Policy Hit Fluctuation Detection
         
         @param request: DescribeHitRuleFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13045,7 +13068,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleFluctuationRequest,
     ) -> xtee_20210910_models.DescribeHitRuleFluctuationResponse:
         """
-        @summary 策略命中波动检测
+        @summary Policy Hit Fluctuation Detection
         
         @param request: DescribeHitRuleFluctuationRequest
         @return: DescribeHitRuleFluctuationResponse
@@ -13058,7 +13081,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleFluctuationRequest,
     ) -> xtee_20210910_models.DescribeHitRuleFluctuationResponse:
         """
-        @summary 策略命中波动检测
+        @summary Policy Hit Fluctuation Detection
         
         @param request: DescribeHitRuleFluctuationRequest
         @return: DescribeHitRuleFluctuationResponse
@@ -13072,7 +13095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleListResponse:
         """
-        @summary 主事件/旁路/分流策略命中TOP20
+        @summary Top 20 Hits for Main Events/Bypass/Diversion Strategies
         
         @param request: DescribeHitRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13117,7 +13140,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleListResponse:
         """
-        @summary 主事件/旁路/分流策略命中TOP20
+        @summary Top 20 Hits for Main Events/Bypass/Diversion Strategies
         
         @param request: DescribeHitRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13161,7 +13184,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleListRequest,
     ) -> xtee_20210910_models.DescribeHitRuleListResponse:
         """
-        @summary 主事件/旁路/分流策略命中TOP20
+        @summary Top 20 Hits for Main Events/Bypass/Diversion Strategies
         
         @param request: DescribeHitRuleListRequest
         @return: DescribeHitRuleListResponse
@@ -13174,7 +13197,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleListRequest,
     ) -> xtee_20210910_models.DescribeHitRuleListResponse:
         """
-        @summary 主事件/旁路/分流策略命中TOP20
+        @summary Top 20 Hits for Main Events/Bypass/Diversion Strategies
         
         @param request: DescribeHitRuleListRequest
         @return: DescribeHitRuleListResponse
@@ -13188,7 +13211,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleTrendResponse:
         """
-        @summary 策略命中趋势
+        @summary Hit Rule Trend
         
         @param request: DescribeHitRuleTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13233,7 +13256,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeHitRuleTrendResponse:
         """
-        @summary 策略命中趋势
+        @summary Hit Rule Trend
         
         @param request: DescribeHitRuleTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13277,7 +13300,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleTrendRequest,
     ) -> xtee_20210910_models.DescribeHitRuleTrendResponse:
         """
-        @summary 策略命中趋势
+        @summary Hit Rule Trend
         
         @param request: DescribeHitRuleTrendRequest
         @return: DescribeHitRuleTrendResponse
@@ -13290,7 +13313,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeHitRuleTrendRequest,
     ) -> xtee_20210910_models.DescribeHitRuleTrendResponse:
         """
-        @summary 策略命中趋势
+        @summary Hit Rule Trend
         
         @param request: DescribeHitRuleTrendRequest
         @return: DescribeHitRuleTrendResponse
@@ -13298,13 +13321,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hit_rule_trend_with_options_async(request, runtime)
 
+    def describe_init_dig_with_options(
+        self,
+        request: xtee_20210910_models.DescribeInitDigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeInitDigResponse:
+        """
+        @summary Initialization Popup Information
+        
+        @description Add prompt information in BOPS, POC new page initialization popup prompts this information
+        
+        @param request: DescribeInitDigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInitDigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInitDig',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeInitDigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_init_dig_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeInitDigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeInitDigResponse:
+        """
+        @summary Initialization Popup Information
+        
+        @description Add prompt information in BOPS, POC new page initialization popup prompts this information
+        
+        @param request: DescribeInitDigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInitDigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInitDig',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeInitDigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_init_dig(
+        self,
+        request: xtee_20210910_models.DescribeInitDigRequest,
+    ) -> xtee_20210910_models.DescribeInitDigResponse:
+        """
+        @summary Initialization Popup Information
+        
+        @description Add prompt information in BOPS, POC new page initialization popup prompts this information
+        
+        @param request: DescribeInitDigRequest
+        @return: DescribeInitDigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_init_dig_with_options(request, runtime)
+
+    async def describe_init_dig_async(
+        self,
+        request: xtee_20210910_models.DescribeInitDigRequest,
+    ) -> xtee_20210910_models.DescribeInitDigResponse:
+        """
+        @summary Initialization Popup Information
+        
+        @description Add prompt information in BOPS, POC new page initialization popup prompts this information
+        
+        @param request: DescribeInitDigRequest
+        @return: DescribeInitDigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_init_dig_with_options_async(request, runtime)
+
     def describe_input_feild_count_by_event_code_with_options(
         self,
         request: xtee_20210910_models.DescribeInputFeildCountByEventCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeInputFeildCountByEventCodeResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Number of Events
         
         @param request: DescribeInputFeildCountByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13345,7 +13480,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeInputFeildCountByEventCodeResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Number of Events
         
         @param request: DescribeInputFeildCountByEventCodeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13385,7 +13520,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeInputFeildCountByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeInputFeildCountByEventCodeResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Number of Events
         
         @param request: DescribeInputFeildCountByEventCodeRequest
         @return: DescribeInputFeildCountByEventCodeResponse
@@ -13398,7 +13533,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeInputFeildCountByEventCodeRequest,
     ) -> xtee_20210910_models.DescribeInputFeildCountByEventCodeResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Number of Events
         
         @param request: DescribeInputFeildCountByEventCodeRequest
         @return: DescribeInputFeildCountByEventCodeResponse
@@ -13406,13 +13541,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_input_feild_count_by_event_code_with_options_async(request, runtime)
 
+    def describe_list_model_with_options(
+        self,
+        request: xtee_20210910_models.DescribeListModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeListModelResponse:
+        """
+        @summary Display of Model List
+        
+        @param request: DescribeListModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListModel',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeListModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_list_model_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeListModelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeListModelResponse:
+        """
+        @summary Display of Model List
+        
+        @param request: DescribeListModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListModelResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeListModel',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeListModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_list_model(
+        self,
+        request: xtee_20210910_models.DescribeListModelRequest,
+    ) -> xtee_20210910_models.DescribeListModelResponse:
+        """
+        @summary Display of Model List
+        
+        @param request: DescribeListModelRequest
+        @return: DescribeListModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_list_model_with_options(request, runtime)
+
+    async def describe_list_model_async(
+        self,
+        request: xtee_20210910_models.DescribeListModelRequest,
+    ) -> xtee_20210910_models.DescribeListModelResponse:
+        """
+        @summary Display of Model List
+        
+        @param request: DescribeListModelRequest
+        @return: DescribeListModelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_list_model_with_options_async(request, runtime)
+
     def describe_list_poc_with_options(
         self,
         request: xtee_20210910_models.DescribeListPocRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeListPocResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeListPocRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13455,7 +13694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeListPocResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeListPocRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13497,7 +13736,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeListPocRequest,
     ) -> xtee_20210910_models.DescribeListPocResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeListPocRequest
         @return: DescribeListPocResponse
@@ -13510,7 +13749,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeListPocRequest,
     ) -> xtee_20210910_models.DescribeListPocResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeListPocRequest
         @return: DescribeListPocResponse
@@ -13524,7 +13763,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeLoanExecListResponse:
         """
-        @summary 获取监控对象列表
+        @summary Get Monitoring Object List
         
         @param request: DescribeLoanExecListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13571,7 +13810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeLoanExecListResponse:
         """
-        @summary 获取监控对象列表
+        @summary Get Monitoring Object List
         
         @param request: DescribeLoanExecListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13617,7 +13856,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeLoanExecListRequest,
     ) -> xtee_20210910_models.DescribeLoanExecListResponse:
         """
-        @summary 获取监控对象列表
+        @summary Get Monitoring Object List
         
         @param request: DescribeLoanExecListRequest
         @return: DescribeLoanExecListResponse
@@ -13630,7 +13869,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeLoanExecListRequest,
     ) -> xtee_20210910_models.DescribeLoanExecListResponse:
         """
-        @summary 获取监控对象列表
+        @summary Get Monitoring Object List
         
         @param request: DescribeLoanExecListRequest
         @return: DescribeLoanExecListResponse
@@ -13644,7 +13883,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeLoanTaskListResponse:
         """
-        @summary 获取贷中监控任务列表
+        @summary Get Loan Monitoring Task List
         
         @param request: DescribeLoanTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13689,7 +13928,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeLoanTaskListResponse:
         """
-        @summary 获取贷中监控任务列表
+        @summary Get Loan Monitoring Task List
         
         @param request: DescribeLoanTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13733,7 +13972,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeLoanTaskListRequest,
     ) -> xtee_20210910_models.DescribeLoanTaskListResponse:
         """
-        @summary 获取贷中监控任务列表
+        @summary Get Loan Monitoring Task List
         
         @param request: DescribeLoanTaskListRequest
         @return: DescribeLoanTaskListResponse
@@ -13746,7 +13985,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeLoanTaskListRequest,
     ) -> xtee_20210910_models.DescribeLoanTaskListResponse:
         """
-        @summary 获取贷中监控任务列表
+        @summary Get Loan Monitoring Task List
         
         @param request: DescribeLoanTaskListRequest
         @return: DescribeLoanTaskListResponse
@@ -13760,7 +13999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMarkPageResponse:
         """
-        @summary 打标列表
+        @summary Mark List
         
         @param request: DescribeMarkPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13809,7 +14048,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMarkPageResponse:
         """
-        @summary 打标列表
+        @summary Mark List
         
         @param request: DescribeMarkPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13857,7 +14096,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMarkPageRequest,
     ) -> xtee_20210910_models.DescribeMarkPageResponse:
         """
-        @summary 打标列表
+        @summary Mark List
         
         @param request: DescribeMarkPageRequest
         @return: DescribeMarkPageResponse
@@ -13870,7 +14109,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMarkPageRequest,
     ) -> xtee_20210910_models.DescribeMarkPageResponse:
         """
-        @summary 打标列表
+        @summary Mark List
         
         @param request: DescribeMarkPageRequest
         @return: DescribeMarkPageResponse
@@ -13884,7 +14123,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMenuPermissionResponse:
         """
-        @summary 查询是否有权限
+        @summary Check Permission
         
         @param request: DescribeMenuPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13923,7 +14162,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMenuPermissionResponse:
         """
-        @summary 查询是否有权限
+        @summary Check Permission
         
         @param request: DescribeMenuPermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13961,7 +14200,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMenuPermissionRequest,
     ) -> xtee_20210910_models.DescribeMenuPermissionResponse:
         """
-        @summary 查询是否有权限
+        @summary Check Permission
         
         @param request: DescribeMenuPermissionRequest
         @return: DescribeMenuPermissionResponse
@@ -13974,7 +14213,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMenuPermissionRequest,
     ) -> xtee_20210910_models.DescribeMenuPermissionResponse:
         """
-        @summary 查询是否有权限
+        @summary Check Permission
         
         @param request: DescribeMenuPermissionRequest
         @return: DescribeMenuPermissionResponse
@@ -13982,13 +14221,213 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_menu_permission_with_options_async(request, runtime)
 
+    def describe_model_details_by_id_with_options(
+        self,
+        request: xtee_20210910_models.DescribeModelDetailsByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeModelDetailsByIdResponse:
+        """
+        @summary View Result
+        
+        @param request: DescribeModelDetailsByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelDetailsByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelDetailsById',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeModelDetailsByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_details_by_id_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeModelDetailsByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeModelDetailsByIdResponse:
+        """
+        @summary View Result
+        
+        @param request: DescribeModelDetailsByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelDetailsByIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelDetailsById',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeModelDetailsByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_details_by_id(
+        self,
+        request: xtee_20210910_models.DescribeModelDetailsByIdRequest,
+    ) -> xtee_20210910_models.DescribeModelDetailsByIdResponse:
+        """
+        @summary View Result
+        
+        @param request: DescribeModelDetailsByIdRequest
+        @return: DescribeModelDetailsByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_model_details_by_id_with_options(request, runtime)
+
+    async def describe_model_details_by_id_async(
+        self,
+        request: xtee_20210910_models.DescribeModelDetailsByIdRequest,
+    ) -> xtee_20210910_models.DescribeModelDetailsByIdResponse:
+        """
+        @summary View Result
+        
+        @param request: DescribeModelDetailsByIdRequest
+        @return: DescribeModelDetailsByIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_model_details_by_id_with_options_async(request, runtime)
+
+    def describe_model_oss_policy_with_options(
+        self,
+        request: xtee_20210910_models.DescribeModelOssPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeModelOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeModelOssPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelOssPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelOssPolicy',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeModelOssPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_model_oss_policy_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeModelOssPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeModelOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeModelOssPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeModelOssPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeModelOssPolicy',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeModelOssPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_model_oss_policy(
+        self,
+        request: xtee_20210910_models.DescribeModelOssPolicyRequest,
+    ) -> xtee_20210910_models.DescribeModelOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeModelOssPolicyRequest
+        @return: DescribeModelOssPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_model_oss_policy_with_options(request, runtime)
+
+    async def describe_model_oss_policy_async(
+        self,
+        request: xtee_20210910_models.DescribeModelOssPolicyRequest,
+    ) -> xtee_20210910_models.DescribeModelOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeModelOssPolicyRequest
+        @return: DescribeModelOssPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_model_oss_policy_with_options_async(request, runtime)
+
     def describe_monitor_task_limit_with_options(
         self,
         request: xtee_20210910_models.DescribeMonitorTaskLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMonitorTaskLimitResponse:
         """
-        @summary 查询任务的限制
+        @summary Query Task Limit
         
         @param request: DescribeMonitorTaskLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14025,7 +14464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeMonitorTaskLimitResponse:
         """
-        @summary 查询任务的限制
+        @summary Query Task Limit
         
         @param request: DescribeMonitorTaskLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14061,7 +14500,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMonitorTaskLimitRequest,
     ) -> xtee_20210910_models.DescribeMonitorTaskLimitResponse:
         """
-        @summary 查询任务的限制
+        @summary Query Task Limit
         
         @param request: DescribeMonitorTaskLimitRequest
         @return: DescribeMonitorTaskLimitResponse
@@ -14074,7 +14513,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeMonitorTaskLimitRequest,
     ) -> xtee_20210910_models.DescribeMonitorTaskLimitResponse:
         """
-        @summary 查询任务的限制
+        @summary Query Task Limit
         
         @param request: DescribeMonitorTaskLimitRequest
         @return: DescribeMonitorTaskLimitResponse
@@ -14088,7 +14527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListResponse:
         """
-        @summary 查询名单分页
+        @summary Query Name List Pagination
         
         @param request: DescribeNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14135,7 +14574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListResponse:
         """
-        @summary 查询名单分页
+        @summary Query Name List Pagination
         
         @param request: DescribeNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14181,7 +14620,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListRequest,
     ) -> xtee_20210910_models.DescribeNameListResponse:
         """
-        @summary 查询名单分页
+        @summary Query Name List Pagination
         
         @param request: DescribeNameListRequest
         @return: DescribeNameListResponse
@@ -14194,7 +14633,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListRequest,
     ) -> xtee_20210910_models.DescribeNameListResponse:
         """
-        @summary 查询名单分页
+        @summary Query Name List Pagination
         
         @param request: DescribeNameListRequest
         @return: DescribeNameListResponse
@@ -14208,7 +14647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListDownloadUrlResponse:
         """
-        @summary 下载名单列表
+        @summary Download Name List
         
         @param request: DescribeNameListDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14247,7 +14686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListDownloadUrlResponse:
         """
-        @summary 下载名单列表
+        @summary Download Name List
         
         @param request: DescribeNameListDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14285,7 +14724,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeNameListDownloadUrlResponse:
         """
-        @summary 下载名单列表
+        @summary Download Name List
         
         @param request: DescribeNameListDownloadUrlRequest
         @return: DescribeNameListDownloadUrlResponse
@@ -14298,7 +14737,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeNameListDownloadUrlResponse:
         """
-        @summary 下载名单列表
+        @summary Download Name List
         
         @param request: DescribeNameListDownloadUrlRequest
         @return: DescribeNameListDownloadUrlResponse
@@ -14312,7 +14751,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListLimitResponse:
         """
-        @summary 查询名单限制数
+        @summary Query Name List Limit
         
         @param request: DescribeNameListLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14351,7 +14790,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListLimitResponse:
         """
-        @summary 查询名单限制数
+        @summary Query Name List Limit
         
         @param request: DescribeNameListLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14389,7 +14828,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListLimitRequest,
     ) -> xtee_20210910_models.DescribeNameListLimitResponse:
         """
-        @summary 查询名单限制数
+        @summary Query Name List Limit
         
         @param request: DescribeNameListLimitRequest
         @return: DescribeNameListLimitResponse
@@ -14402,7 +14841,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListLimitRequest,
     ) -> xtee_20210910_models.DescribeNameListLimitResponse:
         """
-        @summary 查询名单限制数
+        @summary Query Name List Limit
         
         @param request: DescribeNameListLimitRequest
         @return: DescribeNameListLimitResponse
@@ -14416,7 +14855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListPageListResponse:
         """
-        @summary 名单内容查询
+        @summary Query the content of the list
         
         @param request: DescribeNameListPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14465,7 +14904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListPageListResponse:
         """
-        @summary 名单内容查询
+        @summary Query the content of the list
         
         @param request: DescribeNameListPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14513,7 +14952,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListPageListRequest,
     ) -> xtee_20210910_models.DescribeNameListPageListResponse:
         """
-        @summary 名单内容查询
+        @summary Query the content of the list
         
         @param request: DescribeNameListPageListRequest
         @return: DescribeNameListPageListResponse
@@ -14526,7 +14965,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListPageListRequest,
     ) -> xtee_20210910_models.DescribeNameListPageListResponse:
         """
-        @summary 名单内容查询
+        @summary Query the content of the list
         
         @param request: DescribeNameListPageListRequest
         @return: DescribeNameListPageListResponse
@@ -14540,7 +14979,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListTypeListResponse:
         """
-        @summary 名单类型列表
+        @summary List of Name Types
         
         @param request: DescribeNameListTypeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14577,7 +15016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListTypeListResponse:
         """
-        @summary 名单类型列表
+        @summary List of Name Types
         
         @param request: DescribeNameListTypeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14613,7 +15052,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListTypeListRequest,
     ) -> xtee_20210910_models.DescribeNameListTypeListResponse:
         """
-        @summary 名单类型列表
+        @summary List of Name Types
         
         @param request: DescribeNameListTypeListRequest
         @return: DescribeNameListTypeListResponse
@@ -14626,7 +15065,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListTypeListRequest,
     ) -> xtee_20210910_models.DescribeNameListTypeListResponse:
         """
-        @summary 名单类型列表
+        @summary List of Name Types
         
         @param request: DescribeNameListTypeListRequest
         @return: DescribeNameListTypeListResponse
@@ -14640,7 +15079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListVariablePageListResponse:
         """
-        @summary 名单列表
+        @summary Name List
         
         @param request: DescribeNameListVariablePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14687,7 +15126,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeNameListVariablePageListResponse:
         """
-        @summary 名单列表
+        @summary Name List
         
         @param request: DescribeNameListVariablePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14733,7 +15172,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListVariablePageListRequest,
     ) -> xtee_20210910_models.DescribeNameListVariablePageListResponse:
         """
-        @summary 名单列表
+        @summary Name List
         
         @param request: DescribeNameListVariablePageListRequest
         @return: DescribeNameListVariablePageListResponse
@@ -14746,7 +15185,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeNameListVariablePageListRequest,
     ) -> xtee_20210910_models.DescribeNameListVariablePageListResponse:
         """
-        @summary 名单列表
+        @summary Name List
         
         @param request: DescribeNameListVariablePageListRequest
         @return: DescribeNameListVariablePageListResponse
@@ -14760,7 +15199,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperationLogPageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query event list by event name
         
         @param request: DescribeOperationLogPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14805,7 +15244,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperationLogPageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query event list by event name
         
         @param request: DescribeOperationLogPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14849,7 +15288,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperationLogPageListRequest,
     ) -> xtee_20210910_models.DescribeOperationLogPageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query event list by event name
         
         @param request: DescribeOperationLogPageListRequest
         @return: DescribeOperationLogPageListResponse
@@ -14862,7 +15301,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperationLogPageListRequest,
     ) -> xtee_20210910_models.DescribeOperationLogPageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query event list by event name
         
         @param request: DescribeOperationLogPageListRequest
         @return: DescribeOperationLogPageListResponse
@@ -14876,7 +15315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListResponse:
         """
-        @summary 根据客户ID查询操作符映射列表
+        @summary Query the operator mapping list based on customer ID
         
         @param request: DescribeOperatorListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14913,7 +15352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListResponse:
         """
-        @summary 根据客户ID查询操作符映射列表
+        @summary Query the operator mapping list based on customer ID
         
         @param request: DescribeOperatorListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14949,7 +15388,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListRequest,
     ) -> xtee_20210910_models.DescribeOperatorListResponse:
         """
-        @summary 根据客户ID查询操作符映射列表
+        @summary Query the operator mapping list based on customer ID
         
         @param request: DescribeOperatorListRequest
         @return: DescribeOperatorListResponse
@@ -14962,7 +15401,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListRequest,
     ) -> xtee_20210910_models.DescribeOperatorListResponse:
         """
-        @summary 根据客户ID查询操作符映射列表
+        @summary Query the operator mapping list based on customer ID
         
         @param request: DescribeOperatorListRequest
         @return: DescribeOperatorListResponse
@@ -14976,7 +15415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListBySceneResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListBySceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15015,7 +15454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListBySceneResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListBySceneRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15053,7 +15492,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListBySceneRequest,
     ) -> xtee_20210910_models.DescribeOperatorListBySceneResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListBySceneRequest
         @return: DescribeOperatorListBySceneResponse
@@ -15066,7 +15505,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListBySceneRequest,
     ) -> xtee_20210910_models.DescribeOperatorListBySceneResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListBySceneRequest
         @return: DescribeOperatorListBySceneResponse
@@ -15080,7 +15519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListByTypeResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListByTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15117,7 +15556,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOperatorListByTypeResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListByTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15153,7 +15592,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListByTypeRequest,
     ) -> xtee_20210910_models.DescribeOperatorListByTypeResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListByTypeRequest
         @return: DescribeOperatorListByTypeResponse
@@ -15166,7 +15605,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOperatorListByTypeRequest,
     ) -> xtee_20210910_models.DescribeOperatorListByTypeResponse:
         """
-        @summary 查询操作符映射列表
+        @summary Query Operator Mapping List
         
         @param request: DescribeOperatorListByTypeRequest
         @return: DescribeOperatorListByTypeResponse
@@ -15180,7 +15619,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssAuthStatusResponse:
         """
-        @summary 查看是否授权Oss
+        @summary Check Oss Authorization
         
         @param request: DescribeOssAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15217,7 +15656,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssAuthStatusResponse:
         """
-        @summary 查看是否授权Oss
+        @summary Check Oss Authorization
         
         @param request: DescribeOssAuthStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15253,7 +15692,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssAuthStatusRequest,
     ) -> xtee_20210910_models.DescribeOssAuthStatusResponse:
         """
-        @summary 查看是否授权Oss
+        @summary Check Oss Authorization
         
         @param request: DescribeOssAuthStatusRequest
         @return: DescribeOssAuthStatusResponse
@@ -15266,7 +15705,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssAuthStatusRequest,
     ) -> xtee_20210910_models.DescribeOssAuthStatusResponse:
         """
-        @summary 查看是否授权Oss
+        @summary Check Oss Authorization
         
         @param request: DescribeOssAuthStatusRequest
         @return: DescribeOssAuthStatusResponse
@@ -15280,7 +15719,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssPolicyResponse:
         """
-        @summary 获取OSS Policy
+        @summary Get OSS Policy
         
         @param request: DescribeOssPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15319,7 +15758,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssPolicyResponse:
         """
-        @summary 获取OSS Policy
+        @summary Get OSS Policy
         
         @param request: DescribeOssPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15357,7 +15796,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssPolicyRequest,
     ) -> xtee_20210910_models.DescribeOssPolicyResponse:
         """
-        @summary 获取OSS Policy
+        @summary Get OSS Policy
         
         @param request: DescribeOssPolicyRequest
         @return: DescribeOssPolicyResponse
@@ -15370,7 +15809,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssPolicyRequest,
     ) -> xtee_20210910_models.DescribeOssPolicyResponse:
         """
-        @summary 获取OSS Policy
+        @summary Get OSS Policy
         
         @param request: DescribeOssPolicyRequest
         @return: DescribeOssPolicyResponse
@@ -15384,7 +15823,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribeOssTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15425,7 +15864,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribeOssTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15465,7 +15904,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssTokenRequest,
     ) -> xtee_20210910_models.DescribeOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribeOssTokenRequest
         @return: DescribeOssTokenResponse
@@ -15478,7 +15917,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeOssTokenRequest,
     ) -> xtee_20210910_models.DescribeOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribeOssTokenRequest
         @return: DescribeOssTokenResponse
@@ -15492,7 +15931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeParamByEventCodesResponse:
         """
-        @summary 查询事件属性列表
+        @summary Query Event Property List
         
         @param request: DescribeParamByEventCodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15533,7 +15972,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeParamByEventCodesResponse:
         """
-        @summary 查询事件属性列表
+        @summary Query Event Property List
         
         @param request: DescribeParamByEventCodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15573,7 +16012,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeParamByEventCodesRequest,
     ) -> xtee_20210910_models.DescribeParamByEventCodesResponse:
         """
-        @summary 查询事件属性列表
+        @summary Query Event Property List
         
         @param request: DescribeParamByEventCodesRequest
         @return: DescribeParamByEventCodesResponse
@@ -15586,7 +16025,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeParamByEventCodesRequest,
     ) -> xtee_20210910_models.DescribeParamByEventCodesResponse:
         """
-        @summary 查询事件属性列表
+        @summary Query Event Property List
         
         @param request: DescribeParamByEventCodesRequest
         @return: DescribeParamByEventCodesResponse
@@ -15594,229 +16033,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_param_by_event_codes_with_options_async(request, runtime)
 
-    def describe_param_list_with_options(
-        self,
-        request: xtee_20210910_models.DescribeParamListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeParamListResponse:
-        """
-        @summary 获取映射关系
-        
-        @param request: DescribeParamListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeParamListResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeParamList',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeParamListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_param_list_with_options_async(
-        self,
-        request: xtee_20210910_models.DescribeParamListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeParamListResponse:
-        """
-        @summary 获取映射关系
-        
-        @param request: DescribeParamListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeParamListResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeParamList',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeParamListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_param_list(
-        self,
-        request: xtee_20210910_models.DescribeParamListRequest,
-    ) -> xtee_20210910_models.DescribeParamListResponse:
-        """
-        @summary 获取映射关系
-        
-        @param request: DescribeParamListRequest
-        @return: DescribeParamListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_param_list_with_options(request, runtime)
-
-    async def describe_param_list_async(
-        self,
-        request: xtee_20210910_models.DescribeParamListRequest,
-    ) -> xtee_20210910_models.DescribeParamListResponse:
-        """
-        @summary 获取映射关系
-        
-        @param request: DescribeParamListRequest
-        @return: DescribeParamListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_param_list_with_options_async(request, runtime)
-
-    def describe_poc_detail_with_options(
-        self,
-        request: xtee_20210910_models.DescribePocDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribePocDetailResponse:
-        """
-        @summary 获取任务详情
-        
-        @param request: DescribePocDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePocDetailResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.task_id):
-            query['taskId'] = request.task_id
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePocDetail',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribePocDetailResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_poc_detail_with_options_async(
-        self,
-        request: xtee_20210910_models.DescribePocDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribePocDetailResponse:
-        """
-        @summary 获取任务详情
-        
-        @param request: DescribePocDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePocDetailResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.task_id):
-            query['taskId'] = request.task_id
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribePocDetail',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribePocDetailResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_poc_detail(
-        self,
-        request: xtee_20210910_models.DescribePocDetailRequest,
-    ) -> xtee_20210910_models.DescribePocDetailResponse:
-        """
-        @summary 获取任务详情
-        
-        @param request: DescribePocDetailRequest
-        @return: DescribePocDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_poc_detail_with_options(request, runtime)
-
-    async def describe_poc_detail_async(
-        self,
-        request: xtee_20210910_models.DescribePocDetailRequest,
-    ) -> xtee_20210910_models.DescribePocDetailResponse:
-        """
-        @summary 获取任务详情
-        
-        @param request: DescribePocDetailRequest
-        @return: DescribePocDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_poc_detail_with_options_async(request, runtime)
-
     def describe_poc_oss_token_with_options(
         self,
         request: xtee_20210910_models.DescribePocOssTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePocOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribePocOssTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15853,7 +16076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePocOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribePocOssTokenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15889,7 +16112,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePocOssTokenRequest,
     ) -> xtee_20210910_models.DescribePocOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribePocOssTokenRequest
         @return: DescribePocOssTokenResponse
@@ -15902,7 +16125,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePocOssTokenRequest,
     ) -> xtee_20210910_models.DescribePocOssTokenResponse:
         """
-        @summary 获取文件上传凭证
+        @summary Get File Upload Credentials
         
         @param request: DescribePocOssTokenRequest
         @return: DescribePocOssTokenResponse
@@ -15916,7 +16139,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePocTaskListResponse:
         """
-        @summary 获取poc任务列表
+        @summary Get POC Task List
         
         @param request: DescribePocTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15959,7 +16182,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePocTaskListResponse:
         """
-        @summary 获取poc任务列表
+        @summary Get POC Task List
         
         @param request: DescribePocTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16001,7 +16224,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePocTaskListRequest,
     ) -> xtee_20210910_models.DescribePocTaskListResponse:
         """
-        @summary 获取poc任务列表
+        @summary Get POC Task List
         
         @param request: DescribePocTaskListRequest
         @return: DescribePocTaskListResponse
@@ -16014,7 +16237,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePocTaskListRequest,
     ) -> xtee_20210910_models.DescribePocTaskListResponse:
         """
-        @summary 获取poc任务列表
+        @summary Get POC Task List
         
         @param request: DescribePocTaskListRequest
         @return: DescribePocTaskListResponse
@@ -16028,7 +16251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePrivateStackResponse:
         """
-        @summary 判断是否开通Stack私域模式
+        @summary Determine if Stack Private Domain Mode is Enabled
         
         @param request: DescribePrivateStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16063,7 +16286,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribePrivateStackResponse:
         """
-        @summary 判断是否开通Stack私域模式
+        @summary Determine if Stack Private Domain Mode is Enabled
         
         @param request: DescribePrivateStackRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16097,7 +16320,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePrivateStackRequest,
     ) -> xtee_20210910_models.DescribePrivateStackResponse:
         """
-        @summary 判断是否开通Stack私域模式
+        @summary Determine if Stack Private Domain Mode is Enabled
         
         @param request: DescribePrivateStackRequest
         @return: DescribePrivateStackResponse
@@ -16110,7 +16333,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribePrivateStackRequest,
     ) -> xtee_20210910_models.DescribePrivateStackResponse:
         """
-        @summary 判断是否开通Stack私域模式
+        @summary Determine if Stack Private Domain Mode is Enabled
         
         @param request: DescribePrivateStackRequest
         @return: DescribePrivateStackResponse
@@ -16124,7 +16347,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeQueryVariableDetailResponse:
         """
-        @summary 查询变量详情查询
+        @summary Query Variable Detail Query
         
         @param request: DescribeQueryVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16163,7 +16386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeQueryVariableDetailResponse:
         """
-        @summary 查询变量详情查询
+        @summary Query Variable Detail Query
         
         @param request: DescribeQueryVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16201,7 +16424,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeQueryVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeQueryVariableDetailResponse:
         """
-        @summary 查询变量详情查询
+        @summary Query Variable Detail Query
         
         @param request: DescribeQueryVariableDetailRequest
         @return: DescribeQueryVariableDetailResponse
@@ -16214,7 +16437,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeQueryVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeQueryVariableDetailResponse:
         """
-        @summary 查询变量详情查询
+        @summary Query Variable Detail Query
         
         @param request: DescribeQueryVariableDetailRequest
         @return: DescribeQueryVariableDetailResponse
@@ -16348,7 +16571,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendSceneVariablesResponse:
         """
-        @summary 查询样本&场景下的变量列表
+        @summary Query Variable List under Sample & Scenario
         
         @param request: DescribeRecommendSceneVariablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16387,7 +16610,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendSceneVariablesResponse:
         """
-        @summary 查询样本&场景下的变量列表
+        @summary Query Variable List under Sample & Scenario
         
         @param request: DescribeRecommendSceneVariablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16425,7 +16648,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendSceneVariablesRequest,
     ) -> xtee_20210910_models.DescribeRecommendSceneVariablesResponse:
         """
-        @summary 查询样本&场景下的变量列表
+        @summary Query Variable List under Sample & Scenario
         
         @param request: DescribeRecommendSceneVariablesRequest
         @return: DescribeRecommendSceneVariablesResponse
@@ -16438,7 +16661,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendSceneVariablesRequest,
     ) -> xtee_20210910_models.DescribeRecommendSceneVariablesResponse:
         """
-        @summary 查询样本&场景下的变量列表
+        @summary Query Variable List under Sample & Scenario
         
         @param request: DescribeRecommendSceneVariablesRequest
         @return: DescribeRecommendSceneVariablesResponse
@@ -16452,7 +16675,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendTaskDetailResponse:
         """
-        @summary 变量推荐详情查询接口
+        @summary Variable Recommendation Details Query Interface
         
         @param request: DescribeRecommendTaskDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16491,7 +16714,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendTaskDetailResponse:
         """
-        @summary 变量推荐详情查询接口
+        @summary Variable Recommendation Details Query Interface
         
         @param request: DescribeRecommendTaskDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16529,7 +16752,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendTaskDetailRequest,
     ) -> xtee_20210910_models.DescribeRecommendTaskDetailResponse:
         """
-        @summary 变量推荐详情查询接口
+        @summary Variable Recommendation Details Query Interface
         
         @param request: DescribeRecommendTaskDetailRequest
         @return: DescribeRecommendTaskDetailResponse
@@ -16542,7 +16765,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendTaskDetailRequest,
     ) -> xtee_20210910_models.DescribeRecommendTaskDetailResponse:
         """
-        @summary 变量推荐详情查询接口
+        @summary Variable Recommendation Details Query Interface
         
         @param request: DescribeRecommendTaskDetailRequest
         @return: DescribeRecommendTaskDetailResponse
@@ -16556,7 +16779,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendTaskPageListResponse:
         """
-        @summary 变量推荐列表查询接口
+        @summary Variable Recommendation List Query Interface
         
         @param request: DescribeRecommendTaskPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16599,7 +16822,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendTaskPageListResponse:
         """
-        @summary 变量推荐列表查询接口
+        @summary Variable Recommendation List Query Interface
         
         @param request: DescribeRecommendTaskPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16641,7 +16864,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendTaskPageListRequest,
     ) -> xtee_20210910_models.DescribeRecommendTaskPageListResponse:
         """
-        @summary 变量推荐列表查询接口
+        @summary Variable Recommendation List Query Interface
         
         @param request: DescribeRecommendTaskPageListRequest
         @return: DescribeRecommendTaskPageListResponse
@@ -16654,7 +16877,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendTaskPageListRequest,
     ) -> xtee_20210910_models.DescribeRecommendTaskPageListResponse:
         """
-        @summary 变量推荐列表查询接口
+        @summary Variable Recommendation List Query Interface
         
         @param request: DescribeRecommendTaskPageListRequest
         @return: DescribeRecommendTaskPageListResponse
@@ -16668,7 +16891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendVariablesVelocityResponse:
         """
-        @summary 查询变量下的指标信息
+        @summary Query Indicators Information under Variables
         
         @param request: DescribeRecommendVariablesVelocityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16709,7 +16932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendVariablesVelocityResponse:
         """
-        @summary 查询变量下的指标信息
+        @summary Query Indicators Information under Variables
         
         @param request: DescribeRecommendVariablesVelocityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16749,7 +16972,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendVariablesVelocityRequest,
     ) -> xtee_20210910_models.DescribeRecommendVariablesVelocityResponse:
         """
-        @summary 查询变量下的指标信息
+        @summary Query Indicators Information under Variables
         
         @param request: DescribeRecommendVariablesVelocityRequest
         @return: DescribeRecommendVariablesVelocityResponse
@@ -16762,7 +16985,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendVariablesVelocityRequest,
     ) -> xtee_20210910_models.DescribeRecommendVariablesVelocityResponse:
         """
-        @summary 查询变量下的指标信息
+        @summary Query Indicators Information under Variables
         
         @param request: DescribeRecommendVariablesVelocityRequest
         @return: DescribeRecommendVariablesVelocityResponse
@@ -16776,7 +16999,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendVelocitiesResponse:
         """
-        @summary 查询支持的指标列表
+        @summary Query Supported Metrics List
         
         @param request: DescribeRecommendVelocitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16817,7 +17040,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRecommendVelocitiesResponse:
         """
-        @summary 查询支持的指标列表
+        @summary Query Supported Metrics List
         
         @param request: DescribeRecommendVelocitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16857,7 +17080,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendVelocitiesRequest,
     ) -> xtee_20210910_models.DescribeRecommendVelocitiesResponse:
         """
-        @summary 查询支持的指标列表
+        @summary Query Supported Metrics List
         
         @param request: DescribeRecommendVelocitiesRequest
         @return: DescribeRecommendVelocitiesResponse
@@ -16870,7 +17093,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRecommendVelocitiesRequest,
     ) -> xtee_20210910_models.DescribeRecommendVelocitiesResponse:
         """
-        @summary 查询支持的指标列表
+        @summary Query Supported Metrics List
         
         @param request: DescribeRecommendVelocitiesRequest
         @return: DescribeRecommendVelocitiesResponse
@@ -16884,7 +17107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRegionsResponse:
         """
-        @summary 查询ApiGateway支持的region列表
+        @summary Query the list of regions supported by ApiGateway
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16921,7 +17144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRegionsResponse:
         """
-        @summary 查询ApiGateway支持的region列表
+        @summary Query the list of regions supported by ApiGateway
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16957,7 +17180,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRegionsRequest,
     ) -> xtee_20210910_models.DescribeRegionsResponse:
         """
-        @summary 查询ApiGateway支持的region列表
+        @summary Query the list of regions supported by ApiGateway
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -16970,7 +17193,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRegionsRequest,
     ) -> xtee_20210910_models.DescribeRegionsResponse:
         """
-        @summary 查询ApiGateway支持的region列表
+        @summary Query the list of regions supported by ApiGateway
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -16984,7 +17207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRequestHitResponse:
         """
-        @summary 查询请求命中详情
+        @summary Query Request Hit Details
         
         @param request: DescribeRequestHitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17023,7 +17246,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRequestHitResponse:
         """
-        @summary 查询请求命中详情
+        @summary Query Request Hit Details
         
         @param request: DescribeRequestHitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17061,7 +17284,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRequestHitRequest,
     ) -> xtee_20210910_models.DescribeRequestHitResponse:
         """
-        @summary 查询请求命中详情
+        @summary Query Request Hit Details
         
         @param request: DescribeRequestHitRequest
         @return: DescribeRequestHitResponse
@@ -17074,7 +17297,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRequestHitRequest,
     ) -> xtee_20210910_models.DescribeRequestHitResponse:
         """
-        @summary 查询请求命中详情
+        @summary Query Request Hit Details
         
         @param request: DescribeRequestHitRequest
         @return: DescribeRequestHitResponse
@@ -17088,7 +17311,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRequestPeakReportResponse:
         """
-        @summary 请求峰值
+        @summary Request Peak
         
         @param request: DescribeRequestPeakReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17125,7 +17348,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRequestPeakReportResponse:
         """
-        @summary 请求峰值
+        @summary Request Peak
         
         @param request: DescribeRequestPeakReportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17161,7 +17384,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRequestPeakReportRequest,
     ) -> xtee_20210910_models.DescribeRequestPeakReportResponse:
         """
-        @summary 请求峰值
+        @summary Request Peak
         
         @param request: DescribeRequestPeakReportRequest
         @return: DescribeRequestPeakReportResponse
@@ -17174,7 +17397,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRequestPeakReportRequest,
     ) -> xtee_20210910_models.DescribeRequestPeakReportResponse:
         """
-        @summary 请求峰值
+        @summary Request Peak
         
         @param request: DescribeRequestPeakReportRequest
         @return: DescribeRequestPeakReportResponse
@@ -17188,7 +17411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeResultCountResponse:
         """
-        @summary 下钻分析
+        @summary Drill-down Analysis
         
         @param request: DescribeResultCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17229,7 +17452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeResultCountResponse:
         """
-        @summary 下钻分析
+        @summary Drill-down Analysis
         
         @param request: DescribeResultCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17269,7 +17492,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeResultCountRequest,
     ) -> xtee_20210910_models.DescribeResultCountResponse:
         """
-        @summary 下钻分析
+        @summary Drill-down Analysis
         
         @param request: DescribeResultCountRequest
         @return: DescribeResultCountResponse
@@ -17282,7 +17505,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeResultCountRequest,
     ) -> xtee_20210910_models.DescribeResultCountResponse:
         """
-        @summary 下钻分析
+        @summary Drill-down Analysis
         
         @param request: DescribeResultCountRequest
         @return: DescribeResultCountResponse
@@ -17296,7 +17519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRiskLineChartResponse:
         """
-        @summary 风险地图概览图表(折线图)
+        @summary Risk map overview chart (line chart)
         
         @param request: DescribeRiskLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17339,7 +17562,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRiskLineChartResponse:
         """
-        @summary 风险地图概览图表(折线图)
+        @summary Risk map overview chart (line chart)
         
         @param request: DescribeRiskLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17381,7 +17604,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRiskLineChartRequest,
     ) -> xtee_20210910_models.DescribeRiskLineChartResponse:
         """
-        @summary 风险地图概览图表(折线图)
+        @summary Risk map overview chart (line chart)
         
         @param request: DescribeRiskLineChartRequest
         @return: DescribeRiskLineChartResponse
@@ -17394,7 +17617,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRiskLineChartRequest,
     ) -> xtee_20210910_models.DescribeRiskLineChartResponse:
         """
-        @summary 风险地图概览图表(折线图)
+        @summary Risk map overview chart (line chart)
         
         @param request: DescribeRiskLineChartRequest
         @return: DescribeRiskLineChartResponse
@@ -17402,13 +17625,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_risk_line_chart_with_options_async(request, runtime)
 
+    def describe_risk_tags_line_chart_with_options(
+        self,
+        request: xtee_20210910_models.DescribeRiskTagsLineChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeRiskTagsLineChartResponse:
+        """
+        @summary Tag Hit Rate Tag Hit Dimension
+        
+        @param request: DescribeRiskTagsLineChartRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskTagsLineChartResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_codes):
+            query['EventCodes'] = request.event_codes
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskTagsLineChart',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeRiskTagsLineChartResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_risk_tags_line_chart_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeRiskTagsLineChartRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeRiskTagsLineChartResponse:
+        """
+        @summary Tag Hit Rate Tag Hit Dimension
+        
+        @param request: DescribeRiskTagsLineChartRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRiskTagsLineChartResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_codes):
+            query['EventCodes'] = request.event_codes
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRiskTagsLineChart',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeRiskTagsLineChartResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_risk_tags_line_chart(
+        self,
+        request: xtee_20210910_models.DescribeRiskTagsLineChartRequest,
+    ) -> xtee_20210910_models.DescribeRiskTagsLineChartResponse:
+        """
+        @summary Tag Hit Rate Tag Hit Dimension
+        
+        @param request: DescribeRiskTagsLineChartRequest
+        @return: DescribeRiskTagsLineChartResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_risk_tags_line_chart_with_options(request, runtime)
+
+    async def describe_risk_tags_line_chart_async(
+        self,
+        request: xtee_20210910_models.DescribeRiskTagsLineChartRequest,
+    ) -> xtee_20210910_models.DescribeRiskTagsLineChartResponse:
+        """
+        @summary Tag Hit Rate Tag Hit Dimension
+        
+        @param request: DescribeRiskTagsLineChartRequest
+        @return: DescribeRiskTagsLineChartResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_risk_tags_line_chart_with_options_async(request, runtime)
+
     def describe_rule_bar_chart_with_options(
         self,
         request: xtee_20210910_models.DescribeRuleBarChartRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleBarChartResponse:
         """
-        @summary 策略概览列表
+        @summary Policy Overview List
         
         @param request: DescribeRuleBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17451,7 +17786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleBarChartResponse:
         """
-        @summary 策略概览列表
+        @summary Policy Overview List
         
         @param request: DescribeRuleBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17493,7 +17828,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleBarChartRequest,
     ) -> xtee_20210910_models.DescribeRuleBarChartResponse:
         """
-        @summary 策略概览列表
+        @summary Policy Overview List
         
         @param request: DescribeRuleBarChartRequest
         @return: DescribeRuleBarChartResponse
@@ -17506,7 +17841,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleBarChartRequest,
     ) -> xtee_20210910_models.DescribeRuleBarChartResponse:
         """
-        @summary 策略概览列表
+        @summary Policy Overview List
         
         @param request: DescribeRuleBarChartRequest
         @return: DescribeRuleBarChartResponse
@@ -17520,7 +17855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleCountByUserIdResponse:
         """
-        @summary 根据用户Id查询策略数
+        @summary Query Policy Count by User ID
         
         @param request: DescribeRuleCountByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17559,7 +17894,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleCountByUserIdResponse:
         """
-        @summary 根据用户Id查询策略数
+        @summary Query Policy Count by User ID
         
         @param request: DescribeRuleCountByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17597,7 +17932,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleCountByUserIdRequest,
     ) -> xtee_20210910_models.DescribeRuleCountByUserIdResponse:
         """
-        @summary 根据用户Id查询策略数
+        @summary Query Policy Count by User ID
         
         @param request: DescribeRuleCountByUserIdRequest
         @return: DescribeRuleCountByUserIdResponse
@@ -17610,7 +17945,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleCountByUserIdRequest,
     ) -> xtee_20210910_models.DescribeRuleCountByUserIdResponse:
         """
-        @summary 根据用户Id查询策略数
+        @summary Query Policy Count by User ID
         
         @param request: DescribeRuleCountByUserIdRequest
         @return: DescribeRuleCountByUserIdResponse
@@ -17624,7 +17959,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleDetailByRuleIdResponse:
         """
-        @summary 查询策略/版本详情
+        @summary Query policy/version details
         
         @param request: DescribeRuleDetailByRuleIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17667,7 +18002,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleDetailByRuleIdResponse:
         """
-        @summary 查询策略/版本详情
+        @summary Query policy/version details
         
         @param request: DescribeRuleDetailByRuleIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17709,7 +18044,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleDetailByRuleIdRequest,
     ) -> xtee_20210910_models.DescribeRuleDetailByRuleIdResponse:
         """
-        @summary 查询策略/版本详情
+        @summary Query policy/version details
         
         @param request: DescribeRuleDetailByRuleIdRequest
         @return: DescribeRuleDetailByRuleIdResponse
@@ -17722,7 +18057,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleDetailByRuleIdRequest,
     ) -> xtee_20210910_models.DescribeRuleDetailByRuleIdResponse:
         """
-        @summary 查询策略/版本详情
+        @summary Query policy/version details
         
         @param request: DescribeRuleDetailByRuleIdRequest
         @return: DescribeRuleDetailByRuleIdResponse
@@ -17736,7 +18071,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleHitResponse:
         """
-        @summary 查询策略命中详情
+        @summary Query rule hit details
         
         @param request: DescribeRuleHitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17748,6 +18083,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.request_time):
+            query['requestTime'] = request.request_time
         if not UtilClient.is_unset(request.rule_id):
             query['ruleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_snapshot_id):
@@ -17779,7 +18116,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleHitResponse:
         """
-        @summary 查询策略命中详情
+        @summary Query rule hit details
         
         @param request: DescribeRuleHitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17791,6 +18128,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.request_time):
+            query['requestTime'] = request.request_time
         if not UtilClient.is_unset(request.rule_id):
             query['ruleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_snapshot_id):
@@ -17821,7 +18160,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleHitRequest,
     ) -> xtee_20210910_models.DescribeRuleHitResponse:
         """
-        @summary 查询策略命中详情
+        @summary Query rule hit details
         
         @param request: DescribeRuleHitRequest
         @return: DescribeRuleHitResponse
@@ -17834,7 +18173,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleHitRequest,
     ) -> xtee_20210910_models.DescribeRuleHitResponse:
         """
-        @summary 查询策略命中详情
+        @summary Query rule hit details
         
         @param request: DescribeRuleHitRequest
         @return: DescribeRuleHitResponse
@@ -17848,7 +18187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleListByEventCodesListResponse:
         """
-        @summary 查询策略列表
+        @summary Query policy list
         
         @param request: DescribeRuleListByEventCodesListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17887,7 +18226,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleListByEventCodesListResponse:
         """
-        @summary 查询策略列表
+        @summary Query policy list
         
         @param request: DescribeRuleListByEventCodesListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17925,7 +18264,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleListByEventCodesListRequest,
     ) -> xtee_20210910_models.DescribeRuleListByEventCodesListResponse:
         """
-        @summary 查询策略列表
+        @summary Query policy list
         
         @param request: DescribeRuleListByEventCodesListRequest
         @return: DescribeRuleListByEventCodesListResponse
@@ -17938,7 +18277,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleListByEventCodesListRequest,
     ) -> xtee_20210910_models.DescribeRuleListByEventCodesListResponse:
         """
-        @summary 查询策略列表
+        @summary Query policy list
         
         @param request: DescribeRuleListByEventCodesListRequest
         @return: DescribeRuleListByEventCodesListResponse
@@ -17952,7 +18291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRulePageListResponse:
         """
-        @summary 查询策略列表
+        @summary Query the list of policies
         
         @param request: DescribeRulePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17978,6 +18317,8 @@ class Client(OpenApiClient):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18003,7 +18344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRulePageListResponse:
         """
-        @summary 查询策略列表
+        @summary Query the list of policies
         
         @param request: DescribeRulePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18029,6 +18370,8 @@ class Client(OpenApiClient):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18053,7 +18396,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRulePageListRequest,
     ) -> xtee_20210910_models.DescribeRulePageListResponse:
         """
-        @summary 查询策略列表
+        @summary Query the list of policies
         
         @param request: DescribeRulePageListRequest
         @return: DescribeRulePageListResponse
@@ -18066,7 +18409,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRulePageListRequest,
     ) -> xtee_20210910_models.DescribeRulePageListResponse:
         """
-        @summary 查询策略列表
+        @summary Query the list of policies
         
         @param request: DescribeRulePageListRequest
         @return: DescribeRulePageListResponse
@@ -18080,7 +18423,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleSnapshotResponse:
         """
-        @summary 根据ruleId+version查询历史快照
+        @summary Query historical snapshots based on ruleId and version
         
         @param request: DescribeRuleSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18121,7 +18464,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleSnapshotResponse:
         """
-        @summary 根据ruleId+version查询历史快照
+        @summary Query historical snapshots based on ruleId and version
         
         @param request: DescribeRuleSnapshotRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18161,7 +18504,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleSnapshotRequest,
     ) -> xtee_20210910_models.DescribeRuleSnapshotResponse:
         """
-        @summary 根据ruleId+version查询历史快照
+        @summary Query historical snapshots based on ruleId and version
         
         @param request: DescribeRuleSnapshotRequest
         @return: DescribeRuleSnapshotResponse
@@ -18174,7 +18517,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleSnapshotRequest,
     ) -> xtee_20210910_models.DescribeRuleSnapshotResponse:
         """
-        @summary 根据ruleId+version查询历史快照
+        @summary Query historical snapshots based on ruleId and version
         
         @param request: DescribeRuleSnapshotRequest
         @return: DescribeRuleSnapshotResponse
@@ -18188,7 +18531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleVersionListResponse:
         """
-        @summary 查询策略版本列表
+        @summary Query Policy Version List
         
         @param request: DescribeRuleVersionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18200,6 +18543,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.console_rule_id):
             query['consoleRuleId'] = request.console_rule_id
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_id):
@@ -18229,7 +18576,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeRuleVersionListResponse:
         """
-        @summary 查询策略版本列表
+        @summary Query Policy Version List
         
         @param request: DescribeRuleVersionListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18241,6 +18588,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.console_rule_id):
             query['consoleRuleId'] = request.console_rule_id
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_id):
@@ -18269,7 +18620,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleVersionListRequest,
     ) -> xtee_20210910_models.DescribeRuleVersionListResponse:
         """
-        @summary 查询策略版本列表
+        @summary Query Policy Version List
         
         @param request: DescribeRuleVersionListRequest
         @return: DescribeRuleVersionListResponse
@@ -18282,7 +18633,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeRuleVersionListRequest,
     ) -> xtee_20210910_models.DescribeRuleVersionListResponse:
         """
-        @summary 查询策略版本列表
+        @summary Query Policy Version List
         
         @param request: DescribeRuleVersionListRequest
         @return: DescribeRuleVersionListResponse
@@ -18296,7 +18647,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSDKDownloadListResponse:
         """
-        @summary 获取老旧版本sdk下载列表
+        @summary SDK Download List
         
         @param request: DescribeSDKDownloadListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18337,7 +18688,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSDKDownloadListResponse:
         """
-        @summary 获取老旧版本sdk下载列表
+        @summary SDK Download List
         
         @param request: DescribeSDKDownloadListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18377,7 +18728,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSDKDownloadListRequest,
     ) -> xtee_20210910_models.DescribeSDKDownloadListResponse:
         """
-        @summary 获取老旧版本sdk下载列表
+        @summary SDK Download List
         
         @param request: DescribeSDKDownloadListRequest
         @return: DescribeSDKDownloadListResponse
@@ -18390,7 +18741,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSDKDownloadListRequest,
     ) -> xtee_20210910_models.DescribeSDKDownloadListResponse:
         """
-        @summary 获取老旧版本sdk下载列表
+        @summary SDK Download List
         
         @param request: DescribeSDKDownloadListRequest
         @return: DescribeSDKDownloadListResponse
@@ -18500,7 +18851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafDeOrderResponse:
         """
-        @summary 查询saf_de订单
+        @summary Query saf_de Order
         
         @param request: DescribeSafDeOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18545,7 +18896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafDeOrderResponse:
         """
-        @summary 查询saf_de订单
+        @summary Query saf_de Order
         
         @param request: DescribeSafDeOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18589,7 +18940,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafDeOrderRequest,
     ) -> xtee_20210910_models.DescribeSafDeOrderResponse:
         """
-        @summary 查询saf_de订单
+        @summary Query saf_de Order
         
         @param request: DescribeSafDeOrderRequest
         @return: DescribeSafDeOrderResponse
@@ -18602,7 +18953,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafDeOrderRequest,
     ) -> xtee_20210910_models.DescribeSafDeOrderResponse:
         """
-        @summary 查询saf_de订单
+        @summary Query saf_de Order
         
         @param request: DescribeSafDeOrderRequest
         @return: DescribeSafDeOrderResponse
@@ -18616,7 +18967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafOrderResponse:
         """
-        @summary 查询订单信息
+        @summary Query Order Information
         
         @param request: DescribeSafOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18663,7 +19014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafOrderResponse:
         """
-        @summary 查询订单信息
+        @summary Query Order Information
         
         @param request: DescribeSafOrderRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18709,7 +19060,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafOrderRequest,
     ) -> xtee_20210910_models.DescribeSafOrderResponse:
         """
-        @summary 查询订单信息
+        @summary Query Order Information
         
         @param request: DescribeSafOrderRequest
         @return: DescribeSafOrderResponse
@@ -18722,7 +19073,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafOrderRequest,
     ) -> xtee_20210910_models.DescribeSafOrderResponse:
         """
-        @summary 查询订单信息
+        @summary Query Order Information
         
         @param request: DescribeSafOrderRequest
         @return: DescribeSafOrderResponse
@@ -18736,7 +19087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafStartConfigResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18773,7 +19124,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafStartConfigResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18809,7 +19160,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafStartConfigRequest,
     ) -> xtee_20210910_models.DescribeSafStartConfigResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartConfigRequest
         @return: DescribeSafStartConfigResponse
@@ -18822,7 +19173,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafStartConfigRequest,
     ) -> xtee_20210910_models.DescribeSafStartConfigResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartConfigRequest
         @return: DescribeSafStartConfigResponse
@@ -18836,7 +19187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafStartStepsResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartStepsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18883,7 +19234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafStartStepsResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartStepsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18929,7 +19280,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafStartStepsRequest,
     ) -> xtee_20210910_models.DescribeSafStartStepsResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartStepsRequest
         @return: DescribeSafStartStepsResponse
@@ -18942,7 +19293,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafStartStepsRequest,
     ) -> xtee_20210910_models.DescribeSafStartStepsResponse:
         """
-        @summary 查询接入配置
+        @summary Query Access Configuration
         
         @param request: DescribeSafStartStepsRequest
         @return: DescribeSafStartStepsResponse
@@ -18956,7 +19307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafTagListResponse:
         """
-        @summary 获取风险标签列表
+        @summary Get Risk Tag List
         
         @param request: DescribeSafTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18966,6 +19317,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.api_id):
             query['apiId'] = request.api_id
         if not UtilClient.is_unset(request.current_page):
@@ -18999,7 +19352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafTagListResponse:
         """
-        @summary 获取风险标签列表
+        @summary Get Risk Tag List
         
         @param request: DescribeSafTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19009,6 +19362,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
         if not UtilClient.is_unset(request.api_id):
             query['apiId'] = request.api_id
         if not UtilClient.is_unset(request.current_page):
@@ -19041,7 +19396,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafTagListRequest,
     ) -> xtee_20210910_models.DescribeSafTagListResponse:
         """
-        @summary 获取风险标签列表
+        @summary Get Risk Tag List
         
         @param request: DescribeSafTagListRequest
         @return: DescribeSafTagListResponse
@@ -19054,7 +19409,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafTagListRequest,
     ) -> xtee_20210910_models.DescribeSafTagListResponse:
         """
-        @summary 获取风险标签列表
+        @summary Get Risk Tag List
         
         @param request: DescribeSafTagListRequest
         @return: DescribeSafTagListResponse
@@ -19062,13 +19417,241 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_saf_tag_list_with_options_async(request, runtime)
 
+    def describe_sample_batch_oss_policy_with_options(
+        self,
+        request: xtee_20210910_models.DescribeSampleBatchOssPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleBatchOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeSampleBatchOssPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleBatchOssPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleBatchOssPolicy',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleBatchOssPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sample_batch_oss_policy_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleBatchOssPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleBatchOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeSampleBatchOssPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleBatchOssPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleBatchOssPolicy',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleBatchOssPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sample_batch_oss_policy(
+        self,
+        request: xtee_20210910_models.DescribeSampleBatchOssPolicyRequest,
+    ) -> xtee_20210910_models.DescribeSampleBatchOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeSampleBatchOssPolicyRequest
+        @return: DescribeSampleBatchOssPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sample_batch_oss_policy_with_options(request, runtime)
+
+    async def describe_sample_batch_oss_policy_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleBatchOssPolicyRequest,
+    ) -> xtee_20210910_models.DescribeSampleBatchOssPolicyResponse:
+        """
+        @summary Get File Upload Credentials
+        
+        @param request: DescribeSampleBatchOssPolicyRequest
+        @return: DescribeSampleBatchOssPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sample_batch_oss_policy_with_options_async(request, runtime)
+
+    def describe_sample_data_by_batch_uuid_page_with_options(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataByBatchUUidPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataByBatchUUidPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleDataByBatchUUidPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.update_begin_time):
+            query['updateBeginTime'] = request.update_begin_time
+        if not UtilClient.is_unset(request.update_end_time):
+            query['updateEndTime'] = request.update_end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleDataByBatchUUidPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sample_data_by_batch_uuid_page_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataByBatchUUidPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataByBatchUUidPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleDataByBatchUUidPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.update_begin_time):
+            query['updateBeginTime'] = request.update_begin_time
+        if not UtilClient.is_unset(request.update_end_time):
+            query['updateEndTime'] = request.update_end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleDataByBatchUUidPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sample_data_by_batch_uuid_page(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataByBatchUUidPageRequest,
+    ) -> xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataByBatchUUidPageRequest
+        @return: DescribeSampleDataByBatchUUidPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sample_data_by_batch_uuid_page_with_options(request, runtime)
+
+    async def describe_sample_data_by_batch_uuid_page_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataByBatchUUidPageRequest,
+    ) -> xtee_20210910_models.DescribeSampleDataByBatchUUidPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataByBatchUUidPageRequest
+        @return: DescribeSampleDataByBatchUUidPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sample_data_by_batch_uuid_page_with_options_async(request, runtime)
+
     def describe_sample_data_list_with_options(
         self,
         request: xtee_20210910_models.DescribeSampleDataListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDataListResponse:
         """
-        @summary 样本列表分页查询
+        @summary Paged Query of Sample List
         
         @param request: DescribeSampleDataListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19119,7 +19702,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDataListResponse:
         """
-        @summary 样本列表分页查询
+        @summary Paged Query of Sample List
         
         @param request: DescribeSampleDataListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19169,7 +19752,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDataListRequest,
     ) -> xtee_20210910_models.DescribeSampleDataListResponse:
         """
-        @summary 样本列表分页查询
+        @summary Paged Query of Sample List
         
         @param request: DescribeSampleDataListRequest
         @return: DescribeSampleDataListResponse
@@ -19182,7 +19765,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDataListRequest,
     ) -> xtee_20210910_models.DescribeSampleDataListResponse:
         """
-        @summary 样本列表分页查询
+        @summary Paged Query of Sample List
         
         @param request: DescribeSampleDataListRequest
         @return: DescribeSampleDataListResponse
@@ -19190,13 +19773,133 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sample_data_list_with_options_async(request, runtime)
 
+    def describe_sample_data_page_with_options(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleDataPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleDataPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.update_begin_time):
+            query['updateBeginTime'] = request.update_begin_time
+        if not UtilClient.is_unset(request.update_end_time):
+            query['updateEndTime'] = request.update_end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleDataPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleDataPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sample_data_page_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSampleDataPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleDataPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.update_begin_time):
+            query['updateBeginTime'] = request.update_begin_time
+        if not UtilClient.is_unset(request.update_end_time):
+            query['updateEndTime'] = request.update_end_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSampleDataPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSampleDataPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sample_data_page(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataPageRequest,
+    ) -> xtee_20210910_models.DescribeSampleDataPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataPageRequest
+        @return: DescribeSampleDataPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sample_data_page_with_options(request, runtime)
+
+    async def describe_sample_data_page_async(
+        self,
+        request: xtee_20210910_models.DescribeSampleDataPageRequest,
+    ) -> xtee_20210910_models.DescribeSampleDataPageResponse:
+        """
+        @summary Sample List
+        
+        @param request: DescribeSampleDataPageRequest
+        @return: DescribeSampleDataPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sample_data_page_with_options_async(request, runtime)
+
     def describe_sample_demo_download_url_with_options(
         self,
         request: xtee_20210910_models.DescribeSampleDemoDownloadUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDemoDownloadUrlResponse:
         """
-        @summary 查询样本示例授权
+        @summary Query Sample Example Authorization
         
         @param request: DescribeSampleDemoDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19235,7 +19938,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDemoDownloadUrlResponse:
         """
-        @summary 查询样本示例授权
+        @summary Query Sample Example Authorization
         
         @param request: DescribeSampleDemoDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19273,7 +19976,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDemoDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeSampleDemoDownloadUrlResponse:
         """
-        @summary 查询样本示例授权
+        @summary Query Sample Example Authorization
         
         @param request: DescribeSampleDemoDownloadUrlRequest
         @return: DescribeSampleDemoDownloadUrlResponse
@@ -19286,7 +19989,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDemoDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeSampleDemoDownloadUrlResponse:
         """
-        @summary 查询样本示例授权
+        @summary Query Sample Example Authorization
         
         @param request: DescribeSampleDemoDownloadUrlRequest
         @return: DescribeSampleDemoDownloadUrlResponse
@@ -19300,7 +20003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDownloadUrlResponse:
         """
-        @summary 查询样本下载授权信息
+        @summary Query Sample Download Authorization Information
         
         @param request: DescribeSampleDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19339,7 +20042,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleDownloadUrlResponse:
         """
-        @summary 查询样本下载授权信息
+        @summary Query Sample Download Authorization Information
         
         @param request: DescribeSampleDownloadUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19377,7 +20080,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeSampleDownloadUrlResponse:
         """
-        @summary 查询样本下载授权信息
+        @summary Query Sample Download Authorization Information
         
         @param request: DescribeSampleDownloadUrlRequest
         @return: DescribeSampleDownloadUrlResponse
@@ -19390,7 +20093,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleDownloadUrlRequest,
     ) -> xtee_20210910_models.DescribeSampleDownloadUrlResponse:
         """
-        @summary 查询样本下载授权信息
+        @summary Query Sample Download Authorization Information
         
         @param request: DescribeSampleDownloadUrlRequest
         @return: DescribeSampleDownloadUrlResponse
@@ -19404,7 +20107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleInfoResponse:
         """
-        @summary 查询样本详情
+        @summary Query Sample Details
         
         @param request: DescribeSampleInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19445,7 +20148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleInfoResponse:
         """
-        @summary 查询样本详情
+        @summary Query Sample Details
         
         @param request: DescribeSampleInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19485,7 +20188,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleInfoRequest,
     ) -> xtee_20210910_models.DescribeSampleInfoResponse:
         """
-        @summary 查询样本详情
+        @summary Query Sample Details
         
         @param request: DescribeSampleInfoRequest
         @return: DescribeSampleInfoResponse
@@ -19498,7 +20201,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleInfoRequest,
     ) -> xtee_20210910_models.DescribeSampleInfoResponse:
         """
-        @summary 查询样本详情
+        @summary Query Sample Details
         
         @param request: DescribeSampleInfoRequest
         @return: DescribeSampleInfoResponse
@@ -19512,7 +20215,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleListResponse:
         """
-        @summary 查询样本列表
+        @summary Query Sample List
         
         @param request: DescribeSampleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19557,7 +20260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleListResponse:
         """
-        @summary 查询样本列表
+        @summary Query Sample List
         
         @param request: DescribeSampleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19601,7 +20304,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleListRequest,
     ) -> xtee_20210910_models.DescribeSampleListResponse:
         """
-        @summary 查询样本列表
+        @summary Query Sample List
         
         @param request: DescribeSampleListRequest
         @return: DescribeSampleListResponse
@@ -19614,7 +20317,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleListRequest,
     ) -> xtee_20210910_models.DescribeSampleListResponse:
         """
-        @summary 查询样本列表
+        @summary Query Sample List
         
         @param request: DescribeSampleListRequest
         @return: DescribeSampleListResponse
@@ -19628,7 +20331,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleSceneListResponse:
         """
-        @summary 查询场景列表
+        @summary Query Scene List
         
         @param request: DescribeSampleSceneListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19665,7 +20368,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleSceneListResponse:
         """
-        @summary 查询场景列表
+        @summary Query Scene List
         
         @param request: DescribeSampleSceneListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19701,7 +20404,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleSceneListRequest,
     ) -> xtee_20210910_models.DescribeSampleSceneListResponse:
         """
-        @summary 查询场景列表
+        @summary Query Scene List
         
         @param request: DescribeSampleSceneListRequest
         @return: DescribeSampleSceneListResponse
@@ -19714,7 +20417,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleSceneListRequest,
     ) -> xtee_20210910_models.DescribeSampleSceneListResponse:
         """
-        @summary 查询场景列表
+        @summary Query Scene List
         
         @param request: DescribeSampleSceneListRequest
         @return: DescribeSampleSceneListResponse
@@ -19728,7 +20431,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleTagListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeSampleTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19765,7 +20468,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleTagListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeSampleTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19801,7 +20504,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleTagListRequest,
     ) -> xtee_20210910_models.DescribeSampleTagListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeSampleTagListRequest
         @return: DescribeSampleTagListResponse
@@ -19814,7 +20517,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleTagListRequest,
     ) -> xtee_20210910_models.DescribeSampleTagListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeSampleTagListRequest
         @return: DescribeSampleTagListResponse
@@ -19828,7 +20531,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleUploadPolicyResponse:
         """
-        @summary 查询样本上传授权信息
+        @summary Query Sample Upload Authorization Information
         
         @param request: DescribeSampleUploadPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19865,7 +20568,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSampleUploadPolicyResponse:
         """
-        @summary 查询样本上传授权信息
+        @summary Query Sample Upload Authorization Information
         
         @param request: DescribeSampleUploadPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19901,7 +20604,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleUploadPolicyRequest,
     ) -> xtee_20210910_models.DescribeSampleUploadPolicyResponse:
         """
-        @summary 查询样本上传授权信息
+        @summary Query Sample Upload Authorization Information
         
         @param request: DescribeSampleUploadPolicyRequest
         @return: DescribeSampleUploadPolicyResponse
@@ -19914,7 +20617,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSampleUploadPolicyRequest,
     ) -> xtee_20210910_models.DescribeSampleUploadPolicyResponse:
         """
-        @summary 查询样本上传授权信息
+        @summary Query Sample Upload Authorization Information
         
         @param request: DescribeSampleUploadPolicyRequest
         @return: DescribeSampleUploadPolicyResponse
@@ -19922,13 +20625,127 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_sample_upload_policy_with_options_async(request, runtime)
 
+    def describe_samplebatch_page_with_options(
+        self,
+        request: xtee_20210910_models.DescribeSamplebatchPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSamplebatchPageResponse:
+        """
+        @summary Sample Batch List
+        
+        @param request: DescribeSamplebatchPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSamplebatchPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSamplebatchPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSamplebatchPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_samplebatch_page_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeSamplebatchPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeSamplebatchPageResponse:
+        """
+        @summary Sample Batch List
+        
+        @param request: DescribeSamplebatchPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSamplebatchPageResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.data_value):
+            query['dataValue'] = request.data_value
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSamplebatchPage',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeSamplebatchPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_samplebatch_page(
+        self,
+        request: xtee_20210910_models.DescribeSamplebatchPageRequest,
+    ) -> xtee_20210910_models.DescribeSamplebatchPageResponse:
+        """
+        @summary Sample Batch List
+        
+        @param request: DescribeSamplebatchPageRequest
+        @return: DescribeSamplebatchPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_samplebatch_page_with_options(request, runtime)
+
+    async def describe_samplebatch_page_async(
+        self,
+        request: xtee_20210910_models.DescribeSamplebatchPageRequest,
+    ) -> xtee_20210910_models.DescribeSamplebatchPageResponse:
+        """
+        @summary Sample Batch List
+        
+        @param request: DescribeSamplebatchPageRequest
+        @return: DescribeSamplebatchPageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_samplebatch_page_with_options_async(request, runtime)
+
     def describe_scene_all_event_name_code_list_with_options(
         self,
         request: xtee_20210910_models.DescribeSceneAllEventNameCodeListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneAllEventNameCodeListResponse:
         """
-        @summary 场景化服务事件下拉列表
+        @summary Dropdown list for scenario-based service events
+        
+        @description Dropdown list for scenario-based risk control events
         
         @param request: DescribeSceneAllEventNameCodeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19967,7 +20784,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneAllEventNameCodeListResponse:
         """
-        @summary 场景化服务事件下拉列表
+        @summary Dropdown list for scenario-based service events
+        
+        @description Dropdown list for scenario-based risk control events
         
         @param request: DescribeSceneAllEventNameCodeListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20005,7 +20824,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneAllEventNameCodeListRequest,
     ) -> xtee_20210910_models.DescribeSceneAllEventNameCodeListResponse:
         """
-        @summary 场景化服务事件下拉列表
+        @summary Dropdown list for scenario-based service events
+        
+        @description Dropdown list for scenario-based risk control events
         
         @param request: DescribeSceneAllEventNameCodeListRequest
         @return: DescribeSceneAllEventNameCodeListResponse
@@ -20018,7 +20839,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneAllEventNameCodeListRequest,
     ) -> xtee_20210910_models.DescribeSceneAllEventNameCodeListResponse:
         """
-        @summary 场景化服务事件下拉列表
+        @summary Dropdown list for scenario-based service events
+        
+        @description Dropdown list for scenario-based risk control events
         
         @param request: DescribeSceneAllEventNameCodeListRequest
         @return: DescribeSceneAllEventNameCodeListResponse
@@ -20032,7 +20855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneEventPageListResponse:
         """
-        @summary 场景化风控事件列表
+        @summary List of Scenario-based Risk Control Events
         
         @param request: DescribeSceneEventPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20075,7 +20898,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneEventPageListResponse:
         """
-        @summary 场景化风控事件列表
+        @summary List of Scenario-based Risk Control Events
         
         @param request: DescribeSceneEventPageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20117,7 +20940,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneEventPageListRequest,
     ) -> xtee_20210910_models.DescribeSceneEventPageListResponse:
         """
-        @summary 场景化风控事件列表
+        @summary List of Scenario-based Risk Control Events
         
         @param request: DescribeSceneEventPageListRequest
         @return: DescribeSceneEventPageListResponse
@@ -20130,7 +20953,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneEventPageListRequest,
     ) -> xtee_20210910_models.DescribeSceneEventPageListResponse:
         """
-        @summary 场景化风控事件列表
+        @summary List of Scenario-based Risk Control Events
         
         @param request: DescribeSceneEventPageListRequest
         @return: DescribeSceneEventPageListResponse
@@ -20144,7 +20967,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneRulePageListResponse:
         """
-        @summary 风控服务白盒化策略列表
+        @summary White-boxed strategy list for risk control services
+        
+        @description Query the list of scenarized risk control event strategies
         
         @param request: DescribeSceneRulePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20195,7 +21020,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSceneRulePageListResponse:
         """
-        @summary 风控服务白盒化策略列表
+        @summary White-boxed strategy list for risk control services
+        
+        @description Query the list of scenarized risk control event strategies
         
         @param request: DescribeSceneRulePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20245,7 +21072,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneRulePageListRequest,
     ) -> xtee_20210910_models.DescribeSceneRulePageListResponse:
         """
-        @summary 风控服务白盒化策略列表
+        @summary White-boxed strategy list for risk control services
+        
+        @description Query the list of scenarized risk control event strategies
         
         @param request: DescribeSceneRulePageListRequest
         @return: DescribeSceneRulePageListResponse
@@ -20258,7 +21087,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSceneRulePageListRequest,
     ) -> xtee_20210910_models.DescribeSceneRulePageListResponse:
         """
-        @summary 风控服务白盒化策略列表
+        @summary White-boxed strategy list for risk control services
+        
+        @description Query the list of scenarized risk control event strategies
         
         @param request: DescribeSceneRulePageListRequest
         @return: DescribeSceneRulePageListResponse
@@ -20266,13 +21097,113 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_scene_rule_page_list_with_options_async(request, runtime)
 
+    def describe_score_list_with_options(
+        self,
+        request: xtee_20210910_models.DescribeScoreListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeScoreListResponse:
+        """
+        @summary Score Distribution
+        
+        @param request: DescribeScoreListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScoreListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScoreList',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeScoreListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_score_list_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeScoreListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeScoreListResponse:
+        """
+        @summary Score Distribution
+        
+        @param request: DescribeScoreListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeScoreListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeScoreList',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeScoreListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_score_list(
+        self,
+        request: xtee_20210910_models.DescribeScoreListRequest,
+    ) -> xtee_20210910_models.DescribeScoreListResponse:
+        """
+        @summary Score Distribution
+        
+        @param request: DescribeScoreListRequest
+        @return: DescribeScoreListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_score_list_with_options(request, runtime)
+
+    async def describe_score_list_async(
+        self,
+        request: xtee_20210910_models.DescribeScoreListRequest,
+    ) -> xtee_20210910_models.DescribeScoreListResponse:
+        """
+        @summary Score Distribution
+        
+        @param request: DescribeScoreListRequest
+        @return: DescribeScoreListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_score_list_with_options_async(request, runtime)
+
     def describe_score_section_num_line_chart_with_options(
         self,
         request: xtee_20210910_models.DescribeScoreSectionNumLineChartRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionNumLineChartResponse:
         """
-        @summary 分值区间数量分析
+        @summary Score Range Quantity Analysis
         
         @param request: DescribeScoreSectionNumLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20319,7 +21250,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionNumLineChartResponse:
         """
-        @summary 分值区间数量分析
+        @summary Score Range Quantity Analysis
         
         @param request: DescribeScoreSectionNumLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20365,7 +21296,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionNumLineChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionNumLineChartResponse:
         """
-        @summary 分值区间数量分析
+        @summary Score Range Quantity Analysis
         
         @param request: DescribeScoreSectionNumLineChartRequest
         @return: DescribeScoreSectionNumLineChartResponse
@@ -20378,7 +21309,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionNumLineChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionNumLineChartResponse:
         """
-        @summary 分值区间数量分析
+        @summary Score Range Quantity Analysis
         
         @param request: DescribeScoreSectionNumLineChartRequest
         @return: DescribeScoreSectionNumLineChartResponse
@@ -20392,7 +21323,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionPieChartResponse:
         """
-        @summary 主事件/旁路事件/分流事件分值区间占比
+        @summary Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
         
         @param request: DescribeScoreSectionPieChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20437,7 +21368,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionPieChartResponse:
         """
-        @summary 主事件/旁路事件/分流事件分值区间占比
+        @summary Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
         
         @param request: DescribeScoreSectionPieChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20481,7 +21412,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionPieChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionPieChartResponse:
         """
-        @summary 主事件/旁路事件/分流事件分值区间占比
+        @summary Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
         
         @param request: DescribeScoreSectionPieChartRequest
         @return: DescribeScoreSectionPieChartResponse
@@ -20494,7 +21425,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionPieChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionPieChartResponse:
         """
-        @summary 主事件/旁路事件/分流事件分值区间占比
+        @summary Proportion of Score Ranges for Main Events/Bypass Events/Diversion Events
         
         @param request: DescribeScoreSectionPieChartRequest
         @return: DescribeScoreSectionPieChartResponse
@@ -20508,7 +21439,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionRatioLineChartResponse:
         """
-        @summary 分值区间占比分析
+        @summary Score Section Ratio Analysis
         
         @param request: DescribeScoreSectionRatioLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20555,7 +21486,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeScoreSectionRatioLineChartResponse:
         """
-        @summary 分值区间占比分析
+        @summary Score Section Ratio Analysis
         
         @param request: DescribeScoreSectionRatioLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20601,7 +21532,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionRatioLineChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionRatioLineChartResponse:
         """
-        @summary 分值区间占比分析
+        @summary Score Section Ratio Analysis
         
         @param request: DescribeScoreSectionRatioLineChartRequest
         @return: DescribeScoreSectionRatioLineChartResponse
@@ -20614,7 +21545,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeScoreSectionRatioLineChartRequest,
     ) -> xtee_20210910_models.DescribeScoreSectionRatioLineChartResponse:
         """
-        @summary 分值区间占比分析
+        @summary Score Section Ratio Analysis
         
         @param request: DescribeScoreSectionRatioLineChartRequest
         @return: DescribeScoreSectionRatioLineChartResponse
@@ -20628,7 +21559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSelectItemResponse:
         """
-        @summary 查询任务ID列表
+        @summary Query Task ID List
         
         @param request: DescribeSelectItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20665,7 +21596,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSelectItemResponse:
         """
-        @summary 查询任务ID列表
+        @summary Query Task ID List
         
         @param request: DescribeSelectItemRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20701,7 +21632,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSelectItemRequest,
     ) -> xtee_20210910_models.DescribeSelectItemResponse:
         """
-        @summary 查询任务ID列表
+        @summary Query Task ID List
         
         @param request: DescribeSelectItemRequest
         @return: DescribeSelectItemResponse
@@ -20714,7 +21645,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSelectItemRequest,
     ) -> xtee_20210910_models.DescribeSelectItemResponse:
         """
-        @summary 查询任务ID列表
+        @summary Query Task ID List
         
         @param request: DescribeSelectItemRequest
         @return: DescribeSelectItemResponse
@@ -20728,7 +21659,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeServiceAppKeyResponse:
         """
-        @summary ServiceAppkey下拉
+        @summary ServiceAppkey dropdown
         
         @param request: DescribeServiceAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20763,7 +21694,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeServiceAppKeyResponse:
         """
-        @summary ServiceAppkey下拉
+        @summary ServiceAppkey dropdown
         
         @param request: DescribeServiceAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20797,7 +21728,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeServiceAppKeyRequest,
     ) -> xtee_20210910_models.DescribeServiceAppKeyResponse:
         """
-        @summary ServiceAppkey下拉
+        @summary ServiceAppkey dropdown
         
         @param request: DescribeServiceAppKeyRequest
         @return: DescribeServiceAppKeyResponse
@@ -20810,7 +21741,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeServiceAppKeyRequest,
     ) -> xtee_20210910_models.DescribeServiceAppKeyResponse:
         """
-        @summary ServiceAppkey下拉
+        @summary ServiceAppkey dropdown
         
         @param request: DescribeServiceAppKeyRequest
         @return: DescribeServiceAppKeyResponse
@@ -20818,39 +21749,29 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_service_app_key_with_options_async(request, runtime)
 
-    def describe_service_consume_with_options(
+    def describe_service_code_name_with_options(
         self,
-        request: xtee_20210910_models.DescribeServiceConsumeRequest,
+        request: xtee_20210910_models.DescribeServiceCodeNameRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeServiceConsumeResponse:
+    ) -> xtee_20210910_models.DescribeServiceCodeNameResponse:
         """
-        @summary 获取服务调用量
+        @summary ServiceCodeName Information
         
-        @param request: DescribeServiceConsumeRequest
+        @param request: DescribeServiceCodeNameRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceConsumeResponse
+        @return: DescribeServiceCodeNameResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.current_page):
-            query['currentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
-            query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
-            query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.tab):
+            query['Tab'] = request.tab
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeServiceConsume',
+            action='DescribeServiceCodeName',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -20861,43 +21782,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.DescribeServiceConsumeResponse(),
+            xtee_20210910_models.DescribeServiceCodeNameResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def describe_service_consume_with_options_async(
+    async def describe_service_code_name_with_options_async(
         self,
-        request: xtee_20210910_models.DescribeServiceConsumeRequest,
+        request: xtee_20210910_models.DescribeServiceCodeNameRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeServiceConsumeResponse:
+    ) -> xtee_20210910_models.DescribeServiceCodeNameResponse:
         """
-        @summary 获取服务调用量
+        @summary ServiceCodeName Information
         
-        @param request: DescribeServiceConsumeRequest
+        @param request: DescribeServiceCodeNameRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceConsumeResponse
+        @return: DescribeServiceCodeNameResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.current_page):
-            query['currentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
-            query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
-            query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.tab):
+            query['Tab'] = request.tab
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='DescribeServiceConsume',
+            action='DescribeServiceCodeName',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -20908,147 +21819,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.DescribeServiceConsumeResponse(),
+            xtee_20210910_models.DescribeServiceCodeNameResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_service_consume(
+    def describe_service_code_name(
         self,
-        request: xtee_20210910_models.DescribeServiceConsumeRequest,
-    ) -> xtee_20210910_models.DescribeServiceConsumeResponse:
+        request: xtee_20210910_models.DescribeServiceCodeNameRequest,
+    ) -> xtee_20210910_models.DescribeServiceCodeNameResponse:
         """
-        @summary 获取服务调用量
+        @summary ServiceCodeName Information
         
-        @param request: DescribeServiceConsumeRequest
-        @return: DescribeServiceConsumeResponse
+        @param request: DescribeServiceCodeNameRequest
+        @return: DescribeServiceCodeNameResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.describe_service_consume_with_options(request, runtime)
+        return self.describe_service_code_name_with_options(request, runtime)
 
-    async def describe_service_consume_async(
+    async def describe_service_code_name_async(
         self,
-        request: xtee_20210910_models.DescribeServiceConsumeRequest,
-    ) -> xtee_20210910_models.DescribeServiceConsumeResponse:
+        request: xtee_20210910_models.DescribeServiceCodeNameRequest,
+    ) -> xtee_20210910_models.DescribeServiceCodeNameResponse:
         """
-        @summary 获取服务调用量
+        @summary ServiceCodeName Information
         
-        @param request: DescribeServiceConsumeRequest
-        @return: DescribeServiceConsumeResponse
+        @param request: DescribeServiceCodeNameRequest
+        @return: DescribeServiceCodeNameResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.describe_service_consume_with_options_async(request, runtime)
-
-    def describe_service_consume_download_url_with_options(
-        self,
-        request: xtee_20210910_models.DescribeServiceConsumeDownloadUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse:
-        """
-        @summary 下载服务调用量数据文件URL
-        
-        @param request: DescribeServiceConsumeDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceConsumeDownloadUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.end_date):
-            query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
-            query['startDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceConsumeDownloadUrl',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_service_consume_download_url_with_options_async(
-        self,
-        request: xtee_20210910_models.DescribeServiceConsumeDownloadUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse:
-        """
-        @summary 下载服务调用量数据文件URL
-        
-        @param request: DescribeServiceConsumeDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceConsumeDownloadUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.end_date):
-            query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
-            query['startDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeServiceConsumeDownloadUrl',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_service_consume_download_url(
-        self,
-        request: xtee_20210910_models.DescribeServiceConsumeDownloadUrlRequest,
-    ) -> xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse:
-        """
-        @summary 下载服务调用量数据文件URL
-        
-        @param request: DescribeServiceConsumeDownloadUrlRequest
-        @return: DescribeServiceConsumeDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_service_consume_download_url_with_options(request, runtime)
-
-    async def describe_service_consume_download_url_async(
-        self,
-        request: xtee_20210910_models.DescribeServiceConsumeDownloadUrlRequest,
-    ) -> xtee_20210910_models.DescribeServiceConsumeDownloadUrlResponse:
-        """
-        @summary 下载服务调用量数据文件URL
-        
-        @param request: DescribeServiceConsumeDownloadUrlRequest
-        @return: DescribeServiceConsumeDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_service_consume_download_url_with_options_async(request, runtime)
+        return await self.describe_service_code_name_with_options_async(request, runtime)
 
     def describe_service_list_with_options(
         self,
@@ -21056,7 +21855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeServiceListResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: DescribeServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21093,7 +21892,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeServiceListResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: DescribeServiceListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21129,7 +21928,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeServiceListRequest,
     ) -> xtee_20210910_models.DescribeServiceListResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: DescribeServiceListRequest
         @return: DescribeServiceListResponse
@@ -21142,7 +21941,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeServiceListRequest,
     ) -> xtee_20210910_models.DescribeServiceListResponse:
         """
-        @summary 获取服务列表
+        @summary Get Service List
         
         @param request: DescribeServiceListRequest
         @return: DescribeServiceListResponse
@@ -21156,7 +21955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationPreditInfoResponse:
         """
-        @summary 预估调用信息
+        @summary Estimate Call Information
         
         @param request: DescribeSimulationPreditInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21197,7 +21996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationPreditInfoResponse:
         """
-        @summary 预估调用信息
+        @summary Estimate Call Information
         
         @param request: DescribeSimulationPreditInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21237,7 +22036,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationPreditInfoRequest,
     ) -> xtee_20210910_models.DescribeSimulationPreditInfoResponse:
         """
-        @summary 预估调用信息
+        @summary Estimate Call Information
         
         @param request: DescribeSimulationPreditInfoRequest
         @return: DescribeSimulationPreditInfoResponse
@@ -21250,7 +22049,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationPreditInfoRequest,
     ) -> xtee_20210910_models.DescribeSimulationPreditInfoResponse:
         """
-        @summary 预估调用信息
+        @summary Estimate Call Information
         
         @param request: DescribeSimulationPreditInfoRequest
         @return: DescribeSimulationPreditInfoResponse
@@ -21264,7 +22063,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationTaskCountResponse:
         """
-        @summary 查询任务记录数
+        @summary Query Task Record Count
         
         @param request: DescribeSimulationTaskCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21313,7 +22112,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationTaskCountResponse:
         """
-        @summary 查询任务记录数
+        @summary Query Task Record Count
         
         @param request: DescribeSimulationTaskCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21361,7 +22160,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationTaskCountRequest,
     ) -> xtee_20210910_models.DescribeSimulationTaskCountResponse:
         """
-        @summary 查询任务记录数
+        @summary Query Task Record Count
         
         @param request: DescribeSimulationTaskCountRequest
         @return: DescribeSimulationTaskCountResponse
@@ -21374,7 +22173,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationTaskCountRequest,
     ) -> xtee_20210910_models.DescribeSimulationTaskCountResponse:
         """
-        @summary 查询任务记录数
+        @summary Query Task Record Count
         
         @param request: DescribeSimulationTaskCountRequest
         @return: DescribeSimulationTaskCountResponse
@@ -21388,7 +22187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeSimulationTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21435,7 +22234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSimulationTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeSimulationTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21481,7 +22280,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationTaskListRequest,
     ) -> xtee_20210910_models.DescribeSimulationTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeSimulationTaskListRequest
         @return: DescribeSimulationTaskListResponse
@@ -21494,7 +22293,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSimulationTaskListRequest,
     ) -> xtee_20210910_models.DescribeSimulationTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeSimulationTaskListRequest
         @return: DescribeSimulationTaskListResponse
@@ -21508,7 +22307,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSlsUrlConfigResponse:
         """
-        @summary 获取project配置
+        @summary Get Project Configuration
         
         @param request: DescribeSlsUrlConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21545,7 +22344,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSlsUrlConfigResponse:
         """
-        @summary 获取project配置
+        @summary Get Project Configuration
         
         @param request: DescribeSlsUrlConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21581,7 +22380,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSlsUrlConfigRequest,
     ) -> xtee_20210910_models.DescribeSlsUrlConfigResponse:
         """
-        @summary 获取project配置
+        @summary Get Project Configuration
         
         @param request: DescribeSlsUrlConfigRequest
         @return: DescribeSlsUrlConfigResponse
@@ -21594,7 +22393,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSlsUrlConfigRequest,
     ) -> xtee_20210910_models.DescribeSlsUrlConfigResponse:
         """
-        @summary 获取project配置
+        @summary Get Project Configuration
         
         @param request: DescribeSlsUrlConfigRequest
         @return: DescribeSlsUrlConfigResponse
@@ -21608,7 +22407,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSupportRuleListResponse:
         """
-        @summary 查询支持仿真的策略列表
+        @summary Query List of Policies Supporting Simulation
         
         @param request: DescribeSupportRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21647,7 +22446,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSupportRuleListResponse:
         """
-        @summary 查询支持仿真的策略列表
+        @summary Query List of Policies Supporting Simulation
         
         @param request: DescribeSupportRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21685,7 +22484,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSupportRuleListRequest,
     ) -> xtee_20210910_models.DescribeSupportRuleListResponse:
         """
-        @summary 查询支持仿真的策略列表
+        @summary Query List of Policies Supporting Simulation
         
         @param request: DescribeSupportRuleListRequest
         @return: DescribeSupportRuleListResponse
@@ -21698,7 +22497,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSupportRuleListRequest,
     ) -> xtee_20210910_models.DescribeSupportRuleListResponse:
         """
-        @summary 查询支持仿真的策略列表
+        @summary Query List of Policies Supporting Simulation
         
         @param request: DescribeSupportRuleListRequest
         @return: DescribeSupportRuleListResponse
@@ -21712,7 +22511,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagListResponse:
         """
-        @summary 标签列表
+        @summary Tag List
         
         @param request: DescribeTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21751,7 +22550,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagListResponse:
         """
-        @summary 标签列表
+        @summary Tag List
         
         @param request: DescribeTagListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21789,7 +22588,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagListRequest,
     ) -> xtee_20210910_models.DescribeTagListResponse:
         """
-        @summary 标签列表
+        @summary Tag List
         
         @param request: DescribeTagListRequest
         @return: DescribeTagListResponse
@@ -21802,7 +22601,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagListRequest,
     ) -> xtee_20210910_models.DescribeTagListResponse:
         """
-        @summary 标签列表
+        @summary Tag List
         
         @param request: DescribeTagListRequest
         @return: DescribeTagListResponse
@@ -21816,7 +22615,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsBarChartResponse:
         """
-        @summary 标签概览列表
+        @summary Tag Overview List
         
         @param request: DescribeTagsBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21861,7 +22660,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsBarChartResponse:
         """
-        @summary 标签概览列表
+        @summary Tag Overview List
         
         @param request: DescribeTagsBarChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21905,7 +22704,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsBarChartRequest,
     ) -> xtee_20210910_models.DescribeTagsBarChartResponse:
         """
-        @summary 标签概览列表
+        @summary Tag Overview List
         
         @param request: DescribeTagsBarChartRequest
         @return: DescribeTagsBarChartResponse
@@ -21918,7 +22717,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsBarChartRequest,
     ) -> xtee_20210910_models.DescribeTagsBarChartResponse:
         """
-        @summary 标签概览列表
+        @summary Tag Overview List
         
         @param request: DescribeTagsBarChartRequest
         @return: DescribeTagsBarChartResponse
@@ -21932,7 +22731,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsFluctuationResponse:
         """
-        @summary 标签波动检测
+        @summary Tag Fluctuation Detection
         
         @param request: DescribeTagsFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21971,7 +22770,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsFluctuationResponse:
         """
-        @summary 标签波动检测
+        @summary Tag Fluctuation Detection
         
         @param request: DescribeTagsFluctuationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22009,7 +22808,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsFluctuationRequest,
     ) -> xtee_20210910_models.DescribeTagsFluctuationResponse:
         """
-        @summary 标签波动检测
+        @summary Tag Fluctuation Detection
         
         @param request: DescribeTagsFluctuationRequest
         @return: DescribeTagsFluctuationResponse
@@ -22022,7 +22821,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsFluctuationRequest,
     ) -> xtee_20210910_models.DescribeTagsFluctuationResponse:
         """
-        @summary 标签波动检测
+        @summary Tag Fluctuation Detection
         
         @param request: DescribeTagsFluctuationRequest
         @return: DescribeTagsFluctuationResponse
@@ -22036,7 +22835,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeTagsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22073,7 +22872,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeTagsListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22109,7 +22908,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsListRequest,
     ) -> xtee_20210910_models.DescribeTagsListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeTagsListRequest
         @return: DescribeTagsListResponse
@@ -22122,7 +22921,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsListRequest,
     ) -> xtee_20210910_models.DescribeTagsListResponse:
         """
-        @summary 获取标签列表
+        @summary Get Tag List
         
         @param request: DescribeTagsListRequest
         @return: DescribeTagsListResponse
@@ -22136,7 +22935,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsNumLineChartResponse:
         """
-        @summary 标签命中数量分析
+        @summary Tag Hit Count Analysis
         
         @param request: DescribeTagsNumLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22183,7 +22982,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsNumLineChartResponse:
         """
-        @summary 标签命中数量分析
+        @summary Tag Hit Count Analysis
         
         @param request: DescribeTagsNumLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22229,7 +23028,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsNumLineChartRequest,
     ) -> xtee_20210910_models.DescribeTagsNumLineChartResponse:
         """
-        @summary 标签命中数量分析
+        @summary Tag Hit Count Analysis
         
         @param request: DescribeTagsNumLineChartRequest
         @return: DescribeTagsNumLineChartResponse
@@ -22242,7 +23041,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsNumLineChartRequest,
     ) -> xtee_20210910_models.DescribeTagsNumLineChartResponse:
         """
-        @summary 标签命中数量分析
+        @summary Tag Hit Count Analysis
         
         @param request: DescribeTagsNumLineChartRequest
         @return: DescribeTagsNumLineChartResponse
@@ -22256,7 +23055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsRatioLineChartResponse:
         """
-        @summary 标签命中占比分析
+        @summary Tag Hit Ratio Analysis
         
         @param request: DescribeTagsRatioLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22303,7 +23102,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsRatioLineChartResponse:
         """
-        @summary 标签命中占比分析
+        @summary Tag Hit Ratio Analysis
         
         @param request: DescribeTagsRatioLineChartRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22349,7 +23148,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsRatioLineChartRequest,
     ) -> xtee_20210910_models.DescribeTagsRatioLineChartResponse:
         """
-        @summary 标签命中占比分析
+        @summary Tag Hit Ratio Analysis
         
         @param request: DescribeTagsRatioLineChartRequest
         @return: DescribeTagsRatioLineChartResponse
@@ -22362,7 +23161,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsRatioLineChartRequest,
     ) -> xtee_20210910_models.DescribeTagsRatioLineChartResponse:
         """
-        @summary 标签命中占比分析
+        @summary Tag Hit Ratio Analysis
         
         @param request: DescribeTagsRatioLineChartRequest
         @return: DescribeTagsRatioLineChartResponse
@@ -22376,7 +23175,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsTrendResponse:
         """
-        @summary 标签命中趋势
+        @summary Tag Hit Trend
         
         @param request: DescribeTagsTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22421,7 +23220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTagsTrendResponse:
         """
-        @summary 标签命中趋势
+        @summary Tag Hit Trend
         
         @param request: DescribeTagsTrendRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22465,7 +23264,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsTrendRequest,
     ) -> xtee_20210910_models.DescribeTagsTrendResponse:
         """
-        @summary 标签命中趋势
+        @summary Tag Hit Trend
         
         @param request: DescribeTagsTrendRequest
         @return: DescribeTagsTrendResponse
@@ -22478,7 +23277,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTagsTrendRequest,
     ) -> xtee_20210910_models.DescribeTagsTrendResponse:
         """
-        @summary 标签命中趋势
+        @summary Tag Hit Trend
         
         @param request: DescribeTagsTrendRequest
         @return: DescribeTagsTrendResponse
@@ -22492,7 +23291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22535,7 +23334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeTaskListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22577,7 +23376,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTaskListRequest,
     ) -> xtee_20210910_models.DescribeTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeTaskListRequest
         @return: DescribeTaskListResponse
@@ -22590,7 +23389,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTaskListRequest,
     ) -> xtee_20210910_models.DescribeTaskListResponse:
         """
-        @summary 任务列表
+        @summary Task List
         
         @param request: DescribeTaskListRequest
         @return: DescribeTaskListResponse
@@ -22604,7 +23403,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTaskLogListResponse:
         """
-        @summary 任务日志列表
+        @summary Task Log List
         
         @param request: DescribeTaskLogListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22651,7 +23450,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTaskLogListResponse:
         """
-        @summary 任务日志列表
+        @summary Task Log List
         
         @param request: DescribeTaskLogListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22697,7 +23496,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTaskLogListRequest,
     ) -> xtee_20210910_models.DescribeTaskLogListResponse:
         """
-        @summary 任务日志列表
+        @summary Task Log List
         
         @param request: DescribeTaskLogListRequest
         @return: DescribeTaskLogListResponse
@@ -22710,7 +23509,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTaskLogListRequest,
     ) -> xtee_20210910_models.DescribeTaskLogListResponse:
         """
-        @summary 任务日志列表
+        @summary Task Log List
         
         @param request: DescribeTaskLogListRequest
         @return: DescribeTaskLogListResponse
@@ -22718,117 +23517,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_task_log_list_with_options_async(request, runtime)
 
-    def describe_template_base_info_by_template_id_with_options(
-        self,
-        request: xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse:
-        """
-        @summary 查询事件模版详情
-        
-        @param request: DescribeTemplateBaseInfoByTemplateIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTemplateBaseInfoByTemplateIdResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeTemplateBaseInfoByTemplateId',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_template_base_info_by_template_id_with_options_async(
-        self,
-        request: xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse:
-        """
-        @summary 查询事件模版详情
-        
-        @param request: DescribeTemplateBaseInfoByTemplateIdRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTemplateBaseInfoByTemplateIdResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeTemplateBaseInfoByTemplateId',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_template_base_info_by_template_id(
-        self,
-        request: xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdRequest,
-    ) -> xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse:
-        """
-        @summary 查询事件模版详情
-        
-        @param request: DescribeTemplateBaseInfoByTemplateIdRequest
-        @return: DescribeTemplateBaseInfoByTemplateIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.describe_template_base_info_by_template_id_with_options(request, runtime)
-
-    async def describe_template_base_info_by_template_id_async(
-        self,
-        request: xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdRequest,
-    ) -> xtee_20210910_models.DescribeTemplateBaseInfoByTemplateIdResponse:
-        """
-        @summary 查询事件模版详情
-        
-        @param request: DescribeTemplateBaseInfoByTemplateIdRequest
-        @return: DescribeTemplateBaseInfoByTemplateIdResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_template_base_info_by_template_id_with_options_async(request, runtime)
-
     def describe_template_count_with_options(
         self,
         request: xtee_20210910_models.DescribeTemplateCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplateCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeTemplateCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22865,7 +23560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplateCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeTemplateCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22901,7 +23596,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplateCountRequest,
     ) -> xtee_20210910_models.DescribeTemplateCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeTemplateCountRequest
         @return: DescribeTemplateCountResponse
@@ -22914,7 +23609,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplateCountRequest,
     ) -> xtee_20210910_models.DescribeTemplateCountResponse:
         """
-        @summary 查询事件总数量
+        @summary Query Total Event Count
         
         @param request: DescribeTemplateCountRequest
         @return: DescribeTemplateCountResponse
@@ -22928,7 +23623,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplateDownloadResponse:
         """
-        @summary 模版下载
+        @summary Template Download
         
         @param request: DescribeTemplateDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22965,7 +23660,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplateDownloadResponse:
         """
-        @summary 模版下载
+        @summary Template Download
         
         @param request: DescribeTemplateDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23001,7 +23696,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplateDownloadRequest,
     ) -> xtee_20210910_models.DescribeTemplateDownloadResponse:
         """
-        @summary 模版下载
+        @summary Template Download
         
         @param request: DescribeTemplateDownloadRequest
         @return: DescribeTemplateDownloadResponse
@@ -23014,7 +23709,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplateDownloadRequest,
     ) -> xtee_20210910_models.DescribeTemplateDownloadResponse:
         """
-        @summary 模版下载
+        @summary Template Download
         
         @param request: DescribeTemplateDownloadRequest
         @return: DescribeTemplateDownloadResponse
@@ -23028,7 +23723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplatePageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query Event List by Event Name
         
         @param request: DescribeTemplatePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23079,7 +23774,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeTemplatePageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query Event List by Event Name
         
         @param request: DescribeTemplatePageListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23129,7 +23824,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplatePageListRequest,
     ) -> xtee_20210910_models.DescribeTemplatePageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query Event List by Event Name
         
         @param request: DescribeTemplatePageListRequest
         @return: DescribeTemplatePageListResponse
@@ -23142,7 +23837,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeTemplatePageListRequest,
     ) -> xtee_20210910_models.DescribeTemplatePageListResponse:
         """
-        @summary 根据事件名称查询事件列表
+        @summary Query Event List by Event Name
         
         @param request: DescribeTemplatePageListRequest
         @return: DescribeTemplatePageListResponse
@@ -23156,7 +23851,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeUsedServiceResponse:
         """
-        @summary 获取用户使用过服务列表
+        @summary Get List of Services Used by User
         
         @param request: DescribeUsedServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23193,7 +23888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeUsedServiceResponse:
         """
-        @summary 获取用户使用过服务列表
+        @summary Get List of Services Used by User
         
         @param request: DescribeUsedServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23229,7 +23924,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeUsedServiceRequest,
     ) -> xtee_20210910_models.DescribeUsedServiceResponse:
         """
-        @summary 获取用户使用过服务列表
+        @summary Get List of Services Used by User
         
         @param request: DescribeUsedServiceRequest
         @return: DescribeUsedServiceResponse
@@ -23242,7 +23937,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeUsedServiceRequest,
     ) -> xtee_20210910_models.DescribeUsedServiceResponse:
         """
-        @summary 获取用户使用过服务列表
+        @summary Get List of Services Used by User
         
         @param request: DescribeUsedServiceRequest
         @return: DescribeUsedServiceResponse
@@ -23256,7 +23951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeUserInfoResponse:
         """
-        @summary 获取当前登录用户信息
+        @summary Get Current Logged-in User Information
         
         @param request: DescribeUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23293,7 +23988,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeUserInfoResponse:
         """
-        @summary 获取当前登录用户信息
+        @summary Get Current Logged-in User Information
         
         @param request: DescribeUserInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23329,7 +24024,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeUserInfoRequest,
     ) -> xtee_20210910_models.DescribeUserInfoResponse:
         """
-        @summary 获取当前登录用户信息
+        @summary Get Current Logged-in User Information
         
         @param request: DescribeUserInfoRequest
         @return: DescribeUserInfoResponse
@@ -23342,7 +24037,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeUserInfoRequest,
     ) -> xtee_20210910_models.DescribeUserInfoResponse:
         """
-        @summary 获取当前登录用户信息
+        @summary Get Current Logged-in User Information
         
         @param request: DescribeUserInfoRequest
         @return: DescribeUserInfoResponse
@@ -23356,7 +24051,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableBindDetailResponse:
         """
-        @summary 查询变量绑定信息
+        @summary Query Variable Binding Information
         
         @param request: DescribeVariableBindDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23397,7 +24092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableBindDetailResponse:
         """
-        @summary 查询变量绑定信息
+        @summary Query Variable Binding Information
         
         @param request: DescribeVariableBindDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23437,7 +24132,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableBindDetailRequest,
     ) -> xtee_20210910_models.DescribeVariableBindDetailResponse:
         """
-        @summary 查询变量绑定信息
+        @summary Query Variable Binding Information
         
         @param request: DescribeVariableBindDetailRequest
         @return: DescribeVariableBindDetailResponse
@@ -23450,7 +24145,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableBindDetailRequest,
     ) -> xtee_20210910_models.DescribeVariableBindDetailResponse:
         """
-        @summary 查询变量绑定信息
+        @summary Query Variable Binding Information
         
         @param request: DescribeVariableBindDetailRequest
         @return: DescribeVariableBindDetailResponse
@@ -23464,7 +24159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableDetailResponse:
         """
-        @summary 查询变量详情
+        @summary Query variable details
         
         @param request: DescribeVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23503,7 +24198,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableDetailResponse:
         """
-        @summary 查询变量详情
+        @summary Query variable details
         
         @param request: DescribeVariableDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23541,7 +24236,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeVariableDetailResponse:
         """
-        @summary 查询变量详情
+        @summary Query variable details
         
         @param request: DescribeVariableDetailRequest
         @return: DescribeVariableDetailResponse
@@ -23554,7 +24249,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableDetailRequest,
     ) -> xtee_20210910_models.DescribeVariableDetailResponse:
         """
-        @summary 查询变量详情
+        @summary Query variable details
         
         @param request: DescribeVariableDetailRequest
         @return: DescribeVariableDetailResponse
@@ -23568,7 +24263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableFeeResponse:
         """
-        @summary 查询变量收费信息
+        @summary Query Variable Fee Information
         
         @param request: DescribeVariableFeeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23607,7 +24302,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableFeeResponse:
         """
-        @summary 查询变量收费信息
+        @summary Query Variable Fee Information
         
         @param request: DescribeVariableFeeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23645,7 +24340,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableFeeRequest,
     ) -> xtee_20210910_models.DescribeVariableFeeResponse:
         """
-        @summary 查询变量收费信息
+        @summary Query Variable Fee Information
         
         @param request: DescribeVariableFeeRequest
         @return: DescribeVariableFeeResponse
@@ -23658,7 +24353,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableFeeRequest,
     ) -> xtee_20210910_models.DescribeVariableFeeResponse:
         """
-        @summary 查询变量收费信息
+        @summary Query Variable Fee Information
         
         @param request: DescribeVariableFeeRequest
         @return: DescribeVariableFeeResponse
@@ -23672,7 +24367,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableListResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23725,7 +24420,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableListResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23777,7 +24472,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableListRequest,
     ) -> xtee_20210910_models.DescribeVariableListResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeVariableListRequest
         @return: DescribeVariableListResponse
@@ -23790,7 +24485,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableListRequest,
     ) -> xtee_20210910_models.DescribeVariableListResponse:
         """
-        @summary 查询变量详情
+        @summary Query Variable Details
         
         @param request: DescribeVariableListRequest
         @return: DescribeVariableListResponse
@@ -23804,7 +24499,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableMarketListResponse:
         """
-        @summary 查询变量定义
+        @summary Query Variable Definitions
         
         @param request: DescribeVariableMarketListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23857,7 +24552,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableMarketListResponse:
         """
-        @summary 查询变量定义
+        @summary Query Variable Definitions
         
         @param request: DescribeVariableMarketListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23909,7 +24604,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableMarketListRequest,
     ) -> xtee_20210910_models.DescribeVariableMarketListResponse:
         """
-        @summary 查询变量定义
+        @summary Query Variable Definitions
         
         @param request: DescribeVariableMarketListRequest
         @return: DescribeVariableMarketListResponse
@@ -23922,7 +24617,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableMarketListRequest,
     ) -> xtee_20210910_models.DescribeVariableMarketListResponse:
         """
-        @summary 查询变量定义
+        @summary Query Variable Definitions
         
         @param request: DescribeVariableMarketListRequest
         @return: DescribeVariableMarketListResponse
@@ -23936,7 +24631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableSceneListResponse:
         """
-        @summary 查询配置信息
+        @summary Query Configuration Information
         
         @param request: DescribeVariableSceneListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23983,7 +24678,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeVariableSceneListResponse:
         """
-        @summary 查询配置信息
+        @summary Query Configuration Information
         
         @param request: DescribeVariableSceneListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24029,7 +24724,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableSceneListRequest,
     ) -> xtee_20210910_models.DescribeVariableSceneListResponse:
         """
-        @summary 查询配置信息
+        @summary Query Configuration Information
         
         @param request: DescribeVariableSceneListRequest
         @return: DescribeVariableSceneListResponse
@@ -24042,7 +24737,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeVariableSceneListRequest,
     ) -> xtee_20210910_models.DescribeVariableSceneListResponse:
         """
-        @summary 查询配置信息
+        @summary Query Configuration Information
         
         @param request: DescribeVariableSceneListRequest
         @return: DescribeVariableSceneListResponse
@@ -24050,13 +24745,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_variable_scene_list_with_options_async(request, runtime)
 
+    def download_smaple_batch_with_options(
+        self,
+        request: xtee_20210910_models.DownloadSmapleBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DownloadSmapleBatchResponse:
+        """
+        @summary Sample List Data Download
+        
+        @param request: DownloadSmapleBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadSmapleBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadSmapleBatch',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DownloadSmapleBatchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def download_smaple_batch_with_options_async(
+        self,
+        request: xtee_20210910_models.DownloadSmapleBatchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DownloadSmapleBatchResponse:
+        """
+        @summary Sample List Data Download
+        
+        @param request: DownloadSmapleBatchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadSmapleBatchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_uuid):
+            query['batchUuid'] = request.batch_uuid
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DownloadSmapleBatch',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DownloadSmapleBatchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def download_smaple_batch(
+        self,
+        request: xtee_20210910_models.DownloadSmapleBatchRequest,
+    ) -> xtee_20210910_models.DownloadSmapleBatchResponse:
+        """
+        @summary Sample List Data Download
+        
+        @param request: DownloadSmapleBatchRequest
+        @return: DownloadSmapleBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.download_smaple_batch_with_options(request, runtime)
+
+    async def download_smaple_batch_async(
+        self,
+        request: xtee_20210910_models.DownloadSmapleBatchRequest,
+    ) -> xtee_20210910_models.DownloadSmapleBatchResponse:
+        """
+        @summary Sample List Data Download
+        
+        @param request: DownloadSmapleBatchRequest
+        @return: DownloadSmapleBatchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.download_smaple_batch_with_options_async(request, runtime)
+
     def expression_test_with_options(
         self,
         request: xtee_20210910_models.ExpressionTestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ExpressionTestResponse:
         """
-        @summary 自定义变量测试
+        @summary Custom Variable Test
         
         @param request: ExpressionTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24103,7 +24902,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ExpressionTestResponse:
         """
-        @summary 自定义变量测试
+        @summary Custom Variable Test
         
         @param request: ExpressionTestRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24149,7 +24948,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ExpressionTestRequest,
     ) -> xtee_20210910_models.ExpressionTestResponse:
         """
-        @summary 自定义变量测试
+        @summary Custom Variable Test
         
         @param request: ExpressionTestRequest
         @return: ExpressionTestResponse
@@ -24162,7 +24961,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ExpressionTestRequest,
     ) -> xtee_20210910_models.ExpressionTestResponse:
         """
-        @summary 自定义变量测试
+        @summary Custom Variable Test
         
         @param request: ExpressionTestRequest
         @return: ExpressionTestResponse
@@ -24176,7 +24975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.FileUploadResponse:
         """
-        @summary 文件上传
+        @summary File Upload
         
         @param request: FileUploadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24217,7 +25016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.FileUploadResponse:
         """
-        @summary 文件上传
+        @summary File Upload
         
         @param request: FileUploadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24257,7 +25056,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.FileUploadRequest,
     ) -> xtee_20210910_models.FileUploadResponse:
         """
-        @summary 文件上传
+        @summary File Upload
         
         @param request: FileUploadRequest
         @return: FileUploadResponse
@@ -24270,7 +25069,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.FileUploadRequest,
     ) -> xtee_20210910_models.FileUploadResponse:
         """
-        @summary 文件上传
+        @summary File Upload
         
         @param request: FileUploadRequest
         @return: FileUploadResponse
@@ -24278,13 +25077,117 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.file_upload_with_options_async(request, runtime)
 
+    def import_field_with_options(
+        self,
+        request: xtee_20210910_models.ImportFieldRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ImportFieldResponse:
+        """
+        @summary Batch Import
+        
+        @param request: ImportFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportFieldResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportField',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ImportFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_field_with_options_async(
+        self,
+        request: xtee_20210910_models.ImportFieldRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ImportFieldResponse:
+        """
+        @summary Batch Import
+        
+        @param request: ImportFieldRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportFieldResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportField',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ImportFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_field(
+        self,
+        request: xtee_20210910_models.ImportFieldRequest,
+    ) -> xtee_20210910_models.ImportFieldResponse:
+        """
+        @summary Batch Import
+        
+        @param request: ImportFieldRequest
+        @return: ImportFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_field_with_options(request, runtime)
+
+    async def import_field_async(
+        self,
+        request: xtee_20210910_models.ImportFieldRequest,
+    ) -> xtee_20210910_models.ImportFieldResponse:
+        """
+        @summary Batch Import
+        
+        @param request: ImportFieldRequest
+        @return: ImportFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_field_with_options_async(request, runtime)
+
     def import_name_list_with_options(
         self,
         request: xtee_20210910_models.ImportNameListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ImportNameListResponse:
         """
-        @summary 创建或导入名单
+        @summary Create or Import Name List
         
         @param request: ImportNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24302,6 +25205,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.import_type):
             query['importType'] = request.import_type
+        if not UtilClient.is_unset(request.memo):
+            query['memo'] = request.memo
         if not UtilClient.is_unset(request.name_list_type):
             query['nameListType'] = request.name_list_type
         if not UtilClient.is_unset(request.reg_id):
@@ -24335,7 +25240,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ImportNameListResponse:
         """
-        @summary 创建或导入名单
+        @summary Create or Import Name List
         
         @param request: ImportNameListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24353,6 +25258,8 @@ class Client(OpenApiClient):
             query['description'] = request.description
         if not UtilClient.is_unset(request.import_type):
             query['importType'] = request.import_type
+        if not UtilClient.is_unset(request.memo):
+            query['memo'] = request.memo
         if not UtilClient.is_unset(request.name_list_type):
             query['nameListType'] = request.name_list_type
         if not UtilClient.is_unset(request.reg_id):
@@ -24385,7 +25292,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ImportNameListRequest,
     ) -> xtee_20210910_models.ImportNameListResponse:
         """
-        @summary 创建或导入名单
+        @summary Create or Import Name List
         
         @param request: ImportNameListRequest
         @return: ImportNameListResponse
@@ -24398,7 +25305,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ImportNameListRequest,
     ) -> xtee_20210910_models.ImportNameListResponse:
         """
-        @summary 创建或导入名单
+        @summary Create or Import Name List
         
         @param request: ImportNameListRequest
         @return: ImportNameListResponse
@@ -24412,7 +25319,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ImportTemplateEventResponse:
         """
-        @summary 导入模板事件
+        @summary Import Template Event
         
         @param request: ImportTemplateEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24451,7 +25358,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ImportTemplateEventResponse:
         """
-        @summary 导入模板事件
+        @summary Import Template Event
         
         @param request: ImportTemplateEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24489,7 +25396,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ImportTemplateEventRequest,
     ) -> xtee_20210910_models.ImportTemplateEventResponse:
         """
-        @summary 导入模板事件
+        @summary Import Template Event
         
         @param request: ImportTemplateEventRequest
         @return: ImportTemplateEventResponse
@@ -24502,7 +25409,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ImportTemplateEventRequest,
     ) -> xtee_20210910_models.ImportTemplateEventResponse:
         """
-        @summary 导入模板事件
+        @summary Import Template Event
         
         @param request: ImportTemplateEventRequest
         @return: ImportTemplateEventResponse
@@ -24510,13 +25417,669 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_template_event_with_options_async(request, runtime)
 
+    def list_variable_define_with_options(
+        self,
+        request: xtee_20210910_models.ListVariableDefineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ListVariableDefineResponse:
+        """
+        @summary Query Variable Definition
+        
+        @param request: ListVariableDefineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVariableDefineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.allow_bind):
+            query['allowBind'] = request.allow_bind
+        if not UtilClient.is_unset(request.charging_mode):
+            query['chargingMode'] = request.charging_mode
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.paging):
+            query['paging'] = request.paging
+        if not UtilClient.is_unset(request.query_content):
+            query['queryContent'] = request.query_content
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.role_type):
+            query['roleType'] = request.role_type
+        if not UtilClient.is_unset(request.scenes_str):
+            query['scenesStr'] = request.scenes_str
+        if not UtilClient.is_unset(request.source):
+            query['source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.title):
+            query['title'] = request.title
+        if not UtilClient.is_unset(request.types_str):
+            query['typesStr'] = request.types_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVariableDefine',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ListVariableDefineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_variable_define_with_options_async(
+        self,
+        request: xtee_20210910_models.ListVariableDefineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ListVariableDefineResponse:
+        """
+        @summary Query Variable Definition
+        
+        @param request: ListVariableDefineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVariableDefineResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.allow_bind):
+            query['allowBind'] = request.allow_bind
+        if not UtilClient.is_unset(request.charging_mode):
+            query['chargingMode'] = request.charging_mode
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.paging):
+            query['paging'] = request.paging
+        if not UtilClient.is_unset(request.query_content):
+            query['queryContent'] = request.query_content
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.role_type):
+            query['roleType'] = request.role_type
+        if not UtilClient.is_unset(request.scenes_str):
+            query['scenesStr'] = request.scenes_str
+        if not UtilClient.is_unset(request.source):
+            query['source'] = request.source
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.title):
+            query['title'] = request.title
+        if not UtilClient.is_unset(request.types_str):
+            query['typesStr'] = request.types_str
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVariableDefine',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ListVariableDefineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_variable_define(
+        self,
+        request: xtee_20210910_models.ListVariableDefineRequest,
+    ) -> xtee_20210910_models.ListVariableDefineResponse:
+        """
+        @summary Query Variable Definition
+        
+        @param request: ListVariableDefineRequest
+        @return: ListVariableDefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_variable_define_with_options(request, runtime)
+
+    async def list_variable_define_async(
+        self,
+        request: xtee_20210910_models.ListVariableDefineRequest,
+    ) -> xtee_20210910_models.ListVariableDefineResponse:
+        """
+        @summary Query Variable Definition
+        
+        @param request: ListVariableDefineRequest
+        @return: ListVariableDefineResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_variable_define_with_options_async(request, runtime)
+
+    def model_delete_with_options(
+        self,
+        request: xtee_20210910_models.ModelDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelDeleteResponse:
+        """
+        @summary Delete
+        
+        @param request: ModelDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelDelete',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_delete_with_options_async(
+        self,
+        request: xtee_20210910_models.ModelDeleteRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelDeleteResponse:
+        """
+        @summary Delete
+        
+        @param request: ModelDeleteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelDeleteResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelDelete',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_delete(
+        self,
+        request: xtee_20210910_models.ModelDeleteRequest,
+    ) -> xtee_20210910_models.ModelDeleteResponse:
+        """
+        @summary Delete
+        
+        @param request: ModelDeleteRequest
+        @return: ModelDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_delete_with_options(request, runtime)
+
+    async def model_delete_async(
+        self,
+        request: xtee_20210910_models.ModelDeleteRequest,
+    ) -> xtee_20210910_models.ModelDeleteResponse:
+        """
+        @summary Delete
+        
+        @param request: ModelDeleteRequest
+        @return: ModelDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_delete_with_options_async(request, runtime)
+
+    def model_file_upload_with_options(
+        self,
+        request: xtee_20210910_models.ModelFileUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelFileUploadResponse:
+        """
+        @summary File Upload
+        
+        @param request: ModelFileUploadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelFileUploadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.object_name):
+            query['ObjectName'] = request.object_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelFileUpload',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelFileUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_file_upload_with_options_async(
+        self,
+        request: xtee_20210910_models.ModelFileUploadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelFileUploadResponse:
+        """
+        @summary File Upload
+        
+        @param request: ModelFileUploadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelFileUploadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.object_name):
+            query['ObjectName'] = request.object_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelFileUpload',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelFileUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_file_upload(
+        self,
+        request: xtee_20210910_models.ModelFileUploadRequest,
+    ) -> xtee_20210910_models.ModelFileUploadResponse:
+        """
+        @summary File Upload
+        
+        @param request: ModelFileUploadRequest
+        @return: ModelFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_file_upload_with_options(request, runtime)
+
+    async def model_file_upload_async(
+        self,
+        request: xtee_20210910_models.ModelFileUploadRequest,
+    ) -> xtee_20210910_models.ModelFileUploadResponse:
+        """
+        @summary File Upload
+        
+        @param request: ModelFileUploadRequest
+        @return: ModelFileUploadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_file_upload_with_options_async(request, runtime)
+
+    def model_is_using_with_options(
+        self,
+        request: xtee_20210910_models.ModelIsUsingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelIsUsingResponse:
+        """
+        @summary Enable, Disable
+        
+        @param request: ModelIsUsingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelIsUsingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelIsUsing',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelIsUsingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_is_using_with_options_async(
+        self,
+        request: xtee_20210910_models.ModelIsUsingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelIsUsingResponse:
+        """
+        @summary Enable, Disable
+        
+        @param request: ModelIsUsingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelIsUsingResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_code):
+            query['ModelCode'] = request.model_code
+        if not UtilClient.is_unset(request.model_id):
+            query['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelIsUsing',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelIsUsingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_is_using(
+        self,
+        request: xtee_20210910_models.ModelIsUsingRequest,
+    ) -> xtee_20210910_models.ModelIsUsingResponse:
+        """
+        @summary Enable, Disable
+        
+        @param request: ModelIsUsingRequest
+        @return: ModelIsUsingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_is_using_with_options(request, runtime)
+
+    async def model_is_using_async(
+        self,
+        request: xtee_20210910_models.ModelIsUsingRequest,
+    ) -> xtee_20210910_models.ModelIsUsingResponse:
+        """
+        @summary Enable, Disable
+        
+        @param request: ModelIsUsingRequest
+        @return: ModelIsUsingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_is_using_with_options_async(request, runtime)
+
+    def model_name_is_duplication_with_options(
+        self,
+        request: xtee_20210910_models.ModelNameIsDuplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelNameIsDuplicationResponse:
+        """
+        @summary Is Model Name Duplicated
+        
+        @param request: ModelNameIsDuplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelNameIsDuplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelNameIsDuplication',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelNameIsDuplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_name_is_duplication_with_options_async(
+        self,
+        request: xtee_20210910_models.ModelNameIsDuplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelNameIsDuplicationResponse:
+        """
+        @summary Is Model Name Duplicated
+        
+        @param request: ModelNameIsDuplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelNameIsDuplicationResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.model_name):
+            query['ModelName'] = request.model_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelNameIsDuplication',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelNameIsDuplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_name_is_duplication(
+        self,
+        request: xtee_20210910_models.ModelNameIsDuplicationRequest,
+    ) -> xtee_20210910_models.ModelNameIsDuplicationResponse:
+        """
+        @summary Is Model Name Duplicated
+        
+        @param request: ModelNameIsDuplicationRequest
+        @return: ModelNameIsDuplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_name_is_duplication_with_options(request, runtime)
+
+    async def model_name_is_duplication_async(
+        self,
+        request: xtee_20210910_models.ModelNameIsDuplicationRequest,
+    ) -> xtee_20210910_models.ModelNameIsDuplicationResponse:
+        """
+        @summary Is Model Name Duplicated
+        
+        @param request: ModelNameIsDuplicationRequest
+        @return: ModelNameIsDuplicationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_name_is_duplication_with_options_async(request, runtime)
+
+    def model_sample_download_with_options(
+        self,
+        request: xtee_20210910_models.ModelSampleDownloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelSampleDownloadResponse:
+        """
+        @summary Template Download
+        
+        @param request: ModelSampleDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelSampleDownloadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelSampleDownload',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelSampleDownloadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def model_sample_download_with_options_async(
+        self,
+        request: xtee_20210910_models.ModelSampleDownloadRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.ModelSampleDownloadResponse:
+        """
+        @summary Template Download
+        
+        @param request: ModelSampleDownloadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModelSampleDownloadResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModelSampleDownload',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.ModelSampleDownloadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def model_sample_download(
+        self,
+        request: xtee_20210910_models.ModelSampleDownloadRequest,
+    ) -> xtee_20210910_models.ModelSampleDownloadResponse:
+        """
+        @summary Template Download
+        
+        @param request: ModelSampleDownloadRequest
+        @return: ModelSampleDownloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.model_sample_download_with_options(request, runtime)
+
+    async def model_sample_download_async(
+        self,
+        request: xtee_20210910_models.ModelSampleDownloadRequest,
+    ) -> xtee_20210910_models.ModelSampleDownloadResponse:
+        """
+        @summary Template Download
+        
+        @param request: ModelSampleDownloadRequest
+        @return: ModelSampleDownloadResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.model_sample_download_with_options_async(request, runtime)
+
     def modify_app_key_with_options(
         self,
         request: xtee_20210910_models.ModifyAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyAppKeyResponse:
         """
-        @summary 更新备注
+        @summary Update Memo
         
         @param request: ModifyAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24557,7 +26120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyAppKeyResponse:
         """
-        @summary 更新备注
+        @summary Update Memo
         
         @param request: ModifyAppKeyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24597,7 +26160,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyAppKeyRequest,
     ) -> xtee_20210910_models.ModifyAppKeyResponse:
         """
-        @summary 更新备注
+        @summary Update Memo
         
         @param request: ModifyAppKeyRequest
         @return: ModifyAppKeyResponse
@@ -24610,7 +26173,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyAppKeyRequest,
     ) -> xtee_20210910_models.ModifyAppKeyResponse:
         """
-        @summary 更新备注
+        @summary Update Memo
         
         @param request: ModifyAppKeyRequest
         @return: ModifyAppKeyResponse
@@ -24624,7 +26187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyCustVariableResponse:
         """
-        @summary 编辑累计变量
+        @summary Edit Accumulated Variable
         
         @param request: ModifyCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24675,7 +26238,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyCustVariableResponse:
         """
-        @summary 编辑累计变量
+        @summary Edit Accumulated Variable
         
         @param request: ModifyCustVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24725,7 +26288,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyCustVariableRequest,
     ) -> xtee_20210910_models.ModifyCustVariableResponse:
         """
-        @summary 编辑累计变量
+        @summary Edit Accumulated Variable
         
         @param request: ModifyCustVariableRequest
         @return: ModifyCustVariableResponse
@@ -24738,7 +26301,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyCustVariableRequest,
     ) -> xtee_20210910_models.ModifyCustVariableResponse:
         """
-        @summary 编辑累计变量
+        @summary Edit Accumulated Variable
         
         @param request: ModifyCustVariableRequest
         @return: ModifyCustVariableResponse
@@ -24752,7 +26315,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyEventResponse:
         """
-        @summary 编辑事件
+        @summary Edit Event
         
         @param request: ModifyEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24768,6 +26331,8 @@ class Client(OpenApiClient):
             query['createType'] = request.create_type
         if not UtilClient.is_unset(request.event_code):
             query['eventCode'] = request.event_code
+        if not UtilClient.is_unset(request.event_name):
+            query['eventName'] = request.event_name
         if not UtilClient.is_unset(request.input_fields_str):
             query['inputFieldsStr'] = request.input_fields_str
         if not UtilClient.is_unset(request.memo):
@@ -24801,7 +26366,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyEventResponse:
         """
-        @summary 编辑事件
+        @summary Edit Event
         
         @param request: ModifyEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24817,6 +26382,8 @@ class Client(OpenApiClient):
             query['createType'] = request.create_type
         if not UtilClient.is_unset(request.event_code):
             query['eventCode'] = request.event_code
+        if not UtilClient.is_unset(request.event_name):
+            query['eventName'] = request.event_name
         if not UtilClient.is_unset(request.input_fields_str):
             query['inputFieldsStr'] = request.input_fields_str
         if not UtilClient.is_unset(request.memo):
@@ -24849,7 +26416,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyEventRequest,
     ) -> xtee_20210910_models.ModifyEventResponse:
         """
-        @summary 编辑事件
+        @summary Edit Event
         
         @param request: ModifyEventRequest
         @return: ModifyEventResponse
@@ -24862,7 +26429,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyEventRequest,
     ) -> xtee_20210910_models.ModifyEventResponse:
         """
-        @summary 编辑事件
+        @summary Edit Event
         
         @param request: ModifyEventRequest
         @return: ModifyEventResponse
@@ -24876,7 +26443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyEventStatusResponse:
         """
-        @summary 修改事件状态
+        @summary Modify Event Status
         
         @param request: ModifyEventStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24921,7 +26488,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyEventStatusResponse:
         """
-        @summary 修改事件状态
+        @summary Modify Event Status
         
         @param request: ModifyEventStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24965,7 +26532,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyEventStatusRequest,
     ) -> xtee_20210910_models.ModifyEventStatusResponse:
         """
-        @summary 修改事件状态
+        @summary Modify Event Status
         
         @param request: ModifyEventStatusRequest
         @return: ModifyEventStatusResponse
@@ -24978,7 +26545,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyEventStatusRequest,
     ) -> xtee_20210910_models.ModifyEventStatusResponse:
         """
-        @summary 修改事件状态
+        @summary Modify Event Status
         
         @param request: ModifyEventStatusRequest
         @return: ModifyEventStatusResponse
@@ -24992,7 +26559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyExpressionVariableResponse:
         """
-        @summary 编辑自定义变量
+        @summary Edit Custom Variable
         
         @param request: ModifyExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25016,6 +26583,8 @@ class Client(OpenApiClient):
             query['expressionVariable'] = request.expression_variable
         if not UtilClient.is_unset(request.id):
             query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.outlier):
             query['outlier'] = request.outlier
         if not UtilClient.is_unset(request.outputs):
@@ -25049,7 +26618,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyExpressionVariableResponse:
         """
-        @summary 编辑自定义变量
+        @summary Edit Custom Variable
         
         @param request: ModifyExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25073,6 +26642,8 @@ class Client(OpenApiClient):
             query['expressionVariable'] = request.expression_variable
         if not UtilClient.is_unset(request.id):
             query['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
         if not UtilClient.is_unset(request.outlier):
             query['outlier'] = request.outlier
         if not UtilClient.is_unset(request.outputs):
@@ -25105,7 +26676,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyExpressionVariableRequest,
     ) -> xtee_20210910_models.ModifyExpressionVariableResponse:
         """
-        @summary 编辑自定义变量
+        @summary Edit Custom Variable
         
         @param request: ModifyExpressionVariableRequest
         @return: ModifyExpressionVariableResponse
@@ -25118,7 +26689,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyExpressionVariableRequest,
     ) -> xtee_20210910_models.ModifyExpressionVariableResponse:
         """
-        @summary 编辑自定义变量
+        @summary Edit Custom Variable
         
         @param request: ModifyExpressionVariableRequest
         @return: ModifyExpressionVariableResponse
@@ -25132,7 +26703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyFieldResponse:
         """
-        @summary 修改字段
+        @summary Modify Field
         
         @param request: ModifyFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25181,7 +26752,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyFieldResponse:
         """
-        @summary 修改字段
+        @summary Modify Field
         
         @param request: ModifyFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25229,7 +26800,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyFieldRequest,
     ) -> xtee_20210910_models.ModifyFieldResponse:
         """
-        @summary 修改字段
+        @summary Modify Field
         
         @param request: ModifyFieldRequest
         @return: ModifyFieldResponse
@@ -25242,7 +26813,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyFieldRequest,
     ) -> xtee_20210910_models.ModifyFieldResponse:
         """
-        @summary 修改字段
+        @summary Modify Field
         
         @param request: ModifyFieldRequest
         @return: ModifyFieldResponse
@@ -25250,157 +26821,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_field_with_options_async(request, runtime)
 
-    def modify_poc_task_with_options(
-        self,
-        request: xtee_20210910_models.ModifyPocTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyPocTaskResponse:
-        """
-        @summary 修改poc任务
-        
-        @param request: ModifyPocTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPocTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.access_type):
-            query['accessType'] = request.access_type
-        if not UtilClient.is_unset(request.config):
-            query['config'] = request.config
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
-            query['fileType'] = request.file_type
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reason):
-            query['reason'] = request.reason
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.service_name):
-            query['serviceName'] = request.service_name
-        if not UtilClient.is_unset(request.task_id):
-            query['taskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_name):
-            query['taskName'] = request.task_name
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyPocTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyPocTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_poc_task_with_options_async(
-        self,
-        request: xtee_20210910_models.ModifyPocTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyPocTaskResponse:
-        """
-        @summary 修改poc任务
-        
-        @param request: ModifyPocTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyPocTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.access_type):
-            query['accessType'] = request.access_type
-        if not UtilClient.is_unset(request.config):
-            query['config'] = request.config
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
-            query['fileType'] = request.file_type
-        if not UtilClient.is_unset(request.file_url):
-            query['fileUrl'] = request.file_url
-        if not UtilClient.is_unset(request.reason):
-            query['reason'] = request.reason
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.service_code):
-            query['serviceCode'] = request.service_code
-        if not UtilClient.is_unset(request.service_name):
-            query['serviceName'] = request.service_name
-        if not UtilClient.is_unset(request.task_id):
-            query['taskId'] = request.task_id
-        if not UtilClient.is_unset(request.task_name):
-            query['taskName'] = request.task_name
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyPocTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyPocTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_poc_task(
-        self,
-        request: xtee_20210910_models.ModifyPocTaskRequest,
-    ) -> xtee_20210910_models.ModifyPocTaskResponse:
-        """
-        @summary 修改poc任务
-        
-        @param request: ModifyPocTaskRequest
-        @return: ModifyPocTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_poc_task_with_options(request, runtime)
-
-    async def modify_poc_task_async(
-        self,
-        request: xtee_20210910_models.ModifyPocTaskRequest,
-    ) -> xtee_20210910_models.ModifyPocTaskResponse:
-        """
-        @summary 修改poc任务
-        
-        @param request: ModifyPocTaskRequest
-        @return: ModifyPocTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_poc_task_with_options_async(request, runtime)
-
     def modify_rule_priority_with_options(
         self,
         request: xtee_20210910_models.ModifyRulePriorityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyRulePriorityResponse:
         """
-        @summary 策略修改优先级
+        @summary Modify Policy Priority
         
         @param request: ModifyRulePriorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25443,7 +26870,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyRulePriorityResponse:
         """
-        @summary 策略修改优先级
+        @summary Modify Policy Priority
         
         @param request: ModifyRulePriorityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25485,7 +26912,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyRulePriorityRequest,
     ) -> xtee_20210910_models.ModifyRulePriorityResponse:
         """
-        @summary 策略修改优先级
+        @summary Modify Policy Priority
         
         @param request: ModifyRulePriorityRequest
         @return: ModifyRulePriorityResponse
@@ -25498,7 +26925,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyRulePriorityRequest,
     ) -> xtee_20210910_models.ModifyRulePriorityResponse:
         """
-        @summary 策略修改优先级
+        @summary Modify Policy Priority
         
         @param request: ModifyRulePriorityRequest
         @return: ModifyRulePriorityResponse
@@ -25512,7 +26939,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyRuleStatusResponse:
         """
-        @summary 策略版本申请状态变更
+        @summary Change the status of a policy version application
         
         @param request: ModifyRuleStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25569,7 +26996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.ModifyRuleStatusResponse:
         """
-        @summary 策略版本申请状态变更
+        @summary Change the status of a policy version application
         
         @param request: ModifyRuleStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25625,7 +27052,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyRuleStatusRequest,
     ) -> xtee_20210910_models.ModifyRuleStatusResponse:
         """
-        @summary 策略版本申请状态变更
+        @summary Change the status of a policy version application
         
         @param request: ModifyRuleStatusRequest
         @return: ModifyRuleStatusResponse
@@ -25638,7 +27065,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.ModifyRuleStatusRequest,
     ) -> xtee_20210910_models.ModifyRuleStatusResponse:
         """
-        @summary 策略版本申请状态变更
+        @summary Change the status of a policy version application
         
         @param request: ModifyRuleStatusRequest
         @return: ModifyRuleStatusResponse
@@ -25646,361 +27073,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_rule_status_with_options_async(request, runtime)
 
-    def modify_template_with_options(
-        self,
-        request: xtee_20210910_models.ModifyTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyTemplateResponse:
-        """
-        @summary 修改模版
-        
-        @param request: ModifyTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.input_fields):
-            query['inputFields'] = request.input_fields
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_type):
-            query['templateType'] = request.template_type
-        if not UtilClient.is_unset(request.version):
-            query['version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_template_with_options_async(
-        self,
-        request: xtee_20210910_models.ModifyTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyTemplateResponse:
-        """
-        @summary 修改模版
-        
-        @param request: ModifyTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.input_fields):
-            query['inputFields'] = request.input_fields
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.template_type):
-            query['templateType'] = request.template_type
-        if not UtilClient.is_unset(request.version):
-            query['version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_template(
-        self,
-        request: xtee_20210910_models.ModifyTemplateRequest,
-    ) -> xtee_20210910_models.ModifyTemplateResponse:
-        """
-        @summary 修改模版
-        
-        @param request: ModifyTemplateRequest
-        @return: ModifyTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_template_with_options(request, runtime)
-
-    async def modify_template_async(
-        self,
-        request: xtee_20210910_models.ModifyTemplateRequest,
-    ) -> xtee_20210910_models.ModifyTemplateResponse:
-        """
-        @summary 修改模版
-        
-        @param request: ModifyTemplateRequest
-        @return: ModifyTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_template_with_options_async(request, runtime)
-
-    def modify_template_status_with_options(
-        self,
-        request: xtee_20210910_models.ModifyTemplateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyTemplateStatusResponse:
-        """
-        @summary 更新模版状态
-        
-        @param request: ModifyTemplateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyTemplateStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.from_template_satus):
-            query['fromTemplateSatus'] = request.from_template_satus
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.to_template_satus):
-            query['toTemplateSatus'] = request.to_template_satus
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyTemplateStatus',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyTemplateStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_template_status_with_options_async(
-        self,
-        request: xtee_20210910_models.ModifyTemplateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyTemplateStatusResponse:
-        """
-        @summary 更新模版状态
-        
-        @param request: ModifyTemplateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyTemplateStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.from_template_satus):
-            query['fromTemplateSatus'] = request.from_template_satus
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.to_template_satus):
-            query['toTemplateSatus'] = request.to_template_satus
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyTemplateStatus',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyTemplateStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_template_status(
-        self,
-        request: xtee_20210910_models.ModifyTemplateStatusRequest,
-    ) -> xtee_20210910_models.ModifyTemplateStatusResponse:
-        """
-        @summary 更新模版状态
-        
-        @param request: ModifyTemplateStatusRequest
-        @return: ModifyTemplateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_template_status_with_options(request, runtime)
-
-    async def modify_template_status_async(
-        self,
-        request: xtee_20210910_models.ModifyTemplateStatusRequest,
-    ) -> xtee_20210910_models.ModifyTemplateStatusResponse:
-        """
-        @summary 更新模版状态
-        
-        @param request: ModifyTemplateStatusRequest
-        @return: ModifyTemplateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_template_status_with_options_async(request, runtime)
-
-    def modify_variable_with_options(
-        self,
-        request: xtee_20210910_models.ModifyVariableRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyVariableResponse:
-        """
-        @summary 修改变量信息
-        
-        @param request: ModifyVariableRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyVariableResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.title):
-            query['title'] = request.title
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyVariable',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyVariableResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_variable_with_options_async(
-        self,
-        request: xtee_20210910_models.ModifyVariableRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.ModifyVariableResponse:
-        """
-        @summary 修改变量信息
-        
-        @param request: ModifyVariableRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyVariableResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.description):
-            query['description'] = request.description
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.title):
-            query['title'] = request.title
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyVariable',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.ModifyVariableResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_variable(
-        self,
-        request: xtee_20210910_models.ModifyVariableRequest,
-    ) -> xtee_20210910_models.ModifyVariableResponse:
-        """
-        @summary 修改变量信息
-        
-        @param request: ModifyVariableRequest
-        @return: ModifyVariableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_variable_with_options(request, runtime)
-
-    async def modify_variable_async(
-        self,
-        request: xtee_20210910_models.ModifyVariableRequest,
-    ) -> xtee_20210910_models.ModifyVariableResponse:
-        """
-        @summary 修改变量信息
-        
-        @param request: ModifyVariableRequest
-        @return: ModifyVariableResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_variable_with_options_async(request, runtime)
-
     def open_console_sls_with_options(
         self,
         request: xtee_20210910_models.OpenConsoleSlsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.OpenConsoleSlsResponse:
         """
-        @summary 开通服务
+        @summary Activate Service
         
         @param request: OpenConsoleSlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26039,7 +27118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.OpenConsoleSlsResponse:
         """
-        @summary 开通服务
+        @summary Activate Service
         
         @param request: OpenConsoleSlsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26077,7 +27156,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.OpenConsoleSlsRequest,
     ) -> xtee_20210910_models.OpenConsoleSlsResponse:
         """
-        @summary 开通服务
+        @summary Activate Service
         
         @param request: OpenConsoleSlsRequest
         @return: OpenConsoleSlsResponse
@@ -26090,7 +27169,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.OpenConsoleSlsRequest,
     ) -> xtee_20210910_models.OpenConsoleSlsResponse:
         """
-        @summary 开通服务
+        @summary Activate Service
         
         @param request: OpenConsoleSlsRequest
         @return: OpenConsoleSlsResponse
@@ -26104,7 +27183,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.OperateFavoriteVariableResponse:
         """
-        @summary 操作收藏
+        @summary Operate Favorites
         
         @param request: OperateFavoriteVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26145,7 +27224,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.OperateFavoriteVariableResponse:
         """
-        @summary 操作收藏
+        @summary Operate Favorites
         
         @param request: OperateFavoriteVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26185,7 +27264,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.OperateFavoriteVariableRequest,
     ) -> xtee_20210910_models.OperateFavoriteVariableResponse:
         """
-        @summary 操作收藏
+        @summary Operate Favorites
         
         @param request: OperateFavoriteVariableRequest
         @return: OperateFavoriteVariableResponse
@@ -26198,7 +27277,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.OperateFavoriteVariableRequest,
     ) -> xtee_20210910_models.OperateFavoriteVariableResponse:
         """
-        @summary 操作收藏
+        @summary Operate Favorites
         
         @param request: OperateFavoriteVariableRequest
         @return: OperateFavoriteVariableResponse
@@ -26212,7 +27291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.PermissionCheckResponse:
         """
-        @summary 企业认证
+        @summary Enterprise Verification
         
         @param request: PermissionCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26249,7 +27328,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.PermissionCheckResponse:
         """
-        @summary 企业认证
+        @summary Enterprise Verification
         
         @param request: PermissionCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26285,7 +27364,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.PermissionCheckRequest,
     ) -> xtee_20210910_models.PermissionCheckResponse:
         """
-        @summary 企业认证
+        @summary Enterprise Verification
         
         @param request: PermissionCheckRequest
         @return: PermissionCheckResponse
@@ -26298,7 +27377,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.PermissionCheckRequest,
     ) -> xtee_20210910_models.PermissionCheckResponse:
         """
-        @summary 企业认证
+        @summary Enterprise Verification
         
         @param request: PermissionCheckRequest
         @return: PermissionCheckResponse
@@ -26306,13 +27385,441 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.permission_check_with_options_async(request, runtime)
 
+    def poc_create_task_with_options(
+        self,
+        request: xtee_20210910_models.PocCreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocCreateTaskResponse:
+        """
+        @summary createTask
+        
+        @param request: PocCreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocCreateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date_format):
+            query['DateFormat'] = request.date_format
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocCreateTask',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocCreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def poc_create_task_with_options_async(
+        self,
+        request: xtee_20210910_models.PocCreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocCreateTaskResponse:
+        """
+        @summary createTask
+        
+        @param request: PocCreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocCreateTaskResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.date_format):
+            query['DateFormat'] = request.date_format
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.task_name):
+            query['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocCreateTask',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocCreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def poc_create_task(
+        self,
+        request: xtee_20210910_models.PocCreateTaskRequest,
+    ) -> xtee_20210910_models.PocCreateTaskResponse:
+        """
+        @summary createTask
+        
+        @param request: PocCreateTaskRequest
+        @return: PocCreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.poc_create_task_with_options(request, runtime)
+
+    async def poc_create_task_async(
+        self,
+        request: xtee_20210910_models.PocCreateTaskRequest,
+    ) -> xtee_20210910_models.PocCreateTaskResponse:
+        """
+        @summary createTask
+        
+        @param request: PocCreateTaskRequest
+        @return: PocCreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.poc_create_task_with_options_async(request, runtime)
+
+    def poc_get_download_url_with_options(
+        self,
+        request: xtee_20210910_models.PocGetDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocGetDownloadUrlResponse:
+        """
+        @summary PocGetDownloadUrl
+        
+        @param request: PocGetDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocGetDownloadUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocGetDownloadUrl',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocGetDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def poc_get_download_url_with_options_async(
+        self,
+        request: xtee_20210910_models.PocGetDownloadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocGetDownloadUrlResponse:
+        """
+        @summary PocGetDownloadUrl
+        
+        @param request: PocGetDownloadUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocGetDownloadUrlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocGetDownloadUrl',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocGetDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def poc_get_download_url(
+        self,
+        request: xtee_20210910_models.PocGetDownloadUrlRequest,
+    ) -> xtee_20210910_models.PocGetDownloadUrlResponse:
+        """
+        @summary PocGetDownloadUrl
+        
+        @param request: PocGetDownloadUrlRequest
+        @return: PocGetDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.poc_get_download_url_with_options(request, runtime)
+
+    async def poc_get_download_url_async(
+        self,
+        request: xtee_20210910_models.PocGetDownloadUrlRequest,
+    ) -> xtee_20210910_models.PocGetDownloadUrlResponse:
+        """
+        @summary PocGetDownloadUrl
+        
+        @param request: PocGetDownloadUrlRequest
+        @return: PocGetDownloadUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.poc_get_download_url_with_options_async(request, runtime)
+
+    def poc_get_token_with_options(
+        self,
+        request: xtee_20210910_models.PocGetTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocGetTokenResponse:
+        """
+        @summary getToken
+        
+        @param request: PocGetTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocGetTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocGetToken',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocGetTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def poc_get_token_with_options_async(
+        self,
+        request: xtee_20210910_models.PocGetTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocGetTokenResponse:
+        """
+        @summary getToken
+        
+        @param request: PocGetTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocGetTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocGetToken',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocGetTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def poc_get_token(
+        self,
+        request: xtee_20210910_models.PocGetTokenRequest,
+    ) -> xtee_20210910_models.PocGetTokenResponse:
+        """
+        @summary getToken
+        
+        @param request: PocGetTokenRequest
+        @return: PocGetTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.poc_get_token_with_options(request, runtime)
+
+    async def poc_get_token_async(
+        self,
+        request: xtee_20210910_models.PocGetTokenRequest,
+    ) -> xtee_20210910_models.PocGetTokenResponse:
+        """
+        @summary getToken
+        
+        @param request: PocGetTokenRequest
+        @return: PocGetTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.poc_get_token_with_options_async(request, runtime)
+
+    def poc_send_data_with_options(
+        self,
+        request: xtee_20210910_models.PocSendDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocSendDataResponse:
+        """
+        @summary sendData
+        
+        @param request: PocSendDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocSendDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_no):
+            query['BatchNo'] = request.batch_no
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.params_list):
+            query['ParamsList'] = request.params_list
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocSendData',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocSendDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def poc_send_data_with_options_async(
+        self,
+        request: xtee_20210910_models.PocSendDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.PocSendDataResponse:
+        """
+        @summary sendData
+        
+        @param request: PocSendDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PocSendDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.batch_no):
+            query['BatchNo'] = request.batch_no
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.params_list):
+            query['ParamsList'] = request.params_list
+        if not UtilClient.is_unset(request.reg_id):
+            query['RegId'] = request.reg_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PocSendData',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.PocSendDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def poc_send_data(
+        self,
+        request: xtee_20210910_models.PocSendDataRequest,
+    ) -> xtee_20210910_models.PocSendDataResponse:
+        """
+        @summary sendData
+        
+        @param request: PocSendDataRequest
+        @return: PocSendDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.poc_send_data_with_options(request, runtime)
+
+    async def poc_send_data_async(
+        self,
+        request: xtee_20210910_models.PocSendDataRequest,
+    ) -> xtee_20210910_models.PocSendDataResponse:
+        """
+        @summary sendData
+        
+        @param request: PocSendDataRequest
+        @return: PocSendDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.poc_send_data_with_options_async(request, runtime)
+
     def query_auth_rule_detail_by_rule_id_with_options(
         self,
         request: xtee_20210910_models.QueryAuthRuleDetailByRuleIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.QueryAuthRuleDetailByRuleIdResponse:
         """
-        @summary 白盒化策略详情查询
+        @summary Query White-box Strategy Details
         
         @param request: QueryAuthRuleDetailByRuleIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26355,7 +27862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.QueryAuthRuleDetailByRuleIdResponse:
         """
-        @summary 白盒化策略详情查询
+        @summary Query White-box Strategy Details
         
         @param request: QueryAuthRuleDetailByRuleIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26397,7 +27904,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.QueryAuthRuleDetailByRuleIdRequest,
     ) -> xtee_20210910_models.QueryAuthRuleDetailByRuleIdResponse:
         """
-        @summary 白盒化策略详情查询
+        @summary Query White-box Strategy Details
         
         @param request: QueryAuthRuleDetailByRuleIdRequest
         @return: QueryAuthRuleDetailByRuleIdResponse
@@ -26410,7 +27917,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.QueryAuthRuleDetailByRuleIdRequest,
     ) -> xtee_20210910_models.QueryAuthRuleDetailByRuleIdResponse:
         """
-        @summary 白盒化策略详情查询
+        @summary Query White-box Strategy Details
         
         @param request: QueryAuthRuleDetailByRuleIdRequest
         @return: QueryAuthRuleDetailByRuleIdResponse
@@ -26418,229 +27925,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_auth_rule_detail_by_rule_id_with_options_async(request, runtime)
 
-    def query_auth_user_name_with_options(
-        self,
-        request: xtee_20210910_models.QueryAuthUserNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.QueryAuthUserNameResponse:
-        """
-        @summary 获取授权用户名
-        
-        @param request: QueryAuthUserNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuthUserNameResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.bind_id):
-            query['bindId'] = request.bind_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryAuthUserName',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.QueryAuthUserNameResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_auth_user_name_with_options_async(
-        self,
-        request: xtee_20210910_models.QueryAuthUserNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.QueryAuthUserNameResponse:
-        """
-        @summary 获取授权用户名
-        
-        @param request: QueryAuthUserNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuthUserNameResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.bind_id):
-            query['bindId'] = request.bind_id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryAuthUserName',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.QueryAuthUserNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_auth_user_name(
-        self,
-        request: xtee_20210910_models.QueryAuthUserNameRequest,
-    ) -> xtee_20210910_models.QueryAuthUserNameResponse:
-        """
-        @summary 获取授权用户名
-        
-        @param request: QueryAuthUserNameRequest
-        @return: QueryAuthUserNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.query_auth_user_name_with_options(request, runtime)
-
-    async def query_auth_user_name_async(
-        self,
-        request: xtee_20210910_models.QueryAuthUserNameRequest,
-    ) -> xtee_20210910_models.QueryAuthUserNameResponse:
-        """
-        @summary 获取授权用户名
-        
-        @param request: QueryAuthUserNameRequest
-        @return: QueryAuthUserNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.query_auth_user_name_with_options_async(request, runtime)
-
-    def query_authorization_user_list_with_options(
-        self,
-        request: xtee_20210910_models.QueryAuthorizationUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.QueryAuthorizationUserListResponse:
-        """
-        @summary 事件模版授权用户列表
-        
-        @param request: QueryAuthorizationUserListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuthorizationUserListResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryAuthorizationUserList',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.QueryAuthorizationUserListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def query_authorization_user_list_with_options_async(
-        self,
-        request: xtee_20210910_models.QueryAuthorizationUserListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.QueryAuthorizationUserListResponse:
-        """
-        @summary 事件模版授权用户列表
-        
-        @param request: QueryAuthorizationUserListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuthorizationUserListResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.create_type):
-            query['createType'] = request.create_type
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='QueryAuthorizationUserList',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.QueryAuthorizationUserListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def query_authorization_user_list(
-        self,
-        request: xtee_20210910_models.QueryAuthorizationUserListRequest,
-    ) -> xtee_20210910_models.QueryAuthorizationUserListResponse:
-        """
-        @summary 事件模版授权用户列表
-        
-        @param request: QueryAuthorizationUserListRequest
-        @return: QueryAuthorizationUserListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.query_authorization_user_list_with_options(request, runtime)
-
-    async def query_authorization_user_list_async(
-        self,
-        request: xtee_20210910_models.QueryAuthorizationUserListRequest,
-    ) -> xtee_20210910_models.QueryAuthorizationUserListResponse:
-        """
-        @summary 事件模版授权用户列表
-        
-        @param request: QueryAuthorizationUserListRequest
-        @return: QueryAuthorizationUserListResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.query_authorization_user_list_with_options_async(request, runtime)
-
     def recall_rule_audit_with_options(
         self,
         request: xtee_20210910_models.RecallRuleAuditRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.RecallRuleAuditResponse:
         """
-        @summary 撤回
+        @summary Recall.
         
         @param request: RecallRuleAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26677,7 +27968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.RecallRuleAuditResponse:
         """
-        @summary 撤回
+        @summary Recall.
         
         @param request: RecallRuleAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26713,7 +28004,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.RecallRuleAuditRequest,
     ) -> xtee_20210910_models.RecallRuleAuditResponse:
         """
-        @summary 撤回
+        @summary Recall.
         
         @param request: RecallRuleAuditRequest
         @return: RecallRuleAuditResponse
@@ -26726,7 +28017,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.RecallRuleAuditRequest,
     ) -> xtee_20210910_models.RecallRuleAuditResponse:
         """
-        @summary 撤回
+        @summary Recall.
         
         @param request: RecallRuleAuditRequest
         @return: RecallRuleAuditResponse
@@ -26740,7 +28031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.RemoveEventResponse:
         """
-        @summary 删除事件
+        @summary Delete Event
         
         @param request: RemoveEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26785,7 +28076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.RemoveEventResponse:
         """
-        @summary 删除事件
+        @summary Delete Event
         
         @param request: RemoveEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26829,7 +28120,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.RemoveEventRequest,
     ) -> xtee_20210910_models.RemoveEventResponse:
         """
-        @summary 删除事件
+        @summary Delete Event
         
         @param request: RemoveEventRequest
         @return: RemoveEventResponse
@@ -26842,7 +28133,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.RemoveEventRequest,
     ) -> xtee_20210910_models.RemoveEventResponse:
         """
-        @summary 删除事件
+        @summary Delete Event
         
         @param request: RemoveEventRequest
         @return: RemoveEventResponse
@@ -26850,125 +28141,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_event_with_options_async(request, runtime)
 
-    def remove_template_with_options(
-        self,
-        request: xtee_20210910_models.RemoveTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.RemoveTemplateResponse:
-        """
-        @summary 删除模版事件
-        
-        @param request: RemoveTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.version):
-            query['version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RemoveTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.RemoveTemplateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def remove_template_with_options_async(
-        self,
-        request: xtee_20210910_models.RemoveTemplateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.RemoveTemplateResponse:
-        """
-        @summary 删除模版事件
-        
-        @param request: RemoveTemplateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveTemplateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.event_code):
-            query['eventCode'] = request.event_code
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.template_id):
-            query['templateId'] = request.template_id
-        if not UtilClient.is_unset(request.version):
-            query['version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RemoveTemplate',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.RemoveTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def remove_template(
-        self,
-        request: xtee_20210910_models.RemoveTemplateRequest,
-    ) -> xtee_20210910_models.RemoveTemplateResponse:
-        """
-        @summary 删除模版事件
-        
-        @param request: RemoveTemplateRequest
-        @return: RemoveTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.remove_template_with_options(request, runtime)
-
-    async def remove_template_async(
-        self,
-        request: xtee_20210910_models.RemoveTemplateRequest,
-    ) -> xtee_20210910_models.RemoveTemplateResponse:
-        """
-        @summary 删除模版事件
-        
-        @param request: RemoveTemplateRequest
-        @return: RemoveTemplateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.remove_template_with_options_async(request, runtime)
-
     def sample_file_download_with_options(
         self,
         request: xtee_20210910_models.SampleFileDownloadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SampleFileDownloadResponse:
         """
-        @summary 模板下载
+        @summary Template Download
         
         @param request: SampleFileDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27007,7 +28186,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SampleFileDownloadResponse:
         """
-        @summary 模板下载
+        @summary Template Download
         
         @param request: SampleFileDownloadRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27045,7 +28224,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SampleFileDownloadRequest,
     ) -> xtee_20210910_models.SampleFileDownloadResponse:
         """
-        @summary 模板下载
+        @summary Template Download
         
         @param request: SampleFileDownloadRequest
         @return: SampleFileDownloadResponse
@@ -27058,7 +28237,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SampleFileDownloadRequest,
     ) -> xtee_20210910_models.SampleFileDownloadResponse:
         """
-        @summary 模板下载
+        @summary Template Download
         
         @param request: SampleFileDownloadRequest
         @return: SampleFileDownloadResponse
@@ -27072,7 +28251,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SaveAnalysisColumnResponse:
         """
-        @summary 保存自定义列
+        @summary Save Custom Columns
         
         @param request: SaveAnalysisColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27111,7 +28290,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SaveAnalysisColumnResponse:
         """
-        @summary 保存自定义列
+        @summary Save Custom Columns
         
         @param request: SaveAnalysisColumnRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27149,7 +28328,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SaveAnalysisColumnRequest,
     ) -> xtee_20210910_models.SaveAnalysisColumnResponse:
         """
-        @summary 保存自定义列
+        @summary Save Custom Columns
         
         @param request: SaveAnalysisColumnRequest
         @return: SaveAnalysisColumnResponse
@@ -27162,7 +28341,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SaveAnalysisColumnRequest,
     ) -> xtee_20210910_models.SaveAnalysisColumnResponse:
         """
-        @summary 保存自定义列
+        @summary Save Custom Columns
         
         @param request: SaveAnalysisColumnRequest
         @return: SaveAnalysisColumnResponse
@@ -27176,7 +28355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SaveByPassOrShuntEventResponse:
         """
-        @summary 旁路/分流配置
+        @summary Bypass/Shunt Configuration
         
         @param request: SaveByPassOrShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27219,7 +28398,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SaveByPassOrShuntEventResponse:
         """
-        @summary 旁路/分流配置
+        @summary Bypass/Shunt Configuration
         
         @param request: SaveByPassOrShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27261,7 +28440,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SaveByPassOrShuntEventRequest,
     ) -> xtee_20210910_models.SaveByPassOrShuntEventResponse:
         """
-        @summary 旁路/分流配置
+        @summary Bypass/Shunt Configuration
         
         @param request: SaveByPassOrShuntEventRequest
         @return: SaveByPassOrShuntEventResponse
@@ -27274,7 +28453,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SaveByPassOrShuntEventRequest,
     ) -> xtee_20210910_models.SaveByPassOrShuntEventResponse:
         """
-        @summary 旁路/分流配置
+        @summary Bypass/Shunt Configuration
         
         @param request: SaveByPassOrShuntEventRequest
         @return: SaveByPassOrShuntEventResponse
@@ -27288,7 +28467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StartOrStopByPassShuntEventResponse:
         """
-        @summary 开启/停止旁路事件
+        @summary Start/Stop Bypass Event
         
         @param request: StartOrStopByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27329,7 +28508,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StartOrStopByPassShuntEventResponse:
         """
-        @summary 开启/停止旁路事件
+        @summary Start/Stop Bypass Event
         
         @param request: StartOrStopByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27369,7 +28548,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StartOrStopByPassShuntEventRequest,
     ) -> xtee_20210910_models.StartOrStopByPassShuntEventResponse:
         """
-        @summary 开启/停止旁路事件
+        @summary Start/Stop Bypass Event
         
         @param request: StartOrStopByPassShuntEventRequest
         @return: StartOrStopByPassShuntEventResponse
@@ -27382,7 +28561,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StartOrStopByPassShuntEventRequest,
     ) -> xtee_20210910_models.StartOrStopByPassShuntEventResponse:
         """
-        @summary 开启/停止旁路事件
+        @summary Start/Stop Bypass Event
         
         @param request: StartOrStopByPassShuntEventRequest
         @return: StartOrStopByPassShuntEventResponse
@@ -27396,7 +28575,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StartSimulationTaskResponse:
         """
-        @summary 开始执行任务
+        @summary Start Task Execution
         
         @param request: StartSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27435,7 +28614,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StartSimulationTaskResponse:
         """
-        @summary 开始执行任务
+        @summary Start Task Execution
         
         @param request: StartSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27473,7 +28652,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StartSimulationTaskRequest,
     ) -> xtee_20210910_models.StartSimulationTaskResponse:
         """
-        @summary 开始执行任务
+        @summary Start Task Execution
         
         @param request: StartSimulationTaskRequest
         @return: StartSimulationTaskResponse
@@ -27486,7 +28665,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StartSimulationTaskRequest,
     ) -> xtee_20210910_models.StartSimulationTaskResponse:
         """
-        @summary 开始执行任务
+        @summary Start Task Execution
         
         @param request: StartSimulationTaskRequest
         @return: StartSimulationTaskResponse
@@ -27500,7 +28679,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StopSimulationTaskResponse:
         """
-        @summary 停止任务
+        @summary Stop Task
         
         @param request: StopSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27539,7 +28718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.StopSimulationTaskResponse:
         """
-        @summary 停止任务
+        @summary Stop Task
         
         @param request: StopSimulationTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27577,7 +28756,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StopSimulationTaskRequest,
     ) -> xtee_20210910_models.StopSimulationTaskResponse:
         """
-        @summary 停止任务
+        @summary Stop Task
         
         @param request: StopSimulationTaskRequest
         @return: StopSimulationTaskResponse
@@ -27590,7 +28769,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.StopSimulationTaskRequest,
     ) -> xtee_20210910_models.StopSimulationTaskResponse:
         """
-        @summary 停止任务
+        @summary Stop Task
         
         @param request: StopSimulationTaskRequest
         @return: StopSimulationTaskResponse
@@ -27598,121 +28777,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.stop_simulation_task_with_options_async(request, runtime)
 
-    def submit_import_task_with_options(
-        self,
-        request: xtee_20210910_models.SubmitImportTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.SubmitImportTaskResponse:
-        """
-        @summary 批量创建策略
-        
-        @param request: SubmitImportTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitImportTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.url):
-            query['url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitImportTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.SubmitImportTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def submit_import_task_with_options_async(
-        self,
-        request: xtee_20210910_models.SubmitImportTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.SubmitImportTaskResponse:
-        """
-        @summary 批量创建策略
-        
-        @param request: SubmitImportTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitImportTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.file_name):
-            query['fileName'] = request.file_name
-        if not UtilClient.is_unset(request.reg_id):
-            query['regId'] = request.reg_id
-        if not UtilClient.is_unset(request.url):
-            query['url'] = request.url
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SubmitImportTask',
-            version='2021-09-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            xtee_20210910_models.SubmitImportTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def submit_import_task(
-        self,
-        request: xtee_20210910_models.SubmitImportTaskRequest,
-    ) -> xtee_20210910_models.SubmitImportTaskResponse:
-        """
-        @summary 批量创建策略
-        
-        @param request: SubmitImportTaskRequest
-        @return: SubmitImportTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.submit_import_task_with_options(request, runtime)
-
-    async def submit_import_task_async(
-        self,
-        request: xtee_20210910_models.SubmitImportTaskRequest,
-    ) -> xtee_20210910_models.SubmitImportTaskResponse:
-        """
-        @summary 批量创建策略
-        
-        @param request: SubmitImportTaskRequest
-        @return: SubmitImportTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.submit_import_task_with_options_async(request, runtime)
-
     def switch_expression_variable_with_options(
         self,
         request: xtee_20210910_models.SwitchExpressionVariableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchExpressionVariableResponse:
         """
-        @summary 自定义变量开关
+        @summary Custom Variable Switch
         
         @param request: SwitchExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27755,7 +28826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchExpressionVariableResponse:
         """
-        @summary 自定义变量开关
+        @summary Custom Variable Switch
         
         @param request: SwitchExpressionVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27797,7 +28868,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchExpressionVariableRequest,
     ) -> xtee_20210910_models.SwitchExpressionVariableResponse:
         """
-        @summary 自定义变量开关
+        @summary Custom Variable Switch
         
         @param request: SwitchExpressionVariableRequest
         @return: SwitchExpressionVariableResponse
@@ -27810,7 +28881,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchExpressionVariableRequest,
     ) -> xtee_20210910_models.SwitchExpressionVariableResponse:
         """
-        @summary 自定义变量开关
+        @summary Custom Variable Switch
         
         @param request: SwitchExpressionVariableRequest
         @return: SwitchExpressionVariableResponse
@@ -27824,7 +28895,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchFieldResponse:
         """
-        @summary 字段开关
+        @summary Field Switch
         
         @param request: SwitchFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27869,7 +28940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchFieldResponse:
         """
-        @summary 字段开关
+        @summary Field Switch
         
         @param request: SwitchFieldRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27913,7 +28984,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchFieldRequest,
     ) -> xtee_20210910_models.SwitchFieldResponse:
         """
-        @summary 字段开关
+        @summary Field Switch
         
         @param request: SwitchFieldRequest
         @return: SwitchFieldResponse
@@ -27926,7 +28997,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchFieldRequest,
     ) -> xtee_20210910_models.SwitchFieldResponse:
         """
-        @summary 字段开关
+        @summary Field Switch
         
         @param request: SwitchFieldRequest
         @return: SwitchFieldResponse
@@ -27940,7 +29011,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchQueryVariableResponse:
         """
-        @summary 查询变量启用/禁用
+        @summary Query Variable Enable/Disable
         
         @param request: SwitchQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27981,7 +29052,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchQueryVariableResponse:
         """
-        @summary 查询变量启用/禁用
+        @summary Query Variable Enable/Disable
         
         @param request: SwitchQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28021,7 +29092,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchQueryVariableRequest,
     ) -> xtee_20210910_models.SwitchQueryVariableResponse:
         """
-        @summary 查询变量启用/禁用
+        @summary Query Variable Enable/Disable
         
         @param request: SwitchQueryVariableRequest
         @return: SwitchQueryVariableResponse
@@ -28034,7 +29105,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchQueryVariableRequest,
     ) -> xtee_20210910_models.SwitchQueryVariableResponse:
         """
-        @summary 查询变量启用/禁用
+        @summary Query Variable Enable/Disable
         
         @param request: SwitchQueryVariableRequest
         @return: SwitchQueryVariableResponse
@@ -28048,7 +29119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchToOnlineResponse:
         """
-        @summary 一键切换上线
+        @summary One-click switch online
         
         @param request: SwitchToOnlineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28087,7 +29158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchToOnlineResponse:
         """
-        @summary 一键切换上线
+        @summary One-click switch online
         
         @param request: SwitchToOnlineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28125,7 +29196,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchToOnlineRequest,
     ) -> xtee_20210910_models.SwitchToOnlineResponse:
         """
-        @summary 一键切换上线
+        @summary One-click switch online
         
         @param request: SwitchToOnlineRequest
         @return: SwitchToOnlineResponse
@@ -28138,7 +29209,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchToOnlineRequest,
     ) -> xtee_20210910_models.SwitchToOnlineResponse:
         """
-        @summary 一键切换上线
+        @summary One-click switch online
         
         @param request: SwitchToOnlineRequest
         @return: SwitchToOnlineResponse
@@ -28152,7 +29223,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchVariableResponse:
         """
-        @summary 累计变量开关
+        @summary Cumulative Variable Switch
         
         @param request: SwitchVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28197,7 +29268,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.SwitchVariableResponse:
         """
-        @summary 累计变量开关
+        @summary Cumulative Variable Switch
         
         @param request: SwitchVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28241,7 +29312,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchVariableRequest,
     ) -> xtee_20210910_models.SwitchVariableResponse:
         """
-        @summary 累计变量开关
+        @summary Cumulative Variable Switch
         
         @param request: SwitchVariableRequest
         @return: SwitchVariableResponse
@@ -28254,7 +29325,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.SwitchVariableRequest,
     ) -> xtee_20210910_models.SwitchVariableResponse:
         """
-        @summary 累计变量开关
+        @summary Cumulative Variable Switch
         
         @param request: SwitchVariableRequest
         @return: SwitchVariableResponse
@@ -28268,7 +29339,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.TaskNameByUserIdResponse:
         """
-        @summary 判断任务名是否重复
+        @summary Determine if the task name is duplicated
         
         @param request: TaskNameByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28307,7 +29378,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.TaskNameByUserIdResponse:
         """
-        @summary 判断任务名是否重复
+        @summary Determine if the task name is duplicated
         
         @param request: TaskNameByUserIdRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28345,7 +29416,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.TaskNameByUserIdRequest,
     ) -> xtee_20210910_models.TaskNameByUserIdResponse:
         """
-        @summary 判断任务名是否重复
+        @summary Determine if the task name is duplicated
         
         @param request: TaskNameByUserIdRequest
         @return: TaskNameByUserIdResponse
@@ -28358,7 +29429,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.TaskNameByUserIdRequest,
     ) -> xtee_20210910_models.TaskNameByUserIdResponse:
         """
-        @summary 判断任务名是否重复
+        @summary Determine if the task name is duplicated
         
         @param request: TaskNameByUserIdRequest
         @return: TaskNameByUserIdResponse
@@ -28372,7 +29443,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAnalysisConditionFavoriteResponse:
         """
-        @summary 修改查询条件
+        @summary Modify Query Conditions
         
         @param request: UpdateAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28427,7 +29498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAnalysisConditionFavoriteResponse:
         """
-        @summary 修改查询条件
+        @summary Modify Query Conditions
         
         @param request: UpdateAnalysisConditionFavoriteRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28481,7 +29552,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.UpdateAnalysisConditionFavoriteResponse:
         """
-        @summary 修改查询条件
+        @summary Modify Query Conditions
         
         @param request: UpdateAnalysisConditionFavoriteRequest
         @return: UpdateAnalysisConditionFavoriteResponse
@@ -28494,7 +29565,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAnalysisConditionFavoriteRequest,
     ) -> xtee_20210910_models.UpdateAnalysisConditionFavoriteResponse:
         """
-        @summary 修改查询条件
+        @summary Modify Query Conditions
         
         @param request: UpdateAnalysisConditionFavoriteRequest
         @return: UpdateAnalysisConditionFavoriteResponse
@@ -28508,7 +29579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAuditResponse:
         """
-        @summary 审批
+        @summary Approval
         
         @param request: UpdateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28553,7 +29624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAuditResponse:
         """
-        @summary 审批
+        @summary Approval
         
         @param request: UpdateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28597,7 +29668,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAuditRequest,
     ) -> xtee_20210910_models.UpdateAuditResponse:
         """
-        @summary 审批
+        @summary Approval
         
         @param request: UpdateAuditRequest
         @return: UpdateAuditResponse
@@ -28610,7 +29681,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAuditRequest,
     ) -> xtee_20210910_models.UpdateAuditResponse:
         """
-        @summary 审批
+        @summary Approval
         
         @param request: UpdateAuditRequest
         @return: UpdateAuditResponse
@@ -28624,7 +29695,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAuthRuleResponse:
         """
-        @summary 修改授权策略
+        @summary Modify Authorization Policy
         
         @param request: UpdateAuthRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28673,7 +29744,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateAuthRuleResponse:
         """
-        @summary 修改授权策略
+        @summary Modify Authorization Policy
         
         @param request: UpdateAuthRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28721,7 +29792,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAuthRuleRequest,
     ) -> xtee_20210910_models.UpdateAuthRuleResponse:
         """
-        @summary 修改授权策略
+        @summary Modify Authorization Policy
         
         @param request: UpdateAuthRuleRequest
         @return: UpdateAuthRuleResponse
@@ -28734,7 +29805,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateAuthRuleRequest,
     ) -> xtee_20210910_models.UpdateAuthRuleResponse:
         """
-        @summary 修改授权策略
+        @summary Modify Authorization Policy
         
         @param request: UpdateAuthRuleRequest
         @return: UpdateAuthRuleResponse
@@ -28748,7 +29819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateByPassShuntEventResponse:
         """
-        @summary 编辑旁路事件
+        @summary Edit Bypass Event
         
         @param request: UpdateByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28789,7 +29860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateByPassShuntEventResponse:
         """
-        @summary 编辑旁路事件
+        @summary Edit Bypass Event
         
         @param request: UpdateByPassShuntEventRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28829,7 +29900,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateByPassShuntEventRequest,
     ) -> xtee_20210910_models.UpdateByPassShuntEventResponse:
         """
-        @summary 编辑旁路事件
+        @summary Edit Bypass Event
         
         @param request: UpdateByPassShuntEventRequest
         @return: UpdateByPassShuntEventResponse
@@ -28842,7 +29913,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateByPassShuntEventRequest,
     ) -> xtee_20210910_models.UpdateByPassShuntEventResponse:
         """
-        @summary 编辑旁路事件
+        @summary Edit Bypass Event
         
         @param request: UpdateByPassShuntEventRequest
         @return: UpdateByPassShuntEventResponse
@@ -28856,7 +29927,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源
+        @summary Modify Data Source
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28903,7 +29974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源
+        @summary Modify Data Source
         
         @param request: UpdateDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -28949,7 +30020,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateDataSourceRequest,
     ) -> xtee_20210910_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源
+        @summary Modify Data Source
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
@@ -28962,7 +30033,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateDataSourceRequest,
     ) -> xtee_20210910_models.UpdateDataSourceResponse:
         """
-        @summary 修改数据源
+        @summary Modify Data Source
         
         @param request: UpdateDataSourceRequest
         @return: UpdateDataSourceResponse
@@ -28976,7 +30047,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateQueryVariableResponse:
         """
-        @summary 自定义查询变量修改
+        @summary Modify Custom Query Variable
         
         @param request: UpdateQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29033,7 +30104,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateQueryVariableResponse:
         """
-        @summary 自定义查询变量修改
+        @summary Modify Custom Query Variable
         
         @param request: UpdateQueryVariableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29089,7 +30160,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateQueryVariableRequest,
     ) -> xtee_20210910_models.UpdateQueryVariableResponse:
         """
-        @summary 自定义查询变量修改
+        @summary Modify Custom Query Variable
         
         @param request: UpdateQueryVariableRequest
         @return: UpdateQueryVariableResponse
@@ -29102,7 +30173,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateQueryVariableRequest,
     ) -> xtee_20210910_models.UpdateQueryVariableResponse:
         """
-        @summary 自定义查询变量修改
+        @summary Modify Custom Query Variable
         
         @param request: UpdateQueryVariableRequest
         @return: UpdateQueryVariableResponse
@@ -29116,7 +30187,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateRuleResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29138,6 +30209,8 @@ class Client(OpenApiClient):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_actions):
             query['ruleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_body):
+            query['ruleBody'] = request.rule_body
         if not UtilClient.is_unset(request.rule_expressions):
             query['ruleExpressions'] = request.rule_expressions
         if not UtilClient.is_unset(request.rule_id):
@@ -29146,6 +30219,8 @@ class Client(OpenApiClient):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['ruleType'] = request.rule_type
         if not UtilClient.is_unset(request.rule_version_id):
             query['ruleVersionId'] = request.rule_version_id
         req = open_api_models.OpenApiRequest(
@@ -29173,7 +30248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateRuleResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdateRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29195,6 +30270,8 @@ class Client(OpenApiClient):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.rule_actions):
             query['ruleActions'] = request.rule_actions
+        if not UtilClient.is_unset(request.rule_body):
+            query['ruleBody'] = request.rule_body
         if not UtilClient.is_unset(request.rule_expressions):
             query['ruleExpressions'] = request.rule_expressions
         if not UtilClient.is_unset(request.rule_id):
@@ -29203,6 +30280,8 @@ class Client(OpenApiClient):
             query['ruleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_status):
             query['ruleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['ruleType'] = request.rule_type
         if not UtilClient.is_unset(request.rule_version_id):
             query['ruleVersionId'] = request.rule_version_id
         req = open_api_models.OpenApiRequest(
@@ -29229,7 +30308,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateRuleRequest,
     ) -> xtee_20210910_models.UpdateRuleResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdateRuleRequest
         @return: UpdateRuleResponse
@@ -29242,7 +30321,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateRuleRequest,
     ) -> xtee_20210910_models.UpdateRuleResponse:
         """
-        @summary 更新策略
+        @summary Update Policy
         
         @param request: UpdateRuleRequest
         @return: UpdateRuleResponse
@@ -29256,7 +30335,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateRuleBaseResponse:
         """
-        @summary 更新策略基础信息
+        @summary Update Basic Policy Information
         
         @param request: UpdateRuleBaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29303,7 +30382,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateRuleBaseResponse:
         """
-        @summary 更新策略基础信息
+        @summary Update Basic Policy Information
         
         @param request: UpdateRuleBaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29349,7 +30428,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateRuleBaseRequest,
     ) -> xtee_20210910_models.UpdateRuleBaseResponse:
         """
-        @summary 更新策略基础信息
+        @summary Update Basic Policy Information
         
         @param request: UpdateRuleBaseRequest
         @return: UpdateRuleBaseResponse
@@ -29362,7 +30441,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateRuleBaseRequest,
     ) -> xtee_20210910_models.UpdateRuleBaseResponse:
         """
-        @summary 更新策略基础信息
+        @summary Update Basic Policy Information
         
         @param request: UpdateRuleBaseRequest
         @return: UpdateRuleBaseResponse
@@ -29376,7 +30455,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateSampleBatchResponse:
         """
-        @summary 批量修改样本
+        @summary Batch Update Samples
         
         @param request: UpdateSampleBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29419,7 +30498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.UpdateSampleBatchResponse:
         """
-        @summary 批量修改样本
+        @summary Batch Update Samples
         
         @param request: UpdateSampleBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29461,7 +30540,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateSampleBatchRequest,
     ) -> xtee_20210910_models.UpdateSampleBatchResponse:
         """
-        @summary 批量修改样本
+        @summary Batch Update Samples
         
         @param request: UpdateSampleBatchRequest
         @return: UpdateSampleBatchResponse
@@ -29474,7 +30553,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.UpdateSampleBatchRequest,
     ) -> xtee_20210910_models.UpdateSampleBatchResponse:
         """
-        @summary 批量修改样本
+        @summary Batch Update Samples
         
         @param request: UpdateSampleBatchRequest
         @return: UpdateSampleBatchResponse
@@ -29482,33 +30561,39 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_sample_batch_with_options_async(request, runtime)
 
-    def upload_sample_api_with_options(
+    def upload_file_check_with_options(
         self,
-        request: xtee_20210910_models.UploadSampleApiRequest,
+        request: xtee_20210910_models.UploadFileCheckRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.UploadSampleApiResponse:
+    ) -> xtee_20210910_models.UploadFileCheckResponse:
         """
-        @summary 单用户API创建样本
+        @summary Sample Inspection
         
-        @param request: UploadSampleApiRequest
+        @param request: UploadFileCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UploadSampleApiResponse
+        @return: UploadFileCheckResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
         if not UtilClient.is_unset(request.data_type):
-            query['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.data_value):
-            query['DataValue'] = request.data_value
-        if not UtilClient.is_unset(request.sample_type):
-            query['SampleType'] = request.sample_type
-        if not UtilClient.is_unset(request.service):
-            query['Service'] = request.service
+            query['dataType'] = request.data_type
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_tag_type):
+            query['sampleTagType'] = request.sample_tag_type
+        if not UtilClient.is_unset(request.service_list):
+            query['serviceList'] = request.service_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UploadSampleApi',
+            action='UploadFileCheck',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -29519,37 +30604,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.UploadSampleApiResponse(),
+            xtee_20210910_models.UploadFileCheckResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def upload_sample_api_with_options_async(
+    async def upload_file_check_with_options_async(
         self,
-        request: xtee_20210910_models.UploadSampleApiRequest,
+        request: xtee_20210910_models.UploadFileCheckRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> xtee_20210910_models.UploadSampleApiResponse:
+    ) -> xtee_20210910_models.UploadFileCheckResponse:
         """
-        @summary 单用户API创建样本
+        @summary Sample Inspection
         
-        @param request: UploadSampleApiRequest
+        @param request: UploadFileCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UploadSampleApiResponse
+        @return: UploadFileCheckResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.batch_name):
+            query['batchName'] = request.batch_name
         if not UtilClient.is_unset(request.data_type):
-            query['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.data_value):
-            query['DataValue'] = request.data_value
-        if not UtilClient.is_unset(request.sample_type):
-            query['SampleType'] = request.sample_type
-        if not UtilClient.is_unset(request.service):
-            query['Service'] = request.service
+            query['dataType'] = request.data_type
+        if not UtilClient.is_unset(request.oss_file_name):
+            query['ossFileName'] = request.oss_file_name
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.sample_tag_type):
+            query['sampleTagType'] = request.sample_tag_type
+        if not UtilClient.is_unset(request.service_list):
+            query['serviceList'] = request.service_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='UploadSampleApi',
+            action='UploadFileCheck',
             version='2021-09-10',
             protocol='HTTPS',
             pathname='/',
@@ -29560,32 +30651,32 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            xtee_20210910_models.UploadSampleApiResponse(),
+            xtee_20210910_models.UploadFileCheckResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def upload_sample_api(
+    def upload_file_check(
         self,
-        request: xtee_20210910_models.UploadSampleApiRequest,
-    ) -> xtee_20210910_models.UploadSampleApiResponse:
+        request: xtee_20210910_models.UploadFileCheckRequest,
+    ) -> xtee_20210910_models.UploadFileCheckResponse:
         """
-        @summary 单用户API创建样本
+        @summary Sample Inspection
         
-        @param request: UploadSampleApiRequest
-        @return: UploadSampleApiResponse
+        @param request: UploadFileCheckRequest
+        @return: UploadFileCheckResponse
         """
         runtime = util_models.RuntimeOptions()
-        return self.upload_sample_api_with_options(request, runtime)
+        return self.upload_file_check_with_options(request, runtime)
 
-    async def upload_sample_api_async(
+    async def upload_file_check_async(
         self,
-        request: xtee_20210910_models.UploadSampleApiRequest,
-    ) -> xtee_20210910_models.UploadSampleApiResponse:
+        request: xtee_20210910_models.UploadFileCheckRequest,
+    ) -> xtee_20210910_models.UploadFileCheckResponse:
         """
-        @summary 单用户API创建样本
+        @summary Sample Inspection
         
-        @param request: UploadSampleApiRequest
-        @return: UploadSampleApiResponse
+        @param request: UploadFileCheckRequest
+        @return: UploadFileCheckResponse
         """
         runtime = util_models.RuntimeOptions()
-        return await self.upload_sample_api_with_options_async(request, runtime)
+        return await self.upload_file_check_with_options_async(request, runtime)

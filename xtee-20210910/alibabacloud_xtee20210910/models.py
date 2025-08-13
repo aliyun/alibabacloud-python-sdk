@@ -4,6 +4,357 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AddSampleDataByCsvRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        oss_file_name: str = None,
+        reg_id: str = None,
+        sample_batch_uuid: str = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Uploaded OSS address.
+        self.oss_file_name = oss_file_name
+        # Region code
+        self.reg_id = reg_id
+        # Sample UUID.
+        self.sample_batch_uuid = sample_batch_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.oss_file_name is not None:
+            result['ossFileName'] = self.oss_file_name
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.sample_batch_uuid is not None:
+            result['sampleBatchUuid'] = self.sample_batch_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ossFileName') is not None:
+            self.oss_file_name = m.get('ossFileName')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('sampleBatchUuid') is not None:
+            self.sample_batch_uuid = m.get('sampleBatchUuid')
+        return self
+
+
+class AddSampleDataByCsvResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddSampleDataByCsvResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSampleDataByCsvResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSampleDataByCsvResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddSampleDataByTextRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        data_value: str = None,
+        reg_id: str = None,
+        sample_batch_uuid: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # List data.
+        self.data_value = data_value
+        # Region code
+        self.reg_id = reg_id
+        # Sample UUID.
+        self.sample_batch_uuid = sample_batch_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.sample_batch_uuid is not None:
+            result['sampleBatchUuid'] = self.sample_batch_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('sampleBatchUuid') is not None:
+            self.sample_batch_uuid = m.get('sampleBatchUuid')
+        return self
+
+
+class AddSampleDataByTextResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AddSampleDataByTextResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddSampleDataByTextResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddSampleDataByTextResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class BatchDeleteSampleDataRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        reg_id: str = None,
+        uuids: str = None,
+    ):
+        # Language of the error message returned by the interface. Values: zh: Chinese; en: English. Default is en.
+        self.lang = lang
+        # Region code
+        self.reg_id = reg_id
+        # UUID.
+        self.uuids = uuids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.uuids is not None:
+            result['uuids'] = self.uuids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('uuids') is not None:
+            self.uuids = m.get('uuids')
+        return self
+
+
+class BatchDeleteSampleDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BatchDeleteSampleDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchDeleteSampleDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchDeleteSampleDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindVariableRequest(TeaModel):
     def __init__(
         self,
@@ -25,23 +376,44 @@ class BindVariableRequest(TeaModel):
         source_type: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # API region ID
         self.api_region_id = api_region_id
+        # API type
         self.api_type = api_type
+        # Creation type
         self.create_type = create_type
+        # Associated variable definition primary key ID
         self.define_id = define_id
+        # Variable definition IDs, can be multiple. If binding multiple IDs, separate them with commas
         self.define_ids = define_ids
+        # Description information.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Exception value
         self.exception_value = exception_value
+        # Variable primary key ID
         self.id = id
+        # Output field path
         self.output_field = output_field
+        # Output type
         self.output_type = output_type
+        # Binding input parameter information
         self.params = params
+        # Event parameter mapping 2.0, either params or paramsList must not be empty. List, JSON structure
         self.params_list = params_list
+        # Region code
         self.reg_id = reg_id
+        # Variable source
         self.source_type = source_type
+        # Title
+        # 
         # This parameter is required.
         self.title = title
 
@@ -135,7 +507,9 @@ class BindVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -203,6 +577,234 @@ class BindVariableResponse(TeaModel):
         return self
 
 
+class CheckCopyRuleVariableRequest(TeaModel):
+    def __init__(
+        self,
+        create_type: str = None,
+        lang: str = None,
+        reg_id: str = None,
+        source_rule_id: str = None,
+        source_rule_ids: str = None,
+        target_event_code: str = None,
+    ):
+        # Creation type
+        self.create_type = create_type
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code
+        self.reg_id = reg_id
+        # Source policy ID
+        self.source_rule_id = source_rule_id
+        # Source policy IDs
+        self.source_rule_ids = source_rule_ids
+        # Target event
+        self.target_event_code = target_event_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.source_rule_id is not None:
+            result['SourceRuleId'] = self.source_rule_id
+        if self.source_rule_ids is not None:
+            result['SourceRuleIds'] = self.source_rule_ids
+        if self.target_event_code is not None:
+            result['TargetEventCode'] = self.target_event_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('SourceRuleId') is not None:
+            self.source_rule_id = m.get('SourceRuleId')
+        if m.get('SourceRuleIds') is not None:
+            self.source_rule_ids = m.get('SourceRuleIds')
+        if m.get('TargetEventCode') is not None:
+            self.target_event_code = m.get('TargetEventCode')
+        return self
+
+
+class CheckCopyRuleVariableResponseBodyResultObjectMessage(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        name: str = None,
+        title: str = None,
+        type: str = None,
+    ):
+        # Primary key ID of the variable
+        self.id = id
+        # Name of the variable
+        self.name = name
+        # Title of the variable
+        self.title = title
+        # Type of the variable
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CheckCopyRuleVariableResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        message: List[CheckCopyRuleVariableResponseBodyResultObjectMessage] = None,
+    ):
+        # Information.
+        self.message = message
+
+    def validate(self):
+        if self.message:
+            for k in self.message:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Message'] = []
+        if self.message is not None:
+            for k in self.message:
+                result['Message'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.message = []
+        if m.get('Message') is not None:
+            for k in m.get('Message'):
+                temp_model = CheckCopyRuleVariableResponseBodyResultObjectMessage()
+                self.message.append(temp_model.from_map(k))
+        return self
+
+
+class CheckCopyRuleVariableResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: CheckCopyRuleVariableResponseBodyResultObject = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Returned result information
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = CheckCopyRuleVariableResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class CheckCopyRuleVariableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckCopyRuleVariableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckCopyRuleVariableResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CheckCustVariableLimitRequest(TeaModel):
     def __init__(
         self,
@@ -210,8 +812,13 @@ class CheckCustVariableLimitRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -248,7 +855,9 @@ class CheckCustVariableLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -322,7 +931,12 @@ class CheckExpressionVariableLimitRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -356,7 +970,9 @@ class CheckExpressionVariableLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -431,8 +1047,13 @@ class CheckFieldLimitRequest(TeaModel):
         reg_id: str = None,
         source: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Source of the field
         self.source = source
 
     def validate(self):
@@ -469,7 +1090,9 @@ class CheckFieldLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Whether the condition is met: -**true**: meets the condition-**false**: does not meet the condition
         self.result_object = result_object
 
     def validate(self):
@@ -537,113 +1160,6 @@ class CheckFieldLimitResponse(TeaModel):
         return self
 
 
-class CheckPermissionRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class CheckPermissionResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class CheckPermissionResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CheckPermissionResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CheckPermissionResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CheckUsageVariableRequest(TeaModel):
     def __init__(
         self,
@@ -651,9 +1167,16 @@ class CheckUsageVariableRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary Key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region ID
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -691,7 +1214,9 @@ class CheckUsageVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Whether it was successful
         self.result_object = result_object
 
     def validate(self):
@@ -759,17 +1284,30 @@ class CheckUsageVariableResponse(TeaModel):
         return self
 
 
-class ClearNameListRequest(TeaModel):
+class CompareCopyRuleVariableRequest(TeaModel):
     def __init__(
         self,
+        create_type: str = None,
         lang: str = None,
         reg_id: str = None,
-        variable_id: int = None,
+        source_rule_id: str = None,
+        source_rule_ids: str = None,
+        target_event_code: str = None,
     ):
+        # Creation type
+        self.create_type = create_type
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
-        # This parameter is required.
-        self.variable_id = variable_id
+        # Original policy ruleId.
+        self.source_rule_id = source_rule_id
+        # Original policy ruleIds.
+        self.source_rule_ids = source_rule_ids
+        # Target event eventCode.
+        self.target_event_code = target_event_code
 
     def validate(self):
         pass
@@ -780,36 +1318,503 @@ class ClearNameListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.variable_id is not None:
-            result['variableId'] = self.variable_id
+            result['RegId'] = self.reg_id
+        if self.source_rule_id is not None:
+            result['SourceRuleId'] = self.source_rule_id
+        if self.source_rule_ids is not None:
+            result['SourceRuleIds'] = self.source_rule_ids
+        if self.target_event_code is not None:
+            result['TargetEventCode'] = self.target_event_code
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('variableId') is not None:
-            self.variable_id = m.get('variableId')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('SourceRuleId') is not None:
+            self.source_rule_id = m.get('SourceRuleId')
+        if m.get('SourceRuleIds') is not None:
+            self.source_rule_ids = m.get('SourceRuleIds')
+        if m.get('TargetEventCode') is not None:
+            self.target_event_code = m.get('TargetEventCode')
         return self
 
 
-class ClearNameListResponseBody(TeaModel):
+class CompareCopyRuleVariableResponseBodyResultObjectCustVariableList(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        result_object: bool = None,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
     ):
-        self.request_id = request_id
-        self.result_object = result_object
+        # Description
+        self.description = description
+        # Variable ID
+        self.id = id
+        # Variable name
+        self.name = name
+        # Variable type
+        self.out_type = out_type
+        # Title
+        self.title = title
 
     def validate(self):
         pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObjectEventVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
+    ):
+        # Description
+        self.description = description
+        # Variable id
+        self.id = id
+        # Variable name
+        self.name = name
+        # Variable type
+        self.out_type = out_type
+        # Title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObjectExpressionVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
+    ):
+        # Description
+        self.description = description
+        # Variable ID
+        self.id = id
+        # Variable name
+        self.name = name
+        # Variable Type
+        self.out_type = out_type
+        # Title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObjectNameListVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
+    ):
+        # Description
+        self.description = description
+        # Variable id
+        self.id = id
+        # Variable name
+        self.name = name
+        # Variable type
+        self.out_type = out_type
+        # Title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObjectQueryExpressionVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
+    ):
+        # Description
+        self.description = description
+        # Variable ID
+        self.id = id
+        # Variable Name
+        self.name = name
+        # Variable Type
+        self.out_type = out_type
+        # Title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObjectSystemVariableList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: int = None,
+        name: str = None,
+        out_type: str = None,
+        title: str = None,
+    ):
+        # Description
+        self.description = description
+        # Variable ID
+        self.id = id
+        # Variable name
+        self.name = name
+        # Variable type
+        self.out_type = out_type
+        # Title
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.out_type is not None:
+            result['OutType'] = self.out_type
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OutType') is not None:
+            self.out_type = m.get('OutType')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class CompareCopyRuleVariableResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        cust_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectCustVariableList] = None,
+        event_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectEventVariableList] = None,
+        expression_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectExpressionVariableList] = None,
+        name_list_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectNameListVariableList] = None,
+        query_expression_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectQueryExpressionVariableList] = None,
+        system_variable_list: List[CompareCopyRuleVariableResponseBodyResultObjectSystemVariableList] = None,
+    ):
+        # Cumulative variable list
+        self.cust_variable_list = cust_variable_list
+        # Event field variables
+        self.event_variable_list = event_variable_list
+        # Custom variable list
+        self.expression_variable_list = expression_variable_list
+        # Name list variables
+        self.name_list_variable_list = name_list_variable_list
+        # Custom Query Variable List
+        self.query_expression_variable_list = query_expression_variable_list
+        # System variable list
+        self.system_variable_list = system_variable_list
+
+    def validate(self):
+        if self.cust_variable_list:
+            for k in self.cust_variable_list:
+                if k:
+                    k.validate()
+        if self.event_variable_list:
+            for k in self.event_variable_list:
+                if k:
+                    k.validate()
+        if self.expression_variable_list:
+            for k in self.expression_variable_list:
+                if k:
+                    k.validate()
+        if self.name_list_variable_list:
+            for k in self.name_list_variable_list:
+                if k:
+                    k.validate()
+        if self.query_expression_variable_list:
+            for k in self.query_expression_variable_list:
+                if k:
+                    k.validate()
+        if self.system_variable_list:
+            for k in self.system_variable_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CustVariableList'] = []
+        if self.cust_variable_list is not None:
+            for k in self.cust_variable_list:
+                result['CustVariableList'].append(k.to_map() if k else None)
+        result['EventVariableList'] = []
+        if self.event_variable_list is not None:
+            for k in self.event_variable_list:
+                result['EventVariableList'].append(k.to_map() if k else None)
+        result['ExpressionVariableList'] = []
+        if self.expression_variable_list is not None:
+            for k in self.expression_variable_list:
+                result['ExpressionVariableList'].append(k.to_map() if k else None)
+        result['NameListVariableList'] = []
+        if self.name_list_variable_list is not None:
+            for k in self.name_list_variable_list:
+                result['NameListVariableList'].append(k.to_map() if k else None)
+        result['QueryExpressionVariableList'] = []
+        if self.query_expression_variable_list is not None:
+            for k in self.query_expression_variable_list:
+                result['QueryExpressionVariableList'].append(k.to_map() if k else None)
+        result['SystemVariableList'] = []
+        if self.system_variable_list is not None:
+            for k in self.system_variable_list:
+                result['SystemVariableList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cust_variable_list = []
+        if m.get('CustVariableList') is not None:
+            for k in m.get('CustVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectCustVariableList()
+                self.cust_variable_list.append(temp_model.from_map(k))
+        self.event_variable_list = []
+        if m.get('EventVariableList') is not None:
+            for k in m.get('EventVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectEventVariableList()
+                self.event_variable_list.append(temp_model.from_map(k))
+        self.expression_variable_list = []
+        if m.get('ExpressionVariableList') is not None:
+            for k in m.get('ExpressionVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectExpressionVariableList()
+                self.expression_variable_list.append(temp_model.from_map(k))
+        self.name_list_variable_list = []
+        if m.get('NameListVariableList') is not None:
+            for k in m.get('NameListVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectNameListVariableList()
+                self.name_list_variable_list.append(temp_model.from_map(k))
+        self.query_expression_variable_list = []
+        if m.get('QueryExpressionVariableList') is not None:
+            for k in m.get('QueryExpressionVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectQueryExpressionVariableList()
+                self.query_expression_variable_list.append(temp_model.from_map(k))
+        self.system_variable_list = []
+        if m.get('SystemVariableList') is not None:
+            for k in m.get('SystemVariableList'):
+                temp_model = CompareCopyRuleVariableResponseBodyResultObjectSystemVariableList()
+                self.system_variable_list.append(temp_model.from_map(k))
+        return self
+
+
+class CompareCopyRuleVariableResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: CompareCopyRuleVariableResponseBodyResultObject = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # Result object.
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -820,24 +1825,25 @@ class ClearNameListResponseBody(TeaModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result_object is not None:
-            result['resultObject'] = self.result_object
+            result['ResultObject'] = self.result_object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
+        if m.get('ResultObject') is not None:
+            temp_model = CompareCopyRuleVariableResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
         return self
 
 
-class ClearNameListResponse(TeaModel):
+class CompareCopyRuleVariableResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: ClearNameListResponseBody = None,
+        body: CompareCopyRuleVariableResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -868,7 +1874,7 @@ class ClearNameListResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = ClearNameListResponseBody()
+            temp_model = CompareCopyRuleVariableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -887,21 +1893,40 @@ class CreateAnalysisConditionFavoriteRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Condition value.
+        # 
         # This parameter is required.
         self.condition = condition
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
+        # Event codes, separated by commas
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_end_time = event_end_time
+        # Field name
         self.field_name = field_name
+        # Field value
         self.field_value = field_value
+        # Condition favorite name
+        # 
         # This parameter is required.
         self.name = name
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Query type
+        # 
         # This parameter is required.
         self.type = type
 
@@ -967,7 +1992,9 @@ class CreateAnalysisConditionFavoriteResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -1051,23 +2078,44 @@ class CreateAnalysisExportTaskRequest(TeaModel):
         scope: str = None,
         type: str = None,
     ):
+        # Sets the language type for the request and response messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Custom columns
         self.columns = columns
+        # Query expression
         self.conditions = conditions
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_end_time = event_end_time
+        # Field name
         self.field_name = field_name
+        # Field value
         self.field_value = field_value
+        # File format, Excel, CSV
+        # 
         # This parameter is required.
         self.file_format = file_format
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Export scope: ALL: All, SELECT: Selected rows
+        # 
         # This parameter is required.
         self.scope = scope
+        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1150,16 +2198,27 @@ class CreateAnalysisExportTaskResponseBodyResultObject(TeaModel):
         type: str = None,
         user_id: int = None,
     ):
+        # Export list.
         self.columns = columns
+        # Export task conditions.
         self.conditions = conditions
+        # Event start time.
         self.event_begin_time = event_begin_time
+        # Event code.
         self.event_codes = event_codes
+        # End time.
         self.event_end_time = event_end_time
+        # File format.
         self.file_format = file_format
+        # OSS-generated key.
         self.oss_key = oss_key
+        # Export task scope.
         self.scope = scope
+        # Task status.
         self.status = status
+        # Export task type.
         self.type = type
+        # User UID
         self.user_id = user_id
 
     def validate(self):
@@ -1228,7 +2287,9 @@ class CreateAnalysisExportTaskResponseBody(TeaModel):
         request_id: str = None,
         result_object: CreateAnalysisExportTaskResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -1304,7 +2365,11 @@ class CreateAppKeyRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -1337,7 +2402,9 @@ class CreateAppKeyResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Data object
         self.data = data
 
     def validate(self):
@@ -1405,131 +2472,6 @@ class CreateAppKeyResponse(TeaModel):
         return self
 
 
-class CreateAuthorizationUserRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        bind_id: int = None,
-        create_type: str = None,
-        event_template_id: int = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        self.bind_id = bind_id
-        self.create_type = create_type
-        self.event_template_id = event_template_id
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.bind_id is not None:
-            result['bindId'] = self.bind_id
-        if self.create_type is not None:
-            result['createType'] = self.create_type
-        if self.event_template_id is not None:
-            result['eventTemplateId'] = self.event_template_id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('bindId') is not None:
-            self.bind_id = m.get('bindId')
-        if m.get('createType') is not None:
-            self.create_type = m.get('createType')
-        if m.get('eventTemplateId') is not None:
-            self.event_template_id = m.get('eventTemplateId')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class CreateAuthorizationUserResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class CreateAuthorizationUserResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateAuthorizationUserResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateAuthorizationUserResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateCustVariableRequest(TeaModel):
     def __init__(
         self,
@@ -1549,25 +2491,48 @@ class CreateCustVariableRequest(TeaModel):
         velocity_fc: str = None,
         velocity_tw: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Condition value.
         self.condition = condition
+        # Creation type
         self.create_type = create_type
+        # Description information.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # Value type
         self.history_value_type = history_value_type
+        # Accumulative object
         self.object = object
+        # Variable return type
         self.outputs = outputs
+        # Region code
         self.reg_id = reg_id
+        # Primary object
+        # 
         # This parameter is required.
         self.subject = subject
+        # Time slice type
+        # 
         # This parameter is required.
         self.time_type = time_type
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
+        # Number of time units
         self.tw_count = tw_count
+        # Variable type
+        # 
         # This parameter is required.
         self.velocity_fc = velocity_fc
+        # Time slice unit
+        # 
         # This parameter is required.
         self.velocity_tw = velocity_tw
 
@@ -1653,7 +2618,9 @@ class CreateCustVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -1731,14 +2698,26 @@ class CreateDataSourceRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source description.
         self.description = description
+        # Data source name.
+        # 
         # This parameter is required.
         self.name = name
+        # OSS file key.
+        # 
         # This parameter is required.
         self.oss_key = oss_key
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Data source type
+        # 
         # This parameter is required.
         self.type = type
 
@@ -1788,7 +2767,9 @@ class CreateDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -1869,14 +2850,25 @@ class CreateEventRequest(TeaModel):
         template_name: str = None,
         template_type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event name.
         self.event_name = event_name
+        # Input parameters, JSON string.
         self.input_fields_str = input_fields_str
+        # Memo information
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
+        # Input field template type
         self.template_code = template_code
+        # Published template name.
         self.template_name = template_name
+        # Template type.
         self.template_type = template_type
 
     def validate(self):
@@ -1937,7 +2929,9 @@ class CreateEventResponseBody(TeaModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # Return result.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2019,21 +3013,40 @@ class CreateExpressionVariableRequest(TeaModel):
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Description.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Calculation expression
+        # 
         # This parameter is required.
         self.expression = expression
+        # Display value of calculation expression
+        # 
         # This parameter is required.
         self.expression_title = expression_title
+        # Calculation expression variable
         self.expression_variable = expression_variable
+        # Outlier
+        # 
         # This parameter is required.
         self.outlier = outlier
+        # Variable return type
+        # 
         # This parameter is required.
         self.outputs = outputs
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -2099,7 +3112,9 @@ class CreateExpressionVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -2180,15 +3195,27 @@ class CreateFieldRequest(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Field classification.
         self.classify = classify
+        # Description information.
         self.description = description
+        # Enum data.
         self.enum_data = enum_data
+        # Field name.
         self.name = name
+        # Region code.
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Business source.
         self.source = source
+        # Title.
         self.title = title
+        # Field type.
         self.type = type
 
     def validate(self):
@@ -2249,7 +3276,9 @@ class CreateFieldResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object.
         self.result_object = result_object
 
     def validate(self):
@@ -2317,290 +3346,53 @@ class CreateFieldResponse(TeaModel):
         return self
 
 
-class CreateGroupSignRequest(TeaModel):
+class CreateModelRequest(TeaModel):
     def __init__(
         self,
-        lang: str = None,
-        sign_list: str = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        # This parameter is required.
-        self.sign_list = sign_list
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.sign_list is not None:
-            result['SignList'] = self.sign_list
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('SignList') is not None:
-            self.sign_list = m.get('SignList')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class CreateGroupSignResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: bool = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
-        return self
-
-
-class CreateGroupSignResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateGroupSignResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateGroupSignResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateMonitorTaskRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        biz_type: str = None,
-        cycle_type: str = None,
-        end_time: int = None,
+        buc_id: str = None,
+        counts: str = None,
+        file_md5: str = None,
         file_path: str = None,
-        listday_str: str = None,
+        model_name: str = None,
+        model_scene: str = None,
+        parameter_num: str = None,
         reg_id: str = None,
-        start_time: int = None,
+        user_local_file_name: str = None,
     ):
-        self.lang = lang
+        # Submitter ID.
+        # 
         # This parameter is required.
-        self.biz_type = biz_type
+        self.buc_id = buc_id
+        # Number of file rows.
+        # 
         # This parameter is required.
-        self.cycle_type = cycle_type
+        self.counts = counts
+        # File MD5 value.
+        # 
         # This parameter is required.
-        self.end_time = end_time
+        self.file_md5 = file_md5
+        # File path.
+        # 
         # This parameter is required.
         self.file_path = file_path
-        self.listday_str = listday_str
-        self.reg_id = reg_id
+        # Model name.
+        # 
         # This parameter is required.
-        self.start_time = start_time
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.biz_type is not None:
-            result['bizType'] = self.biz_type
-        if self.cycle_type is not None:
-            result['cycleType'] = self.cycle_type
-        if self.end_time is not None:
-            result['endTime'] = self.end_time
-        if self.file_path is not None:
-            result['filePath'] = self.file_path
-        if self.listday_str is not None:
-            result['listdayStr'] = self.listday_str
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.start_time is not None:
-            result['startTime'] = self.start_time
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('bizType') is not None:
-            self.biz_type = m.get('bizType')
-        if m.get('cycleType') is not None:
-            self.cycle_type = m.get('cycleType')
-        if m.get('endTime') is not None:
-            self.end_time = m.get('endTime')
-        if m.get('filePath') is not None:
-            self.file_path = m.get('filePath')
-        if m.get('listdayStr') is not None:
-            self.listday_str = m.get('listdayStr')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('startTime') is not None:
-            self.start_time = m.get('startTime')
-        return self
-
-
-class CreateMonitorTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class CreateMonitorTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateMonitorTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateMonitorTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreatePocRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        config_str: str = None,
-        file_name: str = None,
-        file_type: str = None,
-        file_url: str = None,
-        reg_id: str = None,
-        service_code: str = None,
-        service_name: str = None,
-        task_name: str = None,
-    ):
-        self.lang = lang
-        self.config_str = config_str
-        self.file_name = file_name
-        self.file_type = file_type
-        self.file_url = file_url
+        self.model_name = model_name
+        # Model scenario.
+        # 
+        # This parameter is required.
+        self.model_scene = model_scene
+        # Number of file columns.
+        # 
+        # This parameter is required.
+        self.parameter_num = parameter_num
+        # Region code
         self.reg_id = reg_id
-        self.service_code = service_code
-        self.service_name = service_name
-        self.task_name = task_name
+        # Uploaded file name.
+        # 
+        # This parameter is required.
+        self.user_local_file_name = user_local_file_name
 
     def validate(self):
         pass
@@ -2611,56 +3403,58 @@ class CreatePocRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.config_str is not None:
-            result['configStr'] = self.config_str
-        if self.file_name is not None:
-            result['fileName'] = self.file_name
-        if self.file_type is not None:
-            result['fileType'] = self.file_type
-        if self.file_url is not None:
-            result['fileUrl'] = self.file_url
+        if self.buc_id is not None:
+            result['BucId'] = self.buc_id
+        if self.counts is not None:
+            result['Counts'] = self.counts
+        if self.file_md5 is not None:
+            result['FileMD5'] = self.file_md5
+        if self.file_path is not None:
+            result['FilePath'] = self.file_path
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.model_scene is not None:
+            result['ModelScene'] = self.model_scene
+        if self.parameter_num is not None:
+            result['ParameterNum'] = self.parameter_num
         if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
-        if self.task_name is not None:
-            result['taskName'] = self.task_name
+            result['RegId'] = self.reg_id
+        if self.user_local_file_name is not None:
+            result['UserLocalFileName'] = self.user_local_file_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('configStr') is not None:
-            self.config_str = m.get('configStr')
-        if m.get('fileName') is not None:
-            self.file_name = m.get('fileName')
-        if m.get('fileType') is not None:
-            self.file_type = m.get('fileType')
-        if m.get('fileUrl') is not None:
-            self.file_url = m.get('fileUrl')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
-        if m.get('taskName') is not None:
-            self.task_name = m.get('taskName')
+        if m.get('BucId') is not None:
+            self.buc_id = m.get('BucId')
+        if m.get('Counts') is not None:
+            self.counts = m.get('Counts')
+        if m.get('FileMD5') is not None:
+            self.file_md5 = m.get('FileMD5')
+        if m.get('FilePath') is not None:
+            self.file_path = m.get('FilePath')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('ModelScene') is not None:
+            self.model_scene = m.get('ModelScene')
+        if m.get('ParameterNum') is not None:
+            self.parameter_num = m.get('ParameterNum')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('UserLocalFileName') is not None:
+            self.user_local_file_name = m.get('UserLocalFileName')
         return self
 
 
-class CreatePocResponseBody(TeaModel):
+class CreateModelResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -2675,24 +3469,24 @@ class CreatePocResponseBody(TeaModel):
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.result_object is not None:
-            result['resultObject'] = self.result_object
+            result['ResultObject'] = self.result_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
         return self
 
 
-class CreatePocResponse(TeaModel):
+class CreateModelResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: CreatePocResponseBody = None,
+        body: CreateModelResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -2723,7 +3517,7 @@ class CreatePocResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = CreatePocResponseBody()
+            temp_model = CreateModelResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2743,16 +3537,30 @@ class CreatePocEvRequest(TeaModel):
         task_name: str = None,
         type: str = None,
     ):
+        # Date format type
         self.date_format = date_format
+        # File name.
+        # > The file name must end with txt or sql. For example, test.txt, test.sql.
         self.file_name = file_name
+        # File type
         self.file_type = file_type
+        # File URL.
         self.file_url = file_url
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Service code.
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
+        # Scenario.
         self.tab = tab
+        # Task name.
         self.task_name = task_name
+        # Access type.
         self.type = type
 
     def validate(self):
@@ -2824,10 +3632,15 @@ class CreatePocEvResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result
         self.result_object = result_object
 
     def validate(self):
@@ -2922,24 +3735,46 @@ class CreateQueryVariableRequest(TeaModel):
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source ID.
+        # 
         # This parameter is required.
         self.data_source_code = data_source_code
+        # Description.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Calculation expression
+        # 
         # This parameter is required.
         self.expression = expression
+        # Display value of calculation expression
+        # 
         # This parameter is required.
         self.expression_title = expression_title
+        # Calculation expression variable
+        # 
         # This parameter is required.
         self.expression_variable = expression_variable
+        # Outlier
+        # 
         # This parameter is required.
         self.outlier = outlier
+        # Variable return type
+        # 
         # This parameter is required.
         self.outputs = outputs
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -3009,7 +3844,9 @@ class CreateQueryVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -3087,11 +3924,19 @@ class CreateRecommendEventRuleRequest(TeaModel):
         reg_id: str = None,
         task_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code.
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Strategy ID.
         self.recommend_rule_ids_str = recommend_rule_ids_str
+        # Region code.
         self.reg_id = reg_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -3140,7 +3985,9 @@ class CreateRecommendEventRuleResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object.
         self.result_object = result_object
 
     def validate(self):
@@ -3218,14 +4065,26 @@ class CreateRecommendTaskRequest(TeaModel):
         variables_str: str = None,
         velocities_str: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Name
+        # 
         # This parameter is required.
         self.name = name
+        # Region code
         self.reg_id = reg_id
+        # Task ID.
+        # 
         # This parameter is required.
         self.sample_id = sample_id
+        # Variables to be calculated, variables
+        # 
         # This parameter is required.
         self.variables_str = variables_str
+        # Indicator effect
+        # 
         # This parameter is required.
         self.velocities_str = velocities_str
 
@@ -3275,7 +4134,9 @@ class CreateRecommendTaskResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -3343,134 +4204,6 @@ class CreateRecommendTaskResponse(TeaModel):
         return self
 
 
-class CreateReplenishTaskRequest(TeaModel):
-    def __init__(
-        self,
-        client_file_name: str = None,
-        client_path: str = None,
-        lang: str = None,
-        task_id: str = None,
-        reg_id: str = None,
-    ):
-        # This parameter is required.
-        self.client_file_name = client_file_name
-        # This parameter is required.
-        self.client_path = client_path
-        self.lang = lang
-        # This parameter is required.
-        self.task_id = task_id
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_file_name is not None:
-            result['ClientFileName'] = self.client_file_name
-        if self.client_path is not None:
-            result['ClientPath'] = self.client_path
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientFileName') is not None:
-            self.client_file_name = m.get('ClientFileName')
-        if m.get('ClientPath') is not None:
-            self.client_path = m.get('ClientPath')
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class CreateReplenishTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        data: bool = None,
-    ):
-        self.request_id = request_id
-        self.data = data
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
-        return self
-
-
-class CreateReplenishTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateReplenishTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateReplenishTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class CreateRuleRequest(TeaModel):
     def __init__(
         self,
@@ -3483,22 +4216,42 @@ class CreateRuleRequest(TeaModel):
         memo: str = None,
         reg_id: str = None,
         rule_actions: str = None,
+        rule_body: str = None,
         rule_expressions: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Rule ID.
         self.console_rule_id = console_rule_id
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Policy expression execution logic
         self.logic_expression = logic_expression
+        # Memo
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
+        # Policy execution output action
         self.rule_actions = rule_actions
+        # DSL policy execution logic
+        self.rule_body = rule_body
+        # Policy expression
         self.rule_expressions = rule_expressions
+        # Policy name
         self.rule_name = rule_name
+        # Policy status
         self.rule_status = rule_status
+        # Policy type
+        self.rule_type = rule_type
 
     def validate(self):
         pass
@@ -3527,12 +4280,16 @@ class CreateRuleRequest(TeaModel):
             result['regId'] = self.reg_id
         if self.rule_actions is not None:
             result['ruleActions'] = self.rule_actions
+        if self.rule_body is not None:
+            result['ruleBody'] = self.rule_body
         if self.rule_expressions is not None:
             result['ruleExpressions'] = self.rule_expressions
         if self.rule_name is not None:
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3555,12 +4312,16 @@ class CreateRuleRequest(TeaModel):
             self.reg_id = m.get('regId')
         if m.get('ruleActions') is not None:
             self.rule_actions = m.get('ruleActions')
+        if m.get('ruleBody') is not None:
+            self.rule_body = m.get('ruleBody')
         if m.get('ruleExpressions') is not None:
             self.rule_expressions = m.get('ruleExpressions')
         if m.get('ruleName') is not None:
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         return self
 
 
@@ -3570,7 +4331,9 @@ class CreateRuleResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -3651,14 +4414,25 @@ class CreateSampleRequest(TeaModel):
         sample_values: str = None,
         upload_type: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # OSS client uploaded file name
         self.client_file_name = client_file_name
+        # OSS client address
         self.client_path = client_path
+        # File type
         self.file_type = file_type
+        # Region code
         self.reg_id = reg_id
+        # Sample tag
         self.sample_tag = sample_tag
+        # Sample type
         self.sample_type = sample_type
+        # Sample values
         self.sample_values = sample_values
+        # Upload type
         self.upload_type = upload_type
 
     def validate(self):
@@ -3723,11 +4497,17 @@ class CreateSampleResponseBodyResultObject(TeaModel):
         sample_count: int = None,
         success_count: int = None,
     ):
+        # Number of colored groups
         self.community_count = community_count
+        # Number of failed samples
         self.fail_count = fail_count
+        # Recall probability
         self.recall_probability = recall_probability
+        # Risk density
         self.risk_density = risk_density
+        # Number of samples
         self.sample_count = sample_count
+        # Number of successful samples
         self.success_count = success_count
 
     def validate(self):
@@ -3776,7 +4556,9 @@ class CreateSampleResponseBody(TeaModel):
         request_id: str = None,
         result_object: CreateSampleResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -3856,12 +4638,19 @@ class CreateSampleApiRequest(TeaModel):
         sample_batch_type: str = None,
         service_list: str = None,
     ):
+        # Same as input parameter
         self.data_type = data_type
+        # Specific data value
         self.data_value = data_value
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
         # regionId
         self.reg_id = reg_id
+        # Sample batch type
         self.sample_batch_type = sample_batch_type
+        # Service list.
         self.service_list = service_list
 
     def validate(self):
@@ -3911,9 +4700,11 @@ class CreateSampleApiResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Status code.
         self.code = code
+        # Error message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -3985,6 +4776,161 @@ class CreateSampleApiResponse(TeaModel):
         return self
 
 
+class CreateSampleBatchRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        batch_name: str = None,
+        data_type: str = None,
+        data_value: str = None,
+        description: str = None,
+        oss_file_name: str = None,
+        reg_id: str = None,
+        sample_batch_type: str = None,
+        service_list: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Sample batch name
+        self.batch_name = batch_name
+        # Data type
+        self.data_type = data_type
+        # Content of the list entered in the text box
+        self.data_value = data_value
+        # Description information.
+        self.description = description
+        # Uploaded OSS address.
+        self.oss_file_name = oss_file_name
+        # Region code
+        self.reg_id = reg_id
+        # Specific type of sample list
+        self.sample_batch_type = sample_batch_type
+        # Service list
+        self.service_list = service_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_name is not None:
+            result['batchName'] = self.batch_name
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.description is not None:
+            result['description'] = self.description
+        if self.oss_file_name is not None:
+            result['ossFileName'] = self.oss_file_name
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.sample_batch_type is not None:
+            result['sampleBatchType'] = self.sample_batch_type
+        if self.service_list is not None:
+            result['serviceList'] = self.service_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchName') is not None:
+            self.batch_name = m.get('batchName')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('ossFileName') is not None:
+            self.oss_file_name = m.get('ossFileName')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('sampleBatchType') is not None:
+            self.sample_batch_type = m.get('sampleBatchType')
+        if m.get('serviceList') is not None:
+            self.service_list = m.get('serviceList')
+        return self
+
+
+class CreateSampleBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSampleBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSampleBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSampleBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSampleDataRequest(TeaModel):
     def __init__(
         self,
@@ -3998,14 +4944,25 @@ class CreateSampleDataRequest(TeaModel):
         store_path: str = None,
         store_type: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Description.
         self.description = description
+        # Encryption type
         self.encrypt_type = encrypt_type
+        # Name
         self.name = name
+        # Region code
         self.reg_id = reg_id
+        # Specified risk value
         self.risk_value = risk_value
+        # Scene
         self.scene = scene
+        # Storage path
         self.store_path = store_path
+        # Storage type
         self.store_type = store_type
 
     def validate(self):
@@ -4066,7 +5023,9 @@ class CreateSampleDataResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -4149,21 +5108,40 @@ class CreateSimulationTaskRequest(TeaModel):
         start_time: int = None,
         task_name: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source configuration
         self.data_source_config = data_source_config
+        # Data source type
         self.data_source_type = data_source_type
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Filters
         self.filters_str = filters_str
+        # Region code
         self.reg_id = reg_id
+        # Rules list
+        # 
         # This parameter is required.
         self.rules_str = rules_str
+        # Whether to run the task directly
+        # 
         # This parameter is required.
         self.run_task = run_task
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.start_time = start_time
+        # Task name
+        # 
         # This parameter is required.
         self.task_name = task_name
 
@@ -4233,7 +5211,9 @@ class CreateSimulationTaskResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -4301,22 +5281,45 @@ class CreateSimulationTaskResponse(TeaModel):
         return self
 
 
-class CreateTaskRequest(TeaModel):
+class DeepCopyRuleRequest(TeaModel):
     def __init__(
         self,
-        client_file_name: str = None,
-        client_path: str = None,
-        describe: str = None,
+        create_type: str = None,
+        cust_insert_info: str = None,
+        cust_write_info: str = None,
+        expression_variable_info: str = None,
         lang: str = None,
-        scene_name: str = None,
+        query_expression_variable_info: str = None,
         reg_id: str = None,
+        source_rule_id: str = None,
+        source_rule_ids: str = None,
+        target_event_code: str = None,
+        target_event_name: str = None,
     ):
-        self.client_file_name = client_file_name
-        self.client_path = client_path
-        self.describe = describe
+        # Creation type
+        self.create_type = create_type
+        # Newly added cumulative variable
+        self.cust_insert_info = cust_insert_info
+        # Read cumulative variable
+        self.cust_write_info = cust_write_info
+        # Custom variables to be added
+        self.expression_variable_info = expression_variable_info
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        self.scene_name = scene_name
+        # Custom query variables to be added
+        self.query_expression_variable_info = query_expression_variable_info
+        # Region code
         self.reg_id = reg_id
+        # Source policy ID
+        self.source_rule_id = source_rule_id
+        # Target policy ID
+        self.source_rule_ids = source_rule_ids
+        # Target event
+        self.target_event_code = target_event_code
+        # Target event name
+        self.target_event_name = target_event_name
 
     def validate(self):
         pass
@@ -4327,48 +5330,120 @@ class CreateTaskRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.client_file_name is not None:
-            result['ClientFileName'] = self.client_file_name
-        if self.client_path is not None:
-            result['ClientPath'] = self.client_path
-        if self.describe is not None:
-            result['Describe'] = self.describe
+        if self.create_type is not None:
+            result['CreateType'] = self.create_type
+        if self.cust_insert_info is not None:
+            result['CustInsertInfo'] = self.cust_insert_info
+        if self.cust_write_info is not None:
+            result['CustWriteInfo'] = self.cust_write_info
+        if self.expression_variable_info is not None:
+            result['ExpressionVariableInfo'] = self.expression_variable_info
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.scene_name is not None:
-            result['SceneName'] = self.scene_name
+        if self.query_expression_variable_info is not None:
+            result['QueryExpressionVariableInfo'] = self.query_expression_variable_info
         if self.reg_id is not None:
-            result['regId'] = self.reg_id
+            result['RegId'] = self.reg_id
+        if self.source_rule_id is not None:
+            result['SourceRuleId'] = self.source_rule_id
+        if self.source_rule_ids is not None:
+            result['SourceRuleIds'] = self.source_rule_ids
+        if self.target_event_code is not None:
+            result['TargetEventCode'] = self.target_event_code
+        if self.target_event_name is not None:
+            result['TargetEventName'] = self.target_event_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('ClientFileName') is not None:
-            self.client_file_name = m.get('ClientFileName')
-        if m.get('ClientPath') is not None:
-            self.client_path = m.get('ClientPath')
-        if m.get('Describe') is not None:
-            self.describe = m.get('Describe')
+        if m.get('CreateType') is not None:
+            self.create_type = m.get('CreateType')
+        if m.get('CustInsertInfo') is not None:
+            self.cust_insert_info = m.get('CustInsertInfo')
+        if m.get('CustWriteInfo') is not None:
+            self.cust_write_info = m.get('CustWriteInfo')
+        if m.get('ExpressionVariableInfo') is not None:
+            self.expression_variable_info = m.get('ExpressionVariableInfo')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('SceneName') is not None:
-            self.scene_name = m.get('SceneName')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
+        if m.get('QueryExpressionVariableInfo') is not None:
+            self.query_expression_variable_info = m.get('QueryExpressionVariableInfo')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('SourceRuleId') is not None:
+            self.source_rule_id = m.get('SourceRuleId')
+        if m.get('SourceRuleIds') is not None:
+            self.source_rule_ids = m.get('SourceRuleIds')
+        if m.get('TargetEventCode') is not None:
+            self.target_event_code = m.get('TargetEventCode')
+        if m.get('TargetEventName') is not None:
+            self.target_event_name = m.get('TargetEventName')
         return self
 
 
-class CreateTaskResponseBody(TeaModel):
+class DeepCopyRuleResponseBodyResultObject(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
-        data: bool = None,
+        batch_copy_flag: bool = None,
+        console_rule_id: int = None,
+        rule_id: str = None,
+        rule_version_id: int = None,
     ):
-        self.request_id = request_id
-        self.data = data
+        # Whether to redirect to details
+        self.batch_copy_flag = batch_copy_flag
+        # Primary key of the policy
+        self.console_rule_id = console_rule_id
+        # Policy ID
+        self.rule_id = rule_id
+        # Primary key of the policy version
+        self.rule_version_id = rule_version_id
 
     def validate(self):
         pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_copy_flag is not None:
+            result['BatchCopyFlag'] = self.batch_copy_flag
+        if self.console_rule_id is not None:
+            result['ConsoleRuleId'] = self.console_rule_id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_version_id is not None:
+            result['RuleVersionId'] = self.rule_version_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchCopyFlag') is not None:
+            self.batch_copy_flag = m.get('BatchCopyFlag')
+        if m.get('ConsoleRuleId') is not None:
+            self.console_rule_id = m.get('ConsoleRuleId')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleVersionId') is not None:
+            self.rule_version_id = m.get('RuleVersionId')
+        return self
+
+
+class DeepCopyRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DeepCopyRuleResponseBodyResultObject = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Returned result information
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4378,25 +5453,26 @@ class CreateTaskResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
+        if m.get('ResultObject') is not None:
+            temp_model = DeepCopyRuleResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
         return self
 
 
-class CreateTaskResponse(TeaModel):
+class DeepCopyRuleResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: CreateTaskResponseBody = None,
+        body: DeepCopyRuleResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -4427,168 +5503,7 @@ class CreateTaskResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = CreateTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class CreateTemplateRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        create_type: str = None,
-        event_code: str = None,
-        event_name: str = None,
-        logic_expression: str = None,
-        memo: str = None,
-        reg_id: str = None,
-        rule_actions: str = None,
-        rule_expressions: str = None,
-        rule_name: str = None,
-        rule_status: str = None,
-    ):
-        self.lang = lang
-        self.create_type = create_type
-        self.event_code = event_code
-        self.event_name = event_name
-        self.logic_expression = logic_expression
-        self.memo = memo
-        self.reg_id = reg_id
-        self.rule_actions = rule_actions
-        self.rule_expressions = rule_expressions
-        self.rule_name = rule_name
-        self.rule_status = rule_status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.create_type is not None:
-            result['createType'] = self.create_type
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.event_name is not None:
-            result['eventName'] = self.event_name
-        if self.logic_expression is not None:
-            result['logicExpression'] = self.logic_expression
-        if self.memo is not None:
-            result['memo'] = self.memo
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.rule_actions is not None:
-            result['ruleActions'] = self.rule_actions
-        if self.rule_expressions is not None:
-            result['ruleExpressions'] = self.rule_expressions
-        if self.rule_name is not None:
-            result['ruleName'] = self.rule_name
-        if self.rule_status is not None:
-            result['ruleStatus'] = self.rule_status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('createType') is not None:
-            self.create_type = m.get('createType')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('eventName') is not None:
-            self.event_name = m.get('eventName')
-        if m.get('logicExpression') is not None:
-            self.logic_expression = m.get('logicExpression')
-        if m.get('memo') is not None:
-            self.memo = m.get('memo')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('ruleActions') is not None:
-            self.rule_actions = m.get('ruleActions')
-        if m.get('ruleExpressions') is not None:
-            self.rule_expressions = m.get('ruleExpressions')
-        if m.get('ruleName') is not None:
-            self.rule_name = m.get('ruleName')
-        if m.get('ruleStatus') is not None:
-            self.rule_status = m.get('ruleStatus')
-        return self
-
-
-class CreateTemplateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class CreateTemplateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: CreateTemplateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = CreateTemplateResponseBody()
+            temp_model = DeepCopyRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4600,9 +5515,16 @@ class DeleteAnalysisConditionFavoriteRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -4640,7 +5562,9 @@ class DeleteAnalysisConditionFavoriteResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -4708,131 +5632,6 @@ class DeleteAnalysisConditionFavoriteResponse(TeaModel):
         return self
 
 
-class DeleteAuthUserRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        create_type: str = None,
-        event_code: str = None,
-        id: int = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        self.create_type = create_type
-        self.event_code = event_code
-        self.id = id
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.create_type is not None:
-            result['createType'] = self.create_type
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.id is not None:
-            result['id'] = self.id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('createType') is not None:
-            self.create_type = m.get('createType')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class DeleteAuthUserResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class DeleteAuthUserResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DeleteAuthUserResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DeleteAuthUserResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DeleteByPassShuntEventRequest(TeaModel):
     def __init__(
         self,
@@ -4840,8 +5639,13 @@ class DeleteByPassShuntEventRequest(TeaModel):
         event_id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event ID.
         self.event_id = event_id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -4882,11 +5686,17 @@ class DeleteByPassShuntEventResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether it was successful.
         self.success = success
 
     def validate(self):
@@ -4979,10 +5789,17 @@ class DeleteCustVariableRequest(TeaModel):
         reg_id: str = None,
         variable_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Data version.
         self.data_version = data_version
+        # Region code
         self.reg_id = reg_id
+        # Variable ID
         self.variable_id = variable_id
 
     def validate(self):
@@ -5027,7 +5844,9 @@ class DeleteCustVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5102,9 +5921,16 @@ class DeleteDataSourceRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -5142,7 +5968,9 @@ class DeleteDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5210,6 +6038,133 @@ class DeleteDataSourceResponse(TeaModel):
         return self
 
 
+class DeleteEventFieldRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        event_code: str = None,
+        field_name: str = None,
+        reg_id: str = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Event code
+        self.event_code = event_code
+        # Field name
+        self.field_name = field_name
+        # Region ID
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.event_code is not None:
+            result['eventCode'] = self.event_code
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('eventCode') is not None:
+            self.event_code = m.get('eventCode')
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DeleteEventFieldResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resule_object: bool = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Result object
+        self.resule_object = resule_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resule_object is not None:
+            result['resuleObject'] = self.resule_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('resuleObject') is not None:
+            self.resule_object = m.get('resuleObject')
+        return self
+
+
+class DeleteEventFieldResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEventFieldResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEventFieldResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteExpressionVariableRequest(TeaModel):
     def __init__(
         self,
@@ -5218,11 +6173,20 @@ class DeleteExpressionVariableRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data version.
+        # 
         # This parameter is required.
         self.data_version = data_version
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -5264,7 +6228,9 @@ class DeleteExpressionVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5340,9 +6306,16 @@ class DeleteFieldRequest(TeaModel):
         name: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the field
         self.id = id
+        # Name of the field.
         self.name = name
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -5384,7 +6357,9 @@ class DeleteFieldResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -5459,8 +6434,13 @@ class DeleteNameListRequest(TeaModel):
         ids: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Name list ID, multiple IDs should be separated by commas
         self.ids = ids
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -5497,7 +6477,9 @@ class DeleteNameListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5572,8 +6554,13 @@ class DeleteNameListDataRequest(TeaModel):
         reg_id: str = None,
         variable_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Variable ID
         self.variable_id = variable_id
 
     def validate(self):
@@ -5610,7 +6597,9 @@ class DeleteNameListDataResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5685,9 +6674,16 @@ class DeleteQueryVariableRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -5725,7 +6721,9 @@ class DeleteQueryVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5802,10 +6800,17 @@ class DeleteRuleRequest(TeaModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Policy primary key ID
         self.console_rule_id = console_rule_id
+        # Region code
         self.reg_id = reg_id
+        # Policy ID
         self.rule_id = rule_id
+        # Policy version primary key ID
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -5850,7 +6855,9 @@ class DeleteRuleResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -5926,9 +6933,16 @@ class DeleteSampleBatchRequest(TeaModel):
         reg_id: str = None,
         versions: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # IDs for batch deletion operations.
         self.ids = ids
+        # Region code.
         self.reg_id = reg_id
+        # List of versions.
+        # 
         # This parameter is required.
         self.versions = versions
 
@@ -5970,7 +6984,9 @@ class DeleteSampleBatchResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned data object.
         self.data = data
 
     def validate(self):
@@ -6038,6 +7054,119 @@ class DeleteSampleBatchResponse(TeaModel):
         return self
 
 
+class DeleteSampleBatchMetaRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        batch_uuid: str = None,
+        reg_id: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # UUID.
+        self.batch_uuid = batch_uuid
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_uuid is not None:
+            result['batchUuid'] = self.batch_uuid
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchUuid') is not None:
+            self.batch_uuid = m.get('batchUuid')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DeleteSampleBatchMetaResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSampleBatchMetaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSampleBatchMetaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSampleBatchMetaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSampleDataRequest(TeaModel):
     def __init__(
         self,
@@ -6045,8 +7174,13 @@ class DeleteSampleDataRequest(TeaModel):
         id: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -6083,7 +7217,9 @@ class DeleteSampleDataResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -6151,15 +7287,20 @@ class DeleteSampleDataResponse(TeaModel):
         return self
 
 
-class DeleteTaskRequest(TeaModel):
+class DeleteSelfBindVariableRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        task_id: str = None,
+        id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        self.task_id = task_id
+        # Variable ID
+        self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -6173,8 +7314,8 @@ class DeleteTaskRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.task_id is not None:
-            result['TaskId'] = self.task_id
+        if self.id is not None:
+            result['id'] = self.id
         if self.reg_id is not None:
             result['regId'] = self.reg_id
         return result
@@ -6183,21 +7324,23 @@ class DeleteTaskRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('TaskId') is not None:
-            self.task_id = m.get('TaskId')
+        if m.get('id') is not None:
+            self.id = m.get('id')
         if m.get('regId') is not None:
             self.reg_id = m.get('regId')
         return self
 
 
-class DeleteTaskResponseBody(TeaModel):
+class DeleteSelfBindVariableResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        data: bool = None,
+        result_object: bool = None,
     ):
+        # ID of the request
         self.request_id = request_id
-        self.data = data
+        # Returned object
+        self.result_object = result_object
 
     def validate(self):
         pass
@@ -6210,25 +7353,25 @@ class DeleteTaskResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.data is not None:
-            result['data'] = self.data
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('data') is not None:
-            self.data = m.get('data')
+        if m.get('resultObject') is not None:
+            self.result_object = m.get('resultObject')
         return self
 
 
-class DeleteTaskResponse(TeaModel):
+class DeleteSelfBindVariableResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: DeleteTaskResponseBody = None,
+        body: DeleteSelfBindVariableResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -6259,7 +7402,7 @@ class DeleteTaskResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = DeleteTaskResponseBody()
+            temp_model = DeleteSelfBindVariableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6272,10 +7415,18 @@ class DescribeAdvanceSearchLeftVariableListRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
+        # Scene
+        # 
         # This parameter is required.
         self.scene = scene
 
@@ -6326,16 +7477,27 @@ class DescribeAdvanceSearchLeftVariableListResponseBodyResultObject(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Variable code
         self.code = code
+        # Description.
         self.description = description
+        # Display type and grouping label
         self.display_type = display_type
+        # Variable return value type
         self.field_rank = field_rank
+        # Field table sorting
         self.field_type = field_type
+        # Primary key ID
         self.id = id
+        # Variable name
         self.name = name
+        # Parent node
         self.parent_name = parent_name
+        # Data source
         self.source_type = source_type
+        # Title.
         self.title = title
+        # Variable type
         self.type = type
 
     def validate(self):
@@ -6404,7 +7566,9 @@ class DescribeAdvanceSearchLeftVariableListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAdvanceSearchLeftVariableListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -6494,20 +7658,38 @@ class DescribeAdvanceSearchPageListRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Condition value.
         self.condition = condition
+        # Current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Query start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_end_time = event_end_time
+        # Field name
         self.field_name = field_name
+        # Field value
         self.field_value = field_value
+        # Page size, default value is 10
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -6574,8 +7756,13 @@ class DescribeAdvanceSearchPageListResponseBodyResultObjectHeader(TeaModel):
         field_title: str = None,
         is_default: bool = None,
     ):
+        # Field name
         self.field_name = field_name
+        # Field title.
         self.field_title = field_title
+        # Whether it is a default display field (displayed in the response, not used as a parameter)
+        # - true: Yes
+        # - false: No
         self.is_default = is_default
 
     def validate(self):
@@ -6616,11 +7803,17 @@ class DescribeAdvanceSearchPageListResponseBodyResultObject(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Returned data object
         self.data = data
+        # Table header
         self.header = header
+        # Number of items per page. Default value: 20, minimum value: 1, maximum value: 50.
         self.page_size = page_size
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -6677,7 +7870,9 @@ class DescribeAdvanceSearchPageListResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeAdvanceSearchPageListResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -6753,7 +7948,12 @@ class DescribeAllDataSourceRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -6788,8 +7988,11 @@ class DescribeAllDataSourceResponseBodyResultObject(TeaModel):
         event_name: str = None,
         id: int = None,
     ):
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Policy primary key ID
         self.id = id
 
     def validate(self):
@@ -6826,7 +8029,9 @@ class DescribeAllDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAllDataSourceResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -6909,8 +8114,13 @@ class DescribeAllEventNameAndCodeRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for the request and response messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -6949,9 +8159,13 @@ class DescribeAllEventNameAndCodeResponseBodyResultObjectChildren(TeaModel):
         event_name: str = None,
         event_type: str = None,
     ):
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
 
     def validate(self):
@@ -6995,10 +8209,15 @@ class DescribeAllEventNameAndCodeResponseBodyResultObject(TeaModel):
         event_name: str = None,
         event_type: str = None,
     ):
+        # List of child fields.
         self.children = children
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
 
     def validate(self):
@@ -7055,11 +8274,17 @@ class DescribeAllEventNameAndCodeResponseBody(TeaModel):
         result_object: List[DescribeAllEventNameAndCodeResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -7165,15 +8390,27 @@ class DescribeAllRootVariableRequest(TeaModel):
         reg_id: str = None,
         velocity_variable_ids: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Request source IP. No need to fill in, the system will automatically obtain it.
         self.source_ip = source_ip
+        # Device variable list
         self.device_variable_ids = device_variable_ids
+        # Event code
         self.event_code = event_code
+        # Custom variable list
         self.expression_variable_ids = expression_variable_ids
+        # Variable ID.
         self.id = id
+        # Event field list
         self.native_variable_ids = native_variable_ids
+        # Custom query variable
         self.query_variable_ids = query_variable_ids
+        # Region code
         self.reg_id = reg_id
+        # Custom cumulative variable
         self.velocity_variable_ids = velocity_variable_ids
 
     def validate(self):
@@ -7238,7 +8475,9 @@ class DescribeAllRootVariableResponseBodyResultObjectOutputThreshold(TeaModel):
         max_value: float = None,
         min_value: float = None,
     ):
+        # Maximum value
         self.max_value = max_value
+        # Minimum value.
         self.min_value = min_value
 
     def validate(self):
@@ -7283,19 +8522,33 @@ class DescribeAllRootVariableResponseBodyResultObject(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Variable code
         self.code = code
+        # Variable description.
         self.description = description
+        # Display type and group label
         self.display_type = display_type
+        # Favorite flag
         self.favorite_flag = favorite_flag
+        # Field ranking
         self.field_rank = field_rank
+        # Field type.
         self.field_type = field_type
+        # Variable ID.
         self.id = id
+        # Input field type.
         self.input_field_type = input_field_type
+        # Variable input.
         self.inputs = inputs
+        # Variable name.
         self.name = name
+        # Maximum cross-sectional area of the checkbox.
         self.output_threshold = output_threshold
+        # Data source
         self.source_type = source_type
+        # Title.
         self.title = title
+        # Variable type.
         self.type = type
 
     def validate(self):
@@ -7378,7 +8631,9 @@ class DescribeAllRootVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAllRootVariableResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -7460,7 +8715,12 @@ class DescribeAnalysisColumnFieldListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -7494,7 +8754,9 @@ class DescribeAnalysisColumnFieldListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -7568,7 +8830,12 @@ class DescribeAnalysisColumnListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -7606,11 +8873,17 @@ class DescribeAnalysisColumnListResponseBodyResultObject(TeaModel):
         variable_title: str = None,
         variable_type: str = None,
     ):
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Whether it is a default column.
         self.is_default = is_default
+        # Variable name.
         self.variable_name = variable_name
+        # Variable title.
         self.variable_title = variable_title
+        # Variable type.
         self.variable_type = variable_type
 
     def validate(self):
@@ -7659,7 +8932,9 @@ class DescribeAnalysisColumnListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAnalysisColumnListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -7741,7 +9016,12 @@ class DescribeAnalysisConditionFavoriteListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -7782,14 +9062,23 @@ class DescribeAnalysisConditionFavoriteListResponseBodyResultObject(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # Condition value.
         self.condition = condition
+        # Event start timestamp.
         self.event_begin_time = event_begin_time
+        # Event codes.
         self.event_codes = event_codes
+        # Event end time.
         self.event_end_time = event_end_time
+        # Field name.
         self.field_name = field_name
+        # Field value.
         self.field_value = field_value
+        # Primary key ID
         self.id = id
+        # Condition name
         self.name = name
+        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
         self.type = type
 
     def validate(self):
@@ -7850,7 +9139,9 @@ class DescribeAnalysisConditionFavoriteListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAnalysisConditionFavoriteListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -7932,7 +9223,12 @@ class DescribeAnalysisExportTaskDownloadUrlRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -7967,8 +9263,11 @@ class DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject(TeaModel):
         execute_time: int = None,
         status: str = None,
     ):
+        # Download URL.
         self.download_file_url = download_file_url
+        # Download execution time
         self.execute_time = execute_time
+        # Task status.
         self.status = status
 
     def validate(self):
@@ -8005,7 +9304,9 @@ class DescribeAnalysisExportTaskDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeAnalysisExportTaskDownloadUrlResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -8084,13 +9385,23 @@ class DescribeApiRequest(TeaModel):
         api_type: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # API unique ID.
+        # 
         # This parameter is required.
         self.api_id = api_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.api_region_id = api_region_id
+        # API type
+        # 
         # This parameter is required.
         self.api_type = api_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -8135,7 +9446,9 @@ class DescribeApiResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -8210,9 +9523,15 @@ class DescribeApiGroupsRequest(TeaModel):
         api_region_id: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region ID.
+        # 
         # This parameter is required.
         self.api_region_id = api_region_id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -8249,7 +9568,9 @@ class DescribeApiGroupsResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -8323,7 +9644,11 @@ class DescribeApiLimitRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -8357,8 +9682,11 @@ class DescribeApiLimitResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether the maximum number has been exceeded
         self.limit = limit
+        # Maximum number of items that can be created
         self.max_total_item = max_total_item
+        # Total number of items
         self.total_item = total_item
 
     def validate(self):
@@ -8395,7 +9723,9 @@ class DescribeApiLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeApiLimitResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -8471,7 +9801,11 @@ class DescribeApiNameListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -8504,7 +9838,9 @@ class DescribeApiNameListResponseBodyResultObject(TeaModel):
         api_id: str = None,
         api_name: str = None,
     ):
+        # API ID.
         self.api_id = api_id
+        # API name.
         self.api_name = api_name
 
     def validate(self):
@@ -8537,7 +9873,9 @@ class DescribeApiNameListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeApiNameListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -8620,9 +9958,15 @@ class DescribeApiVariableRequest(TeaModel):
         id: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -8659,7 +10003,9 @@ class DescribeApiVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -8736,13 +10082,23 @@ class DescribeApisRequest(TeaModel):
         api_type: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # API group ID.
+        # 
         # This parameter is required.
         self.api_group_id = api_group_id
+        # Region ID.
+        # 
         # This parameter is required.
         self.api_region_id = api_region_id
+        # API type.
+        # 
         # This parameter is required.
         self.api_type = api_type
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -8787,7 +10143,9 @@ class DescribeApisResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object.
         self.result_object = result_object
 
     def validate(self):
@@ -8863,9 +10221,15 @@ class DescribeAppKeyPageRequest(TeaModel):
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -8913,14 +10277,23 @@ class DescribeAppKeyPageResponseBodyResultObject(TeaModel):
         sdk_items: str = None,
         used: str = None,
     ):
+        # Android SDK download URL.
         self.android_sdk_url = android_sdk_url
+        # Android SDK version number.
         self.android_sdk_version = android_sdk_version
+        # Application appkey.
         self.app_key = app_key
+        # Creation time.
         self.gmt_create = gmt_create
+        # iOS SDK download URL.
         self.ios_sdk_url = ios_sdk_url
+        # iOS SDK version number.
         self.ios_sdk_version = ios_sdk_version
+        # Memo.
         self.memo = memo
+        # Deprecated.
         self.sdk_items = sdk_items
+        # Whether this appKey is integrated.
         self.used = used
 
     def validate(self):
@@ -8985,11 +10358,17 @@ class DescribeAppKeyPageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -9088,8 +10467,13 @@ class DescribeAuditConfigRequest(TeaModel):
         audit_relation_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Audit type
         self.audit_relation_type = audit_relation_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -9129,10 +10513,15 @@ class DescribeAuditConfigResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Returned object
         self.result_object = result_object
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -9219,9 +10608,15 @@ class DescribeAuditDetailsRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -9261,10 +10656,15 @@ class DescribeAuditDetailsResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Returned object
         self.result_object = result_object
+        # Whether the call was successful
         self.success = success
 
     def validate(self):
@@ -9355,12 +10755,21 @@ class DescribeAuditPageListRequest(TeaModel):
         reg_id: str = None,
         rule_name: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Audit status
         self.audit_status = audit_status
+        # Current page number.
         self.current_page = current_page
+        # Event code
         self.event_code = event_code
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Policy name
         self.rule_name = rule_name
 
     def validate(self):
@@ -9417,11 +10826,17 @@ class DescribeAuditPageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Number of records per page, default value: 10.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Total items
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -9511,7 +10926,11 @@ class DescribeAuthEventNameListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -9544,7 +10963,9 @@ class DescribeAuthEventNameListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -9621,11 +11042,19 @@ class DescribeAuthRulePageListRequest(TeaModel):
         rule_name: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code
         self.event_code = event_code
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Policy name
         self.rule_name = rule_name
+        # Status.
         self.status = status
 
     def validate(self):
@@ -9678,15 +11107,25 @@ class DescribeAuthRulePageListResponseBodyResultObject(TeaModel):
         status: str = None,
         version: int = None,
     ):
+        # Console rule ID.
         self.console_rule_id = console_rule_id
+        # Creation type
         self.create_type = create_type
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Policy primary key ID
         self.id = id
+        # Memo
         self.memo = memo
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
+        # Policy version primary key ID
         self.rule_version_id = rule_version_id
+        # Status.
         self.status = status
+        # Version number
         self.version = version
 
     def validate(self):
@@ -9755,11 +11194,17 @@ class DescribeAuthRulePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total items
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -9857,7 +11302,12 @@ class DescribeAuthSceneListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -9890,6 +11340,7 @@ class DescribeAuthSceneListResponseBodyResultObject(TeaModel):
         self,
         service_code: str = None,
     ):
+        # Service code
         self.service_code = service_code
 
     def validate(self):
@@ -9918,7 +11369,9 @@ class DescribeAuthSceneListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeAuthSceneListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -10001,9 +11454,15 @@ class DescribeAuthScenePageListRequest(TeaModel):
         reg_id: str = None,
         scene_name: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Scene name.
         self.scene_name = scene_name
 
     def validate(self):
@@ -10043,10 +11502,15 @@ class DescribeAuthScenePageListResponseBodyResultObject(TeaModel):
         scene_name: str = None,
         server_name: str = None,
     ):
+        # Number of common rules
         self.common_rule_count = common_rule_count
+        # Number of custom rules
         self.custom_rule_count = custom_rule_count
+        # Event code
         self.event_code = event_code
+        # Scene name.
         self.scene_name = scene_name
+        # Service name.
         self.server_name = server_name
 
     def validate(self):
@@ -10095,11 +11559,17 @@ class DescribeAuthScenePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -10197,7 +11667,11 @@ class DescribeAuthStatusRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -10230,7 +11704,9 @@ class DescribeAuthStatusResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -10304,7 +11780,11 @@ class DescribeAvgExecuteCostReportRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -10337,7 +11817,9 @@ class DescribeAvgExecuteCostReportResponseBodyResultObject(TeaModel):
         ratio: str = None,
         value: str = None,
     ):
+        # Comparison with yesterday\\"s average execution time
         self.ratio = ratio
+        # Today\\"s average execution time
         self.value = value
 
     def validate(self):
@@ -10374,11 +11856,17 @@ class DescribeAvgExecuteCostReportResponseBody(TeaModel):
         result_object: List[DescribeAvgExecuteCostReportResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the call was successful
         self.success = success
 
     def validate(self):
@@ -10483,19 +11971,36 @@ class DescribeBasicSearchPageListRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Query start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_begin_time = event_begin_time
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.event_end_time = event_end_time
+        # Field name
         self.field_name = field_name
+        # Field value
         self.field_value = field_value
+        # Page size, with a default value of 10
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -10558,8 +12063,13 @@ class DescribeBasicSearchPageListResponseBodyResultObjectHeader(TeaModel):
         field_title: str = None,
         is_default: bool = None,
     ):
+        # Field name
         self.field_name = field_name
+        # Field title.
         self.field_title = field_title
+        # Whether it is a default display field (displayed in the response, not used as a parameter)
+        # - true: Yes
+        # - false: No
         self.is_default = is_default
 
     def validate(self):
@@ -10600,11 +12110,17 @@ class DescribeBasicSearchPageListResponseBodyResultObject(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number in pagination queries.
         self.current_page = current_page
+        # Returned data object
         self.data = data
+        # Table header
         self.header = header
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -10661,7 +12177,9 @@ class DescribeBasicSearchPageListResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeBasicSearchPageListResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -10740,10 +12258,15 @@ class DescribeBasicStartRequest(TeaModel):
         service: str = None,
         start_ds: str = None,
     ):
+        # Application appkey.
         self.app_key = app_key
+        # End time, accurate to milliseconds (ms).
         self.end_ds = end_ds
+        # Region code
         self.reg_id = reg_id
+        # Service to call
         self.service = service
+        # Start time, accurate to milliseconds (ms).
         self.start_ds = start_ds
 
     def validate(self):
@@ -10792,11 +12315,17 @@ class DescribeBasicStartResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10887,8 +12416,13 @@ class DescribeByPassShuntEventRequest(TeaModel):
         event_id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event ID.
         self.event_id = event_id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -10924,6 +12458,7 @@ class DescribeByPassShuntEventResponseBodyResultObject(TeaModel):
         self,
         event_name: str = None,
     ):
+        # Event name.
         self.event_name = event_name
 
     def validate(self):
@@ -10956,11 +12491,17 @@ class DescribeByPassShuntEventResponseBody(TeaModel):
         result_object: DescribeByPassShuntEventResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Error code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether it was successful.
         self.success = success
 
     def validate(self):
@@ -11054,10 +12595,17 @@ class DescribeCustVariableConfigListRequest(TeaModel):
         reg_id: str = None,
         time_type: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Configuration type
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Region code
         self.reg_id = reg_id
+        # Time type
         self.time_type = time_type
 
     def validate(self):
@@ -11098,7 +12646,9 @@ class DescribeCustVariableConfigListResponseBodyResultObject(TeaModel):
         config_key: str = None,
         config_value: str = None,
     ):
+        # Configuration key
         self.config_key = config_key
+        # Configuration value
         self.config_value = config_value
 
     def validate(self):
@@ -11131,7 +12681,9 @@ class DescribeCustVariableConfigListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeCustVariableConfigListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -11214,9 +12766,15 @@ class DescribeCustVariableDetailRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the cumulative variable
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -11265,19 +12823,33 @@ class DescribeCustVariableDetailResponseBodyResultObject(TeaModel):
         velocity_fc: str = None,
         velocity_tw: str = None,
     ):
+        # Condition value.
         self.condition = condition
+        # Data version.
         self.data_version = data_version
+        # Description information.
         self.description = description
+        # Event code.
         self.event_codes = event_codes
+        # Value type
         self.history_value_type = history_value_type
+        # Primary key ID of the cumulative variable
         self.id = id
+        # Cumulative object
         self.object = object
+        # Variable return type
         self.outputs = outputs
+        # Main object
         self.subject = subject
+        # Time slice type
         self.time_type = time_type
+        # Title.
         self.title = title
+        # Time count
         self.tw_count = tw_count
+        # Variable type
         self.velocity_fc = velocity_fc
+        # Time slice unit
         self.velocity_tw = velocity_tw
 
     def validate(self):
@@ -11358,7 +12930,9 @@ class DescribeCustVariableDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeCustVariableDetailResponseBodyResultObject] = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -11445,12 +13019,21 @@ class DescribeCustVariablePageRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Pagination parameter, current page number.
         self.current_page = current_page
+        # Description
         self.description = description
+        # Event code
         self.event_code = event_code
+        # Number of records per page, default value: 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -11508,12 +13091,19 @@ class DescribeCustVariablePageResponseBodyResultObject(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        # Data version.
         self.data_version = data_version
+        # Description information.
         self.description = description
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Primary key ID of accumulated variable
         self.id = id
+        # Accumulated variable name: generated by backend
         self.name = name
+        # Status.
         self.status = status
+        # Title.
         self.title = title
 
     def validate(self):
@@ -11570,11 +13160,17 @@ class DescribeCustVariablePageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -11673,9 +13269,16 @@ class DescribeDataSourceDataDownloadUrlRequest(TeaModel):
         data_source_id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source ID.
+        # 
         # This parameter is required.
         self.data_source_id = data_source_id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -11712,6 +13315,7 @@ class DescribeDataSourceDataDownloadUrlResponseBodyResultObject(TeaModel):
         self,
         download_file_url: str = None,
     ):
+        # Download URL.
         self.download_file_url = download_file_url
 
     def validate(self):
@@ -11740,7 +13344,9 @@ class DescribeDataSourceDataDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeDataSourceDataDownloadUrlResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -11817,9 +13423,16 @@ class DescribeDataSourceFieldsRequest(TeaModel):
         data_source_code: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source code
+        # 
         # This parameter is required.
         self.data_source_code = data_source_code
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -11857,7 +13470,9 @@ class DescribeDataSourceFieldsResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -11936,12 +13551,21 @@ class DescribeDataSourcePageListRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Request source IP.
         self.source_ip = source_ip
+        # Current page number.
         self.current_page = current_page
+        # Variable name
         self.name = name
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Type
         self.type = type
 
     def validate(self):
@@ -12001,14 +13625,23 @@ class DescribeDataSourcePageListResponseBodyResultObject(TeaModel):
         total: int = None,
         type: str = None,
     ):
+        # Creator of the data source.
         self.creator = creator
+        # Data source description.
         self.description = description
+        # Time when the data source was created.
         self.gmt_create = gmt_create
+        # Time when the data source was last modified.
         self.gmt_modified = gmt_modified
+        # Data source ID.
         self.id = id
+        # Last modifier.
         self.modifier = modifier
+        # Data source name.
         self.name = name
+        # Total pages.
         self.total = total
+        # Data source type.
         self.type = type
 
     def validate(self):
@@ -12073,11 +13706,17 @@ class DescribeDataSourcePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Return object
         self.result_object = result_object
+        # Total items
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -12176,8 +13815,13 @@ class DescribeDecisionResultFluctuationRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -12218,11 +13862,17 @@ class DescribeDecisionResultFluctuationResponseBodyResultObject(TeaModel):
         within_three_day_num: str = None,
         yesterday_num: int = None,
     ):
+        # Execution status.
         self.status = status
+        # Today\\"s count
         self.today_num = today_num
+        # Count within the last seven days
         self.within_seven_day_num = within_seven_day_num
+        # Count within the last thirty days
         self.within_thirty_day_num = within_thirty_day_num
+        # Count within the last three days
         self.within_three_day_num = within_three_day_num
+        # Yesterday\\"s count
         self.yesterday_num = yesterday_num
 
     def validate(self):
@@ -12275,11 +13925,17 @@ class DescribeDecisionResultFluctuationResponseBody(TeaModel):
         result_object: List[DescribeDecisionResultFluctuationResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Indicates whether the operation was successful.
         self.success = success
 
     def validate(self):
@@ -12380,10 +14036,17 @@ class DescribeDecisionResultTrendRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start timestamp, in milliseconds.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -12428,7 +14091,9 @@ class DescribeDecisionResultTrendResponseBodyResultObjectSeriesData(TeaModel):
         num: int = None,
         scale: str = None,
     ):
+        # Number
         self.num = num
+        # ratio
         self.scale = scale
 
     def validate(self):
@@ -12461,7 +14126,9 @@ class DescribeDecisionResultTrendResponseBodyResultObjectSeries(TeaModel):
         data: List[DescribeDecisionResultTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Name.
         self.name = name
 
     def validate(self):
@@ -12501,6 +14168,7 @@ class DescribeDecisionResultTrendResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # X-axis data structure.
         self.data = data
 
     def validate(self):
@@ -12529,7 +14197,9 @@ class DescribeDecisionResultTrendResponseBodyResultObject(TeaModel):
         series: List[DescribeDecisionResultTrendResponseBodyResultObjectSeries] = None,
         xaxis: DescribeDecisionResultTrendResponseBodyResultObjectXaxis = None,
     ):
+        # Chart data
         self.series = series
+        # X-axis data
         self.xaxis = xaxis
 
     def validate(self):
@@ -12577,11 +14247,17 @@ class DescribeDecisionResultTrendResponseBody(TeaModel):
         result_object: DescribeDecisionResultTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -12676,10 +14352,19 @@ class DescribeDetailStartRequest(TeaModel):
         service: str = None,
         start_ds: str = None,
     ):
+        # Application appkey.
         self.app_key = app_key
+        # End time
+        #      
+        # Format yyyymmdd
         self.end_ds = end_ds
+        # Region code
         self.reg_id = reg_id
+        # Called service
         self.service = service
+        # Start time
+        #      
+        #  Format yyyymmdd
         self.start_ds = start_ds
 
     def validate(self):
@@ -12728,11 +14413,17 @@ class DescribeDetailStartResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Indicates whether the operation was successful, with true representing success.
         self.success = success
 
     def validate(self):
@@ -12825,10 +14516,17 @@ class DescribeDownloadUrlRequest(TeaModel):
         task_id: int = None,
         type: str = None,
     ):
+        # File type
         self.file_type = file_type
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Task ID.
         self.task_id = task_id
+        # Download type
         self.type = type
 
     def validate(self):
@@ -12873,7 +14571,9 @@ class DescribeDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -12949,9 +14649,15 @@ class DescribeEventBaseInfoByEventCodeRequest(TeaModel):
         event_code: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -12996,11 +14702,17 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObjectInputFields(TeaMod
         field_type: str = None,
         title: str = None,
     ):
+        # Field description.
         self.description = description
+        # Field code
         self.field_code = field_code
+        # Field ranking
         self.field_rank = field_rank
+        # Field source.
         self.field_source = field_source
+        # Field type.
         self.field_type = field_type
+        # Field name.
         self.title = title
 
     def validate(self):
@@ -13055,13 +14767,21 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObjectRuleDetails(TeaMod
         rule_name: str = None,
         rule_status: str = None,
     ):
+        # Policy Execution Logic
         self.logic_expression = logic_expression
+        # Memo
         self.memo = memo
+        # Rule Actions
         self.rule_actions = rule_actions
+        # Policy Type
         self.rule_auth_type = rule_auth_type
+        # Event Expressions.
         self.rule_expressions = rule_expressions
+        # Policy ID
         self.rule_id = rule_id
+        # Policy Name
         self.rule_name = rule_name
+        # Policy Status
         self.rule_status = rule_status
 
     def validate(self):
@@ -13126,15 +14846,25 @@ class DescribeEventBaseInfoByEventCodeResponseBodyResultObject(TeaModel):
         template_name: str = None,
         template_type: str = None,
     ):
+        # Business version number
         self.biz_version = biz_version
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event status.
         self.event_stauts = event_stauts
+        # Field list.
         self.input_fields = input_fields
+        # Memo.
         self.memo = memo
+        # Policy Information
         self.rule_details = rule_details
+        # Operation template code
         self.template_code = template_code
+        # Template name
         self.template_name = template_name
+        # Template type.
         self.template_type = template_type
 
     def validate(self):
@@ -13216,7 +14946,9 @@ class DescribeEventBaseInfoByEventCodeResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeEventBaseInfoByEventCodeResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -13293,8 +15025,13 @@ class DescribeEventCountRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -13332,8 +15069,11 @@ class DescribeEventCountResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether it exceeds the maximum number
         self.limit = limit
+        # Maximum creation count
         self.max_total_item = max_total_item
+        # Total count
         self.total_item = total_item
 
     def validate(self):
@@ -13374,11 +15114,17 @@ class DescribeEventCountResponseBody(TeaModel):
         result_object: DescribeEventCountResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -13473,11 +15219,20 @@ class DescribeEventDetailByRequestIdRequest(TeaModel):
         reg_id: str = None,
         s_request_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code
         self.event_code = event_code
+        # Event execution time
         self.event_time = event_time
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Request ID.
+        # 
         # This parameter is required.
         self.s_request_id = s_request_id
 
@@ -13523,7 +15278,9 @@ class DescribeEventDetailByRequestIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -13598,8 +15355,14 @@ class DescribeEventLogDetailRequest(TeaModel):
         reg_id: str = None,
         req_id_by_log: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Log details.
+        # 
         # This parameter is required.
         self.req_id_by_log = req_id_by_log
 
@@ -13637,7 +15400,9 @@ class DescribeEventLogDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -13761,6 +15526,7 @@ class DescribeEventLogPageRequest(TeaModel):
         self.refer_prp = refer_prp
         self.reg_id = reg_id
         self.register_ip_prp = register_ip_prp
+        # requestId。
         self.req_id_pbs = req_id_pbs
         self.score_ebs = score_ebs
         self.score_sbs = score_sbs
@@ -13923,6 +15689,7 @@ class DescribeEventLogPageResponseBodyResultObject(TeaModel):
     ):
         self.account_id = account_id
         self.email = email
+        # ip。
         self.ip = ip
         self.mobile = mobile
         self.nick_name = nick_name
@@ -14111,13 +15878,23 @@ class DescribeEventPageListRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Current page number.
         self.current_page = current_page
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event status.
         self.event_status = event_status
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -14180,13 +15957,21 @@ class DescribeEventPageListResponseBodyResultObjectChildren(TeaModel):
         id: int = None,
         rule_count: int = None,
     ):
+        # Event code.
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event status.
         self.event_status = event_status
+        # Event type.
         self.event_type = event_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Primary key ID
         self.id = id
+        # Total number of rules.
         self.rule_count = rule_count
 
     def validate(self):
@@ -14254,18 +16039,31 @@ class DescribeEventPageListResponseBodyResultObject(TeaModel):
         template_type: str = None,
         user_count: int = None,
     ):
+        # Object
         self.children = children
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event status.
         self.event_status = event_status
+        # Event type.
         self.event_type = event_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Database ID.
         self.id = id
+        # Total number of rules.
         self.rule_count = rule_count
+        # Template code
         self.template_code = template_code
+        # Template name.
         self.template_name = template_name
+        # Template type
         self.template_type = template_type
+        # Number of customer authorizations
         self.user_count = user_count
 
     def validate(self):
@@ -14354,11 +16152,17 @@ class DescribeEventPageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -14459,12 +16263,21 @@ class DescribeEventResultBarChartRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -14509,7 +16322,9 @@ class DescribeEventResultBarChartResponseBodyResultObjectSeriesData(TeaModel):
         num: int = None,
         scale: str = None,
     ):
+        # Number.
         self.num = num
+        # Scale
         self.scale = scale
 
     def validate(self):
@@ -14543,8 +16358,11 @@ class DescribeEventResultBarChartResponseBodyResultObjectSeries(TeaModel):
         name: str = None,
         stack: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Series name.
         self.name = name
+        # Label key
         self.stack = stack
 
     def validate(self):
@@ -14588,6 +16406,7 @@ class DescribeEventResultBarChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Returned data object
         self.data = data
 
     def validate(self):
@@ -14616,7 +16435,9 @@ class DescribeEventResultBarChartResponseBodyResultObject(TeaModel):
         series: List[DescribeEventResultBarChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeEventResultBarChartResponseBodyResultObjectXaxis = None,
     ):
+        # Chart data
         self.series = series
+        # xaxis interface configuration.
         self.xaxis = xaxis
 
     def validate(self):
@@ -14664,11 +16485,17 @@ class DescribeEventResultBarChartResponseBody(TeaModel):
         result_object: DescribeEventResultBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -14764,13 +16591,23 @@ class DescribeEventResultListRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # Current page number.
         self.current_page = current_page
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -14823,11 +16660,17 @@ class DescribeEventResultListResponseBodyResultObject(TeaModel):
         reject_num: int = None,
         total_num: int = None,
     ):
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Number of passed checks.
         self.pass_num = pass_num
+        # Number of pending items.
         self.pending_num = pending_num
+        # Number of rejected approvals.
         self.reject_num = reject_num
+        # Total number of items.
         self.total_num = total_num
 
     def validate(self):
@@ -14884,15 +16727,25 @@ class DescribeEventResultListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Status code.
         self.code = code
+        # Current page number.
         self.current_page = current_page
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Page size, default value is 10
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the query was successful.
         self.success = success
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -15006,7 +16859,11 @@ class DescribeEventTaskHistoryRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -15041,9 +16898,13 @@ class DescribeEventTaskHistoryResponseBodyResultObject(TeaModel):
         task_status: str = None,
         url: str = None,
     ):
+        # Task code.
         self.task_code = task_code
+        # Task name
         self.task_name = task_name
+        # Task status.
         self.task_status = task_status
+        # OSS download URL
         self.url = url
 
     def validate(self):
@@ -15084,7 +16945,9 @@ class DescribeEventTaskHistoryResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeEventTaskHistoryResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -15166,7 +17029,11 @@ class DescribeEventTotalCountReportRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -15199,7 +17066,9 @@ class DescribeEventTotalCountReportResponseBodyResultObject(TeaModel):
         ratio: str = None,
         value: str = None,
     ):
+        # Comparison with yesterday\\"s event invocation count
         self.ratio = ratio
+        # Today\\"s event invocation count
         self.value = value
 
     def validate(self):
@@ -15236,11 +17105,17 @@ class DescribeEventTotalCountReportResponseBody(TeaModel):
         result_object: DescribeEventTotalCountReportResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Indicates whether this operation was successful, `true` means success.
         self.success = success
 
     def validate(self):
@@ -15332,7 +17207,11 @@ class DescribeEventUploadPolicyRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -15370,12 +17249,19 @@ class DescribeEventUploadPolicyResponseBody(TeaModel):
         signature: str = None,
         sts_token: str = None,
     ):
+        # ID for accessing OSS
         self.access_id = access_id
+        # OSS host.
         self.host = host
+        # The Key required for file upload.
         self.key = key
+        # OSS security policy
         self.policy = policy
+        # Request ID
         self.request_id = request_id
+        # Signature data.
         self.signature = signature
+        # Temporary identity credential.
         self.sts_token = sts_token
 
     def validate(self):
@@ -18902,11 +20788,20 @@ class DescribeEventVariableTemplateBindRequest(TeaModel):
         template_code: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages. Default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Input parameters, separated by commas if multiple.
+        # 
         # This parameter is required.
         self.inputs = inputs
+        # Region code
         self.reg_id = reg_id
+        # Template code.
         self.template_code = template_code
+        # Type
+        # 
         # This parameter is required.
         self.type = type
 
@@ -18957,12 +20852,19 @@ class DescribeEventVariableTemplateBindResponseBodyResultObjectChargeVariables(T
         title: str = None,
         type: str = None,
     ):
+        # Variable code
         self.code = code
+        # Description of the variable.
         self.description = description
+        # Field type.
         self.field_type = field_type
+        # Primary key ID
         self.id = id
+        # Variable name
         self.name = name
+        # Title.
         self.title = title
+        # Variable type.
         self.type = type
 
     def validate(self):
@@ -19020,12 +20922,19 @@ class DescribeEventVariableTemplateBindResponseBodyResultObjectFreeVariables(Tea
         title: str = None,
         type: str = None,
     ):
+        # Variable code
         self.code = code
+        # Variable description.
         self.description = description
+        # Field type.
         self.field_type = field_type
+        # Primary key ID
         self.id = id
+        # Variable name
         self.name = name
+        # Title.
         self.title = title
+        # Variable type.
         self.type = type
 
     def validate(self):
@@ -19080,9 +20989,13 @@ class DescribeEventVariableTemplateBindResponseBodyResultObject(TeaModel):
         template_code: str = None,
         total_count: str = None,
     ):
+        # List of chargeable variables
         self.charge_variables = charge_variables
+        # List of free variables
         self.free_variables = free_variables
+        # Template code
         self.template_code = template_code
+        # Total count
         self.total_count = total_count
 
     def validate(self):
@@ -19140,7 +21053,9 @@ class DescribeEventVariableTemplateBindResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeEventVariableTemplateBindResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -19219,10 +21134,17 @@ class DescribeEventVariableTemplateListRequest(TeaModel):
         template_code: str = None,
         type: str = None,
     ):
+        # Sets the language type for the request and response messages. The default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Input parameters, separated by commas.
         self.inputs = inputs
+        # Region code
         self.reg_id = reg_id
+        # Template code.
         self.template_code = template_code
+        # Template type.
         self.type = type
 
     def validate(self):
@@ -19272,12 +21194,19 @@ class DescribeEventVariableTemplateListResponseBodyResultObjectVariables(TeaMode
         title: str = None,
         type: str = None,
     ):
+        # Variable code
         self.code = code
+        # Description information.
         self.description = description
+        # Variable input type
         self.field_type = field_type
+        # Primary key ID
         self.id = id
+        # Variable name
         self.name = name
+        # Title.
         self.title = title
+        # Variable type.
         self.type = type
 
     def validate(self):
@@ -19331,8 +21260,11 @@ class DescribeEventVariableTemplateListResponseBodyResultObject(TeaModel):
         template_name: str = None,
         variables: List[DescribeEventVariableTemplateListResponseBodyResultObjectVariables] = None,
     ):
+        # Template code.
         self.template_code = template_code
+        # Template name.
         self.template_name = template_name
+        # Variable list.
         self.variables = variables
 
     def validate(self):
@@ -19377,7 +21309,9 @@ class DescribeEventVariableTemplateListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeEventVariableTemplateListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -19463,12 +21397,22 @@ class DescribeEventsVariableListRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # Filter object
         self.filter_dto = filter_dto
+        # Region code
         self.reg_id = reg_id
+        # Applicable scene code
+        # 
         # This parameter is required.
         self.scene = scene
 
@@ -19518,7 +21462,9 @@ class DescribeEventsVariableListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -19731,8 +21677,14 @@ class DescribeExistNameRequest(TeaModel):
         name: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable name
         self.name = name
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -19770,7 +21722,9 @@ class DescribeExistNameResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -19845,8 +21799,13 @@ class DescribeExistSceneRequest(TeaModel):
         scene_name: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Scene name.
         self.scene_name = scene_name
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -19883,7 +21842,9 @@ class DescribeExistSceneResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Data object
         self.data = data
 
     def validate(self):
@@ -19958,9 +21919,16 @@ class DescribeExpressionVariableDetailRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -19998,7 +21966,9 @@ class DescribeExpressionVariableDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: Dict[str, Any] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -20072,7 +22042,12 @@ class DescribeExpressionVariableFunctionListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -20112,13 +22087,21 @@ class DescribeExpressionVariableFunctionListResponseBodyResultObject(TeaModel):
         return_types: str = None,
         value: str = None,
     ):
+        # Description information.
         self.description = description
+        # Function name
         self.key = key
+        # Maximum number of parameters
         self.max_param_size = max_param_size
+        # Minimum number of parameters
         self.min_param_size = min_param_size
+        # Parameter types
         self.param_types = param_types
+        # Whether it is directly invoked
         self.redirect = redirect
+        # Method return types
         self.return_types = return_types
+        # Function value
         self.value = value
 
     def validate(self):
@@ -20175,7 +22158,9 @@ class DescribeExpressionVariableFunctionListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeExpressionVariableFunctionListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -20263,16 +22248,29 @@ class DescribeExpressionVariablePageRequest(TeaModel):
         status: str = None,
         value: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Event code
         self.event_code = event_code
+        # Variable return type
         self.outputs = outputs
+        # Page size, with a default value of 10
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Status.
         self.status = status
+        # Variable name/description
         self.value = value
 
     def validate(self):
@@ -20335,13 +22333,21 @@ class DescribeExpressionVariablePageResponseBodyResultObject(TeaModel):
         title: str = None,
         version: int = None,
     ):
+        # Description information.
         self.description = description
+        # Event name.
         self.event_name = event_name
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key of custom variable
         self.id = id
+        # Variable return type
         self.outputs = outputs
+        # Status.
         self.status = status
+        # Title.
         self.title = title
+        # Version information.
         self.version = version
 
     def validate(self):
@@ -20402,11 +22408,17 @@ class DescribeExpressionVariablePageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -20505,8 +22517,14 @@ class DescribeFieldByIdRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -20544,7 +22562,9 @@ class DescribeFieldByIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -20620,9 +22640,16 @@ class DescribeFieldListRequest(TeaModel):
         inputs: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Query input name or title
         self.condition = condition
+        # Selected fields
         self.inputs = inputs
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -20671,14 +22698,23 @@ class DescribeFieldListResponseBodyResultObject(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Field classification
         self.classify = classify
+        # Description information.
         self.description = description
+        # Enum data
         self.enum_data = enum_data
+        # Field ID.
         self.id = id
+        # Field name
         self.name = name
+        # Field source
         self.source = source
+        # Status.
         self.status = status
+        # Title.
         self.title = title
+        # Field type
         self.type = type
 
     def validate(self):
@@ -20743,11 +22779,17 @@ class DescribeFieldListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -20854,16 +22896,29 @@ class DescribeFieldPageRequest(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Field classification
         self.classify = classify
+        # Query input parameter name or title
         self.condition = condition
+        # Current page number
         self.current_page = current_page
+        # Field name
         self.name = name
+        # Number of items per page, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Field source
         self.source = source
+        # Status.
         self.status = status
+        # Title.
         self.title = title
+        # Field type
         self.type = type
 
     def validate(self):
@@ -20939,14 +22994,23 @@ class DescribeFieldPageResponseBodyResultObject(TeaModel):
         title: str = None,
         type: str = None,
     ):
+        # Field classification
         self.classify = classify
+        # Description information.
         self.description = description
+        # Enum data
         self.enum_data = enum_data
+        # Unique table ID.
         self.id = id
+        # Field name
         self.name = name
+        # File source.
         self.source = source
+        # Status.
         self.status = status
+        # Title.
         self.title = title
+        # Field type
         self.type = type
 
     def validate(self):
@@ -21011,11 +23075,17 @@ class DescribeFieldPageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number
         self.current_page = current_page
+        # Number of items per page, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -21122,16 +23192,29 @@ class DescribeGroupAccountPageRequest(TeaModel):
         reg_id: str = None,
         task_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Community number.
         self.community_no = community_no
+        # Current page number.
         self.current_page = current_page
+        # Order direction.
         self.direction = direction
+        # fieldKey.
         self.field_key = field_key
+        # fieldVal.
         self.field_val = field_val
+        # Whether to paginate.
         self.is_page = is_page
+        # Sorting condition.
         self.order = order
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -21204,11 +23287,17 @@ class DescribeGroupAccountPageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Returned data object.
         self.data = data
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -21298,7 +23387,11 @@ class DescribeGroupConditionListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -21331,7 +23424,9 @@ class DescribeGroupConditionListResponseBodyResultObject(TeaModel):
         field_key: str = None,
         field_value: str = None,
     ):
+        # Field key
         self.field_key = field_key
+        # Field value.
         self.field_value = field_value
 
     def validate(self):
@@ -21364,7 +23459,9 @@ class DescribeGroupConditionListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeGroupConditionListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -21452,13 +23549,23 @@ class DescribeGroupPageRequest(TeaModel):
         task_id: str = None,
         time_type: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Order.
         self.direction = direction
+        # Sorting condition.
         self.order = order
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Task ID.
         self.task_id = task_id
+        # Time type.
         self.time_type = time_type
 
     def validate(self):
@@ -21521,13 +23628,21 @@ class DescribeGroupPageResponseBodyResultObject(TeaModel):
         task_id: int = None,
         user_id: str = None,
     ):
+        # Community number.
         self.community_no = community_no
+        # Creation time.
         self.create_time = create_time
+        # Group risk concentration.
         self.group_risk = group_risk
+        # Group scale.
         self.group_scale = group_scale
+        # Primary key ID.
         self.id = id
+        # Scene name.
         self.scene_name = scene_name
+        # Task ID.
         self.task_id = task_id
+        # User UID.
         self.user_id = user_id
 
     def validate(self):
@@ -21588,11 +23703,17 @@ class DescribeGroupPageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -21690,7 +23811,11 @@ class DescribeGroupStatisticsByTodayRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -21723,7 +23848,9 @@ class DescribeGroupStatisticsByTodayResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned data.
         self.data = data
 
     def validate(self):
@@ -21798,8 +23925,13 @@ class DescribeGroupTrendRequest(TeaModel):
         day: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # day
         self.day = day
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -21836,7 +23968,9 @@ class DescribeGroupTrendResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return result.
         self.data = data
 
     def validate(self):
@@ -21913,10 +24047,17 @@ class DescribeHasRuleNameByEventCodeRequest(TeaModel):
         reg_id: str = None,
         rule_name: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code
         self.event_code = event_code
+        # Excluded policy ID
         self.exclude_rule_id = exclude_rule_id
+        # Region code
         self.reg_id = reg_id
+        # Policy name
         self.rule_name = rule_name
 
     def validate(self):
@@ -21961,7 +24102,9 @@ class DescribeHasRuleNameByEventCodeResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -22038,12 +24181,21 @@ class DescribeHighRiskPieChartRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages. Default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -22087,6 +24239,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid(TeaMode
         self,
         show: bool = None,
     ):
+        # Chart flag, default false
         self.show = show
 
     def validate(self):
@@ -22115,7 +24268,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeriesData(T
         name: str = None,
         value: str = None,
     ):
+        # Field name
         self.name = name
+        # Data value
         self.value = value
 
     def validate(self):
@@ -22149,8 +24304,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries(TeaMo
         name: str = None,
         rose_type: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Field name
         self.name = name
+        # Chart identifier, default is false
         self.rose_type = rose_type
 
     def validate(self):
@@ -22196,8 +24354,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCity(TeaModel):
         grid: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCityGrid = None,
         series: List[DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPCitySeries] = None,
     ):
+        # Chart flag, default true
         self.animation = animation
+        # Belonging grid.
         self.grid = grid
+        # Chart data
         self.series = series
 
     def validate(self):
@@ -22244,6 +24405,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid(Tea
         self,
         show: bool = None,
     ):
+        # Chart identifier, default is false
         self.show = show
 
     def validate(self):
@@ -22272,7 +24434,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeriesDa
         name: str = None,
         value: str = None,
     ):
+        # Variable name
         self.name = name
+        # Data value
         self.value = value
 
     def validate(self):
@@ -22306,8 +24470,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries(T
         name: str = None,
         rose_type: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Field name
         self.name = name
+        # Chart identifier, default is false
         self.rose_type = rose_type
 
     def validate(self):
@@ -22353,8 +24520,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvince(TeaMode
         grid: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceGrid = None,
         series: List[DescribeHighRiskPieChartResponseBodyResultObjectHighRiskIPProvinceSeries] = None,
     ):
+        # Chart identifier, default is true
         self.animation = animation
+        # Belonging grid.
         self.grid = grid
+        # Chart data
         self.series = series
 
     def validate(self):
@@ -22401,6 +24571,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid(Tea
         self,
         show: bool = None,
     ):
+        # Chart flag, default is false
         self.show = show
 
     def validate(self):
@@ -22429,7 +24600,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeriesDa
         name: str = None,
         value: str = None,
     ):
+        # Field name
         self.name = name
+        # Data value
         self.value = value
 
     def validate(self):
@@ -22463,8 +24636,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries(T
         name: str = None,
         rose_type: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Field name
         self.name = name
+        # Chart flag, default is false
         self.rose_type = rose_type
 
     def validate(self):
@@ -22510,8 +24686,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity(TeaMode
         grid: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCityGrid = None,
         series: List[DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCitySeries] = None,
     ):
+        # Chart flag, default is true
         self.animation = animation
+        # Belongs to grid.
         self.grid = grid
+        # Chart data
         self.series = series
 
     def validate(self):
@@ -22558,6 +24737,7 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid
         self,
         show: bool = None,
     ):
+        # Chart flag, default is false
         self.show = show
 
     def validate(self):
@@ -22586,7 +24766,9 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeri
         name: str = None,
         value: str = None,
     ):
+        # Field name
         self.name = name
+        # Data value
         self.value = value
 
     def validate(self):
@@ -22620,8 +24802,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeri
         name: str = None,
         rose_type: str = None,
     ):
+        # High-risk position data.
         self.data = data
+        # Display title
         self.name = name
+        # Chart identifier, default false
         self.rose_type = rose_type
 
     def validate(self):
@@ -22667,8 +24852,11 @@ class DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince(Tea
         grid: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceGrid = None,
         series: List[DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvinceSeries] = None,
     ):
+        # Indicator, default true
         self.animation = animation
+        # Belongs to grid.
         self.grid = grid
+        # Chart data
         self.series = series
 
     def validate(self):
@@ -22718,9 +24906,13 @@ class DescribeHighRiskPieChartResponseBodyResultObject(TeaModel):
         high_risk_mobile_city: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileCity = None,
         high_risk_mobile_province: DescribeHighRiskPieChartResponseBodyResultObjectHighRiskMobileProvince = None,
     ):
+        # High-risk IP city
         self.high_risk_ipcity = high_risk_ipcity
+        # High-risk IP归属province
         self.high_risk_ipprovince = high_risk_ipprovince
+        # High-risk mobile phone归属city
         self.high_risk_mobile_city = high_risk_mobile_city
+        # High-risk mobile phone\\"s province of origin
         self.high_risk_mobile_province = high_risk_mobile_province
 
     def validate(self):
@@ -22776,11 +24968,17 @@ class DescribeHighRiskPieChartResponseBody(TeaModel):
         result_object: DescribeHighRiskPieChartResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -22874,9 +25072,15 @@ class DescribeHitRuleFluctuationRequest(TeaModel):
         reg_id: str = None,
         rule_status: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event codes, separated by commas (,).
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
+        # Policy status
         self.rule_status = rule_status
 
     def validate(self):
@@ -22922,12 +25126,19 @@ class DescribeHitRuleFluctuationResponseBodyResultObject(TeaModel):
         within_three_day_num: str = None,
         yesterday_num: int = None,
     ):
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
+        # Today\\"s count
         self.today_num = today_num
+        # Count within seven days
         self.within_seven_day_num = within_seven_day_num
+        # Count within thirty days
         self.within_thirty_day_num = within_thirty_day_num
+        # Count within three days
         self.within_three_day_num = within_three_day_num
+        # Yesterday\\"s count
         self.yesterday_num = yesterday_num
 
     def validate(self):
@@ -22984,11 +25195,17 @@ class DescribeHitRuleFluctuationResponseBody(TeaModel):
         result_object: List[DescribeHitRuleFluctuationResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -23090,11 +25307,19 @@ class DescribeHitRuleListRequest(TeaModel):
         event_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
         self.end_time = end_time
+        # Event codes, separated by commas if multiple.
         self.event_codes = event_codes
+        # Event type
         self.event_type = event_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -23143,7 +25368,9 @@ class DescribeHitRuleListResponseBodyResultObject(TeaModel):
         hit_count: int = None,
         rule_name: str = None,
     ):
+        # Number of hits.
         self.hit_count = hit_count
+        # Strategy name
         self.rule_name = rule_name
 
     def validate(self):
@@ -23176,7 +25403,9 @@ class DescribeHitRuleListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeHitRuleListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Response object
         self.result_object = result_object
 
     def validate(self):
@@ -23262,11 +25491,19 @@ class DescribeHitRuleTrendRequest(TeaModel):
         reg_id: str = None,
         rule_status: str = None,
     ):
+        # Sets the language type for the request and response messages. Default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
         self.end_time = end_time
+        # Event codes, separated by commas (,).
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
+        # Rule status
         self.rule_status = rule_status
 
     def validate(self):
@@ -23315,7 +25552,9 @@ class DescribeHitRuleTrendResponseBodyResultObjectSeriesData(TeaModel):
         num: int = None,
         scale: str = None,
     ):
+        # Number
         self.num = num
+        # Scale
         self.scale = scale
 
     def validate(self):
@@ -23348,7 +25587,9 @@ class DescribeHitRuleTrendResponseBodyResultObjectSeries(TeaModel):
         data: List[DescribeHitRuleTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
+        # Returned data object
         self.data = data
+        # Display title
         self.name = name
 
     def validate(self):
@@ -23388,6 +25629,7 @@ class DescribeHitRuleTrendResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Returned data object
         self.data = data
 
     def validate(self):
@@ -23416,7 +25658,9 @@ class DescribeHitRuleTrendResponseBodyResultObject(TeaModel):
         series: List[DescribeHitRuleTrendResponseBodyResultObjectSeries] = None,
         xaxis: DescribeHitRuleTrendResponseBodyResultObjectXaxis = None,
     ):
+        # Chart data
         self.series = series
+        # X-axis data
         self.xaxis = xaxis
 
     def validate(self):
@@ -23464,11 +25708,17 @@ class DescribeHitRuleTrendResponseBody(TeaModel):
         result_object: DescribeHitRuleTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Response object
         self.result_object = result_object
+        # Indicates whether the operation was successful, where true means success.
         self.success = success
 
     def validate(self):
@@ -23554,6 +25804,158 @@ class DescribeHitRuleTrendResponse(TeaModel):
         return self
 
 
+class DescribeInitDigRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        reg_id: str = None,
+        type: str = None,
+    ):
+        # Set the language type for request and response messages. Default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code
+        self.reg_id = reg_id
+        # Data source type
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeInitDigResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        tip_info: str = None,
+    ):
+        # Prompt information
+        self.tip_info = tip_info
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tip_info is not None:
+            result['TipInfo'] = self.tip_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TipInfo') is not None:
+            self.tip_info = m.get('TipInfo')
+        return self
+
+
+class DescribeInitDigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DescribeInitDigResponseBodyResultObject = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Returned result information
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeInitDigResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        return self
+
+
+class DescribeInitDigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInitDigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInitDigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInputFeildCountByEventCodeRequest(TeaModel):
     def __init__(
         self,
@@ -23562,9 +25964,15 @@ class DescribeInputFeildCountByEventCodeRequest(TeaModel):
         event_code: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -23606,8 +26014,11 @@ class DescribeInputFeildCountByEventCodeResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether it exceeds the maximum quantity
         self.limit = limit
+        # Maximum number of created items
         self.max_total_item = max_total_item
+        # Total number of items
         self.total_item = total_item
 
     def validate(self):
@@ -23644,7 +26055,9 @@ class DescribeInputFeildCountByEventCodeResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeInputFeildCountByEventCodeResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -23714,6 +26127,258 @@ class DescribeInputFeildCountByEventCodeResponse(TeaModel):
         return self
 
 
+class DescribeListModelRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        reg_id: str = None,
+    ):
+        # Current page number.
+        self.current_page = current_page
+        # Number of items per page.
+        self.page_size = page_size
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class DescribeListModelResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        buc_id: str = None,
+        create_time: str = None,
+        model_code: str = None,
+        model_id: str = None,
+        model_name: str = None,
+        model_scene: str = None,
+        model_status: str = None,
+        task_id: str = None,
+        update_time: str = None,
+        user_id: str = None,
+        user_local_file_name: str = None,
+    ):
+        # Uploader ID.
+        self.buc_id = buc_id
+        # Creation time.
+        self.create_time = create_time
+        # Model code.
+        self.model_code = model_code
+        # Unique identifier of the model in use.
+        self.model_id = model_id
+        # Model name.
+        self.model_name = model_name
+        # Model scenario.
+        self.model_scene = model_scene
+        # Model status, values: -**ENABLED**: Enabled-**DISABLED**: Disabled
+        self.model_status = model_status
+        # Task ID.
+        self.task_id = task_id
+        # Last update time of the model.
+        self.update_time = update_time
+        # User ID.
+        self.user_id = user_id
+        # File name.
+        self.user_local_file_name = user_local_file_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buc_id is not None:
+            result['bucId'] = self.buc_id
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.model_code is not None:
+            result['modelCode'] = self.model_code
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.model_scene is not None:
+            result['modelScene'] = self.model_scene
+        if self.model_status is not None:
+            result['modelStatus'] = self.model_status
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.user_local_file_name is not None:
+            result['userLocalFileName'] = self.user_local_file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bucId') is not None:
+            self.buc_id = m.get('bucId')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('modelCode') is not None:
+            self.model_code = m.get('modelCode')
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('modelScene') is not None:
+            self.model_scene = m.get('modelScene')
+        if m.get('modelStatus') is not None:
+            self.model_status = m.get('modelStatus')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('userLocalFileName') is not None:
+            self.user_local_file_name = m.get('userLocalFileName')
+        return self
+
+
+class DescribeListModelResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        page_size: str = None,
+        request_id: str = None,
+        result_object: List[DescribeListModelResponseBodyResultObject] = None,
+        total_item: str = None,
+        total_page: str = None,
+    ):
+        # Current page number.
+        self.current_page = current_page
+        # Number of items per page.
+        self.page_size = page_size
+        # Request ID.
+        self.request_id = request_id
+        # Returned data.
+        self.result_object = result_object
+        # Total number of records.
+        self.total_item = total_item
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        if self.total_item is not None:
+            result['TotalItem'] = self.total_item
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = DescribeListModelResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('TotalItem') is not None:
+            self.total_item = m.get('TotalItem')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeListModelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeListModelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeListModelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeListPocRequest(TeaModel):
     def __init__(
         self,
@@ -23723,10 +26388,17 @@ class DescribeListPocRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Page size.
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Type
         self.type = type
 
     def validate(self):
@@ -23778,14 +26450,23 @@ class DescribeListPocResponseBody(TeaModel):
         total_item: str = None,
         total_page: str = None,
     ):
+        # Status code.
         self.code = code
+        # Current page.
         self.current_page = current_page
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Page size.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Total number of items returned.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -23892,12 +26573,21 @@ class DescribeLoanExecListRequest(TeaModel):
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Import batch number.
         self.batch_no = batch_no
+        # Current page number.
         self.current_page = current_page
+        # Monitoring metric data.
         self.monitor_obj = monitor_obj
+        # Status
         self.monitor_status = monitor_status
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -23954,11 +26644,17 @@ class DescribeLoanExecListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Return object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -24052,11 +26748,19 @@ class DescribeLoanTaskListRequest(TeaModel):
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Import batch number.
         self.batch_no = batch_no
+        # Current page number. Default is: 1.
         self.current_page = current_page
+        # Task status.
         self.monitor_status = monitor_status
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -24109,11 +26813,17 @@ class DescribeLoanTaskListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Return object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -24209,13 +26919,23 @@ class DescribeMarkPageRequest(TeaModel):
         reg_id: str = None,
         task_log_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Order direction.
         self.direction = direction
+        # Whether to paginate.
         self.is_page = is_page
+        # Sorting condition.
         self.order = order
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Task ID.
         self.task_log_id = task_log_id
 
     def validate(self):
@@ -24274,9 +26994,13 @@ class DescribeMarkPageResponseBodyResultObject(TeaModel):
         id: int = None,
         mark_type: str = None,
     ):
+        # Field name.
         self.field_name = field_name
+        # Field value.
         self.field_value = field_value
+        # Primary key ID.
         self.id = id
+        # Mark (0 No / 1 Yes).
         self.mark_type = mark_type
 
     def validate(self):
@@ -24321,11 +27045,17 @@ class DescribeMarkPageResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -24424,8 +27154,13 @@ class DescribeMenuPermissionRequest(TeaModel):
         permission_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Permission type
         self.permission_type = permission_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -24462,7 +27197,9 @@ class DescribeMenuPermissionResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -24530,13 +27267,321 @@ class DescribeMenuPermissionResponse(TeaModel):
         return self
 
 
+class DescribeModelDetailsByIdRequest(TeaModel):
+    def __init__(
+        self,
+        model_id: str = None,
+        reg_id: str = None,
+    ):
+        # Model ID.
+        # 
+        # This parameter is required.
+        self.model_id = model_id
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class DescribeModelDetailsByIdResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        model_effect_evaluation: str = None,
+    ):
+        # Model prediction result.
+        self.model_effect_evaluation = model_effect_evaluation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_effect_evaluation is not None:
+            result['modelEffectEvaluation'] = self.model_effect_evaluation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelEffectEvaluation') is not None:
+            self.model_effect_evaluation = m.get('modelEffectEvaluation')
+        return self
+
+
+class DescribeModelDetailsByIdResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: List[DescribeModelDetailsByIdResponseBodyResultObject] = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Returned result information
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['ResultObject'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.result_object = []
+        if m.get('ResultObject') is not None:
+            for k in m.get('ResultObject'):
+                temp_model = DescribeModelDetailsByIdResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeModelDetailsByIdResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeModelDetailsByIdResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeModelDetailsByIdResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeModelOssPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        reg_id: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DescribeModelOssPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        host: str = None,
+        key: str = None,
+        message: str = None,
+        policy: str = None,
+        request_id: str = None,
+        signature: str = None,
+        result_object: bool = None,
+    ):
+        # Access ID for OSS.
+        self.access_id = access_id
+        # Address.
+        self.host = host
+        # OSS access key secret.
+        self.key = key
+        # Error message.
+        self.message = message
+        # The policy for user form upload, which is a base64-encoded string.
+        self.policy = policy
+        # Request ID.
+        self.request_id = request_id
+        # Signature information.
+        self.signature = signature
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('resultObject') is not None:
+            self.result_object = m.get('resultObject')
+        return self
+
+
+class DescribeModelOssPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeModelOssPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeModelOssPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeMonitorTaskLimitRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -24570,8 +27615,11 @@ class DescribeMonitorTaskLimitResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether the maximum limit has been reached
         self.limit = limit
+        # Maximum number of items
         self.max_total_item = max_total_item
+        # Total number of items
         self.total_item = total_item
 
     def validate(self):
@@ -24608,7 +27656,9 @@ class DescribeMonitorTaskLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeMonitorTaskLimitResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -24689,12 +27739,21 @@ class DescribeNameListRequest(TeaModel):
         value: str = None,
         variable_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type.
         self.create_type = create_type
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Search value.
         self.value = value
+        # Variable ID.
         self.variable_id = variable_id
 
     def validate(self):
@@ -24752,12 +27811,19 @@ class DescribeNameListResponseBodyResultObject(TeaModel):
         value: str = None,
         variable_id: int = None,
     ):
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Name list content ID.
         self.id = id
+        # Variable identifier.
         self.identifier = identifier
+        # Title.
         self.title = title
+        # Value.
         self.value = value
+        # Variable ID.
         self.variable_id = variable_id
 
     def validate(self):
@@ -24814,11 +27880,17 @@ class DescribeNameListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -24917,8 +27989,14 @@ class DescribeNameListDownloadUrlRequest(TeaModel):
         reg_id: str = None,
         variable_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Variable ID.
+        # 
         # This parameter is required.
         self.variable_id = variable_id
 
@@ -24955,6 +28033,7 @@ class DescribeNameListDownloadUrlResponseBodyResultObject(TeaModel):
         self,
         download_file_url: str = None,
     ):
+        # Download URL.
         self.download_file_url = download_file_url
 
     def validate(self):
@@ -24983,7 +28062,9 @@ class DescribeNameListDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeNameListDownloadUrlResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -25060,8 +28141,13 @@ class DescribeNameListLimitRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -25099,8 +28185,11 @@ class DescribeNameListLimitResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether it exceeds the maximum quantity
         self.limit = limit
+        # Maximum number of creatable items
         self.max_total_item = max_total_item
+        # Total number of items
         self.total_item = total_item
 
     def validate(self):
@@ -25137,7 +28226,9 @@ class DescribeNameListLimitResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeNameListLimitResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -25219,13 +28310,24 @@ class DescribeNameListPageListRequest(TeaModel):
         value: str = None,
         variable_id: int = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Update start time.
         self.update_begin_time = update_begin_time
+        # Update end time.
         self.update_end_time = update_end_time
+        # Variable name/description
         self.value = value
+        # Variable ID
+        # 
         # This parameter is required.
         self.variable_id = variable_id
 
@@ -25283,6 +28385,7 @@ class DescribeNameListPageListResponseBodyResultObject(TeaModel):
         gmt_create: int = None,
         gmt_modified: int = None,
         id: int = None,
+        memo: str = None,
         name: str = None,
         name_list_type: str = None,
         title: str = None,
@@ -25290,14 +28393,25 @@ class DescribeNameListPageListResponseBodyResultObject(TeaModel):
         value: str = None,
         variable_id: int = None,
     ):
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # ID of the list variable content data
         self.id = id
+        # NameList Content memo
+        self.memo = memo
+        # Variable name
         self.name = name
+        # Variable type
         self.name_list_type = name_list_type
+        # Title.
         self.title = title
+        # User UID
         self.user_id = user_id
+        # Variable value
         self.value = value
+        # Variable ID.
         self.variable_id = variable_id
 
     def validate(self):
@@ -25315,6 +28429,8 @@ class DescribeNameListPageListResponseBodyResultObject(TeaModel):
             result['gmtModified'] = self.gmt_modified
         if self.id is not None:
             result['id'] = self.id
+        if self.memo is not None:
+            result['memo'] = self.memo
         if self.name is not None:
             result['name'] = self.name
         if self.name_list_type is not None:
@@ -25337,6 +28453,8 @@ class DescribeNameListPageListResponseBodyResultObject(TeaModel):
             self.gmt_modified = m.get('gmtModified')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('memo') is not None:
+            self.memo = m.get('memo')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('nameListType') is not None:
@@ -25362,11 +28480,17 @@ class DescribeNameListPageListResponseBody(TeaModel):
         total_item: str = None,
         total_page: str = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -25464,7 +28588,11 @@ class DescribeNameListTypeListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -25497,7 +28625,9 @@ class DescribeNameListTypeListResponseBodyResultObject(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Match Key.
         self.key = key
+        # Variable value
         self.value = value
 
     def validate(self):
@@ -25530,7 +28660,9 @@ class DescribeNameListTypeListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeNameListTypeListResponseBodyResultObject] = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -25617,12 +28749,21 @@ class DescribeNameListVariablePageListRequest(TeaModel):
         reg_id: str = None,
         value: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Variable name
         self.name = name
+        # Variable type
         self.name_list_type = name_list_type
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Name list value
         self.value = value
 
     def validate(self):
@@ -25687,19 +28828,33 @@ class DescribeNameListVariablePageListResponseBodyResultObject(TeaModel):
         type: str = None,
         user_id: int = None,
     ):
+        # Used capacity
         self.capacity = capacity
+        # Description information.
         self.description = description
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Name list ID
         self.id = id
+        # Remaining capacity
         self.left_capacity = left_capacity
+        # Parameter name.
         self.name = name
+        # Name list type
         self.name_list_type = name_list_type
+        # Associated event eventCode
         self.ref_obj_id = ref_obj_id
+        # Association type
         self.ref_obj_type = ref_obj_type
+        # Data source
         self.source_type = source_type
+        # Title.
         self.title = title
+        # Variable type
         self.type = type
+        # User UID
         self.user_id = user_id
 
     def validate(self):
@@ -25784,11 +28939,17 @@ class DescribeNameListVariablePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -25890,11 +29051,19 @@ class DescribeOperationLogPageListRequest(TeaModel):
         reg_id: str = None,
         start_date: int = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # End time.
         self.end_date = end_date
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Start time.
         self.start_date = start_date
 
     def validate(self):
@@ -25948,12 +29117,19 @@ class DescribeOperationLogPageListResponseBodyResultObject(TeaModel):
         operation_type: str = None,
         user_name: str = None,
     ):
+        # Client IP.
         self.client_ip = client_ip
+        # Creation time.
         self.gmt_create = gmt_create
+        # Content after operation
         self.new_content = new_content
+        # Content before operation
         self.old_content = old_content
+        # Operation summary
         self.operation_summary = operation_summary
+        # Operation type.
         self.operation_type = operation_type
+        # Operator
         self.user_name = user_name
 
     def validate(self):
@@ -26010,11 +29186,17 @@ class DescribeOperationLogPageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -26112,7 +29294,12 @@ class DescribeOperatorListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -26147,8 +29334,11 @@ class DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables(TeaMod
         field_type: str = None,
         field_value: str = None,
     ):
+        # Field name.
         self.field_name = field_name
+        # Field type.
         self.field_type = field_type
+        # Field value.
         self.field_value = field_value
 
     def validate(self):
@@ -26188,10 +29378,15 @@ class DescribeOperatorListResponseBodyResultObjectOperators(TeaModel):
         name: str = None,
         right_variables: List[DescribeOperatorListResponseBodyResultObjectOperatorsRightVariables] = None,
     ):
+        # Operator code
         self.code = code
+        # Whether it contains a right variable
         self.has_right_variable = has_right_variable
+        # Description
         self.memo = memo
+        # Operator name
         self.name = name
+        # Right variable object
         self.right_variables = right_variables
 
     def validate(self):
@@ -26244,7 +29439,9 @@ class DescribeOperatorListResponseBodyResultObject(TeaModel):
         field_type: str = None,
         operators: List[DescribeOperatorListResponseBodyResultObjectOperators] = None,
     ):
+        # Return value type
         self.field_type = field_type
+        # Operator list
         self.operators = operators
 
     def validate(self):
@@ -26285,7 +29482,9 @@ class DescribeOperatorListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeOperatorListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -26368,8 +29567,13 @@ class DescribeOperatorListBySceneRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Scene type.
         self.scene = scene
 
     def validate(self):
@@ -26407,8 +29611,11 @@ class DescribeOperatorListBySceneResponseBodyResultObjectOperatorsRightVariables
         field_type: str = None,
         field_value: str = None,
     ):
+        # Field name.
         self.field_name = field_name
+        # Field type.
         self.field_type = field_type
+        # Field value.
         self.field_value = field_value
 
     def validate(self):
@@ -26448,10 +29655,15 @@ class DescribeOperatorListBySceneResponseBodyResultObjectOperators(TeaModel):
         name: str = None,
         right_variables: List[DescribeOperatorListBySceneResponseBodyResultObjectOperatorsRightVariables] = None,
     ):
+        # Operator code
         self.code = code
+        # Whether it contains a right variable
         self.has_right_variable = has_right_variable
+        # Description
         self.memo = memo
+        # Operator name
         self.name = name
+        # Right variable object
         self.right_variables = right_variables
 
     def validate(self):
@@ -26504,7 +29716,9 @@ class DescribeOperatorListBySceneResponseBodyResultObject(TeaModel):
         field_type: str = None,
         operators: List[DescribeOperatorListBySceneResponseBodyResultObjectOperators] = None,
     ):
+        # Return value type
         self.field_type = field_type
+        # Operator list
         self.operators = operators
 
     def validate(self):
@@ -26545,7 +29759,9 @@ class DescribeOperatorListBySceneResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeOperatorListBySceneResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -26627,7 +29843,12 @@ class DescribeOperatorListByTypeRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -26662,8 +29883,11 @@ class DescribeOperatorListByTypeResponseBodyResultObjectOperators(TeaModel):
         has_right_variable: bool = None,
         name: str = None,
     ):
+        # Operator code
         self.code = code
+        # Whether it contains a right variable
         self.has_right_variable = has_right_variable
+        # Operator name
         self.name = name
 
     def validate(self):
@@ -26700,7 +29924,9 @@ class DescribeOperatorListByTypeResponseBodyResultObject(TeaModel):
         field_type: str = None,
         operators: List[DescribeOperatorListByTypeResponseBodyResultObjectOperators] = None,
     ):
+        # Return value type
         self.field_type = field_type
+        # Operator list
         self.operators = operators
 
     def validate(self):
@@ -26741,7 +29967,9 @@ class DescribeOperatorListByTypeResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeOperatorListByTypeResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -26823,7 +30051,11 @@ class DescribeOssAuthStatusRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -26856,7 +30088,9 @@ class DescribeOssAuthStatusResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -26931,9 +30165,16 @@ class DescribeOssPolicyRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Scene
+        # 
         # This parameter is required.
         self.scene = scene
 
@@ -26975,11 +30216,17 @@ class DescribeOssPolicyResponseBody(TeaModel):
         signature: str = None,
         request_id: str = None,
     ):
+        # accessId, a parameter used in OSS SDK uploads, corresponding to OSSAccessKeyId
         self.access_id = access_id
+        # OSS host ID.
         self.host = host
+        # Key required for file upload.
         self.key = key
+        # OSS security policy
         self.policy = policy
+        # Signature data.
         self.signature = signature
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27071,9 +30318,15 @@ class DescribeOssTokenRequest(TeaModel):
         reg_id: str = None,
         upload_type: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # File name.
         self.file_name = file_name
+        # Region code
         self.reg_id = reg_id
+        # Upload type
         self.upload_type = upload_type
 
     def validate(self):
@@ -27119,12 +30372,19 @@ class DescribeOssTokenResponseBody(TeaModel):
         signature: str = None,
         sts_token: str = None,
     ):
+        # AccessKeyId for OSS file upload.
         self.access_id = access_id
+        # Host address.
         self.host = host
+        # The Key required for file upload.
         self.key = key
+        # Permission policy for ossbucket.
         self.policy = policy
+        # Request ID.
         self.request_id = request_id
+        # OSS signature.
         self.signature = signature
+        # Temporary identity credential.
         self.sts_token = sts_token
 
     def validate(self):
@@ -27220,10 +30480,17 @@ class DescribeParamByEventCodesRequest(TeaModel):
         parma: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code.
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # Query condition
         self.parma = parma
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -27264,7 +30531,9 @@ class DescribeParamByEventCodesResponseBodyResultObject(TeaModel):
         code: str = None,
         name: str = None,
     ):
+        # Return code.
         self.code = code
+        # Name
         self.name = name
 
     def validate(self):
@@ -27297,7 +30566,9 @@ class DescribeParamByEventCodesResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeParamByEventCodesResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -27373,251 +30644,17 @@ class DescribeParamByEventCodesResponse(TeaModel):
         return self
 
 
-class DescribeParamListRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        file_url: str = None,
-        reg_id: str = None,
-        service_code: str = None,
-    ):
-        self.lang = lang
-        self.file_url = file_url
-        self.reg_id = reg_id
-        self.service_code = service_code
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.file_url is not None:
-            result['fileUrl'] = self.file_url
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('fileUrl') is not None:
-            self.file_url = m.get('fileUrl')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        return self
-
-
-class DescribeParamListResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class DescribeParamListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeParamListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeParamListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribePocDetailRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        reg_id: str = None,
-        task_id: str = None,
-        type: str = None,
-    ):
-        self.lang = lang
-        self.reg_id = reg_id
-        self.task_id = task_id
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.task_id is not None:
-            result['taskId'] = self.task_id
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('taskId') is not None:
-            self.task_id = m.get('taskId')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class DescribePocDetailResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class DescribePocDetailResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribePocDetailResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribePocDetailResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribePocOssTokenRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -27655,12 +30692,19 @@ class DescribePocOssTokenResponseBody(TeaModel):
         signature: str = None,
         result_object: bool = None,
     ):
+        # AccessKeyId for OSS file upload
         self.access_id = access_id
+        # Host address.
         self.host = host
+        # The Key required for file upload.
         self.key = key
+        # OSS security policy.
         self.policy = policy
+        # Request ID.
         self.request_id = request_id
+        # Upload signature information.
         self.signature = signature
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -27757,10 +30801,17 @@ class DescribePocTaskListRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Query type.
         self.type = type
 
     def validate(self):
@@ -27811,13 +30862,21 @@ class DescribePocTaskListResponseBodyResultObject(TeaModel):
         task_name: str = None,
         update_time: str = None,
     ):
+        # Creation time.
         self.create_time = create_time
+        # Download URL.
         self.download_url = download_url
+        # File type.
         self.file_type = file_type
+        # Service name.
         self.service_name = service_name
+        # Status.
         self.status = status
+        # Task ID.
         self.task_id = task_id
+        # Task name.
         self.task_name = task_name
+        # Last modified time.
         self.update_time = update_time
 
     def validate(self):
@@ -27878,11 +30937,17 @@ class DescribePocTaskListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -27979,6 +31044,7 @@ class DescribePrivateStackRequest(TeaModel):
         self,
         reg_id: str = None,
     ):
+        # Region Code
         self.reg_id = reg_id
 
     def validate(self):
@@ -28007,7 +31073,9 @@ class DescribePrivateStackResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return Object
         self.result_object = result_object
 
     def validate(self):
@@ -28082,9 +31150,16 @@ class DescribeQueryVariableDetailRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -28131,16 +31206,27 @@ class DescribeQueryVariableDetailResponseBodyResultObject(TeaModel):
         outputs: str = None,
         title: str = None,
     ):
+        # Data source code.
         self.data_source_code = data_source_code
+        # Data source name
         self.data_source_name = data_source_name
+        # Description.
         self.description = description
+        # Event code
         self.event_code = event_code
+        # Expression.
         self.expression = expression
+        # Expression title.
         self.expression_title = expression_title
+        # Expression variable.
         self.expression_variable = expression_variable
+        # Variable ID
         self.id = id
+        # Outlier
         self.outlier = outlier
+        # Output results.
         self.outputs = outputs
+        # Title.
         self.title = title
 
     def validate(self):
@@ -28209,7 +31295,9 @@ class DescribeQueryVariableDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeQueryVariableDetailResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -28290,12 +31378,22 @@ class DescribeQueryVariablePageListRequest(TeaModel):
         page_size: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Data source code
         self.data_source_code = data_source_code
+        # Event code
         self.event_code = event_code
+        # Query variable name
         self.name = name
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -28359,17 +31457,29 @@ class DescribeQueryVariablePageListResponseBodyResultObject(TeaModel):
         total: int = None,
         version: int = None,
     ):
+        # Data source code.
         self.data_source_code = data_source_code
+        # Data source name.
         self.data_source_name = data_source_name
+        # Description information.
         self.description = description
+        # Event name.
         self.event_name = event_name
+        # Return value type
         self.field_type = field_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Query variable primary key ID
         self.id = id
+        # Query variable name
         self.name = name
+        # Status.
         self.status = status
+        # Total count
         self.total = total
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -28446,11 +31556,17 @@ class DescribeQueryVariablePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Pagination parameter, current page.
         self.current_page = current_page
+        # Page size, default value is 10
         self.page_size = page_size
+        # Return object
         self.result_object = result_object
+        # Total items
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -28549,8 +31665,14 @@ class DescribeRecommendSceneVariablesRequest(TeaModel):
         reg_id: str = None,
         sample_id: int = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region Code
         self.reg_id = reg_id
+        # Sample ID
+        # 
         # This parameter is required.
         self.sample_id = sample_id
 
@@ -28588,7 +31710,9 @@ class DescribeRecommendSceneVariablesResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return Object
         self.result_object = result_object
 
     def validate(self):
@@ -28663,8 +31787,13 @@ class DescribeRecommendTaskDetailRequest(TeaModel):
         reg_id: str = None,
         task_id: int = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
+        # Task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -28702,8 +31831,11 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOsRecomm
         operator: str = None,
         right: str = None,
     ):
+        # Left variable
         self.left = left
+        # Operator
         self.operator = operator
+        # Right variable
         self.right = right
 
     def validate(self):
@@ -28747,14 +31879,23 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendRuleDTOs(TeaMo
         status: str = None,
         velocities: str = None,
     ):
+        # Calculation path
         self.compute_expression = compute_expression
+        # Number of hit samples
         self.hit_sample = hit_sample
+        # Primary key ID of the rule
         self.id = id
+        # Number of unhit samples
         self.not_hit_sample = not_hit_sample
+        # List of candidate rules
         self.recommend_rules = recommend_rules
+        # Strategy ID
         self.rule_id = rule_id
+        # Rule name
         self.rule_name = rule_name
+        # Status
         self.status = status
+        # List of indicators in JSON string format
         self.velocities = velocities
 
     def validate(self):
@@ -28823,7 +31964,9 @@ class DescribeRecommendTaskDetailResponseBodyResultObjectRecommendVariableDTOs(T
         id: int = None,
         title: str = None,
     ):
+        # Primary key ID
         self.id = id
+        # Title
         self.title = title
 
     def validate(self):
@@ -28868,19 +32011,33 @@ class DescribeRecommendTaskDetailResponseBodyResultObject(TeaModel):
         task_name: str = None,
         task_status: str = None,
     ):
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Comparison indicators
         self.expect_velocities = expect_velocities
+        # Creation time
         self.gmt_create = gmt_create
+        # Number of normal samples
         self.normal_size = normal_size
+        # Recommended strategy list
         self.recommend_rule_dtos = recommend_rule_dtos
+        # Selected variable list
         self.recommend_variable_dtos = recommend_variable_dtos
+        # Number of risk samples
         self.risk_size = risk_size
+        # Sample name
         self.sample_name = sample_name
+        # Sample scenario
         self.sample_scene = sample_scene
+        # Sample scenario name
         self.sample_scene_name = sample_scene_name
+        # Task ID
         self.task_id = task_id
+        # Task name
         self.task_name = task_name
+        # Task status.
         self.task_status = task_status
 
     def validate(self):
@@ -28978,7 +32135,9 @@ class DescribeRecommendTaskDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeRecommendTaskDetailResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return result
         self.result_object = result_object
 
     def validate(self):
@@ -29057,10 +32216,17 @@ class DescribeRecommendTaskPageListRequest(TeaModel):
         reg_id: str = None,
         task_name: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Task name
         self.task_name = task_name
 
     def validate(self):
@@ -29114,16 +32280,27 @@ class DescribeRecommendTaskPageListResponseBodyResultObject(TeaModel):
         task_name: str = None,
         task_status: str = None,
     ):
+        # Impact indicators
         self.expect_velocities = expect_velocities
+        # Creation time.
         self.gmt_create = gmt_create
+        # Number of samples
         self.normal_count = normal_count
+        # Number of normal samples
         self.normal_size = normal_size
+        # Number of records displayed on the current page.
         self.risk_count = risk_count
+        # Number of risk samples
         self.risk_size = risk_size
+        # Sample name
         self.sample_name = sample_name
+        # Sample scenario
         self.sample_scene = sample_scene
+        # Task ID.
         self.task_id = task_id
+        # Task name.
         self.task_name = task_name
+        # Task status.
         self.task_status = task_status
 
     def validate(self):
@@ -29196,11 +32373,17 @@ class DescribeRecommendTaskPageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Current page number
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -29300,10 +32483,17 @@ class DescribeRecommendVariablesVelocityRequest(TeaModel):
         task_id: int = None,
         variable_ids_str: str = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region Code
         self.reg_id = reg_id
+        # Task ID
+        # 
         # This parameter is required.
         self.task_id = task_id
+        # Variable IDs
         self.variable_ids_str = variable_ids_str
 
     def validate(self):
@@ -29344,7 +32534,9 @@ class DescribeRecommendVariablesVelocityResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return Object
         self.result_object = result_object
 
     def validate(self):
@@ -29420,9 +32612,15 @@ class DescribeRecommendVelocitiesRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Metric code
         self.code = code
+        # Region ID
         self.reg_id = reg_id
+        # Metric type
         self.type = type
 
     def validate(self):
@@ -29463,7 +32661,9 @@ class DescribeRecommendVelocitiesResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -29537,7 +32737,11 @@ class DescribeRegionsRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and responses. The default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -29570,7 +32774,9 @@ class DescribeRegionsResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -29645,8 +32851,14 @@ class DescribeRequestHitRequest(TeaModel):
         reg_id: str = None,
         s_request_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Request ID.
+        # 
         # This parameter is required.
         self.s_request_id = s_request_id
 
@@ -29690,13 +32902,21 @@ class DescribeRequestHitResponseBodyResultObjectRuleHitRecords(TeaModel):
         rule_snapshot_id: str = None,
         rule_status: str = None,
     ):
+        # Duration
         self.cost = cost
+        # Whether the rule was hit.
         self.hit_successful = hit_successful
+        # Whether to show details
         self.is_show_detail = is_show_detail
+        # Order.
         self.order = order
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
+        # Rule snapshot ID
         self.rule_snapshot_id = rule_snapshot_id
+        # Policy status
         self.rule_status = rule_status
 
     def validate(self):
@@ -29759,13 +32979,21 @@ class DescribeRequestHitResponseBodyResultObject(TeaModel):
         s_request_id: str = None,
         total_cost: int = None,
     ):
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Input parameters.
         self.inputs = inputs
+        # Output parameters
         self.outputs = outputs
+        # Timestamp of the request.
         self.request_time = request_time
+        # Details of the executed rules.
         self.rule_hit_records = rule_hit_records
+        # Request ID
         self.s_request_id = s_request_id
+        # Total amount of the request
         self.total_cost = total_cost
 
     def validate(self):
@@ -29830,7 +33058,9 @@ class DescribeRequestHitResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeRequestHitResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -29906,7 +33136,11 @@ class DescribeRequestPeakReportRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -29939,7 +33173,9 @@ class DescribeRequestPeakReportResponseBodyResultObject(TeaModel):
         ratio: str = None,
         value: str = None,
     ):
+        # Return value
         self.ratio = ratio
+        # Return text
         self.value = value
 
     def validate(self):
@@ -29976,11 +33212,17 @@ class DescribeRequestPeakReportResponseBody(TeaModel):
         result_object: List[DescribeRequestPeakReportResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful
         self.success = success
 
     def validate(self):
@@ -30080,11 +33322,19 @@ class DescribeResultCountRequest(TeaModel):
         end_time: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -30125,7 +33375,9 @@ class DescribeResultCountResponseBodyResultObject(TeaModel):
         result: str = None,
         total: str = None,
     ):
+        # Execution result
         self.result = result
+        # Quantity
         self.total = total
 
     def validate(self):
@@ -30162,11 +33414,17 @@ class DescribeResultCountResponseBody(TeaModel):
         result_object: List[DescribeResultCountResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -30267,12 +33525,21 @@ class DescribeRiskLineChartRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Query start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event codes, separated by commas (,).
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -30317,7 +33584,9 @@ class DescribeRiskLineChartResponseBodyResultObjectSeries(TeaModel):
         data: List[str] = None,
         name: str = None,
     ):
+        # Line chart data
         self.data = data
+        # Title of the line segment in the line chart
         self.name = name
 
     def validate(self):
@@ -30349,6 +33618,7 @@ class DescribeRiskLineChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Returns x-axis data points
         self.data = data
 
     def validate(self):
@@ -30377,7 +33647,9 @@ class DescribeRiskLineChartResponseBodyResultObject(TeaModel):
         series: List[DescribeRiskLineChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeRiskLineChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # Details of xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -30425,11 +33697,17 @@ class DescribeRiskLineChartResponseBody(TeaModel):
         result_object: DescribeRiskLineChartResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -30515,6 +33793,297 @@ class DescribeRiskLineChartResponse(TeaModel):
         return self
 
 
+class DescribeRiskTagsLineChartRequest(TeaModel):
+    def __init__(
+        self,
+        begin_time: int = None,
+        end_time: int = None,
+        event_codes: str = None,
+        lang: str = None,
+        reg_id: str = None,
+    ):
+        # Start time of the query, in milliseconds (ms).
+        # 
+        # This parameter is required.
+        self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
+        # This parameter is required.
+        self.end_time = end_time
+        # Event code
+        self.event_codes = event_codes
+        # Sets the language type for the request and response messages. Default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_time is not None:
+            result['BeginTime'] = self.begin_time
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.event_codes is not None:
+            result['EventCodes'] = self.event_codes
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginTime') is not None:
+            self.begin_time = m.get('BeginTime')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('EventCodes') is not None:
+            self.event_codes = m.get('EventCodes')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class DescribeRiskTagsLineChartResponseBodyResultObjectSeries(TeaModel):
+    def __init__(
+        self,
+        data: float = None,
+        name: str = None,
+    ):
+        # Data
+        self.data = data
+        # Name
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeRiskTagsLineChartResponseBodyResultObjectXaxis(TeaModel):
+    def __init__(
+        self,
+        data: List[str] = None,
+    ):
+        # Data returned by the chart
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class DescribeRiskTagsLineChartResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        percent: List[float] = None,
+        series: List[DescribeRiskTagsLineChartResponseBodyResultObjectSeries] = None,
+        total: List[int] = None,
+        xaxis: DescribeRiskTagsLineChartResponseBodyResultObjectXaxis = None,
+    ):
+        # Call percentage, represented as a decimal
+        self.percent = percent
+        # Chart data
+        self.series = series
+        # Total number of records.
+        self.total = total
+        # X-axis data of the chart
+        self.xaxis = xaxis
+
+    def validate(self):
+        if self.series:
+            for k in self.series:
+                if k:
+                    k.validate()
+        if self.xaxis:
+            self.xaxis.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        result['Series'] = []
+        if self.series is not None:
+            for k in self.series:
+                result['Series'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        if self.xaxis is not None:
+            result['Xaxis'] = self.xaxis.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        self.series = []
+        if m.get('Series') is not None:
+            for k in m.get('Series'):
+                temp_model = DescribeRiskTagsLineChartResponseBodyResultObjectSeries()
+                self.series.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        if m.get('Xaxis') is not None:
+            temp_model = DescribeRiskTagsLineChartResponseBodyResultObjectXaxis()
+            self.xaxis = temp_model.from_map(m['Xaxis'])
+        return self
+
+
+class DescribeRiskTagsLineChartResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: DescribeRiskTagsLineChartResponseBodyResultObject = None,
+        success: bool = None,
+    ):
+        # Status code. Note: 200 indicates success.
+        self.code = code
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message.
+        self.message = message
+        # Request ID
+        self.request_id = request_id
+        # Returned result information
+        self.result_object = result_object
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = DescribeRiskTagsLineChartResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeRiskTagsLineChartResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRiskTagsLineChartResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRiskTagsLineChartResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRuleBarChartRequest(TeaModel):
     def __init__(
         self,
@@ -30524,12 +34093,21 @@ class DescribeRuleBarChartRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Query start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event codes, separated by commas (,).
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -30576,9 +34154,13 @@ class DescribeRuleBarChartResponseBodyResultObjectSeriesData(TeaModel):
         rule_name: str = None,
         status: str = None,
     ):
+        # Event name.
         self.event_name = event_name
+        # Number.
         self.num = num
+        # Policy name
         self.rule_name = rule_name
+        # Status.
         self.status = status
 
     def validate(self):
@@ -30619,7 +34201,9 @@ class DescribeRuleBarChartResponseBodyResultObjectSeries(TeaModel):
         data: List[DescribeRuleBarChartResponseBodyResultObjectSeriesData] = None,
         type: str = None,
     ):
+        # Response data.
         self.data = data
+        # Bar chart type
         self.type = type
 
     def validate(self):
@@ -30659,6 +34243,7 @@ class DescribeRuleBarChartResponseBodyResultObjectYaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # yaxis data items
         self.data = data
 
     def validate(self):
@@ -30687,7 +34272,9 @@ class DescribeRuleBarChartResponseBodyResultObject(TeaModel):
         series: List[DescribeRuleBarChartResponseBodyResultObjectSeries] = None,
         yaxis: DescribeRuleBarChartResponseBodyResultObjectYaxis = None,
     ):
+        # Data list
         self.series = series
+        # yaxis related results.
         self.yaxis = yaxis
 
     def validate(self):
@@ -30735,11 +34322,17 @@ class DescribeRuleBarChartResponseBody(TeaModel):
         result_object: DescribeRuleBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -30832,8 +34425,14 @@ class DescribeRuleCountByUserIdRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -30872,8 +34471,11 @@ class DescribeRuleCountByUserIdResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Whether the limit condition is reached. Values: -**true**: Yes-**false**: No
         self.limit = limit
+        # Maximum number of items
         self.max_total_item = max_total_item
+        # Total number of items
         self.total_item = total_item
 
     def validate(self):
@@ -30910,7 +34512,9 @@ class DescribeRuleCountByUserIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeRuleCountByUserIdResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -30989,10 +34593,17 @@ class DescribeRuleDetailByRuleIdRequest(TeaModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the policy.
         self.console_rule_id = console_rule_id
+        # Region code.
         self.reg_id = reg_id
+        # Policy ID.
         self.rule_id = rule_id
+        # Primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -31034,8 +34645,10 @@ class DescribeRuleDetailByRuleIdRequest(TeaModel):
 class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
     def __init__(
         self,
+        auth_type: str = None,
         biz_version: str = None,
         console_rule_id: int = None,
+        create_type: str = None,
         event_code: str = None,
         event_name: str = None,
         gmt_create: int = None,
@@ -31045,27 +34658,56 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
         memo: str = None,
         rule_action_map: Dict[str, Any] = None,
         rule_actions: str = None,
+        rule_auth_type: str = None,
+        rule_body: str = None,
         rule_expressions: str = None,
         rule_id: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         rule_version_id: int = None,
     ):
+        # Service authorization type.
+        self.auth_type = auth_type
+        # Version.
         self.biz_version = biz_version
+        # Primary key ID of the policy.
         self.console_rule_id = console_rule_id
+        # Creation type.
+        self.create_type = create_type
+        # Event code.
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Log expression.
         self.logic_expression = logic_expression
+        # Main event code.
         self.main_event_code = main_event_code
+        # Memo.
         self.memo = memo
+        # Rule action structure.
         self.rule_action_map = rule_action_map
+        # Rule actions.
         self.rule_actions = rule_actions
+        # Rule authorization type.
+        self.rule_auth_type = rule_auth_type
+        # DSL policy expression.
+        self.rule_body = rule_body
+        # Rule expressions.
         self.rule_expressions = rule_expressions
+        # Policy ID.
         self.rule_id = rule_id
+        # Policy name.
         self.rule_name = rule_name
+        # Policy status.
         self.rule_status = rule_status
+        # Rule type.
+        self.rule_type = rule_type
+        # Primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -31077,10 +34719,14 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_type is not None:
+            result['authType'] = self.auth_type
         if self.biz_version is not None:
             result['bizVersion'] = self.biz_version
         if self.console_rule_id is not None:
             result['consoleRuleId'] = self.console_rule_id
+        if self.create_type is not None:
+            result['createType'] = self.create_type
         if self.event_code is not None:
             result['eventCode'] = self.event_code
         if self.event_name is not None:
@@ -31099,6 +34745,10 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             result['ruleActionMap'] = self.rule_action_map
         if self.rule_actions is not None:
             result['ruleActions'] = self.rule_actions
+        if self.rule_auth_type is not None:
+            result['ruleAuthType'] = self.rule_auth_type
+        if self.rule_body is not None:
+            result['ruleBody'] = self.rule_body
         if self.rule_expressions is not None:
             result['ruleExpressions'] = self.rule_expressions
         if self.rule_id is not None:
@@ -31107,16 +34757,22 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.rule_version_id is not None:
             result['ruleVersionId'] = self.rule_version_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('authType') is not None:
+            self.auth_type = m.get('authType')
         if m.get('bizVersion') is not None:
             self.biz_version = m.get('bizVersion')
         if m.get('consoleRuleId') is not None:
             self.console_rule_id = m.get('consoleRuleId')
+        if m.get('createType') is not None:
+            self.create_type = m.get('createType')
         if m.get('eventCode') is not None:
             self.event_code = m.get('eventCode')
         if m.get('eventName') is not None:
@@ -31135,6 +34791,10 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             self.rule_action_map = m.get('ruleActionMap')
         if m.get('ruleActions') is not None:
             self.rule_actions = m.get('ruleActions')
+        if m.get('ruleAuthType') is not None:
+            self.rule_auth_type = m.get('ruleAuthType')
+        if m.get('ruleBody') is not None:
+            self.rule_body = m.get('ruleBody')
         if m.get('ruleExpressions') is not None:
             self.rule_expressions = m.get('ruleExpressions')
         if m.get('ruleId') is not None:
@@ -31143,6 +34803,8 @@ class DescribeRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('ruleVersionId') is not None:
             self.rule_version_id = m.get('ruleVersionId')
         return self
@@ -31154,7 +34816,9 @@ class DescribeRuleDetailByRuleIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeRuleDetailByRuleIdResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -31229,14 +34893,24 @@ class DescribeRuleHitRequest(TeaModel):
         self,
         lang: str = None,
         reg_id: str = None,
+        request_time: int = None,
         rule_id: str = None,
         rule_snapshot_id: str = None,
         s_request_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Execution time
+        self.request_time = request_time
+        # Rule ID
         self.rule_id = rule_id
+        # Snapshot ID.
         self.rule_snapshot_id = rule_snapshot_id
+        # Request ID.
         self.s_request_id = s_request_id
 
     def validate(self):
@@ -31252,6 +34926,8 @@ class DescribeRuleHitRequest(TeaModel):
             result['Lang'] = self.lang
         if self.reg_id is not None:
             result['regId'] = self.reg_id
+        if self.request_time is not None:
+            result['requestTime'] = self.request_time
         if self.rule_id is not None:
             result['ruleId'] = self.rule_id
         if self.rule_snapshot_id is not None:
@@ -31266,6 +34942,8 @@ class DescribeRuleHitRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('regId') is not None:
             self.reg_id = m.get('regId')
+        if m.get('requestTime') is not None:
+            self.request_time = m.get('requestTime')
         if m.get('ruleId') is not None:
             self.rule_id = m.get('ruleId')
         if m.get('ruleSnapshotId') is not None:
@@ -31281,7 +34959,9 @@ class DescribeRuleHitResponseBody(TeaModel):
         request_id: str = None,
         result_object: Dict[str, Any] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -31356,9 +35036,16 @@ class DescribeRuleListByEventCodesListRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event codes, JSON array string
+        # 
         # This parameter is required.
         self.event_codes = event_codes
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -31396,7 +35083,9 @@ class DescribeRuleListByEventCodesListResponseBodyResultObject(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
 
     def validate(self):
@@ -31429,7 +35118,9 @@ class DescribeRuleListByEventCodesListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeRuleListByEventCodesListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -31517,16 +35208,32 @@ class DescribeRulePageListRequest(TeaModel):
         rule_auth_type: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        sort: str = None,
     ):
+        # Set the language type for requests and responses, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type.
         self.create_type = create_type
+        # Current page number.
         self.current_page = current_page
+        # Event code.
         self.event_code = event_code
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Policy type.
         self.rule_auth_type = rule_auth_type
+        # Policy name.
         self.rule_name = rule_name
+        # Policy status.
         self.rule_status = rule_status
+        # Sorting method, default value is desc.
+        # - desc: descending order
+        # - asc: ascending order
+        self.sort = sort
 
     def validate(self):
         pass
@@ -31555,6 +35262,8 @@ class DescribeRulePageListRequest(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.sort is not None:
+            result['sort'] = self.sort
         return result
 
     def from_map(self, m: dict = None):
@@ -31577,6 +35286,8 @@ class DescribeRulePageListRequest(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('sort') is not None:
+            self.sort = m.get('sort')
         return self
 
 
@@ -31600,21 +35311,37 @@ class DescribeRulePageListResponseBodyResultObjectConsoleAudit(TeaModel):
         relation_name: str = None,
         relation_type: str = None,
     ):
+        # UID of the user who passed the audit
         self.apply_user_id = apply_user_id
+        # Name of the user who passed the audit
         self.apply_user_name = apply_user_name
+        # Approval comments
         self.audit_msg = audit_msg
+        # UID of the final auditor
         self.audit_real_user_id = audit_real_user_id
+        # Name of the final auditor
         self.audit_real_user_name = audit_real_user_name
+        # Remarks by the approver.
         self.audit_remark = audit_remark
+        # Application audit status
         self.audit_status = audit_status
+        # Approval time
         self.audit_time = audit_time
+        # UID of the auditor
         self.audit_user_id = audit_user_id
+        # Name of the auditor
         self.audit_user_name = audit_user_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Primary key ID
         self.id = id
+        # Information of other related parties (in JSON format)
         self.relation_ext = relation_ext
+        # ID of the related transaction for the approval
         self.relation_id = relation_id
+        # Name of the related transaction for the approval (can be null)
         self.relation_name = relation_name
+        # Type of the approval (e.g., `rule` represents the approval of a rule)
         self.relation_type = relation_type
 
     def validate(self):
@@ -31708,6 +35435,7 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
         external_rule_name: str = None,
         gmt_create: int = None,
         gmt_modified: int = None,
+        has_new_version: bool = None,
         id: int = None,
         main_rule_id: str = None,
         priority: int = None,
@@ -31716,28 +35444,52 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
         rule_memo: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         rule_version_id: int = None,
         template_id: int = None,
         version: int = None,
     ):
+        # Service authorization type
         self.auth_type = auth_type
+        # Audit object
         self.console_audit = console_audit
+        # Event code.
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
+        # External name of the rule
         self.external_rule_name = external_rule_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Whether there is a new version
+        self.has_new_version = has_new_version
+        # Primary key ID of the policy.
         self.id = id
+        # Main rule ID
         self.main_rule_id = main_rule_id
+        # Policy priority, the higher the number, the higher the priority.
         self.priority = priority
+        # Rule type
         self.rule_auth_type = rule_auth_type
+        # Policy ID.
         self.rule_id = rule_id
+        # Policy description.
         self.rule_memo = rule_memo
+        # Policy name.
         self.rule_name = rule_name
+        # Policy status.
         self.rule_status = rule_status
+        # Rule type
+        self.rule_type = rule_type
+        # Primary key ID of the rule version.
         self.rule_version_id = rule_version_id
+        # Template ID.
         self.template_id = template_id
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -31766,6 +35518,8 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
             result['gmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
             result['gmtModified'] = self.gmt_modified
+        if self.has_new_version is not None:
+            result['hasNewVersion'] = self.has_new_version
         if self.id is not None:
             result['id'] = self.id
         if self.main_rule_id is not None:
@@ -31782,6 +35536,8 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.rule_version_id is not None:
             result['ruleVersionId'] = self.rule_version_id
         if self.template_id is not None:
@@ -31809,6 +35565,8 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
             self.gmt_create = m.get('gmtCreate')
         if m.get('gmtModified') is not None:
             self.gmt_modified = m.get('gmtModified')
+        if m.get('hasNewVersion') is not None:
+            self.has_new_version = m.get('hasNewVersion')
         if m.get('id') is not None:
             self.id = m.get('id')
         if m.get('mainRuleId') is not None:
@@ -31825,6 +35583,8 @@ class DescribeRulePageListResponseBodyResultObject(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('ruleVersionId') is not None:
             self.rule_version_id = m.get('ruleVersionId')
         if m.get('templateId') is not None:
@@ -31844,11 +35604,17 @@ class DescribeRulePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -31948,9 +35714,15 @@ class DescribeRuleSnapshotRequest(TeaModel):
         rule_id: str = None,
         snapshot_version: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Policy ID
         self.rule_id = rule_id
+        # Snapshot version.
         self.snapshot_version = snapshot_version
 
     def validate(self):
@@ -32001,17 +35773,29 @@ class DescribeRuleSnapshotResponseBodyResultObject(TeaModel):
         rule_name: str = None,
         rule_status: str = None,
     ):
+        # Business version.
         self.biz_version = biz_version
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Expression for analysis results.
         self.logic_expression = logic_expression
+        # Memo.
         self.memo = memo
+        # Rule actions.
         self.rule_actions = rule_actions
+        # Expression.
         self.rule_expressions = rule_expressions
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
+        # Policy status
         self.rule_status = rule_status
 
     def validate(self):
@@ -32084,7 +35868,9 @@ class DescribeRuleSnapshotResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeRuleSnapshotResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -32159,12 +35945,24 @@ class DescribeRuleVersionListRequest(TeaModel):
         self,
         lang: str = None,
         console_rule_id: int = None,
+        current_page: int = None,
+        page_size: int = None,
         reg_id: str = None,
         rule_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Policy primary key ID
         self.console_rule_id = console_rule_id
+        # Current page number.
+        self.current_page = current_page
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Policy ID
         self.rule_id = rule_id
 
     def validate(self):
@@ -32180,6 +35978,10 @@ class DescribeRuleVersionListRequest(TeaModel):
             result['Lang'] = self.lang
         if self.console_rule_id is not None:
             result['consoleRuleId'] = self.console_rule_id
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         if self.reg_id is not None:
             result['regId'] = self.reg_id
         if self.rule_id is not None:
@@ -32192,6 +35994,10 @@ class DescribeRuleVersionListRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('consoleRuleId') is not None:
             self.console_rule_id = m.get('consoleRuleId')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         if m.get('regId') is not None:
             self.reg_id = m.get('regId')
         if m.get('ruleId') is not None:
@@ -32219,21 +36025,37 @@ class DescribeRuleVersionListResponseBodyResultObjectConsoleAudit(TeaModel):
         relation_name: str = None,
         relation_type: str = None,
     ):
+        # Initiator UID
         self.apply_user_id = apply_user_id
+        # Initiator name
         self.apply_user_name = apply_user_name
+        # Approval comment
         self.audit_msg = audit_msg
+        # Final approver UID
         self.audit_real_user_id = audit_real_user_id
+        # Final approver name
         self.audit_real_user_name = audit_real_user_name
+        # Approver\\"s remarks.
         self.audit_remark = audit_remark
+        # Approval status
         self.audit_status = audit_status
+        # Approval time.
         self.audit_time = audit_time
+        # Designated approver UID
         self.audit_user_id = audit_user_id
+        # Designated auditor\\"s name
         self.audit_user_name = audit_user_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Primary key ID
         self.id = id
+        # Information of related others (in JSON format)
         self.relation_ext = relation_ext
+        # ID of the associated transaction
         self.relation_id = relation_id
+        # Name of the associated item
         self.relation_name = relation_name
+        # Type of approval (e.g., `rule` for policy approval)
         self.relation_type = relation_type
 
     def validate(self):
@@ -32332,21 +36154,38 @@ class DescribeRuleVersionListResponseBodyResultObject(TeaModel):
         priority: int = None,
         rule_id: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         version: int = None,
     ):
+        # Audit object
         self.console_audit = console_audit
+        # Console rule ID.
         self.console_rule_id = console_rule_id
+        # Associated policy remarks
         self.console_rule_memo = console_rule_memo
+        # Associated policy name
         self.console_rule_name = console_rule_name
+        # Event code
         self.event_code = event_code
+        # Event type
         self.event_type = event_type
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID of the policy
         self.id = id
+        # The user who last operated.
         self.last_operator = last_operator
+        # Policy priority, the higher the number, the higher the priority.
         self.priority = priority
+        # Policy ID
         self.rule_id = rule_id
+        # Policy status
         self.rule_status = rule_status
+        # Rule Type
+        self.rule_type = rule_type
+        # Version number
         self.version = version
 
     def validate(self):
@@ -32385,6 +36224,8 @@ class DescribeRuleVersionListResponseBodyResultObject(TeaModel):
             result['ruleId'] = self.rule_id
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.version is not None:
             result['version'] = self.version
         return result
@@ -32418,6 +36259,8 @@ class DescribeRuleVersionListResponseBodyResultObject(TeaModel):
             self.rule_id = m.get('ruleId')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('version') is not None:
             self.version = m.get('version')
         return self
@@ -32426,11 +36269,25 @@ class DescribeRuleVersionListResponseBodyResultObject(TeaModel):
 class DescribeRuleVersionListResponseBody(TeaModel):
     def __init__(
         self,
+        current_page: int = None,
+        page_size: int = None,
         request_id: str = None,
         result_object: List[DescribeRuleVersionListResponseBodyResultObject] = None,
+        total_item: int = None,
+        total_page: int = None,
     ):
+        # Current page number.
+        self.current_page = current_page
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Total number of items
+        self.total_item = total_item
+        # Total number of pages.
+        self.total_page = total_page
 
     def validate(self):
         if self.result_object:
@@ -32444,16 +36301,28 @@ class DescribeRuleVersionListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
         if self.request_id is not None:
             result['requestId'] = self.request_id
         result['resultObject'] = []
         if self.result_object is not None:
             for k in self.result_object:
                 result['resultObject'].append(k.to_map() if k else None)
+        if self.total_item is not None:
+            result['totalItem'] = self.total_item
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
         self.result_object = []
@@ -32461,6 +36330,10 @@ class DescribeRuleVersionListResponseBody(TeaModel):
             for k in m.get('resultObject'):
                 temp_model = DescribeRuleVersionListResponseBodyResultObject()
                 self.result_object.append(temp_model.from_map(k))
+        if m.get('totalItem') is not None:
+            self.total_item = m.get('totalItem')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
         return self
 
 
@@ -32513,9 +36386,15 @@ class DescribeSDKDownloadListRequest(TeaModel):
         list_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Device type.
         self.device_type = device_type
+        # Download type
         self.list_type = list_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -32564,15 +36443,25 @@ class DescribeSDKDownloadListResponseBodyResultObject(TeaModel):
         sdk_version: str = None,
         size: str = None,
     ):
+        # Description information.
         self.description = description
+        # Developer
         self.developer = developer
+        # Device type.
         self.device_type = device_type
+        # Download URL.
         self.download_url = download_url
+        # File MD5.
         self.md_5 = md_5
+        # Package name
         self.package_name = package_name
+        # Risk recognition SDK privacy policy link
         self.privacy_link = privacy_link
+        # Release time
         self.push_time = push_time
+        # SDK version.
         self.sdk_version = sdk_version
+        # Size
         self.size = size
 
     def validate(self):
@@ -32637,7 +36526,9 @@ class DescribeSDKDownloadListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeSDKDownloadListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -32837,11 +36728,19 @@ class DescribeSafDeOrderRequest(TeaModel):
         reg_id: str = None,
         start_date: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # End date
         self.end_date = end_date
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Start date.
         self.start_date = start_date
 
     def validate(self):
@@ -32890,7 +36789,13 @@ class DescribeSafDeOrderResponseBodyResultObject(TeaModel):
         expiration_date: int = None,
         open_user_type: int = None,
     ):
+        # Expiration time
         self.expiration_date = expiration_date
+        # Based on the product type subscribed by the customer, the console permissions are divided into three categories:
+        # 
+        #      1. New Customer: Has not purchased/subscribed to any service.
+        #      2. Old Customer (Subscription): Customers who have purchased the SAF product.
+        #      3. Pay-As-You-Go: Customers who have purchased the SAF_BAG product or activated SAF_POS.
         self.open_user_type = open_user_type
 
     def validate(self):
@@ -32923,7 +36828,9 @@ class DescribeSafDeOrderResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeSafDeOrderResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -33004,12 +36911,21 @@ class DescribeSafOrderRequest(TeaModel):
         reg_id: str = None,
         start_date: str = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # End date.
         self.end_date = end_date
+        # Product code.
         self.exact_product_code = exact_product_code
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
+        # Start time.
         self.start_date = start_date
 
     def validate(self):
@@ -33061,6 +36977,7 @@ class DescribeSafOrderResponseBodyResultObject(TeaModel):
         self,
         expiration_date: int = None,
     ):
+        # Expiration date (timestamp).
         self.expiration_date = expiration_date
 
     def validate(self):
@@ -33089,7 +37006,9 @@ class DescribeSafOrderResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeSafOrderResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object.
         self.result_object = result_object
 
     def validate(self):
@@ -33165,7 +37084,11 @@ class DescribeSafStartConfigRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -33200,9 +37123,13 @@ class DescribeSafStartConfigResponseBodyResultObject(TeaModel):
         languages: List[str] = None,
         server_regions: List[str] = None,
     ):
+        # List of device types.
         self.device_types = device_types
+        # Event codes.
         self.event_codes = event_codes
+        # Configuration language details.
         self.languages = languages
+        # Server region
         self.server_regions = server_regions
 
     def validate(self):
@@ -33243,7 +37170,9 @@ class DescribeSafStartConfigResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeSafStartConfigResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -33324,12 +37253,27 @@ class DescribeSafStartStepsRequest(TeaModel):
         reg_id: str = None,
         server_region: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Whether the server is an Alibaba Cloud server
+        # 
+        # true or false
         self.aliyun_server = aliyun_server
+        # Used to receive a collection of strings from the frontend that POP cannot accept
+        #      
+        # Device type
         self.device_types_str = device_types_str
+        # Event code
         self.event_code = event_code
+        # Language, parameters can be passed
+        # - zh-CN: Chinese (default)
+        # - en-US: English
         self.language = language
+        # Region code
         self.reg_id = reg_id
+        # Server region
         self.server_region = server_region
 
     def validate(self):
@@ -33383,8 +37327,11 @@ class DescribeSafStartStepsResponseBodyResultObject(TeaModel):
         id: str = None,
         type: str = None,
     ):
+        # Step content
         self.content = content
+        # Step title
         self.id = id
+        # Type
         self.type = type
 
     def validate(self):
@@ -33421,7 +37368,9 @@ class DescribeSafStartStepsResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeSafStartStepsResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -33501,15 +37450,25 @@ class DescribeSafTagListRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
+        tag_name: str = None,
         api_id: str = None,
         current_page: str = None,
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Tag name. Fuzzy search.
+        self.tag_name = tag_name
+        # API service ID.
         self.api_id = api_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -33523,6 +37482,8 @@ class DescribeSafTagListRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
         if self.api_id is not None:
             result['apiId'] = self.api_id
         if self.current_page is not None:
@@ -33537,6 +37498,8 @@ class DescribeSafTagListRequest(TeaModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
         if m.get('apiId') is not None:
             self.api_id = m.get('apiId')
         if m.get('currentPage') is not None:
@@ -33559,12 +37522,19 @@ class DescribeSafTagListResponseBodyResultObject(TeaModel):
         tag_uid: str = None,
         update_time: str = None,
     ):
+        # Tag description.
         self.tag_desc = tag_desc
+        # Tag meaning.
         self.tag_mean = tag_mean
+        # Tag name.
         self.tag_name = tag_name
+        # Tag identifier.
         self.tag_state = tag_state
+        # Tag type.
         self.tag_type = tag_type
+        # Unique identifier of the tag key.
         self.tag_uid = tag_uid
+        # Update time.
         self.update_time = update_time
 
     def validate(self):
@@ -33621,11 +37591,17 @@ class DescribeSafTagListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -33717,6 +37693,429 @@ class DescribeSafTagListResponse(TeaModel):
         return self
 
 
+class DescribeSampleBatchOssPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        batch_name: str = None,
+        reg_id: str = None,
+    ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Sample batch name
+        self.batch_name = batch_name
+        # Region code
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_name is not None:
+            result['batchName'] = self.batch_name
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchName') is not None:
+            self.batch_name = m.get('batchName')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DescribeSampleBatchOssPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        host: str = None,
+        key: str = None,
+        policy: str = None,
+        request_id: str = None,
+        signature: str = None,
+    ):
+        # OSS Access ID
+        self.access_id = access_id
+        # OSS Domain
+        self.host = host
+        # Key required for file upload.
+        self.key = key
+        # OSS Security Policy
+        self.policy = policy
+        # ID of the request
+        self.request_id = request_id
+        # OSS Signature
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class DescribeSampleBatchOssPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSampleBatchOssPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSampleBatchOssPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSampleDataByBatchUUidPageRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        batch_uuid: str = None,
+        current_page: int = None,
+        data_value: str = None,
+        page_size: int = None,
+        reg_id: str = None,
+        update_begin_time: int = None,
+        update_end_time: int = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Sample batch UUID
+        self.batch_uuid = batch_uuid
+        # Current page number.
+        self.current_page = current_page
+        # Content of the list entered in the text box
+        self.data_value = data_value
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Region code
+        self.reg_id = reg_id
+        # Start time
+        self.update_begin_time = update_begin_time
+        # End time
+        self.update_end_time = update_end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_uuid is not None:
+            result['batchUuid'] = self.batch_uuid
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.update_begin_time is not None:
+            result['updateBeginTime'] = self.update_begin_time
+        if self.update_end_time is not None:
+            result['updateEndTime'] = self.update_end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchUuid') is not None:
+            self.batch_uuid = m.get('batchUuid')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('updateBeginTime') is not None:
+            self.update_begin_time = m.get('updateBeginTime')
+        if m.get('updateEndTime') is not None:
+            self.update_end_time = m.get('updateEndTime')
+        return self
+
+
+class DescribeSampleDataByBatchUUidPageResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        batch_name: str = None,
+        creator: str = None,
+        data_tag_type: str = None,
+        data_value: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        last_source_type: str = None,
+        uuid: str = None,
+        version: int = None,
+    ):
+        # Sample batch name
+        self.batch_name = batch_name
+        # Creator
+        self.creator = creator
+        # Sample type
+        self.data_tag_type = data_tag_type
+        # Data content
+        self.data_value = data_value
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time
+        self.gmt_modified = gmt_modified
+        # Last source
+        self.last_source_type = last_source_type
+        # Sample batch UUID
+        self.uuid = uuid
+        # Version
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_name is not None:
+            result['batchName'] = self.batch_name
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.data_tag_type is not None:
+            result['dataTagType'] = self.data_tag_type
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.last_source_type is not None:
+            result['lastSourceType'] = self.last_source_type
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('batchName') is not None:
+            self.batch_name = m.get('batchName')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('dataTagType') is not None:
+            self.data_tag_type = m.get('dataTagType')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('lastSourceType') is not None:
+            self.last_source_type = m.get('lastSourceType')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeSampleDataByBatchUUidPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        result_object: List[DescribeSampleDataByBatchUUidPageResponseBodyResultObject] = None,
+        total_item: int = None,
+        total_page: int = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Current page number.
+        self.current_page = current_page
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Returned object
+        self.result_object = result_object
+        # Total number of items
+        self.total_item = total_item
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['resultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['resultObject'].append(k.to_map() if k else None)
+        if self.total_item is not None:
+            result['totalItem'] = self.total_item
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.result_object = []
+        if m.get('resultObject') is not None:
+            for k in m.get('resultObject'):
+                temp_model = DescribeSampleDataByBatchUUidPageResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('totalItem') is not None:
+            self.total_item = m.get('totalItem')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class DescribeSampleDataByBatchUUidPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSampleDataByBatchUUidPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSampleDataByBatchUUidPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSampleDataListRequest(TeaModel):
     def __init__(
         self,
@@ -33730,14 +38129,25 @@ class DescribeSampleDataListRequest(TeaModel):
         scene: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Deletion status
         self.delete_tag = delete_tag
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Query content
         self.query_content = query_content
+        # Region code
         self.reg_id = reg_id
+        # Sample ID.
         self.sample_id = sample_id
+        # Scene
         self.scene = scene
+        # Status.
         self.status = status
 
     def validate(self):
@@ -33818,27 +38228,49 @@ class DescribeSampleDataListResponseBodyResultObject(TeaModel):
         user_id: int = None,
         version: int = None,
     ):
+        # Classification type, binary or multi-class.
         self.classification_type = classification_type
+        # Criterion value for sample data calculation
         self.data_distributed = data_distributed
+        # First row of sample data. Used to define the values of each column.
         self.data_title = data_title
+        # Deletion tag.
         self.delete_tag = delete_tag
+        # Description information.
         self.description = description
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID
         self.id = id
+        # Name
         self.name = name
+        # Number of normal samples
         self.normal_size = normal_size
+        # Recall configuration
         self.recall_config = recall_config
+        # Number of risk samples
         self.risk_size = risk_size
+        # Specified risk value
         self.risk_value = risk_value
+        # Sample label details
         self.sample_label_detail = sample_label_detail
+        # Sample size
         self.sample_size = sample_size
+        # Scene code
         self.scene = scene
+        # Status.
         self.status = status
+        # Storage path
         self.store_path = store_path
+        # Storage type
         self.store_type = store_type
+        # Whether recall is supported
         self.support_recall = support_recall
+        # User UID
         self.user_id = user_id
+        # Version
         self.version = version
 
     def validate(self):
@@ -33955,11 +38387,17 @@ class DescribeSampleDataListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -34051,6 +38489,274 @@ class DescribeSampleDataListResponse(TeaModel):
         return self
 
 
+class DescribeSampleDataPageRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        current_page: int = None,
+        data_value: str = None,
+        page_size: int = None,
+        reg_id: str = None,
+        update_begin_time: int = None,
+        update_end_time: int = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Current page number.
+        self.current_page = current_page
+        # Content of the list entered in the text box
+        self.data_value = data_value
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Region code
+        self.reg_id = reg_id
+        # Start time
+        self.update_begin_time = update_begin_time
+        # End time
+        self.update_end_time = update_end_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.update_begin_time is not None:
+            result['updateBeginTime'] = self.update_begin_time
+        if self.update_end_time is not None:
+            result['updateEndTime'] = self.update_end_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('updateBeginTime') is not None:
+            self.update_begin_time = m.get('updateBeginTime')
+        if m.get('updateEndTime') is not None:
+            self.update_end_time = m.get('updateEndTime')
+        return self
+
+
+class DescribeSampleDataPageResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        data_tag_type: str = None,
+        data_value: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        last_source_type: str = None,
+        updator: str = None,
+        uuid: str = None,
+        version: int = None,
+    ):
+        # Creator
+        self.creator = creator
+        # Sample type
+        self.data_tag_type = data_tag_type
+        # Content of the list entered in the text box
+        self.data_value = data_value
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time
+        self.gmt_modified = gmt_modified
+        # Last source
+        self.last_source_type = last_source_type
+        # Modifier
+        self.updator = updator
+        # UUID of the sample batch
+        self.uuid = uuid
+        # Version number
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.data_tag_type is not None:
+            result['dataTagType'] = self.data_tag_type
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.last_source_type is not None:
+            result['lastSourceType'] = self.last_source_type
+        if self.updator is not None:
+            result['updator'] = self.updator
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('dataTagType') is not None:
+            self.data_tag_type = m.get('dataTagType')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('lastSourceType') is not None:
+            self.last_source_type = m.get('lastSourceType')
+        if m.get('updator') is not None:
+            self.updator = m.get('updator')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeSampleDataPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        result_object: List[DescribeSampleDataPageResponseBodyResultObject] = None,
+        total_item: int = None,
+        total_page: int = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Current page number.
+        self.current_page = current_page
+        # Number of items per page, default is 10.
+        self.page_size = page_size
+        # Returned object
+        self.result_object = result_object
+        # Total number of items
+        self.total_item = total_item
+        # Total number of pages.
+        self.total_page = total_page
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['resultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['resultObject'].append(k.to_map() if k else None)
+        if self.total_item is not None:
+            result['totalItem'] = self.total_item
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.result_object = []
+        if m.get('resultObject') is not None:
+            for k in m.get('resultObject'):
+                temp_model = DescribeSampleDataPageResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('totalItem') is not None:
+            self.total_item = m.get('totalItem')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class DescribeSampleDataPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSampleDataPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSampleDataPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSampleDemoDownloadUrlRequest(TeaModel):
     def __init__(
         self,
@@ -34058,8 +38764,14 @@ class DescribeSampleDemoDownloadUrlRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Scene code
+        # 
         # This parameter is required.
         self.scene = scene
 
@@ -34097,7 +38809,9 @@ class DescribeSampleDemoDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -34172,8 +38886,14 @@ class DescribeSampleDownloadUrlRequest(TeaModel):
         reg_id: str = None,
         sample_id: int = None,
     ):
+        # Set the language type for request and response, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Sample ID.
+        # 
         # This parameter is required.
         self.sample_id = sample_id
 
@@ -34211,7 +38931,9 @@ class DescribeSampleDownloadUrlResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -34287,9 +39009,15 @@ class DescribeSampleInfoRequest(TeaModel):
         reg_id: str = None,
         versions: int = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
         self.id = id
+        # Region code
         self.reg_id = reg_id
+        # Version number.
         self.versions = versions
 
     def validate(self):
@@ -34334,11 +39062,17 @@ class DescribeSampleInfoResponseBodyResultObject(TeaModel):
         update_time: str = None,
         version: int = None,
     ):
+        # Primary key ID
         self.id = id
+        # Sample tags.
         self.sample_tags = sample_tags
+        # Sample type
         self.sample_type = sample_type
+        # Sample value.
         self.sample_value = sample_value
+        # Update time.
         self.update_time = update_time
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -34387,7 +39121,9 @@ class DescribeSampleInfoResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeSampleInfoResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -34467,11 +39203,19 @@ class DescribeSampleListRequest(TeaModel):
         sample_type: str = None,
         sample_value: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Sample type
         self.sample_type = sample_type
+        # Sample data value.
         self.sample_value = sample_value
 
     def validate(self):
@@ -34524,11 +39268,17 @@ class DescribeSampleListResponseBodyResultObject(TeaModel):
         update_time: int = None,
         version: int = None,
     ):
+        # Database ID.
         self.id = id
+        # Sample tags.
         self.sample_tags = sample_tags
+        # Sample type
         self.sample_type = sample_type
+        # Sample value.
         self.sample_value = sample_value
+        # Update time.
         self.update_time = update_time
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -34581,11 +39331,17 @@ class DescribeSampleListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total count.
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -34683,7 +39439,11 @@ class DescribeSampleSceneListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -34724,15 +39484,25 @@ class DescribeSampleSceneListResponseBodyResultObject(TeaModel):
         last_modified_operator: str = None,
         status: str = None,
     ):
+        # Business type.
         self.biz_type = biz_type
+        # Configuration key.
         self.config_key = config_key
+        # Configuration value.
         self.config_value = config_value
+        # Creator.
         self.creator = creator
+        # Description information.
         self.description = description
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Task ID.
         self.id = id
+        # Last modified by.
         self.last_modified_operator = last_modified_operator
+        # Status.
         self.status = status
 
     def validate(self):
@@ -34801,11 +39571,17 @@ class DescribeSampleSceneListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -34903,7 +39679,11 @@ class DescribeSampleTagListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -34936,7 +39716,9 @@ class DescribeSampleTagListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -35010,7 +39792,11 @@ class DescribeSampleUploadPolicyRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -35048,12 +39834,19 @@ class DescribeSampleUploadPolicyResponseBody(TeaModel):
         signature: str = None,
         sts_token: str = None,
     ):
+        # OSS access key ID.
         self.access_id = access_id
+        # OSS domain name.
         self.host = host
+        # The key of OSS upload policy.
         self.key = key
+        # OSS upload policy.
         self.policy = policy
+        # Request ID.
         self.request_id = request_id
+        # Signature information.
         self.signature = signature
+        # Temporary identity credential.
         self.sts_token = sts_token
 
     def validate(self):
@@ -35141,6 +39934,274 @@ class DescribeSampleUploadPolicyResponse(TeaModel):
         return self
 
 
+class DescribeSamplebatchPageRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        current_page: int = None,
+        data_value: str = None,
+        page_size: int = None,
+        reg_id: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Current page number.
+        self.current_page = current_page
+        # Content of the list entered in the text box
+        self.data_value = data_value
+        # Page size, with a default value of 10
+        self.page_size = page_size
+        # Region code
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.data_value is not None:
+            result['dataValue'] = self.data_value
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('dataValue') is not None:
+            self.data_value = m.get('dataValue')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DescribeSamplebatchPageResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        batch_name: str = None,
+        creator: str = None,
+        data_type: str = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        init_valid_file_row: int = None,
+        sample_batch_type: str = None,
+        services: str = None,
+        updator: str = None,
+        uuid: str = None,
+    ):
+        # Sample batch name
+        self.batch_name = batch_name
+        # Creator.
+        self.creator = creator
+        # Data type
+        self.data_type = data_type
+        # Description.
+        self.description = description
+        # Creation time.
+        self.gmt_create = gmt_create
+        # Modification time
+        self.gmt_modified = gmt_modified
+        # Valid sample content data
+        self.init_valid_file_row = init_valid_file_row
+        # Specific type of the sample list
+        self.sample_batch_type = sample_batch_type
+        # Service ID
+        self.services = services
+        # Modifier
+        self.updator = updator
+        # Sample batch UUID
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_name is not None:
+            result['batchName'] = self.batch_name
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.init_valid_file_row is not None:
+            result['initValidFileRow'] = self.init_valid_file_row
+        if self.sample_batch_type is not None:
+            result['sampleBatchType'] = self.sample_batch_type
+        if self.services is not None:
+            result['services'] = self.services
+        if self.updator is not None:
+            result['updator'] = self.updator
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('batchName') is not None:
+            self.batch_name = m.get('batchName')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('initValidFileRow') is not None:
+            self.init_valid_file_row = m.get('initValidFileRow')
+        if m.get('sampleBatchType') is not None:
+            self.sample_batch_type = m.get('sampleBatchType')
+        if m.get('services') is not None:
+            self.services = m.get('services')
+        if m.get('updator') is not None:
+            self.updator = m.get('updator')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        return self
+
+
+class DescribeSamplebatchPageResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        result_object: List[DescribeSamplebatchPageResponseBodyResultObject] = None,
+        total_item: int = None,
+        total_page: int = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Current page number.
+        self.current_page = current_page
+        # Page size, with a default value of 10
+        self.page_size = page_size
+        # Returned object
+        self.result_object = result_object
+        # Total number of items
+        self.total_item = total_item
+        # Total number of pages
+        self.total_page = total_page
+
+    def validate(self):
+        if self.result_object:
+            for k in self.result_object:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        result['resultObject'] = []
+        if self.result_object is not None:
+            for k in self.result_object:
+                result['resultObject'].append(k.to_map() if k else None)
+        if self.total_item is not None:
+            result['totalItem'] = self.total_item
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        self.result_object = []
+        if m.get('resultObject') is not None:
+            for k in m.get('resultObject'):
+                temp_model = DescribeSamplebatchPageResponseBodyResultObject()
+                self.result_object.append(temp_model.from_map(k))
+        if m.get('totalItem') is not None:
+            self.total_item = m.get('totalItem')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class DescribeSamplebatchPageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSamplebatchPageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSamplebatchPageResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSceneAllEventNameCodeListRequest(TeaModel):
     def __init__(
         self,
@@ -35148,8 +40209,13 @@ class DescribeSceneAllEventNameCodeListRequest(TeaModel):
         create_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -35188,9 +40254,13 @@ class DescribeSceneAllEventNameCodeListResponseBodyResultObjectChildren(TeaModel
         event_name: str = None,
         event_type: str = None,
     ):
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
 
     def validate(self):
@@ -35234,10 +40304,15 @@ class DescribeSceneAllEventNameCodeListResponseBodyResultObject(TeaModel):
         event_name: str = None,
         event_type: str = None,
     ):
+        # Child objects
         self.children = children
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
 
     def validate(self):
@@ -35294,11 +40369,17 @@ class DescribeSceneAllEventNameCodeListResponseBody(TeaModel):
         result_object: List[DescribeSceneAllEventNameCodeListResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error details
         self.message = message
+        # Request ID, which is unique for each request, facilitating subsequent troubleshooting
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Indicates whether the operation was successful, where true means success.
         self.success = success
 
     def validate(self):
@@ -35399,10 +40480,17 @@ class DescribeSceneEventPageListRequest(TeaModel):
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Search name or service code
         self.name_or_code = name_or_code
+        # Page size.
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -35455,15 +40543,25 @@ class DescribeSceneEventPageListResponseBodyResultObject(TeaModel):
         use_status: str = None,
         white_box_rule_count: str = None,
     ):
+        # Number of common rules
         self.common_rule_count = common_rule_count
+        # Number of custom rules
         self.custom_rule_count = custom_rule_count
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Modifier
         self.modifier = modifier
+        # Number of custom rules
         self.normal_rule_count = normal_rule_count
+        # Service code
         self.service = service
+        # Usage status
         self.use_status = use_status
+        # Number of white-box rules
         self.white_box_rule_count = white_box_rule_count
 
     def validate(self):
@@ -35532,11 +40630,17 @@ class DescribeSceneEventPageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page. Default value: 20, minimum value: 1, maximum value: 50.
         self.page_size = page_size
+        # Request ID, each request has a unique value, which facilitates subsequent troubleshooting
         self.request_id = request_id
+        # Return array
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -35641,14 +40745,25 @@ class DescribeSceneRulePageListRequest(TeaModel):
         rule_name: str = None,
         rule_status: str = None,
     ):
+        # Set the language type for requests and received messages. Default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Current page number.
         self.current_page = current_page
+        # Event code
         self.event_code = event_code
+        # Number of items per page in the returned results. Default value: 20, minimum value: 1, maximum value: 50.
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Strategy type
         self.rule_auth_type = rule_auth_type
+        # Strategy name
         self.rule_name = rule_name
+        # Strategy status
         self.rule_status = rule_status
 
     def validate(self):
@@ -35723,21 +40838,37 @@ class DescribeSceneRulePageListResponseBodyResultObjectConsoleAudit(TeaModel):
         relation_name: str = None,
         relation_type: str = None,
     ):
+        # Initiator account ID
         self.apply_user_id = apply_user_id
+        # Initiator account name
         self.apply_user_name = apply_user_name
+        # Approval comments
         self.audit_msg = audit_msg
+        # Final approver ID
         self.audit_real_user_id = audit_real_user_id
+        # Approver account name
         self.audit_real_user_name = audit_real_user_name
+        # Approval application remarks
         self.audit_remark = audit_remark
+        # Status
         self.audit_status = audit_status
+        # Approval time
         self.audit_time = audit_time
+        # Designated auditor account IDs (comma-separated for multiple)
         self.audit_user_id = audit_user_id
+        # Designated auditor account names (comma-separated for multiple)
         self.audit_user_name = audit_user_name
+        # Creation time in UTC
         self.gmt_create = gmt_create
+        # Primary key ID
         self.id = id
+        # Information about other related parties (in JSON format)
         self.relation_ext = relation_ext
+        # 审批关联的事务ID
         self.relation_id = relation_id
+        # The name of the associated transaction (can be null)
         self.relation_name = relation_name
+        # 审批的类型（如rule代表策略的审批）
         self.relation_type = relation_type
 
     def validate(self):
@@ -35839,28 +40970,50 @@ class DescribeSceneRulePageListResponseBodyResultObject(TeaModel):
         rule_memo: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         rule_version_id: int = None,
         template_id: int = None,
         version: int = None,
     ):
+        # Service authorization type
         self.auth_type = auth_type
+        # Audit object
         self.console_audit = console_audit
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
+        # External rule name
         self.external_rule_name = external_rule_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Primary key ID of the rule
         self.id = id
+        # Main rule ID
         self.main_rule_id = main_rule_id
+        # Strategy priority, where a higher number indicates a higher priority.
         self.priority = priority
+        # Rule Auth type
         self.rule_auth_type = rule_auth_type
+        # Strategy ID
         self.rule_id = rule_id
+        # Strategy description
         self.rule_memo = rule_memo
+        # Strategy name
         self.rule_name = rule_name
+        # Strategy status
         self.rule_status = rule_status
+        # Rule type
+        self.rule_type = rule_type
+        # Primary key ID of the rule version
         self.rule_version_id = rule_version_id
+        # Template ID
         self.template_id = template_id
+        # Version number
         self.version = version
 
     def validate(self):
@@ -35905,6 +41058,8 @@ class DescribeSceneRulePageListResponseBodyResultObject(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.rule_version_id is not None:
             result['ruleVersionId'] = self.rule_version_id
         if self.template_id is not None:
@@ -35948,6 +41103,8 @@ class DescribeSceneRulePageListResponseBodyResultObject(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('ruleVersionId') is not None:
             self.rule_version_id = m.get('ruleVersionId')
         if m.get('templateId') is not None:
@@ -35967,11 +41124,17 @@ class DescribeSceneRulePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page in the returned results. Default value: 20, minimum value: 1, maximum value: 50.
         self.page_size = page_size
+        # Request ID, which is unique for each request, facilitating subsequent troubleshooting
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -36063,6 +41226,141 @@ class DescribeSceneRulePageListResponse(TeaModel):
         return self
 
 
+class DescribeScoreListRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        lang: str = None,
+    ):
+        # Primary key ID.
+        self.id = id
+        # Language type of the returned message. Values:
+        # 
+        # - **zh** (default): Chinese
+        # - **en**: English
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        return self
+
+
+class DescribeScoreListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: str = None,
+    ):
+        # Status code.
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class DescribeScoreListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeScoreListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeScoreListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeScoreSectionNumLineChartRequest(TeaModel):
     def __init__(
         self,
@@ -36074,14 +41372,25 @@ class DescribeScoreSectionNumLineChartRequest(TeaModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start timestamp, in milliseconds.
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # Bypass event code
         self.by_pass_event_codes = by_pass_event_codes
+        # End timestamp, in milliseconds.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Main event code
         self.main_event_codes = main_event_codes
+        # Region code
         self.reg_id = reg_id
+        # Diversion event code
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):
@@ -36134,7 +41443,9 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries(TeaModel):
         data: List[str] = None,
         name: str = None,
     ):
+        # List of current category results.
         self.data = data
+        # Category name.
         self.name = name
 
     def validate(self):
@@ -36166,6 +41477,7 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Data structure.
         self.data = data
 
     def validate(self):
@@ -36194,7 +41506,9 @@ class DescribeScoreSectionNumLineChartResponseBodyResultObject(TeaModel):
         series: List[DescribeScoreSectionNumLineChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeScoreSectionNumLineChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # Details of xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -36238,7 +41552,9 @@ class DescribeScoreSectionNumLineChartResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeScoreSectionNumLineChartResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -36318,11 +41634,19 @@ class DescribeScoreSectionPieChartRequest(TeaModel):
         event_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Event type.
         self.event_type = event_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -36370,6 +41694,7 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectGrid(TeaModel):
         self,
         show: bool = None,
     ):
+        # Chart field, default false
         self.show = show
 
     def validate(self):
@@ -36398,7 +41723,9 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectSeriesData(TeaModel):
         name: str = None,
         value: str = None,
     ):
+        # Category item name.
         self.name = name
+        # Result value.
         self.value = value
 
     def validate(self):
@@ -36432,8 +41759,11 @@ class DescribeScoreSectionPieChartResponseBodyResultObjectSeries(TeaModel):
         name: str = None,
         rose_type: bool = None,
     ):
+        # Chart data list
         self.data = data
+        # Category name.
         self.name = name
+        # Chart field, default false
         self.rose_type = rose_type
 
     def validate(self):
@@ -36479,8 +41809,11 @@ class DescribeScoreSectionPieChartResponseBodyResultObject(TeaModel):
         grid: DescribeScoreSectionPieChartResponseBodyResultObjectGrid = None,
         series: List[DescribeScoreSectionPieChartResponseBodyResultObjectSeries] = None,
     ):
+        # Chart field, default true
         self.animation = animation
+        # Belongs to grid.
         self.grid = grid
+        # Data list
         self.series = series
 
     def validate(self):
@@ -36528,7 +41861,9 @@ class DescribeScoreSectionPieChartResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeScoreSectionPieChartResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -36609,14 +41944,25 @@ class DescribeScoreSectionRatioLineChartRequest(TeaModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
+        # Sets the language type for request and response messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # Bypass event code
         self.by_pass_event_codes = by_pass_event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Main event code
         self.main_event_codes = main_event_codes
+        # Region code
         self.reg_id = reg_id
+        # Shunt event code
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):
@@ -36669,7 +42015,9 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries(TeaModel)
         data: List[str] = None,
         name: str = None,
     ):
+        # Chart data list
         self.data = data
+        # Statistical dimension.
         self.name = name
 
     def validate(self):
@@ -36701,6 +42049,7 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Chart data list
         self.data = data
 
     def validate(self):
@@ -36729,7 +42078,9 @@ class DescribeScoreSectionRatioLineChartResponseBodyResultObject(TeaModel):
         series: List[DescribeScoreSectionRatioLineChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeScoreSectionRatioLineChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # Details of the xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -36773,7 +42124,9 @@ class DescribeScoreSectionRatioLineChartResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeScoreSectionRatioLineChartResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -36849,7 +42202,11 @@ class DescribeSelectItemRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -36882,7 +42239,9 @@ class DescribeSelectItemResponseBodyResultObject(TeaModel):
         monitor_status_list: List[str] = None,
         task_id_list: List[str] = None,
     ):
+        # Monitoring status list.
         self.monitor_status_list = monitor_status_list
+        # Task ID list.
         self.task_id_list = task_id_list
 
     def validate(self):
@@ -36915,7 +42274,9 @@ class DescribeSelectItemResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeSelectItemResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -36990,6 +42351,7 @@ class DescribeServiceAppKeyRequest(TeaModel):
         self,
         reg_id: str = None,
     ):
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -37022,11 +42384,17 @@ class DescribeServiceAppKeyResponseBody(TeaModel):
         result_object: bool = None,
         uccess: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful.
         self.uccess = uccess
 
     def validate(self):
@@ -37110,27 +42478,18 @@ class DescribeServiceAppKeyResponse(TeaModel):
         return self
 
 
-class DescribeServiceConsumeRequest(TeaModel):
+class DescribeServiceCodeNameRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
-        current_page: str = None,
-        end_date: str = None,
-        page_size: str = None,
-        reg_id: str = None,
-        service_code: str = None,
-        start_date: str = None,
+        tab: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
-        self.current_page = current_page
-        # This parameter is required.
-        self.end_date = end_date
-        self.page_size = page_size
-        self.reg_id = reg_id
-        # This parameter is required.
-        self.service_code = service_code
-        # This parameter is required.
-        self.start_date = start_date
+        # Scenario.
+        self.tab = tab
 
     def validate(self):
         pass
@@ -37143,47 +42502,38 @@ class DescribeServiceConsumeRequest(TeaModel):
         result = dict()
         if self.lang is not None:
             result['Lang'] = self.lang
-        if self.current_page is not None:
-            result['currentPage'] = self.current_page
-        if self.end_date is not None:
-            result['endDate'] = self.end_date
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        if self.start_date is not None:
-            result['startDate'] = self.start_date
+        if self.tab is not None:
+            result['Tab'] = self.tab
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
-        if m.get('currentPage') is not None:
-            self.current_page = m.get('currentPage')
-        if m.get('endDate') is not None:
-            self.end_date = m.get('endDate')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        if m.get('startDate') is not None:
-            self.start_date = m.get('startDate')
+        if m.get('Tab') is not None:
+            self.tab = m.get('Tab')
         return self
 
 
-class DescribeServiceConsumeResponseBodyConsumeRecordsRecords(TeaModel):
+class DescribeServiceCodeNameResponseBody(TeaModel):
     def __init__(
         self,
-        count: int = None,
-        service_code: str = None,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: str = None,
     ):
-        self.count = count
-        self.service_code = service_code
+        # Status code.
+        self.code = code
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
 
     def validate(self):
         pass
@@ -37194,133 +42544,39 @@ class DescribeServiceConsumeResponseBodyConsumeRecordsRecords(TeaModel):
             return _map
 
         result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        return self
-
-
-class DescribeServiceConsumeResponseBodyConsumeRecords(TeaModel):
-    def __init__(
-        self,
-        date: str = None,
-        records: List[DescribeServiceConsumeResponseBodyConsumeRecordsRecords] = None,
-    ):
-        self.date = date
-        self.records = records
-
-    def validate(self):
-        if self.records:
-            for k in self.records:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.date is not None:
-            result['date'] = self.date
-        result['records'] = []
-        if self.records is not None:
-            for k in self.records:
-                result['records'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('date') is not None:
-            self.date = m.get('date')
-        self.records = []
-        if m.get('records') is not None:
-            for k in m.get('records'):
-                temp_model = DescribeServiceConsumeResponseBodyConsumeRecordsRecords()
-                self.records.append(temp_model.from_map(k))
-        return self
-
-
-class DescribeServiceConsumeResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        consume_records: List[DescribeServiceConsumeResponseBodyConsumeRecords] = None,
-        current_page: int = None,
-        page_size: int = None,
-        total_item: int = None,
-        total_page: int = None,
-    ):
-        self.request_id = request_id
-        self.consume_records = consume_records
-        self.current_page = current_page
-        self.page_size = page_size
-        self.total_item = total_item
-        self.total_page = total_page
-
-    def validate(self):
-        if self.consume_records:
-            for k in self.consume_records:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['consumeRecords'] = []
-        if self.consume_records is not None:
-            for k in self.consume_records:
-                result['consumeRecords'].append(k.to_map() if k else None)
-        if self.current_page is not None:
-            result['currentPage'] = self.current_page
-        if self.page_size is not None:
-            result['pageSize'] = self.page_size
-        if self.total_item is not None:
-            result['totalItem'] = self.total_item
-        if self.total_page is not None:
-            result['totalPage'] = self.total_page
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.consume_records = []
-        if m.get('consumeRecords') is not None:
-            for k in m.get('consumeRecords'):
-                temp_model = DescribeServiceConsumeResponseBodyConsumeRecords()
-                self.consume_records.append(temp_model.from_map(k))
-        if m.get('currentPage') is not None:
-            self.current_page = m.get('currentPage')
-        if m.get('pageSize') is not None:
-            self.page_size = m.get('pageSize')
-        if m.get('totalItem') is not None:
-            self.total_item = m.get('totalItem')
-        if m.get('totalPage') is not None:
-            self.total_page = m.get('totalPage')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
         return self
 
 
-class DescribeServiceConsumeResponse(TeaModel):
+class DescribeServiceCodeNameResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: DescribeServiceConsumeResponseBody = None,
+        body: DescribeServiceCodeNameResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -37351,135 +42607,7 @@ class DescribeServiceConsumeResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = DescribeServiceConsumeResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class DescribeServiceConsumeDownloadUrlRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        end_date: str = None,
-        reg_id: str = None,
-        service_code: str = None,
-        start_date: str = None,
-    ):
-        self.lang = lang
-        # This parameter is required.
-        self.end_date = end_date
-        self.reg_id = reg_id
-        # This parameter is required.
-        self.service_code = service_code
-        # This parameter is required.
-        self.start_date = start_date
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.end_date is not None:
-            result['endDate'] = self.end_date
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        if self.start_date is not None:
-            result['startDate'] = self.start_date
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('endDate') is not None:
-            self.end_date = m.get('endDate')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        if m.get('startDate') is not None:
-            self.start_date = m.get('startDate')
-        return self
-
-
-class DescribeServiceConsumeDownloadUrlResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        download_file_url: str = None,
-    ):
-        self.request_id = request_id
-        self.download_file_url = download_file_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.download_file_url is not None:
-            result['downloadFileUrl'] = self.download_file_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('downloadFileUrl') is not None:
-            self.download_file_url = m.get('downloadFileUrl')
-        return self
-
-
-class DescribeServiceConsumeDownloadUrlResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeServiceConsumeDownloadUrlResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeServiceConsumeDownloadUrlResponseBody()
+            temp_model = DescribeServiceCodeNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -37490,7 +42618,11 @@ class DescribeServiceListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -37523,7 +42655,9 @@ class DescribeServiceListResponseBodyResultObject(TeaModel):
         service_code: str = None,
         service_name: str = None,
     ):
+        # Service code
         self.service_code = service_code
+        # Service name.
         self.service_name = service_name
 
     def validate(self):
@@ -37556,7 +42690,9 @@ class DescribeServiceListResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[DescribeServiceListResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -37640,10 +42776,18 @@ class DescribeSimulationPreditInfoRequest(TeaModel):
         reg_id: str = None,
         rules_str: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Region code
         self.reg_id = reg_id
+        # Policy list
+        # 
         # This parameter is required.
         self.rules_str = rules_str
 
@@ -37685,7 +42829,9 @@ class DescribeSimulationPreditInfoResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -37765,15 +42911,28 @@ class DescribeSimulationTaskCountRequest(TeaModel):
         reg_id: str = None,
         start_time: int = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source configuration
         self.data_source_config = data_source_config
+        # Data source type
         self.data_source_type = data_source_type
+        # Task end time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Filter
         self.filters_str = filters_str
+        # Region code
         self.reg_id = reg_id
+        # Task start time.
+        # 
         # This parameter is required.
         self.start_time = start_time
 
@@ -37831,7 +42990,9 @@ class DescribeSimulationTaskCountResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -37910,12 +43071,21 @@ class DescribeSimulationTaskListRequest(TeaModel):
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Primary key ID
         self.id = id
+        # Name
         self.name = name
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Title.
         self.title = title
 
     def validate(self):
@@ -37972,11 +43142,17 @@ class DescribeSimulationTaskListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Return object
         self.result_object = result_object
+        # Total count.
         self.total_item = total_item
+        # Total pages
         self.total_page = total_page
 
     def validate(self):
@@ -38066,7 +43242,11 @@ class DescribeSlsUrlConfigRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -38099,7 +43279,9 @@ class DescribeSlsUrlConfigResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -38174,9 +43356,15 @@ class DescribeSupportRuleListRequest(TeaModel):
         event_code: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -38213,7 +43401,9 @@ class DescribeSupportRuleListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -38288,8 +43478,13 @@ class DescribeTagListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Primary key ID
         self.id = id
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -38329,10 +43524,15 @@ class DescribeTagListResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -38422,13 +43622,23 @@ class DescribeTagsBarChartRequest(TeaModel):
         reg_id: str = None,
         result: str = None,
     ):
+        # Sets the language type for the request and response messages. Default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
+        # Policy execution result
         self.result = result
 
     def validate(self):
@@ -38477,7 +43687,9 @@ class DescribeTagsBarChartResponseBodyResultObjectSeriesData(TeaModel):
         num: int = None,
         scale: str = None,
     ):
+        # Number.
         self.num = num
+        # Scale
         self.scale = scale
 
     def validate(self):
@@ -38511,8 +43723,11 @@ class DescribeTagsBarChartResponseBodyResultObjectSeries(TeaModel):
         name: str = None,
         stack: str = None,
     ):
+        # Chart data list
         self.data = data
+        # Series name.
         self.name = name
+        # Chart field, same as name
         self.stack = stack
 
     def validate(self):
@@ -38556,6 +43771,7 @@ class DescribeTagsBarChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # xaxis data items
         self.data = data
 
     def validate(self):
@@ -38584,7 +43800,9 @@ class DescribeTagsBarChartResponseBodyResultObject(TeaModel):
         series: List[DescribeTagsBarChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeTagsBarChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # xaxis interface configuration.
         self.xaxis = xaxis
 
     def validate(self):
@@ -38632,11 +43850,17 @@ class DescribeTagsBarChartResponseBody(TeaModel):
         result_object: DescribeTagsBarChartResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -38729,8 +43953,13 @@ class DescribeTagsFluctuationRequest(TeaModel):
         event_codes: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -38771,11 +44000,17 @@ class DescribeTagsFluctuationResponseBodyResultObject(TeaModel):
         within_three_day_num: str = None,
         yesterday_num: int = None,
     ):
+        # Tag name
         self.table_name = table_name
+        # Data for today
         self.today_num = today_num
+        # Data for the last seven days
         self.within_seven_day_num = within_seven_day_num
+        # Data for the last thirty days
         self.within_thirty_day_num = within_thirty_day_num
+        # Data for the last three days
         self.within_three_day_num = within_three_day_num
+        # Data for yesterday
         self.yesterday_num = yesterday_num
 
     def validate(self):
@@ -38828,11 +44063,17 @@ class DescribeTagsFluctuationResponseBody(TeaModel):
         result_object: List[DescribeTagsFluctuationResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Indicates whether the call was successful
         self.success = success
 
     def validate(self):
@@ -38930,7 +44171,11 @@ class DescribeTagsListRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and responses, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -38963,7 +44208,9 @@ class DescribeTagsListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -39042,14 +44289,25 @@ class DescribeTagsNumLineChartRequest(TeaModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # Bypass event code
         self.by_pass_event_codes = by_pass_event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Main event code
         self.main_event_codes = main_event_codes
+        # Region code
         self.reg_id = reg_id
+        # Shunt event code
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):
@@ -39102,7 +44360,9 @@ class DescribeTagsNumLineChartResponseBodyResultObjectSeries(TeaModel):
         data: List[str] = None,
         name: str = None,
     ):
+        # Chart data list
         self.data = data
+        # Series name.
         self.name = name
 
     def validate(self):
@@ -39134,6 +44394,7 @@ class DescribeTagsNumLineChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # Chart data list
         self.data = data
 
     def validate(self):
@@ -39162,7 +44423,9 @@ class DescribeTagsNumLineChartResponseBodyResultObject(TeaModel):
         series: List[DescribeTagsNumLineChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeTagsNumLineChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -39206,7 +44469,9 @@ class DescribeTagsNumLineChartResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeTagsNumLineChartResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -39287,15 +44552,27 @@ class DescribeTagsRatioLineChartRequest(TeaModel):
         reg_id: str = None,
         shunt_event_codes: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.begin_time = begin_time
+        # Bypass event code
         self.by_pass_event_codes = by_pass_event_codes
+        # End time, accurate to milliseconds (ms).
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # Main event code
         self.main_event_codes = main_event_codes
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Shunt event code
         self.shunt_event_codes = shunt_event_codes
 
     def validate(self):
@@ -39348,7 +44625,9 @@ class DescribeTagsRatioLineChartResponseBodyResultObjectSeries(TeaModel):
         data: List[str] = None,
         name: str = None,
     ):
+        # Result data.
         self.data = data
+        # Series name.
         self.name = name
 
     def validate(self):
@@ -39380,6 +44659,7 @@ class DescribeTagsRatioLineChartResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # X-axis data
         self.data = data
 
     def validate(self):
@@ -39408,7 +44688,9 @@ class DescribeTagsRatioLineChartResponseBodyResultObject(TeaModel):
         series: List[DescribeTagsRatioLineChartResponseBodyResultObjectSeries] = None,
         xaxis: DescribeTagsRatioLineChartResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # xaxis node.
         self.xaxis = xaxis
 
     def validate(self):
@@ -39452,7 +44734,9 @@ class DescribeTagsRatioLineChartResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeTagsRatioLineChartResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -39532,11 +44816,19 @@ class DescribeTagsTrendRequest(TeaModel):
         reg_id: str = None,
         result: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Start time, accurate to milliseconds (ms).
         self.begin_time = begin_time
+        # End time, accurate to milliseconds (ms).
         self.end_time = end_time
+        # Event code.
         self.event_codes = event_codes
+        # Region code
         self.reg_id = reg_id
+        # Policy execution result
         self.result = result
 
     def validate(self):
@@ -39585,7 +44877,9 @@ class DescribeTagsTrendResponseBodyResultObjectSeriesData(TeaModel):
         num: int = None,
         scale: str = None,
     ):
+        # The number of items in this category.
         self.num = num
+        # Proportion
         self.scale = scale
 
     def validate(self):
@@ -39618,7 +44912,9 @@ class DescribeTagsTrendResponseBodyResultObjectSeries(TeaModel):
         data: List[DescribeTagsTrendResponseBodyResultObjectSeriesData] = None,
         name: str = None,
     ):
+        # Chart data list
         self.data = data
+        # Category name.
         self.name = name
 
     def validate(self):
@@ -39658,6 +44954,7 @@ class DescribeTagsTrendResponseBodyResultObjectXaxis(TeaModel):
         self,
         data: List[str] = None,
     ):
+        # X-axis data
         self.data = data
 
     def validate(self):
@@ -39686,7 +44983,9 @@ class DescribeTagsTrendResponseBodyResultObject(TeaModel):
         series: List[DescribeTagsTrendResponseBodyResultObjectSeries] = None,
         xaxis: DescribeTagsTrendResponseBodyResultObjectXaxis = None,
     ):
+        # Data list
         self.series = series
+        # xaxis returned data
         self.xaxis = xaxis
 
     def validate(self):
@@ -39734,11 +45033,17 @@ class DescribeTagsTrendResponseBody(TeaModel):
         result_object: DescribeTagsTrendResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -39833,10 +45138,17 @@ class DescribeTaskListRequest(TeaModel):
         page_size: str = None,
         reg_id: str = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Whether to paginate.
         self.is_page = is_page
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -39888,14 +45200,31 @@ class DescribeTaskListResponseBodyResultObject(TeaModel):
         task_log_id: int = None,
         task_type: str = None,
     ):
+        # Completion time, in milliseconds.
         self.completion_time = completion_time
+        # Creation time.
         self.create_time = create_time
+        # Task ID.
         self.id = id
+        # Total number of mark information.
         self.mark = mark
+        # Remark.
         self.remark = remark
+        # Scene name
         self.scene_name = scene_name
+        # Data status.
+        # 
+        # -1: Failed
+        # 0: Deleted
+        # 1: Pending
+        # 2: Success
         self.status = status
+        # Task ID.
         self.task_log_id = task_log_id
+        # Task type
+        # 1: Data upload
+        # 2: Supplemental upload
+        # 3: Labeling
         self.task_type = task_type
 
     def validate(self):
@@ -39960,11 +45289,17 @@ class DescribeTaskListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -40067,12 +45402,21 @@ class DescribeTaskLogListRequest(TeaModel):
         task_log_id: str = None,
         reg_id: str = None,
     ):
+        # Current page.
         self.current_page = current_page
+        # Whether to paginate.
         self.is_page = is_page
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Page size.
         self.page_size = page_size
+        # Task ID.
         self.task_id = task_id
+        # Task log ID
         self.task_log_id = task_log_id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -40130,12 +45474,26 @@ class DescribeTaskLogListResponseBodyResultObject(TeaModel):
         status: str = None,
         task_type: str = None,
     ):
+        # Completion time, in milliseconds.
         self.completion_time = completion_time
+        # Task creation time.
         self.create_time = create_time
+        # Log ID.
         self.id = id
+        # Remark.
         self.remark = remark
+        # Scene name
         self.scene_name = scene_name
+        # Status.
+        # 
+        # 0: Deleted
+        # 1: Normal
         self.status = status
+        # Task type
+        # 
+        # 1: Data upload
+        # 2: Supplemental upload
+        # 3: Labeling
         self.task_type = task_type
 
     def validate(self):
@@ -40192,11 +45550,17 @@ class DescribeTaskLogListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page, default value is 10
         self.page_size = page_size
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -40288,346 +45652,17 @@ class DescribeTaskLogListResponse(TeaModel):
         return self
 
 
-class DescribeTemplateBaseInfoByTemplateIdRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        reg_id: str = None,
-        template_id: int = None,
-    ):
-        self.lang = lang
-        self.reg_id = reg_id
-        self.template_id = template_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        return self
-
-
-class DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectInputFields(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        field_code: str = None,
-        field_rank: str = None,
-        field_source: str = None,
-        field_type: str = None,
-        title: str = None,
-    ):
-        self.description = description
-        self.field_code = field_code
-        self.field_rank = field_rank
-        self.field_source = field_source
-        self.field_type = field_type
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.field_code is not None:
-            result['fieldCode'] = self.field_code
-        if self.field_rank is not None:
-            result['fieldRank'] = self.field_rank
-        if self.field_source is not None:
-            result['fieldSource'] = self.field_source
-        if self.field_type is not None:
-            result['fieldType'] = self.field_type
-        if self.title is not None:
-            result['title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('fieldCode') is not None:
-            self.field_code = m.get('fieldCode')
-        if m.get('fieldRank') is not None:
-            self.field_rank = m.get('fieldRank')
-        if m.get('fieldSource') is not None:
-            self.field_source = m.get('fieldSource')
-        if m.get('fieldType') is not None:
-            self.field_type = m.get('fieldType')
-        if m.get('title') is not None:
-            self.title = m.get('title')
-        return self
-
-
-class DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectRuleDetails(TeaModel):
-    def __init__(
-        self,
-        logic_expression: str = None,
-        memo: str = None,
-        rule_actions: str = None,
-        rule_expressions: str = None,
-        rule_id: str = None,
-        rule_name: str = None,
-        rule_status: str = None,
-    ):
-        self.logic_expression = logic_expression
-        self.memo = memo
-        self.rule_actions = rule_actions
-        self.rule_expressions = rule_expressions
-        self.rule_id = rule_id
-        self.rule_name = rule_name
-        self.rule_status = rule_status
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.logic_expression is not None:
-            result['logicExpression'] = self.logic_expression
-        if self.memo is not None:
-            result['memo'] = self.memo
-        if self.rule_actions is not None:
-            result['ruleActions'] = self.rule_actions
-        if self.rule_expressions is not None:
-            result['ruleExpressions'] = self.rule_expressions
-        if self.rule_id is not None:
-            result['ruleId'] = self.rule_id
-        if self.rule_name is not None:
-            result['ruleName'] = self.rule_name
-        if self.rule_status is not None:
-            result['ruleStatus'] = self.rule_status
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('logicExpression') is not None:
-            self.logic_expression = m.get('logicExpression')
-        if m.get('memo') is not None:
-            self.memo = m.get('memo')
-        if m.get('ruleActions') is not None:
-            self.rule_actions = m.get('ruleActions')
-        if m.get('ruleExpressions') is not None:
-            self.rule_expressions = m.get('ruleExpressions')
-        if m.get('ruleId') is not None:
-            self.rule_id = m.get('ruleId')
-        if m.get('ruleName') is not None:
-            self.rule_name = m.get('ruleName')
-        if m.get('ruleStatus') is not None:
-            self.rule_status = m.get('ruleStatus')
-        return self
-
-
-class DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObject(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        event_code: str = None,
-        event_name: str = None,
-        event_stauts: str = None,
-        input_fields: List[DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectInputFields] = None,
-        rule_details: List[DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectRuleDetails] = None,
-        template_code: str = None,
-        template_name: str = None,
-        template_type: str = None,
-        version: int = None,
-    ):
-        self.description = description
-        self.event_code = event_code
-        self.event_name = event_name
-        self.event_stauts = event_stauts
-        self.input_fields = input_fields
-        self.rule_details = rule_details
-        self.template_code = template_code
-        self.template_name = template_name
-        self.template_type = template_type
-        self.version = version
-
-    def validate(self):
-        if self.input_fields:
-            for k in self.input_fields:
-                if k:
-                    k.validate()
-        if self.rule_details:
-            for k in self.rule_details:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.event_name is not None:
-            result['eventName'] = self.event_name
-        if self.event_stauts is not None:
-            result['eventStauts'] = self.event_stauts
-        result['inputFields'] = []
-        if self.input_fields is not None:
-            for k in self.input_fields:
-                result['inputFields'].append(k.to_map() if k else None)
-        result['ruleDetails'] = []
-        if self.rule_details is not None:
-            for k in self.rule_details:
-                result['ruleDetails'].append(k.to_map() if k else None)
-        if self.template_code is not None:
-            result['templateCode'] = self.template_code
-        if self.template_name is not None:
-            result['templateName'] = self.template_name
-        if self.template_type is not None:
-            result['templateType'] = self.template_type
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('eventName') is not None:
-            self.event_name = m.get('eventName')
-        if m.get('eventStauts') is not None:
-            self.event_stauts = m.get('eventStauts')
-        self.input_fields = []
-        if m.get('inputFields') is not None:
-            for k in m.get('inputFields'):
-                temp_model = DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectInputFields()
-                self.input_fields.append(temp_model.from_map(k))
-        self.rule_details = []
-        if m.get('ruleDetails') is not None:
-            for k in m.get('ruleDetails'):
-                temp_model = DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObjectRuleDetails()
-                self.rule_details.append(temp_model.from_map(k))
-        if m.get('templateCode') is not None:
-            self.template_code = m.get('templateCode')
-        if m.get('templateName') is not None:
-            self.template_name = m.get('templateName')
-        if m.get('templateType') is not None:
-            self.template_type = m.get('templateType')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
-class DescribeTemplateBaseInfoByTemplateIdResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObject = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        if self.result_object:
-            self.result_object.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            temp_model = DescribeTemplateBaseInfoByTemplateIdResponseBodyResultObject()
-            self.result_object = temp_model.from_map(m['resultObject'])
-        return self
-
-
-class DescribeTemplateBaseInfoByTemplateIdResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: DescribeTemplateBaseInfoByTemplateIdResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = DescribeTemplateBaseInfoByTemplateIdResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class DescribeTemplateCountRequest(TeaModel):
     def __init__(
         self,
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -40661,8 +45696,11 @@ class DescribeTemplateCountResponseBodyResultObject(TeaModel):
         max_total_item: int = None,
         total_item: int = None,
     ):
+        # Template quantity limit.
         self.limit = limit
+        # Maximum count
         self.max_total_item = max_total_item
+        # Total count.
         self.total_item = total_item
 
     def validate(self):
@@ -40699,7 +45737,9 @@ class DescribeTemplateCountResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeTemplateCountResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -40775,7 +45815,11 @@ class DescribeTemplateDownloadRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -40808,7 +45852,9 @@ class DescribeTemplateDownloadResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Data object
         self.data = data
 
     def validate(self):
@@ -40889,14 +45935,25 @@ class DescribeTemplatePageListRequest(TeaModel):
         template_status: str = None,
         template_type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Current page number.
         self.current_page = current_page
+        # Event code.
         self.event_codes = event_codes
+        # Page size, default value is 10
         self.page_size = page_size
+        # Region code
         self.reg_id = reg_id
+        # Event name
         self.template_name = template_name
+        # Event template search field
         self.template_search_item = template_search_item
+        # Event status
         self.template_status = template_status
+        # Template type
         self.template_type = template_type
 
     def validate(self):
@@ -40968,18 +46025,31 @@ class DescribeTemplatePageListResponseBodyResultObject(TeaModel):
         user_count: int = None,
         version: int = None,
     ):
+        # Description information.
         self.description = description
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Template ID.
         self.id = id
+        # Number of policies
         self.rule_count = rule_count
+        # Template code.
         self.template_code = template_code
+        # Template name.
         self.template_name = template_name
+        # Event status
         self.template_status = template_status
+        # Template type
         self.template_type = template_type
+        # Number of customer authorizations
         self.user_count = user_count
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -41060,11 +46130,17 @@ class DescribeTemplatePageListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Current page number.
         self.current_page = current_page
+        # Number of items per page, default value is 10
         self.page_size = page_size
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -41162,7 +46238,11 @@ class DescribeUsedServiceRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -41196,8 +46276,11 @@ class DescribeUsedServiceResponseBodyRecords(TeaModel):
         name: str = None,
         service_code: str = None,
     ):
+        # English name
         self.en_name = en_name
+        # Service name
         self.name = name
+        # Service code
         self.service_code = service_code
 
     def validate(self):
@@ -41234,7 +46317,9 @@ class DescribeUsedServiceResponseBody(TeaModel):
         request_id: str = None,
         records: List[DescribeUsedServiceResponseBodyRecords] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Record details
         self.records = records
 
     def validate(self):
@@ -41316,7 +46401,11 @@ class DescribeUserInfoRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -41351,9 +46440,13 @@ class DescribeUserInfoResponseBodyResultObject(TeaModel):
         user_id: int = None,
         user_name: str = None,
     ):
+        # Client IP.
         self.client_ip = client_ip
+        # Sub-account ID
         self.sub_id = sub_id
+        # User UID
         self.user_id = user_id
+        # User name
         self.user_name = user_name
 
     def validate(self):
@@ -41397,10 +46490,15 @@ class DescribeUserInfoResponseBody(TeaModel):
         result_object: DescribeUserInfoResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message
         self.message = message
+        # Returned object
         self.result_object = result_object
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -41490,9 +46588,15 @@ class DescribeVariableBindDetailRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Bound variable definition ID
         self.define_id = define_id
+        # Primary key ID of the variable, which is empty if it\\"s a new addition
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -41534,8 +46638,11 @@ class DescribeVariableBindDetailResponseBodyResultObjectParams(TeaModel):
         required: bool = None,
         variable_name: str = None,
     ):
+        # Event field name
         self.event_field_name = event_field_name
+        # Whether it is required, default is false
         self.required = required
+        # Bound variable name
         self.variable_name = variable_name
 
     def validate(self):
@@ -41572,7 +46679,9 @@ class DescribeVariableBindDetailResponseBodyResultObjectRelationRules(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Policy rule ID
         self.key = key
+        # Policy name
         self.value = value
 
     def validate(self):
@@ -41612,14 +46721,23 @@ class DescribeVariableBindDetailResponseBodyResultObject(TeaModel):
         relation_rules: List[DescribeVariableBindDetailResponseBodyResultObjectRelationRules] = None,
         title: str = None,
     ):
+        # Whether modification is allowed, default is false
         self.allow_modify = allow_modify
+        # Variable definition ID
         self.define_id = define_id
+        # Variable definition title
         self.define_title = define_title
+        # Variable description information
         self.description = description
+        # Event code
         self.event_code = event_code
+        # Variable ID.
         self.id = id
+        # Bound parameters.
         self.params = params
+        # List of associated policies
         self.relation_rules = relation_rules
+        # Title.
         self.title = title
 
     def validate(self):
@@ -41697,7 +46815,9 @@ class DescribeVariableBindDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeVariableBindDetailResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -41774,9 +46894,15 @@ class DescribeVariableDetailRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -41846,40 +46972,79 @@ class DescribeVariableDetailResponseBodyResultObjectBaseInfo(TeaModel):
         x_label: str = None,
         y_label: str = None,
     ):
+        # Whether variable binding is allowed
         self.allow_bind = allow_bind
+        # Charging mode
         self.charging_mode = charging_mode
+        # Charging mode description
         self.charging_mode_desc = charging_mode_desc
+        # Creator.
         self.creator = creator
+        # Data distribution display, in JSON format
         self.data_display = data_display
+        # Data valid range, left-closed and right-closed
         self.data_threshold = data_threshold
+        # Deduction factor
         self.deduction_factor = deduction_factor
+        # Description.
         self.description = description
+        # Front-end binding allowed
         self.front_allow_bind = front_allow_bind
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID
         self.id = id
+        # Required parameters
+        #      
+        #      When inputRequired=__all__, it means all parameters are required
+        #      When inputRequired=__one__, it means only one input is needed
+        #      Required fields are separated by commas, e.g., mobile,ip,email
         self.input_required = input_required
+        # Input parameters.
         self.inputs = inputs
+        # Input parameter description.
         self.inputs_desc = inputs_desc
+        # Invoke key
         self.invoke_key = invoke_key
+        # Invoke RT, unit: milliseconds
         self.invoke_rt = invoke_rt
+        # Invocation success rate
         self.invoke_success_rate = invoke_success_rate
+        # Number of invocations
         self.invoke_times = invoke_times
+        # Last modifier.
         self.last_modified_operator = last_modified_operator
+        # Variable name
         self.name = name
+        # Output
         self.outputs = outputs
+        # Output description
         self.outputs_desc = outputs_desc
+        # Code of applicable scenarios
         self.scene = scene
+        # Applicable scenario description
         self.scene_desc = scene_desc
+        # Display order
         self.show_order = show_order
+        # Source
         self.source = source
+        # Source description
         self.source_desc = source_desc
+        # Status.
         self.status = status
+        # List of supported regions.
         self.support_regions = support_regions
+        # Title.
         self.title = title
+        # Type
         self.type = type
+        # Category description
         self.type_desc = type_desc
+        # X-axis label for data distribution display
         self.x_label = x_label
+        # Data distribution display y-axis label
         self.y_label = y_label
 
     def validate(self):
@@ -42043,6 +47208,7 @@ class DescribeVariableDetailResponseBodyResultObject(TeaModel):
         self,
         base_info: DescribeVariableDetailResponseBodyResultObjectBaseInfo = None,
     ):
+        # Basic attributes.
         self.base_info = base_info
 
     def validate(self):
@@ -42073,7 +47239,9 @@ class DescribeVariableDetailResponseBody(TeaModel):
         request_id: str = None,
         result_object: DescribeVariableDetailResponseBodyResultObject = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -42150,9 +47318,15 @@ class DescribeVariableFeeRequest(TeaModel):
         ids: List[int] = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID
+        # 
         # This parameter is required.
         self.ids = ids
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -42189,7 +47363,9 @@ class DescribeVariableFeeResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -42271,15 +47447,27 @@ class DescribeVariableListRequest(TeaModel):
         types_str: str = None,
         value: str = None,
     ):
+        # Set the language type for requests and responses, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type.
         self.create_type = create_type
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Associated event ID.
         self.ref_obj_id = ref_obj_id
+        # Region code.
         self.reg_id = reg_id
+        # Source type.
         self.source_type = source_type
+        # Type.
         self.type = type
+        # JSON array string of types.
         self.types_str = types_str
+        # Value for fuzzy search.
         self.value = value
 
     def validate(self):
@@ -42359,22 +47547,39 @@ class DescribeVariableListResponseBodyResultObject(TeaModel):
         type: str = None,
         user_id: int = None,
     ):
+        # Capacity.
         self.capacity = capacity
+        # Variable definition ID.
         self.define_id = define_id
+        # Description information.
         self.description = description
+        # Extended information.
         self.extend_info = extend_info
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Variable ID.
         self.id = id
+        # Remaining capacity.
         self.left_capacity = left_capacity
+        # Variable name
         self.name = name
+        # Variable output type
         self.outputs_type = outputs_type
+        # Associated event ID.
         self.ref_obj_id = ref_obj_id
+        # Associated event name.
         self.ref_obj_name = ref_obj_name
+        # Associated object type of the variable
         self.ref_obj_type = ref_obj_type
+        # Source type.
         self.source_type = source_type
+        # Title.
         self.title = title
+        # Variable type.
         self.type = type
+        # User ID to which the data belongs.
         self.user_id = user_id
 
     def validate(self):
@@ -42471,11 +47676,17 @@ class DescribeVariableListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -42581,15 +47792,29 @@ class DescribeVariableMarketListRequest(TeaModel):
         source: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Charging mode
         self.charging_mode = charging_mode
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Paging indicator, default is true.
         self.paging = paging
+        # Query content, supports fuzzy search.
+        # 
+        #  Title/Description
         self.query_content = query_content
+        # Region code
         self.reg_id = reg_id
+        # Scenario
         self.scenes_str = scenes_str
+        # Source
         self.source = source
+        # Title.
         self.title = title
 
     def validate(self):
@@ -42658,11 +47883,17 @@ class DescribeVariableMarketListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, with a default value of 10.
         self.page_size = page_size
+        # Return object
         self.result_object = result_object
+        # Total number of items
         self.total_item = total_item
+        # Total number of pages
         self.total_page = total_page
 
     def validate(self):
@@ -42757,14 +47988,25 @@ class DescribeVariableSceneListRequest(TeaModel):
         paging: bool = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Business type.
+        # 
         # This parameter is required.
         self.biz_type = biz_type
+        # Configuration key.
         self.config_key = config_key
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Paging flag, default is true.
+        # 
         # This parameter is required.
         self.paging = paging
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -42825,15 +48067,25 @@ class DescribeVariableSceneListResponseBodyResultObject(TeaModel):
         last_modified_operator: str = None,
         status: str = None,
     ):
+        # Business category identifier.
         self.biz_type = biz_type
+        # Configuration key.
         self.config_key = config_key
+        # Configuration value.
         self.config_value = config_value
+        # Created by.
         self.creator = creator
+        # Description information.
         self.description = description
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID of the configuration.
         self.id = id
+        # Last modified by.
         self.last_modified_operator = last_modified_operator
+        # Status.
         self.status = status
 
     def validate(self):
@@ -42902,11 +48154,17 @@ class DescribeVariableSceneListResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Current page number.
         self.current_page = current_page
+        # Page size, default value is 10.
         self.page_size = page_size
+        # Returned object.
         self.result_object = result_object
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -42998,6 +48256,156 @@ class DescribeVariableSceneListResponse(TeaModel):
         return self
 
 
+class DownloadSmapleBatchRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        batch_uuid: str = None,
+        reg_id: str = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Sample batch UUID
+        self.batch_uuid = batch_uuid
+        # Region code
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_uuid is not None:
+            result['batchUuid'] = self.batch_uuid
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchUuid') is not None:
+            self.batch_uuid = m.get('batchUuid')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        return self
+
+
+class DownloadSmapleBatchResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        file_download_url: str = None,
+    ):
+        # Download URL
+        self.file_download_url = file_download_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_download_url is not None:
+            result['fileDownloadURL'] = self.file_download_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileDownloadURL') is not None:
+            self.file_download_url = m.get('fileDownloadURL')
+        return self
+
+
+class DownloadSmapleBatchResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: DownloadSmapleBatchResponseBodyResultObject = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Returned object
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('resultObject') is not None:
+            temp_model = DownloadSmapleBatchResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['resultObject'])
+        return self
+
+
+class DownloadSmapleBatchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DownloadSmapleBatchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DownloadSmapleBatchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ExpressionTestRequest(TeaModel):
     def __init__(
         self,
@@ -43009,15 +48417,28 @@ class ExpressionTestRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Test expression.
+        # 
         # This parameter is required.
         self.expression = expression
+        # Calculation expression variable
+        # 
         # This parameter is required.
         self.expression_variable = expression_variable
+        # Associated variable ID
         self.expression_variable_ids = expression_variable_ids
+        # Variable ID
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Scene
+        # 
         # This parameter is required.
         self.scene = scene
 
@@ -43071,7 +48492,9 @@ class ExpressionTestResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -43147,9 +48570,15 @@ class FileUploadRequest(TeaModel):
         lang: str = None,
         tab: str = None,
     ):
+        # File name.
         self.file_name = file_name
+        # File URL
         self.file_url = file_url
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Scenario.
         self.tab = tab
 
     def validate(self):
@@ -43193,10 +48622,15 @@ class FileUploadResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Information returned by the API request.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -43276,6 +48710,200 @@ class FileUploadResponse(TeaModel):
         return self
 
 
+class ImportFieldRequest(TeaModel):
+    def __init__(
+        self,
+        file_url: str = None,
+        lang: str = None,
+        reg_id: str = None,
+    ):
+        # Attachment download URL.
+        # 
+        # This parameter is required.
+        self.file_url = file_url
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class ImportFieldResponseBodyResultObject(TeaModel):
+    def __init__(
+        self,
+        fail_field_names: str = None,
+        success_num: int = None,
+        total_num: int = None,
+    ):
+        # Names of fields that failed to upload
+        self.fail_field_names = fail_field_names
+        # Number of successful executions.
+        self.success_num = success_num
+        # Total number of records.
+        self.total_num = total_num
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fail_field_names is not None:
+            result['FailFieldNames'] = self.fail_field_names
+        if self.success_num is not None:
+            result['SuccessNum'] = self.success_num
+        if self.total_num is not None:
+            result['TotalNum'] = self.total_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailFieldNames') is not None:
+            self.fail_field_names = m.get('FailFieldNames')
+        if m.get('SuccessNum') is not None:
+            self.success_num = m.get('SuccessNum')
+        if m.get('TotalNum') is not None:
+            self.total_num = m.get('TotalNum')
+        return self
+
+
+class ImportFieldResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result_object: ImportFieldResponseBodyResultObject = None,
+        success: bool = None,
+    ):
+        # API status code.
+        self.code = code
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Error message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Returned result
+        self.result_object = result_object
+        # Indicator of whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            temp_model = ImportFieldResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['ResultObject'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ImportFieldResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportFieldResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportFieldResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportNameListRequest(TeaModel):
     def __init__(
         self,
@@ -43284,21 +48912,42 @@ class ImportNameListRequest(TeaModel):
         data: str = None,
         description: str = None,
         import_type: str = None,
+        memo: str = None,
         name_list_type: str = None,
         reg_id: str = None,
         title: str = None,
         variable_id: int = None,
     ):
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Import name list.
         self.data = data
+        # Description information.
         self.description = description
+        # Document import type:
+        # 
+        # 
+        # INPUT: Text input
+        # CSV: CSV upload
+        # NONE: Do not upload for now
+        # 
         # This parameter is required.
         self.import_type = import_type
+        # name content memo
+        self.memo = memo
+        # nameListType
         self.name_list_type = name_list_type
+        # Region code
         self.reg_id = reg_id
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
+        # Variable ID
         self.variable_id = variable_id
 
     def validate(self):
@@ -43320,6 +48969,8 @@ class ImportNameListRequest(TeaModel):
             result['description'] = self.description
         if self.import_type is not None:
             result['importType'] = self.import_type
+        if self.memo is not None:
+            result['memo'] = self.memo
         if self.name_list_type is not None:
             result['nameListType'] = self.name_list_type
         if self.reg_id is not None:
@@ -43342,6 +48993,8 @@ class ImportNameListRequest(TeaModel):
             self.description = m.get('description')
         if m.get('importType') is not None:
             self.import_type = m.get('importType')
+        if m.get('memo') is not None:
+            self.memo = m.get('memo')
         if m.get('nameListType') is not None:
             self.name_list_type = m.get('nameListType')
         if m.get('regId') is not None:
@@ -43359,7 +49012,9 @@ class ImportNameListResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -43434,8 +49089,13 @@ class ImportTemplateEventRequest(TeaModel):
         event_template_ids: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # The template ID of the event.
         self.event_template_ids = event_template_ids
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -43472,7 +49132,9 @@ class ImportTemplateEventResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned data object
         self.data = data
 
     def validate(self):
@@ -43540,6 +49202,814 @@ class ImportTemplateEventResponse(TeaModel):
         return self
 
 
+class ListVariableDefineRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        allow_bind: str = None,
+        charging_mode: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        paging: str = None,
+        query_content: str = None,
+        reg_id: str = None,
+        role_type: str = None,
+        scenes_str: str = None,
+        source: str = None,
+        status: str = None,
+        title: str = None,
+        types_str: str = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Whether binding is allowed, default is ENABLE
+        self.allow_bind = allow_bind
+        # Charging mode
+        self.charging_mode = charging_mode
+        # Current page number.
+        self.current_page = current_page
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Paging identifier
+        self.paging = paging
+        # Query content
+        self.query_content = query_content
+        # Region code
+        self.reg_id = reg_id
+        # Authorization type
+        self.role_type = role_type
+        # Scenario
+        self.scenes_str = scenes_str
+        # Source
+        self.source = source
+        # Status.
+        self.status = status
+        # Title.
+        self.title = title
+        # Type
+        self.types_str = types_str
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.allow_bind is not None:
+            result['allowBind'] = self.allow_bind
+        if self.charging_mode is not None:
+            result['chargingMode'] = self.charging_mode
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.paging is not None:
+            result['paging'] = self.paging
+        if self.query_content is not None:
+            result['queryContent'] = self.query_content
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.role_type is not None:
+            result['roleType'] = self.role_type
+        if self.scenes_str is not None:
+            result['scenesStr'] = self.scenes_str
+        if self.source is not None:
+            result['source'] = self.source
+        if self.status is not None:
+            result['status'] = self.status
+        if self.title is not None:
+            result['title'] = self.title
+        if self.types_str is not None:
+            result['typesStr'] = self.types_str
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('allowBind') is not None:
+            self.allow_bind = m.get('allowBind')
+        if m.get('chargingMode') is not None:
+            self.charging_mode = m.get('chargingMode')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('paging') is not None:
+            self.paging = m.get('paging')
+        if m.get('queryContent') is not None:
+            self.query_content = m.get('queryContent')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('roleType') is not None:
+            self.role_type = m.get('roleType')
+        if m.get('scenesStr') is not None:
+            self.scenes_str = m.get('scenesStr')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('typesStr') is not None:
+            self.types_str = m.get('typesStr')
+        return self
+
+
+class ListVariableDefineResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        current_page: int = None,
+        page_size: int = None,
+        result_object: bool = None,
+        total_item: int = None,
+        total_page: int = None,
+    ):
+        # Request ID
+        self.request_id = request_id
+        # Current page number.
+        self.current_page = current_page
+        # Page size, default value is 10
+        self.page_size = page_size
+        # Returned object
+        self.result_object = result_object
+        # Total items
+        self.total_item = total_item
+        # Total pages.
+        self.total_page = total_page
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.current_page is not None:
+            result['currentPage'] = self.current_page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object
+        if self.total_item is not None:
+            result['totalItem'] = self.total_item
+        if self.total_page is not None:
+            result['totalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('currentPage') is not None:
+            self.current_page = m.get('currentPage')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('resultObject') is not None:
+            self.result_object = m.get('resultObject')
+        if m.get('totalItem') is not None:
+            self.total_item = m.get('totalItem')
+        if m.get('totalPage') is not None:
+            self.total_page = m.get('totalPage')
+        return self
+
+
+class ListVariableDefineResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListVariableDefineResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListVariableDefineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModelDeleteRequest(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        reg_id: str = None,
+    ):
+        # Model name.
+        # 
+        # This parameter is required.
+        self.model_name = model_name
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class ModelDeleteResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Deletion result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class ModelDeleteResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModelDeleteResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModelDeleteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModelFileUploadRequest(TeaModel):
+    def __init__(
+        self,
+        object_name: str = None,
+        reg_id: str = None,
+    ):
+        # File name.
+        # 
+        # This parameter is required.
+        self.object_name = object_name
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.object_name is not None:
+            result['ObjectName'] = self.object_name
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObjectName') is not None:
+            self.object_name = m.get('ObjectName')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class ModelFileUploadResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class ModelFileUploadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModelFileUploadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModelFileUploadResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModelIsUsingRequest(TeaModel):
+    def __init__(
+        self,
+        model_code: str = None,
+        model_id: str = None,
+        model_name: str = None,
+        reg_id: str = None,
+        status: str = None,
+    ):
+        # Model code.
+        # 
+        # This parameter is required.
+        self.model_code = model_code
+        # Model ID.
+        # 
+        # This parameter is required.
+        self.model_id = model_id
+        # Model name.
+        # 
+        # This parameter is required.
+        self.model_name = model_name
+        # Region code.
+        self.reg_id = reg_id
+        # Model status.
+        # 
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_code is not None:
+            result['ModelCode'] = self.model_code
+        if self.model_id is not None:
+            result['ModelId'] = self.model_id
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelCode') is not None:
+            self.model_code = m.get('ModelCode')
+        if m.get('ModelId') is not None:
+            self.model_id = m.get('ModelId')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ModelIsUsingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Result object.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class ModelIsUsingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModelIsUsingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModelIsUsingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModelNameIsDuplicationRequest(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        reg_id: str = None,
+    ):
+        # Model name.
+        # 
+        # This parameter is required.
+        self.model_name = model_name
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class ModelNameIsDuplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Return result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class ModelNameIsDuplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModelNameIsDuplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModelNameIsDuplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModelSampleDownloadRequest(TeaModel):
+    def __init__(
+        self,
+        reg_id: str = None,
+    ):
+        # Region code.
+        self.reg_id = reg_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        return self
+
+
+class ModelSampleDownloadResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: bool = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+        # Request result.
+        self.result_object = result_object
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['ResultObject'] = self.result_object
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultObject') is not None:
+            self.result_object = m.get('ResultObject')
+        return self
+
+
+class ModelSampleDownloadResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModelSampleDownloadResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModelSampleDownloadResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyAppKeyRequest(TeaModel):
     def __init__(
         self,
@@ -43548,9 +50018,15 @@ class ModifyAppKeyRequest(TeaModel):
         memo: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # appkey information.
         self.app_key = app_key
+        # Application memo information.
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -43591,7 +50067,9 @@ class ModifyAppKeyResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned data object.
         self.data = data
 
     def validate(self):
@@ -43672,17 +50150,31 @@ class ModifyCustVariableRequest(TeaModel):
         outputs: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Condition value.
         self.condition = condition
+        # Data version.
+        # 
         # This parameter is required.
         self.data_version = data_version
+        # Description information.
         self.description = description
+        # Event code.
         self.event_codes = event_codes
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Variable name
+        # 
         # This parameter is required.
         self.name = name
+        # Output
         self.outputs = outputs
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -43744,8 +50236,11 @@ class ModifyCustVariableResponseBodyResultObject(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # Failure type
         self.fail_type = fail_type
+        # Detailed information.
         self.message = message
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):
@@ -43782,7 +50277,9 @@ class ModifyCustVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: List[ModifyCustVariableResponseBodyResultObject] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -43865,18 +50362,31 @@ class ModifyEventRequest(TeaModel):
         biz_version: int = None,
         create_type: str = None,
         event_code: str = None,
+        event_name: str = None,
         input_fields_str: str = None,
         memo: str = None,
         reg_id: str = None,
         template_type: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Version number (latest).
         self.biz_version = biz_version
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event name.
+        self.event_name = event_name
+        # Input parameters, JSON string.
         self.input_fields_str = input_fields_str
+        # Memo.
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
+        # Template type
         self.template_type = template_type
 
     def validate(self):
@@ -43896,6 +50406,8 @@ class ModifyEventRequest(TeaModel):
             result['createType'] = self.create_type
         if self.event_code is not None:
             result['eventCode'] = self.event_code
+        if self.event_name is not None:
+            result['eventName'] = self.event_name
         if self.input_fields_str is not None:
             result['inputFieldsStr'] = self.input_fields_str
         if self.memo is not None:
@@ -43916,6 +50428,8 @@ class ModifyEventRequest(TeaModel):
             self.create_type = m.get('createType')
         if m.get('eventCode') is not None:
             self.event_code = m.get('eventCode')
+        if m.get('eventName') is not None:
+            self.event_name = m.get('eventName')
         if m.get('inputFieldsStr') is not None:
             self.input_fields_str = m.get('inputFieldsStr')
         if m.get('memo') is not None:
@@ -43933,7 +50447,9 @@ class ModifyEventResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -44011,11 +50527,19 @@ class ModifyEventStatusRequest(TeaModel):
         reg_id: str = None,
         to_event_satus: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Initial event status, to avoid duplicate submissions or historical replays
         self.from_event_satus = from_event_satus
+        # Region code
         self.reg_id = reg_id
+        # Updated event status
         self.to_event_satus = to_event_satus
 
     def validate(self):
@@ -44064,7 +50588,9 @@ class ModifyEventStatusResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -44143,30 +50669,56 @@ class ModifyExpressionVariableRequest(TeaModel):
         expression_title: str = None,
         expression_variable: str = None,
         id: int = None,
+        name: str = None,
         outlier: str = None,
         outputs: str = None,
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data version.
+        # 
         # This parameter is required.
         self.data_version = data_version
+        # Description.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Expression
+        # 
         # This parameter is required.
         self.expression = expression
+        # Expression display
+        # 
         # This parameter is required.
         self.expression_title = expression_title
+        # Calculation expression variable
         self.expression_variable = expression_variable
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Variable name
+        self.name = name
+        # Outlier
+        # 
         # This parameter is required.
         self.outlier = outlier
+        # Output
+        # 
         # This parameter is required.
         self.outputs = outputs
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -44195,6 +50747,8 @@ class ModifyExpressionVariableRequest(TeaModel):
             result['expressionVariable'] = self.expression_variable
         if self.id is not None:
             result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
         if self.outlier is not None:
             result['outlier'] = self.outlier
         if self.outputs is not None:
@@ -44223,6 +50777,8 @@ class ModifyExpressionVariableRequest(TeaModel):
             self.expression_variable = m.get('expressionVariable')
         if m.get('id') is not None:
             self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
         if m.get('outlier') is not None:
             self.outlier = m.get('outlier')
         if m.get('outputs') is not None:
@@ -44240,7 +50796,9 @@ class ModifyExpressionVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -44320,14 +50878,25 @@ class ModifyFieldRequest(TeaModel):
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Field classification
         self.classify = classify
+        # Description information.
         self.description = description
+        # Enum type
         self.enum_data = enum_data
+        # Variable ID
         self.id = id
+        # Variable name
         self.name = name
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Title.
         self.title = title
 
     def validate(self):
@@ -44384,7 +50953,9 @@ class ModifyFieldResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -44452,179 +51023,6 @@ class ModifyFieldResponse(TeaModel):
         return self
 
 
-class ModifyPocTaskRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        access_type: str = None,
-        config: str = None,
-        file_name: str = None,
-        file_type: str = None,
-        file_url: str = None,
-        reason: str = None,
-        reg_id: str = None,
-        service_code: str = None,
-        service_name: str = None,
-        task_id: str = None,
-        task_name: str = None,
-        type: str = None,
-    ):
-        self.lang = lang
-        self.access_type = access_type
-        self.config = config
-        self.file_name = file_name
-        self.file_type = file_type
-        self.file_url = file_url
-        self.reason = reason
-        self.reg_id = reg_id
-        self.service_code = service_code
-        self.service_name = service_name
-        self.task_id = task_id
-        self.task_name = task_name
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.access_type is not None:
-            result['accessType'] = self.access_type
-        if self.config is not None:
-            result['config'] = self.config
-        if self.file_name is not None:
-            result['fileName'] = self.file_name
-        if self.file_type is not None:
-            result['fileType'] = self.file_type
-        if self.file_url is not None:
-            result['fileUrl'] = self.file_url
-        if self.reason is not None:
-            result['reason'] = self.reason
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.service_code is not None:
-            result['serviceCode'] = self.service_code
-        if self.service_name is not None:
-            result['serviceName'] = self.service_name
-        if self.task_id is not None:
-            result['taskId'] = self.task_id
-        if self.task_name is not None:
-            result['taskName'] = self.task_name
-        if self.type is not None:
-            result['type'] = self.type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('accessType') is not None:
-            self.access_type = m.get('accessType')
-        if m.get('config') is not None:
-            self.config = m.get('config')
-        if m.get('fileName') is not None:
-            self.file_name = m.get('fileName')
-        if m.get('fileType') is not None:
-            self.file_type = m.get('fileType')
-        if m.get('fileUrl') is not None:
-            self.file_url = m.get('fileUrl')
-        if m.get('reason') is not None:
-            self.reason = m.get('reason')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('serviceCode') is not None:
-            self.service_code = m.get('serviceCode')
-        if m.get('serviceName') is not None:
-            self.service_name = m.get('serviceName')
-        if m.get('taskId') is not None:
-            self.task_id = m.get('taskId')
-        if m.get('taskName') is not None:
-            self.task_name = m.get('taskName')
-        if m.get('type') is not None:
-            self.type = m.get('type')
-        return self
-
-
-class ModifyPocTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class ModifyPocTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyPocTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyPocTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyRulePriorityRequest(TeaModel):
     def __init__(
         self,
@@ -44634,10 +51032,17 @@ class ModifyRulePriorityRequest(TeaModel):
         reg_id: str = None,
         rule_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the policy
         self.console_rule_id = console_rule_id
+        # Policy priority, the higher the number, the higher the priority.
         self.priority = priority
+        # Region code
         self.reg_id = reg_id
+        # Policy ID
         self.rule_id = rule_id
 
     def validate(self):
@@ -44682,7 +51087,9 @@ class ModifyRulePriorityResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -44766,17 +51173,31 @@ class ModifyRuleStatusRequest(TeaModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # UID of the applicant.
         self.apply_user_id = apply_user_id
+        # Name of the applicant.
         self.apply_user_name = apply_user_name
+        # Approval remarks.
         self.audit_remark = audit_remark
+        # UID of the auditor.
         self.audit_user_id = audit_user_id
+        # Name of the auditor.
         self.audit_user_name = audit_user_name
+        # Primary key ID of the policy.
         self.console_rule_id = console_rule_id
+        # Event type.
         self.event_type = event_type
+        # Region code.
         self.reg_id = reg_id
+        # Audit status.
         self.rule_audit_type = rule_audit_type
+        # Policy ID.
         self.rule_id = rule_id
+        # Primary key ID of the policy version.
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -44849,7 +51270,9 @@ class ModifyRuleStatusResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object.
         self.result_object = result_object
 
     def validate(self):
@@ -44917,460 +51340,6 @@ class ModifyRuleStatusResponse(TeaModel):
         return self
 
 
-class ModifyTemplateRequestInputFields(TeaModel):
-    def __init__(
-        self,
-        description: str = None,
-        field_code: str = None,
-        field_rank: int = None,
-        field_source: str = None,
-        field_type: str = None,
-        title: str = None,
-    ):
-        self.description = description
-        self.field_code = field_code
-        self.field_rank = field_rank
-        self.field_source = field_source
-        self.field_type = field_type
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.description is not None:
-            result['description'] = self.description
-        if self.field_code is not None:
-            result['fieldCode'] = self.field_code
-        if self.field_rank is not None:
-            result['fieldRank'] = self.field_rank
-        if self.field_source is not None:
-            result['fieldSource'] = self.field_source
-        if self.field_type is not None:
-            result['fieldType'] = self.field_type
-        if self.title is not None:
-            result['title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('fieldCode') is not None:
-            self.field_code = m.get('fieldCode')
-        if m.get('fieldRank') is not None:
-            self.field_rank = m.get('fieldRank')
-        if m.get('fieldSource') is not None:
-            self.field_source = m.get('fieldSource')
-        if m.get('fieldType') is not None:
-            self.field_type = m.get('fieldType')
-        if m.get('title') is not None:
-            self.title = m.get('title')
-        return self
-
-
-class ModifyTemplateRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        description: str = None,
-        event_code: str = None,
-        input_fields: ModifyTemplateRequestInputFields = None,
-        reg_id: str = None,
-        template_id: int = None,
-        template_type: str = None,
-        version: int = None,
-    ):
-        self.lang = lang
-        self.description = description
-        self.event_code = event_code
-        self.input_fields = input_fields
-        self.reg_id = reg_id
-        self.template_id = template_id
-        self.template_type = template_type
-        self.version = version
-
-    def validate(self):
-        if self.input_fields:
-            self.input_fields.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.description is not None:
-            result['description'] = self.description
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.input_fields is not None:
-            result['inputFields'] = self.input_fields.to_map()
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.template_type is not None:
-            result['templateType'] = self.template_type
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('inputFields') is not None:
-            temp_model = ModifyTemplateRequestInputFields()
-            self.input_fields = temp_model.from_map(m['inputFields'])
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('templateType') is not None:
-            self.template_type = m.get('templateType')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
-class ModifyTemplateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class ModifyTemplateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyTemplateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyTemplateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ModifyTemplateStatusRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        from_template_satus: str = None,
-        reg_id: str = None,
-        template_id: int = None,
-        to_template_satus: str = None,
-    ):
-        self.lang = lang
-        self.from_template_satus = from_template_satus
-        self.reg_id = reg_id
-        self.template_id = template_id
-        self.to_template_satus = to_template_satus
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.from_template_satus is not None:
-            result['fromTemplateSatus'] = self.from_template_satus
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.to_template_satus is not None:
-            result['toTemplateSatus'] = self.to_template_satus
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('fromTemplateSatus') is not None:
-            self.from_template_satus = m.get('fromTemplateSatus')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('toTemplateSatus') is not None:
-            self.to_template_satus = m.get('toTemplateSatus')
-        return self
-
-
-class ModifyTemplateStatusResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class ModifyTemplateStatusResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyTemplateStatusResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyTemplateStatusResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class ModifyVariableRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        description: str = None,
-        id: int = None,
-        reg_id: str = None,
-        title: str = None,
-    ):
-        self.lang = lang
-        self.description = description
-        # This parameter is required.
-        self.id = id
-        self.reg_id = reg_id
-        # This parameter is required.
-        self.title = title
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.description is not None:
-            result['description'] = self.description
-        if self.id is not None:
-            result['id'] = self.id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.title is not None:
-            result['title'] = self.title
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('description') is not None:
-            self.description = m.get('description')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('title') is not None:
-            self.title = m.get('title')
-        return self
-
-
-class ModifyVariableResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class ModifyVariableResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyVariableResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyVariableResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class OpenConsoleSlsRequest(TeaModel):
     def __init__(
         self,
@@ -45378,8 +51347,13 @@ class OpenConsoleSlsRequest(TeaModel):
         reg_id: str = None,
         scene: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code
         self.reg_id = reg_id
+        # Scene
         self.scene = scene
 
     def validate(self):
@@ -45416,7 +51390,9 @@ class OpenConsoleSlsResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -45492,11 +51468,19 @@ class OperateFavoriteVariableRequest(TeaModel):
         operate: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Favorite operation
+        # 
         # This parameter is required.
         self.operate = operate
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -45537,7 +51521,9 @@ class OperateFavoriteVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -45611,7 +51597,11 @@ class PermissionCheckRequest(TeaModel):
         lang: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
 
     def validate(self):
@@ -45647,10 +51637,15 @@ class PermissionCheckResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Return code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -45730,6 +51725,629 @@ class PermissionCheckResponse(TeaModel):
         return self
 
 
+class PocCreateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        date_format: str = None,
+        lang: str = None,
+        reg_id: str = None,
+        task_name: str = None,
+        token: str = None,
+    ):
+        # Date format
+        self.date_format = date_format
+        # Set the language type for request and response messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code.
+        self.reg_id = reg_id
+        # Task name.
+        self.task_name = task_name
+        # Task token.
+        # 
+        # This parameter is required.
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date_format is not None:
+            result['DateFormat'] = self.date_format
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DateFormat') is not None:
+            self.date_format = m.get('DateFormat')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PocCreateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # Status code.
+        self.code = code
+        # Task creation result
+        self.data = data
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Response message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the task was successful. **true** indicates success, **false** indicates failure.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PocCreateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PocCreateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PocCreateTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PocGetDownloadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        token: str = None,
+    ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Task token.
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PocGetDownloadUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # Status code.
+        self.code = code
+        # Data
+        self.data = data
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Response message
+        self.message = message
+        # ID of the request
+        self.request_id = request_id
+        # Indicates whether the call was successful. true: Call succeeded. false: Call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PocGetDownloadUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PocGetDownloadUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PocGetDownloadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PocGetTokenRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        reg_id: str = None,
+        service_code: str = None,
+    ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Region code.
+        self.reg_id = reg_id
+        # Service code.
+        # 
+        # This parameter is required.
+        self.service_code = service_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        return self
+
+
+class PocGetTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # Status code
+        self.code = code
+        # Returned data
+        self.data = data
+        # HTTP status code
+        self.http_status_code = http_status_code
+        # Return message
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the call was successful. true: Call succeeded. false: Call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PocGetTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PocGetTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PocGetTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PocSendDataRequest(TeaModel):
+    def __init__(
+        self,
+        batch_no: int = None,
+        lang: str = None,
+        params_list: str = None,
+        reg_id: str = None,
+        token: str = None,
+    ):
+        # Starting position for batch operations, starting from 0.
+        # 
+        # This parameter is required.
+        self.batch_no = batch_no
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Return parameters, in JSON format.
+        # 
+        # This parameter is required.
+        self.params_list = params_list
+        # Region code.
+        self.reg_id = reg_id
+        # Task token.
+        # 
+        # This parameter is required.
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_no is not None:
+            result['BatchNo'] = self.batch_no
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.params_list is not None:
+            result['ParamsList'] = self.params_list
+        if self.reg_id is not None:
+            result['RegId'] = self.reg_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchNo') is not None:
+            self.batch_no = m.get('BatchNo')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('ParamsList') is not None:
+            self.params_list = m.get('ParamsList')
+        if m.get('RegId') is not None:
+            self.reg_id = m.get('RegId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PocSendDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # API status code.
+        self.code = code
+        # Returned data result.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Return message.
+        self.message = message
+        # Request ID.
+        self.request_id = request_id
+        # Whether the operation was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PocSendDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PocSendDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PocSendDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryAuthRuleDetailByRuleIdRequest(TeaModel):
     def __init__(
         self,
@@ -45739,11 +52357,19 @@ class QueryAuthRuleDetailByRuleIdRequest(TeaModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the strategy
         self.console_rule_id = console_rule_id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Strategy ID
         self.rule_id = rule_id
+        # Primary key ID of the strategy version
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -45803,30 +52429,54 @@ class QueryAuthRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         rule_version_id: int = None,
         template_type: str = None,
         version: int = None,
     ):
+        # Audit ID
         self.audit_id = audit_id
+        # Authorization type
         self.auth_type = auth_type
+        # Authorized user UID
         self.auth_users = auth_users
+        # Primary key ID of the strategy
         self.console_rule_id = console_rule_id
+        # Event code
         self.event_code = event_code
+        # Event name.
         self.event_name = event_name
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time
         self.gmt_modified = gmt_modified
+        # Execution logic
         self.logic_expression = logic_expression
+        # Description
         self.memo = memo
+        # Rule priority, the higher the number, the higher the priority.
         self.priority = priority
+        # Returned rule action structure.
         self.rule_action_map = rule_action_map
+        # Output actions
         self.rule_actions = rule_actions
+        # Rule authorization type
         self.rule_auth_type = rule_auth_type
+        # Rule expressions.
         self.rule_expressions = rule_expressions
+        # Strategy ID
         self.rule_id = rule_id
+        # Strategy name
         self.rule_name = rule_name
+        # Strategy status
         self.rule_status = rule_status
+        # Rule type
+        self.rule_type = rule_type
+        # Primary key ID of the strategy version
         self.rule_version_id = rule_version_id
+        # Template type
         self.template_type = template_type
+        # Version number
         self.version = version
 
     def validate(self):
@@ -45874,6 +52524,8 @@ class QueryAuthRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.rule_version_id is not None:
             result['ruleVersionId'] = self.rule_version_id
         if self.template_type is not None:
@@ -45920,6 +52572,8 @@ class QueryAuthRuleDetailByRuleIdResponseBodyResultObject(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('ruleVersionId') is not None:
             self.rule_version_id = m.get('ruleVersionId')
         if m.get('templateType') is not None:
@@ -45935,7 +52589,9 @@ class QueryAuthRuleDetailByRuleIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: QueryAuthRuleDetailByRuleIdResponseBodyResultObject = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -46005,340 +52661,17 @@ class QueryAuthRuleDetailByRuleIdResponse(TeaModel):
         return self
 
 
-class QueryAuthUserNameRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        bind_id: int = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        self.bind_id = bind_id
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.bind_id is not None:
-            result['bindId'] = self.bind_id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('bindId') is not None:
-            self.bind_id = m.get('bindId')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class QueryAuthUserNameResponseBodyResultObject(TeaModel):
-    def __init__(
-        self,
-        company: str = None,
-        user_id: int = None,
-    ):
-        self.company = company
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.company is not None:
-            result['company'] = self.company
-        if self.user_id is not None:
-            result['userId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('company') is not None:
-            self.company = m.get('company')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
-        return self
-
-
-class QueryAuthUserNameResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: QueryAuthUserNameResponseBodyResultObject = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        if self.result_object:
-            self.result_object.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            temp_model = QueryAuthUserNameResponseBodyResultObject()
-            self.result_object = temp_model.from_map(m['resultObject'])
-        return self
-
-
-class QueryAuthUserNameResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryAuthUserNameResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryAuthUserNameResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class QueryAuthorizationUserListRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        create_type: str = None,
-        event_code: str = None,
-        id: int = None,
-        reg_id: str = None,
-    ):
-        self.lang = lang
-        self.create_type = create_type
-        self.event_code = event_code
-        self.id = id
-        self.reg_id = reg_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.create_type is not None:
-            result['createType'] = self.create_type
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.id is not None:
-            result['id'] = self.id
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('createType') is not None:
-            self.create_type = m.get('createType')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        return self
-
-
-class QueryAuthorizationUserListResponseBodyResultObject(TeaModel):
-    def __init__(
-        self,
-        company: str = None,
-        id: int = None,
-        uid: str = None,
-        user_id: int = None,
-    ):
-        self.company = company
-        self.id = id
-        self.uid = uid
-        self.user_id = user_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.company is not None:
-            result['company'] = self.company
-        if self.id is not None:
-            result['id'] = self.id
-        if self.uid is not None:
-            result['uid'] = self.uid
-        if self.user_id is not None:
-            result['userId'] = self.user_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('company') is not None:
-            self.company = m.get('company')
-        if m.get('id') is not None:
-            self.id = m.get('id')
-        if m.get('uid') is not None:
-            self.uid = m.get('uid')
-        if m.get('userId') is not None:
-            self.user_id = m.get('userId')
-        return self
-
-
-class QueryAuthorizationUserListResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: List[QueryAuthorizationUserListResponseBodyResultObject] = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        if self.result_object:
-            for k in self.result_object:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        result['resultObject'] = []
-        if self.result_object is not None:
-            for k in self.result_object:
-                result['resultObject'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        self.result_object = []
-        if m.get('resultObject') is not None:
-            for k in m.get('resultObject'):
-                temp_model = QueryAuthorizationUserListResponseBodyResultObject()
-                self.result_object.append(temp_model.from_map(k))
-        return self
-
-
-class QueryAuthorizationUserListResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: QueryAuthorizationUserListResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = QueryAuthorizationUserListResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class RecallRuleAuditRequest(TeaModel):
     def __init__(
         self,
         id: int = None,
         reg_id: str = None,
     ):
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -46371,7 +52704,9 @@ class RecallRuleAuditResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -46449,11 +52784,19 @@ class RemoveEventRequest(TeaModel):
         reg_id: str = None,
         template_code: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Creation type
         self.create_type = create_type
+        # Event code
         self.event_code = event_code
+        # Event ID
         self.id = id
+        # Region code
         self.reg_id = reg_id
+        # Input field template type
         self.template_code = template_code
 
     def validate(self):
@@ -46502,7 +52845,9 @@ class RemoveEventResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -46570,131 +52915,6 @@ class RemoveEventResponse(TeaModel):
         return self
 
 
-class RemoveTemplateRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        event_code: str = None,
-        reg_id: str = None,
-        template_id: int = None,
-        version: int = None,
-    ):
-        self.lang = lang
-        self.event_code = event_code
-        self.reg_id = reg_id
-        self.template_id = template_id
-        self.version = version
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.event_code is not None:
-            result['eventCode'] = self.event_code
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.template_id is not None:
-            result['templateId'] = self.template_id
-        if self.version is not None:
-            result['version'] = self.version
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('eventCode') is not None:
-            self.event_code = m.get('eventCode')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('templateId') is not None:
-            self.template_id = m.get('templateId')
-        if m.get('version') is not None:
-            self.version = m.get('version')
-        return self
-
-
-class RemoveTemplateResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['requestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('requestId') is not None:
-            self.request_id = m.get('requestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class RemoveTemplateResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: RemoveTemplateResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = RemoveTemplateResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SampleFileDownloadRequest(TeaModel):
     def __init__(
         self,
@@ -46702,8 +52922,13 @@ class SampleFileDownloadRequest(TeaModel):
         reg_id: str = None,
         tab: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
+        # Scenario.
         self.tab = tab
 
     def validate(self):
@@ -46743,10 +52968,15 @@ class SampleFileDownloadResponseBody(TeaModel):
         request_id: str = None,
         result_object: str = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Request result.
         self.result_object = result_object
 
     def validate(self):
@@ -46833,9 +53063,16 @@ class SaveAnalysisColumnRequest(TeaModel):
         columns: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Custom columns
+        # 
         # This parameter is required.
         self.columns = columns
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
 
@@ -46873,7 +53110,9 @@ class SaveAnalysisColumnResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -46950,10 +53189,17 @@ class SaveByPassOrShuntEventRequest(TeaModel):
         event_type: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event ID.
         self.event_id = event_id
+        # Event name.
         self.event_name = event_name
+        # Event type
         self.event_type = event_type
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -47002,11 +53248,17 @@ class SaveByPassOrShuntEventResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -47098,9 +53350,15 @@ class StartOrStopByPassShuntEventRequest(TeaModel):
         reg_id: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event ID.
         self.event_id = event_id
+        # Region code
         self.reg_id = reg_id
+        # Status.
         self.status = status
 
     def validate(self):
@@ -47145,11 +53403,17 @@ class StartOrStopByPassShuntEventResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -47240,9 +53504,15 @@ class StartSimulationTaskRequest(TeaModel):
         id: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -47279,7 +53549,9 @@ class StartSimulationTaskResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -47354,9 +53626,15 @@ class StopSimulationTaskRequest(TeaModel):
         id: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Task ID.
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -47393,7 +53671,9 @@ class StopSimulationTaskResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -47461,125 +53741,6 @@ class StopSimulationTaskResponse(TeaModel):
         return self
 
 
-class SubmitImportTaskRequest(TeaModel):
-    def __init__(
-        self,
-        lang: str = None,
-        file_name: str = None,
-        reg_id: str = None,
-        url: str = None,
-    ):
-        self.lang = lang
-        self.file_name = file_name
-        self.reg_id = reg_id
-        self.url = url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.lang is not None:
-            result['Lang'] = self.lang
-        if self.file_name is not None:
-            result['fileName'] = self.file_name
-        if self.reg_id is not None:
-            result['regId'] = self.reg_id
-        if self.url is not None:
-            result['url'] = self.url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Lang') is not None:
-            self.lang = m.get('Lang')
-        if m.get('fileName') is not None:
-            self.file_name = m.get('fileName')
-        if m.get('regId') is not None:
-            self.reg_id = m.get('regId')
-        if m.get('url') is not None:
-            self.url = m.get('url')
-        return self
-
-
-class SubmitImportTaskResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-        result_object: bool = None,
-    ):
-        self.request_id = request_id
-        self.result_object = result_object
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        if self.result_object is not None:
-            result['resultObject'] = self.result_object
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        if m.get('resultObject') is not None:
-            self.result_object = m.get('resultObject')
-        return self
-
-
-class SubmitImportTaskResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SubmitImportTaskResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SubmitImportTaskResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SwitchExpressionVariableRequest(TeaModel):
     def __init__(
         self,
@@ -47589,13 +53750,24 @@ class SwitchExpressionVariableRequest(TeaModel):
         reg_id: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data version.
+        # 
         # This parameter is required.
         self.data_version = data_version
+        # Variable ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Status.
+        # 
         # This parameter is required.
         self.status = status
 
@@ -47641,7 +53813,9 @@ class SwitchExpressionVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -47719,12 +53893,21 @@ class SwitchFieldRequest(TeaModel):
         source: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary Key ID
         self.id = id
+        # Parameter Name.
         self.name = name
+        # Region Code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Field Source
         self.source = source
+        # Status.
         self.status = status
 
     def validate(self):
@@ -47773,7 +53956,9 @@ class SwitchFieldResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return Object
         self.result_object = result_object
 
     def validate(self):
@@ -47849,11 +54034,19 @@ class SwitchQueryVariableRequest(TeaModel):
         reg_id: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Status.
         self.status = status
 
     def validate(self):
@@ -47894,7 +54087,9 @@ class SwitchQueryVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -47969,9 +54164,15 @@ class SwitchToOnlineRequest(TeaModel):
         event_id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # The event ID to switch to.
+        # 
         # This parameter is required.
         self.event_id = event_id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -48012,11 +54213,17 @@ class SwitchToOnlineResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Indicates whether this operation was successful, `true` means success.
         self.success = success
 
     def validate(self):
@@ -48110,11 +54317,19 @@ class SwitchVariableRequest(TeaModel):
         reg_id: str = None,
         status: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data version.
         self.data_version = data_version
+        # Primary key ID of the cumulative variable
         self.id = id
+        # Cumulative variable name: generated by the backend
         self.name = name
+        # Region code
         self.reg_id = reg_id
+        # Status.
         self.status = status
 
     def validate(self):
@@ -48163,7 +54378,9 @@ class SwitchVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -48238,8 +54455,13 @@ class TaskNameByUserIdRequest(TeaModel):
         reg_id: str = None,
         task_name: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Region code.
         self.reg_id = reg_id
+        # Task name.
         self.task_name = task_name
 
     def validate(self):
@@ -48279,10 +54501,15 @@ class TaskNameByUserIdResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Response code.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -48377,18 +54604,33 @@ class UpdateAnalysisConditionFavoriteRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Condition value.
         self.condition = condition
+        # Start time, accurate to milliseconds (ms).
         self.event_begin_time = event_begin_time
+        # Event code
         self.event_code = event_code
+        # End time, accurate to milliseconds (ms).
         self.event_end_time = event_end_time
+        # Field name
         self.field_name = field_name
+        # Field value
         self.field_value = field_value
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Condition name
         self.name = name
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Type, BASIC: Basic query, ADVANCE: Advanced query, BATCH: Batch query
         self.type = type
 
     def validate(self):
@@ -48457,7 +54699,9 @@ class UpdateAnalysisConditionFavoriteResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned object
         self.result_object = result_object
 
     def validate(self):
@@ -48535,11 +54779,19 @@ class UpdateAuditRequest(TeaModel):
         id: int = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Approval comments
         self.audit_msg = audit_msg
+        # Associated type
         self.audit_relation_type = audit_relation_type
+        # Status
         self.audit_status = audit_status
+        # The ID of the approval to be updated.
         self.id = id
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -48591,10 +54843,15 @@ class UpdateAuditResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Returned object
         self.result_object = result_object
+        # Whether the call was successful
         self.success = success
 
     def validate(self):
@@ -48686,16 +54943,29 @@ class UpdateAuthRuleRequest(TeaModel):
         rule_id: str = None,
         rule_version_id: int = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Policy primary key ID
         self.console_rule_id = console_rule_id
+        # Event code
         self.event_code = event_code
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Policy output action
         self.rule_actions = rule_actions
+        # Expression
+        # 
         # This parameter is required.
         self.rule_expressions = rule_expressions
+        # Policy ID
+        # 
         # This parameter is required.
         self.rule_id = rule_id
+        # Policy version primary key ID
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -48752,7 +55022,9 @@ class UpdateAuthRuleResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -48828,9 +55100,15 @@ class UpdateByPassShuntEventRequest(TeaModel):
         event_name: str = None,
         reg_id: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Event ID.
         self.event_id = event_id
+        # Event name.
         self.event_name = event_name
+        # Region code
         self.reg_id = reg_id
 
     def validate(self):
@@ -48875,11 +55153,17 @@ class UpdateByPassShuntEventResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code.
         self.code = code
+        # HTTP status code
         self.http_status_code = http_status_code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
+        # Whether it was successful
         self.success = success
 
     def validate(self):
@@ -48974,14 +55258,25 @@ class UpdateDataSourceRequest(TeaModel):
         reg_id: str = None,
         type: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Description information.
         self.description = description
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Data source name.
         self.name = name
+        # OSS file key.
         self.oss_key = oss_key
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Data source type
         self.type = type
 
     def validate(self):
@@ -49034,7 +55329,9 @@ class UpdateDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -49118,26 +55415,50 @@ class UpdateQueryVariableRequest(TeaModel):
         reg_id: str = None,
         title: str = None,
     ):
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Data source code
+        # 
         # This parameter is required.
         self.data_source_code = data_source_code
+        # Description.
         self.description = description
+        # Event code
+        # 
         # This parameter is required.
         self.event_code = event_code
+        # Expression.
+        # 
         # This parameter is required.
         self.expression = expression
+        # Display expression
+        # 
         # This parameter is required.
         self.expression_title = expression_title
+        # Expression associated variable
+        # 
         # This parameter is required.
         self.expression_variable = expression_variable
+        # Primary key ID
+        # 
         # This parameter is required.
         self.id = id
+        # Outlier
+        # 
         # This parameter is required.
         self.outlier = outlier
+        # Variable return type
+        # 
         # This parameter is required.
         self.outputs = outputs
+        # Region code
+        # 
         # This parameter is required.
         self.reg_id = reg_id
+        # Title.
+        # 
         # This parameter is required.
         self.title = title
 
@@ -49211,7 +55532,9 @@ class UpdateQueryVariableResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -49289,23 +55612,43 @@ class UpdateRuleRequest(TeaModel):
         memo: str = None,
         reg_id: str = None,
         rule_actions: str = None,
+        rule_body: str = None,
         rule_expressions: str = None,
         rule_id: str = None,
         rule_name: str = None,
         rule_status: str = None,
+        rule_type: str = None,
         rule_version_id: int = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values: 
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Primary key ID of the policy
         self.console_rule_id = console_rule_id
+        # Event code
         self.event_code = event_code
+        # Execution logic
         self.logic_expression = logic_expression
+        # Description
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
+        # Output action
         self.rule_actions = rule_actions
+        # DSL policy expression
+        self.rule_body = rule_body
+        # Policy expression
         self.rule_expressions = rule_expressions
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
+        # Policy status
         self.rule_status = rule_status
+        # Policy type
+        self.rule_type = rule_type
+        # Primary key ID of the policy version
         self.rule_version_id = rule_version_id
 
     def validate(self):
@@ -49331,6 +55674,8 @@ class UpdateRuleRequest(TeaModel):
             result['regId'] = self.reg_id
         if self.rule_actions is not None:
             result['ruleActions'] = self.rule_actions
+        if self.rule_body is not None:
+            result['ruleBody'] = self.rule_body
         if self.rule_expressions is not None:
             result['ruleExpressions'] = self.rule_expressions
         if self.rule_id is not None:
@@ -49339,6 +55684,8 @@ class UpdateRuleRequest(TeaModel):
             result['ruleName'] = self.rule_name
         if self.rule_status is not None:
             result['ruleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['ruleType'] = self.rule_type
         if self.rule_version_id is not None:
             result['ruleVersionId'] = self.rule_version_id
         return result
@@ -49359,6 +55706,8 @@ class UpdateRuleRequest(TeaModel):
             self.reg_id = m.get('regId')
         if m.get('ruleActions') is not None:
             self.rule_actions = m.get('ruleActions')
+        if m.get('ruleBody') is not None:
+            self.rule_body = m.get('ruleBody')
         if m.get('ruleExpressions') is not None:
             self.rule_expressions = m.get('ruleExpressions')
         if m.get('ruleId') is not None:
@@ -49367,6 +55716,8 @@ class UpdateRuleRequest(TeaModel):
             self.rule_name = m.get('ruleName')
         if m.get('ruleStatus') is not None:
             self.rule_status = m.get('ruleStatus')
+        if m.get('ruleType') is not None:
+            self.rule_type = m.get('ruleType')
         if m.get('ruleVersionId') is not None:
             self.rule_version_id = m.get('ruleVersionId')
         return self
@@ -49378,7 +55729,9 @@ class UpdateRuleResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -49457,12 +55810,21 @@ class UpdateRuleBaseRequest(TeaModel):
         rule_id: str = None,
         rule_name: str = None,
     ):
+        # Set the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Policy primary key ID
         self.console_rule_id = console_rule_id
+        # Event code
         self.event_code = event_code
+        # Description
         self.memo = memo
+        # Region code
         self.reg_id = reg_id
+        # Policy ID
         self.rule_id = rule_id
+        # Policy name
         self.rule_name = rule_name
 
     def validate(self):
@@ -49515,7 +55877,9 @@ class UpdateRuleBaseResponseBody(TeaModel):
         request_id: str = None,
         result_object: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Return object
         self.result_object = result_object
 
     def validate(self):
@@ -49592,10 +55956,17 @@ class UpdateSampleBatchRequest(TeaModel):
         tags: str = None,
         versions: str = None,
     ):
+        # Sets the language type for requests and received messages, default value is **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
         self.lang = lang
+        # Batch operation IDs.
         self.ids = ids
+        # Region code.
         self.reg_id = reg_id
+        # Tags (comma-separated).
         self.tags = tags
+        # Version number (latest).
         self.versions = versions
 
     def validate(self):
@@ -49640,7 +56011,9 @@ class UpdateSampleBatchResponseBody(TeaModel):
         request_id: str = None,
         data: bool = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # Returned data.
         self.data = data
 
     def validate(self):
@@ -49708,22 +56081,33 @@ class UpdateSampleBatchResponse(TeaModel):
         return self
 
 
-class UploadSampleApiRequest(TeaModel):
+class UploadFileCheckRequest(TeaModel):
     def __init__(
         self,
+        lang: str = None,
+        batch_name: str = None,
         data_type: str = None,
-        data_value: str = None,
-        sample_type: str = None,
-        service: str = None,
+        oss_file_name: str = None,
+        reg_id: str = None,
+        sample_tag_type: str = None,
+        service_list: str = None,
     ):
-        # This parameter is required.
+        # Sets the language type for requests and received messages, with a default value of **zh**. Values:
+        # - **zh**: Chinese
+        # - **en**: English
+        self.lang = lang
+        # Sample batch name
+        self.batch_name = batch_name
+        # Data type
         self.data_type = data_type
-        # This parameter is required.
-        self.data_value = data_value
-        # This parameter is required.
-        self.sample_type = sample_type
-        # This parameter is required.
-        self.service = service
+        # Uploaded OSS address.
+        self.oss_file_name = oss_file_name
+        # Region code
+        self.reg_id = reg_id
+        # Sample type
+        self.sample_tag_type = sample_tag_type
+        # Service list
+        self.service_list = service_list
 
     def validate(self):
         pass
@@ -49734,39 +56118,97 @@ class UploadSampleApiRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.batch_name is not None:
+            result['batchName'] = self.batch_name
         if self.data_type is not None:
-            result['DataType'] = self.data_type
-        if self.data_value is not None:
-            result['DataValue'] = self.data_value
-        if self.sample_type is not None:
-            result['SampleType'] = self.sample_type
-        if self.service is not None:
-            result['Service'] = self.service
+            result['dataType'] = self.data_type
+        if self.oss_file_name is not None:
+            result['ossFileName'] = self.oss_file_name
+        if self.reg_id is not None:
+            result['regId'] = self.reg_id
+        if self.sample_tag_type is not None:
+            result['sampleTagType'] = self.sample_tag_type
+        if self.service_list is not None:
+            result['serviceList'] = self.service_list
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
-        if m.get('DataValue') is not None:
-            self.data_value = m.get('DataValue')
-        if m.get('SampleType') is not None:
-            self.sample_type = m.get('SampleType')
-        if m.get('Service') is not None:
-            self.service = m.get('Service')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('batchName') is not None:
+            self.batch_name = m.get('batchName')
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+        if m.get('ossFileName') is not None:
+            self.oss_file_name = m.get('ossFileName')
+        if m.get('regId') is not None:
+            self.reg_id = m.get('regId')
+        if m.get('sampleTagType') is not None:
+            self.sample_tag_type = m.get('sampleTagType')
+        if m.get('serviceList') is not None:
+            self.service_list = m.get('serviceList')
         return self
 
 
-class UploadSampleApiResponseBody(TeaModel):
+class UploadFileCheckResponseBodyResultObject(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        effective_number: int = None,
+        result_list: List[str] = None,
+        total_number: int = None,
     ):
-        # Id of the request
-        self.request_id = request_id
+        # Number of effective rows
+        self.effective_number = effective_number
+        # Valid sample data
+        self.result_list = result_list
+        # Total number of rows
+        self.total_number = total_number
 
     def validate(self):
         pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_number is not None:
+            result['effectiveNumber'] = self.effective_number
+        if self.result_list is not None:
+            result['resultList'] = self.result_list
+        if self.total_number is not None:
+            result['totalNumber'] = self.total_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('effectiveNumber') is not None:
+            self.effective_number = m.get('effectiveNumber')
+        if m.get('resultList') is not None:
+            self.result_list = m.get('resultList')
+        if m.get('totalNumber') is not None:
+            self.total_number = m.get('totalNumber')
+        return self
+
+
+class UploadFileCheckResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_object: UploadFileCheckResponseBodyResultObject = None,
+    ):
+        # ID of the request
+        self.request_id = request_id
+        # Returned object
+        self.result_object = result_object
+
+    def validate(self):
+        if self.result_object:
+            self.result_object.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -49776,21 +56218,26 @@ class UploadSampleApiResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.result_object is not None:
+            result['resultObject'] = self.result_object.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('resultObject') is not None:
+            temp_model = UploadFileCheckResponseBodyResultObject()
+            self.result_object = temp_model.from_map(m['resultObject'])
         return self
 
 
-class UploadSampleApiResponse(TeaModel):
+class UploadFileCheckResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        body: UploadSampleApiResponseBody = None,
+        body: UploadFileCheckResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -49821,7 +56268,7 @@ class UploadSampleApiResponse(TeaModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
-            temp_model = UploadSampleApiResponseBody()
+            temp_model = UploadFileCheckResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
