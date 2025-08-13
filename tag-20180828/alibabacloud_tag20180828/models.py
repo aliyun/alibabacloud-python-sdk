@@ -397,6 +397,193 @@ class CloseCreatedByResponse(TeaModel):
         return self
 
 
+class CreateAssociatedResourceRulesRequestCreateRulesList(TeaModel):
+    def __init__(
+        self,
+        existing_status: str = None,
+        setting_name: str = None,
+        status: str = None,
+        tag_keys: List[str] = None,
+    ):
+        self.existing_status = existing_status
+        # The name of the associated resource tagging rule.
+        # 
+        # For more information, see the **Rule Name** column in [Resource types that support the Associated Resource Tagging feature](https://help.aliyun.com/document_detail/2586330.html).
+        # 
+        # This parameter is required.
+        self.setting_name = setting_name
+        # Specifies whether to enable the associated resource tagging rule. Valid values:
+        # 
+        # *   Enable (default)
+        # *   Disable
+        # 
+        # This parameter is required.
+        self.status = status
+        # The tag keys to which the associated resource tagging rule applies.
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.existing_status is not None:
+            result['ExistingStatus'] = self.existing_status
+        if self.setting_name is not None:
+            result['SettingName'] = self.setting_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExistingStatus') is not None:
+            self.existing_status = m.get('ExistingStatus')
+        if m.get('SettingName') is not None:
+            self.setting_name = m.get('SettingName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class CreateAssociatedResourceRulesRequest(TeaModel):
+    def __init__(
+        self,
+        create_rules_list: List[CreateAssociatedResourceRulesRequestCreateRulesList] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+    ):
+        # The associated resource tagging rules that you want to create.
+        self.create_rules_list = create_rules_list
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+
+    def validate(self):
+        if self.create_rules_list:
+            for k in self.create_rules_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CreateRulesList'] = []
+        if self.create_rules_list is not None:
+            for k in self.create_rules_list:
+                result['CreateRulesList'].append(k.to_map() if k else None)
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.create_rules_list = []
+        if m.get('CreateRulesList') is not None:
+            for k in m.get('CreateRulesList'):
+                temp_model = CreateAssociatedResourceRulesRequestCreateRulesList()
+                self.create_rules_list.append(temp_model.from_map(k))
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        return self
+
+
+class CreateAssociatedResourceRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAssociatedResourceRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAssociatedResourceRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAssociatedResourceRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePolicyRequest(TeaModel):
     def __init__(
         self,
@@ -810,6 +997,130 @@ class CreateTagsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAssociatedResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        setting_name: str = None,
+    ):
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        # The name of the associated resource tagging rule.
+        # 
+        # For more information, see the **Rule Name** column in [Resource types that support the Associated Resource Tagging feature](https://help.aliyun.com/document_detail/2586330.html).
+        self.setting_name = setting_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.setting_name is not None:
+            result['SettingName'] = self.setting_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('SettingName') is not None:
+            self.setting_name = m.get('SettingName')
+        return self
+
+
+class DeleteAssociatedResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAssociatedResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAssociatedResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAssociatedResourceRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1315,7 +1626,7 @@ class DetachPolicyRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         # The ID of the object.
         # 
-        # >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required.
+        # > If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this parameter is required.
         self.target_id = target_id
         # The type of the object. Valid values:
         # 
@@ -1324,7 +1635,7 @@ class DetachPolicyRequest(TeaModel):
         # *   FOLDER: a folder other than the Root folder in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
         # *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
         # 
-        # >  If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this feature is required. The value of this parameter is not case-sensitive.
+        # > If you use the Tag Policy feature in single-account mode, this parameter is optional. If you use the Tag Policy feature in multi-account mode, this parameter is required. The value of this parameter is not case-sensitive.
         self.target_type = target_type
 
     def validate(self):
@@ -1376,7 +1687,7 @@ class DetachPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2751,6 +3062,232 @@ class GetPolicyEnableStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPolicyEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAssociatedResourceRulesRequest(TeaModel):
+    def __init__(
+        self,
+        max_result: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        setting_name: List[str] = None,
+        status: str = None,
+    ):
+        # Number of data entries to display per page during pagination.
+        # 
+        # Default value: 50. Maximum value: 100.
+        self.max_result = max_result
+        # Token for the next query start.
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # Region ID.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        # Setting name of the associated resource tag rule.
+        self.setting_name = setting_name
+        # Whether the associated resource tag rule is enabled. Values:
+        # 
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_result is not None:
+            result['MaxResult'] = self.max_result
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.setting_name is not None:
+            result['SettingName'] = self.setting_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResult') is not None:
+            self.max_result = m.get('MaxResult')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('SettingName') is not None:
+            self.setting_name = m.get('SettingName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAssociatedResourceRulesResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        existing_status: str = None,
+        setting_name: str = None,
+        status: str = None,
+        tag_keys: List[str] = None,
+    ):
+        self.existing_status = existing_status
+        # Setting name of the associated resource tag rule.
+        self.setting_name = setting_name
+        # Whether the associated resource tag rule is enabled. Values:
+        # 
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        self.status = status
+        # List of tag keys for the associated resource tag rule.
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.existing_status is not None:
+            result['ExistingStatus'] = self.existing_status
+        if self.setting_name is not None:
+            result['SettingName'] = self.setting_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExistingStatus') is not None:
+            self.existing_status = m.get('ExistingStatus')
+        if m.get('SettingName') is not None:
+            self.setting_name = m.get('SettingName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class ListAssociatedResourceRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        request_id: str = None,
+        rules: List[ListAssociatedResourceRulesResponseBodyRules] = None,
+    ):
+        # Determine if there is a token for the next query based on `NextToken`. Values:
+        # 
+        # - If `NextToken` is empty, it indicates there is no next query.
+        # - If `NextToken` has a value, that value is the token for the next query start.
+        # 
+        # This parameter is required.
+        self.next_token = next_token
+        # Request ID.
+        self.request_id = request_id
+        # List of associated resource tag rules.
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListAssociatedResourceRulesResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class ListAssociatedResourceRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAssociatedResourceRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAssociatedResourceRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4526,6 +5063,18 @@ class ListTagResourcesRequest(TeaModel):
         # This parameter is required.
         self.region_id = region_id
         # The Alibaba Cloud Resource Name (ARN) of a resource.
+        # 
+        # Valid values of N: 1 to 50.
+        # 
+        # ARN format: `arn:acs:${ProductCode}:${Region}:${Account}:${ResourceType}/${ResourceId}` Fields:
+        # 
+        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+        # *   `Region`: the region ID of the resource. You can set this field to an asterisk (\\*) to indicate the current region.
+        # *   `Account`: the ID of the Alibaba Cloud account to which the resource belongs. You can set this field to an asterisk (\\*) to indicate the current Alibaba Cloud account.
+        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](https://help.aliyun.com/document_detail/2330915.html) operation.
+        # *   `ResourceId`: the ID of the resource.
+        # 
+        # >  You can set `ProductCode` and `ResourceType` in ResourceARN to values defined in Resource Group, ActionTrail, or Resource Center.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
         # The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -5273,10 +5822,10 @@ class ModifyPolicyRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
     ):
-        # Specifies whether to perform a dry run for the request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   false: The system performs the related operation based on the parameter settings in the request. This is the default value.
-        # *   true: The system does not perform the related operation based on the parameter settings in the request but only verifies the parameter settings.
+        # *   false (default): performs a dry run and performs the actual request.
+        # *   true: performs only a dry run.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5357,7 +5906,7 @@ class ModifyPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6071,6 +6620,155 @@ class UntagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UntagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAssociatedResourceRuleRequest(TeaModel):
+    def __init__(
+        self,
+        existing_status: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        setting_name: str = None,
+        status: str = None,
+        tag_keys: List[str] = None,
+    ):
+        self.existing_status = existing_status
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        # The setting name of the associated resource tag rule.
+        # 
+        # For specific values, see the **Rule Setting Name** column in [Resources that Support Associated Resource Tag Settings](https://help.aliyun.com/document_detail/2586330.html).
+        # 
+        # This parameter is required.
+        self.setting_name = setting_name
+        # Indicates whether to enable the associated resource tag rule. Values:
+        # 
+        # - Enable: Enabled.
+        # - Disable: Disabled.
+        self.status = status
+        # List of tag keys affected by the associated resource tag rule.
+        self.tag_keys = tag_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.existing_status is not None:
+            result['ExistingStatus'] = self.existing_status
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.setting_name is not None:
+            result['SettingName'] = self.setting_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tag_keys is not None:
+            result['TagKeys'] = self.tag_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExistingStatus') is not None:
+            self.existing_status = m.get('ExistingStatus')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('SettingName') is not None:
+            self.setting_name = m.get('SettingName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TagKeys') is not None:
+            self.tag_keys = m.get('TagKeys')
+        return self
+
+
+class UpdateAssociatedResourceRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAssociatedResourceRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAssociatedResourceRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAssociatedResourceRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

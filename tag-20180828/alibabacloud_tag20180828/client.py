@@ -121,16 +121,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.AttachPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.AttachPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.AttachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def attach_policy_with_options_async(
         self,
@@ -177,16 +171,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.AttachPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.AttachPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.AttachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def attach_policy(
         self,
@@ -258,16 +246,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CheckCreatedByEnabledResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CheckCreatedByEnabledResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CheckCreatedByEnabledResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def check_created_by_enabled_with_options_async(
         self,
@@ -307,16 +289,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CheckCreatedByEnabledResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CheckCreatedByEnabledResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CheckCreatedByEnabledResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def check_created_by_enabled(
         self,
@@ -382,16 +358,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CloseCreatedByResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CloseCreatedByResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CloseCreatedByResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def close_created_by_with_options_async(
         self,
@@ -431,16 +401,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CloseCreatedByResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CloseCreatedByResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CloseCreatedByResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def close_created_by(
         self,
@@ -467,6 +431,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.close_created_by_with_options_async(request, runtime)
+
+    def create_associated_resource_rules_with_options(
+        self,
+        request: tag_20180828_models.CreateAssociatedResourceRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CreateAssociatedResourceRulesResponse:
+        """
+        @summary Creates associated resource tagging rules.
+        
+        @param request: CreateAssociatedResourceRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAssociatedResourceRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_rules_list):
+            query['CreateRulesList'] = request.create_rules_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAssociatedResourceRules',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateAssociatedResourceRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_associated_resource_rules_with_options_async(
+        self,
+        request: tag_20180828_models.CreateAssociatedResourceRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.CreateAssociatedResourceRulesResponse:
+        """
+        @summary Creates associated resource tagging rules.
+        
+        @param request: CreateAssociatedResourceRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAssociatedResourceRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.create_rules_list):
+            query['CreateRulesList'] = request.create_rules_list
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAssociatedResourceRules',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateAssociatedResourceRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_associated_resource_rules(
+        self,
+        request: tag_20180828_models.CreateAssociatedResourceRulesRequest,
+    ) -> tag_20180828_models.CreateAssociatedResourceRulesResponse:
+        """
+        @summary Creates associated resource tagging rules.
+        
+        @param request: CreateAssociatedResourceRulesRequest
+        @return: CreateAssociatedResourceRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_associated_resource_rules_with_options(request, runtime)
+
+    async def create_associated_resource_rules_async(
+        self,
+        request: tag_20180828_models.CreateAssociatedResourceRulesRequest,
+    ) -> tag_20180828_models.CreateAssociatedResourceRulesResponse:
+        """
+        @summary Creates associated resource tagging rules.
+        
+        @param request: CreateAssociatedResourceRulesRequest
+        @return: CreateAssociatedResourceRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_associated_resource_rules_with_options_async(request, runtime)
 
     def create_policy_with_options(
         self,
@@ -517,16 +593,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CreatePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CreatePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CreatePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_policy_with_options_async(
         self,
@@ -577,16 +647,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CreatePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CreatePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CreatePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_policy(
         self,
@@ -662,16 +726,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CreateTagsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CreateTagsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_tags_with_options_async(
         self,
@@ -715,16 +773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.CreateTagsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.CreateTagsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.CreateTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_tags(
         self,
@@ -760,13 +812,125 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_tags_with_options_async(request, runtime)
 
+    def delete_associated_resource_rule_with_options(
+        self,
+        request: tag_20180828_models.DeleteAssociatedResourceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DeleteAssociatedResourceRuleResponse:
+        """
+        @summary Deletes an associated resource tagging rule.
+        
+        @param request: DeleteAssociatedResourceRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAssociatedResourceRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAssociatedResourceRule',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteAssociatedResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_associated_resource_rule_with_options_async(
+        self,
+        request: tag_20180828_models.DeleteAssociatedResourceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.DeleteAssociatedResourceRuleResponse:
+        """
+        @summary Deletes an associated resource tagging rule.
+        
+        @param request: DeleteAssociatedResourceRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAssociatedResourceRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAssociatedResourceRule',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteAssociatedResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_associated_resource_rule(
+        self,
+        request: tag_20180828_models.DeleteAssociatedResourceRuleRequest,
+    ) -> tag_20180828_models.DeleteAssociatedResourceRuleResponse:
+        """
+        @summary Deletes an associated resource tagging rule.
+        
+        @param request: DeleteAssociatedResourceRuleRequest
+        @return: DeleteAssociatedResourceRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_associated_resource_rule_with_options(request, runtime)
+
+    async def delete_associated_resource_rule_async(
+        self,
+        request: tag_20180828_models.DeleteAssociatedResourceRuleRequest,
+    ) -> tag_20180828_models.DeleteAssociatedResourceRuleResponse:
+        """
+        @summary Deletes an associated resource tagging rule.
+        
+        @param request: DeleteAssociatedResourceRuleRequest
+        @return: DeleteAssociatedResourceRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_associated_resource_rule_with_options_async(request, runtime)
+
     def delete_policy_with_options(
         self,
         request: tag_20180828_models.DeletePolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a tag policy.
         
         @description Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
         This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7***`.
@@ -801,16 +965,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DeletePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DeletePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DeletePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_policy_with_options_async(
         self,
@@ -818,7 +976,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a tag policy.
         
         @description Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
         This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7***`.
@@ -853,23 +1011,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DeletePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DeletePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DeletePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_policy(
         self,
         request: tag_20180828_models.DeletePolicyRequest,
     ) -> tag_20180828_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a tag policy.
         
         @description Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
         This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7***`.
@@ -885,7 +1037,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeletePolicyRequest,
     ) -> tag_20180828_models.DeletePolicyResponse:
         """
-        @summary 删除策略
+        @summary Deletes a tag policy.
         
         @description Before you delete a tag policy, make sure that the tag policy is detached from all objects to which the tag policy is attached. For more information about how to detach a tag policy, see [DetachPolicy](https://help.aliyun.com/document_detail/429724.html).
         This topic provides an example on how to call the API operation to delete the tag policy with an ID of `p-557cb141331f41c7***`.
@@ -938,16 +1090,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DeleteTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DeleteTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_tag_with_options_async(
         self,
@@ -991,16 +1137,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DeleteTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DeleteTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_tag(
         self,
@@ -1072,16 +1212,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -1123,16 +1257,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(
         self,
@@ -1166,9 +1294,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DetachPolicyResponse:
         """
-        @summary 解除策略绑定
+        @summary Detaches a tag policy from an object.
         
-        @description If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+        @description ###
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75***` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
         
         @param request: DetachPolicyRequest
@@ -1205,16 +1334,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DetachPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DetachPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DetachPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def detach_policy_with_options_async(
         self,
@@ -1222,9 +1345,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DetachPolicyResponse:
         """
-        @summary 解除策略绑定
+        @summary Detaches a tag policy from an object.
         
-        @description If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+        @description ###
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75***` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
         
         @param request: DetachPolicyRequest
@@ -1261,25 +1385,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DetachPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DetachPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DetachPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def detach_policy(
         self,
         request: tag_20180828_models.DetachPolicyRequest,
     ) -> tag_20180828_models.DetachPolicyResponse:
         """
-        @summary 解除策略绑定
+        @summary Detaches a tag policy from an object.
         
-        @description If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+        @description ###
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75***` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
         
         @param request: DetachPolicyRequest
@@ -1293,9 +1412,10 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DetachPolicyRequest,
     ) -> tag_20180828_models.DetachPolicyResponse:
         """
-        @summary 解除策略绑定
+        @summary Detaches a tag policy from an object.
         
-        @description If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
+        @description ###
+        If you use the Tag Policy feature in single-account mode, you can call this API operation to detach a tag policy from the current logon account. If you use the Tag Policy feature in multi-account mode, you can call this API operation to detach a tag policy from the Root folder, a folder other than the Root folder, or a member in a resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         This topic provides an example on how to call the API operation to detach the tag policy with an ID of `p-a3381efe2fe34a75***` from the current logon account. In this example, the Tag Policy feature in single-account mode is used.
         
         @param request: DetachPolicyRequest
@@ -1346,16 +1466,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DisablePolicyTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DisablePolicyTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DisablePolicyTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def disable_policy_type_with_options_async(
         self,
@@ -1399,16 +1513,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.DisablePolicyTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.DisablePolicyTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.DisablePolicyTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def disable_policy_type(
         self,
@@ -1478,16 +1586,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.EnablePolicyTypeResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.EnablePolicyTypeResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.EnablePolicyTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def enable_policy_type_with_options_async(
         self,
@@ -1531,16 +1633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.EnablePolicyTypeResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.EnablePolicyTypeResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.EnablePolicyTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def enable_policy_type(
         self,
@@ -1613,16 +1709,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GenerateConfigRuleReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GenerateConfigRuleReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GenerateConfigRuleReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def generate_config_rule_report_with_options_async(
         self,
@@ -1669,16 +1759,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GenerateConfigRuleReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GenerateConfigRuleReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GenerateConfigRuleReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def generate_config_rule_report(
         self,
@@ -1757,16 +1841,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetConfigRuleReportResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetConfigRuleReportResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetConfigRuleReportResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_config_rule_report_with_options_async(
         self,
@@ -1813,16 +1891,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetConfigRuleReportResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetConfigRuleReportResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetConfigRuleReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_config_rule_report(
         self,
@@ -1862,7 +1934,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
         """
-        @summary 查询有效策略
+        @summary Queries the information about the effective policy.
         
         @description If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
@@ -1902,16 +1974,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetEffectivePolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetEffectivePolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetEffectivePolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_effective_policy_with_options_async(
         self,
@@ -1919,7 +1985,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
         """
-        @summary 查询有效策略
+        @summary Queries the information about the effective policy.
         
         @description If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
@@ -1959,23 +2025,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetEffectivePolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetEffectivePolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetEffectivePolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_effective_policy(
         self,
         request: tag_20180828_models.GetEffectivePolicyRequest,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
         """
-        @summary 查询有效策略
+        @summary Queries the information about the effective policy.
         
         @description If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
@@ -1992,7 +2052,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetEffectivePolicyRequest,
     ) -> tag_20180828_models.GetEffectivePolicyResponse:
         """
-        @summary 查询有效策略
+        @summary Queries the information about the effective policy.
         
         @description If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the effective tag policy for the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the effective tag policy for the Root folder, a folder other than the Root folder, or a member in the resource directory. You can also use a member of a resource directory to call this API operation to query the effective tag policy for the member. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](https://help.aliyun.com/document_detail/417434.html).
         An effective tag policy is obtained based on tag policy inheritance. For more information, see [Inheritance of a tag policy and calculation of an effective tag policy](https://help.aliyun.com/document_detail/417435.html).
@@ -2010,7 +2070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries the details of a tag policy.
         
         @description This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
         
@@ -2044,16 +2104,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_with_options_async(
         self,
@@ -2061,7 +2115,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.GetPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries the details of a tag policy.
         
         @description This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
         
@@ -2095,23 +2149,17 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy(
         self,
         request: tag_20180828_models.GetPolicyRequest,
     ) -> tag_20180828_models.GetPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries the details of a tag policy.
         
         @description This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
         
@@ -2126,7 +2174,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.GetPolicyRequest,
     ) -> tag_20180828_models.GetPolicyResponse:
         """
-        @summary 查询策略
+        @summary Queries the details of a tag policy.
         
         @description This topic provides an example on how to call the API operation to query the details of the tag policy with an ID of `p-557cb141331f41c7***`.
         
@@ -2180,16 +2228,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyEnableStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyEnableStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetPolicyEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_policy_enable_status_with_options_async(
         self,
@@ -2235,16 +2277,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyEnableStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.GetPolicyEnableStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.GetPolicyEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_policy_enable_status(
         self,
@@ -2275,6 +2311,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_policy_enable_status_with_options_async(request, runtime)
+
+    def list_associated_resource_rules_with_options(
+        self,
+        request: tag_20180828_models.ListAssociatedResourceRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.ListAssociatedResourceRulesResponse:
+        """
+        @summary Search the rules for associated resources that the user has set up.
+        
+        @param request: ListAssociatedResourceRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAssociatedResourceRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAssociatedResourceRules',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.ListAssociatedResourceRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_associated_resource_rules_with_options_async(
+        self,
+        request: tag_20180828_models.ListAssociatedResourceRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.ListAssociatedResourceRulesResponse:
+        """
+        @summary Search the rules for associated resources that the user has set up.
+        
+        @param request: ListAssociatedResourceRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAssociatedResourceRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_result):
+            query['MaxResult'] = request.max_result
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAssociatedResourceRules',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.ListAssociatedResourceRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_associated_resource_rules(
+        self,
+        request: tag_20180828_models.ListAssociatedResourceRulesRequest,
+    ) -> tag_20180828_models.ListAssociatedResourceRulesResponse:
+        """
+        @summary Search the rules for associated resources that the user has set up.
+        
+        @param request: ListAssociatedResourceRulesRequest
+        @return: ListAssociatedResourceRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_associated_resource_rules_with_options(request, runtime)
+
+    async def list_associated_resource_rules_async(
+        self,
+        request: tag_20180828_models.ListAssociatedResourceRulesRequest,
+    ) -> tag_20180828_models.ListAssociatedResourceRulesResponse:
+        """
+        @summary Search the rules for associated resources that the user has set up.
+        
+        @param request: ListAssociatedResourceRulesRequest
+        @return: ListAssociatedResourceRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_associated_resource_rules_with_options_async(request, runtime)
 
     def list_config_rules_for_target_with_options(
         self,
@@ -2329,16 +2489,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListConfigRulesForTargetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListConfigRulesForTargetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListConfigRulesForTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_config_rules_for_target_with_options_async(
         self,
@@ -2393,16 +2547,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListConfigRulesForTargetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListConfigRulesForTargetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListConfigRulesForTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_config_rules_for_target(
         self,
@@ -2485,16 +2633,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policies_with_options_async(
         self,
@@ -2545,16 +2687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policies(
         self,
@@ -2635,16 +2771,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesForTargetResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesForTargetResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListPoliciesForTargetResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_policies_for_target_with_options_async(
         self,
@@ -2693,16 +2823,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesForTargetResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListPoliciesForTargetResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListPoliciesForTargetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_policies_for_target(
         self,
@@ -2788,16 +2912,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListResourcesByTagResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListResourcesByTagResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListResourcesByTagResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_resources_by_tag_with_options_async(
         self,
@@ -2851,16 +2969,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListResourcesByTagResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListResourcesByTagResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListResourcesByTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_resources_by_tag(
         self,
@@ -2945,16 +3057,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListSupportResourceTypesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListSupportResourceTypesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListSupportResourceTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_support_resource_types_with_options_async(
         self,
@@ -3009,16 +3115,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListSupportResourceTypesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListSupportResourceTypesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListSupportResourceTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_support_resource_types(
         self,
@@ -3110,16 +3210,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagKeysResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagKeysResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagKeysResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_keys_with_options_async(
         self,
@@ -3175,16 +3269,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagKeysResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagKeysResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagKeysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_keys(
         self,
@@ -3266,16 +3354,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_resources_with_options_async(
         self,
@@ -3327,16 +3409,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_resources(
         self,
@@ -3422,16 +3498,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagValuesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagValuesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_tag_values_with_options_async(
         self,
@@ -3487,16 +3557,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagValuesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTagValuesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_tag_values(
         self,
@@ -3573,16 +3637,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTargetsForPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTargetsForPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTargetsForPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_targets_for_policy_with_options_async(
         self,
@@ -3629,16 +3687,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ListTargetsForPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ListTargetsForPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ListTargetsForPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_targets_for_policy(
         self,
@@ -3678,9 +3730,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a tag policy.
         
-        @description This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        @description ### [](#)
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
         
         @param request: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3720,16 +3773,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ModifyPolicyResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ModifyPolicyResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ModifyPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_policy_with_options_async(
         self,
@@ -3737,9 +3784,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a tag policy.
         
-        @description This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        @description ### [](#)
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
         
         @param request: ModifyPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3779,25 +3827,20 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.ModifyPolicyResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.ModifyPolicyResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.ModifyPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_policy(
         self,
         request: tag_20180828_models.ModifyPolicyRequest,
     ) -> tag_20180828_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a tag policy.
         
-        @description This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        @description ### [](#)
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
         
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
@@ -3810,9 +3853,10 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ModifyPolicyRequest,
     ) -> tag_20180828_models.ModifyPolicyResponse:
         """
-        @summary 修改策略
+        @summary Modifies a tag policy.
         
-        @description This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
+        @description ### [](#)
+        This topic provides an example on how to call the API operation to change the name of a tag policy to `test`.
         
         @param request: ModifyPolicyRequest
         @return: ModifyPolicyResponse
@@ -3860,16 +3904,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.OpenCreatedByResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.OpenCreatedByResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.OpenCreatedByResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def open_created_by_with_options_async(
         self,
@@ -3911,16 +3949,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.OpenCreatedByResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.OpenCreatedByResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.OpenCreatedByResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def open_created_by(
         self,
@@ -3997,16 +4029,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.TagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.TagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.TagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def tag_resources_with_options_async(
         self,
@@ -4053,16 +4079,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.TagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.TagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.TagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def tag_resources(
         self,
@@ -4141,16 +4161,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.UntagResourcesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.UntagResourcesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.UntagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def untag_resources_with_options_async(
         self,
@@ -4197,16 +4211,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tag_20180828_models.UntagResourcesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tag_20180828_models.UntagResourcesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tag_20180828_models.UntagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def untag_resources(
         self,
@@ -4239,3 +4247,127 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_associated_resource_rule_with_options(
+        self,
+        request: tag_20180828_models.UpdateAssociatedResourceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.UpdateAssociatedResourceRuleResponse:
+        """
+        @summary Update the rule for tagging associated resources.
+        
+        @param request: UpdateAssociatedResourceRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAssociatedResourceRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.existing_status):
+            query['ExistingStatus'] = request.existing_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAssociatedResourceRule',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.UpdateAssociatedResourceRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_associated_resource_rule_with_options_async(
+        self,
+        request: tag_20180828_models.UpdateAssociatedResourceRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> tag_20180828_models.UpdateAssociatedResourceRuleResponse:
+        """
+        @summary Update the rule for tagging associated resources.
+        
+        @param request: UpdateAssociatedResourceRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAssociatedResourceRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.existing_status):
+            query['ExistingStatus'] = request.existing_status
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.setting_name):
+            query['SettingName'] = request.setting_name
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_keys):
+            query['TagKeys'] = request.tag_keys
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAssociatedResourceRule',
+            version='2018-08-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tag_20180828_models.UpdateAssociatedResourceRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_associated_resource_rule(
+        self,
+        request: tag_20180828_models.UpdateAssociatedResourceRuleRequest,
+    ) -> tag_20180828_models.UpdateAssociatedResourceRuleResponse:
+        """
+        @summary Update the rule for tagging associated resources.
+        
+        @param request: UpdateAssociatedResourceRuleRequest
+        @return: UpdateAssociatedResourceRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_associated_resource_rule_with_options(request, runtime)
+
+    async def update_associated_resource_rule_async(
+        self,
+        request: tag_20180828_models.UpdateAssociatedResourceRuleRequest,
+    ) -> tag_20180828_models.UpdateAssociatedResourceRuleResponse:
+        """
+        @summary Update the rule for tagging associated resources.
+        
+        @param request: UpdateAssociatedResourceRuleRequest
+        @return: UpdateAssociatedResourceRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_associated_resource_rule_with_options_async(request, runtime)
