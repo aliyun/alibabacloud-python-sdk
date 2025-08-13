@@ -41690,13 +41690,17 @@ class ListGatewayResponseBodyDataResultGatewayEntry(TeaModel):
         http_ports: List[int] = None,
         https_ports: List[int] = None,
         ip_list: List[str] = None,
+        ipv_6list: List[str] = None,
         net_type: str = None,
+        status: str = None,
     ):
         self.entry_domain = entry_domain
         self.http_ports = http_ports
         self.https_ports = https_ports
         self.ip_list = ip_list
+        self.ipv_6list = ipv_6list
         self.net_type = net_type
+        self.status = status
 
     def validate(self):
         pass
@@ -41715,8 +41719,12 @@ class ListGatewayResponseBodyDataResultGatewayEntry(TeaModel):
             result['HttpsPorts'] = self.https_ports
         if self.ip_list is not None:
             result['IpList'] = self.ip_list
+        if self.ipv_6list is not None:
+            result['Ipv6List'] = self.ipv_6list
         if self.net_type is not None:
             result['NetType'] = self.net_type
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
@@ -41729,8 +41737,12 @@ class ListGatewayResponseBodyDataResultGatewayEntry(TeaModel):
             self.https_ports = m.get('HttpsPorts')
         if m.get('IpList') is not None:
             self.ip_list = m.get('IpList')
+        if m.get('Ipv6List') is not None:
+            self.ipv_6list = m.get('Ipv6List')
         if m.get('NetType') is not None:
             self.net_type = m.get('NetType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
