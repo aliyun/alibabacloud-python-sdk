@@ -1676,6 +1676,298 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_favorite_public_media_with_options_async(request, runtime)
 
+    def cancel_iproduction_job_with_options(
+        self,
+        request: ice20201109_models.CancelIProductionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CancelIProductionJobResponse:
+        """
+        @summary 取消智能生产任务
+        
+        @param request: CancelIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelIProductionJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelIProductionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CancelIProductionJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_iproduction_job_with_options_async(
+        self,
+        request: ice20201109_models.CancelIProductionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CancelIProductionJobResponse:
+        """
+        @summary 取消智能生产任务
+        
+        @param request: CancelIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelIProductionJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelIProductionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CancelIProductionJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_iproduction_job(
+        self,
+        request: ice20201109_models.CancelIProductionJobRequest,
+    ) -> ice20201109_models.CancelIProductionJobResponse:
+        """
+        @summary 取消智能生产任务
+        
+        @param request: CancelIProductionJobRequest
+        @return: CancelIProductionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_iproduction_job_with_options(request, runtime)
+
+    async def cancel_iproduction_job_async(
+        self,
+        request: ice20201109_models.CancelIProductionJobRequest,
+    ) -> ice20201109_models.CancelIProductionJobResponse:
+        """
+        @summary 取消智能生产任务
+        
+        @param request: CancelIProductionJobRequest
+        @return: CancelIProductionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_iproduction_job_with_options_async(request, runtime)
+
+    def clear_aiagent_voiceprint_with_options(
+        self,
+        request: ice20201109_models.ClearAIAgentVoiceprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
+        """
+        @summary 清除声纹ID对应的声纹
+        
+        @param request: ClearAIAgentVoiceprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearAIAgentVoiceprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearAIAgentVoiceprint',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ClearAIAgentVoiceprintResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_aiagent_voiceprint_with_options_async(
+        self,
+        request: ice20201109_models.ClearAIAgentVoiceprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
+        """
+        @summary 清除声纹ID对应的声纹
+        
+        @param request: ClearAIAgentVoiceprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ClearAIAgentVoiceprintResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearAIAgentVoiceprint',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ClearAIAgentVoiceprintResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_aiagent_voiceprint(
+        self,
+        request: ice20201109_models.ClearAIAgentVoiceprintRequest,
+    ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
+        """
+        @summary 清除声纹ID对应的声纹
+        
+        @param request: ClearAIAgentVoiceprintRequest
+        @return: ClearAIAgentVoiceprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.clear_aiagent_voiceprint_with_options(request, runtime)
+
+    async def clear_aiagent_voiceprint_async(
+        self,
+        request: ice20201109_models.ClearAIAgentVoiceprintRequest,
+    ) -> ice20201109_models.ClearAIAgentVoiceprintResponse:
+        """
+        @summary 清除声纹ID对应的声纹
+        
+        @param request: ClearAIAgentVoiceprintRequest
+        @return: ClearAIAgentVoiceprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.clear_aiagent_voiceprint_with_options_async(request, runtime)
+
+    def close_media_connect_flow_failover_with_options(
+        self,
+        request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
+        """
+        @summary 关闭MediaConnect实例的双流灾备功能
+        
+        @param request: CloseMediaConnectFlowFailoverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseMediaConnectFlowFailoverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseMediaConnectFlowFailover',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CloseMediaConnectFlowFailoverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_media_connect_flow_failover_with_options_async(
+        self,
+        request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
+        """
+        @summary 关闭MediaConnect实例的双流灾备功能
+        
+        @param request: CloseMediaConnectFlowFailoverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseMediaConnectFlowFailoverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseMediaConnectFlowFailover',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CloseMediaConnectFlowFailoverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_media_connect_flow_failover(
+        self,
+        request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
+    ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
+        """
+        @summary 关闭MediaConnect实例的双流灾备功能
+        
+        @param request: CloseMediaConnectFlowFailoverRequest
+        @return: CloseMediaConnectFlowFailoverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.close_media_connect_flow_failover_with_options(request, runtime)
+
+    async def close_media_connect_flow_failover_async(
+        self,
+        request: ice20201109_models.CloseMediaConnectFlowFailoverRequest,
+    ) -> ice20201109_models.CloseMediaConnectFlowFailoverResponse:
+        """
+        @summary 关闭MediaConnect实例的双流灾备功能
+        
+        @param request: CloseMediaConnectFlowFailoverRequest
+        @return: CloseMediaConnectFlowFailoverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.close_media_connect_flow_failover_with_options_async(request, runtime)
+
     def create_audit_with_options(
         self,
         request: ice20201109_models.CreateAuditRequest,
@@ -8146,6 +8438,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(
@@ -8185,6 +8479,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(
@@ -11408,6 +11704,206 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.drop_search_lib_with_options_async(request, runtime)
 
+    def forbid_media_connect_flow_output_with_options(
+        self,
+        request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
+        """
+        @summary 禁用某个MediaConnect实例的某个输出
+        
+        @param request: ForbidMediaConnectFlowOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForbidMediaConnectFlowOutputResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.output_name):
+            query['OutputName'] = request.output_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ForbidMediaConnectFlowOutput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ForbidMediaConnectFlowOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def forbid_media_connect_flow_output_with_options_async(
+        self,
+        request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
+        """
+        @summary 禁用某个MediaConnect实例的某个输出
+        
+        @param request: ForbidMediaConnectFlowOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForbidMediaConnectFlowOutputResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.output_name):
+            query['OutputName'] = request.output_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ForbidMediaConnectFlowOutput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ForbidMediaConnectFlowOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def forbid_media_connect_flow_output(
+        self,
+        request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
+    ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
+        """
+        @summary 禁用某个MediaConnect实例的某个输出
+        
+        @param request: ForbidMediaConnectFlowOutputRequest
+        @return: ForbidMediaConnectFlowOutputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.forbid_media_connect_flow_output_with_options(request, runtime)
+
+    async def forbid_media_connect_flow_output_async(
+        self,
+        request: ice20201109_models.ForbidMediaConnectFlowOutputRequest,
+    ) -> ice20201109_models.ForbidMediaConnectFlowOutputResponse:
+        """
+        @summary 禁用某个MediaConnect实例的某个输出
+        
+        @param request: ForbidMediaConnectFlowOutputRequest
+        @return: ForbidMediaConnectFlowOutputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.forbid_media_connect_flow_output_with_options_async(request, runtime)
+
+    def forward_aiagent_call_with_options(
+        self,
+        request: ice20201109_models.ForwardAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ForwardAIAgentCallResponse:
+        """
+        @summary 转呼通话到目标电话
+        
+        @param request: ForwardAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForwardAIAgentCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ForwardAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ForwardAIAgentCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def forward_aiagent_call_with_options_async(
+        self,
+        request: ice20201109_models.ForwardAIAgentCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ForwardAIAgentCallResponse:
+        """
+        @summary 转呼通话到目标电话
+        
+        @param request: ForwardAIAgentCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ForwardAIAgentCallResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.called_number):
+            query['CalledNumber'] = request.called_number
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ForwardAIAgentCall',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ForwardAIAgentCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def forward_aiagent_call(
+        self,
+        request: ice20201109_models.ForwardAIAgentCallRequest,
+    ) -> ice20201109_models.ForwardAIAgentCallResponse:
+        """
+        @summary 转呼通话到目标电话
+        
+        @param request: ForwardAIAgentCallRequest
+        @return: ForwardAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.forward_aiagent_call_with_options(request, runtime)
+
+    async def forward_aiagent_call_async(
+        self,
+        request: ice20201109_models.ForwardAIAgentCallRequest,
+    ) -> ice20201109_models.ForwardAIAgentCallResponse:
+        """
+        @summary 转呼通话到目标电话
+        
+        @param request: ForwardAIAgentCallRequest
+        @return: ForwardAIAgentCallResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.forward_aiagent_call_with_options_async(request, runtime)
+
     def generate_aiagent_call_with_options(
         self,
         tmp_req: ice20201109_models.GenerateAIAgentCallRequest,
@@ -14560,6 +15056,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_template_with_options_async(request, runtime)
 
+    def get_media_connect_available_region_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
+        """
+        @summary 获取MediaConnect可用的区域
+        
+        @param request: GetMediaConnectAvailableRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConnectAvailableRegionResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetMediaConnectAvailableRegion',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConnectAvailableRegionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_connect_available_region_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
+        """
+        @summary 获取MediaConnect可用的区域
+        
+        @param request: GetMediaConnectAvailableRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConnectAvailableRegionResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetMediaConnectAvailableRegion',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConnectAvailableRegionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_connect_available_region(self) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
+        """
+        @summary 获取MediaConnect可用的区域
+        
+        @return: GetMediaConnectAvailableRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_connect_available_region_with_options(runtime)
+
+    async def get_media_connect_available_region_async(self) -> ice20201109_models.GetMediaConnectAvailableRegionResponse:
+        """
+        @summary 获取MediaConnect可用的区域
+        
+        @return: GetMediaConnectAvailableRegionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_connect_available_region_with_options_async(runtime)
+
     def get_media_connect_flow_with_options(
         self,
         request: ice20201109_models.GetMediaConnectFlowRequest,
@@ -14667,6 +15237,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_connect_flow_with_options_async(request, runtime)
+
+    def get_media_connect_flow_all_output_name_with_options(
+        self,
+        request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
+        """
+        @summary 获取某个MediaConnect实例下的所有output的名字
+        
+        @param request: GetMediaConnectFlowAllOutputNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConnectFlowAllOutputNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaConnectFlowAllOutputName',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConnectFlowAllOutputNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_media_connect_flow_all_output_name_with_options_async(
+        self,
+        request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
+        """
+        @summary 获取某个MediaConnect实例下的所有output的名字
+        
+        @param request: GetMediaConnectFlowAllOutputNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaConnectFlowAllOutputNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetMediaConnectFlowAllOutputName',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetMediaConnectFlowAllOutputNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_media_connect_flow_all_output_name(
+        self,
+        request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
+    ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
+        """
+        @summary 获取某个MediaConnect实例下的所有output的名字
+        
+        @param request: GetMediaConnectFlowAllOutputNameRequest
+        @return: GetMediaConnectFlowAllOutputNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_media_connect_flow_all_output_name_with_options(request, runtime)
+
+    async def get_media_connect_flow_all_output_name_async(
+        self,
+        request: ice20201109_models.GetMediaConnectFlowAllOutputNameRequest,
+    ) -> ice20201109_models.GetMediaConnectFlowAllOutputNameResponse:
+        """
+        @summary 获取某个MediaConnect实例下的所有output的名字
+        
+        @param request: GetMediaConnectFlowAllOutputNameRequest
+        @return: GetMediaConnectFlowAllOutputNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_media_connect_flow_all_output_name_with_options_async(request, runtime)
 
     def get_media_connect_flow_input_with_options(
         self,
@@ -18060,6 +18726,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(
@@ -18105,6 +18773,8 @@ class Client(OpenApiClient):
             query['MediaType'] = request.media_type
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(
@@ -18511,6 +19181,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_aiagent_phone_number_with_options_async(request, runtime)
+
+    def list_aiagent_voiceprints_with_options(
+        self,
+        request: ice20201109_models.ListAIAgentVoiceprintsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: ListAIAgentVoiceprintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentVoiceprintsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentVoiceprints',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentVoiceprintsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_aiagent_voiceprints_with_options_async(
+        self,
+        request: ice20201109_models.ListAIAgentVoiceprintsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: ListAIAgentVoiceprintsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAIAgentVoiceprintsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAIAgentVoiceprints',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListAIAgentVoiceprintsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_aiagent_voiceprints(
+        self,
+        request: ice20201109_models.ListAIAgentVoiceprintsRequest,
+    ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: ListAIAgentVoiceprintsRequest
+        @return: ListAIAgentVoiceprintsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_aiagent_voiceprints_with_options(request, runtime)
+
+    async def list_aiagent_voiceprints_async(
+        self,
+        request: ice20201109_models.ListAIAgentVoiceprintsRequest,
+    ) -> ice20201109_models.ListAIAgentVoiceprintsResponse:
+        """
+        @summary 更新回调配置
+        
+        @param request: ListAIAgentVoiceprintsRequest
+        @return: ListAIAgentVoiceprintsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_aiagent_voiceprints_with_options_async(request, runtime)
 
     def list_ad_insertions_with_options(
         self,
@@ -25052,6 +25826,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_vod_packaging_groups_with_options_async(request, runtime)
 
+    def list_workflow_tasks_with_options(
+        self,
+        request: ice20201109_models.ListWorkflowTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListWorkflowTasksResponse:
+        """
+        @summary 工作流任务实例列表
+        
+        @param request: ListWorkflowTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_create_time):
+            query['EndOfCreateTime'] = request.end_of_create_time
+        if not UtilClient.is_unset(request.key_text):
+            query['KeyText'] = request.key_text
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_of_create_time):
+            query['StartOfCreateTime'] = request.start_of_create_time
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowTasks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListWorkflowTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workflow_tasks_with_options_async(
+        self,
+        request: ice20201109_models.ListWorkflowTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ListWorkflowTasksResponse:
+        """
+        @summary 工作流任务实例列表
+        
+        @param request: ListWorkflowTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_of_create_time):
+            query['EndOfCreateTime'] = request.end_of_create_time
+        if not UtilClient.is_unset(request.key_text):
+            query['KeyText'] = request.key_text
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_of_create_time):
+            query['StartOfCreateTime'] = request.start_of_create_time
+        if not UtilClient.is_unset(request.workflow_id):
+            query['WorkflowId'] = request.workflow_id
+        if not UtilClient.is_unset(request.workflow_name):
+            query['WorkflowName'] = request.workflow_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkflowTasks',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ListWorkflowTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workflow_tasks(
+        self,
+        request: ice20201109_models.ListWorkflowTasksRequest,
+    ) -> ice20201109_models.ListWorkflowTasksResponse:
+        """
+        @summary 工作流任务实例列表
+        
+        @param request: ListWorkflowTasksRequest
+        @return: ListWorkflowTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_workflow_tasks_with_options(request, runtime)
+
+    async def list_workflow_tasks_async(
+        self,
+        request: ice20201109_models.ListWorkflowTasksRequest,
+    ) -> ice20201109_models.ListWorkflowTasksResponse:
+        """
+        @summary 工作流任务实例列表
+        
+        @param request: ListWorkflowTasksRequest
+        @return: ListWorkflowTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workflow_tasks_with_options_async(request, runtime)
+
+    def open_media_connect_flow_failover_with_options(
+        self,
+        request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
+        """
+        @summary 开启MediaConnect双流灾备
+        
+        @param request: OpenMediaConnectFlowFailoverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenMediaConnectFlowFailoverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenMediaConnectFlowFailover',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.OpenMediaConnectFlowFailoverResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_media_connect_flow_failover_with_options_async(
+        self,
+        request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
+        """
+        @summary 开启MediaConnect双流灾备
+        
+        @param request: OpenMediaConnectFlowFailoverRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenMediaConnectFlowFailoverResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenMediaConnectFlowFailover',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.OpenMediaConnectFlowFailoverResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_media_connect_flow_failover(
+        self,
+        request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
+    ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
+        """
+        @summary 开启MediaConnect双流灾备
+        
+        @param request: OpenMediaConnectFlowFailoverRequest
+        @return: OpenMediaConnectFlowFailoverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.open_media_connect_flow_failover_with_options(request, runtime)
+
+    async def open_media_connect_flow_failover_async(
+        self,
+        request: ice20201109_models.OpenMediaConnectFlowFailoverRequest,
+    ) -> ice20201109_models.OpenMediaConnectFlowFailoverResponse:
+        """
+        @summary 开启MediaConnect双流灾备
+        
+        @param request: OpenMediaConnectFlowFailoverRequest
+        @return: OpenMediaConnectFlowFailoverResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.open_media_connect_flow_failover_with_options_async(request, runtime)
+
     def query_copyright_extract_job_with_options(
         self,
         request: ice20201109_models.QueryCopyrightExtractJobRequest,
@@ -26468,6 +27458,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_trace_m3u_8job_list_with_options_async(request, runtime)
 
+    def query_video_cognition_job_with_options(
+        self,
+        tmp_req: ice20201109_models.QueryVideoCognitionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryVideoCognitionJobResponse:
+        """
+        @summary 查询视频理解任务结果
+        
+        @param tmp_req: QueryVideoCognitionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVideoCognitionJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.QueryVideoCognitionJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.include_results):
+            request.include_results_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_results, 'IncludeResults', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.include_results_shrink):
+            query['IncludeResults'] = request.include_results_shrink
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVideoCognitionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryVideoCognitionJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_video_cognition_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.QueryVideoCognitionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryVideoCognitionJobResponse:
+        """
+        @summary 查询视频理解任务结果
+        
+        @param tmp_req: QueryVideoCognitionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryVideoCognitionJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.QueryVideoCognitionJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.include_results):
+            request.include_results_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.include_results, 'IncludeResults', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.include_results_shrink):
+            query['IncludeResults'] = request.include_results_shrink
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVideoCognitionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryVideoCognitionJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_video_cognition_job(
+        self,
+        request: ice20201109_models.QueryVideoCognitionJobRequest,
+    ) -> ice20201109_models.QueryVideoCognitionJobResponse:
+        """
+        @summary 查询视频理解任务结果
+        
+        @param request: QueryVideoCognitionJobRequest
+        @return: QueryVideoCognitionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_video_cognition_job_with_options(request, runtime)
+
+    async def query_video_cognition_job_async(
+        self,
+        request: ice20201109_models.QueryVideoCognitionJobRequest,
+    ) -> ice20201109_models.QueryVideoCognitionJobResponse:
+        """
+        @summary 查询视频理解任务结果
+        
+        @param request: QueryVideoCognitionJobRequest
+        @return: QueryVideoCognitionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_video_cognition_job_with_options_async(request, runtime)
+
     def refresh_upload_media_with_options(
         self,
         request: ice20201109_models.RefreshUploadMediaRequest,
@@ -26844,6 +27946,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.register_media_stream_with_options_async(request, runtime)
 
+    def resume_media_connect_flow_output_with_options(
+        self,
+        request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
+        """
+        @summary 恢复某个MediaConnect实例的某个输出
+        
+        @param request: ResumeMediaConnectFlowOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeMediaConnectFlowOutputResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.output_name):
+            query['OutputName'] = request.output_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeMediaConnectFlowOutput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ResumeMediaConnectFlowOutputResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_media_connect_flow_output_with_options_async(
+        self,
+        request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
+        """
+        @summary 恢复某个MediaConnect实例的某个输出
+        
+        @param request: ResumeMediaConnectFlowOutputRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeMediaConnectFlowOutputResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.flow_id):
+            query['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.output_name):
+            query['OutputName'] = request.output_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeMediaConnectFlowOutput',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.ResumeMediaConnectFlowOutputResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_media_connect_flow_output(
+        self,
+        request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
+    ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
+        """
+        @summary 恢复某个MediaConnect实例的某个输出
+        
+        @param request: ResumeMediaConnectFlowOutputRequest
+        @return: ResumeMediaConnectFlowOutputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resume_media_connect_flow_output_with_options(request, runtime)
+
+    async def resume_media_connect_flow_output_async(
+        self,
+        request: ice20201109_models.ResumeMediaConnectFlowOutputRequest,
+    ) -> ice20201109_models.ResumeMediaConnectFlowOutputResponse:
+        """
+        @summary 恢复某个MediaConnect实例的某个输出
+        
+        @param request: ResumeMediaConnectFlowOutputRequest
+        @return: ResumeMediaConnectFlowOutputResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_media_connect_flow_output_with_options_async(request, runtime)
+
     def search_editing_project_with_options(
         self,
         request: ice20201109_models.SearchEditingProjectRequest,
@@ -26988,6 +28190,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.task):
@@ -27027,6 +28231,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         if not UtilClient.is_unset(request.task):
@@ -28619,6 +29825,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.send_message_chat_text_with_options_async(request, runtime)
+
+    def set_aiagent_voiceprint_with_options(
+        self,
+        tmp_req: ice20201109_models.SetAIAgentVoiceprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
+        """
+        @summary 设置声纹
+        
+        @param tmp_req: SetAIAgentVoiceprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAIAgentVoiceprintResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SetAIAgentVoiceprintShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAIAgentVoiceprint',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetAIAgentVoiceprintResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_aiagent_voiceprint_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SetAIAgentVoiceprintRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
+        """
+        @summary 设置声纹
+        
+        @param tmp_req: SetAIAgentVoiceprintRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAIAgentVoiceprintResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SetAIAgentVoiceprintShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.voiceprint_id):
+            query['VoiceprintId'] = request.voiceprint_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAIAgentVoiceprint',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SetAIAgentVoiceprintResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_aiagent_voiceprint(
+        self,
+        request: ice20201109_models.SetAIAgentVoiceprintRequest,
+    ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
+        """
+        @summary 设置声纹
+        
+        @param request: SetAIAgentVoiceprintRequest
+        @return: SetAIAgentVoiceprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_aiagent_voiceprint_with_options(request, runtime)
+
+    async def set_aiagent_voiceprint_async(
+        self,
+        request: ice20201109_models.SetAIAgentVoiceprintRequest,
+    ) -> ice20201109_models.SetAIAgentVoiceprintResponse:
+        """
+        @summary 设置声纹
+        
+        @param request: SetAIAgentVoiceprintRequest
+        @return: SetAIAgentVoiceprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_aiagent_voiceprint_with_options_async(request, runtime)
 
     def set_content_analyze_config_with_options(
         self,
@@ -35076,6 +36390,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.submit_transcode_job_with_options_async(request, runtime)
 
+    def submit_video_cognition_job_with_options(
+        self,
+        tmp_req: ice20201109_models.SubmitVideoCognitionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
+        """
+        @summary 提交视频理解任务
+        
+        @param tmp_req: SubmitVideoCognitionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoCognitionJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitVideoCognitionJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoCognitionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitVideoCognitionJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_cognition_job_with_options_async(
+        self,
+        tmp_req: ice20201109_models.SubmitVideoCognitionJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
+        """
+        @summary 提交视频理解任务
+        
+        @param tmp_req: SubmitVideoCognitionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitVideoCognitionJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ice20201109_models.SubmitVideoCognitionJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.input):
+            request.input_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.input, 'Input', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.input_shrink):
+            query['Input'] = request.input_shrink
+        if not UtilClient.is_unset(request.params):
+            query['Params'] = request.params
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitVideoCognitionJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitVideoCognitionJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_cognition_job(
+        self,
+        request: ice20201109_models.SubmitVideoCognitionJobRequest,
+    ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
+        """
+        @summary 提交视频理解任务
+        
+        @param request: SubmitVideoCognitionJobRequest
+        @return: SubmitVideoCognitionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_video_cognition_job_with_options(request, runtime)
+
+    async def submit_video_cognition_job_async(
+        self,
+        request: ice20201109_models.SubmitVideoCognitionJobRequest,
+    ) -> ice20201109_models.SubmitVideoCognitionJobResponse:
+        """
+        @summary 提交视频理解任务
+        
+        @param request: SubmitVideoCognitionJobRequest
+        @return: SubmitVideoCognitionJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_video_cognition_job_with_options_async(request, runtime)
+
     def submit_video_translation_job_with_options(
         self,
         request: ice20201109_models.SubmitVideoTranslationJobRequest,
@@ -38434,6 +39868,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(
@@ -38473,6 +39909,8 @@ class Client(OpenApiClient):
             query['MediaId'] = request.media_id
         if not UtilClient.is_unset(request.msg_body):
             query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.search_lib_name):
             query['SearchLibName'] = request.search_lib_name
         req = open_api_models.OpenApiRequest(

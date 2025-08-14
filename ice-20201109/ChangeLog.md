@@ -1,3 +1,43 @@
+2025-08-14 Version: 6.5.0
+- Support API CancelIProductionJob.
+- Support API ClearAIAgentVoiceprint.
+- Support API CloseMediaConnectFlowFailover.
+- Support API ForbidMediaConnectFlowOutput.
+- Support API ForwardAIAgentCall.
+- Support API GetMediaConnectAvailableRegion.
+- Support API GetMediaConnectFlowAllOutputName.
+- Support API ListAIAgentVoiceprints.
+- Support API ListWorkflowTasks.
+- Support API OpenMediaConnectFlowFailover.
+- Support API QueryVideoCognitionJob.
+- Support API ResumeMediaConnectFlowOutput.
+- Support API SetAIAgentVoiceprint.
+- Support API SubmitVideoCognitionJob.
+- Update API CreateMediaLiveInput: add request parameters InputSettings.$.SrtLatency.
+- Update API CreateMediaLiveInput: add request parameters InputSettings.$.SrtMaxBitrate.
+- Update API CreateMediaLiveInput: add request parameters InputSettings.$.SrtPassphrase.
+- Update API CreateMediaLiveInput: add request parameters InputSettings.$.SrtPbKeyLen.
+- Update API DeleteMediaFromSearchLib: add request parameters Namespace.
+- Update API DescribeAIAgentInstance: add response parameters Body.Instance.GmtCreate.
+- Update API DescribeAIAgentInstance: add response parameters Body.Instance.GmtModified.
+- Update API GetMediaConnectFlow: add response parameters Body.Content.FlowRegion.
+- Update API GetMediaLiveInput: add response parameters Body.Input.InputInfos.$.SrtLatency.
+- Update API GetMediaLiveInput: add response parameters Body.Input.InputInfos.$.SrtMaxBitrate.
+- Update API GetMediaLiveInput: add response parameters Body.Input.InputInfos.$.SrtPassphrase.
+- Update API GetMediaLiveInput: add response parameters Body.Input.InputInfos.$.SrtPbKeyLen.
+- Update API InsertMediaToSearchLib: add request parameters Namespace.
+- Update API ListMediaLiveInputs: add response parameters Body.Inputs.$.InputInfos.$.SrtLatency.
+- Update API ListMediaLiveInputs: add response parameters Body.Inputs.$.InputInfos.$.SrtMaxBitrate.
+- Update API ListMediaLiveInputs: add response parameters Body.Inputs.$.InputInfos.$.SrtPassphrase.
+- Update API ListMediaLiveInputs: add response parameters Body.Inputs.$.InputInfos.$.SrtPbKeyLen.
+- Update API SearchIndexJobRerun: add request parameters Namespace.
+- Update API UpdateMediaLiveInput: add request parameters InputSettings.$.SrtLatency.
+- Update API UpdateMediaLiveInput: add request parameters InputSettings.$.SrtMaxBitrate.
+- Update API UpdateMediaLiveInput: add request parameters InputSettings.$.SrtPassphrase.
+- Update API UpdateMediaLiveInput: add request parameters InputSettings.$.SrtPbKeyLen.
+- Update API UpdateMediaToSearchLib: add request parameters Namespace.
+
+
 2025-07-07 Version: 6.4.3
 - Update API GetSmartHandleJob: add response parameters Body.ErrorCode.
 - Update API GetSmartHandleJob: add response parameters Body.ErrorMessage.
