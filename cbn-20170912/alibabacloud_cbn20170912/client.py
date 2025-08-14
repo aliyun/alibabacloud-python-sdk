@@ -20367,6 +20367,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         """
+        @summary 删除PrivateZone
+        
         @param request: UnroutePrivateZoneInCenToVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnroutePrivateZoneInCenToVpcResponse
@@ -20410,6 +20412,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         """
+        @summary 删除PrivateZone
+        
         @param request: UnroutePrivateZoneInCenToVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UnroutePrivateZoneInCenToVpcResponse
@@ -20452,6 +20456,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UnroutePrivateZoneInCenToVpcRequest,
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         """
+        @summary 删除PrivateZone
+        
         @param request: UnroutePrivateZoneInCenToVpcRequest
         @return: UnroutePrivateZoneInCenToVpcResponse
         """
@@ -20463,6 +20469,8 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.UnroutePrivateZoneInCenToVpcRequest,
     ) -> cbn_20170912_models.UnroutePrivateZoneInCenToVpcResponse:
         """
+        @summary 删除PrivateZone
+        
         @param request: UnroutePrivateZoneInCenToVpcRequest
         @return: UnroutePrivateZoneInCenToVpcResponse
         """

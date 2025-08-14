@@ -1,3 +1,6 @@
+2025-08-14 Version: 1.3.3
+- Generated python 2017-09-12 for Cbn.
+
 2025-05-29 Version: 1.3.2
 - Update API DescribeCenAttachedChildInstanceAttribute: add response parameters Body.ManagedService.
 - Update API DescribeCenAttachedChildInstances: add response parameters Body.ChildInstances.$.ManagedService.

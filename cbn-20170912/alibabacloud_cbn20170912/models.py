@@ -3428,8 +3428,6 @@ class CreateFlowlogRequest(TeaModel):
         #     *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
         #     *   The name must start and end with a lowercase letter or a digit.
         #     *   The name must be 3 to 63 characters in length,
-        # 
-        # This parameter is required.
         self.log_store_name = log_store_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3445,8 +3443,6 @@ class CreateFlowlogRequest(TeaModel):
         #     *   The name can contain only lowercase letters, digits, and hyphens (-).
         #     *   The name must start and end with a lowercase letter or a digit.
         #     *   The name must be 3 to 63 characters in length,
-        # 
-        # This parameter is required.
         self.project_name = project_name
         # The ID of the region where the flow log is deployed.
         # 
