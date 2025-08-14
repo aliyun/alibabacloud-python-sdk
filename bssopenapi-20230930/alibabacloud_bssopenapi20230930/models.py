@@ -3330,6 +3330,7 @@ class DescribeCouponResponseBodyData(TeaModel):
         coupon_type_name: str = None,
         currency: str = None,
         end_time: str = None,
+        first_buy: bool = None,
         gmt_create: str = None,
         item_names: List[str] = None,
         money_limit: str = None,
@@ -3355,6 +3356,7 @@ class DescribeCouponResponseBodyData(TeaModel):
         self.coupon_type_name = coupon_type_name
         self.currency = currency
         self.end_time = end_time
+        self.first_buy = first_buy
         self.gmt_create = gmt_create
         self.item_names = item_names
         self.money_limit = money_limit
@@ -3400,6 +3402,8 @@ class DescribeCouponResponseBodyData(TeaModel):
             result['Currency'] = self.currency
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.first_buy is not None:
+            result['FirstBuy'] = self.first_buy
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.item_names is not None:
@@ -3454,6 +3458,8 @@ class DescribeCouponResponseBodyData(TeaModel):
             self.currency = m.get('Currency')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('FirstBuy') is not None:
+            self.first_buy = m.get('FirstBuy')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('ItemNames') is not None:
@@ -11216,6 +11222,745 @@ class QueryCostCenterRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryCostCenterRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCostCenterShareRuleRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class QueryCostCenterShareRuleRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids: List[QueryCostCenterShareRuleRequestEcIdAccountIds] = None,
+        max_results: int = None,
+        nbid: str = None,
+        next_token: str = None,
+        owner_account_id: int = None,
+    ):
+        self.ec_id_account_ids = ec_id_account_ids
+        self.max_results = max_results
+        self.nbid = nbid
+        self.next_token = next_token
+        self.owner_account_id = owner_account_id
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = QueryCostCenterShareRuleRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        return self
+
+
+class QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails(TeaModel):
+    def __init__(
+        self,
+        cost_center_code: str = None,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        owner_account_id: int = None,
+        parent_cost_center_id: int = None,
+        prev_cost_center_id: int = None,
+        root_cost_center_id: int = None,
+    ):
+        self.cost_center_code = cost_center_code
+        self.cost_center_id = cost_center_id
+        self.cost_center_name = cost_center_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.owner_account_id = owner_account_id
+        self.parent_cost_center_id = parent_cost_center_id
+        self.prev_cost_center_id = prev_cost_center_id
+        self.root_cost_center_id = root_cost_center_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_code is not None:
+            result['CostCenterCode'] = self.cost_center_code
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        if self.prev_cost_center_id is not None:
+            result['PrevCostCenterId'] = self.prev_cost_center_id
+        if self.root_cost_center_id is not None:
+            result['RootCostCenterId'] = self.root_cost_center_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterCode') is not None:
+            self.cost_center_code = m.get('CostCenterCode')
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        if m.get('PrevCostCenterId') is not None:
+            self.prev_cost_center_id = m.get('PrevCostCenterId')
+        if m.get('RootCostCenterId') is not None:
+            self.root_cost_center_id = m.get('RootCostCenterId')
+        return self
+
+
+class QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails(TeaModel):
+    def __init__(
+        self,
+        cost_center_code: str = None,
+        cost_center_id: int = None,
+        cost_center_name: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        owner_account_id: int = None,
+        parent_cost_center_id: int = None,
+        prev_cost_center_id: int = None,
+        root_cost_center_id: int = None,
+        share_ratio: float = None,
+    ):
+        self.cost_center_code = cost_center_code
+        self.cost_center_id = cost_center_id
+        self.cost_center_name = cost_center_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.owner_account_id = owner_account_id
+        self.parent_cost_center_id = parent_cost_center_id
+        self.prev_cost_center_id = prev_cost_center_id
+        self.root_cost_center_id = root_cost_center_id
+        self.share_ratio = share_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cost_center_code is not None:
+            result['CostCenterCode'] = self.cost_center_code
+        if self.cost_center_id is not None:
+            result['CostCenterId'] = self.cost_center_id
+        if self.cost_center_name is not None:
+            result['CostCenterName'] = self.cost_center_name
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.parent_cost_center_id is not None:
+            result['ParentCostCenterId'] = self.parent_cost_center_id
+        if self.prev_cost_center_id is not None:
+            result['PrevCostCenterId'] = self.prev_cost_center_id
+        if self.root_cost_center_id is not None:
+            result['RootCostCenterId'] = self.root_cost_center_id
+        if self.share_ratio is not None:
+            result['ShareRatio'] = self.share_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CostCenterCode') is not None:
+            self.cost_center_code = m.get('CostCenterCode')
+        if m.get('CostCenterId') is not None:
+            self.cost_center_id = m.get('CostCenterId')
+        if m.get('CostCenterName') is not None:
+            self.cost_center_name = m.get('CostCenterName')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ParentCostCenterId') is not None:
+            self.parent_cost_center_id = m.get('ParentCostCenterId')
+        if m.get('PrevCostCenterId') is not None:
+            self.prev_cost_center_id = m.get('PrevCostCenterId')
+        if m.get('RootCostCenterId') is not None:
+            self.root_cost_center_id = m.get('RootCostCenterId')
+        if m.get('ShareRatio') is not None:
+            self.share_ratio = m.get('ShareRatio')
+        return self
+
+
+class QueryCostCenterShareRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        from_cost_center_share_rule_details: List[QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails] = None,
+        owner_account_id: int = None,
+        share_rule_id: int = None,
+        share_rule_name: str = None,
+        share_rule_type: str = None,
+        to_cost_center_share_rule_details: List[QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails] = None,
+    ):
+        self.from_cost_center_share_rule_details = from_cost_center_share_rule_details
+        self.owner_account_id = owner_account_id
+        self.share_rule_id = share_rule_id
+        self.share_rule_name = share_rule_name
+        self.share_rule_type = share_rule_type
+        self.to_cost_center_share_rule_details = to_cost_center_share_rule_details
+
+    def validate(self):
+        if self.from_cost_center_share_rule_details:
+            for k in self.from_cost_center_share_rule_details:
+                if k:
+                    k.validate()
+        if self.to_cost_center_share_rule_details:
+            for k in self.to_cost_center_share_rule_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FromCostCenterShareRuleDetails'] = []
+        if self.from_cost_center_share_rule_details is not None:
+            for k in self.from_cost_center_share_rule_details:
+                result['FromCostCenterShareRuleDetails'].append(k.to_map() if k else None)
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.share_rule_id is not None:
+            result['ShareRuleId'] = self.share_rule_id
+        if self.share_rule_name is not None:
+            result['ShareRuleName'] = self.share_rule_name
+        if self.share_rule_type is not None:
+            result['ShareRuleType'] = self.share_rule_type
+        result['ToCostCenterShareRuleDetails'] = []
+        if self.to_cost_center_share_rule_details is not None:
+            for k in self.to_cost_center_share_rule_details:
+                result['ToCostCenterShareRuleDetails'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.from_cost_center_share_rule_details = []
+        if m.get('FromCostCenterShareRuleDetails') is not None:
+            for k in m.get('FromCostCenterShareRuleDetails'):
+                temp_model = QueryCostCenterShareRuleResponseBodyDataFromCostCenterShareRuleDetails()
+                self.from_cost_center_share_rule_details.append(temp_model.from_map(k))
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('ShareRuleId') is not None:
+            self.share_rule_id = m.get('ShareRuleId')
+        if m.get('ShareRuleName') is not None:
+            self.share_rule_name = m.get('ShareRuleName')
+        if m.get('ShareRuleType') is not None:
+            self.share_rule_type = m.get('ShareRuleType')
+        self.to_cost_center_share_rule_details = []
+        if m.get('ToCostCenterShareRuleDetails') is not None:
+            for k in m.get('ToCostCenterShareRuleDetails'):
+                temp_model = QueryCostCenterShareRuleResponseBodyDataToCostCenterShareRuleDetails()
+                self.to_cost_center_share_rule_details.append(temp_model.from_map(k))
+        return self
+
+
+class QueryCostCenterShareRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryCostCenterShareRuleResponseBodyData] = None,
+        max_results: int = None,
+        metadata: Any = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.max_results = max_results
+        self.metadata = metadata
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryCostCenterShareRuleResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class QueryCostCenterShareRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCostCenterShareRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCostCenterShareRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveCostCenterShareRuleRequestCreateShareRuleList(TeaModel):
+    def __init__(
+        self,
+        from_cost_center_list: List[int] = None,
+        share_ratio_list: List[float] = None,
+        share_rule_name: str = None,
+        share_type: str = None,
+        to_cost_center_list: List[int] = None,
+    ):
+        self.from_cost_center_list = from_cost_center_list
+        self.share_ratio_list = share_ratio_list
+        self.share_rule_name = share_rule_name
+        # This parameter is required.
+        self.share_type = share_type
+        self.to_cost_center_list = to_cost_center_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_cost_center_list is not None:
+            result['FromCostCenterList'] = self.from_cost_center_list
+        if self.share_ratio_list is not None:
+            result['ShareRatioList'] = self.share_ratio_list
+        if self.share_rule_name is not None:
+            result['ShareRuleName'] = self.share_rule_name
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
+        if self.to_cost_center_list is not None:
+            result['ToCostCenterList'] = self.to_cost_center_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromCostCenterList') is not None:
+            self.from_cost_center_list = m.get('FromCostCenterList')
+        if m.get('ShareRatioList') is not None:
+            self.share_ratio_list = m.get('ShareRatioList')
+        if m.get('ShareRuleName') is not None:
+            self.share_rule_name = m.get('ShareRuleName')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
+        if m.get('ToCostCenterList') is not None:
+            self.to_cost_center_list = m.get('ToCostCenterList')
+        return self
+
+
+class SaveCostCenterShareRuleRequestModifyShareRuleList(TeaModel):
+    def __init__(
+        self,
+        from_cost_center_list: List[int] = None,
+        share_ratio_list: List[float] = None,
+        share_rule_id: int = None,
+        share_rule_name: str = None,
+        share_type: str = None,
+        to_cost_center_list: List[int] = None,
+    ):
+        self.from_cost_center_list = from_cost_center_list
+        self.share_ratio_list = share_ratio_list
+        # This parameter is required.
+        self.share_rule_id = share_rule_id
+        self.share_rule_name = share_rule_name
+        # This parameter is required.
+        self.share_type = share_type
+        self.to_cost_center_list = to_cost_center_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_cost_center_list is not None:
+            result['FromCostCenterList'] = self.from_cost_center_list
+        if self.share_ratio_list is not None:
+            result['ShareRatioList'] = self.share_ratio_list
+        if self.share_rule_id is not None:
+            result['ShareRuleId'] = self.share_rule_id
+        if self.share_rule_name is not None:
+            result['ShareRuleName'] = self.share_rule_name
+        if self.share_type is not None:
+            result['ShareType'] = self.share_type
+        if self.to_cost_center_list is not None:
+            result['ToCostCenterList'] = self.to_cost_center_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromCostCenterList') is not None:
+            self.from_cost_center_list = m.get('FromCostCenterList')
+        if m.get('ShareRatioList') is not None:
+            self.share_ratio_list = m.get('ShareRatioList')
+        if m.get('ShareRuleId') is not None:
+            self.share_rule_id = m.get('ShareRuleId')
+        if m.get('ShareRuleName') is not None:
+            self.share_rule_name = m.get('ShareRuleName')
+        if m.get('ShareType') is not None:
+            self.share_type = m.get('ShareType')
+        if m.get('ToCostCenterList') is not None:
+            self.to_cost_center_list = m.get('ToCostCenterList')
+        return self
+
+
+class SaveCostCenterShareRuleRequest(TeaModel):
+    def __init__(
+        self,
+        create_share_rule_list: List[SaveCostCenterShareRuleRequestCreateShareRuleList] = None,
+        modify_share_rule_list: List[SaveCostCenterShareRuleRequestModifyShareRuleList] = None,
+        nbid: str = None,
+        owner_account_id: int = None,
+        remove_share_rule_list: List[int] = None,
+    ):
+        self.create_share_rule_list = create_share_rule_list
+        self.modify_share_rule_list = modify_share_rule_list
+        self.nbid = nbid
+        self.owner_account_id = owner_account_id
+        self.remove_share_rule_list = remove_share_rule_list
+
+    def validate(self):
+        if self.create_share_rule_list:
+            for k in self.create_share_rule_list:
+                if k:
+                    k.validate()
+        if self.modify_share_rule_list:
+            for k in self.modify_share_rule_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CreateShareRuleList'] = []
+        if self.create_share_rule_list is not None:
+            for k in self.create_share_rule_list:
+                result['CreateShareRuleList'].append(k.to_map() if k else None)
+        result['ModifyShareRuleList'] = []
+        if self.modify_share_rule_list is not None:
+            for k in self.modify_share_rule_list:
+                result['ModifyShareRuleList'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.remove_share_rule_list is not None:
+            result['RemoveShareRuleList'] = self.remove_share_rule_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.create_share_rule_list = []
+        if m.get('CreateShareRuleList') is not None:
+            for k in m.get('CreateShareRuleList'):
+                temp_model = SaveCostCenterShareRuleRequestCreateShareRuleList()
+                self.create_share_rule_list.append(temp_model.from_map(k))
+        self.modify_share_rule_list = []
+        if m.get('ModifyShareRuleList') is not None:
+            for k in m.get('ModifyShareRuleList'):
+                temp_model = SaveCostCenterShareRuleRequestModifyShareRuleList()
+                self.modify_share_rule_list.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('RemoveShareRuleList') is not None:
+            self.remove_share_rule_list = m.get('RemoveShareRuleList')
+        return self
+
+
+class SaveCostCenterShareRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        create_share_rule_list_shrink: str = None,
+        modify_share_rule_list_shrink: str = None,
+        nbid: str = None,
+        owner_account_id: int = None,
+        remove_share_rule_list_shrink: str = None,
+    ):
+        self.create_share_rule_list_shrink = create_share_rule_list_shrink
+        self.modify_share_rule_list_shrink = modify_share_rule_list_shrink
+        self.nbid = nbid
+        self.owner_account_id = owner_account_id
+        self.remove_share_rule_list_shrink = remove_share_rule_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_share_rule_list_shrink is not None:
+            result['CreateShareRuleList'] = self.create_share_rule_list_shrink
+        if self.modify_share_rule_list_shrink is not None:
+            result['ModifyShareRuleList'] = self.modify_share_rule_list_shrink
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.owner_account_id is not None:
+            result['OwnerAccountId'] = self.owner_account_id
+        if self.remove_share_rule_list_shrink is not None:
+            result['RemoveShareRuleList'] = self.remove_share_rule_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateShareRuleList') is not None:
+            self.create_share_rule_list_shrink = m.get('CreateShareRuleList')
+        if m.get('ModifyShareRuleList') is not None:
+            self.modify_share_rule_list_shrink = m.get('ModifyShareRuleList')
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OwnerAccountId') is not None:
+            self.owner_account_id = m.get('OwnerAccountId')
+        if m.get('RemoveShareRuleList') is not None:
+            self.remove_share_rule_list_shrink = m.get('RemoveShareRuleList')
+        return self
+
+
+class SaveCostCenterShareRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        metadata: Any = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.metadata = metadata
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SaveCostCenterShareRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveCostCenterShareRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveCostCenterShareRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

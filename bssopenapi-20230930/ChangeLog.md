@@ -1,3 +1,9 @@
+2025-08-14 Version: 1.5.0
+- Support API QueryCostCenterShareRule.
+- Support API SaveCostCenterShareRule.
+- Update API DescribeCoupon: add response parameters Body.Data.$.FirstBuy.
+
+
 2025-07-22 Version: 1.4.0
 - Support API AllocateCostCenterResource.
 - Support API CreateCostCenterRule.

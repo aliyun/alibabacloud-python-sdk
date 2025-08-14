@@ -4503,6 +4503,246 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_cost_center_rule_with_options_async(request, runtime)
 
+    def query_cost_center_share_rule_with_options(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterShareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterShareRuleResponse:
+        """
+        @summary 查询财务单元分摊规则
+        
+        @param request: QueryCostCenterShareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterShareRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenterShareRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterShareRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_cost_center_share_rule_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterShareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.QueryCostCenterShareRuleResponse:
+        """
+        @summary 查询财务单元分摊规则
+        
+        @param request: QueryCostCenterShareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCostCenterShareRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCostCenterShareRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.QueryCostCenterShareRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_cost_center_share_rule(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterShareRuleRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterShareRuleResponse:
+        """
+        @summary 查询财务单元分摊规则
+        
+        @param request: QueryCostCenterShareRuleRequest
+        @return: QueryCostCenterShareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_cost_center_share_rule_with_options(request, runtime)
+
+    async def query_cost_center_share_rule_async(
+        self,
+        request: bss_open_api_20230930_models.QueryCostCenterShareRuleRequest,
+    ) -> bss_open_api_20230930_models.QueryCostCenterShareRuleResponse:
+        """
+        @summary 查询财务单元分摊规则
+        
+        @param request: QueryCostCenterShareRuleRequest
+        @return: QueryCostCenterShareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_cost_center_share_rule_with_options_async(request, runtime)
+
+    def save_cost_center_share_rule_with_options(
+        self,
+        tmp_req: bss_open_api_20230930_models.SaveCostCenterShareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.SaveCostCenterShareRuleResponse:
+        """
+        @summary 修改财务单元分摊规则
+        
+        @param tmp_req: SaveCostCenterShareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCostCenterShareRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.SaveCostCenterShareRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_share_rule_list):
+            request.create_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_share_rule_list, 'CreateShareRuleList', 'json')
+        if not UtilClient.is_unset(tmp_req.modify_share_rule_list):
+            request.modify_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modify_share_rule_list, 'ModifyShareRuleList', 'json')
+        if not UtilClient.is_unset(tmp_req.remove_share_rule_list):
+            request.remove_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_share_rule_list, 'RemoveShareRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_share_rule_list_shrink):
+            query['CreateShareRuleList'] = request.create_share_rule_list_shrink
+        if not UtilClient.is_unset(request.modify_share_rule_list_shrink):
+            query['ModifyShareRuleList'] = request.modify_share_rule_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.remove_share_rule_list_shrink):
+            query['RemoveShareRuleList'] = request.remove_share_rule_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveCostCenterShareRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SaveCostCenterShareRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_cost_center_share_rule_with_options_async(
+        self,
+        tmp_req: bss_open_api_20230930_models.SaveCostCenterShareRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.SaveCostCenterShareRuleResponse:
+        """
+        @summary 修改财务单元分摊规则
+        
+        @param tmp_req: SaveCostCenterShareRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveCostCenterShareRuleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bss_open_api_20230930_models.SaveCostCenterShareRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_share_rule_list):
+            request.create_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_share_rule_list, 'CreateShareRuleList', 'json')
+        if not UtilClient.is_unset(tmp_req.modify_share_rule_list):
+            request.modify_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.modify_share_rule_list, 'ModifyShareRuleList', 'json')
+        if not UtilClient.is_unset(tmp_req.remove_share_rule_list):
+            request.remove_share_rule_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_share_rule_list, 'RemoveShareRuleList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.create_share_rule_list_shrink):
+            query['CreateShareRuleList'] = request.create_share_rule_list_shrink
+        if not UtilClient.is_unset(request.modify_share_rule_list_shrink):
+            query['ModifyShareRuleList'] = request.modify_share_rule_list_shrink
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.owner_account_id):
+            query['OwnerAccountId'] = request.owner_account_id
+        if not UtilClient.is_unset(request.remove_share_rule_list_shrink):
+            query['RemoveShareRuleList'] = request.remove_share_rule_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveCostCenterShareRule',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.SaveCostCenterShareRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_cost_center_share_rule(
+        self,
+        request: bss_open_api_20230930_models.SaveCostCenterShareRuleRequest,
+    ) -> bss_open_api_20230930_models.SaveCostCenterShareRuleResponse:
+        """
+        @summary 修改财务单元分摊规则
+        
+        @param request: SaveCostCenterShareRuleRequest
+        @return: SaveCostCenterShareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_cost_center_share_rule_with_options(request, runtime)
+
+    async def save_cost_center_share_rule_async(
+        self,
+        request: bss_open_api_20230930_models.SaveCostCenterShareRuleRequest,
+    ) -> bss_open_api_20230930_models.SaveCostCenterShareRuleResponse:
+        """
+        @summary 修改财务单元分摊规则
+        
+        @param request: SaveCostCenterShareRuleRequest
+        @return: SaveCostCenterShareRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_cost_center_share_rule_with_options_async(request, runtime)
+
     def set_fund_account_credit_amount_with_options(
         self,
         request: bss_open_api_20230930_models.SetFundAccountCreditAmountRequest,
