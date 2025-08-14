@@ -1,3 +1,12 @@
+2025-08-14 Version: 5.9.1
+- Update API DescribeBackupPolicy: add response parameters Body.AdvancedDataPolicies.
+- Update API DescribeBackupPolicy: add response parameters Body.AdvancedPolicyOption.
+- Update API DescribeBackupPolicy: add response parameters Body.BackupPolicyLevel.
+- Update API DescribeLogBackupPolicy: add response parameters Body.AdvancedLogPolicies.
+- Update API ModifyBackupPolicy: add request parameters AdvancedDataPolicies.
+- Update API ModifyBackupPolicy: add request parameters BackupPolicyLevel.
+
+
 2025-08-07 Version: 5.9.0
 - Support API DeleteApplication.
 - Support API DescribeAIDBClusterPerformance.

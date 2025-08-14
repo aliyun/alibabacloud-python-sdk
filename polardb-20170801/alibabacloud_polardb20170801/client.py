@@ -14653,7 +14653,7 @@ class Client(OpenApiClient):
 
     def modify_backup_policy_with_options(
         self,
-        request: polardb_20170801_models.ModifyBackupPolicyRequest,
+        tmp_req: polardb_20170801_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
         """
@@ -14661,14 +14661,22 @@ class Client(OpenApiClient):
         
         @description > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
         
-        @param request: ModifyBackupPolicyRequest
+        @param tmp_req: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_data_policies):
+            request.advanced_data_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_data_policies, 'AdvancedDataPolicies', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_data_policies_shrink):
+            query['AdvancedDataPolicies'] = request.advanced_data_policies_shrink
         if not UtilClient.is_unset(request.backup_frequency):
             query['BackupFrequency'] = request.backup_frequency
+        if not UtilClient.is_unset(request.backup_policy_level):
+            query['BackupPolicyLevel'] = request.backup_policy_level
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -14722,7 +14730,7 @@ class Client(OpenApiClient):
 
     async def modify_backup_policy_with_options_async(
         self,
-        request: polardb_20170801_models.ModifyBackupPolicyRequest,
+        tmp_req: polardb_20170801_models.ModifyBackupPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> polardb_20170801_models.ModifyBackupPolicyResponse:
         """
@@ -14730,14 +14738,22 @@ class Client(OpenApiClient):
         
         @description > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
         
-        @param request: ModifyBackupPolicyRequest
+        @param tmp_req: ModifyBackupPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyBackupPolicyResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = polardb_20170801_models.ModifyBackupPolicyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.advanced_data_policies):
+            request.advanced_data_policies_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_data_policies, 'AdvancedDataPolicies', 'json')
         query = {}
+        if not UtilClient.is_unset(request.advanced_data_policies_shrink):
+            query['AdvancedDataPolicies'] = request.advanced_data_policies_shrink
         if not UtilClient.is_unset(request.backup_frequency):
             query['BackupFrequency'] = request.backup_frequency
+        if not UtilClient.is_unset(request.backup_policy_level):
+            query['BackupPolicyLevel'] = request.backup_policy_level
         if not UtilClient.is_unset(request.backup_retention_policy_on_cluster_deletion):
             query['BackupRetentionPolicyOnClusterDeletion'] = request.backup_retention_policy_on_cluster_deletion
         if not UtilClient.is_unset(request.dbcluster_id):

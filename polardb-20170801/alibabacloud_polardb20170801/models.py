@@ -9383,10 +9383,159 @@ class DescribeBackupPolicyRequest(TeaModel):
         return self
 
 
+class DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy(TeaModel):
+    def __init__(
+        self,
+        auto_created: bool = None,
+        bak_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        dump_action: str = None,
+        filter_key: str = None,
+        filter_type: str = None,
+        filter_value: str = None,
+        only_preserve_one_each_day: bool = None,
+        only_preserve_one_each_hour: bool = None,
+        policy_id: str = None,
+        retention_type: str = None,
+        retention_value: str = None,
+        src_region: str = None,
+        src_type: str = None,
+    ):
+        self.auto_created = auto_created
+        self.bak_type = bak_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.dump_action = dump_action
+        self.filter_key = filter_key
+        self.filter_type = filter_type
+        self.filter_value = filter_value
+        self.only_preserve_one_each_day = only_preserve_one_each_day
+        self.only_preserve_one_each_hour = only_preserve_one_each_hour
+        self.policy_id = policy_id
+        self.retention_type = retention_type
+        self.retention_value = retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_created is not None:
+            result['AutoCreated'] = self.auto_created
+        if self.bak_type is not None:
+            result['BakType'] = self.bak_type
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.dump_action is not None:
+            result['DumpAction'] = self.dump_action
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.only_preserve_one_each_day is not None:
+            result['OnlyPreserveOneEachDay'] = self.only_preserve_one_each_day
+        if self.only_preserve_one_each_hour is not None:
+            result['OnlyPreserveOneEachHour'] = self.only_preserve_one_each_hour
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.retention_type is not None:
+            result['RetentionType'] = self.retention_type
+        if self.retention_value is not None:
+            result['RetentionValue'] = self.retention_value
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCreated') is not None:
+            self.auto_created = m.get('AutoCreated')
+        if m.get('BakType') is not None:
+            self.bak_type = m.get('BakType')
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('DumpAction') is not None:
+            self.dump_action = m.get('DumpAction')
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('OnlyPreserveOneEachDay') is not None:
+            self.only_preserve_one_each_day = m.get('OnlyPreserveOneEachDay')
+        if m.get('OnlyPreserveOneEachHour') is not None:
+            self.only_preserve_one_each_hour = m.get('OnlyPreserveOneEachHour')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RetentionType') is not None:
+            self.retention_type = m.get('RetentionType')
+        if m.get('RetentionValue') is not None:
+            self.retention_value = m.get('RetentionValue')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        return self
+
+
+class DescribeBackupPolicyResponseBodyAdvancedDataPolicies(TeaModel):
+    def __init__(
+        self,
+        advanced_data_policy: List[DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy] = None,
+    ):
+        self.advanced_data_policy = advanced_data_policy
+
+    def validate(self):
+        if self.advanced_data_policy:
+            for k in self.advanced_data_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvancedDataPolicy'] = []
+        if self.advanced_data_policy is not None:
+            for k in self.advanced_data_policy:
+                result['AdvancedDataPolicy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_data_policy = []
+        if m.get('AdvancedDataPolicy') is not None:
+            for k in m.get('AdvancedDataPolicy'):
+                temp_model = DescribeBackupPolicyResponseBodyAdvancedDataPoliciesAdvancedDataPolicy()
+                self.advanced_data_policy.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeBackupPolicyResponseBody(TeaModel):
     def __init__(
         self,
+        advanced_data_policies: DescribeBackupPolicyResponseBodyAdvancedDataPolicies = None,
+        advanced_policy_option: str = None,
         backup_frequency: str = None,
+        backup_policy_level: str = None,
         backup_retention_policy_on_cluster_deletion: str = None,
         data_level_1backup_frequency: str = None,
         data_level_1backup_period: str = None,
@@ -9401,6 +9550,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         preferred_next_backup_time: str = None,
         request_id: str = None,
     ):
+        self.advanced_data_policies = advanced_data_policies
+        self.advanced_policy_option = advanced_policy_option
         # The backup frequency. Default value: Normal. Valid values:
         # 
         # *   **Normal**: standard backup. The system backs up data once a day.
@@ -9411,6 +9562,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # > - If enhanced backup is enabled, all backups are retained for 24 hours. Backups are automatically deleted when the retention period ends. However, the system permanently retains the first backup that is created after 00:00 every day.
         # >-  If enhanced backup is enabled, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
         self.backup_frequency = backup_frequency
+        self.backup_policy_level = backup_policy_level
         # Indicates whether backups are retained when you delete a cluster. Valid values:
         # 
         # *   **ALL**: permanently retains all backups.
@@ -9498,7 +9650,8 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.advanced_data_policies:
+            self.advanced_data_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9506,8 +9659,14 @@ class DescribeBackupPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_data_policies is not None:
+            result['AdvancedDataPolicies'] = self.advanced_data_policies.to_map()
+        if self.advanced_policy_option is not None:
+            result['AdvancedPolicyOption'] = self.advanced_policy_option
         if self.backup_frequency is not None:
             result['BackupFrequency'] = self.backup_frequency
+        if self.backup_policy_level is not None:
+            result['BackupPolicyLevel'] = self.backup_policy_level
         if self.backup_retention_policy_on_cluster_deletion is not None:
             result['BackupRetentionPolicyOnClusterDeletion'] = self.backup_retention_policy_on_cluster_deletion
         if self.data_level_1backup_frequency is not None:
@@ -9538,8 +9697,15 @@ class DescribeBackupPolicyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedDataPolicies') is not None:
+            temp_model = DescribeBackupPolicyResponseBodyAdvancedDataPolicies()
+            self.advanced_data_policies = temp_model.from_map(m['AdvancedDataPolicies'])
+        if m.get('AdvancedPolicyOption') is not None:
+            self.advanced_policy_option = m.get('AdvancedPolicyOption')
         if m.get('BackupFrequency') is not None:
             self.backup_frequency = m.get('BackupFrequency')
+        if m.get('BackupPolicyLevel') is not None:
+            self.backup_policy_level = m.get('BackupPolicyLevel')
         if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
             self.backup_retention_policy_on_cluster_deletion = m.get('BackupRetentionPolicyOnClusterDeletion')
         if m.get('DataLevel1BackupFrequency') is not None:
@@ -22499,15 +22665,121 @@ class DescribeLogBackupPolicyRequest(TeaModel):
         return self
 
 
+class DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy(TeaModel):
+    def __init__(
+        self,
+        dest_region: str = None,
+        dest_type: str = None,
+        enable_log_backup: int = None,
+        log_retention_type: str = None,
+        log_retention_value: str = None,
+        policy_id: str = None,
+        src_region: str = None,
+        src_type: str = None,
+    ):
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.enable_log_backup = enable_log_backup
+        self.log_retention_type = log_retention_type
+        self.log_retention_value = log_retention_value
+        self.policy_id = policy_id
+        self.src_region = src_region
+        self.src_type = src_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.enable_log_backup is not None:
+            result['EnableLogBackup'] = self.enable_log_backup
+        if self.log_retention_type is not None:
+            result['LogRetentionType'] = self.log_retention_type
+        if self.log_retention_value is not None:
+            result['LogRetentionValue'] = self.log_retention_value
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('EnableLogBackup') is not None:
+            self.enable_log_backup = m.get('EnableLogBackup')
+        if m.get('LogRetentionType') is not None:
+            self.log_retention_type = m.get('LogRetentionType')
+        if m.get('LogRetentionValue') is not None:
+            self.log_retention_value = m.get('LogRetentionValue')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        return self
+
+
+class DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies(TeaModel):
+    def __init__(
+        self,
+        advanced_log_policy: List[DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy] = None,
+    ):
+        self.advanced_log_policy = advanced_log_policy
+
+    def validate(self):
+        if self.advanced_log_policy:
+            for k in self.advanced_log_policy:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvancedLogPolicy'] = []
+        if self.advanced_log_policy is not None:
+            for k in self.advanced_log_policy:
+                result['AdvancedLogPolicy'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_log_policy = []
+        if m.get('AdvancedLogPolicy') is not None:
+            for k in m.get('AdvancedLogPolicy'):
+                temp_model = DescribeLogBackupPolicyResponseBodyAdvancedLogPoliciesAdvancedLogPolicy()
+                self.advanced_log_policy.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeLogBackupPolicyResponseBody(TeaModel):
     def __init__(
         self,
+        advanced_log_policies: DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies = None,
         enable_backup_log: int = None,
         log_backup_another_region_region: str = None,
         log_backup_another_region_retention_period: str = None,
         log_backup_retention_period: int = None,
         request_id: str = None,
     ):
+        self.advanced_log_policies = advanced_log_policies
         # Indicates whether the log backup feature is enabled. Valid values:
         # 
         # *   0: The log backup feature is disabled.
@@ -22532,7 +22804,8 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.advanced_log_policies:
+            self.advanced_log_policies.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22540,6 +22813,8 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_log_policies is not None:
+            result['AdvancedLogPolicies'] = self.advanced_log_policies.to_map()
         if self.enable_backup_log is not None:
             result['EnableBackupLog'] = self.enable_backup_log
         if self.log_backup_another_region_region is not None:
@@ -22554,6 +22829,9 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedLogPolicies') is not None:
+            temp_model = DescribeLogBackupPolicyResponseBodyAdvancedLogPolicies()
+            self.advanced_log_policies = temp_model.from_map(m['AdvancedLogPolicies'])
         if m.get('EnableBackupLog') is not None:
             self.enable_backup_log = m.get('EnableBackupLog')
         if m.get('LogBackupAnotherRegionRegion') is not None:
@@ -29112,10 +29390,129 @@ class ModifyAutoRenewAttributeResponse(TeaModel):
         return self
 
 
+class ModifyBackupPolicyRequestAdvancedDataPolicies(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        auto_created: bool = None,
+        bak_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        dump_action: str = None,
+        filter_key: str = None,
+        filter_type: str = None,
+        filter_value: str = None,
+        only_preserve_one_each_day: bool = None,
+        only_preserve_one_each_hour: bool = None,
+        policy_id: str = None,
+        retention_type: str = None,
+        retention_value: str = None,
+        src_region: str = None,
+        src_type: str = None,
+    ):
+        self.action_type = action_type
+        self.auto_created = auto_created
+        self.bak_type = bak_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.dump_action = dump_action
+        self.filter_key = filter_key
+        self.filter_type = filter_type
+        self.filter_value = filter_value
+        self.only_preserve_one_each_day = only_preserve_one_each_day
+        self.only_preserve_one_each_hour = only_preserve_one_each_hour
+        self.policy_id = policy_id
+        self.retention_type = retention_type
+        self.retention_value = retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.auto_created is not None:
+            result['AutoCreated'] = self.auto_created
+        if self.bak_type is not None:
+            result['BakType'] = self.bak_type
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.dump_action is not None:
+            result['DumpAction'] = self.dump_action
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.only_preserve_one_each_day is not None:
+            result['OnlyPreserveOneEachDay'] = self.only_preserve_one_each_day
+        if self.only_preserve_one_each_hour is not None:
+            result['OnlyPreserveOneEachHour'] = self.only_preserve_one_each_hour
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.retention_type is not None:
+            result['RetentionType'] = self.retention_type
+        if self.retention_value is not None:
+            result['RetentionValue'] = self.retention_value
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('AutoCreated') is not None:
+            self.auto_created = m.get('AutoCreated')
+        if m.get('BakType') is not None:
+            self.bak_type = m.get('BakType')
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('DumpAction') is not None:
+            self.dump_action = m.get('DumpAction')
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('OnlyPreserveOneEachDay') is not None:
+            self.only_preserve_one_each_day = m.get('OnlyPreserveOneEachDay')
+        if m.get('OnlyPreserveOneEachHour') is not None:
+            self.only_preserve_one_each_hour = m.get('OnlyPreserveOneEachHour')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RetentionType') is not None:
+            self.retention_type = m.get('RetentionType')
+        if m.get('RetentionValue') is not None:
+            self.retention_value = m.get('RetentionValue')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        return self
+
+
 class ModifyBackupPolicyRequest(TeaModel):
     def __init__(
         self,
+        advanced_data_policies: List[ModifyBackupPolicyRequestAdvancedDataPolicies] = None,
         backup_frequency: str = None,
+        backup_policy_level: str = None,
         backup_retention_policy_on_cluster_deletion: str = None,
         dbcluster_id: str = None,
         data_level_1backup_frequency: str = None,
@@ -29133,6 +29530,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.advanced_data_policies = advanced_data_policies
         # The backup frequency. Default value: Normal. Valid values:
         # 
         # *   **Normal**: standard backup. The system backs up data once a day.
@@ -29144,6 +29542,239 @@ class ModifyBackupPolicyRequest(TeaModel):
         # >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
         # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.backup_frequency = backup_frequency
+        self.backup_policy_level = backup_policy_level
+        # Specifies whether to retain backups when a cluster is deleted. Valid values:
+        # 
+        # *   **ALL**: permanently retains all backups.
+        # *   **LATEST**: permanently retains the most recent backup.
+        # *   **NONE**: does not retain backups.
+        # 
+        # >  The default value of the parameter is NONE.
+        self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
+        # The ID of the cluster.
+        # 
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # The frequency of level-1 backups. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
+        # *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
+        # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+        # 
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.data_level_1backup_frequency = data_level_1backup_frequency
+        # The backup cycle of level-1 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.data_level_1backup_period = data_level_1backup_period
+        # The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
+        self.data_level_1backup_retention_period = data_level_1backup_retention_period
+        # The time period during which automatic backup for level-1 backup is performed. The time period is in the `hh:mmZ-hh:mmZ` format and is displayed in UTC. The start time and end time are on the hour and have an interval of 1 hour. Example: `14:00Z-15:00Z`.
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.data_level_1backup_time = data_level_1backup_time
+        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
+        # The retention period of cross-region level-2 backups. Valid values:
+        # 
+        # *   **0**: The cross-region level-2 backup feature is disabled.
+        # *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Cross-region level-2 backups are permanently retained.
+        # 
+        # >  The default value of the parameter is **0**.
+        self.data_level_2backup_another_region_retention_period = data_level_2backup_another_region_retention_period
+        # The backup cycle of level-2 backups. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.data_level_2backup_period = data_level_2backup_period
+        # The retention period of level-2 backups. Valid values:
+        # 
+        # *   **0**: The level-2 backup feature is disabled.
+        # *   **30 to 7300**: Level-2 backups are retained for 30 to 7,300 days.
+        # *   **1**: Level-2 backups are permanently retained.
+        # 
+        # >  The default value of this parameter is **0**.
+        self.data_level_2backup_retention_period = data_level_2backup_retention_period
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The backup cycle. Valid values:
+        # 
+        # *   **Monday**\
+        # *   **Tuesday**\
+        # *   **Wednesday**\
+        # *   **Thursday**\
+        # *   **Friday**\
+        # *   **Saturday**\
+        # *   **Sunday**\
+        # 
+        # >- You need to specify at least two values. Separate multiple values with commas (,).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.preferred_backup_period = preferred_backup_period
+        # The time period during which automatic backup for level-1 backup is performed. The format is `hh:mmZ-hh:mmZ` format. The time is displayed in UTC. The start time and end time are on the hour and with an interval of one hour. Example: `14:00Z-15:00Z`.
+        self.preferred_backup_time = preferred_backup_time
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        if self.advanced_data_policies:
+            for k in self.advanced_data_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvancedDataPolicies'] = []
+        if self.advanced_data_policies is not None:
+            for k in self.advanced_data_policies:
+                result['AdvancedDataPolicies'].append(k.to_map() if k else None)
+        if self.backup_frequency is not None:
+            result['BackupFrequency'] = self.backup_frequency
+        if self.backup_policy_level is not None:
+            result['BackupPolicyLevel'] = self.backup_policy_level
+        if self.backup_retention_policy_on_cluster_deletion is not None:
+            result['BackupRetentionPolicyOnClusterDeletion'] = self.backup_retention_policy_on_cluster_deletion
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data_level_1backup_frequency is not None:
+            result['DataLevel1BackupFrequency'] = self.data_level_1backup_frequency
+        if self.data_level_1backup_period is not None:
+            result['DataLevel1BackupPeriod'] = self.data_level_1backup_period
+        if self.data_level_1backup_retention_period is not None:
+            result['DataLevel1BackupRetentionPeriod'] = self.data_level_1backup_retention_period
+        if self.data_level_1backup_time is not None:
+            result['DataLevel1BackupTime'] = self.data_level_1backup_time
+        if self.data_level_2backup_another_region_region is not None:
+            result['DataLevel2BackupAnotherRegionRegion'] = self.data_level_2backup_another_region_region
+        if self.data_level_2backup_another_region_retention_period is not None:
+            result['DataLevel2BackupAnotherRegionRetentionPeriod'] = self.data_level_2backup_another_region_retention_period
+        if self.data_level_2backup_period is not None:
+            result['DataLevel2BackupPeriod'] = self.data_level_2backup_period
+        if self.data_level_2backup_retention_period is not None:
+            result['DataLevel2BackupRetentionPeriod'] = self.data_level_2backup_retention_period
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.preferred_backup_period is not None:
+            result['PreferredBackupPeriod'] = self.preferred_backup_period
+        if self.preferred_backup_time is not None:
+            result['PreferredBackupTime'] = self.preferred_backup_time
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_data_policies = []
+        if m.get('AdvancedDataPolicies') is not None:
+            for k in m.get('AdvancedDataPolicies'):
+                temp_model = ModifyBackupPolicyRequestAdvancedDataPolicies()
+                self.advanced_data_policies.append(temp_model.from_map(k))
+        if m.get('BackupFrequency') is not None:
+            self.backup_frequency = m.get('BackupFrequency')
+        if m.get('BackupPolicyLevel') is not None:
+            self.backup_policy_level = m.get('BackupPolicyLevel')
+        if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
+            self.backup_retention_policy_on_cluster_deletion = m.get('BackupRetentionPolicyOnClusterDeletion')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataLevel1BackupFrequency') is not None:
+            self.data_level_1backup_frequency = m.get('DataLevel1BackupFrequency')
+        if m.get('DataLevel1BackupPeriod') is not None:
+            self.data_level_1backup_period = m.get('DataLevel1BackupPeriod')
+        if m.get('DataLevel1BackupRetentionPeriod') is not None:
+            self.data_level_1backup_retention_period = m.get('DataLevel1BackupRetentionPeriod')
+        if m.get('DataLevel1BackupTime') is not None:
+            self.data_level_1backup_time = m.get('DataLevel1BackupTime')
+        if m.get('DataLevel2BackupAnotherRegionRegion') is not None:
+            self.data_level_2backup_another_region_region = m.get('DataLevel2BackupAnotherRegionRegion')
+        if m.get('DataLevel2BackupAnotherRegionRetentionPeriod') is not None:
+            self.data_level_2backup_another_region_retention_period = m.get('DataLevel2BackupAnotherRegionRetentionPeriod')
+        if m.get('DataLevel2BackupPeriod') is not None:
+            self.data_level_2backup_period = m.get('DataLevel2BackupPeriod')
+        if m.get('DataLevel2BackupRetentionPeriod') is not None:
+            self.data_level_2backup_retention_period = m.get('DataLevel2BackupRetentionPeriod')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PreferredBackupPeriod') is not None:
+            self.preferred_backup_period = m.get('PreferredBackupPeriod')
+        if m.get('PreferredBackupTime') is not None:
+            self.preferred_backup_time = m.get('PreferredBackupTime')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyBackupPolicyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_data_policies_shrink: str = None,
+        backup_frequency: str = None,
+        backup_policy_level: str = None,
+        backup_retention_policy_on_cluster_deletion: str = None,
+        dbcluster_id: str = None,
+        data_level_1backup_frequency: str = None,
+        data_level_1backup_period: str = None,
+        data_level_1backup_retention_period: str = None,
+        data_level_1backup_time: str = None,
+        data_level_2backup_another_region_region: str = None,
+        data_level_2backup_another_region_retention_period: str = None,
+        data_level_2backup_period: str = None,
+        data_level_2backup_retention_period: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        preferred_backup_period: str = None,
+        preferred_backup_time: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.advanced_data_policies_shrink = advanced_data_policies_shrink
+        # The backup frequency. Default value: Normal. Valid values:
+        # 
+        # *   **Normal**: standard backup. The system backs up data once a day.
+        # *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
+        # *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
+        # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+        # 
+        # >- If you enable enhanced backup, all backups are retained for 24 hours. For backup files that are created earlier than the previous 24 hours, the system permanently retains only the first backup that is created after 00:00 every day and deletes the rest.
+        # >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+        self.backup_frequency = backup_frequency
+        self.backup_policy_level = backup_policy_level
         # Specifies whether to retain backups when a cluster is deleted. Valid values:
         # 
         # *   **ALL**: permanently retains all backups.
@@ -29249,8 +29880,12 @@ class ModifyBackupPolicyRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.advanced_data_policies_shrink is not None:
+            result['AdvancedDataPolicies'] = self.advanced_data_policies_shrink
         if self.backup_frequency is not None:
             result['BackupFrequency'] = self.backup_frequency
+        if self.backup_policy_level is not None:
+            result['BackupPolicyLevel'] = self.backup_policy_level
         if self.backup_retention_policy_on_cluster_deletion is not None:
             result['BackupRetentionPolicyOnClusterDeletion'] = self.backup_retention_policy_on_cluster_deletion
         if self.dbcluster_id is not None:
@@ -29287,8 +29922,12 @@ class ModifyBackupPolicyRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdvancedDataPolicies') is not None:
+            self.advanced_data_policies_shrink = m.get('AdvancedDataPolicies')
         if m.get('BackupFrequency') is not None:
             self.backup_frequency = m.get('BackupFrequency')
+        if m.get('BackupPolicyLevel') is not None:
+            self.backup_policy_level = m.get('BackupPolicyLevel')
         if m.get('BackupRetentionPolicyOnClusterDeletion') is not None:
             self.backup_retention_policy_on_cluster_deletion = m.get('BackupRetentionPolicyOnClusterDeletion')
         if m.get('DBClusterId') is not None:
