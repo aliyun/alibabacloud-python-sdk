@@ -3374,6 +3374,7 @@ class SubmitDocParserJobRequest(TeaModel):
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        output_html_table: bool = None,
         page_index: str = None,
     ):
         self.file_name = file_name
@@ -3384,6 +3385,7 @@ class SubmitDocParserJobRequest(TeaModel):
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.output_html_table = output_html_table
         self.page_index = page_index
 
     def validate(self):
@@ -3411,6 +3413,8 @@ class SubmitDocParserJobRequest(TeaModel):
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.output_html_table is not None:
+            result['OutputHtmlTable'] = self.output_html_table
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
         return result
@@ -3433,6 +3437,8 @@ class SubmitDocParserJobRequest(TeaModel):
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('OutputHtmlTable') is not None:
+            self.output_html_table = m.get('OutputHtmlTable')
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
         return self
@@ -3449,6 +3455,7 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
+        output_html_table: bool = None,
         page_index: str = None,
     ):
         self.file_name = file_name
@@ -3459,6 +3466,7 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        self.output_html_table = output_html_table
         self.page_index = page_index
 
     def validate(self):
@@ -3486,6 +3494,8 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             result['OssBucket'] = self.oss_bucket
         if self.oss_endpoint is not None:
             result['OssEndpoint'] = self.oss_endpoint
+        if self.output_html_table is not None:
+            result['OutputHtmlTable'] = self.output_html_table
         if self.page_index is not None:
             result['PageIndex'] = self.page_index
         return result
@@ -3508,6 +3518,8 @@ class SubmitDocParserJobAdvanceRequest(TeaModel):
             self.oss_bucket = m.get('OssBucket')
         if m.get('OssEndpoint') is not None:
             self.oss_endpoint = m.get('OssEndpoint')
+        if m.get('OutputHtmlTable') is not None:
+            self.output_html_table = m.get('OutputHtmlTable')
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
         return self

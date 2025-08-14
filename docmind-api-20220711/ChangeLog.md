@@ -1,3 +1,7 @@
+2025-08-14 Version: 1.4.8
+- Update API SubmitDocParserJob: add request parameters OutputHtmlTable.
+
+
 2025-05-22 Version: 1.4.7
 - Generated python 2022-07-11 for docmind-api.
 
