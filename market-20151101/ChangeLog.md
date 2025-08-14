@@ -1,3 +1,11 @@
+2025-08-14 Version: 4.2.1
+- Update API DescribeInvoiceForIsv: add response parameters Body.Result.$.CheckNotice.
+- Update API DescribeInvoiceForIsv: add response parameters Body.Result.$.UserNotice.
+- Update API DescribeInvoiceForIsv: add response parameters Body.Result.$.EvaluateList.$.ProductCode.
+- Update API DescribeInvoiceForIsv: add response parameters Body.Result.$.EvaluateList.$.ProductName.
+- Update API DescribeInvoiceForIsv: add response parameters Body.Result.$.EvaluateList.$.RealAliyunId.
+
+
 2025-08-08 Version: 4.2.0
 - Support API ConfirmNotification.
 - Support API DescribeFailedNotifications.

@@ -3432,6 +3432,9 @@ class DescribeInvoiceForIsvResponseBodyResultEvaluateList(TeaModel):
         id: str = None,
         order_type: str = None,
         out_biz_id: str = None,
+        product_code: str = None,
+        product_name: str = None,
+        real_aliyun_id: str = None,
         real_aliyun_pk: str = None,
     ):
         self.agent = agent
@@ -3440,6 +3443,9 @@ class DescribeInvoiceForIsvResponseBodyResultEvaluateList(TeaModel):
         self.id = id
         self.order_type = order_type
         self.out_biz_id = out_biz_id
+        self.product_code = product_code
+        self.product_name = product_name
+        self.real_aliyun_id = real_aliyun_id
         self.real_aliyun_pk = real_aliyun_pk
 
     def validate(self):
@@ -3463,6 +3469,12 @@ class DescribeInvoiceForIsvResponseBodyResultEvaluateList(TeaModel):
             result['OrderType'] = self.order_type
         if self.out_biz_id is not None:
             result['OutBizId'] = self.out_biz_id
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.real_aliyun_id is not None:
+            result['RealAliyunId'] = self.real_aliyun_id
         if self.real_aliyun_pk is not None:
             result['RealAliyunPk'] = self.real_aliyun_pk
         return result
@@ -3481,6 +3493,12 @@ class DescribeInvoiceForIsvResponseBodyResultEvaluateList(TeaModel):
             self.order_type = m.get('OrderType')
         if m.get('OutBizId') is not None:
             self.out_biz_id = m.get('OutBizId')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RealAliyunId') is not None:
+            self.real_aliyun_id = m.get('RealAliyunId')
         if m.get('RealAliyunPk') is not None:
             self.real_aliyun_pk = m.get('RealAliyunPk')
         return self
@@ -3613,6 +3631,7 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
     def __init__(
         self,
         aliyun_pk: str = None,
+        check_notice: str = None,
         create_time_str: str = None,
         evaluate_list: List[DescribeInvoiceForIsvResponseBodyResultEvaluateList] = None,
         id: str = None,
@@ -3627,8 +3646,10 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
         title: str = None,
         type: str = None,
         user_address_dto: DescribeInvoiceForIsvResponseBodyResultUserAddressDto = None,
+        user_notice: str = None,
     ):
         self.aliyun_pk = aliyun_pk
+        self.check_notice = check_notice
         self.create_time_str = create_time_str
         self.evaluate_list = evaluate_list
         self.id = id
@@ -3643,6 +3664,7 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
         self.title = title
         self.type = type
         self.user_address_dto = user_address_dto
+        self.user_notice = user_notice
 
     def validate(self):
         if self.evaluate_list:
@@ -3666,6 +3688,8 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
         result = dict()
         if self.aliyun_pk is not None:
             result['AliyunPk'] = self.aliyun_pk
+        if self.check_notice is not None:
+            result['CheckNotice'] = self.check_notice
         if self.create_time_str is not None:
             result['CreateTimeStr'] = self.create_time_str
         result['EvaluateList'] = []
@@ -3698,12 +3722,16 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
             result['Type'] = self.type
         if self.user_address_dto is not None:
             result['UserAddressDto'] = self.user_address_dto.to_map()
+        if self.user_notice is not None:
+            result['UserNotice'] = self.user_notice
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AliyunPk') is not None:
             self.aliyun_pk = m.get('AliyunPk')
+        if m.get('CheckNotice') is not None:
+            self.check_notice = m.get('CheckNotice')
         if m.get('CreateTimeStr') is not None:
             self.create_time_str = m.get('CreateTimeStr')
         self.evaluate_list = []
@@ -3740,6 +3768,8 @@ class DescribeInvoiceForIsvResponseBodyResult(TeaModel):
         if m.get('UserAddressDto') is not None:
             temp_model = DescribeInvoiceForIsvResponseBodyResultUserAddressDto()
             self.user_address_dto = temp_model.from_map(m['UserAddressDto'])
+        if m.get('UserNotice') is not None:
+            self.user_notice = m.get('UserNotice')
         return self
 
 
