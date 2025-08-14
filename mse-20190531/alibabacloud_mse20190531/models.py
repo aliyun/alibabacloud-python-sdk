@@ -964,6 +964,39 @@ class RulesValue(TeaModel):
         return self
 
 
+class DataToolSpecToolsMetaValue(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        templates: Dict[str, Any] = None,
+    ):
+        self.enabled = enabled
+        self.templates = templates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.templates is not None:
+            result['Templates'] = self.templates
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Templates') is not None:
+            self.templates = m.get('Templates')
+        return self
+
+
 class DataValue(TeaModel):
     def __init__(
         self,
@@ -11745,6 +11778,149 @@ class CreateNacosInstanceResponse(TeaModel):
         return self
 
 
+class CreateNacosMcpServerRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        endpoint_specification: str = None,
+        instance_id: str = None,
+        namespace_id: str = None,
+        server_name: str = None,
+        server_specification: str = None,
+        tool_specification: str = None,
+        yaml_config: str = None,
+    ):
+        self.accept_language = accept_language
+        self.endpoint_specification = endpoint_specification
+        self.instance_id = instance_id
+        self.namespace_id = namespace_id
+        self.server_name = server_name
+        self.server_specification = server_specification
+        self.tool_specification = tool_specification
+        self.yaml_config = yaml_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.endpoint_specification is not None:
+            result['EndpointSpecification'] = self.endpoint_specification
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.server_name is not None:
+            result['ServerName'] = self.server_name
+        if self.server_specification is not None:
+            result['ServerSpecification'] = self.server_specification
+        if self.tool_specification is not None:
+            result['ToolSpecification'] = self.tool_specification
+        if self.yaml_config is not None:
+            result['YamlConfig'] = self.yaml_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('EndpointSpecification') is not None:
+            self.endpoint_specification = m.get('EndpointSpecification')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('ServerName') is not None:
+            self.server_name = m.get('ServerName')
+        if m.get('ServerSpecification') is not None:
+            self.server_specification = m.get('ServerSpecification')
+        if m.get('ToolSpecification') is not None:
+            self.tool_specification = m.get('ToolSpecification')
+        if m.get('YamlConfig') is not None:
+            self.yaml_config = m.get('YamlConfig')
+        return self
+
+
+class CreateNacosMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateNacosMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateNacosMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateNacosMcpServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateNacosServiceRequest(TeaModel):
     def __init__(
         self,
@@ -18737,6 +18913,125 @@ class DeleteNacosInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteNacosInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteNacosMcpServerRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        instance_id: str = None,
+        mcp_server_id: str = None,
+        namespace_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.instance_id = instance_id
+        self.mcp_server_id = mcp_server_id
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class DeleteNacosMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteNacosMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteNacosMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteNacosMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30568,6 +30863,545 @@ class GetNacosHistoryConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNacosHistoryConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetNacosMcpServerRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        instance_id: str = None,
+        mcp_server_id: str = None,
+        mcp_server_version: str = None,
+        namespace_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.instance_id = instance_id
+        self.mcp_server_id = mcp_server_id
+        self.mcp_server_version = mcp_server_version
+        self.namespace_id = namespace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+        if self.mcp_server_version is not None:
+            result['McpServerVersion'] = self.mcp_server_version
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
+        if m.get('McpServerVersion') is not None:
+            self.mcp_server_version = m.get('McpServerVersion')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataAllVersions(TeaModel):
+    def __init__(
+        self,
+        is_latest: bool = None,
+        release_date: str = None,
+        version: str = None,
+    ):
+        self.is_latest = is_latest
+        self.release_date = release_date
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_latest is not None:
+            result['Is_latest'] = self.is_latest
+        if self.release_date is not None:
+            result['Release_date'] = self.release_date
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Is_latest') is not None:
+            self.is_latest = m.get('Is_latest')
+        if m.get('Release_date') is not None:
+            self.release_date = m.get('Release_date')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataBackendEndpoints(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        path: str = None,
+        port: int = None,
+    ):
+        self.address = address
+        self.path = path
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.path is not None:
+            result['Path'] = self.path
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Path') is not None:
+            self.path = m.get('Path')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+        namespace_id: str = None,
+        service_name: str = None,
+    ):
+        self.group_name = group_name
+        self.namespace_id = namespace_id
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataRemoteServerConfig(TeaModel):
+    def __init__(
+        self,
+        export_path: str = None,
+        service_ref: GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef = None,
+    ):
+        self.export_path = export_path
+        self.service_ref = service_ref
+
+    def validate(self):
+        if self.service_ref:
+            self.service_ref.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.export_path is not None:
+            result['ExportPath'] = self.export_path
+        if self.service_ref is not None:
+            result['ServiceRef'] = self.service_ref.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExportPath') is not None:
+            self.export_path = m.get('ExportPath')
+        if m.get('ServiceRef') is not None:
+            temp_model = GetNacosMcpServerResponseBodyDataRemoteServerConfigServiceRef()
+            self.service_ref = temp_model.from_map(m['ServiceRef'])
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataToolSpecTools(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        input_schema: Dict[str, Any] = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.input_schema = input_schema
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.input_schema is not None:
+            result['InputSchema'] = self.input_schema
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('InputSchema') is not None:
+            self.input_schema = m.get('InputSchema')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataToolSpec(TeaModel):
+    def __init__(
+        self,
+        tools: List[GetNacosMcpServerResponseBodyDataToolSpecTools] = None,
+        tools_meta: Dict[str, DataToolSpecToolsMetaValue] = None,
+    ):
+        self.tools = tools
+        self.tools_meta = tools_meta
+
+    def validate(self):
+        if self.tools:
+            for k in self.tools:
+                if k:
+                    k.validate()
+        if self.tools_meta:
+            for v in self.tools_meta.values():
+                if v:
+                    v.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tools'] = []
+        if self.tools is not None:
+            for k in self.tools:
+                result['Tools'].append(k.to_map() if k else None)
+        result['ToolsMeta'] = {}
+        if self.tools_meta is not None:
+            for k, v in self.tools_meta.items():
+                result['ToolsMeta'][k] = v.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tools = []
+        if m.get('Tools') is not None:
+            for k in m.get('Tools'):
+                temp_model = GetNacosMcpServerResponseBodyDataToolSpecTools()
+                self.tools.append(temp_model.from_map(k))
+        self.tools_meta = {}
+        if m.get('ToolsMeta') is not None:
+            for k, v in m.get('ToolsMeta').items():
+                temp_model = DataToolSpecToolsMetaValue()
+                self.tools_meta[k] = temp_model.from_map(v)
+        return self
+
+
+class GetNacosMcpServerResponseBodyDataVersionDetail(TeaModel):
+    def __init__(
+        self,
+        is_latest: bool = None,
+        release_date: str = None,
+        version: str = None,
+    ):
+        self.is_latest = is_latest
+        self.release_date = release_date
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_latest is not None:
+            result['IsLatest'] = self.is_latest
+        if self.release_date is not None:
+            result['ReleaseDate'] = self.release_date
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsLatest') is not None:
+            self.is_latest = m.get('IsLatest')
+        if m.get('ReleaseDate') is not None:
+            self.release_date = m.get('ReleaseDate')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class GetNacosMcpServerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        all_versions: List[GetNacosMcpServerResponseBodyDataAllVersions] = None,
+        backend_endpoints: List[GetNacosMcpServerResponseBodyDataBackendEndpoints] = None,
+        capabilities: List[str] = None,
+        description: str = None,
+        enabled: bool = None,
+        front_protocol: str = None,
+        id: str = None,
+        local_server_config: Dict[str, Any] = None,
+        name: str = None,
+        protocol: str = None,
+        remote_server_config: GetNacosMcpServerResponseBodyDataRemoteServerConfig = None,
+        tool_spec: GetNacosMcpServerResponseBodyDataToolSpec = None,
+        version_detail: GetNacosMcpServerResponseBodyDataVersionDetail = None,
+        yaml_config: str = None,
+    ):
+        self.all_versions = all_versions
+        self.backend_endpoints = backend_endpoints
+        self.capabilities = capabilities
+        self.description = description
+        self.enabled = enabled
+        self.front_protocol = front_protocol
+        # ID。
+        self.id = id
+        self.local_server_config = local_server_config
+        self.name = name
+        self.protocol = protocol
+        self.remote_server_config = remote_server_config
+        self.tool_spec = tool_spec
+        self.version_detail = version_detail
+        self.yaml_config = yaml_config
+
+    def validate(self):
+        if self.all_versions:
+            for k in self.all_versions:
+                if k:
+                    k.validate()
+        if self.backend_endpoints:
+            for k in self.backend_endpoints:
+                if k:
+                    k.validate()
+        if self.remote_server_config:
+            self.remote_server_config.validate()
+        if self.tool_spec:
+            self.tool_spec.validate()
+        if self.version_detail:
+            self.version_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AllVersions'] = []
+        if self.all_versions is not None:
+            for k in self.all_versions:
+                result['AllVersions'].append(k.to_map() if k else None)
+        result['BackendEndpoints'] = []
+        if self.backend_endpoints is not None:
+            for k in self.backend_endpoints:
+                result['BackendEndpoints'].append(k.to_map() if k else None)
+        if self.capabilities is not None:
+            result['Capabilities'] = self.capabilities
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.front_protocol is not None:
+            result['FrontProtocol'] = self.front_protocol
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.local_server_config is not None:
+            result['LocalServerConfig'] = self.local_server_config
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.remote_server_config is not None:
+            result['RemoteServerConfig'] = self.remote_server_config.to_map()
+        if self.tool_spec is not None:
+            result['ToolSpec'] = self.tool_spec.to_map()
+        if self.version_detail is not None:
+            result['VersionDetail'] = self.version_detail.to_map()
+        if self.yaml_config is not None:
+            result['YamlConfig'] = self.yaml_config
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.all_versions = []
+        if m.get('AllVersions') is not None:
+            for k in m.get('AllVersions'):
+                temp_model = GetNacosMcpServerResponseBodyDataAllVersions()
+                self.all_versions.append(temp_model.from_map(k))
+        self.backend_endpoints = []
+        if m.get('BackendEndpoints') is not None:
+            for k in m.get('BackendEndpoints'):
+                temp_model = GetNacosMcpServerResponseBodyDataBackendEndpoints()
+                self.backend_endpoints.append(temp_model.from_map(k))
+        if m.get('Capabilities') is not None:
+            self.capabilities = m.get('Capabilities')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('FrontProtocol') is not None:
+            self.front_protocol = m.get('FrontProtocol')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('LocalServerConfig') is not None:
+            self.local_server_config = m.get('LocalServerConfig')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RemoteServerConfig') is not None:
+            temp_model = GetNacosMcpServerResponseBodyDataRemoteServerConfig()
+            self.remote_server_config = temp_model.from_map(m['RemoteServerConfig'])
+        if m.get('ToolSpec') is not None:
+            temp_model = GetNacosMcpServerResponseBodyDataToolSpec()
+            self.tool_spec = temp_model.from_map(m['ToolSpec'])
+        if m.get('VersionDetail') is not None:
+            temp_model = GetNacosMcpServerResponseBodyDataVersionDetail()
+            self.version_detail = temp_model.from_map(m['VersionDetail'])
+        if m.get('YamlConfig') is not None:
+            self.yaml_config = m.get('YamlConfig')
+        return self
+
+
+class GetNacosMcpServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetNacosMcpServerResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetNacosMcpServerResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetNacosMcpServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNacosMcpServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNacosMcpServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -50094,6 +50928,311 @@ class ListNacosHistoryConfigsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListNacosHistoryConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListNacosMcpServersRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        instance_id: str = None,
+        name: str = None,
+        namespace_id: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        search: str = None,
+    ):
+        self.accept_language = accept_language
+        self.instance_id = instance_id
+        self.name = name
+        self.namespace_id = namespace_id
+        self.page_num = page_num
+        self.page_size = page_size
+        self.search = search
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.namespace_id is not None:
+            result['NamespaceId'] = self.namespace_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search is not None:
+            result['Search'] = self.search
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NamespaceId') is not None:
+            self.namespace_id = m.get('NamespaceId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Search') is not None:
+            self.search = m.get('Search')
+        return self
+
+
+class ListNacosMcpServersResponseBodyDataPageItemsVersionDetail(TeaModel):
+    def __init__(
+        self,
+        is_latest: bool = None,
+        release_date: str = None,
+        version: str = None,
+    ):
+        self.is_latest = is_latest
+        self.release_date = release_date
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_latest is not None:
+            result['Is_latest'] = self.is_latest
+        if self.release_date is not None:
+            result['Release_date'] = self.release_date
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Is_latest') is not None:
+            self.is_latest = m.get('Is_latest')
+        if m.get('Release_date') is not None:
+            self.release_date = m.get('Release_date')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListNacosMcpServersResponseBodyDataPageItems(TeaModel):
+    def __init__(
+        self,
+        capabilities: List[str] = None,
+        description: str = None,
+        front_protocol: str = None,
+        id: str = None,
+        name: str = None,
+        protocol: str = None,
+        version: str = None,
+        version_detail: ListNacosMcpServersResponseBodyDataPageItemsVersionDetail = None,
+    ):
+        self.capabilities = capabilities
+        self.description = description
+        self.front_protocol = front_protocol
+        # ID。
+        self.id = id
+        self.name = name
+        self.protocol = protocol
+        self.version = version
+        self.version_detail = version_detail
+
+    def validate(self):
+        if self.version_detail:
+            self.version_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capabilities is not None:
+            result['Capabilities'] = self.capabilities
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.front_protocol is not None:
+            result['FrontProtocol'] = self.front_protocol
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.version_detail is not None:
+            result['VersionDetail'] = self.version_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capabilities') is not None:
+            self.capabilities = m.get('Capabilities')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FrontProtocol') is not None:
+            self.front_protocol = m.get('FrontProtocol')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VersionDetail') is not None:
+            temp_model = ListNacosMcpServersResponseBodyDataPageItemsVersionDetail()
+            self.version_detail = temp_model.from_map(m['VersionDetail'])
+        return self
+
+
+class ListNacosMcpServersResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_items: List[ListNacosMcpServersResponseBodyDataPageItems] = None,
+        page_number: int = None,
+        pages_available: int = None,
+        total_count: int = None,
+    ):
+        self.page_items = page_items
+        # pageNumber.
+        self.page_number = page_number
+        # pagesAvailable.
+        self.pages_available = pages_available
+        self.total_count = total_count
+
+    def validate(self):
+        if self.page_items:
+            for k in self.page_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['PageItems'] = []
+        if self.page_items is not None:
+            for k in self.page_items:
+                result['PageItems'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.pages_available is not None:
+            result['PagesAvailable'] = self.pages_available
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.page_items = []
+        if m.get('PageItems') is not None:
+            for k in m.get('PageItems'):
+                temp_model = ListNacosMcpServersResponseBodyDataPageItems()
+                self.page_items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PagesAvailable') is not None:
+            self.pages_available = m.get('PagesAvailable')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListNacosMcpServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListNacosMcpServersResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListNacosMcpServersResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListNacosMcpServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListNacosMcpServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListNacosMcpServersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

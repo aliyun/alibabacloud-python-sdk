@@ -4662,6 +4662,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_nacos_instance_with_options_async(request, runtime)
 
+    def create_nacos_mcp_server_with_options(
+        self,
+        request: mse_20190531_models.CreateNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateNacosMcpServerResponse:
+        """
+        @summary 创建一个MCP Server
+        
+        @param request: CreateNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_specification):
+            body['EndpointSpecification'] = request.endpoint_specification
+        if not UtilClient.is_unset(request.server_specification):
+            body['ServerSpecification'] = request.server_specification
+        if not UtilClient.is_unset(request.tool_specification):
+            body['ToolSpecification'] = request.tool_specification
+        if not UtilClient.is_unset(request.yaml_config):
+            body['YamlConfig'] = request.yaml_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateNacosMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_nacos_mcp_server_with_options_async(
+        self,
+        request: mse_20190531_models.CreateNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.CreateNacosMcpServerResponse:
+        """
+        @summary 创建一个MCP Server
+        
+        @param request: CreateNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.server_name):
+            query['ServerName'] = request.server_name
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_specification):
+            body['EndpointSpecification'] = request.endpoint_specification
+        if not UtilClient.is_unset(request.server_specification):
+            body['ServerSpecification'] = request.server_specification
+        if not UtilClient.is_unset(request.tool_specification):
+            body['ToolSpecification'] = request.tool_specification
+        if not UtilClient.is_unset(request.yaml_config):
+            body['YamlConfig'] = request.yaml_config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.CreateNacosMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_nacos_mcp_server(
+        self,
+        request: mse_20190531_models.CreateNacosMcpServerRequest,
+    ) -> mse_20190531_models.CreateNacosMcpServerResponse:
+        """
+        @summary 创建一个MCP Server
+        
+        @param request: CreateNacosMcpServerRequest
+        @return: CreateNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_nacos_mcp_server_with_options(request, runtime)
+
+    async def create_nacos_mcp_server_async(
+        self,
+        request: mse_20190531_models.CreateNacosMcpServerRequest,
+    ) -> mse_20190531_models.CreateNacosMcpServerResponse:
+        """
+        @summary 创建一个MCP Server
+        
+        @param request: CreateNacosMcpServerRequest
+        @return: CreateNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_nacos_mcp_server_with_options_async(request, runtime)
+
     def create_nacos_service_with_options(
         self,
         request: mse_20190531_models.CreateNacosServiceRequest,
@@ -8081,6 +8209,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_instance_with_options_async(request, runtime)
+
+    def delete_nacos_mcp_server_with_options(
+        self,
+        request: mse_20190531_models.DeleteNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteNacosMcpServerResponse:
+        """
+        @summary 删除一个MCP Server
+        
+        @param request: DeleteNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteNacosMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_nacos_mcp_server_with_options_async(
+        self,
+        request: mse_20190531_models.DeleteNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.DeleteNacosMcpServerResponse:
+        """
+        @summary 删除一个MCP Server
+        
+        @param request: DeleteNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.DeleteNacosMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_nacos_mcp_server(
+        self,
+        request: mse_20190531_models.DeleteNacosMcpServerRequest,
+    ) -> mse_20190531_models.DeleteNacosMcpServerResponse:
+        """
+        @summary 删除一个MCP Server
+        
+        @param request: DeleteNacosMcpServerRequest
+        @return: DeleteNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_nacos_mcp_server_with_options(request, runtime)
+
+    async def delete_nacos_mcp_server_async(
+        self,
+        request: mse_20190531_models.DeleteNacosMcpServerRequest,
+    ) -> mse_20190531_models.DeleteNacosMcpServerResponse:
+        """
+        @summary 删除一个MCP Server
+        
+        @param request: DeleteNacosMcpServerRequest
+        @return: DeleteNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_nacos_mcp_server_with_options_async(request, runtime)
 
     def delete_nacos_service_with_options(
         self,
@@ -12329,6 +12565,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_nacos_history_config_with_options_async(request, runtime)
+
+    def get_nacos_mcp_server_with_options(
+        self,
+        request: mse_20190531_models.GetNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetNacosMcpServerResponse:
+        """
+        @summary 获取MCP Server的详情
+        
+        @param request: GetNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not UtilClient.is_unset(request.mcp_server_version):
+            query['McpServerVersion'] = request.mcp_server_version
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetNacosMcpServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_nacos_mcp_server_with_options_async(
+        self,
+        request: mse_20190531_models.GetNacosMcpServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.GetNacosMcpServerResponse:
+        """
+        @summary 获取MCP Server的详情
+        
+        @param request: GetNacosMcpServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNacosMcpServerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mcp_server_id):
+            query['McpServerId'] = request.mcp_server_id
+        if not UtilClient.is_unset(request.mcp_server_version):
+            query['McpServerVersion'] = request.mcp_server_version
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetNacosMcpServer',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.GetNacosMcpServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_nacos_mcp_server(
+        self,
+        request: mse_20190531_models.GetNacosMcpServerRequest,
+    ) -> mse_20190531_models.GetNacosMcpServerResponse:
+        """
+        @summary 获取MCP Server的详情
+        
+        @param request: GetNacosMcpServerRequest
+        @return: GetNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_nacos_mcp_server_with_options(request, runtime)
+
+    async def get_nacos_mcp_server_async(
+        self,
+        request: mse_20190531_models.GetNacosMcpServerRequest,
+    ) -> mse_20190531_models.GetNacosMcpServerResponse:
+        """
+        @summary 获取MCP Server的详情
+        
+        @param request: GetNacosMcpServerRequest
+        @return: GetNacosMcpServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_nacos_mcp_server_with_options_async(request, runtime)
 
     def get_overview_with_options(
         self,
@@ -18309,6 +18657,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_nacos_history_configs_with_options_async(request, runtime)
+
+    def list_nacos_mcp_servers_with_options(
+        self,
+        request: mse_20190531_models.ListNacosMcpServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListNacosMcpServersResponse:
+        """
+        @summary 获取McpServer列表
+        
+        @param request: ListNacosMcpServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosMcpServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNacosMcpServers',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListNacosMcpServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_nacos_mcp_servers_with_options_async(
+        self,
+        request: mse_20190531_models.ListNacosMcpServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mse_20190531_models.ListNacosMcpServersResponse:
+        """
+        @summary 获取McpServer列表
+        
+        @param request: ListNacosMcpServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNacosMcpServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search):
+            query['Search'] = request.search
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListNacosMcpServers',
+            version='2019-05-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mse_20190531_models.ListNacosMcpServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_nacos_mcp_servers(
+        self,
+        request: mse_20190531_models.ListNacosMcpServersRequest,
+    ) -> mse_20190531_models.ListNacosMcpServersResponse:
+        """
+        @summary 获取McpServer列表
+        
+        @param request: ListNacosMcpServersRequest
+        @return: ListNacosMcpServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_nacos_mcp_servers_with_options(request, runtime)
+
+    async def list_nacos_mcp_servers_async(
+        self,
+        request: mse_20190531_models.ListNacosMcpServersRequest,
+    ) -> mse_20190531_models.ListNacosMcpServersResponse:
+        """
+        @summary 获取McpServer列表
+        
+        @param request: ListNacosMcpServersRequest
+        @return: ListNacosMcpServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_nacos_mcp_servers_with_options_async(request, runtime)
 
     def list_namespaces_with_options(
         self,
