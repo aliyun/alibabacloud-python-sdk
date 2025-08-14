@@ -1,3 +1,9 @@
+2025-08-14 Version: 6.2.1
+- Update API CreateDomain: add request parameters Redirect.BackendPorts.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.BackendPorts.
+- Update API ModifyDomain: add request parameters Redirect.BackendPorts.
+
+
 2025-08-07 Version: 6.2.0
 - Support API DescribeDefenseSceneConfig.
 - Support API ModifyDefenseSceneConfig.

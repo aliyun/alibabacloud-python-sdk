@@ -2417,6 +2417,45 @@ class CreateDomainRequestListen(TeaModel):
         return self
 
 
+class CreateDomainRequestRedirectBackendPorts(TeaModel):
+    def __init__(
+        self,
+        backend_port: int = None,
+        listen_port: int = None,
+        protocol: str = None,
+    ):
+        self.backend_port = backend_port
+        self.listen_port = listen_port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_port is not None:
+            result['BackendPort'] = self.backend_port
+        if self.listen_port is not None:
+            result['ListenPort'] = self.listen_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendPort') is not None:
+            self.backend_port = m.get('BackendPort')
+        if m.get('ListenPort') is not None:
+            self.listen_port = m.get('ListenPort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
 class CreateDomainRequestRedirectRequestHeaders(TeaModel):
     def __init__(
         self,
@@ -2455,6 +2494,7 @@ class CreateDomainRequestRedirectRequestHeaders(TeaModel):
 class CreateDomainRequestRedirect(TeaModel):
     def __init__(
         self,
+        backend_ports: List[CreateDomainRequestRedirectBackendPorts] = None,
         backends: List[str] = None,
         backup_backends: List[str] = None,
         cname_enabled: bool = None,
@@ -2473,6 +2513,7 @@ class CreateDomainRequestRedirect(TeaModel):
         write_timeout: int = None,
         xff_proto: bool = None,
     ):
+        self.backend_ports = backend_ports
         # The IP addresses or domain names of the origin server.
         self.backends = backends
         # The secondary IP addresses or domain names of the origin server.
@@ -2545,6 +2586,10 @@ class CreateDomainRequestRedirect(TeaModel):
         self.xff_proto = xff_proto
 
     def validate(self):
+        if self.backend_ports:
+            for k in self.backend_ports:
+                if k:
+                    k.validate()
         if self.request_headers:
             for k in self.request_headers:
                 if k:
@@ -2556,6 +2601,10 @@ class CreateDomainRequestRedirect(TeaModel):
             return _map
 
         result = dict()
+        result['BackendPorts'] = []
+        if self.backend_ports is not None:
+            for k in self.backend_ports:
+                result['BackendPorts'].append(k.to_map() if k else None)
         if self.backends is not None:
             result['Backends'] = self.backends
         if self.backup_backends is not None:
@@ -2596,6 +2645,11 @@ class CreateDomainRequestRedirect(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backend_ports = []
+        if m.get('BackendPorts') is not None:
+            for k in m.get('BackendPorts'):
+                temp_model = CreateDomainRequestRedirectBackendPorts()
+                self.backend_ports.append(temp_model.from_map(k))
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
         if m.get('BackupBackends') is not None:
@@ -16715,6 +16769,45 @@ class DescribeDomainDetailResponseBodyListen(TeaModel):
         return self
 
 
+class DescribeDomainDetailResponseBodyRedirectBackendPorts(TeaModel):
+    def __init__(
+        self,
+        backend_port: int = None,
+        listen_port: int = None,
+        protocol: str = None,
+    ):
+        self.backend_port = backend_port
+        self.listen_port = listen_port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_port is not None:
+            result['BackendPort'] = self.backend_port
+        if self.listen_port is not None:
+            result['ListenPort'] = self.listen_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendPort') is not None:
+            self.backend_port = m.get('BackendPort')
+        if m.get('ListenPort') is not None:
+            self.listen_port = m.get('ListenPort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
 class DescribeDomainDetailResponseBodyRedirectBackends(TeaModel):
     def __init__(
         self,
@@ -16811,6 +16904,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self,
         back_up_backend_list: List[str] = None,
         backend_list: List[str] = None,
+        backend_ports: List[DescribeDomainDetailResponseBodyRedirectBackendPorts] = None,
         backends: List[DescribeDomainDetailResponseBodyRedirectBackends] = None,
         backup_backends: List[DescribeDomainDetailResponseBodyRedirectBackupBackends] = None,
         connect_timeout: int = None,
@@ -16829,6 +16923,7 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
     ):
         self.back_up_backend_list = back_up_backend_list
         self.backend_list = backend_list
+        self.backend_ports = backend_ports
         # An array of addresses of origin servers.
         self.backends = backends
         # An array of HTTPS listener ports.
@@ -16884,6 +16979,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self.xff_proto = xff_proto
 
     def validate(self):
+        if self.backend_ports:
+            for k in self.backend_ports:
+                if k:
+                    k.validate()
         if self.backends:
             for k in self.backends:
                 if k:
@@ -16907,6 +17006,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['BackUpBackendList'] = self.back_up_backend_list
         if self.backend_list is not None:
             result['BackendList'] = self.backend_list
+        result['BackendPorts'] = []
+        if self.backend_ports is not None:
+            for k in self.backend_ports:
+                result['BackendPorts'].append(k.to_map() if k else None)
         result['Backends'] = []
         if self.backends is not None:
             for k in self.backends:
@@ -16951,6 +17054,11 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.back_up_backend_list = m.get('BackUpBackendList')
         if m.get('BackendList') is not None:
             self.backend_list = m.get('BackendList')
+        self.backend_ports = []
+        if m.get('BackendPorts') is not None:
+            for k in m.get('BackendPorts'):
+                temp_model = DescribeDomainDetailResponseBodyRedirectBackendPorts()
+                self.backend_ports.append(temp_model.from_map(k))
         self.backends = []
         if m.get('Backends') is not None:
             for k in m.get('Backends'):
@@ -37597,6 +37705,45 @@ class ModifyDomainRequestListen(TeaModel):
         return self
 
 
+class ModifyDomainRequestRedirectBackendPorts(TeaModel):
+    def __init__(
+        self,
+        backend_port: int = None,
+        listen_port: int = None,
+        protocol: str = None,
+    ):
+        self.backend_port = backend_port
+        self.listen_port = listen_port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend_port is not None:
+            result['BackendPort'] = self.backend_port
+        if self.listen_port is not None:
+            result['ListenPort'] = self.listen_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendPort') is not None:
+            self.backend_port = m.get('BackendPort')
+        if m.get('ListenPort') is not None:
+            self.listen_port = m.get('ListenPort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
 class ModifyDomainRequestRedirectRequestHeaders(TeaModel):
     def __init__(
         self,
@@ -37635,6 +37782,7 @@ class ModifyDomainRequestRedirectRequestHeaders(TeaModel):
 class ModifyDomainRequestRedirect(TeaModel):
     def __init__(
         self,
+        backend_ports: List[ModifyDomainRequestRedirectBackendPorts] = None,
         backends: List[str] = None,
         backup_backends: List[str] = None,
         cname_enabled: bool = None,
@@ -37653,6 +37801,7 @@ class ModifyDomainRequestRedirect(TeaModel):
         write_timeout: int = None,
         xff_proto: bool = None,
     ):
+        self.backend_ports = backend_ports
         # The IP addresses or domain names of the origin server. You cannot specify both IP addresses and domain names. If you specify domain names, the domain names can be resolved only to IPv4 addresses.
         # 
         # *   If you specify IP addresses, specify the value in the **["ip1","ip2",...]** format. You can enter up to 20 IP addresses.
@@ -37728,6 +37877,10 @@ class ModifyDomainRequestRedirect(TeaModel):
         self.xff_proto = xff_proto
 
     def validate(self):
+        if self.backend_ports:
+            for k in self.backend_ports:
+                if k:
+                    k.validate()
         if self.request_headers:
             for k in self.request_headers:
                 if k:
@@ -37739,6 +37892,10 @@ class ModifyDomainRequestRedirect(TeaModel):
             return _map
 
         result = dict()
+        result['BackendPorts'] = []
+        if self.backend_ports is not None:
+            for k in self.backend_ports:
+                result['BackendPorts'].append(k.to_map() if k else None)
         if self.backends is not None:
             result['Backends'] = self.backends
         if self.backup_backends is not None:
@@ -37779,6 +37936,11 @@ class ModifyDomainRequestRedirect(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.backend_ports = []
+        if m.get('BackendPorts') is not None:
+            for k in m.get('BackendPorts'):
+                temp_model = ModifyDomainRequestRedirectBackendPorts()
+                self.backend_ports.append(temp_model.from_map(k))
         if m.get('Backends') is not None:
             self.backends = m.get('Backends')
         if m.get('BackupBackends') is not None:
