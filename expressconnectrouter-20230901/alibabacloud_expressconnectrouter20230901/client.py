@@ -3421,6 +3421,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_with_options_async(request, runtime)
 
+    def modify_express_connect_router_association_with_options(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse:
+        """
+        @summary 修改专线网关关联的属性
+        
+        @param request: ModifyExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterAssociationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.association_id):
+            body['AssociationId'] = request.association_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectRouterAssociation',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_express_connect_router_association_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse:
+        """
+        @summary 修改专线网关关联的属性
+        
+        @param request: ModifyExpressConnectRouterAssociationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterAssociationResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.association_id):
+            body['AssociationId'] = request.association_id
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectRouterAssociation',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_express_connect_router_association(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationRequest,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse:
+        """
+        @summary 修改专线网关关联的属性
+        
+        @param request: ModifyExpressConnectRouterAssociationRequest
+        @return: ModifyExpressConnectRouterAssociationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_express_connect_router_association_with_options(request, runtime)
+
+    async def modify_express_connect_router_association_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationRequest,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationResponse:
+        """
+        @summary 修改专线网关关联的属性
+        
+        @param request: ModifyExpressConnectRouterAssociationRequest
+        @return: ModifyExpressConnectRouterAssociationResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_express_connect_router_association_with_options_async(request, runtime)
+
     def modify_express_connect_router_association_allowed_prefix_with_options(
         self,
         request: express_connect_router_20230901_models.ModifyExpressConnectRouterAssociationAllowedPrefixRequest,
@@ -3540,6 +3652,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_express_connect_router_association_allowed_prefix_with_options_async(request, runtime)
+
+    def modify_express_connect_router_child_instance_with_options(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse:
+        """
+        @summary 修改专线网关子实例的属性
+        
+        @param request: ModifyExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterChildInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.child_instance_id):
+            body['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            body['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectRouterChildInstance',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_express_connect_router_child_instance_with_options_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse:
+        """
+        @summary 修改专线网关子实例的属性
+        
+        @param request: ModifyExpressConnectRouterChildInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExpressConnectRouterChildInstanceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.child_instance_id):
+            body['ChildInstanceId'] = request.child_instance_id
+        if not UtilClient.is_unset(request.child_instance_type):
+            body['ChildInstanceType'] = request.child_instance_type
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ecr_id):
+            body['EcrId'] = request.ecr_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyExpressConnectRouterChildInstance',
+            version='2023-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_express_connect_router_child_instance(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceRequest,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse:
+        """
+        @summary 修改专线网关子实例的属性
+        
+        @param request: ModifyExpressConnectRouterChildInstanceRequest
+        @return: ModifyExpressConnectRouterChildInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_express_connect_router_child_instance_with_options(request, runtime)
+
+    async def modify_express_connect_router_child_instance_async(
+        self,
+        request: express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceRequest,
+    ) -> express_connect_router_20230901_models.ModifyExpressConnectRouterChildInstanceResponse:
+        """
+        @summary 修改专线网关子实例的属性
+        
+        @param request: ModifyExpressConnectRouterChildInstanceRequest
+        @return: ModifyExpressConnectRouterChildInstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_express_connect_router_child_instance_with_options_async(request, runtime)
 
     def modify_express_connect_router_inter_region_transit_mode_with_options(
         self,
