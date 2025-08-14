@@ -1,3 +1,7 @@
+2025-08-14 Version: 6.1.3
+- Update API DeleteSecurityProxy: add request parameters trimSql.
+
+
 2025-08-05 Version: 6.2.0
 - Support API AddDnsFirewallPolicy.
 - Support API AddPrivateDnsDomainName.
