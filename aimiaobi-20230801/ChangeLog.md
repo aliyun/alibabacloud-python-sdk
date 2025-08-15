@@ -1,3 +1,12 @@
+2025-08-15 Version: 1.33.0
+- Support API DeleteFactAuditUrl.
+- Support API GetFactAuditUrl.
+- Support API SubmitFactAuditUrl.
+- Update API AddAuditTerms: add request parameters ExceptionWord.
+- Update API EditAuditTerms: add request parameters ExceptionWord.
+- Update API ListAuditTerms: add response parameters Body.Data.$.ExceptionWord.
+
+
 2025-08-05 Version: 1.32.2
 - Generated python 2023-08-01 for AiMiaoBi.
 

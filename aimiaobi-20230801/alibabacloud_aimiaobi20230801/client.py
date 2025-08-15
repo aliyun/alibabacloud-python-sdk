@@ -43,18 +43,24 @@ class Client(OpenApiClient):
 
     def add_audit_terms_with_options(
         self,
-        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+        tmp_req: ai_miao_bi_20230801_models.AddAuditTermsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
         """
         @summary 添加审核自定义词库记录
         
-        @param request: AddAuditTermsRequest
+        @param tmp_req: AddAuditTermsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddAuditTermsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AddAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exception_word):
+            request.exception_word_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exception_word, 'ExceptionWord', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exception_word_shrink):
+            body['ExceptionWord'] = request.exception_word_shrink
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.suggest_word):
@@ -84,18 +90,24 @@ class Client(OpenApiClient):
 
     async def add_audit_terms_with_options_async(
         self,
-        request: ai_miao_bi_20230801_models.AddAuditTermsRequest,
+        tmp_req: ai_miao_bi_20230801_models.AddAuditTermsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.AddAuditTermsResponse:
         """
         @summary 添加审核自定义词库记录
         
-        @param request: AddAuditTermsRequest
+        @param tmp_req: AddAuditTermsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: AddAuditTermsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.AddAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exception_word):
+            request.exception_word_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exception_word, 'ExceptionWord', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exception_word_shrink):
+            body['ExceptionWord'] = request.exception_word_shrink
         if not UtilClient.is_unset(request.keyword):
             body['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.suggest_word):
@@ -2377,6 +2389,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_docs_with_options_async(request, runtime)
 
+    def delete_fact_audit_url_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse:
+        """
+        @summary 删除指定的用于事实性审核的 URL。
+        
+        @param request: DeleteFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_fact_audit_url_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse:
+        """
+        @summary 删除指定的用于事实性审核的 URL。
+        
+        @param request: DeleteFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_fact_audit_url(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse:
+        """
+        @summary 删除指定的用于事实性审核的 URL。
+        
+        @param request: DeleteFactAuditUrlRequest
+        @return: DeleteFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_fact_audit_url_with_options(request, runtime)
+
+    async def delete_fact_audit_url_async(
+        self,
+        request: ai_miao_bi_20230801_models.DeleteFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.DeleteFactAuditUrlResponse:
+        """
+        @summary 删除指定的用于事实性审核的 URL。
+        
+        @param request: DeleteFactAuditUrlRequest
+        @return: DeleteFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_fact_audit_url_with_options_async(request, runtime)
+
     def delete_generated_content_with_options(
         self,
         request: ai_miao_bi_20230801_models.DeleteGeneratedContentRequest,
@@ -3011,18 +3123,24 @@ class Client(OpenApiClient):
 
     def edit_audit_terms_with_options(
         self,
-        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+        tmp_req: ai_miao_bi_20230801_models.EditAuditTermsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
         """
         @summary 编辑审核自定义词库记录
         
-        @param request: EditAuditTermsRequest
+        @param tmp_req: EditAuditTermsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EditAuditTermsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.EditAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exception_word):
+            request.exception_word_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exception_word, 'ExceptionWord', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exception_word_shrink):
+            body['ExceptionWord'] = request.exception_word_shrink
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.keyword):
@@ -3054,18 +3172,24 @@ class Client(OpenApiClient):
 
     async def edit_audit_terms_with_options_async(
         self,
-        request: ai_miao_bi_20230801_models.EditAuditTermsRequest,
+        tmp_req: ai_miao_bi_20230801_models.EditAuditTermsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ai_miao_bi_20230801_models.EditAuditTermsResponse:
         """
         @summary 编辑审核自定义词库记录
         
-        @param request: EditAuditTermsRequest
+        @param tmp_req: EditAuditTermsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: EditAuditTermsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.EditAuditTermsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.exception_word):
+            request.exception_word_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exception_word, 'ExceptionWord', 'json')
         body = {}
+        if not UtilClient.is_unset(request.exception_word_shrink):
+            body['ExceptionWord'] = request.exception_word_shrink
         if not UtilClient.is_unset(request.id):
             body['Id'] = request.id
         if not UtilClient.is_unset(request.keyword):
@@ -6420,6 +6544,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_enterprise_voc_analysis_task_with_options_async(request, runtime)
+
+    def get_fact_audit_url_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetFactAuditUrlResponse:
+        """
+        @summary 获取当前正用于事实性审核的信源 URL。
+        
+        @param request: GetFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetFactAuditUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_fact_audit_url_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetFactAuditUrlResponse:
+        """
+        @summary 获取当前正用于事实性审核的信源 URL。
+        
+        @param request: GetFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetFactAuditUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_fact_audit_url(
+        self,
+        request: ai_miao_bi_20230801_models.GetFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.GetFactAuditUrlResponse:
+        """
+        @summary 获取当前正用于事实性审核的信源 URL。
+        
+        @param request: GetFactAuditUrlRequest
+        @return: GetFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_fact_audit_url_with_options(request, runtime)
+
+    async def get_fact_audit_url_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.GetFactAuditUrlResponse:
+        """
+        @summary 获取当前正用于事实性审核的信源 URL。
+        
+        @param request: GetFactAuditUrlRequest
+        @return: GetFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_fact_audit_url_with_options_async(request, runtime)
 
     def get_file_content_length_with_options(
         self,
@@ -18216,6 +18436,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_export_terms_task_with_options_async(request, runtime)
+
+    def submit_fact_audit_url_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse:
+        """
+        @summary 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+        
+        @param request: SubmitFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_fact_audit_url_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitFactAuditUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse:
+        """
+        @summary 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+        
+        @param request: SubmitFactAuditUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitFactAuditUrlResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitFactAuditUrl',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_fact_audit_url(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse:
+        """
+        @summary 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+        
+        @param request: SubmitFactAuditUrlRequest
+        @return: SubmitFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_fact_audit_url_with_options(request, runtime)
+
+    async def submit_fact_audit_url_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitFactAuditUrlRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitFactAuditUrlResponse:
+        """
+        @summary 妙笔为您提供了新的事实性审核能力，在联网搜索并判断正误的前提下，还支持用户自定义配置搜索来源 URL。
+        
+        @param request: SubmitFactAuditUrlRequest
+        @return: SubmitFactAuditUrlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_fact_audit_url_with_options_async(request, runtime)
 
     def submit_import_terms_task_with_options(
         self,

@@ -317,11 +317,13 @@ class WritingStyleTemplateDefine(TeaModel):
 class AddAuditTermsRequest(TeaModel):
     def __init__(
         self,
+        exception_word: List[str] = None,
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
         workspace_id: str = None,
     ):
+        self.exception_word = exception_word
         self.keyword = keyword
         self.suggest_word = suggest_word
         self.terms_desc = terms_desc
@@ -337,6 +339,8 @@ class AddAuditTermsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exception_word is not None:
+            result['ExceptionWord'] = self.exception_word
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.suggest_word is not None:
@@ -349,6 +353,60 @@ class AddAuditTermsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExceptionWord') is not None:
+            self.exception_word = m.get('ExceptionWord')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('SuggestWord') is not None:
+            self.suggest_word = m.get('SuggestWord')
+        if m.get('TermsDesc') is not None:
+            self.terms_desc = m.get('TermsDesc')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class AddAuditTermsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        exception_word_shrink: str = None,
+        keyword: str = None,
+        suggest_word: str = None,
+        terms_desc: str = None,
+        workspace_id: str = None,
+    ):
+        self.exception_word_shrink = exception_word_shrink
+        self.keyword = keyword
+        self.suggest_word = suggest_word
+        self.terms_desc = terms_desc
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exception_word_shrink is not None:
+            result['ExceptionWord'] = self.exception_word_shrink
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.suggest_word is not None:
+            result['SuggestWord'] = self.suggest_word
+        if self.terms_desc is not None:
+            result['TermsDesc'] = self.terms_desc
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceptionWord') is not None:
+            self.exception_word_shrink = m.get('ExceptionWord')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('SuggestWord') is not None:
@@ -5053,6 +5111,140 @@ class DeleteDocsResponse(TeaModel):
         return self
 
 
+class DeleteFactAuditUrlRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class DeleteFactAuditUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteFactAuditUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteFactAuditUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteFactAuditUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteGeneratedContentRequest(TeaModel):
     def __init__(
         self,
@@ -6024,12 +6216,14 @@ class DownloadAuditNoteResponse(TeaModel):
 class EditAuditTermsRequest(TeaModel):
     def __init__(
         self,
+        exception_word: List[str] = None,
         id: str = None,
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
         workspace_id: str = None,
     ):
+        self.exception_word = exception_word
         self.id = id
         self.keyword = keyword
         self.suggest_word = suggest_word
@@ -6046,6 +6240,8 @@ class EditAuditTermsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exception_word is not None:
+            result['ExceptionWord'] = self.exception_word
         if self.id is not None:
             result['Id'] = self.id
         if self.keyword is not None:
@@ -6060,6 +6256,66 @@ class EditAuditTermsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExceptionWord') is not None:
+            self.exception_word = m.get('ExceptionWord')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('SuggestWord') is not None:
+            self.suggest_word = m.get('SuggestWord')
+        if m.get('TermsDesc') is not None:
+            self.terms_desc = m.get('TermsDesc')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class EditAuditTermsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        exception_word_shrink: str = None,
+        id: str = None,
+        keyword: str = None,
+        suggest_word: str = None,
+        terms_desc: str = None,
+        workspace_id: str = None,
+    ):
+        self.exception_word_shrink = exception_word_shrink
+        self.id = id
+        self.keyword = keyword
+        self.suggest_word = suggest_word
+        self.terms_desc = terms_desc
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exception_word_shrink is not None:
+            result['ExceptionWord'] = self.exception_word_shrink
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.suggest_word is not None:
+            result['SuggestWord'] = self.suggest_word
+        if self.terms_desc is not None:
+            result['TermsDesc'] = self.terms_desc
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceptionWord') is not None:
+            self.exception_word_shrink = m.get('ExceptionWord')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Keyword') is not None:
@@ -13470,6 +13726,134 @@ class GetEnterpriseVocAnalysisTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEnterpriseVocAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFactAuditUrlRequest(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetFactAuditUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[str] = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        # This parameter is required.
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFactAuditUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFactAuditUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFactAuditUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21447,11 +21831,13 @@ class ListAuditTermsRequest(TeaModel):
 class ListAuditTermsResponseBodyData(TeaModel):
     def __init__(
         self,
+        exception_word: List[str] = None,
         id: str = None,
         keyword: str = None,
         suggest_word: str = None,
         terms_desc: str = None,
     ):
+        self.exception_word = exception_word
         self.id = id
         self.keyword = keyword
         self.suggest_word = suggest_word
@@ -21466,6 +21852,8 @@ class ListAuditTermsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.exception_word is not None:
+            result['ExceptionWord'] = self.exception_word
         if self.id is not None:
             result['Id'] = self.id
         if self.keyword is not None:
@@ -21478,6 +21866,8 @@ class ListAuditTermsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExceptionWord') is not None:
+            self.exception_word = m.get('ExceptionWord')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Keyword') is not None:
@@ -52439,6 +52829,140 @@ class SubmitExportTermsTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitExportTermsTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitFactAuditUrlRequest(TeaModel):
+    def __init__(
+        self,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitFactAuditUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitFactAuditUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitFactAuditUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitFactAuditUrlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
