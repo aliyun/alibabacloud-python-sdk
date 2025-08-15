@@ -4,6 +4,172 @@ from Tea.model import TeaModel
 from typing import Dict, List, BinaryIO
 
 
+class AddressCompareIntlRequest(TeaModel):
+    def __init__(
+        self,
+        default_country: str = None,
+        product_code: str = None,
+        text_1: str = None,
+        text_2: str = None,
+    ):
+        # This parameter is required.
+        self.default_country = default_country
+        # ADD_VERIFY
+        # 
+        # This parameter is required.
+        self.product_code = product_code
+        # This parameter is required.
+        self.text_1 = text_1
+        # This parameter is required.
+        self.text_2 = text_2
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.default_country is not None:
+            result['DefaultCountry'] = self.default_country
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.text_1 is not None:
+            result['Text1'] = self.text_1
+        if self.text_2 is not None:
+            result['Text2'] = self.text_2
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DefaultCountry') is not None:
+            self.default_country = m.get('DefaultCountry')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Text1') is not None:
+            self.text_1 = m.get('Text1')
+        if m.get('Text2') is not None:
+            self.text_2 = m.get('Text2')
+        return self
+
+
+class AddressCompareIntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+    ):
+        self.data = data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        return self
+
+
+class AddressCompareIntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: AddressCompareIntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AddressCompareIntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class AddressCompareIntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddressCompareIntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddressCompareIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddressVerifyIntlRequest(TeaModel):
     def __init__(
         self,
@@ -19,20 +185,40 @@ class AddressVerifyIntlRequest(TeaModel):
         text: str = None,
         verify_type: str = None,
     ):
+        # Verification address type:
+        # - “0”: Text address
+        # - “1”: Latitude and longitude
+        # 
         # This parameter is required.
         self.address_type = address_type
+        # Default city
         self.default_city = default_city
+        # Country name, currently only supports: China
+        # 
         # This parameter is required.
         self.default_country = default_country
+        # Default district
         self.default_district = default_district
+        # Default province
         self.default_province = default_province
+        # Latitude.
         self.latitude = latitude
+        # Longitude.
         self.longitude = longitude
+        # Supports Chinese mobile phone numbers.
+        # 
         # This parameter is required.
         self.mobile = mobile
+        # Fixed value: ADD_VERIFY_PRO
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # Detailed address text content
         self.text = text
+        # Address verification method:
+        # - HOME: Home address verification
+        # - WORK: Work address verification
+        # 
         # This parameter is required.
         self.verify_type = verify_type
 
@@ -105,10 +291,20 @@ class AddressVerifyIntlResponseBodyResultObject(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # Address verification details.
         self.address_info = address_info
+        # Operator name:
+        # - CMCC: China Mobile
+        # - CTCC: China Telecom
+        # - CUCC: China Unicom
         self.isp_name = isp_name
+        # Verification result, values:
+        # - Y: Yes, the verified address distance is less than or equal to 10KM.
+        # - N: No, the verified address distance is greater than 10KM.
         self.passed = passed
+        # Authentication result description.
         self.sub_code = sub_code
+        # Unique identifier for the authentication request.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -155,9 +351,13 @@ class AddressVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result_object: AddressVerifyIntlResponseBodyResultObject = None,
     ):
+        # Return code.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -231,6 +431,197 @@ class AddressVerifyIntlResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AddressVerifyIntlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddressVerifyV2IntlRequest(TeaModel):
+    def __init__(
+        self,
+        device_token: str = None,
+        mobile: str = None,
+        product_code: str = None,
+        reg_country: str = None,
+        text: str = None,
+        verify_type: str = None,
+    ):
+        # This parameter is required.
+        self.device_token = device_token
+        # This parameter is required.
+        self.mobile = mobile
+        # This parameter is required.
+        self.product_code = product_code
+        # This parameter is required.
+        self.reg_country = reg_country
+        # This parameter is required.
+        self.text = text
+        # This parameter is required.
+        self.verify_type = verify_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.device_token is not None:
+            result['DeviceToken'] = self.device_token
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.reg_country is not None:
+            result['RegCountry'] = self.reg_country
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.verify_type is not None:
+            result['VerifyType'] = self.verify_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeviceToken') is not None:
+            self.device_token = m.get('DeviceToken')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('RegCountry') is not None:
+            self.reg_country = m.get('RegCountry')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('VerifyType') is not None:
+            self.verify_type = m.get('VerifyType')
+        return self
+
+
+class AddressVerifyV2IntlResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        biz_code: str = None,
+        detail: str = None,
+        transaction_id: str = None,
+    ):
+        self.biz_code = biz_code
+        self.detail = detail
+        self.transaction_id = transaction_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_code is not None:
+            result['BizCode'] = self.biz_code
+        if self.detail is not None:
+            result['Detail'] = self.detail
+        if self.transaction_id is not None:
+            result['TransactionId'] = self.transaction_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizCode') is not None:
+            self.biz_code = m.get('BizCode')
+        if m.get('Detail') is not None:
+            self.detail = m.get('Detail')
+        if m.get('TransactionId') is not None:
+            self.transaction_id = m.get('TransactionId')
+        return self
+
+
+class AddressVerifyV2IntlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+        result: AddressVerifyV2IntlResponseBodyResult = None,
+    ):
+        self.code = code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            temp_model = AddressVerifyV2IntlResponseBodyResult()
+            self.result = temp_model.from_map(m['Result'])
+        return self
+
+
+class AddressVerifyV2IntlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddressVerifyV2IntlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddressVerifyV2IntlResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -530,14 +921,29 @@ class CardOcrRequest(TeaModel):
         product_code: str = None,
         spoof: str = None,
     ):
+        # Document type.
         self.doc_type = doc_type
+        # Whether to perform face quality detection on the document
+        # - T: Indicates that detection is needed
+        # - F: Indicates that detection is not needed (default F)
         self.id_face_quality = id_face_quality
+        # Base64 on the front of the document image
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # URL of the front side of the document image
         self.id_ocr_picture_url = id_ocr_picture_url
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Merchant user ID or other identifiers that can be used to identify specific users, such as phone numbers, email addresses, etc. It is strongly recommended to pre-desensitize the value of the userId field, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
+        # Whether to perform document OCR
+        # - T: Indicates that document OCR is required (default T)
+        # - F: Indicates that it is not required
         self.ocr = ocr
+        # Product code
         self.product_code = product_code
+        # Whether to enable anti-counterfeiting detection
+        # - T: Indicates to enable anti-counterfeiting
+        # - F: Indicates to disable (default F)
         self.spoof = spoof
 
     def validate(self):
@@ -601,10 +1007,18 @@ class CardOcrResponseBodyResult(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # Document recognition result
         self.ext_card_info = ext_card_info
+        # Additional result information
         self.ext_id_info = ext_id_info
+        # Whether the authentication passed.
+        # 
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
+        # Sub-result code.
         self.sub_code = sub_code
+        # Unique identifier for the authentication request
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -651,10 +1065,13 @@ class CardOcrResponseBody(TeaModel):
         request_id: str = None,
         result: CardOcrResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -741,10 +1158,17 @@ class CheckResultRequest(TeaModel):
         return_five_category_spoof_result: str = None,
         transaction_id: str = None,
     ):
+        # Return additional information.
         self.extra_image_control_list = extra_image_control_list
+        # Whether to return images.
+        # - Y: Return
+        # - N: Do not return
         self.is_return_image = is_return_image
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Whether to return anti-fraud detection results.
         self.return_five_category_spoof_result = return_five_category_spoof_result
+        # Authentication ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -795,13 +1219,24 @@ class CheckResultResponseBodyResult(TeaModel):
         passed: str = None,
         sub_code: str = None,
     ):
+        # Authentication result.
         self.ekyc_result = ekyc_result
+        # Extended basic information.
         self.ext_basic_info = ext_basic_info
+        # Face information.
         self.ext_face_info = ext_face_info
+        # ID information.
         self.ext_id_info = ext_id_info
+        # Extended information
         self.ext_info = ext_info
+        # Risk information.
         self.ext_risk_info = ext_risk_info
+        # Whether the authentication is passed.
+        # 
+        # - Y: Passed
+        # - N: Not passed
         self.passed = passed
+        # Sub-result code.
         self.sub_code = sub_code
 
     def validate(self):
@@ -860,10 +1295,13 @@ class CheckResultResponseBody(TeaModel):
         request_id: str = None,
         result: CheckResultResponseBodyResult = None,
     ):
+        # Return code.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -947,7 +1385,9 @@ class CheckVerifyLogRequest(TeaModel):
         merchant_biz_id: str = None,
         transaction_id: str = None,
     ):
+        # A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. Supports a combination of letters and numbers, with a maximum length of 32 characters. Ensure uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # The unique identifier for the entire authentication process. This value needs to be obtained by calling Initialize.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -979,20 +1419,70 @@ class CheckVerifyLogResponseBodyResult(TeaModel):
         self,
         ext_info: str = None,
         interrupt_page: str = None,
+        interrupt_page_en: str = None,
         log_info: List[str] = None,
+        log_info_en: List[str] = None,
         log_statistics_info: str = None,
         passed: str = None,
         sub_code: str = None,
         verify_error_code: str = None,
         verify_status: str = None,
     ):
+        # Extended information
         self.ext_info = ext_info
+        # Records the last page where the authentication was interrupted.
+        # 
+        # - Page not started
+        # - OCR guide page
+        # - OCR camera authorization
+        # - OCR document capture page
+        # - OCR recognition loading
+        # - OCR recognition result editing page
+        # - OCR recognition result editing loading
+        # - Liveness detection guide page
+        # - Liveness detection camera authorization page
+        # - Liveness detection page
+        # - Liveness detection fallback page
+        # - Liveness detection retry
+        # - Liveness detection loading
         self.interrupt_page = interrupt_page
+        self.interrupt_page_en = interrupt_page_en
+        # SDK operation log details
         self.log_info = log_info
+        self.log_info_en = log_info_en
+        # SDK operation log statistics details
         self.log_statistics_info = log_statistics_info
+        # Whether the authentication passed.
+        # 
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
+        # Sub-result code
         self.sub_code = sub_code
+        # Authentication interruption error codes
+        # 
+        # - 1000: The user completed the face scanning process, and the suggested authentication result is pass
+        # - 1001: The user completed the face scanning process, and the suggested authentication result is fail
+        # - 1002: System error
+        # - 1003: SDK initialization failed, please check if the client time is correct
+        # - 1004: Camera permission error
+        # - 1005: Network error
+        # - 1006: User exited
+        # - 1007: Invalid TransactionId
+        # - 1009: Client timestamp error
+        # - 1011: Incorrect document type submitted
+        # - 1012: Missing or format validation failure of key information on the recognized document
+        # - 1013: Poor image quality
+        # - 1014: Exceeded the upper limit of errors
+        # - 1015: Android system version too low
+        # - 1016: Camera permission not obtained
+        # - 9999: Suspected authentication process interruption
         self.verify_error_code = verify_error_code
+        # Authentication status, values:
+        # 
+        # - 0: finished (authentication completed)
+        # - 1: unfinished (authentication interrupted)
+        # - 2: notstart (authentication not started)
         self.verify_status = verify_status
 
     def validate(self):
@@ -1008,8 +1498,12 @@ class CheckVerifyLogResponseBodyResult(TeaModel):
             result['ExtInfo'] = self.ext_info
         if self.interrupt_page is not None:
             result['InterruptPage'] = self.interrupt_page
+        if self.interrupt_page_en is not None:
+            result['InterruptPageEn'] = self.interrupt_page_en
         if self.log_info is not None:
             result['LogInfo'] = self.log_info
+        if self.log_info_en is not None:
+            result['LogInfoEn'] = self.log_info_en
         if self.log_statistics_info is not None:
             result['LogStatisticsInfo'] = self.log_statistics_info
         if self.passed is not None:
@@ -1028,8 +1522,12 @@ class CheckVerifyLogResponseBodyResult(TeaModel):
             self.ext_info = m.get('ExtInfo')
         if m.get('InterruptPage') is not None:
             self.interrupt_page = m.get('InterruptPage')
+        if m.get('InterruptPageEn') is not None:
+            self.interrupt_page_en = m.get('InterruptPageEn')
         if m.get('LogInfo') is not None:
             self.log_info = m.get('LogInfo')
+        if m.get('LogInfoEn') is not None:
+            self.log_info_en = m.get('LogInfoEn')
         if m.get('LogStatisticsInfo') is not None:
             self.log_statistics_info = m.get('LogStatisticsInfo')
         if m.get('Passed') is not None:
@@ -1051,10 +1549,13 @@ class CheckVerifyLogResponseBody(TeaModel):
         request_id: str = None,
         result: CheckVerifyLogResponseBodyResult = None,
     ):
+        # Backend error code.
         self.code = code
+        # Return message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -1141,12 +1642,35 @@ class CredentialVerifyIntlRequest(TeaModel):
         image_url: str = None,
         product_code: str = None,
     ):
+        # Credential name (numeric code):
+        # 
+        # - Starting with 03: Enterprise Qualification
+        #   - 0301: Mainland China Business License
+        # - Starting with 04, Transaction Voucher
+        #   - 0401: Bank Statement
+        #   - 0402: Pay Slip
+        #   - 0403: Utility Bill
+        #   - 0405: Credit Card Statement
+        #   - 0499: Others
+        # 
         # This parameter is required.
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 03: Enterprise Qualification
+        # - 04: Transaction Voucher
+        # 
         # This parameter is required.
         self.cred_type = cred_type
+        # Image input stream.
+        # > Choose either ImageUrl or ImageFile.
         self.image_file = image_file
+        # The URL of the image.
+        # > Choose either ImageUrl or ImageFile.
         self.image_url = image_url
+        # Invocation mode:
+        # - ANTI_FAKE_CHECK: Image quality and tampering detection.
+        # 
         # This parameter is required.
         self.product_code = product_code
 
@@ -1195,12 +1719,35 @@ class CredentialVerifyIntlAdvanceRequest(TeaModel):
         image_url: str = None,
         product_code: str = None,
     ):
+        # Credential name (numeric code):
+        # 
+        # - Starting with 03: Enterprise Qualification
+        #   - 0301: Mainland China Business License
+        # - Starting with 04, Transaction Voucher
+        #   - 0401: Bank Statement
+        #   - 0402: Pay Slip
+        #   - 0403: Utility Bill
+        #   - 0405: Credit Card Statement
+        #   - 0499: Others
+        # 
         # This parameter is required.
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 03: Enterprise Qualification
+        # - 04: Transaction Voucher
+        # 
         # This parameter is required.
         self.cred_type = cred_type
+        # Image input stream.
+        # > Choose either ImageUrl or ImageFile.
         self.image_file_object = image_file_object
+        # The URL of the image.
+        # > Choose either ImageUrl or ImageFile.
         self.image_url = image_url
+        # Invocation mode:
+        # - ANTI_FAKE_CHECK: Image quality and tampering detection.
+        # 
         # This parameter is required.
         self.product_code = product_code
 
@@ -1248,9 +1795,22 @@ class CredentialVerifyIntlResponseBodyResultObject(TeaModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # Other information in JSON format.
         self.material_info = material_info
+        # Risk result:
+        # 
+        # - **0**: Low risk
+        # - **1**: High risk
+        # - **2**: Suspicious
         self.result = result
+        # Risk score map
         self.risk_score = risk_score
+        # Risk tags, separated by commas (,). Includes:
+        # 
+        # - PS: Image manipulation (Photoshop)
+        # - SCREEN_PHOTO: Screen recapture
+        # - SCREENSHOT: Screenshot
+        # - ORIGINAL_PHOTO: Not original image
         self.risk_tag = risk_tag
 
     def validate(self):
@@ -1293,9 +1853,13 @@ class CredentialVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result_object: CredentialVerifyIntlResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -1566,8 +2130,11 @@ class DeleteVerifyResultRequest(TeaModel):
         delete_type: str = None,
         transaction_id: str = None,
     ):
+        # Whether to depend on the query interface when deleting data
         self.delete_after_query = delete_after_query
+        # Type of data to be deleted
         self.delete_type = delete_type
+        # Unique identifier of the authentication request
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -1604,7 +2171,9 @@ class DeleteVerifyResultResponseBodyResult(TeaModel):
         delete_result: str = None,
         transaction_id: str = None,
     ):
+        # Deletion result. Y indicates successful deletion, N indicates failed deletion
         self.delete_result = delete_result
+        # Unique identifier of the authentication request
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -1639,9 +2208,13 @@ class DeleteVerifyResultResponseBody(TeaModel):
         request_id: str = None,
         result: DeleteVerifyResultResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
+        # ID of this request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -1734,16 +2307,33 @@ class DocOcrRequest(TeaModel):
         product_code: str = None,
         spoof: str = None,
     ):
+        # CardSide
         self.card_side = card_side
+        # Document type
         self.doc_type = doc_type
+        # Whether to perform ID face quality detection
+        # - T: Indicates that detection is required
+        # - F: Indicates that detection is not required (default F)
         self.id_face_quality = id_face_quality
+        # Base64 of the front side of the document image
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # URL of the front side of the document image
         self.id_ocr_picture_url = id_ocr_picture_url
+        # IdThreshold
         self.id_threshold = id_threshold
+        # A unique business identifier defined by the merchant, used for subsequent troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # A custom user ID in the business, please keep it unique.
         self.merchant_user_id = merchant_user_id
+        # Whether to perform document OCR
+        # - T: Indicates that document OCR is required
+        # - F: Indicates that document OCR is not required
         self.ocr = ocr
+        # Product code
         self.product_code = product_code
+        # Whether to enable anti-counterfeiting detection
+        # - T: Indicates that anti-counterfeiting is enabled
+        # - F: Indicates that anti-counterfeiting is disabled
         self.spoof = spoof
 
     def validate(self):
@@ -1814,9 +2404,16 @@ class DocOcrResponseBodyResult(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # Card and document recognition result	Only returned when the interface response is successful
         self.ext_id_info = ext_id_info
+        # Whether the authentication passed.
+        # 
+        # - Y: Passed
+        # - N: Not passed
         self.passed = passed
+        # Sub-result code
         self.sub_code = sub_code
+        # Unique identifier of the authentication request
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -1859,10 +2456,13 @@ class DocOcrResponseBody(TeaModel):
         request_id: str = None,
         result: DocOcrResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -4472,10 +5072,27 @@ class Mobile3MetaVerifyIntlRequest(TeaModel):
         product_code: str = None,
         user_name: str = None,
     ):
+        # ID number
+        # 
+        # - When paramType is set to normal, enter the plaintext
+        # - When paramType is set to md5, enter a 32-character lowercase md5 string
         self.identify_num = identify_num
+        # Mobile phone number.
+        # 
+        # - When paramType is set to normal, enter the plaintext
+        # - When paramType is set to md5, enter a 32-character lowercase md5 string
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: unencrypted
+        # - md5: md5 encrypted
         self.param_type = param_type
+        # The product solution to be integrated, with a fixed value: MOBILE_3META
         self.product_code = product_code
+        # Name
+        # 
+        # - When paramType is set to normal, enter the plaintext
+        # - When paramType is set to md5, enter a 32-character lowercase md5 string
         self.user_name = user_name
 
     def validate(self):
@@ -4521,8 +5138,25 @@ class Mobile3MetaVerifyIntlResponseBodyResult(TeaModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
+        # Verification result code.
+        # - 1: Verification consistent
+        # - 2: Verification inconsistent
+        # - 3: No record found
         self.biz_code = biz_code
+        # ISP name
+        # 
+        # - CMCC: China Mobile
+        # - CUCC: China Unicom
+        # - CTCC: China Telecom
         self.isp_name = isp_name
+        # Detailed verification results
+        # 
+        # - 101: Verification passed 
+        # - 201: Mobile number and name do not match, mobile number and ID number do not match 
+        # - 202: Mobile number and name match, but mobile number and ID number do not match 
+        # - 203: Mobile number and ID number match, but mobile number and name do not match 
+        # - 204: Other inconsistencies
+        # - 301: No record found
         self.sub_code = sub_code
 
     def validate(self):
@@ -4561,9 +5195,13 @@ class Mobile3MetaVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result: Mobile3MetaVerifyIntlResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):

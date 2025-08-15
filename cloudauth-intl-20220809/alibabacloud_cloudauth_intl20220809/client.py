@@ -122,13 +122,123 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def address_compare_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
+        """
+        @summary 地址相似比对
+        
+        @param request: AddressCompareIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressCompareIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.default_country):
+            query['DefaultCountry'] = request.default_country
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.text_1):
+            query['Text1'] = request.text_1
+        if not UtilClient.is_unset(request.text_2):
+            query['Text2'] = request.text_2
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressCompareIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressCompareIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def address_compare_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
+        """
+        @summary 地址相似比对
+        
+        @param request: AddressCompareIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressCompareIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.default_country):
+            query['DefaultCountry'] = request.default_country
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.text_1):
+            query['Text1'] = request.text_1
+        if not UtilClient.is_unset(request.text_2):
+            query['Text2'] = request.text_2
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressCompareIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressCompareIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def address_compare_intl(
+        self,
+        request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
+        """
+        @summary 地址相似比对
+        
+        @param request: AddressCompareIntlRequest
+        @return: AddressCompareIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.address_compare_intl_with_options(request, runtime)
+
+    async def address_compare_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
+        """
+        @summary 地址相似比对
+        
+        @param request: AddressCompareIntlRequest
+        @return: AddressCompareIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.address_compare_intl_with_options_async(request, runtime)
+
     def address_verify_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
-        @summary 地址核验
+        @summary Address Verification
+        
+        @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -183,7 +293,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
-        @summary 地址核验
+        @summary Address Verification
+        
+        @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -237,7 +349,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
-        @summary 地址核验
+        @summary Address Verification
+        
+        @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @return: AddressVerifyIntlResponse
@@ -250,13 +364,131 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyIntlResponse:
         """
-        @summary 地址核验
+        @summary Address Verification
+        
+        @description Based on the operator\\"s capabilities, input the phone number and address (or latitude and longitude) to verify whether the provided address is the user\\"s usual residence.
         
         @param request: AddressVerifyIntlRequest
         @return: AddressVerifyIntlResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.address_verify_intl_with_options_async(request, runtime)
+
+    def address_verify_v2intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyV2IntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressVerifyV2IntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.reg_country):
+            query['RegCountry'] = request.reg_country
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressVerifyV2Intl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def address_verify_v2intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyV2IntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddressVerifyV2IntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_token):
+            query['DeviceToken'] = request.device_token
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.reg_country):
+            query['RegCountry'] = request.reg_country
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        if not UtilClient.is_unset(request.verify_type):
+            query['VerifyType'] = request.verify_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddressVerifyV2Intl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def address_verify_v2intl(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyV2IntlRequest
+        @return: AddressVerifyV2IntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.address_verify_v2intl_with_options(request, runtime)
+
+    async def address_verify_v2intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
+    ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
+        """
+        @summary 地址核验
+        
+        @param request: AddressVerifyV2IntlRequest
+        @return: AddressVerifyV2IntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.address_verify_v2intl_with_options_async(request, runtime)
 
     def bank_meta_verify_intl_with_options(
         self,
@@ -402,7 +634,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
         
-        @summary 证件OCR识别纯服务端接口
+        @summary Pure server-side interface for document OCR recognition
         
         @param request: CardOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -458,7 +690,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
         
-        @summary 证件OCR识别纯服务端接口
+        @summary Pure server-side interface for document OCR recognition
         
         @param request: CardOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -513,7 +745,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
         
-        @summary 证件OCR识别纯服务端接口
+        @summary Pure server-side interface for document OCR recognition
         
         @param request: CardOcrRequest
         @return: CardOcrResponse
@@ -529,7 +761,7 @@ class Client(OpenApiClient):
         """
         @deprecated OpenAPI CardOcr is deprecated, please use Cloudauth-intl::2022-08-09::DocOcr instead.
         
-        @summary 证件OCR识别纯服务端接口
+        @summary Pure server-side interface for document OCR recognition
         
         @param request: CardOcrRequest
         @return: CardOcrResponse
@@ -544,7 +776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
         """
-        @summary 结果查询
+        @summary Result Query
         
         @param request: CheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -587,7 +819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
         """
-        @summary 结果查询
+        @summary Result Query
         
         @param request: CheckResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -629,7 +861,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckResultRequest,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
         """
-        @summary 结果查询
+        @summary Result Query
         
         @param request: CheckResultRequest
         @return: CheckResultResponse
@@ -642,7 +874,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckResultRequest,
     ) -> cloudauth_intl_20220809_models.CheckResultResponse:
         """
-        @summary 结果查询
+        @summary Result Query
         
         @param request: CheckResultRequest
         @return: CheckResultResponse
@@ -656,7 +888,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
         """
-        @summary 认证日志查询接口
+        @summary Authentication Log Query Interface
         
         @param request: CheckVerifyLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -693,7 +925,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
         """
-        @summary 认证日志查询接口
+        @summary Authentication Log Query Interface
         
         @param request: CheckVerifyLogRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -729,7 +961,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
     ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
         """
-        @summary 认证日志查询接口
+        @summary Authentication Log Query Interface
         
         @param request: CheckVerifyLogRequest
         @return: CheckVerifyLogResponse
@@ -742,7 +974,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CheckVerifyLogRequest,
     ) -> cloudauth_intl_20220809_models.CheckVerifyLogResponse:
         """
-        @summary 认证日志查询接口
+        @summary Authentication Log Query Interface
         
         @param request: CheckVerifyLogRequest
         @return: CheckVerifyLogResponse
@@ -756,7 +988,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
         
         @param request: CredentialVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -801,7 +1035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
         
         @param request: CredentialVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -845,7 +1081,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
         
         @param request: CredentialVerifyIntlRequest
         @return: CredentialVerifyIntlResponse
@@ -858,7 +1096,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.CredentialVerifyIntlResponse:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image quality, tampering, and forgery detection, and return the detection results.
         
         @param request: CredentialVerifyIntlRequest
         @return: CredentialVerifyIntlResponse
@@ -1158,7 +1398,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
         """
-        @summary 删除用户认证记录结果
+        @summary Delete user authentication record results
         
         @param request: DeleteVerifyResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1197,7 +1437,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
         """
-        @summary 删除用户认证记录结果
+        @summary Delete user authentication record results
         
         @param request: DeleteVerifyResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1235,7 +1475,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
         """
-        @summary 删除用户认证记录结果
+        @summary Delete user authentication record results
         
         @param request: DeleteVerifyResultRequest
         @return: DeleteVerifyResultResponse
@@ -1248,7 +1488,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeleteVerifyResultRequest,
     ) -> cloudauth_intl_20220809_models.DeleteVerifyResultResponse:
         """
-        @summary 删除用户认证记录结果
+        @summary Delete user authentication record results
         
         @param request: DeleteVerifyResultRequest
         @return: DeleteVerifyResultResponse
@@ -1262,7 +1502,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
         """
-        @summary 卡证ocr纯服务端
+        @summary Card and document OCR pure server-side
         
         @param request: DocOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1319,7 +1559,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
         """
-        @summary 卡证ocr纯服务端
+        @summary Card and document OCR pure server-side
         
         @param request: DocOcrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1375,7 +1615,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
         """
-        @summary 卡证ocr纯服务端
+        @summary Card and document OCR pure server-side
         
         @param request: DocOcrRequest
         @return: DocOcrResponse
@@ -1388,7 +1628,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrResponse:
         """
-        @summary 卡证ocr纯服务端
+        @summary Card and document OCR pure server-side
         
         @param request: DocOcrRequest
         @return: DocOcrResponse
@@ -2836,7 +3076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
         """
-        @summary 手机号三要素国际版接口
+        @summary International Version of Mobile Three Elements API
         
         @param request: Mobile3MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2879,7 +3119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
         """
-        @summary 手机号三要素国际版接口
+        @summary International Version of Mobile Three Elements API
         
         @param request: Mobile3MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2921,7 +3161,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
         """
-        @summary 手机号三要素国际版接口
+        @summary International Version of Mobile Three Elements API
         
         @param request: Mobile3MetaVerifyIntlRequest
         @return: Mobile3MetaVerifyIntlResponse
@@ -2934,7 +3174,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
         """
-        @summary 手机号三要素国际版接口
+        @summary International Version of Mobile Three Elements API
         
         @param request: Mobile3MetaVerifyIntlRequest
         @return: Mobile3MetaVerifyIntlResponse

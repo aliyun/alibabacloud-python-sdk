@@ -1,3 +1,10 @@
+2025-08-15 Version: 3.11.0
+- Support API AddressCompareIntl.
+- Support API AddressVerifyV2Intl.
+- Update API CheckVerifyLog: add response parameters Body.Result.InterruptPageEn.
+- Update API CheckVerifyLog: add response parameters Body.Result.LogInfoEn.
+
+
 2025-07-18 Version: 3.10.0
 - Support API Mobile2MetaVerifyIntl.
 
