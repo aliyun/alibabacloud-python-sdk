@@ -3743,6 +3743,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_session_clusters_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_sql_statement_contents_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSqlStatementContentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse:
+        """
+        @summary 获取sql statement内容
+        
+        @param request: ListSqlStatementContentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSqlStatementContentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSqlStatementContents',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/action/listSqlStatementContents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sql_statement_contents_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSqlStatementContentsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse:
+        """
+        @summary 获取sql statement内容
+        
+        @param request: ListSqlStatementContentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSqlStatementContentsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_name):
+            query['fileName'] = request.file_name
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSqlStatementContents',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/action/listSqlStatementContents',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sql_statement_contents(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSqlStatementContentsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse:
+        """
+        @summary 获取sql statement内容
+        
+        @param request: ListSqlStatementContentsRequest
+        @return: ListSqlStatementContentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_sql_statement_contents_with_options(workspace_id, request, headers, runtime)
+
+    async def list_sql_statement_contents_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSqlStatementContentsRequest,
+    ) -> emr_serverless_spark_20230808_models.ListSqlStatementContentsResponse:
+        """
+        @summary 获取sql statement内容
+        
+        @param request: ListSqlStatementContentsRequest
+        @return: ListSqlStatementContentsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_sql_statement_contents_with_options_async(workspace_id, request, headers, runtime)
+
     def list_workspace_queues_with_options(
         self,
         workspace_id: str,

@@ -9494,6 +9494,166 @@ class ListSessionClustersResponse(TeaModel):
         return self
 
 
+class ListSqlStatementContentsRequest(TeaModel):
+    def __init__(
+        self,
+        file_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.file_name = file_name
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListSqlStatementContentsResponseBodySqlStatementContents(TeaModel):
+    def __init__(
+        self,
+        contents: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        total_count: int = None,
+    ):
+        self.contents = contents
+        self.max_results = max_results
+        self.next_token = next_token
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.contents is not None:
+            result['contents'] = self.contents
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('contents') is not None:
+            self.contents = m.get('contents')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListSqlStatementContentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sql_statement_contents: ListSqlStatementContentsResponseBodySqlStatementContents = None,
+    ):
+        self.request_id = request_id
+        self.sql_statement_contents = sql_statement_contents
+
+    def validate(self):
+        if self.sql_statement_contents:
+            self.sql_statement_contents.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.sql_statement_contents is not None:
+            result['sqlStatementContents'] = self.sql_statement_contents.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sqlStatementContents') is not None:
+            temp_model = ListSqlStatementContentsResponseBodySqlStatementContents()
+            self.sql_statement_contents = temp_model.from_map(m['sqlStatementContents'])
+        return self
+
+
+class ListSqlStatementContentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSqlStatementContentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSqlStatementContentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkspaceQueuesRequest(TeaModel):
     def __init__(
         self,
