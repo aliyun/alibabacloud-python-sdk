@@ -472,9 +472,10 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
         # 
         # If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
-        # Fixed retry interval, unit: seconds.This option is effective when retryPolicy is FixedRetryPolicy.Value range：
-        #   - Concurrently:10-600
-        #   - Orderly:1-60
+        # The fixed interval. Unit: seconds. This parameter takes effect only if you set retryPolicy to FixedRetryPolicy. Valid values:
+        # 
+        # *   Concurrent delivery: 10 to 1800
+        # *   Ordered delivery: 1 to 600
         self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -704,9 +705,9 @@ class CreateDisasterRecoveryPlanRequestInstancesMessageProperty(TeaModel):
         property_key: str = None,
         property_value: str = None,
     ):
-        # Property key
+        # The attribute key.
         self.property_key = property_key
-        # Property value
+        # The attribute value.
         self.property_value = property_value
 
     def validate(self):
@@ -751,41 +752,55 @@ class CreateDisasterRecoveryPlanRequestInstances(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
-        #   - NO_AUTH: No authentication required
-        #   - ACL_AUTH: ACL authentication
+        # The authentication method. If you set instanceType to ALIYUN_ROCKETMQ and the instance is an ApsaraMQ for RocketMQ 4.0 instance, you do not need to specify this parameter.
+        # 
+        # *   NO_AUTH: no authentication
+        # *   ACL_AUTH: access control list (ACL)-based authentication
+        # 
+        # Valid values:
+        # 
+        # *   NO_AUTH: no authentication
+        # *   ACL_AUTH: access control list (ACL)-based authentication
         self.auth_type = auth_type
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+        # The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
         self.endpoint_url = endpoint_url
-        # Instance ID, not required for instanceType of EXTERNAL_ROCKETMQ, but required for ALIYUN_ROCKETMQ
+        # The instance ID. This parameter is required only if you set instanceType to ALIYUN_ROCKETMQ.
         self.instance_id = instance_id
-        # Instance role, either primary or secondary
-        #   - ACTIVE: Primary
-        #   - PASSIVE: Secondary
+        # The instance role. Valid values:
+        # 
+        # *   ACTIVE: primary instance
+        # *   Passive: secondary instance
         self.instance_role = instance_role
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type. Valid values:
+        # 
+        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+        # *   EXTERNAL_ROCKETMQ: external RocketMQ instance
+        # 
+        # Valid values:
+        # 
+        # *   ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+        # *   EXTERNAL_ROCKETMQ: external RocketMQ instance
         self.instance_type = instance_type
-        # Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
+        # The message attribute. When you synchronize a message to the destination cluster, the system automatically adds the attribute to the message for SQL-based filtering.
         self.message_property = message_property
-        # Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
-        # Parameter values are as follows:
-        #   - TCP_INTERNET: TCP public network
-        #   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+        # The network type. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ. Valid values:
+        # 
+        # *   TCP_INTERNET: Internet over TCP
+        # *   TCP_VPC: virtual private cloud (VPC) over TCP.
         self.network_type = network_type
-        # Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+        # The password used for authentication. This parameter is required only if you set authType to ACL_AUTH. If you set instanceType to ALIYUN_ROCKETMQ, you do not need to specify this parameter.
         self.password = password
-        # Region where the instance is located
+        # The region where the instance resides.
         self.region_id = region_id
-        # Security group ID, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+        # The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.security_group_id = security_group_id
-        # Authentication username, required when authType is ACL_AUTH
+        # The username used for authentication. This parameter is required only if you set authType to ACL_AUTH.
         self.username = username
-        # The ID of the switch associated with the instance, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+        # The ID of the vSwitch with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+        # The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -872,22 +887,32 @@ class CreateDisasterRecoveryPlanRequest(TeaModel):
         plan_type: str = None,
         sync_checkpoint_enabled: bool = None,
     ):
-        # Whether to enable automatic synchronization of consumption progress.
+        # Specifies whether to enable automatic consumer progress synchronization.
         # 
-        # > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+        # >  This parameter takes effect only when you set `syncCheckpointEnabled` to true.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # Instances involved in the backup plan. Required
+        # The instances involved in the Global Replicator task. You must specify this parameter.
         self.instances = instances
-        # Plan description
+        # The description of the Global Replicator task.
         self.plan_desc = plan_desc
-        # Plan name, required
+        # The name of the Global Replicator task. You must specify this parameter.
         self.plan_name = plan_name
-        # Backup plan type, required. Please refer to the [documentation](https://help.aliyun.com/document_detail/2843187.html).
-        # Parameter values are as follows:
-        #   - ACTIVE_PASSIVE: One-way backup
-        #   - ACTIVE_ACTIVE: Two-way backup
+        # The type of the Global Replicator task. You must specify this parameter. For more information, see [Global Replicator](https://help.aliyun.com/document_detail/2843187.html). Valid values:
+        # 
+        # *   ACTIVE_PASSIVE: one-way backup
+        # *   ACTIVE_ACTIVE: two-way backup
         self.plan_type = plan_type
-        # Switch for synchronizing consumption progress
+        # Specifies whether to enable consumer progress synchronization.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
 
     def validate(self):
@@ -1900,11 +1925,11 @@ class CreateInstanceAclRequest(TeaModel):
         # The following types of operations are supported based on the resource type:
         # 
         # *   Topic: Pub, Sub, and Pub|Sub
-        # *   Consumer group: Sub
+        # *   Group: Sub
         # 
         # Valid values:
         # 
-        # *   SUB: subscribe
+        # *   Sub: subscribe
         # *   Pub|Sub: publish and subscribe
         # *   Pub: publish
         # 
@@ -1919,7 +1944,7 @@ class CreateInstanceAclRequest(TeaModel):
         # 
         # This parameter is required.
         self.decision = decision
-        # The IP address whitelists.
+        # The IP addresses in the whitelist.
         self.ip_whitelists = ip_whitelists
         # The name of the resource on which you want to grant permissions.
         # 
@@ -2270,6 +2295,8 @@ class CreateTopicRequest(TeaModel):
         # *   NORMAL: normal messages
         # 
         # >  The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, you can use the topic to send and receive only ordered messages.
+        # 
+        # This parameter is required.
         self.message_type = message_type
         # The description of the topic that you want to create.
         self.remark = remark
@@ -3701,6 +3728,9 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
         # 
         # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        # Fixed interval retry time,Value range, unit: seconds
+        #  - Concurrently:10-1800
+        #  - Orderly:1-600
         self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -3708,33 +3738,8 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
         # 
         # Valid values:
         # 
-        # *   FixedRetryPolicy
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Failed messages are retried at a fixed interval
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
-        # *   DefaultRetryPolicy
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     Failed messages are retried at incremental intervals as the number of retries increases
-        # 
-        #     <!-- -->
-        # 
-        #     .
+        # *   FixedRetryPolicy: fixed-interval retry
+        # *   DefaultRetryPolicy: exponential backoff retry
         self.retry_policy = retry_policy
 
     def validate(self):
@@ -3783,39 +3788,18 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+        # The consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
         self.consume_retry_policy = consume_retry_policy
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
         # The time when the consumer group was created.
         self.create_time = create_time
-        # The message delivery order of the consumer group.
+        # The message delivery method of the consumer group.
         # 
         # Valid values:
         # 
-        # *   Concurrently
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     concurrent delivery
-        # 
-        #     <!-- -->
-        # 
-        # *   Orderly
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     ordered delivery
-        # 
-        #     <!-- -->
+        # *   Concurrently: concurrent delivery
+        # *   Orderly: ordered delivery
         self.delivery_order_type = delivery_order_type
         # The ID of the instance.
         self.instance_id = instance_id
@@ -3825,37 +3809,12 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         self.region_id = region_id
         # The remarks on the consumer group.
         self.remark = remark
-        # The state of the consumer group.
+        # The status of the consumer group.
         # 
         # Valid values:
         # 
         # *   RUNNING
-        # 
-        #     <!-- -->
-        # 
-        #     : The consumer group is
-        # 
-        #     <!-- -->
-        # 
-        #     running
-        # 
-        #     <!-- -->
-        # 
-        #     .
-        # 
         # *   CREATING
-        # 
-        #     <!-- -->
-        # 
-        #     : The consumer group is
-        # 
-        #     <!-- -->
-        # 
-        #     being created
-        # 
-        #     <!-- -->
-        # 
-        #     .
         self.status = status
         # The time when the consumer group was last updated.
         self.update_time = update_time
@@ -5126,9 +5085,9 @@ class GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty(TeaModel):
         property_key: str = None,
         property_value: str = None,
     ):
-        # Property key
+        # The attribute key.
         self.property_key = property_key
-        # Property value
+        # The attribute value.
         self.property_value = property_value
 
     def validate(self):
@@ -5173,40 +5132,33 @@ class GetDisasterRecoveryPlanResponseBodyDataInstances(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
-        #   - NO_AUTH: No authentication required
-        #   - ACL_AUTH: ACL authentication
+        # The authentication type.
         self.auth_type = auth_type
+        # The consumer Group ID.
         self.consumer_group_id = consumer_group_id
-        # Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+        # The endpoint.
         self.endpoint_url = endpoint_url
         # The instance ID.
         self.instance_id = instance_id
-        # Instance role, either primary or secondary 
-        #   - ACTIVE: Primary
-        #   - PASSIVE: Secondary
+        # The instance role.
         self.instance_role = instance_role
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type.
         self.instance_type = instance_type
-        # Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
+        # The message attribute.
         self.message_property = message_property
-        # Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ Parameter values are as follows:
-        #   - TCP_INTERNET: TCP public network
-        #   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+        # The network type.
         self.network_type = network_type
-        # Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+        # The password used for authentication.
         self.password = password
-        # Region ID.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # Security group ID, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+        # The security group ID.
         self.security_group_id = security_group_id
-        # Authentication username, required when authType is ACL_AUTH
+        # The username used for authentication.
         self.username = username
-        # The ID of the switch associated with the instance, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -5298,30 +5250,46 @@ class GetDisasterRecoveryPlanResponseBodyData(TeaModel):
         sync_checkpoint_enabled: bool = None,
         update_time: str = None,
     ):
-        # Whether to enable automatic synchronization of consumption progress.
+        # Indicates whether automatic consumer progress synchronization is enabled.
+        # 
+        # >  This parameter takes effect only when `syncCheckpointEnabled` is set to true.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # The time when the backup plan was created.
+        # The time when the query task was created.
         self.create_time = create_time
-        # Additional Information
+        # The extended information.
         self.ext_info = ext_info
-        # Instances involved in the backup plan
+        # The instances involved in the Global Replicator task.
         self.instances = instances
-        # The describe of the global message backup plan.
+        # The description of the Global Replicator task.
         self.plan_desc = plan_desc
-        # The ID of the global message backup plan.
+        # The ID of the Global Replicator task.
         self.plan_id = plan_id
-        # The name of the global message backup plan.
+        # The name of the Global Replicator task.
         self.plan_name = plan_name
-        # The status of the global message backup plan.
+        # The status of the Global Replicator task. Valid values:
+        # 
+        # *   CREATED
+        # *   RUNNING
+        # *   DELETED
         self.plan_status = plan_status
-        # The type of the global message backup plan.
-        # values are as follows:
-        #   - ACTIVE_PASSIVE: One-way backup
-        #   - ACTIVE_ACTIVE: Two-way backup
+        # The type of the Global Replicator task. Valid values:
+        # 
+        # *   ACTIVE_PASSIVE: one-way backup
+        # *   ACTIVE_ACTIVE: two-way backup
         self.plan_type = plan_type
-        # Switch for synchronizing consumption progress
+        # Indicates whether consumer progress synchronization is enabled.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
-        # The time when the backup plan was created.
+        # The time when the query task was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -5409,19 +5377,19 @@ class GetDisasterRecoveryPlanResponseBody(TeaModel):
         self.access_denied_detail = access_denied_detail
         # The error code.
         self.code = code
-        # The data returned.
+        # The returned data.
         self.data = data
         # The dynamic error code.
         self.dynamic_code = dynamic_code
         # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # The HTTP status code.
+        # The response code.
         self.http_status_code = http_status_code
         # The error message.
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful.
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -7776,6 +7744,39 @@ class GetTopicResponse(TeaModel):
         return self
 
 
+class GetTraceRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
 class GetTraceResponseBodyDataBrokerInfoOperations(TeaModel):
     def __init__(
         self,
@@ -10023,12 +10024,13 @@ class ListDisasterRecoveryItemsRequest(TeaModel):
         page_size: int = None,
         topic_name: str = None,
     ):
-        # Filter condition, filter by topicName
+        # The filter condition. Topics are filtered by topic name.
         self.filter = filter
-        # Page number, indicating which page of the results to query.
+        # The page number.
         self.page_number = page_number
-        # Page size, the maximum number of results displayed per page.
+        # The number of entries per page.
         self.page_size = page_size
+        # The topic name.
         self.topic_name = topic_name
 
     def validate(self):
@@ -10073,19 +10075,20 @@ class ListDisasterRecoveryItemsResponseBodyDataListTopics(TeaModel):
         region_id: str = None,
         topic_name: str = None,
     ):
-        # Consumer group ID
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # The order in which messages are delivered to the target instance.
+        # The method used to deliver messages to the destination instance.
         # 
-        # Parameter values are as follows:
-        # - Concurrently: concurrent delivery
-        # - Orderly: sequential delivery
+        # Valid values:
+        # 
+        # *   Concurrently: concurrent delivery
+        # *   Orderly: ordered delivery
         self.delivery_order_type = delivery_order_type
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance type
+        # The instance type.
         self.instance_type = instance_type
-        # Region ID
+        # regionId
         self.region_id = region_id
         # The topic name.
         self.topic_name = topic_name
@@ -10141,24 +10144,25 @@ class ListDisasterRecoveryItemsResponseBodyDataList(TeaModel):
         topics: List[ListDisasterRecoveryItemsResponseBodyDataListTopics] = None,
         update_time: str = None,
     ):
-        # Creation time
+        # The time when the query task was created.
         self.create_time = create_time
-        # Extended information
+        # The extended information.
         self.ext_info = ext_info
-        # Backup plan ID
+        # The ID of the Global Replicator task.
         self.item_id = item_id
-        # Backup mapping status:
-        #   - CREATING (Creating)
-        #   - CHANGING (Changing)
-        #   - RUNNING (Running)
-        #   - MANUAL_STOPPED (Manually Stopped)
-        #   - OVERDUE_STOPPED (Stopped Due to Overdue)
+        # The status of the topic mapping. Valid values:
+        # 
+        # *   CREATING
+        # *   CHANGING
+        # *   RUNNING
+        # *   MANUAL_STOPPED
+        # *   OVERDUE_STOPPED
         self.item_status = item_status
-        # Mapping ID
+        # The ID of the topic mapping.
         self.plan_id = plan_id
-        # Topics included in the backup mapping
+        # The topics involved in the topic mapping.
         self.topics = topics
-        # Update time
+        # The time when the query task was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -10222,16 +10226,15 @@ class ListDisasterRecoveryItemsResponseBodyData(TeaModel):
         scroll_id: str = None,
         total_count: int = None,
     ):
-        # Paged data
+        # The Global Replicator tasks.
         self.list = list
-        # Current page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Request scroll ID.
-        # Automatically generated by the system, subsequent pagination requests need to include this return value to continue pagination.
+        # The scroll ID of the request. The ID is automatically generated by the system. The result can be paginated only if this parameter is included in the pagination request.
         self.scroll_id = scroll_id
-        # Total number of records
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10291,23 +10294,23 @@ class ListDisasterRecoveryItemsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Access denied details, provided only when access is denied due to lack of RAM permissions
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code.
         self.code = code
-        # Return result
+        # The returned data.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message
+        # The dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The response code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the request was successful
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -10413,12 +10416,13 @@ class ListDisasterRecoveryPlansRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Filter conditions, filter by backup name and description
+        # The filter condition. Global Replicator tasks are filtered by task name or description.
         self.filter = filter
+        # The instance ID.
         self.instance_id = instance_id
-        # Page number, the page of results to be queried.
+        # The page number.
         self.page_number = page_number
-        # Page size, the maximum number of results displayed per page.
+        # The number of entries per page.
         self.page_size = page_size
 
     def validate(self):
@@ -10459,9 +10463,9 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty(TeaM
         property_key: str = None,
         property_value: str = None,
     ):
-        # Property key
+        # The attribute key.
         self.property_key = property_key
-        # Property value
+        # The attribute value.
         self.property_value = property_value
 
     def validate(self):
@@ -10506,34 +10510,33 @@ class ListDisasterRecoveryPlansResponseBodyDataListInstances(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # Authentication method
+        # The authentication type.
         self.auth_type = auth_type
+        # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
-        # Endpoint URL
+        # The endpoint.
         self.endpoint_url = endpoint_url
-        # Instance ID
+        # The instance ID.
         self.instance_id = instance_id
-        # Instance role
+        # The instance role.
         self.instance_role = instance_role
-        # Instance type
-        #   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
-        #   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+        # The instance type.
         self.instance_type = instance_type
-        # Message property
+        # The message attribute.
         self.message_property = message_property
-        # Network type
+        # The network type.
         self.network_type = network_type
-        # Authentication password
+        # The password used for authentication.
         self.password = password
-        # The region where the instance is located
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # Security group ID
+        # The security group ID.
         self.security_group_id = security_group_id
-        # Authentication username
+        # The username used for authentication.
         self.username = username
-        # VSwitch ID
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # VPC ID
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -10625,32 +10628,34 @@ class ListDisasterRecoveryPlansResponseBodyDataList(TeaModel):
         sync_checkpoint_enabled: bool = None,
         update_time: str = None,
     ):
-        # Whether to enable automatic synchronization of consumption progress.
+        # Indicates whether automatic consumer progress synchronization is enabled.
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # Creation time
+        # The time when the query task was created.
         self.create_time = create_time
-        # Extended information
+        # The extended information.
         self.ext_info = ext_info
-        # Instances involved in the backup plan
+        # The instances involved in the Global Replicator task.
         self.instances = instances
-        # Plan description
+        # The description of the Global Replicator task.
         self.plan_desc = plan_desc
-        # Plan ID
+        # The ID of the Global Replicator task.
         self.plan_id = plan_id
-        # Plan name
+        # The name of the Global Replicator task.
         self.plan_name = plan_name
-        # Plan status:
-        #   - CREATED (Created)
-        #   - RUNNING (Running)
-        #   - DELETED (Deleted)
+        # The status of the Global Replicator task. Valid values:
+        # 
+        # *   CREATED
+        # *   RUNNING
+        # *   DELETED
         self.plan_status = plan_status
-        # Plan type:
-        #   - ACTIVE_PASSIVE (One-way backup)
-        #   - ACTIVE_ACTIVE (Two-way backup)
+        # The type of the Global Replicator task. Valid values:
+        # 
+        # *   ACTIVE_PASSIVE: one-way backup
+        # *   ACTIVE_ACTIVE: two-way backup
         self.plan_type = plan_type
-        # Sync checkpoint switch
+        # Indicates whether consumer progress synchronization is enabled.
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
-        # Update time
+        # The time when the query task was last modified.
         self.update_time = update_time
 
     def validate(self):
@@ -10730,16 +10735,15 @@ class ListDisasterRecoveryPlansResponseBodyData(TeaModel):
         scroll_id: str = None,
         total_count: int = None,
     ):
-        # Paged data
+        # The Global Replicator tasks.
         self.list = list
-        # Current page number
+        # The page number.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Scroll request ID.
-        # Automatically generated by the system, subsequent paging requests need to include this result to continue paging.
+        # The scroll ID of the request. The ID is automatically generated by the system. The result can be paginated only if this parameter is included in the pagination request.
         self.scroll_id = scroll_id
-        # Total number of records
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10799,23 +10803,23 @@ class ListDisasterRecoveryPlansResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+        # The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
         self.access_denied_detail = access_denied_detail
-        # Error code
+        # The error code.
         self.code = code
-        # Return result
+        # The returned data.
         self.data = data
-        # Dynamic error code
+        # The dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message
+        # The returned dynamic error message.
         self.dynamic_message = dynamic_message
-        # HTTP status code
+        # The response code.
         self.http_status_code = http_status_code
-        # Error message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Whether the operation was successful
+        # Indicates whether the information about the service was queried.
         self.success = success
 
     def validate(self):
@@ -14037,6 +14041,7 @@ class ListTopicsResponseBody(TeaModel):
         self.dynamic_code = dynamic_code
         # Dynamic error message.
         self.dynamic_message = dynamic_message
+        # HTTP status code.
         self.http_status_code = http_status_code
         # Error message.
         self.message = message
@@ -15356,8 +15361,11 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the maximum number of retries specified for the message is reached, the message is delivered to the dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+        # If a message still fails to be consumed after the maximum number of retries specified in the consumption retry policy is reached, the message is delivered to the dead-letter topic for subsequent business recovery or backtracking. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
+        # Fixed retry interval, unit: seconds.This option is effective when retryPolicy is FixedRetryPolicy.Value range：
+        #   - Concurrently:10-1800
+        #   - Orderly:1-600
         self.fixed_interval_retry_time = fixed_interval_retry_time
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -15424,7 +15432,7 @@ class UpdateConsumerGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.delivery_order_type = delivery_order_type
-        # The maximum TPS for message sending.
+        # The maximum number of messages that can be processed by consumers per second.
         self.max_receive_tps = max_receive_tps
         # The new description of the consumer group.
         self.remark = remark
@@ -15859,11 +15867,17 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The authentication type.
+        # The authentication type. Valid values:
         # 
         # *   NO_AUTH: no authentication
         # *   ACL_AUTH: access control list (ACL)-based authentication
+        # 
+        # <!---->
+        # 
+        # *\
+        # *\
         self.auth_type = auth_type
+        # The consumer group ID.
         self.consumer_group_id = consumer_group_id
         # The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
         self.endpoint_url = endpoint_url
@@ -15886,17 +15900,17 @@ class UpdateDisasterRecoveryPlanRequestInstances(TeaModel):
         # *   TCP_INTERNET: Internet over TCP
         # *   TCP_VPC: virtual private cloud (VPC) over TCP.
         self.network_type = network_type
-        # The password that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+        # The password used for authentication. This parameter is required only if you set authType to ACL_AUTH.
         self.password = password
-        # The region in which the instance resides.
+        # The ID of the region where the instance resides.
         self.region_id = region_id
-        # The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        # The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.security_group_id = security_group_id
-        # The username that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+        # The username used for authentication. This parameter is required only if you set authType to ACL_AUTH.
         self.username = username
-        # The ID of the vSwitch with which the instance is associated. If you want to specify multiple vSwitches, separate the vSwitches with vertical bars (|).
+        # The ID of the vSwitch with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+        # The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ and networkType to TCP_VPC.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -15983,22 +15997,32 @@ class UpdateDisasterRecoveryPlanRequest(TeaModel):
         plan_type: str = None,
         sync_checkpoint_enabled: bool = None,
     ):
-        # Whether to enable automatic synchronization of consumption progress.
+        # Specifies whether to enable automatic consumer progress synchronization.
         # 
-        # > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+        # >  This parameter takes effect only when you set `syncCheckpointEnabled` to true.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_sync_checkpoint = auto_sync_checkpoint
-        # The instances that are involved in the global message backup plan.
+        # The instances involved in the Global Replicator task. After you create a Global Replicator task, you cannot change the instances involved in the task. You can change only the message attribute and authentication type of the task.
         self.instances = instances
-        # The description of the global message backup plan.
+        # The description of the Global Replicator task.
         self.plan_desc = plan_desc
-        # The name of the global message backup plan.
+        # The name of the Global Replicator task.
         self.plan_name = plan_name
-        # The type of the global message backup plan. Valid values:
+        # The type of the Global Replicator task. After you create a Global Replicator task, you cannot change the type of the task. Valid values:
         # 
-        # *   ACTIVE_PASSIVE: geo-disaster recovery
-        # *   ACTIVE_ACTIVE: active geo-redundancy
+        # *   ACTIVE_PASSIVE: one-way backup
+        # *   ACTIVE_ACTIVE: two-way backup
         self.plan_type = plan_type
-        # Switch for synchronizing consumption progress
+        # Specifies whether to enable consumer progress synchronization.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # *   false
         self.sync_checkpoint_enabled = sync_checkpoint_enabled
 
     def validate(self):
@@ -16699,14 +16723,14 @@ class UpdateInstanceAclRequest(TeaModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The following items describe the types of permissions that can be granted based on the resource type:
+        # The following types of operations are supported based on the resource type:
         # 
         # *   Topic: Pub, Sub, and Pub|Sub
-        # *   Consumer group: Sub
+        # *   Group: Sub
         # 
         # Valid values:
         # 
-        # *   SUB: subscribe
+        # *   Sub: subscribe
         # *   Pub|Sub: publish and subscribe
         # *   Pub: publish
         self.actions = actions
@@ -16717,7 +16741,7 @@ class UpdateInstanceAclRequest(TeaModel):
         # *   Deny
         # *   Allow
         self.decision = decision
-        # The IP address whitelists.
+        # The IP addresses in the whitelist.
         self.ip_whitelists = ip_whitelists
         # The name of the resource on which you want to grant permissions.
         # 

@@ -1,3 +1,9 @@
+2025-08-15 Version: 4.0.0
+- Update API GetTrace: add request parameters endTime.
+- Update API GetTrace: add request parameters startTime.
+- Update API GetTrace: add request The number of query or body parameters has changed from zero to many.
+
+
 2025-07-09 Version: 3.1.3
 - Generated python 2022-08-01 for RocketMQ.
 

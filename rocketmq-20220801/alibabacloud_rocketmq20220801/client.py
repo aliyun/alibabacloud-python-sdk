@@ -2654,7 +2654,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
         """
-        @summary 查询容灾计划详情
+        @summary Queries the details of a Global Replicator task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2686,7 +2686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
         """
-        @summary 查询容灾计划详情
+        @summary Queries the details of a Global Replicator task.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2716,7 +2716,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
         """
-        @summary 查询容灾计划详情
+        @summary Queries the details of a Global Replicator task.
         
         @return: GetDisasterRecoveryPlanResponse
         """
@@ -2729,7 +2729,7 @@ class Client(OpenApiClient):
         plan_id: str,
     ) -> rocket_mq20220801_models.GetDisasterRecoveryPlanResponse:
         """
-        @summary 查询容灾计划详情
+        @summary Queries the details of a Global Replicator task.
         
         @return: GetDisasterRecoveryPlanResponse
         """
@@ -3372,18 +3372,27 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
         message_id: str,
+        request: rocket_mq20220801_models.GetTraceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
         @summary Queries the trace of a specific message in a specific topic.
         
+        @param request: GetTraceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTraceResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTrace',
@@ -3406,18 +3415,27 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
         message_id: str,
+        request: rocket_mq20220801_models.GetTraceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
         @summary Queries the trace of a specific message in a specific topic.
         
+        @param request: GetTraceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetTraceResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['startTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetTrace',
@@ -3440,30 +3458,34 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
         message_id: str,
+        request: rocket_mq20220801_models.GetTraceRequest,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
         @summary Queries the trace of a specific message in a specific topic.
         
+        @param request: GetTraceRequest
         @return: GetTraceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_trace_with_options(instance_id, topic_name, message_id, headers, runtime)
+        return self.get_trace_with_options(instance_id, topic_name, message_id, request, headers, runtime)
 
     async def get_trace_async(
         self,
         instance_id: str,
         topic_name: str,
         message_id: str,
+        request: rocket_mq20220801_models.GetTraceRequest,
     ) -> rocket_mq20220801_models.GetTraceResponse:
         """
         @summary Queries the trace of a specific message in a specific topic.
         
+        @param request: GetTraceRequest
         @return: GetTraceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_trace_with_options_async(instance_id, topic_name, message_id, headers, runtime)
+        return await self.get_trace_with_options_async(instance_id, topic_name, message_id, request, headers, runtime)
 
     def list_available_zones_with_options(
         self,
@@ -4009,7 +4031,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
         """
-        @summary Query Disaster Recovery Plan Entry List
+        @summary Queries the Global Replicator tasks of an instance.
         
         @param request: ListDisasterRecoveryItemsRequest
         @param headers: map
@@ -4054,7 +4076,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
         """
-        @summary Query Disaster Recovery Plan Entry List
+        @summary Queries the Global Replicator tasks of an instance.
         
         @param request: ListDisasterRecoveryItemsRequest
         @param headers: map
@@ -4097,7 +4119,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
         """
-        @summary Query Disaster Recovery Plan Entry List
+        @summary Queries the Global Replicator tasks of an instance.
         
         @param request: ListDisasterRecoveryItemsRequest
         @return: ListDisasterRecoveryItemsResponse
@@ -4112,7 +4134,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListDisasterRecoveryItemsRequest,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryItemsResponse:
         """
-        @summary Query Disaster Recovery Plan Entry List
+        @summary Queries the Global Replicator tasks of an instance.
         
         @param request: ListDisasterRecoveryItemsRequest
         @return: ListDisasterRecoveryItemsResponse
@@ -4128,7 +4150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
         """
-        @summary Query Disaster Recovery Plan List
+        @summary Queries Global Replicator tasks.
         
         @param request: ListDisasterRecoveryPlansRequest
         @param headers: map
@@ -4172,7 +4194,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
         """
-        @summary Query Disaster Recovery Plan List
+        @summary Queries Global Replicator tasks.
         
         @param request: ListDisasterRecoveryPlansRequest
         @param headers: map
@@ -4214,7 +4236,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
         """
-        @summary Query Disaster Recovery Plan List
+        @summary Queries Global Replicator tasks.
         
         @param request: ListDisasterRecoveryPlansRequest
         @return: ListDisasterRecoveryPlansResponse
@@ -4228,7 +4250,7 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListDisasterRecoveryPlansRequest,
     ) -> rocket_mq20220801_models.ListDisasterRecoveryPlansResponse:
         """
-        @summary Query Disaster Recovery Plan List
+        @summary Queries Global Replicator tasks.
         
         @param request: ListDisasterRecoveryPlansRequest
         @return: ListDisasterRecoveryPlansResponse
