@@ -3771,8 +3771,6 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_id):
             query['ProxyId'] = request.proxy_id
-        if not UtilClient.is_unset(request.trim_sql):
-            query['trimSql'] = request.trim_sql
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3810,8 +3808,6 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_id):
             query['ProxyId'] = request.proxy_id
-        if not UtilClient.is_unset(request.trim_sql):
-            query['trimSql'] = request.trim_sql
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

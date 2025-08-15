@@ -5054,7 +5054,6 @@ class DeleteSecurityProxyRequest(TeaModel):
         self,
         lang: str = None,
         proxy_id: str = None,
-        trim_sql: str = None,
     ):
         # The language of the content within the response. Valid values:
         # 
@@ -5065,7 +5064,6 @@ class DeleteSecurityProxyRequest(TeaModel):
         # 
         # This parameter is required.
         self.proxy_id = proxy_id
-        self.trim_sql = trim_sql
 
     def validate(self):
         pass
@@ -5080,8 +5078,6 @@ class DeleteSecurityProxyRequest(TeaModel):
             result['Lang'] = self.lang
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
-        if self.trim_sql is not None:
-            result['trimSql'] = self.trim_sql
         return result
 
     def from_map(self, m: dict = None):
@@ -5090,8 +5086,6 @@ class DeleteSecurityProxyRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
-        if m.get('trimSql') is not None:
-            self.trim_sql = m.get('trimSql')
         return self
 
 

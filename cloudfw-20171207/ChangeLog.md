@@ -1,3 +1,6 @@
+2025-08-15 Version: 6.1.4
+- Generated python 2017-12-07 for Cloudfw.
+
 2025-08-14 Version: 6.1.3
 - Update API DeleteSecurityProxy: add request parameters trimSql.
 
