@@ -1,3 +1,21 @@
+2025-08-15 Version: 2.4.0
+- Support API CreateAdvancedQueryHistory.
+- Support API CreateAdvancedQueryTemplate.
+- Support API DeleteAdvancedQueryHistory.
+- Support API DeleteAdvancedQueryTemplate.
+- Support API DescribeAdvancedQueryHistory.
+- Support API DescribeAdvancedQueryTemplate.
+- Support API DescribeResourceLifeCycleEvents.
+- Support API DescribeScenes.
+- Support API DescribeSearchTemplates.
+- Support API DescribeUserAlertCount.
+- Support API DescribeUserLogCount.
+- Support API GetAdvancedQueryTemplate.
+- Support API GetGovernanceMetrics.
+- Support API ListDataEventServices.
+- Support API UpdateAdvancedQueryTemplate.
+
+
 2024-02-21 Version: 2.3.0
 - Support API EnableInsight.
 

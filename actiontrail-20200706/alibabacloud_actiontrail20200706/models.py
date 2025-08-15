@@ -4,6 +4,259 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class CreateAdvancedQueryHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        query_sql: str = None,
+        simple_query: bool = None,
+    ):
+        self.query_sql = query_sql
+        # This parameter is required.
+        self.simple_query = simple_query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_sql is not None:
+            result['QuerySql'] = self.query_sql
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuerySql') is not None:
+            self.query_sql = m.get('QuerySql')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        return self
+
+
+class CreateAdvancedQueryHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+        query_sql: str = None,
+        request_id: str = None,
+        simple_query: bool = None,
+    ):
+        self.query_id = query_id
+        self.query_sql = query_sql
+        self.request_id = request_id
+        self.simple_query = simple_query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        if self.query_sql is not None:
+            result['QuerySql'] = self.query_sql
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('QuerySql') is not None:
+            self.query_sql = m.get('QuerySql')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        return self
+
+
+class CreateAdvancedQueryHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAdvancedQueryHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAdvancedQueryHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAdvancedQueryTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        simple_query: bool = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        # This parameter is required.
+        self.simple_query = simple_query
+        self.template_name = template_name
+        # This parameter is required.
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class CreateAdvancedQueryTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        simple_query: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        self.request_id = request_id
+        self.simple_query = simple_query
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class CreateAdvancedQueryTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAdvancedQueryTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAdvancedQueryTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDeliveryHistoryJobRequest(TeaModel):
     def __init__(
         self,
@@ -14,9 +267,11 @@ class CreateDeliveryHistoryJobRequest(TeaModel):
         # 
         # The token can contain only ASCII characters and can be up to 64 characters in length.
         # 
-        # For more information, see [How to ensure idempotence](~~25693~~).
+        # For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The name of the trail for which you want to create a historical event delivery task.
+        # 
+        # This parameter is required.
         self.trail_name = trail_name
 
     def validate(self):
@@ -145,13 +400,24 @@ class CreateTrailRequest(TeaModel):
         # *   true: creates a multi-account trail.
         # *   false (default): creates a single-account trail.
         self.is_organization_trail = is_organization_trail
+        # The ARN of the MaxCompute project to which you want to deliver events.
+        # 
+        # >  You must specify at least one of the following parameters: OssBucketName, SlsProjectArn, and MaxComputeProjectArn.
+        # 
+        # >  The name of the MaxCompute project must be prefixed with actiontrail_.
         self.max_compute_project_arn = max_compute_project_arn
+        # The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
+        # 
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter and deliver events to the current account, you must grant the RAM role the permissions on the service-linked role for ActionTrail. If you want to deliver events to other accounts, you must attach a system policy to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail to be created.
         # 
-        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
         # > The name must be unique within your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
         # The name of the OSS bucket to which events are to be delivered.
         # 
@@ -161,12 +427,12 @@ class CreateTrailRequest(TeaModel):
         self.oss_bucket_name = oss_bucket_name
         # The prefix of the log files to be stored in the destination OSS bucket. This parameter can be left empty.
         # 
-        # The prefix must be 6 to 32 characters in length. The prefix must start with a letter and can contain letters, digits, hyphens (-), forward slashes (/), and underscores (\_).
+        # The prefix must be 6 to 32 characters in length. The prefix must start with a letter and can contain letters, digits, hyphens (-), forward slashes (/), and underscores (_).
         self.oss_key_prefix = oss_key_prefix
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is assumed by ActionTrail to deliver events to the OSS bucket.
+        # The Alibaba Cloud Resource Name (ARN) of the service-linked role that is assumed by ActionTrail to deliver events to the destination Object Storage Service (OSS) bucket.
         # 
-        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the required resources. For more information, see [Manage the service-linked role](~~169244~~).
-        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](~~207462~~).
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter and deliver events to the current account, you must grant the RAM role the permissions on the service-linked role for ActionTrail. If you want to deliver events to other accounts, you must attach a system policy to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.oss_write_role_arn = oss_write_role_arn
         # The ARN of the Log Service project to which events are to be delivered.
         # 
@@ -174,14 +440,14 @@ class CreateTrailRequest(TeaModel):
         self.sls_project_arn = sls_project_arn
         # The ARN of the RAM role that is assumed by ActionTrail to deliver events to the Log Service project.
         # 
-        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](~~169244~~).
-        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](~~207462~~).
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.sls_write_role_arn = sls_write_role_arn
         # The one or more regions from which the trail delivers events.
         # 
         # The default value is All, which indicates that the trail delivers events from all regions.
         # 
-        # You can also specify specific regions. You can call the [DescribeRegions](~~213597~~) operation to query all the supported regions.
+        # You can also specify specific regions. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/213597.html) operation to query all the supported regions.
         self.trail_region = trail_region
 
     def validate(self):
@@ -264,7 +530,9 @@ class CreateTrailResponseBody(TeaModel):
         self.event_rw = event_rw
         # The home region of the trail.
         self.home_region = home_region
+        # ARN of the Big Data Compute Service project for tracking delivery.
         self.max_compute_project_arn = max_compute_project_arn
+        # The ARN of the role that Operation Audit assumes when delivering operation events to the Big Data Compute Service project.
         self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
@@ -388,6 +656,197 @@ class CreateTrailResponse(TeaModel):
         return self
 
 
+class DeleteAdvancedQueryHistoryRequest(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+    ):
+        # This parameter is required.
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class DeleteAdvancedQueryHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAdvancedQueryHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAdvancedQueryHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAdvancedQueryHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAdvancedQueryTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteAdvancedQueryTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteAdvancedQueryTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAdvancedQueryTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAdvancedQueryTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDeliveryHistoryJobRequest(TeaModel):
     def __init__(
         self,
@@ -395,7 +854,9 @@ class DeleteDeliveryHistoryJobRequest(TeaModel):
     ):
         # The ID of the historical event delivery task to be deleted.
         # 
-        # You can call the [ListDeliveryHistoryJobs](~~188101~~) operation to query task IDs.
+        # You can call the [ListDeliveryHistoryJobs](https://help.aliyun.com/document_detail/188101.html) operation to query task IDs.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -494,9 +955,11 @@ class DeleteTrailRequest(TeaModel):
     ):
         # The name of the trail that you want to delete.
         # 
-        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
         # > The name must be unique within your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -588,15 +1051,355 @@ class DeleteTrailResponse(TeaModel):
         return self
 
 
+class DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+        query_sql: str = None,
+        simple_query: bool = None,
+        time_stamp: str = None,
+    ):
+        self.query_id = query_id
+        self.query_sql = query_sql
+        self.simple_query = simple_query
+        self.time_stamp = time_stamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        if self.query_sql is not None:
+            result['QuerySql'] = self.query_sql
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.time_stamp is not None:
+            result['TimeStamp'] = self.time_stamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('QuerySql') is not None:
+            self.query_sql = m.get('QuerySql')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TimeStamp') is not None:
+            self.time_stamp = m.get('TimeStamp')
+        return self
+
+
+class DescribeAdvancedQueryHistoryResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_history_list: List[DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList] = None,
+        request_id: str = None,
+    ):
+        self.query_history_list = query_history_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.query_history_list:
+            for k in self.query_history_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['QueryHistoryList'] = []
+        if self.query_history_list is not None:
+            for k in self.query_history_list:
+                result['QueryHistoryList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.query_history_list = []
+        if m.get('QueryHistoryList') is not None:
+            for k in m.get('QueryHistoryList'):
+                temp_model = DescribeAdvancedQueryHistoryResponseBodyQueryHistoryList()
+                self.query_history_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAdvancedQueryHistoryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAdvancedQueryHistoryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAdvancedQueryHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAdvancedQueryTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        template_name: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList(TeaModel):
+    def __init__(
+        self,
+        simple_query: bool = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        self.simple_query = simple_query
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class DescribeAdvancedQueryTemplateResponseBodyTemplatePage(TeaModel):
+    def __init__(
+        self,
+        page_number: str = None,
+        page_size: str = None,
+        template_list: List[DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList] = None,
+        total: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.template_list = template_list
+        self.total = total
+
+    def validate(self):
+        if self.template_list:
+            for k in self.template_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        result['TemplateList'] = []
+        if self.template_list is not None:
+            for k in self.template_list:
+                result['TemplateList'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        self.template_list = []
+        if m.get('TemplateList') is not None:
+            for k in m.get('TemplateList'):
+                temp_model = DescribeAdvancedQueryTemplateResponseBodyTemplatePageTemplateList()
+                self.template_list.append(temp_model.from_map(k))
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class DescribeAdvancedQueryTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        template_page: DescribeAdvancedQueryTemplateResponseBodyTemplatePage = None,
+    ):
+        self.request_id = request_id
+        self.template_page = template_page
+
+    def validate(self):
+        if self.template_page:
+            self.template_page.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_page is not None:
+            result['TemplatePage'] = self.template_page.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplatePage') is not None:
+            temp_model = DescribeAdvancedQueryTemplateResponseBodyTemplatePage()
+            self.template_page = temp_model.from_map(m['TemplatePage'])
+        return self
+
+
+class DescribeAdvancedQueryTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAdvancedQueryTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAdvancedQueryTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeRegionsRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
     ):
-        # The language in which the region names are returned. Valid values:
+        # The language of the content within the request and response. Valid values:
         # 
-        # - zh-CN: Chinese.
-        # - en-US: English. It is the default value.
+        # *   zh-CN: Chinese
+        # *   en-US (default): English
         self.accept_language = accept_language
 
     def validate(self):
@@ -628,7 +1431,7 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
     ):
         # The name of the region.
         # 
-        # > If the AcceptLanguage parameter is set to zh-CN, the Chinese name of the region is returned. If the AcceptLanguage parameter is set to zh-US or left empty, the English name of the region is returned.
+        # >  If AcceptLanguage is set to zh-CN, the Chinese name of the region is returned. If AcceptLanguage is set to en-US or left empty, the English name of the region is returned.
         self.local_name = local_name
         # The endpoint of ActionTrail in the region.
         self.region_endpoint = region_endpoint
@@ -704,7 +1507,7 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # The regions returned.
+        # A list of regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -772,6 +1575,482 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResourceLifeCycleEventsRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+        service_name: str = None,
+    ):
+        self.resource_type = resource_type
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class DescribeResourceLifeCycleEventsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeResourceLifeCycleEventsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResourceLifeCycleEventsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResourceLifeCycleEventsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeScenesRequest(TeaModel):
+    def __init__(
+        self,
+        search_code: str = None,
+    ):
+        self.search_code = search_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.search_code is not None:
+            result['SearchCode'] = self.search_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SearchCode') is not None:
+            self.search_code = m.get('SearchCode')
+        return self
+
+
+class DescribeScenesResponseBodySceneList(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        scene_id: str = None,
+        token: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.scene_id = scene_id
+        self.token = token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeScenesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        scene_list: List[DescribeScenesResponseBodySceneList] = None,
+    ):
+        self.request_id = request_id
+        self.scene_list = scene_list
+
+    def validate(self):
+        if self.scene_list:
+            for k in self.scene_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SceneList'] = []
+        if self.scene_list is not None:
+            for k in self.scene_list:
+                result['SceneList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.scene_list = []
+        if m.get('SceneList') is not None:
+            for k in m.get('SceneList'):
+                temp_model = DescribeScenesResponseBodySceneList()
+                self.scene_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeScenesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeScenesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeScenesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSearchTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        scene_id: str = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class DescribeSearchTemplatesResponseBodyTemplateList(TeaModel):
+    def __init__(
+        self,
+        charts: str = None,
+        description: str = None,
+        params: str = None,
+        scene_id: str = None,
+        sql: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        token: str = None,
+        type: str = None,
+    ):
+        self.charts = charts
+        self.description = description
+        self.params = params
+        self.scene_id = scene_id
+        self.sql = sql
+        self.template_id = template_id
+        self.template_name = template_name
+        self.token = token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charts is not None:
+            result['Charts'] = self.charts
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.token is not None:
+            result['Token'] = self.token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charts') is not None:
+            self.charts = m.get('Charts')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeSearchTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        template_list: List[DescribeSearchTemplatesResponseBodyTemplateList] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.template_list = template_list
+
+    def validate(self):
+        if self.template_list:
+            for k in self.template_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TemplateList'] = []
+        if self.template_list is not None:
+            for k in self.template_list:
+                result['TemplateList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.template_list = []
+        if m.get('TemplateList') is not None:
+            for k in m.get('TemplateList'):
+                temp_model = DescribeSearchTemplatesResponseBodyTemplateList()
+                self.template_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeSearchTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSearchTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSearchTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -864,7 +2143,9 @@ class DescribeTrailsResponseBodyTrailList(TeaModel):
         # *   false (default)
         # *   true
         self.is_organization_trail = is_organization_trail
+        # The ARN of the MaxCompute project.
         self.max_compute_project_arn = max_compute_project_arn
+        # The ARN of the role that is assumed by ActionTrail to deliver events to the MaxCompute project.
         self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
@@ -1011,7 +2292,7 @@ class DescribeTrailsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # A list of returned trails.
+        # The trails.
         self.trail_list = trail_list
 
     def validate(self):
@@ -1087,11 +2368,300 @@ class DescribeTrailsResponse(TeaModel):
         return self
 
 
+class DescribeUserAlertCountRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        start_date: str = None,
+    ):
+        self.end_date = end_date
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeUserAlertCountResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        counts: List[int] = None,
+        dates: List[str] = None,
+    ):
+        self.counts = counts
+        self.dates = dates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.counts is not None:
+            result['Counts'] = self.counts
+        if self.dates is not None:
+            result['Dates'] = self.dates
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Counts') is not None:
+            self.counts = m.get('Counts')
+        if m.get('Dates') is not None:
+            self.dates = m.get('Dates')
+        return self
+
+
+class DescribeUserAlertCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeUserAlertCountResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeUserAlertCountResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUserAlertCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserAlertCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserAlertCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeUserLogCountRequest(TeaModel):
+    def __init__(
+        self,
+        end_date: str = None,
+        start_date: str = None,
+    ):
+        self.end_date = end_date
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeUserLogCountResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        counts: List[int] = None,
+        dates: List[str] = None,
+    ):
+        self.counts = counts
+        self.dates = dates
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.counts is not None:
+            result['Counts'] = self.counts
+        if self.dates is not None:
+            result['Dates'] = self.dates
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Counts') is not None:
+            self.counts = m.get('Counts')
+        if m.get('Dates') is not None:
+            self.dates = m.get('Dates')
+        return self
+
+
+class DescribeUserLogCountResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeUserLogCountResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeUserLogCountResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeUserLogCountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeUserLogCountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeUserLogCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableInsightRequest(TeaModel):
     def __init__(
         self,
         insight_type: str = None,
     ):
+        # The type of the Insights event. Valid values:
+        # 
+        # *   IpInsight: Insights event on IP address
+        # *   ApiCallRateInsight: Insights event on API call rate
+        # *   ApiErrorRateInsight: Insights event on API error rate
         self.insight_type = insight_type
 
     def validate(self):
@@ -1119,6 +2689,7 @@ class EnableInsightResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1191,6 +2762,8 @@ class GetAccessKeyLastUsedEventsRequest(TeaModel):
         service_name: str = None,
     ):
         # The AccessKey ID.
+        # 
+        # This parameter is required.
         self.access_key = access_key
         # The token that determines the start point of the query.
         # 
@@ -1202,7 +2775,9 @@ class GetAccessKeyLastUsedEventsRequest(TeaModel):
         # 
         # Default value: 20.
         self.page_size = page_size
-        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Supported Alibaba Cloud services](~~28829~~).
+        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Supported Alibaba Cloud services](https://help.aliyun.com/document_detail/28829.html).
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -1294,10 +2869,14 @@ class GetAccessKeyLastUsedEventsResponseBody(TeaModel):
         request_id: str = None,
     ):
         # The list of returned events.
+        # 
+        # This parameter is required.
         self.events = events
         # The token that determines the start point of the query.
         self.next_token = next_token
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -1382,7 +2961,9 @@ class GetAccessKeyLastUsedInfoRequest(TeaModel):
         self,
         access_key: str = None,
     ):
-        # The AccessKey secret.
+        # The AccessKey ID.
+        # 
+        # This parameter is required.
         self.access_key = access_key
 
     def validate(self):
@@ -1432,8 +3013,12 @@ class GetAccessKeyLastUsedInfoResponseBody(TeaModel):
         # The ID of the account to which the AccessKey pair belongs.
         self.owner_id = owner_id
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.request_id = request_id
         # The Alibaba Cloud service that was last accessed.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # The Chinese name of the Alibaba Cloud service that was last accessed.
         self.service_name_cn = service_name_cn
@@ -1442,6 +3027,8 @@ class GetAccessKeyLastUsedInfoResponseBody(TeaModel):
         # The event source.
         self.source = source
         # The timestamp when the AccessKey pair was last called.
+        # 
+        # This parameter is required.
         self.used_timestamp = used_timestamp
         # The name of the account to which the AccessKey pair belongs.
         # 
@@ -1562,18 +3149,18 @@ class GetAccessKeyLastUsedIpsRequest(TeaModel):
         service_name: str = None,
     ):
         # The AccessKey ID.
+        # 
+        # This parameter is required.
         self.access_key = access_key
-        # The token that determines the start point of the query.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # > The request parameters must be the same as those of the last request.
+        # >  You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
-        # The number of entries to return on each page.
-        # 
-        # Valid values: 0 to 100.
-        # 
-        # Default value: 20.
+        # The number of entries per page. Valid values: 0 to 100. Default value: 20.
         self.page_size = page_size
-        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Supported Alibaba Cloud services](~~28829~~).
+        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Services that work with ActionTrail](https://help.aliyun.com/document_detail/28829.html).
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -1616,13 +3203,19 @@ class GetAccessKeyLastUsedIpsResponseBodyIps(TeaModel):
         source: str = None,
         used_timestamp: int = None,
     ):
-        # An array that consists of the details about the event.
+        # The event details.
         self.detail = detail
         # The IP address.
         self.ip = ip
         # The event source.
+        # 
+        # Valid values:
+        # 
+        # *   Internal: other events.
+        # *   ManagementEvent: management events.
+        # *   DataEvent: data events.
         self.source = source
-        # The timestamp when the IP address was used.
+        # The timestamp when the IP address was used. Unit: milliseconds.
         self.used_timestamp = used_timestamp
 
     def validate(self):
@@ -1664,11 +3257,15 @@ class GetAccessKeyLastUsedIpsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The list of returned IP addresses.
+        # The IP addresses.
+        # 
+        # This parameter is required.
         self.ips = ips
-        # The token that determines the start point of the query.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -1754,6 +3351,8 @@ class GetAccessKeyLastUsedProductsRequest(TeaModel):
         access_key: str = None,
     ):
         # The AccessKey ID.
+        # 
+        # This parameter is required.
         self.access_key = access_key
 
     def validate(self):
@@ -1884,8 +3483,12 @@ class GetAccessKeyLastUsedProductsResponseBody(TeaModel):
         request_id: str = None,
     ):
         # The list of returned Alibaba Cloud services.
+        # 
+        # This parameter is required.
         self.products = products
         # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -1970,6 +3573,8 @@ class GetAccessKeyLastUsedResourcesRequest(TeaModel):
         service_name: str = None,
     ):
         # The AccessKey ID.
+        # 
+        # This parameter is required.
         self.access_key = access_key
         # The pagination token that is used in the next request to retrieve a new page of results.
         # 
@@ -1980,7 +3585,9 @@ class GetAccessKeyLastUsedResourcesRequest(TeaModel):
         # *   Valid values: 0 to 100.
         # *   Default value: 20.
         self.page_size = page_size
-        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Supported Alibaba Cloud services](~~28829~~).
+        # The Alibaba Cloud service. For more information about the Alibaba Cloud services supported by ActionTrail, see [Supported Alibaba Cloud services](https://help.aliyun.com/document_detail/28829.html).
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -2119,8 +3726,12 @@ class GetAccessKeyLastUsedResourcesResponseBody(TeaModel):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
         # The list of returned resources.
+        # 
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -2200,12 +3811,134 @@ class GetAccessKeyLastUsedResourcesResponse(TeaModel):
         return self
 
 
+class GetAdvancedQueryTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: str = None,
+    ):
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class GetAdvancedQueryTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        simple_query: bool = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        self.request_id = request_id
+        self.simple_query = simple_query
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class GetAdvancedQueryTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAdvancedQueryTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAdvancedQueryTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDeliveryHistoryJobRequest(TeaModel):
     def __init__(
         self,
         job_id: int = None,
     ):
         # The ID of the historical event delivery task.
+        # 
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -2515,6 +4248,162 @@ class GetGlobalEventsStorageRegionResponse(TeaModel):
         return self
 
 
+class GetGovernanceMetricsResponseBodyDataGovernanceMetrics(TeaModel):
+    def __init__(
+        self,
+        columns_schema: str = None,
+        governance_item: str = None,
+        governance_score: str = None,
+    ):
+        self.columns_schema = columns_schema
+        self.governance_item = governance_item
+        self.governance_score = governance_score
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.columns_schema is not None:
+            result['ColumnsSchema'] = self.columns_schema
+        if self.governance_item is not None:
+            result['GovernanceItem'] = self.governance_item
+        if self.governance_score is not None:
+            result['GovernanceScore'] = self.governance_score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnsSchema') is not None:
+            self.columns_schema = m.get('ColumnsSchema')
+        if m.get('GovernanceItem') is not None:
+            self.governance_item = m.get('GovernanceItem')
+        if m.get('GovernanceScore') is not None:
+            self.governance_score = m.get('GovernanceScore')
+        return self
+
+
+class GetGovernanceMetricsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        governance_metrics: List[GetGovernanceMetricsResponseBodyDataGovernanceMetrics] = None,
+    ):
+        self.account_id = account_id
+        self.governance_metrics = governance_metrics
+
+    def validate(self):
+        if self.governance_metrics:
+            for k in self.governance_metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        result['GovernanceMetrics'] = []
+        if self.governance_metrics is not None:
+            for k in self.governance_metrics:
+                result['GovernanceMetrics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        self.governance_metrics = []
+        if m.get('GovernanceMetrics') is not None:
+            for k in m.get('GovernanceMetrics'):
+                temp_model = GetGovernanceMetricsResponseBodyDataGovernanceMetrics()
+                self.governance_metrics.append(temp_model.from_map(k))
+        return self
+
+
+class GetGovernanceMetricsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetGovernanceMetricsResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetGovernanceMetricsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetGovernanceMetricsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGovernanceMetricsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGovernanceMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetTrailStatusRequest(TeaModel):
     def __init__(
         self,
@@ -2528,9 +4417,11 @@ class GetTrailStatusRequest(TeaModel):
         self.is_organization_trail = is_organization_trail
         # The name of the trail.
         # 
-        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # 
         # > The name must be unique within your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -2694,6 +4585,195 @@ class GetTrailStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTrailStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataEventServicesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListDataEventServicesResponseBodyDataServiceInfos(TeaModel):
+    def __init__(
+        self,
+        event_names: List[str] = None,
+        service_name: str = None,
+    ):
+        self.event_names = event_names
+        self.service_name = service_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_names is not None:
+            result['EventNames'] = self.event_names
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventNames') is not None:
+            self.event_names = m.get('EventNames')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        return self
+
+
+class ListDataEventServicesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        service_infos: List[ListDataEventServicesResponseBodyDataServiceInfos] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.service_infos = service_infos
+
+    def validate(self):
+        if self.service_infos:
+            for k in self.service_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['ServiceInfos'] = []
+        if self.service_infos is not None:
+            for k in self.service_infos:
+                result['ServiceInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.service_infos = []
+        if m.get('ServiceInfos') is not None:
+            for k in m.get('ServiceInfos'):
+                temp_model = ListDataEventServicesResponseBodyDataServiceInfos()
+                self.service_infos.append(temp_model.from_map(k))
+        return self
+
+
+class ListDataEventServicesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListDataEventServicesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ListDataEventServicesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListDataEventServicesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataEventServicesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataEventServicesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2954,7 +5034,7 @@ class LookupEventsRequestLookupAttribute(TeaModel):
         # *   When the LookupAttribute.N.Key parameter is set to ResourceType, you can set this parameter to a value such as `ACS::ECS::Instance`.
         # *   When the LookupAttribute.N.Key parameter is set to ResourceName, you can set this parameter to a value such as `i-bp14664y88udkt45****`.
         # *   When the LookupAttribute.N.Key parameter is set to EventRW, you can set this parameter to `Read` or `Write`.
-        # *   When the LookupAttribute.N.Key parameter is set to EventAccessKeyId, you can set this parameter to a value such as `LTAI4FoDkCf4DU1bic1V****`.
+        # *   When the LookupAttribute.N.Key parameter is set to EventAccessKeyId, you can set this parameter to a value such as `LTAI****************`.
         self.value = value
 
     def validate(self):
@@ -3072,7 +5152,7 @@ class LookupEventsResponseBody(TeaModel):
         self.end_time = end_time
         # The returned event details.
         # 
-        # For more information about the fields in an event log, see [ActionTrail event log reference](~~28819~~).
+        # For more information about the fields in an event log, see [ActionTrail event log reference](https://help.aliyun.com/document_detail/28819.html).
         self.events = events
         # The token used to return the next page of query results.
         # 
@@ -3167,9 +5247,11 @@ class StartLoggingRequest(TeaModel):
     ):
         # The name of the trail that you want to enable.
         # 
-        # The name must be 6 to 36 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). It must start with a lowercase letter.
+        # The name must be 6 to 36 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). It must start with a lowercase letter.
         # 
         # > The name must be unique within your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3268,9 +5350,11 @@ class StopLoggingRequest(TeaModel):
     ):
         # The name of the trail that you want to disable.
         # 
-        # The name must be 6 to 36 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (\_). It must start with a lowercase letter.
+        # The name must be 6 to 36 characters in length, and can contain lowercase letters, digits, hyphens (-), and underscores (_). It must start with a lowercase letter.
         # 
         # > The name must be unique within your Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3362,6 +5446,145 @@ class StopLoggingResponse(TeaModel):
         return self
 
 
+class UpdateAdvancedQueryTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        simple_query: bool = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        # This parameter is required.
+        self.simple_query = simple_query
+        # This parameter is required.
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class UpdateAdvancedQueryTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        simple_query: str = None,
+        template_id: str = None,
+        template_name: str = None,
+        template_sql: str = None,
+    ):
+        self.request_id = request_id
+        self.simple_query = simple_query
+        self.template_id = template_id
+        self.template_name = template_name
+        self.template_sql = template_sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.simple_query is not None:
+            result['SimpleQuery'] = self.simple_query
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        if self.template_sql is not None:
+            result['TemplateSql'] = self.template_sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SimpleQuery') is not None:
+            self.simple_query = m.get('SimpleQuery')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        if m.get('TemplateSql') is not None:
+            self.template_sql = m.get('TemplateSql')
+        return self
+
+
+class UpdateAdvancedQueryTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAdvancedQueryTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAdvancedQueryTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateGlobalEventsStorageRegionRequest(TeaModel):
     def __init__(
         self,
@@ -3394,6 +5617,8 @@ class UpdateGlobalEventsStorageRegionRequest(TeaModel):
         #     the China (Hangzhou) region
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.storage_region = storage_region
 
     def validate(self):
@@ -3505,13 +5730,22 @@ class UpdateTrailRequest(TeaModel):
         # *   Read: read events.
         # *   All: read and write events.
         self.event_rw = event_rw
+        # The ARN of the MaxCompute project to which you want to deliver events.
+        # 
+        # >  The name of the MaxCompute project must be prefixed with actiontrail_.
         self.max_compute_project_arn = max_compute_project_arn
+        # The ARN of the role that is assumed by ActionTrail to deliver events to the destination Simple Log Service project.
+        # 
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the required resources. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter and deliver events to the current account, you must grant the RAM role the permissions on the service-linked role for ActionTrail. If you want to deliver events to other accounts, you must attach a system policy to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail whose configurations you want to update.
         # 
-        # The name must be 6 to 36 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (\_). It must start with a lowercase letter.
+        # The name must be 6 to 36 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (_). It must start with a lowercase letter.
         # 
         # >  The name must be unique within an Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.name = name
         # The name of the Object Storage Service (OSS) bucket to which you want to deliver events.
         # 
@@ -3521,25 +5755,25 @@ class UpdateTrailRequest(TeaModel):
         self.oss_bucket_name = oss_bucket_name
         # The prefix of the files that are stored in the OSS bucket.
         # 
-        # The prefix must be 6 to 32 characters in length. The prefix must start with a letter and can contain letters, digits, hyphens (-), forward slashes (/), and underscores (\_).
+        # The prefix must be 6 to 32 characters in length. The prefix must start with a letter and can contain letters, digits, hyphens (-), forward slashes (/), and underscores (_).
         self.oss_key_prefix = oss_key_prefix
         # The Alibaba Cloud Resource Name (ARN) of the RAM role that is assumed by ActionTrail to deliver events to the OSS bucket.
         # 
-        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the required resources. For more information, see [Manage the service-linked role](~~169244~~).
-        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](~~207462~~).
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the required resources. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.oss_write_role_arn = oss_write_role_arn
         # The ARN of the Log Service project to which you want to deliver events.
         self.sls_project_arn = sls_project_arn
         # The ARN of the RAM role that is assumed by ActionTrail to deliver events to the Log Service project.
         # 
-        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](~~169244~~).
-        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](~~207462~~).
+        # *   If you do not specify this parameter, ActionTrail creates a service-linked role to create the corresponding resource. For more information, see [Manage the service-linked role](https://help.aliyun.com/document_detail/169244.html).
+        # *   If you specify this parameter, you must grant the permissions of the service-linked role that is assumed by ActionTrail to the RAM role before you can deliver events to your Alibaba Cloud account. If you need to deliver events to other Alibaba Cloud accounts, you must attach the permission policy that is used to grant permissions related to event delivery to the RAM role. For more information about how to deliver events across Alibaba Cloud accounts, see [Deliver events across Alibaba Cloud accounts](https://help.aliyun.com/document_detail/207462.html).
         self.sls_write_role_arn = sls_write_role_arn
         # The region of the trail.
         # 
         # *   The default value is All, which indicates that the trail delivers events from all regions.
         # 
-        # You can also specify specific regions. You can call the [DescribeRegions](~~213597~~) operation to query all the supported regions.
+        # You can also specify specific regions. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/213597.html) operation to query all the supported regions.
         self.trail_region = trail_region
 
     def validate(self):
@@ -3618,7 +5852,9 @@ class UpdateTrailResponseBody(TeaModel):
         self.event_rw = event_rw
         # The home region of the trail.
         self.home_region = home_region
+        # ARN of the Big Data Compute Service project for tracking delivery.
         self.max_compute_project_arn = max_compute_project_arn
+        # The ARN of the role that Operation Audit assumes when delivering operation events to the Big Data Compute Service project.
         self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
