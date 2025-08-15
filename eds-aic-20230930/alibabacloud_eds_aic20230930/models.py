@@ -2039,6 +2039,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
         ip_ratio: int = None,
         isp: str = None,
         limited_bandwidth: int = None,
+        pay_type: str = None,
     ):
         self.bandwidth_package_name = bandwidth_package_name
         self.cidr_block = cidr_block
@@ -2046,6 +2047,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
         self.ip_ratio = ip_ratio
         self.isp = isp
         self.limited_bandwidth = limited_bandwidth
+        self.pay_type = pay_type
 
     def validate(self):
         pass
@@ -2068,6 +2070,8 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
             result['Isp'] = self.isp
         if self.limited_bandwidth is not None:
             result['LimitedBandwidth'] = self.limited_bandwidth
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2084,6 +2088,8 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
             self.isp = m.get('Isp')
         if m.get('LimitedBandwidth') is not None:
             self.limited_bandwidth = m.get('LimitedBandwidth')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
         return self
 
 
