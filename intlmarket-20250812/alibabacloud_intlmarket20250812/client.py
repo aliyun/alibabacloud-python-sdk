@@ -41,6 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_order_with_options(
+        self,
+        request: intl_market_20250812_models.CreateOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> intl_market_20250812_models.CreateOrderResponse:
+        """
+        @summary 创建云市场订单
+        
+        @param request: CreateOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity):
+            query['Commodity'] = request.commodity
+        if not UtilClient.is_unset(request.order_souce):
+            query['OrderSouce'] = request.order_souce
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2025-08-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intl_market_20250812_models.CreateOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_order_with_options_async(
+        self,
+        request: intl_market_20250812_models.CreateOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> intl_market_20250812_models.CreateOrderResponse:
+        """
+        @summary 创建云市场订单
+        
+        @param request: CreateOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.commodity):
+            query['Commodity'] = request.commodity
+        if not UtilClient.is_unset(request.order_souce):
+            query['OrderSouce'] = request.order_souce
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2025-08-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intl_market_20250812_models.CreateOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_order(
+        self,
+        request: intl_market_20250812_models.CreateOrderRequest,
+    ) -> intl_market_20250812_models.CreateOrderResponse:
+        """
+        @summary 创建云市场订单
+        
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_order_with_options(request, runtime)
+
+    async def create_order_async(
+        self,
+        request: intl_market_20250812_models.CreateOrderRequest,
+    ) -> intl_market_20250812_models.CreateOrderResponse:
+        """
+        @summary 创建云市场订单
+        
+        @param request: CreateOrderRequest
+        @return: CreateOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_order_with_options_async(request, runtime)
+
     def describe_price_with_options(
         self,
         request: intl_market_20250812_models.DescribePriceRequest,

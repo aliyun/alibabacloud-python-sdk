@@ -4,6 +4,147 @@ from Tea.model import TeaModel
 from typing import List, Dict
 
 
+class CreateOrderRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        commodity: str = None,
+        order_souce: str = None,
+        order_type: str = None,
+        owner_id: str = None,
+        payment_type: str = None,
+    ):
+        # This parameter is required.
+        self.client_token = client_token
+        # This parameter is required.
+        self.commodity = commodity
+        self.order_souce = order_souce
+        # This parameter is required.
+        self.order_type = order_type
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.payment_type = payment_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.commodity is not None:
+            result['Commodity'] = self.commodity
+        if self.order_souce is not None:
+            result['OrderSouce'] = self.order_souce
+        if self.order_type is not None:
+            result['OrderType'] = self.order_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Commodity') is not None:
+            self.commodity = m.get('Commodity')
+        if m.get('OrderSouce') is not None:
+            self.order_souce = m.get('OrderSouce')
+        if m.get('OrderType') is not None:
+            self.order_type = m.get('OrderType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        return self
+
+
+class CreateOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.instance_ids = instance_ids
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribePriceRequest(TeaModel):
     def __init__(
         self,
