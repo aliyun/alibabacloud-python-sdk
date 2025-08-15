@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
-from darabonba.model import DaraModel 
-from alibabacloud_dlfnext20250310 import models as main_models 
 
+from alibabacloud_dlfnext20250310 import models as main_models
+from darabonba.model import DaraModel
 
 class CatalogSummary(DaraModel):
     def __init__(

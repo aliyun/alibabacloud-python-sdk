@@ -6,7 +6,7 @@ from typing import Dict
 
 from darabonba.model import DaraModel
 
-class AlterTableResponse(DaraModel):
+class RefreshUserSyncResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,

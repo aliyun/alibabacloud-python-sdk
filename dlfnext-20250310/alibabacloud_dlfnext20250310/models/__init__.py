@@ -2,8 +2,6 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-
-
 from ._catalog import Catalog
 from ._catalog_summary import CatalogSummary
 from ._catalog_summary_trend import CatalogSummaryTrend
@@ -170,6 +168,7 @@ from ._list_user_roles_response import ListUserRolesResponse
 from ._list_users_request import ListUsersRequest
 from ._list_users_response_body import ListUsersResponseBody
 from ._list_users_response import ListUsersResponse
+from ._refresh_user_sync_response import RefreshUserSyncResponse
 from ._revoke_role_from_users_request import RevokeRoleFromUsersRequest
 from ._revoke_role_from_users_response import RevokeRoleFromUsersResponse
 from ._rollback_table_request import RollbackTableRequest
@@ -349,6 +348,7 @@ __all__ = [
     ListUsersRequest,
     ListUsersResponseBody,
     ListUsersResponse,
+    RefreshUserSyncResponse,
     RevokeRoleFromUsersRequest,
     RevokeRoleFromUsersResponse,
     RollbackTableRequest,

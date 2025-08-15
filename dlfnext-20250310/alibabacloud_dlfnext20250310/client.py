@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
-from alibabacloud_tea_openapi.client import Client as OpenApiClient 
-from alibabacloud_tea_openapi import utils_models as open_api_util_models 
-from darabonba.core import DaraCore as DaraCore 
-from alibabacloud_tea_openapi.utils import Utils 
-from alibabacloud_dlfnext20250310 import models as main_models 
-from darabonba.runtime import RuntimeOptions 
-from darabonba.url import Url as DaraURL 
+
 from typing import Dict
 
+from alibabacloud_dlfnext20250310 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
+from alibabacloud_tea_openapi.client import Client as OpenApiClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
+from darabonba.url import Url as DaraURL
 
 """
 """
@@ -4865,6 +4866,64 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_users_with_options_async(request, headers, runtime)
+
+    def refresh_user_sync_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshUserSyncResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshUserSync',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/usersync',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshUserSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refresh_user_sync_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.RefreshUserSyncResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'RefreshUserSync',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/auth/usersync',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.RefreshUserSyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refresh_user_sync(self) -> main_models.RefreshUserSyncResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.refresh_user_sync_with_options(headers, runtime)
+
+    async def refresh_user_sync_async(self) -> main_models.RefreshUserSyncResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.refresh_user_sync_with_options_async(headers, runtime)
 
     def revoke_role_from_users_with_options(
         self,

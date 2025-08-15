@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
-from darabonba.model import DaraModel 
+
 from typing import List
 
+from darabonba.model import DaraModel
 
 class ListDatabasesResponseBody(DaraModel):
     def __init__(
