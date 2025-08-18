@@ -7708,9 +7708,11 @@ class CreateStreamBatchJobMappingResponseBodyData(TeaModel):
     def __init__(
         self,
         file_id: str = None,
+        job_id: int = None,
         url: str = None,
     ):
         self.file_id = file_id
+        self.job_id = job_id
         self.url = url
 
     def validate(self):
@@ -7724,6 +7726,8 @@ class CreateStreamBatchJobMappingResponseBodyData(TeaModel):
         result = dict()
         if self.file_id is not None:
             result['FileId'] = self.file_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.url is not None:
             result['Url'] = self.url
         return result
@@ -7732,6 +7736,8 @@ class CreateStreamBatchJobMappingResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('Url') is not None:
             self.url = m.get('Url')
         return self

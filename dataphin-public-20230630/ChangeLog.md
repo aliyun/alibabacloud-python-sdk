@@ -1,3 +1,7 @@
+2025-08-18 Version: 2.0.1
+- Update API CreateStreamBatchJobMapping: add response parameters Body.Data.JobId.
+
+
 2025-07-31 Version: 2.0.0
 - Support API AddDataServiceProjectMember.
 - Support API AddProjectMember.
