@@ -1,3 +1,13 @@
+2025-08-18 Version: 4.1.0
+- Support API CreateWuyingServer.
+- Support API ListWuyingServer.
+- Support API ModifyWuyingServerAttribute.
+- Support API RenewWuyingServer.
+- Support API RestartWuyingServer.
+- Support API StartWuyingServer.
+- Support API StopWuyingServer.
+
+
 2025-07-10 Version: 4.0.1
 - Update API RenewAppInstanceGroup: add request parameters RenewAmount.
 - Update API RenewAppInstanceGroup: add request parameters RenewMode.

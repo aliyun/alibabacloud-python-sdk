@@ -1692,6 +1692,291 @@ class CreateImageFromAppInstanceGroupResponse(TeaModel):
         return self
 
 
+class CreateWuyingServerRequestDataDisk(TeaModel):
+    def __init__(
+        self,
+        data_disk_category: str = None,
+        data_disk_performance_level: str = None,
+        data_disk_size: int = None,
+    ):
+        self.data_disk_category = data_disk_category
+        self.data_disk_performance_level = data_disk_performance_level
+        self.data_disk_size = data_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
+        if self.data_disk_performance_level is not None:
+            result['DataDiskPerformanceLevel'] = self.data_disk_performance_level
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
+        if m.get('DataDiskPerformanceLevel') is not None:
+            self.data_disk_performance_level = m.get('DataDiskPerformanceLevel')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        return self
+
+
+class CreateWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        data_disk: List[CreateWuyingServerRequestDataDisk] = None,
+        image_id: str = None,
+        office_site_id: str = None,
+        password: str = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        server_instance_type: str = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+        v_switch_ids: List[str] = None,
+        wuying_server_name: str = None,
+    ):
+        self.amount = amount
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        self.data_disk = data_disk
+        self.image_id = image_id
+        self.office_site_id = office_site_id
+        self.password = password
+        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
+        self.server_instance_type = server_instance_type
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+        self.v_switch_ids = v_switch_ids
+        self.wuying_server_name = wuying_server_name
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.server_instance_type is not None:
+            result['ServerInstanceType'] = self.server_instance_type
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.wuying_server_name is not None:
+            result['WuyingServerName'] = self.wuying_server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = CreateWuyingServerRequestDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('ServerInstanceType') is not None:
+            self.server_instance_type = m.get('ServerInstanceType')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('WuyingServerName') is not None:
+            self.wuying_server_name = m.get('WuyingServerName')
+        return self
+
+
+class CreateWuyingServerResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        wuying_server_id_list: List[str] = None,
+    ):
+        self.order_id = order_id
+        self.wuying_server_id_list = wuying_server_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.wuying_server_id_list is not None:
+            result['WuyingServerIdList'] = self.wuying_server_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('WuyingServerIdList') is not None:
+            self.wuying_server_id_list = m.get('WuyingServerIdList')
+        return self
+
+
+class CreateWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateWuyingServerResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CreateWuyingServerResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteAppInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -7672,6 +7957,471 @@ class ListTenantConfigResponse(TeaModel):
         return self
 
 
+class ListWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        image_id: str = None,
+        office_site_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        server_instance_type: str = None,
+        status: str = None,
+        wuying_server_id_list: List[str] = None,
+        wuying_server_name_or_id: str = None,
+    ):
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        self.image_id = image_id
+        self.office_site_id = office_site_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.server_instance_type = server_instance_type
+        self.status = status
+        self.wuying_server_id_list = wuying_server_id_list
+        self.wuying_server_name_or_id = wuying_server_name_or_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.server_instance_type is not None:
+            result['ServerInstanceType'] = self.server_instance_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.wuying_server_id_list is not None:
+            result['WuyingServerIdList'] = self.wuying_server_id_list
+        if self.wuying_server_name_or_id is not None:
+            result['WuyingServerNameOrId'] = self.wuying_server_name_or_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ServerInstanceType') is not None:
+            self.server_instance_type = m.get('ServerInstanceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WuyingServerIdList') is not None:
+            self.wuying_server_id_list = m.get('WuyingServerIdList')
+        if m.get('WuyingServerNameOrId') is not None:
+            self.wuying_server_name_or_id = m.get('WuyingServerNameOrId')
+        return self
+
+
+class ListWuyingServerResponseBodyWuyingServerListDataDisk(TeaModel):
+    def __init__(
+        self,
+        data_disk_category: str = None,
+        data_disk_performance_level: str = None,
+        data_disk_size: int = None,
+    ):
+        self.data_disk_category = data_disk_category
+        self.data_disk_performance_level = data_disk_performance_level
+        self.data_disk_size = data_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_disk_category is not None:
+            result['DataDiskCategory'] = self.data_disk_category
+        if self.data_disk_performance_level is not None:
+            result['DataDiskPerformanceLevel'] = self.data_disk_performance_level
+        if self.data_disk_size is not None:
+            result['DataDiskSize'] = self.data_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataDiskCategory') is not None:
+            self.data_disk_category = m.get('DataDiskCategory')
+        if m.get('DataDiskPerformanceLevel') is not None:
+            self.data_disk_performance_level = m.get('DataDiskPerformanceLevel')
+        if m.get('DataDiskSize') is not None:
+            self.data_disk_size = m.get('DataDiskSize')
+        return self
+
+
+class ListWuyingServerResponseBodyWuyingServerListInstanceInfoList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        network_interface_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.network_interface_id = network_interface_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.network_interface_id is not None:
+            result['NetworkInterfaceId'] = self.network_interface_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NetworkInterfaceId') is not None:
+            self.network_interface_id = m.get('NetworkInterfaceId')
+        return self
+
+
+class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gpu_memory: int = None,
+        memory: int = None,
+        server_instance_type: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gpu_memory = gpu_memory
+        self.memory = memory
+        self.server_instance_type = server_instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.gpu is not None:
+            result['Gpu'] = self.gpu
+        if self.gpu_memory is not None:
+            result['GpuMemory'] = self.gpu_memory
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.server_instance_type is not None:
+            result['ServerInstanceType'] = self.server_instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Gpu') is not None:
+            self.gpu = m.get('Gpu')
+        if m.get('GpuMemory') is not None:
+            self.gpu_memory = m.get('GpuMemory')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('ServerInstanceType') is not None:
+            self.server_instance_type = m.get('ServerInstanceType')
+        return self
+
+
+class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
+    def __init__(
+        self,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        create_time: str = None,
+        data_disk: List[ListWuyingServerResponseBodyWuyingServerListDataDisk] = None,
+        expired_time: str = None,
+        image_id: str = None,
+        image_name: str = None,
+        instance_info_list: List[ListWuyingServerResponseBodyWuyingServerListInstanceInfoList] = None,
+        network_interface_ip: str = None,
+        office_site_id: str = None,
+        office_site_name: str = None,
+        office_site_type: str = None,
+        os_type: str = None,
+        server_instance_type_info: ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo = None,
+        status: str = None,
+        system_disk_category: str = None,
+        system_disk_performance_level: str = None,
+        system_disk_size: int = None,
+        wuying_server_id: str = None,
+        wuying_server_name: str = None,
+    ):
+        self.biz_region_id = biz_region_id
+        self.charge_type = charge_type
+        self.create_time = create_time
+        self.data_disk = data_disk
+        self.expired_time = expired_time
+        self.image_id = image_id
+        self.image_name = image_name
+        self.instance_info_list = instance_info_list
+        self.network_interface_ip = network_interface_ip
+        self.office_site_id = office_site_id
+        self.office_site_name = office_site_name
+        self.office_site_type = office_site_type
+        self.os_type = os_type
+        self.server_instance_type_info = server_instance_type_info
+        self.status = status
+        self.system_disk_category = system_disk_category
+        self.system_disk_performance_level = system_disk_performance_level
+        self.system_disk_size = system_disk_size
+        self.wuying_server_id = wuying_server_id
+        self.wuying_server_name = wuying_server_name
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+        if self.instance_info_list:
+            for k in self.instance_info_list:
+                if k:
+                    k.validate()
+        if self.server_instance_type_info:
+            self.server_instance_type_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        if self.expired_time is not None:
+            result['ExpiredTime'] = self.expired_time
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.image_name is not None:
+            result['ImageName'] = self.image_name
+        result['InstanceInfoList'] = []
+        if self.instance_info_list is not None:
+            for k in self.instance_info_list:
+                result['InstanceInfoList'].append(k.to_map() if k else None)
+        if self.network_interface_ip is not None:
+            result['NetworkInterfaceIp'] = self.network_interface_ip
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.office_site_name is not None:
+            result['OfficeSiteName'] = self.office_site_name
+        if self.office_site_type is not None:
+            result['OfficeSiteType'] = self.office_site_type
+        if self.os_type is not None:
+            result['OsType'] = self.os_type
+        if self.server_instance_type_info is not None:
+            result['ServerInstanceTypeInfo'] = self.server_instance_type_info.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.system_disk_category is not None:
+            result['SystemDiskCategory'] = self.system_disk_category
+        if self.system_disk_performance_level is not None:
+            result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
+        if self.system_disk_size is not None:
+            result['SystemDiskSize'] = self.system_disk_size
+        if self.wuying_server_id is not None:
+            result['WuyingServerId'] = self.wuying_server_id
+        if self.wuying_server_name is not None:
+            result['WuyingServerName'] = self.wuying_server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = ListWuyingServerResponseBodyWuyingServerListDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        if m.get('ExpiredTime') is not None:
+            self.expired_time = m.get('ExpiredTime')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('ImageName') is not None:
+            self.image_name = m.get('ImageName')
+        self.instance_info_list = []
+        if m.get('InstanceInfoList') is not None:
+            for k in m.get('InstanceInfoList'):
+                temp_model = ListWuyingServerResponseBodyWuyingServerListInstanceInfoList()
+                self.instance_info_list.append(temp_model.from_map(k))
+        if m.get('NetworkInterfaceIp') is not None:
+            self.network_interface_ip = m.get('NetworkInterfaceIp')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('OfficeSiteName') is not None:
+            self.office_site_name = m.get('OfficeSiteName')
+        if m.get('OfficeSiteType') is not None:
+            self.office_site_type = m.get('OfficeSiteType')
+        if m.get('OsType') is not None:
+            self.os_type = m.get('OsType')
+        if m.get('ServerInstanceTypeInfo') is not None:
+            temp_model = ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo()
+            self.server_instance_type_info = temp_model.from_map(m['ServerInstanceTypeInfo'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SystemDiskCategory') is not None:
+            self.system_disk_category = m.get('SystemDiskCategory')
+        if m.get('SystemDiskPerformanceLevel') is not None:
+            self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
+        if m.get('SystemDiskSize') is not None:
+            self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('WuyingServerId') is not None:
+            self.wuying_server_id = m.get('WuyingServerId')
+        if m.get('WuyingServerName') is not None:
+            self.wuying_server_name = m.get('WuyingServerName')
+        return self
+
+
+class ListWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        wuying_server_list: List[ListWuyingServerResponseBodyWuyingServerList] = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.wuying_server_list = wuying_server_list
+
+    def validate(self):
+        if self.wuying_server_list:
+            for k in self.wuying_server_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['WuyingServerList'] = []
+        if self.wuying_server_list is not None:
+            for k in self.wuying_server_list:
+                result['WuyingServerList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.wuying_server_list = []
+        if m.get('WuyingServerList') is not None:
+            for k in m.get('WuyingServerList'):
+                temp_model = ListWuyingServerResponseBodyWuyingServerList()
+                self.wuying_server_list.append(temp_model.from_map(k))
+        return self
+
+
+class ListWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class LogOffAllSessionsInAppInstanceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -9378,6 +10128,113 @@ class ModifyTenantConfigResponse(TeaModel):
         return self
 
 
+class ModifyWuyingServerAttributeRequest(TeaModel):
+    def __init__(
+        self,
+        password: str = None,
+        wuying_server_id: str = None,
+        wuying_server_name: str = None,
+    ):
+        self.password = password
+        self.wuying_server_id = wuying_server_id
+        self.wuying_server_name = wuying_server_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.wuying_server_id is not None:
+            result['WuyingServerId'] = self.wuying_server_id
+        if self.wuying_server_name is not None:
+            result['WuyingServerName'] = self.wuying_server_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('WuyingServerId') is not None:
+            self.wuying_server_id = m.get('WuyingServerId')
+        if m.get('WuyingServerName') is not None:
+            self.wuying_server_name = m.get('WuyingServerName')
+        return self
+
+
+class ModifyWuyingServerAttributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyWuyingServerAttributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyWuyingServerAttributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyWuyingServerAttributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PageListAppInstanceGroupUserRequest(TeaModel):
     def __init__(
         self,
@@ -9815,6 +10672,422 @@ class RenewAppInstanceGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RenewAppInstanceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RenewWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        period: int = None,
+        period_unit: str = None,
+        promotion_id: str = None,
+        wuying_server_id: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.period = period
+        self.period_unit = period_unit
+        self.promotion_id = promotion_id
+        self.wuying_server_id = wuying_server_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
+        if self.wuying_server_id is not None:
+            result['WuyingServerId'] = self.wuying_server_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
+        if m.get('WuyingServerId') is not None:
+            self.wuying_server_id = m.get('WuyingServerId')
+        return self
+
+
+class RenewWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        order_id: str = None,
+        request_id: str = None,
+    ):
+        self.order_id = order_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RenewWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RenewWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RenewWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RestartWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        wuying_server_id_list: List[str] = None,
+    ):
+        self.wuying_server_id_list = wuying_server_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wuying_server_id_list is not None:
+            result['WuyingServerIdList'] = self.wuying_server_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WuyingServerIdList') is not None:
+            self.wuying_server_id_list = m.get('WuyingServerIdList')
+        return self
+
+
+class RestartWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RestartWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RestartWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RestartWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        wuying_server_id_list: List[str] = None,
+    ):
+        self.wuying_server_id_list = wuying_server_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.wuying_server_id_list is not None:
+            result['WuyingServerIdList'] = self.wuying_server_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WuyingServerIdList') is not None:
+            self.wuying_server_id_list = m.get('WuyingServerIdList')
+        return self
+
+
+class StartWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartWuyingServerResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopWuyingServerRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+        wuying_server_id_list: List[str] = None,
+    ):
+        self.force = force
+        self.wuying_server_id_list = wuying_server_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
+        if self.wuying_server_id_list is not None:
+            result['WuyingServerIdList'] = self.wuying_server_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
+        if m.get('WuyingServerIdList') is not None:
+            self.wuying_server_id_list = m.get('WuyingServerIdList')
+        return self
+
+
+class StopWuyingServerResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StopWuyingServerResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopWuyingServerResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopWuyingServerResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

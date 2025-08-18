@@ -640,6 +640,176 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_image_from_app_instance_group_with_options_async(request, runtime)
 
+    def create_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.CreateWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
+        """
+        @summary 创建一台或多台研发主机
+        
+        @param request: CreateWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk):
+            body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.system_disk_category):
+            body['SystemDiskCategory'] = request.system_disk_category
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.v_switch_ids):
+            body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.wuying_server_name):
+            body['WuyingServerName'] = request.wuying_server_name
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.CreateWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
+        """
+        @summary 创建一台或多台研发主机
+        
+        @param request: CreateWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.amount):
+            body['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        body_flat = {}
+        if not UtilClient.is_unset(request.data_disk):
+            body_flat['DataDisk'] = request.data_disk
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.system_disk_category):
+            body['SystemDiskCategory'] = request.system_disk_category
+        if not UtilClient.is_unset(request.system_disk_performance_level):
+            body['SystemDiskPerformanceLevel'] = request.system_disk_performance_level
+        if not UtilClient.is_unset(request.system_disk_size):
+            body['SystemDiskSize'] = request.system_disk_size
+        if not UtilClient.is_unset(request.v_switch_ids):
+            body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.wuying_server_name):
+            body['WuyingServerName'] = request.wuying_server_name
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.CreateWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_wuying_server(
+        self,
+        request: appstream_center_20210901_models.CreateWuyingServerRequest,
+    ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
+        """
+        @summary 创建一台或多台研发主机
+        
+        @param request: CreateWuyingServerRequest
+        @return: CreateWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_wuying_server_with_options(request, runtime)
+
+    async def create_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.CreateWuyingServerRequest,
+    ) -> appstream_center_20210901_models.CreateWuyingServerResponse:
+        """
+        @summary 创建一台或多台研发主机
+        
+        @param request: CreateWuyingServerRequest
+        @return: CreateWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_wuying_server_with_options_async(request, runtime)
+
     def delete_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.DeleteAppInstanceGroupRequest,
@@ -2822,6 +2992,144 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_tenant_config_with_options_async(runtime)
 
+    def list_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.ListWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListWuyingServerResponse:
+        """
+        @summary 查询研发主机列表
+        
+        @param request: ListWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        if not UtilClient.is_unset(request.wuying_server_name_or_id):
+            body['WuyingServerNameOrId'] = request.wuying_server_name_or_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ListWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ListWuyingServerResponse:
+        """
+        @summary 查询研发主机列表
+        
+        @param request: ListWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.biz_region_id):
+            body['BizRegionId'] = request.biz_region_id
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.image_id):
+            body['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.office_site_id):
+            body['OfficeSiteId'] = request.office_site_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.server_instance_type):
+            body['ServerInstanceType'] = request.server_instance_type
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        if not UtilClient.is_unset(request.wuying_server_name_or_id):
+            body['WuyingServerNameOrId'] = request.wuying_server_name_or_id
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ListWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_wuying_server(
+        self,
+        request: appstream_center_20210901_models.ListWuyingServerRequest,
+    ) -> appstream_center_20210901_models.ListWuyingServerResponse:
+        """
+        @summary 查询研发主机列表
+        
+        @param request: ListWuyingServerRequest
+        @return: ListWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_wuying_server_with_options(request, runtime)
+
+    async def list_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.ListWuyingServerRequest,
+    ) -> appstream_center_20210901_models.ListWuyingServerResponse:
+        """
+        @summary 查询研发主机列表
+        
+        @param request: ListWuyingServerRequest
+        @return: ListWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_wuying_server_with_options_async(request, runtime)
+
     def log_off_all_sessions_in_app_instance_group_with_options(
         self,
         request: appstream_center_20210901_models.LogOffAllSessionsInAppInstanceGroupRequest,
@@ -3522,6 +3830,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_config_with_options_async(request, runtime)
 
+    def modify_wuying_server_attribute_with_options(
+        self,
+        request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
+        """
+        @summary 修改研发主机属性
+        
+        @param request: ModifyWuyingServerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWuyingServerAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        if not UtilClient.is_unset(request.wuying_server_name):
+            body['WuyingServerName'] = request.wuying_server_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyWuyingServerAttribute',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyWuyingServerAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_wuying_server_attribute_with_options_async(
+        self,
+        request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
+        """
+        @summary 修改研发主机属性
+        
+        @param request: ModifyWuyingServerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWuyingServerAttributeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        if not UtilClient.is_unset(request.wuying_server_name):
+            body['WuyingServerName'] = request.wuying_server_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyWuyingServerAttribute',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.ModifyWuyingServerAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_wuying_server_attribute(
+        self,
+        request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
+    ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
+        """
+        @summary 修改研发主机属性
+        
+        @param request: ModifyWuyingServerAttributeRequest
+        @return: ModifyWuyingServerAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_wuying_server_attribute_with_options(request, runtime)
+
+    async def modify_wuying_server_attribute_async(
+        self,
+        request: appstream_center_20210901_models.ModifyWuyingServerAttributeRequest,
+    ) -> appstream_center_20210901_models.ModifyWuyingServerAttributeResponse:
+        """
+        @summary 修改研发主机属性
+        
+        @param request: ModifyWuyingServerAttributeRequest
+        @return: ModifyWuyingServerAttributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_wuying_server_attribute_with_options_async(request, runtime)
+
     def page_list_app_instance_group_user_with_options(
         self,
         request: appstream_center_20210901_models.PageListAppInstanceGroupUserRequest,
@@ -3773,6 +4185,428 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.renew_app_instance_group_with_options_async(request, runtime)
+
+    def renew_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.RenewWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
+        """
+        @summary 续费研发主机
+        
+        @param request: RenewWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenewWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.RenewWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def renew_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.RenewWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
+        """
+        @summary 续费研发主机
+        
+        @param request: RenewWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.period):
+            body['Period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            body['PromotionId'] = request.promotion_id
+        if not UtilClient.is_unset(request.wuying_server_id):
+            body['WuyingServerId'] = request.wuying_server_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RenewWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.RenewWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def renew_wuying_server(
+        self,
+        request: appstream_center_20210901_models.RenewWuyingServerRequest,
+    ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
+        """
+        @summary 续费研发主机
+        
+        @param request: RenewWuyingServerRequest
+        @return: RenewWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.renew_wuying_server_with_options(request, runtime)
+
+    async def renew_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.RenewWuyingServerRequest,
+    ) -> appstream_center_20210901_models.RenewWuyingServerResponse:
+        """
+        @summary 续费研发主机
+        
+        @param request: RenewWuyingServerRequest
+        @return: RenewWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.renew_wuying_server_with_options_async(request, runtime)
+
+    def restart_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.RestartWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
+        """
+        @summary 重启研发主机
+        
+        @param request: RestartWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.RestartWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.RestartWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
+        """
+        @summary 重启研发主机
+        
+        @param request: RestartWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RestartWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.RestartWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_wuying_server(
+        self,
+        request: appstream_center_20210901_models.RestartWuyingServerRequest,
+    ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
+        """
+        @summary 重启研发主机
+        
+        @param request: RestartWuyingServerRequest
+        @return: RestartWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.restart_wuying_server_with_options(request, runtime)
+
+    async def restart_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.RestartWuyingServerRequest,
+    ) -> appstream_center_20210901_models.RestartWuyingServerResponse:
+        """
+        @summary 重启研发主机
+        
+        @param request: RestartWuyingServerRequest
+        @return: RestartWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_wuying_server_with_options_async(request, runtime)
+
+    def start_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.StartWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StartWuyingServerResponse:
+        """
+        @summary 启动研发主机
+        
+        @param request: StartWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StartWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.StartWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StartWuyingServerResponse:
+        """
+        @summary 启动研发主机
+        
+        @param request: StartWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StartWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_wuying_server(
+        self,
+        request: appstream_center_20210901_models.StartWuyingServerRequest,
+    ) -> appstream_center_20210901_models.StartWuyingServerResponse:
+        """
+        @summary 启动研发主机
+        
+        @param request: StartWuyingServerRequest
+        @return: StartWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.start_wuying_server_with_options(request, runtime)
+
+    async def start_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.StartWuyingServerRequest,
+    ) -> appstream_center_20210901_models.StartWuyingServerResponse:
+        """
+        @summary 启动研发主机
+        
+        @param request: StartWuyingServerRequest
+        @return: StartWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.start_wuying_server_with_options_async(request, runtime)
+
+    def stop_wuying_server_with_options(
+        self,
+        request: appstream_center_20210901_models.StopWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StopWuyingServerResponse:
+        """
+        @summary 停止研发主机
+        
+        @param request: StopWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StopWuyingServerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_wuying_server_with_options_async(
+        self,
+        request: appstream_center_20210901_models.StopWuyingServerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> appstream_center_20210901_models.StopWuyingServerResponse:
+        """
+        @summary 停止研发主机
+        
+        @param request: StopWuyingServerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopWuyingServerResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.force):
+            body['Force'] = request.force
+        body_flat = {}
+        if not UtilClient.is_unset(request.wuying_server_id_list):
+            body_flat['WuyingServerIdList'] = request.wuying_server_id_list
+        body = TeaCore.merge(body,
+            OpenApiUtilClient.query(body_flat))
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopWuyingServer',
+            version='2021-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            appstream_center_20210901_models.StopWuyingServerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_wuying_server(
+        self,
+        request: appstream_center_20210901_models.StopWuyingServerRequest,
+    ) -> appstream_center_20210901_models.StopWuyingServerResponse:
+        """
+        @summary 停止研发主机
+        
+        @param request: StopWuyingServerRequest
+        @return: StopWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.stop_wuying_server_with_options(request, runtime)
+
+    async def stop_wuying_server_async(
+        self,
+        request: appstream_center_20210901_models.StopWuyingServerRequest,
+    ) -> appstream_center_20210901_models.StopWuyingServerResponse:
+        """
+        @summary 停止研发主机
+        
+        @param request: StopWuyingServerRequest
+        @return: StopWuyingServerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_wuying_server_with_options_async(request, runtime)
 
     def tag_cloud_resources_with_options(
         self,
