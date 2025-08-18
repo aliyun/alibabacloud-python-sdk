@@ -1,3 +1,7 @@
+2025-08-18 Version: 1.34.0
+- Support API RunVideoScriptGenerate.
+
+
 2025-08-15 Version: 1.33.0
 - Support API DeleteFactAuditUrl.
 - Support API GetFactAuditUrl.

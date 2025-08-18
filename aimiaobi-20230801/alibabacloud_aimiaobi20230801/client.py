@@ -16141,6 +16141,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_translate_generation_with_options_async(request, runtime)
 
+    def run_video_script_generate_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunVideoScriptGenerateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse:
+        """
+        @summary AI生成视频剪辑脚本
+        
+        @param request: RunVideoScriptGenerateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunVideoScriptGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.script_length):
+            body['ScriptLength'] = request.script_length
+        if not UtilClient.is_unset(request.script_number):
+            body['ScriptNumber'] = request.script_number
+        if not UtilClient.is_unset(request.use_search):
+            body['UseSearch'] = request.use_search
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunVideoScriptGenerate',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_video_script_generate_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunVideoScriptGenerateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse:
+        """
+        @summary AI生成视频剪辑脚本
+        
+        @param request: RunVideoScriptGenerateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunVideoScriptGenerateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.prompt):
+            body['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.script_length):
+            body['ScriptLength'] = request.script_length
+        if not UtilClient.is_unset(request.script_number):
+            body['ScriptNumber'] = request.script_number
+        if not UtilClient.is_unset(request.use_search):
+            body['UseSearch'] = request.use_search
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunVideoScriptGenerate',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_video_script_generate(
+        self,
+        request: ai_miao_bi_20230801_models.RunVideoScriptGenerateRequest,
+    ) -> ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse:
+        """
+        @summary AI生成视频剪辑脚本
+        
+        @param request: RunVideoScriptGenerateRequest
+        @return: RunVideoScriptGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_video_script_generate_with_options(request, runtime)
+
+    async def run_video_script_generate_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunVideoScriptGenerateRequest,
+    ) -> ai_miao_bi_20230801_models.RunVideoScriptGenerateResponse:
+        """
+        @summary AI生成视频剪辑脚本
+        
+        @param request: RunVideoScriptGenerateRequest
+        @return: RunVideoScriptGenerateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_video_script_generate_with_options_async(request, runtime)
+
     def run_write_tone_generation_with_options(
         self,
         tmp_req: ai_miao_bi_20230801_models.RunWriteToneGenerationRequest,
