@@ -1,3 +1,6 @@
+2025-08-18 Version: 2.4.1
+- Generated python 2020-07-06 for Actiontrail.
+
 2025-08-15 Version: 2.4.0
 - Support API CreateAdvancedQueryHistory.
 - Support API CreateAdvancedQueryTemplate.
