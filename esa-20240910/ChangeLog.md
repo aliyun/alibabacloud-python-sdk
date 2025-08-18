@@ -1,3 +1,6 @@
+2025-08-18 Version: 2.28.1
+- Generated python 2024-09-10 for ESA.
+
 2025-07-10 Version: 2.28.0
 - Support API DescribeUrlObservationData.
 - Update API CreateRoutineRoute: add request parameters Fallback.

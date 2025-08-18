@@ -13796,7 +13796,7 @@ class CreateUrlObservationRequest(TeaModel):
 class CreateUrlObservationResponseBody(TeaModel):
     def __init__(
         self,
-        config_id: str = None,
+        config_id: int = None,
         request_id: str = None,
     ):
         self.config_id = config_id
