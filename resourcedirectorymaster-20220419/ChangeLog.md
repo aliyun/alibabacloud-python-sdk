@@ -1,3 +1,6 @@
+2025-08-19 Version: 2.2.1
+- Generated python 2022-04-19 for ResourceDirectoryMaster.
+
 2025-03-19 Version: 2.2.0
 - Support API SetMemberDisplayNameSyncStatus.
 
