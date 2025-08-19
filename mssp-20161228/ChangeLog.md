@@ -1,3 +1,7 @@
+2025-08-19 Version: 1.2.2
+- Update API GetDocumentDownloadUrl: add request parameters FileKey.
+
+
 2025-02-20 Version: 1.2.1
 - Update API SendCustomEvent: add param EventMarkdown.
 

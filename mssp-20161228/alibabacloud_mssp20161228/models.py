@@ -2498,9 +2498,11 @@ class GetDetailByIdResponse(TeaModel):
 class GetDocumentDownloadUrlRequest(TeaModel):
     def __init__(
         self,
+        file_key: str = None,
         id: int = None,
         report_type: str = None,
     ):
+        self.file_key = file_key
         # Document management ID.
         # 
         # This parameter is required.
@@ -2517,6 +2519,8 @@ class GetDocumentDownloadUrlRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.file_key is not None:
+            result['FileKey'] = self.file_key
         if self.id is not None:
             result['Id'] = self.id
         if self.report_type is not None:
@@ -2525,6 +2529,8 @@ class GetDocumentDownloadUrlRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FileKey') is not None:
+            self.file_key = m.get('FileKey')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('ReportType') is not None:
@@ -7041,6 +7047,7 @@ class SendCustomEventRequest(TeaModel):
         self.event_description = event_description
         # Alert event details.
         self.event_details = event_details
+        # Details of markdown format
         self.event_markdown = event_markdown
         # Event name.
         # 
