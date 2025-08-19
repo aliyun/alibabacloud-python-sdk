@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
+from Tea.request import TeaRequest
+from Tea.exceptions import TeaException
 from Tea.core import TeaCore
+from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_tea_fileform.client import Client as FileFormClient
+from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_cloudauth20190307 import models as cloudauth_20190307_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
-from alibabacloud_openplatform20191219 import models as open_platform_models
-from alibabacloud_oss_sdk import models as oss_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
-from alibabacloud_oss_util import models as ossutil_models
 
 
 class Client(OpenApiClient):
@@ -30,6 +29,82 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'central'
         self.check_config(config)
         self._endpoint = self.get_endpoint('cloudauth', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def _post_ossobject(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = TeaCore.do_action(_request)
+        resp_map = None
+        body_str = UtilClient.read_as_string(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
+
+    async def _post_ossobject_async(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = await TeaCore.async_do_action(_request)
+        resp_map = None
+        body_str = await UtilClient.read_as_string_async(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
 
     def get_endpoint(
         self,
@@ -53,7 +128,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
         """
-        @summary 新增AIGC人脸检测能力
+        @summary Add AIGC Face Detection Capability
         
         @param request: AIGCFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -102,7 +177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
         """
-        @summary 新增AIGC人脸检测能力
+        @summary Add AIGC Face Detection Capability
         
         @param request: AIGCFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -150,7 +225,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
     ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
         """
-        @summary 新增AIGC人脸检测能力
+        @summary Add AIGC Face Detection Capability
         
         @param request: AIGCFaceVerifyRequest
         @return: AIGCFaceVerifyResponse
@@ -163,7 +238,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
     ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
         """
-        @summary 新增AIGC人脸检测能力
+        @summary Add AIGC Face Detection Capability
         
         @param request: AIGCFaceVerifyRequest
         @return: AIGCFaceVerifyResponse
@@ -177,7 +252,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
         """
-        @summary 银行卡要素核验接口
+        @summary Bank Card Element Verification Interface
+        
+        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
+        - Service address:
+        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
+        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: BankMetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -226,7 +308,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
         """
-        @summary 银行卡要素核验接口
+        @summary Bank Card Element Verification Interface
+        
+        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
+        - Service address:
+        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
+        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: BankMetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -274,7 +363,14 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.BankMetaVerifyRequest,
     ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
         """
-        @summary 银行卡要素核验接口
+        @summary Bank Card Element Verification Interface
+        
+        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
+        - Service address:
+        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
+        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: BankMetaVerifyRequest
         @return: BankMetaVerifyResponse
@@ -287,7 +383,14 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.BankMetaVerifyRequest,
     ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
         """
-        @summary 银行卡要素核验接口
+        @summary Bank Card Element Verification Interface
+        
+        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
+        - Service address:
+        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
+        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: BankMetaVerifyRequest
         @return: BankMetaVerifyResponse
@@ -301,6 +404,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
         """
+        @summary Financial-grade Pure Server-Side API for Face Comparison.
+        
+        @description - API Name: CompareFaceVerify.
+        - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - API Description: An interface to achieve real-person authentication through server-side integration.
+        #### Photo Format Requirements
+        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
+        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
+        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
+        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
+        - Photo size: <1MB.
+        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+        
         @param request: CompareFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompareFaceVerifyResponse
@@ -360,6 +477,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
         """
+        @summary Financial-grade Pure Server-Side API for Face Comparison.
+        
+        @description - API Name: CompareFaceVerify.
+        - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - API Description: An interface to achieve real-person authentication through server-side integration.
+        #### Photo Format Requirements
+        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
+        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
+        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
+        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
+        - Photo size: <1MB.
+        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+        
         @param request: CompareFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompareFaceVerifyResponse
@@ -418,6 +549,20 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CompareFaceVerifyRequest,
     ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
         """
+        @summary Financial-grade Pure Server-Side API for Face Comparison.
+        
+        @description - API Name: CompareFaceVerify.
+        - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - API Description: An interface to achieve real-person authentication through server-side integration.
+        #### Photo Format Requirements
+        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
+        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
+        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
+        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
+        - Photo size: <1MB.
+        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+        
         @param request: CompareFaceVerifyRequest
         @return: CompareFaceVerifyResponse
         """
@@ -429,6 +574,20 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CompareFaceVerifyRequest,
     ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
         """
+        @summary Financial-grade Pure Server-Side API for Face Comparison.
+        
+        @description - API Name: CompareFaceVerify.
+        - Service Address: cloudauth.aliyuncs.com.
+        - Request Method: HTTPS POST and GET.
+        - API Description: An interface to achieve real-person authentication through server-side integration.
+        #### Photo Format Requirements
+        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
+        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
+        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
+        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
+        - Photo size: <1MB.
+        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
+        
         @param request: CompareFaceVerifyRequest
         @return: CompareFaceVerifyResponse
         """
@@ -441,6 +600,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CompareFacesResponse:
         """
+        @summary Invoke CompareFaces for face comparison.
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
+        - At least one of the specified comparison images should be a face photo (FacePic).
+        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
+        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
+        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
+        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
+        Image Restrictions
+        - Does not support relative or absolute paths for local images.
+        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
+        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
+        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
+        
         @param request: CompareFacesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompareFacesResponse
@@ -480,6 +655,22 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CompareFacesResponse:
         """
+        @summary Invoke CompareFaces for face comparison.
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
+        - At least one of the specified comparison images should be a face photo (FacePic).
+        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
+        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
+        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
+        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
+        Image Restrictions
+        - Does not support relative or absolute paths for local images.
+        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
+        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
+        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
+        
         @param request: CompareFacesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CompareFacesResponse
@@ -518,6 +709,22 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CompareFacesRequest,
     ) -> cloudauth_20190307_models.CompareFacesResponse:
         """
+        @summary Invoke CompareFaces for face comparison.
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
+        - At least one of the specified comparison images should be a face photo (FacePic).
+        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
+        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
+        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
+        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
+        Image Restrictions
+        - Does not support relative or absolute paths for local images.
+        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
+        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
+        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
+        
         @param request: CompareFacesRequest
         @return: CompareFacesResponse
         """
@@ -529,6 +736,22 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CompareFacesRequest,
     ) -> cloudauth_20190307_models.CompareFacesResponse:
         """
+        @summary Invoke CompareFaces for face comparison.
+        
+        @description Request Method: Only supports sending requests via HTTPS POST.
+        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
+        - At least one of the specified comparison images should be a face photo (FacePic).
+        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
+        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
+        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
+        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
+        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
+        Image Restrictions
+        - Does not support relative or absolute paths for local images.
+        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
+        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
+        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
+        
         @param request: CompareFacesRequest
         @return: CompareFacesResponse
         """
@@ -705,10 +928,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -723,51 +953,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         contrast_face_verify_req = cloudauth_20190307_models.ContrastFaceVerifyRequest()
         OpenApiUtilClient.convert(request, contrast_face_verify_req)
         if not UtilClient.is_unset(request.face_contrast_file_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.face_contrast_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            contrast_face_verify_req.face_contrast_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            contrast_face_verify_req.face_contrast_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         contrast_face_verify_resp = self.contrast_face_verify_with_options(contrast_face_verify_req, runtime)
         return contrast_face_verify_resp
 
@@ -777,10 +1011,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -795,51 +1036,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         contrast_face_verify_req = cloudauth_20190307_models.ContrastFaceVerifyRequest()
         OpenApiUtilClient.convert(request, contrast_face_verify_req)
         if not UtilClient.is_unset(request.face_contrast_file_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.face_contrast_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            contrast_face_verify_req.face_contrast_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            contrast_face_verify_req.face_contrast_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         contrast_face_verify_resp = await self.contrast_face_verify_with_options_async(contrast_face_verify_req, runtime)
         return contrast_face_verify_resp
 
@@ -1057,7 +1302,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         """
-        @summary 商品凭证核验
+        @summary Product Credential Verification
+        
+        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
         
         @param request: CredentialProductVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1104,7 +1351,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         """
-        @summary 商品凭证核验
+        @summary Product Credential Verification
+        
+        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
         
         @param request: CredentialProductVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1150,7 +1399,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         """
-        @summary 商品凭证核验
+        @summary Product Credential Verification
+        
+        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
         
         @param request: CredentialProductVerifyV2Request
         @return: CredentialProductVerifyV2Response
@@ -1163,7 +1414,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         """
-        @summary 商品凭证核验
+        @summary Product Credential Verification
+        
+        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
         
         @param request: CredentialProductVerifyV2Request
         @return: CredentialProductVerifyV2Response
@@ -1177,10 +1430,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1195,51 +1455,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         credential_product_verify_v2req = cloudauth_20190307_models.CredentialProductVerifyV2Request()
         OpenApiUtilClient.convert(request, credential_product_verify_v2req)
         if not UtilClient.is_unset(request.image_file_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.image_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            credential_product_verify_v2req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            credential_product_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_product_verify_v2resp = self.credential_product_verify_v2with_options(credential_product_verify_v2req, runtime)
         return credential_product_verify_v2resp
 
@@ -1249,10 +1513,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1267,51 +1538,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         credential_product_verify_v2req = cloudauth_20190307_models.CredentialProductVerifyV2Request()
         OpenApiUtilClient.convert(request, credential_product_verify_v2req)
         if not UtilClient.is_unset(request.image_file_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.image_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            credential_product_verify_v2req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            credential_product_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_product_verify_v2resp = await self.credential_product_verify_v2with_options_async(credential_product_verify_v2req, runtime)
         return credential_product_verify_v2resp
 
@@ -1481,7 +1756,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
         
         @param tmp_req: CredentialVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1550,7 +1827,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
         
         @param tmp_req: CredentialVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -1618,7 +1897,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CredentialVerifyV2Request,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
         
         @param request: CredentialVerifyV2Request
         @return: CredentialVerifyV2Response
@@ -1631,7 +1912,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.CredentialVerifyV2Request,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         """
-        @summary 凭证核验
+        @summary Credential Verification
+        
+        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
         
         @param request: CredentialVerifyV2Request
         @return: CredentialVerifyV2Response
@@ -1645,10 +1928,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1663,51 +1953,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         credential_verify_v2req = cloudauth_20190307_models.CredentialVerifyV2Request()
         OpenApiUtilClient.convert(request, credential_verify_v2req)
         if not UtilClient.is_unset(request.image_file_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.image_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            credential_verify_v2req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            credential_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_verify_v2resp = self.credential_verify_v2with_options(credential_verify_v2req, runtime)
         return credential_verify_v2resp
 
@@ -1717,10 +2011,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1735,51 +2036,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         credential_verify_v2req = cloudauth_20190307_models.CredentialVerifyV2Request()
         OpenApiUtilClient.convert(request, credential_verify_v2req)
         if not UtilClient.is_unset(request.image_file_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.image_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            credential_verify_v2req.image_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            credential_verify_v2req.image_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         credential_verify_v2resp = await self.credential_verify_v2with_options_async(credential_verify_v2req, runtime)
         return credential_verify_v2resp
 
@@ -1789,7 +2094,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
         """
-        @summary 人脸凭证核验服务
+        @summary Face Credential Verification Service
+        
+        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
+        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: DeepfakeDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1832,7 +2142,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
         """
-        @summary 人脸凭证核验服务
+        @summary Face Credential Verification Service
+        
+        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
+        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: DeepfakeDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1874,7 +2189,12 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.DeepfakeDetectRequest,
     ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
         """
-        @summary 人脸凭证核验服务
+        @summary Face Credential Verification Service
+        
+        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
+        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: DeepfakeDetectRequest
         @return: DeepfakeDetectResponse
@@ -1887,7 +2207,12 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.DeepfakeDetectRequest,
     ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
         """
-        @summary 人脸凭证核验服务
+        @summary Face Credential Verification Service
+        
+        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
+        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: DeepfakeDetectRequest
         @return: DeepfakeDetectResponse
@@ -1901,7 +2226,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
         """
-        @summary 金融级服务敏感数据删除接口
+        @summary Financial Level Sensitive Data Deletion Interface
+        
+        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
         
         @param request: DeleteFaceVerifyResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1938,7 +2265,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
         """
-        @summary 金融级服务敏感数据删除接口
+        @summary Financial Level Sensitive Data Deletion Interface
+        
+        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
         
         @param request: DeleteFaceVerifyResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1974,7 +2303,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
     ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
         """
-        @summary 金融级服务敏感数据删除接口
+        @summary Financial Level Sensitive Data Deletion Interface
+        
+        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
         
         @param request: DeleteFaceVerifyResultRequest
         @return: DeleteFaceVerifyResultResponse
@@ -1987,7 +2318,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
     ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
         """
-        @summary 金融级服务敏感数据删除接口
+        @summary Financial Level Sensitive Data Deletion Interface
+        
+        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
         
         @param request: DeleteFaceVerifyResultRequest
         @return: DeleteFaceVerifyResultResponse
@@ -3119,7 +3452,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
         """
-        @summary 二要素有效期核验接口
+        @summary Two-Factor Validity Verification API
         
         @param request: Id2MetaPeriodVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3162,7 +3495,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
         """
-        @summary 二要素有效期核验接口
+        @summary Two-Factor Validity Verification API
         
         @param request: Id2MetaPeriodVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3204,7 +3537,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
         """
-        @summary 二要素有效期核验接口
+        @summary Two-Factor Validity Verification API
         
         @param request: Id2MetaPeriodVerifyRequest
         @return: Id2MetaPeriodVerifyResponse
@@ -3217,7 +3550,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
         """
-        @summary 二要素有效期核验接口
+        @summary Two-Factor Validity Verification API
         
         @param request: Id2MetaPeriodVerifyRequest
         @return: Id2MetaPeriodVerifyResponse
@@ -3231,7 +3564,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
         """
-        @summary 身份二要素标准版
+        @summary Identity Two-Factor Standard
         
         @param request: Id2MetaStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3270,7 +3603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
         """
-        @summary 身份二要素标准版
+        @summary Identity Two-Factor Standard
         
         @param request: Id2MetaStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3308,7 +3641,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
         """
-        @summary 身份二要素标准版
+        @summary Identity Two-Factor Standard
         
         @param request: Id2MetaStandardVerifyRequest
         @return: Id2MetaStandardVerifyResponse
@@ -3321,7 +3654,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
         """
-        @summary 身份二要素标准版
+        @summary Identity Two-Factor Standard
         
         @param request: Id2MetaStandardVerifyRequest
         @return: Id2MetaStandardVerifyResponse
@@ -3335,7 +3668,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
         """
-        @summary 身份二要素接口
+        @summary Identity Two-Factor Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Id2MetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3374,7 +3711,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
         """
-        @summary 身份二要素接口
+        @summary Identity Two-Factor Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Id2MetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3412,7 +3753,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
         """
-        @summary 身份二要素接口
+        @summary Identity Two-Factor Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Id2MetaVerifyRequest
         @return: Id2MetaVerifyResponse
@@ -3425,7 +3770,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaVerifyRequest,
     ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
         """
-        @summary 身份二要素接口
+        @summary Identity Two-Factor Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Id2MetaVerifyRequest
         @return: Id2MetaVerifyResponse
@@ -3439,7 +3788,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         """
-        @summary 身份二要素图片核验
+        @summary ID Two-Factor Image Verification
+        
+        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
         
         @param request: Id2MetaVerifyWithOCRRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3480,7 +3831,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         """
-        @summary 身份二要素图片核验
+        @summary ID Two-Factor Image Verification
+        
+        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
         
         @param request: Id2MetaVerifyWithOCRRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3520,7 +3873,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         """
-        @summary 身份二要素图片核验
+        @summary ID Two-Factor Image Verification
+        
+        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
         
         @param request: Id2MetaVerifyWithOCRRequest
         @return: Id2MetaVerifyWithOCRResponse
@@ -3533,7 +3888,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         """
-        @summary 身份二要素图片核验
+        @summary ID Two-Factor Image Verification
+        
+        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
         
         @param request: Id2MetaVerifyWithOCRRequest
         @return: Id2MetaVerifyWithOCRResponse
@@ -3547,10 +3904,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3565,75 +3929,77 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         id_2meta_verify_with_ocrreq = cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest()
         OpenApiUtilClient.convert(request, id_2meta_verify_with_ocrreq)
         if not UtilClient.is_unset(request.cert_file_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.cert_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            id_2meta_verify_with_ocrreq.cert_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.cert_national_file_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.cert_national_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            id_2meta_verify_with_ocrreq.cert_national_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            id_2meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_2meta_verify_with_ocrresp = self.id_2meta_verify_with_ocrwith_options(id_2meta_verify_with_ocrreq, runtime)
         return id_2meta_verify_with_ocrresp
 
@@ -3643,10 +4009,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3661,75 +4034,77 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='Cloudauth',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'Cloudauth',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         id_2meta_verify_with_ocrreq = cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest()
         OpenApiUtilClient.convert(request, id_2meta_verify_with_ocrreq)
         if not UtilClient.is_unset(request.cert_file_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.cert_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            id_2meta_verify_with_ocrreq.cert_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.cert_national_file_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.cert_national_file_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            id_2meta_verify_with_ocrreq.cert_national_file = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            id_2meta_verify_with_ocrreq.cert_national_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         id_2meta_verify_with_ocrresp = await self.id_2meta_verify_with_ocrwith_options_async(id_2meta_verify_with_ocrreq, runtime)
         return id_2meta_verify_with_ocrresp
 
@@ -3739,7 +4114,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitCardVerifyResponse:
         """
-        @summary 图片核验发起认证请求
+        @summary Initiate an authentication request for image verification
+        
+        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
         
         @param request: InitCardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3792,7 +4169,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitCardVerifyResponse:
         """
-        @summary 图片核验发起认证请求
+        @summary Initiate an authentication request for image verification
+        
+        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
         
         @param request: InitCardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3844,7 +4223,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InitCardVerifyRequest,
     ) -> cloudauth_20190307_models.InitCardVerifyResponse:
         """
-        @summary 图片核验发起认证请求
+        @summary Initiate an authentication request for image verification
+        
+        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
         
         @param request: InitCardVerifyRequest
         @return: InitCardVerifyResponse
@@ -3857,7 +4238,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InitCardVerifyRequest,
     ) -> cloudauth_20190307_models.InitCardVerifyResponse:
         """
-        @summary 图片核验发起认证请求
+        @summary Initiate an authentication request for image verification
+        
+        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
         
         @param request: InitCardVerifyRequest
         @return: InitCardVerifyResponse
@@ -4107,7 +4490,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
         """
-        @summary 新增实人白名单
+        @summary Add Real Person Whitelist
         
         @param request: InsertWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4152,7 +4535,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
         """
-        @summary 新增实人白名单
+        @summary Add Real Person Whitelist
         
         @param request: InsertWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4196,7 +4579,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
         """
-        @summary 新增实人白名单
+        @summary Add Real Person Whitelist
         
         @param request: InsertWhiteListSettingRequest
         @return: InsertWhiteListSettingResponse
@@ -4209,7 +4592,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
         """
-        @summary 新增实人白名单
+        @summary Add Real Person Whitelist
         
         @param request: InsertWhiteListSettingRequest
         @return: InsertWhiteListSettingResponse
@@ -4367,7 +4750,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
         """
-        @summary 手机二要素核验
+        @summary Mobile Two-Factor Verification
+        
+        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile2MetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4406,7 +4791,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
         """
-        @summary 手机二要素核验
+        @summary Mobile Two-Factor Verification
+        
+        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile2MetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4444,7 +4831,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
         """
-        @summary 手机二要素核验
+        @summary Mobile Two-Factor Verification
+        
+        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile2MetaVerifyRequest
         @return: Mobile2MetaVerifyResponse
@@ -4457,7 +4846,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
         """
-        @summary 手机二要素核验
+        @summary Mobile Two-Factor Verification
+        
+        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile2MetaVerifyRequest
         @return: Mobile2MetaVerifyResponse
@@ -4471,7 +4862,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
         """
-        @summary 手机号三要素详版_标准版
+        @summary Detailed Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
         
         @param request: Mobile3MetaDetailStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4512,7 +4905,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
         """
-        @summary 手机号三要素详版_标准版
+        @summary Detailed Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
         
         @param request: Mobile3MetaDetailStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4552,7 +4947,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
         """
-        @summary 手机号三要素详版_标准版
+        @summary Detailed Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
         
         @param request: Mobile3MetaDetailStandardVerifyRequest
         @return: Mobile3MetaDetailStandardVerifyResponse
@@ -4565,7 +4962,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
         """
-        @summary 手机号三要素详版_标准版
+        @summary Detailed Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
         
         @param request: Mobile3MetaDetailStandardVerifyRequest
         @return: Mobile3MetaDetailStandardVerifyResponse
@@ -4579,7 +4978,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
         """
-        @summary 手机三要素详版接口
+        @summary Detailed Mobile Three-Element Verification Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaDetailVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4620,7 +5023,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
         """
-        @summary 手机三要素详版接口
+        @summary Detailed Mobile Three-Element Verification Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaDetailVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4660,7 +5067,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
         """
-        @summary 手机三要素详版接口
+        @summary Detailed Mobile Three-Element Verification Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaDetailVerifyRequest
         @return: Mobile3MetaDetailVerifyResponse
@@ -4673,7 +5084,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
         """
-        @summary 手机三要素详版接口
+        @summary Detailed Mobile Three-Element Verification Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaDetailVerifyRequest
         @return: Mobile3MetaDetailVerifyResponse
@@ -4687,7 +5102,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
         """
-        @summary 手机号三要素简版_标准版
+        @summary Simplified Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile3MetaSimpleStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4728,7 +5145,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
         """
-        @summary 手机号三要素简版_标准版
+        @summary Simplified Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile3MetaSimpleStandardVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4768,7 +5187,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
         """
-        @summary 手机号三要素简版_标准版
+        @summary Simplified Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile3MetaSimpleStandardVerifyRequest
         @return: Mobile3MetaSimpleStandardVerifyResponse
@@ -4781,7 +5202,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
         """
-        @summary 手机号三要素简版_标准版
+        @summary Simplified Three-Element Verification for Phone Number_Standard Version
+        
+        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
         
         @param request: Mobile3MetaSimpleStandardVerifyRequest
         @return: Mobile3MetaSimpleStandardVerifyResponse
@@ -4795,7 +5218,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
         """
-        @summary 手机号三要素简版接口
+        @summary Mobile Three Elements Simplified Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaSimpleVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4836,7 +5263,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
         """
-        @summary 手机号三要素简版接口
+        @summary Mobile Three Elements Simplified Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaSimpleVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4876,7 +5307,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
         """
-        @summary 手机号三要素简版接口
+        @summary Mobile Three Elements Simplified Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaSimpleVerifyRequest
         @return: Mobile3MetaSimpleVerifyResponse
@@ -4889,7 +5324,11 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
     ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
         """
-        @summary 手机号三要素简版接口
+        @summary Mobile Three Elements Simplified Interface
+        
+        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
+        - Request method: POST and GET.
+        - Transfer protocol: HTTPS.
         
         @param request: Mobile3MetaSimpleVerifyRequest
         @return: Mobile3MetaSimpleVerifyResponse
@@ -4903,7 +5342,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileDetectResponse:
         """
-        @summary 号码检测
+        @summary Number Detection
         
         @param request: MobileDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4940,7 +5379,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileDetectResponse:
         """
-        @summary 号码检测
+        @summary Number Detection
         
         @param request: MobileDetectRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4976,7 +5415,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileDetectRequest,
     ) -> cloudauth_20190307_models.MobileDetectResponse:
         """
-        @summary 号码检测
+        @summary Number Detection
         
         @param request: MobileDetectRequest
         @return: MobileDetectResponse
@@ -4989,7 +5428,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileDetectRequest,
     ) -> cloudauth_20190307_models.MobileDetectResponse:
         """
-        @summary 号码检测
+        @summary Number Detection
         
         @param request: MobileDetectRequest
         @return: MobileDetectResponse
@@ -5003,7 +5442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
         """
-        @summary 查询手机号在网状态
+        @summary Query the online status of a mobile number
         
         @param request: MobileOnlineStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5040,7 +5479,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
         """
-        @summary 查询手机号在网状态
+        @summary Query the online status of a mobile number
         
         @param request: MobileOnlineStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5076,7 +5515,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileOnlineStatusRequest,
     ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
         """
-        @summary 查询手机号在网状态
+        @summary Query the online status of a mobile number
         
         @param request: MobileOnlineStatusRequest
         @return: MobileOnlineStatusResponse
@@ -5089,7 +5528,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileOnlineStatusRequest,
     ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
         """
-        @summary 查询手机号在网状态
+        @summary Query the online status of a mobile number
         
         @param request: MobileOnlineStatusRequest
         @return: MobileOnlineStatusResponse
@@ -5103,7 +5542,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
         """
-        @summary 查询手机号在网时长
+        @summary Query the online duration of a mobile number
         
         @param request: MobileOnlineTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5140,7 +5579,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
         """
-        @summary 查询手机号在网时长
+        @summary Query the online duration of a mobile number
         
         @param request: MobileOnlineTimeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5176,7 +5615,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileOnlineTimeRequest,
     ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
         """
-        @summary 查询手机号在网时长
+        @summary Query the online duration of a mobile number
         
         @param request: MobileOnlineTimeRequest
         @return: MobileOnlineTimeResponse
@@ -5189,7 +5628,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.MobileOnlineTimeRequest,
     ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
         """
-        @summary 查询手机号在网时长
+        @summary Query the online duration of a mobile number
         
         @param request: MobileOnlineTimeRequest
         @return: MobileOnlineTimeResponse
@@ -5203,6 +5642,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         """
+        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        
         @param request: ModifyDeviceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDeviceInfoResponse
@@ -5244,6 +5687,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         """
+        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        
         @param request: ModifyDeviceInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyDeviceInfoResponse
@@ -5284,6 +5731,10 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         """
+        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        
         @param request: ModifyDeviceInfoRequest
         @return: ModifyDeviceInfoResponse
         """
@@ -5295,6 +5746,10 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
     ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
         """
+        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
+        
+        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
+        
         @param request: ModifyDeviceInfoRequest
         @return: ModifyDeviceInfoResponse
         """
@@ -5307,7 +5762,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
         """
-        @summary 分页查询实人白名单配置
+        @summary Paging Query for Real Person Whitelist Configuration
         
         @param request: PageQueryWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5358,7 +5813,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
         """
-        @summary 分页查询实人白名单配置
+        @summary Paging Query for Real Person Whitelist Configuration
         
         @param request: PageQueryWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5408,7 +5863,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
         """
-        @summary 分页查询实人白名单配置
+        @summary Paging Query for Real Person Whitelist Configuration
         
         @param request: PageQueryWhiteListSettingRequest
         @return: PageQueryWhiteListSettingResponse
@@ -5421,7 +5876,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
         """
-        @summary 分页查询实人白名单配置
+        @summary Paging Query for Real Person Whitelist Configuration
         
         @param request: PageQueryWhiteListSettingRequest
         @return: PageQueryWhiteListSettingResponse
@@ -5435,7 +5890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
         """
-        @summary 删除实人白名单
+        @summary Delete Real Person Whitelist
         
         @param tmp_req: RemoveWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5476,7 +5931,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
         """
-        @summary 删除实人白名单
+        @summary Delete Real Person Whitelist
         
         @param tmp_req: RemoveWhiteListSettingRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5516,7 +5971,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
         """
-        @summary 删除实人白名单
+        @summary Delete Real Person Whitelist
         
         @param request: RemoveWhiteListSettingRequest
         @return: RemoveWhiteListSettingResponse
@@ -5529,7 +5984,7 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
     ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
         """
-        @summary 删除实人白名单
+        @summary Delete Real Person Whitelist
         
         @param request: RemoveWhiteListSettingRequest
         @return: RemoveWhiteListSettingResponse
@@ -5543,7 +5998,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
         """
-        @summary 车五项信息识别
+        @summary Five-Item Vehicle Information Recognition
+        
+        @description Query basic vehicle information through the license plate number and vehicle type.
         
         @param request: Vehicle5ItemQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5582,7 +6039,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
         """
-        @summary 车五项信息识别
+        @summary Five-Item Vehicle Information Recognition
+        
+        @description Query basic vehicle information through the license plate number and vehicle type.
         
         @param request: Vehicle5ItemQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5620,7 +6079,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
     ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
         """
-        @summary 车五项信息识别
+        @summary Five-Item Vehicle Information Recognition
+        
+        @description Query basic vehicle information through the license plate number and vehicle type.
         
         @param request: Vehicle5ItemQueryRequest
         @return: Vehicle5ItemQueryResponse
@@ -5633,7 +6094,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
     ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
         """
-        @summary 车五项信息识别
+        @summary Five-Item Vehicle Information Recognition
+        
+        @description Query basic vehicle information through the license plate number and vehicle type.
         
         @param request: Vehicle5ItemQueryRequest
         @return: Vehicle5ItemQueryResponse
@@ -5647,7 +6110,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
         """
-        @summary 车辆投保日期查询
+        @summary Vehicle Insurance Date Inquiry
+        
+        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
         
         @param request: VehicleInsureQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5688,7 +6153,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
         """
-        @summary 车辆投保日期查询
+        @summary Vehicle Insurance Date Inquiry
+        
+        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
         
         @param request: VehicleInsureQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5728,7 +6195,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleInsureQueryRequest,
     ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
         """
-        @summary 车辆投保日期查询
+        @summary Vehicle Insurance Date Inquiry
+        
+        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
         
         @param request: VehicleInsureQueryRequest
         @return: VehicleInsureQueryResponse
@@ -5741,7 +6210,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleInsureQueryRequest,
     ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
         """
-        @summary 车辆投保日期查询
+        @summary Vehicle Insurance Date Inquiry
+        
+        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
         
         @param request: VehicleInsureQueryRequest
         @return: VehicleInsureQueryResponse
@@ -5755,7 +6226,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
         """
-        @summary 车辆要素核验
+        @summary Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
         
         @param request: VehicleMetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5800,7 +6273,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
         """
-        @summary 车辆要素核验
+        @summary Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
         
         @param request: VehicleMetaVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5844,7 +6319,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
         """
-        @summary 车辆要素核验
+        @summary Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
         
         @param request: VehicleMetaVerifyRequest
         @return: VehicleMetaVerifyResponse
@@ -5857,7 +6334,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
         """
-        @summary 车辆要素核验
+        @summary Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
         
         @param request: VehicleMetaVerifyRequest
         @return: VehicleMetaVerifyResponse
@@ -5871,7 +6350,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
         """
-        @summary 车辆要素核验增强版
+        @summary Enhanced Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
         
         @param request: VehicleMetaVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -5916,7 +6397,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
         """
-        @summary 车辆要素核验增强版
+        @summary Enhanced Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
         
         @param request: VehicleMetaVerifyV2Request
         @param runtime: runtime options for this request RuntimeOptions
@@ -5960,7 +6443,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
         """
-        @summary 车辆要素核验增强版
+        @summary Enhanced Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
         
         @param request: VehicleMetaVerifyV2Request
         @return: VehicleMetaVerifyV2Response
@@ -5973,7 +6458,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
     ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
         """
-        @summary 车辆要素核验增强版
+        @summary Enhanced Vehicle Element Verification
+        
+        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
         
         @param request: VehicleMetaVerifyV2Request
         @return: VehicleMetaVerifyV2Response
@@ -5987,7 +6474,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleQueryResponse:
         """
-        @summary 车辆信息识别
+        @summary Vehicle Information Recognition
+        
+        @description Query detailed vehicle information through the license plate number and vehicle type.
         
         @param request: VehicleQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6026,7 +6515,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.VehicleQueryResponse:
         """
-        @summary 车辆信息识别
+        @summary Vehicle Information Recognition
+        
+        @description Query detailed vehicle information through the license plate number and vehicle type.
         
         @param request: VehicleQueryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6064,7 +6555,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleQueryRequest,
     ) -> cloudauth_20190307_models.VehicleQueryResponse:
         """
-        @summary 车辆信息识别
+        @summary Vehicle Information Recognition
+        
+        @description Query detailed vehicle information through the license plate number and vehicle type.
         
         @param request: VehicleQueryRequest
         @return: VehicleQueryResponse
@@ -6077,7 +6570,9 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.VehicleQueryRequest,
     ) -> cloudauth_20190307_models.VehicleQueryResponse:
         """
-        @summary 车辆信息识别
+        @summary Vehicle Information Recognition
+        
+        @description Query detailed vehicle information through the license plate number and vehicle type.
         
         @param request: VehicleQueryRequest
         @return: VehicleQueryResponse

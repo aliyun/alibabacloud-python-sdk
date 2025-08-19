@@ -15,12 +15,24 @@ class AIGCFaceVerifyRequest(TeaModel):
         product_code: str = None,
         scene_id: int = None,
     ):
+        # Base64 encoded photo.
+        # > Choose one of the three ways to input images: FaceContrastPicture, FaceContrastPictureUrl, or OSS.
         self.face_contrast_picture = face_contrast_picture
+        # Portrait address, accessible via public HTTP or HTTPS link.
+        # 
+        # > Choose one of the three ways to input images: FaceContrastPicture, FaceContrastPictureUrl, or OSS.
         self.face_contrast_picture_url = face_contrast_picture_url
+        # Authorized OSS bucket name.
+        # > Choose one of the three ways to input images: FaceContrastPicture, FaceContrastPictureUrl, or OSS.
         self.oss_bucket_name = oss_bucket_name
+        # Authorized OSS file name.
+        # > Choose one of the three ways to input images: FaceContrastPicture, FaceContrastPictureUrl, or OSS.
         self.oss_object_name = oss_object_name
+        # A unique business identifier defined by the client side, used for subsequent troubleshooting. The value should be a combination of letters and numbers with a maximum length of 32 characters, please ensure its uniqueness.
         self.outer_order_no = outer_order_no
+        # Product solution
         self.product_code = product_code
+        # Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For how to create an authentication scene, see Adding an Authentication Scene.
         self.scene_id = scene_id
 
     def validate(self):
@@ -74,8 +86,15 @@ class AIGCFaceVerifyResponseBodyResultObject(TeaModel):
         result: str = None,
         score: str = None,
     ):
+        # Unique real-person authentication identifier.
         self.certify_id = certify_id
+        # Authentication result. Values:
+        # 
+        # ● Y: AIGC-generated face.
+        # 
+        # ● N: Not detected
         self.result = result
+        # Detection score
         self.score = score
 
     def validate(self):
@@ -114,9 +133,13 @@ class AIGCFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: AIGCFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result
         self.result_object = result_object
 
     def validate(self):
@@ -206,13 +229,42 @@ class BankMetaVerifyRequest(TeaModel):
         user_name: str = None,
         verify_mode: str = None,
     ):
+        # Bank card number.
+        # 
+        # - When `paramType` is `normal`, enter the plain text bank card number.
+        # - When `paramType` is `md5`, enter the part of the card number except the last 6 digits in plain text + the last 6 digits encrypted with MD5 (32 lowercase).
         self.bank_card = bank_card
+        # ID number.
+        # 
+        # - When `ProductType` is `BANK_CARD_3_META`, this field is required.
+        # - When `paramType` is `normal`, enter the plain text ID number.
+        # - When `paramType` is `md5`, enter the first 6 digits of the ID number in plain text + the birth date encrypted with MD5 (32 lowercase MD5) + the last 4 digits of the ID number.
         self.identify_num = identify_num
+        # Identity type.
         self.identity_type = identity_type
+        # Mobile phone number.
+        # 
+        # - When `ProductType` is `BANK_CARD_4_META`, this field is required.
+        # - When `paramType` is `normal`, enter the plain text mobile phone number.
+        # - When `paramType` is `md5`, enter the mobile phone number (32 lowercase MD5).
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: MD5 encrypted.
         self.param_type = param_type
+        # Product type to call:
+        # 
+        # - BANK_CARD_2_META: Bank card number + name verification.
+        # - BANK_CARD_3_META: Bank card number + name + ID number verification.
+        # - BANK_CARD_4_META: Bank card number + name + ID number + mobile phone number verification.
         self.product_type = product_type
+        # Name.
+        # 
+        # - When `paramType` is `normal`, enter the plain text name.
+        # - When `paramType` is `md5`, encrypt the first character of the name with MD5 (32 lowercase MD5) + the rest of the name in plain text.
         self.user_name = user_name
+        # VERIFY_BANK_CARD: Bank card authentication mode. It indicates whether the provided bank card number matches the user\\"s real name, ID number, and mobile phone number.
         self.verify_mode = verify_mode
 
     def validate(self):
@@ -269,7 +321,37 @@ class BankMetaVerifyResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         sub_code: str = None,
     ):
+        # Verification result.
+        # 
+        # - 1: Consistent (billable)
+        # - 2: Inconsistent (billable)
+        # - 3: No record found (non-billable)
         self.biz_code = biz_code
+        # Verification details:
+        # 
+        # - **101**: Verification passed.
+        # - **201**: Authentication information does not match, cardholder information is incorrect.
+        # - **202**: Authentication information does not match, bank card has not enabled authentication payment.
+        # - **203**: Authentication information does not match, bank card has expired.
+        # - **204**: Authentication information does not match, bank card is a restricted card.
+        # - **205**: Authentication information does not match, this card has been confiscated.
+        # - **206**: Authentication information does not match, bank card is invalid.
+        # - **207**: Authentication information does not match, this card has no corresponding issuing bank.
+        # - **208**: Authentication information does not match, the card is uninitialized or a dormant card.
+        # - **209**: Authentication information does not match, this card is a cheating card or swallowed card.
+        # - **210**: Authentication information does not match, this card has been reported lost.
+        # - **211**: Authentication information does not match, the number of password errors exceeds the limit.
+        # - **212**: Authentication information does not match, the issuing bank does not support this transaction.
+        # - **213**: Authentication information does not match, the card status is abnormal or the card is invalid.
+        # - **214**: Authentication information does not match, no mobile phone number reserved.
+        # - **215**: Authentication information does not match, the entered password, expiration date, or CVN2 is incorrect.
+        # - **216**: Authentication information does not match, other card anomalies.
+        # - **301**: Unable to verify, the bank card does not support this service.
+        # - **302**: Unable to verify, verification failed or the bank refused to verify, please contact the issuing bank.
+        # - **303**: Unable to verify, the bank card does not currently support mobile phone number verification.
+        # - **304**: Unable to verify, the bank card number is incorrect.
+        # - **305**: Unable to verify, other reasons.
+        # - **306**: Unable to verify, the number of verifications exceeds the limit.
         self.sub_code = sub_code
 
     def validate(self):
@@ -304,9 +386,13 @@ class BankMetaVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: BankMetaVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -402,19 +488,51 @@ class CompareFaceVerifyRequest(TeaModel):
         target_oss_bucket_name: str = None,
         target_oss_object_name: str = None,
     ):
+        # Whether cropping is allowed. Default is not allowed, T/F.
+        # 
+        # - T: Indicates that cropping is required
+        # - F: Indicates that cropping is not required (default F)
         self.crop = crop
+        # A unique identifier for the merchant\\"s request. The value is a 32-character alphanumeric combination, where the first few characters are a custom abbreviation defined by the merchant, followed by a period, and the latter part can be a random or incrementing sequence.
         self.outer_order_no = outer_order_no
+        # Fixed value: PV_FC.
         self.product_code = product_code
+        # Authentication scenario ID.
         self.scene_id = scene_id
+        # The CertifyId of a previously successful real-person verification, where the photo taken during that verification is used as the face comparison photo.
+        # > Among the four ways to input facial photos (FaceContrastPicture, FaceContrastPictureUrl, CertifyId, OSS), choose one to provide.
         self.source_certify_id = source_certify_id
+        # Base64 encoding of the photo.
+        # > Choose one of the four ways to input a face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.source_face_contrast_picture = source_face_contrast_picture
+        # OSS photo URL, currently only supports authorized OSS photo URLs.
+        # > Four ways to input face photos: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, and OSS. Choose one of them to input.
         self.source_face_contrast_picture_url = source_face_contrast_picture_url
+        # Name of the authorized OSS bucket.
+        # > Choose one of the four ways to input face photos: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.source_oss_bucket_name = source_oss_bucket_name
+        # Filename of the authorized OSS space.
+        # > Choose one of the four ways to input face photos: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.source_oss_object_name = source_oss_object_name
+        # CertifyId from a previously successful real-person authentication, where the photo taken during the authentication is used for face comparison.
+        # 
+        # > Choose one of the four methods to provide the reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.target_certify_id = target_certify_id
+        # Base64 encoding of the reference photo.
+        # 
+        # > Choose one of the four methods to provide the reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.target_face_contrast_picture = target_face_contrast_picture
+        # OSS address of the reference photo. Currently, only authorized OSS addresses are supported.
+        # 
+        # > Choose one of the four methods to provide the reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.target_face_contrast_picture_url = target_face_contrast_picture_url
+        # Name of the authorized OSS bucket.
+        # 
+        # > Choose one of the four methods to provide the reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.target_oss_bucket_name = target_oss_bucket_name
+        # File name in the authorized OSS space.
+        # 
+        # > Choose one of the four methods to provide the reference face photo: FaceContrastPicture, FaceContrastPictureUrl, CertifyId, or OSS.
         self.target_oss_object_name = target_oss_object_name
 
     def validate(self):
@@ -496,8 +614,11 @@ class CompareFaceVerifyResponseBodyResultObject(TeaModel):
         passed: str = None,
         verify_score: float = None,
     ):
+        # Unique identifier for the real-person authentication request.
         self.certify_id = certify_id
+        # Whether the verification passed, T for pass, F for fail.
         self.passed = passed
+        # Face comparison score.
         self.verify_score = verify_score
 
     def validate(self):
@@ -536,9 +657,13 @@ class CompareFaceVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: CompareFaceVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, other values indicate failure.
         self.code = code
+        # Error message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Face comparison result information.
         self.result_object = result_object
 
     def validate(self):
@@ -624,9 +749,19 @@ class CompareFacesRequest(TeaModel):
         target_image_type: str = None,
         target_image_value: str = None,
     ):
+        # Type of Image 1, with values:
+        # 
+        # - **FacePic**: User\\"s face photo
+        # - **IDPic**: Headshot from the user\\"s second-generation ID card chip (typically obtained and decoded by a second-generation ID card reader)
         self.source_image_type = source_image_type
+        # Address of Image 1. Please refer to the instructions on uploading image addresses.
         self.source_image_value = source_image_value
+        # Type of Image 2, with values:
+        # 
+        # - **FacePic**: User\\"s face photo
+        # - **IDPic**: Headshot from the user\\"s second-generation ID card chip (typically obtained and decoded by a second-generation ID card reader)
         self.target_image_type = target_image_type
+        # Address of Image 2. Please refer to the instructions on uploading image addresses.
         self.target_image_value = target_image_value
 
     def validate(self):
@@ -667,7 +802,20 @@ class CompareFacesResponseBodyData(TeaModel):
         confidence_thresholds: str = None,
         similarity_score: float = None,
     ):
+        # Confidence thresholds for face comparison. The returned content is a JSON Object, with the specific structure being `"key":"value"`.
+        # 
+        # - `key` represents the false acceptance rate, which is the probability of misidentifying someone else as the specified person.
+        # - `value` is the corresponding threshold.
+        # 
+        # 
+        # > Regarding the confidence thresholds (confidenceThresholds) in the example:
+        # - `"0.0001": "90.07"` indicates that the threshold is 90.07 when the false acceptance rate is 0.01%.
+        # - `"0.001": "80.01"` indicates that the threshold is 80.01 when the false acceptance rate is 0.1%.
+        # - `"0.01": "70.02"` indicates that the threshold is 70.02 when the false acceptance rate is 1%.
+        # 
+        # Confidence thresholds are dynamically provided based on different images and algorithms, so do not persist these thresholds.
         self.confidence_thresholds = confidence_thresholds
+        # The degree of similarity between the faces in the two images. The value range is [0, 100], with higher values indicating greater similarity.
         self.similarity_score = similarity_score
 
     def validate(self):
@@ -703,10 +851,15 @@ class CompareFacesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # HTTP status code.
         self.code = code
+        # Result of the face comparison.
         self.data = data
+        # Error code.
         self.message = message
+        # ID of the current request.
         self.request_id = request_id
+        # Indicates whether the response was successful.
         self.success = success
 
     def validate(self):
@@ -1478,13 +1631,23 @@ class CredentialProductVerifyV2Request(TeaModel):
         merchant_id: str = None,
         product_code: str = None,
     ):
+        # Credential name: Only supports value 0501 (product image).
+        # 
         # This parameter is required.
         self.cred_name = cred_name
+        # Credential type: Only supports value 05 (product image).
+        # 
         # This parameter is required.
         self.cred_type = cred_type
+        # InputStream object of the image.
         self.image_file = image_file
+        # URL of the image.
         self.image_url = image_url
+        # Merchant ID.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # Only supports value ANTI_FAKE_CHECK.
+        # 
         # This parameter is required.
         self.product_code = product_code
 
@@ -1538,13 +1701,23 @@ class CredentialProductVerifyV2AdvanceRequest(TeaModel):
         merchant_id: str = None,
         product_code: str = None,
     ):
+        # Credential name: Only supports value 0501 (product image).
+        # 
         # This parameter is required.
         self.cred_name = cred_name
+        # Credential type: Only supports value 05 (product image).
+        # 
         # This parameter is required.
         self.cred_type = cred_type
+        # InputStream object of the image.
         self.image_file_object = image_file_object
+        # URL of the image.
         self.image_url = image_url
+        # Merchant ID.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # Only supports value ANTI_FAKE_CHECK.
+        # 
         # This parameter is required.
         self.product_code = product_code
 
@@ -1596,9 +1769,18 @@ class CredentialProductVerifyV2ResponseBodyResultObject(TeaModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # Additional information in JSON format.
         self.material_info = material_info
+        # - 0: Low risk
+        # - 1: High risk
+        # - 2: Suspicious
         self.result = result
+        # Map of risk scores.
         self.risk_score = risk_score
+        # Risk tags, separated by commas, including:
+        # - PS: Image has been photoshopped
+        # - LOW_QUALITY_PRODUCT: Low quality (low clarity)
+        # - SAME_BACKGROUND: Similar background
         self.risk_tag = risk_tag
 
     def validate(self):
@@ -1641,9 +1823,13 @@ class CredentialProductVerifyV2ResponseBody(TeaModel):
         request_id: str = None,
         result_object: CredentialProductVerifyV2ResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -2170,7 +2356,9 @@ class CredentialVerifyV2RequestMerchantDetail(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Keyword key.
         self.key = key
+        # Keyword value.
         self.value = value
 
     def validate(self):
@@ -2216,20 +2404,78 @@ class CredentialVerifyV2Request(TeaModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
+        # Relevant certificate number.
         self.cert_num = cert_num
+        # - 01: Personal ID cards
+        #   - 0101: ID card
+        #   - 0102: Bank card
+        #   - 0104: Teacher qualification certificate
+        #   - 0107: Student ID card
+        # - 02: Business scenario
+        #   - 0201: Storefront photo
+        #   - 0202: Counter photo
+        #   - 0203: Scene photo
+        # - 03: Corporate qualifications
+        #   - 0301: Business license
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 01: Personal ID cards
+        # - 02: Business scenario
+        # - 03: Corporate qualifications
         self.cred_type = cred_type
+        # ID number.
         self.identify_num = identify_num
+        # Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_context = image_context
+        # Image input stream, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_file = image_file
+        # Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_url = image_url
+        # Whether to enable authoritative authentication
+        # 
+        # - ****0****: No
+        # - **1**: Yes
         self.is_check = is_check
+        # Whether to use OCR
         self.is_ocr = is_ocr
+        # Merchant details:
+        # 
+        # MerchantName: Merchant name
+        # 
+        # BusinessType: Industry information
+        # 
+        # BusinessContent: Business content
+        # 
+        # This field is required when PromptModel is set to DEFAULT.
         self.merchant_detail = merchant_detail
+        # Merchant ID. This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # 
+        # - ANTI_FAKE_CHECK: Image anti-forgery check
+        # 
+        # - ANTI_FAKE_VL: Image anti-forgery check and semantic understanding
+        # 
+        # - IMAGE_VL_COG: Image semantic understanding
+        # 
+        # Default value: ANTI_FAKE_CHECK
+        # 
+        # When CredType is set to 02, ProductCode can only be ANTI_FAKE_VL or IMAGE_VL_COG.
         self.product_code = product_code
+        # Customer-defined prompt content for image semantic understanding.
+        # 
+        # This field is required when PromptModel is set to CUSTOM.
         self.prompt = prompt
+        # Prompt acquisition method for image semantic understanding:
+        # 
+        # - DEFAULT: System default
+        # 
+        # - CUSTOM: Customer-defined
+        # 
+        # Note: When ProductCode is set to ANTI_FAKE_VL or IMAGE_VL_COG, this parameter must be provided.
         self.prompt_model = prompt_model
+        # Name.
         self.user_name = user_name
 
     def validate(self):
@@ -2322,7 +2568,9 @@ class CredentialVerifyV2AdvanceRequestMerchantDetail(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # Keyword key.
         self.key = key
+        # Keyword value.
         self.value = value
 
     def validate(self):
@@ -2368,20 +2616,78 @@ class CredentialVerifyV2AdvanceRequest(TeaModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
+        # Relevant certificate number.
         self.cert_num = cert_num
+        # - 01: Personal ID cards
+        #   - 0101: ID card
+        #   - 0102: Bank card
+        #   - 0104: Teacher qualification certificate
+        #   - 0107: Student ID card
+        # - 02: Business scenario
+        #   - 0201: Storefront photo
+        #   - 0202: Counter photo
+        #   - 0203: Scene photo
+        # - 03: Corporate qualifications
+        #   - 0301: Business license
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 01: Personal ID cards
+        # - 02: Business scenario
+        # - 03: Corporate qualifications
         self.cred_type = cred_type
+        # ID number.
         self.identify_num = identify_num
+        # Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_context = image_context
+        # Image input stream, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_file_object = image_file_object
+        # Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_url = image_url
+        # Whether to enable authoritative authentication
+        # 
+        # - ****0****: No
+        # - **1**: Yes
         self.is_check = is_check
+        # Whether to use OCR
         self.is_ocr = is_ocr
+        # Merchant details:
+        # 
+        # MerchantName: Merchant name
+        # 
+        # BusinessType: Industry information
+        # 
+        # BusinessContent: Business content
+        # 
+        # This field is required when PromptModel is set to DEFAULT.
         self.merchant_detail = merchant_detail
+        # Merchant ID. This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # 
+        # - ANTI_FAKE_CHECK: Image anti-forgery check
+        # 
+        # - ANTI_FAKE_VL: Image anti-forgery check and semantic understanding
+        # 
+        # - IMAGE_VL_COG: Image semantic understanding
+        # 
+        # Default value: ANTI_FAKE_CHECK
+        # 
+        # When CredType is set to 02, ProductCode can only be ANTI_FAKE_VL or IMAGE_VL_COG.
         self.product_code = product_code
+        # Customer-defined prompt content for image semantic understanding.
+        # 
+        # This field is required when PromptModel is set to CUSTOM.
         self.prompt = prompt
+        # Prompt acquisition method for image semantic understanding:
+        # 
+        # - DEFAULT: System default
+        # 
+        # - CUSTOM: Customer-defined
+        # 
+        # Note: When ProductCode is set to ANTI_FAKE_VL or IMAGE_VL_COG, this parameter must be provided.
         self.prompt_model = prompt_model
+        # Name.
         self.user_name = user_name
 
     def validate(self):
@@ -2487,20 +2793,78 @@ class CredentialVerifyV2ShrinkRequest(TeaModel):
         prompt_model: str = None,
         user_name: str = None,
     ):
+        # Relevant certificate number.
         self.cert_num = cert_num
+        # - 01: Personal ID cards
+        #   - 0101: ID card
+        #   - 0102: Bank card
+        #   - 0104: Teacher qualification certificate
+        #   - 0107: Student ID card
+        # - 02: Business scenario
+        #   - 0201: Storefront photo
+        #   - 0202: Counter photo
+        #   - 0203: Scene photo
+        # - 03: Corporate qualifications
+        #   - 0301: Business license
         self.cred_name = cred_name
+        # Credential type:
+        # 
+        # - 01: Personal ID cards
+        # - 02: Business scenario
+        # - 03: Corporate qualifications
         self.cred_type = cred_type
+        # ID number.
         self.identify_num = identify_num
+        # Base64 encoded image, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_context = image_context
+        # Image input stream, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_file = image_file
+        # Image URL, choose one from `imageUrl`, `imageFile`, or `imageContext`.
         self.image_url = image_url
+        # Whether to enable authoritative authentication
+        # 
+        # - ****0****: No
+        # - **1**: Yes
         self.is_check = is_check
+        # Whether to use OCR
         self.is_ocr = is_ocr
+        # Merchant details:
+        # 
+        # MerchantName: Merchant name
+        # 
+        # BusinessType: Industry information
+        # 
+        # BusinessContent: Business content
+        # 
+        # This field is required when PromptModel is set to DEFAULT.
         self.merchant_detail_shrink = merchant_detail_shrink
+        # Merchant ID. This field is required when ****CredName**** is set to **02**.
         self.merchant_id = merchant_id
+        # Invocation mode:
+        # 
+        # - ANTI_FAKE_CHECK: Image anti-forgery check
+        # 
+        # - ANTI_FAKE_VL: Image anti-forgery check and semantic understanding
+        # 
+        # - IMAGE_VL_COG: Image semantic understanding
+        # 
+        # Default value: ANTI_FAKE_CHECK
+        # 
+        # When CredType is set to 02, ProductCode can only be ANTI_FAKE_VL or IMAGE_VL_COG.
         self.product_code = product_code
+        # Customer-defined prompt content for image semantic understanding.
+        # 
+        # This field is required when PromptModel is set to CUSTOM.
         self.prompt = prompt
+        # Prompt acquisition method for image semantic understanding:
+        # 
+        # - DEFAULT: System default
+        # 
+        # - CUSTOM: Customer-defined
+        # 
+        # Note: When ProductCode is set to ANTI_FAKE_VL or IMAGE_VL_COG, this parameter must be provided.
         self.prompt_model = prompt_model
+        # Name.
         self.user_name = user_name
 
     def validate(self):
@@ -2585,7 +2949,17 @@ class CredentialVerifyV2ResponseBodyResultObjectVlResult(TeaModel):
         success: bool = None,
         vl_content: str = None,
     ):
+        # Qwen interpretation success indicator
+        # 
+        # true: Success
+        # 
+        # false: Failure
         self.success = success
+        # Image understanding result:
+        # 
+        # - When PromptModel is DEFAULT, the output format refers to the example on the right.
+        # 
+        # - When PromptModel is CUSTOM, the output format follows the agreed format of the Prompt.
         self.vl_content = vl_content
 
     def validate(self):
@@ -2624,13 +2998,32 @@ class CredentialVerifyV2ResponseBodyResultObject(TeaModel):
         verify_result: str = None,
         vl_result: CredentialVerifyV2ResponseBodyResultObjectVlResult = None,
     ):
+        # Additional information in JSON format.
         self.material_info = material_info
+        # OCR recognition result.
         self.ocr_info = ocr_info
+        # Risk result
+        # 
+        # - 0: Low risk
+        # - 1: High risk
+        # - 2: Suspicious
         self.result = result
+        # Risk score map.
         self.risk_score = risk_score
+        # Risk tags, separated by commas (,), including:
+        # 
+        # - PS: Image manipulation.
+        # - SCREEN_PHOTO: Screen recapture.
+        # - SCREENSHOT: Screenshot.
+        # - WATERMARK: Watermark.
+        # - SAME_BACKGROUND: Similar background.
+        # - ORIGINAL_PHOTO: Not the original image
         self.risk_tag = risk_tag
+        # Authority verification details.
         self.verify_detail = verify_detail
+        # Authority verification result
         self.verify_result = verify_result
+        # Qwen interpretation.
         self.vl_result = vl_result
 
     def validate(self):
@@ -2691,9 +3084,13 @@ class CredentialVerifyV2ResponseBody(TeaModel):
         request_id: str = None,
         result_object: CredentialVerifyV2ResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -2779,9 +3176,15 @@ class DeepfakeDetectRequest(TeaModel):
         face_url: str = None,
         outer_order_no: str = None,
     ):
+        # Enter the Base64 encoded string of the face image.
+        # > Either FaceUrl or FaceBase64 must be provided.
         self.face_base_64 = face_base_64
+        # Input **IMAGE** to indicate an image type.
         self.face_input_type = face_input_type
+        # Enter the URL of the face image.
+        # > Either FaceUrl or FaceBase64 must be provided.
         self.face_url = face_url
+        # A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination. The first few characters can be a custom abbreviation defined by the merchant, the middle part may include a timestamp, and the latter part can use a random or incrementing sequence.
         self.outer_order_no = outer_order_no
 
     def validate(self):
@@ -2823,8 +3226,22 @@ class DeepfakeDetectResponseBodyResultObject(TeaModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # Risk result:
+        # 
+        # - **0**: Low risk
+        # - **1**: High risk
+        # - **2**: Suspicious
         self.result = result
+        # Risk score map.
         self.risk_score = risk_score
+        # Risk tags. Multiple tags are separated by commas (,). Includes:
+        # 
+        # - Suspected deep forgery  SuspectDeepForgery
+        # - Suspected synthetic attack  SuspectPSFace
+        # - Suspected watermark  SuspectWarterMark
+        # - Suspected black industry attack  SuspectTemple
+        # - Suspected generated face  SuspectAIGC Face
+        # - Suspected rephotographed face  SuspectRemake
         self.risk_tag = risk_tag
 
     def validate(self):
@@ -2863,10 +3280,13 @@ class DeepfakeDetectResponseBody(TeaModel):
         request_id: str = None,
         result_object: DeepfakeDetectResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, others indicate failure.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -2950,7 +3370,12 @@ class DeleteFaceVerifyResultRequest(TeaModel):
         certify_id: str = None,
         delete_after_query: str = None,
     ):
+        # Unique identifier for real-person authentication.
         self.certify_id = certify_id
+        # Whether deletion depends on having already obtained relevant data from the corresponding authentication process.
+        # 
+        # - Y: Required. To successfully delete the related data, you must have obtained the processing result through the DescribeFaceVerify interface.
+        # - N: Not required (default). For pure server-side API integration, you can directly pass N.
         self.delete_after_query = delete_after_query
 
     def validate(self):
@@ -2984,8 +3409,17 @@ class DeleteFaceVerifyResultResponseBodyResultObject(TeaModel):
         delete_result: str = None,
         fail_reason: str = None,
     ):
+        # Unique identifier for real-person authentication.
         self.certify_id = certify_id
+        # Deletion result. Possible values are as follows:
+        # 
+        # - Y: Deletion successful.
+        # - N: Deletion failed.
         self.delete_result = delete_result
+        # Reason for deletion failure
+        # 
+        # - NOT_DELETE_REPEATEDLY: Cannot be deleted repeatedly
+        # - NEED_QUERY_VERIFY_RESULT: Need to query the verification result first, then delete
         self.fail_reason = fail_reason
 
     def validate(self):
@@ -3024,10 +3458,13 @@ class DeleteFaceVerifyResultResponseBody(TeaModel):
         request_id: str = None,
         result_object: DeleteFaceVerifyResultResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -5587,10 +6024,25 @@ class Id2MetaPeriodVerifyRequest(TeaModel):
         validity_end_date: str = None,
         validity_start_date: str = None,
     ):
+        # ID number:
+        # 
+        # - When `paramType` is `normal`: Enter the plain text of the ID number.
+        # - When `paramType` is `md5`:
+        # The first 6 digits (plain text) + date of birth (encrypted) + last 4 digits (plain text).
         self.identify_num = identify_num
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: MD5 encrypted.
         self.param_type = param_type
+        # Name.
+        # 
+        # - When `paramType` = `normal`: Enter the plain text of the name.
+        # - When `paramType` = `md5`: The first character of the name MD5 encrypted (32 lowercase MD5) + the rest of the name in plain text.
         self.user_name = user_name
+        # End date of ID validity, format: YYYYMMDD
         self.validity_end_date = validity_end_date
+        # Start date of ID validity, format: YYYYMMDD
         self.validity_start_date = validity_start_date
 
     def validate(self):
@@ -5634,6 +6086,10 @@ class Id2MetaPeriodVerifyResponseBodyResultObject(TeaModel):
         self,
         biz_code: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification consistent.
+        # - **2**: Verification inconsistent.
+        # - **3**: No record found.
         self.biz_code = biz_code
 
     def validate(self):
@@ -5664,10 +6120,13 @@ class Id2MetaPeriodVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Id2MetaPeriodVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -5752,8 +6211,21 @@ class Id2MetaStandardVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # - When `paramType` is normal: enter the plain text of the ID number.
+        # - When `paramType` is md5:
+        # The first 6 digits (plain text) + date of birth (encrypted) + last 4 digits (plain text).
         self.identify_num = identify_num
+        # Parameter type:
+        # 
+        # - normal: unencrypted.
+        # - md5: md5 encrypted.
         self.param_type = param_type
+        # Name:
+        # 
+        # - When `paramType` is normal: enter the plain text of the name.
+        # - When `paramType` is md5: the first character of the name (encrypted) + the rest of the name (plain text).
         self.user_name = user_name
 
     def validate(self):
@@ -5789,6 +6261,10 @@ class Id2MetaStandardVerifyResponseBodyResultObject(TeaModel):
         self,
         biz_code: str = None,
     ):
+        # Verification result code:
+        # - **1**: verification matches.
+        # - **2**: verification does not match.
+        # - **3**: no record found.
         self.biz_code = biz_code
 
     def validate(self):
@@ -5819,10 +6295,13 @@ class Id2MetaStandardVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Id2MetaStandardVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -5907,8 +6386,26 @@ class Id2MetaVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # Note
+        # Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+        # 
+        # - When paramType is normal: enter the plaintext ID number.
+        # 
+        # - When paramType is md5: first 6 digits of the ID number (plaintext) + date of birth (ciphertext) + last 4 digits of the ID number (plaintext).
         self.identify_num = identify_num
+        # Encryption method:
+        # 
+        # - normal: plaintext, no encryption
+        # 
+        # - md5: MD5 encryption
         self.param_type = param_type
+        # Name:
+        # 
+        # - When paramType is normal: enter the plaintext name.
+        # 
+        # - When paramType is md5: first character of the name in ciphertext + rest of the name in plaintext.
         self.user_name = user_name
 
     def validate(self):
@@ -5944,6 +6441,10 @@ class Id2MetaVerifyResponseBodyResultObject(TeaModel):
         self,
         biz_code: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification consistent.
+        # - **2**: Verification inconsistent.
+        # - **3**: No record found.
         self.biz_code = biz_code
 
     def validate(self):
@@ -5974,9 +6475,13 @@ class Id2MetaVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Id2MetaVerifyResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates successful API response.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -6062,9 +6567,19 @@ class Id2MetaVerifyWithOCRRequest(TeaModel):
         cert_national_url: str = None,
         cert_url: str = None,
     ):
+        # Input stream for the portrait side of the ID card image.
+        # Choose one between CertUrl and CertFile.
         self.cert_file = cert_file
+        # National emblem side of the ID card image address.
+        # Choose one between CertNationalUrl and CertNationalFile, or omit both.
         self.cert_national_file = cert_national_file
+        # National emblem side of the ID card image URL. National emblem side
+        # A publicly accessible HTTP or HTTPS link.
+        # Choose one between CertNationalUrl and CertNationalFile, or omit both.
         self.cert_national_url = cert_national_url
+        # Portrait side of the ID card image.
+        # A publicly accessible HTTP or HTTPS link.
+        # Choose one between CertUrl and CertFile.
         self.cert_url = cert_url
 
     def validate(self):
@@ -6107,9 +6622,19 @@ class Id2MetaVerifyWithOCRAdvanceRequest(TeaModel):
         cert_national_url: str = None,
         cert_url: str = None,
     ):
+        # Input stream for the portrait side of the ID card image.
+        # Choose one between CertUrl and CertFile.
         self.cert_file_object = cert_file_object
+        # National emblem side of the ID card image address.
+        # Choose one between CertNationalUrl and CertNationalFile, or omit both.
         self.cert_national_file_object = cert_national_file_object
+        # National emblem side of the ID card image URL. National emblem side
+        # A publicly accessible HTTP or HTTPS link.
+        # Choose one between CertNationalUrl and CertNationalFile, or omit both.
         self.cert_national_url = cert_national_url
+        # Portrait side of the ID card image.
+        # A publicly accessible HTTP or HTTPS link.
+        # Choose one between CertUrl and CertFile.
         self.cert_url = cert_url
 
     def validate(self):
@@ -6150,7 +6675,12 @@ class Id2MetaVerifyWithOCRResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         card_info: str = None,
     ):
+        # Identity verification result:
+        # - 1: Consistent
+        # - 2: Inconsistent
+        # - 3: No record found
         self.biz_code = biz_code
+        # {"address":"Zhejiang Province, Hangzhou City, Yu*****","birthDate":"19901226","certName":"Zhang San","certNo":"1234561990122*****","nationality":"Han","authority":"xxx Public Security Bureau","startDate":"20201130","endDate":"20301130"}
         self.card_info = card_info
 
     def validate(self):
@@ -6185,9 +6715,18 @@ class Id2MetaVerifyWithOCRResponseBody(TeaModel):
         request_id: str = None,
         result_object: Id2MetaVerifyWithOCRResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, any other value indicates failure.
+        # **Important**\
+        # - This parameter indicates whether the API was called correctly. For detailed return code explanations, please refer to the error codes.
+        # - Check the business verification results through the fields in ResultObject.
         self.code = code
+        # API call return message.
+        # **Important**\
+        # This parameter only indicates if there was an exception with the API call.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object
         self.result_object = result_object
 
     def validate(self):
@@ -6279,21 +6818,54 @@ class InitCardVerifyRequest(TeaModel):
         picture_save: str = None,
         verify_meta: str = None,
     ):
+        # Security Token, used for anti-replay and anti-tampering checks. If this parameter is passed, the CallbackToken field will be displayed in the callback address.
         self.callback_token = callback_token
+        # - The callback notification address for the authentication result, which must start with https.
+        # - The platform will call back this address after completing the authentication and automatically add the certifyId and passed fields, example: https://www.aliyun.com?certifyId=xxxx&passed=T
+        # - Warning
+        # The callback is triggered only when the authentication is completed. If the authentication is abandoned, interrupted abnormally, or not performed, no notification will be sent. It is recommended that when you receive the callback notification, if necessary, you can obtain detailed authentication information through the query interface.
         self.callback_url = callback_url
+        # Number of card pages collected by the SDK
+        # - You can input 1 or 2; input 1 to collect the front side, input 2 to collect both the front and back sides.
+        # 
+        # - If the verification type is ID period (VerifyMeta value is ID_PERIOD), you must input 2.
+        # 
         # This parameter is required.
         self.card_page_number = card_page_number
+        # Type of identification
+        # - Resident Second Generation ID Card: IDENTITY_CARD
+        # 
         # This parameter is required.
         self.card_type = card_type
+        # Enumeration of photo-taking methods (manual/auto)
+        # - Take a photo: shoot
+        # - Scan: scan 
+        # - Auto switch: auto
         self.doc_scan_mode = doc_scan_mode
+        # A unique business identifier you define, used for subsequent troubleshooting.
+        # Supports a combination of 32 alphanumeric characters, please ensure uniqueness.
+        # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
+        # MetaInfo environment parameter, which needs to be obtained through the client SDK.
+        # 
         # This parameter is required.
         self.meta_info = meta_info
+        # Verification method, value:
+        # - OCR_VERIFY: OCR recognition and verification mode.
+        # 
         # This parameter is required.
         self.model = model
+        # Whether to temporarily store the images collected by the app.
+        # - Y: Yes
+        # - N: No
+        # - If \\"Yes\\" is selected here, the query interface will support returning the card image information.
+        # 
         # This parameter is required.
         self.picture_save = picture_save
+        # Verification type, value:
+        # - Identity two elements (name + ID number): ID_2_META
+        # 
         # This parameter is required.
         self.verify_meta = verify_meta
 
@@ -6358,6 +6930,10 @@ class InitCardVerifyResponseBodyResultObject(TeaModel):
         self,
         certify_id: str = None,
     ):
+        # Verification request ID, a unique identifier for the verification service\\"s authentication request.
+        # - When querying the authentication result, the authentication request ID must be provided.
+        # 
+        # - The CertifyId field is a billing statistics field. To facilitate subsequent bill reconciliation, please retain this field information locally. The CertifyId returned by the initialization interface is valid for 30 minutes and can only be submitted once for authentication. Please apply it within the validity period to avoid reuse.
         self.certify_id = certify_id
 
     def validate(self):
@@ -6388,9 +6964,16 @@ class InitCardVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: InitCardVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
+        # Important
+        # - This parameter indicates whether the interface was called correctly. For detailed return code descriptions, see the error codes.
+        # - Business results should be viewed through the fields in ResultObject.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
 
     def validate(self):
@@ -6842,11 +7425,17 @@ class InsertWhiteListSettingRequest(TeaModel):
         service_code: str = None,
         valid_day: int = None,
     ):
+        # ID number.
         self.cert_no = cert_no
+        # Unique identifier for real person authentication.
         self.certify_id = certify_id
+        # Remark, with a length less than 32 characters.
         self.remark = remark
+        # Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For instructions on how to create an authentication scene, see Adding an Authentication Scene.
         self.scene_id = scene_id
+        # ServiceCode for the real person cloud product, value: **antcloudauth**.
         self.service_code = service_code
+        # Whitelist validity period in days (only supports 3, 7, 30).
         self.valid_day = valid_day
 
     def validate(self):
@@ -6898,11 +7487,15 @@ class InsertWhiteListSettingResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Returned result
         self.result_object = result_object
+        # Indicates whether the response was successful.
         self.success = success
 
     def validate(self):
@@ -7227,10 +7820,22 @@ class Mobile2MetaVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # Phone number:
+        # - When paramType is normal: input the plaintext phone number.
+        # - When paramType is md5: input the encrypted phone number.
+        # 
         # This parameter is required.
         self.mobile = mobile
+        # Encryption method:
+        # - normal: plaintext without encryption
+        # - md5: MD5 encryption
+        # 
         # This parameter is required.
         self.param_type = param_type
+        # Name:
+        # - When paramType is normal: input the plaintext name.
+        # - When paramType is md5: input the encrypted name.
+        # 
         # This parameter is required.
         self.user_name = user_name
 
@@ -7268,7 +7873,15 @@ class Mobile2MetaVerifyResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
+        # Verification result:
+        # - 1: Consistent verification
+        # - 2: Inconsistent verification
+        # - 3: No record found
         self.biz_code = biz_code
+        # Operator name:
+        # - CMCC: China Mobile
+        # - CUCC: China Unicom
+        # - CTCC: China Telecom
         self.isp_name = isp_name
 
     def validate(self):
@@ -7303,9 +7916,13 @@ class Mobile2MetaVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Mobile2MetaVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Result object.
         self.result_object = result_object
 
     def validate(self):
@@ -7391,9 +8008,25 @@ class Mobile3MetaDetailStandardVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the ID number.
+        # - When `paramType` is `md5`: Input the encrypted text of the ID number.
         self.identify_num = identify_num
+        # Phone number:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the phone number.
+        # - When `paramType` is `md5`: Input the encrypted text of the phone number.
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: Encrypted with MD5.
         self.param_type = param_type
+        # Name:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the name.
+        # - When `paramType` is `md5`: Input the encrypted text of the name.
         self.user_name = user_name
 
     def validate(self):
@@ -7435,8 +8068,26 @@ class Mobile3MetaDetailStandardVerifyResponseBodyResultObject(TeaModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification matches.
+        # - **2**: Verification does not match.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # ISP name:
+        # 
+        # - **CMCC**: China Mobile.
+        # - **CUCC**: China Unicom.
+        # - **CTCC**: China Telecom.
+        # - **CBCC**: China Broadcasting Network.
         self.isp_name = isp_name
+        # Detailed verification results:
+        # 
+        # - 101: Passed, three elements are consistent.
+        # - 201: The phone number does not match the name and ID number.
+        # - 202: The phone number matches the name but does not match the ID number.
+        # - 203: The phone number does not match the name but matches the ID number.
+        # - 204: Other inconsistencies.
+        # - 301: No record found.
         self.sub_code = sub_code
 
     def validate(self):
@@ -7475,10 +8126,13 @@ class Mobile3MetaDetailStandardVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Mobile3MetaDetailStandardVerifyResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates a successful API response.
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # Request ID
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -7564,9 +8218,32 @@ class Mobile3MetaDetailVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # Note
+        # Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+        # 
+        # - When paramType is normal: enter the plaintext ID number.
+        # 
+        # - When paramType is md5: enter the encrypted ID number.
         self.identify_num = identify_num
+        # Mobile phone number:
+        # 
+        # - When paramType is normal: enter the plaintext mobile phone number.
+        # 
+        # - When paramType is md5: enter the encrypted mobile phone number.
         self.mobile = mobile
+        # Encryption method:
+        # 
+        # - normal: plaintext, unencrypted
+        # 
+        # - md5: MD5 encryption
         self.param_type = param_type
+        # Name:
+        # 
+        # - When paramType is normal: enter the plaintext name.
+        # 
+        # - When paramType is md5: enter the encrypted name.
         self.user_name = user_name
 
     def validate(self):
@@ -7608,8 +8285,25 @@ class Mobile3MetaDetailVerifyResponseBodyResultObject(TeaModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification consistent.
+        # - **2**: Verification inconsistent.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # Operator name:
+        # 
+        # - **CMCC**: China Mobile.
+        # - **CUCC**: China Unicom.
+        # - **CTCC**: China Telecom.
         self.isp_name = isp_name
+        # Detailed verification results:
+        # 
+        # - **101**: Verification passed.
+        # - **201**: Mobile number and name do not match, mobile number and ID number do not match.
+        # - **202**: Mobile number and name match, but mobile number and ID number do not match.
+        # - **203**: Mobile number and ID number match, but mobile number and name do not match.
+        # - **204**: Other inconsistencies.
+        # - **301**: No record found.
         self.sub_code = sub_code
 
     def validate(self):
@@ -7648,9 +8342,13 @@ class Mobile3MetaDetailVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Mobile3MetaDetailVerifyResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates a successful API response.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -7736,9 +8434,25 @@ class Mobile3MetaSimpleStandardVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the ID number.
+        # - When `paramType` is `md5`: Input the encrypted ID number.
         self.identify_num = identify_num
+        # Phone number:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the phone number.
+        # - When `paramType` is `md5`: Input the encrypted phone number.
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: MD5 encrypted.
         self.param_type = param_type
+        # Name:
+        # 
+        # - When `paramType` is `normal`: Input the plain text of the name.
+        # - When `paramType` is `md5`: Input the encrypted name.
         self.user_name = user_name
 
     def validate(self):
@@ -7779,7 +8493,18 @@ class Mobile3MetaSimpleStandardVerifyResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
+        # Verification result:
+        # 
+        # - 1: Consistent (billable)
+        # - 2: Inconsistent (billable)
+        # - 3: No record found (non-billable)
         self.biz_code = biz_code
+        # Operator name:
+        # 
+        # - **CMCC**: China Mobile.
+        # - **CUCC**: China Unicom.
+        # - **CTCC**: China Telecom.
+        # - **CBCC**: China Broadcasting Network.
         self.isp_name = isp_name
 
     def validate(self):
@@ -7814,10 +8539,13 @@ class Mobile3MetaSimpleStandardVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Mobile3MetaSimpleStandardVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -7903,9 +8631,32 @@ class Mobile3MetaSimpleVerifyRequest(TeaModel):
         param_type: str = None,
         user_name: str = None,
     ):
+        # ID number:
+        # 
+        # Note
+        # Only supports the ID numbers of second-generation resident IDs and Hong Kong, Macao, and Taiwan residence permits.
+        # 
+        # - When paramType is normal: enter the plaintext ID number.
+        # 
+        # - When paramType is md5: enter the encrypted ID number.
         self.identify_num = identify_num
+        # Mobile phone number:
+        # 
+        # - When paramType is normal: enter the plaintext mobile phone number.
+        # 
+        # - When paramType is md5: enter the encrypted mobile phone number.
         self.mobile = mobile
+        # Encryption method:
+        # 
+        # - normal: plaintext, not encrypted
+        # 
+        # - md5: MD5 encryption
         self.param_type = param_type
+        # Name:
+        # 
+        # - When paramType is normal: enter the plaintext name.
+        # 
+        # - When paramType is md5: enter the encrypted name.
         self.user_name = user_name
 
     def validate(self):
@@ -7946,7 +8697,16 @@ class Mobile3MetaSimpleVerifyResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification consistent.
+        # - **2**: Verification inconsistent.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # ISP name:
+        # 
+        # - **CMCC**: China Mobile.
+        # - **CUCC**: China Unicom.
+        # - **CTCC**: China Telecom.
         self.isp_name = isp_name
 
     def validate(self):
@@ -7981,9 +8741,13 @@ class Mobile3MetaSimpleVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: Mobile3MetaSimpleVerifyResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
 
     def validate(self):
@@ -8067,7 +8831,11 @@ class MobileDetectRequest(TeaModel):
         mobiles: str = None,
         param_type: str = None,
     ):
+        # List of phone numbers.
         self.mobiles = mobiles
+        # Encryption method:
+        # - normal: plaintext, no encryption
+        # - md5: MD5 encryption
         self.param_type = param_type
 
     def validate(self):
@@ -8103,10 +8871,30 @@ class MobileDetectResponseBodyResultObjectItems(TeaModel):
         mobile: str = None,
         sub_code: str = None,
     ):
+        # Phone number\\"s area (only for plaintext phone numbers)
         self.area = area
+        # Verification result
+        # 
+        # - 1: Available online 
+        # - 2: Not available online
+        # - 3: No query result
         self.biz_code = biz_code
+        # Operator name
+        # 
+        # - CMCC: China Mobile 
+        # - CUCC: China Unicom 
+        # - CTCC: China Telecom
         self.isp_name = isp_name
+        # Phone number
         self.mobile = mobile
+        # Verification details
+        # 
+        # - 101: Available number
+        # - 102: Empty number
+        # - 103: Suspended 
+        # - 104: Silent number (inactive small number, new number, non-smartphone user within the last six months) 
+        # - 105: Risky number (long-term shutdown or no voice service activated and prone to complaints)
+        # - 301: No record found
         self.sub_code = sub_code
 
     def validate(self):
@@ -8151,7 +8939,9 @@ class MobileDetectResponseBodyResultObject(TeaModel):
         charge_count: str = None,
         items: List[MobileDetectResponseBodyResultObjectItems] = None,
     ):
+        # Billing count, the total billing count in one request
         self.charge_count = charge_count
+        # Verification results set
         self.items = items
 
     def validate(self):
@@ -8194,9 +8984,13 @@ class MobileDetectResponseBody(TeaModel):
         request_id: str = None,
         result_object: MobileDetectResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -8280,7 +9074,15 @@ class MobileOnlineStatusRequest(TeaModel):
         mobile: str = None,
         param_type: str = None,
     ):
+        # Mobile number:
+        # 
+        # - When `paramType` is `normal`: provide the plaintext mobile number.
+        # - When `paramType` is `md5`: provide the encrypted mobile number.
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: unencrypted.
+        # - md5: md5 encrypted.
         self.param_type = param_type
 
     def validate(self):
@@ -8314,8 +9116,26 @@ class MobileOnlineStatusResponseBodyResultObject(TeaModel):
         isp_name: str = None,
         sub_code: str = None,
     ):
+        # Verification result
+        # 
+        # - 1: Available online 
+        # - 2: Not available online (see subCode for details)
+        # - 3: No query result
         self.biz_code = biz_code
+        # ISP name
+        # 
+        # - CMCC: China Mobile 
+        # - CUCC: China Unicom 
+        # - CTCC: China Telecom
         self.isp_name = isp_name
+        # Verification details
+        # 
+        # - 101: Available online 
+        # - 201: Suspended 
+        # - 202: Disconnected 
+        # - 203: Online but not available 
+        # - 204: Not online 
+        # - 301: No record found
         self.sub_code = sub_code
 
     def validate(self):
@@ -8354,9 +9174,13 @@ class MobileOnlineStatusResponseBody(TeaModel):
         request_id: str = None,
         result_object: MobileOnlineStatusResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -8440,7 +9264,14 @@ class MobileOnlineTimeRequest(TeaModel):
         mobile: str = None,
         param_type: str = None,
     ):
+        # Mobile number:
+        # - When `paramType` is `normal`: provide the plaintext mobile number.
+        # - When `paramType` is `md5`: provide the encrypted mobile number.
         self.mobile = mobile
+        # Parameter type:
+        # 
+        # - normal: unencrypted.
+        # - md5: md5 encrypted.
         self.param_type = param_type
 
     def validate(self):
@@ -8474,8 +9305,22 @@ class MobileOnlineTimeResponseBodyResultObject(TeaModel):
         isp_name: str = None,
         time_code: str = None,
     ):
+        # Verification result code.
+        # - 1: Verification consistent
+        # - 2: Verification inconsistent
+        # - 3: No record found
         self.biz_code = biz_code
+        # Operator name
+        # 
+        # - CMCC: China Mobile 
+        # - CUCC: China Unicom 
+        # - CTCC: China Telecom
         self.isp_name = isp_name
+        # - 1: [0,3) indicates the online duration is 0~3 months 
+        # - 2: [3,6) indicates the online duration is 3~6 months 
+        # - 3: [6,12) indicates the online duration is 6~12 months 
+        # - 4: [12,24) indicates the online duration is 12~24 months 
+        # - 5: [24,+) indicates the online duration is more than 24 months
         self.time_code = time_code
 
     def validate(self):
@@ -8514,9 +9359,13 @@ class MobileOnlineTimeResponseBody(TeaModel):
         request_id: str = None,
         result_object: MobileOnlineTimeResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result information
         self.result_object = result_object
 
     def validate(self):
@@ -8603,11 +9452,18 @@ class ModifyDeviceInfoRequest(TeaModel):
         expired_day: str = None,
         user_device_id: str = None,
     ):
+        # The updated business type. It should not exceed 64 characters and is defined by the connected party. It can be used to annotate specific businesses, for example, different face usage scenarios or the customer identifiers to be delivered.
         self.biz_type = biz_type
+        # A unique ID generated by the real-person authentication server for the connected device, which is only generated after the device is successfully activated. This ID can be obtained through the getLicenseExtraInfo function in the offline facial recognition SDK.
+        # 
         # This parameter is required.
         self.device_id = device_id
+        # The extended duration of the device expiration. Unit: years, with a range of [1,100]. A value of 100 indicates permanent use. One year is calculated as 365 days.
         self.duration = duration
+        # The current expiration time of the device. If the expiration date is incorrect (differing from the real-person authentication server\\"s recorded expiration time by more than one week), an error will be reported.
+        # > The expiration time can be queried through the DescribeDeviceInfo interface. An incorrect expiration date will result in an error. This check ensures that the business party does not accidentally re-activate a device due to some misoperation, thus consuming the authorization unnecessarily.
         self.expired_day = expired_day
+        # The updated user device ID. It should not exceed 64 characters and is defined by the connected party. It can be used to identify specific devices, and it is recommended to use the physical number of the device.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -8656,11 +9512,17 @@ class ModifyDeviceInfoResponseBody(TeaModel):
         request_id: str = None,
         user_device_id: str = None,
     ):
+        # If the Duration in the request parameters is not empty, this field represents the start time of the authorization after the device validity period has been extended. One year of Duration is calculated as 365 days. Example: 20180101.
         self.begin_day = begin_day
+        # Corresponds to the BizType in the request parameters.
         self.biz_type = biz_type
+        # Corresponds to the DeviceId in the request parameters.
         self.device_id = device_id
+        # If the Duration in the request parameters is not empty, this field represents the expiration time of the authorization after the device validity period has been extended. One year of Duration is calculated as 365 days. Example: 20180101.
         self.expired_day = expired_day
+        # The ID of this request.
         self.request_id = request_id
+        # Corresponds to the UserDeviceId in the request parameters.
         self.user_device_id = user_device_id
 
     def validate(self):
@@ -8757,14 +9619,27 @@ class PageQueryWhiteListSettingRequest(TeaModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
+        # ID number.
         self.cert_no = cert_no
+        # Unique identifier for real person authentication.
         self.certify_id = certify_id
+        # Current page number, default is 1.
         self.current_page = current_page
+        # Number of items per page, default is 10
         self.page_size = page_size
+        # Authentication scene ID. This ID is automatically generated after creating an authentication scene in the console. For how to create an authentication scene, see Adding an Authentication Scene.
         self.scene_id = scene_id
+        # ServiceCode of the real person cloud product, value: **antcloudauth**.
         self.service_code = service_code
+        # Status:
+        # 
+        # - DELETE: Deleted
+        # - VALID: Not deleted and within the validity period, valid
+        # - INVALID: Not deleted but outside the validity period, invalid
         self.status = status
+        # End date of validity (timestamp in milliseconds)
         self.valid_end_date = valid_end_date
+        # Start date of validity (timestamp in milliseconds)
         self.valid_start_date = valid_start_date
 
     def validate(self):
@@ -8834,16 +9709,31 @@ class PageQueryWhiteListSettingResponseBodyResultObject(TeaModel):
         valid_end_date: str = None,
         valid_start_date: str = None,
     ):
+        # ID number.
         self.cert_no = cert_no
+        # Unique identifier for real person authentication.
         self.certify_id = certify_id
+        # Creation time.
         self.gmt_create = gmt_create
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Whitelist ID.
         self.id = id
+        # Remark information.
         self.remark = remark
+        # Authentication scene ID.
         self.scene_id = scene_id
+        # ServiceCode of the real person cloud product
         self.service_code = service_code
+        # Status:
+        # 
+        # - DELETE: Deleted
+        # - VALID: Not deleted and within the validity period, valid
+        # - INVALID: Not deleted but outside the validity period, invalid
         self.status = status
+        # End date of validity
         self.valid_end_date = valid_end_date
+        # Start date of validity
         self.valid_start_date = valid_start_date
 
     def validate(self):
@@ -8919,15 +9809,23 @@ class PageQueryWhiteListSettingResponseBody(TeaModel):
         total_item: int = None,
         total_page: int = None,
     ):
+        # Return code, **200** indicates a successful API response.
         self.code = code
+        # Current page number.
         self.current_page = current_page
+        # Return message.
         self.message = message
+        # Number of items per page.
         self.page_size = page_size
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Request result
         self.result_object = result_object
+        # Whether the response was successful.
         self.success = success
+        # Total number of items.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -9037,7 +9935,9 @@ class RemoveWhiteListSettingRequest(TeaModel):
         ids: List[int] = None,
         service_code: str = None,
     ):
+        # IDs of the whitelist to be deleted in bulk.
         self.ids = ids
+        # ServiceCode for the real person cloud product, only value: **antcloudauth**.
         self.service_code = service_code
 
     def validate(self):
@@ -9070,7 +9970,9 @@ class RemoveWhiteListSettingShrinkRequest(TeaModel):
         ids_shrink: str = None,
         service_code: str = None,
     ):
+        # IDs of the whitelist to be deleted in bulk.
         self.ids_shrink = ids_shrink
+        # ServiceCode for the real person cloud product, only value: **antcloudauth**.
         self.service_code = service_code
 
     def validate(self):
@@ -9106,11 +10008,15 @@ class RemoveWhiteListSettingResponseBody(TeaModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Return code: 200 for success, others for failure
         self.code = code
+        # Return message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
+        # Whether the response was successful.
         self.success = success
 
     def validate(self):
@@ -9197,8 +10103,22 @@ class Vehicle5ItemQueryRequest(TeaModel):
         vehicle_num: str = None,
         vehicle_type: str = None,
     ):
+        # Parameter type:
+        # 
+        # - **normal**: Unencrypted.
+        # - **md5**: MD5 encrypted.
         self.param_type = param_type
+        # License plate number
+        # 
+        # > 
+        # > - When paramType is set to normal, enter the plain text.
+        # > - When paramType is set to md5, enter the plain text of all but the last two characters of the license plate + MD5 encryption (32-bit lowercase MD5) of the last two characters.
         self.vehicle_num = vehicle_num
+        # Vehicle type
+        # 
+        # > 
+        # > - 02: Ordinary passenger car
+        # > - 52: New energy passenger car
         self.vehicle_type = vehicle_type
 
     def validate(self):
@@ -9235,7 +10155,11 @@ class Vehicle5ItemQueryResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         vehicle_info: str = None,
     ):
+        # Verification result code:
+        # - **1**: Found (charged)
+        # - **3**: No record found (not charged)
         self.biz_code = biz_code
+        # Vehicle information
         self.vehicle_info = vehicle_info
 
     def validate(self):
@@ -9270,9 +10194,13 @@ class Vehicle5ItemQueryResponseBody(TeaModel):
         request_id: str = None,
         result_object: Vehicle5ItemQueryResponseBodyResultObject = None,
     ):
+        # Return code
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -9358,9 +10286,24 @@ class VehicleInsureQueryRequest(TeaModel):
         vehicle_type: str = None,
         vin: str = None,
     ):
+        # Parameter type:
+        # 
+        # - **normal**: Unencrypted.
+        # - **md5**: MD5 encrypted.
         self.param_type = param_type
+        # License plate number
+        # > 
+        # > - When `paramType` is set to `normal`, enter the plain text.
+        # > - When `paramType` is set to `md5`, enter the plain text of all but the last two characters of the license plate + the MD5 encryption (32 lowercase characters) of the last two characters of the license plate.
         self.vehicle_num = vehicle_num
+        # Driver\\"s license vehicle type.
         self.vehicle_type = vehicle_type
+        # Vehicle identification code, i.e., the vehicle VIN
+        # 
+        # 
+        # > 
+        # > - When `paramType` is set to `normal`, enter the plain text.
+        # > - When `paramType` is set to `md5`, enter the plain text of all but the last four characters of the VIN + the MD5 encryption (32 lowercase characters) of the last four characters of the VIN.
         self.vin = vin
 
     def validate(self):
@@ -9401,7 +10344,13 @@ class VehicleInsureQueryResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         vehicle_info: str = None,
     ):
+        # Verification result code:
+        # 
+        # > 
+        # > - 1: Found (charged)
+        # > - 3: No record found (not charged)
         self.biz_code = biz_code
+        # Insurance date information
         self.vehicle_info = vehicle_info
 
     def validate(self):
@@ -9436,9 +10385,13 @@ class VehicleInsureQueryResponseBody(TeaModel):
         request_id: str = None,
         result_object: VehicleInsureQueryResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates success, others indicate failure.
         self.code = code
+        # Response message for the request information.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -9526,11 +10479,37 @@ class VehicleMetaVerifyRequest(TeaModel):
         vehicle_type: str = None,
         verify_meta_type: str = None,
     ):
+        # ID number.
+        # 
+        # This is a required field when VerifyMetaType is set to VEHICLE_3_META.
+        # > 
+        # > - When paramType is set to normal, enter the plain text.
+        # > - When paramType is set to md5, enter the first 6 digits in plain text + the birth date encrypted with MD5 (32 lowercase characters) + the last 4 digits in plain text.
         self.identify_num = identify_num
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: Encrypted with MD5.
         self.param_type = param_type
+        # Name
+        # 
+        # > This is an explanation
+        # > - When paramType is set to normal, enter the plain text.
+        # > - When paramType is set to md5, encrypt the first character of the name with MD5 (32 lowercase characters) + the rest of the name in plain text.
         self.user_name = user_name
+        # Vehicle license plate
+        # 
+        # > 
+        # > - When paramType is set to normal, enter the plain text.
+        # > - When paramType is set to md5, enter the part of the license plate except for the last two characters in plain text + the last two characters of the license plate encrypted with MD5 (32 lowercase characters).
         self.vehicle_num = vehicle_num
+        # Vehicle type
         self.vehicle_type = vehicle_type
+        # Verification type
+        # 
+        # > 
+        # > - VEHICLE_2_META: Two-element verification, name + vehicle license plate verification;
+        # > - VEHICLE_3_META: Three-element verification, name + vehicle license plate + ID number verification;
         self.verify_meta_type = verify_meta_type
 
     def validate(self):
@@ -9578,6 +10557,11 @@ class VehicleMetaVerifyResponseBodyResultObject(TeaModel):
         self,
         biz_code: str = None,
     ):
+        # Verification result.
+        # 
+        # - 1: Consistent (billable)
+        # - 2: Inconsistent (billable)
+        # - 3: No record found (non-billable)
         self.biz_code = biz_code
 
     def validate(self):
@@ -9608,10 +10592,13 @@ class VehicleMetaVerifyResponseBody(TeaModel):
         request_id: str = None,
         result_object: VehicleMetaVerifyResponseBodyResultObject = None,
     ):
+        # Response code, **200** indicates that the API response was successful.
         self.code = code
+        # Response message.
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -9699,11 +10686,37 @@ class VehicleMetaVerifyV2Request(TeaModel):
         vehicle_type: str = None,
         verify_meta_type: str = None,
     ):
+        # ID number.
+        # 
+        # This is a required field when VerifyMetaType is VEHICLE_3_META.
+        # 
+        # > 
+        # > - When paramType is normal, enter plain text.
+        # > - When paramType is md5, enter the first 6 digits in plain text + MD5 (32 lowercase) of the birth date + the last 4 digits in plain text.
         self.identify_num = identify_num
+        # Parameter type:
+        # 
+        # - normal: Unencrypted.
+        # - md5: Md5 encrypted.
         self.param_type = param_type
+        # Name
+        # > 
+        # > - When paramType is normal, enter plain text.
+        # > - When paramType is md5, enter the first character of the name as MD5 (32 lowercase) + the rest of the name in plain text.
         self.user_name = user_name
+        # License plate number
+        # 
+        # > 
+        # > - When paramType is normal, enter plain text.
+        # > - When paramType is md5, enter all but the last two characters in plain text + the last two characters as MD5 (32 lowercase).
         self.vehicle_num = vehicle_num
+        # Vehicle type
         self.vehicle_type = vehicle_type
+        # Verification type
+        # 
+        # > 
+        # > - VEHICLE_2_META: Two-element verification, name + license plate number verification;
+        # > - VEHICLE_3_META: Three-element verification, name + license plate number + ID number verification;
         self.verify_meta_type = verify_meta_type
 
     def validate(self):
@@ -9752,7 +10765,12 @@ class VehicleMetaVerifyV2ResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         vehicle_info: str = None,
     ):
+        # Verification result code:
+        # - **1**: Verification consistent.
+        # - **2**: Verification inconsistent.
+        # - **3**: No record found.
         self.biz_code = biz_code
+        # Detailed vehicle information.
         self.vehicle_info = vehicle_info
 
     def validate(self):
@@ -9787,9 +10805,13 @@ class VehicleMetaVerifyV2ResponseBody(TeaModel):
         request_id: str = None,
         result_object: VehicleMetaVerifyV2ResponseBodyResultObject = None,
     ):
+        # Return code, **200** indicates successful API response.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result
         self.result_object = result_object
 
     def validate(self):
@@ -9874,8 +10896,18 @@ class VehicleQueryRequest(TeaModel):
         vehicle_num: str = None,
         vehicle_type: str = None,
     ):
+        # Parameter type:
+        # 
+        # - **normal**: Unencrypted.
+        # - **md5**: MD5 encrypted.
         self.param_type = param_type
+        # License plate number
+        # 
+        # > 
+        # > - When paramType is set to normal, enter the plain text.
+        # > - When paramType is set to md5, enter the unencrypted part of the license plate number except for the last two characters + the MD5 (32 lowercase) encryption of the last two characters of the license plate.
         self.vehicle_num = vehicle_num
+        # Vehicle type
         self.vehicle_type = vehicle_type
 
     def validate(self):
@@ -9912,7 +10944,13 @@ class VehicleQueryResponseBodyResultObject(TeaModel):
         biz_code: str = None,
         vehicle_info: str = None,
     ):
+        # Verification result code:
+        # 
+        # > 
+        # > - 1: Found (charged)
+        # > - 3: No record found (not charged)
         self.biz_code = biz_code
+        # Vehicle information.
         self.vehicle_info = vehicle_info
 
     def validate(self):
@@ -9947,9 +10985,13 @@ class VehicleQueryResponseBody(TeaModel):
         request_id: str = None,
         result_object: VehicleQueryResponseBodyResultObject = None,
     ):
+        # Return code: 200 for success, others for failure
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Request result
         self.result_object = result_object
 
     def validate(self):
