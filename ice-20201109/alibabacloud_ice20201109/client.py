@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-1': 'ice.aliyuncs.com',
@@ -16906,7 +16905,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.GetPublicMediaInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_public_media_info_with_options_async(
@@ -16941,7 +16940,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.GetPublicMediaInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_public_media_info(
@@ -19560,7 +19559,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.ListAllPublicMediaTagsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def list_all_public_media_tags_with_options_async(
@@ -19597,7 +19596,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.ListAllPublicMediaTagsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def list_all_public_media_tags(
@@ -23702,7 +23701,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.ListPublicMediaBasicInfosResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def list_public_media_basic_infos_with_options_async(
@@ -23749,7 +23748,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ice20201109_models.ListPublicMediaBasicInfosResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def list_public_media_basic_infos(
@@ -27854,6 +27853,8 @@ class Client(OpenApiClient):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.stream_tags):
+            query['StreamTags'] = request.stream_tags
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(
@@ -27895,6 +27896,8 @@ class Client(OpenApiClient):
             query['InputURL'] = request.input_url
         if not UtilClient.is_unset(request.media_id):
             query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.stream_tags):
+            query['StreamTags'] = request.stream_tags
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
         req = open_api_models.OpenApiRequest(

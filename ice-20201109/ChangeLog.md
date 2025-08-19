@@ -1,3 +1,7 @@
+2025-08-19 Version: 6.5.1
+- Update API RegisterMediaStream: add request parameters StreamTags.
+
+
 2025-08-14 Version: 6.5.0
 - Support API CancelIProductionJob.
 - Support API ClearAIAgentVoiceprint.

@@ -72424,6 +72424,7 @@ class RegisterMediaStreamRequest(TeaModel):
         self,
         input_url: str = None,
         media_id: str = None,
+        stream_tags: str = None,
         user_data: str = None,
     ):
         # The URL of the media asset in another service. The URL is associated with the ID of the media asset in IMS. The URL cannot be modified once registered.
@@ -72436,6 +72437,7 @@ class RegisterMediaStreamRequest(TeaModel):
         self.input_url = input_url
         # The ID of the media asset.
         self.media_id = media_id
+        self.stream_tags = stream_tags
         # The user data.
         self.user_data = user_data
 
@@ -72452,6 +72454,8 @@ class RegisterMediaStreamRequest(TeaModel):
             result['InputURL'] = self.input_url
         if self.media_id is not None:
             result['MediaId'] = self.media_id
+        if self.stream_tags is not None:
+            result['StreamTags'] = self.stream_tags
         if self.user_data is not None:
             result['UserData'] = self.user_data
         return result
@@ -72462,6 +72466,8 @@ class RegisterMediaStreamRequest(TeaModel):
             self.input_url = m.get('InputURL')
         if m.get('MediaId') is not None:
             self.media_id = m.get('MediaId')
+        if m.get('StreamTags') is not None:
+            self.stream_tags = m.get('StreamTags')
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
         return self
