@@ -5813,6 +5813,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_all_department_with_options_async(request, runtime)
 
+    def get_call_dialog_content_with_options(
+        self,
+        request: aiccs_20191015_models.GetCallDialogContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.GetCallDialogContentResponse:
+        """
+        @summary 查询对话内容
+        
+        @param request: GetCallDialogContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallDialogContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_date):
+            query['CallDate'] = request.call_date
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCallDialogContent',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.GetCallDialogContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_call_dialog_content_with_options_async(
+        self,
+        request: aiccs_20191015_models.GetCallDialogContentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiccs_20191015_models.GetCallDialogContentResponse:
+        """
+        @summary 查询对话内容
+        
+        @param request: GetCallDialogContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCallDialogContentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.call_date):
+            query['CallDate'] = request.call_date
+        if not UtilClient.is_unset(request.call_id):
+            query['CallId'] = request.call_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCallDialogContent',
+            version='2019-10-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiccs_20191015_models.GetCallDialogContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_call_dialog_content(
+        self,
+        request: aiccs_20191015_models.GetCallDialogContentRequest,
+    ) -> aiccs_20191015_models.GetCallDialogContentResponse:
+        """
+        @summary 查询对话内容
+        
+        @param request: GetCallDialogContentRequest
+        @return: GetCallDialogContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_call_dialog_content_with_options(request, runtime)
+
+    async def get_call_dialog_content_async(
+        self,
+        request: aiccs_20191015_models.GetCallDialogContentRequest,
+    ) -> aiccs_20191015_models.GetCallDialogContentResponse:
+        """
+        @summary 查询对话内容
+        
+        @param request: GetCallDialogContentRequest
+        @return: GetCallDialogContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_call_dialog_content_with_options_async(request, runtime)
+
     def get_call_sound_record_with_options(
         self,
         request: aiccs_20191015_models.GetCallSoundRecordRequest,
