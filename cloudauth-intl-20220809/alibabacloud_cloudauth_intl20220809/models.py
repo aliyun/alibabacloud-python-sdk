@@ -447,15 +447,12 @@ class AddressVerifyV2IntlRequest(TeaModel):
     ):
         # This parameter is required.
         self.device_token = device_token
-        # This parameter is required.
         self.mobile = mobile
         # This parameter is required.
         self.product_code = product_code
         # This parameter is required.
         self.reg_country = reg_country
-        # This parameter is required.
         self.text = text
-        # This parameter is required.
         self.verify_type = verify_type
 
     def validate(self):
