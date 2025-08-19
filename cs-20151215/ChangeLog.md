@@ -1,3 +1,14 @@
+2025-08-19 Version: 4.9.7
+- Update API CreateClusterNodePool: add request parameters body.management.auto_vul_fix_policy.exclude_packages.
+- Update API DescribeClusterDetail: add response parameters Body.extra_sans.
+- Update API DescribeClusterDetail: add response parameters Body.rrsa_config.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_vul_fix_policy.exclude_packages.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.auto_vul_fix_policy.exclude_packages.
+- Update API DescribeNodePoolVuls: add response parameters Body.vul_records.$.vul_list.$.package_list.
+- Update API ModifyClusterNodePool: add request parameters body.kubernetes_config.node_name_mode.
+- Update API ModifyClusterNodePool: add request parameters body.management.auto_vul_fix_policy.exclude_packages.
+
+
 2025-07-29 Version: 4.9.6
 - Update API CreateCluster: add request parameters body.control_plane_config.instance_metadata_options.
 - Update API CreateClusterNodePool: add request parameters body.scaling_group.instance_metadata_options.

@@ -5731,9 +5731,11 @@ class CreateClusterNodePoolRequestManagementAutoUpgradePolicy(TeaModel):
 class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
     def __init__(
         self,
+        exclude_packages: str = None,
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        self.exclude_packages = exclude_packages
         # Specifies whether to allow node restart. This parameter takes effect only when `auto_vul_fix` is set to true. Valid values:
         # 
         # *   `true`: allows node restart.
@@ -5757,6 +5759,8 @@ class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_packages is not None:
+            result['exclude_packages'] = self.exclude_packages
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         if self.vul_level is not None:
@@ -5765,6 +5769,8 @@ class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('exclude_packages') is not None:
+            self.exclude_packages = m.get('exclude_packages')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         if m.get('vul_level') is not None:
@@ -10076,6 +10082,75 @@ class DescribeClusterDetailResponseBodyOperationPolicy(TeaModel):
         return self
 
 
+class DescribeClusterDetailResponseBodyRrsaConfig(TeaModel):
+    def __init__(
+        self,
+        audience: str = None,
+        enabled: bool = None,
+        issuer: str = None,
+        jwks_url: str = None,
+        max_oidc_token_expiration: str = None,
+        oidc_arn: str = None,
+        oidc_name: str = None,
+        open_api_configuration_url: str = None,
+    ):
+        self.audience = audience
+        self.enabled = enabled
+        self.issuer = issuer
+        self.jwks_url = jwks_url
+        self.max_oidc_token_expiration = max_oidc_token_expiration
+        self.oidc_arn = oidc_arn
+        self.oidc_name = oidc_name
+        self.open_api_configuration_url = open_api_configuration_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audience is not None:
+            result['audience'] = self.audience
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.issuer is not None:
+            result['issuer'] = self.issuer
+        if self.jwks_url is not None:
+            result['jwks_url'] = self.jwks_url
+        if self.max_oidc_token_expiration is not None:
+            result['max_oidc_token_expiration'] = self.max_oidc_token_expiration
+        if self.oidc_arn is not None:
+            result['oidc_arn'] = self.oidc_arn
+        if self.oidc_name is not None:
+            result['oidc_name'] = self.oidc_name
+        if self.open_api_configuration_url is not None:
+            result['open_api_configuration_url'] = self.open_api_configuration_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('audience') is not None:
+            self.audience = m.get('audience')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('issuer') is not None:
+            self.issuer = m.get('issuer')
+        if m.get('jwks_url') is not None:
+            self.jwks_url = m.get('jwks_url')
+        if m.get('max_oidc_token_expiration') is not None:
+            self.max_oidc_token_expiration = m.get('max_oidc_token_expiration')
+        if m.get('oidc_arn') is not None:
+            self.oidc_arn = m.get('oidc_arn')
+        if m.get('oidc_name') is not None:
+            self.oidc_name = m.get('oidc_name')
+        if m.get('open_api_configuration_url') is not None:
+            self.open_api_configuration_url = m.get('open_api_configuration_url')
+        return self
+
+
 class DescribeClusterDetailResponseBody(TeaModel):
     def __init__(
         self,
@@ -10091,6 +10166,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         deletion_protection: bool = None,
         docker_version: str = None,
         external_loadbalancer_id: str = None,
+        extra_sans: List[str] = None,
         init_version: str = None,
         ip_stack: str = None,
         maintenance_window: MaintenanceWindow = None,
@@ -10107,6 +10183,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         proxy_mode: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        rrsa_config: DescribeClusterDetailResponseBodyRrsaConfig = None,
         security_group_id: str = None,
         service_cidr: str = None,
         size: int = None,
@@ -10154,6 +10231,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.docker_version = docker_version
         # The ID of the Server Load Balancer (SLB) instance that is created for the Ingress of the cluster.
         self.external_loadbalancer_id = external_loadbalancer_id
+        self.extra_sans = extra_sans
         # The initial Kubernetes version of the cluster.
         self.init_version = init_version
         # The IP stack of the cluster. Valid values:
@@ -10204,6 +10282,7 @@ class DescribeClusterDetailResponseBody(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
+        self.rrsa_config = rrsa_config
         # The ID of the security group to which the cluster belongs.
         self.security_group_id = security_group_id
         # The Service CIDR block.
@@ -10255,6 +10334,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.maintenance_window.validate()
         if self.operation_policy:
             self.operation_policy.validate()
+        if self.rrsa_config:
+            self.rrsa_config.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -10290,6 +10371,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['docker_version'] = self.docker_version
         if self.external_loadbalancer_id is not None:
             result['external_loadbalancer_id'] = self.external_loadbalancer_id
+        if self.extra_sans is not None:
+            result['extra_sans'] = self.extra_sans
         if self.init_version is not None:
             result['init_version'] = self.init_version
         if self.ip_stack is not None:
@@ -10322,6 +10405,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             result['region_id'] = self.region_id
         if self.resource_group_id is not None:
             result['resource_group_id'] = self.resource_group_id
+        if self.rrsa_config is not None:
+            result['rrsa_config'] = self.rrsa_config.to_map()
         if self.security_group_id is not None:
             result['security_group_id'] = self.security_group_id
         if self.service_cidr is not None:
@@ -10380,6 +10465,8 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.docker_version = m.get('docker_version')
         if m.get('external_loadbalancer_id') is not None:
             self.external_loadbalancer_id = m.get('external_loadbalancer_id')
+        if m.get('extra_sans') is not None:
+            self.extra_sans = m.get('extra_sans')
         if m.get('init_version') is not None:
             self.init_version = m.get('init_version')
         if m.get('ip_stack') is not None:
@@ -10414,6 +10501,9 @@ class DescribeClusterDetailResponseBody(TeaModel):
             self.region_id = m.get('region_id')
         if m.get('resource_group_id') is not None:
             self.resource_group_id = m.get('resource_group_id')
+        if m.get('rrsa_config') is not None:
+            temp_model = DescribeClusterDetailResponseBodyRrsaConfig()
+            self.rrsa_config = temp_model.from_map(m['rrsa_config'])
         if m.get('security_group_id') is not None:
             self.security_group_id = m.get('security_group_id')
         if m.get('service_cidr') is not None:
@@ -11255,9 +11345,11 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy(TeaMo
 class DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy(TeaModel):
     def __init__(
         self,
+        exclude_packages: str = None,
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        self.exclude_packages = exclude_packages
         # Whether to allow restarting nodes.
         self.restart_node = restart_node
         # The vulnerability levels allowed for auto-fixing, separated by commas.
@@ -11272,6 +11364,8 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy(TeaMod
             return _map
 
         result = dict()
+        if self.exclude_packages is not None:
+            result['exclude_packages'] = self.exclude_packages
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         if self.vul_level is not None:
@@ -11280,6 +11374,8 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy(TeaMod
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('exclude_packages') is not None:
+            self.exclude_packages = m.get('exclude_packages')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         if m.get('vul_level') is not None:
@@ -12830,9 +12926,11 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoUpgradePolicy(T
 class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy(TeaModel):
     def __init__(
         self,
+        exclude_packages: str = None,
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        self.exclude_packages = exclude_packages
         # Specifies whether to allow node restart. This parameter takes effect only if `auto_vul_fix` is set to true. Valid values:
         # 
         # *   `true`: allows node restart.
@@ -12854,6 +12952,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy(Te
             return _map
 
         result = dict()
+        if self.exclude_packages is not None:
+            result['exclude_packages'] = self.exclude_packages
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         if self.vul_level is not None:
@@ -12862,6 +12962,8 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementAutoVulFixPolicy(Te
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('exclude_packages') is not None:
+            self.exclude_packages = m.get('exclude_packages')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         if m.get('vul_level') is not None:
@@ -18562,6 +18664,33 @@ class DescribeNodePoolVulsRequest(TeaModel):
         return self
 
 
+class DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
 class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
     def __init__(
         self,
@@ -18570,6 +18699,7 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         name: str = None,
         necessity: str = None,
         need_reboot: bool = None,
+        package_list: List[DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList] = None,
     ):
         # The alias of the vulnerability.
         self.alias_name = alias_name
@@ -18587,9 +18717,13 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         self.necessity = necessity
         # Indicates whether a restart is required.
         self.need_reboot = need_reboot
+        self.package_list = package_list
 
     def validate(self):
-        pass
+        if self.package_list:
+            for k in self.package_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -18607,6 +18741,10 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
             result['necessity'] = self.necessity
         if self.need_reboot is not None:
             result['need_reboot'] = self.need_reboot
+        result['package_list'] = []
+        if self.package_list is not None:
+            for k in self.package_list:
+                result['package_list'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -18621,6 +18759,11 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
             self.necessity = m.get('necessity')
         if m.get('need_reboot') is not None:
             self.need_reboot = m.get('need_reboot')
+        self.package_list = []
+        if m.get('package_list') is not None:
+            for k in m.get('package_list'):
+                temp_model = DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList()
+                self.package_list.append(temp_model.from_map(k))
         return self
 
 
@@ -26482,6 +26625,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         cms_enabled: bool = None,
         cpu_policy: str = None,
         labels: List[Tag] = None,
+        node_name_mode: str = None,
         pre_user_data: str = None,
         runtime: str = None,
         runtime_version: str = None,
@@ -26508,6 +26652,7 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         # *   A label is a case-sensitive key-value pair. You can add up to 20 labels.
         # *   The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.labels = labels
+        self.node_name_mode = node_name_mode
         # Predefined custom data. Nodes automatically run predefined scripts before they are added to the cluster. For more information, see [User-Data script](https://help.aliyun.com/document_detail/49121.html).
         self.pre_user_data = pre_user_data
         # The name of the container runtime. The following types of runtime are supported by ACK:
@@ -26554,6 +26699,8 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['labels'].append(k.to_map() if k else None)
+        if self.node_name_mode is not None:
+            result['node_name_mode'] = self.node_name_mode
         if self.pre_user_data is not None:
             result['pre_user_data'] = self.pre_user_data
         if self.runtime is not None:
@@ -26581,6 +26728,8 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
             for k in m.get('labels'):
                 temp_model = Tag()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('node_name_mode') is not None:
+            self.node_name_mode = m.get('node_name_mode')
         if m.get('pre_user_data') is not None:
             self.pre_user_data = m.get('pre_user_data')
         if m.get('runtime') is not None:
@@ -26694,9 +26843,11 @@ class ModifyClusterNodePoolRequestManagementAutoUpgradePolicy(TeaModel):
 class ModifyClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
     def __init__(
         self,
+        exclude_packages: str = None,
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        self.exclude_packages = exclude_packages
         # Specifies whether ACK is allowed to automatically restart nodes after repairing the nodes. Valid values:
         # 
         # *   `true`: yes.
@@ -26720,6 +26871,8 @@ class ModifyClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_packages is not None:
+            result['exclude_packages'] = self.exclude_packages
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
         if self.vul_level is not None:
@@ -26728,6 +26881,8 @@ class ModifyClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('exclude_packages') is not None:
+            self.exclude_packages = m.get('exclude_packages')
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')
         if m.get('vul_level') is not None:
