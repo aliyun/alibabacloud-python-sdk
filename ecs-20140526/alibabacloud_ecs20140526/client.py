@@ -31500,6 +31500,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attribute):
+            query['Attribute'] = request.attribute
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.max_results):
@@ -31553,6 +31555,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.attribute):
+            query['Attribute'] = request.attribute
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.max_results):
@@ -44182,6 +44186,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
 
+    def modify_instance_clock_options_with_options(
+        self,
+        request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
+        """
+        @summary 修改实例时钟选项
+        
+        @param request: ModifyInstanceClockOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceClockOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.ptp_status):
+            query['PtpStatus'] = request.ptp_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceClockOptions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceClockOptionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_clock_options_with_options_async(
+        self,
+        request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
+        """
+        @summary 修改实例时钟选项
+        
+        @param request: ModifyInstanceClockOptionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceClockOptionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.ptp_status):
+            query['PtpStatus'] = request.ptp_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyInstanceClockOptions',
+            version='2014-05-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ecs_20140526_models.ModifyInstanceClockOptionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_clock_options(
+        self,
+        request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
+    ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
+        """
+        @summary 修改实例时钟选项
+        
+        @param request: ModifyInstanceClockOptionsRequest
+        @return: ModifyInstanceClockOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_instance_clock_options_with_options(request, runtime)
+
+    async def modify_instance_clock_options_async(
+        self,
+        request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
+    ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
+        """
+        @summary 修改实例时钟选项
+        
+        @param request: ModifyInstanceClockOptionsRequest
+        @return: ModifyInstanceClockOptionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_instance_clock_options_with_options_async(request, runtime)
+
     def modify_instance_deployment_with_options(
         self,
         request: ecs_20140526_models.ModifyInstanceDeploymentRequest,
@@ -44648,7 +44780,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary 修改实例网络选项
+        @summary Modifies instance network configurations.
+        
+        @description When you call this operation, take note of the following item:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+        To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
         
         @param request: ModifyInstanceNetworkOptionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44691,7 +44828,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary 修改实例网络选项
+        @summary Modifies instance network configurations.
+        
+        @description When you call this operation, take note of the following item:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+        To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
         
         @param request: ModifyInstanceNetworkOptionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44733,7 +44875,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary 修改实例网络选项
+        @summary Modifies instance network configurations.
+        
+        @description When you call this operation, take note of the following item:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+        To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
         
         @param request: ModifyInstanceNetworkOptionsRequest
         @return: ModifyInstanceNetworkOptionsResponse
@@ -44746,7 +44893,12 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceNetworkOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceNetworkOptionsResponse:
         """
-        @summary 修改实例网络选项
+        @summary Modifies instance network configurations.
+        
+        @description When you call this operation, take note of the following item:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        You can modify only one attribute at a time. If you modify multiple attributes, call this operation multiple times.
+        To modify the BandwidthWeighting, you must specify the specifications of the instance. The instance types that are supported. You can query the instance type list (DescribeInstanceTypes).
         
         @param request: ModifyInstanceNetworkOptionsRequest
         @return: ModifyInstanceNetworkOptionsResponse
@@ -48514,11 +48666,9 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of a snapshot. You can call this operation to convert a standard snapshot into an archive snapshot.
         
-        @description    Archive snapshots cannot be restored to standard snapshots.
+        @description    Archived snapshots cannot be restored to standard snapshots.
         You can archive only standard snapshots that have been retained for at least 14 days.
-        You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48567,11 +48717,9 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of a snapshot. You can call this operation to convert a standard snapshot into an archive snapshot.
         
-        @description    Archive snapshots cannot be restored to standard snapshots.
+        @description    Archived snapshots cannot be restored to standard snapshots.
         You can archive only standard snapshots that have been retained for at least 14 days.
-        You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -48619,11 +48767,9 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of a snapshot. You can call this operation to convert a standard snapshot into an archive snapshot.
         
-        @description    Archive snapshots cannot be restored to standard snapshots.
+        @description    Archived snapshots cannot be restored to standard snapshots.
         You can archive only standard snapshots that have been retained for at least 14 days.
-        You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @return: ModifySnapshotCategoryResponse
@@ -48638,11 +48784,9 @@ class Client(OpenApiClient):
         """
         @summary Changes the type of a snapshot. You can call this operation to convert a standard snapshot into an archive snapshot.
         
-        @description    Archive snapshots cannot be restored to standard snapshots.
+        @description    Archived snapshots cannot be restored to standard snapshots.
         You can archive only standard snapshots that have been retained for at least 14 days.
-        You cannot archive encrypted snapshots.
         You cannot archive snapshots that are shared to you, snapshots managed by Cloud Backup, or snapshots in cloud boxes.
-        The archive snapshot feature is available only in the China (Hohhot), Malaysia (Kuala Lumpur), South Korea (Seoul), Philippines (Manila), Thailand (Bangkok), and Mexico regions. The availability of the feature in other regions is subject to notice.
         
         @param request: ModifySnapshotCategoryRequest
         @return: ModifySnapshotCategoryResponse
