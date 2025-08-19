@@ -1,3 +1,7 @@
+2025-08-19 Version: 1.4.9
+- Update API SubmitDocParserJob: add request parameters EnhancementMode.
+
+
 2025-08-14 Version: 1.4.8
 - Update API SubmitDocParserJob: add request parameters OutputHtmlTable.
 
