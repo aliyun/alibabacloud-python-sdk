@@ -3348,6 +3348,7 @@ class CreateSessionClusterRequest(TeaModel):
         application_configs: List[CreateSessionClusterRequestApplicationConfigs] = None,
         auto_start_configuration: CreateSessionClusterRequestAutoStartConfiguration = None,
         auto_stop_configuration: CreateSessionClusterRequestAutoStopConfiguration = None,
+        client_token: str = None,
         display_release_version: str = None,
         env_id: str = None,
         fusion: bool = None,
@@ -3367,6 +3368,7 @@ class CreateSessionClusterRequest(TeaModel):
         self.auto_start_configuration = auto_start_configuration
         # The automatic termination configuration.
         self.auto_stop_configuration = auto_stop_configuration
+        self.client_token = client_token
         # The version of the Spark engine.
         self.display_release_version = display_release_version
         # The ID of the Python environment. This parameter takes effect only for notebook sessions.
@@ -3412,6 +3414,8 @@ class CreateSessionClusterRequest(TeaModel):
             result['autoStartConfiguration'] = self.auto_start_configuration.to_map()
         if self.auto_stop_configuration is not None:
             result['autoStopConfiguration'] = self.auto_stop_configuration.to_map()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
         if self.display_release_version is not None:
             result['displayReleaseVersion'] = self.display_release_version
         if self.env_id is not None:
@@ -3445,6 +3449,8 @@ class CreateSessionClusterRequest(TeaModel):
         if m.get('autoStopConfiguration') is not None:
             temp_model = CreateSessionClusterRequestAutoStopConfiguration()
             self.auto_stop_configuration = temp_model.from_map(m['autoStopConfiguration'])
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
         if m.get('displayReleaseVersion') is not None:
             self.display_release_version = m.get('displayReleaseVersion')
         if m.get('envId') is not None:
@@ -6614,6 +6620,7 @@ class ListJobRunsRequestTags(TeaModel):
 class ListJobRunsRequest(TeaModel):
     def __init__(
         self,
+        application_configs: str = None,
         creator: str = None,
         end_time: ListJobRunsRequestEndTime = None,
         is_workflow: str = None,
@@ -6625,10 +6632,12 @@ class ListJobRunsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
         resource_queue_id: str = None,
+        runtime_configs: str = None,
         start_time: ListJobRunsRequestStartTime = None,
         states: List[str] = None,
         tags: List[ListJobRunsRequestTags] = None,
     ):
+        self.application_configs = application_configs
         # The ID of the user who created the job.
         self.creator = creator
         # The range of end time.
@@ -6650,6 +6659,7 @@ class ListJobRunsRequest(TeaModel):
         self.region_id = region_id
         # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
+        self.runtime_configs = runtime_configs
         # The range of start time.
         self.start_time = start_time
         # The job states.
@@ -6673,6 +6683,8 @@ class ListJobRunsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.application_configs is not None:
+            result['applicationConfigs'] = self.application_configs
         if self.creator is not None:
             result['creator'] = self.creator
         if self.end_time is not None:
@@ -6695,6 +6707,8 @@ class ListJobRunsRequest(TeaModel):
             result['regionId'] = self.region_id
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
+        if self.runtime_configs is not None:
+            result['runtimeConfigs'] = self.runtime_configs
         if self.start_time is not None:
             result['startTime'] = self.start_time.to_map()
         if self.states is not None:
@@ -6707,6 +6721,8 @@ class ListJobRunsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('applicationConfigs') is not None:
+            self.application_configs = m.get('applicationConfigs')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('endTime') is not None:
@@ -6730,6 +6746,8 @@ class ListJobRunsRequest(TeaModel):
             self.region_id = m.get('regionId')
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
+        if m.get('runtimeConfigs') is not None:
+            self.runtime_configs = m.get('runtimeConfigs')
         if m.get('startTime') is not None:
             temp_model = ListJobRunsRequestStartTime()
             self.start_time = temp_model.from_map(m['startTime'])
@@ -6746,6 +6764,7 @@ class ListJobRunsRequest(TeaModel):
 class ListJobRunsShrinkRequest(TeaModel):
     def __init__(
         self,
+        application_configs: str = None,
         creator: str = None,
         end_time_shrink: str = None,
         is_workflow: str = None,
@@ -6757,10 +6776,12 @@ class ListJobRunsShrinkRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
         resource_queue_id: str = None,
+        runtime_configs: str = None,
         start_time_shrink: str = None,
         states_shrink: str = None,
         tags_shrink: str = None,
     ):
+        self.application_configs = application_configs
         # The ID of the user who created the job.
         self.creator = creator
         # The range of end time.
@@ -6782,6 +6803,7 @@ class ListJobRunsShrinkRequest(TeaModel):
         self.region_id = region_id
         # The name of the resource queue on which the Spark jobs run.
         self.resource_queue_id = resource_queue_id
+        self.runtime_configs = runtime_configs
         # The range of start time.
         self.start_time_shrink = start_time_shrink
         # The job states.
@@ -6798,6 +6820,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.application_configs is not None:
+            result['applicationConfigs'] = self.application_configs
         if self.creator is not None:
             result['creator'] = self.creator
         if self.end_time_shrink is not None:
@@ -6820,6 +6844,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             result['regionId'] = self.region_id
         if self.resource_queue_id is not None:
             result['resourceQueueId'] = self.resource_queue_id
+        if self.runtime_configs is not None:
+            result['runtimeConfigs'] = self.runtime_configs
         if self.start_time_shrink is not None:
             result['startTime'] = self.start_time_shrink
         if self.states_shrink is not None:
@@ -6830,6 +6856,8 @@ class ListJobRunsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('applicationConfigs') is not None:
+            self.application_configs = m.get('applicationConfigs')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('endTime') is not None:
@@ -6852,6 +6880,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             self.region_id = m.get('regionId')
         if m.get('resourceQueueId') is not None:
             self.resource_queue_id = m.get('resourceQueueId')
+        if m.get('runtimeConfigs') is not None:
+            self.runtime_configs = m.get('runtimeConfigs')
         if m.get('startTime') is not None:
             self.start_time_shrink = m.get('startTime')
         if m.get('states') is not None:
@@ -7239,6 +7269,7 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(TeaModel):
         creator: str = None,
         inner_endpoint: str = None,
         kyuubi_configs: str = None,
+        kyuubi_release_version: str = None,
         kyuubi_service_id: str = None,
         name: str = None,
         public_endpoint: str = None,
@@ -7254,6 +7285,7 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(TeaModel):
         self.creator = creator
         self.inner_endpoint = inner_endpoint
         self.kyuubi_configs = kyuubi_configs
+        self.kyuubi_release_version = kyuubi_release_version
         # KyuubiServer ID。
         self.kyuubi_service_id = kyuubi_service_id
         self.name = name
@@ -7284,6 +7316,8 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(TeaModel):
             result['innerEndpoint'] = self.inner_endpoint
         if self.kyuubi_configs is not None:
             result['kyuubiConfigs'] = self.kyuubi_configs
+        if self.kyuubi_release_version is not None:
+            result['kyuubiReleaseVersion'] = self.kyuubi_release_version
         if self.kyuubi_service_id is not None:
             result['kyuubiServiceId'] = self.kyuubi_service_id
         if self.name is not None:
@@ -7316,6 +7350,8 @@ class ListKyuubiServicesResponseBodyDataKyuubiServices(TeaModel):
             self.inner_endpoint = m.get('innerEndpoint')
         if m.get('kyuubiConfigs') is not None:
             self.kyuubi_configs = m.get('kyuubiConfigs')
+        if m.get('kyuubiReleaseVersion') is not None:
+            self.kyuubi_release_version = m.get('kyuubiReleaseVersion')
         if m.get('kyuubiServiceId') is not None:
             self.kyuubi_service_id = m.get('kyuubiServiceId')
         if m.get('name') is not None:
@@ -7652,6 +7688,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         application_name: str = None,
         cu_hours: float = None,
         end_time: str = None,
+        exit_reason: str = None,
         latest_sql_statement_status: str = None,
         mb_seconds: int = None,
         resource_queue_id: str = None,
@@ -7668,6 +7705,7 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
         self.cu_hours = cu_hours
         # The time when the task ended.
         self.end_time = end_time
+        self.exit_reason = exit_reason
         self.latest_sql_statement_status = latest_sql_statement_status
         # The total amount of memory allocated to the job multiplied by the running duration (seconds).
         self.mb_seconds = mb_seconds
@@ -7703,6 +7741,8 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             result['cuHours'] = self.cu_hours
         if self.end_time is not None:
             result['endTime'] = self.end_time
+        if self.exit_reason is not None:
+            result['exitReason'] = self.exit_reason
         if self.latest_sql_statement_status is not None:
             result['latestSqlStatementStatus'] = self.latest_sql_statement_status
         if self.mb_seconds is not None:
@@ -7729,6 +7769,8 @@ class ListKyuubiSparkApplicationsResponseBodyApplications(TeaModel):
             self.cu_hours = m.get('cuHours')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+        if m.get('exitReason') is not None:
+            self.exit_reason = m.get('exitReason')
         if m.get('latestSqlStatementStatus') is not None:
             self.latest_sql_statement_status = m.get('latestSqlStatementStatus')
         if m.get('mbSeconds') is not None:
@@ -7881,18 +7923,22 @@ class ListKyuubiTokenRequest(TeaModel):
 class ListKyuubiTokenResponseBodyDataTokens(TeaModel):
     def __init__(
         self,
+        account_names: List[str] = None,
         create_time: int = None,
         created_by: str = None,
         expire_time: int = None,
         last_used_time: int = None,
+        member_arns: List[str] = None,
         name: str = None,
         token: str = None,
         token_id: str = None,
     ):
+        self.account_names = account_names
         self.create_time = create_time
         self.created_by = created_by
         self.expire_time = expire_time
         self.last_used_time = last_used_time
+        self.member_arns = member_arns
         self.name = name
         self.token = token
         # Token ID。
@@ -7907,6 +7953,8 @@ class ListKyuubiTokenResponseBodyDataTokens(TeaModel):
             return _map
 
         result = dict()
+        if self.account_names is not None:
+            result['accountNames'] = self.account_names
         if self.create_time is not None:
             result['createTime'] = self.create_time
         if self.created_by is not None:
@@ -7915,6 +7963,8 @@ class ListKyuubiTokenResponseBodyDataTokens(TeaModel):
             result['expireTime'] = self.expire_time
         if self.last_used_time is not None:
             result['lastUsedTime'] = self.last_used_time
+        if self.member_arns is not None:
+            result['memberArns'] = self.member_arns
         if self.name is not None:
             result['name'] = self.name
         if self.token is not None:
@@ -7925,6 +7975,8 @@ class ListKyuubiTokenResponseBodyDataTokens(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('accountNames') is not None:
+            self.account_names = m.get('accountNames')
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
         if m.get('createdBy') is not None:
@@ -7933,6 +7985,8 @@ class ListKyuubiTokenResponseBodyDataTokens(TeaModel):
             self.expire_time = m.get('expireTime')
         if m.get('lastUsedTime') is not None:
             self.last_used_time = m.get('lastUsedTime')
+        if m.get('memberArns') is not None:
+            self.member_arns = m.get('memberArns')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('token') is not None:

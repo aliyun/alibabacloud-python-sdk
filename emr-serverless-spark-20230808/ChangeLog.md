@@ -1,3 +1,13 @@
+2025-08-19 Version: 1.13.1
+- Update API CreateSessionCluster: add request parameters body.clientToken.
+- Update API ListJobRuns: add request parameters applicationConfigs.
+- Update API ListJobRuns: add request parameters runtimeConfigs.
+- Update API ListKyuubiServices: add response parameters Body.data.kyuubiServices.$.kyuubiReleaseVersion.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.exitReason.
+- Update API ListKyuubiToken: add response parameters Body.data.tokens.$.accountNames.
+- Update API ListKyuubiToken: add response parameters Body.data.tokens.$.memberArns.
+
+
 2025-08-15 Version: 1.13.0
 - Support API ListSqlStatementContents.
 

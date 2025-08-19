@@ -791,6 +791,8 @@ class Client(OpenApiClient):
             body['autoStartConfiguration'] = request.auto_start_configuration
         if not UtilClient.is_unset(request.auto_stop_configuration):
             body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
         if not UtilClient.is_unset(request.env_id):
@@ -854,6 +856,8 @@ class Client(OpenApiClient):
             body['autoStartConfiguration'] = request.auto_start_configuration
         if not UtilClient.is_unset(request.auto_stop_configuration):
             body['autoStopConfiguration'] = request.auto_stop_configuration
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.display_release_version):
             body['displayReleaseVersion'] = request.display_release_version
         if not UtilClient.is_unset(request.env_id):
@@ -2636,6 +2640,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.application_configs):
+            query['applicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.creator):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
@@ -2658,6 +2664,8 @@ class Client(OpenApiClient):
             query['regionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_queue_id):
             query['resourceQueueId'] = request.resource_queue_id
+        if not UtilClient.is_unset(request.runtime_configs):
+            query['runtimeConfigs'] = request.runtime_configs
         if not UtilClient.is_unset(request.start_time_shrink):
             query['startTime'] = request.start_time_shrink
         if not UtilClient.is_unset(request.states_shrink):
@@ -2711,6 +2719,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.application_configs):
+            query['applicationConfigs'] = request.application_configs
         if not UtilClient.is_unset(request.creator):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
@@ -2733,6 +2743,8 @@ class Client(OpenApiClient):
             query['regionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_queue_id):
             query['resourceQueueId'] = request.resource_queue_id
+        if not UtilClient.is_unset(request.runtime_configs):
+            query['runtimeConfigs'] = request.runtime_configs
         if not UtilClient.is_unset(request.start_time_shrink):
             query['startTime'] = request.start_time_shrink
         if not UtilClient.is_unset(request.states_shrink):
