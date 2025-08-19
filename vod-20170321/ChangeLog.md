@@ -1,3 +1,6 @@
+2025-08-19 Version: 3.8.1
+- Generated python 2017-03-21 for vod.
+
 2025-08-06 Version: 3.8.0
 - Support API AddCustomTemplateAndGroupConsole.
 - Support API AddFilterConfigs.
