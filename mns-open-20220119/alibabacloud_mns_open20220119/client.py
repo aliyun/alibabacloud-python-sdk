@@ -1133,6 +1133,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_endpoint_attribute_with_options_async(request, runtime)
 
+    def get_event_rule_with_options(
+        self,
+        request: mns_open_20220119_models.GetEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.GetEventRuleResponse:
+        """
+        @summary 获取事件通知规则
+        
+        @param request: GetEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.GetEventRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_event_rule_with_options_async(
+        self,
+        request: mns_open_20220119_models.GetEventRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.GetEventRuleResponse:
+        """
+        @summary 获取事件通知规则
+        
+        @param request: GetEventRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventRuleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEventRule',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.GetEventRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_event_rule(
+        self,
+        request: mns_open_20220119_models.GetEventRuleRequest,
+    ) -> mns_open_20220119_models.GetEventRuleResponse:
+        """
+        @summary 获取事件通知规则
+        
+        @param request: GetEventRuleRequest
+        @return: GetEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_event_rule_with_options(request, runtime)
+
+    async def get_event_rule_async(
+        self,
+        request: mns_open_20220119_models.GetEventRuleRequest,
+    ) -> mns_open_20220119_models.GetEventRuleResponse:
+        """
+        @summary 获取事件通知规则
+        
+        @param request: GetEventRuleRequest
+        @return: GetEventRuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_event_rule_with_options_async(request, runtime)
+
     def get_queue_attributes_with_options(
         self,
         request: mns_open_20220119_models.GetQueueAttributesRequest,
@@ -1432,6 +1532,142 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_attributes_with_options_async(request, runtime)
+
+    def list_event_rules_with_options(
+        self,
+        tmp_req: mns_open_20220119_models.ListEventRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.ListEventRulesResponse:
+        """
+        @summary 查询事件通知列表
+        
+        @param tmp_req: ListEventRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.ListEventRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.subscription):
+            request.subscription_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscription, 'Subscription', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.subscription_shrink):
+            query['Subscription'] = request.subscription_shrink
+        if not UtilClient.is_unset(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventRules',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.ListEventRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_event_rules_with_options_async(
+        self,
+        tmp_req: mns_open_20220119_models.ListEventRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> mns_open_20220119_models.ListEventRulesResponse:
+        """
+        @summary 查询事件通知列表
+        
+        @param tmp_req: ListEventRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEventRulesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = mns_open_20220119_models.ListEventRulesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.subscription):
+            request.subscription_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscription, 'Subscription', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_name):
+            query['ProductName'] = request.product_name
+        if not UtilClient.is_unset(request.resource_name):
+            query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.subscription_shrink):
+            query['Subscription'] = request.subscription_shrink
+        if not UtilClient.is_unset(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListEventRules',
+            version='2022-01-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            mns_open_20220119_models.ListEventRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_event_rules(
+        self,
+        request: mns_open_20220119_models.ListEventRulesRequest,
+    ) -> mns_open_20220119_models.ListEventRulesResponse:
+        """
+        @summary 查询事件通知列表
+        
+        @param request: ListEventRulesRequest
+        @return: ListEventRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_event_rules_with_options(request, runtime)
+
+    async def list_event_rules_async(
+        self,
+        request: mns_open_20220119_models.ListEventRulesRequest,
+    ) -> mns_open_20220119_models.ListEventRulesResponse:
+        """
+        @summary 查询事件通知列表
+        
+        @param request: ListEventRulesRequest
+        @return: ListEventRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_event_rules_with_options_async(request, runtime)
 
     def list_queue_with_options(
         self,

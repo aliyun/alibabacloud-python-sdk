@@ -2263,6 +2263,297 @@ class GetEndpointAttributeResponse(TeaModel):
         return self
 
 
+class GetEventRuleRequest(TeaModel):
+    def __init__(
+        self,
+        product_name: str = None,
+        rule_name: str = None,
+    ):
+        # This parameter is required.
+        self.product_name = product_name
+        # This parameter is required.
+        self.rule_name = rule_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        return self
+
+
+class GetEventRuleResponseBodyDataEndpoint(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class GetEventRuleResponseBodyDataSubscriptions(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class GetEventRuleResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        delivery_mode: str = None,
+        endpoint: GetEventRuleResponseBodyDataEndpoint = None,
+        event_types: List[str] = None,
+        match_rules: List[List[EventMatchRule]] = None,
+        rule_name: str = None,
+        subscriptions: List[GetEventRuleResponseBodyDataSubscriptions] = None,
+        topic_name: str = None,
+    ):
+        self.delivery_mode = delivery_mode
+        self.endpoint = endpoint
+        self.event_types = event_types
+        self.match_rules = match_rules
+        self.rule_name = rule_name
+        self.subscriptions = subscriptions
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.endpoint:
+            self.endpoint.validate()
+        if self.match_rules:
+            for k in self.match_rules:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.subscriptions:
+            for k in self.subscriptions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_mode is not None:
+            result['DeliveryMode'] = self.delivery_mode
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint.to_map()
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['MatchRules'].append(l1)
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        result['Subscriptions'] = []
+        if self.subscriptions is not None:
+            for k in self.subscriptions:
+                result['Subscriptions'].append(k.to_map() if k else None)
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryMode') is not None:
+            self.delivery_mode = m.get('DeliveryMode')
+        if m.get('Endpoint') is not None:
+            temp_model = GetEventRuleResponseBodyDataEndpoint()
+            self.endpoint = temp_model.from_map(m['Endpoint'])
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                l1 = []
+                for k1 in k:
+                    temp_model = EventMatchRule()
+                    l1.append(temp_model.from_map(k1))
+                self.match_rules.append(l1)
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        self.subscriptions = []
+        if m.get('Subscriptions') is not None:
+            for k in m.get('Subscriptions'):
+                temp_model = GetEventRuleResponseBodyDataSubscriptions()
+                self.subscriptions.append(temp_model.from_map(k))
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class GetEventRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetEventRuleResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetEventRuleResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetEventRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetEventRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetEventRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetQueueAttributesRequestTag(TeaModel):
     def __init__(
         self,
@@ -3328,6 +3619,524 @@ class GetTopicAttributesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTopicAttributesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEventRulesRequestSubscription(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class ListEventRulesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        product_name: str = None,
+        resource_name: str = None,
+        rule_name: str = None,
+        subscription: ListEventRulesRequestSubscription = None,
+        topic_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_num = page_num
+        self.page_size = page_size
+        self.product_name = product_name
+        self.resource_name = resource_name
+        self.rule_name = rule_name
+        self.subscription = subscription
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.subscription:
+            self.subscription.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.subscription is not None:
+            result['Subscription'] = self.subscription.to_map()
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Subscription') is not None:
+            temp_model = ListEventRulesRequestSubscription()
+            self.subscription = temp_model.from_map(m['Subscription'])
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class ListEventRulesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        product_name: str = None,
+        resource_name: str = None,
+        rule_name: str = None,
+        subscription_shrink: str = None,
+        topic_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_num = page_num
+        self.page_size = page_size
+        self.product_name = product_name
+        self.resource_name = resource_name
+        self.rule_name = rule_name
+        self.subscription_shrink = subscription_shrink
+        self.topic_name = topic_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.resource_name is not None:
+            result['ResourceName'] = self.resource_name
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.subscription_shrink is not None:
+            result['Subscription'] = self.subscription_shrink
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('ResourceName') is not None:
+            self.resource_name = m.get('ResourceName')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Subscription') is not None:
+            self.subscription_shrink = m.get('Subscription')
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class ListEventRulesResponseBodyDataPageDataEndpoint(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class ListEventRulesResponseBodyDataPageDataSubscriptions(TeaModel):
+    def __init__(
+        self,
+        endpoint_type: str = None,
+        endpoint_value: str = None,
+    ):
+        self.endpoint_type = endpoint_type
+        self.endpoint_value = endpoint_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint_type is not None:
+            result['EndpointType'] = self.endpoint_type
+        if self.endpoint_value is not None:
+            result['EndpointValue'] = self.endpoint_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointType') is not None:
+            self.endpoint_type = m.get('EndpointType')
+        if m.get('EndpointValue') is not None:
+            self.endpoint_value = m.get('EndpointValue')
+        return self
+
+
+class ListEventRulesResponseBodyDataPageData(TeaModel):
+    def __init__(
+        self,
+        delivery_mode: str = None,
+        endpoint: ListEventRulesResponseBodyDataPageDataEndpoint = None,
+        event_types: List[str] = None,
+        match_rules: List[List[EventMatchRule]] = None,
+        rule_name: str = None,
+        subscriptions: List[ListEventRulesResponseBodyDataPageDataSubscriptions] = None,
+        topic_name: str = None,
+    ):
+        self.delivery_mode = delivery_mode
+        self.endpoint = endpoint
+        self.event_types = event_types
+        self.match_rules = match_rules
+        self.rule_name = rule_name
+        self.subscriptions = subscriptions
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.endpoint:
+            self.endpoint.validate()
+        if self.match_rules:
+            for k in self.match_rules:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+        if self.subscriptions:
+            for k in self.subscriptions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delivery_mode is not None:
+            result['DeliveryMode'] = self.delivery_mode
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint.to_map()
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['MatchRules'].append(l1)
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        result['Subscriptions'] = []
+        if self.subscriptions is not None:
+            for k in self.subscriptions:
+                result['Subscriptions'].append(k.to_map() if k else None)
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeliveryMode') is not None:
+            self.delivery_mode = m.get('DeliveryMode')
+        if m.get('Endpoint') is not None:
+            temp_model = ListEventRulesResponseBodyDataPageDataEndpoint()
+            self.endpoint = temp_model.from_map(m['Endpoint'])
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                l1 = []
+                for k1 in k:
+                    temp_model = EventMatchRule()
+                    l1.append(temp_model.from_map(k1))
+                self.match_rules.append(l1)
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        self.subscriptions = []
+        if m.get('Subscriptions') is not None:
+            for k in m.get('Subscriptions'):
+                temp_model = ListEventRulesResponseBodyDataPageDataSubscriptions()
+                self.subscriptions.append(temp_model.from_map(k))
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+        return self
+
+
+class ListEventRulesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_data: List[ListEventRulesResponseBodyDataPageData] = None,
+        page_num: int = None,
+        page_size: int = None,
+        pages: int = None,
+        size: int = None,
+        total: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_data = page_data
+        self.page_num = page_num
+        self.page_size = page_size
+        self.pages = pages
+        self.size = size
+        self.total = total
+
+    def validate(self):
+        if self.page_data:
+            for k in self.page_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['PageData'] = []
+        if self.page_data is not None:
+            for k in self.page_data:
+                result['PageData'].append(k.to_map() if k else None)
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.page_data = []
+        if m.get('PageData') is not None:
+            for k in m.get('PageData'):
+                temp_model = ListEventRulesResponseBodyDataPageData()
+                self.page_data.append(temp_model.from_map(k))
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListEventRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ListEventRulesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ListEventRulesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListEventRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEventRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEventRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

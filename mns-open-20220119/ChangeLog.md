@@ -1,3 +1,8 @@
+2025-08-19 Version: 1.3.0
+- Support API GetEventRule.
+- Support API ListEventRules.
+
+
 2025-07-23 Version: 1.2.4
 - Update API CreateEventRule: add request parameters Endpoint.
 
