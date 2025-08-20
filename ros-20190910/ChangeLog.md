@@ -1,3 +1,7 @@
+2025-08-20 Version: 3.5.7
+- Update API PreviewStack: add request parameters UsePreviousParameters.
+
+
 2025-06-04 Version: 3.5.6
 - Update API CreateChangeSet: add request parameters TaintResources.
 - Update API PreviewStack: add request parameters TaintResources.

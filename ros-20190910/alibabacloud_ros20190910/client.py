@@ -9075,6 +9075,8 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body
@@ -9148,6 +9150,8 @@ class Client(OpenApiClient):
             query['TemplateVersion'] = request.template_version
         if not UtilClient.is_unset(request.timeout_in_minutes):
             query['TimeoutInMinutes'] = request.timeout_in_minutes
+        if not UtilClient.is_unset(request.use_previous_parameters):
+            query['UsePreviousParameters'] = request.use_previous_parameters
         body = {}
         if not UtilClient.is_unset(request.template_body):
             body['TemplateBody'] = request.template_body

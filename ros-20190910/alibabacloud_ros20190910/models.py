@@ -21757,6 +21757,7 @@ class PreviewStackRequest(TeaModel):
         template_url: str = None,
         template_version: str = None,
         timeout_in_minutes: int = None,
+        use_previous_parameters: bool = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.\\
         # The token can be up to 64 characters in length, and can contain letters, digits, underscores (_), and hyphens (-).\\
@@ -21835,6 +21836,7 @@ class PreviewStackRequest(TeaModel):
         # 
         # Default value: 60.
         self.timeout_in_minutes = timeout_in_minutes
+        self.use_previous_parameters = use_previous_parameters
 
     def validate(self):
         if self.parameters:
@@ -21886,6 +21888,8 @@ class PreviewStackRequest(TeaModel):
             result['TemplateVersion'] = self.template_version
         if self.timeout_in_minutes is not None:
             result['TimeoutInMinutes'] = self.timeout_in_minutes
+        if self.use_previous_parameters is not None:
+            result['UsePreviousParameters'] = self.use_previous_parameters
         return result
 
     def from_map(self, m: dict = None):
@@ -21929,6 +21933,8 @@ class PreviewStackRequest(TeaModel):
             self.template_version = m.get('TemplateVersion')
         if m.get('TimeoutInMinutes') is not None:
             self.timeout_in_minutes = m.get('TimeoutInMinutes')
+        if m.get('UsePreviousParameters') is not None:
+            self.use_previous_parameters = m.get('UsePreviousParameters')
         return self
 
 
