@@ -1,3 +1,54 @@
+2025-08-20 Version: 1.10.4
+- Update API GetApprovalProcess: add response parameters Body.Process.ApprovalType.
+- Update API GetApprovalProcess: add response parameters Body.Process.EventLabel.
+- Update API GetApprovalProcess: add response parameters Body.Process.ExternalConfig.
+- Update API GetApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.DlpSendPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.DlpSendPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainBlacklistPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainBlacklistPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainWhitelistPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.DomainWhitelistPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.PeripheralBlockPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.PeripheralBlockPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareBlockPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareBlockPolicies.FieldMap.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.ExternalProcessId.
+- Update API GetApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.FieldMap.
+- Update API ListApprovalProcesses: add response parameters Body.Processes.$.ApprovalType.
+- Update API ListApprovals: add response parameters Body.Approvals.$.ApprovalType.
+- Update API UpdateApprovalProcess: add request parameters ApprovalType.
+- Update API UpdateApprovalProcess: add request parameters EventLabel.
+- Update API UpdateApprovalProcess: add request parameters ExternalConfig.
+- Update API UpdateApprovalProcess: add request parameters MatchSchemaConfigs.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.ApprovalType.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.EventLabel.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.ExternalConfig.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.AppUninstallPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DeviceRegistrationPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DlpSendPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DlpSendPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DomainBlacklistPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DomainBlacklistPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DomainWhitelistPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.DomainWhitelistPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.EndpointHardeningPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.PeripheraBlockPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.PeripheraBlockPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.SoftwareBlockPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.SoftwareBlockPolicies.FieldMap.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.ExternalProcessId.
+- Update API UpdateApprovalProcess: add response parameters Body.Process.SoftwareHardeningPolicies.FieldMap.
+
+
 2025-08-01 Version: 1.10.3
 - Update API CreateWmBaseImage: add request parameters comment.
 - Update API CreateWmBaseImage: add request parameters ImageControl.LogoVisibleControl.Enhance.

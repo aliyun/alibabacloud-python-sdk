@@ -289,6 +289,7 @@ class DisposalContent(TeaModel):
         self,
         alert_content: str = None,
         alert_content_en: str = None,
+        alert_interval_seconds: int = None,
         alert_title: str = None,
         alert_title_en: str = None,
         nac_demotion_policy_ids: List[str] = None,
@@ -296,9 +297,11 @@ class DisposalContent(TeaModel):
         notice_content_en: str = None,
         notify_actions: List[str] = None,
         prohibit_actions: List[str] = None,
+        prohibit_software_ids: List[str] = None,
     ):
         self.alert_content = alert_content
         self.alert_content_en = alert_content_en
+        self.alert_interval_seconds = alert_interval_seconds
         self.alert_title = alert_title
         self.alert_title_en = alert_title_en
         self.nac_demotion_policy_ids = nac_demotion_policy_ids
@@ -307,6 +310,7 @@ class DisposalContent(TeaModel):
         # This parameter is required.
         self.notify_actions = notify_actions
         self.prohibit_actions = prohibit_actions
+        self.prohibit_software_ids = prohibit_software_ids
 
     def validate(self):
         pass
@@ -321,6 +325,8 @@ class DisposalContent(TeaModel):
             result['AlertContent'] = self.alert_content
         if self.alert_content_en is not None:
             result['AlertContentEn'] = self.alert_content_en
+        if self.alert_interval_seconds is not None:
+            result['AlertIntervalSeconds'] = self.alert_interval_seconds
         if self.alert_title is not None:
             result['AlertTitle'] = self.alert_title
         if self.alert_title_en is not None:
@@ -335,6 +341,8 @@ class DisposalContent(TeaModel):
             result['NotifyActions'] = self.notify_actions
         if self.prohibit_actions is not None:
             result['ProhibitActions'] = self.prohibit_actions
+        if self.prohibit_software_ids is not None:
+            result['ProhibitSoftwareIds'] = self.prohibit_software_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -343,6 +351,8 @@ class DisposalContent(TeaModel):
             self.alert_content = m.get('AlertContent')
         if m.get('AlertContentEn') is not None:
             self.alert_content_en = m.get('AlertContentEn')
+        if m.get('AlertIntervalSeconds') is not None:
+            self.alert_interval_seconds = m.get('AlertIntervalSeconds')
         if m.get('AlertTitle') is not None:
             self.alert_title = m.get('AlertTitle')
         if m.get('AlertTitleEn') is not None:
@@ -357,6 +367,8 @@ class DisposalContent(TeaModel):
             self.notify_actions = m.get('NotifyActions')
         if m.get('ProhibitActions') is not None:
             self.prohibit_actions = m.get('ProhibitActions')
+        if m.get('ProhibitSoftwareIds') is not None:
+            self.prohibit_software_ids = m.get('ProhibitSoftwareIds')
         return self
 
 
@@ -9812,14 +9824,14 @@ class GetApprovalProcessRequest(TeaModel):
         return self
 
 
-class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
+class GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -9830,6 +9842,52 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -9838,21 +9896,114 @@ class GetApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
             self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -9863,29 +10014,82 @@ class GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class GetApprovalProcessResponseBodyProcessDlpSendPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -9896,29 +10100,82 @@ class GetApprovalProcessResponseBodyProcessDlpSendPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -9929,29 +10186,82 @@ class GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -9962,32 +10272,39 @@ class GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
 
     def validate(self):
-        pass
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9995,6 +10312,12 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -10003,6 +10326,13 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -10010,14 +10340,14 @@ class GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
         return self
 
 
-class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
+class GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -10028,6 +10358,52 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -10036,6 +10412,13 @@ class GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -10076,14 +10459,14 @@ class GetApprovalProcessResponseBodyProcessProcessNodes(TeaModel):
         return self
 
 
-class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
+class GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -10094,6 +10477,52 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -10102,6 +10531,13 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -10109,14 +10545,14 @@ class GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
         return self
 
 
-class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+class GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -10127,6 +10563,52 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -10135,6 +10617,13 @@ class GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -10146,6 +10635,7 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
     def __init__(
         self,
         app_uninstall_policies: GetApprovalProcessResponseBodyProcessAppUninstallPolicies = None,
+        approval_type: int = None,
         create_time: str = None,
         description: str = None,
         device_registration_policies: GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies = None,
@@ -10153,6 +10643,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         domain_blacklist_policies: GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies = None,
         domain_whitelist_policies: GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies = None,
         endpoint_hardening_policies: GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies = None,
+        event_label: str = None,
+        external_config: str = None,
         peripheral_block_policies: GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
@@ -10161,6 +10653,7 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         software_hardening_policies: GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
+        self.approval_type = approval_type
         self.create_time = create_time
         self.description = description
         self.device_registration_policies = device_registration_policies
@@ -10168,6 +10661,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
         self.endpoint_hardening_policies = endpoint_hardening_policies
+        self.event_label = event_label
+        self.external_config = external_config
         self.peripheral_block_policies = peripheral_block_policies
         self.process_id = process_id
         self.process_name = process_name
@@ -10208,6 +10703,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         result = dict()
         if self.app_uninstall_policies is not None:
             result['AppUninstallPolicies'] = self.app_uninstall_policies.to_map()
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -10222,6 +10719,10 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
         if self.endpoint_hardening_policies is not None:
             result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.external_config is not None:
+            result['ExternalConfig'] = self.external_config
         if self.peripheral_block_policies is not None:
             result['PeripheralBlockPolicies'] = self.peripheral_block_policies.to_map()
         if self.process_id is not None:
@@ -10246,6 +10747,8 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('AppUninstallPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessAppUninstallPolicies()
             self.app_uninstall_policies = temp_model.from_map(m['AppUninstallPolicies'])
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -10265,6 +10768,10 @@ class GetApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('EndpointHardeningPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies()
             self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('ExternalConfig') is not None:
+            self.external_config = m.get('ExternalConfig')
         if m.get('PeripheralBlockPolicies') is not None:
             temp_model = GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies()
             self.peripheral_block_policies = temp_model.from_map(m['PeripheralBlockPolicies'])
@@ -14372,6 +14879,7 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
     def __init__(
         self,
         app_uninstall_policies: ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies = None,
+        approval_type: int = None,
         create_time: str = None,
         description: str = None,
         device_registration_policies: ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies = None,
@@ -14387,6 +14895,7 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         software_hardening_policies: ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
+        self.approval_type = approval_type
         self.create_time = create_time
         self.description = description
         self.device_registration_policies = device_registration_policies
@@ -14434,6 +14943,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         result = dict()
         if self.app_uninstall_policies is not None:
             result['AppUninstallPolicies'] = self.app_uninstall_policies.to_map()
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -14472,6 +14983,8 @@ class ListApprovalProcessesResponseBodyProcesses(TeaModel):
         if m.get('AppUninstallPolicies') is not None:
             temp_model = ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies()
             self.app_uninstall_policies = temp_model.from_map(m['AppUninstallPolicies'])
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -15458,6 +15971,7 @@ class ListApprovalsResponseBodyApprovals(TeaModel):
         approval_detail: str = None,
         approval_id: str = None,
         approval_progresses: List[ListApprovalsResponseBodyApprovalsApprovalProgresses] = None,
+        approval_type: int = None,
         create_time: str = None,
         creator_department: str = None,
         creator_dev_tag: str = None,
@@ -15476,6 +15990,7 @@ class ListApprovalsResponseBodyApprovals(TeaModel):
         self.approval_detail = approval_detail
         self.approval_id = approval_id
         self.approval_progresses = approval_progresses
+        self.approval_type = approval_type
         self.create_time = create_time
         self.creator_department = creator_department
         self.creator_dev_tag = creator_dev_tag
@@ -15511,6 +16026,8 @@ class ListApprovalsResponseBodyApprovals(TeaModel):
         if self.approval_progresses is not None:
             for k in self.approval_progresses:
                 result['ApprovalProgresses'].append(k.to_map() if k else None)
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.creator_department is not None:
@@ -15552,6 +16069,8 @@ class ListApprovalsResponseBodyApprovals(TeaModel):
             for k in m.get('ApprovalProgresses'):
                 temp_model = ListApprovalsResponseBodyApprovalsApprovalProgresses()
                 self.approval_progresses.append(temp_model.from_map(k))
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('CreatorDepartment') is not None:
@@ -25116,6 +25635,827 @@ class RevokeUserSessionResponse(TeaModel):
         return self
 
 
+class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessRequestMatchSchemaConfigs(TeaModel):
+    def __init__(
+        self,
+        app_uninstall_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig = None,
+        device_registration_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig = None,
+        dlp_send_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig = None,
+        domain_blacklist_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig = None,
+        domain_whitelist_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig = None,
+        endpoint_hardening_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig = None,
+        peripheral_block_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig = None,
+        software_block_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig = None,
+        software_hardening_schema_config: UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig = None,
+    ):
+        self.app_uninstall_schema_config = app_uninstall_schema_config
+        self.device_registration_schema_config = device_registration_schema_config
+        self.dlp_send_schema_config = dlp_send_schema_config
+        self.domain_blacklist_schema_config = domain_blacklist_schema_config
+        self.domain_whitelist_schema_config = domain_whitelist_schema_config
+        self.endpoint_hardening_schema_config = endpoint_hardening_schema_config
+        self.peripheral_block_schema_config = peripheral_block_schema_config
+        self.software_block_schema_config = software_block_schema_config
+        self.software_hardening_schema_config = software_hardening_schema_config
+
+    def validate(self):
+        if self.app_uninstall_schema_config:
+            self.app_uninstall_schema_config.validate()
+        if self.device_registration_schema_config:
+            self.device_registration_schema_config.validate()
+        if self.dlp_send_schema_config:
+            self.dlp_send_schema_config.validate()
+        if self.domain_blacklist_schema_config:
+            self.domain_blacklist_schema_config.validate()
+        if self.domain_whitelist_schema_config:
+            self.domain_whitelist_schema_config.validate()
+        if self.endpoint_hardening_schema_config:
+            self.endpoint_hardening_schema_config.validate()
+        if self.peripheral_block_schema_config:
+            self.peripheral_block_schema_config.validate()
+        if self.software_block_schema_config:
+            self.software_block_schema_config.validate()
+        if self.software_hardening_schema_config:
+            self.software_hardening_schema_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_uninstall_schema_config is not None:
+            result['AppUninstallSchemaConfig'] = self.app_uninstall_schema_config.to_map()
+        if self.device_registration_schema_config is not None:
+            result['DeviceRegistrationSchemaConfig'] = self.device_registration_schema_config.to_map()
+        if self.dlp_send_schema_config is not None:
+            result['DlpSendSchemaConfig'] = self.dlp_send_schema_config.to_map()
+        if self.domain_blacklist_schema_config is not None:
+            result['DomainBlacklistSchemaConfig'] = self.domain_blacklist_schema_config.to_map()
+        if self.domain_whitelist_schema_config is not None:
+            result['DomainWhitelistSchemaConfig'] = self.domain_whitelist_schema_config.to_map()
+        if self.endpoint_hardening_schema_config is not None:
+            result['EndpointHardeningSchemaConfig'] = self.endpoint_hardening_schema_config.to_map()
+        if self.peripheral_block_schema_config is not None:
+            result['PeripheralBlockSchemaConfig'] = self.peripheral_block_schema_config.to_map()
+        if self.software_block_schema_config is not None:
+            result['SoftwareBlockSchemaConfig'] = self.software_block_schema_config.to_map()
+        if self.software_hardening_schema_config is not None:
+            result['SoftwareHardeningSchemaConfig'] = self.software_hardening_schema_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppUninstallSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig()
+            self.app_uninstall_schema_config = temp_model.from_map(m['AppUninstallSchemaConfig'])
+        if m.get('DeviceRegistrationSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig()
+            self.device_registration_schema_config = temp_model.from_map(m['DeviceRegistrationSchemaConfig'])
+        if m.get('DlpSendSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig()
+            self.dlp_send_schema_config = temp_model.from_map(m['DlpSendSchemaConfig'])
+        if m.get('DomainBlacklistSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig()
+            self.domain_blacklist_schema_config = temp_model.from_map(m['DomainBlacklistSchemaConfig'])
+        if m.get('DomainWhitelistSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig()
+            self.domain_whitelist_schema_config = temp_model.from_map(m['DomainWhitelistSchemaConfig'])
+        if m.get('EndpointHardeningSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig()
+            self.endpoint_hardening_schema_config = temp_model.from_map(m['EndpointHardeningSchemaConfig'])
+        if m.get('PeripheralBlockSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig()
+            self.peripheral_block_schema_config = temp_model.from_map(m['PeripheralBlockSchemaConfig'])
+        if m.get('SoftwareBlockSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig()
+            self.software_block_schema_config = temp_model.from_map(m['SoftwareBlockSchemaConfig'])
+        if m.get('SoftwareHardeningSchemaConfig') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig()
+            self.software_hardening_schema_config = temp_model.from_map(m['SoftwareHardeningSchemaConfig'])
+        return self
+
+
 class UpdateApprovalProcessRequestMatchSchemas(TeaModel):
     def __init__(
         self,
@@ -25194,13 +26534,21 @@ class UpdateApprovalProcessRequestMatchSchemas(TeaModel):
 class UpdateApprovalProcessRequest(TeaModel):
     def __init__(
         self,
+        approval_type: int = None,
         description: str = None,
+        event_label: str = None,
+        external_config: str = None,
+        match_schema_configs: UpdateApprovalProcessRequestMatchSchemaConfigs = None,
         match_schemas: UpdateApprovalProcessRequestMatchSchemas = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
+        self.approval_type = approval_type
         self.description = description
+        self.event_label = event_label
+        self.external_config = external_config
+        self.match_schema_configs = match_schema_configs
         self.match_schemas = match_schemas
         # This parameter is required.
         self.process_id = process_id
@@ -25208,6 +26556,8 @@ class UpdateApprovalProcessRequest(TeaModel):
         self.process_nodes = process_nodes
 
     def validate(self):
+        if self.match_schema_configs:
+            self.match_schema_configs.validate()
         if self.match_schemas:
             self.match_schemas.validate()
 
@@ -25217,8 +26567,16 @@ class UpdateApprovalProcessRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.external_config is not None:
+            result['ExternalConfig'] = self.external_config
+        if self.match_schema_configs is not None:
+            result['MatchSchemaConfigs'] = self.match_schema_configs.to_map()
         if self.match_schemas is not None:
             result['MatchSchemas'] = self.match_schemas.to_map()
         if self.process_id is not None:
@@ -25231,8 +26589,17 @@ class UpdateApprovalProcessRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('ExternalConfig') is not None:
+            self.external_config = m.get('ExternalConfig')
+        if m.get('MatchSchemaConfigs') is not None:
+            temp_model = UpdateApprovalProcessRequestMatchSchemaConfigs()
+            self.match_schema_configs = temp_model.from_map(m['MatchSchemaConfigs'])
         if m.get('MatchSchemas') is not None:
             temp_model = UpdateApprovalProcessRequestMatchSchemas()
             self.match_schemas = temp_model.from_map(m['MatchSchemas'])
@@ -25248,13 +26615,21 @@ class UpdateApprovalProcessRequest(TeaModel):
 class UpdateApprovalProcessShrinkRequest(TeaModel):
     def __init__(
         self,
+        approval_type: int = None,
         description: str = None,
+        event_label: str = None,
+        external_config: str = None,
+        match_schema_configs_shrink: str = None,
         match_schemas_shrink: str = None,
         process_id: str = None,
         process_name: str = None,
         process_nodes: List[List[str]] = None,
     ):
+        self.approval_type = approval_type
         self.description = description
+        self.event_label = event_label
+        self.external_config = external_config
+        self.match_schema_configs_shrink = match_schema_configs_shrink
         self.match_schemas_shrink = match_schemas_shrink
         # This parameter is required.
         self.process_id = process_id
@@ -25270,8 +26645,16 @@ class UpdateApprovalProcessShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.external_config is not None:
+            result['ExternalConfig'] = self.external_config
+        if self.match_schema_configs_shrink is not None:
+            result['MatchSchemaConfigs'] = self.match_schema_configs_shrink
         if self.match_schemas_shrink is not None:
             result['MatchSchemas'] = self.match_schemas_shrink
         if self.process_id is not None:
@@ -25284,8 +26667,16 @@ class UpdateApprovalProcessShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('ExternalConfig') is not None:
+            self.external_config = m.get('ExternalConfig')
+        if m.get('MatchSchemaConfigs') is not None:
+            self.match_schema_configs_shrink = m.get('MatchSchemaConfigs')
         if m.get('MatchSchemas') is not None:
             self.match_schemas_shrink = m.get('MatchSchemas')
         if m.get('ProcessId') is not None:
@@ -25297,14 +26688,16 @@ class UpdateApprovalProcessShrinkRequest(TeaModel):
         return self
 
 
-class UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
+class UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25315,6 +26708,56 @@ class UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -25323,21 +26766,122 @@ class UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
             self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25348,29 +26892,88 @@ class UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies(TeaMode
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class UpdateApprovalProcessResponseBodyProcessDlpSendPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25381,29 +26984,88 @@ class UpdateApprovalProcessResponseBodyProcessDlpSendPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25414,29 +27076,88 @@ class UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
+        if self.policy_ids is not None:
+            result['PolicyIds'] = self.policy_ids
+        if self.schema_id is not None:
+            result['SchemaId'] = self.schema_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
+        if m.get('PolicyIds') is not None:
+            self.policy_ids = m.get('PolicyIds')
+        if m.get('SchemaId') is not None:
+            self.schema_id = m.get('SchemaId')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap(TeaModel):
+    def __init__(
+        self,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
+    ):
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25447,32 +27168,43 @@ class UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies(TeaModel):
             return _map
 
         result = dict()
-        if self.policy_ids is not None:
-            result['PolicyIds'] = self.policy_ids
-        if self.schema_id is not None:
-            result['SchemaId'] = self.schema_id
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('PolicyIds') is not None:
-            self.policy_ids = m.get('PolicyIds')
-        if m.get('SchemaId') is not None:
-            self.schema_id = m.get('SchemaId')
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
         return self
 
 
 class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel):
     def __init__(
         self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap] = None,
         policy_ids: List[str] = None,
         schema_id: str = None,
     ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
         self.policy_ids = policy_ids
         self.schema_id = schema_id
 
     def validate(self):
-        pass
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25480,6 +27212,12 @@ class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel
             return _map
 
         result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -25488,6 +27226,13 @@ class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -25495,14 +27240,16 @@ class UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies(TeaModel
         return self
 
 
-class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(TeaModel):
+class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25513,6 +27260,56 @@ class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -25521,6 +27318,13 @@ class UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -25561,14 +27365,16 @@ class UpdateApprovalProcessResponseBodyProcessProcessNodes(TeaModel):
         return self
 
 
-class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
+class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25579,6 +27385,56 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -25587,6 +27443,13 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -25594,14 +27457,16 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies(TeaModel):
         return self
 
 
-class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap(TeaModel):
     def __init__(
         self,
-        policy_ids: List[str] = None,
-        schema_id: str = None,
+        display_field: str = None,
+        display_field_value: str = None,
+        system_field: str = None,
     ):
-        self.policy_ids = policy_ids
-        self.schema_id = schema_id
+        self.display_field = display_field
+        self.display_field_value = display_field_value
+        self.system_field = system_field
 
     def validate(self):
         pass
@@ -25612,6 +27477,56 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel
             return _map
 
         result = dict()
+        if self.display_field is not None:
+            result['DisplayField'] = self.display_field
+        if self.display_field_value is not None:
+            result['DisplayFieldValue'] = self.display_field_value
+        if self.system_field is not None:
+            result['SystemField'] = self.system_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayField') is not None:
+            self.display_field = m.get('DisplayField')
+        if m.get('DisplayFieldValue') is not None:
+            self.display_field_value = m.get('DisplayFieldValue')
+        if m.get('SystemField') is not None:
+            self.system_field = m.get('SystemField')
+        return self
+
+
+class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel):
+    def __init__(
+        self,
+        external_process_id: str = None,
+        field_map: List[UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap] = None,
+        policy_ids: List[str] = None,
+        schema_id: str = None,
+    ):
+        self.external_process_id = external_process_id
+        self.field_map = field_map
+        self.policy_ids = policy_ids
+        self.schema_id = schema_id
+
+    def validate(self):
+        if self.field_map:
+            for k in self.field_map:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.external_process_id is not None:
+            result['ExternalProcessId'] = self.external_process_id
+        result['FieldMap'] = []
+        if self.field_map is not None:
+            for k in self.field_map:
+                result['FieldMap'].append(k.to_map() if k else None)
         if self.policy_ids is not None:
             result['PolicyIds'] = self.policy_ids
         if self.schema_id is not None:
@@ -25620,6 +27535,13 @@ class UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies(TeaModel
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExternalProcessId') is not None:
+            self.external_process_id = m.get('ExternalProcessId')
+        self.field_map = []
+        if m.get('FieldMap') is not None:
+            for k in m.get('FieldMap'):
+                temp_model = UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap()
+                self.field_map.append(temp_model.from_map(k))
         if m.get('PolicyIds') is not None:
             self.policy_ids = m.get('PolicyIds')
         if m.get('SchemaId') is not None:
@@ -25631,6 +27553,7 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
     def __init__(
         self,
         app_uninstall_policies: UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies = None,
+        approval_type: int = None,
         create_time: str = None,
         description: str = None,
         device_registration_policies: UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies = None,
@@ -25638,6 +27561,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         domain_blacklist_policies: UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies = None,
         domain_whitelist_policies: UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies = None,
         endpoint_hardening_policies: UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies = None,
+        event_label: str = None,
+        external_config: str = None,
         periphera_block_policies: UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies = None,
         process_id: str = None,
         process_name: str = None,
@@ -25646,6 +27571,7 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         software_hardening_policies: UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies = None,
     ):
         self.app_uninstall_policies = app_uninstall_policies
+        self.approval_type = approval_type
         self.create_time = create_time
         self.description = description
         self.device_registration_policies = device_registration_policies
@@ -25653,6 +27579,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         self.domain_blacklist_policies = domain_blacklist_policies
         self.domain_whitelist_policies = domain_whitelist_policies
         self.endpoint_hardening_policies = endpoint_hardening_policies
+        self.event_label = event_label
+        self.external_config = external_config
         self.periphera_block_policies = periphera_block_policies
         self.process_id = process_id
         self.process_name = process_name
@@ -25693,6 +27621,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         result = dict()
         if self.app_uninstall_policies is not None:
             result['AppUninstallPolicies'] = self.app_uninstall_policies.to_map()
+        if self.approval_type is not None:
+            result['ApprovalType'] = self.approval_type
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.description is not None:
@@ -25707,6 +27637,10 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
             result['DomainWhitelistPolicies'] = self.domain_whitelist_policies.to_map()
         if self.endpoint_hardening_policies is not None:
             result['EndpointHardeningPolicies'] = self.endpoint_hardening_policies.to_map()
+        if self.event_label is not None:
+            result['EventLabel'] = self.event_label
+        if self.external_config is not None:
+            result['ExternalConfig'] = self.external_config
         if self.periphera_block_policies is not None:
             result['PeripheraBlockPolicies'] = self.periphera_block_policies.to_map()
         if self.process_id is not None:
@@ -25731,6 +27665,8 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('AppUninstallPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies()
             self.app_uninstall_policies = temp_model.from_map(m['AppUninstallPolicies'])
+        if m.get('ApprovalType') is not None:
+            self.approval_type = m.get('ApprovalType')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
@@ -25750,6 +27686,10 @@ class UpdateApprovalProcessResponseBodyProcess(TeaModel):
         if m.get('EndpointHardeningPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies()
             self.endpoint_hardening_policies = temp_model.from_map(m['EndpointHardeningPolicies'])
+        if m.get('EventLabel') is not None:
+            self.event_label = m.get('EventLabel')
+        if m.get('ExternalConfig') is not None:
+            self.external_config = m.get('ExternalConfig')
         if m.get('PeripheraBlockPolicies') is not None:
             temp_model = UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies()
             self.periphera_block_policies = temp_model.from_map(m['PeripheraBlockPolicies'])

@@ -9682,8 +9682,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.UpdateApprovalProcessShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schema_configs):
+            request.match_schema_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schema_configs, 'MatchSchemaConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.match_schemas):
             request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
+        if not UtilClient.is_unset(request.event_label):
+            query['EventLabel'] = request.event_label
+        if not UtilClient.is_unset(request.external_config):
+            query['ExternalConfig'] = request.external_config
+        if not UtilClient.is_unset(request.match_schema_configs_shrink):
+            query['MatchSchemaConfigs'] = request.match_schema_configs_shrink
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -9699,6 +9710,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -9732,8 +9744,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.UpdateApprovalProcessShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.match_schema_configs):
+            request.match_schema_configs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schema_configs, 'MatchSchemaConfigs', 'json')
         if not UtilClient.is_unset(tmp_req.match_schemas):
             request.match_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_schemas, 'MatchSchemas', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.approval_type):
+            query['ApprovalType'] = request.approval_type
+        if not UtilClient.is_unset(request.event_label):
+            query['EventLabel'] = request.event_label
+        if not UtilClient.is_unset(request.external_config):
+            query['ExternalConfig'] = request.external_config
+        if not UtilClient.is_unset(request.match_schema_configs_shrink):
+            query['MatchSchemaConfigs'] = request.match_schema_configs_shrink
         body = {}
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
@@ -9749,6 +9772,7 @@ class Client(OpenApiClient):
         body = TeaCore.merge(body,
             OpenApiUtilClient.query(body_flat))
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
