@@ -4,15 +4,123 @@ from Tea.model import TeaModel
 from typing import Dict, Any, List
 
 
+class ArtifactLifecyclePolicyCondition(TeaModel):
+    def __init__(
+        self,
+        last_pull_older_than_days: int = None,
+        last_push_older_than_days: int = None,
+        latest_tag_count: int = None,
+    ):
+        self.last_pull_older_than_days = last_pull_older_than_days
+        self.last_push_older_than_days = last_push_older_than_days
+        self.latest_tag_count = latest_tag_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_pull_older_than_days is not None:
+            result['LastPullOlderThanDays'] = self.last_pull_older_than_days
+        if self.last_push_older_than_days is not None:
+            result['LastPushOlderThanDays'] = self.last_push_older_than_days
+        if self.latest_tag_count is not None:
+            result['LatestTagCount'] = self.latest_tag_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastPullOlderThanDays') is not None:
+            self.last_pull_older_than_days = m.get('LastPullOlderThanDays')
+        if m.get('LastPushOlderThanDays') is not None:
+            self.last_push_older_than_days = m.get('LastPushOlderThanDays')
+        if m.get('LatestTagCount') is not None:
+            self.latest_tag_count = m.get('LatestTagCount')
+        return self
+
+
+class ArtifactLifecyclePolicyFilter(TeaModel):
+    def __init__(
+        self,
+        tag_wildcard: str = None,
+    ):
+        self.tag_wildcard = tag_wildcard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_wildcard is not None:
+            result['TagWildcard'] = self.tag_wildcard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagWildcard') is not None:
+            self.tag_wildcard = m.get('TagWildcard')
+        return self
+
+
+class ArtifactLifecyclePolicy(TeaModel):
+    def __init__(
+        self,
+        condition: ArtifactLifecyclePolicyCondition = None,
+        filter: ArtifactLifecyclePolicyFilter = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.filter = filter
+        self.type = type
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            temp_model = ArtifactLifecyclePolicyCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('Filter') is not None:
+            temp_model = ArtifactLifecyclePolicyFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class RepoConfigurationArtifactBuildRuleParameters(TeaModel):
     def __init__(
         self,
         image_index_only: bool = None,
-        priority_file: str = None,
     ):
         # This parameter is required.
         self.image_index_only = image_index_only
-        self.priority_file = priority_file
 
     def validate(self):
         pass
@@ -25,16 +133,12 @@ class RepoConfigurationArtifactBuildRuleParameters(TeaModel):
         result = dict()
         if self.image_index_only is not None:
             result['ImageIndexOnly'] = self.image_index_only
-        if self.priority_file is not None:
-            result['PriorityFile'] = self.priority_file
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ImageIndexOnly') is not None:
             self.image_index_only = m.get('ImageIndexOnly')
-        if m.get('PriorityFile') is not None:
-            self.priority_file = m.get('PriorityFile')
         return self
 
 
@@ -6651,6 +6755,116 @@ class GetArtifactLifecycleRuleRequest(TeaModel):
         return self
 
 
+class GetArtifactLifecycleRuleResponseBodyPoliciesCondition(TeaModel):
+    def __init__(
+        self,
+        last_pull_older_than_days: int = None,
+        last_push_older_than_days: int = None,
+        latest_tag_count: int = None,
+    ):
+        self.last_pull_older_than_days = last_pull_older_than_days
+        self.last_push_older_than_days = last_push_older_than_days
+        self.latest_tag_count = latest_tag_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_pull_older_than_days is not None:
+            result['LastPullOlderThanDays'] = self.last_pull_older_than_days
+        if self.last_push_older_than_days is not None:
+            result['LastPushOlderThanDays'] = self.last_push_older_than_days
+        if self.latest_tag_count is not None:
+            result['LatestTagCount'] = self.latest_tag_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastPullOlderThanDays') is not None:
+            self.last_pull_older_than_days = m.get('LastPullOlderThanDays')
+        if m.get('LastPushOlderThanDays') is not None:
+            self.last_push_older_than_days = m.get('LastPushOlderThanDays')
+        if m.get('LatestTagCount') is not None:
+            self.latest_tag_count = m.get('LatestTagCount')
+        return self
+
+
+class GetArtifactLifecycleRuleResponseBodyPoliciesFilter(TeaModel):
+    def __init__(
+        self,
+        tag_wildcard: str = None,
+    ):
+        self.tag_wildcard = tag_wildcard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_wildcard is not None:
+            result['TagWildcard'] = self.tag_wildcard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagWildcard') is not None:
+            self.tag_wildcard = m.get('TagWildcard')
+        return self
+
+
+class GetArtifactLifecycleRuleResponseBodyPolicies(TeaModel):
+    def __init__(
+        self,
+        condition: GetArtifactLifecycleRuleResponseBodyPoliciesCondition = None,
+        filter: GetArtifactLifecycleRuleResponseBodyPoliciesFilter = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.filter = filter
+        self.type = type
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            temp_model = GetArtifactLifecycleRuleResponseBodyPoliciesCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('Filter') is not None:
+            temp_model = GetArtifactLifecycleRuleResponseBodyPoliciesFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class GetArtifactLifecycleRuleResponseBody(TeaModel):
     def __init__(
         self,
@@ -6663,6 +6877,7 @@ class GetArtifactLifecycleRuleResponseBody(TeaModel):
         modified_time: int = None,
         namespace_name: str = None,
         next_time: int = None,
+        policies: List[GetArtifactLifecycleRuleResponseBodyPolicies] = None,
         repo_name: str = None,
         request_id: str = None,
         retention_tag_count: int = None,
@@ -6692,6 +6907,7 @@ class GetArtifactLifecycleRuleResponseBody(TeaModel):
         self.namespace_name = namespace_name
         # The time when the lifecycle management rule is next executed.
         self.next_time = next_time
+        self.policies = policies
         # The name of the image repository.
         self.repo_name = repo_name
         # The request ID.
@@ -6708,7 +6924,10 @@ class GetArtifactLifecycleRuleResponseBody(TeaModel):
         self.tag_regexp = tag_regexp
 
     def validate(self):
-        pass
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6734,6 +6953,10 @@ class GetArtifactLifecycleRuleResponseBody(TeaModel):
             result['NamespaceName'] = self.namespace_name
         if self.next_time is not None:
             result['NextTime'] = self.next_time
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.request_id is not None:
@@ -6770,6 +6993,11 @@ class GetArtifactLifecycleRuleResponseBody(TeaModel):
             self.namespace_name = m.get('NamespaceName')
         if m.get('NextTime') is not None:
             self.next_time = m.get('NextTime')
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = GetArtifactLifecycleRuleResponseBodyPolicies()
+                self.policies.append(temp_model.from_map(k))
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RequestId') is not None:
@@ -11726,6 +11954,116 @@ class ListArtifactLifecycleRuleRequest(TeaModel):
         return self
 
 
+class ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition(TeaModel):
+    def __init__(
+        self,
+        last_pull_older_than_days: int = None,
+        last_push_older_than_days: int = None,
+        latest_tag_count: int = None,
+    ):
+        self.last_pull_older_than_days = last_pull_older_than_days
+        self.last_push_older_than_days = last_push_older_than_days
+        self.latest_tag_count = latest_tag_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_pull_older_than_days is not None:
+            result['LastPullOlderThanDays'] = self.last_pull_older_than_days
+        if self.last_push_older_than_days is not None:
+            result['LastPushOlderThanDays'] = self.last_push_older_than_days
+        if self.latest_tag_count is not None:
+            result['LatestTagCount'] = self.latest_tag_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LastPullOlderThanDays') is not None:
+            self.last_pull_older_than_days = m.get('LastPullOlderThanDays')
+        if m.get('LastPushOlderThanDays') is not None:
+            self.last_push_older_than_days = m.get('LastPushOlderThanDays')
+        if m.get('LatestTagCount') is not None:
+            self.latest_tag_count = m.get('LatestTagCount')
+        return self
+
+
+class ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter(TeaModel):
+    def __init__(
+        self,
+        tag_wildcard: str = None,
+    ):
+        self.tag_wildcard = tag_wildcard
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_wildcard is not None:
+            result['TagWildcard'] = self.tag_wildcard
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagWildcard') is not None:
+            self.tag_wildcard = m.get('TagWildcard')
+        return self
+
+
+class ListArtifactLifecycleRuleResponseBodyRulesPolicies(TeaModel):
+    def __init__(
+        self,
+        condition: ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition = None,
+        filter: ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter = None,
+        type: str = None,
+    ):
+        self.condition = condition
+        self.filter = filter
+        self.type = type
+
+    def validate(self):
+        if self.condition:
+            self.condition.validate()
+        if self.filter:
+            self.filter.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.condition is not None:
+            result['Condition'] = self.condition.to_map()
+        if self.filter is not None:
+            result['Filter'] = self.filter.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Condition') is not None:
+            temp_model = ListArtifactLifecycleRuleResponseBodyRulesPoliciesCondition()
+            self.condition = temp_model.from_map(m['Condition'])
+        if m.get('Filter') is not None:
+            temp_model = ListArtifactLifecycleRuleResponseBodyRulesPoliciesFilter()
+            self.filter = temp_model.from_map(m['Filter'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
 class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
     def __init__(
         self,
@@ -11736,6 +12074,7 @@ class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
         modified_time: int = None,
         namespace_name: str = None,
         next_time: int = None,
+        policies: List[ListArtifactLifecycleRuleResponseBodyRulesPolicies] = None,
         repo_name: str = None,
         retention_tag_count: int = None,
         rule_id: str = None,
@@ -11757,6 +12096,7 @@ class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
         self.namespace_name = namespace_name
         # The time when the lifecycle management rule is next executed.
         self.next_time = next_time
+        self.policies = policies
         # The name of the image repository.
         self.repo_name = repo_name
         # The number of retained images.
@@ -11771,7 +12111,10 @@ class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
         self.tag_regexp = tag_regexp
 
     def validate(self):
-        pass
+        if self.policies:
+            for k in self.policies:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11793,6 +12136,10 @@ class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
             result['NamespaceName'] = self.namespace_name
         if self.next_time is not None:
             result['NextTime'] = self.next_time
+        result['Policies'] = []
+        if self.policies is not None:
+            for k in self.policies:
+                result['Policies'].append(k.to_map() if k else None)
         if self.repo_name is not None:
             result['RepoName'] = self.repo_name
         if self.retention_tag_count is not None:
@@ -11823,6 +12170,11 @@ class ListArtifactLifecycleRuleResponseBodyRules(TeaModel):
             self.namespace_name = m.get('NamespaceName')
         if m.get('NextTime') is not None:
             self.next_time = m.get('NextTime')
+        self.policies = []
+        if m.get('Policies') is not None:
+            for k in m.get('Policies'):
+                temp_model = ListArtifactLifecycleRuleResponseBodyRulesPolicies()
+                self.policies.append(temp_model.from_map(k))
         if m.get('RepoName') is not None:
             self.repo_name = m.get('RepoName')
         if m.get('RetentionTagCount') is not None:
@@ -17054,7 +17406,7 @@ class ListRepoTagRequest(TeaModel):
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_no = page_no
-        # The number of entries to return on each page.
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
         # The ID of the repository.
         # 

@@ -1,3 +1,8 @@
+2025-08-20 Version: 2.0.4
+- Update API GetArtifactLifecycleRule: add response parameters Body.Policies.
+- Update API ListArtifactLifecycleRule: add response parameters Body.Rules.$.Policies.
+
+
 2025-06-11 Version: 2.0.3
 - Generated python 2018-12-01 for cr.
 
