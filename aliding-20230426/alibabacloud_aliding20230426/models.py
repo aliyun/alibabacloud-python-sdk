@@ -48830,6 +48830,7 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
         self,
         anchor_nickname: str = None,
         anchor_union_id: str = None,
+        anchor_union_id_in_alibaba: str = None,
         anchor_user_id: str = None,
         live_end_time: int = None,
         live_start_time: int = None,
@@ -48839,6 +48840,7 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
     ):
         self.anchor_nickname = anchor_nickname
         self.anchor_union_id = anchor_union_id
+        self.anchor_union_id_in_alibaba = anchor_union_id_in_alibaba
         self.anchor_user_id = anchor_user_id
         self.live_end_time = live_end_time
         self.live_start_time = live_start_time
@@ -48859,6 +48861,8 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
             result['AnchorNickname'] = self.anchor_nickname
         if self.anchor_union_id is not None:
             result['AnchorUnionId'] = self.anchor_union_id
+        if self.anchor_union_id_in_alibaba is not None:
+            result['AnchorUnionIdInAlibaba'] = self.anchor_union_id_in_alibaba
         if self.anchor_user_id is not None:
             result['AnchorUserId'] = self.anchor_user_id
         if self.live_end_time is not None:
@@ -48879,6 +48883,8 @@ class GetOrgLiveListResponseBodyResultNewLiveLiveList(TeaModel):
             self.anchor_nickname = m.get('AnchorNickname')
         if m.get('AnchorUnionId') is not None:
             self.anchor_union_id = m.get('AnchorUnionId')
+        if m.get('AnchorUnionIdInAlibaba') is not None:
+            self.anchor_union_id_in_alibaba = m.get('AnchorUnionIdInAlibaba')
         if m.get('AnchorUserId') is not None:
             self.anchor_user_id = m.get('AnchorUserId')
         if m.get('LiveEndTime') is not None:
@@ -48958,6 +48964,7 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
         self,
         anchor_nickname: str = None,
         anchor_union_id: str = None,
+        anchor_union_id_in_alibaba: str = None,
         anchor_user_id: str = None,
         live_end_time: int = None,
         live_start_time: int = None,
@@ -48966,6 +48973,7 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
     ):
         self.anchor_nickname = anchor_nickname
         self.anchor_union_id = anchor_union_id
+        self.anchor_union_id_in_alibaba = anchor_union_id_in_alibaba
         self.anchor_user_id = anchor_user_id
         self.live_end_time = live_end_time
         self.live_start_time = live_start_time
@@ -48985,6 +48993,8 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
             result['AnchorNickname'] = self.anchor_nickname
         if self.anchor_union_id is not None:
             result['AnchorUnionId'] = self.anchor_union_id
+        if self.anchor_union_id_in_alibaba is not None:
+            result['AnchorUnionIdInAlibaba'] = self.anchor_union_id_in_alibaba
         if self.anchor_user_id is not None:
             result['AnchorUserId'] = self.anchor_user_id
         if self.live_end_time is not None:
@@ -49003,6 +49013,8 @@ class GetOrgLiveListResponseBodyResultUpdateLiveLiveList(TeaModel):
             self.anchor_nickname = m.get('AnchorNickname')
         if m.get('AnchorUnionId') is not None:
             self.anchor_union_id = m.get('AnchorUnionId')
+        if m.get('AnchorUnionIdInAlibaba') is not None:
+            self.anchor_union_id_in_alibaba = m.get('AnchorUnionIdInAlibaba')
         if m.get('AnchorUserId') is not None:
             self.anchor_user_id = m.get('AnchorUserId')
         if m.get('LiveEndTime') is not None:
