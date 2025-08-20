@@ -361,11 +361,13 @@ class ActivateLicenseResponse(TeaModel):
 class AicsOpenApiInvokeRequest(TeaModel):
     def __init__(
         self,
+        job_id: str = None,
         node_id: str = None,
         param: Dict[str, Any] = None,
         service_id: str = None,
         type: str = None,
     ):
+        self.job_id = job_id
         self.node_id = node_id
         self.param = param
         # This parameter is required.
@@ -381,6 +383,8 @@ class AicsOpenApiInvokeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.param is not None:
@@ -393,6 +397,8 @@ class AicsOpenApiInvokeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('Param') is not None:
@@ -407,11 +413,13 @@ class AicsOpenApiInvokeRequest(TeaModel):
 class AicsOpenApiInvokeShrinkRequest(TeaModel):
     def __init__(
         self,
+        job_id: str = None,
         node_id: str = None,
         param_shrink: str = None,
         service_id: str = None,
         type: str = None,
     ):
+        self.job_id = job_id
         self.node_id = node_id
         self.param_shrink = param_shrink
         # This parameter is required.
@@ -427,6 +435,8 @@ class AicsOpenApiInvokeShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.node_id is not None:
             result['NodeId'] = self.node_id
         if self.param_shrink is not None:
@@ -439,6 +449,8 @@ class AicsOpenApiInvokeShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
         if m.get('Param') is not None:

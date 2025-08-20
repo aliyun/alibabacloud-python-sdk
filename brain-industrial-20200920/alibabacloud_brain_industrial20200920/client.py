@@ -167,6 +167,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.param):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.service_id):
@@ -214,6 +216,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.param):
             request.param_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.param, 'Param', 'json')
         query = {}
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.node_id):
             query['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.service_id):

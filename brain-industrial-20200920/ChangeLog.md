@@ -1,3 +1,7 @@
+2025-08-20 Version: 2.1.1
+- Update API AicsOpenApiInvoke: add request parameters JobId.
+
+
 2025-07-25 Version: 2.1.0
 - Support API CreateLoadForecastByFileUrlJob.
 - Support API CreatePowerForecastByFileUrlJob.
