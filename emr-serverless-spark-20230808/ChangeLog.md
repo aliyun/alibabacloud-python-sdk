@@ -1,3 +1,7 @@
+2025-08-20 Version: 1.14.0
+- Support API ListMembers.
+
+
 2025-08-19 Version: 1.13.1
 - Update API CreateSessionCluster: add request parameters body.clientToken.
 - Update API ListJobRuns: add request parameters applicationConfigs.

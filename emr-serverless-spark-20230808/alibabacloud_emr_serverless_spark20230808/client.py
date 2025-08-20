@@ -3503,6 +3503,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_log_contents_with_options_async(workspace_id, request, headers, runtime)
 
+    def list_members_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListMembersResponse:
+        """
+        @summary 查询用户列表
+        
+        @param request: ListMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMembers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_members_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListMembersResponse:
+        """
+        @summary 查询用户列表
+        
+        @param request: ListMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMembers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/{OpenApiUtilClient.get_encode_param(workspace_id)}/members',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_members(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListMembersRequest,
+    ) -> emr_serverless_spark_20230808_models.ListMembersResponse:
+        """
+        @summary 查询用户列表
+        
+        @param request: ListMembersRequest
+        @return: ListMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_members_with_options(workspace_id, request, headers, runtime)
+
+    async def list_members_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListMembersRequest,
+    ) -> emr_serverless_spark_20230808_models.ListMembersResponse:
+        """
+        @summary 查询用户列表
+        
+        @param request: ListMembersRequest
+        @return: ListMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_members_with_options_async(workspace_id, request, headers, runtime)
+
     def list_release_versions_with_options(
         self,
         request: emr_serverless_spark_20230808_models.ListReleaseVersionsRequest,
