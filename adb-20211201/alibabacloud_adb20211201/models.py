@@ -461,10 +461,13 @@ class Detail(TeaModel):
         data: str = None,
         duration_in_millis: int = None,
         estimate_execution_cpu_time_in_seconds: int = None,
+        execution_duration_in_millis: int = None,
         last_attempt_id: str = None,
         last_updated_time_in_millis: int = None,
         log_root_path: str = None,
         resource_group_name: str = None,
+        resource_provisioning_duration_in_millis: int = None,
+        running_start_time_in_millis: int = None,
         started_time_in_millis: int = None,
         submitted_time_in_millis: int = None,
         terminated_time_in_millis: int = None,
@@ -475,10 +478,13 @@ class Detail(TeaModel):
         self.data = data
         self.duration_in_millis = duration_in_millis
         self.estimate_execution_cpu_time_in_seconds = estimate_execution_cpu_time_in_seconds
+        self.execution_duration_in_millis = execution_duration_in_millis
         self.last_attempt_id = last_attempt_id
         self.last_updated_time_in_millis = last_updated_time_in_millis
         self.log_root_path = log_root_path
         self.resource_group_name = resource_group_name
+        self.resource_provisioning_duration_in_millis = resource_provisioning_duration_in_millis
+        self.running_start_time_in_millis = running_start_time_in_millis
         self.started_time_in_millis = started_time_in_millis
         self.submitted_time_in_millis = submitted_time_in_millis
         self.terminated_time_in_millis = terminated_time_in_millis
@@ -503,6 +509,8 @@ class Detail(TeaModel):
             result['DurationInMillis'] = self.duration_in_millis
         if self.estimate_execution_cpu_time_in_seconds is not None:
             result['EstimateExecutionCpuTimeInSeconds'] = self.estimate_execution_cpu_time_in_seconds
+        if self.execution_duration_in_millis is not None:
+            result['ExecutionDurationInMillis'] = self.execution_duration_in_millis
         if self.last_attempt_id is not None:
             result['LastAttemptId'] = self.last_attempt_id
         if self.last_updated_time_in_millis is not None:
@@ -511,6 +519,10 @@ class Detail(TeaModel):
             result['LogRootPath'] = self.log_root_path
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
+        if self.resource_provisioning_duration_in_millis is not None:
+            result['ResourceProvisioningDurationInMillis'] = self.resource_provisioning_duration_in_millis
+        if self.running_start_time_in_millis is not None:
+            result['RunningStartTimeInMillis'] = self.running_start_time_in_millis
         if self.started_time_in_millis is not None:
             result['StartedTimeInMillis'] = self.started_time_in_millis
         if self.submitted_time_in_millis is not None:
@@ -533,6 +545,8 @@ class Detail(TeaModel):
             self.duration_in_millis = m.get('DurationInMillis')
         if m.get('EstimateExecutionCpuTimeInSeconds') is not None:
             self.estimate_execution_cpu_time_in_seconds = m.get('EstimateExecutionCpuTimeInSeconds')
+        if m.get('ExecutionDurationInMillis') is not None:
+            self.execution_duration_in_millis = m.get('ExecutionDurationInMillis')
         if m.get('LastAttemptId') is not None:
             self.last_attempt_id = m.get('LastAttemptId')
         if m.get('LastUpdatedTimeInMillis') is not None:
@@ -541,6 +555,10 @@ class Detail(TeaModel):
             self.log_root_path = m.get('LogRootPath')
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('ResourceProvisioningDurationInMillis') is not None:
+            self.resource_provisioning_duration_in_millis = m.get('ResourceProvisioningDurationInMillis')
+        if m.get('RunningStartTimeInMillis') is not None:
+            self.running_start_time_in_millis = m.get('RunningStartTimeInMillis')
         if m.get('StartedTimeInMillis') is not None:
             self.started_time_in_millis = m.get('StartedTimeInMillis')
         if m.get('SubmittedTimeInMillis') is not None:
@@ -2078,10 +2096,12 @@ class OpenStructMvDetailModelBaseTableInfos(TeaModel):
         self,
         base_table_is_mv: bool = None,
         schema_name: str = None,
+        table_engine: str = None,
         table_name: str = None,
     ):
         self.base_table_is_mv = base_table_is_mv
         self.schema_name = schema_name
+        self.table_engine = table_engine
         self.table_name = table_name
 
     def validate(self):
@@ -2097,6 +2117,8 @@ class OpenStructMvDetailModelBaseTableInfos(TeaModel):
             result['BaseTableIsMv'] = self.base_table_is_mv
         if self.schema_name is not None:
             result['SchemaName'] = self.schema_name
+        if self.table_engine is not None:
+            result['TableEngine'] = self.table_engine
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
@@ -2107,6 +2129,8 @@ class OpenStructMvDetailModelBaseTableInfos(TeaModel):
             self.base_table_is_mv = m.get('BaseTableIsMv')
         if m.get('SchemaName') is not None:
             self.schema_name = m.get('SchemaName')
+        if m.get('TableEngine') is not None:
+            self.table_engine = m.get('TableEngine')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self
@@ -2127,6 +2151,7 @@ class OpenStructMvDetailModel(TeaModel):
         refresh_state: str = None,
         remote_size: int = None,
         resource_group: str = None,
+        table_engine: str = None,
         updated_at: str = None,
     ):
         self.base_table_infos = base_table_infos
@@ -2141,6 +2166,7 @@ class OpenStructMvDetailModel(TeaModel):
         self.refresh_state = refresh_state
         self.remote_size = remote_size
         self.resource_group = resource_group
+        self.table_engine = table_engine
         self.updated_at = updated_at
 
     def validate(self):
@@ -2181,6 +2207,8 @@ class OpenStructMvDetailModel(TeaModel):
             result['RemoteSize'] = self.remote_size
         if self.resource_group is not None:
             result['ResourceGroup'] = self.resource_group
+        if self.table_engine is not None:
+            result['TableEngine'] = self.table_engine
         if self.updated_at is not None:
             result['UpdatedAt'] = self.updated_at
         return result
@@ -2214,6 +2242,8 @@ class OpenStructMvDetailModel(TeaModel):
             self.remote_size = m.get('RemoteSize')
         if m.get('ResourceGroup') is not None:
             self.resource_group = m.get('ResourceGroup')
+        if m.get('TableEngine') is not None:
+            self.table_engine = m.get('TableEngine')
         if m.get('UpdatedAt') is not None:
             self.updated_at = m.get('UpdatedAt')
         return self
@@ -5462,6 +5492,555 @@ class CreateApsHiveJobResponse(TeaModel):
         return self
 
 
+class CreateApsKafkaHudiJobRequestColumns(TeaModel):
+    def __init__(
+        self,
+        map_name: str = None,
+        map_type: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.map_name = map_name
+        self.map_type = map_type
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.map_name is not None:
+            result['MapName'] = self.map_name
+        if self.map_type is not None:
+            result['MapType'] = self.map_type
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MapName') is not None:
+            self.map_name = m.get('MapName')
+        if m.get('MapType') is not None:
+            self.map_type = m.get('MapType')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateApsKafkaHudiJobRequest(TeaModel):
+    def __init__(
+        self,
+        across_role: str = None,
+        across_uid: str = None,
+        advanced_config: str = None,
+        columns: List[CreateApsKafkaHudiJobRequestColumns] = None,
+        dbcluster_id: str = None,
+        data_output_format: str = None,
+        datasource_id: int = None,
+        db_name: str = None,
+        full_compute_unit: str = None,
+        hudi_advanced_config: str = None,
+        incremental_compute_unit: str = None,
+        json_parse_level: int = None,
+        kafka_cluster_id: str = None,
+        kafka_topic: str = None,
+        lakehouse_id: int = None,
+        max_offsets_per_trigger: int = None,
+        oss_location: str = None,
+        output_format: str = None,
+        partition_specs: List[Dict[str, Any]] = None,
+        primary_key_definition: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        source_region_id: str = None,
+        starting_offsets: str = None,
+        table_name: str = None,
+        target_generate_rule: str = None,
+        target_type: str = None,
+        workload_name: str = None,
+    ):
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.advanced_config = advanced_config
+        # This parameter is required.
+        self.columns = columns
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.data_output_format = data_output_format
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.db_name = db_name
+        self.full_compute_unit = full_compute_unit
+        self.hudi_advanced_config = hudi_advanced_config
+        # This parameter is required.
+        self.incremental_compute_unit = incremental_compute_unit
+        # This parameter is required.
+        self.json_parse_level = json_parse_level
+        self.kafka_cluster_id = kafka_cluster_id
+        self.kafka_topic = kafka_topic
+        self.lakehouse_id = lakehouse_id
+        self.max_offsets_per_trigger = max_offsets_per_trigger
+        self.oss_location = oss_location
+        self.output_format = output_format
+        self.partition_specs = partition_specs
+        self.primary_key_definition = primary_key_definition
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_group = resource_group
+        self.source_region_id = source_region_id
+        # This parameter is required.
+        self.starting_offsets = starting_offsets
+        # This parameter is required.
+        self.table_name = table_name
+        self.target_generate_rule = target_generate_rule
+        self.target_type = target_type
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data_output_format is not None:
+            result['DataOutputFormat'] = self.data_output_format
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.hudi_advanced_config is not None:
+            result['HudiAdvancedConfig'] = self.hudi_advanced_config
+        if self.incremental_compute_unit is not None:
+            result['IncrementalComputeUnit'] = self.incremental_compute_unit
+        if self.json_parse_level is not None:
+            result['JsonParseLevel'] = self.json_parse_level
+        if self.kafka_cluster_id is not None:
+            result['KafkaClusterId'] = self.kafka_cluster_id
+        if self.kafka_topic is not None:
+            result['KafkaTopic'] = self.kafka_topic
+        if self.lakehouse_id is not None:
+            result['LakehouseId'] = self.lakehouse_id
+        if self.max_offsets_per_trigger is not None:
+            result['MaxOffsetsPerTrigger'] = self.max_offsets_per_trigger
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.partition_specs is not None:
+            result['PartitionSpecs'] = self.partition_specs
+        if self.primary_key_definition is not None:
+            result['PrimaryKeyDefinition'] = self.primary_key_definition
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.target_generate_rule is not None:
+            result['TargetGenerateRule'] = self.target_generate_rule
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = CreateApsKafkaHudiJobRequestColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataOutputFormat') is not None:
+            self.data_output_format = m.get('DataOutputFormat')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('HudiAdvancedConfig') is not None:
+            self.hudi_advanced_config = m.get('HudiAdvancedConfig')
+        if m.get('IncrementalComputeUnit') is not None:
+            self.incremental_compute_unit = m.get('IncrementalComputeUnit')
+        if m.get('JsonParseLevel') is not None:
+            self.json_parse_level = m.get('JsonParseLevel')
+        if m.get('KafkaClusterId') is not None:
+            self.kafka_cluster_id = m.get('KafkaClusterId')
+        if m.get('KafkaTopic') is not None:
+            self.kafka_topic = m.get('KafkaTopic')
+        if m.get('LakehouseId') is not None:
+            self.lakehouse_id = m.get('LakehouseId')
+        if m.get('MaxOffsetsPerTrigger') is not None:
+            self.max_offsets_per_trigger = m.get('MaxOffsetsPerTrigger')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('PartitionSpecs') is not None:
+            self.partition_specs = m.get('PartitionSpecs')
+        if m.get('PrimaryKeyDefinition') is not None:
+            self.primary_key_definition = m.get('PrimaryKeyDefinition')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TargetGenerateRule') is not None:
+            self.target_generate_rule = m.get('TargetGenerateRule')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        across_role: str = None,
+        across_uid: str = None,
+        advanced_config: str = None,
+        columns_shrink: str = None,
+        dbcluster_id: str = None,
+        data_output_format: str = None,
+        datasource_id: int = None,
+        db_name: str = None,
+        full_compute_unit: str = None,
+        hudi_advanced_config: str = None,
+        incremental_compute_unit: str = None,
+        json_parse_level: int = None,
+        kafka_cluster_id: str = None,
+        kafka_topic: str = None,
+        lakehouse_id: int = None,
+        max_offsets_per_trigger: int = None,
+        oss_location: str = None,
+        output_format: str = None,
+        partition_specs_shrink: str = None,
+        primary_key_definition: str = None,
+        region_id: str = None,
+        resource_group: str = None,
+        source_region_id: str = None,
+        starting_offsets: str = None,
+        table_name: str = None,
+        target_generate_rule: str = None,
+        target_type: str = None,
+        workload_name: str = None,
+    ):
+        self.across_role = across_role
+        self.across_uid = across_uid
+        self.advanced_config = advanced_config
+        # This parameter is required.
+        self.columns_shrink = columns_shrink
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.data_output_format = data_output_format
+        self.datasource_id = datasource_id
+        # This parameter is required.
+        self.db_name = db_name
+        self.full_compute_unit = full_compute_unit
+        self.hudi_advanced_config = hudi_advanced_config
+        # This parameter is required.
+        self.incremental_compute_unit = incremental_compute_unit
+        # This parameter is required.
+        self.json_parse_level = json_parse_level
+        self.kafka_cluster_id = kafka_cluster_id
+        self.kafka_topic = kafka_topic
+        self.lakehouse_id = lakehouse_id
+        self.max_offsets_per_trigger = max_offsets_per_trigger
+        self.oss_location = oss_location
+        self.output_format = output_format
+        self.partition_specs_shrink = partition_specs_shrink
+        self.primary_key_definition = primary_key_definition
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.resource_group = resource_group
+        self.source_region_id = source_region_id
+        # This parameter is required.
+        self.starting_offsets = starting_offsets
+        # This parameter is required.
+        self.table_name = table_name
+        self.target_generate_rule = target_generate_rule
+        self.target_type = target_type
+        # This parameter is required.
+        self.workload_name = workload_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.across_role is not None:
+            result['AcrossRole'] = self.across_role
+        if self.across_uid is not None:
+            result['AcrossUid'] = self.across_uid
+        if self.advanced_config is not None:
+            result['AdvancedConfig'] = self.advanced_config
+        if self.columns_shrink is not None:
+            result['Columns'] = self.columns_shrink
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.data_output_format is not None:
+            result['DataOutputFormat'] = self.data_output_format
+        if self.datasource_id is not None:
+            result['DatasourceId'] = self.datasource_id
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.full_compute_unit is not None:
+            result['FullComputeUnit'] = self.full_compute_unit
+        if self.hudi_advanced_config is not None:
+            result['HudiAdvancedConfig'] = self.hudi_advanced_config
+        if self.incremental_compute_unit is not None:
+            result['IncrementalComputeUnit'] = self.incremental_compute_unit
+        if self.json_parse_level is not None:
+            result['JsonParseLevel'] = self.json_parse_level
+        if self.kafka_cluster_id is not None:
+            result['KafkaClusterId'] = self.kafka_cluster_id
+        if self.kafka_topic is not None:
+            result['KafkaTopic'] = self.kafka_topic
+        if self.lakehouse_id is not None:
+            result['LakehouseId'] = self.lakehouse_id
+        if self.max_offsets_per_trigger is not None:
+            result['MaxOffsetsPerTrigger'] = self.max_offsets_per_trigger
+        if self.oss_location is not None:
+            result['OssLocation'] = self.oss_location
+        if self.output_format is not None:
+            result['OutputFormat'] = self.output_format
+        if self.partition_specs_shrink is not None:
+            result['PartitionSpecs'] = self.partition_specs_shrink
+        if self.primary_key_definition is not None:
+            result['PrimaryKeyDefinition'] = self.primary_key_definition
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group is not None:
+            result['ResourceGroup'] = self.resource_group
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+        if self.starting_offsets is not None:
+            result['StartingOffsets'] = self.starting_offsets
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.target_generate_rule is not None:
+            result['TargetGenerateRule'] = self.target_generate_rule
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
+        if self.workload_name is not None:
+            result['WorkloadName'] = self.workload_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcrossRole') is not None:
+            self.across_role = m.get('AcrossRole')
+        if m.get('AcrossUid') is not None:
+            self.across_uid = m.get('AcrossUid')
+        if m.get('AdvancedConfig') is not None:
+            self.advanced_config = m.get('AdvancedConfig')
+        if m.get('Columns') is not None:
+            self.columns_shrink = m.get('Columns')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DataOutputFormat') is not None:
+            self.data_output_format = m.get('DataOutputFormat')
+        if m.get('DatasourceId') is not None:
+            self.datasource_id = m.get('DatasourceId')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('FullComputeUnit') is not None:
+            self.full_compute_unit = m.get('FullComputeUnit')
+        if m.get('HudiAdvancedConfig') is not None:
+            self.hudi_advanced_config = m.get('HudiAdvancedConfig')
+        if m.get('IncrementalComputeUnit') is not None:
+            self.incremental_compute_unit = m.get('IncrementalComputeUnit')
+        if m.get('JsonParseLevel') is not None:
+            self.json_parse_level = m.get('JsonParseLevel')
+        if m.get('KafkaClusterId') is not None:
+            self.kafka_cluster_id = m.get('KafkaClusterId')
+        if m.get('KafkaTopic') is not None:
+            self.kafka_topic = m.get('KafkaTopic')
+        if m.get('LakehouseId') is not None:
+            self.lakehouse_id = m.get('LakehouseId')
+        if m.get('MaxOffsetsPerTrigger') is not None:
+            self.max_offsets_per_trigger = m.get('MaxOffsetsPerTrigger')
+        if m.get('OssLocation') is not None:
+            self.oss_location = m.get('OssLocation')
+        if m.get('OutputFormat') is not None:
+            self.output_format = m.get('OutputFormat')
+        if m.get('PartitionSpecs') is not None:
+            self.partition_specs_shrink = m.get('PartitionSpecs')
+        if m.get('PrimaryKeyDefinition') is not None:
+            self.primary_key_definition = m.get('PrimaryKeyDefinition')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroup') is not None:
+            self.resource_group = m.get('ResourceGroup')
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
+        if m.get('StartingOffsets') is not None:
+            self.starting_offsets = m.get('StartingOffsets')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TargetGenerateRule') is not None:
+            self.target_generate_rule = m.get('TargetGenerateRule')
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
+        if m.get('WorkloadName') is not None:
+            self.workload_name = m.get('WorkloadName')
+        return self
+
+
+class CreateApsKafkaHudiJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateApsKafkaHudiJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateApsKafkaHudiJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateApsKafkaHudiJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateApsSlsADBJobRequestColumns(TeaModel):
     def __init__(
         self,
@@ -6691,11 +7270,19 @@ class CreateDBResourceGroupRequestRayConfig(TeaModel):
     def __init__(
         self,
         category: str = None,
+        enable_user_eni: bool = None,
+        head_allocate_unit: str = None,
+        head_disk_capacity: str = None,
         head_spec: str = None,
+        head_spec_type: str = None,
         worker_groups: List[CreateDBResourceGroupRequestRayConfigWorkerGroups] = None,
     ):
         self.category = category
+        self.enable_user_eni = enable_user_eni
+        self.head_allocate_unit = head_allocate_unit
+        self.head_disk_capacity = head_disk_capacity
         self.head_spec = head_spec
+        self.head_spec_type = head_spec_type
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -6712,8 +7299,16 @@ class CreateDBResourceGroupRequestRayConfig(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.enable_user_eni is not None:
+            result['EnableUserEni'] = self.enable_user_eni
+        if self.head_allocate_unit is not None:
+            result['HeadAllocateUnit'] = self.head_allocate_unit
+        if self.head_disk_capacity is not None:
+            result['HeadDiskCapacity'] = self.head_disk_capacity
         if self.head_spec is not None:
             result['HeadSpec'] = self.head_spec
+        if self.head_spec_type is not None:
+            result['HeadSpecType'] = self.head_spec_type
         result['WorkerGroups'] = []
         if self.worker_groups is not None:
             for k in self.worker_groups:
@@ -6724,8 +7319,16 @@ class CreateDBResourceGroupRequestRayConfig(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('EnableUserEni') is not None:
+            self.enable_user_eni = m.get('EnableUserEni')
+        if m.get('HeadAllocateUnit') is not None:
+            self.head_allocate_unit = m.get('HeadAllocateUnit')
+        if m.get('HeadDiskCapacity') is not None:
+            self.head_disk_capacity = m.get('HeadDiskCapacity')
         if m.get('HeadSpec') is not None:
             self.head_spec = m.get('HeadSpec')
+        if m.get('HeadSpecType') is not None:
+            self.head_spec_type = m.get('HeadSpecType')
         self.worker_groups = []
         if m.get('WorkerGroups') is not None:
             for k in m.get('WorkerGroups'):
@@ -21318,6 +21921,126 @@ class DescribeDBClusterPerformanceResponse(TeaModel):
         return self
 
 
+class DescribeDBClusterSSLRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeDBClusterSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        expire_time: str = None,
+        request_id: str = None,
+        sslenabled: bool = None,
+    ):
+        self.connection_string = connection_string
+        self.expire_time = expire_time
+        self.request_id = request_id
+        self.sslenabled = sslenabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sslenabled is not None:
+            result['SSLEnabled'] = self.sslenabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SSLEnabled') is not None:
+            self.sslenabled = m.get('SSLEnabled')
+        return self
+
+
+class DescribeDBClusterSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBClusterSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBClusterSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBClusterSpaceSummaryRequest(TeaModel):
     def __init__(
         self,
@@ -22833,14 +23556,22 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(TeaModel):
     def __init__(
         self,
         category: str = None,
+        enable_user_eni: bool = None,
+        head_allocate_unit: str = None,
+        head_disk_capacity: str = None,
         head_spec: str = None,
+        head_spec_type: str = None,
         ray_cluster_address: str = None,
         ray_dashboard_address: str = None,
         ray_grafana_address: str = None,
         worker_groups: List[DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups] = None,
     ):
         self.category = category
+        self.enable_user_eni = enable_user_eni
+        self.head_allocate_unit = head_allocate_unit
+        self.head_disk_capacity = head_disk_capacity
         self.head_spec = head_spec
+        self.head_spec_type = head_spec_type
         self.ray_cluster_address = ray_cluster_address
         self.ray_dashboard_address = ray_dashboard_address
         self.ray_grafana_address = ray_grafana_address
@@ -22860,8 +23591,16 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.enable_user_eni is not None:
+            result['EnableUserEni'] = self.enable_user_eni
+        if self.head_allocate_unit is not None:
+            result['HeadAllocateUnit'] = self.head_allocate_unit
+        if self.head_disk_capacity is not None:
+            result['HeadDiskCapacity'] = self.head_disk_capacity
         if self.head_spec is not None:
             result['HeadSpec'] = self.head_spec
+        if self.head_spec_type is not None:
+            result['HeadSpecType'] = self.head_spec_type
         if self.ray_cluster_address is not None:
             result['RayClusterAddress'] = self.ray_cluster_address
         if self.ray_dashboard_address is not None:
@@ -22878,8 +23617,16 @@ class DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('EnableUserEni') is not None:
+            self.enable_user_eni = m.get('EnableUserEni')
+        if m.get('HeadAllocateUnit') is not None:
+            self.head_allocate_unit = m.get('HeadAllocateUnit')
+        if m.get('HeadDiskCapacity') is not None:
+            self.head_disk_capacity = m.get('HeadDiskCapacity')
         if m.get('HeadSpec') is not None:
             self.head_spec = m.get('HeadSpec')
+        if m.get('HeadSpecType') is not None:
+            self.head_spec_type = m.get('HeadSpecType')
         if m.get('RayClusterAddress') is not None:
             self.ray_cluster_address = m.get('RayClusterAddress')
         if m.get('RayDashboardAddress') is not None:
@@ -26740,6 +27487,775 @@ class DescribeExecutorDetectionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeExecutorDetectionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHistoryTasksRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        # This parameter is required.
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_id = resource_owner_id
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        # This parameter is required.
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DescribeHistoryTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        action_info: str = None,
+        caller_source: str = None,
+        caller_uid: str = None,
+        current_step_name: str = None,
+        db_type: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        product: str = None,
+        progress: float = None,
+        reason_code: str = None,
+        region_id: str = None,
+        remain_time: int = None,
+        start_time: str = None,
+        status: str = None,
+        task_detail: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        uid: str = None,
+    ):
+        self.action_info = action_info
+        self.caller_source = caller_source
+        self.caller_uid = caller_uid
+        self.current_step_name = current_step_name
+        self.db_type = db_type
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.product = product
+        self.progress = progress
+        self.reason_code = reason_code
+        self.region_id = region_id
+        self.remain_time = remain_time
+        self.start_time = start_time
+        self.status = status
+        self.task_detail = task_detail
+        self.task_id = task_id
+        self.task_type = task_type
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.caller_source is not None:
+            result['CallerSource'] = self.caller_source
+        if self.caller_uid is not None:
+            result['CallerUid'] = self.caller_uid
+        if self.current_step_name is not None:
+            result['CurrentStepName'] = self.current_step_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remain_time is not None:
+            result['RemainTime'] = self.remain_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_detail is not None:
+            result['TaskDetail'] = self.task_detail
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('CallerSource') is not None:
+            self.caller_source = m.get('CallerSource')
+        if m.get('CallerUid') is not None:
+            self.caller_uid = m.get('CallerUid')
+        if m.get('CurrentStepName') is not None:
+            self.current_step_name = m.get('CurrentStepName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemainTime') is not None:
+            self.remain_time = m.get('RemainTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskDetail') is not None:
+            self.task_detail = m.get('TaskDetail')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class DescribeHistoryTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: DescribeHistoryTasksResponseBodyAccessDeniedDetail = None,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[DescribeHistoryTasksResponseBodyItems] = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.http_status_code = http_status_code
+        self.items = items
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = DescribeHistoryTasksResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHistoryTasksStatRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: int = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        # This parameter is required.
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        # This parameter is required.
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBodyAccessDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        auth_action: str = None,
+        auth_principal_display_name: str = None,
+        auth_principal_owner_id: str = None,
+        auth_principal_type: str = None,
+        encoded_diagnostic_message: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+    ):
+        self.auth_action = auth_action
+        self.auth_principal_display_name = auth_principal_display_name
+        self.auth_principal_owner_id = auth_principal_owner_id
+        self.auth_principal_type = auth_principal_type
+        self.encoded_diagnostic_message = encoded_diagnostic_message
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_action is not None:
+            result['AuthAction'] = self.auth_action
+        if self.auth_principal_display_name is not None:
+            result['AuthPrincipalDisplayName'] = self.auth_principal_display_name
+        if self.auth_principal_owner_id is not None:
+            result['AuthPrincipalOwnerId'] = self.auth_principal_owner_id
+        if self.auth_principal_type is not None:
+            result['AuthPrincipalType'] = self.auth_principal_type
+        if self.encoded_diagnostic_message is not None:
+            result['EncodedDiagnosticMessage'] = self.encoded_diagnostic_message
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthAction') is not None:
+            self.auth_action = m.get('AuthAction')
+        if m.get('AuthPrincipalDisplayName') is not None:
+            self.auth_principal_display_name = m.get('AuthPrincipalDisplayName')
+        if m.get('AuthPrincipalOwnerId') is not None:
+            self.auth_principal_owner_id = m.get('AuthPrincipalOwnerId')
+        if m.get('AuthPrincipalType') is not None:
+            self.auth_principal_type = m.get('AuthPrincipalType')
+        if m.get('EncodedDiagnosticMessage') is not None:
+            self.encoded_diagnostic_message = m.get('EncodedDiagnosticMessage')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        total_count: int = None,
+    ):
+        self.status = status
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: DescribeHistoryTasksStatResponseBodyAccessDeniedDetail = None,
+        code: str = None,
+        http_status_code: int = None,
+        items: List[DescribeHistoryTasksStatResponseBodyItems] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.http_status_code = http_status_code
+        self.items = items
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.access_denied_detail:
+            self.access_denied_detail.validate()
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail.to_map()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            temp_model = DescribeHistoryTasksStatResponseBodyAccessDeniedDetail()
+            self.access_denied_detail = temp_model.from_map(m['AccessDeniedDetail'])
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksStatResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeHistoryTasksStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksStatResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -36918,6 +38434,208 @@ class ExistRunningSQLEngineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExistRunningSQLEngineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetADBSparkNecessaryRAMPermissionsRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        return self
+
+
+class GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        no_permission_type: str = None,
+        policy_type: str = None,
+        principal_type: str = None,
+        resource_auth_target_info: str = None,
+        resource_owner_id: str = None,
+    ):
+        self.action = action
+        self.no_permission_type = no_permission_type
+        self.policy_type = policy_type
+        self.principal_type = principal_type
+        self.resource_auth_target_info = resource_auth_target_info
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.no_permission_type is not None:
+            result['NoPermissionType'] = self.no_permission_type
+        if self.policy_type is not None:
+            result['PolicyType'] = self.policy_type
+        if self.principal_type is not None:
+            result['PrincipalType'] = self.principal_type
+        if self.resource_auth_target_info is not None:
+            result['ResourceAuthTargetInfo'] = self.resource_auth_target_info
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('NoPermissionType') is not None:
+            self.no_permission_type = m.get('NoPermissionType')
+        if m.get('PolicyType') is not None:
+            self.policy_type = m.get('PolicyType')
+        if m.get('PrincipalType') is not None:
+            self.principal_type = m.get('PrincipalType')
+        if m.get('ResourceAuthTargetInfo') is not None:
+            self.resource_auth_target_info = m.get('ResourceAuthTargetInfo')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GetADBSparkNecessaryRAMPermissionsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        denied_detail: GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail = None,
+        passed: bool = None,
+        suggestion: str = None,
+    ):
+        self.denied_detail = denied_detail
+        self.passed = passed
+        self.suggestion = suggestion
+
+    def validate(self):
+        if self.denied_detail:
+            self.denied_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.denied_detail is not None:
+            result['DeniedDetail'] = self.denied_detail.to_map()
+        if self.passed is not None:
+            result['Passed'] = self.passed
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeniedDetail') is not None:
+            temp_model = GetADBSparkNecessaryRAMPermissionsResponseBodyDataDeniedDetail()
+            self.denied_detail = temp_model.from_map(m['DeniedDetail'])
+        if m.get('Passed') is not None:
+            self.passed = m.get('Passed')
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        return self
+
+
+class GetADBSparkNecessaryRAMPermissionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetADBSparkNecessaryRAMPermissionsResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetADBSparkNecessaryRAMPermissionsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetADBSparkNecessaryRAMPermissionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetADBSparkNecessaryRAMPermissionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetADBSparkNecessaryRAMPermissionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48554,6 +50272,121 @@ class ModifyDBClusterResourceGroupResponse(TeaModel):
         return self
 
 
+class ModifyDBClusterSSLRequest(TeaModel):
+    def __init__(
+        self,
+        connection_string: str = None,
+        dbcluster_id: str = None,
+        enable_ssl: bool = None,
+        region_id: str = None,
+    ):
+        self.connection_string = connection_string
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.enable_ssl = enable_ssl
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ModifyDBClusterSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBClusterSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBClusterSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBClusterSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDBClusterVipRequest(TeaModel):
     def __init__(
         self,
@@ -48755,11 +50588,19 @@ class ModifyDBResourceGroupRequestRayConfig(TeaModel):
     def __init__(
         self,
         category: str = None,
+        enable_user_eni: bool = None,
+        head_allocate_unit: str = None,
+        head_disk_capacity: str = None,
         head_spec: str = None,
+        head_spec_type: str = None,
         worker_groups: List[ModifyDBResourceGroupRequestRayConfigWorkerGroups] = None,
     ):
         self.category = category
+        self.enable_user_eni = enable_user_eni
+        self.head_allocate_unit = head_allocate_unit
+        self.head_disk_capacity = head_disk_capacity
         self.head_spec = head_spec
+        self.head_spec_type = head_spec_type
         self.worker_groups = worker_groups
 
     def validate(self):
@@ -48776,8 +50617,16 @@ class ModifyDBResourceGroupRequestRayConfig(TeaModel):
         result = dict()
         if self.category is not None:
             result['Category'] = self.category
+        if self.enable_user_eni is not None:
+            result['EnableUserEni'] = self.enable_user_eni
+        if self.head_allocate_unit is not None:
+            result['HeadAllocateUnit'] = self.head_allocate_unit
+        if self.head_disk_capacity is not None:
+            result['HeadDiskCapacity'] = self.head_disk_capacity
         if self.head_spec is not None:
             result['HeadSpec'] = self.head_spec
+        if self.head_spec_type is not None:
+            result['HeadSpecType'] = self.head_spec_type
         result['WorkerGroups'] = []
         if self.worker_groups is not None:
             for k in self.worker_groups:
@@ -48788,8 +50637,16 @@ class ModifyDBResourceGroupRequestRayConfig(TeaModel):
         m = m or dict()
         if m.get('Category') is not None:
             self.category = m.get('Category')
+        if m.get('EnableUserEni') is not None:
+            self.enable_user_eni = m.get('EnableUserEni')
+        if m.get('HeadAllocateUnit') is not None:
+            self.head_allocate_unit = m.get('HeadAllocateUnit')
+        if m.get('HeadDiskCapacity') is not None:
+            self.head_disk_capacity = m.get('HeadDiskCapacity')
         if m.get('HeadSpec') is not None:
             self.head_spec = m.get('HeadSpec')
+        if m.get('HeadSpecType') is not None:
+            self.head_spec_type = m.get('HeadSpecType')
         self.worker_groups = []
         if m.get('WorkerGroups') is not None:
             for k in m.get('WorkerGroups'):

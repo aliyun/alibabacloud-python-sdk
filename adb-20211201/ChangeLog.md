@@ -1,3 +1,24 @@
+2025-08-20 Version: 3.2.0
+- Support API CreateApsKafkaHudiJob.
+- Support API DescribeDBClusterSSL.
+- Support API DescribeHistoryTasks.
+- Support API DescribeHistoryTasksStat.
+- Support API GetADBSparkNecessaryRAMPermissions.
+- Support API ModifyDBClusterSSL.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.EnableUserEni.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.HeadAllocateUnit.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.HeadDiskCapacity.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.HeadSpecType.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.EnableUserEni.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.HeadAllocateUnit.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.HeadDiskCapacity.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.HeadSpecType.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.EnableUserEni.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.HeadAllocateUnit.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.HeadDiskCapacity.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.HeadSpecType.
+
+
 2025-07-09 Version: 3.1.3
 - Update API ApplyAdviceById: add request parameters ApplyType.
 - Update API ApplyAdviceById: add request parameters BuildImmediately.

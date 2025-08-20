@@ -1907,6 +1907,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_aps_hive_job_with_options_async(request, runtime)
 
+    def create_aps_kafka_hudi_job_with_options(
+        self,
+        tmp_req: adb_20211201_models.CreateApsKafkaHudiJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
+        """
+        @summary 创建Kafka到Huid的APS链路
+        
+        @param tmp_req: CreateApsKafkaHudiJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsKafkaHudiJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsKafkaHudiJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.partition_specs):
+            request.partition_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition_specs, 'PartitionSpecs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.across_role):
+            body['AcrossRole'] = request.across_role
+        if not UtilClient.is_unset(request.across_uid):
+            body['AcrossUid'] = request.across_uid
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_output_format):
+            body['DataOutputFormat'] = request.data_output_format
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.hudi_advanced_config):
+            body['HudiAdvancedConfig'] = request.hudi_advanced_config
+        if not UtilClient.is_unset(request.incremental_compute_unit):
+            body['IncrementalComputeUnit'] = request.incremental_compute_unit
+        if not UtilClient.is_unset(request.json_parse_level):
+            body['JsonParseLevel'] = request.json_parse_level
+        if not UtilClient.is_unset(request.kafka_cluster_id):
+            body['KafkaClusterId'] = request.kafka_cluster_id
+        if not UtilClient.is_unset(request.kafka_topic):
+            body['KafkaTopic'] = request.kafka_topic
+        if not UtilClient.is_unset(request.lakehouse_id):
+            body['LakehouseId'] = request.lakehouse_id
+        if not UtilClient.is_unset(request.max_offsets_per_trigger):
+            body['MaxOffsetsPerTrigger'] = request.max_offsets_per_trigger
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.partition_specs_shrink):
+            body['PartitionSpecs'] = request.partition_specs_shrink
+        if not UtilClient.is_unset(request.primary_key_definition):
+            body['PrimaryKeyDefinition'] = request.primary_key_definition
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.source_region_id):
+            body['SourceRegionId'] = request.source_region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_generate_rule):
+            body['TargetGenerateRule'] = request.target_generate_rule
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsKafkaHudiJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateApsKafkaHudiJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_aps_kafka_hudi_job_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.CreateApsKafkaHudiJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
+        """
+        @summary 创建Kafka到Huid的APS链路
+        
+        @param tmp_req: CreateApsKafkaHudiJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApsKafkaHudiJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.CreateApsKafkaHudiJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.columns):
+            request.columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.columns, 'Columns', 'json')
+        if not UtilClient.is_unset(tmp_req.partition_specs):
+            request.partition_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.partition_specs, 'PartitionSpecs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.across_role):
+            body['AcrossRole'] = request.across_role
+        if not UtilClient.is_unset(request.across_uid):
+            body['AcrossUid'] = request.across_uid
+        if not UtilClient.is_unset(request.advanced_config):
+            body['AdvancedConfig'] = request.advanced_config
+        if not UtilClient.is_unset(request.columns_shrink):
+            body['Columns'] = request.columns_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.data_output_format):
+            body['DataOutputFormat'] = request.data_output_format
+        if not UtilClient.is_unset(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not UtilClient.is_unset(request.db_name):
+            body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.full_compute_unit):
+            body['FullComputeUnit'] = request.full_compute_unit
+        if not UtilClient.is_unset(request.hudi_advanced_config):
+            body['HudiAdvancedConfig'] = request.hudi_advanced_config
+        if not UtilClient.is_unset(request.incremental_compute_unit):
+            body['IncrementalComputeUnit'] = request.incremental_compute_unit
+        if not UtilClient.is_unset(request.json_parse_level):
+            body['JsonParseLevel'] = request.json_parse_level
+        if not UtilClient.is_unset(request.kafka_cluster_id):
+            body['KafkaClusterId'] = request.kafka_cluster_id
+        if not UtilClient.is_unset(request.kafka_topic):
+            body['KafkaTopic'] = request.kafka_topic
+        if not UtilClient.is_unset(request.lakehouse_id):
+            body['LakehouseId'] = request.lakehouse_id
+        if not UtilClient.is_unset(request.max_offsets_per_trigger):
+            body['MaxOffsetsPerTrigger'] = request.max_offsets_per_trigger
+        if not UtilClient.is_unset(request.oss_location):
+            body['OssLocation'] = request.oss_location
+        if not UtilClient.is_unset(request.output_format):
+            body['OutputFormat'] = request.output_format
+        if not UtilClient.is_unset(request.partition_specs_shrink):
+            body['PartitionSpecs'] = request.partition_specs_shrink
+        if not UtilClient.is_unset(request.primary_key_definition):
+            body['PrimaryKeyDefinition'] = request.primary_key_definition
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group):
+            body['ResourceGroup'] = request.resource_group
+        if not UtilClient.is_unset(request.source_region_id):
+            body['SourceRegionId'] = request.source_region_id
+        if not UtilClient.is_unset(request.starting_offsets):
+            body['StartingOffsets'] = request.starting_offsets
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_generate_rule):
+            body['TargetGenerateRule'] = request.target_generate_rule
+        if not UtilClient.is_unset(request.target_type):
+            body['TargetType'] = request.target_type
+        if not UtilClient.is_unset(request.workload_name):
+            body['WorkloadName'] = request.workload_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateApsKafkaHudiJob',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateApsKafkaHudiJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_aps_kafka_hudi_job(
+        self,
+        request: adb_20211201_models.CreateApsKafkaHudiJobRequest,
+    ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
+        """
+        @summary 创建Kafka到Huid的APS链路
+        
+        @param request: CreateApsKafkaHudiJobRequest
+        @return: CreateApsKafkaHudiJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_aps_kafka_hudi_job_with_options(request, runtime)
+
+    async def create_aps_kafka_hudi_job_async(
+        self,
+        request: adb_20211201_models.CreateApsKafkaHudiJobRequest,
+    ) -> adb_20211201_models.CreateApsKafkaHudiJobResponse:
+        """
+        @summary 创建Kafka到Huid的APS链路
+        
+        @param request: CreateApsKafkaHudiJobRequest
+        @return: CreateApsKafkaHudiJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_aps_kafka_hudi_job_with_options_async(request, runtime)
+
     def create_aps_sls_adbjob_with_options(
         self,
         tmp_req: adb_20211201_models.CreateApsSlsADBJobRequest,
@@ -9099,6 +9315,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
+    def describe_dbcluster_sslwith_options(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
+        """
+        @summary 获取SSL配置信息
+        
+        @param request: DescribeDBClusterSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSSL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_sslwith_options_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
+        """
+        @summary 获取SSL配置信息
+        
+        @param request: DescribeDBClusterSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBClusterSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterSSL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_ssl(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSSLRequest,
+    ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
+        """
+        @summary 获取SSL配置信息
+        
+        @param request: DescribeDBClusterSSLRequest
+        @return: DescribeDBClusterSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_sslwith_options(request, runtime)
+
+    async def describe_dbcluster_ssl_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterSSLRequest,
+    ) -> adb_20211201_models.DescribeDBClusterSSLResponse:
+        """
+        @summary 获取SSL配置信息
+        
+        @param request: DescribeDBClusterSSLRequest
+        @return: DescribeDBClusterSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_sslwith_options_async(request, runtime)
+
     def describe_dbcluster_space_summary_with_options(
         self,
         request: adb_20211201_models.DescribeDBClusterSpaceSummaryRequest,
@@ -11058,6 +11374,306 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_executor_detection_with_options_async(request, runtime)
+
+    def describe_history_tasks_with_options(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeHistoryTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasks',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeHistoryTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksRequest,
+    ) -> adb_20211201_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_with_options(request, runtime)
+
+    async def describe_history_tasks_async(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksRequest,
+    ) -> adb_20211201_models.DescribeHistoryTasksResponse:
+        """
+        @summary 任务中心任务列表
+        
+        @param request: DescribeHistoryTasksRequest
+        @return: DescribeHistoryTasksResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_with_options_async(request, runtime)
+
+    def describe_history_tasks_stat_with_options(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary 任务中心任务统计
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeHistoryTasksStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_stat_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary 任务中心任务统计
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHistoryTasksStatResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeHistoryTasksStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks_stat(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksStatRequest,
+    ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary 任务中心任务统计
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @return: DescribeHistoryTasksStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_stat_with_options(request, runtime)
+
+    async def describe_history_tasks_stat_async(
+        self,
+        request: adb_20211201_models.DescribeHistoryTasksStatRequest,
+    ) -> adb_20211201_models.DescribeHistoryTasksStatResponse:
+        """
+        @summary 任务中心任务统计
+        
+        @param request: DescribeHistoryTasksStatRequest
+        @return: DescribeHistoryTasksStatResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_stat_with_options_async(request, runtime)
 
     def describe_inclined_nodes_with_options(
         self,
@@ -16090,6 +16706,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.exist_running_sqlengine_with_options_async(request, runtime)
+
+    def get_adbspark_necessary_rampermissions_with_options(
+        self,
+        request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
+        """
+        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        
+        @param request: GetADBSparkNecessaryRAMPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetADBSparkNecessaryRAMPermissionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetADBSparkNecessaryRAMPermissions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_adbspark_necessary_rampermissions_with_options_async(
+        self,
+        request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
+        """
+        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        
+        @param request: GetADBSparkNecessaryRAMPermissionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetADBSparkNecessaryRAMPermissionsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetADBSparkNecessaryRAMPermissions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_adbspark_necessary_rampermissions(
+        self,
+        request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
+    ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
+        """
+        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        
+        @param request: GetADBSparkNecessaryRAMPermissionsRequest
+        @return: GetADBSparkNecessaryRAMPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_adbspark_necessary_rampermissions_with_options(request, runtime)
+
+    async def get_adbspark_necessary_rampermissions_async(
+        self,
+        request: adb_20211201_models.GetADBSparkNecessaryRAMPermissionsRequest,
+    ) -> adb_20211201_models.GetADBSparkNecessaryRAMPermissionsResponse:
+        """
+        @summary 获取Spark权限说明,失败时给出配置权限的帮助信息
+        
+        @param request: GetADBSparkNecessaryRAMPermissionsRequest
+        @return: GetADBSparkNecessaryRAMPermissionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_adbspark_necessary_rampermissions_with_options_async(request, runtime)
 
     def get_aps_managed_databases_with_options(
         self,
@@ -23014,6 +23726,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_resource_group_with_options_async(request, runtime)
+
+    def modify_dbcluster_sslwith_options(
+        self,
+        request: adb_20211201_models.ModifyDBClusterSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
+        """
+        @summary 配置SSL
+        
+        @param request: ModifyDBClusterSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterSSL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyDBClusterSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbcluster_sslwith_options_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
+        """
+        @summary 配置SSL
+        
+        @param request: ModifyDBClusterSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterSSLResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_string):
+            query['ConnectionString'] = request.connection_string
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_ssl):
+            query['EnableSSL'] = request.enable_ssl
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBClusterSSL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyDBClusterSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbcluster_ssl(
+        self,
+        request: adb_20211201_models.ModifyDBClusterSSLRequest,
+    ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
+        """
+        @summary 配置SSL
+        
+        @param request: ModifyDBClusterSSLRequest
+        @return: ModifyDBClusterSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbcluster_sslwith_options(request, runtime)
+
+    async def modify_dbcluster_ssl_async(
+        self,
+        request: adb_20211201_models.ModifyDBClusterSSLRequest,
+    ) -> adb_20211201_models.ModifyDBClusterSSLResponse:
+        """
+        @summary 配置SSL
+        
+        @param request: ModifyDBClusterSSLRequest
+        @return: ModifyDBClusterSSLResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbcluster_sslwith_options_async(request, runtime)
 
     def modify_dbcluster_vip_with_options(
         self,
