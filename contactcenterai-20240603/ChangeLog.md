@@ -1,3 +1,6 @@
+2025-08-20 Version: 3.6.6
+- Generated python 2024-06-03 for ContactCenterAI.
+
 2025-06-20 Version: 3.6.5
 - Update API CreateTask: add request parameters body.transcription.languageHints.
 
