@@ -1,3 +1,6 @@
+2025-08-20 Version: 2.1.4
+- Generated python 2016-11-01 for live.
+
 2025-08-12 Version: 2.1.3
 - Update API DescribeLiveRecordNotifyRecords: add response parameters Body.CallbackList.$.NotifyResponse.
 - Update API DescribeRtcCloudRecordingFiles: add response parameters Body.TaskInfo.RecordFileList.VodMediaList.
