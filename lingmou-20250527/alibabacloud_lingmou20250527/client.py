@@ -41,6 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def close_chat_instance_sessions_with_options(
+        self,
+        instance_id: str,
+        tmp_req: ling_mou_20250527_models.CloseChatInstanceSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CloseChatInstanceSessionsResponse:
+        """
+        @summary 关闭会话实例session
+        
+        @param tmp_req: CloseChatInstanceSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseChatInstanceSessionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.CloseChatInstanceSessionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_ids):
+            request.session_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_ids, 'sessionIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.session_ids_shrink):
+            body['sessionIds'] = request.session_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseChatInstanceSessions',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sessions/close',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CloseChatInstanceSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_chat_instance_sessions_with_options_async(
+        self,
+        instance_id: str,
+        tmp_req: ling_mou_20250527_models.CloseChatInstanceSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.CloseChatInstanceSessionsResponse:
+        """
+        @summary 关闭会话实例session
+        
+        @param tmp_req: CloseChatInstanceSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseChatInstanceSessionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.CloseChatInstanceSessionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_ids):
+            request.session_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_ids, 'sessionIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.session_ids_shrink):
+            body['sessionIds'] = request.session_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CloseChatInstanceSessions',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sessions/close',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.CloseChatInstanceSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_chat_instance_sessions(
+        self,
+        instance_id: str,
+        request: ling_mou_20250527_models.CloseChatInstanceSessionsRequest,
+    ) -> ling_mou_20250527_models.CloseChatInstanceSessionsResponse:
+        """
+        @summary 关闭会话实例session
+        
+        @param request: CloseChatInstanceSessionsRequest
+        @return: CloseChatInstanceSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.close_chat_instance_sessions_with_options(instance_id, request, headers, runtime)
+
+    async def close_chat_instance_sessions_async(
+        self,
+        instance_id: str,
+        request: ling_mou_20250527_models.CloseChatInstanceSessionsRequest,
+    ) -> ling_mou_20250527_models.CloseChatInstanceSessionsResponse:
+        """
+        @summary 关闭会话实例session
+        
+        @param request: CloseChatInstanceSessionsRequest
+        @return: CloseChatInstanceSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.close_chat_instance_sessions_with_options_async(instance_id, request, headers, runtime)
+
     def create_chat_session_with_options(
         self,
         id: str,
@@ -156,3 +272,119 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_chat_session_with_options_async(id, request, headers, runtime)
+
+    def query_chat_instance_sessions_with_options(
+        self,
+        instance_id: str,
+        tmp_req: ling_mou_20250527_models.QueryChatInstanceSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.QueryChatInstanceSessionsResponse:
+        """
+        @summary 查询会话实例session
+        
+        @param tmp_req: QueryChatInstanceSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryChatInstanceSessionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.QueryChatInstanceSessionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_ids):
+            request.session_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_ids, 'sessionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.session_ids_shrink):
+            query['sessionIds'] = request.session_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryChatInstanceSessions',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.QueryChatInstanceSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_chat_instance_sessions_with_options_async(
+        self,
+        instance_id: str,
+        tmp_req: ling_mou_20250527_models.QueryChatInstanceSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ling_mou_20250527_models.QueryChatInstanceSessionsResponse:
+        """
+        @summary 查询会话实例session
+        
+        @param tmp_req: QueryChatInstanceSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryChatInstanceSessionsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ling_mou_20250527_models.QueryChatInstanceSessionsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.session_ids):
+            request.session_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.session_ids, 'sessionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.session_ids_shrink):
+            query['sessionIds'] = request.session_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryChatInstanceSessions',
+            version='2025-05-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/chat/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ling_mou_20250527_models.QueryChatInstanceSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_chat_instance_sessions(
+        self,
+        instance_id: str,
+        request: ling_mou_20250527_models.QueryChatInstanceSessionsRequest,
+    ) -> ling_mou_20250527_models.QueryChatInstanceSessionsResponse:
+        """
+        @summary 查询会话实例session
+        
+        @param request: QueryChatInstanceSessionsRequest
+        @return: QueryChatInstanceSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_chat_instance_sessions_with_options(instance_id, request, headers, runtime)
+
+    async def query_chat_instance_sessions_async(
+        self,
+        instance_id: str,
+        request: ling_mou_20250527_models.QueryChatInstanceSessionsRequest,
+    ) -> ling_mou_20250527_models.QueryChatInstanceSessionsResponse:
+        """
+        @summary 查询会话实例session
+        
+        @param request: QueryChatInstanceSessionsRequest
+        @return: QueryChatInstanceSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_chat_instance_sessions_with_options_async(instance_id, request, headers, runtime)
