@@ -873,6 +873,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_vocab_with_options_async(request, headers, runtime)
 
+    def general_analyze_image_with_options(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.GeneralAnalyzeImageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GeneralAnalyzeImageResponse:
+        """
+        @summary 通用图片分析
+        
+        @param request: GeneralAnalyzeImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GeneralAnalyzeImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.image_urls):
+            body['imageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GeneralAnalyzeImage',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/generalanalyzeImage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GeneralAnalyzeImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def general_analyze_image_with_options_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.GeneralAnalyzeImageRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> contact_center_ai20240603_models.GeneralAnalyzeImageResponse:
+        """
+        @summary 通用图片分析
+        
+        @param request: GeneralAnalyzeImageRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GeneralAnalyzeImageResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.custom_prompt):
+            body['customPrompt'] = request.custom_prompt
+        if not UtilClient.is_unset(request.image_urls):
+            body['imageUrls'] = request.image_urls
+        if not UtilClient.is_unset(request.stream):
+            body['stream'] = request.stream
+        if not UtilClient.is_unset(request.template_ids):
+            body['templateIds'] = request.template_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GeneralAnalyzeImage',
+            version='2024-06-03',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/ccai/app/{OpenApiUtilClient.get_encode_param(app_id)}/generalanalyzeImage',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            contact_center_ai20240603_models.GeneralAnalyzeImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def general_analyze_image(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.GeneralAnalyzeImageRequest,
+    ) -> contact_center_ai20240603_models.GeneralAnalyzeImageResponse:
+        """
+        @summary 通用图片分析
+        
+        @param request: GeneralAnalyzeImageRequest
+        @return: GeneralAnalyzeImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.general_analyze_image_with_options(workspace_id, app_id, request, headers, runtime)
+
+    async def general_analyze_image_async(
+        self,
+        workspace_id: str,
+        app_id: str,
+        request: contact_center_ai20240603_models.GeneralAnalyzeImageRequest,
+    ) -> contact_center_ai20240603_models.GeneralAnalyzeImageResponse:
+        """
+        @summary 通用图片分析
+        
+        @param request: GeneralAnalyzeImageRequest
+        @return: GeneralAnalyzeImageResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.general_analyze_image_with_options_async(workspace_id, app_id, request, headers, runtime)
+
     def get_task_result_with_options(
         self,
         tmp_req: contact_center_ai20240603_models.GetTaskResultRequest,

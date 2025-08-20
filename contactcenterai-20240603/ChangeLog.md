@@ -1,3 +1,7 @@
+2025-08-20 Version: 3.7.0
+- Support API GeneralAnalyzeImage.
+
+
 2025-08-20 Version: 3.6.6
 - Generated python 2024-06-03 for ContactCenterAI.
 
