@@ -105,11 +105,17 @@ class AppUseTimeReportRequestPayload(TeaModel):
         vip_type: int = None,
         origin_uuid: str = None,
     ):
+        # This parameter is required.
         self.action = action
+        # This parameter is required.
         self.is_privilege = is_privilege
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.step_code = step_code
+        # This parameter is required.
         self.vip_type = vip_type
         self.origin_uuid = origin_uuid
 
@@ -166,9 +172,13 @@ class AppUseTimeReportRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -217,6 +227,7 @@ class AppUseTimeReportRequest(TeaModel):
     ):
         self.device_info = device_info
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -264,6 +275,7 @@ class AppUseTimeReportShrinkRequest(TeaModel):
     ):
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -983,9 +995,13 @@ class CreateReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -1043,12 +1059,16 @@ class CreateReminderRequestPayloadRecurrenceRule(TeaModel):
         self.day = day
         self.days_of_month = days_of_month
         self.days_of_week = days_of_week
+        # This parameter is required.
         self.end_date_time = end_date_time
+        # This parameter is required.
         self.freq = freq
+        # This parameter is required.
         self.hour = hour
         self.minute = minute
         self.month = month
         self.second = second
+        # This parameter is required.
         self.start_date_time = start_date_time
         self.year = year
 
@@ -1119,8 +1139,11 @@ class CreateReminderRequestPayload(TeaModel):
         is_debug: bool = None,
         recurrence_rule: CreateReminderRequestPayloadRecurrenceRule = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.is_debug = is_debug
+        # This parameter is required.
         self.recurrence_rule = recurrence_rule
 
     def validate(self):
@@ -1162,9 +1185,13 @@ class CreateReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -1211,8 +1238,11 @@ class CreateReminderRequest(TeaModel):
         payload: CreateReminderRequestPayload = None,
         user_info: CreateReminderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -1258,8 +1288,11 @@ class CreateReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -1424,9 +1457,13 @@ class DeleteReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -1472,7 +1509,9 @@ class DeleteReminderRequestPayload(TeaModel):
         id: int = None,
         is_debug: bool = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.is_debug = is_debug
 
     def validate(self):
@@ -1508,9 +1547,13 @@ class DeleteReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -1557,8 +1600,11 @@ class DeleteReminderRequest(TeaModel):
         payload: DeleteReminderRequestPayload = None,
         user_info: DeleteReminderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -1604,8 +1650,11 @@ class DeleteReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -1848,9 +1897,13 @@ class GetAccountForAppRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -1899,6 +1952,7 @@ class GetAccountForAppRequest(TeaModel):
     ):
         self.device_info = device_info
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -1946,6 +2000,7 @@ class GetAccountForAppShrinkRequest(TeaModel):
     ):
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -2229,9 +2284,13 @@ class GetBusAppConfigRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -2280,6 +2339,7 @@ class GetBusAppConfigRequest(TeaModel):
     ):
         self.device_info = device_info
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -2327,6 +2387,7 @@ class GetBusAppConfigShrinkRequest(TeaModel):
     ):
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -2532,9 +2593,13 @@ class GetPhoneNumberRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -2583,9 +2648,13 @@ class GetPhoneNumberRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -2631,7 +2700,9 @@ class GetPhoneNumberRequest(TeaModel):
         device_info: GetPhoneNumberRequestDeviceInfo = None,
         user_info: GetPhoneNumberRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -2669,7 +2740,9 @@ class GetPhoneNumberShrinkRequest(TeaModel):
         device_info_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -2812,9 +2885,13 @@ class GetReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -2860,7 +2937,9 @@ class GetReminderRequestPayload(TeaModel):
         id: int = None,
         is_debug: bool = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.is_debug = is_debug
 
     def validate(self):
@@ -2896,9 +2975,13 @@ class GetReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -2945,8 +3028,11 @@ class GetReminderRequest(TeaModel):
         payload: GetReminderRequestPayload = None,
         user_info: GetReminderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -2992,8 +3078,11 @@ class GetReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -3347,9 +3436,13 @@ class ListRemindersRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -3394,6 +3487,7 @@ class ListRemindersRequestPayload(TeaModel):
         self,
         is_debug: bool = None,
     ):
+        # This parameter is required.
         self.is_debug = is_debug
 
     def validate(self):
@@ -3425,9 +3519,13 @@ class ListRemindersRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -3474,8 +3572,11 @@ class ListRemindersRequest(TeaModel):
         payload: ListRemindersRequestPayload = None,
         user_info: ListRemindersRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -3521,8 +3622,11 @@ class ListRemindersShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -3954,9 +4058,13 @@ class PullCashierRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -4005,6 +4113,7 @@ class PullCashierRequest(TeaModel):
     ):
         self.device_info = device_info
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -4052,6 +4161,7 @@ class PullCashierShrinkRequest(TeaModel):
     ):
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -4245,12 +4355,16 @@ class PushNotificationsRequestNotificationUnicastRequest(TeaModel):
         place_holder: Dict[str, str] = None,
         send_target: PushNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
         self.is_debug = is_debug
+        # This parameter is required.
         self.message_template_id = message_template_id
         self.organization_id = organization_id
         self.place_holder = place_holder
+        # This parameter is required.
         self.send_target = send_target
 
     def validate(self):
@@ -4325,6 +4439,7 @@ class PushNotificationsRequest(TeaModel):
         notification_unicast_request: PushNotificationsRequestNotificationUnicastRequest = None,
         tenant_info: PushNotificationsRequestTenantInfo = None,
     ):
+        # This parameter is required.
         self.notification_unicast_request = notification_unicast_request
         self.tenant_info = tenant_info
 
@@ -4363,6 +4478,7 @@ class PushNotificationsShrinkRequest(TeaModel):
         notification_unicast_request_shrink: str = None,
         tenant_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.notification_unicast_request_shrink = notification_unicast_request_shrink
         self.tenant_info_shrink = tenant_info_shrink
 
@@ -4471,9 +4587,13 @@ class SendNotificationsRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -4542,8 +4662,10 @@ class SendNotificationsRequestNotificationUnicastRequest(TeaModel):
         send_target: SendNotificationsRequestNotificationUnicastRequestSendTarget = None,
     ):
         self.is_debug = is_debug
+        # This parameter is required.
         self.message_template_id = message_template_id
         self.place_holder = place_holder
+        # This parameter is required.
         self.send_target = send_target
 
     def validate(self):
@@ -4609,9 +4731,13 @@ class SendNotificationsRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -4659,9 +4785,12 @@ class SendNotificationsRequest(TeaModel):
         tenant_info: SendNotificationsRequestTenantInfo = None,
         user_info: SendNotificationsRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.notification_unicast_request = notification_unicast_request
         self.tenant_info = tenant_info
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -4715,9 +4844,12 @@ class SendNotificationsShrinkRequest(TeaModel):
         tenant_info_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.notification_unicast_request_shrink = notification_unicast_request_shrink
         self.tenant_info_shrink = tenant_info_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -4785,6 +4917,241 @@ class SendNotificationsResponse(TeaModel):
         return self
 
 
+class ThirdImmediateMsgPushHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_aligenie_access_token: str = None,
+        authorization: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_aligenie_access_token = x_acs_aligenie_access_token
+        self.authorization = authorization
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_aligenie_access_token is not None:
+            result['x-acs-aligenie-access-token'] = self.x_acs_aligenie_access_token
+        if self.authorization is not None:
+            result['Authorization'] = self.authorization
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-aligenie-access-token') is not None:
+            self.x_acs_aligenie_access_token = m.get('x-acs-aligenie-access-token')
+        if m.get('Authorization') is not None:
+            self.authorization = m.get('Authorization')
+        return self
+
+
+class ThirdImmediateMsgPushRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        change_detail: str = None,
+        order_id: str = None,
+        psg_ids: str = None,
+        traffic_change_type: str = None,
+        traffic_change_type_desc: str = None,
+        traffic_journey_ids: str = None,
+        traffic_sub_order_ids: str = None,
+        user_id: str = None,
+    ):
+        self.biz_type = biz_type
+        self.change_detail = change_detail
+        self.order_id = order_id
+        self.psg_ids = psg_ids
+        self.traffic_change_type = traffic_change_type
+        self.traffic_change_type_desc = traffic_change_type_desc
+        self.traffic_journey_ids = traffic_journey_ids
+        self.traffic_sub_order_ids = traffic_sub_order_ids
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.change_detail is not None:
+            result['ChangeDetail'] = self.change_detail
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.psg_ids is not None:
+            result['PsgIds'] = self.psg_ids
+        if self.traffic_change_type is not None:
+            result['TrafficChangeType'] = self.traffic_change_type
+        if self.traffic_change_type_desc is not None:
+            result['TrafficChangeTypeDesc'] = self.traffic_change_type_desc
+        if self.traffic_journey_ids is not None:
+            result['TrafficJourneyIds'] = self.traffic_journey_ids
+        if self.traffic_sub_order_ids is not None:
+            result['TrafficSubOrderIds'] = self.traffic_sub_order_ids
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('ChangeDetail') is not None:
+            self.change_detail = m.get('ChangeDetail')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PsgIds') is not None:
+            self.psg_ids = m.get('PsgIds')
+        if m.get('TrafficChangeType') is not None:
+            self.traffic_change_type = m.get('TrafficChangeType')
+        if m.get('TrafficChangeTypeDesc') is not None:
+            self.traffic_change_type_desc = m.get('TrafficChangeTypeDesc')
+        if m.get('TrafficJourneyIds') is not None:
+            self.traffic_journey_ids = m.get('TrafficJourneyIds')
+        if m.get('TrafficSubOrderIds') is not None:
+            self.traffic_sub_order_ids = m.get('TrafficSubOrderIds')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ThirdImmediateMsgPushResponseBodyModel(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ThirdImmediateMsgPushResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_msg: str = None,
+        model: ThirdImmediateMsgPushResponseBodyModel = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.model = model
+        self.success = success
+
+    def validate(self):
+        if self.model:
+            self.model.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('Model') is not None:
+            temp_model = ThirdImmediateMsgPushResponseBodyModel()
+            self.model = temp_model.from_map(m['Model'])
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ThirdImmediateMsgPushResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ThirdImmediateMsgPushResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ThirdImmediateMsgPushResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateReminderHeaders(TeaModel):
     def __init__(
         self,
@@ -4833,9 +5200,13 @@ class UpdateReminderRequestDeviceInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -4893,12 +5264,16 @@ class UpdateReminderRequestPayloadRecurrenceRule(TeaModel):
         self.day = day
         self.days_of_month = days_of_month
         self.days_of_week = days_of_week
+        # This parameter is required.
         self.end_date_time = end_date_time
+        # This parameter is required.
         self.freq = freq
+        # This parameter is required.
         self.hour = hour
         self.minute = minute
         self.month = month
         self.second = second
+        # This parameter is required.
         self.start_date_time = start_date_time
         self.year = year
 
@@ -4970,9 +5345,13 @@ class UpdateReminderRequestPayload(TeaModel):
         is_debug: bool = None,
         recurrence_rule: UpdateReminderRequestPayloadRecurrenceRule = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.is_debug = is_debug
+        # This parameter is required.
         self.recurrence_rule = recurrence_rule
 
     def validate(self):
@@ -5018,9 +5397,13 @@ class UpdateReminderRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -5067,8 +5450,11 @@ class UpdateReminderRequest(TeaModel):
         payload: UpdateReminderRequestPayload = None,
         user_info: UpdateReminderRequestUserInfo = None,
     ):
+        # This parameter is required.
         self.device_info = device_info
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -5114,8 +5500,11 @@ class UpdateReminderShrinkRequest(TeaModel):
         payload_shrink: str = None,
         user_info_shrink: str = None,
     ):
+        # This parameter is required.
         self.device_info_shrink = device_info_shrink
+        # This parameter is required.
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -5334,13 +5723,18 @@ class VideoAppReportRequestPayload(TeaModel):
         pkg_name: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.is_login = is_login
+        # This parameter is required.
         self.is_vip = is_vip
         self.login_nick = login_nick
         self.origin_uuid = origin_uuid
         self.phone = phone
+        # This parameter is required.
         self.pkg_name = pkg_name
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5400,9 +5794,13 @@ class VideoAppReportRequestUserInfo(TeaModel):
         id_type: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.id_type = id_type
         self.organization_id = organization_id
 
@@ -5451,6 +5849,7 @@ class VideoAppReportRequest(TeaModel):
     ):
         self.device_info = device_info
         self.payload = payload
+        # This parameter is required.
         self.user_info = user_info
 
     def validate(self):
@@ -5498,6 +5897,7 @@ class VideoAppReportShrinkRequest(TeaModel):
     ):
         self.device_info_shrink = device_info_shrink
         self.payload_shrink = payload_shrink
+        # This parameter is required.
         self.user_info_shrink = user_info_shrink
 
     def validate(self):
@@ -5656,10 +6056,14 @@ class WakeUpAppRequestTargetInfo(TeaModel):
         target_identity: str = None,
         target_type: str = None,
     ):
+        # This parameter is required.
         self.encode_key = encode_key
+        # This parameter is required.
         self.encode_type = encode_type
         self.organization_id = organization_id
+        # This parameter is required.
         self.target_identity = target_identity
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -5706,7 +6110,9 @@ class WakeUpAppRequest(TeaModel):
         target_info: WakeUpAppRequestTargetInfo = None,
     ):
         self.is_debug = is_debug
+        # This parameter is required.
         self.path = path
+        # This parameter is required.
         self.target_info = target_info
 
     def validate(self):
