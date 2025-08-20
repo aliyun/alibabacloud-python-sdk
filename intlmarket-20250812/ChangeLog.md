@@ -1,3 +1,7 @@
+2025-08-20 Version: 1.1.1
+- Update API DescribePrice: add response parameters Body.Coupons.$.CouponDesc.
+
+
 2025-08-15 Version: 1.1.0
 - Support API CreateOrder.
 

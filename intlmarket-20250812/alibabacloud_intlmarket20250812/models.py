@@ -182,6 +182,7 @@ class DescribePriceResponseBodyCoupons(TeaModel):
     def __init__(
         self,
         can_prom_fee: int = None,
+        coupon_desc: str = None,
         coupon_name: str = None,
         coupon_option_code: str = None,
         coupon_option_no: str = None,
@@ -189,6 +190,7 @@ class DescribePriceResponseBodyCoupons(TeaModel):
         promotion_desc: str = None,
     ):
         self.can_prom_fee = can_prom_fee
+        self.coupon_desc = coupon_desc
         self.coupon_name = coupon_name
         self.coupon_option_code = coupon_option_code
         self.coupon_option_no = coupon_option_no
@@ -206,6 +208,8 @@ class DescribePriceResponseBodyCoupons(TeaModel):
         result = dict()
         if self.can_prom_fee is not None:
             result['CanPromFee'] = self.can_prom_fee
+        if self.coupon_desc is not None:
+            result['CouponDesc'] = self.coupon_desc
         if self.coupon_name is not None:
             result['CouponName'] = self.coupon_name
         if self.coupon_option_code is not None:
@@ -222,6 +226,8 @@ class DescribePriceResponseBodyCoupons(TeaModel):
         m = m or dict()
         if m.get('CanPromFee') is not None:
             self.can_prom_fee = m.get('CanPromFee')
+        if m.get('CouponDesc') is not None:
+            self.coupon_desc = m.get('CouponDesc')
         if m.get('CouponName') is not None:
             self.coupon_name = m.get('CouponName')
         if m.get('CouponOptionCode') is not None:
