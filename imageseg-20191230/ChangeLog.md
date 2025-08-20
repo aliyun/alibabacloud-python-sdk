@@ -1,3 +1,7 @@
+2025-08-20 Version: 4.0.0
+- Delete API SegmentScene.
+
+
 2024-07-19 Version: 3.0.1
 - Update API SegmentCloth: add param OutMode.
 
