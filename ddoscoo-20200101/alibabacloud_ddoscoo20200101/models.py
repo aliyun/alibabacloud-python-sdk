@@ -5556,12 +5556,14 @@ class DescribeAttackAnalysisMaxQpsRequest(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        ip: str = None,
         start_time: int = None,
     ):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.ip = ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
@@ -5578,6 +5580,8 @@ class DescribeAttackAnalysisMaxQpsRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -5586,6 +5590,8 @@ class DescribeAttackAnalysisMaxQpsRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -7336,6 +7342,7 @@ class DescribeDDosAllEventListRequest(TeaModel):
         self,
         end_time: int = None,
         event_type: str = None,
+        ip: str = None,
         page_number: int = None,
         page_size: int = None,
         start_time: int = None,
@@ -7355,6 +7362,7 @@ class DescribeDDosAllEventListRequest(TeaModel):
         # 
         # If you do not configure this parameter, DDoS attack events of all types are queried.
         self.event_type = event_type
+        self.ip = ip
         # The number of the page to return.
         # 
         # This parameter is required.
@@ -7381,6 +7389,8 @@ class DescribeDDosAllEventListRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.event_type is not None:
             result['EventType'] = self.event_type
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -7395,6 +7405,8 @@ class DescribeDDosAllEventListRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('EventType') is not None:
             self.event_type = m.get('EventType')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -8186,12 +8198,14 @@ class DescribeDDosEventMaxRequest(TeaModel):
     def __init__(
         self,
         end_time: int = None,
+        ip: str = None,
         start_time: int = None,
     ):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.ip = ip
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # This parameter is required.
@@ -8208,6 +8222,8 @@ class DescribeDDosEventMaxRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.ip is not None:
+            result['Ip'] = self.ip
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -8216,6 +8232,8 @@ class DescribeDDosEventMaxRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
