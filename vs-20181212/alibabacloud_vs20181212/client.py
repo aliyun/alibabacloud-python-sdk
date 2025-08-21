@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('vs', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -11758,6 +11757,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -11807,6 +11808,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -12942,6 +12945,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -12999,6 +13004,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -16212,6 +16219,8 @@ class Client(OpenApiClient):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_params_shrink):
             query['ClientParams'] = request.client_params_shrink
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
@@ -16257,6 +16266,8 @@ class Client(OpenApiClient):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_params_shrink):
             query['ClientParams'] = request.client_params_shrink
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
@@ -17812,6 +17823,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -17861,6 +17874,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.patch_id):
+            query['PatchId'] = request.patch_id
         if not UtilClient.is_unset(request.project_id):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.rendering_instance_id):
@@ -18006,22 +18021,30 @@ class Client(OpenApiClient):
 
     def update_cloud_app_info_with_options(
         self,
-        request: vs_20181212_models.UpdateCloudAppInfoRequest,
+        tmp_req: vs_20181212_models.UpdateCloudAppInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
         """
         @summary 更新云应用信息
         
-        @param request: UpdateCloudAppInfoRequest
+        @param tmp_req: UpdateCloudAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudAppInfoResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UpdateCloudAppInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.patch):
+            request.patch_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.patch, 'Patch', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.patch_shrink):
+            query['Patch'] = request.patch_shrink
+        if not UtilClient.is_unset(request.stable_patch_id):
+            query['StablePatchId'] = request.stable_patch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18043,22 +18066,30 @@ class Client(OpenApiClient):
 
     async def update_cloud_app_info_with_options_async(
         self,
-        request: vs_20181212_models.UpdateCloudAppInfoRequest,
+        tmp_req: vs_20181212_models.UpdateCloudAppInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vs_20181212_models.UpdateCloudAppInfoResponse:
         """
         @summary 更新云应用信息
         
-        @param request: UpdateCloudAppInfoRequest
+        @param tmp_req: UpdateCloudAppInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateCloudAppInfoResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = vs_20181212_models.UpdateCloudAppInfoShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.patch):
+            request.patch_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.patch, 'Patch', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.patch_shrink):
+            query['Patch'] = request.patch_shrink
+        if not UtilClient.is_unset(request.stable_patch_id):
+            query['StablePatchId'] = request.stable_patch_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

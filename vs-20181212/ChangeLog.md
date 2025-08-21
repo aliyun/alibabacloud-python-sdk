@@ -1,3 +1,18 @@
+2025-08-21 Version: 3.4.3
+- Update API DescribeRenderingSession: add response parameters Body.PatchId.
+- Update API InstallCloudApp: add request parameters PatchId.
+- Update API ListCloudAppInstallations: add request parameters PatchId.
+- Update API ListCloudAppInstallations: add response parameters Body.InstallationInfos.$.PatchId.
+- Update API ListCloudApps: add response parameters Body.CloudApps.$.StablePatchId.
+- Update API ListRenderingSessions: add request parameters PatchId.
+- Update API ListRenderingSessions: add response parameters Body.Sessions.$.PatchId.
+- Update API StartRenderingSession: add request parameters PatchId.
+- Update API UninstallCloudApp: add request parameters PatchId.
+- Update API UpdateCloudAppInfo: add request parameters Patch.
+- Update API UpdateCloudAppInfo: add request parameters StablePatchId.
+- Update API UpdateCloudAppInfo: add response parameters Body.PatchId.
+
+
 2025-07-11 Version: 3.4.2
 - Update API CreateRenderingDataPackage: add request parameters InstanceBillingCycle.
 

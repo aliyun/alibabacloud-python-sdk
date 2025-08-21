@@ -13571,6 +13571,7 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         hostname: str = None,
         isp: str = None,
         location: DescribeRenderingSessionResponseBodyLocation = None,
+        patch_id: str = None,
         port_mappings: List[DescribeRenderingSessionResponseBodyPortMappings] = None,
         rendering_instance_id: str = None,
         request_id: str = None,
@@ -13584,6 +13585,7 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         self.hostname = hostname
         self.isp = isp
         self.location = location
+        self.patch_id = patch_id
         self.port_mappings = port_mappings
         self.rendering_instance_id = rendering_instance_id
         self.request_id = request_id
@@ -13625,6 +13627,8 @@ class DescribeRenderingSessionResponseBody(TeaModel):
             result['Isp'] = self.isp
         if self.location is not None:
             result['Location'] = self.location.to_map()
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         result['PortMappings'] = []
         if self.port_mappings is not None:
             for k in self.port_mappings:
@@ -13659,6 +13663,8 @@ class DescribeRenderingSessionResponseBody(TeaModel):
         if m.get('Location') is not None:
             temp_model = DescribeRenderingSessionResponseBodyLocation()
             self.location = temp_model.from_map(m['Location'])
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         self.port_mappings = []
         if m.get('PortMappings') is not None:
             for k in m.get('PortMappings'):
@@ -21388,6 +21394,7 @@ class InstallCloudAppRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         rendering_instance_ids: List[str] = None,
@@ -21396,6 +21403,7 @@ class InstallCloudAppRequest(TeaModel):
         self.app_id = app_id
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.rendering_instance_ids = rendering_instance_ids
@@ -21415,6 +21423,8 @@ class InstallCloudAppRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -21431,6 +21441,8 @@ class InstallCloudAppRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -21446,6 +21458,7 @@ class InstallCloudAppShrinkRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         rendering_instance_ids_shrink: str = None,
@@ -21454,6 +21467,7 @@ class InstallCloudAppShrinkRequest(TeaModel):
         self.app_id = app_id
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
@@ -21473,6 +21487,8 @@ class InstallCloudAppShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -21489,6 +21505,8 @@ class InstallCloudAppShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -21682,6 +21700,7 @@ class ListCloudAppInstallationsRequest(TeaModel):
         end_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         start_time: str = None,
@@ -21692,6 +21711,7 @@ class ListCloudAppInstallationsRequest(TeaModel):
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.start_time = start_time
@@ -21717,6 +21737,8 @@ class ListCloudAppInstallationsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -21739,6 +21761,8 @@ class ListCloudAppInstallationsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -21755,6 +21779,7 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(TeaModel):
         app_name: str = None,
         app_version: str = None,
         installation_time: str = None,
+        patch_id: str = None,
         rendering_instance_id: str = None,
         status: str = None,
         status_description: str = None,
@@ -21764,6 +21789,7 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(TeaModel):
         self.app_name = app_name
         self.app_version = app_version
         self.installation_time = installation_time
+        self.patch_id = patch_id
         self.rendering_instance_id = rendering_instance_id
         self.status = status
         self.status_description = status_description
@@ -21786,6 +21812,8 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(TeaModel):
             result['AppVersion'] = self.app_version
         if self.installation_time is not None:
             result['InstallationTime'] = self.installation_time
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
         if self.status is not None:
@@ -21806,6 +21834,8 @@ class ListCloudAppInstallationsResponseBodyInstallationInfos(TeaModel):
             self.app_version = m.get('AppVersion')
         if m.get('InstallationTime') is not None:
             self.installation_time = m.get('InstallationTime')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('Status') is not None:
@@ -21995,6 +22025,7 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
         description: str = None,
         pkg_format: str = None,
         pkg_type: str = None,
+        stable_patch_id: str = None,
         status: str = None,
         status_description: str = None,
         update_time: str = None,
@@ -22006,6 +22037,7 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
         self.description = description
         self.pkg_format = pkg_format
         self.pkg_type = pkg_type
+        self.stable_patch_id = stable_patch_id
         self.status = status
         self.status_description = status_description
         self.update_time = update_time
@@ -22032,6 +22064,8 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
             result['PkgFormat'] = self.pkg_format
         if self.pkg_type is not None:
             result['PkgType'] = self.pkg_type
+        if self.stable_patch_id is not None:
+            result['StablePatchId'] = self.stable_patch_id
         if self.status is not None:
             result['Status'] = self.status
         if self.status_description is not None:
@@ -22056,6 +22090,8 @@ class ListCloudAppsResponseBodyCloudApps(TeaModel):
             self.pkg_format = m.get('PkgFormat')
         if m.get('PkgType') is not None:
             self.pkg_type = m.get('PkgType')
+        if m.get('StablePatchId') is not None:
+            self.stable_patch_id = m.get('StablePatchId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('StatusDescription') is not None:
@@ -23941,6 +23977,7 @@ class ListRenderingSessionsRequest(TeaModel):
         end_time: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         session_id: str = None,
@@ -23952,6 +23989,7 @@ class ListRenderingSessionsRequest(TeaModel):
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         # This parameter is required.
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
@@ -23978,6 +24016,8 @@ class ListRenderingSessionsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -24002,6 +24042,8 @@ class ListRenderingSessionsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -24020,12 +24062,14 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
         self,
         app_id: str = None,
         client_id: str = None,
+        patch_id: str = None,
         rendering_instance_id: str = None,
         session_id: str = None,
         start_time: str = None,
     ):
         self.app_id = app_id
         self.client_id = client_id
+        self.patch_id = patch_id
         self.rendering_instance_id = rendering_instance_id
         self.session_id = session_id
         self.start_time = start_time
@@ -24043,6 +24087,8 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
             result['AppId'] = self.app_id
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.rendering_instance_id is not None:
             result['RenderingInstanceId'] = self.rendering_instance_id
         if self.session_id is not None:
@@ -24057,6 +24103,8 @@ class ListRenderingSessionsResponseBodySessions(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('RenderingInstanceId') is not None:
             self.rendering_instance_id = m.get('RenderingInstanceId')
         if m.get('SessionId') is not None:
@@ -27918,12 +27966,14 @@ class StartRenderingSessionRequest(TeaModel):
         app_id: str = None,
         client_id: str = None,
         client_params: StartRenderingSessionRequestClientParams = None,
+        patch_id: str = None,
         project_id: str = None,
     ):
         self.app_id = app_id
         # This parameter is required.
         self.client_id = client_id
         self.client_params = client_params
+        self.patch_id = patch_id
         # This parameter is required.
         self.project_id = project_id
 
@@ -27943,6 +27993,8 @@ class StartRenderingSessionRequest(TeaModel):
             result['ClientId'] = self.client_id
         if self.client_params is not None:
             result['ClientParams'] = self.client_params.to_map()
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
@@ -27956,6 +28008,8 @@ class StartRenderingSessionRequest(TeaModel):
         if m.get('ClientParams') is not None:
             temp_model = StartRenderingSessionRequestClientParams()
             self.client_params = temp_model.from_map(m['ClientParams'])
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -27967,12 +28021,14 @@ class StartRenderingSessionShrinkRequest(TeaModel):
         app_id: str = None,
         client_id: str = None,
         client_params_shrink: str = None,
+        patch_id: str = None,
         project_id: str = None,
     ):
         self.app_id = app_id
         # This parameter is required.
         self.client_id = client_id
         self.client_params_shrink = client_params_shrink
+        self.patch_id = patch_id
         # This parameter is required.
         self.project_id = project_id
 
@@ -27991,6 +28047,8 @@ class StartRenderingSessionShrinkRequest(TeaModel):
             result['ClientId'] = self.client_id
         if self.client_params_shrink is not None:
             result['ClientParams'] = self.client_params_shrink
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
@@ -28003,6 +28061,8 @@ class StartRenderingSessionShrinkRequest(TeaModel):
             self.client_id = m.get('ClientId')
         if m.get('ClientParams') is not None:
             self.client_params_shrink = m.get('ClientParams')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -29980,6 +30040,7 @@ class UninstallCloudAppRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         rendering_instance_ids: List[str] = None,
@@ -29988,6 +30049,7 @@ class UninstallCloudAppRequest(TeaModel):
         self.app_id = app_id
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.rendering_instance_ids = rendering_instance_ids
@@ -30007,6 +30069,8 @@ class UninstallCloudAppRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -30023,6 +30087,8 @@ class UninstallCloudAppRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -30038,6 +30104,7 @@ class UninstallCloudAppShrinkRequest(TeaModel):
         app_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        patch_id: str = None,
         project_id: str = None,
         rendering_instance_id: str = None,
         rendering_instance_ids_shrink: str = None,
@@ -30046,6 +30113,7 @@ class UninstallCloudAppShrinkRequest(TeaModel):
         self.app_id = app_id
         self.page_number = page_number
         self.page_size = page_size
+        self.patch_id = patch_id
         self.project_id = project_id
         self.rendering_instance_id = rendering_instance_id
         self.rendering_instance_ids_shrink = rendering_instance_ids_shrink
@@ -30065,6 +30133,8 @@ class UninstallCloudAppShrinkRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         if self.rendering_instance_id is not None:
@@ -30081,6 +30151,8 @@ class UninstallCloudAppShrinkRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         if m.get('RenderingInstanceId') is not None:
@@ -30373,16 +30445,106 @@ class UnlockDeviceResponse(TeaModel):
         return self
 
 
+class UpdateCloudAppInfoRequestPatch(TeaModel):
+    def __init__(
+        self,
+        download_url: str = None,
+        md_5: str = None,
+        patch_name: str = None,
+    ):
+        self.download_url = download_url
+        self.md_5 = md_5
+        self.patch_name = patch_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_url is not None:
+            result['DownloadURL'] = self.download_url
+        if self.md_5 is not None:
+            result['Md5'] = self.md_5
+        if self.patch_name is not None:
+            result['PatchName'] = self.patch_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadURL') is not None:
+            self.download_url = m.get('DownloadURL')
+        if m.get('Md5') is not None:
+            self.md_5 = m.get('Md5')
+        if m.get('PatchName') is not None:
+            self.patch_name = m.get('PatchName')
+        return self
+
+
 class UpdateCloudAppInfoRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         description: str = None,
+        patch: UpdateCloudAppInfoRequestPatch = None,
+        stable_patch_id: str = None,
     ):
         # This parameter is required.
         self.app_id = app_id
-        # This parameter is required.
         self.description = description
+        self.patch = patch
+        self.stable_patch_id = stable_patch_id
+
+    def validate(self):
+        if self.patch:
+            self.patch.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.patch is not None:
+            result['Patch'] = self.patch.to_map()
+        if self.stable_patch_id is not None:
+            result['StablePatchId'] = self.stable_patch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Patch') is not None:
+            temp_model = UpdateCloudAppInfoRequestPatch()
+            self.patch = temp_model.from_map(m['Patch'])
+        if m.get('StablePatchId') is not None:
+            self.stable_patch_id = m.get('StablePatchId')
+        return self
+
+
+class UpdateCloudAppInfoShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        description: str = None,
+        patch_shrink: str = None,
+        stable_patch_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.description = description
+        self.patch_shrink = patch_shrink
+        self.stable_patch_id = stable_patch_id
 
     def validate(self):
         pass
@@ -30397,6 +30559,10 @@ class UpdateCloudAppInfoRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.description is not None:
             result['Description'] = self.description
+        if self.patch_shrink is not None:
+            result['Patch'] = self.patch_shrink
+        if self.stable_patch_id is not None:
+            result['StablePatchId'] = self.stable_patch_id
         return result
 
     def from_map(self, m: dict = None):
@@ -30405,14 +30571,20 @@ class UpdateCloudAppInfoRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Patch') is not None:
+            self.patch_shrink = m.get('Patch')
+        if m.get('StablePatchId') is not None:
+            self.stable_patch_id = m.get('StablePatchId')
         return self
 
 
 class UpdateCloudAppInfoResponseBody(TeaModel):
     def __init__(
         self,
+        patch_id: str = None,
         request_id: str = None,
     ):
+        self.patch_id = patch_id
         self.request_id = request_id
 
     def validate(self):
@@ -30424,12 +30596,16 @@ class UpdateCloudAppInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.patch_id is not None:
+            result['PatchId'] = self.patch_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PatchId') is not None:
+            self.patch_id = m.get('PatchId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
