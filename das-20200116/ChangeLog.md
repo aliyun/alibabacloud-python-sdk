@@ -1,3 +1,16 @@
+2025-08-21 Version: 2.8.1
+- Update API DescribeHotBigKeys: add response parameters Body.Data.HighTrafficKeyMsg.
+- Update API DescribeHotBigKeys: add response parameters Body.Data.HighTrafficKeys.
+- Update API DescribeHotBigKeys: add response parameters Body.Data.HotKeys.$.Size.
+- Update API DescribeHotKeys: add response parameters Body.Data.$.Category.
+- Update API DescribeHotKeys: add response parameters Body.Data.$.InBytes.
+- Update API DescribeHotKeys: add response parameters Body.Data.$.NodeId.
+- Update API DescribeHotKeys: add response parameters Body.Data.$.OutBytes.
+- Update API DescribeTopHotKeys: add response parameters Body.Data.$.Category.
+- Update API DescribeTopHotKeys: add response parameters Body.Data.$.InBytes.
+- Update API DescribeTopHotKeys: add response parameters Body.Data.$.OutBytes.
+
+
 2025-07-24 Version: 2.8.0
 - Support API DescribeErrorLogRecords.
 
