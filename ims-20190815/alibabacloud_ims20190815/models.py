@@ -1102,6 +1102,7 @@ class CreateApplicationRequest(TeaModel):
         display_name: str = None,
         is_multi_tenant: bool = None,
         predefined_scopes: str = None,
+        protocol_version: str = None,
         redirect_uris: str = None,
         refresh_token_validity: int = None,
         required_scopes: str = None,
@@ -1142,6 +1143,7 @@ class CreateApplicationRequest(TeaModel):
         # 
         # If you enter multiple permission scopes, separate them with semicolons (;).
         self.predefined_scopes = predefined_scopes
+        self.protocol_version = protocol_version
         # The callback URL.
         # 
         # If you enter multiple callback URLs, separate them with semicolons (;).
@@ -1193,6 +1195,8 @@ class CreateApplicationRequest(TeaModel):
             result['IsMultiTenant'] = self.is_multi_tenant
         if self.predefined_scopes is not None:
             result['PredefinedScopes'] = self.predefined_scopes
+        if self.protocol_version is not None:
+            result['ProtocolVersion'] = self.protocol_version
         if self.redirect_uris is not None:
             result['RedirectUris'] = self.redirect_uris
         if self.refresh_token_validity is not None:
@@ -1217,6 +1221,8 @@ class CreateApplicationRequest(TeaModel):
             self.is_multi_tenant = m.get('IsMultiTenant')
         if m.get('PredefinedScopes') is not None:
             self.predefined_scopes = m.get('PredefinedScopes')
+        if m.get('ProtocolVersion') is not None:
+            self.protocol_version = m.get('ProtocolVersion')
         if m.get('RedirectUris') is not None:
             self.redirect_uris = m.get('RedirectUris')
         if m.get('RefreshTokenValidity') is not None:
@@ -1379,6 +1385,7 @@ class CreateApplicationResponseBodyApplication(TeaModel):
         delegated_scope: CreateApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        protocol_version: str = None,
         redirect_uris: CreateApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
         secret_required: bool = None,
@@ -1402,6 +1409,7 @@ class CreateApplicationResponseBodyApplication(TeaModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
+        self.protocol_version = protocol_version
         # The callback URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
@@ -1441,6 +1449,8 @@ class CreateApplicationResponseBodyApplication(TeaModel):
             result['DisplayName'] = self.display_name
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+        if self.protocol_version is not None:
+            result['ProtocolVersion'] = self.protocol_version
         if self.redirect_uris is not None:
             result['RedirectUris'] = self.redirect_uris.to_map()
         if self.refresh_token_validity is not None:
@@ -1472,6 +1482,8 @@ class CreateApplicationResponseBodyApplication(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+        if m.get('ProtocolVersion') is not None:
+            self.protocol_version = m.get('ProtocolVersion')
         if m.get('RedirectUris') is not None:
             temp_model = CreateApplicationResponseBodyApplicationRedirectUris()
             self.redirect_uris = temp_model.from_map(m['RedirectUris'])
@@ -5230,6 +5242,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
     def __init__(
         self,
         access_keys_per_user_quota: int = None,
+        account_access_keys_per_account_quota: int = None,
         attached_policies_per_group_quota: int = None,
         attached_policies_per_role_quota: int = None,
         attached_policies_per_user_quota: int = None,
@@ -5255,6 +5268,7 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
     ):
         # The maximum number of AccessKey pairs that a Resource Access Management (RAM) user can have.
         self.access_keys_per_user_quota = access_keys_per_user_quota
+        self.account_access_keys_per_account_quota = account_access_keys_per_account_quota
         # The maximum number of custom policies that can be added to a RAM user group.
         self.attached_policies_per_group_quota = attached_policies_per_group_quota
         # The maximum number of custom policies that can be added to a RAM role.
@@ -5311,6 +5325,8 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         result = dict()
         if self.access_keys_per_user_quota is not None:
             result['AccessKeysPerUserQuota'] = self.access_keys_per_user_quota
+        if self.account_access_keys_per_account_quota is not None:
+            result['AccountAccessKeysPerAccountQuota'] = self.account_access_keys_per_account_quota
         if self.attached_policies_per_group_quota is not None:
             result['AttachedPoliciesPerGroupQuota'] = self.attached_policies_per_group_quota
         if self.attached_policies_per_role_quota is not None:
@@ -5361,6 +5377,8 @@ class GetAccountSummaryResponseBodySummaryMap(TeaModel):
         m = m or dict()
         if m.get('AccessKeysPerUserQuota') is not None:
             self.access_keys_per_user_quota = m.get('AccessKeysPerUserQuota')
+        if m.get('AccountAccessKeysPerAccountQuota') is not None:
+            self.account_access_keys_per_account_quota = m.get('AccountAccessKeysPerAccountQuota')
         if m.get('AttachedPoliciesPerGroupQuota') is not None:
             self.attached_policies_per_group_quota = m.get('AttachedPoliciesPerGroupQuota')
         if m.get('AttachedPoliciesPerRoleQuota') is not None:
@@ -5833,6 +5851,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         delegated_scope: GetApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        protocol_version: str = None,
         redirect_uris: GetApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
         secret_required: bool = None,
@@ -5860,6 +5879,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
+        self.protocol_version = protocol_version
         # The callback URL.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
@@ -5899,6 +5919,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['DisplayName'] = self.display_name
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+        if self.protocol_version is not None:
+            result['ProtocolVersion'] = self.protocol_version
         if self.redirect_uris is not None:
             result['RedirectUris'] = self.redirect_uris.to_map()
         if self.refresh_token_validity is not None:
@@ -5930,6 +5952,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+        if m.get('ProtocolVersion') is not None:
+            self.protocol_version = m.get('ProtocolVersion')
         if m.get('RedirectUris') is not None:
             temp_model = GetApplicationResponseBodyApplicationRedirectUris()
             self.redirect_uris = temp_model.from_map(m['RedirectUris'])
@@ -10556,6 +10580,7 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
         delegated_scope: ListApplicationsResponseBodyApplicationsApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        protocol_version: str = None,
         redirect_uris: ListApplicationsResponseBodyApplicationsApplicationRedirectUris = None,
         refresh_token_validity: int = None,
         secret_required: bool = None,
@@ -10583,6 +10608,7 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
+        self.protocol_version = protocol_version
         # The callback URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
@@ -10622,6 +10648,8 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
             result['DisplayName'] = self.display_name
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+        if self.protocol_version is not None:
+            result['ProtocolVersion'] = self.protocol_version
         if self.redirect_uris is not None:
             result['RedirectUris'] = self.redirect_uris.to_map()
         if self.refresh_token_validity is not None:
@@ -10653,6 +10681,8 @@ class ListApplicationsResponseBodyApplicationsApplication(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+        if m.get('ProtocolVersion') is not None:
+            self.protocol_version = m.get('ProtocolVersion')
         if m.get('RedirectUris') is not None:
             temp_model = ListApplicationsResponseBodyApplicationsApplicationRedirectUris()
             self.redirect_uris = temp_model.from_map(m['RedirectUris'])
@@ -17904,6 +17934,7 @@ class UpdateApplicationResponseBodyApplication(TeaModel):
         delegated_scope: UpdateApplicationResponseBodyApplicationDelegatedScope = None,
         display_name: str = None,
         is_multi_tenant: bool = None,
+        protocol_version: str = None,
         redirect_uris: UpdateApplicationResponseBodyApplicationRedirectUris = None,
         refresh_token_validity: int = None,
         secret_required: bool = None,
@@ -17927,6 +17958,7 @@ class UpdateApplicationResponseBodyApplication(TeaModel):
         self.display_name = display_name
         # Indicates whether the application can be installed by using other Alibaba Cloud accounts.
         self.is_multi_tenant = is_multi_tenant
+        self.protocol_version = protocol_version
         # The callback URLs.
         self.redirect_uris = redirect_uris
         # The validity period of the refresh token. Unit: seconds.
@@ -17966,6 +17998,8 @@ class UpdateApplicationResponseBodyApplication(TeaModel):
             result['DisplayName'] = self.display_name
         if self.is_multi_tenant is not None:
             result['IsMultiTenant'] = self.is_multi_tenant
+        if self.protocol_version is not None:
+            result['ProtocolVersion'] = self.protocol_version
         if self.redirect_uris is not None:
             result['RedirectUris'] = self.redirect_uris.to_map()
         if self.refresh_token_validity is not None:
@@ -17997,6 +18031,8 @@ class UpdateApplicationResponseBodyApplication(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('IsMultiTenant') is not None:
             self.is_multi_tenant = m.get('IsMultiTenant')
+        if m.get('ProtocolVersion') is not None:
+            self.protocol_version = m.get('ProtocolVersion')
         if m.get('RedirectUris') is not None:
             temp_model = UpdateApplicationResponseBodyApplicationRedirectUris()
             self.redirect_uris = temp_model.from_map(m['RedirectUris'])

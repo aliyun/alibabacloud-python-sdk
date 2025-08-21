@@ -1,3 +1,12 @@
+2025-08-21 Version: 3.3.2
+- Update API CreateApplication: add request parameters ProtocolVersion.
+- Update API CreateApplication: add response parameters Body.Application.ProtocolVersion.
+- Update API GetAccountSummary: add response parameters Body.SummaryMap.AccountAccessKeysPerAccountQuota.
+- Update API GetApplication: add response parameters Body.Application.ProtocolVersion.
+- Update API ListApplications: add response parameters Body.Applications.$.ProtocolVersion.
+- Update API UpdateApplication: add response parameters Body.Application.ProtocolVersion.
+
+
 2025-07-14 Version: 3.3.1
 - Generated python 2019-08-15 for Ims.
 

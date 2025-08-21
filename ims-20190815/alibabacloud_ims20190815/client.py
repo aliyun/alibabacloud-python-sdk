@@ -787,6 +787,8 @@ class Client(OpenApiClient):
             query['IsMultiTenant'] = request.is_multi_tenant
         if not UtilClient.is_unset(request.predefined_scopes):
             query['PredefinedScopes'] = request.predefined_scopes
+        if not UtilClient.is_unset(request.protocol_version):
+            query['ProtocolVersion'] = request.protocol_version
         if not UtilClient.is_unset(request.redirect_uris):
             query['RedirectUris'] = request.redirect_uris
         if not UtilClient.is_unset(request.refresh_token_validity):
@@ -840,6 +842,8 @@ class Client(OpenApiClient):
             query['IsMultiTenant'] = request.is_multi_tenant
         if not UtilClient.is_unset(request.predefined_scopes):
             query['PredefinedScopes'] = request.predefined_scopes
+        if not UtilClient.is_unset(request.protocol_version):
+            query['ProtocolVersion'] = request.protocol_version
         if not UtilClient.is_unset(request.redirect_uris):
             query['RedirectUris'] = request.redirect_uris
         if not UtilClient.is_unset(request.refresh_token_validity):
