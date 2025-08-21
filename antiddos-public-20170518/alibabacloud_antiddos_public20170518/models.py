@@ -731,6 +731,7 @@ class DescribeDdosEventListRequest(TeaModel):
         instance_type: str = None,
         internet_ip: str = None,
         page_size: int = None,
+        query_days: int = None,
     ):
         # The number of the page to return. Default value: **1**.
         self.current_page = current_page
@@ -762,6 +763,7 @@ class DescribeDdosEventListRequest(TeaModel):
         self.internet_ip = internet_ip
         # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
+        self.query_days = query_days
 
     def validate(self):
         pass
@@ -784,6 +786,8 @@ class DescribeDdosEventListRequest(TeaModel):
             result['InternetIp'] = self.internet_ip
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.query_days is not None:
+            result['QueryDays'] = self.query_days
         return result
 
     def from_map(self, m: dict = None):
@@ -800,6 +804,8 @@ class DescribeDdosEventListRequest(TeaModel):
             self.internet_ip = m.get('InternetIp')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('QueryDays') is not None:
+            self.query_days = m.get('QueryDays')
         return self
 
 

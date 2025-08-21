@@ -141,16 +141,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_bgp_pack_by_ip_with_options_async(
         self,
@@ -188,16 +182,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeBgpPackByIpResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_bgp_pack_by_ip(
         self,
@@ -275,16 +263,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeCapResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeCapResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeCapResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_cap_with_options_async(
         self,
@@ -328,16 +310,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeCapResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeCapResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeCapResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_cap(
         self,
@@ -408,16 +384,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCountResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCountResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCountResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ddos_count_with_options_async(
         self,
@@ -454,16 +424,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCountResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCountResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ddos_count(
         self,
@@ -531,16 +495,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ddos_credit_with_options_async(
         self,
@@ -576,16 +534,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosCreditResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosCreditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ddos_credit(
         self,
@@ -651,6 +603,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_days):
+            query['QueryDays'] = request.query_days
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -665,16 +619,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ddos_event_list_with_options_async(
         self,
@@ -706,6 +654,8 @@ class Client(OpenApiClient):
             query['InternetIp'] = request.internet_ip
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_days):
+            query['QueryDays'] = request.query_days
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -720,16 +670,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosEventListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ddos_event_list(
         self,
@@ -805,16 +749,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ddos_threshold_with_options_async(
         self,
@@ -856,16 +794,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeDdosThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ddos_threshold(
         self,
@@ -949,16 +881,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_with_options_async(
         self,
@@ -1008,16 +934,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance(
         self,
@@ -1101,16 +1021,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_ip_address_with_options_async(
         self,
@@ -1160,16 +1074,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeInstanceIpAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_ip_address(
         self,
@@ -1247,16 +1155,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ip_ddos_threshold_with_options_async(
         self,
@@ -1300,16 +1202,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeIpDdosThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ip_ddos_threshold(
         self,
@@ -1379,16 +1275,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_ip_location_service_with_options_async(
         self,
@@ -1424,16 +1314,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeIpLocationServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_ip_location_service(
         self,
@@ -1496,16 +1380,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeRegionsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeRegionsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_regions_with_options_async(
         self,
@@ -1534,16 +1412,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeRegionsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.DescribeRegionsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_regions(self) -> antiddos_public_20170518_models.DescribeRegionsResponse:
         """
@@ -1618,16 +1490,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_defense_threshold_with_options_async(
         self,
@@ -1676,16 +1542,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyDefenseThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_defense_threshold(
         self,
@@ -1764,16 +1624,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_ip_defense_threshold_with_options_async(
         self,
@@ -1820,16 +1674,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            antiddos_public_20170518_models.ModifyIpDefenseThresholdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_ip_defense_threshold(
         self,
