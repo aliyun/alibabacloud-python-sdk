@@ -1,3 +1,12 @@
+2025-08-21 Version: 3.2.0
+- Support API CreateActionPlan.
+- Support API DeleteActionPlan.
+- Support API GetActionPlan.
+- Support API ListActionPlanActivities.
+- Support API ListActionPlans.
+- Support API UpdateActionPlan.
+
+
 2025-08-11 Version: 3.1.0
 - Support API SynchronizeApp.
 

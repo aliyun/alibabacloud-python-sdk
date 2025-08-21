@@ -324,6 +324,337 @@ class AddImageResponse(TeaModel):
         return self
 
 
+class CreateActionPlanRequestRegions(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        security_group_id: List[str] = None,
+        security_group_ids: List[str] = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.region_id = region_id
+        self.security_group_id = security_group_id
+        self.security_group_ids = security_group_ids
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class CreateActionPlanRequestResources(TeaModel):
+    def __init__(
+        self,
+        cores: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class CreateActionPlanRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_name: str = None,
+        allocation_spec: str = None,
+        app_id: str = None,
+        desired_capacity: float = None,
+        level: str = None,
+        prolog_script: str = None,
+        regions: List[CreateActionPlanRequestRegions] = None,
+        resource_type: str = None,
+        resources: List[CreateActionPlanRequestResources] = None,
+        script: str = None,
+    ):
+        self.action_plan_name = action_plan_name
+        self.allocation_spec = allocation_spec
+        self.app_id = app_id
+        self.desired_capacity = desired_capacity
+        self.level = level
+        self.prolog_script = prolog_script
+        self.regions = regions
+        self.resource_type = resource_type
+        self.resources = resources
+        self.script = script
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_name is not None:
+            result['ActionPlanName'] = self.action_plan_name
+        if self.allocation_spec is not None:
+            result['AllocationSpec'] = self.allocation_spec
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.desired_capacity is not None:
+            result['DesiredCapacity'] = self.desired_capacity
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prolog_script is not None:
+            result['PrologScript'] = self.prolog_script
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.script is not None:
+            result['Script'] = self.script
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanName') is not None:
+            self.action_plan_name = m.get('ActionPlanName')
+        if m.get('AllocationSpec') is not None:
+            self.allocation_spec = m.get('AllocationSpec')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DesiredCapacity') is not None:
+            self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PrologScript') is not None:
+            self.prolog_script = m.get('PrologScript')
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = CreateActionPlanRequestRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = CreateActionPlanRequestResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
+        return self
+
+
+class CreateActionPlanShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_name: str = None,
+        allocation_spec: str = None,
+        app_id: str = None,
+        desired_capacity: float = None,
+        level: str = None,
+        prolog_script: str = None,
+        regions_shrink: str = None,
+        resource_type: str = None,
+        resources_shrink: str = None,
+        script: str = None,
+    ):
+        self.action_plan_name = action_plan_name
+        self.allocation_spec = allocation_spec
+        self.app_id = app_id
+        self.desired_capacity = desired_capacity
+        self.level = level
+        self.prolog_script = prolog_script
+        self.regions_shrink = regions_shrink
+        self.resource_type = resource_type
+        self.resources_shrink = resources_shrink
+        self.script = script
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_name is not None:
+            result['ActionPlanName'] = self.action_plan_name
+        if self.allocation_spec is not None:
+            result['AllocationSpec'] = self.allocation_spec
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.desired_capacity is not None:
+            result['DesiredCapacity'] = self.desired_capacity
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prolog_script is not None:
+            result['PrologScript'] = self.prolog_script
+        if self.regions_shrink is not None:
+            result['Regions'] = self.regions_shrink
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.resources_shrink is not None:
+            result['Resources'] = self.resources_shrink
+        if self.script is not None:
+            result['Script'] = self.script
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanName') is not None:
+            self.action_plan_name = m.get('ActionPlanName')
+        if m.get('AllocationSpec') is not None:
+            self.allocation_spec = m.get('AllocationSpec')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('DesiredCapacity') is not None:
+            self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PrologScript') is not None:
+            self.prolog_script = m.get('PrologScript')
+        if m.get('Regions') is not None:
+            self.regions_shrink = m.get('Regions')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Resources') is not None:
+            self.resources_shrink = m.get('Resources')
+        if m.get('Script') is not None:
+            self.script = m.get('Script')
+        return self
+
+
+class CreateActionPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+        request_id: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateActionPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateActionPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateActionPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateJobRequestDependencyPolicyJobDependency(TeaModel):
     def __init__(
         self,
@@ -1619,6 +1950,101 @@ class CreatePoolResponse(TeaModel):
         return self
 
 
+class DeleteActionPlanRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        return self
+
+
+class DeleteActionPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteActionPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteActionPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteActionPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteJobsRequestJobSpecTaskSpec(TeaModel):
     def __init__(
         self,
@@ -2303,6 +2729,274 @@ class DescribeJobMetricLastResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeJobMetricLastResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetActionPlanRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        return self
+
+
+class GetActionPlanResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+        security_group_ids: List[str] = None,
+        v_switch_ids: List[str] = None,
+    ):
+        self.region_id = region_id
+        self.security_group_ids = security_group_ids
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        return self
+
+
+class GetActionPlanResponseBodyResources(TeaModel):
+    def __init__(
+        self,
+        cores: float = None,
+        memory: float = None,
+    ):
+        self.cores = cores
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cores is not None:
+            result['Cores'] = self.cores
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cores') is not None:
+            self.cores = m.get('Cores')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class GetActionPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+        action_plan_name: str = None,
+        allocation_spec: str = None,
+        app_id: str = None,
+        create_time: str = None,
+        desired_capacity: float = None,
+        level: str = None,
+        prolog_script: str = None,
+        regions: List[GetActionPlanResponseBodyRegions] = None,
+        request_id: str = None,
+        resource_type: str = None,
+        resources: List[GetActionPlanResponseBodyResources] = None,
+        status: str = None,
+        total_capacity: float = None,
+        update_time: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+        self.action_plan_name = action_plan_name
+        self.allocation_spec = allocation_spec
+        self.app_id = app_id
+        self.create_time = create_time
+        self.desired_capacity = desired_capacity
+        self.level = level
+        self.prolog_script = prolog_script
+        self.regions = regions
+        self.request_id = request_id
+        self.resource_type = resource_type
+        self.resources = resources
+        self.status = status
+        self.total_capacity = total_capacity
+        self.update_time = update_time
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+        if self.resources:
+            for k in self.resources:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        if self.action_plan_name is not None:
+            result['ActionPlanName'] = self.action_plan_name
+        if self.allocation_spec is not None:
+            result['AllocationSpec'] = self.allocation_spec
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.desired_capacity is not None:
+            result['DesiredCapacity'] = self.desired_capacity
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.prolog_script is not None:
+            result['PrologScript'] = self.prolog_script
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        result['Resources'] = []
+        if self.resources is not None:
+            for k in self.resources:
+                result['Resources'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_capacity is not None:
+            result['TotalCapacity'] = self.total_capacity
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        if m.get('ActionPlanName') is not None:
+            self.action_plan_name = m.get('ActionPlanName')
+        if m.get('AllocationSpec') is not None:
+            self.allocation_spec = m.get('AllocationSpec')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DesiredCapacity') is not None:
+            self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PrologScript') is not None:
+            self.prolog_script = m.get('PrologScript')
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = GetActionPlanResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        self.resources = []
+        if m.get('Resources') is not None:
+            for k in m.get('Resources'):
+                temp_model = GetActionPlanResponseBodyResources()
+                self.resources.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalCapacity') is not None:
+            self.total_capacity = m.get('TotalCapacity')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetActionPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetActionPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetActionPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4086,6 +4780,486 @@ class GetPoolResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListActionPlanActivitiesRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        job_operation_type: str = None,
+        region_id: str = None,
+    ):
+        self.job_id = job_id
+        self.job_operation_type = job_operation_type
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_operation_type is not None:
+            result['JobOperationType'] = self.job_operation_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobOperationType') is not None:
+            self.job_operation_type = m.get('JobOperationType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListActionPlanActivitiesResponseBodyActionPlanActivities(TeaModel):
+    def __init__(
+        self,
+        action_plan_activity_id: str = None,
+        created_capacity: float = None,
+        destroy_capacity: float = None,
+        end_time: str = None,
+        jobs: List[ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs] = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.action_plan_activity_id = action_plan_activity_id
+        self.created_capacity = created_capacity
+        self.destroy_capacity = destroy_capacity
+        self.end_time = end_time
+        self.jobs = jobs
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        if self.jobs:
+            for k in self.jobs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_activity_id is not None:
+            result['ActionPlanActivityId'] = self.action_plan_activity_id
+        if self.created_capacity is not None:
+            result['CreatedCapacity'] = self.created_capacity
+        if self.destroy_capacity is not None:
+            result['DestroyCapacity'] = self.destroy_capacity
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        result['Jobs'] = []
+        if self.jobs is not None:
+            for k in self.jobs:
+                result['Jobs'].append(k.to_map() if k else None)
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanActivityId') is not None:
+            self.action_plan_activity_id = m.get('ActionPlanActivityId')
+        if m.get('CreatedCapacity') is not None:
+            self.created_capacity = m.get('CreatedCapacity')
+        if m.get('DestroyCapacity') is not None:
+            self.destroy_capacity = m.get('DestroyCapacity')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        self.jobs = []
+        if m.get('Jobs') is not None:
+            for k in m.get('Jobs'):
+                temp_model = ListActionPlanActivitiesResponseBodyActionPlanActivitiesJobs()
+                self.jobs.append(temp_model.from_map(k))
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListActionPlanActivitiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        action_plan_activities: List[ListActionPlanActivitiesResponseBodyActionPlanActivities] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.action_plan_activities = action_plan_activities
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.action_plan_activities:
+            for k in self.action_plan_activities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ActionPlanActivities'] = []
+        if self.action_plan_activities is not None:
+            for k in self.action_plan_activities:
+                result['ActionPlanActivities'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.action_plan_activities = []
+        if m.get('ActionPlanActivities') is not None:
+            for k in m.get('ActionPlanActivities'):
+                temp_model = ListActionPlanActivitiesResponseBodyActionPlanActivities()
+                self.action_plan_activities.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListActionPlanActivitiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListActionPlanActivitiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListActionPlanActivitiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListActionPlansRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_ids: List[str] = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.action_plan_ids = action_plan_ids
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_ids is not None:
+            result['ActionPlanIds'] = self.action_plan_ids
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanIds') is not None:
+            self.action_plan_ids = m.get('ActionPlanIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListActionPlansShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_ids_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.action_plan_ids_shrink = action_plan_ids_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_ids_shrink is not None:
+            result['ActionPlanIds'] = self.action_plan_ids_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanIds') is not None:
+            self.action_plan_ids_shrink = m.get('ActionPlanIds')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListActionPlansResponseBodyActionPlans(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+        action_plan_name: str = None,
+        create_time: str = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+        self.action_plan_name = action_plan_name
+        self.create_time = create_time
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        if self.action_plan_name is not None:
+            result['ActionPlanName'] = self.action_plan_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        if m.get('ActionPlanName') is not None:
+            self.action_plan_name = m.get('ActionPlanName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListActionPlansResponseBody(TeaModel):
+    def __init__(
+        self,
+        action_plans: List[ListActionPlansResponseBodyActionPlans] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.action_plans = action_plans
+        self.max_results = max_results
+        # This parameter is required.
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.action_plans:
+            for k in self.action_plans:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ActionPlans'] = []
+        if self.action_plans is not None:
+            for k in self.action_plans:
+                result['ActionPlans'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.action_plans = []
+        if m.get('ActionPlans') is not None:
+            for k in m.get('ActionPlans'):
+                temp_model = ListActionPlansResponseBodyActionPlans()
+                self.action_plans.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListActionPlansResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListActionPlansResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListActionPlansResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6801,6 +7975,113 @@ class UnTagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UnTagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateActionPlanRequest(TeaModel):
+    def __init__(
+        self,
+        action_plan_id: str = None,
+        desired_capacity: float = None,
+        enabled: str = None,
+    ):
+        self.action_plan_id = action_plan_id
+        self.desired_capacity = desired_capacity
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_plan_id is not None:
+            result['ActionPlanId'] = self.action_plan_id
+        if self.desired_capacity is not None:
+            result['DesiredCapacity'] = self.desired_capacity
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionPlanId') is not None:
+            self.action_plan_id = m.get('ActionPlanId')
+        if m.get('DesiredCapacity') is not None:
+            self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
+class UpdateActionPlanResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateActionPlanResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateActionPlanResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateActionPlanResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

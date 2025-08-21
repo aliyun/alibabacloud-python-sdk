@@ -169,6 +169,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_image_with_options_async(request, runtime)
 
+    def create_action_plan_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.CreateActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
+        """
+        @summary 创建执行计划创建执行计划
+        
+        @param tmp_req: CreateActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateActionPlanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.CreateActionPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.regions):
+            request.regions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.regions, 'Regions', 'json')
+        if not UtilClient.is_unset(tmp_req.resources):
+            request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_name):
+            query['ActionPlanName'] = request.action_plan_name
+        if not UtilClient.is_unset(request.allocation_spec):
+            query['AllocationSpec'] = request.allocation_spec
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.desired_capacity):
+            query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.prolog_script):
+            query['PrologScript'] = request.prolog_script
+        if not UtilClient.is_unset(request.regions_shrink):
+            query['Regions'] = request.regions_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resources_shrink):
+            query['Resources'] = request.resources_shrink
+        if not UtilClient.is_unset(request.script):
+            query['Script'] = request.script
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.CreateActionPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_action_plan_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.CreateActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
+        """
+        @summary 创建执行计划创建执行计划
+        
+        @param tmp_req: CreateActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateActionPlanResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.CreateActionPlanShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.regions):
+            request.regions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.regions, 'Regions', 'json')
+        if not UtilClient.is_unset(tmp_req.resources):
+            request.resources_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resources, 'Resources', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_name):
+            query['ActionPlanName'] = request.action_plan_name
+        if not UtilClient.is_unset(request.allocation_spec):
+            query['AllocationSpec'] = request.allocation_spec
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.desired_capacity):
+            query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.level):
+            query['Level'] = request.level
+        if not UtilClient.is_unset(request.prolog_script):
+            query['PrologScript'] = request.prolog_script
+        if not UtilClient.is_unset(request.regions_shrink):
+            query['Regions'] = request.regions_shrink
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.resources_shrink):
+            query['Resources'] = request.resources_shrink
+        if not UtilClient.is_unset(request.script):
+            query['Script'] = request.script
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.CreateActionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_action_plan(
+        self,
+        request: ehpc_instant_20230701_models.CreateActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
+        """
+        @summary 创建执行计划创建执行计划
+        
+        @param request: CreateActionPlanRequest
+        @return: CreateActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_action_plan_with_options(request, runtime)
+
+    async def create_action_plan_async(
+        self,
+        request: ehpc_instant_20230701_models.CreateActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.CreateActionPlanResponse:
+        """
+        @summary 创建执行计划创建执行计划
+        
+        @param request: CreateActionPlanRequest
+        @return: CreateActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_action_plan_with_options_async(request, runtime)
+
     def create_job_with_options(
         self,
         tmp_req: ehpc_instant_20230701_models.CreateJobRequest,
@@ -420,6 +564,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_pool_with_options_async(request, runtime)
+
+    def delete_action_plan_with_options(
+        self,
+        request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
+        """
+        @summary 删除执行计划
+        
+        @param request: DeleteActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeleteActionPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_action_plan_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
+        """
+        @summary 删除执行计划
+        
+        @param request: DeleteActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.DeleteActionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_action_plan(
+        self,
+        request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
+        """
+        @summary 删除执行计划
+        
+        @param request: DeleteActionPlanRequest
+        @return: DeleteActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_action_plan_with_options(request, runtime)
+
+    async def delete_action_plan_async(
+        self,
+        request: ehpc_instant_20230701_models.DeleteActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.DeleteActionPlanResponse:
+        """
+        @summary 删除执行计划
+        
+        @param request: DeleteActionPlanRequest
+        @return: DeleteActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_action_plan_with_options_async(request, runtime)
 
     def delete_jobs_with_options(
         self,
@@ -861,6 +1101,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_job_metric_last_with_options_async(request, runtime)
 
+    def get_action_plan_with_options(
+        self,
+        request: ehpc_instant_20230701_models.GetActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
+        """
+        @summary 查询执行计划详情
+        
+        @param request: GetActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetActionPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_action_plan_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.GetActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
+        """
+        @summary 查询执行计划详情
+        
+        @param request: GetActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.GetActionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_action_plan(
+        self,
+        request: ehpc_instant_20230701_models.GetActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
+        """
+        @summary 查询执行计划详情
+        
+        @param request: GetActionPlanRequest
+        @return: GetActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_action_plan_with_options(request, runtime)
+
+    async def get_action_plan_async(
+        self,
+        request: ehpc_instant_20230701_models.GetActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.GetActionPlanResponse:
+        """
+        @summary 查询执行计划详情
+        
+        @param request: GetActionPlanRequest
+        @return: GetActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_action_plan_with_options_async(request, runtime)
+
     def get_app_versions_with_options(
         self,
         request: ehpc_instant_20230701_models.GetAppVersionsRequest,
@@ -1280,6 +1616,222 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_pool_with_options_async(request, runtime)
+
+    def list_action_plan_activities_with_options(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
+        """
+        @summary 查询执行计划的执行情况。
+        
+        @param request: ListActionPlanActivitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionPlanActivitiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListActionPlanActivities',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListActionPlanActivitiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_action_plan_activities_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
+        """
+        @summary 查询执行计划的执行情况。
+        
+        @param request: ListActionPlanActivitiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionPlanActivitiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListActionPlanActivities',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListActionPlanActivitiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_action_plan_activities(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
+    ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
+        """
+        @summary 查询执行计划的执行情况。
+        
+        @param request: ListActionPlanActivitiesRequest
+        @return: ListActionPlanActivitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_action_plan_activities_with_options(request, runtime)
+
+    async def list_action_plan_activities_async(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlanActivitiesRequest,
+    ) -> ehpc_instant_20230701_models.ListActionPlanActivitiesResponse:
+        """
+        @summary 查询执行计划的执行情况。
+        
+        @param request: ListActionPlanActivitiesRequest
+        @return: ListActionPlanActivitiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_action_plan_activities_with_options_async(request, runtime)
+
+    def list_action_plans_with_options(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListActionPlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
+        """
+        @summary 查询执行计划列表
+        
+        @param tmp_req: ListActionPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionPlansResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListActionPlansShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.action_plan_ids):
+            request.action_plan_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_plan_ids, 'ActionPlanIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_ids_shrink):
+            query['ActionPlanIds'] = request.action_plan_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListActionPlans',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListActionPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_action_plans_with_options_async(
+        self,
+        tmp_req: ehpc_instant_20230701_models.ListActionPlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
+        """
+        @summary 查询执行计划列表
+        
+        @param tmp_req: ListActionPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionPlansResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ehpc_instant_20230701_models.ListActionPlansShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.action_plan_ids):
+            request.action_plan_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.action_plan_ids, 'ActionPlanIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_ids_shrink):
+            query['ActionPlanIds'] = request.action_plan_ids_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListActionPlans',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.ListActionPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_action_plans(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlansRequest,
+    ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
+        """
+        @summary 查询执行计划列表
+        
+        @param request: ListActionPlansRequest
+        @return: ListActionPlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_action_plans_with_options(request, runtime)
+
+    async def list_action_plans_async(
+        self,
+        request: ehpc_instant_20230701_models.ListActionPlansRequest,
+    ) -> ehpc_instant_20230701_models.ListActionPlansResponse:
+        """
+        @summary 查询执行计划列表
+        
+        @param request: ListActionPlansRequest
+        @return: ListActionPlansResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_action_plans_with_options_async(request, runtime)
 
     def list_executors_with_options(
         self,
@@ -2396,6 +2948,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.un_tag_resources_with_options_async(request, runtime)
+
+    def update_action_plan_with_options(
+        self,
+        request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
+        """
+        @summary 更新执行计划
+        
+        @param request: UpdateActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        if not UtilClient.is_unset(request.desired_capacity):
+            query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UpdateActionPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_action_plan_with_options_async(
+        self,
+        request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
+        """
+        @summary 更新执行计划
+        
+        @param request: UpdateActionPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateActionPlanResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_plan_id):
+            query['ActionPlanId'] = request.action_plan_id
+        if not UtilClient.is_unset(request.desired_capacity):
+            query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateActionPlan',
+            version='2023-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ehpc_instant_20230701_models.UpdateActionPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_action_plan(
+        self,
+        request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
+        """
+        @summary 更新执行计划
+        
+        @param request: UpdateActionPlanRequest
+        @return: UpdateActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_action_plan_with_options(request, runtime)
+
+    async def update_action_plan_async(
+        self,
+        request: ehpc_instant_20230701_models.UpdateActionPlanRequest,
+    ) -> ehpc_instant_20230701_models.UpdateActionPlanResponse:
+        """
+        @summary 更新执行计划
+        
+        @param request: UpdateActionPlanRequest
+        @return: UpdateActionPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_action_plan_with_options_async(request, runtime)
 
     def update_pool_with_options(
         self,
