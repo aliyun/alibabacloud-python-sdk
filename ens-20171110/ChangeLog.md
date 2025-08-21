@@ -1,3 +1,26 @@
+2025-08-21 Version: 9.1.1
+- Update API AttachInstanceSDG: add request parameters DiskAccessProtocol.
+- Update API AttachInstanceSDG: add request parameters DiskType.
+- Update API CreateSDG: add request parameters BillingCycle.
+- Update API CreateSDG: add request parameters DiskType.
+- Update API DeployInstanceSDG: add request parameters DiskAccessProtocol.
+- Update API DeployInstanceSDG: add request parameters DiskType.
+- Update API DescribeInstanceSDGStatus: add response parameters Body.DeploymentStatus.$.DiskAccessProtocol.
+- Update API DescribeInstanceSDGStatus: add response parameters Body.DeploymentStatus.$.DiskType.
+- Update API DescribeInstances: add response parameters Body.Instances.$.DeletionProtection.
+- Update API DescribeSDG: add response parameters Body.SDGs.$.BillingCycle.
+- Update API DescribeSDG: add response parameters Body.SDGs.$.CreationDiskType.
+- Update API DescribeSDG: add response parameters Body.SDGs.$.PreloadInfos.$.DiskType.
+- Update API DescribeSDGDeploymentStatus: add response parameters Body.DeploymentStatus.$.DiskAccessProtocol.
+- Update API DescribeSDGDeploymentStatus: add response parameters Body.DeploymentStatus.$.DiskType.
+- Update API DescribeSDGs: add response parameters Body.SDGs.$.BillingCycle.
+- Update API DescribeSDGs: add response parameters Body.SDGs.$.CreationDiskType.
+- Update API ImportImage: add request parameters LicenseType.
+- Update API ModifyInstanceAttribute: add request parameters DeletionProtection.
+- Update API PreloadRegionSDG: add request parameters DiskType.
+- Update API RunInstances: add request parameters DeletionProtection.
+
+
 2025-07-08 Version: 9.1.0
 - Support API RemoveSDGs.
 - Update API DescribeAICImages: add response parameters Body.Images.$.AndroidVersion.

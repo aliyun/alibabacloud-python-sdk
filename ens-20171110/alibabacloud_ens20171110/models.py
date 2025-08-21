@@ -2045,10 +2045,14 @@ class AttachInstanceSDGRequestLoadOpt(TeaModel):
 class AttachInstanceSDGRequest(TeaModel):
     def __init__(
         self,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         instance_ids: List[str] = None,
         load_opt: AttachInstanceSDGRequestLoadOpt = None,
         sdgid: str = None,
     ):
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The IDs of the instances.
         # 
         # This parameter is required.
@@ -2069,6 +2073,10 @@ class AttachInstanceSDGRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.load_opt is not None:
@@ -2079,6 +2087,10 @@ class AttachInstanceSDGRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('LoadOpt') is not None:
@@ -2092,10 +2104,14 @@ class AttachInstanceSDGRequest(TeaModel):
 class AttachInstanceSDGShrinkRequest(TeaModel):
     def __init__(
         self,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         instance_ids_shrink: str = None,
         load_opt_shrink: str = None,
         sdgid: str = None,
     ):
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The IDs of the instances.
         # 
         # This parameter is required.
@@ -2115,6 +2131,10 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
         if self.load_opt_shrink is not None:
@@ -2125,6 +2145,10 @@ class AttachInstanceSDGShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('LoadOpt') is not None:
@@ -9071,15 +9095,19 @@ class CreateNetworkInterfaceResponse(TeaModel):
 class CreateSDGRequest(TeaModel):
     def __init__(
         self,
+        billing_cycle: str = None,
         description: str = None,
+        disk_type: str = None,
         from_sdgid: str = None,
         instance_id: str = None,
         size: str = None,
     ):
+        self.billing_cycle = billing_cycle
         # The description of the SDG.
         # 
         # >  We recommend that you specify this parameter in details for subsequent queries.
         self.description = description
+        self.disk_type = disk_type
         # The ID of the SDG from which you want to create an SDG.
         # 
         # > 
@@ -9114,8 +9142,12 @@ class CreateSDGRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
         if self.description is not None:
             result['Description'] = self.description
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.from_sdgid is not None:
             result['FromSDGId'] = self.from_sdgid
         if self.instance_id is not None:
@@ -9126,8 +9158,12 @@ class CreateSDGRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('FromSDGId') is not None:
             self.from_sdgid = m.get('FromSDGId')
         if m.get('InstanceId') is not None:
@@ -14106,11 +14142,15 @@ class DeployInstanceSDGRequest(TeaModel):
     def __init__(
         self,
         deployment_type: str = None,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         instance_ids: List[str] = None,
         sdgid: str = None,
     ):
         # The deployment type of the SDG. shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
         self.deployment_type = deployment_type
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
         # 
         # This parameter is required.
@@ -14131,6 +14171,10 @@ class DeployInstanceSDGRequest(TeaModel):
         result = dict()
         if self.deployment_type is not None:
             result['DeploymentType'] = self.deployment_type
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.sdgid is not None:
@@ -14141,6 +14185,10 @@ class DeployInstanceSDGRequest(TeaModel):
         m = m or dict()
         if m.get('DeploymentType') is not None:
             self.deployment_type = m.get('DeploymentType')
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('SDGId') is not None:
@@ -14152,11 +14200,15 @@ class DeployInstanceSDGShrinkRequest(TeaModel):
     def __init__(
         self,
         deployment_type: str = None,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         instance_ids_shrink: str = None,
         sdgid: str = None,
     ):
         # The deployment type of the SDG. shared: shared read/write splitting deployment. The content of the SDG is read-only, and data updates are written to the local storage of the instance.
         self.deployment_type = deployment_type
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The IDs of the instances. The value is a JSON array that consists of up to 100 IDs.
         # 
         # This parameter is required.
@@ -14177,6 +14229,10 @@ class DeployInstanceSDGShrinkRequest(TeaModel):
         result = dict()
         if self.deployment_type is not None:
             result['DeploymentType'] = self.deployment_type
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_ids_shrink is not None:
             result['InstanceIds'] = self.instance_ids_shrink
         if self.sdgid is not None:
@@ -14187,6 +14243,10 @@ class DeployInstanceSDGShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DeploymentType') is not None:
             self.deployment_type = m.get('DeploymentType')
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceIds') is not None:
             self.instance_ids_shrink = m.get('InstanceIds')
         if m.get('SDGId') is not None:
@@ -29559,6 +29619,8 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
         self,
         block_rw_split_size: int = None,
         cache_size: int = None,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         ens_region_id: str = None,
         instance_id: str = None,
         mount_type: str = None,
@@ -29569,6 +29631,8 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
     ):
         self.block_rw_split_size = block_rw_split_size
         self.cache_size = cache_size
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The ID of the edge node.
         self.ens_region_id = ens_region_id
         # The ID of the AIC instance.
@@ -29597,6 +29661,10 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
             result['BlockRwSplitSize'] = self.block_rw_split_size
         if self.cache_size is not None:
             result['CacheSize'] = self.cache_size
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.instance_id is not None:
@@ -29619,6 +29687,10 @@ class DescribeInstanceSDGStatusResponseBodyDeploymentStatus(TeaModel):
             self.block_rw_split_size = m.get('BlockRwSplitSize')
         if m.get('CacheSize') is not None:
             self.cache_size = m.get('CacheSize')
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('InstanceId') is not None:
@@ -31480,6 +31552,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         cpu: str = None,
         creation_time: str = None,
         data_disk: DescribeInstancesResponseBodyInstancesInstanceDataDisk = None,
+        deletion_protection: bool = None,
         disk: int = None,
         ens_region_id: str = None,
         expired_time: str = None,
@@ -31516,6 +31589,7 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         self.creation_time = creation_time
         # Details of the data disk.
         self.data_disk = data_disk
+        self.deletion_protection = deletion_protection
         # The total size of the disk. Unit: MiB.
         self.disk = disk
         # The region ID of the instance.
@@ -31630,6 +31704,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
             result['CreationTime'] = self.creation_time
         if self.data_disk is not None:
             result['DataDisk'] = self.data_disk.to_map()
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.disk is not None:
             result['Disk'] = self.disk
         if self.ens_region_id is not None:
@@ -31697,6 +31773,8 @@ class DescribeInstancesResponseBodyInstancesInstance(TeaModel):
         if m.get('DataDisk') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesInstanceDataDisk()
             self.data_disk = temp_model.from_map(m['DataDisk'])
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('Disk') is not None:
             self.disk = m.get('Disk')
         if m.get('EnsRegionId') is not None:
@@ -42333,6 +42411,7 @@ class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
     def __init__(
         self,
         creation_time: str = None,
+        disk_type: str = None,
         namespace: str = None,
         redundant_num: int = None,
         region_id: str = None,
@@ -42340,6 +42419,7 @@ class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
     ):
         # The time when the SDG was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
+        self.disk_type = disk_type
         # The namespace.
         self.namespace = namespace
         # The number of redundant replicas to quickly respond to shared mounts.
@@ -42360,6 +42440,8 @@ class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
         result = dict()
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.redundant_num is not None:
@@ -42374,6 +42456,8 @@ class DescribeSDGResponseBodySDGsPreloadInfos(TeaModel):
         m = m or dict()
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('RedundantNum') is not None:
@@ -42389,6 +42473,8 @@ class DescribeSDGResponseBodySDGs(TeaModel):
     def __init__(
         self,
         avaliable_region_ids: List[DescribeSDGResponseBodySDGsAvaliableRegionIds] = None,
+        billing_cycle: str = None,
+        creation_disk_type: str = None,
         creation_instance_id: str = None,
         creation_region_id: str = None,
         creation_time: str = None,
@@ -42402,6 +42488,8 @@ class DescribeSDGResponseBodySDGs(TeaModel):
     ):
         # SDGs that have snapshots.
         self.avaliable_region_ids = avaliable_region_ids
+        self.billing_cycle = billing_cycle
+        self.creation_disk_type = creation_disk_type
         # The ID of the instance on which the SDG is created.
         self.creation_instance_id = creation_instance_id
         # The ID of the node on which the SDG is created.
@@ -42448,6 +42536,10 @@ class DescribeSDGResponseBodySDGs(TeaModel):
         if self.avaliable_region_ids is not None:
             for k in self.avaliable_region_ids:
                 result['AvaliableRegionIds'].append(k.to_map() if k else None)
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
+        if self.creation_disk_type is not None:
+            result['CreationDiskType'] = self.creation_disk_type
         if self.creation_instance_id is not None:
             result['CreationInstanceId'] = self.creation_instance_id
         if self.creation_region_id is not None:
@@ -42479,6 +42571,10 @@ class DescribeSDGResponseBodySDGs(TeaModel):
             for k in m.get('AvaliableRegionIds'):
                 temp_model = DescribeSDGResponseBodySDGsAvaliableRegionIds()
                 self.avaliable_region_ids.append(temp_model.from_map(k))
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
+        if m.get('CreationDiskType') is not None:
+            self.creation_disk_type = m.get('CreationDiskType')
         if m.get('CreationInstanceId') is not None:
             self.creation_instance_id = m.get('CreationInstanceId')
         if m.get('CreationRegionId') is not None:
@@ -42759,6 +42855,8 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
         self,
         block_rw_split_size: int = None,
         cache_size: int = None,
+        disk_access_protocol: str = None,
+        disk_type: str = None,
         instance_id: str = None,
         mount_type: str = None,
         phase: str = None,
@@ -42768,6 +42866,8 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
     ):
         self.block_rw_split_size = block_rw_split_size
         self.cache_size = cache_size
+        self.disk_access_protocol = disk_access_protocol
+        self.disk_type = disk_type
         # The ID of the AIC instance.
         self.instance_id = instance_id
         # The deployment type.
@@ -42805,6 +42905,10 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
             result['BlockRwSplitSize'] = self.block_rw_split_size
         if self.cache_size is not None:
             result['CacheSize'] = self.cache_size
+        if self.disk_access_protocol is not None:
+            result['DiskAccessProtocol'] = self.disk_access_protocol
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.mount_type is not None:
@@ -42825,6 +42929,10 @@ class DescribeSDGDeploymentStatusResponseBodyDeploymentStatus(TeaModel):
             self.block_rw_split_size = m.get('BlockRwSplitSize')
         if m.get('CacheSize') is not None:
             self.cache_size = m.get('CacheSize')
+        if m.get('DiskAccessProtocol') is not None:
+            self.disk_access_protocol = m.get('DiskAccessProtocol')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('MountType') is not None:
@@ -43130,6 +43238,8 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
     def __init__(
         self,
         avaliable_region_ids: List[DescribeSDGsResponseBodySDGsAvaliableRegionIds] = None,
+        billing_cycle: str = None,
+        creation_disk_type: str = None,
         creation_instance_id: str = None,
         creation_region_id: str = None,
         creation_time: str = None,
@@ -43143,6 +43253,8 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
     ):
         # The IDs of available edge nodes.
         self.avaliable_region_ids = avaliable_region_ids
+        self.billing_cycle = billing_cycle
+        self.creation_disk_type = creation_disk_type
         # The ID of the instance on which the SDG is created.
         self.creation_instance_id = creation_instance_id
         # The ID of the node on which the SDG is created.
@@ -43189,6 +43301,10 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
         if self.avaliable_region_ids is not None:
             for k in self.avaliable_region_ids:
                 result['AvaliableRegionIds'].append(k.to_map() if k else None)
+        if self.billing_cycle is not None:
+            result['BillingCycle'] = self.billing_cycle
+        if self.creation_disk_type is not None:
+            result['CreationDiskType'] = self.creation_disk_type
         if self.creation_instance_id is not None:
             result['CreationInstanceId'] = self.creation_instance_id
         if self.creation_region_id is not None:
@@ -43220,6 +43336,10 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
             for k in m.get('AvaliableRegionIds'):
                 temp_model = DescribeSDGsResponseBodySDGsAvaliableRegionIds()
                 self.avaliable_region_ids.append(temp_model.from_map(k))
+        if m.get('BillingCycle') is not None:
+            self.billing_cycle = m.get('BillingCycle')
+        if m.get('CreationDiskType') is not None:
+            self.creation_disk_type = m.get('CreationDiskType')
         if m.get('CreationInstanceId') is not None:
             self.creation_instance_id = m.get('CreationInstanceId')
         if m.get('CreationRegionId') is not None:
@@ -49874,6 +49994,7 @@ class ImportImageRequest(TeaModel):
         disk_device_mapping: List[ImportImageRequestDiskDeviceMapping] = None,
         image_format: str = None,
         image_name: str = None,
+        license_type: str = None,
         ossbucket: str = None,
         ossobject: str = None,
         ossregion: str = None,
@@ -49891,13 +50012,13 @@ class ImportImageRequest(TeaModel):
         self.image_format = image_format
         # This parameter is required.
         self.image_name = image_name
+        self.license_type = license_type
         self.ossbucket = ossbucket
         self.ossobject = ossobject
         self.ossregion = ossregion
         # This parameter is required.
         self.ostype = ostype
         self.osversion = osversion
-        # This parameter is required.
         self.platform = platform
         self.target_ossregion_id = target_ossregion_id
 
@@ -49925,6 +50046,8 @@ class ImportImageRequest(TeaModel):
             result['ImageFormat'] = self.image_format
         if self.image_name is not None:
             result['ImageName'] = self.image_name
+        if self.license_type is not None:
+            result['LicenseType'] = self.license_type
         if self.ossbucket is not None:
             result['OSSBucket'] = self.ossbucket
         if self.ossobject is not None:
@@ -49956,6 +50079,8 @@ class ImportImageRequest(TeaModel):
             self.image_format = m.get('ImageFormat')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
+        if m.get('LicenseType') is not None:
+            self.license_type = m.get('LicenseType')
         if m.get('OSSBucket') is not None:
             self.ossbucket = m.get('OSSBucket')
         if m.get('OSSObject') is not None:
@@ -49981,6 +50106,7 @@ class ImportImageShrinkRequest(TeaModel):
         disk_device_mapping_shrink: str = None,
         image_format: str = None,
         image_name: str = None,
+        license_type: str = None,
         ossbucket: str = None,
         ossobject: str = None,
         ossregion: str = None,
@@ -49998,13 +50124,13 @@ class ImportImageShrinkRequest(TeaModel):
         self.image_format = image_format
         # This parameter is required.
         self.image_name = image_name
+        self.license_type = license_type
         self.ossbucket = ossbucket
         self.ossobject = ossobject
         self.ossregion = ossregion
         # This parameter is required.
         self.ostype = ostype
         self.osversion = osversion
-        # This parameter is required.
         self.platform = platform
         self.target_ossregion_id = target_ossregion_id
 
@@ -50027,6 +50153,8 @@ class ImportImageShrinkRequest(TeaModel):
             result['ImageFormat'] = self.image_format
         if self.image_name is not None:
             result['ImageName'] = self.image_name
+        if self.license_type is not None:
+            result['LicenseType'] = self.license_type
         if self.ossbucket is not None:
             result['OSSBucket'] = self.ossbucket
         if self.ossobject is not None:
@@ -50055,6 +50183,8 @@ class ImportImageShrinkRequest(TeaModel):
             self.image_format = m.get('ImageFormat')
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
+        if m.get('LicenseType') is not None:
+            self.license_type = m.get('LicenseType')
         if m.get('OSSBucket') is not None:
             self.ossbucket = m.get('OSSBucket')
         if m.get('OSSObject') is not None:
@@ -52838,12 +52968,14 @@ class ModifyImageSharePermissionResponse(TeaModel):
 class ModifyInstanceAttributeRequest(TeaModel):
     def __init__(
         self,
+        deletion_protection: bool = None,
         host_name: str = None,
         instance_id: str = None,
         instance_name: str = None,
         password: str = None,
         user_data: str = None,
     ):
+        self.deletion_protection = deletion_protection
         # The hostname of the Elastic Compute Service (ECS) instance. The value can be 2 to 64 characters in length. You can use periods (.) to separate the value into multiple segments. Each segment can contain letters, digits, hyphens (-), and periods. Consecutive periods or hyphens are not allowed. The name cannot start or end with a period (.) or a hyphen (-).
         self.host_name = host_name
         # The ID of the instance for which you want to modify attributes. You can specify only one ID.
@@ -52870,6 +53002,8 @@ class ModifyInstanceAttributeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.host_name is not None:
             result['HostName'] = self.host_name
         if self.instance_id is not None:
@@ -52884,6 +53018,8 @@ class ModifyInstanceAttributeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('HostName') is not None:
             self.host_name = m.get('HostName')
         if m.get('InstanceId') is not None:
@@ -54737,6 +54873,7 @@ class PreloadRegionSDGRequest(TeaModel):
     def __init__(
         self,
         destination_region_ids: List[str] = None,
+        disk_type: str = None,
         namespaces: List[str] = None,
         redundant_num: int = None,
         sdgid: str = None,
@@ -54745,6 +54882,7 @@ class PreloadRegionSDGRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids = destination_region_ids
+        self.disk_type = disk_type
         # An array that consists of queried namespaces.
         self.namespaces = namespaces
         # The number of redundant replicas to support rapid deployment.
@@ -54767,6 +54905,8 @@ class PreloadRegionSDGRequest(TeaModel):
         result = dict()
         if self.destination_region_ids is not None:
             result['DestinationRegionIds'] = self.destination_region_ids
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.namespaces is not None:
             result['Namespaces'] = self.namespaces
         if self.redundant_num is not None:
@@ -54779,6 +54919,8 @@ class PreloadRegionSDGRequest(TeaModel):
         m = m or dict()
         if m.get('DestinationRegionIds') is not None:
             self.destination_region_ids = m.get('DestinationRegionIds')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('Namespaces') is not None:
             self.namespaces = m.get('Namespaces')
         if m.get('RedundantNum') is not None:
@@ -54792,6 +54934,7 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
     def __init__(
         self,
         destination_region_ids_shrink: str = None,
+        disk_type: str = None,
         namespaces_shrink: str = None,
         redundant_num: int = None,
         sdgid: str = None,
@@ -54800,6 +54943,7 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.destination_region_ids_shrink = destination_region_ids_shrink
+        self.disk_type = disk_type
         # An array that consists of queried namespaces.
         self.namespaces_shrink = namespaces_shrink
         # The number of redundant replicas to support rapid deployment.
@@ -54822,6 +54966,8 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
         result = dict()
         if self.destination_region_ids_shrink is not None:
             result['DestinationRegionIds'] = self.destination_region_ids_shrink
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.namespaces_shrink is not None:
             result['Namespaces'] = self.namespaces_shrink
         if self.redundant_num is not None:
@@ -54834,6 +54980,8 @@ class PreloadRegionSDGShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('DestinationRegionIds') is not None:
             self.destination_region_ids_shrink = m.get('DestinationRegionIds')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('Namespaces') is not None:
             self.namespaces_shrink = m.get('Namespaces')
         if m.get('RedundantNum') is not None:
@@ -60102,6 +60250,7 @@ class RunInstancesRequest(TeaModel):
         billing_cycle: str = None,
         carrier: str = None,
         data_disk: List[RunInstancesRequestDataDisk] = None,
+        deletion_protection: bool = None,
         ens_region_id: str = None,
         host_name: str = None,
         image_id: str = None,
@@ -60167,6 +60316,7 @@ class RunInstancesRequest(TeaModel):
         self.carrier = carrier
         # The specifications of data disks.
         self.data_disk = data_disk
+        self.deletion_protection = deletion_protection
         # The ID of the node.
         # 
         # >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
@@ -60337,6 +60487,8 @@ class RunInstancesRequest(TeaModel):
         if self.data_disk is not None:
             for k in self.data_disk:
                 result['DataDisk'].append(k.to_map() if k else None)
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.host_name is not None:
@@ -60422,6 +60574,8 @@ class RunInstancesRequest(TeaModel):
             for k in m.get('DataDisk'):
                 temp_model = RunInstancesRequestDataDisk()
                 self.data_disk.append(temp_model.from_map(k))
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('HostName') is not None:
@@ -60536,6 +60690,7 @@ class RunInstancesShrinkRequest(TeaModel):
         billing_cycle: str = None,
         carrier: str = None,
         data_disk_shrink: str = None,
+        deletion_protection: bool = None,
         ens_region_id: str = None,
         host_name: str = None,
         image_id: str = None,
@@ -60601,6 +60756,7 @@ class RunInstancesShrinkRequest(TeaModel):
         self.carrier = carrier
         # The specifications of data disks.
         self.data_disk_shrink = data_disk_shrink
+        self.deletion_protection = deletion_protection
         # The ID of the node.
         # 
         # >  This parameter is required if ScheduleAreaLevel is set to Region and is not available if ScheduleAreaLevel is set to other values.
@@ -60763,6 +60919,8 @@ class RunInstancesShrinkRequest(TeaModel):
             result['Carrier'] = self.carrier
         if self.data_disk_shrink is not None:
             result['DataDisk'] = self.data_disk_shrink
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
         if self.ens_region_id is not None:
             result['EnsRegionId'] = self.ens_region_id
         if self.host_name is not None:
@@ -60845,6 +61003,8 @@ class RunInstancesShrinkRequest(TeaModel):
             self.carrier = m.get('Carrier')
         if m.get('DataDisk') is not None:
             self.data_disk_shrink = m.get('DataDisk')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
         if m.get('EnsRegionId') is not None:
             self.ens_region_id = m.get('EnsRegionId')
         if m.get('HostName') is not None:

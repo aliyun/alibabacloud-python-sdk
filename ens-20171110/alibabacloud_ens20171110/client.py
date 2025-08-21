@@ -1077,6 +1077,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.load_opt):
             request.load_opt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.load_opt, 'LoadOpt', 'json')
         query = {}
+        if not UtilClient.is_unset(request.disk_access_protocol):
+            query['DiskAccessProtocol'] = request.disk_access_protocol
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.load_opt_shrink):
@@ -1122,6 +1126,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.load_opt):
             request.load_opt_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.load_opt, 'LoadOpt', 'json')
         query = {}
+        if not UtilClient.is_unset(request.disk_access_protocol):
+            query['DiskAccessProtocol'] = request.disk_access_protocol
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.load_opt_shrink):
@@ -9421,6 +9429,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deployment_type):
             query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.disk_access_protocol):
+            query['DiskAccessProtocol'] = request.disk_access_protocol
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.sdgid):
@@ -9464,6 +9476,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deployment_type):
             query['DeploymentType'] = request.deployment_type
+        if not UtilClient.is_unset(request.disk_access_protocol):
+            query['DiskAccessProtocol'] = request.disk_access_protocol
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
         if not UtilClient.is_unset(request.sdgid):
@@ -21307,6 +21323,8 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.license_type):
+            query['LicenseType'] = request.license_type
         if not UtilClient.is_unset(request.ossbucket):
             query['OSSBucket'] = request.ossbucket
         if not UtilClient.is_unset(request.ossobject):
@@ -21368,6 +21386,8 @@ class Client(OpenApiClient):
             query['ImageFormat'] = request.image_format
         if not UtilClient.is_unset(request.image_name):
             query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.license_type):
+            query['LicenseType'] = request.license_type
         if not UtilClient.is_unset(request.ossbucket):
             query['OSSBucket'] = request.ossbucket
         if not UtilClient.is_unset(request.ossobject):
@@ -23371,6 +23391,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
@@ -23418,6 +23440,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.host_name):
             query['HostName'] = request.host_name
         if not UtilClient.is_unset(request.instance_id):
@@ -24839,6 +24863,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.destination_region_ids_shrink):
             query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.namespaces_shrink):
             query['Namespaces'] = request.namespaces_shrink
         if not UtilClient.is_unset(request.redundant_num):
@@ -24886,6 +24912,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.destination_region_ids_shrink):
             query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.disk_type):
+            query['DiskType'] = request.disk_type
         if not UtilClient.is_unset(request.namespaces_shrink):
             query['Namespaces'] = request.namespaces_shrink
         if not UtilClient.is_unset(request.redundant_num):
@@ -28611,6 +28639,8 @@ class Client(OpenApiClient):
             query['Carrier'] = request.carrier
         if not UtilClient.is_unset(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.host_name):
@@ -28726,6 +28756,8 @@ class Client(OpenApiClient):
             query['Carrier'] = request.carrier
         if not UtilClient.is_unset(request.data_disk_shrink):
             query['DataDisk'] = request.data_disk_shrink
+        if not UtilClient.is_unset(request.deletion_protection):
+            query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.host_name):
