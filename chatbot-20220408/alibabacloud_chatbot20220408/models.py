@@ -6927,10 +6927,12 @@ class DescribeInstanceRequest(TeaModel):
 class DescribeInstanceResponseBodyCategories(TeaModel):
     def __init__(
         self,
+        ability_type: str = None,
         category_id: int = None,
         name: str = None,
         parent_category_id: int = None,
     ):
+        self.ability_type = ability_type
         self.category_id = category_id
         self.name = name
         self.parent_category_id = parent_category_id
@@ -6944,6 +6946,8 @@ class DescribeInstanceResponseBodyCategories(TeaModel):
             return _map
 
         result = dict()
+        if self.ability_type is not None:
+            result['AbilityType'] = self.ability_type
         if self.category_id is not None:
             result['CategoryId'] = self.category_id
         if self.name is not None:
@@ -6954,6 +6958,8 @@ class DescribeInstanceResponseBodyCategories(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbilityType') is not None:
+            self.ability_type = m.get('AbilityType')
         if m.get('CategoryId') is not None:
             self.category_id = m.get('CategoryId')
         if m.get('Name') is not None:
@@ -8614,10 +8620,12 @@ class InitIMConnectResponse(TeaModel):
 class LinkInstanceCategoryRequest(TeaModel):
     def __init__(
         self,
+        ability_type: str = None,
         agent_key: str = None,
         category_ids: str = None,
         instance_id: str = None,
     ):
+        self.ability_type = ability_type
         self.agent_key = agent_key
         self.category_ids = category_ids
         self.instance_id = instance_id
@@ -8631,6 +8639,8 @@ class LinkInstanceCategoryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.ability_type is not None:
+            result['AbilityType'] = self.ability_type
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
         if self.category_ids is not None:
@@ -8641,6 +8651,8 @@ class LinkInstanceCategoryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbilityType') is not None:
+            self.ability_type = m.get('AbilityType')
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
         if m.get('CategoryIds') is not None:
@@ -13458,6 +13470,181 @@ class SearchFaqResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchFaqResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TongyiChatDebugInfoRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        instance_id: str = None,
+        message_id: str = None,
+    ):
+        self.agent_key = agent_key
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.message_id = message_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        return self
+
+
+class TongyiChatDebugInfoResponseBodyPipeline(TeaModel):
+    def __init__(
+        self,
+        input: Any = None,
+        name: str = None,
+        node_type: str = None,
+        output: Any = None,
+    ):
+        self.input = input
+        self.name = name
+        self.node_type = node_type
+        self.output = output
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.output is not None:
+            result['Output'] = self.output
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        return self
+
+
+class TongyiChatDebugInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        message_id: str = None,
+        pipeline: List[TongyiChatDebugInfoResponseBodyPipeline] = None,
+        request_id: str = None,
+    ):
+        self.message_id = message_id
+        self.pipeline = pipeline
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.pipeline:
+            for k in self.pipeline:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        result['Pipeline'] = []
+        if self.pipeline is not None:
+            for k in self.pipeline:
+                result['Pipeline'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        self.pipeline = []
+        if m.get('Pipeline') is not None:
+            for k in m.get('Pipeline'):
+                temp_model = TongyiChatDebugInfoResponseBodyPipeline()
+                self.pipeline.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TongyiChatDebugInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TongyiChatDebugInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TongyiChatDebugInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

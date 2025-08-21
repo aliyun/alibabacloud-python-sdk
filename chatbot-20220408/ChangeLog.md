@@ -1,3 +1,9 @@
+2025-08-21 Version: 2.3.0
+- Support API TongyiChatDebugInfo.
+- Update API DescribeInstance: add response parameters Body.Categories.$.AbilityType.
+- Update API LinkInstanceCategory: add request parameters AbilityType.
+
+
 2024-10-16 Version: 2.2.0
 - Support API ListTongyiConversationLogs.
 - Update API CreateDoc: add param DocMetadata.

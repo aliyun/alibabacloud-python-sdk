@@ -5463,6 +5463,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ability_type):
+            query['AbilityType'] = request.ability_type
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
@@ -5504,6 +5506,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.ability_type):
+            query['AbilityType'] = request.ability_type
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         if not UtilClient.is_unset(request.instance_id):
@@ -7848,6 +7852,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_faq_with_options_async(request, runtime)
+
+    def tongyi_chat_debug_info_with_options(
+        self,
+        request: chatbot_20220408_models.TongyiChatDebugInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.TongyiChatDebugInfoResponse:
+        """
+        @summary 大模型问答调试信息
+        
+        @param request: TongyiChatDebugInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TongyiChatDebugInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TongyiChatDebugInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.TongyiChatDebugInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def tongyi_chat_debug_info_with_options_async(
+        self,
+        request: chatbot_20220408_models.TongyiChatDebugInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.TongyiChatDebugInfoResponse:
+        """
+        @summary 大模型问答调试信息
+        
+        @param request: TongyiChatDebugInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TongyiChatDebugInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.message_id):
+            query['MessageId'] = request.message_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TongyiChatDebugInfo',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.TongyiChatDebugInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def tongyi_chat_debug_info(
+        self,
+        request: chatbot_20220408_models.TongyiChatDebugInfoRequest,
+    ) -> chatbot_20220408_models.TongyiChatDebugInfoResponse:
+        """
+        @summary 大模型问答调试信息
+        
+        @param request: TongyiChatDebugInfoRequest
+        @return: TongyiChatDebugInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.tongyi_chat_debug_info_with_options(request, runtime)
+
+    async def tongyi_chat_debug_info_async(
+        self,
+        request: chatbot_20220408_models.TongyiChatDebugInfoRequest,
+    ) -> chatbot_20220408_models.TongyiChatDebugInfoResponse:
+        """
+        @summary 大模型问答调试信息
+        
+        @param request: TongyiChatDebugInfoRequest
+        @return: TongyiChatDebugInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.tongyi_chat_debug_info_with_options_async(request, runtime)
 
     def update_category_with_options(
         self,
