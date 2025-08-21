@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('elasticsearch', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -725,7 +724,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CapacityPlanResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
     async def capacity_plan_with_options_async(
@@ -769,7 +768,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             elasticsearch_20170613_models.CapacityPlanResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
     def capacity_plan(
@@ -5369,6 +5368,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         """
+        @summary 查看备份设置
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSnapshotSettingResponse
@@ -5399,6 +5400,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         """
+        @summary 查看备份设置
+        
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSnapshotSettingResponse
@@ -5427,6 +5430,8 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         """
+        @summary 查看备份设置
+        
         @return: DescribeSnapshotSettingResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -5438,6 +5443,8 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
         """
+        @summary 查看备份设置
+        
         @return: DescribeSnapshotSettingResponse
         """
         runtime = util_models.RuntimeOptions()
@@ -6354,6 +6361,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_elastictask_with_options_async(instance_id, headers, runtime)
 
+    def get_emon_alarm_record_statistics_distribute_with_options(
+        self,
+        request: elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse:
+        """
+        @summary GetEmonAlarmRecordStatisticsDistribute
+        
+        @param request: GetEmonAlarmRecordStatisticsDistributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonAlarmRecordStatisticsDistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.time_end):
+            query['timeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['timeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEmonAlarmRecordStatisticsDistribute',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/emon/alarm-record-statistics/distribute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_emon_alarm_record_statistics_distribute_with_options_async(
+        self,
+        request: elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse:
+        """
+        @summary GetEmonAlarmRecordStatisticsDistribute
+        
+        @param request: GetEmonAlarmRecordStatisticsDistributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonAlarmRecordStatisticsDistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
+        if not UtilClient.is_unset(request.group_id):
+            query['groupId'] = request.group_id
+        if not UtilClient.is_unset(request.time_end):
+            query['timeEnd'] = request.time_end
+        if not UtilClient.is_unset(request.time_start):
+            query['timeStart'] = request.time_start
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEmonAlarmRecordStatisticsDistribute',
+            version='2017-06-13',
+            protocol='HTTPS',
+            pathname=f'/openapi/emon/alarm-record-statistics/distribute',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_emon_alarm_record_statistics_distribute(
+        self,
+        request: elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeRequest,
+    ) -> elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse:
+        """
+        @summary GetEmonAlarmRecordStatisticsDistribute
+        
+        @param request: GetEmonAlarmRecordStatisticsDistributeRequest
+        @return: GetEmonAlarmRecordStatisticsDistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_emon_alarm_record_statistics_distribute_with_options(request, headers, runtime)
+
+    async def get_emon_alarm_record_statistics_distribute_async(
+        self,
+        request: elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeRequest,
+    ) -> elasticsearch_20170613_models.GetEmonAlarmRecordStatisticsDistributeResponse:
+        """
+        @summary GetEmonAlarmRecordStatisticsDistribute
+        
+        @param request: GetEmonAlarmRecordStatisticsDistributeRequest
+        @return: GetEmonAlarmRecordStatisticsDistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_emon_alarm_record_statistics_distribute_with_options_async(request, headers, runtime)
+
     def get_emon_grafana_alerts_with_options(
         self,
         project_id: str,
@@ -6370,9 +6493,12 @@ class Client(OpenApiClient):
         @return: GetEmonGrafanaAlertsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonGrafanaAlerts',
@@ -6406,9 +6532,12 @@ class Client(OpenApiClient):
         @return: GetEmonGrafanaAlertsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonGrafanaAlerts',
@@ -6472,9 +6601,12 @@ class Client(OpenApiClient):
         @return: GetEmonGrafanaDashboardsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonGrafanaDashboards',
@@ -6508,9 +6640,12 @@ class Client(OpenApiClient):
         @return: GetEmonGrafanaDashboardsResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonGrafanaDashboards',
@@ -6566,15 +6701,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         """
+        @summary GetEmonMonitorData
+        
         @param request: GetEmonMonitorDataRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEmonMonitorDataResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonMonitorData',
@@ -6600,15 +6740,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         """
+        @summary GetEmonMonitorData
+        
         @param request: GetEmonMonitorDataRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetEmonMonitorDataResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetEmonMonitorData',
@@ -6632,6 +6777,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         """
+        @summary GetEmonMonitorData
+        
         @param request: GetEmonMonitorDataRequest
         @return: GetEmonMonitorDataResponse
         """
@@ -6645,6 +6792,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
         """
+        @summary GetEmonMonitorData
+        
         @param request: GetEmonMonitorDataRequest
         @return: GetEmonMonitorDataResponse
         """
@@ -9176,6 +9325,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         """
+        @summary 查询数据流
+        
         @param request: ListDataStreamsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9215,6 +9366,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         """
+        @summary 查询数据流
+        
         @param request: ListDataStreamsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -9252,6 +9405,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListDataStreamsRequest,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         """
+        @summary 查询数据流
+        
         @param request: ListDataStreamsRequest
         @return: ListDataStreamsResponse
         """
@@ -9265,6 +9420,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListDataStreamsRequest,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
         """
+        @summary 查询数据流
+        
         @param request: ListDataStreamsRequest
         @return: ListDataStreamsResponse
         """
@@ -10281,6 +10438,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
+        @summary 查询ecs实例
+        
         @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
@@ -10329,6 +10488,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
+        @summary 查询ecs实例
+        
         @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
@@ -10375,6 +10536,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListEcsInstancesRequest,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
+        @summary 查询ecs实例
+        
         @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
@@ -10389,6 +10552,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListEcsInstancesRequest,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
+        @summary 查询ecs实例
+        
         @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
@@ -11852,6 +12017,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         """
+        @summary ListPipeline
+        
         @param request: ListPipelineRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -11893,6 +12060,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         """
+        @summary ListPipeline
+        
         @param request: ListPipelineRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -11932,6 +12101,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListPipelineRequest,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         """
+        @summary ListPipeline
+        
         @param request: ListPipelineRequest
         @return: ListPipelineResponse
         """
@@ -11945,6 +12116,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListPipelineRequest,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
         """
+        @summary ListPipeline
+        
         @param request: ListPipelineRequest
         @return: ListPipelineResponse
         """
@@ -13847,15 +14020,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         """
+        @summary PostEmonTryAlarmRule
+        
         @param request: PostEmonTryAlarmRuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: PostEmonTryAlarmRuleResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PostEmonTryAlarmRule',
@@ -13882,15 +14060,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         """
+        @summary PostEmonTryAlarmRule
+        
         @param request: PostEmonTryAlarmRuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: PostEmonTryAlarmRuleResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='PostEmonTryAlarmRule',
@@ -13915,6 +14098,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         """
+        @summary PostEmonTryAlarmRule
+        
         @param request: PostEmonTryAlarmRuleRequest
         @return: PostEmonTryAlarmRuleResponse
         """
@@ -13929,6 +14114,8 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
         """
+        @summary PostEmonTryAlarmRule
+        
         @param request: PostEmonTryAlarmRuleRequest
         @return: PostEmonTryAlarmRuleResponse
         """
@@ -16593,10 +16780,11 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag_keys):
             query['TagKeys'] = request.tag_keys
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
@@ -16643,10 +16831,11 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.tag_keys):
             query['TagKeys'] = request.tag_keys
+        if not UtilClient.is_unset(request.body):
+            query['body'] = request.body
         req = open_api_models.OpenApiRequest(
             headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=request.body
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='UntagResources',
