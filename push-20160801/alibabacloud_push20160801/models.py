@@ -1481,6 +1481,7 @@ class MassPushRequestPushTask(TeaModel):
         android_huawei_target_user_type: int = None,
         android_image_url: str = None,
         android_inbox_body: str = None,
+        android_meizu_notice_msg_type: int = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
         android_message_oppo_category: str = None,
@@ -1581,6 +1582,7 @@ class MassPushRequestPushTask(TeaModel):
         self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
         self.android_inbox_body = android_inbox_body
+        self.android_meizu_notice_msg_type = android_meizu_notice_msg_type
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
         self.android_message_oppo_category = android_message_oppo_category
@@ -1707,6 +1709,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidImageUrl'] = self.android_image_url
         if self.android_inbox_body is not None:
             result['AndroidInboxBody'] = self.android_inbox_body
+        if self.android_meizu_notice_msg_type is not None:
+            result['AndroidMeizuNoticeMsgType'] = self.android_meizu_notice_msg_type
         if self.android_message_huawei_category is not None:
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
@@ -1909,6 +1913,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_image_url = m.get('AndroidImageUrl')
         if m.get('AndroidInboxBody') is not None:
             self.android_inbox_body = m.get('AndroidInboxBody')
+        if m.get('AndroidMeizuNoticeMsgType') is not None:
+            self.android_meizu_notice_msg_type = m.get('AndroidMeizuNoticeMsgType')
         if m.get('AndroidMessageHuaweiCategory') is not None:
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:
@@ -2252,6 +2258,7 @@ class PushRequest(TeaModel):
         android_huawei_target_user_type: int = None,
         android_image_url: str = None,
         android_inbox_body: str = None,
+        android_meizu_notice_msg_type: int = None,
         android_message_huawei_category: str = None,
         android_message_huawei_urgency: str = None,
         android_message_oppo_category: str = None,
@@ -2359,6 +2366,7 @@ class PushRequest(TeaModel):
         self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
         self.android_inbox_body = android_inbox_body
+        self.android_meizu_notice_msg_type = android_meizu_notice_msg_type
         self.android_message_huawei_category = android_message_huawei_category
         self.android_message_huawei_urgency = android_message_huawei_urgency
         self.android_message_oppo_category = android_message_oppo_category
@@ -2493,6 +2501,8 @@ class PushRequest(TeaModel):
             result['AndroidImageUrl'] = self.android_image_url
         if self.android_inbox_body is not None:
             result['AndroidInboxBody'] = self.android_inbox_body
+        if self.android_meizu_notice_msg_type is not None:
+            result['AndroidMeizuNoticeMsgType'] = self.android_meizu_notice_msg_type
         if self.android_message_huawei_category is not None:
             result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
         if self.android_message_huawei_urgency is not None:
@@ -2709,6 +2719,8 @@ class PushRequest(TeaModel):
             self.android_image_url = m.get('AndroidImageUrl')
         if m.get('AndroidInboxBody') is not None:
             self.android_inbox_body = m.get('AndroidInboxBody')
+        if m.get('AndroidMeizuNoticeMsgType') is not None:
+            self.android_meizu_notice_msg_type = m.get('AndroidMeizuNoticeMsgType')
         if m.get('AndroidMessageHuaweiCategory') is not None:
             self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
         if m.get('AndroidMessageHuaweiUrgency') is not None:

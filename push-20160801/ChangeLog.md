@@ -1,3 +1,8 @@
+2025-08-21 Version: 1.0.19
+- Update API MassPush: add request parameters PushTask.$.AndroidMeizuNoticeMsgType.
+- Update API Push: add request parameters AndroidMeizuNoticeMsgType.
+
+
 2025-03-21 Version: 1.0.18
 - Update API MassPush: update param PushTask.
 - Update API Push: add param iOSLiveActivityAttributes.
