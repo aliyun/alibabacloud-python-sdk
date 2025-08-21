@@ -1474,6 +1474,45 @@ class WafSiteSettingsAddSecurityHeaders(TeaModel):
         return self
 
 
+class WafSiteSettingsBandwidthAbuseProtection(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        id: int = None,
+        status: str = None,
+    ):
+        self.action = action
+        self.id = id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class WafSiteSettingsBotManagementDefiniteBots(TeaModel):
     def __init__(
         self,
@@ -1725,6 +1764,33 @@ class WafSiteSettingsClientIpIdentifier(TeaModel):
         return self
 
 
+class WafSiteSettingsDisableSecurityModule(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class WafSiteSettingsSecurityLevel(TeaModel):
     def __init__(
         self,
@@ -1757,14 +1823,18 @@ class WafSiteSettings(TeaModel):
         self,
         add_bot_protection_headers: WafSiteSettingsAddBotProtectionHeaders = None,
         add_security_headers: WafSiteSettingsAddSecurityHeaders = None,
+        bandwidth_abuse_protection: WafSiteSettingsBandwidthAbuseProtection = None,
         bot_management: WafSiteSettingsBotManagement = None,
         client_ip_identifier: WafSiteSettingsClientIpIdentifier = None,
+        disable_security_module: WafSiteSettingsDisableSecurityModule = None,
         security_level: WafSiteSettingsSecurityLevel = None,
     ):
         self.add_bot_protection_headers = add_bot_protection_headers
         self.add_security_headers = add_security_headers
+        self.bandwidth_abuse_protection = bandwidth_abuse_protection
         self.bot_management = bot_management
         self.client_ip_identifier = client_ip_identifier
+        self.disable_security_module = disable_security_module
         self.security_level = security_level
 
     def validate(self):
@@ -1772,10 +1842,14 @@ class WafSiteSettings(TeaModel):
             self.add_bot_protection_headers.validate()
         if self.add_security_headers:
             self.add_security_headers.validate()
+        if self.bandwidth_abuse_protection:
+            self.bandwidth_abuse_protection.validate()
         if self.bot_management:
             self.bot_management.validate()
         if self.client_ip_identifier:
             self.client_ip_identifier.validate()
+        if self.disable_security_module:
+            self.disable_security_module.validate()
         if self.security_level:
             self.security_level.validate()
 
@@ -1789,10 +1863,14 @@ class WafSiteSettings(TeaModel):
             result['AddBotProtectionHeaders'] = self.add_bot_protection_headers.to_map()
         if self.add_security_headers is not None:
             result['AddSecurityHeaders'] = self.add_security_headers.to_map()
+        if self.bandwidth_abuse_protection is not None:
+            result['BandwidthAbuseProtection'] = self.bandwidth_abuse_protection.to_map()
         if self.bot_management is not None:
             result['BotManagement'] = self.bot_management.to_map()
         if self.client_ip_identifier is not None:
             result['ClientIpIdentifier'] = self.client_ip_identifier.to_map()
+        if self.disable_security_module is not None:
+            result['DisableSecurityModule'] = self.disable_security_module.to_map()
         if self.security_level is not None:
             result['SecurityLevel'] = self.security_level.to_map()
         return result
@@ -1805,12 +1883,18 @@ class WafSiteSettings(TeaModel):
         if m.get('AddSecurityHeaders') is not None:
             temp_model = WafSiteSettingsAddSecurityHeaders()
             self.add_security_headers = temp_model.from_map(m['AddSecurityHeaders'])
+        if m.get('BandwidthAbuseProtection') is not None:
+            temp_model = WafSiteSettingsBandwidthAbuseProtection()
+            self.bandwidth_abuse_protection = temp_model.from_map(m['BandwidthAbuseProtection'])
         if m.get('BotManagement') is not None:
             temp_model = WafSiteSettingsBotManagement()
             self.bot_management = temp_model.from_map(m['BotManagement'])
         if m.get('ClientIpIdentifier') is not None:
             temp_model = WafSiteSettingsClientIpIdentifier()
             self.client_ip_identifier = temp_model.from_map(m['ClientIpIdentifier'])
+        if m.get('DisableSecurityModule') is not None:
+            temp_model = WafSiteSettingsDisableSecurityModule()
+            self.disable_security_module = temp_model.from_map(m['DisableSecurityModule'])
         if m.get('SecurityLevel') is not None:
             temp_model = WafSiteSettingsSecurityLevel()
             self.security_level = temp_model.from_map(m['SecurityLevel'])
@@ -34903,6 +34987,7 @@ class GetRecordResponseBodyRecordModelData(TeaModel):
         priority: int = None,
         selector: int = None,
         tag: str = None,
+        tags: Dict[str, Any] = None,
         type: int = None,
         usage: int = None,
         value: str = None,
@@ -34928,6 +35013,7 @@ class GetRecordResponseBodyRecordModelData(TeaModel):
         self.selector = selector
         # The tag of the record. The Tag of a CAA record indicate its specific type and usage.
         self.tag = tag
+        self.tags = tags
         # The certificate type of the record (in CERT records), or the public key type (in SSHFP records). This parameter is required when you add CERT or SSHFP records.
         self.type = type
         # The usage identifier of the record, specified within the range of 0 to 255. This parameter is required when you add SMIMEA or TLSA records.
@@ -34975,6 +35061,8 @@ class GetRecordResponseBodyRecordModelData(TeaModel):
             result['Selector'] = self.selector
         if self.tag is not None:
             result['Tag'] = self.tag
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.type is not None:
             result['Type'] = self.type
         if self.usage is not None:
@@ -35007,6 +35095,8 @@ class GetRecordResponseBodyRecordModelData(TeaModel):
             self.selector = m.get('Selector')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Usage') is not None:
@@ -50856,6 +50946,7 @@ class ListRecordsResponseBodyRecordsData(TeaModel):
         priority: int = None,
         selector: int = None,
         tag: str = None,
+        tags: Dict[str, Any] = None,
         type: int = None,
         usage: int = None,
         value: str = None,
@@ -50881,6 +50972,7 @@ class ListRecordsResponseBodyRecordsData(TeaModel):
         self.selector = selector
         # The tag of the record. The Tag of a CAA record indicate its specific type and usage. Exclusive to CAA records.
         self.tag = tag
+        self.tags = tags
         # The certificate type of the record (in CERT records), or the public key type (in SSHFP records).
         self.type = type
         # The usage identifier of the record. Valid values: 0 to 255. Exclusive to SMIMEA, and TLSA records.
@@ -50928,6 +51020,8 @@ class ListRecordsResponseBodyRecordsData(TeaModel):
             result['Selector'] = self.selector
         if self.tag is not None:
             result['Tag'] = self.tag
+        if self.tags is not None:
+            result['Tags'] = self.tags
         if self.type is not None:
             result['Type'] = self.type
         if self.usage is not None:
@@ -50960,6 +51054,8 @@ class ListRecordsResponseBodyRecordsData(TeaModel):
             self.selector = m.get('Selector')
         if m.get('Tag') is not None:
             self.tag = m.get('Tag')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('Usage') is not None:
