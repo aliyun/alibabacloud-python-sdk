@@ -6570,6 +6570,378 @@ class CreateWmEmbedTaskRequestDocumentControl(TeaModel):
         return self
 
 
+class CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin(TeaModel):
+    def __init__(
+        self,
+        bottom: float = None,
+        left: float = None,
+        right: float = None,
+        top: float = None,
+    ):
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.top = top
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottom is not None:
+            result['Bottom'] = self.bottom
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.right is not None:
+            result['Right'] = self.right
+        if self.top is not None:
+            result['Top'] = self.top
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottom') is not None:
+            self.bottom = m.get('Bottom')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Right') is not None:
+            self.right = m.get('Right')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        return self
+
+
+class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        logo_base_64: str = None,
+        margin: CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_ax: float = None,
+        pos_ay: float = None,
+        pos_x: int = None,
+        pos_y: int = None,
+        space_x: int = None,
+        space_y: int = None,
+        visible: bool = None,
+    ):
+        self.angle = angle
+        self.logo_base_64 = logo_base_64
+        self.margin = margin
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_ax = pos_ax
+        self.pos_ay = pos_ay
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.space_x = space_x
+        self.space_y = space_y
+        self.visible = visible
+
+    def validate(self):
+        if self.margin:
+            self.margin.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.logo_base_64 is not None:
+            result['LogoBase64'] = self.logo_base_64
+        if self.margin is not None:
+            result['Margin'] = self.margin.to_map()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_ax is not None:
+            result['PosAx'] = self.pos_ax
+        if self.pos_ay is not None:
+            result['PosAy'] = self.pos_ay
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.space_x is not None:
+            result['SpaceX'] = self.space_x
+        if self.space_y is not None:
+            result['SpaceY'] = self.space_y
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('LogoBase64') is not None:
+            self.logo_base_64 = m.get('LogoBase64')
+        if m.get('Margin') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin()
+            self.margin = temp_model.from_map(m['Margin'])
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosAx') is not None:
+            self.pos_ax = m.get('PosAx')
+        if m.get('PosAy') is not None:
+            self.pos_ay = m.get('PosAy')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('SpaceX') is not None:
+            self.space_x = m.get('SpaceX')
+        if m.get('SpaceY') is not None:
+            self.space_y = m.get('SpaceY')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        return self
+
+
+class CreateWmEmbedTaskRequestImageControlMetadataControl(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        xmp_kv_base_64: str = None,
+    ):
+        self.enable = enable
+        self.xmp_kv_base_64 = xmp_kv_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.xmp_kv_base_64 is not None:
+            result['XmpKvBase64'] = self.xmp_kv_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('XmpKvBase64') is not None:
+            self.xmp_kv_base_64 = m.get('XmpKvBase64')
+        return self
+
+
+class CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin(TeaModel):
+    def __init__(
+        self,
+        bottom: float = None,
+        left: float = None,
+        right: float = None,
+        top: float = None,
+    ):
+        self.bottom = bottom
+        self.left = left
+        self.right = right
+        self.top = top
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottom is not None:
+            result['Bottom'] = self.bottom
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.right is not None:
+            result['Right'] = self.right
+        if self.top is not None:
+            result['Top'] = self.top
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottom') is not None:
+            self.bottom = m.get('Bottom')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Right') is not None:
+            self.right = m.get('Right')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        return self
+
+
+class CreateWmEmbedTaskRequestImageControlTextVisibleControl(TeaModel):
+    def __init__(
+        self,
+        angle: int = None,
+        font_color: str = None,
+        font_size: int = None,
+        margin: CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_ax: float = None,
+        pos_ay: float = None,
+        pos_x: int = None,
+        pos_y: int = None,
+        space_x: int = None,
+        space_y: int = None,
+        visible: bool = None,
+        visible_text: str = None,
+    ):
+        self.angle = angle
+        self.font_color = font_color
+        self.font_size = font_size
+        self.margin = margin
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_ax = pos_ax
+        self.pos_ay = pos_ay
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.space_x = space_x
+        self.space_y = space_y
+        self.visible = visible
+        self.visible_text = visible_text
+
+    def validate(self):
+        if self.margin:
+            self.margin.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.angle is not None:
+            result['Angle'] = self.angle
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.margin is not None:
+            result['Margin'] = self.margin.to_map()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_ax is not None:
+            result['PosAx'] = self.pos_ax
+        if self.pos_ay is not None:
+            result['PosAy'] = self.pos_ay
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.space_x is not None:
+            result['SpaceX'] = self.space_x
+        if self.space_y is not None:
+            result['SpaceY'] = self.space_y
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        if self.visible_text is not None:
+            result['VisibleText'] = self.visible_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Angle') is not None:
+            self.angle = m.get('Angle')
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Margin') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControlTextVisibleControlMargin()
+            self.margin = temp_model.from_map(m['Margin'])
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosAx') is not None:
+            self.pos_ax = m.get('PosAx')
+        if m.get('PosAy') is not None:
+            self.pos_ay = m.get('PosAy')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('SpaceX') is not None:
+            self.space_x = m.get('SpaceX')
+        if m.get('SpaceY') is not None:
+            self.space_y = m.get('SpaceY')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        if m.get('VisibleText') is not None:
+            self.visible_text = m.get('VisibleText')
+        return self
+
+
+class CreateWmEmbedTaskRequestImageControl(TeaModel):
+    def __init__(
+        self,
+        logo_visible_control: CreateWmEmbedTaskRequestImageControlLogoVisibleControl = None,
+        metadata_control: CreateWmEmbedTaskRequestImageControlMetadataControl = None,
+        text_visible_control: CreateWmEmbedTaskRequestImageControlTextVisibleControl = None,
+    ):
+        self.logo_visible_control = logo_visible_control
+        self.metadata_control = metadata_control
+        self.text_visible_control = text_visible_control
+
+    def validate(self):
+        if self.logo_visible_control:
+            self.logo_visible_control.validate()
+        if self.metadata_control:
+            self.metadata_control.validate()
+        if self.text_visible_control:
+            self.text_visible_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logo_visible_control is not None:
+            result['LogoVisibleControl'] = self.logo_visible_control.to_map()
+        if self.metadata_control is not None:
+            result['MetadataControl'] = self.metadata_control.to_map()
+        if self.text_visible_control is not None:
+            result['TextVisibleControl'] = self.text_visible_control.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogoVisibleControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControlLogoVisibleControl()
+            self.logo_visible_control = temp_model.from_map(m['LogoVisibleControl'])
+        if m.get('MetadataControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControlMetadataControl()
+            self.metadata_control = temp_model.from_map(m['MetadataControl'])
+        if m.get('TextVisibleControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControlTextVisibleControl()
+            self.text_visible_control = temp_model.from_map(m['TextVisibleControl'])
+        return self
+
+
 class CreateWmEmbedTaskRequest(TeaModel):
     def __init__(
         self,
@@ -6577,6 +6949,7 @@ class CreateWmEmbedTaskRequest(TeaModel):
         document_control: CreateWmEmbedTaskRequestDocumentControl = None,
         file_url: str = None,
         filename: str = None,
+        image_control: CreateWmEmbedTaskRequestImageControl = None,
         image_embed_jpeg_quality: int = None,
         image_embed_level: int = None,
         video_bitrate: str = None,
@@ -6592,6 +6965,7 @@ class CreateWmEmbedTaskRequest(TeaModel):
         self.file_url = file_url
         # This parameter is required.
         self.filename = filename
+        self.image_control = image_control
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
         self.image_embed_level = image_embed_level
         self.video_bitrate = video_bitrate
@@ -6607,6 +6981,8 @@ class CreateWmEmbedTaskRequest(TeaModel):
             self.csv_control.validate()
         if self.document_control:
             self.document_control.validate()
+        if self.image_control:
+            self.image_control.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6622,6 +6998,8 @@ class CreateWmEmbedTaskRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.image_control is not None:
+            result['ImageControl'] = self.image_control.to_map()
         if self.image_embed_jpeg_quality is not None:
             result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
         if self.image_embed_level is not None:
@@ -6652,6 +7030,9 @@ class CreateWmEmbedTaskRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('ImageControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestImageControl()
+            self.image_control = temp_model.from_map(m['ImageControl'])
         if m.get('ImageEmbedJpegQuality') is not None:
             self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
         if m.get('ImageEmbedLevel') is not None:
@@ -6678,6 +7059,7 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
         document_control_shrink: str = None,
         file_url: str = None,
         filename: str = None,
+        image_control_shrink: str = None,
         image_embed_jpeg_quality: int = None,
         image_embed_level: int = None,
         video_bitrate: str = None,
@@ -6693,6 +7075,7 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
         self.file_url = file_url
         # This parameter is required.
         self.filename = filename
+        self.image_control_shrink = image_control_shrink
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
         self.image_embed_level = image_embed_level
         self.video_bitrate = video_bitrate
@@ -6720,6 +7103,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filename is not None:
             result['Filename'] = self.filename
+        if self.image_control_shrink is not None:
+            result['ImageControl'] = self.image_control_shrink
         if self.image_embed_jpeg_quality is not None:
             result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
         if self.image_embed_level is not None:
@@ -6748,6 +7133,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filename') is not None:
             self.filename = m.get('Filename')
+        if m.get('ImageControl') is not None:
+            self.image_control_shrink = m.get('ImageControl')
         if m.get('ImageEmbedJpegQuality') is not None:
             self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
         if m.get('ImageEmbedLevel') is not None:

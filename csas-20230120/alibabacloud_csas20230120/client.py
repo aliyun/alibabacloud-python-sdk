@@ -1826,6 +1826,8 @@ class Client(OpenApiClient):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        if not UtilClient.is_unset(tmp_req.image_control):
+            request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
@@ -1836,6 +1838,8 @@ class Client(OpenApiClient):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.filename):
             body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.image_control_shrink):
+            body['ImageControl'] = request.image_control_shrink
         if not UtilClient.is_unset(request.image_embed_jpeg_quality):
             body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
         if not UtilClient.is_unset(request.image_embed_level):
@@ -1891,6 +1895,8 @@ class Client(OpenApiClient):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
+        if not UtilClient.is_unset(tmp_req.image_control):
+            request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
         query = {}
         if not UtilClient.is_unset(request.csv_control_shrink):
             query['CsvControl'] = request.csv_control_shrink
@@ -1901,6 +1907,8 @@ class Client(OpenApiClient):
             body['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.filename):
             body['Filename'] = request.filename
+        if not UtilClient.is_unset(request.image_control_shrink):
+            body['ImageControl'] = request.image_control_shrink
         if not UtilClient.is_unset(request.image_embed_jpeg_quality):
             body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
         if not UtilClient.is_unset(request.image_embed_level):
