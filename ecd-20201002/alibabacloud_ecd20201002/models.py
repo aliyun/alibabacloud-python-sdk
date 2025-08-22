@@ -3961,6 +3961,7 @@ class GetLoginTokenRequest(TeaModel):
         authentication_code: str = None,
         available_features: Dict[str, str] = None,
         client_id: str = None,
+        client_name: str = None,
         client_os: str = None,
         client_type: str = None,
         client_version: str = None,
@@ -3985,6 +3986,7 @@ class GetLoginTokenRequest(TeaModel):
         # 
         # This parameter is required.
         self.client_id = client_id
+        self.client_name = client_name
         # The operating system (OS) of the device that runs an Alibaba Cloud Workspace client.
         self.client_os = client_os
         # The type of Alibaba Cloud Workspace clients.
@@ -4061,6 +4063,8 @@ class GetLoginTokenRequest(TeaModel):
             result['AvailableFeatures'] = self.available_features
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_name is not None:
+            result['ClientName'] = self.client_name
         if self.client_os is not None:
             result['ClientOS'] = self.client_os
         if self.client_type is not None:
@@ -4103,6 +4107,8 @@ class GetLoginTokenRequest(TeaModel):
             self.available_features = m.get('AvailableFeatures')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientName') is not None:
+            self.client_name = m.get('ClientName')
         if m.get('ClientOS') is not None:
             self.client_os = m.get('ClientOS')
         if m.get('ClientType') is not None:
@@ -4144,6 +4150,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         authentication_code: str = None,
         available_features_shrink: str = None,
         client_id: str = None,
+        client_name: str = None,
         client_os: str = None,
         client_type: str = None,
         client_version: str = None,
@@ -4168,6 +4175,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.client_id = client_id
+        self.client_name = client_name
         # The operating system (OS) of the device that runs an Alibaba Cloud Workspace client.
         self.client_os = client_os
         # The type of Alibaba Cloud Workspace clients.
@@ -4244,6 +4252,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             result['AvailableFeatures'] = self.available_features_shrink
         if self.client_id is not None:
             result['ClientId'] = self.client_id
+        if self.client_name is not None:
+            result['ClientName'] = self.client_name
         if self.client_os is not None:
             result['ClientOS'] = self.client_os
         if self.client_type is not None:
@@ -4286,6 +4296,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             self.available_features_shrink = m.get('AvailableFeatures')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
+        if m.get('ClientName') is not None:
+            self.client_name = m.get('ClientName')
         if m.get('ClientOS') is not None:
             self.client_os = m.get('ClientOS')
         if m.get('ClientType') is not None:

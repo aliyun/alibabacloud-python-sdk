@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('ecd', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -88,7 +87,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ApproveFotaUpdateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def approve_fota_update_with_options_async(
@@ -137,7 +136,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ApproveFotaUpdateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def approve_fota_update(
@@ -212,7 +211,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ChangePasswordResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def change_password_with_options_async(
@@ -261,7 +260,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ChangePasswordResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def change_password(
@@ -330,7 +329,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DeleteFingerPrintTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def delete_finger_print_template_with_options_async(
@@ -373,7 +372,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DeleteFingerPrintTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def delete_finger_print_template(
@@ -434,7 +433,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeDirectoriesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_directories_with_options_async(
@@ -473,7 +472,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeDirectoriesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_directories(
@@ -540,7 +539,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeFingerPrintTemplatesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_finger_print_templates_with_options_async(
@@ -581,7 +580,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeFingerPrintTemplatesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_finger_print_templates(
@@ -678,7 +677,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeGlobalDesktopsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_global_desktops_with_options_async(
@@ -749,7 +748,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeGlobalDesktopsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_global_desktops(
@@ -808,7 +807,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeOfficeSitesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_office_sites_with_options_async(
@@ -845,7 +844,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeOfficeSitesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_office_sites(
@@ -902,7 +901,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeRegionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_regions_with_options_async(
@@ -937,7 +936,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeRegionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_regions(
@@ -1008,7 +1007,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeSnapshotsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_snapshots_with_options_async(
@@ -1057,7 +1056,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeSnapshotsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_snapshots(
@@ -1168,7 +1167,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeUserResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def describe_user_resources_with_options_async(
@@ -1253,7 +1252,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.DescribeUserResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def describe_user_resources(
@@ -1326,7 +1325,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.EncryptPasswordResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def encrypt_password_with_options_async(
@@ -1373,7 +1372,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.EncryptPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def encrypt_password(
@@ -1442,7 +1441,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetCloudDriveServiceMountTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_cloud_drive_service_mount_token_with_options_async(
@@ -1485,7 +1484,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetCloudDriveServiceMountTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_cloud_drive_service_mount_token(
@@ -1520,6 +1519,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
         """
+        @summary 获得连接凭证
+        
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetConnectionTicketResponse
@@ -1572,7 +1573,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetConnectionTicketResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_connection_ticket_with_options_async(
@@ -1581,6 +1582,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
         """
+        @summary 获得连接凭证
+        
         @param request: GetConnectionTicketRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetConnectionTicketResponse
@@ -1633,7 +1636,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetConnectionTicketResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_connection_ticket(
@@ -1641,6 +1644,8 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetConnectionTicketRequest,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
         """
+        @summary 获得连接凭证
+        
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
         """
@@ -1652,6 +1657,8 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetConnectionTicketRequest,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
         """
+        @summary 获得连接凭证
+        
         @param request: GetConnectionTicketRequest
         @return: GetConnectionTicketResponse
         """
@@ -1682,6 +1689,8 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_name):
+            query['ClientName'] = request.client_name
         if not UtilClient.is_unset(request.client_os):
             query['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_type):
@@ -1730,7 +1739,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetLoginTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_login_token_with_options_async(
@@ -1757,6 +1766,8 @@ class Client(OpenApiClient):
             query['AvailableFeatures'] = request.available_features_shrink
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
+        if not UtilClient.is_unset(request.client_name):
+            query['ClientName'] = request.client_name
         if not UtilClient.is_unset(request.client_os):
             query['ClientOS'] = request.client_os
         if not UtilClient.is_unset(request.client_type):
@@ -1805,7 +1816,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.GetLoginTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_login_token(
@@ -1870,7 +1881,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.IsKeepAliveResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def is_keep_alive_with_options_async(
@@ -1909,7 +1920,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.IsKeepAliveResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def is_keep_alive(
@@ -1974,7 +1985,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.QueryEdsAgentReportConfigResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def query_eds_agent_report_config_with_options_async(
@@ -2013,7 +2024,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.QueryEdsAgentReportConfigResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def query_eds_agent_report_config(
@@ -2094,7 +2105,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.RebootDesktopsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def reboot_desktops_with_options_async(
@@ -2149,7 +2160,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.RebootDesktopsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def reboot_desktops(
@@ -2220,7 +2231,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.RefreshLoginTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def refresh_login_token_with_options_async(
@@ -2265,7 +2276,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.RefreshLoginTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def refresh_login_token(
@@ -2328,7 +2339,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ReportEdsAgentInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def report_eds_agent_info_with_options_async(
@@ -2369,7 +2380,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ReportEdsAgentInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def report_eds_agent_info(
@@ -2438,7 +2449,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ReportSessionStatusResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def report_session_status_with_options_async(
@@ -2481,7 +2492,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ReportSessionStatusResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def report_session_status(
@@ -2550,7 +2561,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ResetPasswordResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def reset_password_with_options_async(
@@ -2597,7 +2608,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ResetPasswordResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def reset_password(
@@ -2670,7 +2681,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ResetSnapshotResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def reset_snapshot_with_options_async(
@@ -2717,7 +2728,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.ResetSnapshotResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def reset_snapshot(
@@ -2792,7 +2803,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SendTokenCodeResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def send_token_code_with_options_async(
@@ -2841,7 +2852,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SendTokenCodeResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def send_token_code(
@@ -2918,7 +2929,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SetFingerPrintTemplateResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def set_finger_print_template_with_options_async(
@@ -2969,7 +2980,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SetFingerPrintTemplateResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def set_finger_print_template(
@@ -3036,7 +3047,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def set_finger_print_template_description_with_options_async(
@@ -3081,7 +3092,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def set_finger_print_template_description(
@@ -3156,7 +3167,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StartDesktopsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def start_desktops_with_options_async(
@@ -3209,7 +3220,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StartDesktopsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def start_desktops(
@@ -3286,7 +3297,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StartRecordContentResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def start_record_content_with_options_async(
@@ -3333,7 +3344,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StartRecordContentResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def start_record_content(
@@ -3412,7 +3423,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StopDesktopsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def stop_desktops_with_options_async(
@@ -3469,7 +3480,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StopDesktopsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def stop_desktops(
@@ -3544,7 +3555,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StopRecordContentResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def stop_record_content_with_options_async(
@@ -3589,7 +3600,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.StopRecordContentResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def stop_record_content(
@@ -3658,7 +3669,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.UnbindUserDesktopResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def unbind_user_desktop_with_options_async(
@@ -3705,7 +3716,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.UnbindUserDesktopResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def unbind_user_desktop(
@@ -3778,7 +3789,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.VerifyCredentialResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def verify_credential_with_options_async(
@@ -3825,7 +3836,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ecd_20201002_models.VerifyCredentialResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def verify_credential(
