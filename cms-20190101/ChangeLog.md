@@ -1,3 +1,7 @@
+2025-08-22 Version: 4.0.1
+- Update API CreateInstantSiteMonitor: add request parameters AgentGroup.
+
+
 2025-08-12 Version: 4.0.0
 - Delete API OpenCmsService.
 - Update API DescribeHybridMonitorNamespaceList: add response parameters Body.DescribeHybridMonitorNamespace.$.Detail.PrometheusInstanceId.

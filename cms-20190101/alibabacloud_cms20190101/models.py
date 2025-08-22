@@ -6953,6 +6953,7 @@ class CreateInstantSiteMonitorRequest(TeaModel):
     def __init__(
         self,
         address: str = None,
+        agent_group: str = None,
         isp_cities: str = None,
         options_json: str = None,
         random_isp_city: int = None,
@@ -6964,6 +6965,7 @@ class CreateInstantSiteMonitorRequest(TeaModel):
         # 
         # This parameter is required.
         self.address = address
+        self.agent_group = agent_group
         # The detection points. If you leave this parameter empty, the system randomly selects three detection points.
         # 
         # The value is a `JSON array`. Example: {"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}. The values of the city field indicate Beijing, Hangzhou, and Qingdao.
@@ -7003,6 +7005,8 @@ class CreateInstantSiteMonitorRequest(TeaModel):
         result = dict()
         if self.address is not None:
             result['Address'] = self.address
+        if self.agent_group is not None:
+            result['AgentGroup'] = self.agent_group
         if self.isp_cities is not None:
             result['IspCities'] = self.isp_cities
         if self.options_json is not None:
@@ -7021,6 +7025,8 @@ class CreateInstantSiteMonitorRequest(TeaModel):
         m = m or dict()
         if m.get('Address') is not None:
             self.address = m.get('Address')
+        if m.get('AgentGroup') is not None:
+            self.agent_group = m.get('AgentGroup')
         if m.get('IspCities') is not None:
             self.isp_cities = m.get('IspCities')
         if m.get('OptionsJson') is not None:

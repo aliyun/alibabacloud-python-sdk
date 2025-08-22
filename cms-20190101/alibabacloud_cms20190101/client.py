@@ -1464,6 +1464,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address):
             query['Address'] = request.address
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.isp_cities):
             query['IspCities'] = request.isp_cities
         if not UtilClient.is_unset(request.options_json):
@@ -1512,6 +1514,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.address):
             query['Address'] = request.address
+        if not UtilClient.is_unset(request.agent_group):
+            query['AgentGroup'] = request.agent_group
         if not UtilClient.is_unset(request.isp_cities):
             query['IspCities'] = request.isp_cities
         if not UtilClient.is_unset(request.options_json):
