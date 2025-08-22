@@ -2,6 +2,10 @@
 - Update API GetLoginToken: add request parameters ClientName.
 
 
+2025-08-22 Version: 1.2.7
+- Update API GetLoginToken: add request parameters ClientName.
+
+
 2025-07-30 Version: 1.2.6
 - Update API GetLoginToken: add request parameters AvailableFeatures.
 
