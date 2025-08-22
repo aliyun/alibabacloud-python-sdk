@@ -591,6 +591,39 @@ class CredentialConfig(TeaModel):
         return self
 
 
+class DataJuicerConfig(TeaModel):
+    def __init__(
+        self,
+        command_type: str = None,
+        execution_mode: str = None,
+    ):
+        self.command_type = command_type
+        self.execution_mode = execution_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_type is not None:
+            result['CommandType'] = self.command_type
+        if self.execution_mode is not None:
+            result['ExecutionMode'] = self.execution_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandType') is not None:
+            self.command_type = m.get('CommandType')
+        if m.get('ExecutionMode') is not None:
+            self.execution_mode = m.get('ExecutionMode')
+        return self
+
+
 class DataSourceItem(TeaModel):
     def __init__(
         self,
@@ -2126,6 +2159,45 @@ class SpotSpec(TeaModel):
         return self
 
 
+class SystemDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
 class JobSpec(TeaModel):
     def __init__(
         self,
@@ -2143,6 +2215,7 @@ class JobSpec(TeaModel):
         restart_policy: str = None,
         service_spec: ServiceSpec = None,
         spot_spec: SpotSpec = None,
+        system_disk: SystemDisk = None,
         type: str = None,
         use_spot_instance: bool = None,
     ):
@@ -2160,6 +2233,7 @@ class JobSpec(TeaModel):
         self.restart_policy = restart_policy
         self.service_spec = service_spec
         self.spot_spec = spot_spec
+        self.system_disk = system_disk
         self.type = type
         self.use_spot_instance = use_spot_instance
 
@@ -2182,6 +2256,8 @@ class JobSpec(TeaModel):
             self.service_spec.validate()
         if self.spot_spec:
             self.spot_spec.validate()
+        if self.system_disk:
+            self.system_disk.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2219,6 +2295,8 @@ class JobSpec(TeaModel):
             result['ServiceSpec'] = self.service_spec.to_map()
         if self.spot_spec is not None:
             result['SpotSpec'] = self.spot_spec.to_map()
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
         if self.type is not None:
             result['Type'] = self.type
         if self.use_spot_instance is not None:
@@ -2265,6 +2343,9 @@ class JobSpec(TeaModel):
         if m.get('SpotSpec') is not None:
             temp_model = SpotSpec()
             self.spot_spec = temp_model.from_map(m['SpotSpec'])
+        if m.get('SystemDisk') is not None:
+            temp_model = SystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('Type') is not None:
             self.type = m.get('Type')
         if m.get('UseSpotInstance') is not None:
@@ -2374,9 +2455,11 @@ class JobSettings(TeaModel):
         allocate_all_rdmadevices: bool = None,
         business_user_id: str = None,
         caller: str = None,
+        data_juicer_config: DataJuicerConfig = None,
         disable_ecs_stock_check: bool = None,
         driver: str = None,
         enable_cpuaffinity: bool = None,
+        enable_dswdev: bool = None,
         enable_error_monitoring_in_aimaster: bool = None,
         enable_oss_append: bool = None,
         enable_rdma: bool = None,
@@ -2394,9 +2477,11 @@ class JobSettings(TeaModel):
         self.allocate_all_rdmadevices = allocate_all_rdmadevices
         self.business_user_id = business_user_id
         self.caller = caller
+        self.data_juicer_config = data_juicer_config
         self.disable_ecs_stock_check = disable_ecs_stock_check
         self.driver = driver
         self.enable_cpuaffinity = enable_cpuaffinity
+        self.enable_dswdev = enable_dswdev
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
         self.enable_oss_append = enable_oss_append
         self.enable_rdma = enable_rdma
@@ -2411,7 +2496,8 @@ class JobSettings(TeaModel):
         self.tags = tags
 
     def validate(self):
-        pass
+        if self.data_juicer_config:
+            self.data_juicer_config.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2427,12 +2513,16 @@ class JobSettings(TeaModel):
             result['BusinessUserId'] = self.business_user_id
         if self.caller is not None:
             result['Caller'] = self.caller
+        if self.data_juicer_config is not None:
+            result['DataJuicerConfig'] = self.data_juicer_config.to_map()
         if self.disable_ecs_stock_check is not None:
             result['DisableEcsStockCheck'] = self.disable_ecs_stock_check
         if self.driver is not None:
             result['Driver'] = self.driver
         if self.enable_cpuaffinity is not None:
             result['EnableCPUAffinity'] = self.enable_cpuaffinity
+        if self.enable_dswdev is not None:
+            result['EnableDSWDev'] = self.enable_dswdev
         if self.enable_error_monitoring_in_aimaster is not None:
             result['EnableErrorMonitoringInAIMaster'] = self.enable_error_monitoring_in_aimaster
         if self.enable_oss_append is not None:
@@ -2469,12 +2559,17 @@ class JobSettings(TeaModel):
             self.business_user_id = m.get('BusinessUserId')
         if m.get('Caller') is not None:
             self.caller = m.get('Caller')
+        if m.get('DataJuicerConfig') is not None:
+            temp_model = DataJuicerConfig()
+            self.data_juicer_config = temp_model.from_map(m['DataJuicerConfig'])
         if m.get('DisableEcsStockCheck') is not None:
             self.disable_ecs_stock_check = m.get('DisableEcsStockCheck')
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
         if m.get('EnableCPUAffinity') is not None:
             self.enable_cpuaffinity = m.get('EnableCPUAffinity')
+        if m.get('EnableDSWDev') is not None:
+            self.enable_dswdev = m.get('EnableDSWDev')
         if m.get('EnableErrorMonitoringInAIMaster') is not None:
             self.enable_error_monitoring_in_aimaster = m.get('EnableErrorMonitoringInAIMaster')
         if m.get('EnableOssAppend') is not None:
@@ -3597,6 +3692,75 @@ class SecurityContext(TeaModel):
         if m.get('SeccompProfile') is not None:
             temp_model = SeccompProfile()
             self.seccomp_profile = temp_model.from_map(m['SeccompProfile'])
+        return self
+
+
+class ServiceExposure(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        job_id: str = None,
+        message: str = None,
+        pod_id: str = None,
+        port: int = None,
+        service_id: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.display_name = display_name
+        self.job_id = job_id
+        self.message = message
+        self.pod_id = pod_id
+        self.port = port
+        self.service_id = service_id
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pod_id is not None:
+            result['PodId'] = self.pod_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PodId') is not None:
+            self.pod_id = m.get('PodId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
