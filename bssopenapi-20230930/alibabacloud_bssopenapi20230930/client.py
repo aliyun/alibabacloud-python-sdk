@@ -1061,8 +1061,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
+        if not UtilClient.is_unset(request.include_members):
+            query['IncludeMembers'] = request.include_members
         if not UtilClient.is_unset(request.nbid):
             query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.not_send_on_no_data):
+            query['NotSendOnNoData'] = request.not_send_on_no_data
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_bucket_owner_account_id):
@@ -1071,6 +1075,10 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not UtilClient.is_unset(request.report_type):
             query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.send_with_attach):
+            query['SendWithAttach'] = request.send_with_attach
+        if not UtilClient.is_unset(request.split_file_on_user_id):
+            query['SplitFileOnUserId'] = request.split_file_on_user_id
         body = {}
         if not UtilClient.is_unset(request.mc_project):
             body['McProject'] = request.mc_project
@@ -1114,8 +1122,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.begin_billing_cycle):
             query['BeginBillingCycle'] = request.begin_billing_cycle
+        if not UtilClient.is_unset(request.include_members):
+            query['IncludeMembers'] = request.include_members
         if not UtilClient.is_unset(request.nbid):
             query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.not_send_on_no_data):
+            query['NotSendOnNoData'] = request.not_send_on_no_data
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_bucket_owner_account_id):
@@ -1124,6 +1136,10 @@ class Client(OpenApiClient):
             query['OssBucketPath'] = request.oss_bucket_path
         if not UtilClient.is_unset(request.report_type):
             query['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.send_with_attach):
+            query['SendWithAttach'] = request.send_with_attach
+        if not UtilClient.is_unset(request.split_file_on_user_id):
+            query['SplitFileOnUserId'] = request.split_file_on_user_id
         body = {}
         if not UtilClient.is_unset(request.mc_project):
             body['McProject'] = request.mc_project

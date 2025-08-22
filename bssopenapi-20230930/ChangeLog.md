@@ -1,3 +1,10 @@
+2025-08-22 Version: 1.5.1
+- Update API CreateReportDefinition: add request parameters IncludeMembers.
+- Update API CreateReportDefinition: add request parameters NotSendOnNoData.
+- Update API CreateReportDefinition: add request parameters SendWithAttach.
+- Update API CreateReportDefinition: add request parameters SplitFileOnUserId.
+
+
 2025-08-14 Version: 1.5.0
 - Support API QueryCostCenterShareRule.
 - Support API SaveCostCenterShareRule.
