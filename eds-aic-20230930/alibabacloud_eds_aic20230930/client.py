@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-aic', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -748,7 +747,7 @@ class Client(OpenApiClient):
 
     def create_android_instance_group_with_options(
         self,
-        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+        tmp_req: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
         """
@@ -758,11 +757,15 @@ class Client(OpenApiClient):
         If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
         You can also set AutoPay to true based on your business requirements.
         
-        @param request: CreateAndroidInstanceGroupRequest
+        @param tmp_req: CreateAndroidInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAndroidInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateAndroidInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network_info):
+            request.network_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_info, 'NetworkInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -770,6 +773,10 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.bandwidth_package_type):
+            query['BandwidthPackageType'] = request.bandwidth_package_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -790,6 +797,10 @@ class Client(OpenApiClient):
             query['Ipv6Bandwidth'] = request.ipv_6bandwidth
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
+        if not UtilClient.is_unset(request.network_info_shrink):
+            query['NetworkInfo'] = request.network_info_shrink
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.number_of_instances):
             query['NumberOfInstances'] = request.number_of_instances
         if not UtilClient.is_unset(request.office_site_id):
@@ -825,7 +836,7 @@ class Client(OpenApiClient):
 
     async def create_android_instance_group_with_options_async(
         self,
-        request: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
+        tmp_req: eds_aic_20230930_models.CreateAndroidInstanceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> eds_aic_20230930_models.CreateAndroidInstanceGroupResponse:
         """
@@ -835,11 +846,15 @@ class Client(OpenApiClient):
         If the billing method of an instance group is PrePaid, AutoPay is set to false by default. In this case, you need to go to [Expenses and Costs](https://usercenter2-intl.aliyun.com/order/list) to manually complete the payment.
         You can also set AutoPay to true based on your business requirements.
         
-        @param request: CreateAndroidInstanceGroupRequest
+        @param tmp_req: CreateAndroidInstanceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAndroidInstanceGroupResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = eds_aic_20230930_models.CreateAndroidInstanceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.network_info):
+            request.network_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.network_info, 'NetworkInfo', 'json')
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
@@ -847,6 +862,10 @@ class Client(OpenApiClient):
             query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.bandwidth_package_id):
+            query['BandwidthPackageId'] = request.bandwidth_package_id
+        if not UtilClient.is_unset(request.bandwidth_package_type):
+            query['BandwidthPackageType'] = request.bandwidth_package_type
         if not UtilClient.is_unset(request.biz_region_id):
             query['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -867,6 +886,10 @@ class Client(OpenApiClient):
             query['Ipv6Bandwidth'] = request.ipv_6bandwidth
         if not UtilClient.is_unset(request.key_pair_id):
             query['KeyPairId'] = request.key_pair_id
+        if not UtilClient.is_unset(request.network_info_shrink):
+            query['NetworkInfo'] = request.network_info_shrink
+        if not UtilClient.is_unset(request.network_type):
+            query['NetworkType'] = request.network_type
         if not UtilClient.is_unset(request.number_of_instances):
             query['NumberOfInstances'] = request.number_of_instances
         if not UtilClient.is_unset(request.office_site_id):
@@ -2784,6 +2807,8 @@ class Client(OpenApiClient):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2837,6 +2862,8 @@ class Client(OpenApiClient):
             query['SaleMode'] = request.sale_mode
         if not UtilClient.is_unset(request.status):
             query['Status'] = request.status
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9064,6 +9091,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id_list):
             query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.reset):
+            query['Reset'] = request.reset
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9101,6 +9130,8 @@ class Client(OpenApiClient):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id_list):
             query['InstanceIdList'] = request.instance_id_list
+        if not UtilClient.is_unset(request.reset):
+            query['Reset'] = request.reset
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

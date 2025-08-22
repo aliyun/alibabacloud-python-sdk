@@ -1228,6 +1228,99 @@ class CheckResourceStockResponse(TeaModel):
         return self
 
 
+class CreateAndroidInstanceGroupRequestNetworkInfo(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        bandwidth_package_name: str = None,
+        cidr_block: str = None,
+        internet_charge_type: str = None,
+        ip_ratio: int = None,
+        isp: str = None,
+        limited_bandwidth: int = None,
+        pay_type: str = None,
+        period: int = None,
+        period_unit: str = None,
+        visible_type: str = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.bandwidth_package_name = bandwidth_package_name
+        self.cidr_block = cidr_block
+        self.internet_charge_type = internet_charge_type
+        self.ip_ratio = ip_ratio
+        self.isp = isp
+        self.limited_bandwidth = limited_bandwidth
+        self.pay_type = pay_type
+        self.period = period
+        self.period_unit = period_unit
+        self.visible_type = visible_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.bandwidth_package_name is not None:
+            result['BandwidthPackageName'] = self.bandwidth_package_name
+        if self.cidr_block is not None:
+            result['CidrBlock'] = self.cidr_block
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.ip_ratio is not None:
+            result['IpRatio'] = self.ip_ratio
+        if self.isp is not None:
+            result['Isp'] = self.isp
+        if self.limited_bandwidth is not None:
+            result['LimitedBandwidth'] = self.limited_bandwidth
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.visible_type is not None:
+            result['VisibleType'] = self.visible_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BandwidthPackageName') is not None:
+            self.bandwidth_package_name = m.get('BandwidthPackageName')
+        if m.get('CidrBlock') is not None:
+            self.cidr_block = m.get('CidrBlock')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('IpRatio') is not None:
+            self.ip_ratio = m.get('IpRatio')
+        if m.get('Isp') is not None:
+            self.isp = m.get('Isp')
+        if m.get('LimitedBandwidth') is not None:
+            self.limited_bandwidth = m.get('LimitedBandwidth')
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('VisibleType') is not None:
+            self.visible_type = m.get('VisibleType')
+        return self
+
+
 class CreateAndroidInstanceGroupRequestTag(TeaModel):
     def __init__(
         self,
@@ -1269,6 +1362,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         amount: int = None,
         auto_pay: bool = None,
         auto_renew: bool = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         client_token: str = None,
@@ -1279,6 +1374,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         instance_group_spec: str = None,
         ipv_6bandwidth: int = None,
         key_pair_id: str = None,
+        network_info: CreateAndroidInstanceGroupRequestNetworkInfo = None,
+        network_type: str = None,
         number_of_instances: int = None,
         office_site_id: str = None,
         period: int = None,
@@ -1303,6 +1400,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         # *   true: automatically renew resource upon expiration.
         # *   false: manually renew resources upon expiration.
         self.auto_renew = auto_renew
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
         # The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
         # 
         # Valid values:
@@ -1358,6 +1457,296 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         # 
         # >  Binding key pairs to cloud phone instances is currently not supported during instance group resizing.
         self.key_pair_id = key_pair_id
+        self.network_info = network_info
+        self.network_type = network_type
+        # The number of cloud phones in the instance group. Maximum value: 100.
+        self.number_of_instances = number_of_instances
+        # The ID of the network.
+        # 
+        # *   This parameter is required if you assign a shared network to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **shared network**. If no shared network is available in the Cloud Phone console, you can leave this parameter empty. The system automatically creates one when you create an instance group.
+        # *   This parameter is required if you assign a virtual private cloud (VPC) to cloud phones. You can go to the [Network](https://wya.wuying.aliyun.com/network) page of the Cloud Phone console to retrieve the ID of a **VPC**. If no VPC is available in the Cloud Phone console, you must first create one.
+        self.office_site_id = office_site_id
+        # The subscription duration. The unit is specified by PeriodUnit.
+        self.period = period
+        # The unit of the subscription duration.
+        # 
+        # Valid values:
+        # 
+        # *   Month
+        # *   Year
+        # *   Hour (Note that this unit is supported only by pay-as-you-go.)
+        self.period_unit = period_unit
+        # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
+        self.policy_group_id = policy_group_id
+        # The tags
+        self.tag = tag
+        # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
+        # 
+        # *   This parameter is not required if you assign a shared network to cloud phones.
+        # *   This parameter is required if you assign a VPC to cloud phones. The vSwitch specified by this parameter is used to create cloud phones.
+        self.v_switch_id = v_switch_id
+
+    def validate(self):
+        if self.network_info:
+            self.network_info.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.amount is not None:
+            result['Amount'] = self.amount
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
+        if self.biz_region_id is not None:
+            result['BizRegionId'] = self.biz_region_id
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_ipv_6 is not None:
+            result['EnableIpv6'] = self.enable_ipv_6
+        if self.gpu_acceleration is not None:
+            result['GpuAcceleration'] = self.gpu_acceleration
+        if self.image_id is not None:
+            result['ImageId'] = self.image_id
+        if self.instance_group_name is not None:
+            result['InstanceGroupName'] = self.instance_group_name
+        if self.instance_group_spec is not None:
+            result['InstanceGroupSpec'] = self.instance_group_spec
+        if self.ipv_6bandwidth is not None:
+            result['Ipv6Bandwidth'] = self.ipv_6bandwidth
+        if self.key_pair_id is not None:
+            result['KeyPairId'] = self.key_pair_id
+        if self.network_info is not None:
+            result['NetworkInfo'] = self.network_info.to_map()
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.number_of_instances is not None:
+            result['NumberOfInstances'] = self.number_of_instances
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_unit is not None:
+            result['PeriodUnit'] = self.period_unit
+        if self.policy_group_id is not None:
+            result['PolicyGroupId'] = self.policy_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Amount') is not None:
+            self.amount = m.get('Amount')
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
+        if m.get('BizRegionId') is not None:
+            self.biz_region_id = m.get('BizRegionId')
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableIpv6') is not None:
+            self.enable_ipv_6 = m.get('EnableIpv6')
+        if m.get('GpuAcceleration') is not None:
+            self.gpu_acceleration = m.get('GpuAcceleration')
+        if m.get('ImageId') is not None:
+            self.image_id = m.get('ImageId')
+        if m.get('InstanceGroupName') is not None:
+            self.instance_group_name = m.get('InstanceGroupName')
+        if m.get('InstanceGroupSpec') is not None:
+            self.instance_group_spec = m.get('InstanceGroupSpec')
+        if m.get('Ipv6Bandwidth') is not None:
+            self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
+        if m.get('KeyPairId') is not None:
+            self.key_pair_id = m.get('KeyPairId')
+        if m.get('NetworkInfo') is not None:
+            temp_model = CreateAndroidInstanceGroupRequestNetworkInfo()
+            self.network_info = temp_model.from_map(m['NetworkInfo'])
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('NumberOfInstances') is not None:
+            self.number_of_instances = m.get('NumberOfInstances')
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodUnit') is not None:
+            self.period_unit = m.get('PeriodUnit')
+        if m.get('PolicyGroupId') is not None:
+            self.policy_group_id = m.get('PolicyGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateAndroidInstanceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        return self
+
+
+class CreateAndroidInstanceGroupShrinkRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key.
+        self.key = key
+        # The tag value.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        amount: int = None,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_type: str = None,
+        biz_region_id: str = None,
+        charge_type: str = None,
+        client_token: str = None,
+        enable_ipv_6: bool = None,
+        gpu_acceleration: bool = None,
+        image_id: str = None,
+        instance_group_name: str = None,
+        instance_group_spec: str = None,
+        ipv_6bandwidth: int = None,
+        key_pair_id: str = None,
+        network_info_shrink: str = None,
+        network_type: str = None,
+        number_of_instances: int = None,
+        office_site_id: str = None,
+        period: int = None,
+        period_unit: str = None,
+        policy_group_id: str = None,
+        tag: List[CreateAndroidInstanceGroupShrinkRequestTag] = None,
+        v_switch_id: str = None,
+    ):
+        # The number of instance groups. Default value: 1. Maximum value: 1.
+        self.amount = amount
+        # Specifies whether to enable automatic payment. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables automatic payment. Make sure that your Alibaba Cloud account has sufficient balance.
+        # *   false: disables automatic payment. You must manually complete the payment.
+        self.auto_pay = auto_pay
+        # Specifies whether to enable auto-renewal. Default value: false.
+        # 
+        # Valid values:
+        # 
+        # *   true: automatically renew resource upon expiration.
+        # *   false: manually renew resources upon expiration.
+        self.auto_renew = auto_renew
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_type = bandwidth_package_type
+        # The ID of the region. You can call the DescribeRegions operation to query the regions where Cloud Phone is supported.
+        # 
+        # Valid values:
+        # 
+        # *   cn-shenzhen: China (Shenzhen).
+        # *   cn-beijing: China (Beijing).
+        # *   cn-shanghai: China (Shanghai).
+        # *   cn-hongkong: China (Hong Kong).
+        # *   ap-southeast-1: Singapore.
+        # *   cn-hangzhou: China (Hangzhou).
+        # 
+        # This parameter is required.
+        self.biz_region_id = biz_region_id
+        # The billing method.
+        # 
+        # Valid values:
+        # 
+        # *   PostPaid: pay-as-you-go.
+        # *   PrePaid: subscription.
+        self.charge_type = charge_type
+        # The client token that is used to ensure the idempotence of the request. The value cannot exceed 100 characters in length.
+        self.client_token = client_token
+        # >  This parameter is not publicly available.
+        self.enable_ipv_6 = enable_ipv_6
+        # Specifies whether to enable GPU acceleration.
+        # 
+        # Valid values:
+        # 
+        # *   true: enables GPU acceleration.
+        # *   false (default): disables GPU acceleration.
+        self.gpu_acceleration = gpu_acceleration
+        # The ID of the image. You can call the [DescribeImageList](https://help.aliyun.com/document_detail/2807324.html) operation to query images.
+        # 
+        # This parameter is required.
+        self.image_id = image_id
+        # The name of the instance group.
+        # 
+        # >  The name can be up to 30 characters in length. It can contain letters, digits, colons (:), underscores (_), periods (.), or hyphens (-). It must start with letters but cannot start with `http://` or `https://`.
+        self.instance_group_name = instance_group_name
+        # The specifications of the instance group. You can call the [DescribeSpec](https://help.aliyun.com/document_detail/2807299.html) operation to query the available specifications.
+        # 
+        # Valid values:
+        # 
+        # *   acp.perf.large: Performance (8 vCPUs, 16 GiB of memory, and 32 GiB of storage.
+        # *   acp.basic.small: Lightweight (2 vCPUs, 4 GiB of memory, and 32 GiB of storage).
+        # *   acp.std.large: Standard (4 vCPUs, 8 GiB of memory, and 32 GiB of storage).
+        # 
+        # This parameter is required.
+        self.instance_group_spec = instance_group_spec
+        # >  This parameter is not publicly available.
+        self.ipv_6bandwidth = ipv_6bandwidth
+        # The ID of the key pair. When you create an instance group and specify a valid key pair ID, all cloud phone instances within the group will automatically be bound to that key pair upon creation. This eliminates the need to manually bind key pairs to individual cloud phone instances.
+        # 
+        # >  Binding key pairs to cloud phone instances is currently not supported during instance group resizing.
+        self.key_pair_id = key_pair_id
+        self.network_info_shrink = network_info_shrink
+        self.network_type = network_type
         # The number of cloud phones in the instance group. Maximum value: 100.
         self.number_of_instances = number_of_instances
         # The ID of the network.
@@ -1403,6 +1792,10 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -1423,6 +1816,10 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['Ipv6Bandwidth'] = self.ipv_6bandwidth
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
+        if self.network_info_shrink is not None:
+            result['NetworkInfo'] = self.network_info_shrink
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.number_of_instances is not None:
             result['NumberOfInstances'] = self.number_of_instances
         if self.office_site_id is not None:
@@ -1449,6 +1846,10 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -1469,6 +1870,10 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
+        if m.get('NetworkInfo') is not None:
+            self.network_info_shrink = m.get('NetworkInfo')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('NumberOfInstances') is not None:
             self.number_of_instances = m.get('NumberOfInstances')
         if m.get('OfficeSiteId') is not None:
@@ -1482,7 +1887,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
-                temp_model = CreateAndroidInstanceGroupRequestTag()
+                temp_model = CreateAndroidInstanceGroupShrinkRequestTag()
                 self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
@@ -1524,11 +1929,45 @@ class CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos(TeaModel):
         return self
 
 
+class CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel(TeaModel):
+    def __init__(
+        self,
+        bandwidth_package_id: str = None,
+        bandwidth_package_order_id: str = None,
+    ):
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_order_id = bandwidth_package_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_order_id is not None:
+            result['BandwidthPackageOrderId'] = self.bandwidth_package_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageOrderId') is not None:
+            self.bandwidth_package_order_id = m.get('BandwidthPackageOrderId')
+        return self
+
+
 class CreateAndroidInstanceGroupResponseBody(TeaModel):
     def __init__(
         self,
         instance_group_ids: List[str] = None,
         instance_group_infos: List[CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos] = None,
+        network_package_order_model: CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel = None,
         order_id: str = None,
         request_id: str = None,
     ):
@@ -1536,6 +1975,7 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
         self.instance_group_ids = instance_group_ids
         # The instance groups.
         self.instance_group_infos = instance_group_infos
+        self.network_package_order_model = network_package_order_model
         # The ID of the order.
         self.order_id = order_id
         # The ID of the request.
@@ -1546,6 +1986,8 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
             for k in self.instance_group_infos:
                 if k:
                     k.validate()
+        if self.network_package_order_model:
+            self.network_package_order_model.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1559,6 +2001,8 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
         if self.instance_group_infos is not None:
             for k in self.instance_group_infos:
                 result['InstanceGroupInfos'].append(k.to_map() if k else None)
+        if self.network_package_order_model is not None:
+            result['NetworkPackageOrderModel'] = self.network_package_order_model.to_map()
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.request_id is not None:
@@ -1574,6 +2018,9 @@ class CreateAndroidInstanceGroupResponseBody(TeaModel):
             for k in m.get('InstanceGroupInfos'):
                 temp_model = CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos()
                 self.instance_group_infos.append(temp_model.from_map(k))
+        if m.get('NetworkPackageOrderModel') is not None:
+            temp_model = CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel()
+            self.network_package_order_model = temp_model.from_map(m['NetworkPackageOrderModel'])
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('RequestId') is not None:
@@ -2040,6 +2487,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
         isp: str = None,
         limited_bandwidth: int = None,
         pay_type: str = None,
+        visible_type: str = None,
     ):
         self.bandwidth_package_name = bandwidth_package_name
         self.cidr_block = cidr_block
@@ -2048,6 +2496,7 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
         self.isp = isp
         self.limited_bandwidth = limited_bandwidth
         self.pay_type = pay_type
+        self.visible_type = visible_type
 
     def validate(self):
         pass
@@ -2072,6 +2521,8 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
             result['LimitedBandwidth'] = self.limited_bandwidth
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.visible_type is not None:
+            result['VisibleType'] = self.visible_type
         return result
 
     def from_map(self, m: dict = None):
@@ -2090,6 +2541,8 @@ class CreateCloudPhoneNodeRequestNetworkInfo(TeaModel):
             self.limited_bandwidth = m.get('LimitedBandwidth')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('VisibleType') is not None:
+            self.visible_type = m.get('VisibleType')
         return self
 
 
@@ -4994,6 +5447,39 @@ class DeleteSystemPropertyTemplatesResponse(TeaModel):
         return self
 
 
+class DescribeAndroidInstanceGroupsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAndroidInstanceGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -5007,6 +5493,7 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
         policy_group_id: str = None,
         sale_mode: str = None,
         status: str = None,
+        tags: List[DescribeAndroidInstanceGroupsRequestTags] = None,
     ):
         # The ID of the region.
         self.biz_region_id = biz_region_id
@@ -5049,9 +5536,13 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
         # *   UPDATING: The instance group is undergoing an image update.
         # *   CREATING: The instance group is being created.
         self.status = status
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5079,6 +5570,10 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
             result['SaleMode'] = self.sale_mode
         if self.status is not None:
             result['Status'] = self.status
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -5103,6 +5598,11 @@ class DescribeAndroidInstanceGroupsRequest(TeaModel):
             self.sale_mode = m.get('SaleMode')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAndroidInstanceGroupsRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -5141,12 +5641,48 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks(TeaModel)
         return self
 
 
+class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
     def __init__(
         self,
         app_instance_group_id: str = None,
         architecture_type: str = None,
         available_instance_amount: int = None,
+        bandwidth_package_id: str = None,
+        bandwidth_package_status: str = None,
+        bandwidth_package_type: str = None,
         charge_type: str = None,
         cpu: str = None,
         disks: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks] = None,
@@ -5164,6 +5700,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         instance_group_status: str = None,
         ipv_6bandwidth: int = None,
         memory: int = None,
+        network_type: str = None,
         number_of_instances: str = None,
         office_site_id: str = None,
         policy_group_id: str = None,
@@ -5173,6 +5710,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         resolution_width: int = None,
         sale_mode: str = None,
         system_version: str = None,
+        tags: List[DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags] = None,
         v_switch_id: str = None,
     ):
         # The ID of the delivery group.
@@ -5183,6 +5721,9 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         # 
         # >  Available instances are those not in the Deleting or Deleted state.
         self.available_instance_amount = available_instance_amount
+        self.bandwidth_package_id = bandwidth_package_id
+        self.bandwidth_package_status = bandwidth_package_status
+        self.bandwidth_package_type = bandwidth_package_type
         # The billing method.
         self.charge_type = charge_type
         # The number of vCPUs.
@@ -5215,6 +5756,7 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.ipv_6bandwidth = ipv_6bandwidth
         # The memory size.
         self.memory = memory
+        self.network_type = network_type
         # The number of instances in the instance group.
         self.number_of_instances = number_of_instances
         # The ID of the network.
@@ -5239,12 +5781,17 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
         self.sale_mode = sale_mode
         # The version of the operating system.
         self.system_version = system_version
+        self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
 
     def validate(self):
         if self.disks:
             for k in self.disks:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -5260,6 +5807,12 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['ArchitectureType'] = self.architecture_type
         if self.available_instance_amount is not None:
             result['AvailableInstanceAmount'] = self.available_instance_amount
+        if self.bandwidth_package_id is not None:
+            result['BandwidthPackageId'] = self.bandwidth_package_id
+        if self.bandwidth_package_status is not None:
+            result['BandwidthPackageStatus'] = self.bandwidth_package_status
+        if self.bandwidth_package_type is not None:
+            result['BandwidthPackageType'] = self.bandwidth_package_type
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cpu is not None:
@@ -5296,6 +5849,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['Ipv6Bandwidth'] = self.ipv_6bandwidth
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
         if self.number_of_instances is not None:
             result['NumberOfInstances'] = self.number_of_instances
         if self.office_site_id is not None:
@@ -5314,6 +5869,10 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             result['SaleMode'] = self.sale_mode
         if self.system_version is not None:
             result['SystemVersion'] = self.system_version
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         return result
@@ -5326,6 +5885,12 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.architecture_type = m.get('ArchitectureType')
         if m.get('AvailableInstanceAmount') is not None:
             self.available_instance_amount = m.get('AvailableInstanceAmount')
+        if m.get('BandwidthPackageId') is not None:
+            self.bandwidth_package_id = m.get('BandwidthPackageId')
+        if m.get('BandwidthPackageStatus') is not None:
+            self.bandwidth_package_status = m.get('BandwidthPackageStatus')
+        if m.get('BandwidthPackageType') is not None:
+            self.bandwidth_package_type = m.get('BandwidthPackageType')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('Cpu') is not None:
@@ -5363,6 +5928,8 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.ipv_6bandwidth = m.get('Ipv6Bandwidth')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
         if m.get('NumberOfInstances') is not None:
             self.number_of_instances = m.get('NumberOfInstances')
         if m.get('OfficeSiteId') is not None:
@@ -5381,6 +5948,11 @@ class DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel(TeaModel):
             self.sale_mode = m.get('SaleMode')
         if m.get('SystemVersion') is not None:
             self.system_version = m.get('SystemVersion')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         return self
@@ -5978,6 +6550,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         server_type: str = None,
         session_status: str = None,
         stream_mode: int = None,
+        system_version: str = None,
         tags: List[DescribeAndroidInstancesResponseBodyInstanceModelTags] = None,
         up_bandwidth_limit: int = None,
         v_switch_id: str = None,
@@ -6063,6 +6636,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         # *   connect: The session is connected.
         self.session_status = session_status
         self.stream_mode = stream_mode
+        self.system_version = system_version
         # The tags.
         self.tags = tags
         self.up_bandwidth_limit = up_bandwidth_limit
@@ -6187,6 +6761,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['SessionStatus'] = self.session_status
         if self.stream_mode is not None:
             result['StreamMode'] = self.stream_mode
+        if self.system_version is not None:
+            result['SystemVersion'] = self.system_version
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -6298,6 +6874,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.session_status = m.get('SessionStatus')
         if m.get('StreamMode') is not None:
             self.stream_mode = m.get('StreamMode')
+        if m.get('SystemVersion') is not None:
+            self.system_version = m.get('SystemVersion')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -16565,9 +17143,11 @@ class UpdateInstanceImageRequest(TeaModel):
         self,
         image_id: str = None,
         instance_id_list: List[str] = None,
+        reset: bool = None,
     ):
         self.image_id = image_id
         self.instance_id_list = instance_id_list
+        self.reset = reset
 
     def validate(self):
         pass
@@ -16582,6 +17162,8 @@ class UpdateInstanceImageRequest(TeaModel):
             result['ImageId'] = self.image_id
         if self.instance_id_list is not None:
             result['InstanceIdList'] = self.instance_id_list
+        if self.reset is not None:
+            result['Reset'] = self.reset
         return result
 
     def from_map(self, m: dict = None):
@@ -16590,6 +17172,8 @@ class UpdateInstanceImageRequest(TeaModel):
             self.image_id = m.get('ImageId')
         if m.get('InstanceIdList') is not None:
             self.instance_id_list = m.get('InstanceIdList')
+        if m.get('Reset') is not None:
+            self.reset = m.get('Reset')
         return self
 
 

@@ -1,3 +1,20 @@
+2025-08-22 Version: 4.12.3
+- Update API CreateAndroidInstanceGroup: add request parameters BandwidthPackageId.
+- Update API CreateAndroidInstanceGroup: add request parameters BandwidthPackageType.
+- Update API CreateAndroidInstanceGroup: add request parameters NetworkInfo.
+- Update API CreateAndroidInstanceGroup: add request parameters NetworkType.
+- Update API CreateAndroidInstanceGroup: add response parameters Body.NetworkPackageOrderModel.
+- Update API CreateCloudPhoneNode: add request parameters NetworkInfo.VisibleType.
+- Update API DescribeAndroidInstanceGroups: add request parameters Tags.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.BandwidthPackageId.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.BandwidthPackageStatus.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.BandwidthPackageType.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.NetworkType.
+- Update API DescribeAndroidInstanceGroups: add response parameters Body.InstanceGroupModel.$.Tags.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.SystemVersion.
+- Update API UpdateInstanceImage: add request parameters Reset.
+
+
 2025-08-15 Version: 4.12.2
 - Update API CreateCloudPhoneNode: add request parameters NetworkInfo.PayType.
 
