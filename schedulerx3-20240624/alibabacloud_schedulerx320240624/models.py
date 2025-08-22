@@ -9,6 +9,7 @@ class CreateAppRequest(TeaModel):
         self,
         access_token: str = None,
         app_name: str = None,
+        app_type: int = None,
         cluster_id: str = None,
         enable_log: bool = None,
         label_route_strategy: int = None,
@@ -18,6 +19,7 @@ class CreateAppRequest(TeaModel):
         self.access_token = access_token
         # This parameter is required.
         self.app_name = app_name
+        self.app_type = app_type
         # This parameter is required.
         self.cluster_id = cluster_id
         self.enable_log = enable_log
@@ -39,6 +41,8 @@ class CreateAppRequest(TeaModel):
             result['AccessToken'] = self.access_token
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.enable_log is not None:
@@ -57,6 +61,8 @@ class CreateAppRequest(TeaModel):
             self.access_token = m.get('AccessToken')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('EnableLog') is not None:
@@ -713,6 +719,7 @@ class CreateJobRequest(TeaModel):
         time_expression: str = None,
         time_type: int = None,
         timezone: str = None,
+        weight: int = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -742,6 +749,7 @@ class CreateJobRequest(TeaModel):
         # This parameter is required.
         self.time_type = time_type
         self.timezone = timezone
+        self.weight = weight
 
     def validate(self):
         if self.notice_config:
@@ -805,6 +813,8 @@ class CreateJobRequest(TeaModel):
             result['TimeType'] = self.time_type
         if self.timezone is not None:
             result['Timezone'] = self.timezone
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -859,6 +869,8 @@ class CreateJobRequest(TeaModel):
             self.time_type = m.get('TimeType')
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -888,6 +900,7 @@ class CreateJobShrinkRequest(TeaModel):
         time_expression: str = None,
         time_type: int = None,
         timezone: str = None,
+        weight: int = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -917,6 +930,7 @@ class CreateJobShrinkRequest(TeaModel):
         # This parameter is required.
         self.time_type = time_type
         self.timezone = timezone
+        self.weight = weight
 
     def validate(self):
         pass
@@ -973,6 +987,8 @@ class CreateJobShrinkRequest(TeaModel):
             result['TimeType'] = self.time_type
         if self.timezone is not None:
             result['Timezone'] = self.timezone
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -1023,6 +1039,8 @@ class CreateJobShrinkRequest(TeaModel):
             self.time_type = m.get('TimeType')
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -1728,6 +1746,7 @@ class GetAppResponseBodyData(TeaModel):
         self,
         access_token: str = None,
         app_name: str = None,
+        app_type: int = None,
         creator: str = None,
         enable_log: bool = None,
         executor_num: int = None,
@@ -1743,6 +1762,7 @@ class GetAppResponseBodyData(TeaModel):
         # AccessToken。
         self.access_token = access_token
         self.app_name = app_name
+        self.app_type = app_type
         self.creator = creator
         self.enable_log = enable_log
         self.executor_num = executor_num
@@ -1768,6 +1788,8 @@ class GetAppResponseBodyData(TeaModel):
             result['AccessToken'] = self.access_token
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.creator is not None:
             result['Creator'] = self.creator
         if self.enable_log is not None:
@@ -1798,6 +1820,8 @@ class GetAppResponseBodyData(TeaModel):
             self.access_token = m.get('AccessToken')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
         if m.get('EnableLog') is not None:
@@ -4674,6 +4698,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         self,
         access_token: str = None,
         app_name: str = None,
+        app_type: int = None,
         creator: str = None,
         enable_log: bool = None,
         executor_num: int = None,
@@ -4689,6 +4714,7 @@ class ListAppsResponseBodyDataRecords(TeaModel):
         # AccessToken
         self.access_token = access_token
         self.app_name = app_name
+        self.app_type = app_type
         self.creator = creator
         self.enable_log = enable_log
         self.executor_num = executor_num
@@ -4714,6 +4740,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             result['AccessToken'] = self.access_token
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
         if self.creator is not None:
             result['Creator'] = self.creator
         if self.enable_log is not None:
@@ -4744,6 +4772,8 @@ class ListAppsResponseBodyDataRecords(TeaModel):
             self.access_token = m.get('AccessToken')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
         if m.get('EnableLog') is not None:
@@ -5503,6 +5533,7 @@ class ListExecutorsResponseBodyData(TeaModel):
         online: bool = None,
         port: int = None,
         version: str = None,
+        weight: int = None,
     ):
         self.address = address
         self.ip = ip
@@ -5511,6 +5542,7 @@ class ListExecutorsResponseBodyData(TeaModel):
         self.online = online
         self.port = port
         self.version = version
+        self.weight = weight
 
     def validate(self):
         pass
@@ -5535,6 +5567,8 @@ class ListExecutorsResponseBodyData(TeaModel):
             result['Port'] = self.port
         if self.version is not None:
             result['Version'] = self.version
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -5553,6 +5587,8 @@ class ListExecutorsResponseBodyData(TeaModel):
             self.port = m.get('Port')
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -6388,6 +6424,7 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         time_zone: str = None,
         timezone: str = None,
         updater: str = None,
+        weight: int = None,
         xattrs: str = None,
     ):
         self.app_name = app_name
@@ -6420,6 +6457,7 @@ class ListJobsResponseBodyDataRecords(TeaModel):
         self.time_zone = time_zone
         self.timezone = timezone
         self.updater = updater
+        self.weight = weight
         self.xattrs = xattrs
 
     def validate(self):
@@ -6491,6 +6529,8 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             result['Timezone'] = self.timezone
         if self.updater is not None:
             result['Updater'] = self.updater
+        if self.weight is not None:
+            result['Weight'] = self.weight
         if self.xattrs is not None:
             result['Xattrs'] = self.xattrs
         return result
@@ -6557,6 +6597,8 @@ class ListJobsResponseBodyDataRecords(TeaModel):
             self.timezone = m.get('Timezone')
         if m.get('Updater') is not None:
             self.updater = m.get('Updater')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         if m.get('Xattrs') is not None:
             self.xattrs = m.get('Xattrs')
         return self
@@ -9284,6 +9326,7 @@ class UpdateJobRequest(TeaModel):
         time_expression: str = None,
         time_type: int = None,
         timezone: str = None,
+        weight: int = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -9310,6 +9353,7 @@ class UpdateJobRequest(TeaModel):
         self.time_expression = time_expression
         self.time_type = time_type
         self.timezone = timezone
+        self.weight = weight
 
     def validate(self):
         if self.notice_config:
@@ -9371,6 +9415,8 @@ class UpdateJobRequest(TeaModel):
             result['TimeType'] = self.time_type
         if self.timezone is not None:
             result['Timezone'] = self.timezone
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -9423,6 +9469,8 @@ class UpdateJobRequest(TeaModel):
             self.time_type = m.get('TimeType')
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -9451,6 +9499,7 @@ class UpdateJobShrinkRequest(TeaModel):
         time_expression: str = None,
         time_type: int = None,
         timezone: str = None,
+        weight: int = None,
     ):
         # This parameter is required.
         self.app_name = app_name
@@ -9477,6 +9526,7 @@ class UpdateJobShrinkRequest(TeaModel):
         self.time_expression = time_expression
         self.time_type = time_type
         self.timezone = timezone
+        self.weight = weight
 
     def validate(self):
         pass
@@ -9531,6 +9581,8 @@ class UpdateJobShrinkRequest(TeaModel):
             result['TimeType'] = self.time_type
         if self.timezone is not None:
             result['Timezone'] = self.timezone
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
@@ -9579,6 +9631,8 @@ class UpdateJobShrinkRequest(TeaModel):
             self.time_type = m.get('TimeType')
         if m.get('Timezone') is not None:
             self.timezone = m.get('Timezone')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 

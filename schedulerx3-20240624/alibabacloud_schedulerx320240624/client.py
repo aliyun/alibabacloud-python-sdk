@@ -59,6 +59,8 @@ class Client(OpenApiClient):
             body['AccessToken'] = request.access_token
         if not UtilClient.is_unset(request.app_name):
             body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
@@ -106,6 +108,8 @@ class Client(OpenApiClient):
             body['AccessToken'] = request.access_token
         if not UtilClient.is_unset(request.app_name):
             body['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
         if not UtilClient.is_unset(request.cluster_id):
             body['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.enable_log):
@@ -355,6 +359,8 @@ class Client(OpenApiClient):
             body['TimeType'] = request.time_type
         if not UtilClient.is_unset(request.timezone):
             body['Timezone'] = request.timezone
+        if not UtilClient.is_unset(request.weight):
+            body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -440,6 +446,8 @@ class Client(OpenApiClient):
             body['TimeType'] = request.time_type
         if not UtilClient.is_unset(request.timezone):
             body['Timezone'] = request.timezone
+        if not UtilClient.is_unset(request.weight):
+            body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4253,6 +4261,8 @@ class Client(OpenApiClient):
             body['TimeType'] = request.time_type
         if not UtilClient.is_unset(request.timezone):
             body['Timezone'] = request.timezone
+        if not UtilClient.is_unset(request.weight):
+            body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4336,6 +4346,8 @@ class Client(OpenApiClient):
             body['TimeType'] = request.time_type
         if not UtilClient.is_unset(request.timezone):
             body['Timezone'] = request.timezone
+        if not UtilClient.is_unset(request.weight):
+            body['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

@@ -1,3 +1,13 @@
+2025-08-22 Version: 1.3.1
+- Update API CreateApp: add request parameters AppType.
+- Update API CreateJob: add request parameters Weight.
+- Update API GetApp: add response parameters Body.Data.AppType.
+- Update API ListApps: add response parameters Body.Data.Records.$.AppType.
+- Update API ListExecutors: add response parameters Body.Data.$.Weight.
+- Update API ListJobs: add response parameters Body.Data.Records.$.Weight.
+- Update API UpdateJob: add request parameters Weight.
+
+
 2025-07-11 Version: 1.3.0
 - Support API GetApp.
 - Support API ListJobScriptHistory.
