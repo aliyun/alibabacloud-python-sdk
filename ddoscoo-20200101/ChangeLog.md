@@ -1,3 +1,6 @@
+2025-08-22 Version: 3.0.3
+- Generated python 2020-01-01 for ddoscoo.
+
 2025-08-21 Version: 3.0.2
 - Update API DescribeAttackAnalysisMaxQps: add request parameters Ip.
 - Update API DescribeDDosAllEventList: add request parameters Ip.
