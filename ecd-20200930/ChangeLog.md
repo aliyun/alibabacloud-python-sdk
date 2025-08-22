@@ -1,3 +1,7 @@
+2025-08-22 Version: 4.12.6
+- Update API ResetDesktops: add request parameters LastRetryTime.
+
+
 2025-08-05 Version: 4.12.5
 - Update API ModifyTemplate: add request parameters DataDiskList.
 

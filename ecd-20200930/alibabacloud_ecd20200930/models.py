@@ -65458,6 +65458,7 @@ class ResetDesktopsRequest(TeaModel):
         desktop_group_ids: List[str] = None,
         desktop_id: List[str] = None,
         image_id: str = None,
+        last_retry_time: int = None,
         pay_type: str = None,
         region_id: str = None,
         reset_scope: str = None,
@@ -65474,6 +65475,7 @@ class ResetDesktopsRequest(TeaModel):
         self.desktop_id = desktop_id
         # The ID of the image.
         self.image_id = image_id
+        self.last_retry_time = last_retry_time
         # The billing method of the cloud computer share.
         # 
         # >  This parameter takes effect when you reset a cloud computer share. If you leave this parameter empty, all cloud computers in that share are reset.
@@ -65523,6 +65525,8 @@ class ResetDesktopsRequest(TeaModel):
             result['DesktopId'] = self.desktop_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.last_retry_time is not None:
+            result['LastRetryTime'] = self.last_retry_time
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.region_id is not None:
@@ -65543,6 +65547,8 @@ class ResetDesktopsRequest(TeaModel):
             self.desktop_id = m.get('DesktopId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('LastRetryTime') is not None:
+            self.last_retry_time = m.get('LastRetryTime')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('RegionId') is not None:
