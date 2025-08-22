@@ -1816,6 +1816,8 @@ class Label(TeaModel):
 class MachineGroup(TeaModel):
     def __init__(
         self,
+        allocatable_cpu: int = None,
+        allocatable_memory: int = None,
         cpu: int = None,
         creator_id: str = None,
         default_driver: str = None,
@@ -1842,7 +1844,11 @@ class MachineGroup(TeaModel):
         resource_type: str = None,
         status: str = None,
         supported_drivers: List[str] = None,
+        system_reserved_cpu: int = None,
+        system_reserved_memory: int = None,
     ):
+        self.allocatable_cpu = allocatable_cpu
+        self.allocatable_memory = allocatable_memory
         self.cpu = cpu
         self.creator_id = creator_id
         self.default_driver = default_driver
@@ -1869,6 +1875,8 @@ class MachineGroup(TeaModel):
         self.resource_type = resource_type
         self.status = status
         self.supported_drivers = supported_drivers
+        self.system_reserved_cpu = system_reserved_cpu
+        self.system_reserved_memory = system_reserved_memory
 
     def validate(self):
         pass
@@ -1879,6 +1887,10 @@ class MachineGroup(TeaModel):
             return _map
 
         result = dict()
+        if self.allocatable_cpu is not None:
+            result['AllocatableCpu'] = self.allocatable_cpu
+        if self.allocatable_memory is not None:
+            result['AllocatableMemory'] = self.allocatable_memory
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.creator_id is not None:
@@ -1931,10 +1943,18 @@ class MachineGroup(TeaModel):
             result['Status'] = self.status
         if self.supported_drivers is not None:
             result['SupportedDrivers'] = self.supported_drivers
+        if self.system_reserved_cpu is not None:
+            result['SystemReservedCpu'] = self.system_reserved_cpu
+        if self.system_reserved_memory is not None:
+            result['SystemReservedMemory'] = self.system_reserved_memory
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocatableCpu') is not None:
+            self.allocatable_cpu = m.get('AllocatableCpu')
+        if m.get('AllocatableMemory') is not None:
+            self.allocatable_memory = m.get('AllocatableMemory')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('CreatorID') is not None:
@@ -1987,6 +2007,10 @@ class MachineGroup(TeaModel):
             self.status = m.get('Status')
         if m.get('SupportedDrivers') is not None:
             self.supported_drivers = m.get('SupportedDrivers')
+        if m.get('SystemReservedCpu') is not None:
+            self.system_reserved_cpu = m.get('SystemReservedCpu')
+        if m.get('SystemReservedMemory') is not None:
+            self.system_reserved_memory = m.get('SystemReservedMemory')
         return self
 
 
@@ -2093,6 +2117,8 @@ class Node(TeaModel):
     def __init__(
         self,
         accelerator_type: str = None,
+        allocatable_cpu: str = None,
+        allocatable_memory: str = None,
         availability_zone: str = None,
         bound_quotas: List[QuotaIdName] = None,
         cpu: str = None,
@@ -2122,10 +2148,14 @@ class Node(TeaModel):
         request_memory: str = None,
         resource_group_id: str = None,
         resource_group_name: str = None,
+        system_reserved_cpu: str = None,
+        system_reserved_memory: str = None,
         users: List[UserInfo] = None,
         workload_num: int = None,
     ):
         self.accelerator_type = accelerator_type
+        self.allocatable_cpu = allocatable_cpu
+        self.allocatable_memory = allocatable_memory
         self.availability_zone = availability_zone
         self.bound_quotas = bound_quotas
         self.cpu = cpu
@@ -2155,6 +2185,8 @@ class Node(TeaModel):
         self.request_memory = request_memory
         self.resource_group_id = resource_group_id
         self.resource_group_name = resource_group_name
+        self.system_reserved_cpu = system_reserved_cpu
+        self.system_reserved_memory = system_reserved_memory
         self.users = users
         self.workload_num = workload_num
 
@@ -2176,6 +2208,10 @@ class Node(TeaModel):
         result = dict()
         if self.accelerator_type is not None:
             result['AcceleratorType'] = self.accelerator_type
+        if self.allocatable_cpu is not None:
+            result['AllocatableCPU'] = self.allocatable_cpu
+        if self.allocatable_memory is not None:
+            result['AllocatableMemory'] = self.allocatable_memory
         if self.availability_zone is not None:
             result['AvailabilityZone'] = self.availability_zone
         result['BoundQuotas'] = []
@@ -2236,6 +2272,10 @@ class Node(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_group_name is not None:
             result['ResourceGroupName'] = self.resource_group_name
+        if self.system_reserved_cpu is not None:
+            result['SystemReservedCPU'] = self.system_reserved_cpu
+        if self.system_reserved_memory is not None:
+            result['SystemReservedMemory'] = self.system_reserved_memory
         result['Users'] = []
         if self.users is not None:
             for k in self.users:
@@ -2248,6 +2288,10 @@ class Node(TeaModel):
         m = m or dict()
         if m.get('AcceleratorType') is not None:
             self.accelerator_type = m.get('AcceleratorType')
+        if m.get('AllocatableCPU') is not None:
+            self.allocatable_cpu = m.get('AllocatableCPU')
+        if m.get('AllocatableMemory') is not None:
+            self.allocatable_memory = m.get('AllocatableMemory')
         if m.get('AvailabilityZone') is not None:
             self.availability_zone = m.get('AvailabilityZone')
         self.bound_quotas = []
@@ -2309,6 +2353,10 @@ class Node(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceGroupName') is not None:
             self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('SystemReservedCPU') is not None:
+            self.system_reserved_cpu = m.get('SystemReservedCPU')
+        if m.get('SystemReservedMemory') is not None:
+            self.system_reserved_memory = m.get('SystemReservedMemory')
         self.users = []
         if m.get('Users') is not None:
             for k in m.get('Users'):
@@ -2724,20 +2772,28 @@ class NodeType(TeaModel):
     def __init__(
         self,
         accelerator_type: str = None,
+        allocatable_cpu: str = None,
+        allocatable_memory: str = None,
         cpu: str = None,
         gpu: str = None,
         gpumemory: str = None,
         gputype: str = None,
         memory: str = None,
         node_type: str = None,
+        system_reserved_cpu: str = None,
+        system_reserved_memory: str = None,
     ):
         self.accelerator_type = accelerator_type
+        self.allocatable_cpu = allocatable_cpu
+        self.allocatable_memory = allocatable_memory
         self.cpu = cpu
         self.gpu = gpu
         self.gpumemory = gpumemory
         self.gputype = gputype
         self.memory = memory
         self.node_type = node_type
+        self.system_reserved_cpu = system_reserved_cpu
+        self.system_reserved_memory = system_reserved_memory
 
     def validate(self):
         pass
@@ -2750,6 +2806,10 @@ class NodeType(TeaModel):
         result = dict()
         if self.accelerator_type is not None:
             result['AcceleratorType'] = self.accelerator_type
+        if self.allocatable_cpu is not None:
+            result['AllocatableCPU'] = self.allocatable_cpu
+        if self.allocatable_memory is not None:
+            result['AllocatableMemory'] = self.allocatable_memory
         if self.cpu is not None:
             result['CPU'] = self.cpu
         if self.gpu is not None:
@@ -2762,12 +2822,20 @@ class NodeType(TeaModel):
             result['Memory'] = self.memory
         if self.node_type is not None:
             result['NodeType'] = self.node_type
+        if self.system_reserved_cpu is not None:
+            result['SystemReservedCPU'] = self.system_reserved_cpu
+        if self.system_reserved_memory is not None:
+            result['SystemReservedMemory'] = self.system_reserved_memory
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AcceleratorType') is not None:
             self.accelerator_type = m.get('AcceleratorType')
+        if m.get('AllocatableCPU') is not None:
+            self.allocatable_cpu = m.get('AllocatableCPU')
+        if m.get('AllocatableMemory') is not None:
+            self.allocatable_memory = m.get('AllocatableMemory')
         if m.get('CPU') is not None:
             self.cpu = m.get('CPU')
         if m.get('GPU') is not None:
@@ -2780,6 +2848,10 @@ class NodeType(TeaModel):
             self.memory = m.get('Memory')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
+        if m.get('SystemReservedCPU') is not None:
+            self.system_reserved_cpu = m.get('SystemReservedCPU')
+        if m.get('SystemReservedMemory') is not None:
+            self.system_reserved_memory = m.get('SystemReservedMemory')
         return self
 
 
@@ -3598,6 +3670,7 @@ class QuotaDetails(TeaModel):
     def __init__(
         self,
         actual_min_quota: ResourceAmount = None,
+        allocatable_quota: ResourceAmount = None,
         allocated_quota: ResourceAmount = None,
         ancestors_allocated_quota: ResourceAmount = None,
         descendants_allocated_quota: ResourceAmount = None,
@@ -3605,9 +3678,11 @@ class QuotaDetails(TeaModel):
         requested_quota: ResourceAmount = None,
         self_allocated_quota: ResourceAmount = None,
         self_submitted_quota: ResourceAmount = None,
+        system_reserved_quota: ResourceAmount = None,
         used_quota: ResourceAmount = None,
     ):
         self.actual_min_quota = actual_min_quota
+        self.allocatable_quota = allocatable_quota
         self.allocated_quota = allocated_quota
         self.ancestors_allocated_quota = ancestors_allocated_quota
         self.descendants_allocated_quota = descendants_allocated_quota
@@ -3615,11 +3690,14 @@ class QuotaDetails(TeaModel):
         self.requested_quota = requested_quota
         self.self_allocated_quota = self_allocated_quota
         self.self_submitted_quota = self_submitted_quota
+        self.system_reserved_quota = system_reserved_quota
         self.used_quota = used_quota
 
     def validate(self):
         if self.actual_min_quota:
             self.actual_min_quota.validate()
+        if self.allocatable_quota:
+            self.allocatable_quota.validate()
         if self.allocated_quota:
             self.allocated_quota.validate()
         if self.ancestors_allocated_quota:
@@ -3634,6 +3712,8 @@ class QuotaDetails(TeaModel):
             self.self_allocated_quota.validate()
         if self.self_submitted_quota:
             self.self_submitted_quota.validate()
+        if self.system_reserved_quota:
+            self.system_reserved_quota.validate()
         if self.used_quota:
             self.used_quota.validate()
 
@@ -3645,6 +3725,8 @@ class QuotaDetails(TeaModel):
         result = dict()
         if self.actual_min_quota is not None:
             result['ActualMinQuota'] = self.actual_min_quota.to_map()
+        if self.allocatable_quota is not None:
+            result['AllocatableQuota'] = self.allocatable_quota.to_map()
         if self.allocated_quota is not None:
             result['AllocatedQuota'] = self.allocated_quota.to_map()
         if self.ancestors_allocated_quota is not None:
@@ -3659,6 +3741,8 @@ class QuotaDetails(TeaModel):
             result['SelfAllocatedQuota'] = self.self_allocated_quota.to_map()
         if self.self_submitted_quota is not None:
             result['SelfSubmittedQuota'] = self.self_submitted_quota.to_map()
+        if self.system_reserved_quota is not None:
+            result['SystemReservedQuota'] = self.system_reserved_quota.to_map()
         if self.used_quota is not None:
             result['UsedQuota'] = self.used_quota.to_map()
         return result
@@ -3668,6 +3752,9 @@ class QuotaDetails(TeaModel):
         if m.get('ActualMinQuota') is not None:
             temp_model = ResourceAmount()
             self.actual_min_quota = temp_model.from_map(m['ActualMinQuota'])
+        if m.get('AllocatableQuota') is not None:
+            temp_model = ResourceAmount()
+            self.allocatable_quota = temp_model.from_map(m['AllocatableQuota'])
         if m.get('AllocatedQuota') is not None:
             temp_model = ResourceAmount()
             self.allocated_quota = temp_model.from_map(m['AllocatedQuota'])
@@ -3689,6 +3776,9 @@ class QuotaDetails(TeaModel):
         if m.get('SelfSubmittedQuota') is not None:
             temp_model = ResourceAmount()
             self.self_submitted_quota = temp_model.from_map(m['SelfSubmittedQuota'])
+        if m.get('SystemReservedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.system_reserved_quota = temp_model.from_map(m['SystemReservedQuota'])
         if m.get('UsedQuota') is not None:
             temp_model = ResourceAmount()
             self.used_quota = temp_model.from_map(m['UsedQuota'])
@@ -8993,6 +9083,8 @@ class GetResourceGroupMachineGroupResponseBodyTags(TeaModel):
 class GetResourceGroupMachineGroupResponseBody(TeaModel):
     def __init__(
         self,
+        allocatable_cpu: str = None,
+        allocatable_memory: str = None,
         cpu: str = None,
         default_driver: str = None,
         ecs_count: int = None,
@@ -9013,8 +9105,12 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         resource_group_id: str = None,
         status: str = None,
         supported_drivers: List[str] = None,
+        system_reserved_cpu: str = None,
+        system_reserved_memory: str = None,
         tags: List[GetResourceGroupMachineGroupResponseBodyTags] = None,
     ):
+        self.allocatable_cpu = allocatable_cpu
+        self.allocatable_memory = allocatable_memory
         self.cpu = cpu
         self.default_driver = default_driver
         self.ecs_count = ecs_count
@@ -9035,6 +9131,8 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
         self.resource_group_id = resource_group_id
         self.status = status
         self.supported_drivers = supported_drivers
+        self.system_reserved_cpu = system_reserved_cpu
+        self.system_reserved_memory = system_reserved_memory
         self.tags = tags
 
     def validate(self):
@@ -9049,6 +9147,10 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.allocatable_cpu is not None:
+            result['AllocatableCpu'] = self.allocatable_cpu
+        if self.allocatable_memory is not None:
+            result['AllocatableMemory'] = self.allocatable_memory
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.default_driver is not None:
@@ -9089,6 +9191,10 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             result['Status'] = self.status
         if self.supported_drivers is not None:
             result['SupportedDrivers'] = self.supported_drivers
+        if self.system_reserved_cpu is not None:
+            result['SystemReservedCpu'] = self.system_reserved_cpu
+        if self.system_reserved_memory is not None:
+            result['SystemReservedMemory'] = self.system_reserved_memory
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -9097,6 +9203,10 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocatableCpu') is not None:
+            self.allocatable_cpu = m.get('AllocatableCpu')
+        if m.get('AllocatableMemory') is not None:
+            self.allocatable_memory = m.get('AllocatableMemory')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('DefaultDriver') is not None:
@@ -9137,6 +9247,10 @@ class GetResourceGroupMachineGroupResponseBody(TeaModel):
             self.status = m.get('Status')
         if m.get('SupportedDrivers') is not None:
             self.supported_drivers = m.get('SupportedDrivers')
+        if m.get('SystemReservedCpu') is not None:
+            self.system_reserved_cpu = m.get('SystemReservedCpu')
+        if m.get('SystemReservedMemory') is not None:
+            self.system_reserved_memory = m.get('SystemReservedMemory')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):

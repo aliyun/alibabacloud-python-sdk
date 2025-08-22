@@ -1,3 +1,10 @@
+2025-08-22 Version: 2.1.9
+- Update API GetResourceGroupMachineGroup: add response parameters Body.AllocatableCpu.
+- Update API GetResourceGroupMachineGroup: add response parameters Body.AllocatableMemory.
+- Update API GetResourceGroupMachineGroup: add response parameters Body.SystemReservedCpu.
+- Update API GetResourceGroupMachineGroup: add response parameters Body.SystemReservedMemory.
+
+
 2025-08-06 Version: 2.1.8
 - Update API ListNodes: add request parameters PaymentType.
 
