@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('iacservice', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -41,6 +40,118 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_shared_accounts_with_options(
+        self,
+        request: ia_cservice_20210806_models.AddSharedAccountsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.AddSharedAccountsResponse:
+        """
+        @summary 新增共享账号信息
+        
+        @param request: AddSharedAccountsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_ids):
+            body['accountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddSharedAccounts',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/sharedAccounts',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.AddSharedAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_shared_accounts_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.AddSharedAccountsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.AddSharedAccountsResponse:
+        """
+        @summary 新增共享账号信息
+        
+        @param request: AddSharedAccountsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSharedAccountsResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.account_ids):
+            body['accountIds'] = request.account_ids
+        if not UtilClient.is_unset(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddSharedAccounts',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/sharedAccounts',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.AddSharedAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_shared_accounts(
+        self,
+        request: ia_cservice_20210806_models.AddSharedAccountsRequest,
+    ) -> ia_cservice_20210806_models.AddSharedAccountsResponse:
+        """
+        @summary 新增共享账号信息
+        
+        @param request: AddSharedAccountsRequest
+        @return: AddSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_shared_accounts_with_options(request, headers, runtime)
+
+    async def add_shared_accounts_async(
+        self,
+        request: ia_cservice_20210806_models.AddSharedAccountsRequest,
+    ) -> ia_cservice_20210806_models.AddSharedAccountsResponse:
+        """
+        @summary 新增共享账号信息
+        
+        @param request: AddSharedAccountsRequest
+        @return: AddSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_shared_accounts_with_options_async(request, headers, runtime)
 
     def associate_group_with_options(
         self,
@@ -162,410 +273,6 @@ class Client(OpenApiClient):
         headers = {}
         return await self.associate_group_with_options_async(group_id, request, headers, runtime)
 
-    def associate_parameter_set_with_options(
-        self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
-        """
-        @summary 将参数集关联资源
-        
-        @param request: AssociateParameterSetRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateParameterSetResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.parameter_set_ids):
-            body['parameterSetIds'] = request.parameter_set_ids
-        if not UtilClient.is_unset(request.resource_id):
-            body['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AssociateParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/operations/associate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AssociateParameterSetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def associate_parameter_set_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
-        """
-        @summary 将参数集关联资源
-        
-        @param request: AssociateParameterSetRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateParameterSetResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.parameter_set_ids):
-            body['parameterSetIds'] = request.parameter_set_ids
-        if not UtilClient.is_unset(request.resource_id):
-            body['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AssociateParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/operations/associate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AssociateParameterSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def associate_parameter_set(
-        self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
-        """
-        @summary 将参数集关联资源
-        
-        @param request: AssociateParameterSetRequest
-        @return: AssociateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.associate_parameter_set_with_options(request, headers, runtime)
-
-    async def associate_parameter_set_async(
-        self,
-        request: ia_cservice_20210806_models.AssociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.AssociateParameterSetResponse:
-        """
-        @summary 将参数集关联资源
-        
-        @param request: AssociateParameterSetRequest
-        @return: AssociateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.associate_parameter_set_with_options_async(request, headers, runtime)
-
-    def attach_rabbitmq_publisher_with_options(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者挂载到任务
-        
-        @param request: AttachRabbitmqPublisherRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachRabbitmqPublisherResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_id):
-            body['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AttachRabbitmqPublisher',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}/attach',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AttachRabbitmqPublisherResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def attach_rabbitmq_publisher_with_options_async(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者挂载到任务
-        
-        @param request: AttachRabbitmqPublisherRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachRabbitmqPublisherResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_id):
-            body['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='AttachRabbitmqPublisher',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}/attach',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.AttachRabbitmqPublisherResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def attach_rabbitmq_publisher(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者挂载到任务
-        
-        @param request: AttachRabbitmqPublisherRequest
-        @return: AttachRabbitmqPublisherResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.attach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
-
-    async def attach_rabbitmq_publisher_async(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.AttachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.AttachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者挂载到任务
-        
-        @param request: AttachRabbitmqPublisherRequest
-        @return: AttachRabbitmqPublisherResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.attach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
-
-    def cancel_project_build_with_options(
-        self,
-        project_id: str,
-        project_build_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CancelProjectBuildResponse:
-        """
-        @summary 取消执行
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelProjectBuildResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CancelProjectBuild',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build/{OpenApiUtilClient.get_encode_param(project_build_id)}/cancel',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CancelProjectBuildResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_project_build_with_options_async(
-        self,
-        project_id: str,
-        project_build_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CancelProjectBuildResponse:
-        """
-        @summary 取消执行
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelProjectBuildResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CancelProjectBuild',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build/{OpenApiUtilClient.get_encode_param(project_build_id)}/cancel',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CancelProjectBuildResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_project_build(
-        self,
-        project_id: str,
-        project_build_id: str,
-    ) -> ia_cservice_20210806_models.CancelProjectBuildResponse:
-        """
-        @summary 取消执行
-        
-        @return: CancelProjectBuildResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.cancel_project_build_with_options(project_id, project_build_id, headers, runtime)
-
-    async def cancel_project_build_async(
-        self,
-        project_id: str,
-        project_build_id: str,
-    ) -> ia_cservice_20210806_models.CancelProjectBuildResponse:
-        """
-        @summary 取消执行
-        
-        @return: CancelProjectBuildResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.cancel_project_build_with_options_async(project_id, project_build_id, headers, runtime)
-
-    def cancel_ram_policy_export_task_with_options(
-        self,
-        ram_policy_export_task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
-        """
-        @summary 取消RAM策略导出任务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelRamPolicyExportTaskResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CancelRamPolicyExportTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/cancel',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def cancel_ram_policy_export_task_with_options_async(
-        self,
-        ram_policy_export_task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
-        """
-        @summary 取消RAM策略导出任务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelRamPolicyExportTaskResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='CancelRamPolicyExportTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/cancel',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def cancel_ram_policy_export_task(
-        self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
-        """
-        @summary 取消RAM策略导出任务
-        
-        @return: CancelRamPolicyExportTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.cancel_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
-
-    async def cancel_ram_policy_export_task_async(
-        self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.CancelRamPolicyExportTaskResponse:
-        """
-        @summary 取消RAM策略导出任务
-        
-        @return: CancelRamPolicyExportTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.cancel_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
-
     def cancel_resource_export_task_with_options(
         self,
         export_task_id: str,
@@ -585,8 +292,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -626,8 +331,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -677,642 +380,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
-
-    def check_resource_name_with_options(
-        self,
-        request: ia_cservice_20210806_models.CheckResourceNameRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
-        """
-        @summary 校验资源名称
-        
-        @param request: CheckResourceNameRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckResourceNameResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.parent_id):
-            query['parentId'] = request.parent_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckResourceName',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/check/name',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CheckResourceNameResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def check_resource_name_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.CheckResourceNameRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
-        """
-        @summary 校验资源名称
-        
-        @param request: CheckResourceNameRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckResourceNameResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.id):
-            query['id'] = request.id
-        if not UtilClient.is_unset(request.name):
-            query['name'] = request.name
-        if not UtilClient.is_unset(request.parent_id):
-            query['parentId'] = request.parent_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='CheckResourceName',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/check/name',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CheckResourceNameResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def check_resource_name(
-        self,
-        request: ia_cservice_20210806_models.CheckResourceNameRequest,
-    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
-        """
-        @summary 校验资源名称
-        
-        @param request: CheckResourceNameRequest
-        @return: CheckResourceNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.check_resource_name_with_options(request, headers, runtime)
-
-    async def check_resource_name_async(
-        self,
-        request: ia_cservice_20210806_models.CheckResourceNameRequest,
-    ) -> ia_cservice_20210806_models.CheckResourceNameResponse:
-        """
-        @summary 校验资源名称
-        
-        @param request: CheckResourceNameRequest
-        @return: CheckResourceNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.check_resource_name_with_options_async(request, headers, runtime)
-
-    def clone_group_with_options(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.CloneGroupRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CloneGroupResponse:
-        """
-        @summary 克隆分组
-        
-        @param request: CloneGroupRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloneGroupResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.project_id):
-            body['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.resource_types):
-            body['resourceTypes'] = request.resource_types
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CloneGroup',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/clone',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CloneGroupResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def clone_group_with_options_async(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.CloneGroupRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CloneGroupResponse:
-        """
-        @summary 克隆分组
-        
-        @param request: CloneGroupRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloneGroupResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.project_id):
-            body['projectId'] = request.project_id
-        if not UtilClient.is_unset(request.resource_types):
-            body['resourceTypes'] = request.resource_types
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CloneGroup',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/group/{OpenApiUtilClient.get_encode_param(group_id)}/clone',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CloneGroupResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def clone_group(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.CloneGroupRequest,
-    ) -> ia_cservice_20210806_models.CloneGroupResponse:
-        """
-        @summary 克隆分组
-        
-        @param request: CloneGroupRequest
-        @return: CloneGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.clone_group_with_options(group_id, request, headers, runtime)
-
-    async def clone_group_async(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.CloneGroupRequest,
-    ) -> ia_cservice_20210806_models.CloneGroupResponse:
-        """
-        @summary 克隆分组
-        
-        @param request: CloneGroupRequest
-        @return: CloneGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.clone_group_with_options_async(group_id, request, headers, runtime)
-
-    def clone_module_with_options(
-        self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
-        """
-        @summary 克隆模版
-        
-        @param request: CloneModuleRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloneModuleResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_source):
-            body['moduleSource'] = request.module_source
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CloneModule',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/modules/operations/clone',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CloneModuleResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def clone_module_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
-        """
-        @summary 克隆模版
-        
-        @param request: CloneModuleRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloneModuleResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_source):
-            body['moduleSource'] = request.module_source
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CloneModule',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/modules/operations/clone',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CloneModuleResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def clone_module(
-        self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
-        """
-        @summary 克隆模版
-        
-        @param request: CloneModuleRequest
-        @return: CloneModuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.clone_module_with_options(request, headers, runtime)
-
-    async def clone_module_async(
-        self,
-        request: ia_cservice_20210806_models.CloneModuleRequest,
-    ) -> ia_cservice_20210806_models.CloneModuleResponse:
-        """
-        @summary 克隆模版
-        
-        @param request: CloneModuleRequest
-        @return: CloneModuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.clone_module_with_options_async(request, headers, runtime)
-
-    def create_authorization_with_options(
-        self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
-        """
-        @summary 创建共享
-        
-        @param request: CreateAuthorizationRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.due_time):
-            body['dueTime'] = request.due_time
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.uid):
-            body['uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateAuthorization',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateAuthorizationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_authorization_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
-        """
-        @summary 创建共享
-        
-        @param request: CreateAuthorizationRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.due_time):
-            body['dueTime'] = request.due_time
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.uid):
-            body['uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateAuthorization',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateAuthorizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_authorization(
-        self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
-        """
-        @summary 创建共享
-        
-        @param request: CreateAuthorizationRequest
-        @return: CreateAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_authorization_with_options(request, headers, runtime)
-
-    async def create_authorization_async(
-        self,
-        request: ia_cservice_20210806_models.CreateAuthorizationRequest,
-    ) -> ia_cservice_20210806_models.CreateAuthorizationResponse:
-        """
-        @summary 创建共享
-        
-        @param request: CreateAuthorizationRequest
-        @return: CreateAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_authorization_with_options_async(request, headers, runtime)
-
-    def create_explorer_task_with_options(
-        self,
-        request: ia_cservice_20210806_models.CreateExplorerTaskRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateExplorerTaskResponse:
-        """
-        @summary 创建Explorer任务
-        
-        @param request: CreateExplorerTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateExplorerTaskResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.init_module_state):
-            body['InitModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.terraform_version):
-            body['TerraformVersion'] = request.terraform_version
-        if not UtilClient.is_unset(request.auto_apply):
-            body['autoApply'] = request.auto_apply
-        if not UtilClient.is_unset(request.auto_destroy):
-            body['autoDestroy'] = request.auto_destroy
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.init_module_state):
-            body['initModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.skip_property_validation):
-            body['skipPropertyValidation'] = request.skip_property_validation
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateExplorerTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/explorerTask',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateExplorerTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_explorer_task_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.CreateExplorerTaskRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateExplorerTaskResponse:
-        """
-        @summary 创建Explorer任务
-        
-        @param request: CreateExplorerTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateExplorerTaskResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.init_module_state):
-            body['InitModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.terraform_version):
-            body['TerraformVersion'] = request.terraform_version
-        if not UtilClient.is_unset(request.auto_apply):
-            body['autoApply'] = request.auto_apply
-        if not UtilClient.is_unset(request.auto_destroy):
-            body['autoDestroy'] = request.auto_destroy
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.init_module_state):
-            body['initModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.skip_property_validation):
-            body['skipPropertyValidation'] = request.skip_property_validation
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateExplorerTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/explorerTask',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateExplorerTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_explorer_task(
-        self,
-        request: ia_cservice_20210806_models.CreateExplorerTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateExplorerTaskResponse:
-        """
-        @summary 创建Explorer任务
-        
-        @param request: CreateExplorerTaskRequest
-        @return: CreateExplorerTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_explorer_task_with_options(request, headers, runtime)
-
-    async def create_explorer_task_async(
-        self,
-        request: ia_cservice_20210806_models.CreateExplorerTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateExplorerTaskResponse:
-        """
-        @summary 创建Explorer任务
-        
-        @param request: CreateExplorerTaskRequest
-        @return: CreateExplorerTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_explorer_task_with_options_async(request, headers, runtime)
 
     def create_group_with_options(
         self,
@@ -1495,8 +562,6 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.execute_type):
-            body['executeType'] = request.execute_type
         if not UtilClient.is_unset(request.sub_command):
             body['subCommand'] = request.sub_command
         if not UtilClient.is_unset(request.task_type):
@@ -1542,8 +607,6 @@ class Client(OpenApiClient):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.execute_type):
-            body['executeType'] = request.execute_type
         if not UtilClient.is_unset(request.sub_command):
             body['subCommand'] = request.sub_command
         if not UtilClient.is_unset(request.task_type):
@@ -1605,7 +668,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.CreateModuleResponse:
         """
-        @summary 创建模版
+        @summary 创建模板
         
         @param request: CreateModuleRequest
         @param headers: map
@@ -1628,6 +691,8 @@ class Client(OpenApiClient):
             body['sourcePath'] = request.source_path
         if not UtilClient.is_unset(request.state_path):
             body['statePath'] = request.state_path
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version_strategy):
             body['versionStrategy'] = request.version_strategy
         req = open_api_models.OpenApiRequest(
@@ -1657,7 +722,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.CreateModuleResponse:
         """
-        @summary 创建模版
+        @summary 创建模板
         
         @param request: CreateModuleRequest
         @param headers: map
@@ -1680,6 +745,8 @@ class Client(OpenApiClient):
             body['sourcePath'] = request.source_path
         if not UtilClient.is_unset(request.state_path):
             body['statePath'] = request.state_path
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version_strategy):
             body['versionStrategy'] = request.version_strategy
         req = open_api_models.OpenApiRequest(
@@ -1707,7 +774,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.CreateModuleRequest,
     ) -> ia_cservice_20210806_models.CreateModuleResponse:
         """
-        @summary 创建模版
+        @summary 创建模板
         
         @param request: CreateModuleRequest
         @return: CreateModuleResponse
@@ -1721,7 +788,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.CreateModuleRequest,
     ) -> ia_cservice_20210806_models.CreateModuleResponse:
         """
-        @summary 创建模版
+        @summary 创建模板
         
         @param request: CreateModuleRequest
         @return: CreateModuleResponse
@@ -1738,7 +805,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         """
-        @summary 创建模版版本
+        @summary 创建模板版本
         
         @param request: CreateModuleVersionRequest
         @param headers: map
@@ -1781,7 +848,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         """
-        @summary 创建模版版本
+        @summary 创建模板版本
         
         @param request: CreateModuleVersionRequest
         @param headers: map
@@ -1822,7 +889,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.CreateModuleVersionRequest,
     ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         """
-        @summary 创建模版版本
+        @summary 创建模板版本
         
         @param request: CreateModuleVersionRequest
         @return: CreateModuleVersionResponse
@@ -1837,7 +904,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.CreateModuleVersionRequest,
     ) -> ia_cservice_20210806_models.CreateModuleVersionResponse:
         """
-        @summary 创建模版版本
+        @summary 创建模板版本
         
         @param request: CreateModuleVersionRequest
         @return: CreateModuleVersionResponse
@@ -1845,122 +912,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_module_version_with_options_async(module_id, request, headers, runtime)
-
-    def create_parameter_set_with_options(
-        self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
-        """
-        @summary 创建参数集
-        
-        @param request: CreateParameterSetRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateParameterSetResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateParameterSetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_parameter_set_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
-        """
-        @summary 创建参数集
-        
-        @param request: CreateParameterSetRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateParameterSetResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateParameterSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_parameter_set(
-        self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
-        """
-        @summary 创建参数集
-        
-        @param request: CreateParameterSetRequest
-        @return: CreateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_parameter_set_with_options(request, headers, runtime)
-
-    async def create_parameter_set_async(
-        self,
-        request: ia_cservice_20210806_models.CreateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.CreateParameterSetResponse:
-        """
-        @summary 创建参数集
-        
-        @param request: CreateParameterSetRequest
-        @return: CreateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_parameter_set_with_options_async(request, headers, runtime)
 
     def create_project_with_options(
         self,
@@ -2074,175 +1025,45 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_project_with_options_async(request, headers, runtime)
 
-    def create_project_build_with_options(
+    def create_registry_module_with_options(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
+        request: ia_cservice_20210806_models.CreateRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
+    ) -> ia_cservice_20210806_models.CreateRegistryModuleResponse:
         """
-        @summary 构建项目批次
+        @summary 创建RegistryModule
         
-        @param request: CreateProjectBuildRequest
+        @param request: CreateRegistryModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateProjectBuildResponse
+        @return: CreateRegistryModuleResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.group_id):
-            body['groupId'] = request.group_id
-        if not UtilClient.is_unset(request.project_build_action):
-            body['projectBuildAction'] = request.project_build_action
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
-        if not UtilClient.is_unset(request.task_policies):
-            body['taskPolicies'] = request.task_policies
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProjectBuild',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateProjectBuildResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_project_build_with_options_async(
-        self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
-        """
-        @summary 构建项目批次
-        
-        @param request: CreateProjectBuildRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateProjectBuildResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.client_token):
-            body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.group_id):
-            body['groupId'] = request.group_id
-        if not UtilClient.is_unset(request.project_build_action):
-            body['projectBuildAction'] = request.project_build_action
-        if not UtilClient.is_unset(request.task_ids):
-            body['taskIds'] = request.task_ids
-        if not UtilClient.is_unset(request.task_policies):
-            body['taskPolicies'] = request.task_policies
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateProjectBuild',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateProjectBuildResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_project_build(
-        self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
-        """
-        @summary 构建项目批次
-        
-        @param request: CreateProjectBuildRequest
-        @return: CreateProjectBuildResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_project_build_with_options(project_id, request, headers, runtime)
-
-    async def create_project_build_async(
-        self,
-        project_id: str,
-        request: ia_cservice_20210806_models.CreateProjectBuildRequest,
-    ) -> ia_cservice_20210806_models.CreateProjectBuildResponse:
-        """
-        @summary 构建项目批次
-        
-        @param request: CreateProjectBuildRequest
-        @return: CreateProjectBuildResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_project_build_with_options_async(project_id, request, headers, runtime)
-
-    def create_rabbitmq_publisher_with_options(
-        self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
-        """
-        @summary 创建消息发布者
-        
-        @param request: CreateRabbitmqPublisherRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRabbitmqPublisherResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exchange_name):
-            body['exchangeName'] = request.exchange_name
-        if not UtilClient.is_unset(request.exchange_type):
-            body['exchangeType'] = request.exchange_type
-        if not UtilClient.is_unset(request.host_name):
-            body['hostName'] = request.host_name
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.password):
-            body['password'] = request.password
-        if not UtilClient.is_unset(request.port):
-            body['port'] = request.port
-        if not UtilClient.is_unset(request.user_name):
-            body['userName'] = request.user_name
-        if not UtilClient.is_unset(request.virtual_host):
-            body['virtualHost'] = request.virtual_host
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.provider):
+            body['provider'] = request.provider
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateRabbitmqPublisher',
+            action='CreateRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers',
+            pathname=f'/registryModule',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2250,55 +1071,49 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.CreateRegistryModuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_rabbitmq_publisher_with_options_async(
+    async def create_registry_module_with_options_async(
         self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
+        request: ia_cservice_20210806_models.CreateRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
+    ) -> ia_cservice_20210806_models.CreateRegistryModuleResponse:
         """
-        @summary 创建消息发布者
+        @summary 创建RegistryModule
         
-        @param request: CreateRabbitmqPublisherRequest
+        @param request: CreateRegistryModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRabbitmqPublisherResponse
+        @return: CreateRegistryModuleResponse
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exchange_name):
-            body['exchangeName'] = request.exchange_name
-        if not UtilClient.is_unset(request.exchange_type):
-            body['exchangeType'] = request.exchange_type
-        if not UtilClient.is_unset(request.host_name):
-            body['hostName'] = request.host_name
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.password):
-            body['password'] = request.password
-        if not UtilClient.is_unset(request.port):
-            body['port'] = request.port
-        if not UtilClient.is_unset(request.user_name):
-            body['userName'] = request.user_name
-        if not UtilClient.is_unset(request.virtual_host):
-            body['virtualHost'] = request.virtual_host
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.provider):
+            body['provider'] = request.provider
+        if not UtilClient.is_unset(request.type):
+            body['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateRabbitmqPublisher',
+            action='CreateRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers',
+            pathname=f'/registryModule',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2306,83 +1121,73 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.CreateRegistryModuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_rabbitmq_publisher(
+    def create_registry_module(
         self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
+        request: ia_cservice_20210806_models.CreateRegistryModuleRequest,
+    ) -> ia_cservice_20210806_models.CreateRegistryModuleResponse:
         """
-        @summary 创建消息发布者
+        @summary 创建RegistryModule
         
-        @param request: CreateRabbitmqPublisherRequest
-        @return: CreateRabbitmqPublisherResponse
+        @param request: CreateRegistryModuleRequest
+        @return: CreateRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_rabbitmq_publisher_with_options(request, headers, runtime)
+        return self.create_registry_module_with_options(request, headers, runtime)
 
-    async def create_rabbitmq_publisher_async(
+    async def create_registry_module_async(
         self,
-        request: ia_cservice_20210806_models.CreateRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.CreateRabbitmqPublisherResponse:
+        request: ia_cservice_20210806_models.CreateRegistryModuleRequest,
+    ) -> ia_cservice_20210806_models.CreateRegistryModuleResponse:
         """
-        @summary 创建消息发布者
+        @summary 创建RegistryModule
         
-        @param request: CreateRabbitmqPublisherRequest
-        @return: CreateRabbitmqPublisherResponse
+        @param request: CreateRegistryModuleRequest
+        @return: CreateRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_rabbitmq_publisher_with_options_async(request, headers, runtime)
+        return await self.create_registry_module_with_options_async(request, headers, runtime)
 
-    def create_ram_policy_export_task_with_options(
+    def create_registry_namespace_with_options(
         self,
-        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+        request: ia_cservice_20210806_models.CreateRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.CreateRegistryNamespaceResponse:
         """
-        @summary 创建RAM策略导出任务
+        @summary 创建工作空间
         
-        @param request: CreateRamPolicyExportTaskRequest
+        @param request: CreateRegistryNamespaceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRamPolicyExportTaskResponse
+        @return: CreateRegistryNamespaceResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.authorization_account_ids):
-            body['authorizationAccountIds'] = request.authorization_account_ids
-        if not UtilClient.is_unset(request.authorization_actions):
-            body['authorizationActions'] = request.authorization_actions
-        if not UtilClient.is_unset(request.authorization_region_ids):
-            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        if not UtilClient.is_unset(request.trigger_strategy):
-            body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.maintainer):
+            body['maintainer'] = request.maintainer
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateRamPolicyExportTask',
+            action='CreateRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks',
+            pathname=f'/registryNamespace',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2390,55 +1195,45 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.CreateRegistryNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_ram_policy_export_task_with_options_async(
+    async def create_registry_namespace_with_options_async(
         self,
-        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
+        request: ia_cservice_20210806_models.CreateRegistryNamespaceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.CreateRegistryNamespaceResponse:
         """
-        @summary 创建RAM策略导出任务
+        @summary 创建工作空间
         
-        @param request: CreateRamPolicyExportTaskRequest
+        @param request: CreateRegistryNamespaceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRamPolicyExportTaskResponse
+        @return: CreateRegistryNamespaceResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.authorization_account_ids):
-            body['authorizationAccountIds'] = request.authorization_account_ids
-        if not UtilClient.is_unset(request.authorization_actions):
-            body['authorizationActions'] = request.authorization_actions
-        if not UtilClient.is_unset(request.authorization_region_ids):
-            body['authorizationRegionIds'] = request.authorization_region_ids
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        if not UtilClient.is_unset(request.trigger_strategy):
-            body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.maintainer):
+            body['maintainer'] = request.maintainer
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreateRamPolicyExportTask',
+            action='CreateRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks',
+            pathname=f'/registryNamespace',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -2446,37 +1241,37 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.CreateRegistryNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_ram_policy_export_task(
+    def create_registry_namespace(
         self,
-        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        request: ia_cservice_20210806_models.CreateRegistryNamespaceRequest,
+    ) -> ia_cservice_20210806_models.CreateRegistryNamespaceResponse:
         """
-        @summary 创建RAM策略导出任务
+        @summary 创建工作空间
         
-        @param request: CreateRamPolicyExportTaskRequest
-        @return: CreateRamPolicyExportTaskResponse
+        @param request: CreateRegistryNamespaceRequest
+        @return: CreateRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_ram_policy_export_task_with_options(request, headers, runtime)
+        return self.create_registry_namespace_with_options(request, headers, runtime)
 
-    async def create_ram_policy_export_task_async(
+    async def create_registry_namespace_async(
         self,
-        request: ia_cservice_20210806_models.CreateRamPolicyExportTaskRequest,
-    ) -> ia_cservice_20210806_models.CreateRamPolicyExportTaskResponse:
+        request: ia_cservice_20210806_models.CreateRegistryNamespaceRequest,
+    ) -> ia_cservice_20210806_models.CreateRegistryNamespaceResponse:
         """
-        @summary 创建RAM策略导出任务
+        @summary 创建工作空间
         
-        @param request: CreateRamPolicyExportTaskRequest
-        @return: CreateRamPolicyExportTaskResponse
+        @param request: CreateRegistryNamespaceRequest
+        @return: CreateRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_ram_policy_export_task_with_options_async(request, headers, runtime)
+        return await self.create_registry_namespace_with_options_async(request, headers, runtime)
 
     def create_resource_export_task_with_options(
         self,
@@ -2496,12 +1291,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.config_path):
-            body['configPath'] = request.config_path
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exclude_rules):
-            body['excludeRules'] = request.exclude_rules
         if not UtilClient.is_unset(request.export_to_module):
             body['exportToModule'] = request.export_to_module
         if not UtilClient.is_unset(request.include_rules):
@@ -2556,12 +1347,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.config_path):
-            body['configPath'] = request.config_path
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exclude_rules):
-            body['excludeRules'] = request.exclude_rules
         if not UtilClient.is_unset(request.export_to_module):
             body['exportToModule'] = request.export_to_module
         if not UtilClient.is_unset(request.include_rules):
@@ -2660,22 +1447,20 @@ class Client(OpenApiClient):
             body['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
         if not UtilClient.is_unset(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
         if not UtilClient.is_unset(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.task_backend):
             body['taskBackend'] = request.task_backend
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2730,22 +1515,20 @@ class Client(OpenApiClient):
             body['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
         if not UtilClient.is_unset(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
         if not UtilClient.is_unset(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.task_backend):
             body['taskBackend'] = request.task_backend
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2793,96 +1576,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_task_with_options_async(request, headers, runtime)
-
-    def delete_authorization_with_options(
-        self,
-        authorization_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
-        """
-        @summary 删除共享
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAuthorizationResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAuthorization',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations/{OpenApiUtilClient.get_encode_param(authorization_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteAuthorizationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_authorization_with_options_async(
-        self,
-        authorization_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
-        """
-        @summary 删除共享
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAuthorizationResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteAuthorization',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations/{OpenApiUtilClient.get_encode_param(authorization_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteAuthorizationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_authorization(
-        self,
-        authorization_id: str,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
-        """
-        @summary 删除共享
-        
-        @return: DeleteAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_authorization_with_options(authorization_id, headers, runtime)
-
-    async def delete_authorization_async(
-        self,
-        authorization_id: str,
-    ) -> ia_cservice_20210806_models.DeleteAuthorizationResponse:
-        """
-        @summary 删除共享
-        
-        @return: DeleteAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_authorization_with_options_async(authorization_id, headers, runtime)
 
     def delete_group_with_options(
         self,
@@ -2981,7 +1674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         """
-        @summary 删除模版
+        @summary 删除模板
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3013,7 +1706,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         """
-        @summary 删除模版
+        @summary 删除模板
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3043,7 +1736,7 @@ class Client(OpenApiClient):
         module_id: str,
     ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         """
-        @summary 删除模版
+        @summary 删除模板
         
         @return: DeleteModuleResponse
         """
@@ -3056,103 +1749,13 @@ class Client(OpenApiClient):
         module_id: str,
     ) -> ia_cservice_20210806_models.DeleteModuleResponse:
         """
-        @summary 删除模版
+        @summary 删除模板
         
         @return: DeleteModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_module_with_options_async(module_id, headers, runtime)
-
-    def delete_parameter_set_with_options(
-        self,
-        parameter_set_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
-        """
-        @summary 删除参数集
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteParameterSetResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteParameterSetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_parameter_set_with_options_async(
-        self,
-        parameter_set_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
-        """
-        @summary 删除参数集
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteParameterSetResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteParameterSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_parameter_set(
-        self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
-        """
-        @summary 删除参数集
-        
-        @return: DeleteParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_parameter_set_with_options(parameter_set_id, headers, runtime)
-
-    async def delete_parameter_set_async(
-        self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.DeleteParameterSetResponse:
-        """
-        @summary 删除参数集
-        
-        @return: DeleteParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_parameter_set_with_options_async(parameter_set_id, headers, runtime)
 
     def delete_project_with_options(
         self,
@@ -3244,27 +1847,28 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_project_with_options_async(project_id, headers, runtime)
 
-    def delete_rabbitmq_publisher_with_options(
+    def delete_registry_module_with_options(
         self,
-        publisher_id: str,
+        namespace_name: str,
+        module_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleResponse:
         """
-        @summary 删除消息发布者
+        @summary 删除RegistryModule
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRabbitmqPublisherResponse
+        @return: DeleteRegistryModuleResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRabbitmqPublisher',
+            action='DeleteRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3272,31 +1876,32 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.DeleteRegistryModuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_rabbitmq_publisher_with_options_async(
+    async def delete_registry_module_with_options_async(
         self,
-        publisher_id: str,
+        namespace_name: str,
+        module_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleResponse:
         """
-        @summary 删除消息发布者
+        @summary 删除RegistryModule
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRabbitmqPublisherResponse
+        @return: DeleteRegistryModuleResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRabbitmqPublisher',
+            action='DeleteRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3304,57 +1909,61 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.DeleteRegistryModuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_rabbitmq_publisher(
+    def delete_registry_module(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+        namespace_name: str,
+        module_name: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleResponse:
         """
-        @summary 删除消息发布者
+        @summary 删除RegistryModule
         
-        @return: DeleteRabbitmqPublisherResponse
+        @return: DeleteRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
+        return self.delete_registry_module_with_options(namespace_name, module_name, headers, runtime)
 
-    async def delete_rabbitmq_publisher_async(
+    async def delete_registry_module_async(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRabbitmqPublisherResponse:
+        namespace_name: str,
+        module_name: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleResponse:
         """
-        @summary 删除消息发布者
+        @summary 删除RegistryModule
         
-        @return: DeleteRabbitmqPublisherResponse
+        @return: DeleteRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+        return await self.delete_registry_module_with_options_async(namespace_name, module_name, headers, runtime)
 
-    def delete_ram_policy_export_task_with_options(
+    def delete_registry_module_version_with_options(
         self,
-        ram_policy_export_task_id: str,
+        namespace_name: str,
+        module_name: str,
+        version: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse:
         """
-        @summary 删除RAM策略导出任务
+        @summary 删除RegistryModule版本
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRamPolicyExportTaskResponse
+        @return: DeleteRegistryModuleVersionResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRamPolicyExportTask',
+            action='DeleteRegistryModuleVersion',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryModuleVersion/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/{OpenApiUtilClient.get_encode_param(version)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3362,31 +1971,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_ram_policy_export_task_with_options_async(
+    async def delete_registry_module_version_with_options_async(
         self,
-        ram_policy_export_task_id: str,
+        namespace_name: str,
+        module_name: str,
+        version: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse:
         """
-        @summary 删除RAM策略导出任务
+        @summary 删除RegistryModule版本
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRamPolicyExportTaskResponse
+        @return: DeleteRegistryModuleVersionResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRamPolicyExportTask',
+            action='DeleteRegistryModuleVersion',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryModuleVersion/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/{OpenApiUtilClient.get_encode_param(version)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3394,58 +2005,61 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_ram_policy_export_task(
+    def delete_registry_module_version(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        namespace_name: str,
+        module_name: str,
+        version: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse:
         """
-        @summary 删除RAM策略导出任务
+        @summary 删除RegistryModule版本
         
-        @return: DeleteRamPolicyExportTaskResponse
+        @return: DeleteRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+        return self.delete_registry_module_version_with_options(namespace_name, module_name, version, headers, runtime)
 
-    async def delete_ram_policy_export_task_async(
+    async def delete_registry_module_version_async(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskResponse:
+        namespace_name: str,
+        module_name: str,
+        version: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryModuleVersionResponse:
         """
-        @summary 删除RAM策略导出任务
+        @summary 删除RegistryModule版本
         
-        @return: DeleteRamPolicyExportTaskResponse
+        @return: DeleteRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
+        return await self.delete_registry_module_version_with_options_async(namespace_name, module_name, version, headers, runtime)
 
-    def delete_ram_policy_export_task_version_with_options(
+    def delete_registry_namespace_with_options(
         self,
-        ram_policy_export_task_id: str,
-        export_version: str,
+        namespace_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryNamespaceResponse:
         """
-        @summary 删除RAM策略导出任务版本
+        @summary 删除工作空间
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRamPolicyExportTaskVersionResponse
+        @return: DeleteRegistryNamespaceResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRamPolicyExportTaskVersion',
+            action='DeleteRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3453,32 +2067,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse(),
+            ia_cservice_20210806_models.DeleteRegistryNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_ram_policy_export_task_version_with_options_async(
+    async def delete_registry_namespace_with_options_async(
         self,
-        ram_policy_export_task_id: str,
-        export_version: str,
+        namespace_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+    ) -> ia_cservice_20210806_models.DeleteRegistryNamespaceResponse:
         """
-        @summary 删除RAM策略导出任务版本
+        @summary 删除工作空间
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRamPolicyExportTaskVersionResponse
+        @return: DeleteRegistryNamespaceResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeleteRamPolicyExportTaskVersion',
+            action='DeleteRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='DELETE',
             auth_type='AK',
             style='ROA',
@@ -3486,37 +2099,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse(),
+            ia_cservice_20210806_models.DeleteRegistryNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def delete_ram_policy_export_task_version(
+    def delete_registry_namespace(
         self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        namespace_name: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryNamespaceResponse:
         """
-        @summary 删除RAM策略导出任务版本
+        @summary 删除工作空间
         
-        @return: DeleteRamPolicyExportTaskVersionResponse
+        @return: DeleteRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.delete_ram_policy_export_task_version_with_options(ram_policy_export_task_id, export_version, headers, runtime)
+        return self.delete_registry_namespace_with_options(namespace_name, headers, runtime)
 
-    async def delete_ram_policy_export_task_version_async(
+    async def delete_registry_namespace_async(
         self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.DeleteRamPolicyExportTaskVersionResponse:
+        namespace_name: str,
+    ) -> ia_cservice_20210806_models.DeleteRegistryNamespaceResponse:
         """
-        @summary 删除RAM策略导出任务版本
+        @summary 删除工作空间
         
-        @return: DeleteRamPolicyExportTaskVersionResponse
+        @return: DeleteRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.delete_ram_policy_export_task_version_with_options_async(ram_policy_export_task_id, export_version, headers, runtime)
+        return await self.delete_registry_namespace_with_options_async(namespace_name, headers, runtime)
 
     def delete_resource_export_task_with_options(
         self,
@@ -3525,7 +2136,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         """
-        @summary 删除任务
+        @summary 删除资源导出任务
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3557,7 +2168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         """
-        @summary 删除任务
+        @summary 删除资源导出任务
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3587,7 +2198,7 @@ class Client(OpenApiClient):
         export_task_id: str,
     ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         """
-        @summary 删除任务
+        @summary 删除资源导出任务
         
         @return: DeleteResourceExportTaskResponse
         """
@@ -3600,103 +2211,13 @@ class Client(OpenApiClient):
         export_task_id: str,
     ) -> ia_cservice_20210806_models.DeleteResourceExportTaskResponse:
         """
-        @summary 删除任务
+        @summary 删除资源导出任务
         
         @return: DeleteResourceExportTaskResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_export_task_with_options_async(export_task_id, headers, runtime)
-
-    def delete_scene_testing_task_with_options(
-        self,
-        task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
-        """
-        @summary 删除场景化测试任务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSceneTestingTaskResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteSceneTestingTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/sceneTestingTask/{OpenApiUtilClient.get_encode_param(task_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteSceneTestingTaskResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_scene_testing_task_with_options_async(
-        self,
-        task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
-        """
-        @summary 删除场景化测试任务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSceneTestingTaskResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteSceneTestingTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/sceneTestingTask/{OpenApiUtilClient.get_encode_param(task_id)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DeleteSceneTestingTaskResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_scene_testing_task(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
-        """
-        @summary 删除场景化测试任务
-        
-        @return: DeleteSceneTestingTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_scene_testing_task_with_options(task_id, headers, runtime)
-
-    async def delete_scene_testing_task_async(
-        self,
-        task_id: str,
-    ) -> ia_cservice_20210806_models.DeleteSceneTestingTaskResponse:
-        """
-        @summary 删除场景化测试任务
-        
-        @return: DeleteSceneTestingTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_scene_testing_task_with_options_async(task_id, headers, runtime)
 
     def delete_task_with_options(
         self,
@@ -3787,114 +2308,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_task_with_options_async(task_id, headers, runtime)
-
-    def detach_rabbitmq_publisher_with_options(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者从任务上卸载
-        
-        @param request: DetachRabbitmqPublisherRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachRabbitmqPublisherResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_id):
-            body['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetachRabbitmqPublisher',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}/detach',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DetachRabbitmqPublisherResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def detach_rabbitmq_publisher_with_options_async(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者从任务上卸载
-        
-        @param request: DetachRabbitmqPublisherRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachRabbitmqPublisherResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.task_id):
-            body['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DetachRabbitmqPublisher',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}/detach',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DetachRabbitmqPublisherResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def detach_rabbitmq_publisher(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者从任务上卸载
-        
-        @param request: DetachRabbitmqPublisherRequest
-        @return: DetachRabbitmqPublisherResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.detach_rabbitmq_publisher_with_options(publisher_id, request, headers, runtime)
-
-    async def detach_rabbitmq_publisher_async(
-        self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.DetachRabbitmqPublisherRequest,
-    ) -> ia_cservice_20210806_models.DetachRabbitmqPublisherResponse:
-        """
-        @summary 将消息发布者从任务上卸载
-        
-        @param request: DetachRabbitmqPublisherRequest
-        @return: DetachRabbitmqPublisherResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.detach_rabbitmq_publisher_with_options_async(publisher_id, request, headers, runtime)
 
     def dissociate_group_with_options(
         self,
@@ -4016,139 +2429,37 @@ class Client(OpenApiClient):
         headers = {}
         return await self.dissociate_group_with_options_async(project_id, group_id, request, headers, runtime)
 
-    def dissociate_parameter_set_with_options(
+    def execute_registry_module_with_options(
         self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.ExecuteRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
+    ) -> ia_cservice_20210806_models.ExecuteRegistryModuleResponse:
         """
-        @summary 解除参数集关联资源关系
+        @summary 执行RegistryModule
         
-        @param request: DissociateParameterSetRequest
+        @param request: ExecuteRegistryModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: DissociateParameterSetResponse
+        @return: ExecuteRegistryModuleResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.parameter_set_ids):
-            body['parameterSetIds'] = request.parameter_set_ids
-        if not UtilClient.is_unset(request.resource_id):
-            body['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='DissociateParameterSet',
+            action='ExecuteRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/parameterSets/operations/dissociate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DissociateParameterSetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def dissociate_parameter_set_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
-        """
-        @summary 解除参数集关联资源关系
-        
-        @param request: DissociateParameterSetRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DissociateParameterSetResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.parameter_set_ids):
-            body['parameterSetIds'] = request.parameter_set_ids
-        if not UtilClient.is_unset(request.resource_id):
-            body['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='DissociateParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/operations/dissociate',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.DissociateParameterSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def dissociate_parameter_set(
-        self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
-        """
-        @summary 解除参数集关联资源关系
-        
-        @param request: DissociateParameterSetRequest
-        @return: DissociateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.dissociate_parameter_set_with_options(request, headers, runtime)
-
-    async def dissociate_parameter_set_async(
-        self,
-        request: ia_cservice_20210806_models.DissociateParameterSetRequest,
-    ) -> ia_cservice_20210806_models.DissociateParameterSetResponse:
-        """
-        @summary 解除参数集关联资源关系
-        
-        @param request: DissociateParameterSetRequest
-        @return: DissociateParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.dissociate_parameter_set_with_options_async(request, headers, runtime)
-
-    def execute_ram_policy_export_task_with_options(
-        self,
-        ram_policy_export_task_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
-        """
-        @summary 执行RAM策略导出任务
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteRamPolicyExportTaskResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='ExecuteRamPolicyExportTask',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/execute',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/execution',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -4156,31 +2467,41 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.ExecuteRegistryModuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def execute_ram_policy_export_task_with_options_async(
+    async def execute_registry_module_with_options_async(
         self,
-        ram_policy_export_task_id: str,
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.ExecuteRegistryModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.ExecuteRegistryModuleResponse:
         """
-        @summary 执行RAM策略导出任务
+        @summary 执行RegistryModule
         
+        @param request: ExecuteRegistryModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ExecuteRamPolicyExportTaskResponse
+        @return: ExecuteRegistryModuleResponse
         """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.parameters):
+            body['parameters'] = request.parameters
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='ExecuteRamPolicyExportTask',
+            action='ExecuteRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/execute',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/execution',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -4188,35 +2509,41 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.ExecuteRegistryModuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def execute_ram_policy_export_task(
+    def execute_registry_module(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.ExecuteRegistryModuleRequest,
+    ) -> ia_cservice_20210806_models.ExecuteRegistryModuleResponse:
         """
-        @summary 执行RAM策略导出任务
+        @summary 执行RegistryModule
         
-        @return: ExecuteRamPolicyExportTaskResponse
+        @param request: ExecuteRegistryModuleRequest
+        @return: ExecuteRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.execute_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+        return self.execute_registry_module_with_options(namespace_name, module_name, request, headers, runtime)
 
-    async def execute_ram_policy_export_task_async(
+    async def execute_registry_module_async(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.ExecuteRamPolicyExportTaskResponse:
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.ExecuteRegistryModuleRequest,
+    ) -> ia_cservice_20210806_models.ExecuteRegistryModuleResponse:
         """
-        @summary 执行RAM策略导出任务
+        @summary 执行RegistryModule
         
-        @return: ExecuteRamPolicyExportTaskResponse
+        @param request: ExecuteRegistryModuleRequest
+        @return: ExecuteRegistryModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.execute_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
+        return await self.execute_registry_module_with_options_async(namespace_name, module_name, request, headers, runtime)
 
     def execute_resource_export_task_with_options(
         self,
@@ -4237,8 +2564,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4278,8 +2603,6 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4330,59 +2653,359 @@ class Client(OpenApiClient):
         headers = {}
         return await self.execute_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
 
-    def get_explorer_task_with_options(
+    def execute_terraform_apply_with_options(
         self,
-        explorer_task_id: str,
+        request: ia_cservice_20210806_models.ExecuteTerraformApplyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetExplorerTaskResponse:
+    ) -> ia_cservice_20210806_models.ExecuteTerraformApplyResponse:
         """
-        @summary 查询Explorer任务详情
+        @summary 执行TerraformApply
         
+        @param request: ExecuteTerraformApplyRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetExplorerTaskResponse
+        @return: ExecuteTerraformApplyResponse
         """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='GetExplorerTask',
+            action='ExecuteTerraformApply',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/explorerTask/{OpenApiUtilClient.get_encode_param(explorer_task_id)}',
-            method='GET',
+            pathname=f'/terraform/execution/apply',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetExplorerTaskResponse(),
+            ia_cservice_20210806_models.ExecuteTerraformApplyResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_explorer_task_with_options_async(
+    async def execute_terraform_apply_with_options_async(
         self,
-        explorer_task_id: str,
+        request: ia_cservice_20210806_models.ExecuteTerraformApplyRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetExplorerTaskResponse:
+    ) -> ia_cservice_20210806_models.ExecuteTerraformApplyResponse:
         """
-        @summary 查询Explorer任务详情
+        @summary 执行TerraformApply
+        
+        @param request: ExecuteTerraformApplyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTerraformApplyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTerraformApply',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ExecuteTerraformApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_terraform_apply(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformApplyRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformApplyResponse:
+        """
+        @summary 执行TerraformApply
+        
+        @param request: ExecuteTerraformApplyRequest
+        @return: ExecuteTerraformApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_terraform_apply_with_options(request, headers, runtime)
+
+    async def execute_terraform_apply_async(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformApplyRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformApplyResponse:
+        """
+        @summary 执行TerraformApply
+        
+        @param request: ExecuteTerraformApplyRequest
+        @return: ExecuteTerraformApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_terraform_apply_with_options_async(request, headers, runtime)
+
+    def execute_terraform_destroy_with_options(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformDestroyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformDestroyResponse:
+        """
+        @summary 执行TerraformDestroy
+        
+        @param request: ExecuteTerraformDestroyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTerraformDestroyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTerraformDestroy',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/destroy',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ExecuteTerraformDestroyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_terraform_destroy_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformDestroyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformDestroyResponse:
+        """
+        @summary 执行TerraformDestroy
+        
+        @param request: ExecuteTerraformDestroyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTerraformDestroyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTerraformDestroy',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/destroy',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ExecuteTerraformDestroyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_terraform_destroy(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformDestroyRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformDestroyResponse:
+        """
+        @summary 执行TerraformDestroy
+        
+        @param request: ExecuteTerraformDestroyRequest
+        @return: ExecuteTerraformDestroyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_terraform_destroy_with_options(request, headers, runtime)
+
+    async def execute_terraform_destroy_async(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformDestroyRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformDestroyResponse:
+        """
+        @summary 执行TerraformDestroy
+        
+        @param request: ExecuteTerraformDestroyRequest
+        @return: ExecuteTerraformDestroyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_terraform_destroy_with_options_async(request, headers, runtime)
+
+    def execute_terraform_plan_with_options(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformPlanResponse:
+        """
+        @summary 执行TerraformPlan
+        
+        @param request: ExecuteTerraformPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTerraformPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTerraformPlan',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/plan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ExecuteTerraformPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_terraform_plan_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformPlanRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformPlanResponse:
+        """
+        @summary 执行TerraformPlan
+        
+        @param request: ExecuteTerraformPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTerraformPlanResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.state_id):
+            body['stateId'] = request.state_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTerraformPlan',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/plan',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ExecuteTerraformPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_terraform_plan(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformPlanRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformPlanResponse:
+        """
+        @summary 执行TerraformPlan
+        
+        @param request: ExecuteTerraformPlanRequest
+        @return: ExecuteTerraformPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_terraform_plan_with_options(request, headers, runtime)
+
+    async def execute_terraform_plan_async(
+        self,
+        request: ia_cservice_20210806_models.ExecuteTerraformPlanRequest,
+    ) -> ia_cservice_20210806_models.ExecuteTerraformPlanResponse:
+        """
+        @summary 执行TerraformPlan
+        
+        @param request: ExecuteTerraformPlanRequest
+        @return: ExecuteTerraformPlanResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_terraform_plan_with_options_async(request, headers, runtime)
+
+    def get_execute_state_with_options(
+        self,
+        state_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetExecuteStateResponse:
+        """
+        @summary 获取Terraform运行结果
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetExplorerTaskResponse
+        @return: GetExecuteStateResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='GetExplorerTask',
+            action='GetExecuteState',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/explorerTask/{OpenApiUtilClient.get_encode_param(explorer_task_id)}',
+            pathname=f'/terraform/execution/{OpenApiUtilClient.get_encode_param(state_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -4390,35 +3013,67 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetExplorerTaskResponse(),
+            ia_cservice_20210806_models.GetExecuteStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_execute_state_with_options_async(
+        self,
+        state_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetExecuteStateResponse:
+        """
+        @summary 获取Terraform运行结果
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExecuteStateResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetExecuteState',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/terraform/execution/{OpenApiUtilClient.get_encode_param(state_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetExecuteStateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_explorer_task(
+    def get_execute_state(
         self,
-        explorer_task_id: str,
-    ) -> ia_cservice_20210806_models.GetExplorerTaskResponse:
+        state_id: str,
+    ) -> ia_cservice_20210806_models.GetExecuteStateResponse:
         """
-        @summary 查询Explorer任务详情
+        @summary 获取Terraform运行结果
         
-        @return: GetExplorerTaskResponse
+        @return: GetExecuteStateResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_explorer_task_with_options(explorer_task_id, headers, runtime)
+        return self.get_execute_state_with_options(state_id, headers, runtime)
 
-    async def get_explorer_task_async(
+    async def get_execute_state_async(
         self,
-        explorer_task_id: str,
-    ) -> ia_cservice_20210806_models.GetExplorerTaskResponse:
+        state_id: str,
+    ) -> ia_cservice_20210806_models.GetExecuteStateResponse:
         """
-        @summary 查询Explorer任务详情
+        @summary 获取Terraform运行结果
         
-        @return: GetExplorerTaskResponse
+        @return: GetExecuteStateResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_explorer_task_with_options_async(explorer_task_id, headers, runtime)
+        return await self.get_execute_state_with_options_async(state_id, headers, runtime)
 
     def get_group_with_options(
         self,
@@ -4629,7 +3284,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetModuleResponse:
         """
-        @summary 获取模版详情
+        @summary 获取模板详情
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4661,7 +3316,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetModuleResponse:
         """
-        @summary 获取模版详情
+        @summary 获取模板详情
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4691,7 +3346,7 @@ class Client(OpenApiClient):
         module_id: str,
     ) -> ia_cservice_20210806_models.GetModuleResponse:
         """
-        @summary 获取模版详情
+        @summary 获取模板详情
         
         @return: GetModuleResponse
         """
@@ -4704,7 +3359,7 @@ class Client(OpenApiClient):
         module_id: str,
     ) -> ia_cservice_20210806_models.GetModuleResponse:
         """
-        @summary 获取模版详情
+        @summary 获取模板详情
         
         @return: GetModuleResponse
         """
@@ -4720,7 +3375,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         """
-        @summary 模版版本详情
+        @summary 模板版本详情
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4753,7 +3408,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         """
-        @summary 模版版本详情
+        @summary 模板版本详情
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4784,7 +3439,7 @@ class Client(OpenApiClient):
         module_version: str,
     ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         """
-        @summary 模版版本详情
+        @summary 模板版本详情
         
         @return: GetModuleVersionResponse
         """
@@ -4798,103 +3453,13 @@ class Client(OpenApiClient):
         module_version: str,
     ) -> ia_cservice_20210806_models.GetModuleVersionResponse:
         """
-        @summary 模版版本详情
+        @summary 模板版本详情
         
         @return: GetModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_module_version_with_options_async(module_id, module_version, headers, runtime)
-
-    def get_parameter_set_with_options(
-        self,
-        parameter_set_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
-        """
-        @summary 参数集详情
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetParameterSetResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetParameterSetResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_parameter_set_with_options_async(
-        self,
-        parameter_set_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
-        """
-        @summary 参数集详情
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetParameterSetResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetParameterSet',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetParameterSetResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_parameter_set(
-        self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
-        """
-        @summary 参数集详情
-        
-        @return: GetParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_parameter_set_with_options(parameter_set_id, headers, runtime)
-
-    async def get_parameter_set_async(
-        self,
-        parameter_set_id: str,
-    ) -> ia_cservice_20210806_models.GetParameterSetResponse:
-        """
-        @summary 参数集详情
-        
-        @return: GetParameterSetResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_parameter_set_with_options_async(parameter_set_id, headers, runtime)
 
     def get_project_with_options(
         self,
@@ -4986,37 +3551,28 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_project_with_options_async(project_id, headers, runtime)
 
-    def get_project_build_context_with_options(
+    def get_registry_module_with_options(
         self,
-        project_id: str,
-        project_build_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildContextRequest,
+        namespace_name: str,
+        module_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
+    ) -> ia_cservice_20210806_models.GetRegistryModuleResponse:
         """
-        @summary 项目批次概览
+        @summary 获取RegistryModule信息
         
-        @param request: GetProjectBuildContextRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetProjectBuildContextResponse
+        @return: GetRegistryModuleResponse
         """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.is_pass_assert_check):
-            query['isPassAssertCheck'] = request.is_pass_assert_check
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='GetProjectBuildContext',
+            action='GetRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build/{OpenApiUtilClient.get_encode_param(project_build_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5024,105 +3580,32 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetProjectBuildContextResponse(),
+            ia_cservice_20210806_models.GetRegistryModuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_project_build_context_with_options_async(
+    async def get_registry_module_with_options_async(
         self,
-        project_id: str,
-        project_build_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildContextRequest,
+        namespace_name: str,
+        module_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
+    ) -> ia_cservice_20210806_models.GetRegistryModuleResponse:
         """
-        @summary 项目批次概览
-        
-        @param request: GetProjectBuildContextRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetProjectBuildContextResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.is_pass_assert_check):
-            query['isPassAssertCheck'] = request.is_pass_assert_check
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetProjectBuildContext',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build/{OpenApiUtilClient.get_encode_param(project_build_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetProjectBuildContextResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_project_build_context(
-        self,
-        project_id: str,
-        project_build_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildContextRequest,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
-        """
-        @summary 项目批次概览
-        
-        @param request: GetProjectBuildContextRequest
-        @return: GetProjectBuildContextResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_project_build_context_with_options(project_id, project_build_id, request, headers, runtime)
-
-    async def get_project_build_context_async(
-        self,
-        project_id: str,
-        project_build_id: str,
-        request: ia_cservice_20210806_models.GetProjectBuildContextRequest,
-    ) -> ia_cservice_20210806_models.GetProjectBuildContextResponse:
-        """
-        @summary 项目批次概览
-        
-        @param request: GetProjectBuildContextRequest
-        @return: GetProjectBuildContextResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_project_build_context_with_options_async(project_id, project_build_id, request, headers, runtime)
-
-    def get_rabbitmq_publisher_with_options(
-        self,
-        publisher_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
-        """
-        @summary 获取消息发布者详情
+        @summary 获取RegistryModule信息
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRabbitmqPublisherResponse
+        @return: GetRegistryModuleResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='GetRabbitmqPublisher',
+            action='GetRegistryModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5130,31 +3613,95 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.GetRegistryModuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_registry_module(
+        self,
+        namespace_name: str,
+        module_name: str,
+    ) -> ia_cservice_20210806_models.GetRegistryModuleResponse:
+        """
+        @summary 获取RegistryModule信息
+        
+        @return: GetRegistryModuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_registry_module_with_options(namespace_name, module_name, headers, runtime)
+
+    async def get_registry_module_async(
+        self,
+        namespace_name: str,
+        module_name: str,
+    ) -> ia_cservice_20210806_models.GetRegistryModuleResponse:
+        """
+        @summary 获取RegistryModule信息
+        
+        @return: GetRegistryModuleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_registry_module_with_options_async(namespace_name, module_name, headers, runtime)
+
+    def get_registry_module_version_with_options(
+        self,
+        namespace_name: str,
+        module_name: str,
+        version: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetRegistryModuleVersionResponse:
+        """
+        @summary 获取RegistryModule版本信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegistryModuleVersionResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetRegistryModuleVersion',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/registryModuleVersion/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/{OpenApiUtilClient.get_encode_param(version)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetRegistryModuleVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_rabbitmq_publisher_with_options_async(
+    async def get_registry_module_version_with_options_async(
         self,
-        publisher_id: str,
+        namespace_name: str,
+        module_name: str,
+        version: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
+    ) -> ia_cservice_20210806_models.GetRegistryModuleVersionResponse:
         """
-        @summary 获取消息发布者详情
+        @summary 获取RegistryModule版本信息
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRabbitmqPublisherResponse
+        @return: GetRegistryModuleVersionResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='GetRabbitmqPublisher',
+            action='GetRegistryModuleVersion',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModuleVersion/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}/{OpenApiUtilClient.get_encode_param(version)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5162,57 +3709,61 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRabbitmqPublisherResponse(),
+            ia_cservice_20210806_models.GetRegistryModuleVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_rabbitmq_publisher(
+    def get_registry_module_version(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
+        namespace_name: str,
+        module_name: str,
+        version: str,
+    ) -> ia_cservice_20210806_models.GetRegistryModuleVersionResponse:
         """
-        @summary 获取消息发布者详情
+        @summary 获取RegistryModule版本信息
         
-        @return: GetRabbitmqPublisherResponse
+        @return: GetRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_rabbitmq_publisher_with_options(publisher_id, headers, runtime)
+        return self.get_registry_module_version_with_options(namespace_name, module_name, version, headers, runtime)
 
-    async def get_rabbitmq_publisher_async(
+    async def get_registry_module_version_async(
         self,
-        publisher_id: str,
-    ) -> ia_cservice_20210806_models.GetRabbitmqPublisherResponse:
+        namespace_name: str,
+        module_name: str,
+        version: str,
+    ) -> ia_cservice_20210806_models.GetRegistryModuleVersionResponse:
         """
-        @summary 获取消息发布者详情
+        @summary 获取RegistryModule版本信息
         
-        @return: GetRabbitmqPublisherResponse
+        @return: GetRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_rabbitmq_publisher_with_options_async(publisher_id, headers, runtime)
+        return await self.get_registry_module_version_with_options_async(namespace_name, module_name, version, headers, runtime)
 
-    def get_ram_policy_export_task_with_options(
+    def get_registry_namespace_with_options(
         self,
-        ram_policy_export_task_id: str,
+        namespace_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.GetRegistryNamespaceResponse:
         """
-        @summary 获取RAM策略导出任务详情
+        @summary 获取工作空间信息
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRamPolicyExportTaskResponse
+        @return: GetRegistryNamespaceResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='GetRamPolicyExportTask',
+            action='GetRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5220,31 +3771,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.GetRegistryNamespaceResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_ram_policy_export_task_with_options_async(
+    async def get_registry_namespace_with_options_async(
         self,
-        ram_policy_export_task_id: str,
+        namespace_name: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+    ) -> ia_cservice_20210806_models.GetRegistryNamespaceResponse:
         """
-        @summary 获取RAM策略导出任务详情
+        @summary 获取工作空间信息
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRamPolicyExportTaskResponse
+        @return: GetRegistryNamespaceResponse
         """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='GetRamPolicyExportTask',
+            action='GetRegistryNamespace',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -5252,129 +3803,35 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRamPolicyExportTaskResponse(),
+            ia_cservice_20210806_models.GetRegistryNamespaceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_ram_policy_export_task(
+    def get_registry_namespace(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        namespace_name: str,
+    ) -> ia_cservice_20210806_models.GetRegistryNamespaceResponse:
         """
-        @summary 获取RAM策略导出任务详情
+        @summary 获取工作空间信息
         
-        @return: GetRamPolicyExportTaskResponse
+        @return: GetRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_ram_policy_export_task_with_options(ram_policy_export_task_id, headers, runtime)
+        return self.get_registry_namespace_with_options(namespace_name, headers, runtime)
 
-    async def get_ram_policy_export_task_async(
+    async def get_registry_namespace_async(
         self,
-        ram_policy_export_task_id: str,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskResponse:
+        namespace_name: str,
+    ) -> ia_cservice_20210806_models.GetRegistryNamespaceResponse:
         """
-        @summary 获取RAM策略导出任务详情
+        @summary 获取工作空间信息
         
-        @return: GetRamPolicyExportTaskResponse
+        @return: GetRegistryNamespaceResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_ram_policy_export_task_with_options_async(ram_policy_export_task_id, headers, runtime)
-
-    def get_ram_policy_export_task_version_with_options(
-        self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
-        """
-        @summary 获取RAM策略导出任务版本详情
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRamPolicyExportTaskVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetRamPolicyExportTaskVersion',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_ram_policy_export_task_version_with_options_async(
-        self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
-        """
-        @summary 获取RAM策略导出任务版本详情
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRamPolicyExportTaskVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetRamPolicyExportTaskVersion',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions/{OpenApiUtilClient.get_encode_param(export_version)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_ram_policy_export_task_version(
-        self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
-        """
-        @summary 获取RAM策略导出任务版本详情
-        
-        @return: GetRamPolicyExportTaskVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_ram_policy_export_task_version_with_options(ram_policy_export_task_id, export_version, headers, runtime)
-
-    async def get_ram_policy_export_task_version_async(
-        self,
-        ram_policy_export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.GetRamPolicyExportTaskVersionResponse:
-        """
-        @summary 获取RAM策略导出任务版本详情
-        
-        @return: GetRamPolicyExportTaskVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_ram_policy_export_task_version_with_options_async(ram_policy_export_task_id, export_version, headers, runtime)
+        return await self.get_registry_namespace_with_options_async(namespace_name, headers, runtime)
 
     def get_resource_export_task_with_options(
         self,
@@ -5484,6 +3941,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resource_export_task_with_options_async(export_task_id, request, headers, runtime)
 
+    def get_resource_type_with_options(
+        self,
+        resource_type: str,
+        request: ia_cservice_20210806_models.GetResourceTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源类型信息
+        
+        @param request: GetResourceTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_read_only):
+            query['filterReadOnly'] = request.filter_read_only
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/resourceType/{OpenApiUtilClient.get_encode_param(resource_type)}',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetResourceTypeResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def get_resource_type_with_options_async(
+        self,
+        resource_type: str,
+        request: ia_cservice_20210806_models.GetResourceTypeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源类型信息
+        
+        @param request: GetResourceTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceTypeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.filter_read_only):
+            query['filterReadOnly'] = request.filter_read_only
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetResourceType',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/resourceType/{OpenApiUtilClient.get_encode_param(resource_type)}',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.GetResourceTypeResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def get_resource_type(
+        self,
+        resource_type: str,
+        request: ia_cservice_20210806_models.GetResourceTypeRequest,
+    ) -> ia_cservice_20210806_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源类型信息
+        
+        @param request: GetResourceTypeRequest
+        @return: GetResourceTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_resource_type_with_options(resource_type, request, headers, runtime)
+
+    async def get_resource_type_async(
+        self,
+        resource_type: str,
+        request: ia_cservice_20210806_models.GetResourceTypeRequest,
+    ) -> ia_cservice_20210806_models.GetResourceTypeResponse:
+        """
+        @summary 获取资源类型信息
+        
+        @param request: GetResourceTypeRequest
+        @return: GetResourceTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_resource_type_with_options_async(resource_type, request, headers, runtime)
+
     def get_task_with_options(
         self,
         task_id: str,
@@ -5574,369 +4147,34 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_task_with_options_async(task_id, headers, runtime)
 
-    def get_task_policy_with_options(
+    def list_explorer_registry_module_examples_with_options(
         self,
-        group_id: str,
-        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse:
         """
-        @summary 查询分组优先级详情
+        @summary 获取Explorer的egistryModule版本示例列表
         
-        @param request: GetTaskPolicyRequest
+        @param request: ListExplorerRegistryModuleExamplesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: GetTaskPolicyResponse
+        @return: ListExplorerRegistryModuleExamplesResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetTaskPolicy',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetTaskPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_task_policy_with_options_async(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
-        """
-        @summary 查询分组优先级详情
-        
-        @param request: GetTaskPolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetTaskPolicyResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.type):
-            query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetTaskPolicy',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.GetTaskPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_task_policy(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
-    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
-        """
-        @summary 查询分组优先级详情
-        
-        @param request: GetTaskPolicyRequest
-        @return: GetTaskPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_task_policy_with_options(group_id, request, headers, runtime)
-
-    async def get_task_policy_async(
-        self,
-        group_id: str,
-        request: ia_cservice_20210806_models.GetTaskPolicyRequest,
-    ) -> ia_cservice_20210806_models.GetTaskPolicyResponse:
-        """
-        @summary 查询分组优先级详情
-        
-        @param request: GetTaskPolicyRequest
-        @return: GetTaskPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_task_policy_with_options_async(group_id, request, headers, runtime)
-
-    def list_authorizations_with_options(
-        self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
-        """
-        @summary 获取共享列表
-        
-        @param request: ListAuthorizationsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAuthorizationsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.authorization_id):
-            query['authorizationId'] = request.authorization_id
-        if not UtilClient.is_unset(request.authorization_type):
-            query['authorizationType'] = request.authorization_type
+        if not UtilClient.is_unset(request.example_name):
+            query['exampleName'] = request.example_name
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAuthorizations',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListAuthorizationsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_authorizations_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
-        """
-        @summary 获取共享列表
-        
-        @param request: ListAuthorizationsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAuthorizationsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.authorization_id):
-            query['authorizationId'] = request.authorization_id
-        if not UtilClient.is_unset(request.authorization_type):
-            query['authorizationType'] = request.authorization_type
-        if not UtilClient.is_unset(request.keyword):
-            query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAuthorizations',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/authorizations',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListAuthorizationsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_authorizations(
-        self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
-        """
-        @summary 获取共享列表
-        
-        @param request: ListAuthorizationsRequest
-        @return: ListAuthorizationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_authorizations_with_options(request, headers, runtime)
-
-    async def list_authorizations_async(
-        self,
-        request: ia_cservice_20210806_models.ListAuthorizationsRequest,
-    ) -> ia_cservice_20210806_models.ListAuthorizationsResponse:
-        """
-        @summary 获取共享列表
-        
-        @param request: ListAuthorizationsRequest
-        @return: ListAuthorizationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_authorizations_with_options_async(request, headers, runtime)
-
-    def list_available_terraform_versions_with_options(
-        self,
-        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
-        """
-        @summary terraform版本
-        
-        @param request: ListAvailableTerraformVersionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAvailableTerraformVersionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.key_word):
-            query['keyWord'] = request.key_word
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAvailableTerraformVersions',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/version/terraform',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_available_terraform_versions_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
-        """
-        @summary terraform版本
-        
-        @param request: ListAvailableTerraformVersionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAvailableTerraformVersionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.key_word):
-            query['keyWord'] = request.key_word
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListAvailableTerraformVersions',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/version/terraform',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_available_terraform_versions(
-        self,
-        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
-        """
-        @summary terraform版本
-        
-        @param request: ListAvailableTerraformVersionsRequest
-        @return: ListAvailableTerraformVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_available_terraform_versions_with_options(request, headers, runtime)
-
-    async def list_available_terraform_versions_async(
-        self,
-        request: ia_cservice_20210806_models.ListAvailableTerraformVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListAvailableTerraformVersionsResponse:
-        """
-        @summary terraform版本
-        
-        @param request: ListAvailableTerraformVersionsRequest
-        @return: ListAvailableTerraformVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_available_terraform_versions_with_options_async(request, headers, runtime)
-
-    def list_explorer_tasks_with_options(
-        self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.ListExplorerTasksRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListExplorerTasksResponse:
-        """
-        @summary 列举Explorer任务
-        
-        @param request: ListExplorerTasksRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListExplorerTasksResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.keyword):
-            query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.max_result):
-            query['maxResult'] = request.max_result
-        if not UtilClient.is_unset(request.module_id):
-            query['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
@@ -5944,44 +4182,49 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListExplorerTasks',
+            action='ListExplorerRegistryModuleExamples',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/explorerTask',
+            pathname=f'/explorerRegistryModule/example',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListExplorerTasksResponse(),
-            self.call_api(params, req, runtime)
+            ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    async def list_explorer_tasks_with_options_async(
+    async def list_explorer_registry_module_examples_with_options_async(
         self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.ListExplorerTasksRequest,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListExplorerTasksResponse:
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse:
         """
-        @summary 列举Explorer任务
+        @summary 获取Explorer的egistryModule版本示例列表
         
-        @param request: ListExplorerTasksRequest
+        @param request: ListExplorerRegistryModuleExamplesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListExplorerTasksResponse
+        @return: ListExplorerRegistryModuleExamplesResponse
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.example_name):
+            query['exampleName'] = request.example_name
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.max_result):
-            query['maxResult'] = request.max_result
-        if not UtilClient.is_unset(request.module_id):
-            query['moduleId'] = request.module_id
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
@@ -5989,50 +4232,292 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListExplorerTasks',
+            action='ListExplorerRegistryModuleExamples',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/explorerTask',
+            pathname=f'/explorerRegistryModule/example',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListExplorerTasksResponse(),
-            await self.call_api_async(params, req, runtime)
+            ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    def list_explorer_tasks(
+    def list_explorer_registry_module_examples(
         self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.ListExplorerTasksRequest,
-    ) -> ia_cservice_20210806_models.ListExplorerTasksResponse:
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse:
         """
-        @summary 列举Explorer任务
+        @summary 获取Explorer的egistryModule版本示例列表
         
-        @param request: ListExplorerTasksRequest
-        @return: ListExplorerTasksResponse
+        @param request: ListExplorerRegistryModuleExamplesRequest
+        @return: ListExplorerRegistryModuleExamplesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_explorer_tasks_with_options(explorer_task_id, request, headers, runtime)
+        return self.list_explorer_registry_module_examples_with_options(request, headers, runtime)
 
-    async def list_explorer_tasks_async(
+    async def list_explorer_registry_module_examples_async(
         self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.ListExplorerTasksRequest,
-    ) -> ia_cservice_20210806_models.ListExplorerTasksResponse:
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleExamplesResponse:
         """
-        @summary 列举Explorer任务
+        @summary 获取Explorer的egistryModule版本示例列表
         
-        @param request: ListExplorerTasksRequest
-        @return: ListExplorerTasksResponse
+        @param request: ListExplorerRegistryModuleExamplesRequest
+        @return: ListExplorerRegistryModuleExamplesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_explorer_tasks_with_options_async(explorer_task_id, request, headers, runtime)
+        return await self.list_explorer_registry_module_examples_with_options_async(request, headers, runtime)
+
+    def list_explorer_registry_module_versions_with_options(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse:
+        """
+        @summary 获取Explorer的egistryModule版本列表
+        
+        @param request: ListExplorerRegistryModuleVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExplorerRegistryModuleVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExplorerRegistryModuleVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorerRegistryModule/version',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def list_explorer_registry_module_versions_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse:
+        """
+        @summary 获取Explorer的egistryModule版本列表
+        
+        @param request: ListExplorerRegistryModuleVersionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExplorerRegistryModuleVersionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.module_version):
+            query['moduleVersion'] = request.module_version
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExplorerRegistryModuleVersions',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorerRegistryModule/version',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def list_explorer_registry_module_versions(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse:
+        """
+        @summary 获取Explorer的egistryModule版本列表
+        
+        @param request: ListExplorerRegistryModuleVersionsRequest
+        @return: ListExplorerRegistryModuleVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_explorer_registry_module_versions_with_options(request, headers, runtime)
+
+    async def list_explorer_registry_module_versions_async(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModuleVersionsResponse:
+        """
+        @summary 获取Explorer的egistryModule版本列表
+        
+        @param request: ListExplorerRegistryModuleVersionsRequest
+        @return: ListExplorerRegistryModuleVersionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_explorer_registry_module_versions_with_options_async(request, headers, runtime)
+
+    def list_explorer_registry_modules_with_options(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModulesResponse:
+        """
+        @summary 获取Explorer的Registry Module列表
+        
+        @param request: ListExplorerRegistryModulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExplorerRegistryModulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExplorerRegistryModules',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorerRegistryModule',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListExplorerRegistryModulesResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def list_explorer_registry_modules_with_options_async(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModulesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModulesResponse:
+        """
+        @summary 获取Explorer的Registry Module列表
+        
+        @param request: ListExplorerRegistryModulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExplorerRegistryModulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExplorerRegistryModules',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/explorerRegistryModule',
+            method='GET',
+            auth_type='Anonymous',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.ListExplorerRegistryModulesResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def list_explorer_registry_modules(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModulesRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModulesResponse:
+        """
+        @summary 获取Explorer的Registry Module列表
+        
+        @param request: ListExplorerRegistryModulesRequest
+        @return: ListExplorerRegistryModulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_explorer_registry_modules_with_options(request, headers, runtime)
+
+    async def list_explorer_registry_modules_async(
+        self,
+        request: ia_cservice_20210806_models.ListExplorerRegistryModulesRequest,
+    ) -> ia_cservice_20210806_models.ListExplorerRegistryModulesResponse:
+        """
+        @summary 获取Explorer的Registry Module列表
+        
+        @param request: ListExplorerRegistryModulesRequest
+        @return: ListExplorerRegistryModulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_explorer_registry_modules_with_options_async(request, headers, runtime)
 
     def list_group_with_options(
         self,
@@ -6290,7 +4775,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         """
-        @summary 模版版本列表
+        @summary 模板版本列表
         
         @param request: ListModuleVersionRequest
         @param headers: map
@@ -6333,7 +4818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         """
-        @summary 模版版本列表
+        @summary 模板版本列表
         
         @param request: ListModuleVersionRequest
         @param headers: map
@@ -6374,7 +4859,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.ListModuleVersionRequest,
     ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         """
-        @summary 模版版本列表
+        @summary 模板版本列表
         
         @param request: ListModuleVersionRequest
         @return: ListModuleVersionResponse
@@ -6389,7 +4874,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.ListModuleVersionRequest,
     ) -> ia_cservice_20210806_models.ListModuleVersionResponse:
         """
-        @summary 模版版本列表
+        @summary 模板版本列表
         
         @param request: ListModuleVersionRequest
         @return: ListModuleVersionResponse
@@ -6405,7 +4890,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         """
-        @summary 列举模版
+        @summary 列举模板
         
         @param tmp_req: ListModulesRequest
         @param headers: map
@@ -6415,13 +4900,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ia_cservice_20210806_models.ListModulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exclude_module_ids):
-            request.exclude_module_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_module_ids, 'excludeModuleIds', 'simple')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.exclude_module_ids_shrink):
-            query['excludeModuleIds'] = request.exclude_module_ids_shrink
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
@@ -6461,7 +4942,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         """
-        @summary 列举模版
+        @summary 列举模板
         
         @param tmp_req: ListModulesRequest
         @param headers: map
@@ -6471,13 +4952,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ia_cservice_20210806_models.ListModulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exclude_module_ids):
-            request.exclude_module_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_module_ids, 'excludeModuleIds', 'simple')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.exclude_module_ids_shrink):
-            query['excludeModuleIds'] = request.exclude_module_ids_shrink
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
@@ -6515,7 +4992,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.ListModulesRequest,
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         """
-        @summary 列举模版
+        @summary 列举模板
         
         @param request: ListModulesRequest
         @return: ListModulesResponse
@@ -6529,7 +5006,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.ListModulesRequest,
     ) -> ia_cservice_20210806_models.ListModulesResponse:
         """
-        @summary 列举模版
+        @summary 列举模板
         
         @param request: ListModulesRequest
         @return: ListModulesResponse
@@ -6538,225 +5015,133 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_modules_with_options_async(request, headers, runtime)
 
-    def list_parameter_set_relation_with_options(
+    def list_products_with_options(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
+        request: ia_cservice_20210806_models.ListProductsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
+    ) -> ia_cservice_20210806_models.ListProductsResponse:
         """
-        @summary 关联到资源的参数集列表
+        @summary 所有产品列表
         
-        @param request: ListParameterSetRelationRequest
+        @param request: ListProductsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListParameterSetRelationResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_id):
-            query['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListParameterSetRelation',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/operations/relation',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListParameterSetRelationResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_parameter_set_relation_with_options_async(
-        self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
-        """
-        @summary 关联到资源的参数集列表
-        
-        @param request: ListParameterSetRelationRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListParameterSetRelationResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.resource_id):
-            query['resourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
-            query['resourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListParameterSetRelation',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/operations/relation',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListParameterSetRelationResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_parameter_set_relation(
-        self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
-        """
-        @summary 关联到资源的参数集列表
-        
-        @param request: ListParameterSetRelationRequest
-        @return: ListParameterSetRelationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_parameter_set_relation_with_options(request, headers, runtime)
-
-    async def list_parameter_set_relation_async(
-        self,
-        request: ia_cservice_20210806_models.ListParameterSetRelationRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetRelationResponse:
-        """
-        @summary 关联到资源的参数集列表
-        
-        @param request: ListParameterSetRelationRequest
-        @return: ListParameterSetRelationResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_parameter_set_relation_with_options_async(request, headers, runtime)
-
-    def list_parameter_sets_with_options(
-        self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
-        """
-        @summary 参数集列表
-        
-        @param request: ListParameterSetsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListParameterSetsResponse
+        @return: ListProductsResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.support_terraformer):
+            query['supportTerraformer'] = request.support_terraformer
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListParameterSets',
+            action='ListProducts',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/parameterSets',
+            pathname=f'/products',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListParameterSetsResponse(),
-            self.call_api(params, req, runtime)
+            ia_cservice_20210806_models.ListProductsResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    async def list_parameter_sets_with_options_async(
+    async def list_products_with_options_async(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
+        request: ia_cservice_20210806_models.ListProductsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
+    ) -> ia_cservice_20210806_models.ListProductsResponse:
         """
-        @summary 参数集列表
+        @summary 所有产品列表
         
-        @param request: ListParameterSetsRequest
+        @param request: ListProductsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListParameterSetsResponse
+        @return: ListProductsResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.support_terraformer):
+            query['supportTerraformer'] = request.support_terraformer
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListParameterSets',
+            action='ListProducts',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/parameterSets',
+            pathname=f'/products',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListParameterSetsResponse(),
-            await self.call_api_async(params, req, runtime)
+            ia_cservice_20210806_models.ListProductsResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    def list_parameter_sets(
+    def list_products(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
+        request: ia_cservice_20210806_models.ListProductsRequest,
+    ) -> ia_cservice_20210806_models.ListProductsResponse:
         """
-        @summary 参数集列表
+        @summary 所有产品列表
         
-        @param request: ListParameterSetsRequest
-        @return: ListParameterSetsResponse
+        @param request: ListProductsRequest
+        @return: ListProductsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_parameter_sets_with_options(request, headers, runtime)
+        return self.list_products_with_options(request, headers, runtime)
 
-    async def list_parameter_sets_async(
+    async def list_products_async(
         self,
-        request: ia_cservice_20210806_models.ListParameterSetsRequest,
-    ) -> ia_cservice_20210806_models.ListParameterSetsResponse:
+        request: ia_cservice_20210806_models.ListProductsRequest,
+    ) -> ia_cservice_20210806_models.ListProductsResponse:
         """
-        @summary 参数集列表
+        @summary 所有产品列表
         
-        @param request: ListParameterSetsRequest
-        @return: ListParameterSetsResponse
+        @param request: ListProductsRequest
+        @return: ListProductsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_parameter_sets_with_options_async(request, headers, runtime)
+        return await self.list_products_with_options_async(request, headers, runtime)
 
     def list_project_with_options(
         self,
@@ -6882,40 +5267,39 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_project_with_options_async(request, headers, runtime)
 
-    def list_project_builds_with_options(
+    def list_registry_module_versions_with_options(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
+        request: ia_cservice_20210806_models.ListRegistryModuleVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryModuleVersionsResponse:
         """
-        @summary 项目批次列表
+        @summary 获取RegistryModule版本列表
         
-        @param request: ListProjectBuildsRequest
+        @param request: ListRegistryModuleVersionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListProjectBuildsResponse
+        @return: ListRegistryModuleVersionsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_id):
-            query['groupId'] = request.group_id
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_build_action):
-            query['projectBuildAction'] = request.project_build_action
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListProjectBuilds',
+            action='ListRegistryModuleVersions',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build',
+            pathname=f'/registryModuleVersion',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6923,44 +5307,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListProjectBuildsResponse(),
+            ia_cservice_20210806_models.ListRegistryModuleVersionsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_project_builds_with_options_async(
+    async def list_registry_module_versions_with_options_async(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
+        request: ia_cservice_20210806_models.ListRegistryModuleVersionsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryModuleVersionsResponse:
         """
-        @summary 项目批次列表
+        @summary 获取RegistryModule版本列表
         
-        @param request: ListProjectBuildsRequest
+        @param request: ListRegistryModuleVersionsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListProjectBuildsResponse
+        @return: ListRegistryModuleVersionsResponse
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_id):
-            query['groupId'] = request.group_id
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.project_build_action):
-            query['projectBuildAction'] = request.project_build_action
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.module_name):
+            query['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListProjectBuilds',
+            action='ListRegistryModuleVersions',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/project/{OpenApiUtilClient.get_encode_param(project_id)}/build',
+            pathname=f'/registryModuleVersion',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -6968,71 +5351,73 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListProjectBuildsResponse(),
+            ia_cservice_20210806_models.ListRegistryModuleVersionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_project_builds(
+    def list_registry_module_versions(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        request: ia_cservice_20210806_models.ListRegistryModuleVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryModuleVersionsResponse:
         """
-        @summary 项目批次列表
+        @summary 获取RegistryModule版本列表
         
-        @param request: ListProjectBuildsRequest
-        @return: ListProjectBuildsResponse
+        @param request: ListRegistryModuleVersionsRequest
+        @return: ListRegistryModuleVersionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_builds_with_options(project_id, request, headers, runtime)
+        return self.list_registry_module_versions_with_options(request, headers, runtime)
 
-    async def list_project_builds_async(
+    async def list_registry_module_versions_async(
         self,
-        project_id: str,
-        request: ia_cservice_20210806_models.ListProjectBuildsRequest,
-    ) -> ia_cservice_20210806_models.ListProjectBuildsResponse:
+        request: ia_cservice_20210806_models.ListRegistryModuleVersionsRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryModuleVersionsResponse:
         """
-        @summary 项目批次列表
+        @summary 获取RegistryModule版本列表
         
-        @param request: ListProjectBuildsRequest
-        @return: ListProjectBuildsResponse
+        @param request: ListRegistryModuleVersionsRequest
+        @return: ListRegistryModuleVersionsResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_builds_with_options_async(project_id, request, headers, runtime)
+        return await self.list_registry_module_versions_with_options_async(request, headers, runtime)
 
-    def list_rabbitmq_publishers_with_options(
+    def list_registry_modules_with_options(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
+        request: ia_cservice_20210806_models.ListRegistryModulesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryModulesResponse:
         """
-        @summary 获取消息发布者列表
+        @summary 获取RegistryModule列表
         
-        @param request: ListRabbitmqPublishersRequest
+        @param request: ListRegistryModulesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRabbitmqPublishersResponse
+        @return: ListRegistryModulesResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRabbitmqPublishers',
+            action='ListRegistryModules',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers',
+            pathname=f'/registryModules',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7040,41 +5425,45 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRabbitmqPublishersResponse(),
+            ia_cservice_20210806_models.ListRegistryModulesResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_rabbitmq_publishers_with_options_async(
+    async def list_registry_modules_with_options_async(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
+        request: ia_cservice_20210806_models.ListRegistryModulesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryModulesResponse:
         """
-        @summary 获取消息发布者列表
+        @summary 获取RegistryModule列表
         
-        @param request: ListRabbitmqPublishersRequest
+        @param request: ListRegistryModulesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRabbitmqPublishersResponse
+        @return: ListRegistryModulesResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.namespace_name):
+            query['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRabbitmqPublishers',
+            action='ListRegistryModules',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers',
+            pathname=f'/registryModules',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7082,189 +5471,71 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRabbitmqPublishersResponse(),
+            ia_cservice_20210806_models.ListRegistryModulesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_rabbitmq_publishers(
+    def list_registry_modules(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+        request: ia_cservice_20210806_models.ListRegistryModulesRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryModulesResponse:
         """
-        @summary 获取消息发布者列表
+        @summary 获取RegistryModule列表
         
-        @param request: ListRabbitmqPublishersRequest
-        @return: ListRabbitmqPublishersResponse
+        @param request: ListRegistryModulesRequest
+        @return: ListRegistryModulesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_rabbitmq_publishers_with_options(request, headers, runtime)
+        return self.list_registry_modules_with_options(request, headers, runtime)
 
-    async def list_rabbitmq_publishers_async(
+    async def list_registry_modules_async(
         self,
-        request: ia_cservice_20210806_models.ListRabbitmqPublishersRequest,
-    ) -> ia_cservice_20210806_models.ListRabbitmqPublishersResponse:
+        request: ia_cservice_20210806_models.ListRegistryModulesRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryModulesResponse:
         """
-        @summary 获取消息发布者列表
+        @summary 获取RegistryModule列表
         
-        @param request: ListRabbitmqPublishersRequest
-        @return: ListRabbitmqPublishersResponse
+        @param request: ListRegistryModulesRequest
+        @return: ListRegistryModulesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_rabbitmq_publishers_with_options_async(request, headers, runtime)
+        return await self.list_registry_modules_with_options_async(request, headers, runtime)
 
-    def list_ram_policy_export_task_versions_with_options(
+    def list_registry_namespaces_with_options(
         self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
+        request: ia_cservice_20210806_models.ListRegistryNamespacesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryNamespacesResponse:
         """
-        @summary 获取RAM策略导出任务版本列表
+        @summary 获取工作空间列表
         
-        @param request: ListRamPolicyExportTaskVersionsRequest
+        @param request: ListRegistryNamespacesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRamPolicyExportTaskVersionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListRamPolicyExportTaskVersions',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def list_ram_policy_export_task_versions_with_options_async(
-        self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
-        """
-        @summary 获取RAM策略导出任务版本列表
-        
-        @param request: ListRamPolicyExportTaskVersionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRamPolicyExportTaskVersionsResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
-            query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ListRamPolicyExportTaskVersions',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}/versions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def list_ram_policy_export_task_versions(
-        self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
-        """
-        @summary 获取RAM策略导出任务版本列表
-        
-        @param request: ListRamPolicyExportTaskVersionsRequest
-        @return: ListRamPolicyExportTaskVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.list_ram_policy_export_task_versions_with_options(ram_policy_export_task_id, request, headers, runtime)
-
-    async def list_ram_policy_export_task_versions_async(
-        self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsRequest,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTaskVersionsResponse:
-        """
-        @summary 获取RAM策略导出任务版本列表
-        
-        @param request: ListRamPolicyExportTaskVersionsRequest
-        @return: ListRamPolicyExportTaskVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.list_ram_policy_export_task_versions_with_options_async(ram_policy_export_task_id, request, headers, runtime)
-
-    def list_ram_policy_export_tasks_with_options(
-        self,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
-        """
-        @summary 获取RAM策略导出任务列表
-        
-        @param request: ListRamPolicyExportTasksRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRamPolicyExportTasksResponse
+        @return: ListRegistryNamespacesResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.module_id):
-            query['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            query['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRamPolicyExportTasks',
+            action='ListRegistryNamespaces',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks',
+            pathname=f'/registryNamespace',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7272,45 +5543,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRamPolicyExportTasksResponse(),
+            ia_cservice_20210806_models.ListRegistryNamespacesResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_ram_policy_export_tasks_with_options_async(
+    async def list_registry_namespaces_with_options_async(
         self,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
+        request: ia_cservice_20210806_models.ListRegistryNamespacesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
+    ) -> ia_cservice_20210806_models.ListRegistryNamespacesResponse:
         """
-        @summary 获取RAM策略导出任务列表
+        @summary 获取工作空间列表
         
-        @param request: ListRamPolicyExportTasksRequest
+        @param request: ListRegistryNamespacesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRamPolicyExportTasksResponse
+        @return: ListRegistryNamespacesResponse
         """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
             query['keyword'] = request.keyword
-        if not UtilClient.is_unset(request.module_id):
-            query['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            query['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListRamPolicyExportTasks',
+            action='ListRegistryNamespaces',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks',
+            pathname=f'/registryNamespace',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -7318,37 +5587,37 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListRamPolicyExportTasksResponse(),
+            ia_cservice_20210806_models.ListRegistryNamespacesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_ram_policy_export_tasks(
+    def list_registry_namespaces(
         self,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
+        request: ia_cservice_20210806_models.ListRegistryNamespacesRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryNamespacesResponse:
         """
-        @summary 获取RAM策略导出任务列表
+        @summary 获取工作空间列表
         
-        @param request: ListRamPolicyExportTasksRequest
-        @return: ListRamPolicyExportTasksResponse
+        @param request: ListRegistryNamespacesRequest
+        @return: ListRegistryNamespacesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_ram_policy_export_tasks_with_options(request, headers, runtime)
+        return self.list_registry_namespaces_with_options(request, headers, runtime)
 
-    async def list_ram_policy_export_tasks_async(
+    async def list_registry_namespaces_async(
         self,
-        request: ia_cservice_20210806_models.ListRamPolicyExportTasksRequest,
-    ) -> ia_cservice_20210806_models.ListRamPolicyExportTasksResponse:
+        request: ia_cservice_20210806_models.ListRegistryNamespacesRequest,
+    ) -> ia_cservice_20210806_models.ListRegistryNamespacesResponse:
         """
-        @summary 获取RAM策略导出任务列表
+        @summary 获取工作空间列表
         
-        @param request: ListRamPolicyExportTasksRequest
-        @return: ListRamPolicyExportTasksResponse
+        @param request: ListRegistryNamespacesRequest
+        @return: ListRegistryNamespacesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_ram_policy_export_tasks_with_options_async(request, headers, runtime)
+        return await self.list_registry_namespaces_with_options_async(request, headers, runtime)
 
     def list_resource_export_task_versions_with_options(
         self,
@@ -7590,125 +5859,157 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_resource_export_tasks_with_options_async(request, headers, runtime)
 
-    def list_resources_with_options(
+    def list_resource_types_with_options(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
+        tmp_req: ia_cservice_20210806_models.ListResourceTypesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+    ) -> ia_cservice_20210806_models.ListResourceTypesResponse:
         """
-        @summary 资源列表
+        @summary 资源类型列表
         
-        @param request: ListResourcesRequest
+        @param tmp_req: ListResourceTypesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourcesResponse
+        @return: ListResourceTypesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210806_models.ListResourceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.terraform_resource_types):
+            request.terraform_resource_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.terraform_resource_types, 'terraformResourceTypes', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_type):
-            query['sourceType'] = request.source_type
-        if not UtilClient.is_unset(request.source_value):
-            query['sourceValue'] = request.source_value
-        if not UtilClient.is_unset(request.spec_type):
-            query['specType'] = request.spec_type
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.subcategory):
+            query['subcategory'] = request.subcategory
+        if not UtilClient.is_unset(request.support_terraformer):
+            query['supportTerraformer'] = request.support_terraformer
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.terraform_resource_types_shrink):
+            query['terraformResourceTypes'] = request.terraform_resource_types_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListResources',
+            action='ListResourceTypes',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/resources/stateparser',
+            pathname=f'/resourceTypes',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListResourcesResponse(),
-            self.call_api(params, req, runtime)
+            ia_cservice_20210806_models.ListResourceTypesResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    async def list_resources_with_options_async(
+    async def list_resource_types_with_options_async(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
+        tmp_req: ia_cservice_20210806_models.ListResourceTypesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+    ) -> ia_cservice_20210806_models.ListResourceTypesResponse:
         """
-        @summary 资源列表
+        @summary 资源类型列表
         
-        @param request: ListResourcesRequest
+        @param tmp_req: ListResourceTypesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourcesResponse
+        @return: ListResourceTypesResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210806_models.ListResourceTypesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.terraform_resource_types):
+            request.terraform_resource_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.terraform_resource_types, 'terraformResourceTypes', 'simple')
         query = {}
-        if not UtilClient.is_unset(request.page_number):
-            query['pageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.source_type):
-            query['sourceType'] = request.source_type
-        if not UtilClient.is_unset(request.source_value):
-            query['sourceValue'] = request.source_value
-        if not UtilClient.is_unset(request.spec_type):
-            query['specType'] = request.spec_type
+        if not UtilClient.is_unset(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.product):
+            query['product'] = request.product
+        if not UtilClient.is_unset(request.sort):
+            query['sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
+        if not UtilClient.is_unset(request.subcategory):
+            query['subcategory'] = request.subcategory
+        if not UtilClient.is_unset(request.support_terraformer):
+            query['supportTerraformer'] = request.support_terraformer
+        if not UtilClient.is_unset(request.terraform_provider_version):
+            query['terraformProviderVersion'] = request.terraform_provider_version
+        if not UtilClient.is_unset(request.terraform_resource_types_shrink):
+            query['terraformResourceTypes'] = request.terraform_resource_types_shrink
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListResources',
+            action='ListResourceTypes',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/resources/stateparser',
+            pathname=f'/resourceTypes',
             method='GET',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.ListResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            ia_cservice_20210806_models.ListResourceTypesResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
-    def list_resources(
+    def list_resource_types(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+        request: ia_cservice_20210806_models.ListResourceTypesRequest,
+    ) -> ia_cservice_20210806_models.ListResourceTypesResponse:
         """
-        @summary 资源列表
+        @summary 资源类型列表
         
-        @param request: ListResourcesRequest
-        @return: ListResourcesResponse
+        @param request: ListResourceTypesRequest
+        @return: ListResourceTypesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_resources_with_options(request, headers, runtime)
+        return self.list_resource_types_with_options(request, headers, runtime)
 
-    async def list_resources_async(
+    async def list_resource_types_async(
         self,
-        request: ia_cservice_20210806_models.ListResourcesRequest,
-    ) -> ia_cservice_20210806_models.ListResourcesResponse:
+        request: ia_cservice_20210806_models.ListResourceTypesRequest,
+    ) -> ia_cservice_20210806_models.ListResourceTypesResponse:
         """
-        @summary 资源列表
+        @summary 资源类型列表
         
-        @param request: ListResourcesRequest
-        @return: ListResourcesResponse
+        @param request: ListResourceTypesRequest
+        @return: ListResourceTypesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_resources_with_options_async(request, headers, runtime)
+        return await self.list_resource_types_with_options_async(request, headers, runtime)
 
     def list_tasks_with_options(
         self,
@@ -7727,13 +6028,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ia_cservice_20210806_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exclude_task_ids):
-            request.exclude_task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_task_ids, 'excludeTaskIds', 'simple')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.exclude_task_ids_shrink):
-            query['excludeTaskIds'] = request.exclude_task_ids_shrink
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
@@ -7789,13 +6086,9 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = ia_cservice_20210806_models.ListTasksShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exclude_task_ids):
-            request.exclude_task_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exclude_task_ids, 'excludeTaskIds', 'simple')
         if not UtilClient.is_unset(tmp_req.tag):
             request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.exclude_task_ids_shrink):
-            query['excludeTaskIds'] = request.exclude_task_ids_shrink
         if not UtilClient.is_unset(request.group_id):
             query['groupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword):
@@ -7903,7 +6196,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ia_cservice_20210806_models.ListTerraformProviderVersionsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
     async def list_terraform_provider_versions_with_options_async(
@@ -7947,7 +6240,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             ia_cservice_20210806_models.ListTerraformProviderVersionsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
         )
 
     def list_terraform_provider_versions(
@@ -8098,133 +6391,39 @@ class Client(OpenApiClient):
         headers = {}
         return await self.operate_job_with_options_async(task_id, job_id, operation_type, request, headers, runtime)
 
-    def remove_resource_export_task_version_with_options(
+    def publish_registry_module_version_with_options(
         self,
-        export_task_id: str,
-        export_version: str,
+        request: ia_cservice_20210806_models.PublishRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
+    ) -> ia_cservice_20210806_models.PublishRegistryModuleVersionResponse:
         """
-        @summary 移除导出任务版本
+        @summary 发布RegistryModule版本
         
+        @param request: PublishRegistryModuleVersionRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveResourceExportTaskVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveResourceExportTaskVersion',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/exportTasks/{OpenApiUtilClient.get_encode_param(export_task_id)}/{OpenApiUtilClient.get_encode_param(export_version)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def remove_resource_export_task_version_with_options_async(
-        self,
-        export_task_id: str,
-        export_version: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
-        """
-        @summary 移除导出任务版本
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveResourceExportTaskVersionResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='RemoveResourceExportTaskVersion',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/exportTasks/{OpenApiUtilClient.get_encode_param(export_task_id)}/{OpenApiUtilClient.get_encode_param(export_version)}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def remove_resource_export_task_version(
-        self,
-        export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
-        """
-        @summary 移除导出任务版本
-        
-        @return: RemoveResourceExportTaskVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.remove_resource_export_task_version_with_options(export_task_id, export_version, headers, runtime)
-
-    async def remove_resource_export_task_version_async(
-        self,
-        export_task_id: str,
-        export_version: str,
-    ) -> ia_cservice_20210806_models.RemoveResourceExportTaskVersionResponse:
-        """
-        @summary 移除导出任务版本
-        
-        @return: RemoveResourceExportTaskVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.remove_resource_export_task_version_with_options_async(export_task_id, export_version, headers, runtime)
-
-    def tag_resources_with_options(
-        self,
-        request: ia_cservice_20210806_models.TagResourcesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.TagResourcesResponse:
-        """
-        @summary 打标签接口
-        
-        @param request: TagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
+        @return: PublishRegistryModuleVersionResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            body['resourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags):
-            body['tags'] = request.tags
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='TagResources',
+            action='PublishRegistryModuleVersion',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tags',
+            pathname=f'/registryModuleVersion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8232,43 +6431,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.TagResourcesResponse(),
+            ia_cservice_20210806_models.PublishRegistryModuleVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def tag_resources_with_options_async(
+    async def publish_registry_module_version_with_options_async(
         self,
-        request: ia_cservice_20210806_models.TagResourcesRequest,
+        request: ia_cservice_20210806_models.PublishRegistryModuleVersionRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.TagResourcesResponse:
+    ) -> ia_cservice_20210806_models.PublishRegistryModuleVersionResponse:
         """
-        @summary 打标签接口
+        @summary 发布RegistryModule版本
         
-        @param request: TagResourcesRequest
+        @param request: PublishRegistryModuleVersionRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
+        @return: PublishRegistryModuleVersionResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.region_id):
-            body['regionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_ids):
-            body['resourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
-            body['resourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags):
-            body['tags'] = request.tags
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.module_name):
+            body['moduleName'] = request.module_name
+        if not UtilClient.is_unset(request.namespace_name):
+            body['namespaceName'] = request.namespace_name
+        if not UtilClient.is_unset(request.version):
+            body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='TagResources',
+            action='PublishRegistryModuleVersion',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/tags',
+            pathname=f'/registryModuleVersion',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -8276,57 +6475,179 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.TagResourcesResponse(),
+            ia_cservice_20210806_models.PublishRegistryModuleVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def tag_resources(
+    def publish_registry_module_version(
         self,
-        request: ia_cservice_20210806_models.TagResourcesRequest,
-    ) -> ia_cservice_20210806_models.TagResourcesResponse:
+        request: ia_cservice_20210806_models.PublishRegistryModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.PublishRegistryModuleVersionResponse:
         """
-        @summary 打标签接口
+        @summary 发布RegistryModule版本
         
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
+        @param request: PublishRegistryModuleVersionRequest
+        @return: PublishRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.tag_resources_with_options(request, headers, runtime)
+        return self.publish_registry_module_version_with_options(request, headers, runtime)
 
-    async def tag_resources_async(
+    async def publish_registry_module_version_async(
         self,
-        request: ia_cservice_20210806_models.TagResourcesRequest,
-    ) -> ia_cservice_20210806_models.TagResourcesResponse:
+        request: ia_cservice_20210806_models.PublishRegistryModuleVersionRequest,
+    ) -> ia_cservice_20210806_models.PublishRegistryModuleVersionResponse:
         """
-        @summary 打标签接口
+        @summary 发布RegistryModule版本
         
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
+        @param request: PublishRegistryModuleVersionRequest
+        @return: PublishRegistryModuleVersionResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.tag_resources_with_options_async(request, headers, runtime)
+        return await self.publish_registry_module_version_with_options_async(request, headers, runtime)
 
-    def update_authorization_attribute_with_options(
+    def remove_shared_accounts_with_options(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
+        tmp_req: ia_cservice_20210806_models.RemoveSharedAccountsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+    ) -> ia_cservice_20210806_models.RemoveSharedAccountsResponse:
         """
-        @summary 更新共享
+        @summary 删除共享账号信息
         
-        @param request: UpdateAuthorizationAttributeRequest
+        @param tmp_req: RemoveSharedAccountsRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAuthorizationAttributeResponse
+        @return: RemoveSharedAccountsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210806_models.RemoveSharedAccountsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'accountIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['accountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSharedAccounts',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/sharedAccounts',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.RemoveSharedAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_shared_accounts_with_options_async(
+        self,
+        tmp_req: ia_cservice_20210806_models.RemoveSharedAccountsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.RemoveSharedAccountsResponse:
+        """
+        @summary 删除共享账号信息
+        
+        @param tmp_req: RemoveSharedAccountsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSharedAccountsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ia_cservice_20210806_models.RemoveSharedAccountsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_ids):
+            request.account_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_ids, 'accountIds', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.account_ids_shrink):
+            query['accountIds'] = request.account_ids_shrink
+        if not UtilClient.is_unset(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSharedAccounts',
+            version='2021-08-06',
+            protocol='HTTPS',
+            pathname=f'/sharedAccounts',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ia_cservice_20210806_models.RemoveSharedAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_shared_accounts(
+        self,
+        request: ia_cservice_20210806_models.RemoveSharedAccountsRequest,
+    ) -> ia_cservice_20210806_models.RemoveSharedAccountsResponse:
+        """
+        @summary 删除共享账号信息
+        
+        @param request: RemoveSharedAccountsRequest
+        @return: RemoveSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.remove_shared_accounts_with_options(request, headers, runtime)
+
+    async def remove_shared_accounts_async(
+        self,
+        request: ia_cservice_20210806_models.RemoveSharedAccountsRequest,
+    ) -> ia_cservice_20210806_models.RemoveSharedAccountsResponse:
+        """
+        @summary 删除共享账号信息
+        
+        @param request: RemoveSharedAccountsRequest
+        @return: RemoveSharedAccountsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.remove_shared_accounts_with_options_async(request, headers, runtime)
+
+    def update_explorer_module_attribute_with_options(
+        self,
+        explorer_module_id: str,
+        request: ia_cservice_20210806_models.UpdateExplorerModuleAttributeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse:
+        """
+        @summary 修改ExplorerModule
+        
+        @param request: UpdateExplorerModuleAttributeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExplorerModuleAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.due_time):
-            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -8334,10 +6655,10 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateAuthorizationAttribute',
+            action='UpdateExplorerModuleAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/authorizations/{OpenApiUtilClient.get_encode_param(authorization_id)}',
+            pathname=f'/explorerModule/{OpenApiUtilClient.get_encode_param(explorer_module_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8345,29 +6666,31 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse(),
+            ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_authorization_attribute_with_options_async(
+    async def update_explorer_module_attribute_with_options_async(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
+        explorer_module_id: str,
+        request: ia_cservice_20210806_models.UpdateExplorerModuleAttributeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+    ) -> ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse:
         """
-        @summary 更新共享
+        @summary 修改ExplorerModule
         
-        @param request: UpdateAuthorizationAttributeRequest
+        @param request: UpdateExplorerModuleAttributeRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAuthorizationAttributeResponse
+        @return: UpdateExplorerModuleAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.due_time):
-            body['dueTime'] = request.due_time
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
         req = open_api_models.OpenApiRequest(
@@ -8375,10 +6698,10 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateAuthorizationAttribute',
+            action='UpdateExplorerModuleAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/authorizations/{OpenApiUtilClient.get_encode_param(authorization_id)}',
+            pathname=f'/explorerModule/{OpenApiUtilClient.get_encode_param(explorer_module_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -8386,163 +6709,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse(),
+            ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_authorization_attribute(
+    def update_explorer_module_attribute(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+        explorer_module_id: str,
+        request: ia_cservice_20210806_models.UpdateExplorerModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse:
         """
-        @summary 更新共享
+        @summary 修改ExplorerModule
         
-        @param request: UpdateAuthorizationAttributeRequest
-        @return: UpdateAuthorizationAttributeResponse
+        @param request: UpdateExplorerModuleAttributeRequest
+        @return: UpdateExplorerModuleAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_authorization_attribute_with_options(authorization_id, request, headers, runtime)
+        return self.update_explorer_module_attribute_with_options(explorer_module_id, request, headers, runtime)
 
-    async def update_authorization_attribute_async(
+    async def update_explorer_module_attribute_async(
         self,
-        authorization_id: str,
-        request: ia_cservice_20210806_models.UpdateAuthorizationAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateAuthorizationAttributeResponse:
+        explorer_module_id: str,
+        request: ia_cservice_20210806_models.UpdateExplorerModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateExplorerModuleAttributeResponse:
         """
-        @summary 更新共享
+        @summary 修改ExplorerModule
         
-        @param request: UpdateAuthorizationAttributeRequest
-        @return: UpdateAuthorizationAttributeResponse
+        @param request: UpdateExplorerModuleAttributeRequest
+        @return: UpdateExplorerModuleAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_authorization_attribute_with_options_async(authorization_id, request, headers, runtime)
-
-    def update_explorer_task_attribute_with_options(
-        self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.UpdateExplorerTaskAttributeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse:
-        """
-        @summary 修改Explorer任务
-        
-        @param request: UpdateExplorerTaskAttributeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateExplorerTaskAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.auto_apply):
-            body['autoApply'] = request.auto_apply
-        if not UtilClient.is_unset(request.explorer_task_name):
-            body['explorerTaskName'] = request.explorer_task_name
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateExplorerTaskAttribute',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/explorerTask/{OpenApiUtilClient.get_encode_param(explorer_task_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_explorer_task_attribute_with_options_async(
-        self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.UpdateExplorerTaskAttributeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse:
-        """
-        @summary 修改Explorer任务
-        
-        @param request: UpdateExplorerTaskAttributeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateExplorerTaskAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.auto_apply):
-            body['autoApply'] = request.auto_apply
-        if not UtilClient.is_unset(request.explorer_task_name):
-            body['explorerTaskName'] = request.explorer_task_name
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.terraform_provider_version):
-            body['terraformProviderVersion'] = request.terraform_provider_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateExplorerTaskAttribute',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/explorerTask/{OpenApiUtilClient.get_encode_param(explorer_task_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_explorer_task_attribute(
-        self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.UpdateExplorerTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse:
-        """
-        @summary 修改Explorer任务
-        
-        @param request: UpdateExplorerTaskAttributeRequest
-        @return: UpdateExplorerTaskAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_explorer_task_attribute_with_options(explorer_task_id, request, headers, runtime)
-
-    async def update_explorer_task_attribute_async(
-        self,
-        explorer_task_id: str,
-        request: ia_cservice_20210806_models.UpdateExplorerTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateExplorerTaskAttributeResponse:
-        """
-        @summary 修改Explorer任务
-        
-        @param request: UpdateExplorerTaskAttributeRequest
-        @return: UpdateExplorerTaskAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_explorer_task_attribute_with_options_async(explorer_task_id, request, headers, runtime)
+        return await self.update_explorer_module_attribute_with_options_async(explorer_module_id, request, headers, runtime)
 
     def update_group_with_options(
         self,
@@ -8712,7 +6911,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         """
-        @summary 更新模版
+        @summary 更新模板
         
         @param request: UpdateModuleAttributeRequest
         @param headers: map
@@ -8721,18 +6920,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.source):
-            body['source'] = request.source
         if not UtilClient.is_unset(request.source_path):
             body['sourcePath'] = request.source_path
         if not UtilClient.is_unset(request.state_path):
             body['statePath'] = request.state_path
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version_strategy):
             body['versionStrategy'] = request.version_strategy
         req = open_api_models.OpenApiRequest(
@@ -8763,7 +6964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         """
-        @summary 更新模版
+        @summary 更新模板
         
         @param request: UpdateModuleAttributeRequest
         @param headers: map
@@ -8772,18 +6973,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.source):
-            body['source'] = request.source
         if not UtilClient.is_unset(request.source_path):
             body['sourcePath'] = request.source_path
         if not UtilClient.is_unset(request.state_path):
             body['statePath'] = request.state_path
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.version_strategy):
             body['versionStrategy'] = request.version_strategy
         req = open_api_models.OpenApiRequest(
@@ -8812,7 +7015,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
     ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         """
-        @summary 更新模版
+        @summary 更新模板
         
         @param request: UpdateModuleAttributeRequest
         @return: UpdateModuleAttributeResponse
@@ -8827,7 +7030,7 @@ class Client(OpenApiClient):
         request: ia_cservice_20210806_models.UpdateModuleAttributeRequest,
     ) -> ia_cservice_20210806_models.UpdateModuleAttributeResponse:
         """
-        @summary 更新模版
+        @summary 更新模板
         
         @param request: UpdateModuleAttributeRequest
         @return: UpdateModuleAttributeResponse
@@ -8835,122 +7038,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_module_attribute_with_options_async(module_id, request, headers, runtime)
-
-    def update_parameter_set_attribute_with_options(
-        self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
-        """
-        @summary 更新参数集
-        
-        @param request: UpdateParameterSetAttributeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateParameterSetAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateParameterSetAttribute',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateParameterSetAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_parameter_set_attribute_with_options_async(
-        self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
-        """
-        @summary 更新参数集
-        
-        @param request: UpdateParameterSetAttributeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateParameterSetAttributeResponse
-        """
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.description):
-            body['description'] = request.description
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdateParameterSetAttribute',
-            version='2021-08-06',
-            protocol='HTTPS',
-            pathname=f'/parameterSets/{OpenApiUtilClient.get_encode_param(parameter_set_id)}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateParameterSetAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_parameter_set_attribute(
-        self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
-        """
-        @summary 更新参数集
-        
-        @param request: UpdateParameterSetAttributeRequest
-        @return: UpdateParameterSetAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_parameter_set_attribute_with_options(parameter_set_id, request, headers, runtime)
-
-    async def update_parameter_set_attribute_async(
-        self,
-        parameter_set_id: str,
-        request: ia_cservice_20210806_models.UpdateParameterSetAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateParameterSetAttributeResponse:
-        """
-        @summary 更新参数集
-        
-        @param request: UpdateParameterSetAttributeRequest
-        @return: UpdateParameterSetAttributeResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_parameter_set_attribute_with_options_async(parameter_set_id, request, headers, runtime)
 
     def update_project_with_options(
         self,
@@ -9068,40 +7155,39 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_project_with_options_async(project_id, request, headers, runtime)
 
-    def update_rabbitmq_publisher_attribute_with_options(
+    def update_registry_module_attribute_with_options(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryModuleAttributeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+    ) -> ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse:
         """
-        @summary 更新消息发布者
+        @summary 修改RegistryModule
         
-        @param request: UpdateRabbitmqPublisherAttributeRequest
+        @param request: UpdateRegistryModuleAttributeRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRabbitmqPublisherAttributeResponse
+        @return: UpdateRegistryModuleAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exchange_name):
-            body['exchangeName'] = request.exchange_name
-        if not UtilClient.is_unset(request.exchange_type):
-            body['exchangeType'] = request.exchange_type
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRabbitmqPublisherAttribute',
+            action='UpdateRegistryModuleAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -9109,44 +7195,43 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse(),
+            ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_rabbitmq_publisher_attribute_with_options_async(
+    async def update_registry_module_attribute_with_options_async(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryModuleAttributeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+    ) -> ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse:
         """
-        @summary 更新消息发布者
+        @summary 修改RegistryModule
         
-        @param request: UpdateRabbitmqPublisherAttributeRequest
+        @param request: UpdateRegistryModuleAttributeRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRabbitmqPublisherAttributeResponse
+        @return: UpdateRegistryModuleAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exchange_name):
-            body['exchangeName'] = request.exchange_name
-        if not UtilClient.is_unset(request.exchange_type):
-            body['exchangeType'] = request.exchange_type
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRabbitmqPublisherAttribute',
+            action='UpdateRegistryModuleAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/publishers/{OpenApiUtilClient.get_encode_param(publisher_id)}',
+            pathname=f'/registryModule/{OpenApiUtilClient.get_encode_param(namespace_name)}/{OpenApiUtilClient.get_encode_param(module_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -9154,82 +7239,74 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse(),
+            ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_rabbitmq_publisher_attribute(
+    def update_registry_module_attribute(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse:
         """
-        @summary 更新消息发布者
+        @summary 修改RegistryModule
         
-        @param request: UpdateRabbitmqPublisherAttributeRequest
-        @return: UpdateRabbitmqPublisherAttributeResponse
+        @param request: UpdateRegistryModuleAttributeRequest
+        @return: UpdateRegistryModuleAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_rabbitmq_publisher_attribute_with_options(publisher_id, request, headers, runtime)
+        return self.update_registry_module_attribute_with_options(namespace_name, module_name, request, headers, runtime)
 
-    async def update_rabbitmq_publisher_attribute_async(
+    async def update_registry_module_attribute_async(
         self,
-        publisher_id: str,
-        request: ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRabbitmqPublisherAttributeResponse:
+        namespace_name: str,
+        module_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryModuleAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRegistryModuleAttributeResponse:
         """
-        @summary 更新消息发布者
+        @summary 修改RegistryModule
         
-        @param request: UpdateRabbitmqPublisherAttributeRequest
-        @return: UpdateRabbitmqPublisherAttributeResponse
+        @param request: UpdateRegistryModuleAttributeRequest
+        @return: UpdateRegistryModuleAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_rabbitmq_publisher_attribute_with_options_async(publisher_id, request, headers, runtime)
+        return await self.update_registry_module_attribute_with_options_async(namespace_name, module_name, request, headers, runtime)
 
-    def update_ram_policy_export_task_attribute_with_options(
+    def update_registry_namespace_attribute_with_options(
         self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+        namespace_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+    ) -> ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse:
         """
-        @summary 修改RAM策略导出任务
+        @summary 修改工作空间
         
-        @param request: UpdateRamPolicyExportTaskAttributeRequest
+        @param request: UpdateRegistryNamespaceAttributeRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRamPolicyExportTaskAttributeResponse
+        @return: UpdateRegistryNamespaceAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.authorization_account_ids):
-            body['authorizationAccountIds'] = request.authorization_account_ids
-        if not UtilClient.is_unset(request.authorization_actions):
-            body['authorizationActions'] = request.authorization_actions
-        if not UtilClient.is_unset(request.authorization_region_ids):
-            body['authorizationRegionIds'] = request.authorization_region_ids
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
-        if not UtilClient.is_unset(request.trigger_strategy):
-            body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRamPolicyExportTaskAttribute',
+            action='UpdateRegistryNamespaceAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -9237,52 +7314,42 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse(),
+            ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_ram_policy_export_task_attribute_with_options_async(
+    async def update_registry_namespace_attribute_with_options_async(
         self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
+        namespace_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+    ) -> ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse:
         """
-        @summary 修改RAM策略导出任务
+        @summary 修改工作空间
         
-        @param request: UpdateRamPolicyExportTaskAttributeRequest
+        @param request: UpdateRegistryNamespaceAttributeRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRamPolicyExportTaskAttributeResponse
+        @return: UpdateRegistryNamespaceAttributeResponse
         """
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.authorization_account_ids):
-            body['authorizationAccountIds'] = request.authorization_account_ids
-        if not UtilClient.is_unset(request.authorization_actions):
-            body['authorizationActions'] = request.authorization_actions
-        if not UtilClient.is_unset(request.authorization_region_ids):
-            body['authorizationRegionIds'] = request.authorization_region_ids
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
-        if not UtilClient.is_unset(request.module_version):
-            body['moduleVersion'] = request.module_version
-        if not UtilClient.is_unset(request.name):
-            body['name'] = request.name
-        if not UtilClient.is_unset(request.ram_role):
-            body['ramRole'] = request.ram_role
-        if not UtilClient.is_unset(request.trigger_strategy):
-            body['triggerStrategy'] = request.trigger_strategy
+        if not UtilClient.is_unset(request.acl):
+            body['acl'] = request.acl
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRamPolicyExportTaskAttribute',
+            action='UpdateRegistryNamespaceAttribute',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/ramPolicyExportTasks/{OpenApiUtilClient.get_encode_param(ram_policy_export_task_id)}',
+            pathname=f'/registryNamespace/{OpenApiUtilClient.get_encode_param(namespace_name)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -9290,39 +7357,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse(),
+            ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_ram_policy_export_task_attribute(
+    def update_registry_namespace_attribute(
         self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        namespace_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse:
         """
-        @summary 修改RAM策略导出任务
+        @summary 修改工作空间
         
-        @param request: UpdateRamPolicyExportTaskAttributeRequest
-        @return: UpdateRamPolicyExportTaskAttributeResponse
+        @param request: UpdateRegistryNamespaceAttributeRequest
+        @return: UpdateRegistryNamespaceAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_ram_policy_export_task_attribute_with_options(ram_policy_export_task_id, request, headers, runtime)
+        return self.update_registry_namespace_attribute_with_options(namespace_name, request, headers, runtime)
 
-    async def update_ram_policy_export_task_attribute_async(
+    async def update_registry_namespace_attribute_async(
         self,
-        ram_policy_export_task_id: str,
-        request: ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeRequest,
-    ) -> ia_cservice_20210806_models.UpdateRamPolicyExportTaskAttributeResponse:
+        namespace_name: str,
+        request: ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeRequest,
+    ) -> ia_cservice_20210806_models.UpdateRegistryNamespaceAttributeResponse:
         """
-        @summary 修改RAM策略导出任务
+        @summary 修改工作空间
         
-        @param request: UpdateRamPolicyExportTaskAttributeRequest
-        @return: UpdateRamPolicyExportTaskAttributeResponse
+        @param request: UpdateRegistryNamespaceAttributeRequest
+        @return: UpdateRegistryNamespaceAttributeResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_ram_policy_export_task_attribute_with_options_async(ram_policy_export_task_id, request, headers, runtime)
+        return await self.update_registry_namespace_attribute_with_options_async(namespace_name, request, headers, runtime)
 
     def update_resource_export_task_attribute_with_options(
         self,
@@ -9343,12 +7410,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.config_path):
-            body['configPath'] = request.config_path
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exclude_rules):
-            body['excludeRules'] = request.exclude_rules
         if not UtilClient.is_unset(request.export_to_module):
             body['exportToModule'] = request.export_to_module
         if not UtilClient.is_unset(request.include_rules):
@@ -9404,12 +7467,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.config_path):
-            body['configPath'] = request.config_path
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
-        if not UtilClient.is_unset(request.exclude_rules):
-            body['excludeRules'] = request.exclude_rules
         if not UtilClient.is_unset(request.export_to_module):
             body['exportToModule'] = request.export_to_module
         if not UtilClient.is_unset(request.include_rules):
@@ -9497,32 +7556,30 @@ class Client(OpenApiClient):
             body['autoApply'] = request.auto_apply
         if not UtilClient.is_unset(request.auto_destroy):
             body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.init_module_state):
             body['initModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
         if not UtilClient.is_unset(request.module_version):
             body['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
         if not UtilClient.is_unset(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
         if not UtilClient.is_unset(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9564,32 +7621,30 @@ class Client(OpenApiClient):
             body['autoApply'] = request.auto_apply
         if not UtilClient.is_unset(request.auto_destroy):
             body['autoDestroy'] = request.auto_destroy
+        if not UtilClient.is_unset(request.client_token):
+            body['clientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
         if not UtilClient.is_unset(request.group_info):
             body['groupInfo'] = request.group_info
         if not UtilClient.is_unset(request.init_module_state):
             body['initModuleState'] = request.init_module_state
-        if not UtilClient.is_unset(request.module_id):
-            body['moduleId'] = request.module_id
         if not UtilClient.is_unset(request.module_version):
             body['moduleVersion'] = request.module_version
         if not UtilClient.is_unset(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.parameters):
-            body['parameters'] = request.parameters
         if not UtilClient.is_unset(request.protection_strategy):
             body['protectionStrategy'] = request.protection_strategy
         if not UtilClient.is_unset(request.ram_role):
             body['ramRole'] = request.ram_role
         if not UtilClient.is_unset(request.skip_property_validation):
             body['skipPropertyValidation'] = request.skip_property_validation
+        if not UtilClient.is_unset(request.tags):
+            body['tags'] = request.tags
         if not UtilClient.is_unset(request.terraform_version):
             body['terraformVersion'] = request.terraform_version
         if not UtilClient.is_unset(request.trigger_strategy):
             body['triggerStrategy'] = request.trigger_strategy
-        if not UtilClient.is_unset(request.trigger_value):
-            body['triggerValue'] = request.trigger_value
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9640,36 +7695,41 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_task_attribute_with_options_async(task_id, request, headers, runtime)
 
-    def update_task_policy_with_options(
+    def validate_module_with_options(
         self,
-        group_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+        request: ia_cservice_20210806_models.ValidateModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+    ) -> ia_cservice_20210806_models.ValidateModuleResponse:
         """
-        @summary 修改分组优先级配置
+        @summary 模版预检
         
-        @param request: UpdateTaskPolicyRequest
+        @param request: ValidateModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateTaskPolicyResponse
+        @return: ValidateModuleResponse
         """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.task_policies):
-            body['taskPolicies'] = request.task_policies
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.code_map):
+            body['codeMap'] = request.code_map
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.source_path):
+            body['sourcePath'] = request.source_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateTaskPolicy',
+            action='ValidateModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
+            pathname=f'/module/validation',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9677,40 +7737,45 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateTaskPolicyResponse(),
+            ia_cservice_20210806_models.ValidateModuleResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_task_policy_with_options_async(
+    async def validate_module_with_options_async(
         self,
-        group_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
+        request: ia_cservice_20210806_models.ValidateModuleRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+    ) -> ia_cservice_20210806_models.ValidateModuleResponse:
         """
-        @summary 修改分组优先级配置
+        @summary 模版预检
         
-        @param request: UpdateTaskPolicyRequest
+        @param request: ValidateModuleRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateTaskPolicyResponse
+        @return: ValidateModuleResponse
         """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['clientToken'] = request.client_token
-        if not UtilClient.is_unset(request.task_policies):
-            body['taskPolicies'] = request.task_policies
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.code_map):
+            body['codeMap'] = request.code_map
+        if not UtilClient.is_unset(request.source):
+            body['source'] = request.source
+        if not UtilClient.is_unset(request.source_path):
+            body['sourcePath'] = request.source_path
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateTaskPolicy',
+            action='ValidateModule',
             version='2021-08-06',
             protocol='HTTPS',
-            pathname=f'/group/task/policy/{OpenApiUtilClient.get_encode_param(group_id)}',
+            pathname=f'/module/validation',
             method='POST',
             auth_type='AK',
             style='ROA',
@@ -9718,36 +7783,34 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            ia_cservice_20210806_models.UpdateTaskPolicyResponse(),
+            ia_cservice_20210806_models.ValidateModuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def update_task_policy(
+    def validate_module(
         self,
-        group_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
-    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        request: ia_cservice_20210806_models.ValidateModuleRequest,
+    ) -> ia_cservice_20210806_models.ValidateModuleResponse:
         """
-        @summary 修改分组优先级配置
+        @summary 模版预检
         
-        @param request: UpdateTaskPolicyRequest
-        @return: UpdateTaskPolicyResponse
+        @param request: ValidateModuleRequest
+        @return: ValidateModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.update_task_policy_with_options(group_id, request, headers, runtime)
+        return self.validate_module_with_options(request, headers, runtime)
 
-    async def update_task_policy_async(
+    async def validate_module_async(
         self,
-        group_id: str,
-        request: ia_cservice_20210806_models.UpdateTaskPolicyRequest,
-    ) -> ia_cservice_20210806_models.UpdateTaskPolicyResponse:
+        request: ia_cservice_20210806_models.ValidateModuleRequest,
+    ) -> ia_cservice_20210806_models.ValidateModuleResponse:
         """
-        @summary 修改分组优先级配置
+        @summary 模版预检
         
-        @param request: UpdateTaskPolicyRequest
-        @return: UpdateTaskPolicyResponse
+        @param request: ValidateModuleRequest
+        @return: ValidateModuleResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.update_task_policy_with_options_async(group_id, request, headers, runtime)
+        return await self.validate_module_with_options_async(request, headers, runtime)

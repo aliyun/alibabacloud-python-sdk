@@ -1,3 +1,137 @@
+2025-08-22 Version: 2.0.0
+- Support API AddSharedAccounts.
+- Support API CreateRegistryModule.
+- Support API CreateRegistryNamespace.
+- Support API DeleteRegistryModule.
+- Support API DeleteRegistryModuleVersion.
+- Support API DeleteRegistryNamespace.
+- Support API ExecuteRegistryModule.
+- Support API ExecuteTerraformApply.
+- Support API ExecuteTerraformDestroy.
+- Support API ExecuteTerraformPlan.
+- Support API GetExecuteState.
+- Support API GetRegistryModule.
+- Support API GetRegistryModuleVersion.
+- Support API GetRegistryNamespace.
+- Support API GetResourceType.
+- Support API ListExplorerRegistryModuleExamples.
+- Support API ListExplorerRegistryModuleVersions.
+- Support API ListExplorerRegistryModules.
+- Support API ListProducts.
+- Support API ListRegistryModuleVersions.
+- Support API ListRegistryModules.
+- Support API ListRegistryNamespaces.
+- Support API ListResourceTypes.
+- Support API PublishRegistryModuleVersion.
+- Support API RemoveSharedAccounts.
+- Support API UpdateExplorerModuleAttribute.
+- Support API UpdateRegistryModuleAttribute.
+- Support API UpdateRegistryNamespaceAttribute.
+- Support API ValidateModule.
+- Delete API AssociateParameterSet.
+- Delete API AttachRabbitmqPublisher.
+- Delete API CancelProjectBuild.
+- Delete API CancelRamPolicyExportTask.
+- Delete API CheckResourceName.
+- Delete API CloneGroup.
+- Delete API CloneModule.
+- Delete API CreateAuthorization.
+- Delete API CreateExplorerTask.
+- Delete API CreateParameterSet.
+- Delete API CreateProjectBuild.
+- Delete API CreateRabbitmqPublisher.
+- Delete API CreateRamPolicyExportTask.
+- Delete API DeleteAuthorization.
+- Delete API DeleteParameterSet.
+- Delete API DeleteRabbitmqPublisher.
+- Delete API DeleteRamPolicyExportTask.
+- Delete API DeleteRamPolicyExportTaskVersion.
+- Delete API DeleteSceneTestingTask.
+- Delete API DetachRabbitmqPublisher.
+- Delete API DissociateParameterSet.
+- Delete API ExecuteRamPolicyExportTask.
+- Delete API GetExplorerTask.
+- Delete API GetParameterSet.
+- Delete API GetProjectBuildContext.
+- Delete API GetRabbitmqPublisher.
+- Delete API GetRamPolicyExportTask.
+- Delete API GetRamPolicyExportTaskVersion.
+- Delete API GetTaskPolicy.
+- Delete API ListAuthorizations.
+- Delete API ListAvailableTerraformVersions.
+- Delete API ListExplorerTasks.
+- Delete API ListParameterSetRelation.
+- Delete API ListParameterSets.
+- Delete API ListProjectBuilds.
+- Delete API ListRabbitmqPublishers.
+- Delete API ListRamPolicyExportTaskVersions.
+- Delete API ListRamPolicyExportTasks.
+- Delete API ListResources.
+- Delete API RemoveResourceExportTaskVersion.
+- Delete API TagResources.
+- Delete API UpdateAuthorizationAttribute.
+- Delete API UpdateExplorerTaskAttribute.
+- Delete API UpdateParameterSetAttribute.
+- Delete API UpdateRabbitmqPublisherAttribute.
+- Delete API UpdateRamPolicyExportTaskAttribute.
+- Delete API UpdateTaskPolicy.
+- Update API CancelResourceExportTask: delete request parameters body.ramRole.
+- Update API CreateJob: delete request parameters body.executeType.
+- Update API CreateModule: add request parameters body.tags.
+- Update API CreateResourceExportTask: delete request parameters body.configPath.
+- Update API CreateResourceExportTask: delete request parameters body.excludeRules.
+- Update API CreateTask: add request parameters body.tags.
+- Update API CreateTask: delete request parameters body.parameters.
+- Update API CreateTask: delete request parameters body.triggerValue.
+- Update API ExecuteResourceExportTask: delete request parameters body.ramRole.
+- Update API GetJob: delete response parameters Body.job.runtimeType.
+- Update API GetModule: add response parameters Body.module.groupInfo.
+- Update API GetModule: add response parameters Body.module.tags.
+- Update API GetResourceExportTask: delete response parameters Body.task.configPath.
+- Update API GetResourceExportTask: delete response parameters Body.task.excludeRules.
+- Update API GetTask: add response parameters Body.task.currentJobStatus.
+- Update API GetTask: add response parameters Body.task.deletionProtection.
+- Update API GetTask: add response parameters Body.task.latestModuleVersion.
+- Update API GetTask: add response parameters Body.task.moduleName.
+- Update API GetTask: add response parameters Body.task.tags.
+- Update API GetTask: add response parameters Body.task.taskBackend.
+- Update API GetTask: delete response parameters Body.task.parameters.
+- Update API GetTask: delete response parameters Body.task.triggerValue.
+- Update API ListJobs: add response parameters Body.jobs.$.config.moduleDescription.
+- Update API ListModules: add request parameters tag.$.tagKey.
+- Update API ListModules: add request parameters tag.$.tagValue.
+- Update API ListModules: add response parameters Body.modules.$.tags.$.tagKey.
+- Update API ListModules: add response parameters Body.modules.$.tags.$.tagValue.
+- Update API ListModules: delete request parameters excludeModuleIds.
+- Update API ListModules: delete request parameters tag.$.key.
+- Update API ListModules: delete request parameters tag.$.value.
+- Update API ListModules: delete response parameters Body.modules.$.meta.
+- Update API ListModules: delete response parameters Body.modules.$.sourceConfig.
+- Update API ListResourceExportTaskVersions: delete response parameters Body.exportTasks.$.excludeRules.
+- Update API ListResourceExportTaskVersions: delete response parameters Body.exportTasks.$.hasDestroy.
+- Update API ListResourceExportTasks: delete response parameters Body.exportTasks.$.excludeRules.
+- Update API ListResourceExportTasks: delete response parameters Body.exportTasks.$.hasDestroy.
+- Update API ListTasks: add request parameters tag.$.tagKey.
+- Update API ListTasks: add request parameters tag.$.tagValue.
+- Update API ListTasks: add response parameters Body.tasks.$.latestModuleVersion.
+- Update API ListTasks: add response parameters Body.tasks.$.tags.$.tagKey.
+- Update API ListTasks: add response parameters Body.tasks.$.tags.$.tagValue.
+- Update API ListTasks: delete request parameters excludeTaskIds.
+- Update API ListTasks: delete request parameters tag.$.key.
+- Update API ListTasks: delete request parameters tag.$.value.
+- Update API ListTerraformProviderVersions: delete response parameters Body.verisonList.
+- Update API UpdateModuleAttribute: add request parameters body.clientToken.
+- Update API UpdateModuleAttribute: add request parameters body.tags.
+- Update API UpdateModuleAttribute: delete request parameters body.source.
+- Update API UpdateResourceExportTaskAttribute: delete request parameters body.configPath.
+- Update API UpdateResourceExportTaskAttribute: delete request parameters body.excludeRules.
+- Update API UpdateTaskAttribute: add request parameters body.clientToken.
+- Update API UpdateTaskAttribute: add request parameters body.tags.
+- Update API UpdateTaskAttribute: delete request parameters body.moduleId.
+- Update API UpdateTaskAttribute: delete request parameters body.parameters.
+- Update API UpdateTaskAttribute: delete request parameters body.triggerValue.
+
+
 2025-04-23 Version: 1.1.0
 - Support API CancelProjectBuild.
 - Support API CreateExplorerTask.
