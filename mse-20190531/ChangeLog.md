@@ -1,3 +1,8 @@
+2025-08-22 Version: 6.21.1
+- Update API GetAppMessageQueueRoute: add response parameters Body.Data.GrayBaseTags.
+- Update API UpdateMessageQueueRoute: add request parameters GrayBaseTags.
+
+
 2025-08-14 Version: 6.21.0
 - Support API CreateNacosMcpServer.
 - Support API DeleteNacosMcpServer.

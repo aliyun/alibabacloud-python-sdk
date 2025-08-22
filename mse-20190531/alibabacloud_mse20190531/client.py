@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('mse', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -27977,6 +27976,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gray_base_tags):
+            request.gray_base_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gray_base_tags, 'GrayBaseTags', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -27990,6 +27991,8 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.filter_side):
             query['FilterSide'] = request.filter_side
+        if not UtilClient.is_unset(request.gray_base_tags_shrink):
+            query['GrayBaseTags'] = request.gray_base_tags_shrink
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region):
@@ -28030,6 +28033,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.gray_base_tags):
+            request.gray_base_tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.gray_base_tags, 'GrayBaseTags', 'json')
         if not UtilClient.is_unset(tmp_req.tags):
             request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
@@ -28043,6 +28048,8 @@ class Client(OpenApiClient):
             query['Enable'] = request.enable
         if not UtilClient.is_unset(request.filter_side):
             query['FilterSide'] = request.filter_side
+        if not UtilClient.is_unset(request.gray_base_tags_shrink):
+            query['GrayBaseTags'] = request.gray_base_tags_shrink
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region):

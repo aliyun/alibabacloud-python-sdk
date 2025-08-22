@@ -22339,6 +22339,7 @@ class GetAppMessageQueueRouteResponseBodyData(TeaModel):
         app_id: str = None,
         enable: bool = None,
         filter_side: str = None,
+        gray_base_tags: List[str] = None,
         region: str = None,
         tags: List[str] = None,
     ):
@@ -22351,6 +22352,7 @@ class GetAppMessageQueueRouteResponseBodyData(TeaModel):
         self.enable = enable
         # The side for message filtering when the canary release for messaging feature is enabled.
         self.filter_side = filter_side
+        self.gray_base_tags = gray_base_tags
         # The region ID.
         self.region = region
         # The tags used to ignore message consumption for nodes in untagged environments.
@@ -22371,6 +22373,8 @@ class GetAppMessageQueueRouteResponseBodyData(TeaModel):
             result['Enable'] = self.enable
         if self.filter_side is not None:
             result['FilterSide'] = self.filter_side
+        if self.gray_base_tags is not None:
+            result['GrayBaseTags'] = self.gray_base_tags
         if self.region is not None:
             result['Region'] = self.region
         if self.tags is not None:
@@ -22385,6 +22389,8 @@ class GetAppMessageQueueRouteResponseBodyData(TeaModel):
             self.enable = m.get('Enable')
         if m.get('FilterSide') is not None:
             self.filter_side = m.get('FilterSide')
+        if m.get('GrayBaseTags') is not None:
+            self.gray_base_tags = m.get('GrayBaseTags')
         if m.get('Region') is not None:
             self.region = m.get('Region')
         if m.get('Tags') is not None:
@@ -72949,6 +72955,7 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         app_name: str = None,
         enable: bool = None,
         filter_side: str = None,
+        gray_base_tags: List[str] = None,
         namespace: str = None,
         region: str = None,
         tags: List[str] = None,
@@ -72970,6 +72977,7 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         self.enable = enable
         # The side for message filtering when the canary release for messaging feature is enabled.
         self.filter_side = filter_side
+        self.gray_base_tags = gray_base_tags
         self.namespace = namespace
         # The region ID.
         # 
@@ -72997,6 +73005,8 @@ class UpdateMessageQueueRouteRequest(TeaModel):
             result['Enable'] = self.enable
         if self.filter_side is not None:
             result['FilterSide'] = self.filter_side
+        if self.gray_base_tags is not None:
+            result['GrayBaseTags'] = self.gray_base_tags
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region is not None:
@@ -73017,6 +73027,8 @@ class UpdateMessageQueueRouteRequest(TeaModel):
             self.enable = m.get('Enable')
         if m.get('FilterSide') is not None:
             self.filter_side = m.get('FilterSide')
+        if m.get('GrayBaseTags') is not None:
+            self.gray_base_tags = m.get('GrayBaseTags')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('Region') is not None:
@@ -73034,6 +73046,7 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         app_name: str = None,
         enable: bool = None,
         filter_side: str = None,
+        gray_base_tags_shrink: str = None,
         namespace: str = None,
         region: str = None,
         tags_shrink: str = None,
@@ -73055,6 +73068,7 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         self.enable = enable
         # The side for message filtering when the canary release for messaging feature is enabled.
         self.filter_side = filter_side
+        self.gray_base_tags_shrink = gray_base_tags_shrink
         self.namespace = namespace
         # The region ID.
         # 
@@ -73082,6 +73096,8 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
             result['Enable'] = self.enable
         if self.filter_side is not None:
             result['FilterSide'] = self.filter_side
+        if self.gray_base_tags_shrink is not None:
+            result['GrayBaseTags'] = self.gray_base_tags_shrink
         if self.namespace is not None:
             result['Namespace'] = self.namespace
         if self.region is not None:
@@ -73102,6 +73118,8 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
             self.enable = m.get('Enable')
         if m.get('FilterSide') is not None:
             self.filter_side = m.get('FilterSide')
+        if m.get('GrayBaseTags') is not None:
+            self.gray_base_tags_shrink = m.get('GrayBaseTags')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
         if m.get('Region') is not None:
