@@ -1,3 +1,11 @@
+2025-08-22 Version: 10.0.0
+- Update API GetRumUploadFiles: add request parameters FileName.
+- Update API GetRumUploadFiles: add request parameters NextToken.
+- Update API GetRumUploadFiles: add request parameters PageSize.
+- Update API GetRumUploadFiles: update response parameters Body.Data' type has changed.
+- Update API GetRumUploadFiles: delete response parameters Body.Data.$.
+
+
 2025-07-25 Version: 9.0.1
 - Update API GetAlertRules: add request parameters BizRegionId.
 

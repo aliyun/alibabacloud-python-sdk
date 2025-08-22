@@ -34567,15 +34567,19 @@ class GetRumUploadFilesRequest(TeaModel):
     def __init__(
         self,
         app_type: str = None,
+        file_name: str = None,
+        next_token: str = None,
+        page_size: int = None,
         pid: str = None,
         region_id: str = None,
         version_id: str = None,
     ):
         # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.app_type = app_type
+        self.file_name = file_name
+        self.next_token = next_token
+        self.page_size = page_size
         # The process ID (PID) of the application.
-        # 
-        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
@@ -34595,6 +34599,12 @@ class GetRumUploadFilesRequest(TeaModel):
         result = dict()
         if self.app_type is not None:
             result['AppType'] = self.app_type
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.region_id is not None:
@@ -34607,6 +34617,12 @@ class GetRumUploadFilesRequest(TeaModel):
         m = m or dict()
         if m.get('AppType') is not None:
             self.app_type = m.get('AppType')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
@@ -34616,7 +34632,7 @@ class GetRumUploadFilesRequest(TeaModel):
         return self
 
 
-class GetRumUploadFilesResponseBodyData(TeaModel):
+class GetRumUploadFilesResponseBodyDataFileList(TeaModel):
     def __init__(
         self,
         file_name: str = None,
@@ -34625,15 +34641,10 @@ class GetRumUploadFilesResponseBodyData(TeaModel):
         uuid: str = None,
         version_id: str = None,
     ):
-        # The file name.
         self.file_name = file_name
-        # The time when the file was last modified. The value is a timestamp.
         self.last_modified_time = last_modified_time
-        # The size of the file. Unit: bytes.
         self.size = size
-        # The file ID.
         self.uuid = uuid
-        # The version number of the file.
         self.version_id = version_id
 
     def validate(self):
@@ -34672,11 +34683,52 @@ class GetRumUploadFilesResponseBodyData(TeaModel):
         return self
 
 
+class GetRumUploadFilesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_list: List[GetRumUploadFilesResponseBodyDataFileList] = None,
+        next_token: str = None,
+    ):
+        self.file_list = file_list
+        self.next_token = next_token
+
+    def validate(self):
+        if self.file_list:
+            for k in self.file_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FileList'] = []
+        if self.file_list is not None:
+            for k in self.file_list:
+                result['FileList'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.file_list = []
+        if m.get('FileList') is not None:
+            for k in m.get('FileList'):
+                temp_model = GetRumUploadFilesResponseBodyDataFileList()
+                self.file_list.append(temp_model.from_map(k))
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
 class GetRumUploadFilesResponseBody(TeaModel):
     def __init__(
         self,
         code: int = None,
-        data: List[GetRumUploadFilesResponseBodyData] = None,
+        data: GetRumUploadFilesResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
@@ -34700,9 +34752,7 @@ class GetRumUploadFilesResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -34712,10 +34762,8 @@ class GetRumUploadFilesResponseBody(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
@@ -34730,11 +34778,9 @@ class GetRumUploadFilesResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = GetRumUploadFilesResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = GetRumUploadFilesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:

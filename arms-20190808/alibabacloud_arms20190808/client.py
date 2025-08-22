@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'arms.aliyuncs.com',
@@ -14955,6 +14954,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_type):
             query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
@@ -14998,6 +15003,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_type):
             query['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.pid):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
