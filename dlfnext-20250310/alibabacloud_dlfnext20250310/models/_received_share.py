@@ -11,6 +11,7 @@ class ReceivedShare(DaraModel):
         comment: str = None,
         created_at: int = None,
         created_by: str = None,
+        enable_write: bool = None,
         owner: str = None,
         provider_tenant_id: int = None,
         share_id: str = None,
@@ -22,6 +23,7 @@ class ReceivedShare(DaraModel):
         self.comment = comment
         self.created_at = created_at
         self.created_by = created_by
+        self.enable_write = enable_write
         self.owner = owner
         self.provider_tenant_id = provider_tenant_id
         self.share_id = share_id
@@ -48,6 +50,9 @@ class ReceivedShare(DaraModel):
 
         if self.created_by is not None:
             result['createdBy'] = self.created_by
+
+        if self.enable_write is not None:
+            result['enableWrite'] = self.enable_write
 
         if self.owner is not None:
             result['owner'] = self.owner
@@ -82,6 +87,9 @@ class ReceivedShare(DaraModel):
 
         if m.get('createdBy') is not None:
             self.created_by = m.get('createdBy')
+
+        if m.get('enableWrite') is not None:
+            self.enable_write = m.get('enableWrite')
 
         if m.get('owner') is not None:
             self.owner = m.get('owner')

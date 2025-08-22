@@ -32,6 +32,7 @@ from ._receiver import Receiver
 from ._role import Role
 from ._schema import Schema
 from ._share import Share
+from ._share_options import ShareOptions
 from ._share_resource import ShareResource
 from ._snapshot import Snapshot
 from ._table import Table
@@ -212,6 +213,7 @@ __all__ = [
     Role,
     Schema,
     Share,
+    ShareOptions,
     ShareResource,
     Snapshot,
     Table,

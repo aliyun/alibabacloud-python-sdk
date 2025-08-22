@@ -1,3 +1,8 @@
+2025-08-22 Version: 3.1.1
+- Update API AlterShare: add request parameters body.enableWrite.
+- Update API CreateShare: add request parameters body.enableWrite.
+
+
 2025-08-15 Version: 3.1.0
 - Support API RefreshUserSync.
 

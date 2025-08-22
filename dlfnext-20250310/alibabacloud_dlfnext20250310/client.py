@@ -308,6 +308,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.comment):
             body['comment'] = request.comment
+        if not DaraCore.is_null(request.enable_write):
+            body['enableWrite'] = request.enable_write
         if not DaraCore.is_null(request.share_name):
             body['shareName'] = request.share_name
         req = open_api_util_models.OpenApiRequest(
@@ -341,6 +343,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.comment):
             body['comment'] = request.comment
+        if not DaraCore.is_null(request.enable_write):
+            body['enableWrite'] = request.enable_write
         if not DaraCore.is_null(request.share_name):
             body['shareName'] = request.share_name
         req = open_api_util_models.OpenApiRequest(
@@ -1151,6 +1155,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.comment):
             body['comment'] = request.comment
+        if not DaraCore.is_null(request.enable_write):
+            body['enableWrite'] = request.enable_write
         if not DaraCore.is_null(request.share_name):
             body['shareName'] = request.share_name
         req = open_api_util_models.OpenApiRequest(
@@ -1183,6 +1189,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.comment):
             body['comment'] = request.comment
+        if not DaraCore.is_null(request.enable_write):
+            body['enableWrite'] = request.enable_write
         if not DaraCore.is_null(request.share_name):
             body['shareName'] = request.share_name
         req = open_api_util_models.OpenApiRequest(
