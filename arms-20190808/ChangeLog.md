@@ -1,3 +1,14 @@
+2025-08-22 Version: 10.0.1
+- Update API CreateRumUploadFileUrl: add request parameters ServiceId.
+- Update API CreateRumUploadFileUrl: add request parameters Workspace.
+- Update API DeleteRumUploadFile: add request parameters ServiceId.
+- Update API DeleteRumUploadFile: add request parameters Workspace.
+- Update API GetRumExceptionStack: add request parameters ServiceId.
+- Update API GetRumExceptionStack: add request parameters Workspace.
+- Update API GetRumUploadFiles: add request parameters ServiceId.
+- Update API GetRumUploadFiles: add request parameters Workspace.
+
+
 2025-08-22 Version: 10.0.0
 - Update API GetRumUploadFiles: add request parameters FileName.
 - Update API GetRumUploadFiles: add request parameters NextToken.

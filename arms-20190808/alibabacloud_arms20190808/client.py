@@ -5326,12 +5326,16 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sourcemap_type):
             query['SourcemapType'] = request.sourcemap_type
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5377,12 +5381,16 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sourcemap_type):
             query['SourcemapType'] = request.sourcemap_type
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8984,10 +8992,14 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9031,10 +9043,14 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.uuid):
             query['Uuid'] = request.uuid
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14724,8 +14740,12 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sourcemap_type):
             query['SourcemapType'] = request.sourcemap_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14773,8 +14793,12 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sourcemap_type):
             query['SourcemapType'] = request.sourcemap_type
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14964,8 +14988,12 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15013,8 +15041,12 @@ class Client(OpenApiClient):
             query['Pid'] = request.pid
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.version_id):
             query['VersionId'] = request.version_id
+        if not UtilClient.is_unset(request.workspace):
+            query['Workspace'] = request.workspace
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -12451,9 +12451,11 @@ class CreateRumUploadFileUrlRequest(TeaModel):
         file_name: str = None,
         pid: str = None,
         region_id: str = None,
+        service_id: str = None,
         sourcemap_type: str = None,
         uuid: str = None,
         version_id: str = None,
+        workspace: str = None,
     ):
         # The application name.
         self.app_name = app_name
@@ -12464,19 +12466,19 @@ class CreateRumUploadFileUrlRequest(TeaModel):
         # This parameter is required.
         self.file_name = file_name
         # The process ID (PID) of the application.
-        # 
-        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.service_id = service_id
         # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.sourcemap_type = sourcemap_type
         # The file ID.
         self.uuid = uuid
         # The version number of the file.
         self.version_id = version_id
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -12497,12 +12499,16 @@ class CreateRumUploadFileUrlRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.sourcemap_type is not None:
             result['SourcemapType'] = self.sourcemap_type
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         if self.version_id is not None:
             result['VersionId'] = self.version_id
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -12517,12 +12523,16 @@ class CreateRumUploadFileUrlRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('SourcemapType') is not None:
             self.sourcemap_type = m.get('SourcemapType')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
         return self
 
 
@@ -19979,25 +19989,27 @@ class DeleteRumUploadFileRequest(TeaModel):
         file_name: str = None,
         pid: str = None,
         region_id: str = None,
+        service_id: str = None,
         uuid: str = None,
         version_id: str = None,
+        workspace: str = None,
     ):
         # Information of files to be deleted in JSON array format. If a single file needs to be deleted, this field should be left empty. If multiple files need to be deleted, just fill in this field.
         self.batch_items = batch_items
         # The file name, with the extension.
         self.file_name = file_name
         # The application ID.
-        # 
-        # This parameter is required.
         self.pid = pid
         # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.service_id = service_id
         # The file ID.
         self.uuid = uuid
         # The version number of the file.
         self.version_id = version_id
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -20016,10 +20028,14 @@ class DeleteRumUploadFileRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.uuid is not None:
             result['Uuid'] = self.uuid
         if self.version_id is not None:
             result['VersionId'] = self.version_id
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -20032,10 +20048,14 @@ class DeleteRumUploadFileRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
         return self
 
 
@@ -33873,7 +33893,9 @@ class GetRumExceptionStackRequest(TeaModel):
         extra_info: str = None,
         pid: str = None,
         region_id: str = None,
+        service_id: str = None,
         sourcemap_type: str = None,
+        workspace: str = None,
     ):
         # The binary images, which represent all executable files loaded into the process address space when a crash occurs.
         self.exception_binary_images = exception_binary_images
@@ -33884,11 +33906,10 @@ class GetRumExceptionStackRequest(TeaModel):
         # Extra information about iOS symbol tables. You can leave this parameter empty.
         self.extra_info = extra_info
         # The application ID.
-        # 
-        # This parameter is required.
         self.pid = pid
         # The region ID.
         self.region_id = region_id
+        self.service_id = service_id
         # The parsing type. Valid values:
         # 
         # *   js: Parses JavaScript errors.
@@ -33897,6 +33918,7 @@ class GetRumExceptionStackRequest(TeaModel):
         # *   dSYM: Parses iOS errors.
         # *   so: Parses Android errors.
         self.sourcemap_type = sourcemap_type
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -33919,8 +33941,12 @@ class GetRumExceptionStackRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.sourcemap_type is not None:
             result['SourcemapType'] = self.sourcemap_type
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -33937,8 +33963,12 @@ class GetRumExceptionStackRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('SourcemapType') is not None:
             self.sourcemap_type = m.get('SourcemapType')
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
         return self
 
 
@@ -34572,7 +34602,9 @@ class GetRumUploadFilesRequest(TeaModel):
         page_size: int = None,
         pid: str = None,
         region_id: str = None,
+        service_id: str = None,
         version_id: str = None,
+        workspace: str = None,
     ):
         # The file type. Valid values: source-map: SourceMap files. mapping: symbol table files for Android. dsym: dSYM files for iOS.
         self.app_type = app_type
@@ -34585,8 +34617,10 @@ class GetRumUploadFilesRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.service_id = service_id
         # The version number of the files. If you do not specify this parameter, all versions of the files are returned by default.
         self.version_id = version_id
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -34609,8 +34643,12 @@ class GetRumUploadFilesRequest(TeaModel):
             result['Pid'] = self.pid
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.version_id is not None:
             result['VersionId'] = self.version_id
+        if self.workspace is not None:
+            result['Workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -34627,8 +34665,12 @@ class GetRumUploadFilesRequest(TeaModel):
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('VersionId') is not None:
             self.version_id = m.get('VersionId')
+        if m.get('Workspace') is not None:
+            self.workspace = m.get('Workspace')
         return self
 
 
