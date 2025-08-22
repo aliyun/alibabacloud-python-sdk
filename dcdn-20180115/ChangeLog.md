@@ -1,3 +1,25 @@
+2025-08-22 Version: 3.0.0
+- Support API DeleteCustomDomainSampleRate.
+- Support API DescribeCustomDomainSampleRate.
+- Support API DescribeKvRealTimeQpsData.
+- Support API ModifyCustomDomainSampleRate.
+- Delete API BatchSetDcdnDomainCertificate.
+- Delete API SetDcdnDomainCertificate.
+- Update API DescribeDcdnDomainCname: add response parameters Body.CnameDatas.$.ErrMsg.
+- Update API DescribeDcdnDomainCname: add response parameters Body.CnameDatas.$.Passed.
+- Update API DescribeDcdnFullDomainsBlockIPHistory: add response parameters Body.IPBlockInfo.$.BlockInterval.
+- Update API DescribeDcdnFullDomainsBlockIPHistory: add response parameters Body.IPBlockInfo.$.OperationType.
+- Update API DescribeDcdnFullDomainsBlockIPHistory: add response parameters Body.IPBlockInfo.$.UpdateType.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityBaseUnit.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityShowUnit.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.CurrCapacityShowValue.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityBaseUnit.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityShowUnit.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.InitCapacityShowValue.
+- Update API DescribeDcdnUserResourcePackage: add response parameters Body.ResourcePackageInfos.$.Region.
+- Update API SetDcdnDomainSSLCertificate: delete request parameters Env.
+
+
 2024-11-06 Version: 2.5.0
 - Support API GetDcdnKvDetail.
 - Update API PreloadDcdnObjectCaches: add param QueryHashkey.

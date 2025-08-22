@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
+from Tea.request import TeaRequest
+from Tea.exceptions import TeaException
 from Tea.core import TeaCore
+from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_tea_fileform.client import Client as FileFormClient
+from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_dcdn20180115 import models as dcdn_20180115_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
-from alibabacloud_openplatform20191219 import models as open_platform_models
-from alibabacloud_oss_sdk import models as oss_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
-from alibabacloud_oss_util import models as ossutil_models
 
 
 class Client(OpenApiClient):
@@ -86,6 +85,82 @@ class Client(OpenApiClient):
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dcdn', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def _post_ossobject(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = TeaCore.do_action(_request)
+        resp_map = None
+        body_str = UtilClient.read_as_string(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
+
+    async def _post_ossobject_async(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = await TeaCore.async_do_action(_request)
+        resp_map = None
+        body_str = await UtilClient.read_as_string_async(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
 
     def get_endpoint(
         self,
@@ -1025,10 +1100,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1043,51 +1125,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='dcdn',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'dcdn',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         batch_delete_dcdn_kv_with_high_capacity_req = dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest()
         OpenApiUtilClient.convert(request, batch_delete_dcdn_kv_with_high_capacity_req)
         if not UtilClient.is_unset(request.url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            batch_delete_dcdn_kv_with_high_capacity_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            batch_delete_dcdn_kv_with_high_capacity_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         batch_delete_dcdn_kv_with_high_capacity_resp = self.batch_delete_dcdn_kv_with_high_capacity_with_options(batch_delete_dcdn_kv_with_high_capacity_req, runtime)
         return batch_delete_dcdn_kv_with_high_capacity_resp
 
@@ -1097,10 +1183,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1115,51 +1208,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='dcdn',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'dcdn',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         batch_delete_dcdn_kv_with_high_capacity_req = dcdn_20180115_models.BatchDeleteDcdnKvWithHighCapacityRequest()
         OpenApiUtilClient.convert(request, batch_delete_dcdn_kv_with_high_capacity_req)
         if not UtilClient.is_unset(request.url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            batch_delete_dcdn_kv_with_high_capacity_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            batch_delete_dcdn_kv_with_high_capacity_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         batch_delete_dcdn_kv_with_high_capacity_resp = await self.batch_delete_dcdn_kv_with_high_capacity_with_options_async(batch_delete_dcdn_kv_with_high_capacity_req, runtime)
         return batch_delete_dcdn_kv_with_high_capacity_resp
 
@@ -1597,10 +1694,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1615,51 +1719,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='dcdn',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'dcdn',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         batch_put_dcdn_kv_with_high_capacity_req = dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest()
         OpenApiUtilClient.convert(request, batch_put_dcdn_kv_with_high_capacity_req)
         if not UtilClient.is_unset(request.url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            batch_put_dcdn_kv_with_high_capacity_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            batch_put_dcdn_kv_with_high_capacity_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         batch_put_dcdn_kv_with_high_capacity_resp = self.batch_put_dcdn_kv_with_high_capacity_with_options(batch_put_dcdn_kv_with_high_capacity_req, runtime)
         return batch_put_dcdn_kv_with_high_capacity_resp
 
@@ -1669,10 +1777,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1687,189 +1802,57 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='dcdn',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'dcdn',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         batch_put_dcdn_kv_with_high_capacity_req = dcdn_20180115_models.BatchPutDcdnKvWithHighCapacityRequest()
         OpenApiUtilClient.convert(request, batch_put_dcdn_kv_with_high_capacity_req)
         if not UtilClient.is_unset(request.url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            batch_put_dcdn_kv_with_high_capacity_req.url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            batch_put_dcdn_kv_with_high_capacity_req.url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         batch_put_dcdn_kv_with_high_capacity_resp = await self.batch_put_dcdn_kv_with_high_capacity_with_options_async(batch_put_dcdn_kv_with_high_capacity_req, runtime)
         return batch_put_dcdn_kv_with_high_capacity_resp
-
-    def batch_set_dcdn_domain_certificate_with_options(
-        self,
-        request: dcdn_20180115_models.BatchSetDcdnDomainCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse:
-        """
-        @summary Configures the SSL certificate and modifies the certificate information for multiple accelerated domain names at a time.
-        
-        @description > You can call this operation up to 10 times per second per account.
-        
-        @param request: BatchSetDcdnDomainCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchSetDcdnDomainCertificateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cert_name):
-            query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_type):
-            query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.sslpri):
-            query['SSLPri'] = request.sslpri
-        if not UtilClient.is_unset(request.sslprotocol):
-            query['SSLProtocol'] = request.sslprotocol
-        if not UtilClient.is_unset(request.sslpub):
-            query['SSLPub'] = request.sslpub
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='BatchSetDcdnDomainCertificate',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def batch_set_dcdn_domain_certificate_with_options_async(
-        self,
-        request: dcdn_20180115_models.BatchSetDcdnDomainCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse:
-        """
-        @summary Configures the SSL certificate and modifies the certificate information for multiple accelerated domain names at a time.
-        
-        @description > You can call this operation up to 10 times per second per account.
-        
-        @param request: BatchSetDcdnDomainCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchSetDcdnDomainCertificateResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cert_name):
-            query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_type):
-            query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.sslpri):
-            query['SSLPri'] = request.sslpri
-        if not UtilClient.is_unset(request.sslprotocol):
-            query['SSLProtocol'] = request.sslprotocol
-        if not UtilClient.is_unset(request.sslpub):
-            query['SSLPub'] = request.sslpub
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='BatchSetDcdnDomainCertificate',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def batch_set_dcdn_domain_certificate(
-        self,
-        request: dcdn_20180115_models.BatchSetDcdnDomainCertificateRequest,
-    ) -> dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse:
-        """
-        @summary Configures the SSL certificate and modifies the certificate information for multiple accelerated domain names at a time.
-        
-        @description > You can call this operation up to 10 times per second per account.
-        
-        @param request: BatchSetDcdnDomainCertificateRequest
-        @return: BatchSetDcdnDomainCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.batch_set_dcdn_domain_certificate_with_options(request, runtime)
-
-    async def batch_set_dcdn_domain_certificate_async(
-        self,
-        request: dcdn_20180115_models.BatchSetDcdnDomainCertificateRequest,
-    ) -> dcdn_20180115_models.BatchSetDcdnDomainCertificateResponse:
-        """
-        @summary Configures the SSL certificate and modifies the certificate information for multiple accelerated domain names at a time.
-        
-        @description > You can call this operation up to 10 times per second per account.
-        
-        @param request: BatchSetDcdnDomainCertificateRequest
-        @return: BatchSetDcdnDomainCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.batch_set_dcdn_domain_certificate_with_options_async(request, runtime)
 
     def batch_set_dcdn_domain_configs_with_options(
         self,
@@ -3643,6 +3626,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_slr_and_sls_project_with_options_async(request, runtime)
 
+    def delete_custom_domain_sample_rate_with_options(
+        self,
+        request: dcdn_20180115_models.DeleteCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制实时日志删除接口
+        
+        @param request: DeleteCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteCustomDomainSampleRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_domain_sample_rate_with_options_async(
+        self,
+        request: dcdn_20180115_models.DeleteCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DeleteCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制实时日志删除接口
+        
+        @param request: DeleteCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DeleteCustomDomainSampleRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_domain_sample_rate(
+        self,
+        request: dcdn_20180115_models.DeleteCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.DeleteCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制实时日志删除接口
+        
+        @param request: DeleteCustomDomainSampleRateRequest
+        @return: DeleteCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_custom_domain_sample_rate_with_options(request, runtime)
+
+    async def delete_custom_domain_sample_rate_async(
+        self,
+        request: dcdn_20180115_models.DeleteCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.DeleteCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制实时日志删除接口
+        
+        @param request: DeleteCustomDomainSampleRateRequest
+        @return: DeleteCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_custom_domain_sample_rate_with_options_async(request, runtime)
+
     def delete_dcdn_deliver_task_with_options(
         self,
         request: dcdn_20180115_models.DeleteDcdnDeliverTaskRequest,
@@ -5364,6 +5443,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_routine_conf_envs_with_options_async(request, runtime)
+
+    def describe_custom_domain_sample_rate_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeCustomDomainSampleRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_domain_sample_rate_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeCustomDomainSampleRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_domain_sample_rate(
+        self,
+        request: dcdn_20180115_models.DescribeCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_custom_domain_sample_rate_with_options(request, runtime)
+
+    async def describe_custom_domain_sample_rate_async(
+        self,
+        request: dcdn_20180115_models.DescribeCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.DescribeCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制查询域名采样率
+        
+        @param request: DescribeCustomDomainSampleRateRequest
+        @return: DescribeCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_custom_domain_sample_rate_with_options_async(request, runtime)
 
     def describe_dcdn_acl_fields_with_options(
         self,
@@ -8493,7 +8676,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
-        @summary Queries the address where you can download the log data of a specific domain name.
+        @summary Queries the address where you can download the log data of a domain name.
         
         @description >
         If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
@@ -8540,7 +8723,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
-        @summary Queries the address where you can download the log data of a specific domain name.
+        @summary Queries the address where you can download the log data of a domain name.
         
         @description >
         If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
@@ -8586,7 +8769,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainLogRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
-        @summary Queries the address where you can download the log data of a specific domain name.
+        @summary Queries the address where you can download the log data of a domain name.
         
         @description >
         If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
@@ -8603,7 +8786,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainLogRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainLogResponse:
         """
-        @summary Queries the address where you can download the log data of a specific domain name.
+        @summary Queries the address where you can download the log data of a domain name.
         
         @description >
         If you do not set the **StartTime** or **EndTime** parameter, the request returns the data collected in the last 24 hours. If you set both these parameters, the request returns the data collected within the specified time range.********\
@@ -9937,9 +10120,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse:
         """
-        @summary Queries traffic data and the number of visits of each Internet service provider (ISP) in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
+        @summary Queries traffic usage through each Internet service provider (ISP) and the number of visits in each region. The resolution of the data is one minute. The maximum time range to query for this operation is 10 minutes.
         
-        @description > You can call this operation up to 10 times per second per account.
+        @description >
+        > - You can call this operation up to 10 times per second per account.
+        > - This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for permissions to use this operation.
         
         @param request: DescribeDcdnDomainRealTimeDetailDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9972,9 +10157,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse:
         """
-        @summary Queries traffic data and the number of visits of each Internet service provider (ISP) in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
+        @summary Queries traffic usage through each Internet service provider (ISP) and the number of visits in each region. The resolution of the data is one minute. The maximum time range to query for this operation is 10 minutes.
         
-        @description > You can call this operation up to 10 times per second per account.
+        @description >
+        > - You can call this operation up to 10 times per second per account.
+        > - This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for permissions to use this operation.
         
         @param request: DescribeDcdnDomainRealTimeDetailDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10006,9 +10193,11 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse:
         """
-        @summary Queries traffic data and the number of visits of each Internet service provider (ISP) in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
+        @summary Queries traffic usage through each Internet service provider (ISP) and the number of visits in each region. The resolution of the data is one minute. The maximum time range to query for this operation is 10 minutes.
         
-        @description > You can call this operation up to 10 times per second per account.
+        @description >
+        > - You can call this operation up to 10 times per second per account.
+        > - This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for permissions to use this operation.
         
         @param request: DescribeDcdnDomainRealTimeDetailDataRequest
         @return: DescribeDcdnDomainRealTimeDetailDataResponse
@@ -10021,9 +10210,11 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDomainRealTimeDetailDataResponse:
         """
-        @summary Queries traffic data and the number of visits of each Internet service provider (ISP) in each region. Data is collected every minute. The maximum time range to query for this operation is 10 minutes.
+        @summary Queries traffic usage through each Internet service provider (ISP) and the number of visits in each region. The resolution of the data is one minute. The maximum time range to query for this operation is 10 minutes.
         
-        @description > You can call this operation up to 10 times per second per account.
+        @description >
+        > - You can call this operation up to 10 times per second per account.
+        > - This operation is available only to users whose daily peak bandwidth value is higher than 1 Gbit/s. If you meet this requirement, you can [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for permissions to use this operation.
         
         @param request: DescribeDcdnDomainRealTimeDetailDataRequest
         @return: DescribeDcdnDomainRealTimeDetailDataResponse
@@ -20283,6 +20474,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_highlight_info_with_options_async(request, runtime)
 
+    def describe_kv_real_time_qps_data_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeKvRealTimeQpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse:
+        """
+        @summary kv存储实时Qps监控数据
+        
+        @param request: DescribeKvRealTimeQpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvRealTimeQpsDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKvRealTimeQpsData',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_kv_real_time_qps_data_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeKvRealTimeQpsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse:
+        """
+        @summary kv存储实时Qps监控数据
+        
+        @param request: DescribeKvRealTimeQpsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKvRealTimeQpsDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_type):
+            query['AccessType'] = request.access_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.split_by):
+            query['SplitBy'] = request.split_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeKvRealTimeQpsData',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_kv_real_time_qps_data(
+        self,
+        request: dcdn_20180115_models.DescribeKvRealTimeQpsDataRequest,
+    ) -> dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse:
+        """
+        @summary kv存储实时Qps监控数据
+        
+        @param request: DescribeKvRealTimeQpsDataRequest
+        @return: DescribeKvRealTimeQpsDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_kv_real_time_qps_data_with_options(request, runtime)
+
+    async def describe_kv_real_time_qps_data_async(
+        self,
+        request: dcdn_20180115_models.DescribeKvRealTimeQpsDataRequest,
+    ) -> dcdn_20180115_models.DescribeKvRealTimeQpsDataResponse:
+        """
+        @summary kv存储实时Qps监控数据
+        
+        @param request: DescribeKvRealTimeQpsDataRequest
+        @return: DescribeKvRealTimeQpsDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_kv_real_time_qps_data_with_options_async(request, runtime)
+
     def describe_kv_usage_data_with_options(
         self,
         request: dcdn_20180115_models.DescribeKvUsageDataRequest,
@@ -22284,6 +22591,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_dcdn_real_time_delivery_project_with_options_async(request, runtime)
+
+    def modify_custom_domain_sample_rate_with_options(
+        self,
+        request: dcdn_20180115_models.ModifyCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制新增修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_config_id):
+            body['BaseConfigID'] = request.base_config_id
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.sample_rate):
+            body['SampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.sink_id):
+            body['SinkID'] = request.sink_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyCustomDomainSampleRateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_custom_domain_sample_rate_with_options_async(
+        self,
+        request: dcdn_20180115_models.ModifyCustomDomainSampleRateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制新增修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_config_id):
+            body['BaseConfigID'] = request.base_config_id
+        if not UtilClient.is_unset(request.domain_names):
+            body['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.sample_rate):
+            body['SampleRate'] = request.sample_rate
+        if not UtilClient.is_unset(request.sink_id):
+            body['SinkID'] = request.sink_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyCustomDomainSampleRate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.ModifyCustomDomainSampleRateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_custom_domain_sample_rate(
+        self,
+        request: dcdn_20180115_models.ModifyCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制新增修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_custom_domain_sample_rate_with_options(request, runtime)
+
+    async def modify_custom_domain_sample_rate_async(
+        self,
+        request: dcdn_20180115_models.ModifyCustomDomainSampleRateRequest,
+    ) -> dcdn_20180115_models.ModifyCustomDomainSampleRateResponse:
+        """
+        @summary A客户定制新增修改域名采样率接口
+        
+        @param request: ModifyCustomDomainSampleRateRequest
+        @return: ModifyCustomDomainSampleRateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_custom_domain_sample_rate_with_options_async(request, runtime)
 
     def modify_dcdn_domain_schdm_by_property_with_options(
         self,
@@ -24301,158 +24716,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_dcdn_domain_csrcertificate_with_options_async(request, runtime)
 
-    def set_dcdn_domain_certificate_with_options(
-        self,
-        request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
-        """
-        @deprecated OpenAPI SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
-        
-        @summary Enables or disables the SSL certificate for a domain name and modifies certificate details.
-        
-        @description > You can call this operation up to 30 times per second per account.
-        
-        @param request: SetDcdnDomainCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDcdnDomainCertificateResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cert_name):
-            query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_type):
-            query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.force_set):
-            query['ForceSet'] = request.force_set
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.sslpri):
-            query['SSLPri'] = request.sslpri
-        if not UtilClient.is_unset(request.sslprotocol):
-            query['SSLProtocol'] = request.sslprotocol
-        if not UtilClient.is_unset(request.sslpub):
-            query['SSLPub'] = request.sslpub
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetDcdnDomainCertificate',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.SetDcdnDomainCertificateResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def set_dcdn_domain_certificate_with_options_async(
-        self,
-        request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
-        """
-        @deprecated OpenAPI SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
-        
-        @summary Enables or disables the SSL certificate for a domain name and modifies certificate details.
-        
-        @description > You can call this operation up to 30 times per second per account.
-        
-        @param request: SetDcdnDomainCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDcdnDomainCertificateResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.cert_name):
-            query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_type):
-            query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.domain_name):
-            query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.force_set):
-            query['ForceSet'] = request.force_set
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region):
-            query['Region'] = request.region
-        if not UtilClient.is_unset(request.sslpri):
-            query['SSLPri'] = request.sslpri
-        if not UtilClient.is_unset(request.sslprotocol):
-            query['SSLProtocol'] = request.sslprotocol
-        if not UtilClient.is_unset(request.sslpub):
-            query['SSLPub'] = request.sslpub
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='SetDcdnDomainCertificate',
-            version='2018-01-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            dcdn_20180115_models.SetDcdnDomainCertificateResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def set_dcdn_domain_certificate(
-        self,
-        request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
-    ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
-        """
-        @deprecated OpenAPI SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
-        
-        @summary Enables or disables the SSL certificate for a domain name and modifies certificate details.
-        
-        @description > You can call this operation up to 30 times per second per account.
-        
-        @param request: SetDcdnDomainCertificateRequest
-        @return: SetDcdnDomainCertificateResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.set_dcdn_domain_certificate_with_options(request, runtime)
-
-    async def set_dcdn_domain_certificate_async(
-        self,
-        request: dcdn_20180115_models.SetDcdnDomainCertificateRequest,
-    ) -> dcdn_20180115_models.SetDcdnDomainCertificateResponse:
-        """
-        @deprecated OpenAPI SetDcdnDomainCertificate is deprecated, please use dcdn::2018-01-15::SetDcdnDomainSSLCertificate instead.
-        
-        @summary Enables or disables the SSL certificate for a domain name and modifies certificate details.
-        
-        @description > You can call this operation up to 30 times per second per account.
-        
-        @param request: SetDcdnDomainCertificateRequest
-        @return: SetDcdnDomainCertificateResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.set_dcdn_domain_certificate_with_options_async(request, runtime)
-
     def set_dcdn_domain_smcertificate_with_options(
         self,
         request: dcdn_20180115_models.SetDcdnDomainSMCertificateRequest,
@@ -24597,8 +24860,6 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpri):
@@ -24652,8 +24913,6 @@ class Client(OpenApiClient):
             query['CertType'] = request.cert_type
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.env):
-            query['Env'] = request.env
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sslpri):
