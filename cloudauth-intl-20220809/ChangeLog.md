@@ -1,3 +1,7 @@
+2025-08-23 Version: 3.11.2
+- Update API Initialize: add request parameters EditOcrResult.
+
+
 2025-08-19 Version: 3.11.1
 - Generated python 2022-08-09 for Cloudauth-intl.
 

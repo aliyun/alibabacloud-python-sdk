@@ -4134,6 +4134,7 @@ class InitializeRequest(TeaModel):
         doc_type: str = None,
         doc_video: str = None,
         document_number: str = None,
+        edit_ocr_result: str = None,
         experience_code: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
@@ -4175,6 +4176,7 @@ class InitializeRequest(TeaModel):
         self.doc_type = doc_type
         self.doc_video = doc_video
         self.document_number = document_number
+        self.edit_ocr_result = edit_ocr_result
         self.experience_code = experience_code
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
@@ -4241,6 +4243,8 @@ class InitializeRequest(TeaModel):
             result['DocVideo'] = self.doc_video
         if self.document_number is not None:
             result['DocumentNumber'] = self.document_number
+        if self.edit_ocr_result is not None:
+            result['EditOcrResult'] = self.edit_ocr_result
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
         if self.face_picture_base_64 is not None:
@@ -4325,6 +4329,8 @@ class InitializeRequest(TeaModel):
             self.doc_video = m.get('DocVideo')
         if m.get('DocumentNumber') is not None:
             self.document_number = m.get('DocumentNumber')
+        if m.get('EditOcrResult') is not None:
+            self.edit_ocr_result = m.get('EditOcrResult')
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
         if m.get('FacePictureBase64') is not None:
@@ -4396,6 +4402,7 @@ class InitializeShrinkRequest(TeaModel):
         doc_type: str = None,
         doc_video: str = None,
         document_number: str = None,
+        edit_ocr_result: str = None,
         experience_code: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
@@ -4437,6 +4444,7 @@ class InitializeShrinkRequest(TeaModel):
         self.doc_type = doc_type
         self.doc_video = doc_video
         self.document_number = document_number
+        self.edit_ocr_result = edit_ocr_result
         self.experience_code = experience_code
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
@@ -4503,6 +4511,8 @@ class InitializeShrinkRequest(TeaModel):
             result['DocVideo'] = self.doc_video
         if self.document_number is not None:
             result['DocumentNumber'] = self.document_number
+        if self.edit_ocr_result is not None:
+            result['EditOcrResult'] = self.edit_ocr_result
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
         if self.face_picture_base_64 is not None:
@@ -4587,6 +4597,8 @@ class InitializeShrinkRequest(TeaModel):
             self.doc_video = m.get('DocVideo')
         if m.get('DocumentNumber') is not None:
             self.document_number = m.get('DocumentNumber')
+        if m.get('EditOcrResult') is not None:
+            self.edit_ocr_result = m.get('EditOcrResult')
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
         if m.get('FacePictureBase64') is not None:

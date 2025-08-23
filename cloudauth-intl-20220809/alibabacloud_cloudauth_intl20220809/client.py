@@ -2672,6 +2672,8 @@ class Client(OpenApiClient):
             query['DocVideo'] = request.doc_video
         if not UtilClient.is_unset(request.document_number):
             query['DocumentNumber'] = request.document_number
+        if not UtilClient.is_unset(request.edit_ocr_result):
+            query['EditOcrResult'] = request.edit_ocr_result
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
@@ -2791,6 +2793,8 @@ class Client(OpenApiClient):
             query['DocVideo'] = request.doc_video
         if not UtilClient.is_unset(request.document_number):
             query['DocumentNumber'] = request.document_number
+        if not UtilClient.is_unset(request.edit_ocr_result):
+            query['EditOcrResult'] = request.edit_ocr_result
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not UtilClient.is_unset(request.face_picture_url):
