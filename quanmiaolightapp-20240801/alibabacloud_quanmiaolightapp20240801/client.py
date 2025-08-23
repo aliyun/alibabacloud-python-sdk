@@ -729,6 +729,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_essay_correction_task_with_options_async(workspace_id, request, headers, runtime)
 
+    def get_file_content_with_options(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetFileContentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetFileContentResponse:
+        """
+        @summary 获取文件内容
+        
+        @param request: GetFileContentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileContentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileContent',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getFileContent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetFileContentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_content_with_options_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetFileContentRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> quan_miao_light_app_20240801_models.GetFileContentResponse:
+        """
+        @summary 获取文件内容
+        
+        @param request: GetFileContentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileContentResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.file_key):
+            body['fileKey'] = request.file_key
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFileContent',
+            version='2024-08-01',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/quanmiao/lightapp/getFileContent',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quan_miao_light_app_20240801_models.GetFileContentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_content(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetFileContentRequest,
+    ) -> quan_miao_light_app_20240801_models.GetFileContentResponse:
+        """
+        @summary 获取文件内容
+        
+        @param request: GetFileContentRequest
+        @return: GetFileContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_file_content_with_options(workspace_id, request, headers, runtime)
+
+    async def get_file_content_async(
+        self,
+        workspace_id: str,
+        request: quan_miao_light_app_20240801_models.GetFileContentRequest,
+    ) -> quan_miao_light_app_20240801_models.GetFileContentResponse:
+        """
+        @summary 获取文件内容
+        
+        @param request: GetFileContentRequest
+        @return: GetFileContentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_file_content_with_options_async(workspace_id, request, headers, runtime)
+
     def get_tag_mining_analysis_task_with_options(
         self,
         workspace_id: str,
