@@ -25738,6 +25738,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.additional_attributes):
+            query['AdditionalAttributes'] = request.additional_attributes
         if not UtilClient.is_unset(request.cpu_architecture):
             query['CpuArchitecture'] = request.cpu_architecture
         if not UtilClient.is_unset(request.cpu_architectures):
@@ -25871,6 +25873,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.additional_attributes):
+            query['AdditionalAttributes'] = request.additional_attributes
         if not UtilClient.is_unset(request.cpu_architecture):
             query['CpuArchitecture'] = request.cpu_architecture
         if not UtilClient.is_unset(request.cpu_architectures):
@@ -44192,7 +44196,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
         """
-        @summary 修改实例时钟选项
+        @summary Modifies the instance clock options.
+        
+        @description When you call this operation, note that:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
         
         @param request: ModifyInstanceClockOptionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44243,7 +44251,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
         """
-        @summary 修改实例时钟选项
+        @summary Modifies the instance clock options.
+        
+        @description When you call this operation, note that:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
         
         @param request: ModifyInstanceClockOptionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44293,7 +44305,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
         """
-        @summary 修改实例时钟选项
+        @summary Modifies the instance clock options.
+        
+        @description When you call this operation, note that:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
         
         @param request: ModifyInstanceClockOptionsRequest
         @return: ModifyInstanceClockOptionsResponse
@@ -44306,7 +44322,11 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.ModifyInstanceClockOptionsRequest,
     ) -> ecs_20140526_models.ModifyInstanceClockOptionsResponse:
         """
-        @summary 修改实例时钟选项
+        @summary Modifies the instance clock options.
+        
+        @description When you call this operation, note that:
+        This is an asynchronous operation. The ID of the asynchronous task is returned after the call. Query the asynchronous task result to determine whether the execution is complete.
+        To modify the PtpStatus parameter, you must specify the parameter. The instance types that are supported. You can query the instance type list ([DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) ).
         
         @param request: ModifyInstanceClockOptionsRequest
         @return: ModifyInstanceClockOptionsResponse

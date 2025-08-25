@@ -1,3 +1,6 @@
+2025-08-25 Version: 7.2.1
+- Generated python 2014-05-26 for Ecs.
+
 2025-08-19 Version: 7.2.0
 - Support API ModifyInstanceClockOptions.
 - Update API DescribeSecurityGroupAttribute: add request parameters Attribute.
