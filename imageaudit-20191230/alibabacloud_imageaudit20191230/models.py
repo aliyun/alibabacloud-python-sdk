@@ -15,6 +15,7 @@ class ScanImageRequestTask(TeaModel):
     ):
         self.data_id = data_id
         self.image_time_millisecond = image_time_millisecond
+        # This parameter is required.
         self.image_url = image_url
         self.interval = interval
         self.max_frames = max_frames
@@ -62,8 +63,12 @@ class ScanImageRequest(TeaModel):
         task: List[ScanImageRequestTask] = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.scene = scene
         # 1
+        # 
+        # This parameter is required.
         self.task = task
 
     def validate(self):
@@ -109,6 +114,7 @@ class ScanImageAdvanceRequestTask(TeaModel):
     ):
         self.data_id = data_id
         self.image_time_millisecond = image_time_millisecond
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.interval = interval
         self.max_frames = max_frames
@@ -156,8 +162,12 @@ class ScanImageAdvanceRequest(TeaModel):
         task: List[ScanImageAdvanceRequestTask] = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.scene = scene
         # 1
+        # 
+        # This parameter is required.
         self.task = task
 
     def validate(self):
@@ -713,9 +723,6 @@ class ScanImageResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -750,6 +757,7 @@ class ScanTextRequestLabels(TeaModel):
         self,
         label: str = None,
     ):
+        # This parameter is required.
         self.label = label
 
     def validate(self):
@@ -777,6 +785,7 @@ class ScanTextRequestTasks(TeaModel):
         self,
         content: str = None,
     ):
+        # This parameter is required.
         self.content = content
 
     def validate(self):
@@ -806,8 +815,12 @@ class ScanTextRequest(TeaModel):
         tasks: List[ScanTextRequestTasks] = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.labels = labels
         # 1
+        # 
+        # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
@@ -1095,9 +1108,6 @@ class ScanTextResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
