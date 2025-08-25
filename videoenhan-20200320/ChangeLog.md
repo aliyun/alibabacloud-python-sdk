@@ -1,3 +1,6 @@
+2025-08-25 Version: 3.0.22
+- Generated python 2020-03-20 for videoenhan.
+
 2024-05-30 Version: 3.0.21
 - Update API AddFaceVideoTemplate: update response param.
 

@@ -1,21 +1,20 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
+from Tea.request import TeaRequest
+from Tea.exceptions import TeaException
 from Tea.core import TeaCore
+from typing import Dict
 
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi import models as open_api_models
 from alibabacloud_tea_util.client import Client as UtilClient
+from alibabacloud_tea_fileform.client import Client as FileFormClient
+from alibabacloud_tea_xml.client import Client as XMLClient
 from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
 from alibabacloud_videoenhan20200320 import models as videoenhan_20200320_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
-from alibabacloud_openplatform20191219 import models as open_platform_models
-from alibabacloud_oss_sdk import models as oss_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
-from alibabacloud_oss_util import models as ossutil_models
 from alibabacloud_darabonba_number.client import Client as NumberClient
 
 
@@ -31,6 +30,82 @@ class Client(OpenApiClient):
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('videoenhan', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
+
+    def _post_ossobject(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = TeaCore.do_action(_request)
+        resp_map = None
+        body_str = UtilClient.read_as_string(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
+
+    async def _post_ossobject_async(
+        self,
+        bucket_name: str,
+        data: dict,
+    ) -> dict:
+        _request = TeaRequest()
+        form = UtilClient.assert_as_map(data)
+        boundary = FileFormClient.get_boundary()
+        host = UtilClient.assert_as_string(form.get('host'))
+        _request.protocol = 'HTTPS'
+        _request.method = 'POST'
+        _request.pathname = f'/'
+        _request.headers = {
+            'host': host,
+            'date': UtilClient.get_date_utcstring(),
+            'user-agent': UtilClient.get_user_agent('')
+        }
+        _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
+        _request.body = FileFormClient.to_file_form(form, boundary)
+        _last_request = _request
+        _response = await TeaCore.async_do_action(_request)
+        resp_map = None
+        body_str = await UtilClient.read_as_string_async(_response.body)
+        if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
+            resp_map = XMLClient.parse_xml(body_str, None)
+            err = UtilClient.assert_as_map(resp_map.get('Error'))
+            raise TeaException({
+                'code': err.get('Code'),
+                'message': err.get('Message'),
+                'data': {
+                    'httpCode': _response.status_code,
+                    'requestId': err.get('RequestId'),
+                    'hostId': err.get('HostId')
+                }
+            })
+        resp_map = XMLClient.parse_xml(body_str, None)
+        return TeaCore.merge(resp_map)
 
     def get_endpoint(
         self,
@@ -154,10 +229,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -172,51 +254,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         abstract_ecommerce_video_req = videoenhan_20200320_models.AbstractEcommerceVideoRequest()
         OpenApiUtilClient.convert(request, abstract_ecommerce_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            abstract_ecommerce_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            abstract_ecommerce_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         abstract_ecommerce_video_resp = self.abstract_ecommerce_video_with_options(abstract_ecommerce_video_req, runtime)
         return abstract_ecommerce_video_resp
 
@@ -226,10 +312,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -244,51 +337,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         abstract_ecommerce_video_req = videoenhan_20200320_models.AbstractEcommerceVideoRequest()
         OpenApiUtilClient.convert(request, abstract_ecommerce_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            abstract_ecommerce_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            abstract_ecommerce_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         abstract_ecommerce_video_resp = await self.abstract_ecommerce_video_with_options_async(abstract_ecommerce_video_req, runtime)
         return abstract_ecommerce_video_resp
 
@@ -390,10 +487,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -408,51 +512,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         abstract_film_video_req = videoenhan_20200320_models.AbstractFilmVideoRequest()
         OpenApiUtilClient.convert(request, abstract_film_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            abstract_film_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            abstract_film_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         abstract_film_video_resp = self.abstract_film_video_with_options(abstract_film_video_req, runtime)
         return abstract_film_video_resp
 
@@ -462,10 +570,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -480,51 +595,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         abstract_film_video_req = videoenhan_20200320_models.AbstractFilmVideoRequest()
         OpenApiUtilClient.convert(request, abstract_film_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            abstract_film_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            abstract_film_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         abstract_film_video_resp = await self.abstract_film_video_with_options_async(abstract_film_video_req, runtime)
         return abstract_film_video_resp
 
@@ -634,10 +753,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -652,51 +778,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         add_face_video_template_req = videoenhan_20200320_models.AddFaceVideoTemplateRequest()
         OpenApiUtilClient.convert(request, add_face_video_template_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            add_face_video_template_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            add_face_video_template_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         add_face_video_template_resp = self.add_face_video_template_with_options(add_face_video_template_req, runtime)
         return add_face_video_template_resp
 
@@ -706,10 +836,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -724,51 +861,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         add_face_video_template_req = videoenhan_20200320_models.AddFaceVideoTemplateRequest()
         OpenApiUtilClient.convert(request, add_face_video_template_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            add_face_video_template_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            add_face_video_template_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         add_face_video_template_resp = await self.add_face_video_template_with_options_async(add_face_video_template_req, runtime)
         return add_face_video_template_resp
 
@@ -882,10 +1023,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -900,51 +1048,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         adjust_video_color_req = videoenhan_20200320_models.AdjustVideoColorRequest()
         OpenApiUtilClient.convert(request, adjust_video_color_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            adjust_video_color_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            adjust_video_color_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         adjust_video_color_resp = self.adjust_video_color_with_options(adjust_video_color_req, runtime)
         return adjust_video_color_resp
 
@@ -954,10 +1106,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -972,51 +1131,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         adjust_video_color_req = videoenhan_20200320_models.AdjustVideoColorRequest()
         OpenApiUtilClient.convert(request, adjust_video_color_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            adjust_video_color_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            adjust_video_color_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         adjust_video_color_resp = await self.adjust_video_color_with_options_async(adjust_video_color_req, runtime)
         return adjust_video_color_resp
 
@@ -1146,10 +1309,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1164,51 +1334,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         change_video_size_req = videoenhan_20200320_models.ChangeVideoSizeRequest()
         OpenApiUtilClient.convert(request, change_video_size_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            change_video_size_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            change_video_size_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_video_size_resp = self.change_video_size_with_options(change_video_size_req, runtime)
         return change_video_size_resp
 
@@ -1218,10 +1392,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1236,51 +1417,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         change_video_size_req = videoenhan_20200320_models.ChangeVideoSizeRequest()
         OpenApiUtilClient.convert(request, change_video_size_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            change_video_size_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            change_video_size_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         change_video_size_resp = await self.change_video_size_with_options_async(change_video_size_req, runtime)
         return change_video_size_resp
 
@@ -1390,10 +1575,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1408,51 +1600,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         convert_hdr_video_req = videoenhan_20200320_models.ConvertHdrVideoRequest()
         OpenApiUtilClient.convert(request, convert_hdr_video_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            convert_hdr_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            convert_hdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         convert_hdr_video_resp = self.convert_hdr_video_with_options(convert_hdr_video_req, runtime)
         return convert_hdr_video_resp
 
@@ -1462,10 +1658,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1480,51 +1683,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         convert_hdr_video_req = videoenhan_20200320_models.ConvertHdrVideoRequest()
         OpenApiUtilClient.convert(request, convert_hdr_video_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            convert_hdr_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            convert_hdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         convert_hdr_video_resp = await self.convert_hdr_video_with_options_async(convert_hdr_video_req, runtime)
         return convert_hdr_video_resp
 
@@ -1726,10 +1933,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1744,51 +1958,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         enhance_portrait_video_req = videoenhan_20200320_models.EnhancePortraitVideoRequest()
         OpenApiUtilClient.convert(request, enhance_portrait_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            enhance_portrait_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            enhance_portrait_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_portrait_video_resp = self.enhance_portrait_video_with_options(enhance_portrait_video_req, runtime)
         return enhance_portrait_video_resp
 
@@ -1798,10 +2016,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -1816,51 +2041,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         enhance_portrait_video_req = videoenhan_20200320_models.EnhancePortraitVideoRequest()
         OpenApiUtilClient.convert(request, enhance_portrait_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            enhance_portrait_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            enhance_portrait_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_portrait_video_resp = await self.enhance_portrait_video_with_options_async(enhance_portrait_video_req, runtime)
         return enhance_portrait_video_resp
 
@@ -1982,10 +2211,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2000,51 +2236,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         enhance_video_quality_req = videoenhan_20200320_models.EnhanceVideoQualityRequest()
         OpenApiUtilClient.convert(request, enhance_video_quality_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            enhance_video_quality_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            enhance_video_quality_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_video_quality_resp = self.enhance_video_quality_with_options(enhance_video_quality_req, runtime)
         return enhance_video_quality_resp
 
@@ -2054,10 +2294,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2072,51 +2319,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         enhance_video_quality_req = videoenhan_20200320_models.EnhanceVideoQualityRequest()
         OpenApiUtilClient.convert(request, enhance_video_quality_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            enhance_video_quality_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            enhance_video_quality_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         enhance_video_quality_resp = await self.enhance_video_quality_with_options_async(enhance_video_quality_req, runtime)
         return enhance_video_quality_resp
 
@@ -2218,10 +2469,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2236,51 +2494,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         erase_video_logo_req = videoenhan_20200320_models.EraseVideoLogoRequest()
         OpenApiUtilClient.convert(request, erase_video_logo_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            erase_video_logo_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            erase_video_logo_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_logo_resp = self.erase_video_logo_with_options(erase_video_logo_req, runtime)
         return erase_video_logo_resp
 
@@ -2290,10 +2552,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2308,51 +2577,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         erase_video_logo_req = videoenhan_20200320_models.EraseVideoLogoRequest()
         OpenApiUtilClient.convert(request, erase_video_logo_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            erase_video_logo_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            erase_video_logo_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_logo_resp = await self.erase_video_logo_with_options_async(erase_video_logo_req, runtime)
         return erase_video_logo_resp
 
@@ -2466,10 +2739,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2484,51 +2764,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         erase_video_subtitles_req = videoenhan_20200320_models.EraseVideoSubtitlesRequest()
         OpenApiUtilClient.convert(request, erase_video_subtitles_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            erase_video_subtitles_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            erase_video_subtitles_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_subtitles_resp = self.erase_video_subtitles_with_options(erase_video_subtitles_req, runtime)
         return erase_video_subtitles_resp
 
@@ -2538,10 +2822,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2556,51 +2847,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         erase_video_subtitles_req = videoenhan_20200320_models.EraseVideoSubtitlesRequest()
         OpenApiUtilClient.convert(request, erase_video_subtitles_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            erase_video_subtitles_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            erase_video_subtitles_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         erase_video_subtitles_resp = await self.erase_video_subtitles_with_options_async(erase_video_subtitles_req, runtime)
         return erase_video_subtitles_resp
 
@@ -2710,10 +3005,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2728,51 +3030,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         generate_human_anime_style_video_req = videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest()
         OpenApiUtilClient.convert(request, generate_human_anime_style_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            generate_human_anime_style_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            generate_human_anime_style_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_human_anime_style_video_resp = self.generate_human_anime_style_video_with_options(generate_human_anime_style_video_req, runtime)
         return generate_human_anime_style_video_resp
 
@@ -2782,10 +3088,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -2800,51 +3113,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         generate_human_anime_style_video_req = videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest()
         OpenApiUtilClient.convert(request, generate_human_anime_style_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            generate_human_anime_style_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            generate_human_anime_style_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         generate_human_anime_style_video_resp = await self.generate_human_anime_style_video_with_options_async(generate_human_anime_style_video_req, runtime)
         return generate_human_anime_style_video_resp
 
@@ -2982,10 +3299,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3000,55 +3324,59 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         generate_video_req = videoenhan_20200320_models.GenerateVideoRequest()
         OpenApiUtilClient.convert(request, generate_video_req)
         if not UtilClient.is_unset(request.file_list):
             i_0 = 0
             for item_0 in request.file_list:
                 if not UtilClient.is_unset(item_0.file_url_object):
-                    auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
+                    tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+                    auth_response = UtilClient.assert_as_map(tmp_resp_0)
+                    tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+                    use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+                    auth_response_body = UtilClient.stringify_map_value(tmp_body)
                     file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
+                        filename=auth_response_body.get('ObjectKey'),
                         content=item_0.file_url_object,
                         content_type=''
                     )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    oss_client.post_object(upload_request, oss_runtime)
+                    oss_header = {
+                        'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                        'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                        'policy': auth_response_body.get('EncodedPolicy'),
+                        'Signature': auth_response_body.get('Signature'),
+                        'key': auth_response_body.get('ObjectKey'),
+                        'file': file_obj,
+                        'success_action_status': '201'
+                    }
+                    self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
                     tmp = generate_video_req.file_list[i_0]
-                    tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    tmp.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = self.generate_video_with_options(generate_video_req, runtime)
         return generate_video_resp
@@ -3059,10 +3387,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3077,55 +3412,59 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         generate_video_req = videoenhan_20200320_models.GenerateVideoRequest()
         OpenApiUtilClient.convert(request, generate_video_req)
         if not UtilClient.is_unset(request.file_list):
             i_0 = 0
             for item_0 in request.file_list:
                 if not UtilClient.is_unset(item_0.file_url_object):
-                    auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-                    oss_config.access_key_id = auth_response.body.access_key_id
-                    oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-                    oss_client = OSSClient(oss_config)
+                    tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+                    auth_response = UtilClient.assert_as_map(tmp_resp_0)
+                    tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+                    use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+                    auth_response_body = UtilClient.stringify_map_value(tmp_body)
                     file_obj = file_form_models.FileField(
-                        filename=auth_response.body.object_key,
+                        filename=auth_response_body.get('ObjectKey'),
                         content=item_0.file_url_object,
                         content_type=''
                     )
-                    oss_header = oss_models.PostObjectRequestHeader(
-                        access_key_id=auth_response.body.access_key_id,
-                        policy=auth_response.body.encoded_policy,
-                        signature=auth_response.body.signature,
-                        key=auth_response.body.object_key,
-                        file=file_obj,
-                        success_action_status='201'
-                    )
-                    upload_request = oss_models.PostObjectRequest(
-                        bucket_name=auth_response.body.bucket,
-                        header=oss_header
-                    )
-                    await oss_client.post_object_async(upload_request, oss_runtime)
+                    oss_header = {
+                        'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                        'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                        'policy': auth_response_body.get('EncodedPolicy'),
+                        'Signature': auth_response_body.get('Signature'),
+                        'key': auth_response_body.get('ObjectKey'),
+                        'file': file_obj,
+                        'success_action_status': '201'
+                    }
+                    await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
                     tmp = generate_video_req.file_list[i_0]
-                    tmp.file_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+                    tmp.file_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
                     i_0 = NumberClient.ltoi(NumberClient.add(NumberClient.itol(i_0), NumberClient.itol(1)))
         generate_video_resp = await self.generate_video_with_options_async(generate_video_req, runtime)
         return generate_video_resp
@@ -3320,10 +3659,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3338,51 +3684,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         interpolate_video_frame_req = videoenhan_20200320_models.InterpolateVideoFrameRequest()
         OpenApiUtilClient.convert(request, interpolate_video_frame_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            interpolate_video_frame_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            interpolate_video_frame_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         interpolate_video_frame_resp = self.interpolate_video_frame_with_options(interpolate_video_frame_req, runtime)
         return interpolate_video_frame_resp
 
@@ -3392,10 +3742,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3410,51 +3767,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         interpolate_video_frame_req = videoenhan_20200320_models.InterpolateVideoFrameRequest()
         OpenApiUtilClient.convert(request, interpolate_video_frame_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            interpolate_video_frame_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            interpolate_video_frame_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         interpolate_video_frame_resp = await self.interpolate_video_frame_with_options_async(interpolate_video_frame_req, runtime)
         return interpolate_video_frame_resp
 
@@ -3568,10 +3929,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3586,75 +3954,77 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         merge_video_face_req = videoenhan_20200320_models.MergeVideoFaceRequest()
         OpenApiUtilClient.convert(request, merge_video_face_req)
         if not UtilClient.is_unset(request.reference_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.reference_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            merge_video_face_req.reference_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            merge_video_face_req.reference_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            merge_video_face_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            merge_video_face_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_face_resp = self.merge_video_face_with_options(merge_video_face_req, runtime)
         return merge_video_face_resp
 
@@ -3664,10 +4034,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3682,75 +4059,77 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         merge_video_face_req = videoenhan_20200320_models.MergeVideoFaceRequest()
         OpenApiUtilClient.convert(request, merge_video_face_req)
         if not UtilClient.is_unset(request.reference_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.reference_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            merge_video_face_req.reference_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            merge_video_face_req.reference_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_1)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            merge_video_face_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            merge_video_face_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_face_resp = await self.merge_video_face_with_options_async(merge_video_face_req, runtime)
         return merge_video_face_resp
 
@@ -3876,10 +4255,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3894,51 +4280,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         merge_video_model_face_req = videoenhan_20200320_models.MergeVideoModelFaceRequest()
         OpenApiUtilClient.convert(request, merge_video_model_face_req)
         if not UtilClient.is_unset(request.face_image_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.face_image_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            merge_video_model_face_req.face_image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            merge_video_model_face_req.face_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_model_face_resp = self.merge_video_model_face_with_options(merge_video_model_face_req, runtime)
         return merge_video_model_face_resp
 
@@ -3948,10 +4338,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -3966,51 +4363,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         merge_video_model_face_req = videoenhan_20200320_models.MergeVideoModelFaceRequest()
         OpenApiUtilClient.convert(request, merge_video_model_face_req)
         if not UtilClient.is_unset(request.face_image_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.face_image_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            merge_video_model_face_req.face_image_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            merge_video_model_face_req.face_image_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         merge_video_model_face_resp = await self.merge_video_model_face_with_options_async(merge_video_model_face_req, runtime)
         return merge_video_model_face_resp
 
@@ -4220,10 +4621,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4238,51 +4646,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         reduce_video_noise_req = videoenhan_20200320_models.ReduceVideoNoiseRequest()
         OpenApiUtilClient.convert(request, reduce_video_noise_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            reduce_video_noise_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            reduce_video_noise_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         reduce_video_noise_resp = self.reduce_video_noise_with_options(reduce_video_noise_req, runtime)
         return reduce_video_noise_resp
 
@@ -4292,10 +4704,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4310,51 +4729,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         reduce_video_noise_req = videoenhan_20200320_models.ReduceVideoNoiseRequest()
         OpenApiUtilClient.convert(request, reduce_video_noise_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            reduce_video_noise_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            reduce_video_noise_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         reduce_video_noise_resp = await self.reduce_video_noise_with_options_async(reduce_video_noise_req, runtime)
         return reduce_video_noise_resp
 
@@ -4456,10 +4879,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4474,51 +4904,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         super_resolve_video_req = videoenhan_20200320_models.SuperResolveVideoRequest()
         OpenApiUtilClient.convert(request, super_resolve_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            super_resolve_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            super_resolve_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         super_resolve_video_resp = self.super_resolve_video_with_options(super_resolve_video_req, runtime)
         return super_resolve_video_resp
 
@@ -4528,10 +4962,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4546,51 +4987,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         super_resolve_video_req = videoenhan_20200320_models.SuperResolveVideoRequest()
         OpenApiUtilClient.convert(request, super_resolve_video_req)
         if not UtilClient.is_unset(request.video_url_object):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_url_object,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            super_resolve_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            super_resolve_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         super_resolve_video_resp = await self.super_resolve_video_with_options_async(super_resolve_video_req, runtime)
         return super_resolve_video_resp
 
@@ -4696,10 +5141,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
         # Step 0: init client
-        access_key_id = self._credential.get_access_key_id()
-        access_key_secret = self._credential.get_access_key_secret()
-        security_token = self._credential.get_security_token()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = self._credential.get_credential()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4714,51 +5166,55 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         tone_sdr_video_req = videoenhan_20200320_models.ToneSdrVideoRequest()
         OpenApiUtilClient.convert(request, tone_sdr_video_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = auth_client.authorize_file_upload_with_options(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            oss_client.post_object(upload_request, oss_runtime)
-            tone_sdr_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            self._post_ossobject(auth_response_body.get('Bucket'), oss_header)
+            tone_sdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         tone_sdr_video_resp = self.tone_sdr_video_with_options(tone_sdr_video_req, runtime)
         return tone_sdr_video_resp
 
@@ -4768,10 +5224,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
         # Step 0: init client
-        access_key_id = await self._credential.get_access_key_id_async()
-        access_key_secret = await self._credential.get_access_key_secret_async()
-        security_token = await self._credential.get_security_token_async()
-        credential_type = self._credential.get_type()
+        credential_model = None
+        if UtilClient.is_unset(self._credential):
+            raise TeaException({
+                'code': 'InvalidCredentials',
+                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            })
+        credential_model = await self._credential.get_credential_async()
+        access_key_id = credential_model.access_key_id
+        access_key_secret = credential_model.access_key_secret
+        security_token = credential_model.security_token
+        credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
         if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
@@ -4786,50 +5249,54 @@ class Client(OpenApiClient):
             protocol=self._protocol,
             region_id=self._region_id
         )
-        auth_client = OpenPlatformClient(auth_config)
-        auth_request = open_platform_models.AuthorizeFileUploadRequest(
-            product='videoenhan',
-            region_id=self._region_id
+        auth_client = OpenApiClient(auth_config)
+        auth_request = {
+            'Product': 'videoenhan',
+            'RegionId': self._region_id
+        }
+        auth_req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(auth_request)
         )
-        auth_response = open_platform_models.AuthorizeFileUploadResponse()
-        oss_config = oss_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            type='access_key',
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_params = open_api_models.Params(
+            action='AuthorizeFileUpload',
+            version='2019-12-19',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
         )
-        oss_client = OSSClient(oss_config)
+        auth_response = {}
         file_obj = file_form_models.FileField()
-        oss_header = oss_models.PostObjectRequestHeader()
-        upload_request = oss_models.PostObjectRequest()
-        oss_runtime = ossutil_models.RuntimeOptions()
-        OpenApiUtilClient.convert(runtime, oss_runtime)
+        oss_header = {}
+        tmp_body = {}
+        use_accelerate = False
+        auth_response_body = {}
         tone_sdr_video_req = videoenhan_20200320_models.ToneSdrVideoRequest()
         OpenApiUtilClient.convert(request, tone_sdr_video_req)
         if not UtilClient.is_unset(request.video_urlobject):
-            auth_response = await auth_client.authorize_file_upload_with_options_async(auth_request, runtime)
-            oss_config.access_key_id = auth_response.body.access_key_id
-            oss_config.endpoint = OpenApiUtilClient.get_endpoint(auth_response.body.endpoint, auth_response.body.use_accelerate, self._endpoint_type)
-            oss_client = OSSClient(oss_config)
+            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            auth_response = UtilClient.assert_as_map(tmp_resp_0)
+            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
+            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
+            auth_response_body = UtilClient.stringify_map_value(tmp_body)
             file_obj = file_form_models.FileField(
-                filename=auth_response.body.object_key,
+                filename=auth_response_body.get('ObjectKey'),
                 content=request.video_urlobject,
                 content_type=''
             )
-            oss_header = oss_models.PostObjectRequestHeader(
-                access_key_id=auth_response.body.access_key_id,
-                policy=auth_response.body.encoded_policy,
-                signature=auth_response.body.signature,
-                key=auth_response.body.object_key,
-                file=file_obj,
-                success_action_status='201'
-            )
-            upload_request = oss_models.PostObjectRequest(
-                bucket_name=auth_response.body.bucket,
-                header=oss_header
-            )
-            await oss_client.post_object_async(upload_request, oss_runtime)
-            tone_sdr_video_req.video_url = f'http://{auth_response.body.bucket}.{auth_response.body.endpoint}/{auth_response.body.object_key}'
+            oss_header = {
+                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
+                'policy': auth_response_body.get('EncodedPolicy'),
+                'Signature': auth_response_body.get('Signature'),
+                'key': auth_response_body.get('ObjectKey'),
+                'file': file_obj,
+                'success_action_status': '201'
+            }
+            await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header)
+            tone_sdr_video_req.video_url = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
         tone_sdr_video_resp = await self.tone_sdr_video_with_options_async(tone_sdr_video_req, runtime)
         return tone_sdr_video_resp
