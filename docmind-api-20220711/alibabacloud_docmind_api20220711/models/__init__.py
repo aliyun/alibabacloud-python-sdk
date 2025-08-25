@@ -68,6 +68,7 @@ from ._submit_digital_doc_structure_job_response_body import SubmitDigitalDocStr
 from ._submit_digital_doc_structure_job_response import SubmitDigitalDocStructureJobResponse
 from ._submit_doc_parser_job_request import SubmitDocParserJobRequest
 from ._submit_doc_parser_job_advance_request import SubmitDocParserJobAdvanceRequest
+from ._submit_doc_parser_job_shrink_request import SubmitDocParserJobShrinkRequest
 from ._submit_doc_parser_job_response_body import SubmitDocParserJobResponseBody
 from ._submit_doc_parser_job_response import SubmitDocParserJobResponse
 from ._submit_doc_structure_job_request import SubmitDocStructureJobRequest
@@ -93,6 +94,8 @@ from ._submit_convert_pdf_to_excel_job_response_body import SubmitConvertPdfToEx
 from ._submit_convert_pdf_to_image_job_response_body import SubmitConvertPdfToImageJobResponseBodyData
 from ._submit_convert_pdf_to_markdown_job_response_body import SubmitConvertPdfToMarkdownJobResponseBodyData
 from ._submit_convert_pdf_to_word_job_response_body import SubmitConvertPdfToWordJobResponseBodyData
+from ._submit_doc_parser_job_request import SubmitDocParserJobRequestMultimediaParameters
+from ._submit_doc_parser_job_advance_request import SubmitDocParserJobAdvanceRequestMultimediaParameters
 from ._submit_doc_parser_job_response_body import SubmitDocParserJobResponseBodyData
 from ._submit_doc_structure_job_response_body import SubmitDocStructureJobResponseBodyData
 from ._submit_document_extract_job_response_body import SubmitDocumentExtractJobResponseBodyData
@@ -165,6 +168,7 @@ __all__ = [
     SubmitDigitalDocStructureJobResponse,
     SubmitDocParserJobRequest,
     SubmitDocParserJobAdvanceRequest,
+    SubmitDocParserJobShrinkRequest,
     SubmitDocParserJobResponseBody,
     SubmitDocParserJobResponse,
     SubmitDocStructureJobRequest,
@@ -190,6 +194,8 @@ __all__ = [
     SubmitConvertPdfToImageJobResponseBodyData,
     SubmitConvertPdfToMarkdownJobResponseBodyData,
     SubmitConvertPdfToWordJobResponseBodyData,
+    SubmitDocParserJobRequestMultimediaParameters,
+    SubmitDocParserJobAdvanceRequestMultimediaParameters,
     SubmitDocParserJobResponseBodyData,
     SubmitDocStructureJobResponseBodyData,
     SubmitDocumentExtractJobResponseBodyData,

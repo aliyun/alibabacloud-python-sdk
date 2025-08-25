@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from alibabacloud_docmind_api20220711 import models as main_models
 from darabonba.model import DaraModel
 
 class SubmitDocParserJobRequest(DaraModel):
@@ -13,6 +14,7 @@ class SubmitDocParserJobRequest(DaraModel):
         file_url: str = None,
         formula_enhancement: bool = None,
         llm_enhancement: bool = None,
+        multimedia_parameters: main_models.SubmitDocParserJobRequestMultimediaParameters = None,
         option: str = None,
         oss_bucket: str = None,
         oss_endpoint: str = None,
@@ -25,6 +27,7 @@ class SubmitDocParserJobRequest(DaraModel):
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
         self.llm_enhancement = llm_enhancement
+        self.multimedia_parameters = multimedia_parameters
         self.option = option
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
@@ -32,7 +35,8 @@ class SubmitDocParserJobRequest(DaraModel):
         self.page_index = page_index
 
     def validate(self):
-        pass
+        if self.multimedia_parameters:
+            self.multimedia_parameters.validate()
 
     def to_map(self):
         result = dict()
@@ -56,6 +60,9 @@ class SubmitDocParserJobRequest(DaraModel):
 
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
+
+        if self.multimedia_parameters is not None:
+            result['MultimediaParameters'] = self.multimedia_parameters.to_map()
 
         if self.option is not None:
             result['Option'] = self.option
@@ -94,6 +101,10 @@ class SubmitDocParserJobRequest(DaraModel):
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
 
+        if m.get('MultimediaParameters') is not None:
+            temp_model = main_models.SubmitDocParserJobRequestMultimediaParameters()
+            self.multimedia_parameters = temp_model.from_map(m.get('MultimediaParameters'))
+
         if m.get('Option') is not None:
             self.option = m.get('Option')
 
@@ -108,6 +119,41 @@ class SubmitDocParserJobRequest(DaraModel):
 
         if m.get('PageIndex') is not None:
             self.page_index = m.get('PageIndex')
+
+        return self
+
+class SubmitDocParserJobRequestMultimediaParameters(DaraModel):
+    def __init__(
+        self,
+        enable_synopsis_parse: bool = None,
+        vl_parse_prompt: str = None,
+    ):
+        self.enable_synopsis_parse = enable_synopsis_parse
+        self.vl_parse_prompt = vl_parse_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_synopsis_parse is not None:
+            result['EnableSynopsisParse'] = self.enable_synopsis_parse
+
+        if self.vl_parse_prompt is not None:
+            result['VlParsePrompt'] = self.vl_parse_prompt
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSynopsisParse') is not None:
+            self.enable_synopsis_parse = m.get('EnableSynopsisParse')
+
+        if m.get('VlParsePrompt') is not None:
+            self.vl_parse_prompt = m.get('VlParsePrompt')
 
         return self
 

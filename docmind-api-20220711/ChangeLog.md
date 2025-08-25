@@ -1,3 +1,7 @@
+2025-08-25 Version: 1.4.10
+- Update API SubmitDocParserJob: add request parameters MultimediaParameters.
+
+
 2025-08-19 Version: 1.4.9
 - Update API SubmitDocParserJob: add request parameters EnhancementMode.
 

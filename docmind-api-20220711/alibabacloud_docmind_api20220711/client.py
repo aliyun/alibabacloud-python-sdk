@@ -2505,10 +2505,14 @@ class Client(OpenApiClient):
 
     def submit_doc_parser_job_with_options(
         self,
-        request: main_models.SubmitDocParserJobRequest,
+        tmp_req: main_models.SubmitDocParserJobRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SubmitDocParserJobResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SubmitDocParserJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multimedia_parameters):
+            request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
         query = {}
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
@@ -2522,6 +2526,8 @@ class Client(OpenApiClient):
             query['FormulaEnhancement'] = request.formula_enhancement
         if not DaraCore.is_null(request.llm_enhancement):
             query['LlmEnhancement'] = request.llm_enhancement
+        if not DaraCore.is_null(request.multimedia_parameters_shrink):
+            query['MultimediaParameters'] = request.multimedia_parameters_shrink
         if not DaraCore.is_null(request.option):
             query['Option'] = request.option
         if not DaraCore.is_null(request.oss_bucket):
@@ -2553,10 +2559,14 @@ class Client(OpenApiClient):
 
     async def submit_doc_parser_job_with_options_async(
         self,
-        request: main_models.SubmitDocParserJobRequest,
+        tmp_req: main_models.SubmitDocParserJobRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SubmitDocParserJobResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SubmitDocParserJobShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.multimedia_parameters):
+            request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
         query = {}
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
@@ -2570,6 +2580,8 @@ class Client(OpenApiClient):
             query['FormulaEnhancement'] = request.formula_enhancement
         if not DaraCore.is_null(request.llm_enhancement):
             query['LlmEnhancement'] = request.llm_enhancement
+        if not DaraCore.is_null(request.multimedia_parameters_shrink):
+            query['MultimediaParameters'] = request.multimedia_parameters_shrink
         if not DaraCore.is_null(request.option):
             query['Option'] = request.option
         if not DaraCore.is_null(request.oss_bucket):
