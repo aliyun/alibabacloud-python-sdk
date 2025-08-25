@@ -9,6 +9,7 @@ class AssessCompositionRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -36,6 +37,7 @@ class AssessCompositionAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -166,6 +168,7 @@ class AssessExposureRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -193,6 +196,7 @@ class AssessExposureAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -323,6 +327,7 @@ class AssessSharpnessRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -350,6 +355,7 @@ class AssessSharpnessAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -482,8 +488,11 @@ class ChangeImageSizeRequest(TeaModel):
         url: str = None,
         width: int = None,
     ):
+        # This parameter is required.
         self.height = height
+        # This parameter is required.
         self.url = url
+        # This parameter is required.
         self.width = width
 
     def validate(self):
@@ -521,8 +530,11 @@ class ChangeImageSizeAdvanceRequest(TeaModel):
         url_object: BinaryIO = None,
         width: int = None,
     ):
+        # This parameter is required.
         self.height = height
+        # This parameter is required.
         self.url_object = url_object
+        # This parameter is required.
         self.width = width
 
     def validate(self):
@@ -714,6 +726,7 @@ class ColorizeImageRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -741,6 +754,7 @@ class ColorizeImageAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -873,8 +887,11 @@ class EnhanceImageColorRequest(TeaModel):
         mode: str = None,
         output_format: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.mode = mode
+        # This parameter is required.
         self.output_format = output_format
 
     def validate(self):
@@ -912,8 +929,11 @@ class EnhanceImageColorAdvanceRequest(TeaModel):
         mode: str = None,
         output_format: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.mode = mode
+        # This parameter is required.
         self.output_format = output_format
 
     def validate(self):
@@ -1053,7 +1073,9 @@ class ErasePersonRequest(TeaModel):
         image_url: str = None,
         user_mask: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.user_mask = user_mask
 
     def validate(self):
@@ -1086,7 +1108,9 @@ class ErasePersonAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         user_mask_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.user_mask_object = user_mask_object
 
     def validate(self):
@@ -1222,7 +1246,9 @@ class ExtendImageStyleRequest(TeaModel):
         major_url: str = None,
         style_url: str = None,
     ):
+        # This parameter is required.
         self.major_url = major_url
+        # This parameter is required.
         self.style_url = style_url
 
     def validate(self):
@@ -1255,7 +1281,9 @@ class ExtendImageStyleAdvanceRequest(TeaModel):
         major_url_object: BinaryIO = None,
         style_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.major_url_object = major_url_object
+        # This parameter is required.
         self.style_url_object = style_url_object
 
     def validate(self):
@@ -1399,7 +1427,9 @@ class GenerateCartoonizedImageRequest(TeaModel):
         index: str = None,
     ):
         self.image_type = image_type
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.index = index
 
     def validate(self):
@@ -1438,7 +1468,9 @@ class GenerateCartoonizedImageAdvanceRequest(TeaModel):
         index: str = None,
     ):
         self.image_type = image_type
+        # This parameter is required.
         self.image_url_object = image_url_object
+        # This parameter is required.
         self.index = index
 
     def validate(self):
@@ -1584,7 +1616,9 @@ class GenerateDynamicImageRequest(TeaModel):
         operation: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.operation = operation
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -1617,7 +1651,9 @@ class GenerateDynamicImageAdvanceRequest(TeaModel):
         operation: str = None,
         url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.operation = operation
+        # This parameter is required.
         self.url_object = url_object
 
     def validate(self):
@@ -1756,6 +1792,7 @@ class GenerateImageWithTextRequest(TeaModel):
     ):
         self.number = number
         self.resolution = resolution
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1907,9 +1944,11 @@ class GenerateImageWithTextAndImageRequest(TeaModel):
     ):
         self.aspect_ratio_mode = aspect_ratio_mode
         self.number = number
+        # This parameter is required.
         self.ref_image_url = ref_image_url
         self.resolution = resolution
         self.similarity = similarity
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1964,9 +2003,11 @@ class GenerateImageWithTextAndImageAdvanceRequest(TeaModel):
     ):
         self.aspect_ratio_mode = aspect_ratio_mode
         self.number = number
+        # This parameter is required.
         self.ref_image_url_object = ref_image_url_object
         self.resolution = resolution
         self.similarity = similarity
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2127,6 +2168,7 @@ class GenerateSuperResolutionImageRequest(TeaModel):
         scale: int = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.output_format = output_format
         self.output_quality = output_quality
@@ -2178,6 +2220,7 @@ class GenerateSuperResolutionImageAdvanceRequest(TeaModel):
         scale: int = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.image_url_object = image_url_object
         self.output_format = output_format
         self.output_quality = output_quality
@@ -2334,6 +2377,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -2493,6 +2537,7 @@ class ImageBlindCharacterWatermarkRequest(TeaModel):
         text: str = None,
         watermark_image_url: str = None,
     ):
+        # This parameter is required.
         self.function_type = function_type
         self.origin_image_url = origin_image_url
         self.output_file_type = output_file_type
@@ -2550,6 +2595,7 @@ class ImageBlindCharacterWatermarkAdvanceRequest(TeaModel):
         text: str = None,
         watermark_image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.function_type = function_type
         self.origin_image_urlobject = origin_image_urlobject
         self.output_file_type = output_file_type
@@ -2716,6 +2762,7 @@ class ImageBlindPicWatermarkRequest(TeaModel):
         quality_factor: int = None,
         watermark_image_url: str = None,
     ):
+        # This parameter is required.
         self.function_type = function_type
         self.logo_url = logo_url
         self.origin_image_url = origin_image_url
@@ -2773,6 +2820,7 @@ class ImageBlindPicWatermarkAdvanceRequest(TeaModel):
         quality_factor: int = None,
         watermark_image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.function_type = function_type
         self.logo_urlobject = logo_urlobject
         self.origin_image_urlobject = origin_image_urlobject
@@ -2935,7 +2983,9 @@ class ImitatePhotoStyleRequest(TeaModel):
         image_url: str = None,
         style_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.style_url = style_url
 
     def validate(self):
@@ -2968,7 +3018,9 @@ class ImitatePhotoStyleAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         style_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.style_url_object = style_url_object
 
     def validate(self):
@@ -3104,6 +3156,7 @@ class IntelligentCompositionRequest(TeaModel):
         image_url: str = None,
         num_boxes: int = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.num_boxes = num_boxes
 
@@ -3137,6 +3190,7 @@ class IntelligentCompositionAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         num_boxes: int = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.num_boxes = num_boxes
 
@@ -3339,6 +3393,7 @@ class MakeSuperResolutionImageRequest(TeaModel):
         self.output_format = output_format
         self.output_quality = output_quality
         self.upscale_factor = upscale_factor
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -3390,6 +3445,7 @@ class MakeSuperResolutionImageAdvanceRequest(TeaModel):
         self.output_format = output_format
         self.output_quality = output_quality
         self.upscale_factor = upscale_factor
+        # This parameter is required.
         self.url_object = url_object
 
     def validate(self):
@@ -3571,9 +3627,11 @@ class RecolorHDImageRequest(TeaModel):
         self.color_count = color_count
         # 1
         self.color_template = color_template
+        # This parameter is required.
         self.degree = degree
         self.mode = mode
         self.ref_url = ref_url
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -3664,9 +3722,11 @@ class RecolorHDImageAdvanceRequest(TeaModel):
         self.color_count = color_count
         # 1
         self.color_template = color_template
+        # This parameter is required.
         self.degree = degree
         self.mode = mode
         self.ref_url_object = ref_url_object
+        # This parameter is required.
         self.url_object = url_object
 
     def validate(self):
@@ -3868,6 +3928,7 @@ class RecolorImageRequest(TeaModel):
         self.color_template = color_template
         self.mode = mode
         self.ref_url = ref_url
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -3955,6 +4016,7 @@ class RecolorImageAdvanceRequest(TeaModel):
         self.color_template = color_template
         self.mode = mode
         self.ref_url_object = ref_url_object
+        # This parameter is required.
         self.url_object = url_object
 
     def validate(self):
@@ -4118,6 +4180,7 @@ class RemoveImageSubtitlesRequest(TeaModel):
         self.bw = bw
         self.bx = bx
         self.by = by
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -4169,6 +4232,7 @@ class RemoveImageSubtitlesAdvanceRequest(TeaModel):
         self.bw = bw
         self.bx = bx
         self.by = by
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -4315,6 +4379,7 @@ class RemoveImageWatermarkRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -4342,6 +4407,7 @@ class RemoveImageWatermarkAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):

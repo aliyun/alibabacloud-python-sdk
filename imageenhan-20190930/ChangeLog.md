@@ -1,3 +1,6 @@
+2025-08-25 Version: 2.0.12
+- Generated python 2019-09-30 for imageenhan.
+
 2024-02-20 Version: 2.0.11
 - Update API GenerateCartoonizedImage: update param ImageType.
 - Update API GenerateCartoonizedImage: update response param.
