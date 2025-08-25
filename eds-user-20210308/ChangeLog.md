@@ -1,3 +1,8 @@
+2025-08-25 Version: 1.6.3
+- Update API DescribeMfaDevices: add request parameters Filter.
+- Update API DescribeMfaDevices: add response parameters Body.MfaDevices.$.AdUser.
+
+
 2025-08-12 Version: 1.6.2
 - Update API DescribeOrgs: add request parameters ShowExtras.
 - Update API DescribeOrgs: add response parameters Body.Orgs.$.OrgNamePath.

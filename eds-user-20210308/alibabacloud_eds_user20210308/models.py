@@ -2537,6 +2537,7 @@ class DescribeMfaDevicesRequest(TeaModel):
         self,
         ad_domain: str = None,
         end_user_ids: List[str] = None,
+        filter: str = None,
         max_results: int = None,
         next_token: str = None,
         serial_numbers: List[str] = None,
@@ -2545,6 +2546,7 @@ class DescribeMfaDevicesRequest(TeaModel):
         self.ad_domain = ad_domain
         # The usernames of the convenience users.
         self.end_user_ids = end_user_ids
+        self.filter = filter
         # The maximum number of entries to return. Valid values: 1 to 500.\\
         # Default value: 100.
         self.max_results = max_results
@@ -2566,6 +2568,8 @@ class DescribeMfaDevicesRequest(TeaModel):
             result['AdDomain'] = self.ad_domain
         if self.end_user_ids is not None:
             result['EndUserIds'] = self.end_user_ids
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -2580,6 +2584,8 @@ class DescribeMfaDevicesRequest(TeaModel):
             self.ad_domain = m.get('AdDomain')
         if m.get('EndUserIds') is not None:
             self.end_user_ids = m.get('EndUserIds')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -2589,9 +2595,55 @@ class DescribeMfaDevicesRequest(TeaModel):
         return self
 
 
+class DescribeMfaDevicesResponseBodyMfaDevicesAdUser(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        display_name_new: str = None,
+        end_user: str = None,
+        user_principal_name: str = None,
+    ):
+        self.display_name = display_name
+        self.display_name_new = display_name_new
+        self.end_user = end_user
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_name_new is not None:
+            result['DisplayNameNew'] = self.display_name_new
+        if self.end_user is not None:
+            result['EndUser'] = self.end_user
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayNameNew') is not None:
+            self.display_name_new = m.get('DisplayNameNew')
+        if m.get('EndUser') is not None:
+            self.end_user = m.get('EndUser')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
 class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
     def __init__(
         self,
+        ad_user: DescribeMfaDevicesResponseBodyMfaDevicesAdUser = None,
         consecutive_fails: int = None,
         device_type: str = None,
         email: str = None,
@@ -2602,6 +2654,7 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
+        self.ad_user = ad_user
         # The number of consecutive failures to bind the virtual MFA device, or the number of authentication failures based on the virtual MFA device.
         self.consecutive_fails = consecutive_fails
         # The type of the virtual MFA device. The value can only be TOTP_VIRTUAL. This value indicates that the virtual MFA device follows the Time-based One-time Password (TOTP) algorithm.
@@ -2648,7 +2701,8 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.ad_user:
+            self.ad_user.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2656,6 +2710,8 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_user is not None:
+            result['AdUser'] = self.ad_user.to_map()
         if self.consecutive_fails is not None:
             result['ConsecutiveFails'] = self.consecutive_fails
         if self.device_type is not None:
@@ -2678,6 +2734,9 @@ class DescribeMfaDevicesResponseBodyMfaDevices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdUser') is not None:
+            temp_model = DescribeMfaDevicesResponseBodyMfaDevicesAdUser()
+            self.ad_user = temp_model.from_map(m['AdUser'])
         if m.get('ConsecutiveFails') is not None:
             self.consecutive_fails = m.get('ConsecutiveFails')
         if m.get('DeviceType') is not None:

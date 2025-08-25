@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self.check_config(config)
         self._endpoint = self.get_endpoint('eds-user', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -1452,6 +1451,8 @@ class Client(OpenApiClient):
             query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -1495,6 +1496,8 @@ class Client(OpenApiClient):
             query['AdDomain'] = request.ad_domain
         if not UtilClient.is_unset(request.end_user_ids):
             query['EndUserIds'] = request.end_user_ids
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
