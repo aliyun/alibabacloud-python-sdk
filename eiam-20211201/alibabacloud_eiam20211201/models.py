@@ -27614,6 +27614,131 @@ class UpdateApplicationAuthorizationTypeResponse(TeaModel):
         return self
 
 
+class UpdateApplicationClientSecretExpirationTimeRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: str = None,
+        expiration_time: int = None,
+        instance_id: str = None,
+        secret_id: str = None,
+    ):
+        # IDaaS的应用资源ID。
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # client secret的有效期时间，Unix时间戳格式，单位为毫秒
+        # 
+        # This parameter is required.
+        self.expiration_time = expiration_time
+        # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # OIDC 场景下用于客户端身份验证的客户端密钥
+        # 
+        # This parameter is required.
+        self.secret_id = secret_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.expiration_time is not None:
+            result['ExpirationTime'] = self.expiration_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('ExpirationTime') is not None:
+            self.expiration_time = m.get('ExpirationTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+        return self
+
+
+class UpdateApplicationClientSecretExpirationTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateApplicationClientSecretExpirationTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateApplicationClientSecretExpirationTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateApplicationClientSecretExpirationTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class UpdateApplicationDescriptionRequest(TeaModel):
     def __init__(
         self,

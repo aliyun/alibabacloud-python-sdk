@@ -12747,6 +12747,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_application_authorization_type_with_options_async(request, runtime)
 
+    def update_application_client_secret_expiration_time_with_options(
+        self,
+        request: eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse:
+        """
+        @summary 更新应用的指定ClientSecret的到期时间
+        
+        @param request: UpdateApplicationClientSecretExpirationTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationClientSecretExpirationTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationClientSecretExpirationTime',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_application_client_secret_expiration_time_with_options_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse:
+        """
+        @summary 更新应用的指定ClientSecret的到期时间
+        
+        @param request: UpdateApplicationClientSecretExpirationTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationClientSecretExpirationTimeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not UtilClient.is_unset(request.expiration_time):
+            query['ExpirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.secret_id):
+            query['SecretId'] = request.secret_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateApplicationClientSecretExpirationTime',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_application_client_secret_expiration_time(
+        self,
+        request: eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeRequest,
+    ) -> eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse:
+        """
+        @summary 更新应用的指定ClientSecret的到期时间
+        
+        @param request: UpdateApplicationClientSecretExpirationTimeRequest
+        @return: UpdateApplicationClientSecretExpirationTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_application_client_secret_expiration_time_with_options(request, runtime)
+
+    async def update_application_client_secret_expiration_time_async(
+        self,
+        request: eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeRequest,
+    ) -> eiam_20211201_models.UpdateApplicationClientSecretExpirationTimeResponse:
+        """
+        @summary 更新应用的指定ClientSecret的到期时间
+        
+        @param request: UpdateApplicationClientSecretExpirationTimeRequest
+        @return: UpdateApplicationClientSecretExpirationTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_application_client_secret_expiration_time_with_options_async(request, runtime)
+
     def update_application_description_with_options(
         self,
         request: eiam_20211201_models.UpdateApplicationDescriptionRequest,
