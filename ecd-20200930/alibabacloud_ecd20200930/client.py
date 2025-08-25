@@ -19611,6 +19611,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -19654,6 +19656,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):

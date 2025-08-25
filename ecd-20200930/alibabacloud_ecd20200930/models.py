@@ -46127,6 +46127,7 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
     def __init__(
         self,
         end_user_id: List[str] = None,
+        filter: str = None,
         max_results: int = None,
         next_token: str = None,
         office_site_id: str = None,
@@ -46134,6 +46135,7 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
     ):
         # The names of the AD users.
         self.end_user_id = end_user_id
+        self.filter = filter
         # The number of entries per page. Valid values: 1 to 500. Default value: 100.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You must specify the token that is obtained from the previous query as the value of NextToken.
@@ -46156,6 +46158,8 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
         result = dict()
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.filter is not None:
+            result['Filter'] = self.filter
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -46170,6 +46174,8 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
         m = m or dict()
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('Filter') is not None:
+            self.filter = m.get('Filter')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -46181,9 +46187,55 @@ class DescribeVirtualMFADevicesRequest(TeaModel):
         return self
 
 
+class DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        display_name_new: str = None,
+        end_user: str = None,
+        user_principal_name: str = None,
+    ):
+        self.display_name = display_name
+        self.display_name_new = display_name_new
+        self.end_user = end_user
+        self.user_principal_name = user_principal_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.display_name_new is not None:
+            result['DisplayNameNew'] = self.display_name_new
+        if self.end_user is not None:
+            result['EndUser'] = self.end_user
+        if self.user_principal_name is not None:
+            result['UserPrincipalName'] = self.user_principal_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('DisplayNameNew') is not None:
+            self.display_name_new = m.get('DisplayNameNew')
+        if m.get('EndUser') is not None:
+            self.end_user = m.get('EndUser')
+        if m.get('UserPrincipalName') is not None:
+            self.user_principal_name = m.get('UserPrincipalName')
+        return self
+
+
 class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
     def __init__(
         self,
+        ad_user: DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser = None,
         consecutive_fails: int = None,
         directory_id: str = None,
         end_user_id: str = None,
@@ -46193,6 +46245,7 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
         serial_number: str = None,
         status: str = None,
     ):
+        self.ad_user = ad_user
         # The number of consecutive failures to bind the virtual MFA device, or the number of failures on the verification of the virtual MFA device.
         self.consecutive_fails = consecutive_fails
         # > This parameter is in invitational preview and is not publicly available.
@@ -46237,7 +46290,8 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
         self.status = status
 
     def validate(self):
-        pass
+        if self.ad_user:
+            self.ad_user.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -46245,6 +46299,8 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
             return _map
 
         result = dict()
+        if self.ad_user is not None:
+            result['AdUser'] = self.ad_user.to_map()
         if self.consecutive_fails is not None:
             result['ConsecutiveFails'] = self.consecutive_fails
         if self.directory_id is not None:
@@ -46265,6 +46321,9 @@ class DescribeVirtualMFADevicesResponseBodyVirtualMFADevices(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdUser') is not None:
+            temp_model = DescribeVirtualMFADevicesResponseBodyVirtualMFADevicesAdUser()
+            self.ad_user = temp_model.from_map(m['AdUser'])
         if m.get('ConsecutiveFails') is not None:
             self.consecutive_fails = m.get('ConsecutiveFails')
         if m.get('DirectoryId') is not None:

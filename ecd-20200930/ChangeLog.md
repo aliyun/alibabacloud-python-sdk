@@ -1,3 +1,8 @@
+2025-08-25 Version: 4.12.7
+- Update API DescribeVirtualMFADevices: add request parameters Filter.
+- Update API DescribeVirtualMFADevices: add response parameters Body.VirtualMFADevices.$.AdUser.
+
+
 2025-08-22 Version: 4.12.6
 - Update API ResetDesktops: add request parameters LastRetryTime.
 
