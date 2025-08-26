@@ -9,6 +9,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -129,9 +130,6 @@ class GetAsyncJobResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -166,6 +164,7 @@ class RecognizeBankCardRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -193,6 +192,7 @@ class RecognizeBankCardAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -307,9 +307,6 @@ class RecognizeBankCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -344,6 +341,7 @@ class RecognizeBusinessLicenseRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -371,6 +369,7 @@ class RecognizeBusinessLicenseAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -736,9 +735,6 @@ class RecognizeBusinessLicenseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -775,8 +771,11 @@ class RecognizeCharacterRequest(TeaModel):
         min_height: int = None,
         output_probability: bool = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.min_height = min_height
+        # This parameter is required.
         self.output_probability = output_probability
 
     def validate(self):
@@ -814,8 +813,11 @@ class RecognizeCharacterAdvanceRequest(TeaModel):
         min_height: int = None,
         output_probability: bool = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.min_height = min_height
+        # This parameter is required.
         self.output_probability = output_probability
 
     def validate(self):
@@ -1020,9 +1022,6 @@ class RecognizeCharacterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1058,6 +1057,7 @@ class RecognizeDriverLicenseRequest(TeaModel):
         image_url: str = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.side = side
 
@@ -1091,6 +1091,7 @@ class RecognizeDriverLicenseAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.side = side
 
@@ -1335,9 +1336,6 @@ class RecognizeDriverLicenseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1373,6 +1371,7 @@ class RecognizeDrivingLicenseRequest(TeaModel):
         image_url: str = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.side = side
 
@@ -1406,6 +1405,7 @@ class RecognizeDrivingLicenseAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.side = side
 
@@ -1680,9 +1680,6 @@ class RecognizeDrivingLicenseResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1718,6 +1715,7 @@ class RecognizeIdentityCardRequest(TeaModel):
         image_url: str = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
         self.side = side
 
@@ -1751,6 +1749,7 @@ class RecognizeIdentityCardAdvanceRequest(TeaModel):
         image_urlobject: BinaryIO = None,
         side: str = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
         self.side = side
 
@@ -2173,9 +2172,6 @@ class RecognizeIdentityCardResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2210,6 +2206,7 @@ class RecognizeLicensePlateRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2237,6 +2234,7 @@ class RecognizeLicensePlateAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -2487,9 +2485,6 @@ class RecognizeLicensePlateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2524,6 +2519,7 @@ class RecognizePdfRequest(TeaModel):
         self,
         file_url: str = None,
     ):
+        # This parameter is required.
         self.file_url = file_url
 
     def validate(self):
@@ -2551,6 +2547,7 @@ class RecognizePdfAdvanceRequest(TeaModel):
         self,
         file_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.file_urlobject = file_urlobject
 
     def validate(self):
@@ -2795,9 +2792,6 @@ class RecognizePdfResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2832,6 +2826,7 @@ class RecognizeQrCodeRequestTasks(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -2860,6 +2855,8 @@ class RecognizeQrCodeRequest(TeaModel):
         tasks: List[RecognizeQrCodeRequestTasks] = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
@@ -2895,6 +2892,7 @@ class RecognizeQrCodeAdvanceRequestTasks(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -2923,6 +2921,8 @@ class RecognizeQrCodeAdvanceRequest(TeaModel):
         tasks: List[RecognizeQrCodeAdvanceRequestTasks] = None,
     ):
         # 1
+        # 
+        # This parameter is required.
         self.tasks = tasks
 
     def validate(self):
@@ -3128,9 +3128,6 @@ class RecognizeQrCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3165,6 +3162,7 @@ class RecognizeQuotaInvoiceRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -3192,6 +3190,7 @@ class RecognizeQuotaInvoiceAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -3472,9 +3471,6 @@ class RecognizeQuotaInvoiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3514,11 +3510,17 @@ class RecognizeTableRequest(TeaModel):
         skip_detection: bool = None,
         use_finance_model: bool = None,
     ):
+        # This parameter is required.
         self.assure_direction = assure_direction
+        # This parameter is required.
         self.has_line = has_line
+        # This parameter is required.
         self.image_url = image_url
+        # This parameter is required.
         self.output_format = output_format
+        # This parameter is required.
         self.skip_detection = skip_detection
+        # This parameter is required.
         self.use_finance_model = use_finance_model
 
     def validate(self):
@@ -3571,11 +3573,17 @@ class RecognizeTableAdvanceRequest(TeaModel):
         skip_detection: bool = None,
         use_finance_model: bool = None,
     ):
+        # This parameter is required.
         self.assure_direction = assure_direction
+        # This parameter is required.
         self.has_line = has_line
+        # This parameter is required.
         self.image_urlobject = image_urlobject
+        # This parameter is required.
         self.output_format = output_format
+        # This parameter is required.
         self.skip_detection = skip_detection
+        # This parameter is required.
         self.use_finance_model = use_finance_model
 
     def validate(self):
@@ -3851,9 +3859,6 @@ class RecognizeTableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3888,6 +3893,7 @@ class RecognizeTaxiInvoiceRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -3915,6 +3921,7 @@ class RecognizeTaxiInvoiceAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -4259,9 +4266,6 @@ class RecognizeTaxiInvoiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4296,6 +4300,7 @@ class RecognizeTicketInvoiceRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -4323,6 +4328,7 @@ class RecognizeTicketInvoiceAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -4722,9 +4728,6 @@ class RecognizeTicketInvoiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4759,6 +4762,7 @@ class RecognizeTrainTicketRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -4786,6 +4790,7 @@ class RecognizeTrainTicketAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -4924,9 +4929,6 @@ class RecognizeTrainTicketResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4962,7 +4964,9 @@ class RecognizeVATInvoiceRequest(TeaModel):
         file_type: str = None,
         file_url: str = None,
     ):
+        # This parameter is required.
         self.file_type = file_type
+        # This parameter is required.
         self.file_url = file_url
 
     def validate(self):
@@ -4995,7 +4999,9 @@ class RecognizeVATInvoiceAdvanceRequest(TeaModel):
         file_type: str = None,
         file_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.file_type = file_type
+        # This parameter is required.
         self.file_urlobject = file_urlobject
 
     def validate(self):
@@ -5410,9 +5416,6 @@ class RecognizeVATInvoiceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5447,6 +5450,7 @@ class RecognizeVINCodeRequest(TeaModel):
         self,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -5474,6 +5478,7 @@ class RecognizeVINCodeAdvanceRequest(TeaModel):
         self,
         image_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.image_urlobject = image_urlobject
 
     def validate(self):
@@ -5570,9 +5575,6 @@ class RecognizeVINCodeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5607,6 +5609,7 @@ class RecognizeVideoCharacterRequest(TeaModel):
         self,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -5634,6 +5637,7 @@ class RecognizeVideoCharacterAdvanceRequest(TeaModel):
         self,
         video_urlobject: BinaryIO = None,
     ):
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -5901,9 +5905,6 @@ class RecognizeVideoCharacterResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
