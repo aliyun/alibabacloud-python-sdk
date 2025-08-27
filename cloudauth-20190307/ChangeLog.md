@@ -1,3 +1,6 @@
+2025-08-27 Version: 3.9.4
+- Generated python 2019-03-07 for Cloudauth.
+
 2025-08-19 Version: 3.9.3
 - Generated python 2019-03-07 for Cloudauth.
 

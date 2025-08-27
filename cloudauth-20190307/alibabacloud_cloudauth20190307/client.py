@@ -4254,6 +4254,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         """
+        @summary 实人服务端初始化接口
+        
         @param request: InitFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InitFaceVerifyResponse
@@ -4361,6 +4363,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         """
+        @summary 实人服务端初始化接口
+        
         @param request: InitFaceVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: InitFaceVerifyResponse
@@ -4467,6 +4471,8 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InitFaceVerifyRequest,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         """
+        @summary 实人服务端初始化接口
+        
         @param request: InitFaceVerifyRequest
         @return: InitFaceVerifyResponse
         """
@@ -4478,6 +4484,8 @@ class Client(OpenApiClient):
         request: cloudauth_20190307_models.InitFaceVerifyRequest,
     ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
         """
+        @summary 实人服务端初始化接口
+        
         @param request: InitFaceVerifyRequest
         @return: InitFaceVerifyResponse
         """
