@@ -1,3 +1,6 @@
+2025-08-27 Version: 1.10.6
+- Generated python 2023-01-20 for csas.
+
 2025-08-21 Version: 1.10.5
 - Update API CreateWmEmbedTask: add request parameters ImageControl.
 
