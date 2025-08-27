@@ -41,6 +41,104 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: fc20230330_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/resource-groups',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: fc20230330_models.ChangeResourceGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/resource-groups',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: fc20230330_models.ChangeResourceGroupRequest,
+    ) -> fc20230330_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_resource_group_with_options(request, headers, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: fc20230330_models.ChangeResourceGroupRequest,
+    ) -> fc20230330_models.ChangeResourceGroupResponse:
+        """
+        @summary 修改实例所在资源组
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_resource_group_with_options_async(request, headers, runtime)
+
     def create_alias_with_options(
         self,
         function_name: str,

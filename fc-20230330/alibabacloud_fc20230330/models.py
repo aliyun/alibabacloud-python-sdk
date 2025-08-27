@@ -646,6 +646,45 @@ class ConcurrencyConfig(TeaModel):
         return self
 
 
+class CookieSessionAffinityConfig(TeaModel):
+    def __init__(
+        self,
+        session_concurrency_per_instance: int = None,
+        session_idle_timeout_in_seconds: int = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.session_concurrency_per_instance = session_concurrency_per_instance
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_concurrency_per_instance is not None:
+            result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionConcurrencyPerInstance') is not None:
+            self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+        return self
+
+
 class CreateAliasInput(TeaModel):
     def __init__(
         self,
@@ -2030,6 +2069,7 @@ class CreateFunctionInput(TeaModel):
         gpu_config: GPUConfig = None,
         handler: str = None,
         instance_concurrency: int = None,
+        instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
         internet_access: bool = None,
         layers: List[str] = None,
@@ -2041,6 +2081,7 @@ class CreateFunctionInput(TeaModel):
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
+        session_affinity_config: str = None,
         tags: List[Tag] = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
@@ -2062,6 +2103,7 @@ class CreateFunctionInput(TeaModel):
         # This parameter is required.
         self.handler = handler
         self.instance_concurrency = instance_concurrency
+        self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
         self.internet_access = internet_access
         self.layers = layers
@@ -2074,6 +2116,7 @@ class CreateFunctionInput(TeaModel):
         # This parameter is required.
         self.runtime = runtime
         self.session_affinity = session_affinity
+        self.session_affinity_config = session_affinity_config
         self.tags = tags
         self.timeout = timeout
         self.tracing_config = tracing_config
@@ -2141,6 +2184,8 @@ class CreateFunctionInput(TeaModel):
             result['handler'] = self.handler
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_isolation_mode is not None:
+            result['instanceIsolationMode'] = self.instance_isolation_mode
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
         if self.internet_access is not None:
@@ -2163,6 +2208,8 @@ class CreateFunctionInput(TeaModel):
             result['runtime'] = self.runtime
         if self.session_affinity is not None:
             result['sessionAffinity'] = self.session_affinity
+        if self.session_affinity_config is not None:
+            result['sessionAffinityConfig'] = self.session_affinity_config
         result['tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -2210,6 +2257,8 @@ class CreateFunctionInput(TeaModel):
             self.handler = m.get('handler')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceIsolationMode') is not None:
+            self.instance_isolation_mode = m.get('instanceIsolationMode')
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
@@ -2236,6 +2285,8 @@ class CreateFunctionInput(TeaModel):
             self.runtime = m.get('runtime')
         if m.get('sessionAffinity') is not None:
             self.session_affinity = m.get('sessionAffinity')
+        if m.get('sessionAffinityConfig') is not None:
+            self.session_affinity_config = m.get('sessionAffinityConfig')
         self.tags = []
         if m.get('tags') is not None:
             for k in m.get('tags'):
@@ -2654,6 +2705,212 @@ class DescribeRegionsOutput(TeaModel):
         if m.get('Regions') is not None:
             temp_model = DescribeRegionsOutputRegions()
             self.regions = temp_model.from_map(m['Regions'])
+        return self
+
+
+class ScalingPolicy(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_instances: int = None,
+        metric_target: float = None,
+        metric_type: str = None,
+        min_instances: int = None,
+        name: str = None,
+        start_time: str = None,
+        time_zone: str = None,
+    ):
+        self.end_time = end_time
+        self.max_instances = max_instances
+        self.metric_target = metric_target
+        self.metric_type = metric_type
+        self.min_instances = min_instances
+        self.name = name
+        self.start_time = start_time
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_instances is not None:
+            result['maxInstances'] = self.max_instances
+        if self.metric_target is not None:
+            result['metricTarget'] = self.metric_target
+        if self.metric_type is not None:
+            result['metricType'] = self.metric_type
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+        if self.name is not None:
+            result['name'] = self.name
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxInstances') is not None:
+            self.max_instances = m.get('maxInstances')
+        if m.get('metricTarget') is not None:
+            self.metric_target = m.get('metricTarget')
+        if m.get('metricType') is not None:
+            self.metric_type = m.get('metricType')
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        return self
+
+
+class ScheduledPolicy(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        name: str = None,
+        schedule_expression: str = None,
+        start_time: str = None,
+        target: int = None,
+        time_zone: str = None,
+    ):
+        self.end_time = end_time
+        self.name = name
+        self.schedule_expression = schedule_expression
+        self.start_time = start_time
+        self.target = target
+        self.time_zone = time_zone
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule_expression is not None:
+            result['scheduleExpression'] = self.schedule_expression
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.target is not None:
+            result['target'] = self.target
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('scheduleExpression') is not None:
+            self.schedule_expression = m.get('scheduleExpression')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('target') is not None:
+            self.target = m.get('target')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        return self
+
+
+class ElasticConfigStatus(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        current_instances: int = None,
+        function_arn: str = None,
+        min_instances: int = None,
+        resident_pool_id: str = None,
+        scaling_policies: List[ScalingPolicy] = None,
+        scheduled_policies: List[ScheduledPolicy] = None,
+    ):
+        self.current_error = current_error
+        self.current_instances = current_instances
+        self.function_arn = function_arn
+        self.min_instances = min_instances
+        self.resident_pool_id = resident_pool_id
+        self.scaling_policies = scaling_policies
+        self.scheduled_policies = scheduled_policies
+
+    def validate(self):
+        if self.scaling_policies:
+            for k in self.scaling_policies:
+                if k:
+                    k.validate()
+        if self.scheduled_policies:
+            for k in self.scheduled_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['currentError'] = self.current_error
+        if self.current_instances is not None:
+            result['currentInstances'] = self.current_instances
+        if self.function_arn is not None:
+            result['functionArn'] = self.function_arn
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+        if self.resident_pool_id is not None:
+            result['residentPoolId'] = self.resident_pool_id
+        result['scalingPolicies'] = []
+        if self.scaling_policies is not None:
+            for k in self.scaling_policies:
+                result['scalingPolicies'].append(k.to_map() if k else None)
+        result['scheduledPolicies'] = []
+        if self.scheduled_policies is not None:
+            for k in self.scheduled_policies:
+                result['scheduledPolicies'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentError') is not None:
+            self.current_error = m.get('currentError')
+        if m.get('currentInstances') is not None:
+            self.current_instances = m.get('currentInstances')
+        if m.get('functionArn') is not None:
+            self.function_arn = m.get('functionArn')
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+        if m.get('residentPoolId') is not None:
+            self.resident_pool_id = m.get('residentPoolId')
+        self.scaling_policies = []
+        if m.get('scalingPolicies') is not None:
+            for k in m.get('scalingPolicies'):
+                temp_model = ScalingPolicy()
+                self.scaling_policies.append(temp_model.from_map(k))
+        self.scheduled_policies = []
+        if m.get('scheduledPolicies') is not None:
+            for k in m.get('scheduledPolicies'):
+                temp_model = ScheduledPolicy()
+                self.scheduled_policies.append(temp_model.from_map(k))
         return self
 
 
@@ -3530,6 +3787,7 @@ class Function(TeaModel):
         gpu_config: GPUConfig = None,
         handler: str = None,
         instance_concurrency: int = None,
+        instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
         internet_access: bool = None,
         invocation_restriction: FunctionRestriction = None,
@@ -3546,6 +3804,7 @@ class Function(TeaModel):
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
+        session_affinity_config: str = None,
         state: str = None,
         state_reason: str = None,
         state_reason_code: str = None,
@@ -3572,6 +3831,7 @@ class Function(TeaModel):
         self.gpu_config = gpu_config
         self.handler = handler
         self.instance_concurrency = instance_concurrency
+        self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
         self.internet_access = internet_access
         self.invocation_restriction = invocation_restriction
@@ -3588,6 +3848,7 @@ class Function(TeaModel):
         self.role = role
         self.runtime = runtime
         self.session_affinity = session_affinity
+        self.session_affinity_config = session_affinity_config
         self.state = state
         self.state_reason = state_reason
         self.state_reason_code = state_reason_code
@@ -3670,6 +3931,8 @@ class Function(TeaModel):
             result['handler'] = self.handler
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_isolation_mode is not None:
+            result['instanceIsolationMode'] = self.instance_isolation_mode
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
         if self.internet_access is not None:
@@ -3704,6 +3967,8 @@ class Function(TeaModel):
             result['runtime'] = self.runtime
         if self.session_affinity is not None:
             result['sessionAffinity'] = self.session_affinity
+        if self.session_affinity_config is not None:
+            result['sessionAffinityConfig'] = self.session_affinity_config
         if self.state is not None:
             result['state'] = self.state
         if self.state_reason is not None:
@@ -3764,6 +4029,8 @@ class Function(TeaModel):
             self.handler = m.get('handler')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceIsolationMode') is not None:
+            self.instance_isolation_mode = m.get('instanceIsolationMode')
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
@@ -3804,6 +4071,8 @@ class Function(TeaModel):
             self.runtime = m.get('runtime')
         if m.get('sessionAffinity') is not None:
             self.session_affinity = m.get('sessionAffinity')
+        if m.get('sessionAffinityConfig') is not None:
+            self.session_affinity_config = m.get('sessionAffinityConfig')
         if m.get('state') is not None:
             self.state = m.get('state')
         if m.get('stateReason') is not None:
@@ -3965,6 +4234,157 @@ class GetResourceTagsOutput(TeaModel):
         return self
 
 
+class ResidentConfig(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        pool_id: str = None,
+    ):
+        self.count = count
+        self.pool_id = pool_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.pool_id is not None:
+            result['poolId'] = self.pool_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('poolId') is not None:
+            self.pool_id = m.get('poolId')
+        return self
+
+
+class ScalingStatus(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        resource_count: int = None,
+    ):
+        self.current_error = current_error
+        self.resource_count = resource_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['currentError'] = self.current_error
+        if self.resource_count is not None:
+            result['resourceCount'] = self.resource_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentError') is not None:
+            self.current_error = m.get('currentError')
+        if m.get('resourceCount') is not None:
+            self.resource_count = m.get('resourceCount')
+        return self
+
+
+class ScalingConfigStatus(TeaModel):
+    def __init__(
+        self,
+        function_name: str = None,
+        qualifier: str = None,
+        resident_config: ResidentConfig = None,
+        resource_type: str = None,
+        scaling_status: ScalingStatus = None,
+    ):
+        self.function_name = function_name
+        self.qualifier = qualifier
+        self.resident_config = resident_config
+        self.resource_type = resource_type
+        self.scaling_status = scaling_status
+
+    def validate(self):
+        if self.resident_config:
+            self.resident_config.validate()
+        if self.scaling_status:
+            self.scaling_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.resident_config is not None:
+            result['residentConfig'] = self.resident_config.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.scaling_status is not None:
+            result['scalingStatus'] = self.scaling_status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('residentConfig') is not None:
+            temp_model = ResidentConfig()
+            self.resident_config = temp_model.from_map(m['residentConfig'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('scalingStatus') is not None:
+            temp_model = ScalingStatus()
+            self.scaling_status = temp_model.from_map(m['scalingStatus'])
+        return self
+
+
+class GetScalingConfigStatusOutput(TeaModel):
+    def __init__(
+        self,
+        scaling_config_status: ScalingConfigStatus = None,
+    ):
+        self.scaling_config_status = scaling_config_status
+
+    def validate(self):
+        if self.scaling_config_status:
+            self.scaling_config_status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scaling_config_status is not None:
+            result['scalingConfigStatus'] = self.scaling_config_status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scalingConfigStatus') is not None:
+            temp_model = ScalingConfigStatus()
+            self.scaling_config_status = temp_model.from_map(m['scalingConfigStatus'])
+        return self
+
+
 class HTTPTrigger(TeaModel):
     def __init__(
         self,
@@ -4040,6 +4460,51 @@ class HTTPTriggerConfig(TeaModel):
             self.disable_urlinternet = m.get('disableURLInternet')
         if m.get('methods') is not None:
             self.methods = m.get('methods')
+        return self
+
+
+class HeaderFieldSessionAffinityConfig(TeaModel):
+    def __init__(
+        self,
+        affinity_header_field_name: str = None,
+        session_concurrency_per_instance: int = None,
+        session_idle_timeout_in_seconds: int = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.affinity_header_field_name = affinity_header_field_name
+        self.session_concurrency_per_instance = session_concurrency_per_instance
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.affinity_header_field_name is not None:
+            result['affinityHeaderFieldName'] = self.affinity_header_field_name
+        if self.session_concurrency_per_instance is not None:
+            result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('affinityHeaderFieldName') is not None:
+            self.affinity_header_field_name = m.get('affinityHeaderFieldName')
+        if m.get('sessionConcurrencyPerInstance') is not None:
+            self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
         return self
 
 
@@ -4456,6 +4921,47 @@ class ListCustomDomainOutput(TeaModel):
             for k in m.get('customDomains'):
                 temp_model = CustomDomain()
                 self.custom_domains.append(temp_model.from_map(k))
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListElasticConfigsOutput(TeaModel):
+    def __init__(
+        self,
+        elastic_configs: List[ElasticConfigStatus] = None,
+        next_token: str = None,
+    ):
+        self.elastic_configs = elastic_configs
+        self.next_token = next_token
+
+    def validate(self):
+        if self.elastic_configs:
+            for k in self.elastic_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['elasticConfigs'] = []
+        if self.elastic_configs is not None:
+            for k in self.elastic_configs:
+                result['elasticConfigs'].append(k.to_map() if k else None)
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elastic_configs = []
+        if m.get('elasticConfigs') is not None:
+            for k in m.get('elasticConfigs'):
+                temp_model = ElasticConfigStatus()
+                self.elastic_configs.append(temp_model.from_map(k))
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
         return self
@@ -4892,6 +5398,341 @@ class ListProvisionConfigsOutput(TeaModel):
         return self
 
 
+class ResidentResourceAllocation(TeaModel):
+    def __init__(
+        self,
+        function_name: str = None,
+        instance_count: int = None,
+        qualifier: str = None,
+        total_cpu_cores: float = None,
+        total_disk_size: float = None,
+        total_gpu_memory_size: float = None,
+        total_memory_size: float = None,
+    ):
+        # 使用该资源池的函数名
+        self.function_name = function_name
+        # 实例数
+        self.instance_count = instance_count
+        # 函数的别名
+        self.qualifier = qualifier
+        # CPU 占用总核数
+        self.total_cpu_cores = total_cpu_cores
+        # 占用磁盘大小，单位 GB
+        self.total_disk_size = total_disk_size
+        # 占用显存大小，单位 GB
+        self.total_gpu_memory_size = total_gpu_memory_size
+        # 内存占用大小，单位 GB
+        self.total_memory_size = total_memory_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.instance_count is not None:
+            result['instanceCount'] = self.instance_count
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.total_cpu_cores is not None:
+            result['totalCpuCores'] = self.total_cpu_cores
+        if self.total_disk_size is not None:
+            result['totalDiskSize'] = self.total_disk_size
+        if self.total_gpu_memory_size is not None:
+            result['totalGpuMemorySize'] = self.total_gpu_memory_size
+        if self.total_memory_size is not None:
+            result['totalMemorySize'] = self.total_memory_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('instanceCount') is not None:
+            self.instance_count = m.get('instanceCount')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('totalCpuCores') is not None:
+            self.total_cpu_cores = m.get('totalCpuCores')
+        if m.get('totalDiskSize') is not None:
+            self.total_disk_size = m.get('totalDiskSize')
+        if m.get('totalGpuMemorySize') is not None:
+            self.total_gpu_memory_size = m.get('totalGpuMemorySize')
+        if m.get('totalMemorySize') is not None:
+            self.total_memory_size = m.get('totalMemorySize')
+        return self
+
+
+class ResidentResourceAllocationStatus(TeaModel):
+    def __init__(
+        self,
+        last_allocated_time: str = None,
+        last_allocation: ResidentResourceAllocation = None,
+    ):
+        self.last_allocated_time = last_allocated_time
+        self.last_allocation = last_allocation
+
+    def validate(self):
+        if self.last_allocation:
+            self.last_allocation.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.last_allocated_time is not None:
+            result['lastAllocatedTime'] = self.last_allocated_time
+        if self.last_allocation is not None:
+            result['lastAllocation'] = self.last_allocation.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('lastAllocatedTime') is not None:
+            self.last_allocated_time = m.get('lastAllocatedTime')
+        if m.get('lastAllocation') is not None:
+            temp_model = ResidentResourceAllocation()
+            self.last_allocation = temp_model.from_map(m['lastAllocation'])
+        return self
+
+
+class ResidentResourceCapacity(TeaModel):
+    def __init__(
+        self,
+        gpu_type: str = None,
+        total_cpu_cores: int = None,
+        total_disk_size: int = None,
+        total_gpu_cards: int = None,
+        total_gpu_memory_size: int = None,
+        total_memory_size: int = None,
+    ):
+        # GPU 卡型
+        self.gpu_type = gpu_type
+        # CPU 总核数
+        self.total_cpu_cores = total_cpu_cores
+        # 总磁盘大小，单位 GB
+        self.total_disk_size = total_disk_size
+        # GPU总卡数
+        self.total_gpu_cards = total_gpu_cards
+        # 总显存大小，单位 GB
+        self.total_gpu_memory_size = total_gpu_memory_size
+        # 总内存大小，单位 GB
+        self.total_memory_size = total_memory_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gpu_type is not None:
+            result['gpuType'] = self.gpu_type
+        if self.total_cpu_cores is not None:
+            result['totalCpuCores'] = self.total_cpu_cores
+        if self.total_disk_size is not None:
+            result['totalDiskSize'] = self.total_disk_size
+        if self.total_gpu_cards is not None:
+            result['totalGpuCards'] = self.total_gpu_cards
+        if self.total_gpu_memory_size is not None:
+            result['totalGpuMemorySize'] = self.total_gpu_memory_size
+        if self.total_memory_size is not None:
+            result['totalMemorySize'] = self.total_memory_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gpuType') is not None:
+            self.gpu_type = m.get('gpuType')
+        if m.get('totalCpuCores') is not None:
+            self.total_cpu_cores = m.get('totalCpuCores')
+        if m.get('totalDiskSize') is not None:
+            self.total_disk_size = m.get('totalDiskSize')
+        if m.get('totalGpuCards') is not None:
+            self.total_gpu_cards = m.get('totalGpuCards')
+        if m.get('totalGpuMemorySize') is not None:
+            self.total_gpu_memory_size = m.get('totalGpuMemorySize')
+        if m.get('totalMemorySize') is not None:
+            self.total_memory_size = m.get('totalMemorySize')
+        return self
+
+
+class ResidentResourcePool(TeaModel):
+    def __init__(
+        self,
+        allocation_status: ResidentResourceAllocationStatus = None,
+        created_time: str = None,
+        expire_time: str = None,
+        last_modified_time: str = None,
+        resident_resource_pool_id: str = None,
+        resident_resource_pool_name: str = None,
+        resource_pool_capacity: ResidentResourceCapacity = None,
+        resource_pool_config: ResidentResourceCapacity = None,
+    ):
+        # 资源池实时分配情况，包含每个函数的具体分配情况
+        self.allocation_status = allocation_status
+        # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
+        self.created_time = created_time
+        # 资源池过期时间
+        self.expire_time = expire_time
+        # 上次修改时间，包含扩容、续费、更名等操作
+        self.last_modified_time = last_modified_time
+        self.resident_resource_pool_id = resident_resource_pool_id
+        # 代表资源名称的资源属性字段
+        self.resident_resource_pool_name = resident_resource_pool_name
+        # 资源池总体规格
+        self.resource_pool_capacity = resource_pool_capacity
+        self.resource_pool_config = resource_pool_config
+
+    def validate(self):
+        if self.allocation_status:
+            self.allocation_status.validate()
+        if self.resource_pool_capacity:
+            self.resource_pool_capacity.validate()
+        if self.resource_pool_config:
+            self.resource_pool_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocation_status is not None:
+            result['allocationStatus'] = self.allocation_status.to_map()
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.resident_resource_pool_id is not None:
+            result['residentResourcePoolId'] = self.resident_resource_pool_id
+        if self.resident_resource_pool_name is not None:
+            result['residentResourcePoolName'] = self.resident_resource_pool_name
+        if self.resource_pool_capacity is not None:
+            result['resourcePoolCapacity'] = self.resource_pool_capacity.to_map()
+        if self.resource_pool_config is not None:
+            result['resourcePoolConfig'] = self.resource_pool_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('allocationStatus') is not None:
+            temp_model = ResidentResourceAllocationStatus()
+            self.allocation_status = temp_model.from_map(m['allocationStatus'])
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('residentResourcePoolId') is not None:
+            self.resident_resource_pool_id = m.get('residentResourcePoolId')
+        if m.get('residentResourcePoolName') is not None:
+            self.resident_resource_pool_name = m.get('residentResourcePoolName')
+        if m.get('resourcePoolCapacity') is not None:
+            temp_model = ResidentResourceCapacity()
+            self.resource_pool_capacity = temp_model.from_map(m['resourcePoolCapacity'])
+        if m.get('resourcePoolConfig') is not None:
+            temp_model = ResidentResourceCapacity()
+            self.resource_pool_config = temp_model.from_map(m['resourcePoolConfig'])
+        return self
+
+
+class ListResidentResourcePoolsOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        resident_resource_pools: List[ResidentResourcePool] = None,
+    ):
+        self.next_token = next_token
+        self.resident_resource_pools = resident_resource_pools
+
+    def validate(self):
+        if self.resident_resource_pools:
+            for k in self.resident_resource_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['residentResourcePools'] = []
+        if self.resident_resource_pools is not None:
+            for k in self.resident_resource_pools:
+                result['residentResourcePools'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.resident_resource_pools = []
+        if m.get('residentResourcePools') is not None:
+            for k in m.get('residentResourcePools'):
+                temp_model = ResidentResourcePool()
+                self.resident_resource_pools.append(temp_model.from_map(k))
+        return self
+
+
+class ListScalingConfigStatusOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        result: List[ScalingConfigStatus] = None,
+    ):
+        self.next_token = next_token
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ScalingConfigStatus()
+                self.result.append(temp_model.from_map(k))
+        return self
+
+
 class TagResource(TeaModel):
     def __init__(
         self,
@@ -5325,6 +6166,78 @@ class ListVpcBindingsOutput(TeaModel):
         return self
 
 
+class MCPSSESessionAffinityConfig(TeaModel):
+    def __init__(
+        self,
+        session_concurrency_per_instance: int = None,
+        sse_endpoint_path: str = None,
+    ):
+        self.session_concurrency_per_instance = session_concurrency_per_instance
+        self.sse_endpoint_path = sse_endpoint_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_concurrency_per_instance is not None:
+            result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
+        if self.sse_endpoint_path is not None:
+            result['sseEndpointPath'] = self.sse_endpoint_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionConcurrencyPerInstance') is not None:
+            self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
+        if m.get('sseEndpointPath') is not None:
+            self.sse_endpoint_path = m.get('sseEndpointPath')
+        return self
+
+
+class MCPStreamableSessionAffinityConfig(TeaModel):
+    def __init__(
+        self,
+        session_concurrency_per_instance: int = None,
+        session_idle_timeout_in_seconds: int = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.session_concurrency_per_instance = session_concurrency_per_instance
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_concurrency_per_instance is not None:
+            result['sessionConcurrencyPerInstance'] = self.session_concurrency_per_instance
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionConcurrencyPerInstance') is not None:
+            self.session_concurrency_per_instance = m.get('sessionConcurrencyPerInstance')
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+        return self
+
+
 class MNSTopicTriggerConfig(TeaModel):
     def __init__(
         self,
@@ -5534,6 +6447,68 @@ class PutConcurrencyInput(TeaModel):
         return self
 
 
+class PutElasticConfigInput(TeaModel):
+    def __init__(
+        self,
+        min_instances: int = None,
+        resident_pool_id: str = None,
+        scaling_policies: List[ScalingPolicy] = None,
+        scheduled_policies: List[ScheduledPolicy] = None,
+    ):
+        self.min_instances = min_instances
+        self.resident_pool_id = resident_pool_id
+        self.scaling_policies = scaling_policies
+        self.scheduled_policies = scheduled_policies
+
+    def validate(self):
+        if self.scaling_policies:
+            for k in self.scaling_policies:
+                if k:
+                    k.validate()
+        if self.scheduled_policies:
+            for k in self.scheduled_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+        if self.resident_pool_id is not None:
+            result['residentPoolId'] = self.resident_pool_id
+        result['scalingPolicies'] = []
+        if self.scaling_policies is not None:
+            for k in self.scaling_policies:
+                result['scalingPolicies'].append(k.to_map() if k else None)
+        result['scheduledPolicies'] = []
+        if self.scheduled_policies is not None:
+            for k in self.scheduled_policies:
+                result['scheduledPolicies'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+        if m.get('residentPoolId') is not None:
+            self.resident_pool_id = m.get('residentPoolId')
+        self.scaling_policies = []
+        if m.get('scalingPolicies') is not None:
+            for k in m.get('scalingPolicies'):
+                temp_model = ScalingPolicy()
+                self.scaling_policies.append(temp_model.from_map(k))
+        self.scheduled_policies = []
+        if m.get('scheduledPolicies') is not None:
+            for k in m.get('scheduledPolicies'):
+                temp_model = ScheduledPolicy()
+                self.scheduled_policies.append(temp_model.from_map(k))
+        return self
+
+
 class PutProvisionConfigInput(TeaModel):
     def __init__(
         self,
@@ -5606,6 +6581,88 @@ class PutProvisionConfigInput(TeaModel):
             for k in m.get('targetTrackingPolicies'):
                 temp_model = TargetTrackingPolicy()
                 self.target_tracking_policies.append(temp_model.from_map(k))
+        return self
+
+
+class PutScalingConfigInput(TeaModel):
+    def __init__(
+        self,
+        resident_config: ResidentConfig = None,
+        resource_type: str = None,
+    ):
+        self.resident_config = resident_config
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.resident_config:
+            self.resident_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resident_config is not None:
+            result['residentConfig'] = self.resident_config.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('residentConfig') is not None:
+            temp_model = ResidentConfig()
+            self.resident_config = temp_model.from_map(m['residentConfig'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        return self
+
+
+class PutScalingConfigOutput(TeaModel):
+    def __init__(
+        self,
+        function_name: str = None,
+        qualifier: str = None,
+        resident_config: ResidentConfig = None,
+        resource_type: str = None,
+    ):
+        self.function_name = function_name
+        self.qualifier = qualifier
+        self.resident_config = resident_config
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.resident_config:
+            self.resident_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.resident_config is not None:
+            result['residentConfig'] = self.resident_config.to_map()
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('residentConfig') is not None:
+            temp_model = ResidentConfig()
+            self.resident_config = temp_model.from_map(m['residentConfig'])
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
         return self
 
 
@@ -5983,6 +7040,7 @@ class UpdateFunctionInput(TeaModel):
         gpu_config: GPUConfig = None,
         handler: str = None,
         instance_concurrency: int = None,
+        instance_isolation_mode: str = None,
         instance_lifecycle_config: InstanceLifecycleConfig = None,
         internet_access: bool = None,
         layers: List[str] = None,
@@ -5993,6 +7051,7 @@ class UpdateFunctionInput(TeaModel):
         role: str = None,
         runtime: str = None,
         session_affinity: str = None,
+        session_affinity_config: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
@@ -6010,6 +7069,7 @@ class UpdateFunctionInput(TeaModel):
         self.gpu_config = gpu_config
         self.handler = handler
         self.instance_concurrency = instance_concurrency
+        self.instance_isolation_mode = instance_isolation_mode
         self.instance_lifecycle_config = instance_lifecycle_config
         self.internet_access = internet_access
         self.layers = layers
@@ -6020,6 +7080,7 @@ class UpdateFunctionInput(TeaModel):
         self.role = role
         self.runtime = runtime
         self.session_affinity = session_affinity
+        self.session_affinity_config = session_affinity_config
         self.timeout = timeout
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -6080,6 +7141,8 @@ class UpdateFunctionInput(TeaModel):
             result['handler'] = self.handler
         if self.instance_concurrency is not None:
             result['instanceConcurrency'] = self.instance_concurrency
+        if self.instance_isolation_mode is not None:
+            result['instanceIsolationMode'] = self.instance_isolation_mode
         if self.instance_lifecycle_config is not None:
             result['instanceLifecycleConfig'] = self.instance_lifecycle_config.to_map()
         if self.internet_access is not None:
@@ -6100,6 +7163,8 @@ class UpdateFunctionInput(TeaModel):
             result['runtime'] = self.runtime
         if self.session_affinity is not None:
             result['sessionAffinity'] = self.session_affinity
+        if self.session_affinity_config is not None:
+            result['sessionAffinityConfig'] = self.session_affinity_config
         if self.timeout is not None:
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
@@ -6141,6 +7206,8 @@ class UpdateFunctionInput(TeaModel):
             self.handler = m.get('handler')
         if m.get('instanceConcurrency') is not None:
             self.instance_concurrency = m.get('instanceConcurrency')
+        if m.get('instanceIsolationMode') is not None:
+            self.instance_isolation_mode = m.get('instanceIsolationMode')
         if m.get('instanceLifecycleConfig') is not None:
             temp_model = InstanceLifecycleConfig()
             self.instance_lifecycle_config = temp_model.from_map(m['instanceLifecycleConfig'])
@@ -6165,6 +7232,8 @@ class UpdateFunctionInput(TeaModel):
             self.runtime = m.get('runtime')
         if m.get('sessionAffinity') is not None:
             self.session_affinity = m.get('sessionAffinity')
+        if m.get('sessionAffinityConfig') is not None:
+            self.session_affinity_config = m.get('sessionAffinityConfig')
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
         if m.get('tracingConfig') is not None:
@@ -6173,6 +7242,33 @@ class UpdateFunctionInput(TeaModel):
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
+        return self
+
+
+class UpdateResidentResourcePoolInput(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
         return self
 
 
@@ -6218,6 +7314,76 @@ class UpdateTriggerInput(TeaModel):
             self.qualifier = m.get('qualifier')
         if m.get('triggerConfig') is not None:
             self.trigger_config = m.get('triggerConfig')
+        return self
+
+
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        body: ChangeResourceGroupInput = None,
+    ):
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupInput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupOutput()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
