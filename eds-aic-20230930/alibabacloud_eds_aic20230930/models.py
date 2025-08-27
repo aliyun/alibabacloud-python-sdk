@@ -15620,11 +15620,13 @@ class ResetAndroidInstancesInGroupResponse(TeaModel):
 class RunCommandRequest(TeaModel):
     def __init__(
         self,
+        agent_type: str = None,
         command_content: str = None,
         content_encoding: str = None,
         instance_ids: List[str] = None,
         timeout: int = None,
     ):
+        self.agent_type = agent_type
         # The content of the command.
         self.command_content = command_content
         # The encoding method of the command content (`CommandContent`). The value is not case-sensitive.
@@ -15650,6 +15652,8 @@ class RunCommandRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.agent_type is not None:
+            result['AgentType'] = self.agent_type
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
         if self.content_encoding is not None:
@@ -15662,6 +15666,8 @@ class RunCommandRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AgentType') is not None:
+            self.agent_type = m.get('AgentType')
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
         if m.get('ContentEncoding') is not None:

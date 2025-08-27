@@ -1,3 +1,7 @@
+2025-08-27 Version: 4.12.4
+- Update API RunCommand: add request parameters AgentType.
+
+
 2025-08-22 Version: 4.12.3
 - Update API CreateAndroidInstanceGroup: add request parameters BandwidthPackageId.
 - Update API CreateAndroidInstanceGroup: add request parameters BandwidthPackageType.

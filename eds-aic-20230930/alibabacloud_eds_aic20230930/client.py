@@ -7783,6 +7783,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
         if not UtilClient.is_unset(request.content_encoding):
@@ -7824,6 +7826,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.agent_type):
+            query['AgentType'] = request.agent_type
         if not UtilClient.is_unset(request.command_content):
             query['CommandContent'] = request.command_content
         if not UtilClient.is_unset(request.content_encoding):
