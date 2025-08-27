@@ -307,6 +307,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.account_email):
+            body['account_email'] = request.account_email
+        if not UtilClient.is_unset(request.account_phone):
+            body['account_phone'] = request.account_phone
         if not UtilClient.is_unset(request.attribute):
             body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
@@ -404,6 +408,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.account_email):
+            body['account_email'] = request.account_email
+        if not UtilClient.is_unset(request.account_phone):
+            body['account_phone'] = request.account_phone
         if not UtilClient.is_unset(request.attribute):
             body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
@@ -19039,6 +19047,294 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
         return await self.intl_flight_ota_search_with_options_async(request, headers, runtime)
 
+    def intl_flight_re_shop_apply_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightReShopApplyRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopApplyResponse:
+        """
+        @summary 国际机票改签申请
+        
+        @param tmp_req: IntlFlightReShopApplyRequest
+        @param headers: IntlFlightReShopApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightReShopApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.selected_journeys):
+            request.selected_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_journeys, 'selected_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.async_apply_key):
+            body['async_apply_key'] = request.async_apply_key
+        if not UtilClient.is_unset(request.async_apply_mode):
+            body['async_apply_mode'] = request.async_apply_mode
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not UtilClient.is_unset(request.re_shop_reason_code):
+            body['re_shop_reason_code'] = request.re_shop_reason_code
+        if not UtilClient.is_unset(request.selected_journeys_shrink):
+            body['selected_journeys'] = request.selected_journeys_shrink
+        if not UtilClient.is_unset(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        if not UtilClient.is_unset(request.user_intention_memo):
+            body['user_intention_memo'] = request.user_intention_memo
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_apply_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightReShopApplyRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopApplyResponse:
+        """
+        @summary 国际机票改签申请
+        
+        @param tmp_req: IntlFlightReShopApplyRequest
+        @param headers: IntlFlightReShopApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightReShopApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.selected_journeys):
+            request.selected_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_journeys, 'selected_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.async_apply_key):
+            body['async_apply_key'] = request.async_apply_key
+        if not UtilClient.is_unset(request.async_apply_mode):
+            body['async_apply_mode'] = request.async_apply_mode
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not UtilClient.is_unset(request.re_shop_reason_code):
+            body['re_shop_reason_code'] = request.re_shop_reason_code
+        if not UtilClient.is_unset(request.selected_journeys_shrink):
+            body['selected_journeys'] = request.selected_journeys_shrink
+        if not UtilClient.is_unset(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        if not UtilClient.is_unset(request.user_intention_memo):
+            body['user_intention_memo'] = request.user_intention_memo
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_apply(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopApplyRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopApplyResponse:
+        """
+        @summary 国际机票改签申请
+        
+        @param request: IntlFlightReShopApplyRequest
+        @return: IntlFlightReShopApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopApplyHeaders()
+        return self.intl_flight_re_shop_apply_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_apply_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopApplyRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopApplyResponse:
+        """
+        @summary 国际机票改签申请
+        
+        @param request: IntlFlightReShopApplyRequest
+        @return: IntlFlightReShopApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopApplyHeaders()
+        return await self.intl_flight_re_shop_apply_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_cancel_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopCancelRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopCancelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopCancelResponse:
+        """
+        @summary 国际机票改签取消
+        
+        @param request: IntlFlightReShopCancelRequest
+        @param headers: IntlFlightReShopCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopCancelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            body['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopCancel',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopCancelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_cancel_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopCancelRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopCancelHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopCancelResponse:
+        """
+        @summary 国际机票改签取消
+        
+        @param request: IntlFlightReShopCancelRequest
+        @param headers: IntlFlightReShopCancelHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopCancelResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            body['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopCancel',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/cancel',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopCancelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_cancel(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopCancelRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopCancelResponse:
+        """
+        @summary 国际机票改签取消
+        
+        @param request: IntlFlightReShopCancelRequest
+        @return: IntlFlightReShopCancelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopCancelHeaders()
+        return self.intl_flight_re_shop_cancel_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_cancel_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopCancelRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopCancelResponse:
+        """
+        @summary 国际机票改签取消
+        
+        @param request: IntlFlightReShopCancelRequest
+        @return: IntlFlightReShopCancelResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopCancelHeaders()
+        return await self.intl_flight_re_shop_cancel_with_options_async(request, headers, runtime)
+
     def intl_flight_re_shop_consult_with_options(
         self,
         request: btrip_open_20220520_models.IntlFlightReShopConsultRequest,
@@ -19055,12 +19351,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.btrip_user_id):
-            query['btrip_user_id'] = request.btrip_user_id
-        if not UtilClient.is_unset(request.buyer_name):
-            query['buyer_name'] = request.buyer_name
-        if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
@@ -19106,12 +19396,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.btrip_user_id):
-            query['btrip_user_id'] = request.btrip_user_id
-        if not UtilClient.is_unset(request.buyer_name):
-            query['buyer_name'] = request.buyer_name
-        if not UtilClient.is_unset(request.isv_name):
-            query['isv_name'] = request.isv_name
         if not UtilClient.is_unset(request.order_id):
             query['order_id'] = request.order_id
         if not UtilClient.is_unset(request.out_order_id):
@@ -19168,6 +19452,652 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.IntlFlightReShopConsultHeaders()
         return await self.intl_flight_re_shop_consult_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_detail_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopDetailResponse:
+        """
+        @summary 国际机票改签详情
+        
+        @param request: IntlFlightReShopDetailRequest
+        @param headers: IntlFlightReShopDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            query['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            query['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_detail_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopDetailResponse:
+        """
+        @summary 国际机票改签详情
+        
+        @param request: IntlFlightReShopDetailRequest
+        @param headers: IntlFlightReShopDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            query['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            query['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_detail(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopDetailResponse:
+        """
+        @summary 国际机票改签详情
+        
+        @param request: IntlFlightReShopDetailRequest
+        @return: IntlFlightReShopDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopDetailHeaders()
+        return self.intl_flight_re_shop_detail_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_detail_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopDetailResponse:
+        """
+        @summary 国际机票改签详情
+        
+        @param request: IntlFlightReShopDetailRequest
+        @return: IntlFlightReShopDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopDetailHeaders()
+        return await self.intl_flight_re_shop_detail_with_options_async(request, headers, runtime)
+
+    def intl_flight_re_shop_pay_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopPayRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopPayHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopPayResponse:
+        """
+        @summary 国际机票改签支付
+        
+        @param request: IntlFlightReShopPayRequest
+        @param headers: IntlFlightReShopPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopPayResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            body['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopPay',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/pay',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopPayResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_re_shop_pay_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopPayRequest,
+        headers: btrip_open_20220520_models.IntlFlightReShopPayHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightReShopPayResponse:
+        """
+        @summary 国际机票改签支付
+        
+        @param request: IntlFlightReShopPayRequest
+        @param headers: IntlFlightReShopPayHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightReShopPayResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_re_shop_apply_id):
+            body['out_re_shop_apply_id'] = request.out_re_shop_apply_id
+        if not UtilClient.is_unset(request.re_shop_apply_id):
+            body['re_shop_apply_id'] = request.re_shop_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightReShopPay',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/reshop/pay',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightReShopPayResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_re_shop_pay(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopPayRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopPayResponse:
+        """
+        @summary 国际机票改签支付
+        
+        @param request: IntlFlightReShopPayRequest
+        @return: IntlFlightReShopPayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopPayHeaders()
+        return self.intl_flight_re_shop_pay_with_options(request, headers, runtime)
+
+    async def intl_flight_re_shop_pay_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightReShopPayRequest,
+    ) -> btrip_open_20220520_models.IntlFlightReShopPayResponse:
+        """
+        @summary 国际机票改签支付
+        
+        @param request: IntlFlightReShopPayRequest
+        @return: IntlFlightReShopPayResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightReShopPayHeaders()
+        return await self.intl_flight_re_shop_pay_with_options_async(request, headers, runtime)
+
+    def intl_flight_refund_apply_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightRefundApplyRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundApplyResponse:
+        """
+        @summary 国际机票退票申请
+        
+        @param tmp_req: IntlFlightRefundApplyRequest
+        @param headers: IntlFlightRefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightRefundApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_segment_list):
+            request.refund_segment_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_segment_list, 'refund_segment_list', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            body['out_refund_apply_id'] = request.out_refund_apply_id
+        if not UtilClient.is_unset(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not UtilClient.is_unset(request.refund_reason_code):
+            body['refund_reason_code'] = request.refund_reason_code
+        if not UtilClient.is_unset(request.refund_segment_list_shrink):
+            body['refund_segment_list'] = request.refund_segment_list_shrink
+        if not UtilClient.is_unset(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundApplyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_refund_apply_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightRefundApplyRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundApplyHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundApplyResponse:
+        """
+        @summary 国际机票退票申请
+        
+        @param tmp_req: IntlFlightRefundApplyRequest
+        @param headers: IntlFlightRefundApplyHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundApplyResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightRefundApplyShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.refund_segment_list):
+            request.refund_segment_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.refund_segment_list, 'refund_segment_list', 'json')
+        if not UtilClient.is_unset(tmp_req.selected_passengers):
+            request.selected_passengers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.selected_passengers, 'selected_passengers', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order_id):
+            body['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            body['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            body['out_refund_apply_id'] = request.out_refund_apply_id
+        if not UtilClient.is_unset(request.passenger_journey_group_key):
+            body['passenger_journey_group_key'] = request.passenger_journey_group_key
+        if not UtilClient.is_unset(request.refund_reason_code):
+            body['refund_reason_code'] = request.refund_reason_code
+        if not UtilClient.is_unset(request.refund_segment_list_shrink):
+            body['refund_segment_list'] = request.refund_segment_list_shrink
+        if not UtilClient.is_unset(request.selected_passengers_shrink):
+            body['selected_passengers'] = request.selected_passengers_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundApply',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/apply',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundApplyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_refund_apply(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundApplyRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundApplyResponse:
+        """
+        @summary 国际机票退票申请
+        
+        @param request: IntlFlightRefundApplyRequest
+        @return: IntlFlightRefundApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundApplyHeaders()
+        return self.intl_flight_refund_apply_with_options(request, headers, runtime)
+
+    async def intl_flight_refund_apply_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundApplyRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundApplyResponse:
+        """
+        @summary 国际机票退票申请
+        
+        @param request: IntlFlightRefundApplyRequest
+        @return: IntlFlightRefundApplyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundApplyHeaders()
+        return await self.intl_flight_refund_apply_with_options_async(request, headers, runtime)
+
+    def intl_flight_refund_consult_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundConsultRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundConsultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundConsultResponse:
+        """
+        @summary 国际机票退票咨询
+        
+        @param request: IntlFlightRefundConsultRequest
+        @param headers: IntlFlightRefundConsultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundConsultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundConsult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/consult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundConsultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_refund_consult_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundConsultRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundConsultHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundConsultResponse:
+        """
+        @summary 国际机票退票咨询
+        
+        @param request: IntlFlightRefundConsultRequest
+        @param headers: IntlFlightRefundConsultHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundConsultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundConsult',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/consult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundConsultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_refund_consult(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundConsultRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundConsultResponse:
+        """
+        @summary 国际机票退票咨询
+        
+        @param request: IntlFlightRefundConsultRequest
+        @return: IntlFlightRefundConsultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundConsultHeaders()
+        return self.intl_flight_refund_consult_with_options(request, headers, runtime)
+
+    async def intl_flight_refund_consult_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundConsultRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundConsultResponse:
+        """
+        @summary 国际机票退票咨询
+        
+        @param request: IntlFlightRefundConsultRequest
+        @return: IntlFlightRefundConsultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundConsultHeaders()
+        return await self.intl_flight_refund_consult_with_options_async(request, headers, runtime)
+
+    def intl_flight_refund_detail_with_options(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundDetailResponse:
+        """
+        @summary 国际机票退票详情
+        
+        @param request: IntlFlightRefundDetailRequest
+        @param headers: IntlFlightRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            query['out_refund_apply_id'] = request.out_refund_apply_id
+        if not UtilClient.is_unset(request.refund_apply_id):
+            query['refund_apply_id'] = request.refund_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_refund_detail_with_options_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightRefundDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightRefundDetailResponse:
+        """
+        @summary 国际机票退票详情
+        
+        @param request: IntlFlightRefundDetailRequest
+        @param headers: IntlFlightRefundDetailHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IntlFlightRefundDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['order_id'] = request.order_id
+        if not UtilClient.is_unset(request.out_order_id):
+            query['out_order_id'] = request.out_order_id
+        if not UtilClient.is_unset(request.out_refund_apply_id):
+            query['out_refund_apply_id'] = request.out_refund_apply_id
+        if not UtilClient.is_unset(request.refund_apply_id):
+            query['refund_apply_id'] = request.refund_apply_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightRefundDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/refund/detail',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightRefundDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_refund_detail(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundDetailResponse:
+        """
+        @summary 国际机票退票详情
+        
+        @param request: IntlFlightRefundDetailRequest
+        @return: IntlFlightRefundDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundDetailHeaders()
+        return self.intl_flight_refund_detail_with_options(request, headers, runtime)
+
+    async def intl_flight_refund_detail_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightRefundDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightRefundDetailResponse:
+        """
+        @summary 国际机票退票详情
+        
+        @param request: IntlFlightRefundDetailRequest
+        @return: IntlFlightRefundDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightRefundDetailHeaders()
+        return await self.intl_flight_refund_detail_with_options_async(request, headers, runtime)
 
     def intl_flight_segment_available_cert_with_options(
         self,
@@ -26669,6 +27599,506 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
         return await self.travel_standard_query_with_options_async(request, headers, runtime)
 
+    def travel_standard_relate_add_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardRelateAddRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateAddResponse:
+        """
+        @summary 新增差旅标准关联人员实体
+        
+        @param tmp_req: TravelStandardRelateAddRequest
+        @param headers: TravelStandardRelateAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardRelateAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_list):
+            request.add_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_list, 'add_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.add_list_shrink):
+            body['add_list'] = request.add_list_shrink
+        if not UtilClient.is_unset(request.from_group):
+            body['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            body['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/add-relate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateAddResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_relate_add_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardRelateAddRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateAddHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateAddResponse:
+        """
+        @summary 新增差旅标准关联人员实体
+        
+        @param tmp_req: TravelStandardRelateAddRequest
+        @param headers: TravelStandardRelateAddHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateAddResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardRelateAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.add_list):
+            request.add_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.add_list, 'add_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.add_list_shrink):
+            body['add_list'] = request.add_list_shrink
+        if not UtilClient.is_unset(request.from_group):
+            body['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            body['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateAdd',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/add-relate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateAddResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_relate_add(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateAddRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateAddResponse:
+        """
+        @summary 新增差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateAddRequest
+        @return: TravelStandardRelateAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateAddHeaders()
+        return self.travel_standard_relate_add_with_options(request, headers, runtime)
+
+    async def travel_standard_relate_add_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateAddRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateAddResponse:
+        """
+        @summary 新增差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateAddRequest
+        @return: TravelStandardRelateAddResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateAddHeaders()
+        return await self.travel_standard_relate_add_with_options_async(request, headers, runtime)
+
+    def travel_standard_relate_delete_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardRelateDeleteRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateDeleteResponse:
+        """
+        @summary 删除差旅标准关联人员实体
+        
+        @param tmp_req: TravelStandardRelateDeleteRequest
+        @param headers: TravelStandardRelateDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardRelateDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.remove_list):
+            request.remove_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_list, 'remove_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.from_group):
+            body['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.remove_list_shrink):
+            body['remove_list'] = request.remove_list_shrink
+        if not UtilClient.is_unset(request.rule_id):
+            body['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateDelete',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/delete-relate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_relate_delete_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.TravelStandardRelateDeleteRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateDeleteHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateDeleteResponse:
+        """
+        @summary 删除差旅标准关联人员实体
+        
+        @param tmp_req: TravelStandardRelateDeleteRequest
+        @param headers: TravelStandardRelateDeleteHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateDeleteResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.TravelStandardRelateDeleteShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.remove_list):
+            request.remove_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.remove_list, 'remove_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.from_group):
+            body['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.remove_list_shrink):
+            body['remove_list'] = request.remove_list_shrink
+        if not UtilClient.is_unset(request.rule_id):
+            body['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateDelete',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/delete-relate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_relate_delete(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateDeleteRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateDeleteResponse:
+        """
+        @summary 删除差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateDeleteRequest
+        @return: TravelStandardRelateDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateDeleteHeaders()
+        return self.travel_standard_relate_delete_with_options(request, headers, runtime)
+
+    async def travel_standard_relate_delete_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateDeleteRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateDeleteResponse:
+        """
+        @summary 删除差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateDeleteRequest
+        @return: TravelStandardRelateDeleteResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateDeleteHeaders()
+        return await self.travel_standard_relate_delete_with_options_async(request, headers, runtime)
+
+    def travel_standard_relate_query_with_options(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateQueryResponse:
+        """
+        @summary 查询差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateQueryRequest
+        @param headers: TravelStandardRelateQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            query['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/query-relate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateQueryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_relate_query_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateQueryRequest,
+        headers: btrip_open_20220520_models.TravelStandardRelateQueryHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardRelateQueryResponse:
+        """
+        @summary 查询差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateQueryRequest
+        @param headers: TravelStandardRelateQueryHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardRelateQueryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            query['rule_id'] = request.rule_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardRelateQuery',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/query-relate',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardRelateQueryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_relate_query(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateQueryResponse:
+        """
+        @summary 查询差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateQueryRequest
+        @return: TravelStandardRelateQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateQueryHeaders()
+        return self.travel_standard_relate_query_with_options(request, headers, runtime)
+
+    async def travel_standard_relate_query_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardRelateQueryRequest,
+    ) -> btrip_open_20220520_models.TravelStandardRelateQueryResponse:
+        """
+        @summary 查询差旅标准关联人员实体
+        
+        @param request: TravelStandardRelateQueryRequest
+        @return: TravelStandardRelateQueryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardRelateQueryHeaders()
+        return await self.travel_standard_relate_query_with_options_async(request, headers, runtime)
+
+    def travel_standard_scope_save_with_options(
+        self,
+        request: btrip_open_20220520_models.TravelStandardScopeSaveRequest,
+        headers: btrip_open_20220520_models.TravelStandardScopeSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardScopeSaveResponse:
+        """
+        @summary 更新差旅标准绑定员工类型
+        
+        @param request: TravelStandardScopeSaveRequest
+        @param headers: TravelStandardScopeSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardScopeSaveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            query['rule_id'] = request.rule_id
+        if not UtilClient.is_unset(request.scope):
+            query['scope'] = request.scope
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardScopeSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/save-scope',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardScopeSaveResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def travel_standard_scope_save_with_options_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardScopeSaveRequest,
+        headers: btrip_open_20220520_models.TravelStandardScopeSaveHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.TravelStandardScopeSaveResponse:
+        """
+        @summary 更新差旅标准绑定员工类型
+        
+        @param request: TravelStandardScopeSaveRequest
+        @param headers: TravelStandardScopeSaveHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TravelStandardScopeSaveResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_group):
+            query['from_group'] = request.from_group
+        if not UtilClient.is_unset(request.rule_id):
+            query['rule_id'] = request.rule_id
+        if not UtilClient.is_unset(request.scope):
+            query['scope'] = request.scope
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TravelStandardScopeSave',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/travel-manage/v1/standards/save-scope',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.TravelStandardScopeSaveResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def travel_standard_scope_save(
+        self,
+        request: btrip_open_20220520_models.TravelStandardScopeSaveRequest,
+    ) -> btrip_open_20220520_models.TravelStandardScopeSaveResponse:
+        """
+        @summary 更新差旅标准绑定员工类型
+        
+        @param request: TravelStandardScopeSaveRequest
+        @return: TravelStandardScopeSaveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardScopeSaveHeaders()
+        return self.travel_standard_scope_save_with_options(request, headers, runtime)
+
+    async def travel_standard_scope_save_async(
+        self,
+        request: btrip_open_20220520_models.TravelStandardScopeSaveRequest,
+    ) -> btrip_open_20220520_models.TravelStandardScopeSaveResponse:
+        """
+        @summary 更新差旅标准绑定员工类型
+        
+        @param request: TravelStandardScopeSaveRequest
+        @return: TravelStandardScopeSaveResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.TravelStandardScopeSaveHeaders()
+        return await self.travel_standard_scope_save_with_options_async(request, headers, runtime)
+
     def trip_business_instance_query_with_options(
         self,
         request: btrip_open_20220520_models.TripBusinessInstanceQueryRequest,
@@ -27323,6 +28753,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.account_email):
+            body['account_email'] = request.account_email
+        if not UtilClient.is_unset(request.account_phone):
+            body['account_phone'] = request.account_phone
         if not UtilClient.is_unset(request.attribute):
             body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):
@@ -27418,6 +28852,10 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.out_dept_id_list):
             request.out_dept_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_dept_id_list, 'out_dept_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.account_email):
+            body['account_email'] = request.account_email
+        if not UtilClient.is_unset(request.account_phone):
+            body['account_phone'] = request.account_phone
         if not UtilClient.is_unset(request.attribute):
             body['attribute'] = request.attribute
         if not UtilClient.is_unset(request.avatar):

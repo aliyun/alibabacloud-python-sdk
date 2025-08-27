@@ -1,3 +1,33 @@
+2025-08-27 Version: 5.0.0
+- Support API IntlFlightReShopApply.
+- Support API IntlFlightReShopCancel.
+- Support API IntlFlightReShopDetail.
+- Support API IntlFlightReShopPay.
+- Support API IntlFlightRefundApply.
+- Support API IntlFlightRefundConsult.
+- Support API IntlFlightRefundDetail.
+- Support API TravelStandardRelateAdd.
+- Support API TravelStandardRelateDelete.
+- Support API TravelStandardRelateQuery.
+- Support API TravelStandardScopeSave.
+- Update API AddEmployee: add request parameters account_email.
+- Update API AddEmployee: add request parameters account_phone.
+- Update API CarOrderQuery: add response parameters Body.module.car_info.way_points.
+- Update API IeFlightBillSettlementQuery: update request parameters order_id' type has changed.
+- Update API IeFlightBillSettlementQuery: update request parameters order_id' format has changed.
+- Update API IntlFlightListingSearch: add response parameters Body.module.flight_item_list.$.best_price_item.label_list.
+- Update API IntlFlightListingSearch: delete response parameters Body.module.flight_item_list.$.best_price_item.item_id.
+- Update API IntlFlightOrderDetail: add response parameters Body.module.passenger_ticket_list.$.ticket_list.$.pnr_no.
+- Update API IntlFlightOtaSearch: add response parameters Body.module.item_list.$.label_list.
+- Update API IntlFlightReShopConsult: delete request parameters btrip_user_id.
+- Update API IntlFlightReShopConsult: delete request parameters buyer_name.
+- Update API IntlFlightReShopConsult: delete request parameters isv_name.
+- Update API TrainOrderQueryV2: add response parameters Body.module.change_ticket_info_list.$.change_order_id.
+- Update API TrainOrderQueryV2: add response parameters Body.module.refund_ticket_info_list.$.refund_apply_id.
+- Update API UpdateEmployee: add request parameters account_email.
+- Update API UpdateEmployee: add request parameters account_phone.
+
+
 2025-06-30 Version: 4.8.0
 - Support API IntlFlightReShopConsult.
 - Support API MonthBillSplitGet.
