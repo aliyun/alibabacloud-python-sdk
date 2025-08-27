@@ -47,7 +47,7 @@ class Client(OpenApiClient):
             'ap-south-1': 'mongodb.ap-south-1.aliyuncs.com',
             'me-east-1': 'mongodb.me-east-1.aliyuncs.com',
             'cn-hangzhou-finance': 'mongodb.aliyuncs.com',
-            'cn-shanghai-finance-1': 'mongodb.aliyuncs.com',
+            'cn-shanghai-finance-1': 'mongodb.cn-shanghai-finance-1.aliyuncs.com',
             'cn-shenzhen-finance-1': 'mongodb.cn-shenzhen-finance-1.aliyuncs.com',
             'cn-north-2-gov-1': 'mongodb.cn-north-2-gov-1.aliyuncs.com',
             'ap-northeast-2-pop': 'mongodb.aliyuncs.com',
@@ -81,8 +81,7 @@ class Client(OpenApiClient):
             'cn-zhangjiakou-na62-a01': 'mongodb.aliyuncs.com',
             'cn-zhengzhou-nebula-1': 'mongodb.aliyuncs.com',
             'eu-west-1-oxs': 'mongodb.aliyuncs.com',
-            'rus-west-1-pop': 'mongodb.aliyuncs.com',
-            'na-south-1': 'mongodb.na-south-1.aliyuncs.com'
+            'rus-west-1-pop': 'mongodb.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('dds', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -102,6 +101,118 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def allocate_dbinstance_srv_network_address_with_options(
+        self,
+        request: dds_20151201_models.AllocateDBInstanceSrvNetworkAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse:
+        """
+        @param request: AllocateDBInstanceSrvNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateDBInstanceSrvNetworkAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.srv_connection_type):
+            query['SrvConnectionType'] = request.srv_connection_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateDBInstanceSrvNetworkAddress',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_dbinstance_srv_network_address_with_options_async(
+        self,
+        request: dds_20151201_models.AllocateDBInstanceSrvNetworkAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse:
+        """
+        @param request: AllocateDBInstanceSrvNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllocateDBInstanceSrvNetworkAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.srv_connection_type):
+            query['SrvConnectionType'] = request.srv_connection_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AllocateDBInstanceSrvNetworkAddress',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_dbinstance_srv_network_address(
+        self,
+        request: dds_20151201_models.AllocateDBInstanceSrvNetworkAddressRequest,
+    ) -> dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse:
+        """
+        @param request: AllocateDBInstanceSrvNetworkAddressRequest
+        @return: AllocateDBInstanceSrvNetworkAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.allocate_dbinstance_srv_network_address_with_options(request, runtime)
+
+    async def allocate_dbinstance_srv_network_address_async(
+        self,
+        request: dds_20151201_models.AllocateDBInstanceSrvNetworkAddressRequest,
+    ) -> dds_20151201_models.AllocateDBInstanceSrvNetworkAddressResponse:
+        """
+        @param request: AllocateDBInstanceSrvNetworkAddressRequest
+        @return: AllocateDBInstanceSrvNetworkAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.allocate_dbinstance_srv_network_address_with_options_async(request, runtime)
 
     def allocate_node_private_network_address_with_options(
         self,
@@ -9605,6 +9716,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.target_region_id):
             query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
@@ -9652,6 +9765,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.role_arn):
+            query['RoleARN'] = request.role_arn
         if not UtilClient.is_unset(request.target_region_id):
             query['TargetRegionId'] = request.target_region_id
         req = open_api_models.OpenApiRequest(
@@ -12518,6 +12633,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12584,6 +12707,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13498,6 +13629,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.switch_time):
             query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13568,6 +13707,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.switch_time):
             query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13663,6 +13810,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -13726,6 +13881,14 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.target_hidden_zone_id):
+            query['TargetHiddenZoneId'] = request.target_hidden_zone_id
+        if not UtilClient.is_unset(request.target_secondary_zone_id):
+            query['TargetSecondaryZoneId'] = request.target_secondary_zone_id
+        if not UtilClient.is_unset(request.target_vswitch_id):
+            query['TargetVswitchId'] = request.target_vswitch_id
+        if not UtilClient.is_unset(request.target_zone_id):
+            query['TargetZoneId'] = request.target_zone_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -14302,6 +14465,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_srv_network_address_with_options(
+        self,
+        request: dds_20151201_models.ModifySrvNetworkAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifySrvNetworkAddressResponse:
+        """
+        @summary 修改MongoDB实例的SRV连接地址
+        
+        @param request: ModifySrvNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySrvNetworkAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.new_connection_string):
+            query['NewConnectionString'] = request.new_connection_string
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySrvNetworkAddress',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifySrvNetworkAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_srv_network_address_with_options_async(
+        self,
+        request: dds_20151201_models.ModifySrvNetworkAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.ModifySrvNetworkAddressResponse:
+        """
+        @summary 修改MongoDB实例的SRV连接地址
+        
+        @param request: ModifySrvNetworkAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySrvNetworkAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.connection_type):
+            query['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.new_connection_string):
+            query['NewConnectionString'] = request.new_connection_string
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySrvNetworkAddress',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.ModifySrvNetworkAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_srv_network_address(
+        self,
+        request: dds_20151201_models.ModifySrvNetworkAddressRequest,
+    ) -> dds_20151201_models.ModifySrvNetworkAddressResponse:
+        """
+        @summary 修改MongoDB实例的SRV连接地址
+        
+        @param request: ModifySrvNetworkAddressRequest
+        @return: ModifySrvNetworkAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_srv_network_address_with_options(request, runtime)
+
+    async def modify_srv_network_address_async(
+        self,
+        request: dds_20151201_models.ModifySrvNetworkAddressRequest,
+    ) -> dds_20151201_models.ModifySrvNetworkAddressResponse:
+        """
+        @summary 修改MongoDB实例的SRV连接地址
+        
+        @param request: ModifySrvNetworkAddressRequest
+        @return: ModifySrvNetworkAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_srv_network_address_with_options_async(request, runtime)
 
     def modify_task_info_with_options(
         self,

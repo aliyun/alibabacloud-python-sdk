@@ -1,3 +1,27 @@
+2025-08-27 Version: 9.2.0
+- Support API AllocateDBInstanceSrvNetworkAddress.
+- Support API ModifySrvNetworkAddress.
+- Update API DescribeActiveOperationTasks: add response parameters Body.Items.$.TaskParams.
+- Update API DescribeClusterRecoverTime: add request parameters DestRegion.
+- Update API DescribeClusterRecoverTime: add request parameters SrcRegion.
+- Update API DescribeInstanceRecoverTime: add request parameters DestRegion.
+- Update API DescribeInstanceRecoverTime: add request parameters SrcRegion.
+- Update API DescribePrice: add response parameters Body.SubOrders.$.ModuleInstance.$.UnitPriceUnit4Buy.
+- Update API DescribeUserEncryptionKeyList: add request parameters RoleARN.
+- Update API ModifyDBInstanceSpec: add request parameters TargetHiddenZoneId.
+- Update API ModifyDBInstanceSpec: add request parameters TargetSecondaryZoneId.
+- Update API ModifyDBInstanceSpec: add request parameters TargetVswitchId.
+- Update API ModifyDBInstanceSpec: add request parameters TargetZoneId.
+- Update API ModifyNodeSpec: add request parameters TargetHiddenZoneId.
+- Update API ModifyNodeSpec: add request parameters TargetSecondaryZoneId.
+- Update API ModifyNodeSpec: add request parameters TargetVswitchId.
+- Update API ModifyNodeSpec: add request parameters TargetZoneId.
+- Update API ModifyNodeSpecBatch: add request parameters TargetHiddenZoneId.
+- Update API ModifyNodeSpecBatch: add request parameters TargetSecondaryZoneId.
+- Update API ModifyNodeSpecBatch: add request parameters TargetVswitchId.
+- Update API ModifyNodeSpecBatch: add request parameters TargetZoneId.
+
+
 2025-07-31 Version: 9.1.0
 - Support API ModifyDBInstanceAttribute.
 - Update API CreateBackup: add request parameters BackupRetentionPeriod.
