@@ -5339,6 +5339,7 @@ class DescribeNodeResponseBody(TeaModel):
         node_group_id: str = None,
         node_group_name: str = None,
         node_id: str = None,
+        node_type: str = None,
         operating_state: str = None,
         request_id: str = None,
         resource_group_id: str = None,
@@ -5376,6 +5377,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.node_group_name = node_group_name
         # The node ID.
         self.node_id = node_id
+        self.node_type = node_type
         # The node status.
         # 
         # Valid values:
@@ -5455,6 +5457,8 @@ class DescribeNodeResponseBody(TeaModel):
             result['NodeGroupName'] = self.node_group_name
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
         if self.operating_state is not None:
             result['OperatingState'] = self.operating_state
         if self.request_id is not None:
@@ -5507,6 +5511,8 @@ class DescribeNodeResponseBody(TeaModel):
             self.node_group_name = m.get('NodeGroupName')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
         if m.get('OperatingState') is not None:
             self.operating_state = m.get('OperatingState')
         if m.get('RequestId') is not None:
@@ -5559,6 +5565,125 @@ class DescribeNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeNodeTypeRequest(TeaModel):
+    def __init__(
+        self,
+        node_type: str = None,
+    ):
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class DescribeNodeTypeResponseBody(TeaModel):
+    def __init__(
+        self,
+        eni_high_dense_quantity: int = None,
+        eni_ipv_6address_quantity: int = None,
+        eni_private_ip_address_quantity: int = None,
+        eni_quantity: int = None,
+        request_id: str = None,
+    ):
+        self.eni_high_dense_quantity = eni_high_dense_quantity
+        self.eni_ipv_6address_quantity = eni_ipv_6address_quantity
+        self.eni_private_ip_address_quantity = eni_private_ip_address_quantity
+        self.eni_quantity = eni_quantity
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.eni_high_dense_quantity is not None:
+            result['EniHighDenseQuantity'] = self.eni_high_dense_quantity
+        if self.eni_ipv_6address_quantity is not None:
+            result['EniIpv6AddressQuantity'] = self.eni_ipv_6address_quantity
+        if self.eni_private_ip_address_quantity is not None:
+            result['EniPrivateIpAddressQuantity'] = self.eni_private_ip_address_quantity
+        if self.eni_quantity is not None:
+            result['EniQuantity'] = self.eni_quantity
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EniHighDenseQuantity') is not None:
+            self.eni_high_dense_quantity = m.get('EniHighDenseQuantity')
+        if m.get('EniIpv6AddressQuantity') is not None:
+            self.eni_ipv_6address_quantity = m.get('EniIpv6AddressQuantity')
+        if m.get('EniPrivateIpAddressQuantity') is not None:
+            self.eni_private_ip_address_quantity = m.get('EniPrivateIpAddressQuantity')
+        if m.get('EniQuantity') is not None:
+            self.eni_quantity = m.get('EniQuantity')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNodeTypeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNodeTypeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNodeTypeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

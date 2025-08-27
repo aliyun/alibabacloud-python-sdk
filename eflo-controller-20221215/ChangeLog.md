@@ -1,3 +1,8 @@
+2025-08-27 Version: 2.6.0
+- Support API DescribeNodeType.
+- Update API DescribeNode: add response parameters Body.NodeType.
+
+
 2025-07-14 Version: 2.5.4
 - Update API CreateCluster: add request parameters NodeGroups.$.VirtualGpuEnabled.
 - Update API CreateNodeGroup: add request parameters NodeGroup.VirtualGpuEnabled.

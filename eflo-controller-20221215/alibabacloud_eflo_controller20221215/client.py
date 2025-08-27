@@ -1929,6 +1929,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_with_options_async(request, runtime)
 
+    def describe_node_type_with_options(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNodeTypeResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: DescribeNodeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_type):
+            body['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeType',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeNodeTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_node_type_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeTypeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DescribeNodeTypeResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: DescribeNodeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeTypeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_type):
+            body['NodeType'] = request.node_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeNodeType',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DescribeNodeTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_node_type(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeTypeRequest,
+    ) -> eflo_controller_20221215_models.DescribeNodeTypeResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: DescribeNodeTypeRequest
+        @return: DescribeNodeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_node_type_with_options(request, runtime)
+
+    async def describe_node_type_async(
+        self,
+        request: eflo_controller_20221215_models.DescribeNodeTypeRequest,
+    ) -> eflo_controller_20221215_models.DescribeNodeTypeResponse:
+        """
+        @summary 创建Web Terminal会话
+        
+        @param request: DescribeNodeTypeRequest
+        @return: DescribeNodeTypeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_node_type_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: eflo_controller_20221215_models.DescribeRegionsRequest,
