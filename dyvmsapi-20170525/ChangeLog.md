@@ -1,3 +1,7 @@
+2025-08-28 Version: 4.0.0
+- Delete API ListHotlineTransferNumber.
+
+
 2024-10-15 Version: 3.2.2
 - Update API PlayVideoFile: add param OnlyPhone.
 - Update API PlayVideoFile: update param CalledNumber.
