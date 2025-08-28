@@ -31,7 +31,6 @@ class Client(OpenApiClient):
             'cn-shenzhen': 'r-kvstore.aliyuncs.com',
             'cn-heyuan': 'r-kvstore.aliyuncs.com',
             'cn-hangzhou-finance': 'r-kvstore.aliyuncs.com',
-            'cn-shanghai-finance-1': 'r-kvstore.aliyuncs.com',
             'ap-northeast-2-pop': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-1': 'r-kvstore.aliyuncs.com',
             'cn-beijing-finance-pop': 'r-kvstore.aliyuncs.com',
@@ -2578,6 +2577,194 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_tair_instance_with_options_async(request, runtime)
+
+    def create_tair_kvcache_vnode_with_options(
+        self,
+        request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
+        """
+        @summary 创建Tair VNode实例
+        
+        @param request: CreateTairKVCacheVNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTairKVCacheVNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compute_unit_num):
+            query['ComputeUnitNum'] = request.compute_unit_num
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vk_name):
+            query['VkName'] = request.vk_name
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTairKVCacheVNode',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tair_kvcache_vnode_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
+        """
+        @summary 创建Tair VNode实例
+        
+        @param request: CreateTairKVCacheVNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTairKVCacheVNodeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.business_info):
+            query['BusinessInfo'] = request.business_info
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.compute_unit_num):
+            query['ComputeUnitNum'] = request.compute_unit_num
+        if not UtilClient.is_unset(request.coupon_no):
+            query['CouponNo'] = request.coupon_no
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vk_name):
+            query['VkName'] = request.vk_name
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTairKVCacheVNode',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tair_kvcache_vnode(
+        self,
+        request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
+    ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
+        """
+        @summary 创建Tair VNode实例
+        
+        @param request: CreateTairKVCacheVNodeRequest
+        @return: CreateTairKVCacheVNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tair_kvcache_vnode_with_options(request, runtime)
+
+    async def create_tair_kvcache_vnode_async(
+        self,
+        request: r_kvstore_20150101_models.CreateTairKVCacheVNodeRequest,
+    ) -> r_kvstore_20150101_models.CreateTairKVCacheVNodeResponse:
+        """
+        @summary 创建Tair VNode实例
+        
+        @param request: CreateTairKVCacheVNodeRequest
+        @return: CreateTairKVCacheVNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tair_kvcache_vnode_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
@@ -7263,6 +7450,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -7348,6 +7537,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.network_type):
             query['NetworkType'] = request.network_type
+        if not UtilClient.is_unset(request.node_type):
+            query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -8903,6 +9094,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
@@ -8980,6 +9173,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.secondary_zone_id):
+            query['SecondaryZoneId'] = request.secondary_zone_id
         if not UtilClient.is_unset(request.security_token):
             query['SecurityToken'] = request.security_token
         if not UtilClient.is_unset(request.shard_count):
@@ -18738,6 +18933,154 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.transform_instance_charge_type_with_options_async(request, runtime)
+
+    def transform_to_ecs_with_options(
+        self,
+        request: r_kvstore_20150101_models.TransformToEcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.TransformToEcsResponse:
+        """
+        @summary 转换本地盘到云原生
+        
+        @param request: TransformToEcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformToEcsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformToEcs',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToEcsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transform_to_ecs_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.TransformToEcsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.TransformToEcsResponse:
+        """
+        @summary 转换本地盘到云原生
+        
+        @param request: TransformToEcsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransformToEcsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.instance_class):
+            query['InstanceClass'] = request.instance_class
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.shard_count):
+            query['ShardCount'] = request.shard_count
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransformToEcs',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.TransformToEcsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transform_to_ecs(
+        self,
+        request: r_kvstore_20150101_models.TransformToEcsRequest,
+    ) -> r_kvstore_20150101_models.TransformToEcsResponse:
+        """
+        @summary 转换本地盘到云原生
+        
+        @param request: TransformToEcsRequest
+        @return: TransformToEcsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transform_to_ecs_with_options(request, runtime)
+
+    async def transform_to_ecs_async(
+        self,
+        request: r_kvstore_20150101_models.TransformToEcsRequest,
+    ) -> r_kvstore_20150101_models.TransformToEcsResponse:
+        """
+        @summary 转换本地盘到云原生
+        
+        @param request: TransformToEcsRequest
+        @return: TransformToEcsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transform_to_ecs_with_options_async(request, runtime)
 
     def transform_to_pre_paid_with_options(
         self,

@@ -1,3 +1,12 @@
+2025-08-28 Version: 6.1.0
+- Support API CreateTairKVCacheVNode.
+- Support API TransformToEcs.
+- Update API DescribeInstances: add request parameters NodeType.
+- Update API DescribePrice: add request parameters SecondaryZoneId.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.AckId.
+- Update API DescribeTairKVCacheInferInstances: add response parameters Body.Instances.$.VNodeCount.
+
+
 2025-07-30 Version: 6.0.1
 - Generated python 2015-01-01 for R-kvstore.
 
