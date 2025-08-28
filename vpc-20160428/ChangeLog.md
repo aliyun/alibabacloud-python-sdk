@@ -1,3 +1,16 @@
+2025-08-28 Version: 6.12.0
+- Support API DescribeVpcGrantRulesToEcr.
+- Update API CreateNatGateway: add request parameters Ipv4Prefix.
+- Update API CreateNatGateway: add request parameters NatIp.
+- Update API CreateNatIp: add request parameters Ipv4Prefix.
+- Update API CreateNatIp: add request parameters Ipv4PrefixCount.
+- Update API CreateNatIp: add response parameters Body.Ipv4Prefix.
+- Update API DeleteNatIp: add request parameters Ipv4Prefix.
+- Update API DeleteNatIp: add request parameters NatGatewayId.
+- Update API DescribeNatGateways: add response parameters Body.NatGateways.$.IpPrefixList.
+- Update API ListNatIps: add response parameters Body.NatIps.$.Ipv4Prefix.
+
+
 2025-07-24 Version: 6.11.9
 - Update API AssociateVpcCidrBlock: add request parameters Ipv6CidrMask.
 - Update API CreateVpc: add request parameters Ipv6CidrMask.

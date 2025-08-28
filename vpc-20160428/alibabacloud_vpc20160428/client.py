@@ -9784,8 +9784,12 @@ class Client(OpenApiClient):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nat_ip):
+            query['NatIp'] = request.nat_ip
         if not UtilClient.is_unset(request.nat_type):
             query['NatType'] = request.nat_type
         if not UtilClient.is_unset(request.network_type):
@@ -9878,8 +9882,12 @@ class Client(OpenApiClient):
             query['InstanceChargeType'] = request.instance_charge_type
         if not UtilClient.is_unset(request.internet_charge_type):
             query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nat_ip):
+            query['NatIp'] = request.nat_ip
         if not UtilClient.is_unset(request.nat_type):
             query['NatType'] = request.nat_type
         if not UtilClient.is_unset(request.network_type):
@@ -9995,6 +10003,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
+        if not UtilClient.is_unset(request.ipv_4prefix_count):
+            query['Ipv4PrefixCount'] = request.ipv_4prefix_count
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.nat_ip):
@@ -10060,6 +10072,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
+        if not UtilClient.is_unset(request.ipv_4prefix_count):
+            query['Ipv4PrefixCount'] = request.ipv_4prefix_count
         if not UtilClient.is_unset(request.nat_gateway_id):
             query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.nat_ip):
@@ -19187,6 +19203,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.nat_ip_id):
             query['NatIpId'] = request.nat_ip_id
         if not UtilClient.is_unset(request.owner_account):
@@ -19244,6 +19264,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
+        if not UtilClient.is_unset(request.nat_gateway_id):
+            query['NatGatewayId'] = request.nat_gateway_id
         if not UtilClient.is_unset(request.nat_ip_id):
             query['NatIpId'] = request.nat_ip_id
         if not UtilClient.is_unset(request.owner_account):
@@ -25897,7 +25921,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         """
-        @summary Queries the information about flow logs.
+        @summary Query flow logs.
         
         @param request: DescribeFlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25968,7 +25992,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         """
-        @summary Queries the information about flow logs.
+        @summary Query flow logs.
         
         @param request: DescribeFlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26038,7 +26062,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeFlowLogsRequest,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         """
-        @summary Queries the information about flow logs.
+        @summary Query flow logs.
         
         @param request: DescribeFlowLogsRequest
         @return: DescribeFlowLogsResponse
@@ -26051,7 +26075,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeFlowLogsRequest,
     ) -> vpc_20160428_models.DescribeFlowLogsResponse:
         """
-        @summary Queries the information about flow logs.
+        @summary Query flow logs.
         
         @param request: DescribeFlowLogsRequest
         @return: DescribeFlowLogsResponse
@@ -30869,7 +30893,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeTagsResponse:
         """
-        @summary 查询满足筛选条件的标签列表。
+        @summary Queries tags that meet the specified filter conditions.
         
         @description    You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
         **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
@@ -30927,7 +30951,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeTagsResponse:
         """
-        @summary 查询满足筛选条件的标签列表。
+        @summary Queries tags that meet the specified filter conditions.
         
         @description    You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
         **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
@@ -30984,7 +31008,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeTagsRequest,
     ) -> vpc_20160428_models.DescribeTagsResponse:
         """
-        @summary 查询满足筛选条件的标签列表。
+        @summary Queries tags that meet the specified filter conditions.
         
         @description    You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
         **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
@@ -31002,7 +31026,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeTagsRequest,
     ) -> vpc_20160428_models.DescribeTagsResponse:
         """
-        @summary 查询满足筛选条件的标签列表。
+        @summary Queries tags that meet the specified filter conditions.
         
         @description    You must specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object that you want to query.
         **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
@@ -31021,7 +31045,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         """
-        @summary 查询路由器列表
+        @summary Queries vRouters in a region.
         
         @param request: DescribeVRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31070,7 +31094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         """
-        @summary 查询路由器列表
+        @summary Queries vRouters in a region.
         
         @param request: DescribeVRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31118,7 +31142,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVRoutersRequest,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         """
-        @summary 查询路由器列表
+        @summary Queries vRouters in a region.
         
         @param request: DescribeVRoutersRequest
         @return: DescribeVRoutersResponse
@@ -31131,7 +31155,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeVRoutersRequest,
     ) -> vpc_20160428_models.DescribeVRoutersResponse:
         """
-        @summary 查询路由器列表
+        @summary Queries vRouters in a region.
         
         @param request: DescribeVRoutersRequest
         @return: DescribeVRoutersResponse
@@ -32058,6 +32082,150 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vpc_attribute_with_options_async(request, runtime)
+
+    def describe_vpc_grant_rules_to_ecr_with_options(
+        self,
+        request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
+        """
+        @summary 查询VPC跨账号授权给ECR
+        
+        @param request: DescribeVpcGrantRulesToEcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcGrantRulesToEcrResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ecr_instance_id):
+            query['EcrInstanceId'] = request.ecr_instance_id
+        if not UtilClient.is_unset(request.ecr_owner_id):
+            query['EcrOwnerId'] = request.ecr_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcGrantRulesToEcr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_grant_rules_to_ecr_with_options_async(
+        self,
+        request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
+        """
+        @summary 查询VPC跨账号授权给ECR
+        
+        @param request: DescribeVpcGrantRulesToEcrRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVpcGrantRulesToEcrResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ecr_instance_id):
+            query['EcrInstanceId'] = request.ecr_instance_id
+        if not UtilClient.is_unset(request.ecr_owner_id):
+            query['EcrOwnerId'] = request.ecr_owner_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tags):
+            query['Tags'] = request.tags
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVpcGrantRulesToEcr',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_grant_rules_to_ecr(
+        self,
+        request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
+    ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
+        """
+        @summary 查询VPC跨账号授权给ECR
+        
+        @param request: DescribeVpcGrantRulesToEcrRequest
+        @return: DescribeVpcGrantRulesToEcrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vpc_grant_rules_to_ecr_with_options(request, runtime)
+
+    async def describe_vpc_grant_rules_to_ecr_async(
+        self,
+        request: vpc_20160428_models.DescribeVpcGrantRulesToEcrRequest,
+    ) -> vpc_20160428_models.DescribeVpcGrantRulesToEcrResponse:
+        """
+        @summary 查询VPC跨账号授权给ECR
+        
+        @param request: DescribeVpcGrantRulesToEcrRequest
+        @return: DescribeVpcGrantRulesToEcrResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vpc_grant_rules_to_ecr_with_options_async(request, runtime)
 
     def describe_vpcs_with_options(
         self,
