@@ -493,6 +493,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_instances_with_options_async(request, runtime)
 
+    def describe_instance_auth_info_with_options(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceAuthInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceAuthInfoResponse:
+        """
+        @summary 查看实例认证信息
+        
+        @param request: DescribeInstanceAuthInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAuthInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAuthInfo',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceAuthInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_auth_info_with_options_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceAuthInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_ai_20250507_models.DescribeInstanceAuthInfoResponse:
+        """
+        @summary 查看实例认证信息
+        
+        @param request: DescribeInstanceAuthInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAuthInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceAuthInfo',
+            version='2025-05-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_ai_20250507_models.DescribeInstanceAuthInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_auth_info(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceAuthInfoRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceAuthInfoResponse:
+        """
+        @summary 查看实例认证信息
+        
+        @param request: DescribeInstanceAuthInfoRequest
+        @return: DescribeInstanceAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_auth_info_with_options(request, runtime)
+
+    async def describe_instance_auth_info_async(
+        self,
+        request: rds_ai_20250507_models.DescribeInstanceAuthInfoRequest,
+    ) -> rds_ai_20250507_models.DescribeInstanceAuthInfoResponse:
+        """
+        @summary 查看实例认证信息
+        
+        @param request: DescribeInstanceAuthInfoRequest
+        @return: DescribeInstanceAuthInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_auth_info_with_options_async(request, runtime)
+
     def describe_instance_endpoints_with_options(
         self,
         request: rds_ai_20250507_models.DescribeInstanceEndpointsRequest,

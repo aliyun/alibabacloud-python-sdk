@@ -695,6 +695,157 @@ class DescribeAppInstancesResponse(TeaModel):
         return self
 
 
+class DescribeInstanceAuthInfoRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        region_id: str = None,
+    ):
+        self.instance_name = instance_name
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class DescribeInstanceAuthInfoResponseBodyApiKeys(TeaModel):
+    def __init__(
+        self,
+        anon_key: str = None,
+        service_key: str = None,
+    ):
+        # Supabase ANON_KEY
+        self.anon_key = anon_key
+        # Supabase SERVICE_ROLE_KEY
+        self.service_key = service_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anon_key is not None:
+            result['AnonKey'] = self.anon_key
+        if self.service_key is not None:
+            result['ServiceKey'] = self.service_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnonKey') is not None:
+            self.anon_key = m.get('AnonKey')
+        if m.get('ServiceKey') is not None:
+            self.service_key = m.get('ServiceKey')
+        return self
+
+
+class DescribeInstanceAuthInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        api_keys: DescribeInstanceAuthInfoResponseBodyApiKeys = None,
+        jwt_secret: str = None,
+        request_id: str = None,
+    ):
+        # API Keys
+        self.api_keys = api_keys
+        self.jwt_secret = jwt_secret
+        self.request_id = request_id
+
+    def validate(self):
+        if self.api_keys:
+            self.api_keys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_keys is not None:
+            result['ApiKeys'] = self.api_keys.to_map()
+        if self.jwt_secret is not None:
+            result['JwtSecret'] = self.jwt_secret
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiKeys') is not None:
+            temp_model = DescribeInstanceAuthInfoResponseBodyApiKeys()
+            self.api_keys = temp_model.from_map(m['ApiKeys'])
+        if m.get('JwtSecret') is not None:
+            self.jwt_secret = m.get('JwtSecret')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceAuthInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceAuthInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceAuthInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceEndpointsRequest(TeaModel):
     def __init__(
         self,
