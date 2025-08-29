@@ -1,3 +1,8 @@
+2025-08-29 Version: 3.1.4
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.EffectiveSceneNameList.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.ServiceIdList.
+
+
 2025-08-29 Version: 3.1.3
 - Update API CreateTrafficControlTask: add request parameters body.EffectiveSceneIds.
 - Update API CreateTrafficControlTask: add request parameters body.ServiceIds.

@@ -17553,6 +17553,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         control_type: str = None,
         description: str = None,
         effective_scene_ids: List[int] = None,
+        effective_scene_name_list: List[str] = None,
         effective_scene_names: List[int] = None,
         end_time: str = None,
         ever_published: bool = None,
@@ -17573,6 +17574,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
         service_id: str = None,
+        service_id_list: List[int] = None,
         service_ids: List[str] = None,
         start_time: str = None,
         statis_bahavior_condition_express: str = None,
@@ -17591,6 +17593,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.control_type = control_type
         self.description = description
         self.effective_scene_ids = effective_scene_ids
+        self.effective_scene_name_list = effective_scene_name_list
         self.effective_scene_names = effective_scene_names
         self.end_time = end_time
         self.ever_published = ever_published
@@ -17611,6 +17614,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.scene_id = scene_id
         self.scene_name = scene_name
         self.service_id = service_id
+        self.service_id_list = service_id_list
         self.service_ids = service_ids
         self.start_time = start_time
         self.statis_bahavior_condition_express = statis_bahavior_condition_express
@@ -17647,6 +17651,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['Description'] = self.description
         if self.effective_scene_ids is not None:
             result['EffectiveSceneIds'] = self.effective_scene_ids
+        if self.effective_scene_name_list is not None:
+            result['EffectiveSceneNameList'] = self.effective_scene_name_list
         if self.effective_scene_names is not None:
             result['EffectiveSceneNames'] = self.effective_scene_names
         if self.end_time is not None:
@@ -17687,6 +17693,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['SceneName'] = self.scene_name
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_id_list is not None:
+            result['ServiceIdList'] = self.service_id_list
         if self.service_ids is not None:
             result['ServiceIds'] = self.service_ids
         if self.start_time is not None:
@@ -17727,6 +17735,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.description = m.get('Description')
         if m.get('EffectiveSceneIds') is not None:
             self.effective_scene_ids = m.get('EffectiveSceneIds')
+        if m.get('EffectiveSceneNameList') is not None:
+            self.effective_scene_name_list = m.get('EffectiveSceneNameList')
         if m.get('EffectiveSceneNames') is not None:
             self.effective_scene_names = m.get('EffectiveSceneNames')
         if m.get('EndTime') is not None:
@@ -17767,6 +17777,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceIdList') is not None:
+            self.service_id_list = m.get('ServiceIdList')
         if m.get('ServiceIds') is not None:
             self.service_ids = m.get('ServiceIds')
         if m.get('StartTime') is not None:
