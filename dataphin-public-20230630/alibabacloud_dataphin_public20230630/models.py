@@ -4,6 +4,77 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class PrivilegeTransferResultEntrie(TeaModel):
+    def __init__(
+        self,
+        children: List['PrivilegeTransferResultEntrie'] = None,
+        err_msg: str = None,
+        is_leaf: bool = None,
+        privilege: str = None,
+        privilege_display_name: str = None,
+        status: str = None,
+        test: str = None,
+    ):
+        self.children = children
+        self.err_msg = err_msg
+        self.is_leaf = is_leaf
+        self.privilege = privilege
+        self.privilege_display_name = privilege_display_name
+        self.status = status
+        self.test = test
+
+    def validate(self):
+        if self.children:
+            for k in self.children:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Children'] = []
+        if self.children is not None:
+            for k in self.children:
+                result['Children'].append(k.to_map() if k else None)
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.is_leaf is not None:
+            result['IsLeaf'] = self.is_leaf
+        if self.privilege is not None:
+            result['Privilege'] = self.privilege
+        if self.privilege_display_name is not None:
+            result['PrivilegeDisplayName'] = self.privilege_display_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.test is not None:
+            result['Test'] = self.test
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.children = []
+        if m.get('Children') is not None:
+            for k in m.get('Children'):
+                temp_model = PrivilegeTransferResultEntrie()
+                self.children.append(temp_model.from_map(k))
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('IsLeaf') is not None:
+            self.is_leaf = m.get('IsLeaf')
+        if m.get('Privilege') is not None:
+            self.privilege = m.get('Privilege')
+        if m.get('PrivilegeDisplayName') is not None:
+            self.privilege_display_name = m.get('PrivilegeDisplayName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Test') is not None:
+            self.test = m.get('Test')
+        return self
+
+
 class AddDataServiceProjectMemberRequestAddCommandProjectMemberList(TeaModel):
     def __init__(
         self,
@@ -28609,6 +28680,431 @@ class GetTableLineageByTaskIdResponse(TeaModel):
         return self
 
 
+class GetTransferInfoRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        proposal_id: int = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        # This parameter is required.
+        self.proposal_id = proposal_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.proposal_id is not None:
+            result['ProposalId'] = self.proposal_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('ProposalId') is not None:
+            self.proposal_id = m.get('ProposalId')
+        return self
+
+
+class GetTransferInfoResponseBodyDataCreator(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        user_id: str = None,
+    ):
+        self.display_name = display_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetTransferInfoResponseBodyDataLastModifier(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        user_id: str = None,
+    ):
+        self.display_name = display_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetTransferInfoResponseBodyDataNewOwner(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        user_id: str = None,
+    ):
+        self.display_name = display_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetTransferInfoResponseBodyDataOldOwner(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        user_id: str = None,
+    ):
+        self.display_name = display_name
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries(TeaModel):
+    def __init__(
+        self,
+        err_msg: str = None,
+        privilege_display_name: str = None,
+        status: str = None,
+    ):
+        self.err_msg = err_msg
+        self.privilege_display_name = privilege_display_name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        if self.privilege_display_name is not None:
+            result['PrivilegeDisplayName'] = self.privilege_display_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        if m.get('PrivilegeDisplayName') is not None:
+            self.privilege_display_name = m.get('PrivilegeDisplayName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetTransferInfoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        creator: GetTransferInfoResponseBodyDataCreator = None,
+        flow_id: int = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        last_modifier: GetTransferInfoResponseBodyDataLastModifier = None,
+        new_owner: GetTransferInfoResponseBodyDataNewOwner = None,
+        old_owner: GetTransferInfoResponseBodyDataOldOwner = None,
+        privilege_transfer_mode: str = None,
+        privilege_transfer_result_entries: List[GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries] = None,
+        proposal_id: int = None,
+        title: str = None,
+        transfer_comment: str = None,
+        transfer_status: str = None,
+    ):
+        self.creator = creator
+        self.flow_id = flow_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.last_modifier = last_modifier
+        self.new_owner = new_owner
+        self.old_owner = old_owner
+        self.privilege_transfer_mode = privilege_transfer_mode
+        self.privilege_transfer_result_entries = privilege_transfer_result_entries
+        self.proposal_id = proposal_id
+        self.title = title
+        self.transfer_comment = transfer_comment
+        self.transfer_status = transfer_status
+
+    def validate(self):
+        if self.creator:
+            self.creator.validate()
+        if self.last_modifier:
+            self.last_modifier.validate()
+        if self.new_owner:
+            self.new_owner.validate()
+        if self.old_owner:
+            self.old_owner.validate()
+        if self.privilege_transfer_result_entries:
+            for k in self.privilege_transfer_result_entries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['Creator'] = self.creator.to_map()
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.last_modifier is not None:
+            result['LastModifier'] = self.last_modifier.to_map()
+        if self.new_owner is not None:
+            result['NewOwner'] = self.new_owner.to_map()
+        if self.old_owner is not None:
+            result['OldOwner'] = self.old_owner.to_map()
+        if self.privilege_transfer_mode is not None:
+            result['PrivilegeTransferMode'] = self.privilege_transfer_mode
+        result['PrivilegeTransferResultEntries'] = []
+        if self.privilege_transfer_result_entries is not None:
+            for k in self.privilege_transfer_result_entries:
+                result['PrivilegeTransferResultEntries'].append(k.to_map() if k else None)
+        if self.proposal_id is not None:
+            result['ProposalId'] = self.proposal_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.transfer_comment is not None:
+            result['TransferComment'] = self.transfer_comment
+        if self.transfer_status is not None:
+            result['TransferStatus'] = self.transfer_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Creator') is not None:
+            temp_model = GetTransferInfoResponseBodyDataCreator()
+            self.creator = temp_model.from_map(m['Creator'])
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('LastModifier') is not None:
+            temp_model = GetTransferInfoResponseBodyDataLastModifier()
+            self.last_modifier = temp_model.from_map(m['LastModifier'])
+        if m.get('NewOwner') is not None:
+            temp_model = GetTransferInfoResponseBodyDataNewOwner()
+            self.new_owner = temp_model.from_map(m['NewOwner'])
+        if m.get('OldOwner') is not None:
+            temp_model = GetTransferInfoResponseBodyDataOldOwner()
+            self.old_owner = temp_model.from_map(m['OldOwner'])
+        if m.get('PrivilegeTransferMode') is not None:
+            self.privilege_transfer_mode = m.get('PrivilegeTransferMode')
+        self.privilege_transfer_result_entries = []
+        if m.get('PrivilegeTransferResultEntries') is not None:
+            for k in m.get('PrivilegeTransferResultEntries'):
+                temp_model = GetTransferInfoResponseBodyDataPrivilegeTransferResultEntries()
+                self.privilege_transfer_result_entries.append(temp_model.from_map(k))
+        if m.get('ProposalId') is not None:
+            self.proposal_id = m.get('ProposalId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('TransferComment') is not None:
+            self.transfer_comment = m.get('TransferComment')
+        if m.get('TransferStatus') is not None:
+            self.transfer_status = m.get('TransferStatus')
+        return self
+
+
+class GetTransferInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetTransferInfoResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTransferInfoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetTransferInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTransferInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTransferInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetUdfRequest(TeaModel):
     def __init__(
         self,
@@ -49362,6 +49858,215 @@ class ResumePhysicalNodeResponse(TeaModel):
         return self
 
 
+class RetryTransferOwnershipRequestPrivilegeTransferRecord(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+        new_owner: str = None,
+        transfer_comment: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.new_owner = new_owner
+        self.transfer_comment = transfer_comment
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.new_owner is not None:
+            result['NewOwner'] = self.new_owner
+        if self.transfer_comment is not None:
+            result['TransferComment'] = self.transfer_comment
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NewOwner') is not None:
+            self.new_owner = m.get('NewOwner')
+        if m.get('TransferComment') is not None:
+            self.transfer_comment = m.get('TransferComment')
+        return self
+
+
+class RetryTransferOwnershipRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        privilege_transfer_record: RetryTransferOwnershipRequestPrivilegeTransferRecord = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        self.privilege_transfer_record = privilege_transfer_record
+
+    def validate(self):
+        if self.privilege_transfer_record:
+            self.privilege_transfer_record.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.privilege_transfer_record is not None:
+            result['PrivilegeTransferRecord'] = self.privilege_transfer_record.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PrivilegeTransferRecord') is not None:
+            temp_model = RetryTransferOwnershipRequestPrivilegeTransferRecord()
+            self.privilege_transfer_record = temp_model.from_map(m['PrivilegeTransferRecord'])
+        return self
+
+
+class RetryTransferOwnershipShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        privilege_transfer_record_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        self.privilege_transfer_record_shrink = privilege_transfer_record_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.privilege_transfer_record_shrink is not None:
+            result['PrivilegeTransferRecord'] = self.privilege_transfer_record_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PrivilegeTransferRecord') is not None:
+            self.privilege_transfer_record_shrink = m.get('PrivilegeTransferRecord')
+        return self
+
+
+class RetryTransferOwnershipResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RetryTransferOwnershipResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RetryTransferOwnershipResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RetryTransferOwnershipResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RevokeDataServiceApiRequestRevokeCommand(TeaModel):
     def __init__(
         self,
@@ -50554,6 +51259,215 @@ class SubmitBatchTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitBatchTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TransferOwnershipForAllObjectRequestPrivilegeTransferRecord(TeaModel):
+    def __init__(
+        self,
+        new_owner: str = None,
+        old_owner: str = None,
+        transfer_comment: str = None,
+    ):
+        # This parameter is required.
+        self.new_owner = new_owner
+        # This parameter is required.
+        self.old_owner = old_owner
+        self.transfer_comment = transfer_comment
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.new_owner is not None:
+            result['NewOwner'] = self.new_owner
+        if self.old_owner is not None:
+            result['OldOwner'] = self.old_owner
+        if self.transfer_comment is not None:
+            result['TransferComment'] = self.transfer_comment
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NewOwner') is not None:
+            self.new_owner = m.get('NewOwner')
+        if m.get('OldOwner') is not None:
+            self.old_owner = m.get('OldOwner')
+        if m.get('TransferComment') is not None:
+            self.transfer_comment = m.get('TransferComment')
+        return self
+
+
+class TransferOwnershipForAllObjectRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        privilege_transfer_record: TransferOwnershipForAllObjectRequestPrivilegeTransferRecord = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        self.privilege_transfer_record = privilege_transfer_record
+
+    def validate(self):
+        if self.privilege_transfer_record:
+            self.privilege_transfer_record.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.privilege_transfer_record is not None:
+            result['PrivilegeTransferRecord'] = self.privilege_transfer_record.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PrivilegeTransferRecord') is not None:
+            temp_model = TransferOwnershipForAllObjectRequestPrivilegeTransferRecord()
+            self.privilege_transfer_record = temp_model.from_map(m['PrivilegeTransferRecord'])
+        return self
+
+
+class TransferOwnershipForAllObjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        op_tenant_id: int = None,
+        privilege_transfer_record_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.op_tenant_id = op_tenant_id
+        self.privilege_transfer_record_shrink = privilege_transfer_record_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op_tenant_id is not None:
+            result['OpTenantId'] = self.op_tenant_id
+        if self.privilege_transfer_record_shrink is not None:
+            result['PrivilegeTransferRecord'] = self.privilege_transfer_record_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OpTenantId') is not None:
+            self.op_tenant_id = m.get('OpTenantId')
+        if m.get('PrivilegeTransferRecord') is not None:
+            self.privilege_transfer_record_shrink = m.get('PrivilegeTransferRecord')
+        return self
+
+
+class TransferOwnershipForAllObjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: int = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class TransferOwnershipForAllObjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TransferOwnershipForAllObjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TransferOwnershipForAllObjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

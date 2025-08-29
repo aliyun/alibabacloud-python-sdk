@@ -1,3 +1,9 @@
+2025-08-29 Version: 2.1.0
+- Support API GetTransferInfo.
+- Support API RetryTransferOwnership.
+- Support API TransferOwnershipForAllObject.
+
+
 2025-08-18 Version: 2.0.1
 - Update API CreateStreamBatchJobMapping: add response parameters Body.Data.JobId.
 

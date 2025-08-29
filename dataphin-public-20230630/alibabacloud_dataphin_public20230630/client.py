@@ -10937,6 +10937,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_table_lineage_by_task_id_with_options_async(request, runtime)
 
+    def get_transfer_info_with_options(
+        self,
+        request: dataphin_public_20230630_models.GetTransferInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTransferInfoResponse:
+        """
+        @summary 根据转交任务ID查询转交任务的进度
+        
+        @param request: GetTransferInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransferInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.proposal_id):
+            query['ProposalId'] = request.proposal_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTransferInfo',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTransferInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_transfer_info_with_options_async(
+        self,
+        request: dataphin_public_20230630_models.GetTransferInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.GetTransferInfoResponse:
+        """
+        @summary 根据转交任务ID查询转交任务的进度
+        
+        @param request: GetTransferInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransferInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        if not UtilClient.is_unset(request.proposal_id):
+            query['ProposalId'] = request.proposal_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTransferInfo',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.GetTransferInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_transfer_info(
+        self,
+        request: dataphin_public_20230630_models.GetTransferInfoRequest,
+    ) -> dataphin_public_20230630_models.GetTransferInfoResponse:
+        """
+        @summary 根据转交任务ID查询转交任务的进度
+        
+        @param request: GetTransferInfoRequest
+        @return: GetTransferInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_transfer_info_with_options(request, runtime)
+
+    async def get_transfer_info_async(
+        self,
+        request: dataphin_public_20230630_models.GetTransferInfoRequest,
+    ) -> dataphin_public_20230630_models.GetTransferInfoResponse:
+        """
+        @summary 根据转交任务ID查询转交任务的进度
+        
+        @param request: GetTransferInfoRequest
+        @return: GetTransferInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_transfer_info_with_options_async(request, runtime)
+
     def get_udf_with_options(
         self,
         request: dataphin_public_20230630_models.GetUdfRequest,
@@ -16865,6 +16965,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.resume_physical_node_with_options_async(request, runtime)
 
+    def retry_transfer_ownership_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.RetryTransferOwnershipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RetryTransferOwnershipResponse:
+        """
+        @summary 重新转交运行失败的转交任务
+        
+        @param tmp_req: RetryTransferOwnershipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryTransferOwnershipResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RetryTransferOwnershipShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.privilege_transfer_record):
+            request.privilege_transfer_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.privilege_transfer_record, 'PrivilegeTransferRecord', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.privilege_transfer_record_shrink):
+            body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetryTransferOwnership',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RetryTransferOwnershipResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_transfer_ownership_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.RetryTransferOwnershipRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.RetryTransferOwnershipResponse:
+        """
+        @summary 重新转交运行失败的转交任务
+        
+        @param tmp_req: RetryTransferOwnershipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryTransferOwnershipResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.RetryTransferOwnershipShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.privilege_transfer_record):
+            request.privilege_transfer_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.privilege_transfer_record, 'PrivilegeTransferRecord', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.privilege_transfer_record_shrink):
+            body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RetryTransferOwnership',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.RetryTransferOwnershipResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_transfer_ownership(
+        self,
+        request: dataphin_public_20230630_models.RetryTransferOwnershipRequest,
+    ) -> dataphin_public_20230630_models.RetryTransferOwnershipResponse:
+        """
+        @summary 重新转交运行失败的转交任务
+        
+        @param request: RetryTransferOwnershipRequest
+        @return: RetryTransferOwnershipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.retry_transfer_ownership_with_options(request, runtime)
+
+    async def retry_transfer_ownership_async(
+        self,
+        request: dataphin_public_20230630_models.RetryTransferOwnershipRequest,
+    ) -> dataphin_public_20230630_models.RetryTransferOwnershipResponse:
+        """
+        @summary 重新转交运行失败的转交任务
+        
+        @param request: RetryTransferOwnershipRequest
+        @return: RetryTransferOwnershipResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_transfer_ownership_with_options_async(request, runtime)
+
     def revoke_data_service_api_with_options(
         self,
         tmp_req: dataphin_public_20230630_models.RevokeDataServiceApiRequest,
@@ -17308,6 +17520,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_task_with_options_async(request, runtime)
+
+    def transfer_ownership_for_all_object_with_options(
+        self,
+        tmp_req: dataphin_public_20230630_models.TransferOwnershipForAllObjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse:
+        """
+        @summary 一键转交负责人
+        
+        @param tmp_req: TransferOwnershipForAllObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferOwnershipForAllObjectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.TransferOwnershipForAllObjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.privilege_transfer_record):
+            request.privilege_transfer_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.privilege_transfer_record, 'PrivilegeTransferRecord', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.privilege_transfer_record_shrink):
+            body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferOwnershipForAllObject',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_ownership_for_all_object_with_options_async(
+        self,
+        tmp_req: dataphin_public_20230630_models.TransferOwnershipForAllObjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse:
+        """
+        @summary 一键转交负责人
+        
+        @param tmp_req: TransferOwnershipForAllObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferOwnershipForAllObjectResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataphin_public_20230630_models.TransferOwnershipForAllObjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.privilege_transfer_record):
+            request.privilege_transfer_record_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.privilege_transfer_record, 'PrivilegeTransferRecord', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.op_tenant_id):
+            query['OpTenantId'] = request.op_tenant_id
+        body = {}
+        if not UtilClient.is_unset(request.privilege_transfer_record_shrink):
+            body['PrivilegeTransferRecord'] = request.privilege_transfer_record_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='TransferOwnershipForAllObject',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_ownership_for_all_object(
+        self,
+        request: dataphin_public_20230630_models.TransferOwnershipForAllObjectRequest,
+    ) -> dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse:
+        """
+        @summary 一键转交负责人
+        
+        @param request: TransferOwnershipForAllObjectRequest
+        @return: TransferOwnershipForAllObjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_ownership_for_all_object_with_options(request, runtime)
+
+    async def transfer_ownership_for_all_object_async(
+        self,
+        request: dataphin_public_20230630_models.TransferOwnershipForAllObjectRequest,
+    ) -> dataphin_public_20230630_models.TransferOwnershipForAllObjectResponse:
+        """
+        @summary 一键转交负责人
+        
+        @param request: TransferOwnershipForAllObjectRequest
+        @return: TransferOwnershipForAllObjectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_ownership_for_all_object_with_options_async(request, runtime)
 
     def update_ad_hoc_file_with_options(
         self,
