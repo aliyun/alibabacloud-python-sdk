@@ -1,3 +1,12 @@
+2025-08-29 Version: 4.1.1
+- Update API CreateWuyingServer: add request parameters VirtualNodePoolId.
+- Update API ListWuyingServer: add request parameters AddVirtualNodePoolStatusList.
+- Update API ListWuyingServer: add request parameters VirtualNodePoolId.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.AddVirtualNodePoolStatus.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.SecurityGroupIds.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VirtualNodePoolId.
+
+
 2025-08-18 Version: 4.1.0
 - Support API CreateWuyingServer.
 - Support API ListWuyingServer.

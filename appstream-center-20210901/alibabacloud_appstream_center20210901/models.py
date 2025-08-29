@@ -1751,6 +1751,7 @@ class CreateWuyingServerRequest(TeaModel):
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
         v_switch_ids: List[str] = None,
+        virtual_node_pool_id: str = None,
         wuying_server_name: str = None,
     ):
         self.amount = amount
@@ -1770,6 +1771,7 @@ class CreateWuyingServerRequest(TeaModel):
         self.system_disk_performance_level = system_disk_performance_level
         self.system_disk_size = system_disk_size
         self.v_switch_ids = v_switch_ids
+        self.virtual_node_pool_id = virtual_node_pool_id
         self.wuying_server_name = wuying_server_name
 
     def validate(self):
@@ -1820,6 +1822,8 @@ class CreateWuyingServerRequest(TeaModel):
             result['SystemDiskSize'] = self.system_disk_size
         if self.v_switch_ids is not None:
             result['VSwitchIds'] = self.v_switch_ids
+        if self.virtual_node_pool_id is not None:
+            result['VirtualNodePoolId'] = self.virtual_node_pool_id
         if self.wuying_server_name is not None:
             result['WuyingServerName'] = self.wuying_server_name
         return result
@@ -1863,6 +1867,8 @@ class CreateWuyingServerRequest(TeaModel):
             self.system_disk_size = m.get('SystemDiskSize')
         if m.get('VSwitchIds') is not None:
             self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VirtualNodePoolId') is not None:
+            self.virtual_node_pool_id = m.get('VirtualNodePoolId')
         if m.get('WuyingServerName') is not None:
             self.wuying_server_name = m.get('WuyingServerName')
         return self
@@ -7960,6 +7966,7 @@ class ListTenantConfigResponse(TeaModel):
 class ListWuyingServerRequest(TeaModel):
     def __init__(
         self,
+        add_virtual_node_pool_status_list: List[str] = None,
         biz_region_id: str = None,
         charge_type: str = None,
         image_id: str = None,
@@ -7968,9 +7975,11 @@ class ListWuyingServerRequest(TeaModel):
         page_size: int = None,
         server_instance_type: str = None,
         status: str = None,
+        virtual_node_pool_id: str = None,
         wuying_server_id_list: List[str] = None,
         wuying_server_name_or_id: str = None,
     ):
+        self.add_virtual_node_pool_status_list = add_virtual_node_pool_status_list
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
         self.image_id = image_id
@@ -7979,6 +7988,7 @@ class ListWuyingServerRequest(TeaModel):
         self.page_size = page_size
         self.server_instance_type = server_instance_type
         self.status = status
+        self.virtual_node_pool_id = virtual_node_pool_id
         self.wuying_server_id_list = wuying_server_id_list
         self.wuying_server_name_or_id = wuying_server_name_or_id
 
@@ -7991,6 +8001,8 @@ class ListWuyingServerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_virtual_node_pool_status_list is not None:
+            result['AddVirtualNodePoolStatusList'] = self.add_virtual_node_pool_status_list
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -8007,6 +8019,8 @@ class ListWuyingServerRequest(TeaModel):
             result['ServerInstanceType'] = self.server_instance_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.virtual_node_pool_id is not None:
+            result['VirtualNodePoolId'] = self.virtual_node_pool_id
         if self.wuying_server_id_list is not None:
             result['WuyingServerIdList'] = self.wuying_server_id_list
         if self.wuying_server_name_or_id is not None:
@@ -8015,6 +8029,8 @@ class ListWuyingServerRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddVirtualNodePoolStatusList') is not None:
+            self.add_virtual_node_pool_status_list = m.get('AddVirtualNodePoolStatusList')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -8031,6 +8047,8 @@ class ListWuyingServerRequest(TeaModel):
             self.server_instance_type = m.get('ServerInstanceType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('VirtualNodePoolId') is not None:
+            self.virtual_node_pool_id = m.get('VirtualNodePoolId')
         if m.get('WuyingServerIdList') is not None:
             self.wuying_server_id_list = m.get('WuyingServerIdList')
         if m.get('WuyingServerNameOrId') is not None:
@@ -8164,6 +8182,7 @@ class ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo(TeaMode
 class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
     def __init__(
         self,
+        add_virtual_node_pool_status: str = None,
         biz_region_id: str = None,
         charge_type: str = None,
         create_time: str = None,
@@ -8177,14 +8196,17 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
         office_site_name: str = None,
         office_site_type: str = None,
         os_type: str = None,
+        security_group_ids: List[str] = None,
         server_instance_type_info: ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo = None,
         status: str = None,
         system_disk_category: str = None,
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
+        virtual_node_pool_id: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
+        self.add_virtual_node_pool_status = add_virtual_node_pool_status
         self.biz_region_id = biz_region_id
         self.charge_type = charge_type
         self.create_time = create_time
@@ -8198,11 +8220,13 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
         self.office_site_name = office_site_name
         self.office_site_type = office_site_type
         self.os_type = os_type
+        self.security_group_ids = security_group_ids
         self.server_instance_type_info = server_instance_type_info
         self.status = status
         self.system_disk_category = system_disk_category
         self.system_disk_performance_level = system_disk_performance_level
         self.system_disk_size = system_disk_size
+        self.virtual_node_pool_id = virtual_node_pool_id
         self.wuying_server_id = wuying_server_id
         self.wuying_server_name = wuying_server_name
 
@@ -8224,6 +8248,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
             return _map
 
         result = dict()
+        if self.add_virtual_node_pool_status is not None:
+            result['AddVirtualNodePoolStatus'] = self.add_virtual_node_pool_status
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
         if self.charge_type is not None:
@@ -8254,6 +8280,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
             result['OfficeSiteType'] = self.office_site_type
         if self.os_type is not None:
             result['OsType'] = self.os_type
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
         if self.server_instance_type_info is not None:
             result['ServerInstanceTypeInfo'] = self.server_instance_type_info.to_map()
         if self.status is not None:
@@ -8264,6 +8292,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
             result['SystemDiskPerformanceLevel'] = self.system_disk_performance_level
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
+        if self.virtual_node_pool_id is not None:
+            result['VirtualNodePoolId'] = self.virtual_node_pool_id
         if self.wuying_server_id is not None:
             result['WuyingServerId'] = self.wuying_server_id
         if self.wuying_server_name is not None:
@@ -8272,6 +8302,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddVirtualNodePoolStatus') is not None:
+            self.add_virtual_node_pool_status = m.get('AddVirtualNodePoolStatus')
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
         if m.get('ChargeType') is not None:
@@ -8304,6 +8336,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
             self.office_site_type = m.get('OfficeSiteType')
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
         if m.get('ServerInstanceTypeInfo') is not None:
             temp_model = ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo()
             self.server_instance_type_info = temp_model.from_map(m['ServerInstanceTypeInfo'])
@@ -8315,6 +8349,8 @@ class ListWuyingServerResponseBodyWuyingServerList(TeaModel):
             self.system_disk_performance_level = m.get('SystemDiskPerformanceLevel')
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
+        if m.get('VirtualNodePoolId') is not None:
+            self.virtual_node_pool_id = m.get('VirtualNodePoolId')
         if m.get('WuyingServerId') is not None:
             self.wuying_server_id = m.get('WuyingServerId')
         if m.get('WuyingServerName') is not None:
@@ -9645,11 +9681,11 @@ class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeri
         end_time: str = None,
         start_time: str = None,
     ):
-        # 资源数量。
+        # The number of resources.
         self.amount = amount
-        # 结束时间。格式为HH:mm。
+        # The end of the time period during which the scaling policy is executed. Format: HH:mm.
         self.end_time = end_time
-        # 开始时间。格式为HH:mm。
+        # The beginning of the time period during which the scaling policy is executed. Format: HH:mm.
         self.start_time = start_time
 
     def validate(self):
@@ -9687,17 +9723,21 @@ class ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules(TeaModel
         recurrence_values: List[int] = None,
         timer_periods: List[ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods] = None,
     ):
-        # 策略执行周期的类型。必须同时指定`RecurrenceType`和`RecurrenceValues`。
-        self.recurrence_type = recurrence_type
-        # 策略执行周期的数值列表。
-        self.recurrence_values = recurrence_values
-        # 策略执行周期的时间段列表。时间段设置要求：
+        # The schedule type of the scaling policy. This parameter must be configured together with `RecurrenceValues`.``
         # 
-        # - 最多可添加3个时间段。
-        # - 时间段之间不重叠。
-        # - 时间段之间的间隔大于或等于5分钟。
-        # - 单个时间段的时长大于或等于15分钟。
-        # - 所有时间段累计不跨天。
+        # Valid values:
+        # 
+        # *   weekly: The scaling policy is executed on specific days each week.
+        self.recurrence_type = recurrence_type
+        # The days of each week on which the scaling policy is executed.
+        self.recurrence_values = recurrence_values
+        # The time periods during which the scaling policy can be executed. The time periods must meet the following requirements:
+        # 
+        # *   Up to three time periods can be added.
+        # *   Time periods cannot be overlapped.
+        # *   The interval between two consecutive time periods must be greater than or equal to 5 minutes.
+        # *   Each time period must be greater than or equal to 15 minutes.
+        # *   The total length of the time periods that you specify cannot be greater than a day.
         self.timer_periods = timer_periods
 
     def validate(self):
@@ -9751,25 +9791,47 @@ class ModifyNodePoolAttributeRequestNodePoolStrategy(TeaModel):
         strategy_type: str = None,
         warm_up: bool = None,
     ):
+        # The maximum number of idle sessions. After you specify a value for this parameter, auto scaling is triggered only if the number of idle sessions in the delivery group is smaller than the specified value and the session usage exceeds the value specified for `ScalingUsageThreshold`. Otherwise, the system determines that the idle sessions in the delivery group are sufficient and does not perform auto scaling.`` You can use this parameter to flexibly manage auto scaling and reduce costs.
         self.max_idle_app_instance_amount = max_idle_app_instance_amount
+        # The maximum number of resources that can be created for scale-out. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_USAGE`.
         self.max_scaling_amount = max_scaling_amount
-        # 购买资源的数量。取值范围：1~100。
+        # The number of resources to purchase. Valid values: 1 to 100.
         # 
         # > 
-        # - 若为包年包月资源，则该参数不可修改。
-        # - 若为按量付费资源，则当弹性模式（`StrategyType`）为固定数量（`NODE_FIXED`）或自动扩缩容（`NODE_SCALING_BY_USAGE`）时该参数可修改。
+        # 
+        # *   If you use subscription resources, you cannot modify this parameter.
+        # *   If you use pay-as-you-go resources, you can modify this parameter only if you set `StrategyType` to `NODE_FIXED` or `NODE_SCALING_BY_USAGE`.
         self.node_amount = node_amount
-        # 策略执行周期列表。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+        # The intervals at which the scaling policy is executed. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.recurrence_schedules = recurrence_schedules
+        # The maximum retention period of a resource to which no session is connected. If no session is connected to a resource, the resource is automatically scaled in after the specified retention period elapses. Valid values: 5 to 120. Default value: 5. Unit: minutes. If one of the following situations occurs, the resource is not scaled in.
+        # 
+        # *   If a scale-out is automatically triggered after the resource is scaled in, the scale-in is not executed. This prevents repeated scale-in and scale-out.
+        # *   If a scale-out is automatically triggered due to an increase in the number of sessions during the specified period of time, the resource is not scaled in and the countdown restarts.
         self.scaling_down_after_idle_minutes = scaling_down_after_idle_minutes
+        # The number of resources that are created each time resources are scaled out. Valid values: 1 to 10. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_USAGE`.
         self.scaling_step = scaling_step
+        # The upper limit of session usage. If the session usage exceeds the specified upper limit, auto scaling is automatically triggered. The session usage is calculated by using the following formula: `Session usage = Number of current sessions/(Total number of resources × Number of concurrent sessions) × 100%`. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_USAGE`. Valid values: 0 to 100. Default value: 85.
         self.scaling_usage_threshold = scaling_usage_threshold
-        # 策略失效日期。格式为：yyyy-MM-dd。失效日期与生效日期的间隔必须介于7天到1年之间（含7天和1年）。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+        # The expiration date of the scaling policy. Format: yyyy-MM-dd. The interval between the expiration date and the effective date must be from 7 days to 1 year. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.strategy_disable_date = strategy_disable_date
-        # 策略生效日期。格式为：yyyy-MM-dd。该日期必须大于或等于当前日期。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+        # The effective date of the scaling policy. Format: yyyy-MM-dd. The date must be the same as or later than the current date. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.strategy_enable_date = strategy_enable_date
+        # The scaling mode.
+        # 
+        # > 
+        # 
+        # *   `NODE_FIXED`: no scaling. This value is applicable to pay-as-you-go resources and subscription resources.
+        # *   `NODE_SCALING_BY_USAGE`: auto scaling. This value is applicable to pay-as-you-go resources and subscription resources.
+        # *   `NODE_SCALING_BY_SCHEDULE`: scheduled scaling. This value is applicable only to pay-as-you-go resources.
+        # 
+        # Valid values:
+        # 
+        # *   NODE_FIXED: no scaling
+        # *   NODE_SCALING_BY_SCHEDULE: scheduled scaling
+        # *   NODE_SCALING_BY_USAGE: auto scaling
         self.strategy_type = strategy_type
-        # 是否开启资源预热策略。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+        # Specifies whether to enable the warmup policy for resources. This parameter is required only if you set `StrategyType` to `NODE_SCALING_BY_SCHEDULE`.
         self.warm_up = warm_up
 
     def validate(self):
@@ -9849,11 +9911,22 @@ class ModifyNodePoolAttributeRequest(TeaModel):
         pool_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
         self.biz_region_id = biz_region_id
         self.node_capacity = node_capacity
+        # The auto scaling policy used by the delivery group.
         self.node_pool_strategy = node_pool_strategy
         self.pool_id = pool_id
-        # 产品类型。
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
         self.product_type = product_type
 
     def validate(self):
@@ -9903,11 +9976,22 @@ class ModifyNodePoolAttributeShrinkRequest(TeaModel):
         pool_id: str = None,
         product_type: str = None,
     ):
+        # The ID of the region where the delivery group resides. For information about the supported regions, see [Limits](https://help.aliyun.com/document_detail/426036.html).
+        # 
+        # Valid values:
+        # 
+        # *   cn-shanghai: China (Shanghai)
+        # *   cn-hangzhou: China (Hangzhou)
         self.biz_region_id = biz_region_id
         self.node_capacity = node_capacity
+        # The auto scaling policy used by the delivery group.
         self.node_pool_strategy_shrink = node_pool_strategy_shrink
         self.pool_id = pool_id
-        # 产品类型。
+        # The product type.
+        # 
+        # Valid value:
+        # 
+        # *   CloudApp: App Streaming
         self.product_type = product_type
 
     def validate(self):

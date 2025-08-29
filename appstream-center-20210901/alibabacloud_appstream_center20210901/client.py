@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -689,6 +688,8 @@ class Client(OpenApiClient):
             body['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.v_switch_ids):
             body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.virtual_node_pool_id):
+            body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not UtilClient.is_unset(request.wuying_server_name):
             body['WuyingServerName'] = request.wuying_server_name
         body = TeaCore.merge(body,
@@ -761,6 +762,8 @@ class Client(OpenApiClient):
             body['SystemDiskSize'] = request.system_disk_size
         if not UtilClient.is_unset(request.v_switch_ids):
             body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.virtual_node_pool_id):
+            body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not UtilClient.is_unset(request.wuying_server_name):
             body['WuyingServerName'] = request.wuying_server_name
         body = TeaCore.merge(body,
@@ -3006,6 +3009,9 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.add_virtual_node_pool_status_list):
+            body_flat['AddVirtualNodePoolStatusList'] = request.add_virtual_node_pool_status_list
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -3022,7 +3028,8 @@ class Client(OpenApiClient):
             body['ServerInstanceType'] = request.server_instance_type
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
-        body_flat = {}
+        if not UtilClient.is_unset(request.virtual_node_pool_id):
+            body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not UtilClient.is_unset(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         if not UtilClient.is_unset(request.wuying_server_name_or_id):
@@ -3062,6 +3069,9 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        body_flat = {}
+        if not UtilClient.is_unset(request.add_virtual_node_pool_status_list):
+            body_flat['AddVirtualNodePoolStatusList'] = request.add_virtual_node_pool_status_list
         if not UtilClient.is_unset(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
         if not UtilClient.is_unset(request.charge_type):
@@ -3078,7 +3088,8 @@ class Client(OpenApiClient):
             body['ServerInstanceType'] = request.server_instance_type
         if not UtilClient.is_unset(request.status):
             body['Status'] = request.status
-        body_flat = {}
+        if not UtilClient.is_unset(request.virtual_node_pool_id):
+            body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not UtilClient.is_unset(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
         if not UtilClient.is_unset(request.wuying_server_name_or_id):
@@ -3628,6 +3639,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
         """
+        @summary Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+        
+        @description You can select one of the following scaling policies for cloud app resources:
+        No scaling: Resources are not scaled.
+        Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+        Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+        Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        
         @param tmp_req: ModifyNodePoolAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyNodePoolAttributeResponse
@@ -3673,6 +3692,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
         """
+        @summary Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+        
+        @description You can select one of the following scaling policies for cloud app resources:
+        No scaling: Resources are not scaled.
+        Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+        Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+        Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        
         @param tmp_req: ModifyNodePoolAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyNodePoolAttributeResponse
@@ -3717,6 +3744,14 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
         """
+        @summary Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+        
+        @description You can select one of the following scaling policies for cloud app resources:
+        No scaling: Resources are not scaled.
+        Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+        Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+        Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        
         @param request: ModifyNodePoolAttributeRequest
         @return: ModifyNodePoolAttributeResponse
         """
@@ -3728,6 +3763,14 @@ class Client(OpenApiClient):
         request: appstream_center_20210901_models.ModifyNodePoolAttributeRequest,
     ) -> appstream_center_20210901_models.ModifyNodePoolAttributeResponse:
         """
+        @summary Changes the scaling policy of a delivery group. The following scaling policies are supported: fixed resource number, scheduled scaling, and auto scaling.
+        
+        @description You can select one of the following scaling policies for cloud app resources:
+        No scaling: Resources are not scaled.
+        Auto scaling: Resources are automatically scaled based on the number of connected sessions and the duration during which no session is connected.
+        Scheduled scaling: Resources are scaled during specific periods of time on specific dates.
+        Before you call this operation, make sure that you fully understand the [billing methods and prices](https://help.aliyun.com/document_detail/426039.html) of App Streaming.
+        
         @param request: ModifyNodePoolAttributeRequest
         @return: ModifyNodePoolAttributeResponse
         """
