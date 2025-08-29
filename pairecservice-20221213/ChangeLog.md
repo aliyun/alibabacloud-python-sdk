@@ -1,3 +1,19 @@
+2025-08-29 Version: 3.1.3
+- Update API CreateTrafficControlTask: add request parameters body.EffectiveSceneIds.
+- Update API CreateTrafficControlTask: add request parameters body.ServiceIds.
+- Update API GetTrafficControlTarget: add response parameters Body.TrafficControlTaskId.
+- Update API GetTrafficControlTask: add response parameters Body.EffectiveSceneIds.
+- Update API GetTrafficControlTask: add response parameters Body.EffectiveSceneNames.
+- Update API GetTrafficControlTask: add response parameters Body.ServiceIds.
+- Update API GetTrafficControlTask: add response parameters Body.TrafficControlTargets.$.TrafficControlTaskId.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.EffectiveSceneIds.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.EffectiveSceneNames.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.ServiceIds.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.TrafficControlTargets.$.TrafficControlTaskId.
+- Update API UpdateTrafficControlTask: add request parameters body.EffectiveSceneIds.
+- Update API UpdateTrafficControlTask: add request parameters body.ServiceIds.
+
+
 2025-06-04 Version: 3.1.1
 - Update API CreateFeatureConsistencyCheckJobConfig: add request parameters body.ResourceConfig.
 - Update API GetFeatureConsistencyCheckJobConfig: add response parameters Body.ResourceConfig.

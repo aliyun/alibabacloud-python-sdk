@@ -3045,6 +3045,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.scene_id):
             body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         if not UtilClient.is_unset(request.value):
             body['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -3091,6 +3093,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.scene_id):
             body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         if not UtilClient.is_unset(request.value):
             body['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -4095,6 +4099,8 @@ class Client(OpenApiClient):
             body['ControlType'] = request.control_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.effective_scene_ids):
+            body['EffectiveSceneIds'] = request.effective_scene_ids
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.execution_time):
@@ -4121,6 +4127,8 @@ class Client(OpenApiClient):
             body['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.service_id):
             body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_ids):
+            body['ServiceIds'] = request.service_ids
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.statis_behavior_condition_array):
@@ -4185,6 +4193,8 @@ class Client(OpenApiClient):
             body['ControlType'] = request.control_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.effective_scene_ids):
+            body['EffectiveSceneIds'] = request.effective_scene_ids
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.execution_time):
@@ -4211,6 +4221,8 @@ class Client(OpenApiClient):
             body['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.service_id):
             body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_ids):
+            body['ServiceIds'] = request.service_ids
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.statis_behavior_condition_array):
@@ -6338,6 +6350,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_traffic_control_task_with_options_async(traffic_control_task_id, request, headers, runtime)
+
+    def generate_algorithm_customization_script_with_options(
+        self,
+        algorithm_customization_id: str,
+        request: pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse:
+        """
+        @summary 生成算法定制脚本
+        
+        @param request: GenerateAlgorithmCustomizationScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateAlgorithmCustomizationScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deploy_mode):
+            body['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_field_types):
+            body['ModuleFieldTypes'] = request.module_field_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateAlgorithmCustomizationScript',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithmcustomizations/{OpenApiUtilClient.get_encode_param(algorithm_customization_id)}/action/generatescript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_algorithm_customization_script_with_options_async(
+        self,
+        algorithm_customization_id: str,
+        request: pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse:
+        """
+        @summary 生成算法定制脚本
+        
+        @param request: GenerateAlgorithmCustomizationScriptRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateAlgorithmCustomizationScriptResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deploy_mode):
+            body['DeployMode'] = request.deploy_mode
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module_field_types):
+            body['ModuleFieldTypes'] = request.module_field_types
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GenerateAlgorithmCustomizationScript',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/algorithmcustomizations/{OpenApiUtilClient.get_encode_param(algorithm_customization_id)}/action/generatescript',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_algorithm_customization_script(
+        self,
+        algorithm_customization_id: str,
+        request: pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptRequest,
+    ) -> pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse:
+        """
+        @summary 生成算法定制脚本
+        
+        @param request: GenerateAlgorithmCustomizationScriptRequest
+        @return: GenerateAlgorithmCustomizationScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.generate_algorithm_customization_script_with_options(algorithm_customization_id, request, headers, runtime)
+
+    async def generate_algorithm_customization_script_async(
+        self,
+        algorithm_customization_id: str,
+        request: pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptRequest,
+    ) -> pai_rec_service_20221213_models.GenerateAlgorithmCustomizationScriptResponse:
+        """
+        @summary 生成算法定制脚本
+        
+        @param request: GenerateAlgorithmCustomizationScriptRequest
+        @return: GenerateAlgorithmCustomizationScriptResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.generate_algorithm_customization_script_with_options_async(algorithm_customization_id, request, headers, runtime)
 
     def generate_traffic_control_task_code_with_options(
         self,
@@ -10733,6 +10861,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.environment):
             query['Environment'] = request.environment
         if not UtilClient.is_unset(request.instance_id):
@@ -10781,6 +10911,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.environment):
             query['Environment'] = request.environment
         if not UtilClient.is_unset(request.instance_id):
@@ -16432,6 +16564,8 @@ class Client(OpenApiClient):
             body['ControlType'] = request.control_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.effective_scene_ids):
+            body['EffectiveSceneIds'] = request.effective_scene_ids
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.execution_time):
@@ -16458,6 +16592,8 @@ class Client(OpenApiClient):
             body['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.service_id):
             body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_ids):
+            body['ServiceIds'] = request.service_ids
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.statis_baeavior_condition_array):
@@ -16523,6 +16659,8 @@ class Client(OpenApiClient):
             body['ControlType'] = request.control_type
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
+        if not UtilClient.is_unset(request.effective_scene_ids):
+            body['EffectiveSceneIds'] = request.effective_scene_ids
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.execution_time):
@@ -16549,6 +16687,8 @@ class Client(OpenApiClient):
             body['SceneId'] = request.scene_id
         if not UtilClient.is_unset(request.service_id):
             body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_ids):
+            body['ServiceIds'] = request.service_ids
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.statis_baeavior_condition_array):

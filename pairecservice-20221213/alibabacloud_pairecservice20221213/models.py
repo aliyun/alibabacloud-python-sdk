@@ -3374,12 +3374,14 @@ class CreateParamRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
         scene_id: str = None,
+        type: str = None,
         value: str = None,
     ):
         self.environment = environment
         self.instance_id = instance_id
         self.name = name
         self.scene_id = scene_id
+        self.type = type
         self.value = value
 
     def validate(self):
@@ -3399,6 +3401,8 @@ class CreateParamRequest(TeaModel):
             result['Name'] = self.name
         if self.scene_id is not None:
             result['SceneId'] = self.scene_id
+        if self.type is not None:
+            result['Type'] = self.type
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -3413,6 +3417,8 @@ class CreateParamRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('SceneId') is not None:
             self.scene_id = m.get('SceneId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -4792,6 +4798,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         control_logic: str = None,
         control_type: str = None,
         description: str = None,
+        effective_scene_ids: List[int] = None,
         end_time: str = None,
         execution_time: str = None,
         flink_resource_id: str = None,
@@ -4805,6 +4812,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         prod_experiment_ids: str = None,
         scene_id: str = None,
         service_id: str = None,
+        service_ids: List[int] = None,
         start_time: str = None,
         statis_behavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -4820,6 +4828,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         self.control_logic = control_logic
         self.control_type = control_type
         self.description = description
+        self.effective_scene_ids = effective_scene_ids
         self.end_time = end_time
         self.execution_time = execution_time
         self.flink_resource_id = flink_resource_id
@@ -4834,6 +4843,7 @@ class CreateTrafficControlTaskRequest(TeaModel):
         self.scene_id = scene_id
         # This parameter is required.
         self.service_id = service_id
+        self.service_ids = service_ids
         self.start_time = start_time
         self.statis_behavior_condition_array = statis_behavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -4866,6 +4876,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             result['ControlType'] = self.control_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.effective_scene_ids is not None:
+            result['EffectiveSceneIds'] = self.effective_scene_ids
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.execution_time is not None:
@@ -4892,6 +4904,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_ids is not None:
+            result['ServiceIds'] = self.service_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_behavior_condition_array is not None:
@@ -4926,6 +4940,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             self.control_type = m.get('ControlType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EffectiveSceneIds') is not None:
+            self.effective_scene_ids = m.get('EffectiveSceneIds')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('ExecutionTime') is not None:
@@ -4952,6 +4968,8 @@ class CreateTrafficControlTaskRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceIds') is not None:
+            self.service_ids = m.get('ServiceIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBehaviorConditionArray') is not None:
@@ -6910,6 +6928,125 @@ class DeleteTrafficControlTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteTrafficControlTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GenerateAlgorithmCustomizationScriptRequest(TeaModel):
+    def __init__(
+        self,
+        deploy_mode: str = None,
+        instance_id: str = None,
+        module_field_types: Dict[str, Any] = None,
+    ):
+        self.deploy_mode = deploy_mode
+        self.instance_id = instance_id
+        self.module_field_types = module_field_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.module_field_types is not None:
+            result['ModuleFieldTypes'] = self.module_field_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ModuleFieldTypes') is not None:
+            self.module_field_types = m.get('ModuleFieldTypes')
+        return self
+
+
+class GenerateAlgorithmCustomizationScriptResponseBody(TeaModel):
+    def __init__(
+        self,
+        log_id: str = None,
+        oss_address: str = None,
+        request_id: str = None,
+    ):
+        self.log_id = log_id
+        self.oss_address = oss_address
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_id is not None:
+            result['LogId'] = self.log_id
+        if self.oss_address is not None:
+            result['OssAddress'] = self.oss_address
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogId') is not None:
+            self.log_id = m.get('LogId')
+        if m.get('OssAddress') is not None:
+            self.oss_address = m.get('OssAddress')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateAlgorithmCustomizationScriptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateAlgorithmCustomizationScriptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateAlgorithmCustomizationScriptResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10632,6 +10769,7 @@ class GetTrafficControlTargetResponseBody(TeaModel):
         status: str = None,
         tolerance_value: int = None,
         traffic_control_target_id: str = None,
+        traffic_control_task_id: str = None,
         value: float = None,
     ):
         self.end_time = end_time
@@ -10650,6 +10788,7 @@ class GetTrafficControlTargetResponseBody(TeaModel):
         self.status = status
         self.tolerance_value = tolerance_value
         self.traffic_control_target_id = traffic_control_target_id
+        self.traffic_control_task_id = traffic_control_task_id
         self.value = value
 
     def validate(self):
@@ -10694,6 +10833,8 @@ class GetTrafficControlTargetResponseBody(TeaModel):
             result['ToleranceValue'] = self.tolerance_value
         if self.traffic_control_target_id is not None:
             result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -10733,6 +10874,8 @@ class GetTrafficControlTargetResponseBody(TeaModel):
             self.tolerance_value = m.get('ToleranceValue')
         if m.get('TrafficControlTargetId') is not None:
             self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -10888,6 +11031,7 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargets(TeaModel):
         status: str = None,
         tolerance_value: int = None,
         traffic_control_target_id: str = None,
+        traffic_control_task_id: str = None,
         value: float = None,
     ):
         self.end_time = end_time
@@ -10906,6 +11050,7 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargets(TeaModel):
         self.status = status
         self.tolerance_value = tolerance_value
         self.traffic_control_target_id = traffic_control_target_id
+        self.traffic_control_task_id = traffic_control_task_id
         self.value = value
 
     def validate(self):
@@ -10950,6 +11095,8 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargets(TeaModel):
             result['ToleranceValue'] = self.tolerance_value
         if self.traffic_control_target_id is not None:
             result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -10989,6 +11136,8 @@ class GetTrafficControlTaskResponseBodyTrafficControlTargets(TeaModel):
             self.tolerance_value = m.get('ToleranceValue')
         if m.get('TrafficControlTargetId') is not None:
             self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -11002,6 +11151,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         control_logic: str = None,
         control_type: str = None,
         description: str = None,
+        effective_scene_ids: List[int] = None,
+        effective_scene_names: List[str] = None,
         end_time: str = None,
         ever_published: bool = None,
         execution_time: str = None,
@@ -11022,6 +11173,7 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
         service_id: str = None,
+        service_ids: List[int] = None,
         start_time: str = None,
         statis_behavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -11038,6 +11190,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         self.control_logic = control_logic
         self.control_type = control_type
         self.description = description
+        self.effective_scene_ids = effective_scene_ids
+        self.effective_scene_names = effective_scene_names
         self.end_time = end_time
         self.ever_published = ever_published
         self.execution_time = execution_time
@@ -11058,6 +11212,7 @@ class GetTrafficControlTaskResponseBody(TeaModel):
         self.scene_id = scene_id
         self.scene_name = scene_name
         self.service_id = service_id
+        self.service_ids = service_ids
         self.start_time = start_time
         self.statis_behavior_condition_array = statis_behavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -11091,6 +11246,10 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             result['ControlType'] = self.control_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.effective_scene_ids is not None:
+            result['EffectiveSceneIds'] = self.effective_scene_ids
+        if self.effective_scene_names is not None:
+            result['EffectiveSceneNames'] = self.effective_scene_names
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.ever_published is not None:
@@ -11131,6 +11290,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             result['SceneName'] = self.scene_name
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_ids is not None:
+            result['ServiceIds'] = self.service_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_behavior_condition_array is not None:
@@ -11167,6 +11328,10 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             self.control_type = m.get('ControlType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EffectiveSceneIds') is not None:
+            self.effective_scene_ids = m.get('EffectiveSceneIds')
+        if m.get('EffectiveSceneNames') is not None:
+            self.effective_scene_names = m.get('EffectiveSceneNames')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EverPublished') is not None:
@@ -11207,6 +11372,8 @@ class GetTrafficControlTaskResponseBody(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceIds') is not None:
+            self.service_ids = m.get('ServiceIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBehaviorConditionArray') is not None:
@@ -15444,6 +15611,7 @@ class ListLayersResponse(TeaModel):
 class ListParamsRequest(TeaModel):
     def __init__(
         self,
+        encrypted: bool = None,
         environment: str = None,
         instance_id: str = None,
         name: str = None,
@@ -15451,6 +15619,7 @@ class ListParamsRequest(TeaModel):
         page_size: int = None,
         scene_id: str = None,
     ):
+        self.encrypted = encrypted
         self.environment = environment
         # This parameter is required.
         self.instance_id = instance_id
@@ -15469,6 +15638,8 @@ class ListParamsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.encrypted is not None:
+            result['Encrypted'] = self.encrypted
         if self.environment is not None:
             result['Environment'] = self.environment
         if self.instance_id is not None:
@@ -15485,6 +15656,8 @@ class ListParamsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Encrypted') is not None:
+            self.encrypted = m.get('Encrypted')
         if m.get('Environment') is not None:
             self.environment = m.get('Environment')
         if m.get('InstanceId') is not None:
@@ -17259,6 +17432,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
         status: str = None,
         tolerance_value: int = None,
         traffic_control_target_id: str = None,
+        traffic_control_task_id: str = None,
         value: float = None,
     ):
         self.end_time = end_time
@@ -17277,6 +17451,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
         self.status = status
         self.tolerance_value = tolerance_value
         self.traffic_control_target_id = traffic_control_target_id
+        self.traffic_control_task_id = traffic_control_task_id
         self.value = value
 
     def validate(self):
@@ -17321,6 +17496,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
             result['ToleranceValue'] = self.tolerance_value
         if self.traffic_control_target_id is not None:
             result['TrafficControlTargetId'] = self.traffic_control_target_id
+        if self.traffic_control_task_id is not None:
+            result['TrafficControlTaskId'] = self.traffic_control_task_id
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -17360,6 +17537,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTarget
             self.tolerance_value = m.get('ToleranceValue')
         if m.get('TrafficControlTargetId') is not None:
             self.traffic_control_target_id = m.get('TrafficControlTargetId')
+        if m.get('TrafficControlTaskId') is not None:
+            self.traffic_control_task_id = m.get('TrafficControlTaskId')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -17373,6 +17552,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         control_logic: str = None,
         control_type: str = None,
         description: str = None,
+        effective_scene_ids: List[int] = None,
+        effective_scene_names: List[int] = None,
         end_time: str = None,
         ever_published: bool = None,
         execution_time: str = None,
@@ -17392,6 +17573,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         scene_id: str = None,
         scene_name: str = None,
         service_id: str = None,
+        service_ids: List[str] = None,
         start_time: str = None,
         statis_bahavior_condition_express: str = None,
         statis_behavior_condition_array: str = None,
@@ -17408,6 +17590,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.control_logic = control_logic
         self.control_type = control_type
         self.description = description
+        self.effective_scene_ids = effective_scene_ids
+        self.effective_scene_names = effective_scene_names
         self.end_time = end_time
         self.ever_published = ever_published
         self.execution_time = execution_time
@@ -17427,6 +17611,7 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
         self.scene_id = scene_id
         self.scene_name = scene_name
         self.service_id = service_id
+        self.service_ids = service_ids
         self.start_time = start_time
         self.statis_bahavior_condition_express = statis_bahavior_condition_express
         self.statis_behavior_condition_array = statis_behavior_condition_array
@@ -17460,6 +17645,10 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['ControlType'] = self.control_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.effective_scene_ids is not None:
+            result['EffectiveSceneIds'] = self.effective_scene_ids
+        if self.effective_scene_names is not None:
+            result['EffectiveSceneNames'] = self.effective_scene_names
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.ever_published is not None:
@@ -17498,6 +17687,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             result['SceneName'] = self.scene_name
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_ids is not None:
+            result['ServiceIds'] = self.service_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_bahavior_condition_express is not None:
@@ -17534,6 +17725,10 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.control_type = m.get('ControlType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EffectiveSceneIds') is not None:
+            self.effective_scene_ids = m.get('EffectiveSceneIds')
+        if m.get('EffectiveSceneNames') is not None:
+            self.effective_scene_names = m.get('EffectiveSceneNames')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EverPublished') is not None:
@@ -17572,6 +17767,8 @@ class ListTrafficControlTasksResponseBodyTrafficControlTasks(TeaModel):
             self.scene_name = m.get('SceneName')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceIds') is not None:
+            self.service_ids = m.get('ServiceIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBahaviorConditionExpress') is not None:
@@ -23101,6 +23298,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         control_logic: str = None,
         control_type: str = None,
         description: str = None,
+        effective_scene_ids: List[int] = None,
         end_time: str = None,
         execution_time: str = None,
         flink_resource_id: str = None,
@@ -23114,6 +23312,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         prod_experiment_ids: str = None,
         scene_id: str = None,
         service_id: str = None,
+        service_ids: List[int] = None,
         start_time: str = None,
         statis_baeavior_condition_array: str = None,
         statis_behavior_condition_express: str = None,
@@ -23129,6 +23328,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         self.control_logic = control_logic
         self.control_type = control_type
         self.description = description
+        self.effective_scene_ids = effective_scene_ids
         self.end_time = end_time
         self.execution_time = execution_time
         self.flink_resource_id = flink_resource_id
@@ -23142,6 +23342,7 @@ class UpdateTrafficControlTaskRequest(TeaModel):
         self.prod_experiment_ids = prod_experiment_ids
         self.scene_id = scene_id
         self.service_id = service_id
+        self.service_ids = service_ids
         self.start_time = start_time
         self.statis_baeavior_condition_array = statis_baeavior_condition_array
         self.statis_behavior_condition_express = statis_behavior_condition_express
@@ -23174,6 +23375,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             result['ControlType'] = self.control_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.effective_scene_ids is not None:
+            result['EffectiveSceneIds'] = self.effective_scene_ids
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.execution_time is not None:
@@ -23200,6 +23403,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             result['SceneId'] = self.scene_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.service_ids is not None:
+            result['ServiceIds'] = self.service_ids
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.statis_baeavior_condition_array is not None:
@@ -23234,6 +23439,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             self.control_type = m.get('ControlType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('EffectiveSceneIds') is not None:
+            self.effective_scene_ids = m.get('EffectiveSceneIds')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('ExecutionTime') is not None:
@@ -23260,6 +23467,8 @@ class UpdateTrafficControlTaskRequest(TeaModel):
             self.scene_id = m.get('SceneId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('ServiceIds') is not None:
+            self.service_ids = m.get('ServiceIds')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StatisBaeaviorConditionArray') is not None:
