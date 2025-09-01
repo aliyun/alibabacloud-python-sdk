@@ -9731,6 +9731,8 @@ class Client(OpenApiClient):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.psg_ids):
             query['PsgIds'] = request.psg_ids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.traffic_change_type):
             query['TrafficChangeType'] = request.traffic_change_type
         if not UtilClient.is_unset(request.traffic_change_type_desc):
@@ -9792,6 +9794,8 @@ class Client(OpenApiClient):
             query['OrderId'] = request.order_id
         if not UtilClient.is_unset(request.psg_ids):
             query['PsgIds'] = request.psg_ids
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         if not UtilClient.is_unset(request.traffic_change_type):
             query['TrafficChangeType'] = request.traffic_change_type
         if not UtilClient.is_unset(request.traffic_change_type_desc):

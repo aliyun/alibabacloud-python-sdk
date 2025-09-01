@@ -27904,6 +27904,7 @@ class ThirdImmediateMsgPushRequest(TeaModel):
         change_detail: str = None,
         order_id: str = None,
         psg_ids: str = None,
+        source: str = None,
         traffic_change_type: str = None,
         traffic_change_type_desc: str = None,
         traffic_journey_ids: str = None,
@@ -27914,6 +27915,7 @@ class ThirdImmediateMsgPushRequest(TeaModel):
         self.change_detail = change_detail
         self.order_id = order_id
         self.psg_ids = psg_ids
+        self.source = source
         self.traffic_change_type = traffic_change_type
         self.traffic_change_type_desc = traffic_change_type_desc
         self.traffic_journey_ids = traffic_journey_ids
@@ -27937,6 +27939,8 @@ class ThirdImmediateMsgPushRequest(TeaModel):
             result['OrderId'] = self.order_id
         if self.psg_ids is not None:
             result['PsgIds'] = self.psg_ids
+        if self.source is not None:
+            result['Source'] = self.source
         if self.traffic_change_type is not None:
             result['TrafficChangeType'] = self.traffic_change_type
         if self.traffic_change_type_desc is not None:
@@ -27959,6 +27963,8 @@ class ThirdImmediateMsgPushRequest(TeaModel):
             self.order_id = m.get('OrderId')
         if m.get('PsgIds') is not None:
             self.psg_ids = m.get('PsgIds')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
         if m.get('TrafficChangeType') is not None:
             self.traffic_change_type = m.get('TrafficChangeType')
         if m.get('TrafficChangeTypeDesc') is not None:
