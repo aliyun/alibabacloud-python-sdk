@@ -2221,6 +2221,8 @@ class Client(OpenApiClient):
             query['current'] = request.current
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -2261,6 +2263,8 @@ class Client(OpenApiClient):
             query['current'] = request.current
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)

@@ -3487,9 +3487,11 @@ class GetListRecordRequest(TeaModel):
         self,
         current: int = None,
         page_size: int = None,
+        region: str = None,
     ):
         self.current = current
         self.page_size = page_size
+        self.region = region
 
     def validate(self):
         pass
@@ -3504,6 +3506,8 @@ class GetListRecordRequest(TeaModel):
             result['current'] = self.current
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.region is not None:
+            result['region'] = self.region
         return result
 
     def from_map(self, m: dict = None):
@@ -3512,6 +3516,8 @@ class GetListRecordRequest(TeaModel):
             self.current = m.get('current')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('region') is not None:
+            self.region = m.get('region')
         return self
 
 

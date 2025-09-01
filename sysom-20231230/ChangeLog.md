@@ -1,3 +1,7 @@
+2025-09-01 Version: 1.11.3
+- Update API GetListRecord: add request parameters region.
+
+
 2025-08-03 Version: 1.11.2
 - Update API GetAbnormalEventsCount: add request parameters level.
 - Update API GetAbnormalEventsCount: add response parameters Body.data.$.eventList.
