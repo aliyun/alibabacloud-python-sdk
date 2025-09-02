@@ -10653,6 +10653,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -10710,6 +10714,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -47337,6 +47345,8 @@ class Client(OpenApiClient):
             query['MinRxInterval'] = request.min_rx_interval
         if not UtilClient.is_unset(request.min_tx_interval):
             query['MinTxInterval'] = request.min_tx_interval
+        if not UtilClient.is_unset(request.mtu):
+            query['Mtu'] = request.mtu
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):
@@ -47426,6 +47436,8 @@ class Client(OpenApiClient):
             query['MinRxInterval'] = request.min_rx_interval
         if not UtilClient.is_unset(request.min_tx_interval):
             query['MinTxInterval'] = request.min_tx_interval
+        if not UtilClient.is_unset(request.mtu):
+            query['Mtu'] = request.mtu
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.owner_account):

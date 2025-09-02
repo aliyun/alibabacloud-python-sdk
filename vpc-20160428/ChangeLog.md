@@ -1,3 +1,10 @@
+2025-09-02 Version: 6.12.1
+- Update API CreatePhysicalConnectionOccupancyOrder: add request parameters AutoRenew.
+- Update API CreatePhysicalConnectionOccupancyOrder: add request parameters AutoRenewDuration.
+- Update API DescribeVirtualBorderRouters: add response parameters Body.VirtualBorderRouterSet.$.Mtu.
+- Update API ModifyVirtualBorderRouterAttribute: add request parameters Mtu.
+
+
 2025-08-28 Version: 6.12.0
 - Support API DescribeVpcGrantRulesToEcr.
 - Update API CreateNatGateway: add request parameters Ipv4Prefix.
