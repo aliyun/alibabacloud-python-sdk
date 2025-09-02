@@ -1,3 +1,6 @@
+2025-09-02 Version: 8.0.1
+- Generated python 2020-05-18 for dataworks-public.
+
 2025-04-27 Version: 8.0.0
 - Update API ListFiles: delete request parameters CommitStatus.
 

@@ -7765,8 +7765,6 @@ class CreatePermissionApplyOrderRequestApplyObjectColumnMetaList(TeaModel):
     ):
         self.actions = actions
         # The field on which you want to request permissions. If you want to request permissions on an entire table, enter all fields in the table. You can request permissions on specific fields of a table in a MaxCompute project only after LabelSecurity is enabled for this project. If LabelSecurity is disabled, you can request permissions only on an entire table.
-        # 
-        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -7805,8 +7803,6 @@ class CreatePermissionApplyOrderRequestApplyObject(TeaModel):
         # The fields on which you want to request permissions.
         self.column_meta_list = column_meta_list
         # The name of the object on which you want to request permissions. You can request permissions only on MaxCompute tables. Set this parameter to the name of the table on which you want to request permissions.
-        # 
-        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -35887,7 +35883,9 @@ class GetMetaTableBasicInfoResponseBodyData(TeaModel):
         self.last_ddl_time = last_ddl_time
         # The time when the metatable was last updated.
         self.last_modify_time = last_modify_time
-        # The lifecycle of the metatable. Unit: days.
+        # The lifecycle of the table. Unit: day.
+        # 
+        # >  If the lifecycle is not set for a MaxCompute table, the return value is 0, indicating that the table is permanently valid.
         self.life_cycle = life_cycle
         # The storage path of the Hive metadatabase.
         self.location = location
@@ -38083,7 +38081,7 @@ class GetMetaTableOutputResponseBodyData(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The list of instances.
+        # The partitions.
         self.data_entity_list = data_entity_list
         # The page number. Valid values: 1 to 30. Default value: 1.
         self.page_number = page_number
