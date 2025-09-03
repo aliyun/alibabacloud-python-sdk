@@ -2383,10 +2383,12 @@ class DedicatedIpPoolDeleteResponse(TeaModel):
 class DedicatedIpPoolListRequest(TeaModel):
     def __init__(
         self,
+        all: bool = None,
         keyword: str = None,
         page_index: int = None,
         page_size: int = None,
     ):
+        self.all = all
         # Search keyword for the name
         self.keyword = keyword
         # Page index, starting from 1
@@ -2403,6 +2405,8 @@ class DedicatedIpPoolListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.all is not None:
+            result['All'] = self.all
         if self.keyword is not None:
             result['Keyword'] = self.keyword
         if self.page_index is not None:
@@ -2413,6 +2417,8 @@ class DedicatedIpPoolListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('All') is not None:
+            self.all = m.get('All')
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')
         if m.get('PageIndex') is not None:
@@ -4915,6 +4921,7 @@ class GetTrackListRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        config_set_id: str = None,
         dedicated_ip: str = None,
         dedicated_ip_pool_id: str = None,
         end_time: str = None,
@@ -4935,6 +4942,7 @@ class GetTrackListRequest(TeaModel):
         # 
         # > If not filled, it represents all addresses; if TagName is provided, this parameter must not be empty.
         self.account_name = account_name
+        self.config_set_id = config_set_id
         self.dedicated_ip = dedicated_ip
         self.dedicated_ip_pool_id = dedicated_ip_pool_id
         # End time, the span between start and end time cannot exceed 7 days. Format: yyyy-MM-dd.
@@ -4975,6 +4983,8 @@ class GetTrackListRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
         if self.dedicated_ip is not None:
             result['DedicatedIp'] = self.dedicated_ip
         if self.dedicated_ip_pool_id is not None:
@@ -5011,6 +5021,8 @@ class GetTrackListRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
         if m.get('DedicatedIp') is not None:
             self.dedicated_ip = m.get('DedicatedIp')
         if m.get('DedicatedIpPoolId') is not None:
@@ -5293,6 +5305,7 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        config_set_id: str = None,
         dedicated_ip: str = None,
         dedicated_ip_pool_id: str = None,
         end_time: str = None,
@@ -5313,6 +5326,7 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         # 
         # > If not filled, it represents all addresses; if there is a TagName, this parameter must not be empty.
         self.account_name = account_name
+        self.config_set_id = config_set_id
         self.dedicated_ip = dedicated_ip
         self.dedicated_ip_pool_id = dedicated_ip_pool_id
         # End time, with a span from the start time that cannot exceed 15 days. Format: yyyy-MM-dd.
@@ -5353,6 +5367,8 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
         if self.dedicated_ip is not None:
             result['DedicatedIp'] = self.dedicated_ip
         if self.dedicated_ip_pool_id is not None:
@@ -5389,6 +5405,8 @@ class GetTrackListByMailFromAndTagNameRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
         if m.get('DedicatedIp') is not None:
             self.dedicated_ip = m.get('DedicatedIp')
         if m.get('DedicatedIpPoolId') is not None:
@@ -7305,6 +7323,8 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
         self,
         account_name: str = None,
         account_status: str = None,
+        config_set_id: str = None,
+        config_set_name: str = None,
         create_time: str = None,
         daily_count: str = None,
         daily_req_count: str = None,
@@ -7320,6 +7340,8 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
         self.account_name = account_name
         # Account status, frozen: 1, normal: 0.
         self.account_status = account_status
+        self.config_set_id = config_set_id
+        self.config_set_name = config_set_name
         # Creation time
         self.create_time = create_time
         # Daily quota limit
@@ -7357,6 +7379,10 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
             result['AccountName'] = self.account_name
         if self.account_status is not None:
             result['AccountStatus'] = self.account_status
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
+        if self.config_set_name is not None:
+            result['ConfigSetName'] = self.config_set_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.daily_count is not None:
@@ -7385,6 +7411,10 @@ class QueryMailAddressByParamResponseBodyDataMailAddress(TeaModel):
             self.account_name = m.get('AccountName')
         if m.get('AccountStatus') is not None:
             self.account_status = m.get('AccountStatus')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
+        if m.get('ConfigSetName') is not None:
+            self.config_set_name = m.get('ConfigSetName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('DailyCount') is not None:
@@ -8387,6 +8417,8 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
     def __init__(
         self,
         address_type: str = None,
+        config_set_id: str = None,
+        config_set_name: str = None,
         create_time: str = None,
         ip_pool_id: str = None,
         ip_pool_name: str = None,
@@ -8400,6 +8432,8 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
     ):
         # Address type, sending address: 1; random address: 0;
         self.address_type = address_type
+        self.config_set_id = config_set_id
+        self.config_set_name = config_set_name
         # Creation time
         self.create_time = create_time
         # dedicated IP pool ID.
@@ -8432,6 +8466,10 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
         result = dict()
         if self.address_type is not None:
             result['AddressType'] = self.address_type
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
+        if self.config_set_name is not None:
+            result['ConfigSetName'] = self.config_set_name
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.ip_pool_id is not None:
@@ -8458,6 +8496,10 @@ class QueryTaskByParamResponseBodyDataTask(TeaModel):
         m = m or dict()
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
+        if m.get('ConfigSetName') is not None:
+            self.config_set_name = m.get('ConfigSetName')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('IpPoolId') is not None:
@@ -9399,7 +9441,9 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        config_set_id: str = None,
         end_time: str = None,
+        ip_pool_id: str = None,
         length: int = None,
         next_start: str = None,
         owner_id: int = None,
@@ -9414,8 +9458,10 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
         # 
         # > **AccountName**, **TagName**, and **ToAddress** can all be left unfilled. If any are filled, only one of these parameters can be passed; you cannot pass a combination of two or more.
         self.account_name = account_name
+        self.config_set_id = config_set_id
         # End time. The span between start and end times cannot exceed 30 days, format: yyyy-MM-dd HH:mm.
         self.end_time = end_time
+        self.ip_pool_id = ip_pool_id
         # Specifies the number of results to return in this request. Range is 1~100.
         self.length = length
         # Used for pagination. Specifies the offset for this request. If there are more results, set this returned value to the NextStart in the next request.
@@ -9448,8 +9494,12 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.ip_pool_id is not None:
+            result['IpPoolId'] = self.ip_pool_id
         if self.length is not None:
             result['Length'] = self.length
         if self.next_start is not None:
@@ -9474,8 +9524,12 @@ class SenderStatisticsDetailByParamRequest(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('IpPoolId') is not None:
+            self.ip_pool_id = m.get('IpPoolId')
         if m.get('Length') is not None:
             self.length = m.get('Length')
         if m.get('NextStart') is not None:
@@ -9501,7 +9555,11 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
     def __init__(
         self,
         account_name: str = None,
+        config_set_id: str = None,
+        config_set_name: str = None,
         error_classification: str = None,
+        ip_pool_id: str = None,
+        ip_pool_name: str = None,
         last_update_time: str = None,
         message: str = None,
         status: int = None,
@@ -9511,9 +9569,13 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
     ):
         # Sending address
         self.account_name = account_name
+        self.config_set_id = config_set_id
+        self.config_set_name = config_set_name
         # Detailed classification of error reasons: - SendOk - SmtpNxBox
         # etc.
         self.error_classification = error_classification
+        self.ip_pool_id = ip_pool_id
+        self.ip_pool_name = ip_pool_name
         # Update time
         self.last_update_time = last_update_time
         # Delivery detail information
@@ -9538,8 +9600,16 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         result = dict()
         if self.account_name is not None:
             result['AccountName'] = self.account_name
+        if self.config_set_id is not None:
+            result['ConfigSetId'] = self.config_set_id
+        if self.config_set_name is not None:
+            result['ConfigSetName'] = self.config_set_name
         if self.error_classification is not None:
             result['ErrorClassification'] = self.error_classification
+        if self.ip_pool_id is not None:
+            result['IpPoolId'] = self.ip_pool_id
+        if self.ip_pool_name is not None:
+            result['IpPoolName'] = self.ip_pool_name
         if self.last_update_time is not None:
             result['LastUpdateTime'] = self.last_update_time
         if self.message is not None:
@@ -9558,8 +9628,16 @@ class SenderStatisticsDetailByParamResponseBodyDataMailDetail(TeaModel):
         m = m or dict()
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
+        if m.get('ConfigSetId') is not None:
+            self.config_set_id = m.get('ConfigSetId')
+        if m.get('ConfigSetName') is not None:
+            self.config_set_name = m.get('ConfigSetName')
         if m.get('ErrorClassification') is not None:
             self.error_classification = m.get('ErrorClassification')
+        if m.get('IpPoolId') is not None:
+            self.ip_pool_id = m.get('IpPoolId')
+        if m.get('IpPoolName') is not None:
+            self.ip_pool_name = m.get('IpPoolName')
         if m.get('LastUpdateTime') is not None:
             self.last_update_time = m.get('LastUpdateTime')
         if m.get('Message') is not None:

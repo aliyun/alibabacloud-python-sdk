@@ -1,3 +1,19 @@
+2025-09-03 Version: 1.6.2
+- Update API DedicatedIpPoolList: add request parameters All.
+- Update API GetTrackList: add request parameters ConfigSetId.
+- Update API GetTrackListByMailFromAndTagName: add request parameters ConfigSetId.
+- Update API QueryMailAddressByParam: add response parameters Body.data.$.ConfigSetId.
+- Update API QueryMailAddressByParam: add response parameters Body.data.$.ConfigSetName.
+- Update API QueryTaskByParam: add response parameters Body.data.$.ConfigSetId.
+- Update API QueryTaskByParam: add response parameters Body.data.$.ConfigSetName.
+- Update API SenderStatisticsDetailByParam: add request parameters ConfigSetId.
+- Update API SenderStatisticsDetailByParam: add request parameters IpPoolId.
+- Update API SenderStatisticsDetailByParam: add response parameters Body.data.$.ConfigSetId.
+- Update API SenderStatisticsDetailByParam: add response parameters Body.data.$.ConfigSetName.
+- Update API SenderStatisticsDetailByParam: add response parameters Body.data.$.IpPoolId.
+- Update API SenderStatisticsDetailByParam: add response parameters Body.data.$.IpPoolName.
+
+
 2025-08-06 Version: 1.6.1
 - Update API DedicatedIpList: add response parameters Body.Ips.$.ZoneId.
 - Update API DedicatedIpNonePoolList: add response parameters Body.Ips.$.ZoneId.

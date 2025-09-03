@@ -1979,6 +1979,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_index):
@@ -2018,6 +2020,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.all):
+            query['All'] = request.all
         if not UtilClient.is_unset(request.keyword):
             query['Keyword'] = request.keyword
         if not UtilClient.is_unset(request.page_index):
@@ -3685,6 +3689,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.dedicated_ip):
             query['DedicatedIp'] = request.dedicated_ip
         if not UtilClient.is_unset(request.dedicated_ip_pool_id):
@@ -3750,6 +3756,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.dedicated_ip):
             query['DedicatedIp'] = request.dedicated_ip
         if not UtilClient.is_unset(request.dedicated_ip_pool_id):
@@ -3841,6 +3849,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.dedicated_ip):
             query['DedicatedIp'] = request.dedicated_ip
         if not UtilClient.is_unset(request.dedicated_ip_pool_id):
@@ -3906,6 +3916,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.dedicated_ip):
             query['DedicatedIp'] = request.dedicated_ip
         if not UtilClient.is_unset(request.dedicated_ip_pool_id):
@@ -6003,8 +6015,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.length):
             query['Length'] = request.length
         if not UtilClient.is_unset(request.next_start):
@@ -6058,8 +6074,12 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.account_name):
             query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.config_set_id):
+            query['ConfigSetId'] = request.config_set_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.ip_pool_id):
+            query['IpPoolId'] = request.ip_pool_id
         if not UtilClient.is_unset(request.length):
             query['Length'] = request.length
         if not UtilClient.is_unset(request.next_start):
