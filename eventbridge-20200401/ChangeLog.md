@@ -1,3 +1,14 @@
+2025-09-03 Version: 7.1.1
+- Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.
+- Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkApacheKafkaParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Source.SourceApacheKafkaParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkApacheKafkaParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Source.SourceApacheKafkaParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.
+- Update API UpdateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.
+
+
 2025-08-06 Version: 7.1.0
 - Support API UpdateEventStreamingBusinessOption.
 
