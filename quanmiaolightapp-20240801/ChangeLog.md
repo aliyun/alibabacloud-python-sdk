@@ -1,3 +1,6 @@
+2025-09-03 Version: 2.11.1
+- Generated python 2024-08-01 for QuanMiaoLightApp.
+
 2025-08-23 Version: 2.11.0
 - Support API GetFileContent.
 
