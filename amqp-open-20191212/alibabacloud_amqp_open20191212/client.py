@@ -55,6 +55,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.account_access_key):
             query['accountAccessKey'] = request.account_access_key
         if not UtilClient.is_unset(request.create_timestamp):
@@ -100,6 +102,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
         if not UtilClient.is_unset(request.account_access_key):
             query['accountAccessKey'] = request.account_access_key
         if not UtilClient.is_unset(request.create_timestamp):

@@ -14,6 +14,7 @@ class DataValue(TeaModel):
         password: str = None,
         deleted: int = None,
         create_timestamp: int = None,
+        remark: str = None,
     ):
         # The Alibaba Cloud account ID or Resource Access Management (RAM) user to which the AccessKey pair that is used to create the static username and password belongs.
         self.master_uid = master_uid
@@ -29,6 +30,7 @@ class DataValue(TeaModel):
         self.deleted = deleted
         # The timestamp that indicates when the static username and password were created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
+        self.remark = remark
 
     def validate(self):
         pass
@@ -53,6 +55,8 @@ class DataValue(TeaModel):
             result['deleted'] = self.deleted
         if self.create_timestamp is not None:
             result['createTimestamp'] = self.create_timestamp
+        if self.remark is not None:
+            result['Remark'] = self.remark
         return result
 
     def from_map(self, m: dict = None):
@@ -71,12 +75,15 @@ class DataValue(TeaModel):
             self.deleted = m.get('deleted')
         if m.get('createTimestamp') is not None:
             self.create_timestamp = m.get('createTimestamp')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         return self
 
 
 class CreateAccountRequest(TeaModel):
     def __init__(
         self,
+        remark: str = None,
         account_access_key: str = None,
         create_timestamp: int = None,
         instance_id: str = None,
@@ -84,6 +91,7 @@ class CreateAccountRequest(TeaModel):
         signature: str = None,
         user_name: str = None,
     ):
+        self.remark = remark
         # The AccessKey ID of your Alibaba Cloud account or RAM user. For information about how to obtain an AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         # 
         # >  If you use the pair of static username and password that is created by using the Accesskey pair of a RAM user to access ApsaraMQ for RabbitMQ to send and receive messages, make sure that the RAM user is granted the required permissions. For more information, see [RAM policies](https://help.aliyun.com/document_detail/146559.html).
@@ -128,6 +136,8 @@ class CreateAccountRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.account_access_key is not None:
             result['accountAccessKey'] = self.account_access_key
         if self.create_timestamp is not None:
@@ -144,6 +154,8 @@ class CreateAccountRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('accountAccessKey') is not None:
             self.account_access_key = m.get('accountAccessKey')
         if m.get('createTimestamp') is not None:
@@ -167,6 +179,7 @@ class CreateAccountResponseBodyData(TeaModel):
         instance_id: str = None,
         master_uid: int = None,
         password: str = None,
+        remark: str = None,
         user_name: str = None,
     ):
         # The AccessKey ID that is used to create the password.
@@ -179,6 +192,7 @@ class CreateAccountResponseBodyData(TeaModel):
         self.master_uid = master_uid
         # The created static password.
         self.password = password
+        self.remark = remark
         # The created static username.
         self.user_name = user_name
 
@@ -201,6 +215,8 @@ class CreateAccountResponseBodyData(TeaModel):
             result['MasterUId'] = self.master_uid
         if self.password is not None:
             result['Password'] = self.password
+        if self.remark is not None:
+            result['Remark'] = self.remark
         if self.user_name is not None:
             result['UserName'] = self.user_name
         return result
@@ -217,6 +233,8 @@ class CreateAccountResponseBodyData(TeaModel):
             self.master_uid = m.get('MasterUId')
         if m.get('Password') is not None:
             self.password = m.get('Password')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
         return self

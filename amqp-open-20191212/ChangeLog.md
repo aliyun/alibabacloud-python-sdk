@@ -1,3 +1,9 @@
+2025-09-04 Version: 1.4.4
+- Update API CreateAccount: add request parameters Remark.
+- Update API CreateAccount: add response parameters Body.Data.Remark.
+- Update API ListAccounts: add response parameters Body.Data.$.Remark.
+
+
 2025-07-21 Version: 1.4.3
 - Update API GetInstance: add response parameters Body.Data.Edition.
 - Update API GetInstance: add response parameters Body.Data.ProvisionedCapacity.
