@@ -1,3 +1,14 @@
+2025-09-05 Version: 4.12.5
+- Update API ChangeCloudPhoneNode: add request parameters PromotionId.
+- Update API CreateAndroidInstanceGroup: add request parameters PromotionId.
+- Update API CreateCloudPhoneNode: add request parameters PromotionId.
+- Update API ExpandDataVolume: add request parameters PromotionId.
+- Update API ModifyInstanceChargeType: add request parameters PromotionId.
+- Update API RenewAndroidInstanceGroups: add request parameters PromotionId.
+- Update API RenewCloudPhoneNodes: add request parameters PromotionId.
+- Update API UpgradeAndroidInstanceGroup: add request parameters PromotionId.
+
+
 2025-08-27 Version: 4.12.4
 - Update API RunCommand: add request parameters AgentType.
 

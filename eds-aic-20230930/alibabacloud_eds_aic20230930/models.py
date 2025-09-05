@@ -824,6 +824,7 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         node_id: str = None,
         phone_count: int = None,
         phone_data_volume: int = None,
+        promotion_id: str = None,
         up_bandwidth_limit: int = None,
     ):
         self.auto_pay = auto_pay
@@ -832,6 +833,7 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         self.node_id = node_id
         self.phone_count = phone_count
         self.phone_data_volume = phone_data_volume
+        self.promotion_id = promotion_id
         self.up_bandwidth_limit = up_bandwidth_limit
 
     def validate(self):
@@ -855,6 +857,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
             result['PhoneCount'] = self.phone_count
         if self.phone_data_volume is not None:
             result['PhoneDataVolume'] = self.phone_data_volume
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.up_bandwidth_limit is not None:
             result['UpBandwidthLimit'] = self.up_bandwidth_limit
         return result
@@ -873,6 +877,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
             self.phone_count = m.get('PhoneCount')
         if m.get('PhoneDataVolume') is not None:
             self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('UpBandwidthLimit') is not None:
             self.up_bandwidth_limit = m.get('UpBandwidthLimit')
         return self
@@ -1381,6 +1387,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
+        promotion_id: str = None,
         tag: List[CreateAndroidInstanceGroupRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -1478,6 +1485,7 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
         self.period_unit = period_unit
         # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
+        self.promotion_id = promotion_id
         # The tags
         self.tag = tag
         # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
@@ -1544,6 +1552,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1599,6 +1609,8 @@ class CreateAndroidInstanceGroupRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -1669,6 +1681,7 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
         period: int = None,
         period_unit: str = None,
         policy_group_id: str = None,
+        promotion_id: str = None,
         tag: List[CreateAndroidInstanceGroupShrinkRequestTag] = None,
         v_switch_id: str = None,
     ):
@@ -1766,6 +1779,7 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
         self.period_unit = period_unit
         # The ID of the policy. You can call the [ListPolicyGroups](https://help.aliyun.com/document_detail/2807352.html) operation to query policies.
         self.policy_group_id = policy_group_id
+        self.promotion_id = promotion_id
         # The tags
         self.tag = tag
         # The ID of the vSwitch. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/448774.html) operation to query vSwitches.
@@ -1830,6 +1844,8 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
             result['PeriodUnit'] = self.period_unit
         if self.policy_group_id is not None:
             result['PolicyGroupId'] = self.policy_group_id
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1884,6 +1900,8 @@ class CreateAndroidInstanceGroupShrinkRequest(TeaModel):
             self.period_unit = m.get('PeriodUnit')
         if m.get('PolicyGroupId') is not None:
             self.policy_group_id = m.get('PolicyGroupId')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2603,6 +2621,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         period_unit: str = None,
         phone_count: int = None,
         phone_data_volume: int = None,
+        promotion_id: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
         server_share_data_volume: int = None,
@@ -2669,6 +2688,7 @@ class CreateCloudPhoneNodeRequest(TeaModel):
         # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
         self.phone_data_volume = phone_data_volume
+        self.promotion_id = promotion_id
         # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
         # The resolution width. Unit: pixel.
@@ -2745,6 +2765,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             result['PhoneCount'] = self.phone_count
         if self.phone_data_volume is not None:
             result['PhoneDataVolume'] = self.phone_data_volume
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
@@ -2809,6 +2831,8 @@ class CreateCloudPhoneNodeRequest(TeaModel):
             self.phone_count = m.get('PhoneCount')
         if m.get('PhoneDataVolume') is not None:
             self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
@@ -2890,6 +2914,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         period_unit: str = None,
         phone_count: int = None,
         phone_data_volume: int = None,
+        promotion_id: str = None,
         resolution_height: int = None,
         resolution_width: int = None,
         server_share_data_volume: int = None,
@@ -2956,6 +2981,7 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
         # The number of instances per cloud phone matrix.
         self.phone_count = phone_count
         self.phone_data_volume = phone_data_volume
+        self.promotion_id = promotion_id
         # The resolution height. Unit: pixel.
         self.resolution_height = resolution_height
         # The resolution width. Unit: pixel.
@@ -3028,6 +3054,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             result['PhoneCount'] = self.phone_count
         if self.phone_data_volume is not None:
             result['PhoneDataVolume'] = self.phone_data_volume
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
         if self.resolution_width is not None:
@@ -3090,6 +3118,8 @@ class CreateCloudPhoneNodeShrinkRequest(TeaModel):
             self.phone_count = m.get('PhoneCount')
         if m.get('PhoneDataVolume') is not None:
             self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')
         if m.get('ResolutionWidth') is not None:
@@ -11320,12 +11350,14 @@ class ExpandDataVolumeRequest(TeaModel):
         biz_region_id: str = None,
         node_ids: List[str] = None,
         phone_data_volume: int = None,
+        promotion_id: str = None,
         share_data_volume: int = None,
     ):
         self.auto_pay = auto_pay
         self.biz_region_id = biz_region_id
         self.node_ids = node_ids
         self.phone_data_volume = phone_data_volume
+        self.promotion_id = promotion_id
         self.share_data_volume = share_data_volume
 
     def validate(self):
@@ -11345,6 +11377,8 @@ class ExpandDataVolumeRequest(TeaModel):
             result['NodeIds'] = self.node_ids
         if self.phone_data_volume is not None:
             result['PhoneDataVolume'] = self.phone_data_volume
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         if self.share_data_volume is not None:
             result['ShareDataVolume'] = self.share_data_volume
         return result
@@ -11359,6 +11393,8 @@ class ExpandDataVolumeRequest(TeaModel):
             self.node_ids = m.get('NodeIds')
         if m.get('PhoneDataVolume') is not None:
             self.phone_data_volume = m.get('PhoneDataVolume')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         if m.get('ShareDataVolume') is not None:
             self.share_data_volume = m.get('ShareDataVolume')
         return self
@@ -13679,6 +13715,7 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         instance_group_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
+        promotion_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature. Default value: false.
         self.auto_pay = auto_pay
@@ -13701,6 +13738,7 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
         # *   **Month**\
         # *   **Year**\
         self.period_unit = period_unit
+        self.promotion_id = promotion_id
 
     def validate(self):
         pass
@@ -13723,6 +13761,8 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         return result
 
     def from_map(self, m: dict = None):
@@ -13739,6 +13779,8 @@ class ModifyInstanceChargeTypeRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         return self
 
 
@@ -15236,6 +15278,7 @@ class RenewAndroidInstanceGroupsRequest(TeaModel):
         instance_group_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
+        promotion_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
         # 
@@ -15255,6 +15298,7 @@ class RenewAndroidInstanceGroupsRequest(TeaModel):
         # *   Month
         # *   Year
         self.period_unit = period_unit
+        self.promotion_id = promotion_id
 
     def validate(self):
         pass
@@ -15273,6 +15317,8 @@ class RenewAndroidInstanceGroupsRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15285,6 +15331,8 @@ class RenewAndroidInstanceGroupsRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         return self
 
 
@@ -15372,6 +15420,7 @@ class RenewCloudPhoneNodesRequest(TeaModel):
         node_ids: List[str] = None,
         period: int = None,
         period_unit: str = None,
+        promotion_id: str = None,
     ):
         self.auto_pay = auto_pay
         # Specifies whether to enable the auto-renewal feature.
@@ -15395,6 +15444,7 @@ class RenewCloudPhoneNodesRequest(TeaModel):
         # *   Month (default)
         # *   Year
         self.period_unit = period_unit
+        self.promotion_id = promotion_id
 
     def validate(self):
         pass
@@ -15415,6 +15465,8 @@ class RenewCloudPhoneNodesRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15429,6 +15481,8 @@ class RenewCloudPhoneNodesRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         return self
 
 
@@ -17263,6 +17317,7 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
         auto_pay: bool = None,
         increase_number_of_instance: int = None,
         instance_group_id: str = None,
+        promotion_id: str = None,
     ):
         # Specifies whether to enable the auto-payment feature.
         # 
@@ -17275,6 +17330,7 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
         self.increase_number_of_instance = increase_number_of_instance
         # The ID of the instance group.
         self.instance_group_id = instance_group_id
+        self.promotion_id = promotion_id
 
     def validate(self):
         pass
@@ -17291,6 +17347,8 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
             result['IncreaseNumberOfInstance'] = self.increase_number_of_instance
         if self.instance_group_id is not None:
             result['InstanceGroupId'] = self.instance_group_id
+        if self.promotion_id is not None:
+            result['PromotionId'] = self.promotion_id
         return result
 
     def from_map(self, m: dict = None):
@@ -17301,6 +17359,8 @@ class UpgradeAndroidInstanceGroupRequest(TeaModel):
             self.increase_number_of_instance = m.get('IncreaseNumberOfInstance')
         if m.get('InstanceGroupId') is not None:
             self.instance_group_id = m.get('InstanceGroupId')
+        if m.get('PromotionId') is not None:
+            self.promotion_id = m.get('PromotionId')
         return self
 
 

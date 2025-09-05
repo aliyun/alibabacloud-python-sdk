@@ -539,6 +539,8 @@ class Client(OpenApiClient):
             query['PhoneCount'] = request.phone_count
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
@@ -586,6 +588,8 @@ class Client(OpenApiClient):
             query['PhoneCount'] = request.phone_count
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.up_bandwidth_limit):
             query['UpBandwidthLimit'] = request.up_bandwidth_limit
         req = open_api_models.OpenApiRequest(
@@ -811,6 +815,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -900,6 +906,8 @@ class Client(OpenApiClient):
             query['PeriodUnit'] = request.period_unit
         if not UtilClient.is_unset(request.policy_group_id):
             query['PolicyGroupId'] = request.policy_group_id
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.v_switch_id):
@@ -1201,6 +1209,8 @@ class Client(OpenApiClient):
             query['PhoneCount'] = request.phone_count
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
@@ -1298,6 +1308,8 @@ class Client(OpenApiClient):
             query['PhoneCount'] = request.phone_count
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not UtilClient.is_unset(request.resolution_width):
@@ -5103,6 +5115,8 @@ class Client(OpenApiClient):
             query['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.share_data_volume):
             query['ShareDataVolume'] = request.share_data_volume
         req = open_api_models.OpenApiRequest(
@@ -5146,6 +5160,8 @@ class Client(OpenApiClient):
             query['NodeIds'] = request.node_ids
         if not UtilClient.is_unset(request.phone_data_volume):
             query['PhoneDataVolume'] = request.phone_data_volume
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         if not UtilClient.is_unset(request.share_data_volume):
             query['ShareDataVolume'] = request.share_data_volume
         req = open_api_models.OpenApiRequest(
@@ -6627,6 +6643,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6672,6 +6690,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7455,6 +7475,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7496,6 +7518,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7557,6 +7581,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
@@ -7602,6 +7628,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
@@ -9203,6 +9231,8 @@ class Client(OpenApiClient):
             query['IncreaseNumberOfInstance'] = request.increase_number_of_instance
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9244,6 +9274,8 @@ class Client(OpenApiClient):
             query['IncreaseNumberOfInstance'] = request.increase_number_of_instance
         if not UtilClient.is_unset(request.instance_group_id):
             query['InstanceGroupId'] = request.instance_group_id
+        if not UtilClient.is_unset(request.promotion_id):
+            query['PromotionId'] = request.promotion_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
