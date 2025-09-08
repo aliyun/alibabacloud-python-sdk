@@ -6341,7 +6341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary Deletes a channel in MediaWeaver.
+        @summary Deletes a channel.
         
         @param request: DeleteChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6376,7 +6376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary Deletes a channel in MediaWeaver.
+        @summary Deletes a channel.
         
         @param request: DeleteChannelRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6410,7 +6410,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteChannelRequest,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary Deletes a channel in MediaWeaver.
+        @summary Deletes a channel.
         
         @param request: DeleteChannelRequest
         @return: DeleteChannelResponse
@@ -6423,7 +6423,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteChannelRequest,
     ) -> ice20201109_models.DeleteChannelResponse:
         """
-        @summary Deletes a channel in MediaWeaver.
+        @summary Deletes a channel.
         
         @param request: DeleteChannelRequest
         @return: DeleteChannelResponse
@@ -17279,7 +17279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary Queries a source in MediaWeaver.
+        @summary Queries a source.
         
         @param request: GetSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17318,7 +17318,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary Queries a source in MediaWeaver.
+        @summary Queries a source.
         
         @param request: GetSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17356,7 +17356,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceRequest,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary Queries a source in MediaWeaver.
+        @summary Queries a source.
         
         @param request: GetSourceRequest
         @return: GetSourceResponse
@@ -17369,7 +17369,7 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSourceRequest,
     ) -> ice20201109_models.GetSourceResponse:
         """
-        @summary Queries a source in MediaWeaver.
+        @summary Queries a source.
         
         @param request: GetSourceRequest
         @return: GetSourceResponse
@@ -29307,6 +29307,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29352,6 +29354,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.text):
             query['Text'] = request.text
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

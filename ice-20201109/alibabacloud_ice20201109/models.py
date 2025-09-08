@@ -4,6 +4,39 @@ from Tea.model import TeaModel
 from typing import List, Any, Dict
 
 
+class AIAgentConfigAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        volume: int = None,
+    ):
+        self.resource_id = resource_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
+        return self
+
+
 class AIAgentConfigAsrConfig(TeaModel):
     def __init__(
         self,
@@ -515,6 +548,33 @@ class AIAgentConfigVcrConfigInvalidFrameMotion(TeaModel):
         return self
 
 
+class AIAgentConfigVcrConfigLookAway(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+    ):
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        return self
+
+
 class AIAgentConfigVcrConfigPeopleCount(TeaModel):
     def __init__(
         self,
@@ -581,12 +641,14 @@ class AIAgentConfigVcrConfig(TeaModel):
         equipment: AIAgentConfigVcrConfigEquipment = None,
         head_motion: AIAgentConfigVcrConfigHeadMotion = None,
         invalid_frame_motion: AIAgentConfigVcrConfigInvalidFrameMotion = None,
+        look_away: AIAgentConfigVcrConfigLookAway = None,
         people_count: AIAgentConfigVcrConfigPeopleCount = None,
         still_frame_motion: AIAgentConfigVcrConfigStillFrameMotion = None,
     ):
         self.equipment = equipment
         self.head_motion = head_motion
         self.invalid_frame_motion = invalid_frame_motion
+        self.look_away = look_away
         self.people_count = people_count
         self.still_frame_motion = still_frame_motion
 
@@ -597,6 +659,8 @@ class AIAgentConfigVcrConfig(TeaModel):
             self.head_motion.validate()
         if self.invalid_frame_motion:
             self.invalid_frame_motion.validate()
+        if self.look_away:
+            self.look_away.validate()
         if self.people_count:
             self.people_count.validate()
         if self.still_frame_motion:
@@ -614,6 +678,8 @@ class AIAgentConfigVcrConfig(TeaModel):
             result['HeadMotion'] = self.head_motion.to_map()
         if self.invalid_frame_motion is not None:
             result['InvalidFrameMotion'] = self.invalid_frame_motion.to_map()
+        if self.look_away is not None:
+            result['LookAway'] = self.look_away.to_map()
         if self.people_count is not None:
             result['PeopleCount'] = self.people_count.to_map()
         if self.still_frame_motion is not None:
@@ -631,6 +697,9 @@ class AIAgentConfigVcrConfig(TeaModel):
         if m.get('InvalidFrameMotion') is not None:
             temp_model = AIAgentConfigVcrConfigInvalidFrameMotion()
             self.invalid_frame_motion = temp_model.from_map(m['InvalidFrameMotion'])
+        if m.get('LookAway') is not None:
+            temp_model = AIAgentConfigVcrConfigLookAway()
+            self.look_away = temp_model.from_map(m['LookAway'])
         if m.get('PeopleCount') is not None:
             temp_model = AIAgentConfigVcrConfigPeopleCount()
             self.people_count = temp_model.from_map(m['PeopleCount'])
@@ -676,6 +745,7 @@ class AIAgentConfigVoiceprintConfig(TeaModel):
 class AIAgentConfig(TeaModel):
     def __init__(
         self,
+        ambient_sound_config: AIAgentConfigAmbientSoundConfig = None,
         asr_config: AIAgentConfigAsrConfig = None,
         avatar_config: AIAgentConfigAvatarConfig = None,
         avatar_url: str = None,
@@ -698,6 +768,7 @@ class AIAgentConfig(TeaModel):
         wake_up_query: str = None,
         workflow_override_params: str = None,
     ):
+        self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
         self.avatar_config = avatar_config
         self.avatar_url = avatar_url
@@ -721,6 +792,8 @@ class AIAgentConfig(TeaModel):
         self.workflow_override_params = workflow_override_params
 
     def validate(self):
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
         if self.avatar_config:
@@ -744,6 +817,8 @@ class AIAgentConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
         if self.avatar_config is not None:
@@ -790,6 +865,9 @@ class AIAgentConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = AIAgentConfigAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
         if m.get('AsrConfig') is not None:
             temp_model = AIAgentConfigAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
@@ -840,6 +918,39 @@ class AIAgentConfig(TeaModel):
             self.wake_up_query = m.get('WakeUpQuery')
         if m.get('WorkflowOverrideParams') is not None:
             self.workflow_override_params = m.get('WorkflowOverrideParams')
+        return self
+
+
+class AIAgentOutboundCallConfigAmbientSoundConfig(TeaModel):
+    def __init__(
+        self,
+        resource_id: str = None,
+        volume: int = None,
+    ):
+        self.resource_id = resource_id
+        self.volume = volume
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.volume is not None:
+            result['Volume'] = self.volume
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Volume') is not None:
+            self.volume = m.get('Volume')
         return self
 
 
@@ -1243,6 +1354,7 @@ class AIAgentOutboundCallConfigTurnDetectionConfig(TeaModel):
 class AIAgentOutboundCallConfig(TeaModel):
     def __init__(
         self,
+        ambient_sound_config: AIAgentOutboundCallConfigAmbientSoundConfig = None,
         asr_config: AIAgentOutboundCallConfigAsrConfig = None,
         enable_intelligent_segment: bool = None,
         greeting: str = None,
@@ -1252,6 +1364,7 @@ class AIAgentOutboundCallConfig(TeaModel):
         tts_config: AIAgentOutboundCallConfigTtsConfig = None,
         turn_detection_config: AIAgentOutboundCallConfigTurnDetectionConfig = None,
     ):
+        self.ambient_sound_config = ambient_sound_config
         self.asr_config = asr_config
         self.enable_intelligent_segment = enable_intelligent_segment
         self.greeting = greeting
@@ -1262,6 +1375,8 @@ class AIAgentOutboundCallConfig(TeaModel):
         self.turn_detection_config = turn_detection_config
 
     def validate(self):
+        if self.ambient_sound_config:
+            self.ambient_sound_config.validate()
         if self.asr_config:
             self.asr_config.validate()
         if self.interrupt_config:
@@ -1279,6 +1394,8 @@ class AIAgentOutboundCallConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.ambient_sound_config is not None:
+            result['AmbientSoundConfig'] = self.ambient_sound_config.to_map()
         if self.asr_config is not None:
             result['AsrConfig'] = self.asr_config.to_map()
         if self.enable_intelligent_segment is not None:
@@ -1299,6 +1416,9 @@ class AIAgentOutboundCallConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AmbientSoundConfig') is not None:
+            temp_model = AIAgentOutboundCallConfigAmbientSoundConfig()
+            self.ambient_sound_config = temp_model.from_map(m['AmbientSoundConfig'])
         if m.get('AsrConfig') is not None:
             temp_model = AIAgentOutboundCallConfigAsrConfig()
             self.asr_config = temp_model.from_map(m['AsrConfig'])
@@ -76715,6 +76835,7 @@ class SendAIAgentSpeechRequest(TeaModel):
         enable_interrupt: bool = None,
         instance_id: str = None,
         text: str = None,
+        type: str = None,
     ):
         # Specifies whether the broadcast can interrupt the ongoing speech. Default value: true
         self.enable_interrupt = enable_interrupt
@@ -76722,6 +76843,7 @@ class SendAIAgentSpeechRequest(TeaModel):
         self.instance_id = instance_id
         # This parameter is required.
         self.text = text
+        self.type = type
 
     def validate(self):
         pass
@@ -76738,6 +76860,8 @@ class SendAIAgentSpeechRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.text is not None:
             result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
@@ -76748,6 +76872,8 @@ class SendAIAgentSpeechRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Text') is not None:
             self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
         return self
 
 
@@ -84675,6 +84801,7 @@ class SubmitMediaConvertJobResponseBodyJobConfig(TeaModel):
     ):
         # The inputs of the transcoding task.
         self.inputs = inputs
+        # The name of the job.
         self.job_name = job_name
         # The output group configurations.
         self.output_groups = output_groups
@@ -84776,8 +84903,8 @@ class SubmitMediaConvertJobResponseBodyJob(TeaModel):
         # 
         # *   Inited: The task is initialized.
         # *   Running
-        # *   Success
-        # *   Failed
+        # *   Complete
+        # *   Error
         # *   Cancelled
         self.state = state
         # The user data.

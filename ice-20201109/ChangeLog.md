@@ -1,3 +1,7 @@
+2025-09-08 Version: 6.5.2
+- Update API SendAIAgentSpeech: add request parameters Type.
+
+
 2025-08-19 Version: 6.5.1
 - Update API RegisterMediaStream: add request parameters StreamTags.
 
