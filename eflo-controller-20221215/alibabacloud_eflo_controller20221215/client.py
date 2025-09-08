@@ -1225,6 +1225,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
+    def delete_node_with_options(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteNodeResponse:
+        """
+        @summary 删除一个未使用节点
+        
+        @param request: DeleteNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_node_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.DeleteNodeResponse:
+        """
+        @summary 删除一个未使用节点
+        
+        @param request: DeleteNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNodeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteNode',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.DeleteNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_node(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeRequest,
+    ) -> eflo_controller_20221215_models.DeleteNodeResponse:
+        """
+        @summary 删除一个未使用节点
+        
+        @param request: DeleteNodeRequest
+        @return: DeleteNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_node_with_options(request, runtime)
+
+    async def delete_node_async(
+        self,
+        request: eflo_controller_20221215_models.DeleteNodeRequest,
+    ) -> eflo_controller_20221215_models.DeleteNodeResponse:
+        """
+        @summary 删除一个未使用节点
+        
+        @param request: DeleteNodeRequest
+        @return: DeleteNodeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_node_with_options_async(request, runtime)
+
     def delete_node_group_with_options(
         self,
         request: eflo_controller_20221215_models.DeleteNodeGroupRequest,
@@ -2666,6 +2762,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.operating_states):
+            body['OperatingStates'] = request.operating_states
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
@@ -2713,6 +2811,8 @@ class Client(OpenApiClient):
             body['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.node_group_id):
             body['NodeGroupId'] = request.node_group_id
+        if not UtilClient.is_unset(request.operating_states):
+            body['OperatingStates'] = request.operating_states
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(

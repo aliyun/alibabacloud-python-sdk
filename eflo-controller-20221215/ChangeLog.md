@@ -1,3 +1,8 @@
+2025-09-08 Version: 2.7.0
+- Support API DeleteNode.
+- Update API ListClusterNodes: add request parameters OperatingStates.
+
+
 2025-08-27 Version: 2.6.0
 - Support API DescribeNodeType.
 - Update API DescribeNode: add response parameters Body.NodeType.
