@@ -982,6 +982,126 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.check_verify_log_with_options_async(request, runtime)
 
+    def credential_recognition_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialRecognitionIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse:
+        """
+        @summary 凭证识别
+        
+        @param request: CredentialRecognitionIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialRecognitionIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.fraud_check):
+            query['FraudCheck'] = request.fraud_check
+        if not UtilClient.is_unset(request.ocr_area):
+            query['OcrArea'] = request.ocr_area
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.credential_ocr_picture_base_64):
+            body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
+        if not UtilClient.is_unset(request.credential_ocr_picture_url):
+            body['CredentialOcrPictureUrl'] = request.credential_ocr_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialRecognitionIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def credential_recognition_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialRecognitionIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse:
+        """
+        @summary 凭证识别
+        
+        @param request: CredentialRecognitionIntlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CredentialRecognitionIntlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.doc_type):
+            query['DocType'] = request.doc_type
+        if not UtilClient.is_unset(request.fraud_check):
+            query['FraudCheck'] = request.fraud_check
+        if not UtilClient.is_unset(request.ocr_area):
+            query['OcrArea'] = request.ocr_area
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        body = {}
+        if not UtilClient.is_unset(request.credential_ocr_picture_base_64):
+            body['CredentialOcrPictureBase64'] = request.credential_ocr_picture_base_64
+        if not UtilClient.is_unset(request.credential_ocr_picture_url):
+            body['CredentialOcrPictureUrl'] = request.credential_ocr_picture_url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CredentialRecognitionIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def credential_recognition_intl(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialRecognitionIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse:
+        """
+        @summary 凭证识别
+        
+        @param request: CredentialRecognitionIntlRequest
+        @return: CredentialRecognitionIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.credential_recognition_intl_with_options(request, runtime)
+
+    async def credential_recognition_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.CredentialRecognitionIntlRequest,
+    ) -> cloudauth_intl_20220809_models.CredentialRecognitionIntlResponse:
+        """
+        @summary 凭证识别
+        
+        @param request: CredentialRecognitionIntlRequest
+        @return: CredentialRecognitionIntlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.credential_recognition_intl_with_options_async(request, runtime)
+
     def credential_verify_intl_with_options(
         self,
         request: cloudauth_intl_20220809_models.CredentialVerifyIntlRequest,
