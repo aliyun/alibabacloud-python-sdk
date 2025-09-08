@@ -7076,6 +7076,7 @@ class InitFaceVerifyRequest(TeaModel):
         mobile: str = None,
         mode: str = None,
         model: str = None,
+        need_multi_face_check: str = None,
         oss_bucket_name: str = None,
         oss_object_name: str = None,
         outer_order_no: str = None,
@@ -7114,6 +7115,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.mobile = mobile
         self.mode = mode
         self.model = model
+        self.need_multi_face_check = need_multi_face_check
         self.oss_bucket_name = oss_bucket_name
         self.oss_object_name = oss_object_name
         self.outer_order_no = outer_order_no
@@ -7183,6 +7185,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['Mode'] = self.mode
         if self.model is not None:
             result['Model'] = self.model
+        if self.need_multi_face_check is not None:
+            result['NeedMultiFaceCheck'] = self.need_multi_face_check
         if self.oss_bucket_name is not None:
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_object_name is not None:
@@ -7261,6 +7265,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.mode = m.get('Mode')
         if m.get('Model') is not None:
             self.model = m.get('Model')
+        if m.get('NeedMultiFaceCheck') is not None:
+            self.need_multi_face_check = m.get('NeedMultiFaceCheck')
         if m.get('OssBucketName') is not None:
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssObjectName') is not None:

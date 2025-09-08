@@ -1,3 +1,7 @@
+2025-09-08 Version: 3.9.5
+- Update API InitFaceVerify: add request parameters NeedMultiFaceCheck.
+
+
 2025-08-27 Version: 3.9.4
 - Generated python 2019-03-07 for Cloudauth.
 

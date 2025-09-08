@@ -4298,6 +4298,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_object_name):
@@ -4407,6 +4409,8 @@ class Client(OpenApiClient):
             query['Mobile'] = request.mobile
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.need_multi_face_check):
+            query['NeedMultiFaceCheck'] = request.need_multi_face_check
         if not UtilClient.is_unset(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_object_name):
