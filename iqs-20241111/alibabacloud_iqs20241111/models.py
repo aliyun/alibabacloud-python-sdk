@@ -117,6 +117,7 @@ class ScorePageItem(TeaModel):
         self,
         card_type: str = None,
         display_link: str = None,
+        host_authority_score: float = None,
         host_logo: str = None,
         hostname: str = None,
         html_snippet: str = None,
@@ -138,6 +139,7 @@ class ScorePageItem(TeaModel):
         self.card_type = card_type
         # This parameter is required.
         self.display_link = display_link
+        self.host_authority_score = host_authority_score
         self.host_logo = host_logo
         self.hostname = hostname
         # This parameter is required.
@@ -176,6 +178,8 @@ class ScorePageItem(TeaModel):
             result['cardType'] = self.card_type
         if self.display_link is not None:
             result['displayLink'] = self.display_link
+        if self.host_authority_score is not None:
+            result['hostAuthorityScore'] = self.host_authority_score
         if self.host_logo is not None:
             result['hostLogo'] = self.host_logo
         if self.hostname is not None:
@@ -218,6 +222,8 @@ class ScorePageItem(TeaModel):
             self.card_type = m.get('cardType')
         if m.get('displayLink') is not None:
             self.display_link = m.get('displayLink')
+        if m.get('hostAuthorityScore') is not None:
+            self.host_authority_score = m.get('hostAuthorityScore')
         if m.get('hostLogo') is not None:
             self.host_logo = m.get('hostLogo')
         if m.get('hostname') is not None:
