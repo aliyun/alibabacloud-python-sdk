@@ -1,3 +1,9 @@
+2025-09-08 Version: 6.3.0
+- Support API DescribeBaseSystemRules.
+- Support API DescribeCustomBaseRuleCompileResult.
+- Support API DescribeDefenseRuleStatistics.
+
+
 2025-08-14 Version: 6.2.1
 - Update API CreateDomain: add request parameters Redirect.BackendPorts.
 - Update API DescribeDomainDetail: add response parameters Body.Redirect.BackendPorts.

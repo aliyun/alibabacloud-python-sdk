@@ -6035,6 +6035,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_apisec_user_operations_with_options_async(request, runtime)
 
+    def describe_base_system_rules_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeBaseSystemRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeBaseSystemRulesResponse:
+        """
+        @summary 查询基础防护系统规则集
+        
+        @param request: DescribeBaseSystemRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBaseSystemRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.detect_type):
+            query['DetectType'] = request.detect_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBaseSystemRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeBaseSystemRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_base_system_rules_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeBaseSystemRulesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeBaseSystemRulesResponse:
+        """
+        @summary 查询基础防护系统规则集
+        
+        @param request: DescribeBaseSystemRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBaseSystemRulesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.detect_type):
+            query['DetectType'] = request.detect_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.risk_level):
+            query['RiskLevel'] = request.risk_level
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeBaseSystemRules',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeBaseSystemRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_base_system_rules(
+        self,
+        request: waf_openapi_20211001_models.DescribeBaseSystemRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeBaseSystemRulesResponse:
+        """
+        @summary 查询基础防护系统规则集
+        
+        @param request: DescribeBaseSystemRulesRequest
+        @return: DescribeBaseSystemRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_base_system_rules_with_options(request, runtime)
+
+    async def describe_base_system_rules_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeBaseSystemRulesRequest,
+    ) -> waf_openapi_20211001_models.DescribeBaseSystemRulesResponse:
+        """
+        @summary 查询基础防护系统规则集
+        
+        @param request: DescribeBaseSystemRulesRequest
+        @return: DescribeBaseSystemRulesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_base_system_rules_with_options_async(request, runtime)
+
     def describe_cert_detail_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeCertDetailRequest,
@@ -6750,6 +6894,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cname_count_with_options_async(request, runtime)
+
+    def describe_custom_base_rule_compile_result_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse:
+        """
+        @summary 查询自定义正则规则编译结果
+        
+        @param request: DescribeCustomBaseRuleCompileResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomBaseRuleCompileResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomBaseRuleCompileResult',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_custom_base_rule_compile_result_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse:
+        """
+        @summary 查询自定义正则规则编译结果
+        
+        @param request: DescribeCustomBaseRuleCompileResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomBaseRuleCompileResultResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCustomBaseRuleCompileResult',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_custom_base_rule_compile_result(
+        self,
+        request: waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultRequest,
+    ) -> waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse:
+        """
+        @summary 查询自定义正则规则编译结果
+        
+        @param request: DescribeCustomBaseRuleCompileResultRequest
+        @return: DescribeCustomBaseRuleCompileResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_custom_base_rule_compile_result_with_options(request, runtime)
+
+    async def describe_custom_base_rule_compile_result_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultRequest,
+    ) -> waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultResponse:
+        """
+        @summary 查询自定义正则规则编译结果
+        
+        @param request: DescribeCustomBaseRuleCompileResultRequest
+        @return: DescribeCustomBaseRuleCompileResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_custom_base_rule_compile_result_with_options_async(request, runtime)
 
     def describe_ddo_sstatus_with_options(
         self,
@@ -8002,6 +8250,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_rule_with_options_async(request, runtime)
+
+    def describe_defense_rule_statistics_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseRuleStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse:
+        """
+        @summary 查询防护规则的统计信息
+        
+        @param request: DescribeDefenseRuleStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseRuleStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fourth_key):
+            query['FourthKey'] = request.fourth_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.primary_key):
+            query['PrimaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.secondary_key):
+            query['SecondaryKey'] = request.secondary_key
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.third_key):
+            query['ThirdKey'] = request.third_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseRuleStatistics',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_defense_rule_statistics_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseRuleStatisticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse:
+        """
+        @summary 查询防护规则的统计信息
+        
+        @param request: DescribeDefenseRuleStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseRuleStatisticsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.fourth_key):
+            query['FourthKey'] = request.fourth_key
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.primary_key):
+            query['PrimaryKey'] = request.primary_key
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.secondary_key):
+            query['SecondaryKey'] = request.secondary_key
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.third_key):
+            query['ThirdKey'] = request.third_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseRuleStatistics',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_defense_rule_statistics(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseRuleStatisticsRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse:
+        """
+        @summary 查询防护规则的统计信息
+        
+        @param request: DescribeDefenseRuleStatisticsRequest
+        @return: DescribeDefenseRuleStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_defense_rule_statistics_with_options(request, runtime)
+
+    async def describe_defense_rule_statistics_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseRuleStatisticsRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseRuleStatisticsResponse:
+        """
+        @summary 查询防护规则的统计信息
+        
+        @param request: DescribeDefenseRuleStatisticsRequest
+        @return: DescribeDefenseRuleStatisticsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_defense_rule_statistics_with_options_async(request, runtime)
 
     def describe_defense_rules_with_options(
         self,

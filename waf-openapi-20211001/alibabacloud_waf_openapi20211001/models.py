@@ -10903,6 +10903,269 @@ class DescribeApisecUserOperationsResponse(TeaModel):
         return self
 
 
+class DescribeBaseSystemRulesRequest(TeaModel):
+    def __init__(
+        self,
+        detect_type: str = None,
+        instance_id: str = None,
+        lang: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        risk_level: str = None,
+        rule_action: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        rule_status: int = None,
+        template_id: int = None,
+    ):
+        self.detect_type = detect_type
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.lang = lang
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.risk_level = risk_level
+        self.rule_action = rule_action
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_status = rule_status
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detect_type is not None:
+            result['DetectType'] = self.detect_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.rule_action is not None:
+            result['RuleAction'] = self.rule_action
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_status is not None:
+            result['RuleStatus'] = self.rule_status
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetectType') is not None:
+            self.detect_type = m.get('DetectType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RuleAction') is not None:
+            self.rule_action = m.get('RuleAction')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleStatus') is not None:
+            self.rule_status = m.get('RuleStatus')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeBaseSystemRulesResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        cve_id: str = None,
+        description: str = None,
+        detect_type: str = None,
+        risk_level: str = None,
+        rule_action: str = None,
+        rule_id: int = None,
+        rule_name: str = None,
+        rule_status: int = None,
+        update_time: int = None,
+    ):
+        self.cve_id = cve_id
+        self.description = description
+        self.detect_type = detect_type
+        self.risk_level = risk_level
+        self.rule_action = rule_action
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.rule_status = rule_status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cve_id is not None:
+            result['CveId'] = self.cve_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.detect_type is not None:
+            result['DetectType'] = self.detect_type
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.rule_action is not None:
+            result['RuleAction'] = self.rule_action
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.rule_status is not None:
+            result['RuleStatus'] = self.rule_status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CveId') is not None:
+            self.cve_id = m.get('CveId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DetectType') is not None:
+            self.detect_type = m.get('DetectType')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('RuleAction') is not None:
+            self.rule_action = m.get('RuleAction')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('RuleStatus') is not None:
+            self.rule_status = m.get('RuleStatus')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeBaseSystemRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rules: List[DescribeBaseSystemRulesResponseBodyRules] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.rules = rules
+        self.total_count = total_count
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeBaseSystemRulesResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeBaseSystemRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeBaseSystemRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeBaseSystemRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCertDetailRequest(TeaModel):
     def __init__(
         self,
@@ -12598,6 +12861,120 @@ class DescribeCnameCountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCnameCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCustomBaseRuleCompileResultRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeCustomBaseRuleCompileResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DescribeCustomBaseRuleCompileResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCustomBaseRuleCompileResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCustomBaseRuleCompileResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15128,6 +15505,211 @@ class DescribeDefenseRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeDefenseRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDefenseRuleStatisticsRequest(TeaModel):
+    def __init__(
+        self,
+        fourth_key: str = None,
+        instance_id: str = None,
+        primary_key: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        secondary_key: str = None,
+        template_id: int = None,
+        third_key: str = None,
+    ):
+        self.fourth_key = fourth_key
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.primary_key = primary_key
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.secondary_key = secondary_key
+        # This parameter is required.
+        self.template_id = template_id
+        self.third_key = third_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fourth_key is not None:
+            result['FourthKey'] = self.fourth_key
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.primary_key is not None:
+            result['PrimaryKey'] = self.primary_key
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.secondary_key is not None:
+            result['SecondaryKey'] = self.secondary_key
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.third_key is not None:
+            result['ThirdKey'] = self.third_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FourthKey') is not None:
+            self.fourth_key = m.get('FourthKey')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PrimaryKey') is not None:
+            self.primary_key = m.get('PrimaryKey')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('SecondaryKey') is not None:
+            self.secondary_key = m.get('SecondaryKey')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('ThirdKey') is not None:
+            self.third_key = m.get('ThirdKey')
+        return self
+
+
+class DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        fourth_value: str = None,
+        primary_value: str = None,
+        secondary_value: str = None,
+        third_value: str = None,
+    ):
+        self.count = count
+        self.fourth_value = fourth_value
+        self.primary_value = primary_value
+        self.secondary_value = secondary_value
+        self.third_value = third_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.fourth_value is not None:
+            result['FourthValue'] = self.fourth_value
+        if self.primary_value is not None:
+            result['PrimaryValue'] = self.primary_value
+        if self.secondary_value is not None:
+            result['SecondaryValue'] = self.secondary_value
+        if self.third_value is not None:
+            result['ThirdValue'] = self.third_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('FourthValue') is not None:
+            self.fourth_value = m.get('FourthValue')
+        if m.get('PrimaryValue') is not None:
+            self.primary_value = m.get('PrimaryValue')
+        if m.get('SecondaryValue') is not None:
+            self.secondary_value = m.get('SecondaryValue')
+        if m.get('ThirdValue') is not None:
+            self.third_value = m.get('ThirdValue')
+        return self
+
+
+class DescribeDefenseRuleStatisticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        statistics_infos: List[DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos] = None,
+    ):
+        self.request_id = request_id
+        self.statistics_infos = statistics_infos
+
+    def validate(self):
+        if self.statistics_infos:
+            for k in self.statistics_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StatisticsInfos'] = []
+        if self.statistics_infos is not None:
+            for k in self.statistics_infos:
+                result['StatisticsInfos'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.statistics_infos = []
+        if m.get('StatisticsInfos') is not None:
+            for k in m.get('StatisticsInfos'):
+                temp_model = DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos()
+                self.statistics_infos.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDefenseRuleStatisticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDefenseRuleStatisticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDefenseRuleStatisticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
