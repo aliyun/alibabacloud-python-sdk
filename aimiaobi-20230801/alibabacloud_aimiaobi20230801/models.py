@@ -418,11 +418,39 @@ class AddAuditTermsShrinkRequest(TeaModel):
         return self
 
 
+class AddAuditTermsResponseBodyDataV1(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
 class AddAuditTermsResponseBody(TeaModel):
     def __init__(
         self,
         code: str = None,
         data: bool = None,
+        data_v1: AddAuditTermsResponseBodyDataV1 = None,
         http_status_code: int = None,
         message: str = None,
         request_id: str = None,
@@ -430,6 +458,7 @@ class AddAuditTermsResponseBody(TeaModel):
     ):
         self.code = code
         self.data = data
+        self.data_v1 = data_v1
         self.http_status_code = http_status_code
         self.message = message
         # Id of the request
@@ -437,7 +466,8 @@ class AddAuditTermsResponseBody(TeaModel):
         self.success = success
 
     def validate(self):
-        pass
+        if self.data_v1:
+            self.data_v1.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -449,6 +479,8 @@ class AddAuditTermsResponseBody(TeaModel):
             result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
+        if self.data_v1 is not None:
+            result['DataV1'] = self.data_v1.to_map()
         if self.http_status_code is not None:
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
@@ -465,6 +497,9 @@ class AddAuditTermsResponseBody(TeaModel):
             self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('DataV1') is not None:
+            temp_model = AddAuditTermsResponseBodyDataV1()
+            self.data_v1 = temp_model.from_map(m['DataV1'])
         if m.get('HttpStatusCode') is not None:
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
@@ -2473,6 +2508,179 @@ class CancelAuditTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelAuditTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CancelDeepWriteTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CancelDeepWriteTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.input = input
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CancelDeepWriteTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: CancelDeepWriteTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CancelDeepWriteTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CancelDeepWriteTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CancelDeepWriteTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CancelDeepWriteTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12891,6 +13099,346 @@ class GetDatasetDocumentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDatasetDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeepWriteTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDeepWriteTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.input = input
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetDeepWriteTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDeepWriteTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDeepWriteTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDeepWriteTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeepWriteTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeepWriteTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeepWriteTaskResultRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.task_id = task_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class GetDeepWriteTaskResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        artifact_url: str = None,
+        task_id: str = None,
+    ):
+        self.artifact_url = artifact_url
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_url is not None:
+            result['ArtifactUrl'] = self.artifact_url
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactUrl') is not None:
+            self.artifact_url = m.get('ArtifactUrl')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetDeepWriteTaskResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDeepWriteTaskResultResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDeepWriteTaskResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDeepWriteTaskResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeepWriteTaskResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeepWriteTaskResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -34763,6 +35311,446 @@ class RunCustomHotTopicViewPointAnalysisResponse(TeaModel):
         return self
 
 
+class RunDeepWritingRequest(TeaModel):
+    def __init__(
+        self,
+        cursor: int = None,
+        task_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.cursor = cursor
+        self.task_id = task_id
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cursor is not None:
+            result['Cursor'] = self.cursor
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cursor') is not None:
+            self.cursor = m.get('Cursor')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class RunDeepWritingResponseBodyHeader(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        event: str = None,
+        session_id: str = None,
+        status_code: int = None,
+        task_id: str = None,
+        trace_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.event = event
+        self.session_id = session_id
+        self.status_code = status_code
+        self.task_id = task_id
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('StatusCode') is not None:
+            self.status_code = m.get('StatusCode')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class RunDeepWritingResponseBodyPayloadOutputItemContent(TeaModel):
+    def __init__(
+        self,
+        text: str = None,
+        type: str = None,
+    ):
+        self.text = text
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RunDeepWritingResponseBodyPayloadOutputItem(TeaModel):
+    def __init__(
+        self,
+        agent: str = None,
+        arguments: str = None,
+        content: List[RunDeepWritingResponseBodyPayloadOutputItemContent] = None,
+        id: str = None,
+        name: str = None,
+        result: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.agent = agent
+        self.arguments = arguments
+        self.content = content
+        self.id = id
+        self.name = name
+        self.result = result
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        if self.content:
+            for k in self.content:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent is not None:
+            result['Agent'] = self.agent
+        if self.arguments is not None:
+            result['Arguments'] = self.arguments
+        result['Content'] = []
+        if self.content is not None:
+            for k in self.content:
+                result['Content'].append(k.to_map() if k else None)
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Agent') is not None:
+            self.agent = m.get('Agent')
+        if m.get('Arguments') is not None:
+            self.arguments = m.get('Arguments')
+        self.content = []
+        if m.get('Content') is not None:
+            for k in m.get('Content'):
+                temp_model = RunDeepWritingResponseBodyPayloadOutputItemContent()
+                self.content.append(temp_model.from_map(k))
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RunDeepWritingResponseBodyPayloadOutputResponse(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        status: str = None,
+    ):
+        self.id = id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class RunDeepWritingResponseBodyPayloadOutput(TeaModel):
+    def __init__(
+        self,
+        item: RunDeepWritingResponseBodyPayloadOutputItem = None,
+        output_index: int = None,
+        response: RunDeepWritingResponseBodyPayloadOutputResponse = None,
+        sequence_number: str = None,
+        type: str = None,
+    ):
+        self.item = item
+        self.output_index = output_index
+        self.response = response
+        self.sequence_number = sequence_number
+        self.type = type
+
+    def validate(self):
+        if self.item:
+            self.item.validate()
+        if self.response:
+            self.response.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.item is not None:
+            result['Item'] = self.item.to_map()
+        if self.output_index is not None:
+            result['OutputIndex'] = self.output_index
+        if self.response is not None:
+            result['Response'] = self.response.to_map()
+        if self.sequence_number is not None:
+            result['SequenceNumber'] = self.sequence_number
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Item') is not None:
+            temp_model = RunDeepWritingResponseBodyPayloadOutputItem()
+            self.item = temp_model.from_map(m['Item'])
+        if m.get('OutputIndex') is not None:
+            self.output_index = m.get('OutputIndex')
+        if m.get('Response') is not None:
+            temp_model = RunDeepWritingResponseBodyPayloadOutputResponse()
+            self.response = temp_model.from_map(m['Response'])
+        if m.get('SequenceNumber') is not None:
+            self.sequence_number = m.get('SequenceNumber')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class RunDeepWritingResponseBodyPayload(TeaModel):
+    def __init__(
+        self,
+        output: RunDeepWritingResponseBodyPayloadOutput = None,
+    ):
+        self.output = output
+
+    def validate(self):
+        if self.output:
+            self.output.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output is not None:
+            result['Output'] = self.output.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Output') is not None:
+            temp_model = RunDeepWritingResponseBodyPayloadOutput()
+            self.output = temp_model.from_map(m['Output'])
+        return self
+
+
+class RunDeepWritingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        header: RunDeepWritingResponseBodyHeader = None,
+        http_status_code: str = None,
+        message: str = None,
+        payload: RunDeepWritingResponseBodyPayload = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.header = header
+        self.http_status_code = http_status_code
+        self.message = message
+        self.payload = payload
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.header:
+            self.header.validate()
+        if self.payload:
+            self.payload.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.header is not None:
+            result['Header'] = self.header.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.payload is not None:
+            result['Payload'] = self.payload.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Header') is not None:
+            temp_model = RunDeepWritingResponseBodyHeader()
+            self.header = temp_model.from_map(m['Header'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Payload') is not None:
+            temp_model = RunDeepWritingResponseBodyPayload()
+            self.payload = temp_model.from_map(m['Payload'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class RunDeepWritingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RunDeepWritingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RunDeepWritingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RunDocBrainmapRequest(TeaModel):
     def __init__(
         self,
@@ -52271,6 +53259,434 @@ class SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent(TeaModel):
+    def __init__(
+        self,
+        enable_search: bool = None,
+        name: str = None,
+    ):
+        self.enable_search = enable_search
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_search is not None:
+            result['EnableSearch'] = self.enable_search
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableSearch') is not None:
+            self.enable_search = m.get('EnableSearch')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent(TeaModel):
+    def __init__(
+        self,
+        enable_citation: bool = None,
+        name: str = None,
+    ):
+        self.enable_citation = enable_citation
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_citation is not None:
+            result['EnableCitation'] = self.enable_citation
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableCitation') is not None:
+            self.enable_citation = m.get('EnableCitation')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class SubmitDeepWriteTaskRequestAgentOrchestration(TeaModel):
+    def __init__(
+        self,
+        data_analyst_agent: SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent = None,
+        data_collector_agent: SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent = None,
+        reporter_agent: SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent = None,
+    ):
+        self.data_analyst_agent = data_analyst_agent
+        self.data_collector_agent = data_collector_agent
+        self.reporter_agent = reporter_agent
+
+    def validate(self):
+        if self.data_analyst_agent:
+            self.data_analyst_agent.validate()
+        if self.data_collector_agent:
+            self.data_collector_agent.validate()
+        if self.reporter_agent:
+            self.reporter_agent.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_analyst_agent is not None:
+            result['DataAnalystAgent'] = self.data_analyst_agent.to_map()
+        if self.data_collector_agent is not None:
+            result['DataCollectorAgent'] = self.data_collector_agent.to_map()
+        if self.reporter_agent is not None:
+            result['ReporterAgent'] = self.reporter_agent.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataAnalystAgent') is not None:
+            temp_model = SubmitDeepWriteTaskRequestAgentOrchestrationDataAnalystAgent()
+            self.data_analyst_agent = temp_model.from_map(m['DataAnalystAgent'])
+        if m.get('DataCollectorAgent') is not None:
+            temp_model = SubmitDeepWriteTaskRequestAgentOrchestrationDataCollectorAgent()
+            self.data_collector_agent = temp_model.from_map(m['DataCollectorAgent'])
+        if m.get('ReporterAgent') is not None:
+            temp_model = SubmitDeepWriteTaskRequestAgentOrchestrationReporterAgent()
+            self.reporter_agent = temp_model.from_map(m['ReporterAgent'])
+        return self
+
+
+class SubmitDeepWriteTaskRequestFiles(TeaModel):
+    def __init__(
+        self,
+        file_description: str = None,
+        file_key: str = None,
+        file_name: str = None,
+    ):
+        self.file_description = file_description
+        self.file_key = file_key
+        self.file_name = file_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_description is not None:
+            result['FileDescription'] = self.file_description
+        if self.file_key is not None:
+            result['FileKey'] = self.file_key
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileDescription') is not None:
+            self.file_description = m.get('FileDescription')
+        if m.get('FileKey') is not None:
+            self.file_key = m.get('FileKey')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        return self
+
+
+class SubmitDeepWriteTaskRequest(TeaModel):
+    def __init__(
+        self,
+        agent_orchestration: SubmitDeepWriteTaskRequestAgentOrchestration = None,
+        files: List[SubmitDeepWriteTaskRequestFiles] = None,
+        input: str = None,
+        instructions: str = None,
+        workspace_id: str = None,
+    ):
+        self.agent_orchestration = agent_orchestration
+        self.files = files
+        # This parameter is required.
+        self.input = input
+        self.instructions = instructions
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        if self.agent_orchestration:
+            self.agent_orchestration.validate()
+        if self.files:
+            for k in self.files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_orchestration is not None:
+            result['AgentOrchestration'] = self.agent_orchestration.to_map()
+        result['Files'] = []
+        if self.files is not None:
+            for k in self.files:
+                result['Files'].append(k.to_map() if k else None)
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentOrchestration') is not None:
+            temp_model = SubmitDeepWriteTaskRequestAgentOrchestration()
+            self.agent_orchestration = temp_model.from_map(m['AgentOrchestration'])
+        self.files = []
+        if m.get('Files') is not None:
+            for k in m.get('Files'):
+                temp_model = SubmitDeepWriteTaskRequestFiles()
+                self.files.append(temp_model.from_map(k))
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitDeepWriteTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_orchestration_shrink: str = None,
+        files_shrink: str = None,
+        input: str = None,
+        instructions: str = None,
+        workspace_id: str = None,
+    ):
+        self.agent_orchestration_shrink = agent_orchestration_shrink
+        self.files_shrink = files_shrink
+        # This parameter is required.
+        self.input = input
+        self.instructions = instructions
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_orchestration_shrink is not None:
+            result['AgentOrchestration'] = self.agent_orchestration_shrink
+        if self.files_shrink is not None:
+            result['Files'] = self.files_shrink
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.instructions is not None:
+            result['Instructions'] = self.instructions
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentOrchestration') is not None:
+            self.agent_orchestration_shrink = m.get('AgentOrchestration')
+        if m.get('Files') is not None:
+            self.files_shrink = m.get('Files')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Instructions') is not None:
+            self.instructions = m.get('Instructions')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class SubmitDeepWriteTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitDeepWriteTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitDeepWriteTaskResponseBodyData = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitDeepWriteTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitDeepWriteTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDeepWriteTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDeepWriteTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

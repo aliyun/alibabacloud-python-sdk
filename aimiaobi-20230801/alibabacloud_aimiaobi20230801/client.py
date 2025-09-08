@@ -981,6 +981,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_audit_task_with_options_async(request, runtime)
 
+    def cancel_deep_write_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.CancelDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse:
+        """
+        @summary 取消深度写作任务
+        
+        @param request: CancelDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_deep_write_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.CancelDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse:
+        """
+        @summary 取消深度写作任务
+        
+        @param request: CancelDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CancelDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_deep_write_task(
+        self,
+        request: ai_miao_bi_20230801_models.CancelDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse:
+        """
+        @summary 取消深度写作任务
+        
+        @param request: CancelDeepWriteTaskRequest
+        @return: CancelDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_deep_write_task_with_options(request, runtime)
+
+    async def cancel_deep_write_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.CancelDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.CancelDeepWriteTaskResponse:
+        """
+        @summary 取消深度写作任务
+        
+        @param request: CancelDeepWriteTaskRequest
+        @return: CancelDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_deep_write_task_with_options_async(request, runtime)
+
     def clear_intervenes_with_options(
         self,
         request: ai_miao_bi_20230801_models.ClearIntervenesRequest,
@@ -6236,6 +6336,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_dataset_document_with_options_async(request, runtime)
+
+    def get_deep_write_task_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResponse:
+        """
+        @summary 查询深度写作任务
+        
+        @param request: GetDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDeepWriteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deep_write_task_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResponse:
+        """
+        @summary 查询深度写作任务
+        
+        @param request: GetDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDeepWriteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deep_write_task(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResponse:
+        """
+        @summary 查询深度写作任务
+        
+        @param request: GetDeepWriteTaskRequest
+        @return: GetDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_deep_write_task_with_options(request, runtime)
+
+    async def get_deep_write_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResponse:
+        """
+        @summary 查询深度写作任务
+        
+        @param request: GetDeepWriteTaskRequest
+        @return: GetDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_deep_write_task_with_options_async(request, runtime)
+
+    def get_deep_write_task_result_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse:
+        """
+        @summary 查询深度写作任务的结果
+        
+        @param request: GetDeepWriteTaskResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeepWriteTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeepWriteTaskResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_deep_write_task_result_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse:
+        """
+        @summary 查询深度写作任务的结果
+        
+        @param request: GetDeepWriteTaskResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeepWriteTaskResultResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetDeepWriteTaskResult',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_deep_write_task_result(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse:
+        """
+        @summary 查询深度写作任务的结果
+        
+        @param request: GetDeepWriteTaskResultRequest
+        @return: GetDeepWriteTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_deep_write_task_result_with_options(request, runtime)
+
+    async def get_deep_write_task_result_async(
+        self,
+        request: ai_miao_bi_20230801_models.GetDeepWriteTaskResultRequest,
+    ) -> ai_miao_bi_20230801_models.GetDeepWriteTaskResultResponse:
+        """
+        @summary 查询深度写作任务的结果
+        
+        @param request: GetDeepWriteTaskResultRequest
+        @return: GetDeepWriteTaskResultResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_deep_write_task_result_with_options_async(request, runtime)
 
     def get_doc_cluster_task_with_options(
         self,
@@ -13741,6 +14041,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.run_custom_hot_topic_view_point_analysis_with_options_async(request, runtime)
 
+    def run_deep_writing_with_options(
+        self,
+        request: ai_miao_bi_20230801_models.RunDeepWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDeepWritingResponse:
+        """
+        @summary 流式输出深度写作事件
+        
+        @param request: RunDeepWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDeepWritingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cursor):
+            body['Cursor'] = request.cursor
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDeepWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDeepWritingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def run_deep_writing_with_options_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDeepWritingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.RunDeepWritingResponse:
+        """
+        @summary 流式输出深度写作事件
+        
+        @param request: RunDeepWritingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunDeepWritingResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cursor):
+            body['Cursor'] = request.cursor
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RunDeepWriting',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.RunDeepWritingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def run_deep_writing(
+        self,
+        request: ai_miao_bi_20230801_models.RunDeepWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunDeepWritingResponse:
+        """
+        @summary 流式输出深度写作事件
+        
+        @param request: RunDeepWritingRequest
+        @return: RunDeepWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.run_deep_writing_with_options(request, runtime)
+
+    async def run_deep_writing_async(
+        self,
+        request: ai_miao_bi_20230801_models.RunDeepWritingRequest,
+    ) -> ai_miao_bi_20230801_models.RunDeepWritingResponse:
+        """
+        @summary 流式输出深度写作事件
+        
+        @param request: RunDeepWritingRequest
+        @return: RunDeepWritingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.run_deep_writing_with_options_async(request, runtime)
+
     def run_doc_brainmap_with_options(
         self,
         request: ai_miao_bi_20230801_models.RunDocBrainmapRequest,
@@ -18180,6 +18584,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.submit_custom_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
+
+    def submit_deep_write_task_with_options(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse:
+        """
+        @summary 提交深度写作任务
+        
+        @param tmp_req: SubmitDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitDeepWriteTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_orchestration):
+            request.agent_orchestration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_orchestration, 'AgentOrchestration', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_orchestration_shrink):
+            query['AgentOrchestration'] = request.agent_orchestration_shrink
+        body = {}
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.input):
+            body['Input'] = request.input
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_deep_write_task_with_options_async(
+        self,
+        tmp_req: ai_miao_bi_20230801_models.SubmitDeepWriteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse:
+        """
+        @summary 提交深度写作任务
+        
+        @param tmp_req: SubmitDeepWriteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDeepWriteTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ai_miao_bi_20230801_models.SubmitDeepWriteTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.agent_orchestration):
+            request.agent_orchestration_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.agent_orchestration, 'AgentOrchestration', 'json')
+        if not UtilClient.is_unset(tmp_req.files):
+            request.files_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.files, 'Files', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_orchestration_shrink):
+            query['AgentOrchestration'] = request.agent_orchestration_shrink
+        body = {}
+        if not UtilClient.is_unset(request.files_shrink):
+            body['Files'] = request.files_shrink
+        if not UtilClient.is_unset(request.input):
+            body['Input'] = request.input
+        if not UtilClient.is_unset(request.instructions):
+            body['Instructions'] = request.instructions
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDeepWriteTask',
+            version='2023-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_deep_write_task(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse:
+        """
+        @summary 提交深度写作任务
+        
+        @param request: SubmitDeepWriteTaskRequest
+        @return: SubmitDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.submit_deep_write_task_with_options(request, runtime)
+
+    async def submit_deep_write_task_async(
+        self,
+        request: ai_miao_bi_20230801_models.SubmitDeepWriteTaskRequest,
+    ) -> ai_miao_bi_20230801_models.SubmitDeepWriteTaskResponse:
+        """
+        @summary 提交深度写作任务
+        
+        @param request: SubmitDeepWriteTaskRequest
+        @return: SubmitDeepWriteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_deep_write_task_with_options_async(request, runtime)
 
     def submit_doc_cluster_task_with_options(
         self,
