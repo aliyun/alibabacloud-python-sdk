@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
-from Tea.core import TeaCore
+from __future__ import annotations
 
+import json
+
+from typing import Dict, Generator, AsyncGenerator
+
+from alibabacloud_edututor20250707 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_edututor20250707 import models as edu_tutor_20250707_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.core import DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = ''
@@ -35,240 +37,274 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def answer_ssewith_sse(
+        self,
+        request: main_models.AnswerSSERequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.AnswerSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnswerSSE',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/answerSSE',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.AnswerSSEResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
+    async def answer_ssewith_sse_async(
+        self,
+        request: main_models.AnswerSSERequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.AnswerSSEResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
+        body = {}
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AnswerSSE',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/answerSSE',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.AnswerSSEResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
 
     def answer_ssewith_options(
         self,
-        request: edu_tutor_20250707_models.AnswerSSERequest,
+        request: main_models.AnswerSSERequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> edu_tutor_20250707_models.AnswerSSEResponse:
-        """
-        @summary AnswerSSE
-        
-        @param request: AnswerSSERequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AnswerSSEResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AnswerSSEResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
+        if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
-        if not UtilClient.is_unset(request.messages):
+        if not DaraCore.is_null(request.messages):
             body['messages'] = request.messages
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AnswerSSE',
-            version='2025-07-07',
-            protocol='HTTPS',
-            pathname=f'/service/answerSSE',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AnswerSSE',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/answerSSE',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            edu_tutor_20250707_models.AnswerSSEResponse(),
+        return DaraCore.from_map(
+            main_models.AnswerSSEResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def answer_ssewith_options_async(
         self,
-        request: edu_tutor_20250707_models.AnswerSSERequest,
+        request: main_models.AnswerSSERequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> edu_tutor_20250707_models.AnswerSSEResponse:
-        """
-        @summary AnswerSSE
-        
-        @param request: AnswerSSERequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AnswerSSEResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AnswerSSEResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
+        if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
-        if not UtilClient.is_unset(request.messages):
+        if not DaraCore.is_null(request.messages):
             body['messages'] = request.messages
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AnswerSSE',
-            version='2025-07-07',
-            protocol='HTTPS',
-            pathname=f'/service/answerSSE',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AnswerSSE',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/answerSSE',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            edu_tutor_20250707_models.AnswerSSEResponse(),
+        return DaraCore.from_map(
+            main_models.AnswerSSEResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def answer_sse(
         self,
-        request: edu_tutor_20250707_models.AnswerSSERequest,
-    ) -> edu_tutor_20250707_models.AnswerSSEResponse:
-        """
-        @summary AnswerSSE
-        
-        @param request: AnswerSSERequest
-        @return: AnswerSSEResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AnswerSSERequest,
+    ) -> main_models.AnswerSSEResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.answer_ssewith_options(request, headers, runtime)
 
     async def answer_sse_async(
         self,
-        request: edu_tutor_20250707_models.AnswerSSERequest,
-    ) -> edu_tutor_20250707_models.AnswerSSEResponse:
-        """
-        @summary AnswerSSE
-        
-        @param request: AnswerSSERequest
-        @return: AnswerSSEResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AnswerSSERequest,
+    ) -> main_models.AnswerSSEResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.answer_ssewith_options_async(request, headers, runtime)
 
     def cut_questions_with_options(
         self,
-        request: edu_tutor_20250707_models.CutQuestionsRequest,
+        request: main_models.CutQuestionsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> edu_tutor_20250707_models.CutQuestionsResponse:
-        """
-        @summary CutQuestions
-        
-        @param request: CutQuestionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CutQuestionsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CutQuestionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
+        if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
-        if not UtilClient.is_unset(request.image):
+        if not DaraCore.is_null(request.image):
             body['image'] = request.image
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CutQuestions',
-            version='2025-07-07',
-            protocol='HTTPS',
-            pathname=f'/service/cutApi',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CutQuestions',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/cutApi',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            edu_tutor_20250707_models.CutQuestionsResponse(),
+        return DaraCore.from_map(
+            main_models.CutQuestionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def cut_questions_with_options_async(
         self,
-        request: edu_tutor_20250707_models.CutQuestionsRequest,
+        request: main_models.CutQuestionsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> edu_tutor_20250707_models.CutQuestionsResponse:
-        """
-        @summary CutQuestions
-        
-        @param request: CutQuestionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CutQuestionsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CutQuestionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.workspace_id):
+        if not DaraCore.is_null(request.workspace_id):
             query['workspaceId'] = request.workspace_id
         body = {}
-        if not UtilClient.is_unset(request.image):
+        if not DaraCore.is_null(request.image):
             body['image'] = request.image
-        if not UtilClient.is_unset(request.parameters):
+        if not DaraCore.is_null(request.parameters):
             body['parameters'] = request.parameters
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CutQuestions',
-            version='2025-07-07',
-            protocol='HTTPS',
-            pathname=f'/service/cutApi',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CutQuestions',
+            version = '2025-07-07',
+            protocol = 'HTTPS',
+            pathname = f'/service/cutApi',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            edu_tutor_20250707_models.CutQuestionsResponse(),
+        return DaraCore.from_map(
+            main_models.CutQuestionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def cut_questions(
         self,
-        request: edu_tutor_20250707_models.CutQuestionsRequest,
-    ) -> edu_tutor_20250707_models.CutQuestionsResponse:
-        """
-        @summary CutQuestions
-        
-        @param request: CutQuestionsRequest
-        @return: CutQuestionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CutQuestionsRequest,
+    ) -> main_models.CutQuestionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.cut_questions_with_options(request, headers, runtime)
 
     async def cut_questions_async(
         self,
-        request: edu_tutor_20250707_models.CutQuestionsRequest,
-    ) -> edu_tutor_20250707_models.CutQuestionsResponse:
-        """
-        @summary CutQuestions
-        
-        @param request: CutQuestionsRequest
-        @return: CutQuestionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CutQuestionsRequest,
+    ) -> main_models.CutQuestionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.cut_questions_with_options_async(request, headers, runtime)
