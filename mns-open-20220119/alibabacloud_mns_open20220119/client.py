@@ -331,6 +331,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
@@ -390,6 +392,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
@@ -457,6 +461,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
         body = {}
         if not UtilClient.is_unset(request.enable_logging):
             body['EnableLogging'] = request.enable_logging
@@ -500,6 +506,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
         body = {}
         if not UtilClient.is_unset(request.enable_logging):
             body['EnableLogging'] = request.enable_logging
@@ -1689,6 +1697,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -1730,6 +1740,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.queue_type):
+            query['QueueType'] = request.queue_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -1915,6 +1927,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1956,6 +1970,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
+        if not UtilClient.is_unset(request.topic_type):
+            query['TopicType'] = request.topic_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

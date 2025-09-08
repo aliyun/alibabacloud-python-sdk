@@ -707,6 +707,7 @@ class CreateQueueRequest(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        queue_type: str = None,
         tag: List[CreateQueueRequestTag] = None,
         tenant_rate_limit_policy: CreateQueueRequestTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
@@ -732,6 +733,7 @@ class CreateQueueRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        self.queue_type = queue_type
         # The tags.
         self.tag = tag
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
@@ -768,6 +770,8 @@ class CreateQueueRequest(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -795,6 +799,8 @@ class CreateQueueRequest(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -853,6 +859,7 @@ class CreateQueueShrinkRequest(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        queue_type: str = None,
         tag: List[CreateQueueShrinkRequestTag] = None,
         tenant_rate_limit_policy_shrink: str = None,
         visibility_timeout: int = None,
@@ -878,6 +885,7 @@ class CreateQueueShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.queue_name = queue_name
+        self.queue_type = queue_type
         # The tags.
         self.tag = tag
         self.tenant_rate_limit_policy_shrink = tenant_rate_limit_policy_shrink
@@ -910,6 +918,8 @@ class CreateQueueShrinkRequest(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -936,6 +946,8 @@ class CreateQueueShrinkRequest(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -1138,6 +1150,7 @@ class CreateTopicRequest(TeaModel):
         max_message_size: int = None,
         tag: List[CreateTopicRequestTag] = None,
         topic_name: str = None,
+        topic_type: str = None,
     ):
         # Specifies whether to enable the log management feature. Valid values:
         # 
@@ -1152,6 +1165,7 @@ class CreateTopicRequest(TeaModel):
         # 
         # This parameter is required.
         self.topic_name = topic_name
+        self.topic_type = topic_type
 
     def validate(self):
         if self.tag:
@@ -1175,6 +1189,8 @@ class CreateTopicRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
+        if self.topic_type is not None:
+            result['TopicType'] = self.topic_type
         return result
 
     def from_map(self, m: dict = None):
@@ -1190,6 +1206,8 @@ class CreateTopicRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        if m.get('TopicType') is not None:
+            self.topic_type = m.get('TopicType')
         return self
 
 
@@ -2759,6 +2777,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        queue_type: str = None,
         tags: List[GetQueueAttributesResponseBodyDataTags] = None,
         tenant_rate_limit_policy: GetQueueAttributesResponseBodyDataTenantRateLimitPolicy = None,
         visibility_timeout: int = None,
@@ -2790,6 +2809,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         self.queue_name = queue_name
+        self.queue_type = queue_type
         # The tag.
         self.tags = tags
         self.tenant_rate_limit_policy = tenant_rate_limit_policy
@@ -2836,6 +2856,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -2873,6 +2895,8 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -3440,6 +3464,7 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         message_retention_period: int = None,
         tags: List[GetTopicAttributesResponseBodyDataTags] = None,
         topic_name: str = None,
+        topic_type: str = None,
     ):
         # The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
@@ -3460,6 +3485,7 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         self.tags = tags
         # The name of the topic.
         self.topic_name = topic_name
+        self.topic_type = topic_type
 
     def validate(self):
         if self.tags:
@@ -3491,6 +3517,8 @@ class GetTopicAttributesResponseBodyData(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
+        if self.topic_type is not None:
+            result['TopicType'] = self.topic_type
         return result
 
     def from_map(self, m: dict = None):
@@ -3514,6 +3542,8 @@ class GetTopicAttributesResponseBodyData(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        if m.get('TopicType') is not None:
+            self.topic_type = m.get('TopicType')
         return self
 
 
@@ -4182,6 +4212,7 @@ class ListQueueRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
         queue_name: str = None,
+        queue_type: str = None,
         tag: List[ListQueueRequestTag] = None,
     ):
         # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
@@ -4190,6 +4221,7 @@ class ListQueueRequest(TeaModel):
         self.page_size = page_size
         # The name of the queue.
         self.queue_name = queue_name
+        self.queue_type = queue_type
         # The tags.
         self.tag = tag
 
@@ -4211,6 +4243,8 @@ class ListQueueRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -4225,6 +4259,8 @@ class ListQueueRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -4325,6 +4361,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        queue_type: str = None,
         tags: List[ListQueueResponseBodyDataPageDataTags] = None,
         visibility_timeout: int = None,
     ):
@@ -4355,6 +4392,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         self.polling_wait_seconds = polling_wait_seconds
         # The name of the queue.
         self.queue_name = queue_name
+        self.queue_type = queue_type
         # The tags added to the resources.
         self.tags = tags
         # The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
@@ -4398,6 +4436,8 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        if self.queue_type is not None:
+            result['QueueType'] = self.queue_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -4433,6 +4473,8 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        if m.get('QueueType') is not None:
+            self.queue_type = m.get('QueueType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -5035,6 +5077,7 @@ class ListTopicRequest(TeaModel):
         page_size: int = None,
         tag: List[ListTopicRequestTag] = None,
         topic_name: str = None,
+        topic_type: str = None,
     ):
         # The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
         self.page_num = page_num
@@ -5044,6 +5087,7 @@ class ListTopicRequest(TeaModel):
         self.tag = tag
         # The name of the topic.
         self.topic_name = topic_name
+        self.topic_type = topic_type
 
     def validate(self):
         if self.tag:
@@ -5067,6 +5111,8 @@ class ListTopicRequest(TeaModel):
                 result['Tag'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
+        if self.topic_type is not None:
+            result['TopicType'] = self.topic_type
         return result
 
     def from_map(self, m: dict = None):
@@ -5082,6 +5128,8 @@ class ListTopicRequest(TeaModel):
                 self.tag.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        if m.get('TopicType') is not None:
+            self.topic_type = m.get('TopicType')
         return self
 
 
@@ -5132,6 +5180,7 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         tags: List[ListTopicResponseBodyDataPageDataTags] = None,
         topic_inner_url: str = None,
         topic_name: str = None,
+        topic_type: str = None,
         topic_url: str = None,
     ):
         # The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
@@ -5155,6 +5204,7 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         self.topic_inner_url = topic_inner_url
         # The name of the topic.
         self.topic_name = topic_name
+        self.topic_type = topic_type
         # The URL of the message topic.
         self.topic_url = topic_url
 
@@ -5190,6 +5240,8 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             result['TopicInnerUrl'] = self.topic_inner_url
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
+        if self.topic_type is not None:
+            result['TopicType'] = self.topic_type
         if self.topic_url is not None:
             result['TopicUrl'] = self.topic_url
         return result
@@ -5217,6 +5269,8 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             self.topic_inner_url = m.get('TopicInnerUrl')
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        if m.get('TopicType') is not None:
+            self.topic_type = m.get('TopicType')
         if m.get('TopicUrl') is not None:
             self.topic_url = m.get('TopicUrl')
         return self

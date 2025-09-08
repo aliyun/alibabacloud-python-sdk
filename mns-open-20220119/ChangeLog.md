@@ -1,3 +1,14 @@
+2025-09-08 Version: 1.3.1
+- Update API CreateQueue: add request parameters QueueType.
+- Update API CreateTopic: add request parameters TopicType.
+- Update API GetQueueAttributes: add response parameters Body.Data.QueueType.
+- Update API GetTopicAttributes: add response parameters Body.Data.TopicType.
+- Update API ListQueue: add request parameters QueueType.
+- Update API ListQueue: add response parameters Body.Data.PageData.$.QueueType.
+- Update API ListTopic: add request parameters TopicType.
+- Update API ListTopic: add response parameters Body.Data.PageData.$.TopicType.
+
+
 2025-08-19 Version: 1.3.0
 - Support API GetEventRule.
 - Support API ListEventRules.
