@@ -9,6 +9,7 @@ class GenerateUserSessionTokenRequest(TeaModel):
         self,
         chatbot_id: str = None,
         expire_second: int = None,
+        extra_info: str = None,
         integrate_id: str = None,
         user_avatar: str = None,
         user_id: str = None,
@@ -18,6 +19,7 @@ class GenerateUserSessionTokenRequest(TeaModel):
         self.chatbot_id = chatbot_id
         # Expiration Time, in seconds, default 24 hours
         self.expire_second = expire_second
+        self.extra_info = extra_info
         # Integration ID
         self.integrate_id = integrate_id
         # User Avatar (URL)
@@ -42,6 +44,8 @@ class GenerateUserSessionTokenRequest(TeaModel):
             result['ChatbotId'] = self.chatbot_id
         if self.expire_second is not None:
             result['ExpireSecond'] = self.expire_second
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
         if self.integrate_id is not None:
             result['IntegrateId'] = self.integrate_id
         if self.user_avatar is not None:
@@ -58,6 +62,8 @@ class GenerateUserSessionTokenRequest(TeaModel):
             self.chatbot_id = m.get('ChatbotId')
         if m.get('ExpireSecond') is not None:
             self.expire_second = m.get('ExpireSecond')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
         if m.get('IntegrateId') is not None:
             self.integrate_id = m.get('IntegrateId')
         if m.get('UserAvatar') is not None:

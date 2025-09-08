@@ -59,6 +59,8 @@ class Client(OpenApiClient):
             query['ChatbotId'] = request.chatbot_id
         if not UtilClient.is_unset(request.expire_second):
             query['ExpireSecond'] = request.expire_second
+        if not UtilClient.is_unset(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.integrate_id):
             query['IntegrateId'] = request.integrate_id
         if not UtilClient.is_unset(request.user_avatar):
@@ -104,6 +106,8 @@ class Client(OpenApiClient):
             query['ChatbotId'] = request.chatbot_id
         if not UtilClient.is_unset(request.expire_second):
             query['ExpireSecond'] = request.expire_second
+        if not UtilClient.is_unset(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
         if not UtilClient.is_unset(request.integrate_id):
             query['IntegrateId'] = request.integrate_id
         if not UtilClient.is_unset(request.user_avatar):
