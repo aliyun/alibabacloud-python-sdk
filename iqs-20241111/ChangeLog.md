@@ -1,3 +1,6 @@
+2025-09-08 Version: 1.4.2
+- Generated python 2024-11-11 for IQS.
+
 2025-08-07 Version: 1.4.1
 - Generated python 2024-11-11 for IQS.
 
