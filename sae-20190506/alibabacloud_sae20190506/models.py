@@ -15444,6 +15444,7 @@ class CreateJobRequest(TeaModel):
         app_name: str = None,
         auto_config: bool = None,
         backoff_limit: int = None,
+        best_effort_type: str = None,
         command: str = None,
         command_args: str = None,
         concurrency_policy: str = None,
@@ -15462,6 +15463,7 @@ class CreateJobRequest(TeaModel):
         mount_desc: str = None,
         mount_host: str = None,
         namespace_id: str = None,
+        nas_configs: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -15510,6 +15512,7 @@ class CreateJobRequest(TeaModel):
         self.auto_config = auto_config
         # The number of times the job is retried.
         self.backoff_limit = backoff_limit
+        self.best_effort_type = best_effort_type
         # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
         # 
         #     command:
@@ -15611,6 +15614,7 @@ class CreateJobRequest(TeaModel):
         self.mount_host = mount_host
         # The ID of the Serverless App Engine (SAE) namespace. The ID can contain only lowercase letters and hyphens (-). It must start with a lowercase letter.
         self.namespace_id = namespace_id
+        self.nas_configs = nas_configs
         # The ID of the Apsara File Storage NAS file system. After the application is created, you may want to call other operations to manage the application. If you do not want to change the NAS configurations in these subsequent operations, you can omit the **NasId** parameter in the requests. If you want to unmount the NAS file system, you must set the **NasId** values in the subsequent requests to an empty string ("").
         self.nas_id = nas_id
         # The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
@@ -15742,6 +15746,8 @@ class CreateJobRequest(TeaModel):
             result['AutoConfig'] = self.auto_config
         if self.backoff_limit is not None:
             result['BackoffLimit'] = self.backoff_limit
+        if self.best_effort_type is not None:
+            result['BestEffortType'] = self.best_effort_type
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -15778,6 +15784,8 @@ class CreateJobRequest(TeaModel):
             result['MountHost'] = self.mount_host
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.oss_ak_id is not None:
@@ -15854,6 +15862,8 @@ class CreateJobRequest(TeaModel):
             self.auto_config = m.get('AutoConfig')
         if m.get('BackoffLimit') is not None:
             self.backoff_limit = m.get('BackoffLimit')
+        if m.get('BestEffortType') is not None:
+            self.best_effort_type = m.get('BestEffortType')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -15890,6 +15900,8 @@ class CreateJobRequest(TeaModel):
             self.mount_host = m.get('MountHost')
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OssAkId') is not None:
@@ -24670,6 +24682,192 @@ class DescribeApplicationInstancesResponse(TeaModel):
         return self
 
 
+class DescribeApplicationMseServiceRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        enable_ahas: bool = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.enable_ahas = enable_ahas
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.enable_ahas is not None:
+            result['EnableAhas'] = self.enable_ahas
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('EnableAhas') is not None:
+            self.enable_ahas = m.get('EnableAhas')
+        return self
+
+
+class DescribeApplicationMseServiceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        mse_app_id: str = None,
+        mse_app_name: str = None,
+        mse_app_name_space: str = None,
+        status: str = None,
+    ):
+        self.mse_app_id = mse_app_id
+        self.mse_app_name = mse_app_name
+        self.mse_app_name_space = mse_app_name_space
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mse_app_id is not None:
+            result['MseAppId'] = self.mse_app_id
+        if self.mse_app_name is not None:
+            result['MseAppName'] = self.mse_app_name
+        if self.mse_app_name_space is not None:
+            result['MseAppNameSpace'] = self.mse_app_name_space
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MseAppId') is not None:
+            self.mse_app_id = m.get('MseAppId')
+        if m.get('MseAppName') is not None:
+            self.mse_app_name = m.get('MseAppName')
+        if m.get('MseAppNameSpace') is not None:
+            self.mse_app_name_space = m.get('MseAppNameSpace')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeApplicationMseServiceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: DescribeApplicationMseServiceResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeApplicationMseServiceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class DescribeApplicationMseServiceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApplicationMseServiceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApplicationMseServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeApplicationNlbsRequest(TeaModel):
     def __init__(
         self,
@@ -28307,12 +28505,14 @@ class DescribeConfigMapResponse(TeaModel):
 class DescribeConfigurationPriceRequest(TeaModel):
     def __init__(
         self,
+        best_effort_type: str = None,
         cpu: int = None,
         memory: int = None,
         new_sae_version: str = None,
         resource_type: str = None,
         workload: str = None,
     ):
+        self.best_effort_type = best_effort_type
         # The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
         # 
         # *   **500**\
@@ -28358,6 +28558,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.best_effort_type is not None:
+            result['BestEffortType'] = self.best_effort_type
         if self.cpu is not None:
             result['Cpu'] = self.cpu
         if self.memory is not None:
@@ -28372,6 +28574,8 @@ class DescribeConfigurationPriceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BestEffortType') is not None:
+            self.best_effort_type = m.get('BestEffortType')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
         if m.get('Memory') is not None:
@@ -31137,6 +31341,7 @@ class DescribeJobResponseBodyData(TeaModel):
         app_id: str = None,
         app_name: str = None,
         backoff_limit: int = None,
+        best_effort_type: str = None,
         command: str = None,
         command_args: str = None,
         concurrency_policy: str = None,
@@ -31203,6 +31408,7 @@ class DescribeJobResponseBodyData(TeaModel):
         self.app_name = app_name
         # The number of times that the job was retried.
         self.backoff_limit = backoff_limit
+        self.best_effort_type = best_effort_type
         # The command that is used to start the image. The command must be an existing executable object in the container. Example:
         # 
         #     command:
@@ -31455,6 +31661,8 @@ class DescribeJobResponseBodyData(TeaModel):
             result['AppName'] = self.app_name
         if self.backoff_limit is not None:
             result['BackoffLimit'] = self.backoff_limit
+        if self.best_effort_type is not None:
+            result['BestEffortType'] = self.best_effort_type
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -31585,6 +31793,8 @@ class DescribeJobResponseBodyData(TeaModel):
             self.app_name = m.get('AppName')
         if m.get('BackoffLimit') is not None:
             self.backoff_limit = m.get('BackoffLimit')
+        if m.get('BestEffortType') is not None:
+            self.best_effort_type = m.get('BestEffortType')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -51812,6 +52022,7 @@ class UpdateJobRequest(TeaModel):
         acr_instance_id: str = None,
         app_id: str = None,
         backoff_limit: int = None,
+        best_effort_type: str = None,
         command: str = None,
         command_args: str = None,
         concurrency_policy: str = None,
@@ -51827,6 +52038,7 @@ class UpdateJobRequest(TeaModel):
         jdk: str = None,
         mount_desc: str = None,
         mount_host: str = None,
+        nas_configs: str = None,
         nas_id: str = None,
         oss_ak_id: str = None,
         oss_ak_secret: str = None,
@@ -51864,6 +52076,7 @@ class UpdateJobRequest(TeaModel):
         self.app_id = app_id
         # The number of times the job is retried.
         self.backoff_limit = backoff_limit
+        self.best_effort_type = best_effort_type
         # The command that is used to start the image. The command must be an existing executable object in the container. Example:
         # 
         #     command:
@@ -51940,6 +52153,7 @@ class UpdateJobRequest(TeaModel):
         self.mount_desc = mount_desc
         # The mount target of the NAS file system in the VPC where the application is deployed. If you do not need to modify this configuration during the deployment, configure the **MountHost** parameter only in the first request. You do not need to include this parameter in subsequent requests. If you need to remove this configuration, leave the **MountHost** parameter empty in the request.
         self.mount_host = mount_host
+        self.nas_configs = nas_configs
         # The ID of the Apsara File Storage NAS file system. If you do not need to modify the NAS configurations when you deploy the application, configure **NasId** only in the first request. If you no longer need to use NAS, leave **NasId** empty in the request.
         self.nas_id = nas_id
         # The AccessKey ID that is used to read data from and write data to OSS.
@@ -52046,6 +52260,8 @@ class UpdateJobRequest(TeaModel):
             result['AppId'] = self.app_id
         if self.backoff_limit is not None:
             result['BackoffLimit'] = self.backoff_limit
+        if self.best_effort_type is not None:
+            result['BestEffortType'] = self.best_effort_type
         if self.command is not None:
             result['Command'] = self.command
         if self.command_args is not None:
@@ -52076,6 +52292,8 @@ class UpdateJobRequest(TeaModel):
             result['MountDesc'] = self.mount_desc
         if self.mount_host is not None:
             result['MountHost'] = self.mount_host
+        if self.nas_configs is not None:
+            result['NasConfigs'] = self.nas_configs
         if self.nas_id is not None:
             result['NasId'] = self.nas_id
         if self.oss_ak_id is not None:
@@ -52140,6 +52358,8 @@ class UpdateJobRequest(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('BackoffLimit') is not None:
             self.backoff_limit = m.get('BackoffLimit')
+        if m.get('BestEffortType') is not None:
+            self.best_effort_type = m.get('BestEffortType')
         if m.get('Command') is not None:
             self.command = m.get('Command')
         if m.get('CommandArgs') is not None:
@@ -52170,6 +52390,8 @@ class UpdateJobRequest(TeaModel):
             self.mount_desc = m.get('MountDesc')
         if m.get('MountHost') is not None:
             self.mount_host = m.get('MountHost')
+        if m.get('NasConfigs') is not None:
+            self.nas_configs = m.get('NasConfigs')
         if m.get('NasId') is not None:
             self.nas_id = m.get('NasId')
         if m.get('OssAkId') is not None:

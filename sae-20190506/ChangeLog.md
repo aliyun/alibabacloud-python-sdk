@@ -1,3 +1,13 @@
+2025-09-08 Version: 2.6.0
+- Support API DescribeApplicationMseService.
+- Update API CreateJob: add request parameters BestEffortType.
+- Update API CreateJob: add request parameters NasConfigs.
+- Update API DescribeConfigurationPrice: add request parameters BestEffortType.
+- Update API DescribeJob: add response parameters Body.Data.BestEffortType.
+- Update API UpdateJob: add request parameters BestEffortType.
+- Update API UpdateJob: add request parameters NasConfigs.
+
+
 2025-07-30 Version: 2.5.9
 - Update API CreateApplication: add request parameters HeadlessPvtzDiscoverySvc.
 - Update API DescribeApplicationConfig: add response parameters Body.Data.CmsServiceId.

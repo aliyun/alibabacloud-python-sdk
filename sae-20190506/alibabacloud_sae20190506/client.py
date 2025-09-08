@@ -1891,6 +1891,8 @@ class Client(OpenApiClient):
             query['AutoConfig'] = request.auto_config
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -1923,6 +1925,8 @@ class Client(OpenApiClient):
             query['MountHost'] = request.mount_host
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.nas_configs):
+            query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
         if not UtilClient.is_unset(request.package_type):
@@ -2037,6 +2041,8 @@ class Client(OpenApiClient):
             query['AutoConfig'] = request.auto_config
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -2069,6 +2075,8 @@ class Client(OpenApiClient):
             query['MountHost'] = request.mount_host
         if not UtilClient.is_unset(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
+        if not UtilClient.is_unset(request.nas_configs):
+            query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
         if not UtilClient.is_unset(request.package_type):
@@ -5465,6 +5473,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_application_instances_with_options_async(request, headers, runtime)
 
+    def describe_application_mse_service_with_options(
+        self,
+        request: sae_20190506_models.DescribeApplicationMseServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
+        """
+        @param request: DescribeApplicationMseServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationMseServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_ahas):
+            query['EnableAhas'] = request.enable_ahas
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationMseService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationMseService',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationMseServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_mse_service_with_options_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationMseServiceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
+        """
+        @param request: DescribeApplicationMseServiceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationMseServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.enable_ahas):
+            query['EnableAhas'] = request.enable_ahas
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationMseService',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/sam/app/applicationMseService',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.DescribeApplicationMseServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_mse_service(
+        self,
+        request: sae_20190506_models.DescribeApplicationMseServiceRequest,
+    ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
+        """
+        @param request: DescribeApplicationMseServiceRequest
+        @return: DescribeApplicationMseServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.describe_application_mse_service_with_options(request, headers, runtime)
+
+    async def describe_application_mse_service_async(
+        self,
+        request: sae_20190506_models.DescribeApplicationMseServiceRequest,
+    ) -> sae_20190506_models.DescribeApplicationMseServiceResponse:
+        """
+        @param request: DescribeApplicationMseServiceRequest
+        @return: DescribeApplicationMseServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.describe_application_mse_service_with_options_async(request, headers, runtime)
+
     def describe_application_nlbs_with_options(
         self,
         request: sae_20190506_models.DescribeApplicationNlbsRequest,
@@ -6321,6 +6429,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.memory):
@@ -6367,6 +6477,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.cpu):
             query['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.memory):
@@ -16213,6 +16325,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -16239,6 +16353,8 @@ class Client(OpenApiClient):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
             query['MountHost'] = request.mount_host
+        if not UtilClient.is_unset(request.nas_configs):
+            query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
         if not UtilClient.is_unset(request.package_url):
@@ -16341,6 +16457,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.backoff_limit):
             query['BackoffLimit'] = request.backoff_limit
+        if not UtilClient.is_unset(request.best_effort_type):
+            query['BestEffortType'] = request.best_effort_type
         if not UtilClient.is_unset(request.command):
             query['Command'] = request.command
         if not UtilClient.is_unset(request.command_args):
@@ -16367,6 +16485,8 @@ class Client(OpenApiClient):
             query['MountDesc'] = request.mount_desc
         if not UtilClient.is_unset(request.mount_host):
             query['MountHost'] = request.mount_host
+        if not UtilClient.is_unset(request.nas_configs):
+            query['NasConfigs'] = request.nas_configs
         if not UtilClient.is_unset(request.nas_id):
             query['NasId'] = request.nas_id
         if not UtilClient.is_unset(request.package_url):
