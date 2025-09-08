@@ -1,3 +1,7 @@
+2025-09-08 Version: 2.22.1
+- Update API DescribeMultimodalModerationResult: add response parameters Body.Data.DataId.
+
+
 2025-07-17 Version: 2.22.0
 - Support API DescribeMultimodalModerationResult.
 - Support API MultimodalAsyncModeration.

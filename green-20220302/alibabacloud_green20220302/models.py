@@ -1586,11 +1586,13 @@ class DescribeMultimodalModerationResultResponseBodyData(TeaModel):
     def __init__(
         self,
         comment_datas: List[DescribeMultimodalModerationResultResponseBodyDataCommentDatas] = None,
+        data_id: str = None,
         main_data: DescribeMultimodalModerationResultResponseBodyDataMainData = None,
         req_id: str = None,
         risk_level: str = None,
     ):
         self.comment_datas = comment_datas
+        self.data_id = data_id
         self.main_data = main_data
         self.req_id = req_id
         self.risk_level = risk_level
@@ -1613,6 +1615,8 @@ class DescribeMultimodalModerationResultResponseBodyData(TeaModel):
         if self.comment_datas is not None:
             for k in self.comment_datas:
                 result['CommentDatas'].append(k.to_map() if k else None)
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
         if self.main_data is not None:
             result['MainData'] = self.main_data.to_map()
         if self.req_id is not None:
@@ -1628,6 +1632,8 @@ class DescribeMultimodalModerationResultResponseBodyData(TeaModel):
             for k in m.get('CommentDatas'):
                 temp_model = DescribeMultimodalModerationResultResponseBodyDataCommentDatas()
                 self.comment_datas.append(temp_model.from_map(k))
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
         if m.get('MainData') is not None:
             temp_model = DescribeMultimodalModerationResultResponseBodyDataMainData()
             self.main_data = temp_model.from_map(m['MainData'])
