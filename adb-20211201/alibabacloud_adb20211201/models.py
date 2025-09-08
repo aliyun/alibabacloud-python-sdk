@@ -22904,6 +22904,8 @@ class DescribeDBClustersResponseBodyItemsDBClusterTaskInfo(TeaModel):
 class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
     def __init__(
         self,
+        ainode_number: int = None,
+        ainode_spec: str = None,
         category: str = None,
         commodity_code: str = None,
         compute_resource: str = None,
@@ -22948,6 +22950,8 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        self.ainode_number = ainode_number
+        self.ainode_spec = ainode_spec
         # The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
         # 
         # *   **BASIC**: reserved mode for Basic Edition.
@@ -23108,6 +23112,10 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
             return _map
 
         result = dict()
+        if self.ainode_number is not None:
+            result['AINodeNumber'] = self.ainode_number
+        if self.ainode_spec is not None:
+            result['AINodeSpec'] = self.ainode_spec
         if self.category is not None:
             result['Category'] = self.category
         if self.commodity_code is not None:
@@ -23198,6 +23206,10 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AINodeNumber') is not None:
+            self.ainode_number = m.get('AINodeNumber')
+        if m.get('AINodeSpec') is not None:
+            self.ainode_spec = m.get('AINodeSpec')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('CommodityCode') is not None:
@@ -28851,6 +28863,8 @@ class DescribeJobResourceUsageRequest(TeaModel):
         self,
         dbcluster_id: str = None,
         end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
         start_time: str = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
@@ -28861,6 +28875,8 @@ class DescribeJobResourceUsageRequest(TeaModel):
         # 
         # This parameter is required.
         self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.
         # 
         # This parameter is required.
@@ -28879,6 +28895,10 @@ class DescribeJobResourceUsageRequest(TeaModel):
             result['DBClusterId'] = self.dbcluster_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -28889,6 +28909,10 @@ class DescribeJobResourceUsageRequest(TeaModel):
             self.dbcluster_id = m.get('DBClusterId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -29014,7 +29038,10 @@ class DescribeJobResourceUsageResponseBodyData(TeaModel):
         dbcluster_id: str = None,
         end_time: str = None,
         job_acu_usage: List[DescribeJobResourceUsageResponseBodyDataJobAcuUsage] = None,
+        page_number: int = None,
+        page_size: int = None,
         start_time: str = None,
+        total_count: int = None,
     ):
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
         self.dbcluster_id = dbcluster_id
@@ -29022,8 +29049,11 @@ class DescribeJobResourceUsageResponseBodyData(TeaModel):
         self.end_time = end_time
         # The AnalyticDB compute unit (ACU) usage of the job resource group.
         self.job_acu_usage = job_acu_usage
+        self.page_number = page_number
+        self.page_size = page_size
         # The start time of the query. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        self.total_count = total_count
 
     def validate(self):
         if self.job_acu_usage:
@@ -29045,8 +29075,14 @@ class DescribeJobResourceUsageResponseBodyData(TeaModel):
         if self.job_acu_usage is not None:
             for k in self.job_acu_usage:
                 result['JobAcuUsage'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
@@ -29060,8 +29096,14 @@ class DescribeJobResourceUsageResponseBodyData(TeaModel):
             for k in m.get('JobAcuUsage'):
                 temp_model = DescribeJobResourceUsageResponseBodyDataJobAcuUsage()
                 self.job_acu_usage.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 

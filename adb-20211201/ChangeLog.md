@@ -1,3 +1,13 @@
+2025-09-08 Version: 3.2.1
+- Update API DescribeDBClusters: add response parameters Body.Items.$.AINodeNumber.
+- Update API DescribeDBClusters: add response parameters Body.Items.$.AINodeSpec.
+- Update API DescribeJobResourceUsage: add request parameters PageNumber.
+- Update API DescribeJobResourceUsage: add request parameters PageSize.
+- Update API DescribeJobResourceUsage: add response parameters Body.Data.PageNumber.
+- Update API DescribeJobResourceUsage: add response parameters Body.Data.PageSize.
+- Update API DescribeJobResourceUsage: add response parameters Body.Data.TotalCount.
+
+
 2025-08-20 Version: 3.2.0
 - Support API CreateApsKafkaHudiJob.
 - Support API DescribeDBClusterSSL.
