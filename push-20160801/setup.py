@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_push20160801.
 
-Created on 21/08/2025
+Created on 09/09/2025
 
 @author: Alibaba Cloud SDK
 """

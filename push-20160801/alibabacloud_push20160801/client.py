@@ -1313,17 +1313,23 @@ class Client(OpenApiClient):
 
     def push_with_options(
         self,
-        request: push_20160801_models.PushRequest,
+        tmp_req: push_20160801_models.PushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
         """
         @summary 高级推送接口
         
-        @param request: PushRequest
+        @param tmp_req: PushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.PushShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.android_oppo_private_content_parameters):
+            request.android_oppo_private_content_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_oppo_private_content_parameters, 'androidOppoPrivateContentParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.android_oppo_private_title_parameters):
+            request.android_oppo_private_title_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_oppo_private_title_parameters, 'androidOppoPrivateTitleParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.android_activity):
             query['AndroidActivity'] = request.android_activity
@@ -1495,6 +1501,12 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.trim):
             query['Trim'] = request.trim
+        if not UtilClient.is_unset(request.android_oppo_private_content_parameters_shrink):
+            query['androidOppoPrivateContentParameters'] = request.android_oppo_private_content_parameters_shrink
+        if not UtilClient.is_unset(request.android_oppo_private_msg_template_id):
+            query['androidOppoPrivateMsgTemplateId'] = request.android_oppo_private_msg_template_id
+        if not UtilClient.is_unset(request.android_oppo_private_title_parameters_shrink):
+            query['androidOppoPrivateTitleParameters'] = request.android_oppo_private_title_parameters_shrink
         if not UtilClient.is_unset(request.i_osapns_env):
             query['iOSApnsEnv'] = request.i_osapns_env
         if not UtilClient.is_unset(request.i_osbadge):
@@ -1560,17 +1572,23 @@ class Client(OpenApiClient):
 
     async def push_with_options_async(
         self,
-        request: push_20160801_models.PushRequest,
+        tmp_req: push_20160801_models.PushRequest,
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.PushResponse:
         """
         @summary 高级推送接口
         
-        @param request: PushRequest
+        @param tmp_req: PushRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: PushResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = push_20160801_models.PushShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.android_oppo_private_content_parameters):
+            request.android_oppo_private_content_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_oppo_private_content_parameters, 'androidOppoPrivateContentParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.android_oppo_private_title_parameters):
+            request.android_oppo_private_title_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.android_oppo_private_title_parameters, 'androidOppoPrivateTitleParameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.android_activity):
             query['AndroidActivity'] = request.android_activity
@@ -1742,6 +1760,12 @@ class Client(OpenApiClient):
             query['Title'] = request.title
         if not UtilClient.is_unset(request.trim):
             query['Trim'] = request.trim
+        if not UtilClient.is_unset(request.android_oppo_private_content_parameters_shrink):
+            query['androidOppoPrivateContentParameters'] = request.android_oppo_private_content_parameters_shrink
+        if not UtilClient.is_unset(request.android_oppo_private_msg_template_id):
+            query['androidOppoPrivateMsgTemplateId'] = request.android_oppo_private_msg_template_id
+        if not UtilClient.is_unset(request.android_oppo_private_title_parameters_shrink):
+            query['androidOppoPrivateTitleParameters'] = request.android_oppo_private_title_parameters_shrink
         if not UtilClient.is_unset(request.i_osapns_env):
             query['iOSApnsEnv'] = request.i_osapns_env
         if not UtilClient.is_unset(request.i_osbadge):

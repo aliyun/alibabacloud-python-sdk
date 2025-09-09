@@ -1,7 +1,1018 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class PushTaskMessage(TeaModel):
+    def __init__(
+        self,
+        body: str = None,
+        title: str = None,
+    ):
+        self.body = body
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsAccs(TeaModel):
+    def __init__(
+        self,
+        custom_style: int = None,
+        notify_type: str = None,
+        open_activity: str = None,
+        open_type: str = None,
+        open_url: str = None,
+        priority: int = None,
+        thread_id: str = None,
+    ):
+        self.custom_style = custom_style
+        self.notify_type = notify_type
+        self.open_activity = open_activity
+        self.open_type = open_type
+        self.open_url = open_url
+        self.priority = priority
+        self.thread_id = thread_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.custom_style is not None:
+            result['CustomStyle'] = self.custom_style
+        if self.notify_type is not None:
+            result['NotifyType'] = self.notify_type
+        if self.open_activity is not None:
+            result['OpenActivity'] = self.open_activity
+        if self.open_type is not None:
+            result['OpenType'] = self.open_type
+        if self.open_url is not None:
+            result['OpenUrl'] = self.open_url
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.thread_id is not None:
+            result['ThreadId'] = self.thread_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CustomStyle') is not None:
+            self.custom_style = m.get('CustomStyle')
+        if m.get('NotifyType') is not None:
+            self.notify_type = m.get('NotifyType')
+        if m.get('OpenActivity') is not None:
+            self.open_activity = m.get('OpenActivity')
+        if m.get('OpenType') is not None:
+            self.open_type = m.get('OpenType')
+        if m.get('OpenUrl') is not None:
+            self.open_url = m.get('OpenUrl')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ThreadId') is not None:
+            self.thread_id = m.get('ThreadId')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsHonor(TeaModel):
+    def __init__(
+        self,
+        importance: int = None,
+    ):
+        self.importance = importance
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.importance is not None:
+            result['Importance'] = self.importance
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Importance') is not None:
+            self.importance = m.get('Importance')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsHuawei(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        importance: int = None,
+        receipt_id: str = None,
+        urgency: str = None,
+    ):
+        self.category = category
+        self.importance = importance
+        self.receipt_id = receipt_id
+        self.urgency = urgency
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.importance is not None:
+            result['Importance'] = self.importance
+        if self.receipt_id is not None:
+            result['ReceiptId'] = self.receipt_id
+        if self.urgency is not None:
+            result['Urgency'] = self.urgency
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Importance') is not None:
+            self.importance = m.get('Importance')
+        if m.get('ReceiptId') is not None:
+            self.receipt_id = m.get('ReceiptId')
+        if m.get('Urgency') is not None:
+            self.urgency = m.get('Urgency')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsOppo(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        notify_level: int = None,
+    ):
+        self.category = category
+        self.notify_level = notify_level
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.notify_level is not None:
+            result['NotifyLevel'] = self.notify_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('NotifyLevel') is not None:
+            self.notify_level = m.get('NotifyLevel')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsVivo(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        importance: int = None,
+        receipt_id: str = None,
+    ):
+        self.category = category
+        self.importance = importance
+        self.receipt_id = receipt_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.importance is not None:
+            result['Importance'] = self.importance
+        if self.receipt_id is not None:
+            result['ReceiptId'] = self.receipt_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('Importance') is not None:
+            self.importance = m.get('Importance')
+        if m.get('ReceiptId') is not None:
+            self.receipt_id = m.get('ReceiptId')
+        return self
+
+
+class PushTaskNotificationAndroidOptionsXiaomi(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+    ):
+        self.channel = channel
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        return self
+
+
+class PushTaskNotificationAndroidOptions(TeaModel):
+    def __init__(
+        self,
+        accs: PushTaskNotificationAndroidOptionsAccs = None,
+        honor: PushTaskNotificationAndroidOptionsHonor = None,
+        huawei: PushTaskNotificationAndroidOptionsHuawei = None,
+        oppo: PushTaskNotificationAndroidOptionsOppo = None,
+        vivo: PushTaskNotificationAndroidOptionsVivo = None,
+        xiaomi: PushTaskNotificationAndroidOptionsXiaomi = None,
+    ):
+        self.accs = accs
+        self.honor = honor
+        self.huawei = huawei
+        self.oppo = oppo
+        self.vivo = vivo
+        self.xiaomi = xiaomi
+
+    def validate(self):
+        if self.accs:
+            self.accs.validate()
+        if self.honor:
+            self.honor.validate()
+        if self.huawei:
+            self.huawei.validate()
+        if self.oppo:
+            self.oppo.validate()
+        if self.vivo:
+            self.vivo.validate()
+        if self.xiaomi:
+            self.xiaomi.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accs is not None:
+            result['Accs'] = self.accs.to_map()
+        if self.honor is not None:
+            result['Honor'] = self.honor.to_map()
+        if self.huawei is not None:
+            result['Huawei'] = self.huawei.to_map()
+        if self.oppo is not None:
+            result['Oppo'] = self.oppo.to_map()
+        if self.vivo is not None:
+            result['Vivo'] = self.vivo.to_map()
+        if self.xiaomi is not None:
+            result['Xiaomi'] = self.xiaomi.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Accs') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsAccs()
+            self.accs = temp_model.from_map(m['Accs'])
+        if m.get('Honor') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsHonor()
+            self.honor = temp_model.from_map(m['Honor'])
+        if m.get('Huawei') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsHuawei()
+            self.huawei = temp_model.from_map(m['Huawei'])
+        if m.get('Oppo') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsOppo()
+            self.oppo = temp_model.from_map(m['Oppo'])
+        if m.get('Vivo') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsVivo()
+            self.vivo = temp_model.from_map(m['Vivo'])
+        if m.get('Xiaomi') is not None:
+            temp_model = PushTaskNotificationAndroidOptionsXiaomi()
+            self.xiaomi = temp_model.from_map(m['Xiaomi'])
+        return self
+
+
+class PushTaskNotificationAndroid(TeaModel):
+    def __init__(
+        self,
+        badge_activity: str = None,
+        badge_add_num: int = None,
+        badge_set_num: int = None,
+        channel_id: str = None,
+        ext_parameters: str = None,
+        group_id: str = None,
+        image_url: str = None,
+        inbox_content: List[str] = None,
+        music: str = None,
+        notify_id: int = None,
+        options: PushTaskNotificationAndroidOptions = None,
+        picture_url: str = None,
+        render_style: str = None,
+        test_message: bool = None,
+        vendor_channel_activity: str = None,
+    ):
+        self.badge_activity = badge_activity
+        self.badge_add_num = badge_add_num
+        self.badge_set_num = badge_set_num
+        self.channel_id = channel_id
+        self.ext_parameters = ext_parameters
+        self.group_id = group_id
+        self.image_url = image_url
+        self.inbox_content = inbox_content
+        self.music = music
+        self.notify_id = notify_id
+        self.options = options
+        self.picture_url = picture_url
+        self.render_style = render_style
+        self.test_message = test_message
+        self.vendor_channel_activity = vendor_channel_activity
+
+    def validate(self):
+        if self.options:
+            self.options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.badge_activity is not None:
+            result['BadgeActivity'] = self.badge_activity
+        if self.badge_add_num is not None:
+            result['BadgeAddNum'] = self.badge_add_num
+        if self.badge_set_num is not None:
+            result['BadgeSetNum'] = self.badge_set_num
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+        if self.ext_parameters is not None:
+            result['ExtParameters'] = self.ext_parameters
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.inbox_content is not None:
+            result['InboxContent'] = self.inbox_content
+        if self.music is not None:
+            result['Music'] = self.music
+        if self.notify_id is not None:
+            result['NotifyId'] = self.notify_id
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
+        if self.picture_url is not None:
+            result['PictureUrl'] = self.picture_url
+        if self.render_style is not None:
+            result['RenderStyle'] = self.render_style
+        if self.test_message is not None:
+            result['TestMessage'] = self.test_message
+        if self.vendor_channel_activity is not None:
+            result['VendorChannelActivity'] = self.vendor_channel_activity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BadgeActivity') is not None:
+            self.badge_activity = m.get('BadgeActivity')
+        if m.get('BadgeAddNum') is not None:
+            self.badge_add_num = m.get('BadgeAddNum')
+        if m.get('BadgeSetNum') is not None:
+            self.badge_set_num = m.get('BadgeSetNum')
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+        if m.get('ExtParameters') is not None:
+            self.ext_parameters = m.get('ExtParameters')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('InboxContent') is not None:
+            self.inbox_content = m.get('InboxContent')
+        if m.get('Music') is not None:
+            self.music = m.get('Music')
+        if m.get('NotifyId') is not None:
+            self.notify_id = m.get('NotifyId')
+        if m.get('Options') is not None:
+            temp_model = PushTaskNotificationAndroidOptions()
+            self.options = temp_model.from_map(m['Options'])
+        if m.get('PictureUrl') is not None:
+            self.picture_url = m.get('PictureUrl')
+        if m.get('RenderStyle') is not None:
+            self.render_style = m.get('RenderStyle')
+        if m.get('TestMessage') is not None:
+            self.test_message = m.get('TestMessage')
+        if m.get('VendorChannelActivity') is not None:
+            self.vendor_channel_activity = m.get('VendorChannelActivity')
+        return self
+
+
+class PushTaskNotificationHmos(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        badge_add_num: int = None,
+        badge_set_num: int = None,
+        category: str = None,
+        ext_parameters: str = None,
+        extension_extra_data: str = None,
+        extension_push: bool = None,
+        image_url: str = None,
+        inbox_content: List[str] = None,
+        notify_id: int = None,
+        receipt_id: str = None,
+        render_style: str = None,
+        slot_type: str = None,
+        test_message: bool = None,
+        uri: str = None,
+    ):
+        self.action = action
+        self.badge_add_num = badge_add_num
+        self.badge_set_num = badge_set_num
+        self.category = category
+        self.ext_parameters = ext_parameters
+        self.extension_extra_data = extension_extra_data
+        self.extension_push = extension_push
+        self.image_url = image_url
+        self.inbox_content = inbox_content
+        self.notify_id = notify_id
+        self.receipt_id = receipt_id
+        self.render_style = render_style
+        self.slot_type = slot_type
+        self.test_message = test_message
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.badge_add_num is not None:
+            result['BadgeAddNum'] = self.badge_add_num
+        if self.badge_set_num is not None:
+            result['BadgeSetNum'] = self.badge_set_num
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.ext_parameters is not None:
+            result['ExtParameters'] = self.ext_parameters
+        if self.extension_extra_data is not None:
+            result['ExtensionExtraData'] = self.extension_extra_data
+        if self.extension_push is not None:
+            result['ExtensionPush'] = self.extension_push
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.inbox_content is not None:
+            result['InboxContent'] = self.inbox_content
+        if self.notify_id is not None:
+            result['NotifyId'] = self.notify_id
+        if self.receipt_id is not None:
+            result['ReceiptId'] = self.receipt_id
+        if self.render_style is not None:
+            result['RenderStyle'] = self.render_style
+        if self.slot_type is not None:
+            result['SlotType'] = self.slot_type
+        if self.test_message is not None:
+            result['TestMessage'] = self.test_message
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('BadgeAddNum') is not None:
+            self.badge_add_num = m.get('BadgeAddNum')
+        if m.get('BadgeSetNum') is not None:
+            self.badge_set_num = m.get('BadgeSetNum')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('ExtParameters') is not None:
+            self.ext_parameters = m.get('ExtParameters')
+        if m.get('ExtensionExtraData') is not None:
+            self.extension_extra_data = m.get('ExtensionExtraData')
+        if m.get('ExtensionPush') is not None:
+            self.extension_push = m.get('ExtensionPush')
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('InboxContent') is not None:
+            self.inbox_content = m.get('InboxContent')
+        if m.get('NotifyId') is not None:
+            self.notify_id = m.get('NotifyId')
+        if m.get('ReceiptId') is not None:
+            self.receipt_id = m.get('ReceiptId')
+        if m.get('RenderStyle') is not None:
+            self.render_style = m.get('RenderStyle')
+        if m.get('SlotType') is not None:
+            self.slot_type = m.get('SlotType')
+        if m.get('TestMessage') is not None:
+            self.test_message = m.get('TestMessage')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class PushTaskNotificationIosLiveActivity(TeaModel):
+    def __init__(
+        self,
+        attributes: str = None,
+        attributes_type: str = None,
+        content_state: str = None,
+        dismissal_date: int = None,
+        event: str = None,
+        id: str = None,
+        stale_date: int = None,
+    ):
+        self.attributes = attributes
+        self.attributes_type = attributes_type
+        self.content_state = content_state
+        self.dismissal_date = dismissal_date
+        self.event = event
+        self.id = id
+        self.stale_date = stale_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
+        if self.attributes_type is not None:
+            result['AttributesType'] = self.attributes_type
+        if self.content_state is not None:
+            result['ContentState'] = self.content_state
+        if self.dismissal_date is not None:
+            result['DismissalDate'] = self.dismissal_date
+        if self.event is not None:
+            result['Event'] = self.event
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.stale_date is not None:
+            result['StaleDate'] = self.stale_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
+        if m.get('AttributesType') is not None:
+            self.attributes_type = m.get('AttributesType')
+        if m.get('ContentState') is not None:
+            self.content_state = m.get('ContentState')
+        if m.get('DismissalDate') is not None:
+            self.dismissal_date = m.get('DismissalDate')
+        if m.get('Event') is not None:
+            self.event = m.get('Event')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('StaleDate') is not None:
+            self.stale_date = m.get('StaleDate')
+        return self
+
+
+class PushTaskNotificationIos(TeaModel):
+    def __init__(
+        self,
+        apns_env: str = None,
+        badge: int = None,
+        badge_auto_increment: bool = None,
+        category: str = None,
+        collapse_id: str = None,
+        ext_parameters: str = None,
+        interruption_level: str = None,
+        live_activity: PushTaskNotificationIosLiveActivity = None,
+        music: str = None,
+        mutable: bool = None,
+        relevance_score: float = None,
+        silent: bool = None,
+        subtitle: str = None,
+        thread_id: str = None,
+    ):
+        self.apns_env = apns_env
+        self.badge = badge
+        self.badge_auto_increment = badge_auto_increment
+        self.category = category
+        self.collapse_id = collapse_id
+        self.ext_parameters = ext_parameters
+        self.interruption_level = interruption_level
+        self.live_activity = live_activity
+        self.music = music
+        self.mutable = mutable
+        self.relevance_score = relevance_score
+        self.silent = silent
+        self.subtitle = subtitle
+        self.thread_id = thread_id
+
+    def validate(self):
+        if self.live_activity:
+            self.live_activity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apns_env is not None:
+            result['ApnsEnv'] = self.apns_env
+        if self.badge is not None:
+            result['Badge'] = self.badge
+        if self.badge_auto_increment is not None:
+            result['BadgeAutoIncrement'] = self.badge_auto_increment
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.collapse_id is not None:
+            result['CollapseId'] = self.collapse_id
+        if self.ext_parameters is not None:
+            result['ExtParameters'] = self.ext_parameters
+        if self.interruption_level is not None:
+            result['InterruptionLevel'] = self.interruption_level
+        if self.live_activity is not None:
+            result['LiveActivity'] = self.live_activity.to_map()
+        if self.music is not None:
+            result['Music'] = self.music
+        if self.mutable is not None:
+            result['Mutable'] = self.mutable
+        if self.relevance_score is not None:
+            result['RelevanceScore'] = self.relevance_score
+        if self.silent is not None:
+            result['Silent'] = self.silent
+        if self.subtitle is not None:
+            result['Subtitle'] = self.subtitle
+        if self.thread_id is not None:
+            result['ThreadId'] = self.thread_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApnsEnv') is not None:
+            self.apns_env = m.get('ApnsEnv')
+        if m.get('Badge') is not None:
+            self.badge = m.get('Badge')
+        if m.get('BadgeAutoIncrement') is not None:
+            self.badge_auto_increment = m.get('BadgeAutoIncrement')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('CollapseId') is not None:
+            self.collapse_id = m.get('CollapseId')
+        if m.get('ExtParameters') is not None:
+            self.ext_parameters = m.get('ExtParameters')
+        if m.get('InterruptionLevel') is not None:
+            self.interruption_level = m.get('InterruptionLevel')
+        if m.get('LiveActivity') is not None:
+            temp_model = PushTaskNotificationIosLiveActivity()
+            self.live_activity = temp_model.from_map(m['LiveActivity'])
+        if m.get('Music') is not None:
+            self.music = m.get('Music')
+        if m.get('Mutable') is not None:
+            self.mutable = m.get('Mutable')
+        if m.get('RelevanceScore') is not None:
+            self.relevance_score = m.get('RelevanceScore')
+        if m.get('Silent') is not None:
+            self.silent = m.get('Silent')
+        if m.get('Subtitle') is not None:
+            self.subtitle = m.get('Subtitle')
+        if m.get('ThreadId') is not None:
+            self.thread_id = m.get('ThreadId')
+        return self
+
+
+class PushTaskNotification(TeaModel):
+    def __init__(
+        self,
+        android: PushTaskNotificationAndroid = None,
+        body: str = None,
+        hmos: PushTaskNotificationHmos = None,
+        ios: PushTaskNotificationIos = None,
+        title: str = None,
+    ):
+        self.android = android
+        self.body = body
+        self.hmos = hmos
+        self.ios = ios
+        self.title = title
+
+    def validate(self):
+        if self.android:
+            self.android.validate()
+        if self.hmos:
+            self.hmos.validate()
+        if self.ios:
+            self.ios.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android is not None:
+            result['Android'] = self.android.to_map()
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.hmos is not None:
+            result['Hmos'] = self.hmos.to_map()
+        if self.ios is not None:
+            result['Ios'] = self.ios.to_map()
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Android') is not None:
+            temp_model = PushTaskNotificationAndroid()
+            self.android = temp_model.from_map(m['Android'])
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('Hmos') is not None:
+            temp_model = PushTaskNotificationHmos()
+            self.hmos = temp_model.from_map(m['Hmos'])
+        if m.get('Ios') is not None:
+            temp_model = PushTaskNotificationIos()
+            self.ios = temp_model.from_map(m['Ios'])
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PushTaskOptionsSms(TeaModel):
+    def __init__(
+        self,
+        delay_secs: int = None,
+        params: str = None,
+        send_policy: str = None,
+        sign_name: str = None,
+        template_name: str = None,
+    ):
+        self.delay_secs = delay_secs
+        self.params = params
+        self.send_policy = send_policy
+        self.sign_name = sign_name
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.delay_secs is not None:
+            result['DelaySecs'] = self.delay_secs
+        if self.params is not None:
+            result['Params'] = self.params
+        if self.send_policy is not None:
+            result['SendPolicy'] = self.send_policy
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DelaySecs') is not None:
+            self.delay_secs = m.get('DelaySecs')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+        if m.get('SendPolicy') is not None:
+            self.send_policy = m.get('SendPolicy')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class PushTaskOptions(TeaModel):
+    def __init__(
+        self,
+        expire_time: str = None,
+        job_key: str = None,
+        message_id: int = None,
+        push_time: str = None,
+        sms: PushTaskOptionsSms = None,
+        trim: bool = None,
+        use_channels: str = None,
+    ):
+        self.expire_time = expire_time
+        self.job_key = job_key
+        self.message_id = message_id
+        self.push_time = push_time
+        self.sms = sms
+        self.trim = trim
+        self.use_channels = use_channels
+
+    def validate(self):
+        if self.sms:
+            self.sms.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.job_key is not None:
+            result['JobKey'] = self.job_key
+        if self.message_id is not None:
+            result['MessageId'] = self.message_id
+        if self.push_time is not None:
+            result['PushTime'] = self.push_time
+        if self.sms is not None:
+            result['Sms'] = self.sms.to_map()
+        if self.trim is not None:
+            result['Trim'] = self.trim
+        if self.use_channels is not None:
+            result['UseChannels'] = self.use_channels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('JobKey') is not None:
+            self.job_key = m.get('JobKey')
+        if m.get('MessageId') is not None:
+            self.message_id = m.get('MessageId')
+        if m.get('PushTime') is not None:
+            self.push_time = m.get('PushTime')
+        if m.get('Sms') is not None:
+            temp_model = PushTaskOptionsSms()
+            self.sms = temp_model.from_map(m['Sms'])
+        if m.get('Trim') is not None:
+            self.trim = m.get('Trim')
+        if m.get('UseChannels') is not None:
+            self.use_channels = m.get('UseChannels')
+        return self
+
+
+class PushTaskTarget(TeaModel):
+    def __init__(
+        self,
+        platform: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.platform = platform
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.platform is not None:
+            result['Platform'] = self.platform
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class PushTask(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        message: PushTaskMessage = None,
+        notification: PushTaskNotification = None,
+        options: PushTaskOptions = None,
+        target: PushTaskTarget = None,
+    ):
+        self.action = action
+        self.message = message
+        self.notification = notification
+        self.options = options
+        self.target = target
+
+    def validate(self):
+        if self.message:
+            self.message.validate()
+        if self.notification:
+            self.notification.validate()
+        if self.options:
+            self.options.validate()
+        if self.target:
+            self.target.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        if self.message is not None:
+            result['Message'] = self.message.to_map()
+        if self.notification is not None:
+            result['Notification'] = self.notification.to_map()
+        if self.options is not None:
+            result['Options'] = self.options.to_map()
+        if self.target is not None:
+            result['Target'] = self.target.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        if m.get('Message') is not None:
+            temp_model = PushTaskMessage()
+            self.message = temp_model.from_map(m['Message'])
+        if m.get('Notification') is not None:
+            temp_model = PushTaskNotification()
+            self.notification = temp_model.from_map(m['Notification'])
+        if m.get('Options') is not None:
+            temp_model = PushTaskOptions()
+            self.options = temp_model.from_map(m['Options'])
+        if m.get('Target') is not None:
+            temp_model = PushTaskTarget()
+            self.target = temp_model.from_map(m['Target'])
+        return self
 
 
 class BindAliasRequest(TeaModel):
@@ -1546,6 +2557,9 @@ class MassPushRequestPushTask(TeaModel):
         target_value: str = None,
         title: str = None,
         trim: bool = None,
+        android_oppo_private_content_parameters: Dict[str, str] = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters: Dict[str, str] = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
@@ -1651,6 +2665,9 @@ class MassPushRequestPushTask(TeaModel):
         self.target_value = target_value
         self.title = title
         self.trim = trim
+        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
@@ -1839,6 +2856,12 @@ class MassPushRequestPushTask(TeaModel):
             result['Title'] = self.title
         if self.trim is not None:
             result['Trim'] = self.trim
+        if self.android_oppo_private_content_parameters is not None:
+            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
+        if self.android_oppo_private_msg_template_id is not None:
+            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters is not None:
+            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -2043,6 +3066,12 @@ class MassPushRequestPushTask(TeaModel):
             self.title = m.get('Title')
         if m.get('Trim') is not None:
             self.trim = m.get('Trim')
+        if m.get('androidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters = m.get('androidOppoPrivateContentParameters')
+        if m.get('androidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
+        if m.get('androidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters = m.get('androidOppoPrivateTitleParameters')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:
@@ -2330,6 +3359,9 @@ class PushRequest(TeaModel):
         target_value: str = None,
         title: str = None,
         trim: bool = None,
+        android_oppo_private_content_parameters: Dict[str, str] = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters: Dict[str, str] = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
@@ -2443,6 +3475,9 @@ class PushRequest(TeaModel):
         self.target_value = target_value
         self.title = title
         self.trim = trim
+        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
@@ -2645,6 +3680,12 @@ class PushRequest(TeaModel):
             result['Title'] = self.title
         if self.trim is not None:
             result['Trim'] = self.trim
+        if self.android_oppo_private_content_parameters is not None:
+            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
+        if self.android_oppo_private_msg_template_id is not None:
+            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters is not None:
+            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -2863,6 +3904,698 @@ class PushRequest(TeaModel):
             self.title = m.get('Title')
         if m.get('Trim') is not None:
             self.trim = m.get('Trim')
+        if m.get('androidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters = m.get('androidOppoPrivateContentParameters')
+        if m.get('androidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
+        if m.get('androidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters = m.get('androidOppoPrivateTitleParameters')
+        if m.get('iOSApnsEnv') is not None:
+            self.i_osapns_env = m.get('iOSApnsEnv')
+        if m.get('iOSBadge') is not None:
+            self.i_osbadge = m.get('iOSBadge')
+        if m.get('iOSBadgeAutoIncrement') is not None:
+            self.i_osbadge_auto_increment = m.get('iOSBadgeAutoIncrement')
+        if m.get('iOSExtParameters') is not None:
+            self.i_osext_parameters = m.get('iOSExtParameters')
+        if m.get('iOSInterruptionLevel') is not None:
+            self.i_osinterruption_level = m.get('iOSInterruptionLevel')
+        if m.get('iOSLiveActivityAttributes') is not None:
+            self.i_oslive_activity_attributes = m.get('iOSLiveActivityAttributes')
+        if m.get('iOSLiveActivityAttributesType') is not None:
+            self.i_oslive_activity_attributes_type = m.get('iOSLiveActivityAttributesType')
+        if m.get('iOSLiveActivityContentState') is not None:
+            self.i_oslive_activity_content_state = m.get('iOSLiveActivityContentState')
+        if m.get('iOSLiveActivityDismissalDate') is not None:
+            self.i_oslive_activity_dismissal_date = m.get('iOSLiveActivityDismissalDate')
+        if m.get('iOSLiveActivityEvent') is not None:
+            self.i_oslive_activity_event = m.get('iOSLiveActivityEvent')
+        if m.get('iOSLiveActivityId') is not None:
+            self.i_oslive_activity_id = m.get('iOSLiveActivityId')
+        if m.get('iOSLiveActivityStaleDate') is not None:
+            self.i_oslive_activity_stale_date = m.get('iOSLiveActivityStaleDate')
+        if m.get('iOSMusic') is not None:
+            self.i_osmusic = m.get('iOSMusic')
+        if m.get('iOSMutableContent') is not None:
+            self.i_osmutable_content = m.get('iOSMutableContent')
+        if m.get('iOSNotificationCategory') is not None:
+            self.i_osnotification_category = m.get('iOSNotificationCategory')
+        if m.get('iOSNotificationCollapseId') is not None:
+            self.i_osnotification_collapse_id = m.get('iOSNotificationCollapseId')
+        if m.get('iOSNotificationThreadId') is not None:
+            self.i_osnotification_thread_id = m.get('iOSNotificationThreadId')
+        if m.get('iOSRelevanceScore') is not None:
+            self.i_osrelevance_score = m.get('iOSRelevanceScore')
+        if m.get('iOSRemind') is not None:
+            self.i_osremind = m.get('iOSRemind')
+        if m.get('iOSRemindBody') is not None:
+            self.i_osremind_body = m.get('iOSRemindBody')
+        if m.get('iOSSilentNotification') is not None:
+            self.i_ossilent_notification = m.get('iOSSilentNotification')
+        if m.get('iOSSubtitle') is not None:
+            self.i_ossubtitle = m.get('iOSSubtitle')
+        return self
+
+
+class PushShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        android_activity: str = None,
+        android_badge_add_num: int = None,
+        android_badge_class: str = None,
+        android_badge_set_num: int = None,
+        android_big_body: str = None,
+        android_big_picture_url: str = None,
+        android_big_title: str = None,
+        android_ext_parameters: str = None,
+        android_honor_target_user_type: int = None,
+        android_huawei_receipt_id: str = None,
+        android_huawei_target_user_type: int = None,
+        android_image_url: str = None,
+        android_inbox_body: str = None,
+        android_meizu_notice_msg_type: int = None,
+        android_message_huawei_category: str = None,
+        android_message_huawei_urgency: str = None,
+        android_message_oppo_category: str = None,
+        android_message_oppo_notify_level: int = None,
+        android_message_vivo_category: str = None,
+        android_music: str = None,
+        android_notification_bar_priority: int = None,
+        android_notification_bar_type: int = None,
+        android_notification_channel: str = None,
+        android_notification_group: str = None,
+        android_notification_honor_channel: str = None,
+        android_notification_huawei_channel: str = None,
+        android_notification_notify_id: int = None,
+        android_notification_thread_id: str = None,
+        android_notification_vivo_channel: str = None,
+        android_notification_xiaomi_channel: str = None,
+        android_notify_type: str = None,
+        android_open_type: str = None,
+        android_open_url: str = None,
+        android_popup_activity: str = None,
+        android_popup_body: str = None,
+        android_popup_title: str = None,
+        android_remind: bool = None,
+        android_render_style: int = None,
+        android_target_user_type: int = None,
+        android_vivo_push_mode: int = None,
+        android_vivo_receipt_id: str = None,
+        android_xiao_mi_activity: str = None,
+        android_xiao_mi_notify_body: str = None,
+        android_xiao_mi_notify_title: str = None,
+        android_xiaomi_big_picture_url: str = None,
+        android_xiaomi_image_url: str = None,
+        app_key: int = None,
+        body: str = None,
+        device_type: str = None,
+        expire_time: str = None,
+        harmony_action: str = None,
+        harmony_action_type: str = None,
+        harmony_badge_add_num: int = None,
+        harmony_badge_set_num: int = None,
+        harmony_category: str = None,
+        harmony_ext_parameters: str = None,
+        harmony_extension_extra_data: str = None,
+        harmony_extension_push: bool = None,
+        harmony_image_url: str = None,
+        harmony_inbox_content: str = None,
+        harmony_notification_slot_type: str = None,
+        harmony_notify_id: int = None,
+        harmony_receipt_id: str = None,
+        harmony_remind: bool = None,
+        harmony_remind_body: str = None,
+        harmony_remind_title: str = None,
+        harmony_render_style: str = None,
+        harmony_test_message: bool = None,
+        harmony_uri: str = None,
+        idempotent_token: str = None,
+        job_key: str = None,
+        push_time: str = None,
+        push_type: str = None,
+        send_channels: str = None,
+        send_speed: int = None,
+        sms_delay_secs: int = None,
+        sms_params: str = None,
+        sms_send_policy: int = None,
+        sms_sign_name: str = None,
+        sms_template_name: str = None,
+        store_offline: bool = None,
+        target: str = None,
+        target_value: str = None,
+        title: str = None,
+        trim: bool = None,
+        android_oppo_private_content_parameters_shrink: str = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters_shrink: str = None,
+        i_osapns_env: str = None,
+        i_osbadge: int = None,
+        i_osbadge_auto_increment: bool = None,
+        i_osext_parameters: str = None,
+        i_osinterruption_level: str = None,
+        i_oslive_activity_attributes: str = None,
+        i_oslive_activity_attributes_type: str = None,
+        i_oslive_activity_content_state: str = None,
+        i_oslive_activity_dismissal_date: int = None,
+        i_oslive_activity_event: str = None,
+        i_oslive_activity_id: str = None,
+        i_oslive_activity_stale_date: int = None,
+        i_osmusic: str = None,
+        i_osmutable_content: bool = None,
+        i_osnotification_category: str = None,
+        i_osnotification_collapse_id: str = None,
+        i_osnotification_thread_id: str = None,
+        i_osrelevance_score: float = None,
+        i_osremind: bool = None,
+        i_osremind_body: str = None,
+        i_ossilent_notification: bool = None,
+        i_ossubtitle: str = None,
+    ):
+        self.android_activity = android_activity
+        self.android_badge_add_num = android_badge_add_num
+        self.android_badge_class = android_badge_class
+        self.android_badge_set_num = android_badge_set_num
+        self.android_big_body = android_big_body
+        self.android_big_picture_url = android_big_picture_url
+        self.android_big_title = android_big_title
+        self.android_ext_parameters = android_ext_parameters
+        self.android_honor_target_user_type = android_honor_target_user_type
+        self.android_huawei_receipt_id = android_huawei_receipt_id
+        self.android_huawei_target_user_type = android_huawei_target_user_type
+        self.android_image_url = android_image_url
+        self.android_inbox_body = android_inbox_body
+        self.android_meizu_notice_msg_type = android_meizu_notice_msg_type
+        self.android_message_huawei_category = android_message_huawei_category
+        self.android_message_huawei_urgency = android_message_huawei_urgency
+        self.android_message_oppo_category = android_message_oppo_category
+        self.android_message_oppo_notify_level = android_message_oppo_notify_level
+        self.android_message_vivo_category = android_message_vivo_category
+        self.android_music = android_music
+        self.android_notification_bar_priority = android_notification_bar_priority
+        self.android_notification_bar_type = android_notification_bar_type
+        self.android_notification_channel = android_notification_channel
+        self.android_notification_group = android_notification_group
+        self.android_notification_honor_channel = android_notification_honor_channel
+        self.android_notification_huawei_channel = android_notification_huawei_channel
+        self.android_notification_notify_id = android_notification_notify_id
+        self.android_notification_thread_id = android_notification_thread_id
+        self.android_notification_vivo_channel = android_notification_vivo_channel
+        self.android_notification_xiaomi_channel = android_notification_xiaomi_channel
+        self.android_notify_type = android_notify_type
+        self.android_open_type = android_open_type
+        self.android_open_url = android_open_url
+        self.android_popup_activity = android_popup_activity
+        self.android_popup_body = android_popup_body
+        self.android_popup_title = android_popup_title
+        self.android_remind = android_remind
+        self.android_render_style = android_render_style
+        self.android_target_user_type = android_target_user_type
+        self.android_vivo_push_mode = android_vivo_push_mode
+        self.android_vivo_receipt_id = android_vivo_receipt_id
+        self.android_xiao_mi_activity = android_xiao_mi_activity
+        self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
+        self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
+        self.android_xiaomi_big_picture_url = android_xiaomi_big_picture_url
+        self.android_xiaomi_image_url = android_xiaomi_image_url
+        # This parameter is required.
+        self.app_key = app_key
+        self.body = body
+        # This parameter is required.
+        self.device_type = device_type
+        self.expire_time = expire_time
+        self.harmony_action = harmony_action
+        self.harmony_action_type = harmony_action_type
+        self.harmony_badge_add_num = harmony_badge_add_num
+        self.harmony_badge_set_num = harmony_badge_set_num
+        self.harmony_category = harmony_category
+        self.harmony_ext_parameters = harmony_ext_parameters
+        self.harmony_extension_extra_data = harmony_extension_extra_data
+        self.harmony_extension_push = harmony_extension_push
+        self.harmony_image_url = harmony_image_url
+        self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_notification_slot_type = harmony_notification_slot_type
+        self.harmony_notify_id = harmony_notify_id
+        self.harmony_receipt_id = harmony_receipt_id
+        self.harmony_remind = harmony_remind
+        self.harmony_remind_body = harmony_remind_body
+        self.harmony_remind_title = harmony_remind_title
+        self.harmony_render_style = harmony_render_style
+        self.harmony_test_message = harmony_test_message
+        self.harmony_uri = harmony_uri
+        self.idempotent_token = idempotent_token
+        self.job_key = job_key
+        self.push_time = push_time
+        # This parameter is required.
+        self.push_type = push_type
+        self.send_channels = send_channels
+        self.send_speed = send_speed
+        self.sms_delay_secs = sms_delay_secs
+        self.sms_params = sms_params
+        self.sms_send_policy = sms_send_policy
+        self.sms_sign_name = sms_sign_name
+        self.sms_template_name = sms_template_name
+        self.store_offline = store_offline
+        # This parameter is required.
+        self.target = target
+        # This parameter is required.
+        self.target_value = target_value
+        self.title = title
+        self.trim = trim
+        self.android_oppo_private_content_parameters_shrink = android_oppo_private_content_parameters_shrink
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters_shrink = android_oppo_private_title_parameters_shrink
+        self.i_osapns_env = i_osapns_env
+        self.i_osbadge = i_osbadge
+        self.i_osbadge_auto_increment = i_osbadge_auto_increment
+        self.i_osext_parameters = i_osext_parameters
+        self.i_osinterruption_level = i_osinterruption_level
+        self.i_oslive_activity_attributes = i_oslive_activity_attributes
+        self.i_oslive_activity_attributes_type = i_oslive_activity_attributes_type
+        self.i_oslive_activity_content_state = i_oslive_activity_content_state
+        self.i_oslive_activity_dismissal_date = i_oslive_activity_dismissal_date
+        self.i_oslive_activity_event = i_oslive_activity_event
+        self.i_oslive_activity_id = i_oslive_activity_id
+        self.i_oslive_activity_stale_date = i_oslive_activity_stale_date
+        self.i_osmusic = i_osmusic
+        self.i_osmutable_content = i_osmutable_content
+        self.i_osnotification_category = i_osnotification_category
+        self.i_osnotification_collapse_id = i_osnotification_collapse_id
+        self.i_osnotification_thread_id = i_osnotification_thread_id
+        self.i_osrelevance_score = i_osrelevance_score
+        self.i_osremind = i_osremind
+        self.i_osremind_body = i_osremind_body
+        self.i_ossilent_notification = i_ossilent_notification
+        self.i_ossubtitle = i_ossubtitle
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.android_activity is not None:
+            result['AndroidActivity'] = self.android_activity
+        if self.android_badge_add_num is not None:
+            result['AndroidBadgeAddNum'] = self.android_badge_add_num
+        if self.android_badge_class is not None:
+            result['AndroidBadgeClass'] = self.android_badge_class
+        if self.android_badge_set_num is not None:
+            result['AndroidBadgeSetNum'] = self.android_badge_set_num
+        if self.android_big_body is not None:
+            result['AndroidBigBody'] = self.android_big_body
+        if self.android_big_picture_url is not None:
+            result['AndroidBigPictureUrl'] = self.android_big_picture_url
+        if self.android_big_title is not None:
+            result['AndroidBigTitle'] = self.android_big_title
+        if self.android_ext_parameters is not None:
+            result['AndroidExtParameters'] = self.android_ext_parameters
+        if self.android_honor_target_user_type is not None:
+            result['AndroidHonorTargetUserType'] = self.android_honor_target_user_type
+        if self.android_huawei_receipt_id is not None:
+            result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
+        if self.android_huawei_target_user_type is not None:
+            result['AndroidHuaweiTargetUserType'] = self.android_huawei_target_user_type
+        if self.android_image_url is not None:
+            result['AndroidImageUrl'] = self.android_image_url
+        if self.android_inbox_body is not None:
+            result['AndroidInboxBody'] = self.android_inbox_body
+        if self.android_meizu_notice_msg_type is not None:
+            result['AndroidMeizuNoticeMsgType'] = self.android_meizu_notice_msg_type
+        if self.android_message_huawei_category is not None:
+            result['AndroidMessageHuaweiCategory'] = self.android_message_huawei_category
+        if self.android_message_huawei_urgency is not None:
+            result['AndroidMessageHuaweiUrgency'] = self.android_message_huawei_urgency
+        if self.android_message_oppo_category is not None:
+            result['AndroidMessageOppoCategory'] = self.android_message_oppo_category
+        if self.android_message_oppo_notify_level is not None:
+            result['AndroidMessageOppoNotifyLevel'] = self.android_message_oppo_notify_level
+        if self.android_message_vivo_category is not None:
+            result['AndroidMessageVivoCategory'] = self.android_message_vivo_category
+        if self.android_music is not None:
+            result['AndroidMusic'] = self.android_music
+        if self.android_notification_bar_priority is not None:
+            result['AndroidNotificationBarPriority'] = self.android_notification_bar_priority
+        if self.android_notification_bar_type is not None:
+            result['AndroidNotificationBarType'] = self.android_notification_bar_type
+        if self.android_notification_channel is not None:
+            result['AndroidNotificationChannel'] = self.android_notification_channel
+        if self.android_notification_group is not None:
+            result['AndroidNotificationGroup'] = self.android_notification_group
+        if self.android_notification_honor_channel is not None:
+            result['AndroidNotificationHonorChannel'] = self.android_notification_honor_channel
+        if self.android_notification_huawei_channel is not None:
+            result['AndroidNotificationHuaweiChannel'] = self.android_notification_huawei_channel
+        if self.android_notification_notify_id is not None:
+            result['AndroidNotificationNotifyId'] = self.android_notification_notify_id
+        if self.android_notification_thread_id is not None:
+            result['AndroidNotificationThreadId'] = self.android_notification_thread_id
+        if self.android_notification_vivo_channel is not None:
+            result['AndroidNotificationVivoChannel'] = self.android_notification_vivo_channel
+        if self.android_notification_xiaomi_channel is not None:
+            result['AndroidNotificationXiaomiChannel'] = self.android_notification_xiaomi_channel
+        if self.android_notify_type is not None:
+            result['AndroidNotifyType'] = self.android_notify_type
+        if self.android_open_type is not None:
+            result['AndroidOpenType'] = self.android_open_type
+        if self.android_open_url is not None:
+            result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_popup_activity is not None:
+            result['AndroidPopupActivity'] = self.android_popup_activity
+        if self.android_popup_body is not None:
+            result['AndroidPopupBody'] = self.android_popup_body
+        if self.android_popup_title is not None:
+            result['AndroidPopupTitle'] = self.android_popup_title
+        if self.android_remind is not None:
+            result['AndroidRemind'] = self.android_remind
+        if self.android_render_style is not None:
+            result['AndroidRenderStyle'] = self.android_render_style
+        if self.android_target_user_type is not None:
+            result['AndroidTargetUserType'] = self.android_target_user_type
+        if self.android_vivo_push_mode is not None:
+            result['AndroidVivoPushMode'] = self.android_vivo_push_mode
+        if self.android_vivo_receipt_id is not None:
+            result['AndroidVivoReceiptId'] = self.android_vivo_receipt_id
+        if self.android_xiao_mi_activity is not None:
+            result['AndroidXiaoMiActivity'] = self.android_xiao_mi_activity
+        if self.android_xiao_mi_notify_body is not None:
+            result['AndroidXiaoMiNotifyBody'] = self.android_xiao_mi_notify_body
+        if self.android_xiao_mi_notify_title is not None:
+            result['AndroidXiaoMiNotifyTitle'] = self.android_xiao_mi_notify_title
+        if self.android_xiaomi_big_picture_url is not None:
+            result['AndroidXiaomiBigPictureUrl'] = self.android_xiaomi_big_picture_url
+        if self.android_xiaomi_image_url is not None:
+            result['AndroidXiaomiImageUrl'] = self.android_xiaomi_image_url
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.body is not None:
+            result['Body'] = self.body
+        if self.device_type is not None:
+            result['DeviceType'] = self.device_type
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.harmony_action is not None:
+            result['HarmonyAction'] = self.harmony_action
+        if self.harmony_action_type is not None:
+            result['HarmonyActionType'] = self.harmony_action_type
+        if self.harmony_badge_add_num is not None:
+            result['HarmonyBadgeAddNum'] = self.harmony_badge_add_num
+        if self.harmony_badge_set_num is not None:
+            result['HarmonyBadgeSetNum'] = self.harmony_badge_set_num
+        if self.harmony_category is not None:
+            result['HarmonyCategory'] = self.harmony_category
+        if self.harmony_ext_parameters is not None:
+            result['HarmonyExtParameters'] = self.harmony_ext_parameters
+        if self.harmony_extension_extra_data is not None:
+            result['HarmonyExtensionExtraData'] = self.harmony_extension_extra_data
+        if self.harmony_extension_push is not None:
+            result['HarmonyExtensionPush'] = self.harmony_extension_push
+        if self.harmony_image_url is not None:
+            result['HarmonyImageUrl'] = self.harmony_image_url
+        if self.harmony_inbox_content is not None:
+            result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_notification_slot_type is not None:
+            result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
+        if self.harmony_notify_id is not None:
+            result['HarmonyNotifyId'] = self.harmony_notify_id
+        if self.harmony_receipt_id is not None:
+            result['HarmonyReceiptId'] = self.harmony_receipt_id
+        if self.harmony_remind is not None:
+            result['HarmonyRemind'] = self.harmony_remind
+        if self.harmony_remind_body is not None:
+            result['HarmonyRemindBody'] = self.harmony_remind_body
+        if self.harmony_remind_title is not None:
+            result['HarmonyRemindTitle'] = self.harmony_remind_title
+        if self.harmony_render_style is not None:
+            result['HarmonyRenderStyle'] = self.harmony_render_style
+        if self.harmony_test_message is not None:
+            result['HarmonyTestMessage'] = self.harmony_test_message
+        if self.harmony_uri is not None:
+            result['HarmonyUri'] = self.harmony_uri
+        if self.idempotent_token is not None:
+            result['IdempotentToken'] = self.idempotent_token
+        if self.job_key is not None:
+            result['JobKey'] = self.job_key
+        if self.push_time is not None:
+            result['PushTime'] = self.push_time
+        if self.push_type is not None:
+            result['PushType'] = self.push_type
+        if self.send_channels is not None:
+            result['SendChannels'] = self.send_channels
+        if self.send_speed is not None:
+            result['SendSpeed'] = self.send_speed
+        if self.sms_delay_secs is not None:
+            result['SmsDelaySecs'] = self.sms_delay_secs
+        if self.sms_params is not None:
+            result['SmsParams'] = self.sms_params
+        if self.sms_send_policy is not None:
+            result['SmsSendPolicy'] = self.sms_send_policy
+        if self.sms_sign_name is not None:
+            result['SmsSignName'] = self.sms_sign_name
+        if self.sms_template_name is not None:
+            result['SmsTemplateName'] = self.sms_template_name
+        if self.store_offline is not None:
+            result['StoreOffline'] = self.store_offline
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.target_value is not None:
+            result['TargetValue'] = self.target_value
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.trim is not None:
+            result['Trim'] = self.trim
+        if self.android_oppo_private_content_parameters_shrink is not None:
+            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters_shrink
+        if self.android_oppo_private_msg_template_id is not None:
+            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters_shrink is not None:
+            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters_shrink
+        if self.i_osapns_env is not None:
+            result['iOSApnsEnv'] = self.i_osapns_env
+        if self.i_osbadge is not None:
+            result['iOSBadge'] = self.i_osbadge
+        if self.i_osbadge_auto_increment is not None:
+            result['iOSBadgeAutoIncrement'] = self.i_osbadge_auto_increment
+        if self.i_osext_parameters is not None:
+            result['iOSExtParameters'] = self.i_osext_parameters
+        if self.i_osinterruption_level is not None:
+            result['iOSInterruptionLevel'] = self.i_osinterruption_level
+        if self.i_oslive_activity_attributes is not None:
+            result['iOSLiveActivityAttributes'] = self.i_oslive_activity_attributes
+        if self.i_oslive_activity_attributes_type is not None:
+            result['iOSLiveActivityAttributesType'] = self.i_oslive_activity_attributes_type
+        if self.i_oslive_activity_content_state is not None:
+            result['iOSLiveActivityContentState'] = self.i_oslive_activity_content_state
+        if self.i_oslive_activity_dismissal_date is not None:
+            result['iOSLiveActivityDismissalDate'] = self.i_oslive_activity_dismissal_date
+        if self.i_oslive_activity_event is not None:
+            result['iOSLiveActivityEvent'] = self.i_oslive_activity_event
+        if self.i_oslive_activity_id is not None:
+            result['iOSLiveActivityId'] = self.i_oslive_activity_id
+        if self.i_oslive_activity_stale_date is not None:
+            result['iOSLiveActivityStaleDate'] = self.i_oslive_activity_stale_date
+        if self.i_osmusic is not None:
+            result['iOSMusic'] = self.i_osmusic
+        if self.i_osmutable_content is not None:
+            result['iOSMutableContent'] = self.i_osmutable_content
+        if self.i_osnotification_category is not None:
+            result['iOSNotificationCategory'] = self.i_osnotification_category
+        if self.i_osnotification_collapse_id is not None:
+            result['iOSNotificationCollapseId'] = self.i_osnotification_collapse_id
+        if self.i_osnotification_thread_id is not None:
+            result['iOSNotificationThreadId'] = self.i_osnotification_thread_id
+        if self.i_osrelevance_score is not None:
+            result['iOSRelevanceScore'] = self.i_osrelevance_score
+        if self.i_osremind is not None:
+            result['iOSRemind'] = self.i_osremind
+        if self.i_osremind_body is not None:
+            result['iOSRemindBody'] = self.i_osremind_body
+        if self.i_ossilent_notification is not None:
+            result['iOSSilentNotification'] = self.i_ossilent_notification
+        if self.i_ossubtitle is not None:
+            result['iOSSubtitle'] = self.i_ossubtitle
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AndroidActivity') is not None:
+            self.android_activity = m.get('AndroidActivity')
+        if m.get('AndroidBadgeAddNum') is not None:
+            self.android_badge_add_num = m.get('AndroidBadgeAddNum')
+        if m.get('AndroidBadgeClass') is not None:
+            self.android_badge_class = m.get('AndroidBadgeClass')
+        if m.get('AndroidBadgeSetNum') is not None:
+            self.android_badge_set_num = m.get('AndroidBadgeSetNum')
+        if m.get('AndroidBigBody') is not None:
+            self.android_big_body = m.get('AndroidBigBody')
+        if m.get('AndroidBigPictureUrl') is not None:
+            self.android_big_picture_url = m.get('AndroidBigPictureUrl')
+        if m.get('AndroidBigTitle') is not None:
+            self.android_big_title = m.get('AndroidBigTitle')
+        if m.get('AndroidExtParameters') is not None:
+            self.android_ext_parameters = m.get('AndroidExtParameters')
+        if m.get('AndroidHonorTargetUserType') is not None:
+            self.android_honor_target_user_type = m.get('AndroidHonorTargetUserType')
+        if m.get('AndroidHuaweiReceiptId') is not None:
+            self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
+        if m.get('AndroidHuaweiTargetUserType') is not None:
+            self.android_huawei_target_user_type = m.get('AndroidHuaweiTargetUserType')
+        if m.get('AndroidImageUrl') is not None:
+            self.android_image_url = m.get('AndroidImageUrl')
+        if m.get('AndroidInboxBody') is not None:
+            self.android_inbox_body = m.get('AndroidInboxBody')
+        if m.get('AndroidMeizuNoticeMsgType') is not None:
+            self.android_meizu_notice_msg_type = m.get('AndroidMeizuNoticeMsgType')
+        if m.get('AndroidMessageHuaweiCategory') is not None:
+            self.android_message_huawei_category = m.get('AndroidMessageHuaweiCategory')
+        if m.get('AndroidMessageHuaweiUrgency') is not None:
+            self.android_message_huawei_urgency = m.get('AndroidMessageHuaweiUrgency')
+        if m.get('AndroidMessageOppoCategory') is not None:
+            self.android_message_oppo_category = m.get('AndroidMessageOppoCategory')
+        if m.get('AndroidMessageOppoNotifyLevel') is not None:
+            self.android_message_oppo_notify_level = m.get('AndroidMessageOppoNotifyLevel')
+        if m.get('AndroidMessageVivoCategory') is not None:
+            self.android_message_vivo_category = m.get('AndroidMessageVivoCategory')
+        if m.get('AndroidMusic') is not None:
+            self.android_music = m.get('AndroidMusic')
+        if m.get('AndroidNotificationBarPriority') is not None:
+            self.android_notification_bar_priority = m.get('AndroidNotificationBarPriority')
+        if m.get('AndroidNotificationBarType') is not None:
+            self.android_notification_bar_type = m.get('AndroidNotificationBarType')
+        if m.get('AndroidNotificationChannel') is not None:
+            self.android_notification_channel = m.get('AndroidNotificationChannel')
+        if m.get('AndroidNotificationGroup') is not None:
+            self.android_notification_group = m.get('AndroidNotificationGroup')
+        if m.get('AndroidNotificationHonorChannel') is not None:
+            self.android_notification_honor_channel = m.get('AndroidNotificationHonorChannel')
+        if m.get('AndroidNotificationHuaweiChannel') is not None:
+            self.android_notification_huawei_channel = m.get('AndroidNotificationHuaweiChannel')
+        if m.get('AndroidNotificationNotifyId') is not None:
+            self.android_notification_notify_id = m.get('AndroidNotificationNotifyId')
+        if m.get('AndroidNotificationThreadId') is not None:
+            self.android_notification_thread_id = m.get('AndroidNotificationThreadId')
+        if m.get('AndroidNotificationVivoChannel') is not None:
+            self.android_notification_vivo_channel = m.get('AndroidNotificationVivoChannel')
+        if m.get('AndroidNotificationXiaomiChannel') is not None:
+            self.android_notification_xiaomi_channel = m.get('AndroidNotificationXiaomiChannel')
+        if m.get('AndroidNotifyType') is not None:
+            self.android_notify_type = m.get('AndroidNotifyType')
+        if m.get('AndroidOpenType') is not None:
+            self.android_open_type = m.get('AndroidOpenType')
+        if m.get('AndroidOpenUrl') is not None:
+            self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidPopupActivity') is not None:
+            self.android_popup_activity = m.get('AndroidPopupActivity')
+        if m.get('AndroidPopupBody') is not None:
+            self.android_popup_body = m.get('AndroidPopupBody')
+        if m.get('AndroidPopupTitle') is not None:
+            self.android_popup_title = m.get('AndroidPopupTitle')
+        if m.get('AndroidRemind') is not None:
+            self.android_remind = m.get('AndroidRemind')
+        if m.get('AndroidRenderStyle') is not None:
+            self.android_render_style = m.get('AndroidRenderStyle')
+        if m.get('AndroidTargetUserType') is not None:
+            self.android_target_user_type = m.get('AndroidTargetUserType')
+        if m.get('AndroidVivoPushMode') is not None:
+            self.android_vivo_push_mode = m.get('AndroidVivoPushMode')
+        if m.get('AndroidVivoReceiptId') is not None:
+            self.android_vivo_receipt_id = m.get('AndroidVivoReceiptId')
+        if m.get('AndroidXiaoMiActivity') is not None:
+            self.android_xiao_mi_activity = m.get('AndroidXiaoMiActivity')
+        if m.get('AndroidXiaoMiNotifyBody') is not None:
+            self.android_xiao_mi_notify_body = m.get('AndroidXiaoMiNotifyBody')
+        if m.get('AndroidXiaoMiNotifyTitle') is not None:
+            self.android_xiao_mi_notify_title = m.get('AndroidXiaoMiNotifyTitle')
+        if m.get('AndroidXiaomiBigPictureUrl') is not None:
+            self.android_xiaomi_big_picture_url = m.get('AndroidXiaomiBigPictureUrl')
+        if m.get('AndroidXiaomiImageUrl') is not None:
+            self.android_xiaomi_image_url = m.get('AndroidXiaomiImageUrl')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('Body') is not None:
+            self.body = m.get('Body')
+        if m.get('DeviceType') is not None:
+            self.device_type = m.get('DeviceType')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('HarmonyAction') is not None:
+            self.harmony_action = m.get('HarmonyAction')
+        if m.get('HarmonyActionType') is not None:
+            self.harmony_action_type = m.get('HarmonyActionType')
+        if m.get('HarmonyBadgeAddNum') is not None:
+            self.harmony_badge_add_num = m.get('HarmonyBadgeAddNum')
+        if m.get('HarmonyBadgeSetNum') is not None:
+            self.harmony_badge_set_num = m.get('HarmonyBadgeSetNum')
+        if m.get('HarmonyCategory') is not None:
+            self.harmony_category = m.get('HarmonyCategory')
+        if m.get('HarmonyExtParameters') is not None:
+            self.harmony_ext_parameters = m.get('HarmonyExtParameters')
+        if m.get('HarmonyExtensionExtraData') is not None:
+            self.harmony_extension_extra_data = m.get('HarmonyExtensionExtraData')
+        if m.get('HarmonyExtensionPush') is not None:
+            self.harmony_extension_push = m.get('HarmonyExtensionPush')
+        if m.get('HarmonyImageUrl') is not None:
+            self.harmony_image_url = m.get('HarmonyImageUrl')
+        if m.get('HarmonyInboxContent') is not None:
+            self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyNotificationSlotType') is not None:
+            self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
+        if m.get('HarmonyNotifyId') is not None:
+            self.harmony_notify_id = m.get('HarmonyNotifyId')
+        if m.get('HarmonyReceiptId') is not None:
+            self.harmony_receipt_id = m.get('HarmonyReceiptId')
+        if m.get('HarmonyRemind') is not None:
+            self.harmony_remind = m.get('HarmonyRemind')
+        if m.get('HarmonyRemindBody') is not None:
+            self.harmony_remind_body = m.get('HarmonyRemindBody')
+        if m.get('HarmonyRemindTitle') is not None:
+            self.harmony_remind_title = m.get('HarmonyRemindTitle')
+        if m.get('HarmonyRenderStyle') is not None:
+            self.harmony_render_style = m.get('HarmonyRenderStyle')
+        if m.get('HarmonyTestMessage') is not None:
+            self.harmony_test_message = m.get('HarmonyTestMessage')
+        if m.get('HarmonyUri') is not None:
+            self.harmony_uri = m.get('HarmonyUri')
+        if m.get('IdempotentToken') is not None:
+            self.idempotent_token = m.get('IdempotentToken')
+        if m.get('JobKey') is not None:
+            self.job_key = m.get('JobKey')
+        if m.get('PushTime') is not None:
+            self.push_time = m.get('PushTime')
+        if m.get('PushType') is not None:
+            self.push_type = m.get('PushType')
+        if m.get('SendChannels') is not None:
+            self.send_channels = m.get('SendChannels')
+        if m.get('SendSpeed') is not None:
+            self.send_speed = m.get('SendSpeed')
+        if m.get('SmsDelaySecs') is not None:
+            self.sms_delay_secs = m.get('SmsDelaySecs')
+        if m.get('SmsParams') is not None:
+            self.sms_params = m.get('SmsParams')
+        if m.get('SmsSendPolicy') is not None:
+            self.sms_send_policy = m.get('SmsSendPolicy')
+        if m.get('SmsSignName') is not None:
+            self.sms_sign_name = m.get('SmsSignName')
+        if m.get('SmsTemplateName') is not None:
+            self.sms_template_name = m.get('SmsTemplateName')
+        if m.get('StoreOffline') is not None:
+            self.store_offline = m.get('StoreOffline')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('TargetValue') is not None:
+            self.target_value = m.get('TargetValue')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('Trim') is not None:
+            self.trim = m.get('Trim')
+        if m.get('androidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters_shrink = m.get('androidOppoPrivateContentParameters')
+        if m.get('androidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
+        if m.get('androidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters_shrink = m.get('androidOppoPrivateTitleParameters')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:

@@ -1,3 +1,12 @@
+2025-09-09 Version: 1.0.20
+- Update API MassPush: add request parameters PushTask.$.androidOppoPrivateContentParameters.
+- Update API MassPush: add request parameters PushTask.$.androidOppoPrivateMsgTemplateId.
+- Update API MassPush: add request parameters PushTask.$.androidOppoPrivateTitleParameters.
+- Update API Push: add request parameters androidOppoPrivateContentParameters.
+- Update API Push: add request parameters androidOppoPrivateMsgTemplateId.
+- Update API Push: add request parameters androidOppoPrivateTitleParameters.
+
+
 2025-08-21 Version: 1.0.19
 - Update API MassPush: add request parameters PushTask.$.AndroidMeizuNoticeMsgType.
 - Update API Push: add request parameters AndroidMeizuNoticeMsgType.
