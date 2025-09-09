@@ -11513,6 +11513,7 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
         sql_text: str = None,
         sql_type: str = None,
         state: str = None,
+        table_name: str = None,
         thread_id: int = None,
         trace_id: str = None,
         trx_id: str = None,
@@ -11576,6 +11577,7 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
         # *   **0**: The execution was successful.
         # *   **1**: The execution failed.
         self.state = state
+        self.table_name = table_name
         # The thread ID.
         self.thread_id = thread_id
         # The trace ID of the PolarDB-X 2.0 instance. The value is the execution ID of the SQL statement on the data node.
@@ -11655,6 +11657,8 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
             result['SqlType'] = self.sql_type
         if self.state is not None:
             result['State'] = self.state
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
         if self.thread_id is not None:
             result['ThreadId'] = self.thread_id
         if self.trace_id is not None:
@@ -11725,6 +11729,8 @@ class DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord(TeaModel):
             self.sql_type = m.get('SqlType')
         if m.get('State') is not None:
             self.state = m.get('State')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
         if m.get('ThreadId') is not None:
             self.thread_id = m.get('ThreadId')
         if m.get('TraceId') is not None:
@@ -34146,6 +34152,7 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
         request_stop_time: int = None,
         retention: int = None,
         sql_log_enable: bool = None,
+        sql_log_source: str = None,
         sql_log_state: str = None,
         sql_log_visible_time: int = None,
         support_version: str = None,
@@ -34197,6 +34204,7 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
         # *   **true**\
         # *   **false**\
         self.sql_log_enable = sql_log_enable
+        self.sql_log_source = sql_log_source
         # The state of data migration. Valid values:
         # 
         # *   **FINISH**: The historical data is migrated.
@@ -34259,6 +34267,8 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
             result['Retention'] = self.retention
         if self.sql_log_enable is not None:
             result['SqlLogEnable'] = self.sql_log_enable
+        if self.sql_log_source is not None:
+            result['SqlLogSource'] = self.sql_log_source
         if self.sql_log_state is not None:
             result['SqlLogState'] = self.sql_log_state
         if self.sql_log_visible_time is not None:
@@ -34297,6 +34307,8 @@ class ModifySqlLogConfigResponseBodyData(TeaModel):
             self.retention = m.get('Retention')
         if m.get('SqlLogEnable') is not None:
             self.sql_log_enable = m.get('SqlLogEnable')
+        if m.get('SqlLogSource') is not None:
+            self.sql_log_source = m.get('SqlLogSource')
         if m.get('SqlLogState') is not None:
             self.sql_log_state = m.get('SqlLogState')
         if m.get('SqlLogVisibleTime') is not None:

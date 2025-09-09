@@ -1,3 +1,8 @@
+2025-09-09 Version: 2.8.2
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.TableName.
+- Update API ModifySqlLogConfig: add response parameters Body.Data.SqlLogSource.
+
+
 2025-08-21 Version: 2.8.1
 - Update API DescribeHotBigKeys: add response parameters Body.Data.HighTrafficKeyMsg.
 - Update API DescribeHotBigKeys: add response parameters Body.Data.HighTrafficKeys.
