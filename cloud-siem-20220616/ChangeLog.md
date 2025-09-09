@@ -1,3 +1,17 @@
+2025-09-09 Version: 5.0.4
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.DetectionRuleId.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.ProductId.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.VendorId.
+- Update API DescribeAlertsWithEntity: add response parameters Body.Data.ResponseData.$.DetectionRuleId.
+- Update API DescribeAlertsWithEntity: add response parameters Body.Data.ResponseData.$.ProductId.
+- Update API DescribeAlertsWithEntity: add response parameters Body.Data.ResponseData.$.VendorId.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.DetectionRuleId.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.ProductId.
+- Update API DescribeAlertsWithEvent: add response parameters Body.Data.ResponseData.$.VendorId.
+- Update API DescribeEventCountByThreatLevel: add response parameters Body.Data.InfoLevelEventNum.
+- Update API DescribeEventCountByThreatLevel: add response parameters Body.Data.SeriousLevelEventNum.
+
+
 2025-09-08 Version: 5.0.3
 - Generated python 2022-06-16 for cloud-siem.
 

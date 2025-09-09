@@ -3760,6 +3760,7 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         asset_list: str = None,
         att_ck: str = None,
         cloud_code: str = None,
+        detection_rule_id: str = None,
         end_time: str = None,
         entity_list: str = None,
         extend_content: str = None,
@@ -3772,9 +3773,11 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         log_uuid: str = None,
         main_user_id: int = None,
         occur_time: str = None,
+        product_id: str = None,
         start_time: str = None,
         sub_user_id: int = None,
         sub_user_name: str = None,
+        vendor_id: str = None,
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
@@ -3824,6 +3827,7 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         # *   qcloud: Tencent Cloud
         # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        self.detection_rule_id = detection_rule_id
         # The time when the alert was closed.
         self.end_time = end_time
         self.entity_list = entity_list
@@ -3849,11 +3853,13 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         self.main_user_id = main_user_id
         # The time when the alert is triggered.
         self.occur_time = occur_time
+        self.product_id = product_id
         # The time at which the alert was first generated.
         self.start_time = start_time
         # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
         self.sub_user_name = sub_user_name
+        self.vendor_id = vendor_id
 
     def validate(self):
         if self.alert_info_list:
@@ -3909,6 +3915,8 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
             result['AttCk'] = self.att_ck
         if self.cloud_code is not None:
             result['CloudCode'] = self.cloud_code
+        if self.detection_rule_id is not None:
+            result['DetectionRuleId'] = self.detection_rule_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.entity_list is not None:
@@ -3933,12 +3941,16 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
             result['MainUserId'] = self.main_user_id
         if self.occur_time is not None:
             result['OccurTime'] = self.occur_time
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.sub_user_id is not None:
             result['SubUserId'] = self.sub_user_id
         if self.sub_user_name is not None:
             result['SubUserName'] = self.sub_user_name
+        if self.vendor_id is not None:
+            result['VendorId'] = self.vendor_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3986,6 +3998,8 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
             self.att_ck = m.get('AttCk')
         if m.get('CloudCode') is not None:
             self.cloud_code = m.get('CloudCode')
+        if m.get('DetectionRuleId') is not None:
+            self.detection_rule_id = m.get('DetectionRuleId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EntityList') is not None:
@@ -4010,12 +4024,16 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
             self.main_user_id = m.get('MainUserId')
         if m.get('OccurTime') is not None:
             self.occur_time = m.get('OccurTime')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('SubUserId') is not None:
             self.sub_user_id = m.get('SubUserId')
         if m.get('SubUserName') is not None:
             self.sub_user_name = m.get('SubUserName')
+        if m.get('VendorId') is not None:
+            self.vendor_id = m.get('VendorId')
         return self
 
 
@@ -4609,6 +4627,7 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         asset_list: str = None,
         att_ck: str = None,
         cloud_code: str = None,
+        detection_rule_id: str = None,
         end_time: str = None,
         entity_list: str = None,
         gmt_create: str = None,
@@ -4620,9 +4639,11 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         log_uuid: str = None,
         main_user_id: int = None,
         occur_time: str = None,
+        product_id: str = None,
         start_time: str = None,
         sub_user_id: int = None,
         sub_user_name: str = None,
+        vendor_id: str = None,
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
@@ -4672,6 +4693,7 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         # *   qcloud: Tencent Cloud
         # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        self.detection_rule_id = detection_rule_id
         # The time when the alert was closed.
         self.end_time = end_time
         self.entity_list = entity_list
@@ -4696,11 +4718,13 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         self.main_user_id = main_user_id
         # The time when the alert was triggered.
         self.occur_time = occur_time
+        self.product_id = product_id
         # The time at which the alert was first generated.
         self.start_time = start_time
         # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
         self.sub_user_name = sub_user_name
+        self.vendor_id = vendor_id
 
     def validate(self):
         if self.alert_info_list:
@@ -4756,6 +4780,8 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
             result['AttCk'] = self.att_ck
         if self.cloud_code is not None:
             result['CloudCode'] = self.cloud_code
+        if self.detection_rule_id is not None:
+            result['DetectionRuleId'] = self.detection_rule_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.entity_list is not None:
@@ -4778,12 +4804,16 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
             result['MainUserId'] = self.main_user_id
         if self.occur_time is not None:
             result['OccurTime'] = self.occur_time
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.sub_user_id is not None:
             result['SubUserId'] = self.sub_user_id
         if self.sub_user_name is not None:
             result['SubUserName'] = self.sub_user_name
+        if self.vendor_id is not None:
+            result['VendorId'] = self.vendor_id
         return result
 
     def from_map(self, m: dict = None):
@@ -4831,6 +4861,8 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
             self.att_ck = m.get('AttCk')
         if m.get('CloudCode') is not None:
             self.cloud_code = m.get('CloudCode')
+        if m.get('DetectionRuleId') is not None:
+            self.detection_rule_id = m.get('DetectionRuleId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EntityList') is not None:
@@ -4853,12 +4885,16 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
             self.main_user_id = m.get('MainUserId')
         if m.get('OccurTime') is not None:
             self.occur_time = m.get('OccurTime')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('SubUserId') is not None:
             self.sub_user_id = m.get('SubUserId')
         if m.get('SubUserName') is not None:
             self.sub_user_name = m.get('SubUserName')
+        if m.get('VendorId') is not None:
+            self.vendor_id = m.get('VendorId')
         return self
 
 
@@ -5280,6 +5316,7 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         asset_list: str = None,
         att_ck: str = None,
         cloud_code: str = None,
+        detection_rule_id: str = None,
         end_time: str = None,
         entity_list: str = None,
         extend_content: str = None,
@@ -5292,9 +5329,11 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         log_uuid: str = None,
         main_user_id: int = None,
         occur_time: str = None,
+        product_id: str = None,
         start_time: str = None,
         sub_user_id: int = None,
         sub_user_name: str = None,
+        vendor_id: str = None,
     ):
         # The description of the alert.
         self.alert_desc = alert_desc
@@ -5344,6 +5383,7 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         # *   qcloud: Tencent Cloud.
         # *   hcloud: Huawei Cloud.
         self.cloud_code = cloud_code
+        self.detection_rule_id = detection_rule_id
         # The time when the alert was closed.
         self.end_time = end_time
         # The details of the entity.
@@ -5370,11 +5410,13 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         self.main_user_id = main_user_id
         # The time when the alert was triggered.
         self.occur_time = occur_time
+        self.product_id = product_id
         # The time at which the alert was first generated.
         self.start_time = start_time
         # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
         self.sub_user_name = sub_user_name
+        self.vendor_id = vendor_id
 
     def validate(self):
         if self.alert_info_list:
@@ -5430,6 +5472,8 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
             result['AttCk'] = self.att_ck
         if self.cloud_code is not None:
             result['CloudCode'] = self.cloud_code
+        if self.detection_rule_id is not None:
+            result['DetectionRuleId'] = self.detection_rule_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.entity_list is not None:
@@ -5454,12 +5498,16 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
             result['MainUserId'] = self.main_user_id
         if self.occur_time is not None:
             result['OccurTime'] = self.occur_time
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.sub_user_id is not None:
             result['SubUserId'] = self.sub_user_id
         if self.sub_user_name is not None:
             result['SubUserName'] = self.sub_user_name
+        if self.vendor_id is not None:
+            result['VendorId'] = self.vendor_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5507,6 +5555,8 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
             self.att_ck = m.get('AttCk')
         if m.get('CloudCode') is not None:
             self.cloud_code = m.get('CloudCode')
+        if m.get('DetectionRuleId') is not None:
+            self.detection_rule_id = m.get('DetectionRuleId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EntityList') is not None:
@@ -5531,12 +5581,16 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
             self.main_user_id = m.get('MainUserId')
         if m.get('OccurTime') is not None:
             self.occur_time = m.get('OccurTime')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('SubUserId') is not None:
             self.sub_user_id = m.get('SubUserId')
         if m.get('SubUserName') is not None:
             self.sub_user_name = m.get('SubUserName')
+        if m.get('VendorId') is not None:
+            self.vendor_id = m.get('VendorId')
         return self
 
 
@@ -10355,18 +10409,22 @@ class DescribeEventCountByThreatLevelResponseBodyData(TeaModel):
         self,
         event_num: int = None,
         high_level_event_num: int = None,
+        info_level_event_num: int = None,
         low_level_event_num: int = None,
         medium_level_event_num: int = None,
+        serious_level_event_num: int = None,
         undeal_event_num: int = None,
     ):
         # The total number of events.
         self.event_num = event_num
         # The number of high-risk events.
         self.high_level_event_num = high_level_event_num
+        self.info_level_event_num = info_level_event_num
         # The number of low-risk events.
         self.low_level_event_num = low_level_event_num
         # The number of medium-risk events.
         self.medium_level_event_num = medium_level_event_num
+        self.serious_level_event_num = serious_level_event_num
         # The number of unhandled events.
         self.undeal_event_num = undeal_event_num
 
@@ -10383,10 +10441,14 @@ class DescribeEventCountByThreatLevelResponseBodyData(TeaModel):
             result['EventNum'] = self.event_num
         if self.high_level_event_num is not None:
             result['HighLevelEventNum'] = self.high_level_event_num
+        if self.info_level_event_num is not None:
+            result['InfoLevelEventNum'] = self.info_level_event_num
         if self.low_level_event_num is not None:
             result['LowLevelEventNum'] = self.low_level_event_num
         if self.medium_level_event_num is not None:
             result['MediumLevelEventNum'] = self.medium_level_event_num
+        if self.serious_level_event_num is not None:
+            result['SeriousLevelEventNum'] = self.serious_level_event_num
         if self.undeal_event_num is not None:
             result['UndealEventNum'] = self.undeal_event_num
         return result
@@ -10397,10 +10459,14 @@ class DescribeEventCountByThreatLevelResponseBodyData(TeaModel):
             self.event_num = m.get('EventNum')
         if m.get('HighLevelEventNum') is not None:
             self.high_level_event_num = m.get('HighLevelEventNum')
+        if m.get('InfoLevelEventNum') is not None:
+            self.info_level_event_num = m.get('InfoLevelEventNum')
         if m.get('LowLevelEventNum') is not None:
             self.low_level_event_num = m.get('LowLevelEventNum')
         if m.get('MediumLevelEventNum') is not None:
             self.medium_level_event_num = m.get('MediumLevelEventNum')
+        if m.get('SeriousLevelEventNum') is not None:
+            self.serious_level_event_num = m.get('SeriousLevelEventNum')
         if m.get('UndealEventNum') is not None:
             self.undeal_event_num = m.get('UndealEventNum')
         return self
