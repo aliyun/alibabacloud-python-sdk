@@ -6052,6 +6052,7 @@ class DescribeDrdsDbRdsNameListRequest(TeaModel):
         self,
         db_name: str = None,
         drds_instance_id: str = None,
+        region_id: str = None,
     ):
         # The name of the database.
         # 
@@ -6061,6 +6062,7 @@ class DescribeDrdsDbRdsNameListRequest(TeaModel):
         # 
         # This parameter is required.
         self.drds_instance_id = drds_instance_id
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -6075,6 +6077,8 @@ class DescribeDrdsDbRdsNameListRequest(TeaModel):
             result['DbName'] = self.db_name
         if self.drds_instance_id is not None:
             result['DrdsInstanceId'] = self.drds_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6083,6 +6087,8 @@ class DescribeDrdsDbRdsNameListRequest(TeaModel):
             self.db_name = m.get('DbName')
         if m.get('DrdsInstanceId') is not None:
             self.drds_instance_id = m.get('DrdsInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
