@@ -2893,6 +2893,288 @@ class AddGtmRecoveryPlanResponse(TeaModel):
         return self
 
 
+class AddRecursionRecordRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        priority: int = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        user_client_ip: str = None,
+        value: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.priority = priority
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.user_client_ip = user_client_ip
+        self.value = value
+        self.weight = weight
+        # Zone ID。
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class AddRecursionRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        record_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.record_id = record_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddRecursionRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddRecursionRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddRecursionRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AddRecursionZoneRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        proxy_pattern: str = None,
+        zone_name: str = None,
+    ):
+        self.client_token = client_token
+        self.proxy_pattern = proxy_pattern
+        self.zone_name = zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.proxy_pattern is not None:
+            result['ProxyPattern'] = self.proxy_pattern
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ProxyPattern') is not None:
+            self.proxy_pattern = m.get('ProxyPattern')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class AddRecursionZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        zone_id: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        # Zone ID。
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class AddRecursionZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddRecursionZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddRecursionZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BindInstanceDomainsRequest(TeaModel):
     def __init__(
         self,
@@ -6418,6 +6700,208 @@ class DeleteGtmRecoveryPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteGtmRecoveryPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRecursionRecordRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        record_id: str = None,
+    ):
+        self.client_token = client_token
+        self.record_id = record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        return self
+
+
+class DeleteRecursionRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRecursionRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRecursionRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRecursionRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteRecursionZoneRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DeleteRecursionZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteRecursionZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteRecursionZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteRecursionZoneResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -32227,6 +32711,460 @@ class DescribeRecordStatisticsSummaryResponse(TeaModel):
         return self
 
 
+class DescribeRecursionRecordRequest(TeaModel):
+    def __init__(
+        self,
+        record_id: str = None,
+    ):
+        self.record_id = record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        return self
+
+
+class DescribeRecursionRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        priority: int = None,
+        record_id: str = None,
+        remark: str = None,
+        request_id: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        value: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.priority = priority
+        # record ID
+        self.record_id = record_id
+        self.remark = remark
+        self.request_id = request_id
+        self.rr = rr
+        # ttl
+        self.ttl = ttl
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.value = value
+        self.weight = weight
+        # zone ID
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRecursionRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRecursionRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRecursionRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeRecursionZoneRequest(TeaModel):
+    def __init__(
+        self,
+        zone_id: str = None,
+    ):
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes(TeaModel):
+    def __init__(
+        self,
+        scope: List[str] = None,
+    ):
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope(TeaModel):
+    def __init__(
+        self,
+        effective_type: str = None,
+        scopes: DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes = None,
+    ):
+        self.effective_type = effective_type
+        self.scopes = scopes
+
+    def validate(self):
+        if self.scopes:
+            self.scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_type is not None:
+            result['EffectiveType'] = self.effective_type
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveType') is not None:
+            self.effective_type = m.get('EffectiveType')
+        if m.get('Scopes') is not None:
+            temp_model = DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScopeScopes()
+            self.scopes = temp_model.from_map(m['Scopes'])
+        return self
+
+
+class DescribeRecursionZoneResponseBodyEffectiveScopes(TeaModel):
+    def __init__(
+        self,
+        effective_scope: List[DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope] = None,
+    ):
+        self.effective_scope = effective_scope
+
+    def validate(self):
+        if self.effective_scope:
+            for k in self.effective_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EffectiveScope'] = []
+        if self.effective_scope is not None:
+            for k in self.effective_scope:
+                result['EffectiveScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.effective_scope = []
+        if m.get('EffectiveScope') is not None:
+            for k in m.get('EffectiveScope'):
+                temp_model = DescribeRecursionZoneResponseBodyEffectiveScopesEffectiveScope()
+                self.effective_scope.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeRecursionZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        effective_scopes: DescribeRecursionZoneResponseBodyEffectiveScopes = None,
+        proxy_pattern: str = None,
+        record_count: int = None,
+        remark: str = None,
+        request_id: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        user_id: str = None,
+        zone_id: str = None,
+        zone_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.effective_scopes = effective_scopes
+        self.proxy_pattern = proxy_pattern
+        self.record_count = record_count
+        self.remark = remark
+        self.request_id = request_id
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.user_id = user_id
+        self.zone_id = zone_id
+        self.zone_name = zone_name
+
+    def validate(self):
+        if self.effective_scopes:
+            self.effective_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.effective_scopes is not None:
+            result['EffectiveScopes'] = self.effective_scopes.to_map()
+        if self.proxy_pattern is not None:
+            result['ProxyPattern'] = self.proxy_pattern
+        if self.record_count is not None:
+            result['RecordCount'] = self.record_count
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('EffectiveScopes') is not None:
+            temp_model = DescribeRecursionZoneResponseBodyEffectiveScopes()
+            self.effective_scopes = temp_model.from_map(m['EffectiveScopes'])
+        if m.get('ProxyPattern') is not None:
+            self.proxy_pattern = m.get('ProxyPattern')
+        if m.get('RecordCount') is not None:
+            self.record_count = m.get('RecordCount')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class DescribeRecursionZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRecursionZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRecursionZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSubDomainRecordsRequest(TeaModel):
     def __init__(
         self,
@@ -37262,6 +38200,781 @@ class ListCloudGtmMonitorTemplatesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListCloudGtmMonitorTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRecursionRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.enable = enable
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark = remark
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.weight = weight
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListRecursionRecordsResponseBodyRecordsRecord(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: int = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        enable_status: str = None,
+        priority: int = None,
+        record_id: str = None,
+        remark: str = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        value: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.enable_status = enable_status
+        self.priority = priority
+        self.record_id = record_id
+        self.remark = remark
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.value = value
+        self.weight = weight
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ListRecursionRecordsResponseBodyRecords(TeaModel):
+    def __init__(
+        self,
+        record: List[ListRecursionRecordsResponseBodyRecordsRecord] = None,
+    ):
+        self.record = record
+
+    def validate(self):
+        if self.record:
+            for k in self.record:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Record'] = []
+        if self.record is not None:
+            for k in self.record:
+                result['Record'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.record = []
+        if m.get('Record') is not None:
+            for k in m.get('Record'):
+                temp_model = ListRecursionRecordsResponseBodyRecordsRecord()
+                self.record.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecursionRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        records: ListRecursionRecordsResponseBodyRecords = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.records = records
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.records:
+            self.records.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.records is not None:
+            result['Records'] = self.records.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Records') is not None:
+            temp_model = ListRecursionRecordsResponseBodyRecords()
+            self.records = temp_model.from_map(m['Records'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListRecursionRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRecursionRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRecursionRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListRecursionZonesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        zone_name: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark = remark
+        self.zone_name = zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes(TeaModel):
+    def __init__(
+        self,
+        scope: List[str] = None,
+    ):
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope(TeaModel):
+    def __init__(
+        self,
+        effective_type: str = None,
+        scopes: ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes = None,
+    ):
+        self.effective_type = effective_type
+        self.scopes = scopes
+
+    def validate(self):
+        if self.scopes:
+            self.scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_type is not None:
+            result['EffectiveType'] = self.effective_type
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveType') is not None:
+            self.effective_type = m.get('EffectiveType')
+        if m.get('Scopes') is not None:
+            temp_model = ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes()
+            self.scopes = temp_model.from_map(m['Scopes'])
+        return self
+
+
+class ListRecursionZonesResponseBodyZonesZoneEffectiveScopes(TeaModel):
+    def __init__(
+        self,
+        effective_scope: List[ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope] = None,
+    ):
+        self.effective_scope = effective_scope
+
+    def validate(self):
+        if self.effective_scope:
+            for k in self.effective_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EffectiveScope'] = []
+        if self.effective_scope is not None:
+            for k in self.effective_scope:
+                result['EffectiveScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.effective_scope = []
+        if m.get('EffectiveScope') is not None:
+            for k in m.get('EffectiveScope'):
+                temp_model = ListRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope()
+                self.effective_scope.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecursionZonesResponseBodyZonesZone(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        effective_scopes: ListRecursionZonesResponseBodyZonesZoneEffectiveScopes = None,
+        proxy_pattern: str = None,
+        record_count: int = None,
+        remark: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        zone_id: str = None,
+        zone_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.effective_scopes = effective_scopes
+        self.proxy_pattern = proxy_pattern
+        self.record_count = record_count
+        self.remark = remark
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.zone_id = zone_id
+        self.zone_name = zone_name
+
+    def validate(self):
+        if self.effective_scopes:
+            self.effective_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.effective_scopes is not None:
+            result['EffectiveScopes'] = self.effective_scopes.to_map()
+        if self.proxy_pattern is not None:
+            result['ProxyPattern'] = self.proxy_pattern
+        if self.record_count is not None:
+            result['RecordCount'] = self.record_count
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('EffectiveScopes') is not None:
+            temp_model = ListRecursionZonesResponseBodyZonesZoneEffectiveScopes()
+            self.effective_scopes = temp_model.from_map(m['EffectiveScopes'])
+        if m.get('ProxyPattern') is not None:
+            self.proxy_pattern = m.get('ProxyPattern')
+        if m.get('RecordCount') is not None:
+            self.record_count = m.get('RecordCount')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class ListRecursionZonesResponseBodyZones(TeaModel):
+    def __init__(
+        self,
+        zone: List[ListRecursionZonesResponseBodyZonesZone] = None,
+    ):
+        self.zone = zone
+
+    def validate(self):
+        if self.zone:
+            for k in self.zone:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Zone'] = []
+        if self.zone is not None:
+            for k in self.zone:
+                result['Zone'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.zone = []
+        if m.get('Zone') is not None:
+            for k in m.get('Zone'):
+                temp_model = ListRecursionZonesResponseBodyZonesZone()
+                self.zone.append(temp_model.from_map(k))
+        return self
+
+
+class ListRecursionZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+        zones: ListRecursionZonesResponseBodyZones = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            self.zones.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        if self.zones is not None:
+            result['Zones'] = self.zones.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        if m.get('Zones') is not None:
+            temp_model = ListRecursionZonesResponseBodyZones()
+            self.zones = temp_model.from_map(m['Zones'])
+        return self
+
+
+class ListRecursionZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRecursionZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRecursionZonesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -42333,6 +44046,937 @@ class SearchCloudGtmMonitorTemplatesResponse(TeaModel):
         return self
 
 
+class SearchRecursionRecordsRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        enable_status: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_by: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        value: str = None,
+        weight: int = None,
+        zone_id: str = None,
+    ):
+        self.direction = direction
+        self.enable_status = enable_status
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_by = order_by
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark = remark
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.value = value
+        self.weight = weight
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class SearchRecursionRecordsResponseBodyRecordsRecord(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: int = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        enable_status: str = None,
+        priority: int = None,
+        record_id: str = None,
+        remark: str = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        value: str = None,
+        weight: str = None,
+        zone_id: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.enable_status = enable_status
+        self.priority = priority
+        # record ID
+        self.record_id = record_id
+        self.remark = remark
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.value = value
+        self.weight = weight
+        # zone ID
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class SearchRecursionRecordsResponseBodyRecords(TeaModel):
+    def __init__(
+        self,
+        record: List[SearchRecursionRecordsResponseBodyRecordsRecord] = None,
+    ):
+        self.record = record
+
+    def validate(self):
+        if self.record:
+            for k in self.record:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Record'] = []
+        if self.record is not None:
+            for k in self.record:
+                result['Record'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.record = []
+        if m.get('Record') is not None:
+            for k in m.get('Record'):
+                temp_model = SearchRecursionRecordsResponseBodyRecordsRecord()
+                self.record.append(temp_model.from_map(k))
+        return self
+
+
+class SearchRecursionRecordsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        records: SearchRecursionRecordsResponseBodyRecords = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.records = records
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.records:
+            self.records.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.records is not None:
+            result['Records'] = self.records.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Records') is not None:
+            temp_model = SearchRecursionRecordsResponseBodyRecords()
+            self.records = temp_model.from_map(m['Records'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchRecursionRecordsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchRecursionRecordsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchRecursionRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchRecursionZonesRequestEffectiveScopes(TeaModel):
+    def __init__(
+        self,
+        effective_type: str = None,
+        scope: List[str] = None,
+    ):
+        self.effective_type = effective_type
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_type is not None:
+            result['EffectiveType'] = self.effective_type
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveType') is not None:
+            self.effective_type = m.get('EffectiveType')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class SearchRecursionZonesRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        effective_scopes: List[SearchRecursionZonesRequestEffectiveScopes] = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_by: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        zone_name: str = None,
+    ):
+        self.direction = direction
+        self.effective_scopes = effective_scopes
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_by = order_by
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark = remark
+        self.zone_name = zone_name
+
+    def validate(self):
+        if self.effective_scopes:
+            for k in self.effective_scopes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        result['EffectiveScopes'] = []
+        if self.effective_scopes is not None:
+            for k in self.effective_scopes:
+                result['EffectiveScopes'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        self.effective_scopes = []
+        if m.get('EffectiveScopes') is not None:
+            for k in m.get('EffectiveScopes'):
+                temp_model = SearchRecursionZonesRequestEffectiveScopes()
+                self.effective_scopes.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class SearchRecursionZonesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        direction: str = None,
+        effective_scopes_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order_by: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        zone_name: str = None,
+    ):
+        self.direction = direction
+        self.effective_scopes_shrink = effective_scopes_shrink
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order_by = order_by
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark = remark
+        self.zone_name = zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.direction is not None:
+            result['Direction'] = self.direction
+        if self.effective_scopes_shrink is not None:
+            result['EffectiveScopes'] = self.effective_scopes_shrink
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
+        if m.get('EffectiveScopes') is not None:
+            self.effective_scopes_shrink = m.get('EffectiveScopes')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes(TeaModel):
+    def __init__(
+        self,
+        scope: List[str] = None,
+    ):
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope(TeaModel):
+    def __init__(
+        self,
+        effective_type: str = None,
+        scopes: SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes = None,
+    ):
+        self.effective_type = effective_type
+        self.scopes = scopes
+
+    def validate(self):
+        if self.scopes:
+            self.scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_type is not None:
+            result['EffectiveType'] = self.effective_type
+        if self.scopes is not None:
+            result['Scopes'] = self.scopes.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveType') is not None:
+            self.effective_type = m.get('EffectiveType')
+        if m.get('Scopes') is not None:
+            temp_model = SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScopeScopes()
+            self.scopes = temp_model.from_map(m['Scopes'])
+        return self
+
+
+class SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes(TeaModel):
+    def __init__(
+        self,
+        effective_scope: List[SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope] = None,
+    ):
+        self.effective_scope = effective_scope
+
+    def validate(self):
+        if self.effective_scope:
+            for k in self.effective_scope:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EffectiveScope'] = []
+        if self.effective_scope is not None:
+            for k in self.effective_scope:
+                result['EffectiveScope'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.effective_scope = []
+        if m.get('EffectiveScope') is not None:
+            for k in m.get('EffectiveScope'):
+                temp_model = SearchRecursionZonesResponseBodyZonesZoneEffectiveScopesEffectiveScope()
+                self.effective_scope.append(temp_model.from_map(k))
+        return self
+
+
+class SearchRecursionZonesResponseBodyZonesZone(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
+        effective_scopes: SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes = None,
+        proxy_pattern: str = None,
+        record_count: int = None,
+        remark: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        zone_id: str = None,
+        zone_name: str = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
+        self.effective_scopes = effective_scopes
+        self.proxy_pattern = proxy_pattern
+        self.record_count = record_count
+        self.remark = remark
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.zone_id = zone_id
+        self.zone_name = zone_name
+
+    def validate(self):
+        if self.effective_scopes:
+            self.effective_scopes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.effective_scopes is not None:
+            result['EffectiveScopes'] = self.effective_scopes.to_map()
+        if self.proxy_pattern is not None:
+            result['ProxyPattern'] = self.proxy_pattern
+        if self.record_count is not None:
+            result['RecordCount'] = self.record_count
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('EffectiveScopes') is not None:
+            temp_model = SearchRecursionZonesResponseBodyZonesZoneEffectiveScopes()
+            self.effective_scopes = temp_model.from_map(m['EffectiveScopes'])
+        if m.get('ProxyPattern') is not None:
+            self.proxy_pattern = m.get('ProxyPattern')
+        if m.get('RecordCount') is not None:
+            self.record_count = m.get('RecordCount')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
+        return self
+
+
+class SearchRecursionZonesResponseBodyZones(TeaModel):
+    def __init__(
+        self,
+        zone: List[SearchRecursionZonesResponseBodyZonesZone] = None,
+    ):
+        self.zone = zone
+
+    def validate(self):
+        if self.zone:
+            for k in self.zone:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Zone'] = []
+        if self.zone is not None:
+            for k in self.zone:
+                result['Zone'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.zone = []
+        if m.get('Zone') is not None:
+            for k in m.get('Zone'):
+                temp_model = SearchRecursionZonesResponseBodyZonesZone()
+                self.zone.append(temp_model.from_map(k))
+        return self
+
+
+class SearchRecursionZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+        zones: SearchRecursionZonesResponseBodyZones = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+        self.zones = zones
+
+    def validate(self):
+        if self.zones:
+            self.zones.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        if self.zones is not None:
+            result['Zones'] = self.zones.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        if m.get('Zones') is not None:
+            temp_model = SearchRecursionZonesResponseBodyZones()
+            self.zones = temp_model.from_map(m['Zones'])
+        return self
+
+
+class SearchRecursionZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchRecursionZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchRecursionZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SetDNSSLBStatusRequest(TeaModel):
     def __init__(
         self,
@@ -44454,11 +47098,11 @@ class UpdateCloudGtmAddressEnableStatusRequest(TeaModel):
         client_token: str = None,
         enable_status: str = None,
     ):
-        # 返回结果显示的语言。取值：
+        # The language of the returned results. Valid values:
         # 
-        # - zh-CN：中文
+        # - zh-CN: Chinese
         # 
-        # - en-US：英文
+        # - en-US: English
         self.accept_language = accept_language
         # The ID of the address. This ID uniquely identifies the address.
         # 
@@ -50397,6 +53041,1003 @@ class UpdateIspFlushCacheInstanceConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIspFlushCacheInstanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionRecordRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        priority: int = None,
+        record_id: str = None,
+        request_source: str = None,
+        rr: str = None,
+        ttl: int = None,
+        type: str = None,
+        value: str = None,
+        weight: int = None,
+    ):
+        self.client_token = client_token
+        self.priority = priority
+        self.record_id = record_id
+        self.request_source = request_source
+        self.rr = rr
+        self.ttl = ttl
+        self.type = type
+        self.value = value
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class UpdateRecursionRecordResponseBody(TeaModel):
+    def __init__(
+        self,
+        record_id: str = None,
+        request_id: str = None,
+    ):
+        self.record_id = record_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionRecordResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionRecordResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionRecordResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionRecordEnableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        enable_status: str = None,
+        record_id: str = None,
+    ):
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.record_id = record_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        return self
+
+
+class UpdateRecursionRecordEnableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionRecordEnableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionRecordEnableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionRecordEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionRecordRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        record_id: str = None,
+        remark: str = None,
+    ):
+        self.client_token = client_token
+        # record id
+        self.record_id = record_id
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateRecursionRecordRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionRecordRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionRecordRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionRecordRemarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionRecordWeightRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        record_id: str = None,
+        weight: int = None,
+    ):
+        self.client_token = client_token
+        self.record_id = record_id
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.record_id is not None:
+            result['RecordId'] = self.record_id
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('RecordId') is not None:
+            self.record_id = m.get('RecordId')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class UpdateRecursionRecordWeightResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionRecordWeightResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionRecordWeightResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionRecordWeightResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionRecordWeightEnableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        enable_status: str = None,
+        request_source: str = None,
+        rr: str = None,
+        type: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.request_source = request_source
+        self.rr = rr
+        self.type = type
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.rr is not None:
+            result['Rr'] = self.rr
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('Rr') is not None:
+            self.rr = m.get('Rr')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateRecursionRecordWeightEnableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionRecordWeightEnableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionRecordWeightEnableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionRecordWeightEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes(TeaModel):
+    def __init__(
+        self,
+        effective_type: str = None,
+        scope: List[str] = None,
+    ):
+        self.effective_type = effective_type
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_type is not None:
+            result['EffectiveType'] = self.effective_type
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveType') is not None:
+            self.effective_type = m.get('EffectiveType')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class UpdateRecursionZoneEffectiveScopeRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        effective_scopes: List[UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes] = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.effective_scopes = effective_scopes
+        self.zone_id = zone_id
+
+    def validate(self):
+        if self.effective_scopes:
+            for k in self.effective_scopes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['EffectiveScopes'] = []
+        if self.effective_scopes is not None:
+            for k in self.effective_scopes:
+                result['EffectiveScopes'].append(k.to_map() if k else None)
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.effective_scopes = []
+        if m.get('EffectiveScopes') is not None:
+            for k in m.get('EffectiveScopes'):
+                temp_model = UpdateRecursionZoneEffectiveScopeRequestEffectiveScopes()
+                self.effective_scopes.append(temp_model.from_map(k))
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateRecursionZoneEffectiveScopeShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        effective_scopes_shrink: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.effective_scopes_shrink = effective_scopes_shrink
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.effective_scopes_shrink is not None:
+            result['EffectiveScopes'] = self.effective_scopes_shrink
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EffectiveScopes') is not None:
+            self.effective_scopes_shrink = m.get('EffectiveScopes')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateRecursionZoneEffectiveScopeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionZoneEffectiveScopeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionZoneEffectiveScopeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionZoneEffectiveScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionZoneProxyPatternRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        proxy_pattern: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.proxy_pattern = proxy_pattern
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.proxy_pattern is not None:
+            result['ProxyPattern'] = self.proxy_pattern
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ProxyPattern') is not None:
+            self.proxy_pattern = m.get('ProxyPattern')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateRecursionZoneProxyPatternResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionZoneProxyPatternResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionZoneProxyPatternResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionZoneProxyPatternResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateRecursionZoneRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        remark: str = None,
+        zone_id: str = None,
+    ):
+        self.client_token = client_token
+        self.remark = remark
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class UpdateRecursionZoneRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateRecursionZoneRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateRecursionZoneRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateRecursionZoneRemarkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

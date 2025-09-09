@@ -1,3 +1,24 @@
+2025-09-09 Version: 3.6.0
+- Support API AddRecursionRecord.
+- Support API AddRecursionZone.
+- Support API DeleteRecursionRecord.
+- Support API DeleteRecursionZone.
+- Support API DescribeRecursionRecord.
+- Support API DescribeRecursionZone.
+- Support API ListRecursionRecords.
+- Support API ListRecursionZones.
+- Support API SearchRecursionRecords.
+- Support API SearchRecursionZones.
+- Support API UpdateRecursionRecord.
+- Support API UpdateRecursionRecordEnableStatus.
+- Support API UpdateRecursionRecordRemark.
+- Support API UpdateRecursionRecordWeight.
+- Support API UpdateRecursionRecordWeightEnableStatus.
+- Support API UpdateRecursionZoneEffectiveScope.
+- Support API UpdateRecursionZoneProxyPattern.
+- Support API UpdateRecursionZoneRemark.
+
+
 2025-07-25 Version: 3.5.10
 - Update API DescribeDomainRecords: add response parameters Body.DomainRecords.$.LbaStatus.
 

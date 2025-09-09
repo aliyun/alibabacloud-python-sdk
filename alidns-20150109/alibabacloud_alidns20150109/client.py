@@ -1661,6 +1661,242 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_gtm_recovery_plan_with_options_async(request, runtime)
 
+    def add_recursion_record_with_options(
+        self,
+        request: alidns_20150109_models.AddRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddRecursionRecordResponse:
+        """
+        @summary 新增递归解析内置权威解析记录
+        
+        @param request: AddRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.AddRecursionRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_recursion_record_with_options_async(
+        self,
+        request: alidns_20150109_models.AddRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddRecursionRecordResponse:
+        """
+        @summary 新增递归解析内置权威解析记录
+        
+        @param request: AddRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.AddRecursionRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_recursion_record(
+        self,
+        request: alidns_20150109_models.AddRecursionRecordRequest,
+    ) -> alidns_20150109_models.AddRecursionRecordResponse:
+        """
+        @summary 新增递归解析内置权威解析记录
+        
+        @param request: AddRecursionRecordRequest
+        @return: AddRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_recursion_record_with_options(request, runtime)
+
+    async def add_recursion_record_async(
+        self,
+        request: alidns_20150109_models.AddRecursionRecordRequest,
+    ) -> alidns_20150109_models.AddRecursionRecordResponse:
+        """
+        @summary 新增递归解析内置权威解析记录
+        
+        @param request: AddRecursionRecordRequest
+        @return: AddRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_recursion_record_with_options_async(request, runtime)
+
+    def add_recursion_zone_with_options(
+        self,
+        request: alidns_20150109_models.AddRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddRecursionZoneResponse:
+        """
+        @summary 新增递归解析内置权威域名zone
+        
+        @param request: AddRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.proxy_pattern):
+            query['ProxyPattern'] = request.proxy_pattern
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.AddRecursionZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_recursion_zone_with_options_async(
+        self,
+        request: alidns_20150109_models.AddRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.AddRecursionZoneResponse:
+        """
+        @summary 新增递归解析内置权威域名zone
+        
+        @param request: AddRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.proxy_pattern):
+            query['ProxyPattern'] = request.proxy_pattern
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.AddRecursionZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_recursion_zone(
+        self,
+        request: alidns_20150109_models.AddRecursionZoneRequest,
+    ) -> alidns_20150109_models.AddRecursionZoneResponse:
+        """
+        @summary 新增递归解析内置权威域名zone
+        
+        @param request: AddRecursionZoneRequest
+        @return: AddRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_recursion_zone_with_options(request, runtime)
+
+    async def add_recursion_zone_async(
+        self,
+        request: alidns_20150109_models.AddRecursionZoneRequest,
+    ) -> alidns_20150109_models.AddRecursionZoneResponse:
+        """
+        @summary 新增递归解析内置权威域名zone
+        
+        @param request: AddRecursionZoneRequest
+        @return: AddRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_recursion_zone_with_options_async(request, runtime)
+
     def bind_instance_domains_with_options(
         self,
         request: alidns_20150109_models.BindInstanceDomainsRequest,
@@ -4256,6 +4492,206 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gtm_recovery_plan_with_options_async(request, runtime)
+
+    def delete_recursion_record_with_options(
+        self,
+        request: alidns_20150109_models.DeleteRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteRecursionRecordResponse:
+        """
+        @summary 删除递归解析内置权威解析记录
+        
+        @param request: DeleteRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteRecursionRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recursion_record_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteRecursionRecordResponse:
+        """
+        @summary 删除递归解析内置权威解析记录
+        
+        @param request: DeleteRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteRecursionRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recursion_record(
+        self,
+        request: alidns_20150109_models.DeleteRecursionRecordRequest,
+    ) -> alidns_20150109_models.DeleteRecursionRecordResponse:
+        """
+        @summary 删除递归解析内置权威解析记录
+        
+        @param request: DeleteRecursionRecordRequest
+        @return: DeleteRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recursion_record_with_options(request, runtime)
+
+    async def delete_recursion_record_async(
+        self,
+        request: alidns_20150109_models.DeleteRecursionRecordRequest,
+    ) -> alidns_20150109_models.DeleteRecursionRecordResponse:
+        """
+        @summary 删除递归解析内置权威解析记录
+        
+        @param request: DeleteRecursionRecordRequest
+        @return: DeleteRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recursion_record_with_options_async(request, runtime)
+
+    def delete_recursion_zone_with_options(
+        self,
+        request: alidns_20150109_models.DeleteRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteRecursionZoneResponse:
+        """
+        @summary 删除递归解析内置权威域名zone
+        
+        @param request: DeleteRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteRecursionZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_recursion_zone_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteRecursionZoneResponse:
+        """
+        @summary 删除递归解析内置权威域名zone
+        
+        @param request: DeleteRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteRecursionZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_recursion_zone(
+        self,
+        request: alidns_20150109_models.DeleteRecursionZoneRequest,
+    ) -> alidns_20150109_models.DeleteRecursionZoneResponse:
+        """
+        @summary 删除递归解析内置权威域名zone
+        
+        @param request: DeleteRecursionZoneRequest
+        @return: DeleteRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_recursion_zone_with_options(request, runtime)
+
+    async def delete_recursion_zone_async(
+        self,
+        request: alidns_20150109_models.DeleteRecursionZoneRequest,
+    ) -> alidns_20150109_models.DeleteRecursionZoneResponse:
+        """
+        @summary 删除递归解析内置权威域名zone
+        
+        @param request: DeleteRecursionZoneRequest
+        @return: DeleteRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_recursion_zone_with_options_async(request, runtime)
 
     def delete_sub_domain_records_with_options(
         self,
@@ -13855,6 +14291,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_statistics_summary_with_options_async(request, runtime)
 
+    def describe_recursion_record_with_options(
+        self,
+        request: alidns_20150109_models.DescribeRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeRecursionRecordResponse:
+        """
+        @summary 查询递归解析内置权威解析记录详情
+        
+        @param request: DescribeRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeRecursionRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_recursion_record_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeRecursionRecordResponse:
+        """
+        @summary 查询递归解析内置权威解析记录详情
+        
+        @param request: DescribeRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeRecursionRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_recursion_record(
+        self,
+        request: alidns_20150109_models.DescribeRecursionRecordRequest,
+    ) -> alidns_20150109_models.DescribeRecursionRecordResponse:
+        """
+        @summary 查询递归解析内置权威解析记录详情
+        
+        @param request: DescribeRecursionRecordRequest
+        @return: DescribeRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_recursion_record_with_options(request, runtime)
+
+    async def describe_recursion_record_async(
+        self,
+        request: alidns_20150109_models.DescribeRecursionRecordRequest,
+    ) -> alidns_20150109_models.DescribeRecursionRecordResponse:
+        """
+        @summary 查询递归解析内置权威解析记录详情
+        
+        @param request: DescribeRecursionRecordRequest
+        @return: DescribeRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_recursion_record_with_options_async(request, runtime)
+
+    def describe_recursion_zone_with_options(
+        self,
+        request: alidns_20150109_models.DescribeRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeRecursionZoneResponse:
+        """
+        @summary 查询递归解析内置权威域名zone详情
+        
+        @param request: DescribeRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeRecursionZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_recursion_zone_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeRecursionZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeRecursionZoneResponse:
+        """
+        @summary 查询递归解析内置权威域名zone详情
+        
+        @param request: DescribeRecursionZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecursionZoneResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRecursionZone',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeRecursionZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_recursion_zone(
+        self,
+        request: alidns_20150109_models.DescribeRecursionZoneRequest,
+    ) -> alidns_20150109_models.DescribeRecursionZoneResponse:
+        """
+        @summary 查询递归解析内置权威域名zone详情
+        
+        @param request: DescribeRecursionZoneRequest
+        @return: DescribeRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_recursion_zone_with_options(request, runtime)
+
+    async def describe_recursion_zone_async(
+        self,
+        request: alidns_20150109_models.DescribeRecursionZoneRequest,
+    ) -> alidns_20150109_models.DescribeRecursionZoneResponse:
+        """
+        @summary 查询递归解析内置权威域名zone详情
+        
+        @param request: DescribeRecursionZoneRequest
+        @return: DescribeRecursionZoneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_recursion_zone_with_options_async(request, runtime)
+
     def describe_sub_domain_records_with_options(
         self,
         request: alidns_20150109_models.DescribeSubDomainRecordsRequest,
@@ -15546,6 +16174,262 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_cloud_gtm_monitor_templates_with_options_async(request, runtime)
+
+    def list_recursion_records_with_options(
+        self,
+        request: alidns_20150109_models.ListRecursionRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListRecursionRecordsResponse:
+        """
+        @summary 查询递归解析内置权威解析记录
+        
+        @param request: ListRecursionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecursionRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecursionRecords',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListRecursionRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recursion_records_with_options_async(
+        self,
+        request: alidns_20150109_models.ListRecursionRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListRecursionRecordsResponse:
+        """
+        @summary 查询递归解析内置权威解析记录
+        
+        @param request: ListRecursionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecursionRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.enable):
+            query['Enable'] = request.enable
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecursionRecords',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListRecursionRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recursion_records(
+        self,
+        request: alidns_20150109_models.ListRecursionRecordsRequest,
+    ) -> alidns_20150109_models.ListRecursionRecordsResponse:
+        """
+        @summary 查询递归解析内置权威解析记录
+        
+        @param request: ListRecursionRecordsRequest
+        @return: ListRecursionRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recursion_records_with_options(request, runtime)
+
+    async def list_recursion_records_async(
+        self,
+        request: alidns_20150109_models.ListRecursionRecordsRequest,
+    ) -> alidns_20150109_models.ListRecursionRecordsResponse:
+        """
+        @summary 查询递归解析内置权威解析记录
+        
+        @param request: ListRecursionRecordsRequest
+        @return: ListRecursionRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recursion_records_with_options_async(request, runtime)
+
+    def list_recursion_zones_with_options(
+        self,
+        request: alidns_20150109_models.ListRecursionZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListRecursionZonesResponse:
+        """
+        @summary 查询递归解析内置权威域名zone
+        
+        @param request: ListRecursionZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecursionZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecursionZones',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListRecursionZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_recursion_zones_with_options_async(
+        self,
+        request: alidns_20150109_models.ListRecursionZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListRecursionZonesResponse:
+        """
+        @summary 查询递归解析内置权威域名zone
+        
+        @param request: ListRecursionZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecursionZonesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRecursionZones',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListRecursionZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_recursion_zones(
+        self,
+        request: alidns_20150109_models.ListRecursionZonesRequest,
+    ) -> alidns_20150109_models.ListRecursionZonesResponse:
+        """
+        @summary 查询递归解析内置权威域名zone
+        
+        @param request: ListRecursionZonesRequest
+        @return: ListRecursionZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_recursion_zones_with_options(request, runtime)
+
+    async def list_recursion_zones_async(
+        self,
+        request: alidns_20150109_models.ListRecursionZonesRequest,
+    ) -> alidns_20150109_models.ListRecursionZonesResponse:
+        """
+        @summary 查询递归解析内置权威域名zone
+        
+        @param request: ListRecursionZonesRequest
+        @return: ListRecursionZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_recursion_zones_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -17706,6 +18590,294 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_cloud_gtm_monitor_templates_with_options_async(request, runtime)
+
+    def search_recursion_records_with_options(
+        self,
+        request: alidns_20150109_models.SearchRecursionRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchRecursionRecordsResponse:
+        """
+        @summary 搜索递归解析内置权威解析记录
+        
+        @param request: SearchRecursionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchRecursionRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchRecursionRecords',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchRecursionRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_recursion_records_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchRecursionRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchRecursionRecordsResponse:
+        """
+        @summary 搜索递归解析内置权威解析记录
+        
+        @param request: SearchRecursionRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchRecursionRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchRecursionRecords',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchRecursionRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_recursion_records(
+        self,
+        request: alidns_20150109_models.SearchRecursionRecordsRequest,
+    ) -> alidns_20150109_models.SearchRecursionRecordsResponse:
+        """
+        @summary 搜索递归解析内置权威解析记录
+        
+        @param request: SearchRecursionRecordsRequest
+        @return: SearchRecursionRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_recursion_records_with_options(request, runtime)
+
+    async def search_recursion_records_async(
+        self,
+        request: alidns_20150109_models.SearchRecursionRecordsRequest,
+    ) -> alidns_20150109_models.SearchRecursionRecordsResponse:
+        """
+        @summary 搜索递归解析内置权威解析记录
+        
+        @param request: SearchRecursionRecordsRequest
+        @return: SearchRecursionRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_recursion_records_with_options_async(request, runtime)
+
+    def search_recursion_zones_with_options(
+        self,
+        tmp_req: alidns_20150109_models.SearchRecursionZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchRecursionZonesResponse:
+        """
+        @summary 搜索递归解析内置权威域名zone
+        
+        @param tmp_req: SearchRecursionZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchRecursionZonesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.SearchRecursionZonesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.effective_scopes):
+            request.effective_scopes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.effective_scopes, 'EffectiveScopes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.effective_scopes_shrink):
+            query['EffectiveScopes'] = request.effective_scopes_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchRecursionZones',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchRecursionZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_recursion_zones_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.SearchRecursionZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchRecursionZonesResponse:
+        """
+        @summary 搜索递归解析内置权威域名zone
+        
+        @param tmp_req: SearchRecursionZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchRecursionZonesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.SearchRecursionZonesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.effective_scopes):
+            request.effective_scopes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.effective_scopes, 'EffectiveScopes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.effective_scopes_shrink):
+            query['EffectiveScopes'] = request.effective_scopes_shrink
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_name):
+            query['ZoneName'] = request.zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchRecursionZones',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchRecursionZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_recursion_zones(
+        self,
+        request: alidns_20150109_models.SearchRecursionZonesRequest,
+    ) -> alidns_20150109_models.SearchRecursionZonesResponse:
+        """
+        @summary 搜索递归解析内置权威域名zone
+        
+        @param request: SearchRecursionZonesRequest
+        @return: SearchRecursionZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_recursion_zones_with_options(request, runtime)
+
+    async def search_recursion_zones_async(
+        self,
+        request: alidns_20150109_models.SearchRecursionZonesRequest,
+    ) -> alidns_20150109_models.SearchRecursionZonesResponse:
+        """
+        @summary 搜索递归解析内置权威域名zone
+        
+        @param request: SearchRecursionZonesRequest
+        @return: SearchRecursionZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_recursion_zones_with_options_async(request, runtime)
 
     def set_dnsslbstatus_with_options(
         self,
@@ -23314,6 +24486,882 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_isp_flush_cache_instance_config_with_options_async(request, runtime)
+
+    def update_recursion_record_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordResponse:
+        """
+        @summary 修改递归解析内置权威解析记录
+        
+        @param request: UpdateRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_record_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordResponse:
+        """
+        @summary 修改递归解析内置权威解析记录
+        
+        @param request: UpdateRecursionRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.priority):
+            query['Priority'] = request.priority
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecord',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_record(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordResponse:
+        """
+        @summary 修改递归解析内置权威解析记录
+        
+        @param request: UpdateRecursionRecordRequest
+        @return: UpdateRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_record_with_options(request, runtime)
+
+    async def update_recursion_record_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordResponse:
+        """
+        @summary 修改递归解析内置权威解析记录
+        
+        @param request: UpdateRecursionRecordRequest
+        @return: UpdateRecursionRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_record_with_options_async(request, runtime)
+
+    def update_recursion_record_enable_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse:
+        """
+        @summary 修改内置权威解析记录启用状态
+        
+        @param request: UpdateRecursionRecordEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_record_enable_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse:
+        """
+        @summary 修改内置权威解析记录启用状态
+        
+        @param request: UpdateRecursionRecordEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_record_enable_status(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse:
+        """
+        @summary 修改内置权威解析记录启用状态
+        
+        @param request: UpdateRecursionRecordEnableStatusRequest
+        @return: UpdateRecursionRecordEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_record_enable_status_with_options(request, runtime)
+
+    async def update_recursion_record_enable_status_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordEnableStatusResponse:
+        """
+        @summary 修改内置权威解析记录启用状态
+        
+        @param request: UpdateRecursionRecordEnableStatusRequest
+        @return: UpdateRecursionRecordEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_record_enable_status_with_options_async(request, runtime)
+
+    def update_recursion_record_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordRemarkResponse:
+        """
+        @summary 修改递归解析内置权威解析记录备注
+        
+        @param request: UpdateRecursionRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_record_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordRemarkResponse:
+        """
+        @summary 修改递归解析内置权威解析记录备注
+        
+        @param request: UpdateRecursionRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_record_remark(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRemarkRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordRemarkResponse:
+        """
+        @summary 修改递归解析内置权威解析记录备注
+        
+        @param request: UpdateRecursionRecordRemarkRequest
+        @return: UpdateRecursionRecordRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_record_remark_with_options(request, runtime)
+
+    async def update_recursion_record_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordRemarkRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordRemarkResponse:
+        """
+        @summary 修改递归解析内置权威解析记录备注
+        
+        @param request: UpdateRecursionRecordRemarkRequest
+        @return: UpdateRecursionRecordRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_record_remark_with_options_async(request, runtime)
+
+    def update_recursion_record_weight_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重
+        
+        @param request: UpdateRecursionRecordWeightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordWeightResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordWeight',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordWeightResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_record_weight_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重
+        
+        @param request: UpdateRecursionRecordWeightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordWeightResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordWeight',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordWeightResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_record_weight(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重
+        
+        @param request: UpdateRecursionRecordWeightRequest
+        @return: UpdateRecursionRecordWeightResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_record_weight_with_options(request, runtime)
+
+    async def update_recursion_record_weight_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重
+        
+        @param request: UpdateRecursionRecordWeightRequest
+        @return: UpdateRecursionRecordWeightResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_record_weight_with_options_async(request, runtime)
+
+    def update_recursion_record_weight_enable_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重算法启用状态
+        
+        @param request: UpdateRecursionRecordWeightEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordWeightEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordWeightEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_record_weight_enable_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重算法启用状态
+        
+        @param request: UpdateRecursionRecordWeightEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionRecordWeightEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.request_source):
+            query['RequestSource'] = request.request_source
+        if not UtilClient.is_unset(request.rr):
+            query['Rr'] = request.rr
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionRecordWeightEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_record_weight_enable_status(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重算法启用状态
+        
+        @param request: UpdateRecursionRecordWeightEnableStatusRequest
+        @return: UpdateRecursionRecordWeightEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_record_weight_enable_status_with_options(request, runtime)
+
+    async def update_recursion_record_weight_enable_status_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateRecursionRecordWeightEnableStatusResponse:
+        """
+        @summary 修改递归解析内置权威解析记录权重算法启用状态
+        
+        @param request: UpdateRecursionRecordWeightEnableStatusRequest
+        @return: UpdateRecursionRecordWeightEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_record_weight_enable_status_with_options_async(request, runtime)
+
+    def update_recursion_zone_effective_scope_with_options(
+        self,
+        tmp_req: alidns_20150109_models.UpdateRecursionZoneEffectiveScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse:
+        """
+        @summary 修改递归解析内置权威域名zone生效范围
+        
+        @param tmp_req: UpdateRecursionZoneEffectiveScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneEffectiveScopeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateRecursionZoneEffectiveScopeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.effective_scopes):
+            request.effective_scopes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.effective_scopes, 'EffectiveScopes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.effective_scopes_shrink):
+            query['EffectiveScopes'] = request.effective_scopes_shrink
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneEffectiveScope',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_zone_effective_scope_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.UpdateRecursionZoneEffectiveScopeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse:
+        """
+        @summary 修改递归解析内置权威域名zone生效范围
+        
+        @param tmp_req: UpdateRecursionZoneEffectiveScopeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneEffectiveScopeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateRecursionZoneEffectiveScopeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.effective_scopes):
+            request.effective_scopes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.effective_scopes, 'EffectiveScopes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.effective_scopes_shrink):
+            query['EffectiveScopes'] = request.effective_scopes_shrink
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneEffectiveScope',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_zone_effective_scope(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneEffectiveScopeRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse:
+        """
+        @summary 修改递归解析内置权威域名zone生效范围
+        
+        @param request: UpdateRecursionZoneEffectiveScopeRequest
+        @return: UpdateRecursionZoneEffectiveScopeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_zone_effective_scope_with_options(request, runtime)
+
+    async def update_recursion_zone_effective_scope_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneEffectiveScopeRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneEffectiveScopeResponse:
+        """
+        @summary 修改递归解析内置权威域名zone生效范围
+        
+        @param request: UpdateRecursionZoneEffectiveScopeRequest
+        @return: UpdateRecursionZoneEffectiveScopeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_zone_effective_scope_with_options_async(request, runtime)
+
+    def update_recursion_zone_proxy_pattern_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneProxyPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse:
+        """
+        @summary 修改递归解析内置权威域名zone递归代理模式
+        
+        @param request: UpdateRecursionZoneProxyPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneProxyPatternResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.proxy_pattern):
+            query['ProxyPattern'] = request.proxy_pattern
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneProxyPattern',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_zone_proxy_pattern_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneProxyPatternRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse:
+        """
+        @summary 修改递归解析内置权威域名zone递归代理模式
+        
+        @param request: UpdateRecursionZoneProxyPatternRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneProxyPatternResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.proxy_pattern):
+            query['ProxyPattern'] = request.proxy_pattern
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneProxyPattern',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_zone_proxy_pattern(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneProxyPatternRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse:
+        """
+        @summary 修改递归解析内置权威域名zone递归代理模式
+        
+        @param request: UpdateRecursionZoneProxyPatternRequest
+        @return: UpdateRecursionZoneProxyPatternResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_zone_proxy_pattern_with_options(request, runtime)
+
+    async def update_recursion_zone_proxy_pattern_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneProxyPatternRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneProxyPatternResponse:
+        """
+        @summary 修改递归解析内置权威域名zone递归代理模式
+        
+        @param request: UpdateRecursionZoneProxyPatternRequest
+        @return: UpdateRecursionZoneProxyPatternResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_zone_proxy_pattern_with_options_async(request, runtime)
+
+    def update_recursion_zone_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneRemarkResponse:
+        """
+        @summary 修改递归解析内置权威域名zone备注
+        
+        @param request: UpdateRecursionZoneRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_recursion_zone_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateRecursionZoneRemarkResponse:
+        """
+        @summary 修改递归解析内置权威域名zone备注
+        
+        @param request: UpdateRecursionZoneRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecursionZoneRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.zone_id):
+            query['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRecursionZoneRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateRecursionZoneRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_recursion_zone_remark(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneRemarkRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneRemarkResponse:
+        """
+        @summary 修改递归解析内置权威域名zone备注
+        
+        @param request: UpdateRecursionZoneRemarkRequest
+        @return: UpdateRecursionZoneRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_recursion_zone_remark_with_options(request, runtime)
+
+    async def update_recursion_zone_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateRecursionZoneRemarkRequest,
+    ) -> alidns_20150109_models.UpdateRecursionZoneRemarkResponse:
+        """
+        @summary 修改递归解析内置权威域名zone备注
+        
+        @param request: UpdateRecursionZoneRemarkRequest
+        @return: UpdateRecursionZoneRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_recursion_zone_remark_with_options_async(request, runtime)
 
     def validate_dns_gtm_cname_rr_can_use_with_options(
         self,
