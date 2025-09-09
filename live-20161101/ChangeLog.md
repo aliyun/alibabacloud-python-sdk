@@ -1,3 +1,7 @@
+2025-09-09 Version: 2.2.0
+- Support API ListRTCLiveRooms.
+
+
 2025-08-20 Version: 2.1.4
 - Generated python 2016-11-01 for live.
 

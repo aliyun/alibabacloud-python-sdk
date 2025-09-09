@@ -70972,6 +70972,127 @@ class ListPlaylistItemsResponse(TeaModel):
         return self
 
 
+class ListRTCLiveRoomsRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListRTCLiveRoomsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        rooms: List[str] = None,
+        total: int = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.rooms = rooms
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rooms is not None:
+            result['Rooms'] = self.rooms
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rooms') is not None:
+            self.rooms = m.get('Rooms')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListRTCLiveRoomsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListRTCLiveRoomsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListRTCLiveRoomsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListRtcMPUEventSubRecordRequest(TeaModel):
     def __init__(
         self,

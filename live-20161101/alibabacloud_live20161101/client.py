@@ -41244,6 +41244,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_playlist_items_with_options_async(request, runtime)
 
+    def list_rtclive_rooms_with_options(
+        self,
+        request: live_20161101_models.ListRTCLiveRoomsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListRTCLiveRoomsResponse:
+        """
+        @summary 获取在线频道列表
+        
+        @param request: ListRTCLiveRoomsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRTCLiveRoomsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRTCLiveRooms',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListRTCLiveRoomsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_rtclive_rooms_with_options_async(
+        self,
+        request: live_20161101_models.ListRTCLiveRoomsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> live_20161101_models.ListRTCLiveRoomsResponse:
+        """
+        @summary 获取在线频道列表
+        
+        @param request: ListRTCLiveRoomsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRTCLiveRoomsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListRTCLiveRooms',
+            version='2016-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            live_20161101_models.ListRTCLiveRoomsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_rtclive_rooms(
+        self,
+        request: live_20161101_models.ListRTCLiveRoomsRequest,
+    ) -> live_20161101_models.ListRTCLiveRoomsResponse:
+        """
+        @summary 获取在线频道列表
+        
+        @param request: ListRTCLiveRoomsRequest
+        @return: ListRTCLiveRoomsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_rtclive_rooms_with_options(request, runtime)
+
+    async def list_rtclive_rooms_async(
+        self,
+        request: live_20161101_models.ListRTCLiveRoomsRequest,
+    ) -> live_20161101_models.ListRTCLiveRoomsResponse:
+        """
+        @summary 获取在线频道列表
+        
+        @param request: ListRTCLiveRoomsRequest
+        @return: ListRTCLiveRoomsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_rtclive_rooms_with_options_async(request, runtime)
+
     def list_rtc_mpuevent_sub_record_with_options(
         self,
         request: live_20161101_models.ListRtcMPUEventSubRecordRequest,
