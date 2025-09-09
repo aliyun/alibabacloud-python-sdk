@@ -1,3 +1,11 @@
+2025-09-09 Version: 4.12.8
+- Update API DescribeModificationPrice: add request parameters RootDiskPerformanceLevel.
+- Update API DescribeModificationPrice: add request parameters UserDiskPerformanceLevel.
+- Update API DescribePrice: add request parameters RootDiskPerformanceLevel.
+- Update API DescribePrice: add request parameters UserDiskPerformanceLevel.
+- Update API ResetSnapshot: add request parameters StopDesktop.
+
+
 2025-08-25 Version: 4.12.7
 - Update API DescribeVirtualMFADevices: add request parameters Filter.
 - Update API DescribeVirtualMFADevices: add response parameters Body.VirtualMFADevices.$.AdUser.

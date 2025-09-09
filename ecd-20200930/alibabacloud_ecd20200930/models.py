@@ -35265,7 +35265,9 @@ class DescribeModificationPriceRequest(TeaModel):
         reseller_owner_uid: int = None,
         resource_specs: List[DescribeModificationPriceRequestResourceSpecs] = None,
         resource_type: str = None,
+        root_disk_performance_level: str = None,
         root_disk_size_gib: int = None,
+        user_disk_performance_level: str = None,
         user_disk_size_gib: int = None,
     ):
         # The maximum public bandwidth. Unit: Mbit/s.
@@ -35316,8 +35318,10 @@ class DescribeModificationPriceRequest(TeaModel):
         # *   Desktop (default): cloud computers.
         # *   NetworkPackage: premium bandwidth plans.
         self.resource_type = resource_type
+        self.root_disk_performance_level = root_disk_performance_level
         # The size of the system disk. Unit: GiB.
         self.root_disk_size_gib = root_disk_size_gib
+        self.user_disk_performance_level = user_disk_performance_level
         # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
@@ -35351,8 +35355,12 @@ class DescribeModificationPriceRequest(TeaModel):
                 result['ResourceSpecs'].append(k.to_map() if k else None)
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.root_disk_performance_level is not None:
+            result['RootDiskPerformanceLevel'] = self.root_disk_performance_level
         if self.root_disk_size_gib is not None:
             result['RootDiskSizeGib'] = self.root_disk_size_gib
+        if self.user_disk_performance_level is not None:
+            result['UserDiskPerformanceLevel'] = self.user_disk_performance_level
         if self.user_disk_size_gib is not None:
             result['UserDiskSizeGib'] = self.user_disk_size_gib
         return result
@@ -35378,8 +35386,12 @@ class DescribeModificationPriceRequest(TeaModel):
                 self.resource_specs.append(temp_model.from_map(k))
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('RootDiskPerformanceLevel') is not None:
+            self.root_disk_performance_level = m.get('RootDiskPerformanceLevel')
         if m.get('RootDiskSizeGib') is not None:
             self.root_disk_size_gib = m.get('RootDiskSizeGib')
+        if m.get('UserDiskPerformanceLevel') is not None:
+            self.user_disk_performance_level = m.get('UserDiskPerformanceLevel')
         if m.get('UserDiskSizeGib') is not None:
             self.user_disk_size_gib = m.get('UserDiskSizeGib')
         return self
@@ -39608,8 +39620,10 @@ class DescribePriceRequest(TeaModel):
         reseller_owner_uid: int = None,
         resource_type: str = None,
         root_disk_category: str = None,
+        root_disk_performance_level: str = None,
         root_disk_size_gib: int = None,
         user_disk_category: str = None,
+        user_disk_performance_level: str = None,
         user_disk_size_gib: int = None,
     ):
         # The number of resources. Default value: 1.
@@ -39690,6 +39704,7 @@ class DescribePriceRequest(TeaModel):
         # *   cloud_auto: the standard SSD.
         # *   cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
         self.root_disk_category = root_disk_category
+        self.root_disk_performance_level = root_disk_performance_level
         # The size of the system disk. Unit: GiB. If you set `ResourceType` to `Desktop`, you must specify this parameter.
         self.root_disk_size_gib = root_disk_size_gib
         # The category of the data disk.
@@ -39700,6 +39715,7 @@ class DescribePriceRequest(TeaModel):
         # *   cloud_auto: the standard SSD.
         # *   cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
         self.user_disk_category = user_disk_category
+        self.user_disk_performance_level = user_disk_performance_level
         # The size of the data disk. Unit: GiB.
         self.user_disk_size_gib = user_disk_size_gib
 
@@ -39740,10 +39756,14 @@ class DescribePriceRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.root_disk_category is not None:
             result['RootDiskCategory'] = self.root_disk_category
+        if self.root_disk_performance_level is not None:
+            result['RootDiskPerformanceLevel'] = self.root_disk_performance_level
         if self.root_disk_size_gib is not None:
             result['RootDiskSizeGib'] = self.root_disk_size_gib
         if self.user_disk_category is not None:
             result['UserDiskCategory'] = self.user_disk_category
+        if self.user_disk_performance_level is not None:
+            result['UserDiskPerformanceLevel'] = self.user_disk_performance_level
         if self.user_disk_size_gib is not None:
             result['UserDiskSizeGib'] = self.user_disk_size_gib
         return result
@@ -39778,10 +39798,14 @@ class DescribePriceRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('RootDiskCategory') is not None:
             self.root_disk_category = m.get('RootDiskCategory')
+        if m.get('RootDiskPerformanceLevel') is not None:
+            self.root_disk_performance_level = m.get('RootDiskPerformanceLevel')
         if m.get('RootDiskSizeGib') is not None:
             self.root_disk_size_gib = m.get('RootDiskSizeGib')
         if m.get('UserDiskCategory') is not None:
             self.user_disk_category = m.get('UserDiskCategory')
+        if m.get('UserDiskPerformanceLevel') is not None:
+            self.user_disk_performance_level = m.get('UserDiskPerformanceLevel')
         if m.get('UserDiskSizeGib') is not None:
             self.user_disk_size_gib = m.get('UserDiskSizeGib')
         return self
@@ -65801,6 +65825,7 @@ class ResetSnapshotRequest(TeaModel):
         self,
         region_id: str = None,
         snapshot_id: str = None,
+        stop_desktop: bool = None,
     ):
         # The ID of the region.
         # 
@@ -65810,6 +65835,7 @@ class ResetSnapshotRequest(TeaModel):
         # 
         # This parameter is required.
         self.snapshot_id = snapshot_id
+        self.stop_desktop = stop_desktop
 
     def validate(self):
         pass
@@ -65824,6 +65850,8 @@ class ResetSnapshotRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.stop_desktop is not None:
+            result['StopDesktop'] = self.stop_desktop
         return result
 
     def from_map(self, m: dict = None):
@@ -65832,6 +65860,8 @@ class ResetSnapshotRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('StopDesktop') is not None:
+            self.stop_desktop = m.get('StopDesktop')
         return self
 
 

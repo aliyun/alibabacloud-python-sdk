@@ -16249,8 +16249,12 @@ class Client(OpenApiClient):
             query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.root_disk_performance_level):
+            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
+        if not UtilClient.is_unset(request.user_disk_performance_level):
+            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -16302,8 +16306,12 @@ class Client(OpenApiClient):
             query['ResourceSpecs'] = request.resource_specs
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.root_disk_performance_level):
+            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
+        if not UtilClient.is_unset(request.user_disk_performance_level):
+            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -16992,10 +17000,14 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_category):
             query['RootDiskCategory'] = request.root_disk_category
+        if not UtilClient.is_unset(request.root_disk_performance_level):
+            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
         if not UtilClient.is_unset(request.user_disk_category):
             query['UserDiskCategory'] = request.user_disk_category
+        if not UtilClient.is_unset(request.user_disk_performance_level):
+            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -17066,10 +17078,14 @@ class Client(OpenApiClient):
             query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.root_disk_category):
             query['RootDiskCategory'] = request.root_disk_category
+        if not UtilClient.is_unset(request.root_disk_performance_level):
+            query['RootDiskPerformanceLevel'] = request.root_disk_performance_level
         if not UtilClient.is_unset(request.root_disk_size_gib):
             query['RootDiskSizeGib'] = request.root_disk_size_gib
         if not UtilClient.is_unset(request.user_disk_category):
             query['UserDiskCategory'] = request.user_disk_category
+        if not UtilClient.is_unset(request.user_disk_performance_level):
+            query['UserDiskPerformanceLevel'] = request.user_disk_performance_level
         if not UtilClient.is_unset(request.user_disk_size_gib):
             query['UserDiskSizeGib'] = request.user_disk_size_gib
         req = open_api_models.OpenApiRequest(
@@ -30400,6 +30416,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.stop_desktop):
+            query['StopDesktop'] = request.stop_desktop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -30442,6 +30460,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.snapshot_id):
             query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.stop_desktop):
+            query['StopDesktop'] = request.stop_desktop
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
