@@ -17054,6 +17054,8 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
     def __init__(
         self,
         applications: List[ListConnectorsResponseBodyConnectorsApplications] = None,
+        cluster_ip: str = None,
+        cluster_port: str = None,
         connector_clients: List[ListConnectorsResponseBodyConnectorsConnectorClients] = None,
         connector_id: str = None,
         create_time: str = None,
@@ -17064,6 +17066,8 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         upgrade_time: ListConnectorsResponseBodyConnectorsUpgradeTime = None,
     ):
         self.applications = applications
+        self.cluster_ip = cluster_ip
+        self.cluster_port = cluster_port
         self.connector_clients = connector_clients
         # ConnectorID。
         self.connector_id = connector_id
@@ -17096,6 +17100,10 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         if self.applications is not None:
             for k in self.applications:
                 result['Applications'].append(k.to_map() if k else None)
+        if self.cluster_ip is not None:
+            result['ClusterIP'] = self.cluster_ip
+        if self.cluster_port is not None:
+            result['ClusterPort'] = self.cluster_port
         result['ConnectorClients'] = []
         if self.connector_clients is not None:
             for k in self.connector_clients:
@@ -17123,6 +17131,10 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
             for k in m.get('Applications'):
                 temp_model = ListConnectorsResponseBodyConnectorsApplications()
                 self.applications.append(temp_model.from_map(k))
+        if m.get('ClusterIP') is not None:
+            self.cluster_ip = m.get('ClusterIP')
+        if m.get('ClusterPort') is not None:
+            self.cluster_port = m.get('ClusterPort')
         self.connector_clients = []
         if m.get('ConnectorClients') is not None:
             for k in m.get('ConnectorClients'):

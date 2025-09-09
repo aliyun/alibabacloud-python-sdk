@@ -1,3 +1,8 @@
+2025-09-09 Version: 1.10.7
+- Update API ListConnectors: add response parameters Body.Connectors.$.ClusterIP.
+- Update API ListConnectors: add response parameters Body.Connectors.$.ClusterPort.
+
+
 2025-08-27 Version: 1.10.6
 - Generated python 2023-01-20 for csas.
 
