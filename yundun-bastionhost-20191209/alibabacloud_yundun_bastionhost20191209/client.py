@@ -521,6 +521,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_hosts_to_group_with_options_async(request, runtime)
 
+    def add_instance_rd_member_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AddInstanceRdMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse:
+        """
+        @summary 添加RD成员账号
+        
+        @param request: AddInstanceRdMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInstanceRdMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstanceRdMember',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_instance_rd_member_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AddInstanceRdMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse:
+        """
+        @summary 添加RD成员账号
+        
+        @param request: AddInstanceRdMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddInstanceRdMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddInstanceRdMember',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_instance_rd_member(
+        self,
+        request: yundun_bastionhost_20191209_models.AddInstanceRdMemberRequest,
+    ) -> yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse:
+        """
+        @summary 添加RD成员账号
+        
+        @param request: AddInstanceRdMemberRequest
+        @return: AddInstanceRdMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_instance_rd_member_with_options(request, runtime)
+
+    async def add_instance_rd_member_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AddInstanceRdMemberRequest,
+    ) -> yundun_bastionhost_20191209_models.AddInstanceRdMemberResponse:
+        """
+        @summary 添加RD成员账号
+        
+        @param request: AddInstanceRdMemberRequest
+        @return: AddInstanceRdMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_instance_rd_member_with_options_async(request, runtime)
+
     def add_users_to_group_with_options(
         self,
         request: yundun_bastionhost_20191209_models.AddUsersToGroupRequest,
@@ -10629,6 +10733,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_hosts_for_user_group_with_options_async(request, runtime)
 
+    def list_instance_rd_members_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListInstanceRdMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse:
+        """
+        @summary 获取RD成员账号列表
+        
+        @param request: ListInstanceRdMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceRdMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRdMembers',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_rd_members_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListInstanceRdMembersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse:
+        """
+        @summary 获取RD成员账号列表
+        
+        @param request: ListInstanceRdMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceRdMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRdMembers',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_rd_members(
+        self,
+        request: yundun_bastionhost_20191209_models.ListInstanceRdMembersRequest,
+    ) -> yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse:
+        """
+        @summary 获取RD成员账号列表
+        
+        @param request: ListInstanceRdMembersRequest
+        @return: ListInstanceRdMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_rd_members_with_options(request, runtime)
+
+    async def list_instance_rd_members_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListInstanceRdMembersRequest,
+    ) -> yundun_bastionhost_20191209_models.ListInstanceRdMembersResponse:
+        """
+        @summary 获取RD成员账号列表
+        
+        @param request: ListInstanceRdMembersRequest
+        @return: ListInstanceRdMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_rd_members_with_options_async(request, runtime)
+
     def list_network_domains_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ListNetworkDomainsRequest,
@@ -15368,6 +15580,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.remove_hosts_from_group_with_options_async(request, runtime)
+
+    def remove_instance_rd_member_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveInstanceRdMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse:
+        """
+        @summary 移除RD成员账号
+        
+        @param request: RemoveInstanceRdMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInstanceRdMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveInstanceRdMember',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_instance_rd_member_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveInstanceRdMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse:
+        """
+        @summary 移除RD成员账号
+        
+        @param request: RemoveInstanceRdMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveInstanceRdMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.member_id):
+            query['MemberId'] = request.member_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveInstanceRdMember',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_instance_rd_member(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveInstanceRdMemberRequest,
+    ) -> yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse:
+        """
+        @summary 移除RD成员账号
+        
+        @param request: RemoveInstanceRdMemberRequest
+        @return: RemoveInstanceRdMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_instance_rd_member_with_options(request, runtime)
+
+    async def remove_instance_rd_member_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RemoveInstanceRdMemberRequest,
+    ) -> yundun_bastionhost_20191209_models.RemoveInstanceRdMemberResponse:
+        """
+        @summary 移除RD成员账号
+        
+        @param request: RemoveInstanceRdMemberRequest
+        @return: RemoveInstanceRdMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_instance_rd_member_with_options_async(request, runtime)
 
     def remove_users_from_group_with_options(
         self,
