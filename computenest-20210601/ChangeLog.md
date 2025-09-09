@@ -1,3 +1,9 @@
+2025-09-09 Version: 4.3.0
+- Support API GetNetworkAvailableZones.
+- Support API ValidateServiceInstanceName.
+- Update API CheckServiceDeployable: add request parameters TemplateName.
+
+
 2025-08-07 Version: 4.2.0
 - Support API CreateBackup.
 - Support API CreateRestoreTask.

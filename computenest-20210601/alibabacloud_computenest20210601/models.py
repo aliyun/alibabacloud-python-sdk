@@ -153,7 +153,9 @@ class CommodityValueResultSubOrdersSubOrderModuleInstance(TeaModel):
         self.price_type = price_type
         # The module attributes.
         self.module_attrs = module_attrs
+        # Module English name.
         self.module_name_en = module_name_en
+        # Price Unit English Name
         self.price_unit_en = price_unit_en
 
     def validate(self):
@@ -702,6 +704,7 @@ class CheckServiceDeployableRequest(TeaModel):
         region_id: str = None,
         service_id: str = None,
         service_version: str = None,
+        template_name: str = None,
         trial_type: str = None,
     ):
         # Total amount of postpaid.
@@ -716,6 +719,7 @@ class CheckServiceDeployableRequest(TeaModel):
         self.service_id = service_id
         # The service version.
         self.service_version = service_version
+        self.template_name = template_name
         # The trial type of the service instance. Valid values:
         # 
         # *   **Trial**: Trials are supported.
@@ -741,6 +745,8 @@ class CheckServiceDeployableRequest(TeaModel):
             result['ServiceId'] = self.service_id
         if self.service_version is not None:
             result['ServiceVersion'] = self.service_version
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
         if self.trial_type is not None:
             result['TrialType'] = self.trial_type
         return result
@@ -757,6 +763,8 @@ class CheckServiceDeployableRequest(TeaModel):
             self.service_id = m.get('ServiceId')
         if m.get('ServiceVersion') is not None:
             self.service_version = m.get('ServiceVersion')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
         if m.get('TrialType') is not None:
             self.trial_type = m.get('TrialType')
         return self
@@ -3205,6 +3213,184 @@ class GetBackupResponse(TeaModel):
         return self
 
 
+class GetNetworkAvailableZonesRequest(TeaModel):
+    def __init__(
+        self,
+        is_poc: bool = None,
+        network_region_id: str = None,
+        private_vpc_connection_mode: str = None,
+        service_id: str = None,
+        service_instance_endpoint_service_type: str = None,
+        service_region_id: str = None,
+        service_version: str = None,
+        zone_id: str = None,
+    ):
+        self.is_poc = is_poc
+        self.network_region_id = network_region_id
+        self.private_vpc_connection_mode = private_vpc_connection_mode
+        self.service_id = service_id
+        self.service_instance_endpoint_service_type = service_instance_endpoint_service_type
+        self.service_region_id = service_region_id
+        self.service_version = service_version
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_poc is not None:
+            result['IsPoc'] = self.is_poc
+        if self.network_region_id is not None:
+            result['NetworkRegionId'] = self.network_region_id
+        if self.private_vpc_connection_mode is not None:
+            result['PrivateVpcConnectionMode'] = self.private_vpc_connection_mode
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_instance_endpoint_service_type is not None:
+            result['ServiceInstanceEndpointServiceType'] = self.service_instance_endpoint_service_type
+        if self.service_region_id is not None:
+            result['ServiceRegionId'] = self.service_region_id
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsPoc') is not None:
+            self.is_poc = m.get('IsPoc')
+        if m.get('NetworkRegionId') is not None:
+            self.network_region_id = m.get('NetworkRegionId')
+        if m.get('PrivateVpcConnectionMode') is not None:
+            self.private_vpc_connection_mode = m.get('PrivateVpcConnectionMode')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceEndpointServiceType') is not None:
+            self.service_instance_endpoint_service_type = m.get('ServiceInstanceEndpointServiceType')
+        if m.get('ServiceRegionId') is not None:
+            self.service_region_id = m.get('ServiceRegionId')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class GetNetworkAvailableZonesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        region_id_list: List[str] = None,
+        zone_id_list: List[str] = None,
+    ):
+        self.region_id_list = region_id_list
+        self.zone_id_list = zone_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id_list is not None:
+            result['RegionIdList'] = self.region_id_list
+        if self.zone_id_list is not None:
+            result['ZoneIdList'] = self.zone_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RegionIdList') is not None:
+            self.region_id_list = m.get('RegionIdList')
+        if m.get('ZoneIdList') is not None:
+            self.zone_id_list = m.get('ZoneIdList')
+        return self
+
+
+class GetNetworkAvailableZonesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetNetworkAvailableZonesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetNetworkAvailableZonesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetNetworkAvailableZonesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetNetworkAvailableZonesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetNetworkAvailableZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetServiceRequest(TeaModel):
     def __init__(
         self,
@@ -4324,11 +4510,11 @@ class GetServiceEstimateCostRequestCommodity(TeaModel):
         self.pay_period = pay_period
         # The unit of the subscription duration. Valid values:
         # 
-        # *   Year
-        # *   Month
-        # *   Day
+        # *   Year.
+        # *   Month.
+        # *   Day.
         self.pay_period_unit = pay_period_unit
-        # Marketplace private offer Id
+        # The PrivateOffer ID of the Alibaba Cloud Marketplace.
         self.quotation_id = quotation_id
 
     def validate(self):
@@ -13646,6 +13832,133 @@ class UpgradeServiceInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpgradeServiceInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ValidateServiceInstanceNameRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        is_trial: bool = None,
+        service_id: str = None,
+        service_instance_name: str = None,
+        service_version: str = None,
+        template_name: str = None,
+    ):
+        self.client_token = client_token
+        self.is_trial = is_trial
+        # This parameter is required.
+        self.service_id = service_id
+        # This parameter is required.
+        self.service_instance_name = service_instance_name
+        self.service_version = service_version
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.is_trial is not None:
+            result['IsTrial'] = self.is_trial
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
+        if self.service_instance_name is not None:
+            result['ServiceInstanceName'] = self.service_instance_name
+        if self.service_version is not None:
+            result['ServiceVersion'] = self.service_version
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('IsTrial') is not None:
+            self.is_trial = m.get('IsTrial')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
+        if m.get('ServiceInstanceName') is not None:
+            self.service_instance_name = m.get('ServiceInstanceName')
+        if m.get('ServiceVersion') is not None:
+            self.service_version = m.get('ServiceVersion')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ValidateServiceInstanceNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ValidateServiceInstanceNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ValidateServiceInstanceNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ValidateServiceInstanceNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

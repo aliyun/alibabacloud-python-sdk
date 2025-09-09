@@ -277,6 +277,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.trial_type):
             query['TrialType'] = request.trial_type
         req = open_api_models.OpenApiRequest(
@@ -322,6 +324,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_version):
             query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.trial_type):
             query['TrialType'] = request.trial_type
         req = open_api_models.OpenApiRequest(
@@ -1644,6 +1648,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_backup_with_options_async(request, runtime)
+
+    def get_network_available_zones_with_options(
+        self,
+        request: compute_nest_20210601_models.GetNetworkAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据指定地域获取可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_poc):
+            body['IsPoc'] = request.is_poc
+        if not UtilClient.is_unset(request.network_region_id):
+            body['NetworkRegionId'] = request.network_region_id
+        if not UtilClient.is_unset(request.private_vpc_connection_mode):
+            body['PrivateVpcConnectionMode'] = request.private_vpc_connection_mode
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_endpoint_service_type):
+            body['ServiceInstanceEndpointServiceType'] = request.service_instance_endpoint_service_type
+        if not UtilClient.is_unset(request.service_region_id):
+            body['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkAvailableZones',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetNetworkAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_available_zones_with_options_async(
+        self,
+        request: compute_nest_20210601_models.GetNetworkAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据指定地域获取可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_poc):
+            body['IsPoc'] = request.is_poc
+        if not UtilClient.is_unset(request.network_region_id):
+            body['NetworkRegionId'] = request.network_region_id
+        if not UtilClient.is_unset(request.private_vpc_connection_mode):
+            body['PrivateVpcConnectionMode'] = request.private_vpc_connection_mode
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_endpoint_service_type):
+            body['ServiceInstanceEndpointServiceType'] = request.service_instance_endpoint_service_type
+        if not UtilClient.is_unset(request.service_region_id):
+            body['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkAvailableZones',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.GetNetworkAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_available_zones(
+        self,
+        request: compute_nest_20210601_models.GetNetworkAvailableZonesRequest,
+    ) -> compute_nest_20210601_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据指定地域获取可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @return: GetNetworkAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_available_zones_with_options(request, runtime)
+
+    async def get_network_available_zones_async(
+        self,
+        request: compute_nest_20210601_models.GetNetworkAvailableZonesRequest,
+    ) -> compute_nest_20210601_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据指定地域获取可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @return: GetNetworkAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_available_zones_with_options_async(request, runtime)
 
     def get_service_with_options(
         self,
@@ -5374,3 +5502,119 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_service_instance_with_options_async(request, runtime)
+
+    def validate_service_instance_name_with_options(
+        self,
+        request: compute_nest_20210601_models.ValidateServiceInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ValidateServiceInstanceNameResponse:
+        """
+        @summary 校验服务实例名称
+        
+        @param request: ValidateServiceInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateServiceInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.is_trial):
+            query['IsTrial'] = request.is_trial
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_name):
+            query['ServiceInstanceName'] = request.service_instance_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidateServiceInstanceName',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ValidateServiceInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_service_instance_name_with_options_async(
+        self,
+        request: compute_nest_20210601_models.ValidateServiceInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_20210601_models.ValidateServiceInstanceNameResponse:
+        """
+        @summary 校验服务实例名称
+        
+        @param request: ValidateServiceInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateServiceInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.is_trial):
+            query['IsTrial'] = request.is_trial
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_name):
+            query['ServiceInstanceName'] = request.service_instance_name
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ValidateServiceInstanceName',
+            version='2021-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_20210601_models.ValidateServiceInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_service_instance_name(
+        self,
+        request: compute_nest_20210601_models.ValidateServiceInstanceNameRequest,
+    ) -> compute_nest_20210601_models.ValidateServiceInstanceNameResponse:
+        """
+        @summary 校验服务实例名称
+        
+        @param request: ValidateServiceInstanceNameRequest
+        @return: ValidateServiceInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.validate_service_instance_name_with_options(request, runtime)
+
+    async def validate_service_instance_name_async(
+        self,
+        request: compute_nest_20210601_models.ValidateServiceInstanceNameRequest,
+    ) -> compute_nest_20210601_models.ValidateServiceInstanceNameResponse:
+        """
+        @summary 校验服务实例名称
+        
+        @param request: ValidateServiceInstanceNameRequest
+        @return: ValidateServiceInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.validate_service_instance_name_with_options_async(request, runtime)
