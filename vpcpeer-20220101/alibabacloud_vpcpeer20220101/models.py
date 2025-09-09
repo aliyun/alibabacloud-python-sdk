@@ -1,7 +1,46 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class AcceptVpcPeerConnectionRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+        self.key = key
+        # The tag value. You must specify at least one tag value and can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
 
 
 class AcceptVpcPeerConnectionRequest(TeaModel):
@@ -12,6 +51,7 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
         instance_id: str = None,
         resource_group_id: str = None,
         resource_owner_account: str = None,
+        tag: List[AcceptVpcPeerConnectionRequestTag] = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -33,9 +73,14 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
         # For more information about resource groups, see [What is a resource group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
+        # The tags.
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -53,6 +98,10 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -67,6 +116,11 @@ class AcceptVpcPeerConnectionRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = AcceptVpcPeerConnectionRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -139,6 +193,45 @@ class AcceptVpcPeerConnectionResponse(TeaModel):
         return self
 
 
+class CreateVpcPeerConnectionRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The tag key. You must specify at least one tag key and at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `acs:` or `aliyun` and cannot contain `http://` or `https://`.
+        self.key = key
+        # The tag value. You must specify at least one tag value and can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateVpcPeerConnectionRequest(TeaModel):
     def __init__(
         self,
@@ -153,6 +246,7 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        tag: List[CreateVpcPeerConnectionRequestTag] = None,
         vpc_id: str = None,
     ):
         # The ID of the Alibaba Cloud account to which the accepter VPC belongs.
@@ -215,13 +309,18 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         # 
         # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
+        # The tags.
+        self.tag = tag
         # The ID of the requester VPC.
         # 
         # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -251,6 +350,10 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -279,6 +382,11 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateVpcPeerConnectionRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -659,6 +767,7 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         gmt_modified: str = None,
         instance_id: str = None,
         link_type: str = None,
+        managed_service: str = None,
         name: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -702,6 +811,7 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
         self.instance_id = instance_id
         # The link type of the VPC peering connection.
         self.link_type = link_type
+        self.managed_service = managed_service
         # The name of the VPC peering connection.
         self.name = name
         # The ID of the Alibaba Cloud account to which the requester VPC belongs.
@@ -768,6 +878,8 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.link_type is not None:
             result['LinkType'] = self.link_type
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_id is not None:
@@ -813,6 +925,8 @@ class GetVpcPeerConnectionAttributeResponseBody(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LinkType') is not None:
             self.link_type = m.get('LinkType')
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerId') is not None:
@@ -923,6 +1037,7 @@ class ListTagResourcesRequestTag(TeaModel):
 class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
+        category: str = None,
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
@@ -930,6 +1045,12 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
+        # Tag Type:
+        # 
+        # - All(Default)
+        # - Custom
+        # - System
+        self.category = category
         # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **50**.
         self.max_results = max_results
         # The token that is used for the next query. Valid values:
@@ -964,6 +1085,8 @@ class ListTagResourcesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -982,6 +1105,8 @@ class ListTagResourcesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -1552,6 +1677,7 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         gmt_modified: str = None,
         instance_id: str = None,
         link_type: str = None,
+        managed_service: str = None,
         name: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -1594,6 +1720,7 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
         self.instance_id = instance_id
         # The link type of the VPC peering connection.
         self.link_type = link_type
+        self.managed_service = managed_service
         # The name of the VPC peering connection.
         self.name = name
         # The ID of the Alibaba Cloud account to which the requester VPC belongs.
@@ -1658,6 +1785,8 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.link_type is not None:
             result['LinkType'] = self.link_type
+        if self.managed_service is not None:
+            result['ManagedService'] = self.managed_service
         if self.name is not None:
             result['Name'] = self.name
         if self.owner_id is not None:
@@ -1701,6 +1830,8 @@ class ListVpcPeerConnectionsResponseBodyVpcPeerConnects(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('LinkType') is not None:
             self.link_type = m.get('LinkType')
+        if m.get('ManagedService') is not None:
+            self.managed_service = m.get('ManagedService')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OwnerId') is not None:

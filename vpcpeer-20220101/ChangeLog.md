@@ -1,3 +1,11 @@
+2025-09-09 Version: 2.0.5
+- Update API AcceptVpcPeerConnection: add request parameters Tag.
+- Update API CreateVpcPeerConnection: add request parameters Tag.
+- Update API GetVpcPeerConnectionAttribute: add response parameters Body.ManagedService.
+- Update API ListTagResources: add request parameters Category.
+- Update API ListVpcPeerConnections: add response parameters Body.VpcPeerConnects.$.ManagedService.
+
+
 2025-02-10 Version: 2.0.4
 - Update API CreateVpcPeerConnection: add param LinkType.
 - Update API GetVpcPeerConnectionAttribute: update response param.
