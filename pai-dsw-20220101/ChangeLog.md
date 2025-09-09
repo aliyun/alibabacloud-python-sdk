@@ -1,3 +1,14 @@
+2025-09-09 Version: 2.0.0
+- Update API ListSystemLogs: add request parameters LifecycleId.
+- Update API ListSystemLogs: add request parameters LogRepository.
+- Update API ListSystemLogs: add request parameters Offset.
+- Update API ListSystemLogs: add response parameters Body.Offset.
+- Update API ListSystemLogs: delete request parameters PageNumber.
+- Update API ListSystemLogs: delete request parameters PageSize.
+- Update API ListSystemLogs: delete request parameters SourceType.
+- Update API ListSystemLogs: delete response parameters Body.TotalCount.
+
+
 2025-07-28 Version: 1.6.2
 - Update API GetLifecycle: add response parameters Body.Lifecycle.$.$.LifecycleId.
 

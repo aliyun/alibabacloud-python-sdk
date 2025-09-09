@@ -8431,28 +8431,28 @@ class ListSystemLogsRequest(TeaModel):
         gmt_end_time: str = None,
         gmt_start_time: str = None,
         instance_id: str = None,
+        lifecycle_id: str = None,
         log_level: str = None,
+        log_repository: str = None,
+        offset: str = None,
         order: str = None,
-        page_number: int = None,
-        page_size: int = None,
         problem_category: str = None,
         sort_by: str = None,
         source_request_id: str = None,
-        source_type: str = None,
     ):
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_end_time = gmt_end_time
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
         self.gmt_start_time = gmt_start_time
         self.instance_id = instance_id
+        self.lifecycle_id = lifecycle_id
         self.log_level = log_level
+        self.log_repository = log_repository
+        self.offset = offset
         self.order = order
-        self.page_number = page_number
-        self.page_size = page_size
         self.problem_category = problem_category
         self.sort_by = sort_by
         self.source_request_id = source_request_id
-        self.source_type = source_type
 
     def validate(self):
         pass
@@ -8469,22 +8469,22 @@ class ListSystemLogsRequest(TeaModel):
             result['GmtStartTime'] = self.gmt_start_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.lifecycle_id is not None:
+            result['LifecycleId'] = self.lifecycle_id
         if self.log_level is not None:
             result['LogLevel'] = self.log_level
+        if self.log_repository is not None:
+            result['LogRepository'] = self.log_repository
+        if self.offset is not None:
+            result['Offset'] = self.offset
         if self.order is not None:
             result['Order'] = self.order
-        if self.page_number is not None:
-            result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         if self.problem_category is not None:
             result['ProblemCategory'] = self.problem_category
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
         if self.source_request_id is not None:
             result['SourceRequestId'] = self.source_request_id
-        if self.source_type is not None:
-            result['SourceType'] = self.source_type
         return result
 
     def from_map(self, m: dict = None):
@@ -8495,22 +8495,22 @@ class ListSystemLogsRequest(TeaModel):
             self.gmt_start_time = m.get('GmtStartTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LifecycleId') is not None:
+            self.lifecycle_id = m.get('LifecycleId')
         if m.get('LogLevel') is not None:
             self.log_level = m.get('LogLevel')
+        if m.get('LogRepository') is not None:
+            self.log_repository = m.get('LogRepository')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
         if m.get('Order') is not None:
             self.order = m.get('Order')
-        if m.get('PageNumber') is not None:
-            self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
         if m.get('ProblemCategory') is not None:
             self.problem_category = m.get('ProblemCategory')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
         if m.get('SourceRequestId') is not None:
             self.source_request_id = m.get('SourceRequestId')
-        if m.get('SourceType') is not None:
-            self.source_type = m.get('SourceType')
         return self
 
 
@@ -8557,11 +8557,11 @@ class ListSystemLogsResponseBodySystemLogs(TeaModel):
 class ListSystemLogsResponseBody(TeaModel):
     def __init__(
         self,
+        offset: str = None,
         system_logs: List[ListSystemLogsResponseBodySystemLogs] = None,
-        total_count: int = None,
     ):
+        self.offset = offset
         self.system_logs = system_logs
-        self.total_count = total_count
 
     def validate(self):
         if self.system_logs:
@@ -8575,23 +8575,23 @@ class ListSystemLogsResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.offset is not None:
+            result['Offset'] = self.offset
         result['SystemLogs'] = []
         if self.system_logs is not None:
             for k in self.system_logs:
                 result['SystemLogs'].append(k.to_map() if k else None)
-        if self.total_count is not None:
-            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
         self.system_logs = []
         if m.get('SystemLogs') is not None:
             for k in m.get('SystemLogs'):
                 temp_model = ListSystemLogsResponseBodySystemLogs()
                 self.system_logs.append(temp_model.from_map(k))
-        if m.get('TotalCount') is not None:
-            self.total_count = m.get('TotalCount')
         return self
 
 

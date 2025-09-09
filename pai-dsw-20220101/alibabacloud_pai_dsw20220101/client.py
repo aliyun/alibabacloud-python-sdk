@@ -2959,22 +2959,22 @@ class Client(OpenApiClient):
             query['GmtStartTime'] = request.gmt_start_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lifecycle_id):
+            query['LifecycleId'] = request.lifecycle_id
         if not UtilClient.is_unset(request.log_level):
             query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.log_repository):
+            query['LogRepository'] = request.log_repository
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.problem_category):
             query['ProblemCategory'] = request.problem_category
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source_request_id):
             query['SourceRequestId'] = request.source_request_id
-        if not UtilClient.is_unset(request.source_type):
-            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -3017,22 +3017,22 @@ class Client(OpenApiClient):
             query['GmtStartTime'] = request.gmt_start_time
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.lifecycle_id):
+            query['LifecycleId'] = request.lifecycle_id
         if not UtilClient.is_unset(request.log_level):
             query['LogLevel'] = request.log_level
+        if not UtilClient.is_unset(request.log_repository):
+            query['LogRepository'] = request.log_repository
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.problem_category):
             query['ProblemCategory'] = request.problem_category
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
         if not UtilClient.is_unset(request.source_request_id):
             query['SourceRequestId'] = request.source_request_id
-        if not UtilClient.is_unset(request.source_type):
-            query['SourceType'] = request.source_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
