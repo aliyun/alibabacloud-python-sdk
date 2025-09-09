@@ -185,8 +185,6 @@ class Client(OpenApiClient):
         @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
         
         @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
-        ## [](#qps-)Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateDataLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -260,8 +258,6 @@ class Client(OpenApiClient):
         @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
         
         @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
-        ## [](#qps-)Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateDataLimitRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -334,8 +330,6 @@ class Client(OpenApiClient):
         @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
         
         @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
-        ## [](#qps-)Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateDataLimitRequest
         @return: CreateDataLimitResponse
@@ -351,8 +345,6 @@ class Client(OpenApiClient):
         @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
         
         @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
-        ## [](#qps-)Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateDataLimitRequest
         @return: CreateDataLimitResponse
@@ -1039,6 +1031,198 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
+
+    def describe_audit_logs_with_options(
+        self,
+        request: sddp_20190103_models.DescribeAuditLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeAuditLogsResponse:
+        """
+        @summary 查询审计告警日志列表
+        
+        @param request: DescribeAuditLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_request_id):
+            query['AsyncRequestId'] = request.async_request_id
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_ua):
+            query['ClientUa'] = request.client_ua
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.effect_row_range):
+            query['EffectRowRange'] = request.effect_row_range
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_time_range):
+            query['ExecuteTimeRange'] = request.execute_time_range
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.load_white_list):
+            query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.member_account):
+            query['MemberAccount'] = request.member_account
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.oss_object_key):
+            query['OssObjectKey'] = request.oss_object_key
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.rule_category):
+            query['RuleCategory'] = request.rule_category
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleID'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sql_text):
+            query['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAuditLogs',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeAuditLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_audit_logs_with_options_async(
+        self,
+        request: sddp_20190103_models.DescribeAuditLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sddp_20190103_models.DescribeAuditLogsResponse:
+        """
+        @summary 查询审计告警日志列表
+        
+        @param request: DescribeAuditLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.async_request_id):
+            query['AsyncRequestId'] = request.async_request_id
+        if not UtilClient.is_unset(request.client_ip):
+            query['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.client_ua):
+            query['ClientUa'] = request.client_ua
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.effect_row_range):
+            query['EffectRowRange'] = request.effect_row_range
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.execute_time_range):
+            query['ExecuteTimeRange'] = request.execute_time_range
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.load_white_list):
+            query['LoadWhiteList'] = request.load_white_list
+        if not UtilClient.is_unset(request.member_account):
+            query['MemberAccount'] = request.member_account
+        if not UtilClient.is_unset(request.message):
+            query['Message'] = request.message
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not UtilClient.is_unset(request.oss_object_key):
+            query['OssObjectKey'] = request.oss_object_key
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.product_id):
+            query['ProductId'] = request.product_id
+        if not UtilClient.is_unset(request.rule_category):
+            query['RuleCategory'] = request.rule_category
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleID'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.sql_text):
+            query['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAuditLogs',
+            version='2019-01-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sddp_20190103_models.DescribeAuditLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_audit_logs(
+        self,
+        request: sddp_20190103_models.DescribeAuditLogsRequest,
+    ) -> sddp_20190103_models.DescribeAuditLogsResponse:
+        """
+        @summary 查询审计告警日志列表
+        
+        @param request: DescribeAuditLogsRequest
+        @return: DescribeAuditLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_audit_logs_with_options(request, runtime)
+
+    async def describe_audit_logs_async(
+        self,
+        request: sddp_20190103_models.DescribeAuditLogsRequest,
+    ) -> sddp_20190103_models.DescribeAuditLogsResponse:
+        """
+        @summary 查询审计告警日志列表
+        
+        @param request: DescribeAuditLogsRequest
+        @return: DescribeAuditLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_audit_logs_with_options_async(request, runtime)
 
     def describe_category_template_list_with_options(
         self,
@@ -3518,8 +3702,6 @@ class Client(OpenApiClient):
         
         @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
-        # [](#qps-)QPS limits
-        This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3582,8 +3764,6 @@ class Client(OpenApiClient):
         
         @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
-        # [](#qps-)QPS limits
-        This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceSourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3645,8 +3825,6 @@ class Client(OpenApiClient):
         
         @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
-        # [](#qps-)QPS limits
-        This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceSourcesRequest
         @return: DescribeInstanceSourcesResponse
@@ -3663,8 +3841,6 @@ class Client(OpenApiClient):
         
         @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
-        # [](#qps-)QPS limits
-        This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DescribeInstanceSourcesRequest
         @return: DescribeInstanceSourcesResponse

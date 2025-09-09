@@ -1288,6 +1288,496 @@ class DeleteRuleResponse(TeaModel):
         return self
 
 
+class DescribeAuditLogsRequest(TeaModel):
+    def __init__(
+        self,
+        async_request_id: str = None,
+        client_ip: str = None,
+        client_ua: str = None,
+        current_page: int = None,
+        database_name: str = None,
+        effect_row_range: str = None,
+        end_time: int = None,
+        execute_time_range: str = None,
+        instance_name: str = None,
+        ip_type: str = None,
+        lang: str = None,
+        load_white_list: bool = None,
+        member_account: str = None,
+        message: str = None,
+        operate_type: str = None,
+        oss_object_key: str = None,
+        page_size: int = None,
+        product_code: str = None,
+        product_id: int = None,
+        rule_category: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        sql_text: str = None,
+        start_time: int = None,
+        user_name: str = None,
+    ):
+        self.async_request_id = async_request_id
+        self.client_ip = client_ip
+        self.client_ua = client_ua
+        self.current_page = current_page
+        self.database_name = database_name
+        self.effect_row_range = effect_row_range
+        self.end_time = end_time
+        self.execute_time_range = execute_time_range
+        self.instance_name = instance_name
+        self.ip_type = ip_type
+        self.lang = lang
+        self.load_white_list = load_white_list
+        self.member_account = member_account
+        self.message = message
+        self.operate_type = operate_type
+        self.oss_object_key = oss_object_key
+        self.page_size = page_size
+        self.product_code = product_code
+        self.product_id = product_id
+        self.rule_category = rule_category
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.sql_text = sql_text
+        self.start_time = start_time
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_request_id is not None:
+            result['AsyncRequestId'] = self.async_request_id
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_ua is not None:
+            result['ClientUa'] = self.client_ua
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.effect_row_range is not None:
+            result['EffectRowRange'] = self.effect_row_range
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.execute_time_range is not None:
+            result['ExecuteTimeRange'] = self.execute_time_range
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.load_white_list is not None:
+            result['LoadWhiteList'] = self.load_white_list
+        if self.member_account is not None:
+            result['MemberAccount'] = self.member_account
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
+        if self.oss_object_key is not None:
+            result['OssObjectKey'] = self.oss_object_key
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.rule_category is not None:
+            result['RuleCategory'] = self.rule_category
+        if self.rule_id is not None:
+            result['RuleID'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncRequestId') is not None:
+            self.async_request_id = m.get('AsyncRequestId')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientUa') is not None:
+            self.client_ua = m.get('ClientUa')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('EffectRowRange') is not None:
+            self.effect_row_range = m.get('EffectRowRange')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ExecuteTimeRange') is not None:
+            self.execute_time_range = m.get('ExecuteTimeRange')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('LoadWhiteList') is not None:
+            self.load_white_list = m.get('LoadWhiteList')
+        if m.get('MemberAccount') is not None:
+            self.member_account = m.get('MemberAccount')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
+        if m.get('OssObjectKey') is not None:
+            self.oss_object_key = m.get('OssObjectKey')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RuleCategory') is not None:
+            self.rule_category = m.get('RuleCategory')
+        if m.get('RuleID') is not None:
+            self.rule_id = m.get('RuleID')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeAuditLogsResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        client_ip: str = None,
+        client_port: str = None,
+        client_ua: str = None,
+        column_name: str = None,
+        creation_time: int = None,
+        data_set: str = None,
+        database_name: str = None,
+        effect_row: int = None,
+        execute_status: int = None,
+        execute_time: int = None,
+        in_white_list: bool = None,
+        instance_description: str = None,
+        instance_name: str = None,
+        ip_type: str = None,
+        log_time: int = None,
+        member_account: str = None,
+        message: str = None,
+        model_name: str = None,
+        operate_type: str = None,
+        oss_object_key: str = None,
+        package_name: str = None,
+        product_code: str = None,
+        product_id: int = None,
+        rule_category: str = None,
+        rule_id: str = None,
+        rule_name: str = None,
+        sql_text: str = None,
+        table_name: str = None,
+        user_id: str = None,
+        user_name: str = None,
+        warn_level: str = None,
+        warn_level_name: str = None,
+    ):
+        self.client_ip = client_ip
+        self.client_port = client_port
+        self.client_ua = client_ua
+        self.column_name = column_name
+        self.creation_time = creation_time
+        self.data_set = data_set
+        self.database_name = database_name
+        self.effect_row = effect_row
+        self.execute_status = execute_status
+        self.execute_time = execute_time
+        self.in_white_list = in_white_list
+        self.instance_description = instance_description
+        self.instance_name = instance_name
+        self.ip_type = ip_type
+        self.log_time = log_time
+        self.member_account = member_account
+        self.message = message
+        self.model_name = model_name
+        self.operate_type = operate_type
+        self.oss_object_key = oss_object_key
+        self.package_name = package_name
+        self.product_code = product_code
+        self.product_id = product_id
+        self.rule_category = rule_category
+        self.rule_id = rule_id
+        self.rule_name = rule_name
+        self.sql_text = sql_text
+        self.table_name = table_name
+        self.user_id = user_id
+        self.user_name = user_name
+        self.warn_level = warn_level
+        self.warn_level_name = warn_level_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_port is not None:
+            result['ClientPort'] = self.client_port
+        if self.client_ua is not None:
+            result['ClientUa'] = self.client_ua
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.data_set is not None:
+            result['DataSet'] = self.data_set
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.effect_row is not None:
+            result['EffectRow'] = self.effect_row
+        if self.execute_status is not None:
+            result['ExecuteStatus'] = self.execute_status
+        if self.execute_time is not None:
+            result['ExecuteTime'] = self.execute_time
+        if self.in_white_list is not None:
+            result['InWhiteList'] = self.in_white_list
+        if self.instance_description is not None:
+            result['InstanceDescription'] = self.instance_description
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.ip_type is not None:
+            result['IpType'] = self.ip_type
+        if self.log_time is not None:
+            result['LogTime'] = self.log_time
+        if self.member_account is not None:
+            result['MemberAccount'] = self.member_account
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
+        if self.oss_object_key is not None:
+            result['OssObjectKey'] = self.oss_object_key
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.rule_category is not None:
+            result['RuleCategory'] = self.rule_category
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.warn_level is not None:
+            result['WarnLevel'] = self.warn_level
+        if self.warn_level_name is not None:
+            result['WarnLevelName'] = self.warn_level_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientPort') is not None:
+            self.client_port = m.get('ClientPort')
+        if m.get('ClientUa') is not None:
+            self.client_ua = m.get('ClientUa')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DataSet') is not None:
+            self.data_set = m.get('DataSet')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('EffectRow') is not None:
+            self.effect_row = m.get('EffectRow')
+        if m.get('ExecuteStatus') is not None:
+            self.execute_status = m.get('ExecuteStatus')
+        if m.get('ExecuteTime') is not None:
+            self.execute_time = m.get('ExecuteTime')
+        if m.get('InWhiteList') is not None:
+            self.in_white_list = m.get('InWhiteList')
+        if m.get('InstanceDescription') is not None:
+            self.instance_description = m.get('InstanceDescription')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('IpType') is not None:
+            self.ip_type = m.get('IpType')
+        if m.get('LogTime') is not None:
+            self.log_time = m.get('LogTime')
+        if m.get('MemberAccount') is not None:
+            self.member_account = m.get('MemberAccount')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
+        if m.get('OssObjectKey') is not None:
+            self.oss_object_key = m.get('OssObjectKey')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('RuleCategory') is not None:
+            self.rule_category = m.get('RuleCategory')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WarnLevel') is not None:
+            self.warn_level = m.get('WarnLevel')
+        if m.get('WarnLevelName') is not None:
+            self.warn_level_name = m.get('WarnLevelName')
+        return self
+
+
+class DescribeAuditLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        async_request_id: str = None,
+        current_page: int = None,
+        items: List[DescribeAuditLogsResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.async_request_id = async_request_id
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.async_request_id is not None:
+            result['AsyncRequestId'] = self.async_request_id
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AsyncRequestId') is not None:
+            self.async_request_id = m.get('AsyncRequestId')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeAuditLogsResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAuditLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAuditLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAuditLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCategoryTemplateListRequest(TeaModel):
     def __init__(
         self,
@@ -2685,19 +3175,19 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
         # The name of the column in the data asset table.
         self.name = name
         # The risk level name of the asset. Values:
-        # - **N/A**：No sensitive data detected.
-        # - **S1**：Level 1 sensitive data.
-        # - **S2**：Level 2 sensitive data.
-        # - **S3**：Level 3 sensitive data.
-        # - **S4**：Level 4 sensitive data.
+        # - **N/A**: No sensitive data detected.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.odps_risk_level_name = odps_risk_level_name
         # The risk level code of the asset. Values:
         # 
-        # - **1**：N/A.
-        # - **2**：S1.
-        # - **3**：S2.
-        # - **4**：S3.
-        # - **5**：S4.
+        # - **1**: N/A.
+        # - **2**: S1.
+        # - **3**: S2.
+        # - **4**: S3.
+        # - **5**: S4.
         # 
         # > A return value <= 1 represents N/A.
         self.odps_risk_level_value = odps_risk_level_value
@@ -2720,31 +3210,31 @@ class DescribeColumnsV2ResponseBodyItems(TeaModel):
         # - 0: Not corrected.
         self.revision_status = revision_status
         # The risk level ID of the column data in the data asset table. Values:
-        # - **1**：N/A.
-        # - **2**：S1.
-        # - **3**：S2.
-        # - **4**：S3.
-        # - **5**：S4.
+        # - **1**: N/A.
+        # - **2**: S1.
+        # - **3**: S2.
+        # - **4**: S3.
+        # - **5**: S4.
         # 
         # > A return value <= 1 represents N/A.
         self.risk_level_id = risk_level_id
         # The risk level name of the column data in the data asset table. Values:
-        # - **N/A**：No sensitive data detected.
-        # - **S1**：Level 1 sensitive data.
-        # - **S2**：Level 2 sensitive data.
-        # - **S3**：Level 3 sensitive data.
-        # - **S4**：Level 4 sensitive data.
+        # - **N/A**: No sensitive data detected.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
         # The ID of the sensitive data recognition rule that the column data in the data asset table hits.
         self.rule_id = rule_id
         # The name of the sensitive data recognition rule that the column data in the data asset table hits.
         self.rule_name = rule_name
         # The sensitivity level name. Values:
-        # - **N/A**：No sensitive data detected.
-        # - **S1**：Level 1 sensitive data.
-        # - **S2**：Level 2 sensitive data.
-        # - **S3**：Level 3 sensitive data.
-        # - **S4**：Level 4 sensitive data.
+        # - **N/A**: No sensitive data detected.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.sens_level_name = sens_level_name
         # Whether the column data in the data asset table contains sensitive data. Values:
         # 
@@ -5666,14 +6156,14 @@ class DescribeDataObjectColumnDetailResponseBodyItemsModelTags(TeaModel):
         name: str = None,
     ):
         # ID corresponding to the data tag name. Possible values:
-        # - **101**：Personal sensitive information
-        # - **102**：Personal information
-        # - **107**：General information
+        # - **101**: Personal sensitive information.
+        # - **102**: Personal information.
+        # - **107**: General information.
         self.id = id
         # Data tag name. Possible values:
-        # - **101**：Personal sensitive information
-        # - **102**：Personal information
-        # - **107**：General information
+        # - **101**: Personal sensitive information.
+        # - **102**: Personal information.
+        # - **107**: General information.
         self.name = name
 
     def validate(self):
@@ -5742,11 +6232,11 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
         self.instance_name = instance_name
         # Column encryption status. Possible values:
         # 
-        # - **-1**：Not encrypted
+        # - **-1**: Not encrypted
         # 
-        # - **1**：Encryption successful
+        # - **1**: Encryption successful
         # 
-        # - **2**：Encryption failed
+        # - **2**: Encryption failed
         self.masking_status = masking_status
         # List of data tags.
         self.model_tags = model_tags
@@ -5756,18 +6246,18 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
         # - **false**: Not a primary key.
         self.primary_key = primary_key
         # ID corresponding to the product name of the data object. Possible values:
-        # - **1**：MaxCompute
-        # - **2**：OSS
-        # - **3**：ADB-MYSQL
-        # - **4**：TableStore
-        # - **5**：RDS
-        # - **6**：SELF_DB
-        # - **7**：PolarDB-X
-        # - **8**：PolarDB
-        # - **9**：ADB-PG
-        # - **10**：OceanBase
-        # - **11**：MongoDB
-        # - **25**：Redis
+        # - **1**: MaxCompute
+        # - **2**: OSS
+        # - **3**: ADB-MYSQL
+        # - **4**: TableStore
+        # - **5**: RDS
+        # - **6**: SELF_DB
+        # - **7**: PolarDB-X
+        # - **8**: PolarDB
+        # - **9**: ADB-PG
+        # - **10**: OceanBase
+        # - **11**: MongoDB
+        # - **25**: Redis
         self.product_id = product_id
         # Region where the asset is located.
         self.region_id = region_id
@@ -5779,11 +6269,11 @@ class DescribeDataObjectColumnDetailResponseBodyItems(TeaModel):
         # - **5**: S4: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
         # Risk level name. Possible values:
-        # - **N/A**：No sensitive data detected.
-        # - **S1**：Level 1 sensitive data.
-        # - **S2**：Level 2 sensitive data.
-        # - **S3**：Level 3 sensitive data.
-        # - **S4**：Level 4 sensitive data.
+        # - **N/A**: No sensitive data detected.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
         # ID of the matched identification model.
         self.rule_id = rule_id
@@ -6087,14 +6577,14 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItemsModelTags(TeaModel):
         name: str = None,
     ):
         # ID corresponding to the data tag name. Values:
-        # - **101**: Personal Sensitive Information
-        # - **102**: Personal Information
-        # - **107**: General Information
+        # - **101**: Personal Sensitive Information.
+        # - **102**: Personal Information.
+        # - **107**: General Information.
         self.id = id
         # Data tag name. Values:
-        # - Personal Sensitive Information
-        # - Personal Information
-        # - General Information
+        # - Personal Sensitive Information.
+        # - Personal Information.
+        # - General Information.
         self.name = name
 
     def validate(self):
@@ -6199,12 +6689,12 @@ class DescribeDataObjectColumnDetailV2ResponseBodyItems(TeaModel):
         # - **4**: S3: Level 3 sensitive data.
         # - **5**: S4: Level 4 sensitive data.
         self.risk_level_id = risk_level_id
-        # 风险等级名称。取值：
-        # - **N/A**：未识别到敏感数据。
-        # - **S1**：1级敏感数据。
-        # - **S2**：2级敏感数据。
-        # - **S3**：3级敏感数据。
-        # - **S4**：4级敏感数据。
+        # Risk level name. Values:
+        # - **N/A**: No sensitive data was identified.
+        # - **S1**: Level 1 sensitive data.
+        # - **S2**: Level 2 sensitive data.
+        # - **S3**: Level 3 sensitive data.
+        # - **S4**: Level 4 sensitive data.
         self.risk_level_name = risk_level_name
         # The ID of the matched recognition model.
         self.rule_id = rule_id
@@ -6769,7 +7259,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         # - **11**: MongoDB
         # - **25**: Redis
         self.product_id = product_id
-        # OSS存储对象所属区域ID。
+        # The region ID to which the OSS storage object belongs.
         self.region_id = region_id
         # Region name.
         self.region_name = region_name
@@ -6904,7 +7394,7 @@ class DescribeDataObjectsResponseBody(TeaModel):
         self.items = items
         # When performing a paginated query, this sets the maximum number of data asset instances to display per page. Default value: **10**.
         self.page_size = page_size
-        # 本次调用请求的ID，是由阿里云为该请求生成的唯一标识符，可用于排查和定位问题。
+        # The ID of this call request is a unique identifier generated by Alibaba Cloud for the request, which can be used to troubleshoot and locate issues.
         self.request_id = request_id
         # The total number of query results.
         self.total_count = total_count
@@ -8772,7 +9262,13 @@ class DescribeInstanceSourcesRequest(TeaModel):
         self.auth_status = auth_status
         # The number of the page to return. Default value: **1**.
         self.current_page = current_page
-        # The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
+        # The engine type. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MariaDB**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.engine_type = engine_type
         # This parameter is deprecated.
         self.feature_type = feature_type
@@ -8787,7 +9283,14 @@ class DescribeInstanceSourcesRequest(TeaModel):
         self.page_size = page_size
         # The name of the service to which the data asset to query belongs. Valid values: **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
-        # The ID of the service to which the data asset to query belongs. Valid values: **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates Object Storage Service (OSS). The value indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The ID of the service to which the asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: Object Storage Service (OSS)
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: Tablestore (OTS)
+        # *   **5**: ApsaraDB RDS
+        # *   **6**: self-managed databases
         self.product_id = product_id
         # The content based on which a fuzzy search is performed.
         self.search_key = search_key
@@ -8932,7 +9435,13 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.enable = enable
-        # The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
+        # The engine type. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **MariaDB**\
+        # *   **Oracle**\
+        # *   **PostgreSQL**\
+        # *   **SQLServer**\
         self.engine_type = engine_type
         # The reason for the failure.
         self.error_message = error_message
@@ -8957,7 +9466,14 @@ class DescribeInstanceSourcesResponseBodyItems(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.password_status = password_status
-        # The ID of the service to which the data asset belongs. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # The ID of the service to which the asset belongs. Valid values:
+        # 
+        # *   **1**: MaxCompute
+        # *   **2**: OSS
+        # *   **3**: AnalyticDB for MySQL
+        # *   **4**: OTS
+        # *   **5**: ApsaraDB RDS
+        # *   **6**: self-managed databases
         self.product_id = product_id
         # The ID of the region where the instance resides.
         self.region_id = region_id
@@ -9099,7 +9615,7 @@ class DescribeInstanceSourcesResponseBody(TeaModel):
     ):
         # The page number of the returned page.
         self.current_page = current_page
-        # An array that consists of the queried data assets.
+        # The assets.
         self.items = items
         # The number of entries returned per page.
         self.page_size = page_size

@@ -1,3 +1,7 @@
+2025-09-09 Version: 1.5.0
+- Support API DescribeAuditLogs.
+
+
 2025-06-30 Version: 1.4.4
 - Update API DescribeDataLimitSet: add request parameters RegionType.
 
