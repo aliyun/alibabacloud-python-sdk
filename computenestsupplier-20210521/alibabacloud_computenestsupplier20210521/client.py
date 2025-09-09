@@ -159,7 +159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ApproveServiceUsageResponse:
         """
-        @summary 商家通过服务使用请求
+        @summary Merchant uses service request
         
         @param request: ApproveServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -204,7 +204,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ApproveServiceUsageResponse:
         """
-        @summary 商家通过服务使用请求
+        @summary Merchant uses service request
         
         @param request: ApproveServiceUsageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -248,7 +248,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ApproveServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.ApproveServiceUsageResponse:
         """
-        @summary 商家通过服务使用请求
+        @summary Merchant uses service request
         
         @param request: ApproveServiceUsageRequest
         @return: ApproveServiceUsageResponse
@@ -261,7 +261,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ApproveServiceUsageRequest,
     ) -> compute_nest_supplier_20210521_models.ApproveServiceUsageResponse:
         """
-        @summary 商家通过服务使用请求
+        @summary Merchant uses service request
         
         @param request: ApproveServiceUsageRequest
         @return: ApproveServiceUsageResponse
@@ -1131,7 +1131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceTestTaskResponse:
         """
-        @summary 创建服务测试任务
+        @summary Create service test task
         
         @param request: CreateServiceTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1172,7 +1172,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.CreateServiceTestTaskResponse:
         """
-        @summary 创建服务测试任务
+        @summary Create service test task
         
         @param request: CreateServiceTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1212,7 +1212,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.CreateServiceTestTaskRequest,
     ) -> compute_nest_supplier_20210521_models.CreateServiceTestTaskResponse:
         """
-        @summary 创建服务测试任务
+        @summary Create service test task
         
         @param request: CreateServiceTestTaskRequest
         @return: CreateServiceTestTaskResponse
@@ -1225,7 +1225,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.CreateServiceTestTaskRequest,
     ) -> compute_nest_supplier_20210521_models.CreateServiceTestTaskResponse:
         """
-        @summary 创建服务测试任务
+        @summary Create service test task
         
         @param request: CreateServiceTestTaskRequest
         @return: CreateServiceTestTaskResponse
@@ -1500,6 +1500,226 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_supplier_registration_with_options_async(request, runtime)
+
+    def delete_acr_image_repositories_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse:
+        """
+        @summary 删除Acr镜像仓库
+        
+        @param request: DeleteAcrImageRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAcrImageRepositoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcrImageRepositories',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_acr_image_repositories_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse:
+        """
+        @summary 删除Acr镜像仓库
+        
+        @param request: DeleteAcrImageRepositoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAcrImageRepositoriesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcrImageRepositories',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_acr_image_repositories(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesRequest,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse:
+        """
+        @summary 删除Acr镜像仓库
+        
+        @param request: DeleteAcrImageRepositoriesRequest
+        @return: DeleteAcrImageRepositoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_acr_image_repositories_with_options(request, runtime)
+
+    async def delete_acr_image_repositories_async(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesRequest,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageRepositoriesResponse:
+        """
+        @summary 删除Acr镜像仓库
+        
+        @param request: DeleteAcrImageRepositoriesRequest
+        @return: DeleteAcrImageRepositoriesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_acr_image_repositories_with_options_async(request, runtime)
+
+    def delete_acr_image_tags_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse:
+        """
+        @summary 删除Acr容器镜像版本
+        
+        @param request: DeleteAcrImageTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAcrImageTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcrImageTags',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_acr_image_tags_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageTagsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse:
+        """
+        @summary 删除Acr容器镜像版本
+        
+        @param request: DeleteAcrImageTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAcrImageTagsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_type):
+            query['ArtifactType'] = request.artifact_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.repo_id):
+            query['RepoId'] = request.repo_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAcrImageTags',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_acr_image_tags(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageTagsRequest,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse:
+        """
+        @summary 删除Acr容器镜像版本
+        
+        @param request: DeleteAcrImageTagsRequest
+        @return: DeleteAcrImageTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_acr_image_tags_with_options(request, runtime)
+
+    async def delete_acr_image_tags_async(
+        self,
+        request: compute_nest_supplier_20210521_models.DeleteAcrImageTagsRequest,
+    ) -> compute_nest_supplier_20210521_models.DeleteAcrImageTagsResponse:
+        """
+        @summary 删除Acr容器镜像版本
+        
+        @param request: DeleteAcrImageTagsRequest
+        @return: DeleteAcrImageTagsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_acr_image_tags_with_options_async(request, runtime)
 
     def delete_artifact_with_options(
         self,
@@ -1823,7 +2043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceTestCaseResponse:
         """
-        @summary 删除服务测试配置
+        @summary Delete service test configuration
         
         @param request: DeleteServiceTestCaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1860,7 +2080,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceTestCaseResponse:
         """
-        @summary 删除服务测试配置
+        @summary Delete service test configuration
         
         @param request: DeleteServiceTestCaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1896,7 +2116,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.DeleteServiceTestCaseRequest,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceTestCaseResponse:
         """
-        @summary 删除服务测试配置
+        @summary Delete service test configuration
         
         @param request: DeleteServiceTestCaseRequest
         @return: DeleteServiceTestCaseResponse
@@ -1909,7 +2129,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.DeleteServiceTestCaseRequest,
     ) -> compute_nest_supplier_20210521_models.DeleteServiceTestCaseResponse:
         """
-        @summary 删除服务测试配置
+        @summary Delete service test configuration
         
         @param request: DeleteServiceTestCaseRequest
         @return: DeleteServiceTestCaseResponse
@@ -2445,6 +2665,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_artifact_repository_credentials_with_options_async(request, runtime)
 
+    def get_network_available_zones_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.GetNetworkAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据地域参数获取地域可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_poc):
+            body['IsPoc'] = request.is_poc
+        if not UtilClient.is_unset(request.network_region_id):
+            body['NetworkRegionId'] = request.network_region_id
+        if not UtilClient.is_unset(request.private_vpc_connection_mode):
+            body['PrivateVpcConnectionMode'] = request.private_vpc_connection_mode
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_endpoint_service_type):
+            body['ServiceInstanceEndpointServiceType'] = request.service_instance_endpoint_service_type
+        if not UtilClient.is_unset(request.service_region_id):
+            body['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkAvailableZones',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_available_zones_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetNetworkAvailableZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据地域参数获取地域可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkAvailableZonesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.is_poc):
+            body['IsPoc'] = request.is_poc
+        if not UtilClient.is_unset(request.network_region_id):
+            body['NetworkRegionId'] = request.network_region_id
+        if not UtilClient.is_unset(request.private_vpc_connection_mode):
+            body['PrivateVpcConnectionMode'] = request.private_vpc_connection_mode
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_instance_endpoint_service_type):
+            body['ServiceInstanceEndpointServiceType'] = request.service_instance_endpoint_service_type
+        if not UtilClient.is_unset(request.service_region_id):
+            body['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.service_version):
+            body['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.zone_id):
+            body['ZoneId'] = request.zone_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetNetworkAvailableZones',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_available_zones(
+        self,
+        request: compute_nest_supplier_20210521_models.GetNetworkAvailableZonesRequest,
+    ) -> compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据地域参数获取地域可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @return: GetNetworkAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_network_available_zones_with_options(request, runtime)
+
+    async def get_network_available_zones_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetNetworkAvailableZonesRequest,
+    ) -> compute_nest_supplier_20210521_models.GetNetworkAvailableZonesResponse:
+        """
+        @summary 根据地域参数获取地域可用区列表
+        
+        @param request: GetNetworkAvailableZonesRequest
+        @return: GetNetworkAvailableZonesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_network_available_zones_with_options_async(request, runtime)
+
     def get_service_with_options(
         self,
         request: compute_nest_supplier_20210521_models.GetServiceRequest,
@@ -2815,7 +3159,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param tmp_req: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2862,7 +3206,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param tmp_req: GetServiceProvisionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2908,7 +3252,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetServiceProvisionsRequest,
     ) -> compute_nest_supplier_20210521_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
@@ -2921,7 +3265,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetServiceProvisionsRequest,
     ) -> compute_nest_supplier_20210521_models.GetServiceProvisionsResponse:
         """
-        @summary 计算巢查询服务是否开通
+        @summary Queries the information about the activation status and Resource Access Management (RAM) roles of the cloud services required by a service.
         
         @param request: GetServiceProvisionsRequest
         @return: GetServiceProvisionsResponse
@@ -3028,6 +3372,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_registration_with_options_async(request, runtime)
+
+    def get_service_template_criterion_issues_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse:
+        """
+        @summary 查询服务模板存在的规范问题
+        
+        @param request: GetServiceTemplateCriterionIssuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceTemplateCriterionIssuesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceTemplateCriterionIssues',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_service_template_criterion_issues_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse:
+        """
+        @summary 查询服务模板存在的规范问题
+        
+        @param request: GetServiceTemplateCriterionIssuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceTemplateCriterionIssuesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetServiceTemplateCriterionIssues',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_service_template_criterion_issues(
+        self,
+        request: compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesRequest,
+    ) -> compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse:
+        """
+        @summary 查询服务模板存在的规范问题
+        
+        @param request: GetServiceTemplateCriterionIssuesRequest
+        @return: GetServiceTemplateCriterionIssuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_service_template_criterion_issues_with_options(request, runtime)
+
+    async def get_service_template_criterion_issues_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesRequest,
+    ) -> compute_nest_supplier_20210521_models.GetServiceTemplateCriterionIssuesResponse:
+        """
+        @summary 查询服务模板存在的规范问题
+        
+        @param request: GetServiceTemplateCriterionIssuesRequest
+        @return: GetServiceTemplateCriterionIssuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_service_template_criterion_issues_with_options_async(request, runtime)
 
     def get_service_template_parameter_constraints_with_options(
         self,
@@ -3163,7 +3611,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetServiceTestTaskResponse:
         """
-        @summary 获取服务测试任务中Cases执行情况
+        @summary Get the execution status of Cases in the service test task
         
         @param request: GetServiceTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3200,7 +3648,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetServiceTestTaskResponse:
         """
-        @summary 获取服务测试任务中Cases执行情况
+        @summary Get the execution status of Cases in the service test task
         
         @param request: GetServiceTestTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3236,7 +3684,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetServiceTestTaskRequest,
     ) -> compute_nest_supplier_20210521_models.GetServiceTestTaskResponse:
         """
-        @summary 获取服务测试任务中Cases执行情况
+        @summary Get the execution status of Cases in the service test task
         
         @param request: GetServiceTestTaskRequest
         @return: GetServiceTestTaskResponse
@@ -3249,7 +3697,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetServiceTestTaskRequest,
     ) -> compute_nest_supplier_20210521_models.GetServiceTestTaskResponse:
         """
-        @summary 获取服务测试任务中Cases执行情况
+        @summary Get the execution status of Cases in the service test task
         
         @param request: GetServiceTestTaskRequest
         @return: GetServiceTestTaskResponse
@@ -3263,7 +3711,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary 获取服务商信息
+        @summary Get service provider information
         
         @param request: GetSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3298,7 +3746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary 获取服务商信息
+        @summary Get service provider information
         
         @param request: GetSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3332,7 +3780,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary 获取服务商信息
+        @summary Get service provider information
         
         @param request: GetSupplierInformationRequest
         @return: GetSupplierInformationResponse
@@ -3345,7 +3793,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.GetSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.GetSupplierInformationResponse:
         """
-        @summary 获取服务商信息
+        @summary Get service provider information
         
         @param request: GetSupplierInformationRequest
         @return: GetSupplierInformationResponse
@@ -3459,7 +3907,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
         """
-        @summary 上线服务
+        @summary Launch service
+        
+        @description 需要上线的服务必须为已通过审核的服务。
         
         @param request: LaunchServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3504,7 +3954,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
         """
-        @summary 上线服务
+        @summary Launch service
+        
+        @description 需要上线的服务必须为已通过审核的服务。
         
         @param request: LaunchServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3548,7 +4000,9 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
     ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
         """
-        @summary 上线服务
+        @summary Launch service
+        
+        @description 需要上线的服务必须为已通过审核的服务。
         
         @param request: LaunchServiceRequest
         @return: LaunchServiceResponse
@@ -3561,7 +4015,9 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.LaunchServiceRequest,
     ) -> compute_nest_supplier_20210521_models.LaunchServiceResponse:
         """
-        @summary 上线服务
+        @summary Launch service
+        
+        @description 需要上线的服务必须为已通过审核的服务。
         
         @param request: LaunchServiceRequest
         @return: LaunchServiceResponse
@@ -3784,6 +4240,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_acr_image_tags_with_options_async(request, runtime)
+
+    def list_artifact_build_logs_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListArtifactBuildLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListArtifactBuildLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListArtifactBuildLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_id):
+            query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.artifact_version):
+            query['ArtifactVersion'] = request.artifact_version
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListArtifactBuildLogs',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_artifact_build_logs_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListArtifactBuildLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListArtifactBuildLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListArtifactBuildLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.artifact_id):
+            query['ArtifactId'] = request.artifact_id
+        if not UtilClient.is_unset(request.artifact_version):
+            query['ArtifactVersion'] = request.artifact_version
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListArtifactBuildLogs',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_artifact_build_logs(
+        self,
+        request: compute_nest_supplier_20210521_models.ListArtifactBuildLogsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListArtifactBuildLogsRequest
+        @return: ListArtifactBuildLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_artifact_build_logs_with_options(request, runtime)
+
+    async def list_artifact_build_logs_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListArtifactBuildLogsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListArtifactBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListArtifactBuildLogsRequest
+        @return: ListArtifactBuildLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_artifact_build_logs_with_options_async(request, runtime)
 
     def list_artifact_risks_with_options(
         self,
@@ -4221,13 +4797,129 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_resellers_with_options_async(request, runtime)
 
+    def list_service_build_logs_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceBuildLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListServiceBuildLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceBuildLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceBuildLogs',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_build_logs_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceBuildLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListServiceBuildLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceBuildLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListServiceBuildLogs',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_build_logs(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceBuildLogsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListServiceBuildLogsRequest
+        @return: ListServiceBuildLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_build_logs_with_options(request, runtime)
+
+    async def list_service_build_logs_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListServiceBuildLogsRequest,
+    ) -> compute_nest_supplier_20210521_models.ListServiceBuildLogsResponse:
+        """
+        @summary 查询部署实例、升级以及应用的日志
+        
+        @param request: ListServiceBuildLogsRequest
+        @return: ListServiceBuildLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_build_logs_with_options_async(request, runtime)
+
     def list_service_instance_bill_with_options(
         self,
         request: compute_nest_supplier_20210521_models.ListServiceInstanceBillRequest,
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceBillResponse:
         """
-        @summary 展示服务实例账单
+        @summary Display service instance bill
         
         @param request: ListServiceInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4276,7 +4968,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceBillResponse:
         """
-        @summary 展示服务实例账单
+        @summary Display service instance bill
         
         @param request: ListServiceInstanceBillRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4324,7 +5016,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceInstanceBillRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceBillResponse:
         """
-        @summary 展示服务实例账单
+        @summary Display service instance bill
         
         @param request: ListServiceInstanceBillRequest
         @return: ListServiceInstanceBillResponse
@@ -4337,7 +5029,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceInstanceBillRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceBillResponse:
         """
-        @summary 展示服务实例账单
+        @summary Display service instance bill
         
         @param request: ListServiceInstanceBillRequest
         @return: ListServiceInstanceBillResponse
@@ -4351,7 +5043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsResponse:
         """
-        @summary 查询服务实例部署详情
+        @summary Query service instance deployment details
         
         @param request: ListServiceInstanceDeployDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4402,7 +5094,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsResponse:
         """
-        @summary 查询服务实例部署详情
+        @summary Query service instance deployment details
         
         @param request: ListServiceInstanceDeployDetailsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4452,7 +5144,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsResponse:
         """
-        @summary 查询服务实例部署详情
+        @summary Query service instance deployment details
         
         @param request: ListServiceInstanceDeployDetailsRequest
         @return: ListServiceInstanceDeployDetailsResponse
@@ -4465,7 +5157,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceInstanceDeployDetailsResponse:
         """
-        @summary 查询服务实例部署详情
+        @summary Query service instance deployment details
         
         @param request: ListServiceInstanceDeployDetailsRequest
         @return: ListServiceInstanceDeployDetailsResponse
@@ -5175,7 +5867,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestCasesResponse:
         """
-        @summary 服务测试用例列表
+        @summary Service test case list
         
         @param request: ListServiceTestCasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5220,7 +5912,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestCasesResponse:
         """
-        @summary 服务测试用例列表
+        @summary Service test case list
         
         @param request: ListServiceTestCasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5264,7 +5956,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceTestCasesRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestCasesResponse:
         """
-        @summary 服务测试用例列表
+        @summary Service test case list
         
         @param request: ListServiceTestCasesRequest
         @return: ListServiceTestCasesResponse
@@ -5277,7 +5969,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceTestCasesRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestCasesResponse:
         """
-        @summary 服务测试用例列表
+        @summary Service test case list
         
         @param request: ListServiceTestCasesRequest
         @return: ListServiceTestCasesResponse
@@ -5291,7 +5983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestTaskLogsResponse:
         """
-        @summary 获取服务测试实时日志
+        @summary Get service test real-time logs
         
         @param request: ListServiceTestTaskLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5332,7 +6024,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestTaskLogsResponse:
         """
-        @summary 获取服务测试实时日志
+        @summary Get service test real-time logs
         
         @param request: ListServiceTestTaskLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5372,7 +6064,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceTestTaskLogsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestTaskLogsResponse:
         """
-        @summary 获取服务测试实时日志
+        @summary Get service test real-time logs
         
         @param request: ListServiceTestTaskLogsRequest
         @return: ListServiceTestTaskLogsResponse
@@ -5385,7 +6077,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListServiceTestTaskLogsRequest,
     ) -> compute_nest_supplier_20210521_models.ListServiceTestTaskLogsResponse:
         """
-        @summary 获取服务测试实时日志
+        @summary Get service test real-time logs
         
         @param request: ListServiceTestTaskLogsRequest
         @return: ListServiceTestTaskLogsResponse
@@ -5727,7 +6419,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListSupplierRegistrationsResponse:
         """
-        @summary 查询服务商入职审核列表
+        @summary Query the list of service provider onboarding reviews
         
         @param request: ListSupplierRegistrationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5768,7 +6460,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListSupplierRegistrationsResponse:
         """
-        @summary 查询服务商入职审核列表
+        @summary Query the list of service provider onboarding reviews
         
         @param request: ListSupplierRegistrationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5808,7 +6500,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListSupplierRegistrationsRequest,
     ) -> compute_nest_supplier_20210521_models.ListSupplierRegistrationsResponse:
         """
-        @summary 查询服务商入职审核列表
+        @summary Query the list of service provider onboarding reviews
         
         @param request: ListSupplierRegistrationsRequest
         @return: ListSupplierRegistrationsResponse
@@ -5821,7 +6513,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListSupplierRegistrationsRequest,
     ) -> compute_nest_supplier_20210521_models.ListSupplierRegistrationsResponse:
         """
-        @summary 查询服务商入职审核列表
+        @summary Query the list of service provider onboarding reviews
         
         @param request: ListSupplierRegistrationsRequest
         @return: ListSupplierRegistrationsResponse
@@ -5835,7 +6527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagKeysResponse:
         """
-        @summary 查询标签键列表
+        @summary Query tag key list
         
         @param request: ListTagKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5874,7 +6566,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagKeysResponse:
         """
-        @summary 查询标签键列表
+        @summary Query tag key list
         
         @param request: ListTagKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5912,7 +6604,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagKeysRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagKeysResponse:
         """
-        @summary 查询标签键列表
+        @summary Query tag key list
         
         @param request: ListTagKeysRequest
         @return: ListTagKeysResponse
@@ -5925,7 +6617,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagKeysRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagKeysResponse:
         """
-        @summary 查询标签键列表
+        @summary Query tag key list
         
         @param request: ListTagKeysRequest
         @return: ListTagKeysResponse
@@ -5939,7 +6631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query resource tags
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5982,7 +6674,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query resource tags
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6024,7 +6716,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query resource tags
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6037,7 +6729,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagResourcesResponse:
         """
-        @summary 查询资源标签
+        @summary Query resource tags
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6051,7 +6743,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagValuesResponse:
         """
-        @summary 查询标签值列表
+        @summary Query tag value list
         
         @param request: ListTagValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6092,7 +6784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.ListTagValuesResponse:
         """
-        @summary 查询标签值列表
+        @summary Query tag value list
         
         @param request: ListTagValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6132,7 +6824,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagValuesRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagValuesResponse:
         """
-        @summary 查询标签值列表
+        @summary Query tag value list
         
         @param request: ListTagValuesRequest
         @return: ListTagValuesResponse
@@ -6145,7 +6837,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.ListTagValuesRequest,
     ) -> compute_nest_supplier_20210521_models.ListTagValuesResponse:
         """
-        @summary 查询标签值列表
+        @summary Query tag value list
         
         @param request: ListTagValuesRequest
         @return: ListTagValuesResponse
@@ -6263,7 +6955,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
         """
-        @summary 预发布服务
+        @summary Pre-release service
         
         @param request: PreLaunchServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6302,7 +6994,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
         """
-        @summary 预发布服务
+        @summary Pre-release service
         
         @param request: PreLaunchServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6340,7 +7032,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
     ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
         """
-        @summary 预发布服务
+        @summary Pre-release service
         
         @param request: PreLaunchServiceRequest
         @return: PreLaunchServiceResponse
@@ -6353,7 +7045,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.PreLaunchServiceRequest,
     ) -> compute_nest_supplier_20210521_models.PreLaunchServiceResponse:
         """
-        @summary 预发布服务
+        @summary Pre-release service
         
         @param request: PreLaunchServiceRequest
         @return: PreLaunchServiceResponse
@@ -7311,7 +8003,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.TagResourcesResponse:
         """
-        @summary 给资源打标签
+        @summary Tag a resource
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7352,7 +8044,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.TagResourcesResponse:
         """
-        @summary 给资源打标签
+        @summary Tag a resource
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7392,7 +8084,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.TagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.TagResourcesResponse:
         """
-        @summary 给资源打标签
+        @summary Tag a resource
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -7405,7 +8097,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.TagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.TagResourcesResponse:
         """
-        @summary 给资源打标签
+        @summary Tag a resource
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -7419,7 +8111,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UnTagResourcesResponse:
         """
-        @summary 资源解绑标签
+        @summary Unbind resource from tag
         
         @param request: UnTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7462,7 +8154,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UnTagResourcesResponse:
         """
-        @summary 资源解绑标签
+        @summary Unbind resource from tag
         
         @param request: UnTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7504,7 +8196,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UnTagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.UnTagResourcesResponse:
         """
-        @summary 资源解绑标签
+        @summary Unbind resource from tag
         
         @param request: UnTagResourcesRequest
         @return: UnTagResourcesResponse
@@ -7517,7 +8209,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UnTagResourcesRequest,
     ) -> compute_nest_supplier_20210521_models.UnTagResourcesResponse:
         """
-        @summary 资源解绑标签
+        @summary Unbind resource from tag
         
         @param request: UnTagResourcesRequest
         @return: UnTagResourcesResponse
@@ -8127,7 +8819,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceTestCaseResponse:
         """
-        @summary 修改服务测试用例
+        @summary Modify Service Test Case
         
         @param request: UpdateServiceTestCaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8168,7 +8860,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceTestCaseResponse:
         """
-        @summary 修改服务测试用例
+        @summary Modify Service Test Case
         
         @param request: UpdateServiceTestCaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8208,7 +8900,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateServiceTestCaseRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceTestCaseResponse:
         """
-        @summary 修改服务测试用例
+        @summary Modify Service Test Case
         
         @param request: UpdateServiceTestCaseRequest
         @return: UpdateServiceTestCaseResponse
@@ -8221,7 +8913,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateServiceTestCaseRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateServiceTestCaseResponse:
         """
-        @summary 修改服务测试用例
+        @summary Modify Service Test Case
         
         @param request: UpdateServiceTestCaseRequest
         @return: UpdateServiceTestCaseResponse
@@ -8351,7 +9043,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateSupplierInformationResponse:
         """
-        @summary 更新供应商全局信息
+        @summary Update the information of supplier.
         
         @param request: UpdateSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8400,7 +9092,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> compute_nest_supplier_20210521_models.UpdateSupplierInformationResponse:
         """
-        @summary 更新供应商全局信息
+        @summary Update the information of supplier.
         
         @param request: UpdateSupplierInformationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8448,7 +9140,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateSupplierInformationResponse:
         """
-        @summary 更新供应商全局信息
+        @summary Update the information of supplier.
         
         @param request: UpdateSupplierInformationRequest
         @return: UpdateSupplierInformationResponse
@@ -8461,7 +9153,7 @@ class Client(OpenApiClient):
         request: compute_nest_supplier_20210521_models.UpdateSupplierInformationRequest,
     ) -> compute_nest_supplier_20210521_models.UpdateSupplierInformationResponse:
         """
-        @summary 更新供应商全局信息
+        @summary Update the information of supplier.
         
         @param request: UpdateSupplierInformationRequest
         @return: UpdateSupplierInformationResponse
