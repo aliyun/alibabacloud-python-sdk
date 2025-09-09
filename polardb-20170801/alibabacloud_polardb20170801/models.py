@@ -14502,6 +14502,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         interval: str = None,
         key: str = None,
         start_time: str = None,
+        sub_group_name: str = None,
         type: str = None,
     ):
         # The cluster ID.
@@ -14524,6 +14525,7 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.start_time = start_time
+        self.sub_group_name = sub_group_name
         # The query type.
         self.type = type
 
@@ -14546,6 +14548,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
             result['Key'] = self.key
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.sub_group_name is not None:
+            result['SubGroupName'] = self.sub_group_name
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -14562,6 +14566,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
             self.key = m.get('Key')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('SubGroupName') is not None:
+            self.sub_group_name = m.get('SubGroupName')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -33950,6 +33956,140 @@ class ModifyDBNodeClassResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDBNodeClassResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyDBNodeDescriptionRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        dbnode_description: str = None,
+        dbnode_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        # This parameter is required.
+        self.dbnode_description = dbnode_description
+        # This parameter is required.
+        self.dbnode_id = dbnode_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.dbnode_description is not None:
+            result['DBNodeDescription'] = self.dbnode_description
+        if self.dbnode_id is not None:
+            result['DBNodeId'] = self.dbnode_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DBNodeDescription') is not None:
+            self.dbnode_description = m.get('DBNodeDescription')
+        if m.get('DBNodeId') is not None:
+            self.dbnode_id = m.get('DBNodeId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class ModifyDBNodeDescriptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBNodeDescriptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBNodeDescriptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBNodeDescriptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

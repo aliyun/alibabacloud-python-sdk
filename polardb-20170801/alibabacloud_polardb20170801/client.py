@@ -7956,6 +7956,8 @@ class Client(OpenApiClient):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_group_name):
+            query['SubGroupName'] = request.sub_group_name
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -8014,6 +8016,8 @@ class Client(OpenApiClient):
             query['Key'] = request.key
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_group_name):
+            query['SubGroupName'] = request.sub_group_name
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -17818,6 +17822,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbnode_class_with_options_async(request, runtime)
+
+    def modify_dbnode_description_with_options(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeDescriptionResponse:
+        """
+        @summary 修改物理节点描述
+        
+        @param request: ModifyDBNodeDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBNodeDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_description):
+            query['DBNodeDescription'] = request.dbnode_description
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbnode_description_with_options_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeDescriptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.ModifyDBNodeDescriptionResponse:
+        """
+        @summary 修改物理节点描述
+        
+        @param request: ModifyDBNodeDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBNodeDescriptionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.dbnode_description):
+            query['DBNodeDescription'] = request.dbnode_description
+        if not UtilClient.is_unset(request.dbnode_id):
+            query['DBNodeId'] = request.dbnode_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBNodeDescription',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.ModifyDBNodeDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbnode_description(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeDescriptionRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeDescriptionResponse:
+        """
+        @summary 修改物理节点描述
+        
+        @param request: ModifyDBNodeDescriptionRequest
+        @return: ModifyDBNodeDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbnode_description_with_options(request, runtime)
+
+    async def modify_dbnode_description_async(
+        self,
+        request: polardb_20170801_models.ModifyDBNodeDescriptionRequest,
+    ) -> polardb_20170801_models.ModifyDBNodeDescriptionResponse:
+        """
+        @summary 修改物理节点描述
+        
+        @param request: ModifyDBNodeDescriptionRequest
+        @return: ModifyDBNodeDescriptionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbnode_description_with_options_async(request, runtime)
 
     def modify_dbnode_hot_replica_mode_with_options(
         self,

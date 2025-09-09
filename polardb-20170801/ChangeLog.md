@@ -1,3 +1,8 @@
+2025-09-09 Version: 5.10.0
+- Support API ModifyDBNodeDescription.
+- Update API DescribeDBClusterPerformance: add request parameters SubGroupName.
+
+
 2025-08-14 Version: 5.9.1
 - Update API DescribeBackupPolicy: add response parameters Body.AdvancedDataPolicies.
 - Update API DescribeBackupPolicy: add response parameters Body.AdvancedPolicyOption.
