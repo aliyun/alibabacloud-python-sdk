@@ -1756,6 +1756,196 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CreateKyuubiTokenRequestAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class CreateKyuubiTokenRequest(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: CreateKyuubiTokenRequestAutoExpireConfiguration = None,
+        member_arns: List[str] = None,
+        name: str = None,
+        token: str = None,
+        region_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.member_arns = member_arns
+        self.name = name
+        self.token = token
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.member_arns is not None:
+            result['memberArns'] = self.member_arns
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = CreateKyuubiTokenRequestAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('memberArns') is not None:
+            self.member_arns = m.get('memberArns')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateKyuubiTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        token_id: str = None,
+    ):
+        # Token ID。
+        self.token_id = token_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.token_id is not None:
+            result['tokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tokenId') is not None:
+            self.token_id = m.get('tokenId')
+        return self
+
+
+class CreateKyuubiTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateKyuubiTokenResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateKyuubiTokenResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateKyuubiTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateKyuubiTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateKyuubiTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLivyComputeRequestAutoStartConfiguration(TeaModel):
     def __init__(
         self,
@@ -3556,6 +3746,7 @@ class CreateSqlStatementRequest(TeaModel):
         default_database: str = None,
         limit: int = None,
         sql_compute_id: str = None,
+        task_biz_id: str = None,
         region_id: str = None,
     ):
         # The SQL code. You can specify one or more SQL statements.
@@ -3568,6 +3759,7 @@ class CreateSqlStatementRequest(TeaModel):
         self.limit = limit
         # The SQL session ID. You can create an SQL session in the workspace created in EMR Serverless Spark.
         self.sql_compute_id = sql_compute_id
+        self.task_biz_id = task_biz_id
         # The region ID.
         self.region_id = region_id
 
@@ -3590,6 +3782,8 @@ class CreateSqlStatementRequest(TeaModel):
             result['limit'] = self.limit
         if self.sql_compute_id is not None:
             result['sqlComputeId'] = self.sql_compute_id
+        if self.task_biz_id is not None:
+            result['taskBizId'] = self.task_biz_id
         if self.region_id is not None:
             result['regionId'] = self.region_id
         return result
@@ -3606,6 +3800,8 @@ class CreateSqlStatementRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('sqlComputeId') is not None:
             self.sql_compute_id = m.get('sqlComputeId')
+        if m.get('taskBizId') is not None:
+            self.task_biz_id = m.get('taskBizId')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         return self
@@ -4010,6 +4206,101 @@ class CreateWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteKyuubiTokenRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class DeleteKyuubiTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteKyuubiTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteKyuubiTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteKyuubiTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5021,6 +5312,220 @@ class GetJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetKyuubiTokenRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetKyuubiTokenResponseBodyDataAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class GetKyuubiTokenResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: GetKyuubiTokenResponseBodyDataAutoExpireConfiguration = None,
+        create_time: int = None,
+        created_by: str = None,
+        expire_time: int = None,
+        last_used_time: int = None,
+        member_arns: List[str] = None,
+        name: str = None,
+        token: str = None,
+        token_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.create_time = create_time
+        self.created_by = created_by
+        self.expire_time = expire_time
+        self.last_used_time = last_used_time
+        self.member_arns = member_arns
+        self.name = name
+        self.token = token
+        # Token ID。
+        self.token_id = token_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.created_by is not None:
+            result['createdBy'] = self.created_by
+        if self.expire_time is not None:
+            result['expireTime'] = self.expire_time
+        if self.last_used_time is not None:
+            result['lastUsedTime'] = self.last_used_time
+        if self.member_arns is not None:
+            result['memberArns'] = self.member_arns
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.token_id is not None:
+            result['tokenId'] = self.token_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = GetKyuubiTokenResponseBodyDataAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('createdBy') is not None:
+            self.created_by = m.get('createdBy')
+        if m.get('expireTime') is not None:
+            self.expire_time = m.get('expireTime')
+        if m.get('lastUsedTime') is not None:
+            self.last_used_time = m.get('lastUsedTime')
+        if m.get('memberArns') is not None:
+            self.member_arns = m.get('memberArns')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('tokenId') is not None:
+            self.token_id = m.get('tokenId')
+        return self
+
+
+class GetKyuubiTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetKyuubiTokenResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetKyuubiTokenResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetKyuubiTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetKyuubiTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetKyuubiTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12277,6 +12782,160 @@ class TerminateSqlStatementResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TerminateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateKyuubiTokenRequestAutoExpireConfiguration(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        expire_days: int = None,
+    ):
+        self.enable = enable
+        self.expire_days = expire_days
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['enable'] = self.enable
+        if self.expire_days is not None:
+            result['expireDays'] = self.expire_days
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enable') is not None:
+            self.enable = m.get('enable')
+        if m.get('expireDays') is not None:
+            self.expire_days = m.get('expireDays')
+        return self
+
+
+class UpdateKyuubiTokenRequest(TeaModel):
+    def __init__(
+        self,
+        auto_expire_configuration: UpdateKyuubiTokenRequestAutoExpireConfiguration = None,
+        member_arns: List[str] = None,
+        name: str = None,
+        token: str = None,
+        region_id: str = None,
+    ):
+        self.auto_expire_configuration = auto_expire_configuration
+        self.member_arns = member_arns
+        self.name = name
+        self.token = token
+        self.region_id = region_id
+
+    def validate(self):
+        if self.auto_expire_configuration:
+            self.auto_expire_configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_expire_configuration is not None:
+            result['autoExpireConfiguration'] = self.auto_expire_configuration.to_map()
+        if self.member_arns is not None:
+            result['memberArns'] = self.member_arns
+        if self.name is not None:
+            result['name'] = self.name
+        if self.token is not None:
+            result['token'] = self.token
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('autoExpireConfiguration') is not None:
+            temp_model = UpdateKyuubiTokenRequestAutoExpireConfiguration()
+            self.auto_expire_configuration = temp_model.from_map(m['autoExpireConfiguration'])
+        if m.get('memberArns') is not None:
+            self.member_arns = m.get('memberArns')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class UpdateKyuubiTokenResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateKyuubiTokenResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateKyuubiTokenResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateKyuubiTokenResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -269,6 +269,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
 
+    def create_kyuubi_token_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.CreateKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse:
+        """
+        @summary 创建kyuubi的token
+        
+        @param request: CreateKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_kyuubi_token_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.CreateKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse:
+        """
+        @summary 创建kyuubi的token
+        
+        @param request: CreateKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_kyuubi_token(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.CreateKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse:
+        """
+        @summary 创建kyuubi的token
+        
+        @param request: CreateKyuubiTokenRequest
+        @return: CreateKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_kyuubi_token_with_options(workspace_id, kyuubi_service_id, request, headers, runtime)
+
+    async def create_kyuubi_token_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        request: emr_serverless_spark_20230808_models.CreateKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateKyuubiTokenResponse:
+        """
+        @summary 创建kyuubi的token
+        
+        @param request: CreateKyuubiTokenRequest
+        @return: CreateKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, request, headers, runtime)
+
     def create_livy_compute_with_options(
         self,
         workspace_biz_id: str,
@@ -955,6 +1087,8 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.sql_compute_id):
             body['sqlComputeId'] = request.sql_compute_id
+        if not UtilClient.is_unset(request.task_biz_id):
+            body['taskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1006,6 +1140,8 @@ class Client(OpenApiClient):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.sql_compute_id):
             body['sqlComputeId'] = request.sql_compute_id
+        if not UtilClient.is_unset(request.task_biz_id):
+            body['taskBizId'] = request.task_biz_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1228,6 +1364,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workspace_with_options_async(request, headers, runtime)
+
+    def delete_kyuubi_token_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse:
+        """
+        @summary 删除compute的token
+        
+        @param request: DeleteKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_kyuubi_token_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse:
+        """
+        @summary 删除compute的token
+        
+        @param request: DeleteKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_kyuubi_token(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse:
+        """
+        @summary 删除compute的token
+        
+        @param request: DeleteKyuubiTokenRequest
+        @return: DeleteKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_kyuubi_token_with_options(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
+
+    async def delete_kyuubi_token_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.DeleteKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.DeleteKyuubiTokenResponse:
+        """
+        @summary 删除compute的token
+        
+        @param request: DeleteKyuubiTokenRequest
+        @return: DeleteKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
 
     def delete_livy_compute_with_options(
         self,
@@ -1928,6 +2180,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
+
+    def get_kyuubi_token_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetKyuubiTokenResponse:
+        """
+        @summary 获取compute的token
+        
+        @param request: GetKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetKyuubiTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_kyuubi_token_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetKyuubiTokenResponse:
+        """
+        @summary 获取compute的token
+        
+        @param request: GetKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetKyuubiTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_kyuubi_token(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.GetKyuubiTokenResponse:
+        """
+        @summary 获取compute的token
+        
+        @param request: GetKyuubiTokenRequest
+        @return: GetKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_kyuubi_token_with_options(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
+
+    async def get_kyuubi_token_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.GetKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.GetKyuubiTokenResponse:
+        """
+        @summary 获取compute的token
+        
+        @param request: GetKyuubiTokenRequest
+        @return: GetKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
 
     def get_livy_compute_with_options(
         self,
@@ -5246,6 +5614,142 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.terminate_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)
+
+    def update_kyuubi_token_with_options(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse:
+        """
+        @summary 更新kyuubi的token
+        
+        @param request: UpdateKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kyuubi_token_with_options_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateKyuubiTokenRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse:
+        """
+        @summary 更新kyuubi的token
+        
+        @param request: UpdateKyuubiTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKyuubiTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.auto_expire_configuration):
+            body['autoExpireConfiguration'] = request.auto_expire_configuration
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.token):
+            body['token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateKyuubiToken',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/kyuubiService/{OpenApiUtilClient.get_encode_param(kyuubi_service_id)}/token/{OpenApiUtilClient.get_encode_param(token_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kyuubi_token(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse:
+        """
+        @summary 更新kyuubi的token
+        
+        @param request: UpdateKyuubiTokenRequest
+        @return: UpdateKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_kyuubi_token_with_options(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
+
+    async def update_kyuubi_token_async(
+        self,
+        workspace_id: str,
+        kyuubi_service_id: str,
+        token_id: str,
+        request: emr_serverless_spark_20230808_models.UpdateKyuubiTokenRequest,
+    ) -> emr_serverless_spark_20230808_models.UpdateKyuubiTokenResponse:
+        """
+        @summary 更新kyuubi的token
+        
+        @param request: UpdateKyuubiTokenRequest
+        @return: UpdateKyuubiTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_kyuubi_token_with_options_async(workspace_id, kyuubi_service_id, token_id, request, headers, runtime)
 
     def update_livy_compute_with_options(
         self,

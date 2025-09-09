@@ -1,3 +1,11 @@
+2025-09-09 Version: 1.15.0
+- Support API CreateKyuubiToken.
+- Support API DeleteKyuubiToken.
+- Support API GetKyuubiToken.
+- Support API UpdateKyuubiToken.
+- Update API CreateSqlStatement: add request parameters body.taskBizId.
+
+
 2025-08-20 Version: 1.14.0
 - Support API ListMembers.
 
