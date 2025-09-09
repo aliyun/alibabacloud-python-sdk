@@ -1,3 +1,8 @@
+2025-09-09 Version: 2.3.0
+- Support API GetIcpFilingInfoForPartner.
+- Support API GetUserTmpIdentityForPartner.
+
+
 2025-08-01 Version: 2.2.0
 - Support API SearchImage.
 

@@ -245,6 +245,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_create_logo_task_with_options_async(request, runtime)
 
+    def get_icp_filing_info_for_partner_with_options(
+        self,
+        request: website_build_20250429_models.GetIcpFilingInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetIcpFilingInfoForPartnerResponse:
+        """
+        @summary 查询域名备案信息
+        
+        @param request: GetIcpFilingInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcpFilingInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIcpFilingInfoForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetIcpFilingInfoForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_icp_filing_info_for_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.GetIcpFilingInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetIcpFilingInfoForPartnerResponse:
+        """
+        @summary 查询域名备案信息
+        
+        @param request: GetIcpFilingInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIcpFilingInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetIcpFilingInfoForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetIcpFilingInfoForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_icp_filing_info_for_partner(
+        self,
+        request: website_build_20250429_models.GetIcpFilingInfoForPartnerRequest,
+    ) -> website_build_20250429_models.GetIcpFilingInfoForPartnerResponse:
+        """
+        @summary 查询域名备案信息
+        
+        @param request: GetIcpFilingInfoForPartnerRequest
+        @return: GetIcpFilingInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_icp_filing_info_for_partner_with_options(request, runtime)
+
+    async def get_icp_filing_info_for_partner_async(
+        self,
+        request: website_build_20250429_models.GetIcpFilingInfoForPartnerRequest,
+    ) -> website_build_20250429_models.GetIcpFilingInfoForPartnerResponse:
+        """
+        @summary 查询域名备案信息
+        
+        @param request: GetIcpFilingInfoForPartnerRequest
+        @return: GetIcpFilingInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_icp_filing_info_for_partner_with_options_async(request, runtime)
+
+    def get_user_tmp_identity_for_partner_with_options(
+        self,
+        request: website_build_20250429_models.GetUserTmpIdentityForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetUserTmpIdentityForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户SLR角色授权临时凭证
+        
+        @param request: GetUserTmpIdentityForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserTmpIdentityForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_purpose):
+            query['AuthPurpose'] = request.auth_purpose
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.service_linked_role):
+            query['ServiceLinkedRole'] = request.service_linked_role
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserTmpIdentityForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetUserTmpIdentityForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_tmp_identity_for_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.GetUserTmpIdentityForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetUserTmpIdentityForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户SLR角色授权临时凭证
+        
+        @param request: GetUserTmpIdentityForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserTmpIdentityForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auth_purpose):
+            query['AuthPurpose'] = request.auth_purpose
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.service_linked_role):
+            query['ServiceLinkedRole'] = request.service_linked_role
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetUserTmpIdentityForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetUserTmpIdentityForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_tmp_identity_for_partner(
+        self,
+        request: website_build_20250429_models.GetUserTmpIdentityForPartnerRequest,
+    ) -> website_build_20250429_models.GetUserTmpIdentityForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户SLR角色授权临时凭证
+        
+        @param request: GetUserTmpIdentityForPartnerRequest
+        @return: GetUserTmpIdentityForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_tmp_identity_for_partner_with_options(request, runtime)
+
+    async def get_user_tmp_identity_for_partner_async(
+        self,
+        request: website_build_20250429_models.GetUserTmpIdentityForPartnerRequest,
+    ) -> website_build_20250429_models.GetUserTmpIdentityForPartnerResponse:
+        """
+        @summary 合作伙伴获取用户SLR角色授权临时凭证
+        
+        @param request: GetUserTmpIdentityForPartnerRequest
+        @return: GetUserTmpIdentityForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_tmp_identity_for_partner_with_options_async(request, runtime)
+
     def operate_app_instance_for_partner_with_options(
         self,
         request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
