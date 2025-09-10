@@ -3,6 +3,11 @@
 - Update API CreateAppInstance: add request parameters RAGEnabled.
 
 
+2025-09-10 Version: 1.1.1
+- Update API CreateAppInstance: add request parameters DBInstanceConfig.
+- Update API CreateAppInstance: add request parameters RAGEnabled.
+
+
 2025-08-28 Version: 1.1.0
 - Support API DescribeInstanceAuthInfo.
 
