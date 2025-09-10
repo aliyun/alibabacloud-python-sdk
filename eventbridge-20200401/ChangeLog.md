@@ -1,3 +1,9 @@
+2025-09-10 Version: 7.1.2
+- Update API CreateEventSource: add request parameters SourceOSSEventParameters.
+- Update API ListUserDefinedEventSources: add response parameters Body.Data.EventSourceList.$.SourceOSSEventParameters.
+- Update API UpdateEventSource: add request parameters SourceOSSEventParameters.
+
+
 2025-09-03 Version: 7.1.1
 - Update API CreateEventStreaming: add request parameters Sink.SinkApacheKafkaParameters.
 - Update API CreateEventStreaming: add request parameters Source.SourceApacheKafkaParameters.

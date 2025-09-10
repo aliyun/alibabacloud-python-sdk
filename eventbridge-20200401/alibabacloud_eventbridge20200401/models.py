@@ -1905,6 +1905,105 @@ class CreateEventSourceRequestSourceMNSParameters(TeaModel):
         return self
 
 
+class CreateEventSourceRequestSourceOSSEventParametersMatchRules(TeaModel):
+    def __init__(
+        self,
+        prefix: str = None,
+        suffix: str = None,
+        name: str = None,
+        match_state: bool = None,
+    ):
+        self.prefix = prefix
+        self.suffix = suffix
+        self.name = name
+        self.match_state = match_state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        if self.suffix is not None:
+            result['Suffix'] = self.suffix
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.match_state is not None:
+            result['MatchState'] = self.match_state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        if m.get('Suffix') is not None:
+            self.suffix = m.get('Suffix')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('MatchState') is not None:
+            self.match_state = m.get('MatchState')
+        return self
+
+
+class CreateEventSourceRequestSourceOSSEventParameters(TeaModel):
+    def __init__(
+        self,
+        event_types: List[str] = None,
+        match_rules: List[List[CreateEventSourceRequestSourceOSSEventParametersMatchRules]] = None,
+        sts_role_arn: str = None,
+    ):
+        self.event_types = event_types
+        self.match_rules = match_rules
+        self.sts_role_arn = sts_role_arn
+
+    def validate(self):
+        if self.match_rules:
+            for k in self.match_rules:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['MatchRules'].append(l1)
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                l1 = []
+                for k1 in k:
+                    temp_model = CreateEventSourceRequestSourceOSSEventParametersMatchRules()
+                    l1.append(temp_model.from_map(k1))
+                self.match_rules.append(l1)
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
+        return self
+
+
 class CreateEventSourceRequestSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -2192,6 +2291,7 @@ class CreateEventSourceRequest(TeaModel):
         source_http_event_parameters: CreateEventSourceRequestSourceHttpEventParameters = None,
         source_kafka_parameters: CreateEventSourceRequestSourceKafkaParameters = None,
         source_mnsparameters: CreateEventSourceRequestSourceMNSParameters = None,
+        source_ossevent_parameters: CreateEventSourceRequestSourceOSSEventParameters = None,
         source_rabbit_mqparameters: CreateEventSourceRequestSourceRabbitMQParameters = None,
         source_rocket_mqparameters: CreateEventSourceRequestSourceRocketMQParameters = None,
         source_slsparameters: CreateEventSourceRequestSourceSLSParameters = None,
@@ -2219,6 +2319,7 @@ class CreateEventSourceRequest(TeaModel):
         self.source_kafka_parameters = source_kafka_parameters
         # The parameters that are configured if you specify Simple Message Queue (formerly MNS) (SMQ) as the event source. If you specify SMQ as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
         self.source_mnsparameters = source_mnsparameters
+        self.source_ossevent_parameters = source_ossevent_parameters
         # The parameters that are configured if the event source is Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -2235,6 +2336,8 @@ class CreateEventSourceRequest(TeaModel):
             self.source_kafka_parameters.validate()
         if self.source_mnsparameters:
             self.source_mnsparameters.validate()
+        if self.source_ossevent_parameters:
+            self.source_ossevent_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -2268,6 +2371,8 @@ class CreateEventSourceRequest(TeaModel):
             result['SourceKafkaParameters'] = self.source_kafka_parameters.to_map()
         if self.source_mnsparameters is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
+        if self.source_ossevent_parameters is not None:
+            result['SourceOSSEventParameters'] = self.source_ossevent_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -2301,6 +2406,9 @@ class CreateEventSourceRequest(TeaModel):
         if m.get('SourceMNSParameters') is not None:
             temp_model = CreateEventSourceRequestSourceMNSParameters()
             self.source_mnsparameters = temp_model.from_map(m['SourceMNSParameters'])
+        if m.get('SourceOSSEventParameters') is not None:
+            temp_model = CreateEventSourceRequestSourceOSSEventParameters()
+            self.source_ossevent_parameters = temp_model.from_map(m['SourceOSSEventParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = CreateEventSourceRequestSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
@@ -2328,6 +2436,7 @@ class CreateEventSourceShrinkRequest(TeaModel):
         source_http_event_parameters_shrink: str = None,
         source_kafka_parameters_shrink: str = None,
         source_mnsparameters_shrink: str = None,
+        source_ossevent_parameters_shrink: str = None,
         source_rabbit_mqparameters_shrink: str = None,
         source_rocket_mqparameters_shrink: str = None,
         source_slsparameters_shrink: str = None,
@@ -2355,6 +2464,7 @@ class CreateEventSourceShrinkRequest(TeaModel):
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
         # The parameters that are configured if you specify Simple Message Queue (formerly MNS) (SMQ) as the event source. If you specify SMQ as the event source, you must configure RegionId, IsBase64Decode, and QueueName.
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
+        self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink
         # The parameters that are configured if the event source is Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
         # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -2391,6 +2501,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             result['SourceKafkaParameters'] = self.source_kafka_parameters_shrink
         if self.source_mnsparameters_shrink is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters_shrink
+        if self.source_ossevent_parameters_shrink is not None:
+            result['SourceOSSEventParameters'] = self.source_ossevent_parameters_shrink
         if self.source_rabbit_mqparameters_shrink is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters_shrink
         if self.source_rocket_mqparameters_shrink is not None:
@@ -2421,6 +2533,8 @@ class CreateEventSourceShrinkRequest(TeaModel):
             self.source_kafka_parameters_shrink = m.get('SourceKafkaParameters')
         if m.get('SourceMNSParameters') is not None:
             self.source_mnsparameters_shrink = m.get('SourceMNSParameters')
+        if m.get('SourceOSSEventParameters') is not None:
+            self.source_ossevent_parameters_shrink = m.get('SourceOSSEventParameters')
         if m.get('SourceRabbitMQParameters') is not None:
             self.source_rabbit_mqparameters_shrink = m.get('SourceRabbitMQParameters')
         if m.get('SourceRocketMQParameters') is not None:
@@ -31751,6 +31865,45 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParamet
         return self
 
 
+class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters(TeaModel):
+    def __init__(
+        self,
+        event_types: List[str] = None,
+        match_rules: Any = None,
+        sts_role_arn: str = None,
+    ):
+        self.event_types = event_types
+        self.match_rules = match_rules
+        self.sts_role_arn = sts_role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        if self.match_rules is not None:
+            result['MatchRules'] = self.match_rules
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        if m.get('MatchRules') is not None:
+            self.match_rules = m.get('MatchRules')
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
+        return self
+
+
 class ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -32041,6 +32194,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceList(TeaModel):
         source_http_event_parameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceHttpEventParameters = None,
         source_kafka_parameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceKafkaParameters = None,
         source_mnsparameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters = None,
+        source_ossevent_parameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters = None,
         source_rabbit_mqparameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters = None,
         source_rocket_mqparameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRocketMQParameters = None,
         source_slsparameters: ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceSLSParameters = None,
@@ -32064,6 +32218,7 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceList(TeaModel):
         self.source_kafka_parameters = source_kafka_parameters
         # The parameters that are returned if Simple Message Queue (formerly MNS) (SMQ) is specified as the event source.
         self.source_mnsparameters = source_mnsparameters
+        self.source_ossevent_parameters = source_ossevent_parameters
         # The parameters that are returned if Message Queue for RabbitMQ is specified as the event source.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # The parameters that are returned if Message Queue for Apache RocketMQ is specified as the event source.
@@ -32084,6 +32239,8 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceList(TeaModel):
             self.source_kafka_parameters.validate()
         if self.source_mnsparameters:
             self.source_mnsparameters.validate()
+        if self.source_ossevent_parameters:
+            self.source_ossevent_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -32115,6 +32272,8 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceList(TeaModel):
             result['SourceKafkaParameters'] = self.source_kafka_parameters.to_map()
         if self.source_mnsparameters is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
+        if self.source_ossevent_parameters is not None:
+            result['SourceOSSEventParameters'] = self.source_ossevent_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -32150,6 +32309,9 @@ class ListUserDefinedEventSourcesResponseBodyDataEventSourceList(TeaModel):
         if m.get('SourceMNSParameters') is not None:
             temp_model = ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceMNSParameters()
             self.source_mnsparameters = temp_model.from_map(m['SourceMNSParameters'])
+        if m.get('SourceOSSEventParameters') is not None:
+            temp_model = ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceOSSEventParameters()
+            self.source_ossevent_parameters = temp_model.from_map(m['SourceOSSEventParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = ListUserDefinedEventSourcesResponseBodyDataEventSourceListSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
@@ -35767,6 +35929,105 @@ class UpdateEventSourceRequestSourceMNSParameters(TeaModel):
         return self
 
 
+class UpdateEventSourceRequestSourceOSSEventParametersMatchRules(TeaModel):
+    def __init__(
+        self,
+        suffix: str = None,
+        match_state: bool = None,
+        prefix: str = None,
+        name: str = None,
+    ):
+        self.suffix = suffix
+        self.match_state = match_state
+        self.prefix = prefix
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.suffix is not None:
+            result['Suffix'] = self.suffix
+        if self.match_state is not None:
+            result['MatchState'] = self.match_state
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Suffix') is not None:
+            self.suffix = m.get('Suffix')
+        if m.get('MatchState') is not None:
+            self.match_state = m.get('MatchState')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateEventSourceRequestSourceOSSEventParameters(TeaModel):
+    def __init__(
+        self,
+        event_types: List[str] = None,
+        match_rules: List[List[UpdateEventSourceRequestSourceOSSEventParametersMatchRules]] = None,
+        sts_role_arn: str = None,
+    ):
+        self.event_types = event_types
+        self.match_rules = match_rules
+        self.sts_role_arn = sts_role_arn
+
+    def validate(self):
+        if self.match_rules:
+            for k in self.match_rules:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_types is not None:
+            result['EventTypes'] = self.event_types
+        result['MatchRules'] = []
+        if self.match_rules is not None:
+            for k in self.match_rules:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['MatchRules'].append(l1)
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventTypes') is not None:
+            self.event_types = m.get('EventTypes')
+        self.match_rules = []
+        if m.get('MatchRules') is not None:
+            for k in m.get('MatchRules'):
+                l1 = []
+                for k1 in k:
+                    temp_model = UpdateEventSourceRequestSourceOSSEventParametersMatchRules()
+                    l1.append(temp_model.from_map(k1))
+                self.match_rules.append(l1)
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
+        return self
+
+
 class UpdateEventSourceRequestSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -36061,6 +36322,7 @@ class UpdateEventSourceRequest(TeaModel):
         source_http_event_parameters: UpdateEventSourceRequestSourceHttpEventParameters = None,
         source_kafka_parameters: UpdateEventSourceRequestSourceKafkaParameters = None,
         source_mnsparameters: UpdateEventSourceRequestSourceMNSParameters = None,
+        source_ossevent_parameters: UpdateEventSourceRequestSourceOSSEventParameters = None,
         source_rabbit_mqparameters: UpdateEventSourceRequestSourceRabbitMQParameters = None,
         source_rocket_mqparameters: UpdateEventSourceRequestSourceRocketMQParameters = None,
         source_slsparameters: UpdateEventSourceRequestSourceSLSParameters = None,
@@ -36088,6 +36350,7 @@ class UpdateEventSourceRequest(TeaModel):
         self.source_kafka_parameters = source_kafka_parameters
         # The parameters that are configured if the event source is Message Service (MNS).
         self.source_mnsparameters = source_mnsparameters
+        self.source_ossevent_parameters = source_ossevent_parameters
         # The parameters that are configured if the event source is Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -36104,6 +36367,8 @@ class UpdateEventSourceRequest(TeaModel):
             self.source_kafka_parameters.validate()
         if self.source_mnsparameters:
             self.source_mnsparameters.validate()
+        if self.source_ossevent_parameters:
+            self.source_ossevent_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -36137,6 +36402,8 @@ class UpdateEventSourceRequest(TeaModel):
             result['SourceKafkaParameters'] = self.source_kafka_parameters.to_map()
         if self.source_mnsparameters is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
+        if self.source_ossevent_parameters is not None:
+            result['SourceOSSEventParameters'] = self.source_ossevent_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -36170,6 +36437,9 @@ class UpdateEventSourceRequest(TeaModel):
         if m.get('SourceMNSParameters') is not None:
             temp_model = UpdateEventSourceRequestSourceMNSParameters()
             self.source_mnsparameters = temp_model.from_map(m['SourceMNSParameters'])
+        if m.get('SourceOSSEventParameters') is not None:
+            temp_model = UpdateEventSourceRequestSourceOSSEventParameters()
+            self.source_ossevent_parameters = temp_model.from_map(m['SourceOSSEventParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = UpdateEventSourceRequestSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
@@ -36197,6 +36467,7 @@ class UpdateEventSourceShrinkRequest(TeaModel):
         source_http_event_parameters_shrink: str = None,
         source_kafka_parameters_shrink: str = None,
         source_mnsparameters_shrink: str = None,
+        source_ossevent_parameters_shrink: str = None,
         source_rabbit_mqparameters_shrink: str = None,
         source_rocket_mqparameters_shrink: str = None,
         source_slsparameters_shrink: str = None,
@@ -36224,6 +36495,7 @@ class UpdateEventSourceShrinkRequest(TeaModel):
         self.source_kafka_parameters_shrink = source_kafka_parameters_shrink
         # The parameters that are configured if the event source is Message Service (MNS).
         self.source_mnsparameters_shrink = source_mnsparameters_shrink
+        self.source_ossevent_parameters_shrink = source_ossevent_parameters_shrink
         # The parameters that are configured if the event source is Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters_shrink = source_rabbit_mqparameters_shrink
         # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -36260,6 +36532,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             result['SourceKafkaParameters'] = self.source_kafka_parameters_shrink
         if self.source_mnsparameters_shrink is not None:
             result['SourceMNSParameters'] = self.source_mnsparameters_shrink
+        if self.source_ossevent_parameters_shrink is not None:
+            result['SourceOSSEventParameters'] = self.source_ossevent_parameters_shrink
         if self.source_rabbit_mqparameters_shrink is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters_shrink
         if self.source_rocket_mqparameters_shrink is not None:
@@ -36290,6 +36564,8 @@ class UpdateEventSourceShrinkRequest(TeaModel):
             self.source_kafka_parameters_shrink = m.get('SourceKafkaParameters')
         if m.get('SourceMNSParameters') is not None:
             self.source_mnsparameters_shrink = m.get('SourceMNSParameters')
+        if m.get('SourceOSSEventParameters') is not None:
+            self.source_ossevent_parameters_shrink = m.get('SourceOSSEventParameters')
         if m.get('SourceRabbitMQParameters') is not None:
             self.source_rabbit_mqparameters_shrink = m.get('SourceRabbitMQParameters')
         if m.get('SourceRocketMQParameters') is not None:

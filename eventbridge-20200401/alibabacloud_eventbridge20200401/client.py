@@ -522,6 +522,8 @@ class Client(OpenApiClient):
             request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_ossevent_parameters):
+            request.source_ossevent_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ossevent_parameters, 'SourceOSSEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
             request.source_rabbit_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rabbit_mqparameters, 'SourceRabbitMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rocket_mqparameters):
@@ -549,6 +551,8 @@ class Client(OpenApiClient):
             body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
+        if not UtilClient.is_unset(request.source_ossevent_parameters_shrink):
+            body['SourceOSSEventParameters'] = request.source_ossevent_parameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
             body['SourceRabbitMQParameters'] = request.source_rabbit_mqparameters_shrink
         if not UtilClient.is_unset(request.source_rocket_mqparameters_shrink):
@@ -601,6 +605,8 @@ class Client(OpenApiClient):
             request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_ossevent_parameters):
+            request.source_ossevent_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ossevent_parameters, 'SourceOSSEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
             request.source_rabbit_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rabbit_mqparameters, 'SourceRabbitMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rocket_mqparameters):
@@ -628,6 +634,8 @@ class Client(OpenApiClient):
             body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
+        if not UtilClient.is_unset(request.source_ossevent_parameters_shrink):
+            body['SourceOSSEventParameters'] = request.source_ossevent_parameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
             body['SourceRabbitMQParameters'] = request.source_rabbit_mqparameters_shrink
         if not UtilClient.is_unset(request.source_rocket_mqparameters_shrink):
@@ -5076,6 +5084,8 @@ class Client(OpenApiClient):
             request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_ossevent_parameters):
+            request.source_ossevent_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ossevent_parameters, 'SourceOSSEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
             request.source_rabbit_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rabbit_mqparameters, 'SourceRabbitMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rocket_mqparameters):
@@ -5103,6 +5113,8 @@ class Client(OpenApiClient):
             body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
+        if not UtilClient.is_unset(request.source_ossevent_parameters_shrink):
+            body['SourceOSSEventParameters'] = request.source_ossevent_parameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
             body['SourceRabbitMQParameters'] = request.source_rabbit_mqparameters_shrink
         if not UtilClient.is_unset(request.source_rocket_mqparameters_shrink):
@@ -5155,6 +5167,8 @@ class Client(OpenApiClient):
             request.source_kafka_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_kafka_parameters, 'SourceKafkaParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_mnsparameters):
             request.source_mnsparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_mnsparameters, 'SourceMNSParameters', 'json')
+        if not UtilClient.is_unset(tmp_req.source_ossevent_parameters):
+            request.source_ossevent_parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_ossevent_parameters, 'SourceOSSEventParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rabbit_mqparameters):
             request.source_rabbit_mqparameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_rabbit_mqparameters, 'SourceRabbitMQParameters', 'json')
         if not UtilClient.is_unset(tmp_req.source_rocket_mqparameters):
@@ -5182,6 +5196,8 @@ class Client(OpenApiClient):
             body['SourceKafkaParameters'] = request.source_kafka_parameters_shrink
         if not UtilClient.is_unset(request.source_mnsparameters_shrink):
             body['SourceMNSParameters'] = request.source_mnsparameters_shrink
+        if not UtilClient.is_unset(request.source_ossevent_parameters_shrink):
+            body['SourceOSSEventParameters'] = request.source_ossevent_parameters_shrink
         if not UtilClient.is_unset(request.source_rabbit_mqparameters_shrink):
             body['SourceRabbitMQParameters'] = request.source_rabbit_mqparameters_shrink
         if not UtilClient.is_unset(request.source_rocket_mqparameters_shrink):
