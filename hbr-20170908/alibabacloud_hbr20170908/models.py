@@ -383,9 +383,11 @@ class AddContainerClusterResponse(TeaModel):
 class CancelBackupJobRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         job_id: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the backup job.
         # 
         # This parameter is required.
@@ -402,6 +404,8 @@ class CancelBackupJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.job_id is not None:
             result['JobId'] = self.job_id
         if self.vault_id is not None:
@@ -410,6 +414,8 @@ class CancelBackupJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
         if m.get('VaultId') is not None:
@@ -513,16 +519,16 @@ class CancelBackupJobResponse(TeaModel):
 class CancelRestoreJobRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         restore_id: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the restore job.
         # 
         # This parameter is required.
         self.restore_id = restore_id
         # The ID of the backup vault.
-        # 
-        # This parameter is required.
         self.vault_id = vault_id
 
     def validate(self):
@@ -534,6 +540,8 @@ class CancelRestoreJobRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.restore_id is not None:
             result['RestoreId'] = self.restore_id
         if self.vault_id is not None:
@@ -542,6 +550,8 @@ class CancelRestoreJobRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('RestoreId') is not None:
             self.restore_id = m.get('RestoreId')
         if m.get('VaultId') is not None:
@@ -4545,6 +4555,7 @@ class CreateRestoreJobRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        edition: str = None,
         exclude: str = None,
         failback_detail: Dict[str, Any] = None,
         include: str = None,
@@ -4578,6 +4589,7 @@ class CreateRestoreJobRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID managed by the current account for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        self.edition = edition
         # The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
         self.exclude = exclude
         # Details of restoring to the local environment.
@@ -4680,6 +4692,8 @@ class CreateRestoreJobRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.failback_detail is not None:
@@ -4738,6 +4752,8 @@ class CreateRestoreJobRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('FailbackDetail') is not None:
@@ -4796,6 +4812,7 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         cross_account_role_name: str = None,
         cross_account_type: str = None,
         cross_account_user_id: int = None,
+        edition: str = None,
         exclude: str = None,
         failback_detail_shrink: str = None,
         include: str = None,
@@ -4829,6 +4846,7 @@ class CreateRestoreJobShrinkRequest(TeaModel):
         self.cross_account_type = cross_account_type
         # The original account ID managed by the current account for cross-account backup.
         self.cross_account_user_id = cross_account_user_id
+        self.edition = edition
         # The path not to be restored. All documents under this path will not be restored. Maximum length is 255 characters.
         self.exclude = exclude
         # Details of restoring to the local environment.
@@ -4930,6 +4948,8 @@ class CreateRestoreJobShrinkRequest(TeaModel):
             result['CrossAccountType'] = self.cross_account_type
         if self.cross_account_user_id is not None:
             result['CrossAccountUserId'] = self.cross_account_user_id
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.failback_detail_shrink is not None:
@@ -4988,6 +5008,8 @@ class CreateRestoreJobShrinkRequest(TeaModel):
             self.cross_account_type = m.get('CrossAccountType')
         if m.get('CrossAccountUserId') is not None:
             self.cross_account_user_id = m.get('CrossAccountUserId')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('FailbackDetail') is not None:
@@ -5958,11 +5980,13 @@ class DeleteBackupClientResourceResponse(TeaModel):
 class DeleteBackupPlanRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         plan_id: str = None,
         require_no_running_jobs: bool = None,
         source_type: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the backup plan.
         # 
         # This parameter is required.
@@ -5989,6 +6013,8 @@ class DeleteBackupPlanRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.require_no_running_jobs is not None:
@@ -6001,6 +6027,8 @@ class DeleteBackupPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('RequireNoRunningJobs') is not None:
@@ -8328,12 +8356,14 @@ class DescribeBackupJobs2RequestFilters(TeaModel):
 class DescribeBackupJobs2Request(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         filters: List[DescribeBackupJobs2RequestFilters] = None,
         page_number: int = None,
         page_size: int = None,
         sort_direction: str = None,
         source_type: str = None,
     ):
+        self.edition = edition
         # The keys that you want to match in the filter.
         self.filters = filters
         # The number of the page to return. Pages start from page 1. Default value: 1.
@@ -8367,6 +8397,8 @@ class DescribeBackupJobs2Request(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         result['Filters'] = []
         if self.filters is not None:
             for k in self.filters:
@@ -8383,6 +8415,8 @@ class DescribeBackupJobs2Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         self.filters = []
         if m.get('Filters') is not None:
             for k in m.get('Filters'):
@@ -9243,11 +9277,13 @@ class DescribeBackupPlansRequestFilters(TeaModel):
 class DescribeBackupPlansRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         filters: List[DescribeBackupPlansRequestFilters] = None,
         page_number: int = None,
         page_size: int = None,
         source_type: str = None,
     ):
+        self.edition = edition
         # The filters.
         self.filters = filters
         # The page number. Pages start from page 1. Default value: 1.
@@ -9276,6 +9312,8 @@ class DescribeBackupPlansRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         result['Filters'] = []
         if self.filters is not None:
             for k in self.filters:
@@ -9290,6 +9328,8 @@ class DescribeBackupPlansRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         self.filters = []
         if m.get('Filters') is not None:
             for k in m.get('Filters'):
@@ -9747,6 +9787,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         instance_name: str = None,
         keep_latest_snapshots: int = None,
         latest_execute_job_id: str = None,
+        latest_finish_job_id: str = None,
         options: str = None,
         ots_detail: DescribeBackupPlansResponseBodyBackupPlansBackupPlanOtsDetail = None,
         paths: DescribeBackupPlansResponseBodyBackupPlansBackupPlanPaths = None,
@@ -9827,6 +9868,7 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
         self.keep_latest_snapshots = keep_latest_snapshots
         # The latest execution job id of plan.
         self.latest_execute_job_id = latest_execute_job_id
+        self.latest_finish_job_id = latest_finish_job_id
         # This parameter is valid only when **SourceType** is set to **ECS_FILE**. This parameter indicates whether Windows Volume Shadow Copy Service (VSS) is used to define a source path.
         self.options = options
         # The details about the Tablestore instance.
@@ -9948,6 +9990,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             result['KeepLatestSnapshots'] = self.keep_latest_snapshots
         if self.latest_execute_job_id is not None:
             result['LatestExecuteJobId'] = self.latest_execute_job_id
+        if self.latest_finish_job_id is not None:
+            result['LatestFinishJobId'] = self.latest_finish_job_id
         if self.options is not None:
             result['Options'] = self.options
         if self.ots_detail is not None:
@@ -10039,6 +10083,8 @@ class DescribeBackupPlansResponseBodyBackupPlansBackupPlan(TeaModel):
             self.keep_latest_snapshots = m.get('KeepLatestSnapshots')
         if m.get('LatestExecuteJobId') is not None:
             self.latest_execute_job_id = m.get('LatestExecuteJobId')
+        if m.get('LatestFinishJobId') is not None:
+            self.latest_finish_job_id = m.get('LatestFinishJobId')
         if m.get('Options') is not None:
             self.options = m.get('Options')
         if m.get('OtsDetail') is not None:
@@ -15756,11 +15802,13 @@ class DescribeRestoreJobs2RequestFilters(TeaModel):
 class DescribeRestoreJobs2Request(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         filters: List[DescribeRestoreJobs2RequestFilters] = None,
         page_number: int = None,
         page_size: int = None,
         restore_type: str = None,
     ):
+        self.edition = edition
         # The keys in the filter.
         self.filters = filters
         # The page number. Pages start from page 1. Default value: 1.
@@ -15788,6 +15836,8 @@ class DescribeRestoreJobs2Request(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         result['Filters'] = []
         if self.filters is not None:
             for k in self.filters:
@@ -15802,6 +15852,8 @@ class DescribeRestoreJobs2Request(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         self.filters = []
         if m.get('Filters') is not None:
             for k in m.get('Filters'):
@@ -15939,6 +15991,7 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         restore_type: str = None,
         snapshot_hash: str = None,
         snapshot_id: str = None,
+        source_instance_id: str = None,
         source_type: str = None,
         speed: int = None,
         start_time: int = None,
@@ -16024,6 +16077,7 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
         self.snapshot_hash = snapshot_hash
         # The ID of the snapshot used for restoration.
         self.snapshot_id = snapshot_id
+        self.source_instance_id = source_instance_id
         # The type of the data source. Valid values:
         # 
         # *   **ECS_FILE**: ECS files
@@ -16146,6 +16200,8 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
             result['SnapshotHash'] = self.snapshot_hash
         if self.snapshot_id is not None:
             result['SnapshotId'] = self.snapshot_id
+        if self.source_instance_id is not None:
+            result['SourceInstanceId'] = self.source_instance_id
         if self.source_type is not None:
             result['SourceType'] = self.source_type
         if self.speed is not None:
@@ -16248,6 +16304,8 @@ class DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob(TeaModel):
             self.snapshot_hash = m.get('SnapshotHash')
         if m.get('SnapshotId') is not None:
             self.snapshot_id = m.get('SnapshotId')
+        if m.get('SourceInstanceId') is not None:
+            self.source_instance_id = m.get('SourceInstanceId')
         if m.get('SourceType') is not None:
             self.source_type = m.get('SourceType')
         if m.get('Speed') is not None:
@@ -18600,10 +18658,12 @@ class DetachNasFileSystemResponse(TeaModel):
 class DisableBackupPlanRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         plan_id: str = None,
         source_type: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the backup plan.
         # 
         # This parameter is required.
@@ -18626,6 +18686,8 @@ class DisableBackupPlanRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.source_type is not None:
@@ -18636,6 +18698,8 @@ class DisableBackupPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('SourceType') is not None:
@@ -18889,10 +18953,12 @@ class DisableHanaBackupPlanResponse(TeaModel):
 class EnableBackupPlanRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         plan_id: str = None,
         source_type: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the backup plan.
         # 
         # This parameter is required.
@@ -18915,6 +18981,8 @@ class EnableBackupPlanRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.source_type is not None:
@@ -18925,6 +18993,8 @@ class EnableBackupPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('SourceType') is not None:
@@ -19178,11 +19248,13 @@ class EnableHanaBackupPlanResponse(TeaModel):
 class ExecuteBackupPlanRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         plan_id: str = None,
         rule_id: str = None,
         source_type: str = None,
         vault_id: str = None,
     ):
+        self.edition = edition
         # The ID of the backup plan.
         # 
         # This parameter is required.
@@ -19207,6 +19279,8 @@ class ExecuteBackupPlanRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.plan_id is not None:
             result['PlanId'] = self.plan_id
         if self.rule_id is not None:
@@ -19219,6 +19293,8 @@ class ExecuteBackupPlanRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('PlanId') is not None:
             self.plan_id = m.get('PlanId')
         if m.get('RuleId') is not None:
@@ -20126,6 +20202,7 @@ class OpenHbrServiceResponse(TeaModel):
 class SearchHistoricalSnapshotsRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         limit: int = None,
         next_token: str = None,
         order: str = None,
@@ -20133,6 +20210,7 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
         sort_by: str = None,
         source_type: str = None,
     ):
+        self.edition = edition
         # The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
         self.limit = limit
         # The token that is required to obtain the next page of backup snapshots.
@@ -20206,6 +20284,8 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.limit is not None:
             result['Limit'] = self.limit
         if self.next_token is not None:
@@ -20222,6 +20302,8 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
         if m.get('NextToken') is not None:
@@ -20240,6 +20322,7 @@ class SearchHistoricalSnapshotsRequest(TeaModel):
 class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
     def __init__(
         self,
+        edition: str = None,
         limit: int = None,
         next_token: str = None,
         order: str = None,
@@ -20247,6 +20330,7 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
         sort_by: str = None,
         source_type: str = None,
     ):
+        self.edition = edition
         # The maximum number of rows that you want the current query to return. To query only the number of matched rows without the need to return specific data, you can set the Limit parameter to `0`. Then, the operation returns only the number of matched rows.
         self.limit = limit
         # The token that is required to obtain the next page of backup snapshots.
@@ -20320,6 +20404,8 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.limit is not None:
             result['Limit'] = self.limit
         if self.next_token is not None:
@@ -20336,6 +20422,8 @@ class SearchHistoricalSnapshotsShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Limit') is not None:
             self.limit = m.get('Limit')
         if m.get('NextToken') is not None:
@@ -20406,6 +20494,7 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         path: str = None,
         paths: SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths = None,
         prefix: str = None,
+        protected_data_size: int = None,
         range_end: int = None,
         range_start: int = None,
         retention: int = None,
@@ -20478,6 +20567,7 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
         self.paths = paths
         # This parameter is returned only if the **SourceType** parameter is set to **OSS**. This parameter indicates the prefix of objects that are backed up.
         self.prefix = prefix
+        self.protected_data_size = protected_data_size
         # The time when the backup job ended. The value is a UNIX timestamp. Unit: milliseconds.
         self.range_end = range_end
         # The time when the backup job started. The value is a UNIX timestamp. Unit: milliseconds.
@@ -20580,6 +20670,8 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             result['Paths'] = self.paths.to_map()
         if self.prefix is not None:
             result['Prefix'] = self.prefix
+        if self.protected_data_size is not None:
+            result['ProtectedDataSize'] = self.protected_data_size
         if self.range_end is not None:
             result['RangeEnd'] = self.range_end
         if self.range_start is not None:
@@ -20665,6 +20757,8 @@ class SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot(TeaModel):
             self.paths = temp_model.from_map(m['Paths'])
         if m.get('Prefix') is not None:
             self.prefix = m.get('Prefix')
+        if m.get('ProtectedDataSize') is not None:
+            self.protected_data_size = m.get('ProtectedDataSize')
         if m.get('RangeEnd') is not None:
             self.range_end = m.get('RangeEnd')
         if m.get('RangeStart') is not None:
@@ -21663,6 +21757,7 @@ class UpdateBackupPlanRequest(TeaModel):
         self,
         change_list_path: str = None,
         detail: Dict[str, Any] = None,
+        edition: str = None,
         exclude: str = None,
         include: str = None,
         keep_latest_snapshots: int = None,
@@ -21689,6 +21784,7 @@ class UpdateBackupPlanRequest(TeaModel):
         # *   preScriptPath: the path to the pre-freeze scripts.
         # *   postScriptPath: the path to the post-thaw scripts.
         self.detail = detail
+        self.edition = edition
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
         self.exclude = exclude
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
@@ -21765,6 +21861,8 @@ class UpdateBackupPlanRequest(TeaModel):
             result['ChangeListPath'] = self.change_list_path
         if self.detail is not None:
             result['Detail'] = self.detail
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.include is not None:
@@ -21807,6 +21905,8 @@ class UpdateBackupPlanRequest(TeaModel):
             self.change_list_path = m.get('ChangeListPath')
         if m.get('Detail') is not None:
             self.detail = m.get('Detail')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('Include') is not None:
@@ -21930,6 +22030,7 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
         self,
         change_list_path: str = None,
         detail_shrink: str = None,
+        edition: str = None,
         exclude: str = None,
         include: str = None,
         keep_latest_snapshots: int = None,
@@ -21956,6 +22057,7 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
         # *   preScriptPath: the path to the pre-freeze scripts.
         # *   postScriptPath: the path to the post-thaw scripts.
         self.detail_shrink = detail_shrink
+        self.edition = edition
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that are excluded from the backup job. The value must be 1 to 255 characters in length.
         self.exclude = exclude
         # This parameter is required only if the **SourceType** parameter is set to **ECS_FILE**. This parameter specifies the paths to the files that you want to back up. The value must be 1 to 255 characters in length.
@@ -22030,6 +22132,8 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
             result['ChangeListPath'] = self.change_list_path
         if self.detail_shrink is not None:
             result['Detail'] = self.detail_shrink
+        if self.edition is not None:
+            result['Edition'] = self.edition
         if self.exclude is not None:
             result['Exclude'] = self.exclude
         if self.include is not None:
@@ -22072,6 +22176,8 @@ class UpdateBackupPlanShrinkRequest(TeaModel):
             self.change_list_path = m.get('ChangeListPath')
         if m.get('Detail') is not None:
             self.detail_shrink = m.get('Detail')
+        if m.get('Edition') is not None:
+            self.edition = m.get('Edition')
         if m.get('Exclude') is not None:
             self.exclude = m.get('Exclude')
         if m.get('Include') is not None:

@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = 'regional'
         self._endpoint_map = {
             'ap-northeast-2-pop': 'hbr.aliyuncs.com',
@@ -201,6 +200,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.vault_id):
@@ -238,6 +239,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
         if not UtilClient.is_unset(request.vault_id):
@@ -301,6 +304,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.restore_id):
             query['RestoreId'] = request.restore_id
         if not UtilClient.is_unset(request.vault_id):
@@ -338,6 +343,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.restore_id):
             query['RestoreId'] = request.restore_id
         if not UtilClient.is_unset(request.vault_id):
@@ -2078,6 +2085,8 @@ class Client(OpenApiClient):
             query['CrossAccountType'] = request.cross_account_type
         if not UtilClient.is_unset(request.cross_account_user_id):
             query['CrossAccountUserId'] = request.cross_account_user_id
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.failback_detail_shrink):
             query['FailbackDetail'] = request.failback_detail_shrink
         if not UtilClient.is_unset(request.initiated_by_ack):
@@ -2178,6 +2187,8 @@ class Client(OpenApiClient):
             query['CrossAccountType'] = request.cross_account_type
         if not UtilClient.is_unset(request.cross_account_user_id):
             query['CrossAccountUserId'] = request.cross_account_user_id
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.failback_detail_shrink):
             query['FailbackDetail'] = request.failback_detail_shrink
         if not UtilClient.is_unset(request.initiated_by_ack):
@@ -2892,6 +2903,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.require_no_running_jobs):
@@ -2936,6 +2949,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.require_no_running_jobs):
@@ -4129,6 +4144,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -4172,6 +4189,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -4241,6 +4260,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -4282,6 +4303,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -6125,6 +6148,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -6166,6 +6191,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.filters):
             query['Filters'] = request.filters
         if not UtilClient.is_unset(request.page_number):
@@ -6831,6 +6858,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.source_type):
@@ -6872,6 +6901,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.source_type):
@@ -7059,6 +7090,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.source_type):
@@ -7100,6 +7133,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.source_type):
@@ -7285,6 +7320,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.rule_id):
@@ -7326,6 +7363,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.plan_id):
             query['PlanId'] = request.plan_id
         if not UtilClient.is_unset(request.rule_id):
@@ -7919,6 +7958,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query, 'Query', 'json')
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
@@ -7968,6 +8009,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.query):
             request.query_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.query, 'Query', 'json')
         query = {}
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.limit):
             query['Limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
@@ -8525,6 +8568,8 @@ class Client(OpenApiClient):
             query['ChangeListPath'] = request.change_list_path
         if not UtilClient.is_unset(request.detail_shrink):
             query['Detail'] = request.detail_shrink
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.keep_latest_snapshots):
             query['KeepLatestSnapshots'] = request.keep_latest_snapshots
         if not UtilClient.is_unset(request.path):
@@ -8602,6 +8647,8 @@ class Client(OpenApiClient):
             query['ChangeListPath'] = request.change_list_path
         if not UtilClient.is_unset(request.detail_shrink):
             query['Detail'] = request.detail_shrink
+        if not UtilClient.is_unset(request.edition):
+            query['Edition'] = request.edition
         if not UtilClient.is_unset(request.keep_latest_snapshots):
             query['KeepLatestSnapshots'] = request.keep_latest_snapshots
         if not UtilClient.is_unset(request.path):

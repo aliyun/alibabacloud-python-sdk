@@ -1,3 +1,21 @@
+2025-09-10 Version: 2.1.9
+- Update API CancelBackupJob: add request parameters Edition.
+- Update API CancelRestoreJob: add request parameters Edition.
+- Update API CreateRestoreJob: add request parameters Edition.
+- Update API DeleteBackupPlan: add request parameters Edition.
+- Update API DescribeBackupJobs2: add request parameters Edition.
+- Update API DescribeBackupPlans: add request parameters Edition.
+- Update API DescribeBackupPlans: add response parameters Body.BackupPlans.$.LatestFinishJobId.
+- Update API DescribeRestoreJobs2: add request parameters Edition.
+- Update API DescribeRestoreJobs2: add response parameters Body.RestoreJobs.$.SourceInstanceId.
+- Update API DisableBackupPlan: add request parameters Edition.
+- Update API EnableBackupPlan: add request parameters Edition.
+- Update API ExecuteBackupPlan: add request parameters Edition.
+- Update API SearchHistoricalSnapshots: add request parameters Edition.
+- Update API SearchHistoricalSnapshots: add response parameters Body.Snapshots.$.ProtectedDataSize.
+- Update API UpdateBackupPlan: add request parameters Edition.
+
+
 2025-08-07 Version: 2.1.8
 - Generated python 2017-09-08 for hbr.
 
