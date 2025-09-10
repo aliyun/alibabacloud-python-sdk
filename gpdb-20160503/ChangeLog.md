@@ -1,3 +1,17 @@
+2025-09-10 Version: 4.10.4
+- Update API CreateDocumentCollection: add request parameters EnableGraph.
+- Update API CreateDocumentCollection: add request parameters EntityTypes.
+- Update API CreateDocumentCollection: add request parameters LLMModel.
+- Update API CreateDocumentCollection: add request parameters Language.
+- Update API CreateDocumentCollection: add request parameters RelationshipTypes.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Items.$.GraphEngineStatus.
+- Update API QueryContent: add request parameters GraphEnhance.
+- Update API QueryContent: add request parameters GraphSearchArgs.
+- Update API QueryContent: add response parameters Body.Entities.
+- Update API QueryContent: add response parameters Body.Relations.
+- Update API UpsertChunks: add response parameters Body.JobId.
+
+
 2025-08-05 Version: 4.10.3
 - Update API UploadDocumentAsync: add request parameters SplitterModel.
 

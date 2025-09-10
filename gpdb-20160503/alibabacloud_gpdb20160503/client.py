@@ -2267,17 +2267,23 @@ class Client(OpenApiClient):
 
     def create_document_collection_with_options(
         self,
-        request: gpdb_20160503_models.CreateDocumentCollectionRequest,
+        tmp_req: gpdb_20160503_models.CreateDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
         @summary Creates a document collection.
         
-        @param request: CreateDocumentCollectionRequest
+        @param tmp_req: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDocumentCollectionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateDocumentCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_types):
+            request.entity_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.relationship_types):
+            request.relationship_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
@@ -2287,6 +2293,10 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
+        if not UtilClient.is_unset(request.enable_graph):
+            query['EnableGraph'] = request.enable_graph
+        if not UtilClient.is_unset(request.entity_types_shrink):
+            query['EntityTypes'] = request.entity_types_shrink
         if not UtilClient.is_unset(request.external_storage):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
@@ -2295,6 +2305,10 @@ class Client(OpenApiClient):
             query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
+        if not UtilClient.is_unset(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.manager_account):
             query['ManagerAccount'] = request.manager_account
         if not UtilClient.is_unset(request.manager_account_password):
@@ -2315,6 +2329,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relationship_types_shrink):
+            query['RelationshipTypes'] = request.relationship_types_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2336,17 +2352,23 @@ class Client(OpenApiClient):
 
     async def create_document_collection_with_options_async(
         self,
-        request: gpdb_20160503_models.CreateDocumentCollectionRequest,
+        tmp_req: gpdb_20160503_models.CreateDocumentCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> gpdb_20160503_models.CreateDocumentCollectionResponse:
         """
         @summary Creates a document collection.
         
-        @param request: CreateDocumentCollectionRequest
+        @param tmp_req: CreateDocumentCollectionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateDocumentCollectionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateDocumentCollectionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_types):
+            request.entity_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.relationship_types):
+            request.relationship_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
         query = {}
         if not UtilClient.is_unset(request.collection):
             query['Collection'] = request.collection
@@ -2356,6 +2378,10 @@ class Client(OpenApiClient):
             query['Dimension'] = request.dimension
         if not UtilClient.is_unset(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
+        if not UtilClient.is_unset(request.enable_graph):
+            query['EnableGraph'] = request.enable_graph
+        if not UtilClient.is_unset(request.entity_types_shrink):
+            query['EntityTypes'] = request.entity_types_shrink
         if not UtilClient.is_unset(request.external_storage):
             query['ExternalStorage'] = request.external_storage
         if not UtilClient.is_unset(request.full_text_retrieval_fields):
@@ -2364,6 +2390,10 @@ class Client(OpenApiClient):
             query['HnswEfConstruction'] = request.hnsw_ef_construction
         if not UtilClient.is_unset(request.hnsw_m):
             query['HnswM'] = request.hnsw_m
+        if not UtilClient.is_unset(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.manager_account):
             query['ManagerAccount'] = request.manager_account
         if not UtilClient.is_unset(request.manager_account_password):
@@ -2384,6 +2414,8 @@ class Client(OpenApiClient):
             query['PqEnable'] = request.pq_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relationship_types_shrink):
+            query['RelationshipTypes'] = request.relationship_types_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -22248,6 +22280,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.graph_search_args):
+            request.graph_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.graph_search_args, 'GraphSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.hybrid_search_args):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.recall_window):
@@ -22263,6 +22297,10 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.graph_enhance):
+            query['GraphEnhance'] = request.graph_enhance
+        if not UtilClient.is_unset(request.graph_search_args_shrink):
+            query['GraphSearchArgs'] = request.graph_search_args_shrink
         if not UtilClient.is_unset(request.hybrid_search):
             query['HybridSearch'] = request.hybrid_search
         if not UtilClient.is_unset(request.hybrid_search_args_shrink):
@@ -22331,6 +22369,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = gpdb_20160503_models.QueryContentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.graph_search_args):
+            request.graph_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.graph_search_args, 'GraphSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.hybrid_search_args):
             request.hybrid_search_args_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.hybrid_search_args, 'HybridSearchArgs', 'json')
         if not UtilClient.is_unset(tmp_req.recall_window):
@@ -22346,6 +22386,10 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not UtilClient.is_unset(request.filter):
             query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.graph_enhance):
+            query['GraphEnhance'] = request.graph_enhance
+        if not UtilClient.is_unset(request.graph_search_args_shrink):
+            query['GraphSearchArgs'] = request.graph_search_args_shrink
         if not UtilClient.is_unset(request.hybrid_search):
             query['HybridSearch'] = request.hybrid_search
         if not UtilClient.is_unset(request.hybrid_search_args_shrink):

@@ -3578,10 +3578,14 @@ class CreateDocumentCollectionRequest(TeaModel):
         dbinstance_id: str = None,
         dimension: int = None,
         embedding_model: str = None,
+        enable_graph: bool = None,
+        entity_types: List[str] = None,
         external_storage: int = None,
         full_text_retrieval_fields: str = None,
         hnsw_ef_construction: str = None,
         hnsw_m: int = None,
+        llmmodel: str = None,
+        language: str = None,
         manager_account: str = None,
         manager_account_password: str = None,
         metadata: str = None,
@@ -3592,6 +3596,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         parser: str = None,
         pq_enable: int = None,
         region_id: str = None,
+        relationship_types: List[str] = None,
     ):
         # The name of the document collection that you want to create.
         # 
@@ -3638,6 +3643,8 @@ class CreateDocumentCollectionRequest(TeaModel):
         # 
         # *   clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
         self.embedding_model = embedding_model
+        self.enable_graph = enable_graph
+        self.entity_types = entity_types
         # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
         # 
         # > 
@@ -3661,6 +3668,8 @@ class CreateDocumentCollectionRequest(TeaModel):
         # 
         # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
         self.hnsw_m = hnsw_m
+        self.llmmodel = llmmodel
+        self.language = language
         # The name of the manager account that has the rds_superuser permission.
         # 
         # > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
@@ -3704,6 +3713,7 @@ class CreateDocumentCollectionRequest(TeaModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        self.relationship_types = relationship_types
 
     def validate(self):
         pass
@@ -3722,6 +3732,10 @@ class CreateDocumentCollectionRequest(TeaModel):
             result['Dimension'] = self.dimension
         if self.embedding_model is not None:
             result['EmbeddingModel'] = self.embedding_model
+        if self.enable_graph is not None:
+            result['EnableGraph'] = self.enable_graph
+        if self.entity_types is not None:
+            result['EntityTypes'] = self.entity_types
         if self.external_storage is not None:
             result['ExternalStorage'] = self.external_storage
         if self.full_text_retrieval_fields is not None:
@@ -3730,6 +3744,10 @@ class CreateDocumentCollectionRequest(TeaModel):
             result['HnswEfConstruction'] = self.hnsw_ef_construction
         if self.hnsw_m is not None:
             result['HnswM'] = self.hnsw_m
+        if self.llmmodel is not None:
+            result['LLMModel'] = self.llmmodel
+        if self.language is not None:
+            result['Language'] = self.language
         if self.manager_account is not None:
             result['ManagerAccount'] = self.manager_account
         if self.manager_account_password is not None:
@@ -3750,6 +3768,8 @@ class CreateDocumentCollectionRequest(TeaModel):
             result['PqEnable'] = self.pq_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.relationship_types is not None:
+            result['RelationshipTypes'] = self.relationship_types
         return result
 
     def from_map(self, m: dict = None):
@@ -3762,6 +3782,10 @@ class CreateDocumentCollectionRequest(TeaModel):
             self.dimension = m.get('Dimension')
         if m.get('EmbeddingModel') is not None:
             self.embedding_model = m.get('EmbeddingModel')
+        if m.get('EnableGraph') is not None:
+            self.enable_graph = m.get('EnableGraph')
+        if m.get('EntityTypes') is not None:
+            self.entity_types = m.get('EntityTypes')
         if m.get('ExternalStorage') is not None:
             self.external_storage = m.get('ExternalStorage')
         if m.get('FullTextRetrievalFields') is not None:
@@ -3770,6 +3794,10 @@ class CreateDocumentCollectionRequest(TeaModel):
             self.hnsw_ef_construction = m.get('HnswEfConstruction')
         if m.get('HnswM') is not None:
             self.hnsw_m = m.get('HnswM')
+        if m.get('LLMModel') is not None:
+            self.llmmodel = m.get('LLMModel')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('ManagerAccount') is not None:
             self.manager_account = m.get('ManagerAccount')
         if m.get('ManagerAccountPassword') is not None:
@@ -3790,6 +3818,260 @@ class CreateDocumentCollectionRequest(TeaModel):
             self.pq_enable = m.get('PqEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RelationshipTypes') is not None:
+            self.relationship_types = m.get('RelationshipTypes')
+        return self
+
+
+class CreateDocumentCollectionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        dimension: int = None,
+        embedding_model: str = None,
+        enable_graph: bool = None,
+        entity_types_shrink: str = None,
+        external_storage: int = None,
+        full_text_retrieval_fields: str = None,
+        hnsw_ef_construction: str = None,
+        hnsw_m: int = None,
+        llmmodel: str = None,
+        language: str = None,
+        manager_account: str = None,
+        manager_account_password: str = None,
+        metadata: str = None,
+        metadata_indices: str = None,
+        metrics: str = None,
+        namespace: str = None,
+        owner_id: int = None,
+        parser: str = None,
+        pq_enable: int = None,
+        region_id: str = None,
+        relationship_types_shrink: str = None,
+    ):
+        # The name of the document collection that you want to create.
+        # 
+        # > The name must comply with PostgreSQL object naming restrictions.
+        # 
+        # This parameter is required.
+        self.collection = collection
+        # The instance ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) API to view details of all AnalyticDB for PostgreSQL instances in the target region, including the instance ID.
+        # 
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.dimension = dimension
+        # The vectorization algorithm.
+        # 
+        # >  Supported algorithms:
+        # 
+        # *   text-embedding-v1: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text-embedding-v2: the algorithm that produces 1536-dimensional vectors.
+        # 
+        # *   text2vec: the algorithm that produces 1024-dimensional vectors.
+        # 
+        # *   m3e-base: the algorithm that produces 768-dimensional vectors.
+        # 
+        # *   m3e-small: the algorithm that produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-b-32: the image vectorization algorithm that uses the Contrastive Language-Image Pre-Training (CLIP) ViT-B/32 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-b-16: the image vectorization algorithm that uses the CLIP ViT-B/16 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-vit-l-14: the image vectorization algorithm that uses the CLIP ViT-L/14 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-vit-l-14-336px: the image vectorization algorithm that uses the CLIP ViT-L/14@336px model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50: the image vectorization algorithm that uses the CLIP RN50 model and produces 1024-dimensional vectors.
+        # 
+        # *   clip-rn101: the image vectorization algorithm that uses the CLIP RN101 model and produces 512-dimensional vectors.
+        # 
+        # *   clip-rn50x4: the image vectorization algorithm that uses the CLIP RN50x4 model and produces 640-dimensional vectors.
+        # 
+        # *   clip-rn50x16: the image vectorization algorithm that uses the CLIP RN50x16 model and produces 768-dimensional vectors.
+        # 
+        # *   clip-rn50x64: the image vectorization algorithm that uses the CLIP RN50x64 model and produces 1024-dimensional vectors.
+        self.embedding_model = embedding_model
+        self.enable_graph = enable_graph
+        self.entity_types_shrink = entity_types_shrink
+        # Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
+        # 
+        # > 
+        # 
+        # *   0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
+        # 
+        # *   1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
+        self.external_storage = external_storage
+        # The fields used for full-text search. Separate multiple fields with commas (,). These fields must be keys defined in Metadata.
+        self.full_text_retrieval_fields = full_text_retrieval_fields
+        self.hnsw_ef_construction = hnsw_ef_construction
+        # The maximum number of neighbors for the Hierarchical Navigable Small World (HNSW) algorithm. Valid values: 1 to 1000. In most cases, this parameter is automatically configured based on the value of the Dimension parameter. You do not need to configure this parameter.
+        # 
+        # >  We recommend that you configure this parameter based on the value of the Dimension parameter.
+        # 
+        # *   If you set Dimension to a value less than or equal to 384, set the value of HnswM to 16.
+        # 
+        # *   If you set Dimension to a value greater than 384 and less than or equal to 768, set the value of HnswM to 32.
+        # 
+        # *   If you set Dimension to a value greater than 768 and less than or equal to 1024, set the value of HnswM to 64.
+        # 
+        # *   If you set Dimension to a value greater than 1024, set the value of HnswM to 128.
+        self.hnsw_m = hnsw_m
+        self.llmmodel = llmmodel
+        self.language = language
+        # The name of the manager account that has the rds_superuser permission.
+        # 
+        # > You can create an account through the console -> Account Management, or by using the [CreateAccount](https://help.aliyun.com/document_detail/2361789.html) API.
+        # 
+        # This parameter is required.
+        self.manager_account = manager_account
+        # The password of the management account.
+        # 
+        # This parameter is required.
+        self.manager_account_password = manager_account_password
+        # The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
+        # 
+        # > Supported data types:
+        # > - For information about data types, see: [Data Types](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-postgresql/developer-reference/data-types-1/).
+        # > - The money type is not supported.
+        # 
+        # >Warning: The fields id, vector, doc_name, content, loader_metadata, source, and to_tsvector are reserved and should not be used.
+        self.metadata = metadata
+        self.metadata_indices = metadata_indices
+        # The method that is used to create vector indexes.
+        # 
+        # Valid values:
+        # 
+        # *   **l2**: Euclidean distance.
+        # *   **ip**: inner product distance.
+        # *   **cosine** (default): cosine similarity.
+        self.metrics = metrics
+        # The name of the namespace. Default value: public.
+        # 
+        # >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
+        self.namespace = namespace
+        self.owner_id = owner_id
+        # The analyzer that is used for full-text search. Default value: zh_cn.
+        self.parser = parser
+        # Specifies whether to enable the product quantization (PQ) feature for index acceleration. We recommend that you enable this feature for more than 500,000 rows of data. Valid values:
+        # 
+        # *   0: no.
+        # *   1 (default): yes.
+        self.pq_enable = pq_enable
+        # The region ID of the instance.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.relationship_types_shrink = relationship_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+        if self.embedding_model is not None:
+            result['EmbeddingModel'] = self.embedding_model
+        if self.enable_graph is not None:
+            result['EnableGraph'] = self.enable_graph
+        if self.entity_types_shrink is not None:
+            result['EntityTypes'] = self.entity_types_shrink
+        if self.external_storage is not None:
+            result['ExternalStorage'] = self.external_storage
+        if self.full_text_retrieval_fields is not None:
+            result['FullTextRetrievalFields'] = self.full_text_retrieval_fields
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
+        if self.hnsw_m is not None:
+            result['HnswM'] = self.hnsw_m
+        if self.llmmodel is not None:
+            result['LLMModel'] = self.llmmodel
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.manager_account is not None:
+            result['ManagerAccount'] = self.manager_account
+        if self.manager_account_password is not None:
+            result['ManagerAccountPassword'] = self.manager_account_password
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.metadata_indices is not None:
+            result['MetadataIndices'] = self.metadata_indices
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.pq_enable is not None:
+            result['PqEnable'] = self.pq_enable
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.relationship_types_shrink is not None:
+            result['RelationshipTypes'] = self.relationship_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+        if m.get('EmbeddingModel') is not None:
+            self.embedding_model = m.get('EmbeddingModel')
+        if m.get('EnableGraph') is not None:
+            self.enable_graph = m.get('EnableGraph')
+        if m.get('EntityTypes') is not None:
+            self.entity_types_shrink = m.get('EntityTypes')
+        if m.get('ExternalStorage') is not None:
+            self.external_storage = m.get('ExternalStorage')
+        if m.get('FullTextRetrievalFields') is not None:
+            self.full_text_retrieval_fields = m.get('FullTextRetrievalFields')
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
+        if m.get('HnswM') is not None:
+            self.hnsw_m = m.get('HnswM')
+        if m.get('LLMModel') is not None:
+            self.llmmodel = m.get('LLMModel')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('ManagerAccount') is not None:
+            self.manager_account = m.get('ManagerAccount')
+        if m.get('ManagerAccountPassword') is not None:
+            self.manager_account_password = m.get('ManagerAccountPassword')
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('MetadataIndices') is not None:
+            self.metadata_indices = m.get('MetadataIndices')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('PqEnable') is not None:
+            self.pq_enable = m.get('PqEnable')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RelationshipTypes') is not None:
+            self.relationship_types_shrink = m.get('RelationshipTypes')
         return self
 
 
@@ -12053,6 +12335,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         engine: str = None,
         engine_version: str = None,
         expire_time: str = None,
+        graph_engine_status: str = None,
         host_type: str = None,
         idle_time: int = None,
         instance_network_type: str = None,
@@ -12185,6 +12468,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # 
         # > The expiration time for pay-as-you-go instances is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
+        self.graph_engine_status = graph_engine_status
         # Compute group machine type, with the following values:
         # - **0**: SSD
         # - **1**: HDD
@@ -12388,6 +12672,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.graph_engine_status is not None:
+            result['GraphEngineStatus'] = self.graph_engine_status
         if self.host_type is not None:
             result['HostType'] = self.host_type
         if self.idle_time is not None:
@@ -12530,6 +12816,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('GraphEngineStatus') is not None:
+            self.graph_engine_status = m.get('GraphEngineStatus')
         if m.get('HostType') is not None:
             self.host_type = m.get('HostType')
         if m.get('IdleTime') is not None:
@@ -40121,6 +40409,33 @@ class QueryCollectionDataResponse(TeaModel):
         return self
 
 
+class QueryContentRequestGraphSearchArgs(TeaModel):
+    def __init__(
+        self,
+        graph_top_k: int = None,
+    ):
+        self.graph_top_k = graph_top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph_top_k is not None:
+            result['GraphTopK'] = self.graph_top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GraphTopK') is not None:
+            self.graph_top_k = m.get('GraphTopK')
+        return self
+
+
 class QueryContentRequest(TeaModel):
     def __init__(
         self,
@@ -40130,6 +40445,8 @@ class QueryContentRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         filter: str = None,
+        graph_enhance: bool = None,
+        graph_search_args: QueryContentRequestGraphSearchArgs = None,
         hybrid_search: str = None,
         hybrid_search_args: Dict[str, dict] = None,
         include_file_url: bool = None,
@@ -40172,6 +40489,8 @@ class QueryContentRequest(TeaModel):
         # > 
         # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/\
         self.filter = filter
+        self.graph_enhance = graph_enhance
+        self.graph_search_args = graph_search_args
         # Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
         # 
         # Available values:
@@ -40247,7 +40566,8 @@ class QueryContentRequest(TeaModel):
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
-        pass
+        if self.graph_search_args:
+            self.graph_search_args.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -40267,6 +40587,10 @@ class QueryContentRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.graph_enhance is not None:
+            result['GraphEnhance'] = self.graph_enhance
+        if self.graph_search_args is not None:
+            result['GraphSearchArgs'] = self.graph_search_args.to_map()
         if self.hybrid_search is not None:
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args is not None:
@@ -40313,6 +40637,11 @@ class QueryContentRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('GraphEnhance') is not None:
+            self.graph_enhance = m.get('GraphEnhance')
+        if m.get('GraphSearchArgs') is not None:
+            temp_model = QueryContentRequestGraphSearchArgs()
+            self.graph_search_args = temp_model.from_map(m['GraphSearchArgs'])
         if m.get('HybridSearch') is not None:
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
@@ -40346,6 +40675,33 @@ class QueryContentRequest(TeaModel):
         return self
 
 
+class QueryContentAdvanceRequestGraphSearchArgs(TeaModel):
+    def __init__(
+        self,
+        graph_top_k: int = None,
+    ):
+        self.graph_top_k = graph_top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.graph_top_k is not None:
+            result['GraphTopK'] = self.graph_top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GraphTopK') is not None:
+            self.graph_top_k = m.get('GraphTopK')
+        return self
+
+
 class QueryContentAdvanceRequest(TeaModel):
     def __init__(
         self,
@@ -40355,6 +40711,8 @@ class QueryContentAdvanceRequest(TeaModel):
         file_name: str = None,
         file_url_object: BinaryIO = None,
         filter: str = None,
+        graph_enhance: bool = None,
+        graph_search_args: QueryContentAdvanceRequestGraphSearchArgs = None,
         hybrid_search: str = None,
         hybrid_search_args: Dict[str, dict] = None,
         include_file_url: bool = None,
@@ -40397,6 +40755,8 @@ class QueryContentAdvanceRequest(TeaModel):
         # > 
         # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/\
         self.filter = filter
+        self.graph_enhance = graph_enhance
+        self.graph_search_args = graph_search_args
         # Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
         # 
         # Available values:
@@ -40472,7 +40832,8 @@ class QueryContentAdvanceRequest(TeaModel):
         self.use_full_text_retrieval = use_full_text_retrieval
 
     def validate(self):
-        pass
+        if self.graph_search_args:
+            self.graph_search_args.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -40492,6 +40853,10 @@ class QueryContentAdvanceRequest(TeaModel):
             result['FileUrl'] = self.file_url_object
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.graph_enhance is not None:
+            result['GraphEnhance'] = self.graph_enhance
+        if self.graph_search_args is not None:
+            result['GraphSearchArgs'] = self.graph_search_args.to_map()
         if self.hybrid_search is not None:
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args is not None:
@@ -40538,6 +40903,11 @@ class QueryContentAdvanceRequest(TeaModel):
             self.file_url_object = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('GraphEnhance') is not None:
+            self.graph_enhance = m.get('GraphEnhance')
+        if m.get('GraphSearchArgs') is not None:
+            temp_model = QueryContentAdvanceRequestGraphSearchArgs()
+            self.graph_search_args = temp_model.from_map(m['GraphSearchArgs'])
         if m.get('HybridSearch') is not None:
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
@@ -40580,6 +40950,8 @@ class QueryContentShrinkRequest(TeaModel):
         file_name: str = None,
         file_url: str = None,
         filter: str = None,
+        graph_enhance: bool = None,
+        graph_search_args_shrink: str = None,
         hybrid_search: str = None,
         hybrid_search_args_shrink: str = None,
         include_file_url: bool = None,
@@ -40622,6 +40994,8 @@ class QueryContentShrinkRequest(TeaModel):
         # > 
         # > - For detailed syntax, refer to: https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-where/\
         self.filter = filter
+        self.graph_enhance = graph_enhance
+        self.graph_search_args_shrink = graph_search_args_shrink
         # Dual recall algorithm, default is empty (i.e., directly compare and sort the scores of vectors and full text).
         # 
         # Available values:
@@ -40717,6 +41091,10 @@ class QueryContentShrinkRequest(TeaModel):
             result['FileUrl'] = self.file_url
         if self.filter is not None:
             result['Filter'] = self.filter
+        if self.graph_enhance is not None:
+            result['GraphEnhance'] = self.graph_enhance
+        if self.graph_search_args_shrink is not None:
+            result['GraphSearchArgs'] = self.graph_search_args_shrink
         if self.hybrid_search is not None:
             result['HybridSearch'] = self.hybrid_search
         if self.hybrid_search_args_shrink is not None:
@@ -40763,6 +41141,10 @@ class QueryContentShrinkRequest(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Filter') is not None:
             self.filter = m.get('Filter')
+        if m.get('GraphEnhance') is not None:
+            self.graph_enhance = m.get('GraphEnhance')
+        if m.get('GraphSearchArgs') is not None:
+            self.graph_search_args_shrink = m.get('GraphSearchArgs')
         if m.get('HybridSearch') is not None:
             self.hybrid_search = m.get('HybridSearch')
         if m.get('HybridSearchArgs') is not None:
@@ -40793,6 +41175,92 @@ class QueryContentShrinkRequest(TeaModel):
             self.url_expiration = m.get('UrlExpiration')
         if m.get('UseFullTextRetrieval') is not None:
             self.use_full_text_retrieval = m.get('UseFullTextRetrieval')
+        return self
+
+
+class QueryContentResponseBodyEntitiesEntities(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        entity: str = None,
+        file_name: str = None,
+        id: str = None,
+        type: str = None,
+    ):
+        self.description = description
+        self.entity = entity
+        self.file_name = file_name
+        self.id = id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.entity is not None:
+            result['Entity'] = self.entity
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Entity') is not None:
+            self.entity = m.get('Entity')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryContentResponseBodyEntities(TeaModel):
+    def __init__(
+        self,
+        entities: List[QueryContentResponseBodyEntitiesEntities] = None,
+    ):
+        self.entities = entities
+
+    def validate(self):
+        if self.entities:
+            for k in self.entities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['entities'] = []
+        if self.entities is not None:
+            for k in self.entities:
+                result['entities'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.entities = []
+        if m.get('entities') is not None:
+            for k in m.get('entities'):
+                temp_model = QueryContentResponseBodyEntitiesEntities()
+                self.entities.append(temp_model.from_map(k))
         return self
 
 
@@ -40958,6 +41426,92 @@ class QueryContentResponseBodyMatches(TeaModel):
             for k in m.get('MatchList'):
                 temp_model = QueryContentResponseBodyMatchesMatchList()
                 self.match_list.append(temp_model.from_map(k))
+        return self
+
+
+class QueryContentResponseBodyRelationsRelations(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        file_name: str = None,
+        id: str = None,
+        source_entity: str = None,
+        target_entity: str = None,
+    ):
+        self.description = description
+        self.file_name = file_name
+        self.id = id
+        self.source_entity = source_entity
+        self.target_entity = target_entity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.source_entity is not None:
+            result['SourceEntity'] = self.source_entity
+        if self.target_entity is not None:
+            result['TargetEntity'] = self.target_entity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('SourceEntity') is not None:
+            self.source_entity = m.get('SourceEntity')
+        if m.get('TargetEntity') is not None:
+            self.target_entity = m.get('TargetEntity')
+        return self
+
+
+class QueryContentResponseBodyRelations(TeaModel):
+    def __init__(
+        self,
+        relations: List[QueryContentResponseBodyRelationsRelations] = None,
+    ):
+        self.relations = relations
+
+    def validate(self):
+        if self.relations:
+            for k in self.relations:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['relations'] = []
+        if self.relations is not None:
+            for k in self.relations:
+                result['relations'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.relations = []
+        if m.get('relations') is not None:
+            for k in m.get('relations'):
+                temp_model = QueryContentResponseBodyRelationsRelations()
+                self.relations.append(temp_model.from_map(k))
         return self
 
 
@@ -41159,8 +41713,10 @@ class QueryContentResponseBody(TeaModel):
     def __init__(
         self,
         embedding_tokens: str = None,
+        entities: QueryContentResponseBodyEntities = None,
         matches: QueryContentResponseBodyMatches = None,
         message: str = None,
+        relations: QueryContentResponseBodyRelations = None,
         request_id: str = None,
         status: str = None,
         usage: QueryContentResponseBodyUsage = None,
@@ -41170,10 +41726,12 @@ class QueryContentResponseBody(TeaModel):
         # 
         # > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
         self.embedding_tokens = embedding_tokens
+        self.entities = entities
         # The retrieved data.
         self.matches = matches
         # Return message.
         self.message = message
+        self.relations = relations
         # The request ID.
         self.request_id = request_id
         # The execution state of the operation. Valid values:
@@ -41187,8 +41745,12 @@ class QueryContentResponseBody(TeaModel):
         self.window_matches = window_matches
 
     def validate(self):
+        if self.entities:
+            self.entities.validate()
         if self.matches:
             self.matches.validate()
+        if self.relations:
+            self.relations.validate()
         if self.usage:
             self.usage.validate()
         if self.window_matches:
@@ -41202,10 +41764,14 @@ class QueryContentResponseBody(TeaModel):
         result = dict()
         if self.embedding_tokens is not None:
             result['EmbeddingTokens'] = self.embedding_tokens
+        if self.entities is not None:
+            result['Entities'] = self.entities.to_map()
         if self.matches is not None:
             result['Matches'] = self.matches.to_map()
         if self.message is not None:
             result['Message'] = self.message
+        if self.relations is not None:
+            result['Relations'] = self.relations.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.status is not None:
@@ -41220,11 +41786,17 @@ class QueryContentResponseBody(TeaModel):
         m = m or dict()
         if m.get('EmbeddingTokens') is not None:
             self.embedding_tokens = m.get('EmbeddingTokens')
+        if m.get('Entities') is not None:
+            temp_model = QueryContentResponseBodyEntities()
+            self.entities = temp_model.from_map(m['Entities'])
         if m.get('Matches') is not None:
             temp_model = QueryContentResponseBodyMatches()
             self.matches = temp_model.from_map(m['Matches'])
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Relations') is not None:
+            temp_model = QueryContentResponseBodyRelations()
+            self.relations = temp_model.from_map(m['Relations'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('Status') is not None:
@@ -46020,6 +46592,7 @@ class UpsertChunksResponseBody(TeaModel):
     def __init__(
         self,
         embedding_tokens: str = None,
+        job_id: str = None,
         message: str = None,
         request_id: str = None,
         status: str = None,
@@ -46028,6 +46601,7 @@ class UpsertChunksResponseBody(TeaModel):
         # 
         # > A token refers to the smallest unit into which the input text is divided. A token can be a word, a phrase, a punctuation mark, a character, etc.
         self.embedding_tokens = embedding_tokens
+        self.job_id = job_id
         # Return message.
         self.message = message
         # Request ID.
@@ -46048,6 +46622,8 @@ class UpsertChunksResponseBody(TeaModel):
         result = dict()
         if self.embedding_tokens is not None:
             result['EmbeddingTokens'] = self.embedding_tokens
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -46060,6 +46636,8 @@ class UpsertChunksResponseBody(TeaModel):
         m = m or dict()
         if m.get('EmbeddingTokens') is not None:
             self.embedding_tokens = m.get('EmbeddingTokens')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
