@@ -1,3 +1,7 @@
+2025-09-10 Version: 1.2.2
+- Update API CreateQuotaAlarm: add request parameters OriginalContext.
+
+
 2024-08-30 Version: 1.2.1
 - Update API GetQuotaApplication: update response param.
 - Update API ListQuotaApplications: update response param.
