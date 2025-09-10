@@ -2876,6 +2876,7 @@ class GetPolicyEnableStatusRequest(TeaModel):
         # 
         # *   TAG_POLICY: the Tag Policy feature.
         # *   VERIFY_NO_TAG: the strong verification feature.
+        # *   TAG_POLICY_NOTIFY: the notification feature that sends notifications for resources found to be non-compliant with the tag policy.
         self.open_type = open_type
         self.owner_account = owner_account
         self.owner_id = owner_id

@@ -1,3 +1,6 @@
+2025-09-10 Version: 1.1.1
+- Generated python 2018-08-28 for Tag.
+
 2025-08-13 Version: 1.1.0
 - Support API CreateAssociatedResourceRules.
 - Support API DeleteAssociatedResourceRule.
