@@ -7263,10 +7263,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.ready):
+            query['Ready'] = request.ready
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.worker_name):
             query['WorkerName'] = request.worker_name
         req = open_api_models.OpenApiRequest(
@@ -7308,10 +7318,20 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.ready):
+            query['Ready'] = request.ready
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         if not UtilClient.is_unset(request.worker_name):
             query['WorkerName'] = request.worker_name
         req = open_api_models.OpenApiRequest(
@@ -8228,6 +8248,8 @@ class Client(OpenApiClient):
             query['ServiceUid'] = request.service_uid
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.traffic_state):
+            query['TrafficState'] = request.traffic_state
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -8316,6 +8338,8 @@ class Client(OpenApiClient):
             query['ServiceUid'] = request.service_uid
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.traffic_state):
+            query['TrafficState'] = request.traffic_state
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -8464,10 +8488,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.virtual_resource_id):
             query['VirtualResourceId'] = request.virtual_resource_id
         if not UtilClient.is_unset(request.virtual_resource_name):
@@ -8508,10 +8536,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
         if not UtilClient.is_unset(request.virtual_resource_id):
             query['VirtualResourceId'] = request.virtual_resource_id
         if not UtilClient.is_unset(request.virtual_resource_name):

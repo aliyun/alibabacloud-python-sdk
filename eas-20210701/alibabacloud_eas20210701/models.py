@@ -3921,6 +3921,7 @@ class CreateServiceCronScalerRequestScaleJobs(TeaModel):
         name: str = None,
         schedule: str = None,
         target_size: int = None,
+        time_zone: str = None,
     ):
         # The name of the CronHPA job.
         self.name = name
@@ -3932,6 +3933,7 @@ class CreateServiceCronScalerRequestScaleJobs(TeaModel):
         # 
         # This parameter is required.
         self.target_size = target_size
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -3948,6 +3950,8 @@ class CreateServiceCronScalerRequestScaleJobs(TeaModel):
             result['Schedule'] = self.schedule
         if self.target_size is not None:
             result['TargetSize'] = self.target_size
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -3958,6 +3962,8 @@ class CreateServiceCronScalerRequestScaleJobs(TeaModel):
             self.schedule = m.get('Schedule')
         if m.get('TargetSize') is not None:
             self.target_size = m.get('TargetSize')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
@@ -11593,14 +11599,24 @@ class ListGroupsResponse(TeaModel):
 class ListResourceInstanceWorkerRequest(TeaModel):
     def __init__(
         self,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
+        ready: bool = None,
+        service_name: str = None,
+        sort: str = None,
+        status: str = None,
         worker_name: str = None,
     ):
+        self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.ready = ready
+        self.service_name = service_name
+        self.sort = sort
+        self.status = status
         # The worker name.
         self.worker_name = worker_name
 
@@ -11613,20 +11629,40 @@ class ListResourceInstanceWorkerRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.ready is not None:
+            result['Ready'] = self.ready
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.status is not None:
+            result['Status'] = self.status
         if self.worker_name is not None:
             result['WorkerName'] = self.worker_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Ready') is not None:
+            self.ready = m.get('Ready')
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('WorkerName') is not None:
             self.worker_name = m.get('WorkerName')
         return self
@@ -13392,6 +13428,7 @@ class ListServicesRequest(TeaModel):
         service_type: str = None,
         service_uid: str = None,
         sort: str = None,
+        traffic_state: str = None,
         workspace_id: str = None,
     ):
         self.autoscaler_enabled = autoscaler_enabled
@@ -13633,6 +13670,7 @@ class ListServicesRequest(TeaModel):
         self.service_uid = service_uid
         # The sort field. By default, the query results are sorted by the timestamp type in descending order.
         self.sort = sort
+        self.traffic_state = traffic_state
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -13691,6 +13729,8 @@ class ListServicesRequest(TeaModel):
             result['ServiceUid'] = self.service_uid
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.traffic_state is not None:
+            result['TrafficState'] = self.traffic_state
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -13743,6 +13783,8 @@ class ListServicesRequest(TeaModel):
             self.service_uid = m.get('ServiceUid')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('TrafficState') is not None:
+            self.traffic_state = m.get('TrafficState')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -13774,6 +13816,7 @@ class ListServicesShrinkRequest(TeaModel):
         service_type: str = None,
         service_uid: str = None,
         sort: str = None,
+        traffic_state: str = None,
         workspace_id: str = None,
     ):
         self.autoscaler_enabled = autoscaler_enabled
@@ -14015,6 +14058,7 @@ class ListServicesShrinkRequest(TeaModel):
         self.service_uid = service_uid
         # The sort field. By default, the query results are sorted by the timestamp type in descending order.
         self.sort = sort
+        self.traffic_state = traffic_state
         # The workspace ID.
         self.workspace_id = workspace_id
 
@@ -14073,6 +14117,8 @@ class ListServicesShrinkRequest(TeaModel):
             result['ServiceUid'] = self.service_uid
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.traffic_state is not None:
+            result['TrafficState'] = self.traffic_state
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -14125,6 +14171,8 @@ class ListServicesShrinkRequest(TeaModel):
             self.service_uid = m.get('ServiceUid')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('TrafficState') is not None:
+            self.traffic_state = m.get('TrafficState')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -14357,15 +14405,19 @@ class ListTenantAddonsResponse(TeaModel):
 class ListVirtualResourceRequest(TeaModel):
     def __init__(
         self,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
+        sort: str = None,
         virtual_resource_id: str = None,
         virtual_resource_name: str = None,
     ):
+        self.order = order
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.sort = sort
         # The ID of the virtual resource group.
         self.virtual_resource_id = virtual_resource_id
         # The name of the virtual resource group.
@@ -14380,10 +14432,14 @@ class ListVirtualResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.sort is not None:
+            result['Sort'] = self.sort
         if self.virtual_resource_id is not None:
             result['VirtualResourceId'] = self.virtual_resource_id
         if self.virtual_resource_name is not None:
@@ -14392,10 +14448,14 @@ class ListVirtualResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
         if m.get('VirtualResourceId') is not None:
             self.virtual_resource_id = m.get('VirtualResourceId')
         if m.get('VirtualResourceName') is not None:
@@ -16750,6 +16810,7 @@ class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
         name: str = None,
         schedule: str = None,
         target_size: int = None,
+        time_zone: str = None,
     ):
         # The name of the CronHPA job.
         self.name = name
@@ -16761,6 +16822,7 @@ class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
         # 
         # This parameter is required.
         self.target_size = target_size
+        self.time_zone = time_zone
 
     def validate(self):
         pass
@@ -16777,6 +16839,8 @@ class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
             result['Schedule'] = self.schedule
         if self.target_size is not None:
             result['TargetSize'] = self.target_size
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         return result
 
     def from_map(self, m: dict = None):
@@ -16787,6 +16851,8 @@ class UpdateServiceCronScalerRequestScaleJobs(TeaModel):
             self.schedule = m.get('Schedule')
         if m.get('TargetSize') is not None:
             self.target_size = m.get('TargetSize')
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         return self
 
 
