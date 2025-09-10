@@ -441,6 +441,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_fund_account_low_available_amount_alarm_with_options_async(request, runtime)
 
+    def check_account_exist_with_options(
+        self,
+        request: bss_open_api_20230930_models.CheckAccountExistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CheckAccountExistResponse:
+        """
+        @summary 提货券账户检查是否存在
+        
+        @param request: CheckAccountExistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountExistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.to_user_type):
+            body['ToUserType'] = request.to_user_type
+        if not UtilClient.is_unset(request.transfer_account):
+            body['TransferAccount'] = request.transfer_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountExist',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CheckAccountExistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_account_exist_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.CheckAccountExistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.CheckAccountExistResponse:
+        """
+        @summary 提货券账户检查是否存在
+        
+        @param request: CheckAccountExistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountExistResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        body = {}
+        if not UtilClient.is_unset(request.to_user_type):
+            body['ToUserType'] = request.to_user_type
+        if not UtilClient.is_unset(request.transfer_account):
+            body['TransferAccount'] = request.transfer_account
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckAccountExist',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.CheckAccountExistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_account_exist(
+        self,
+        request: bss_open_api_20230930_models.CheckAccountExistRequest,
+    ) -> bss_open_api_20230930_models.CheckAccountExistResponse:
+        """
+        @summary 提货券账户检查是否存在
+        
+        @param request: CheckAccountExistRequest
+        @return: CheckAccountExistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_account_exist_with_options(request, runtime)
+
+    async def check_account_exist_async(
+        self,
+        request: bss_open_api_20230930_models.CheckAccountExistRequest,
+    ) -> bss_open_api_20230930_models.CheckAccountExistResponse:
+        """
+        @summary 提货券账户检查是否存在
+        
+        @param request: CheckAccountExistRequest
+        @return: CheckAccountExistResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_account_exist_with_options_async(request, runtime)
+
     def create_cost_center_with_options(
         self,
         tmp_req: bss_open_api_20230930_models.CreateCostCenterRequest,
@@ -4166,6 +4278,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_cost_center_rule_with_options_async(request, runtime)
+
+    def pay_order_with_options(
+        self,
+        request: bss_open_api_20230930_models.PayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PayOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buyer_id):
+            query['BuyerId'] = request.buyer_id
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.pay_submit_uid):
+            query['PaySubmitUid'] = request.pay_submit_uid
+        if not UtilClient.is_unset(request.payer_id):
+            query['PayerId'] = request.payer_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PayOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.PayOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pay_order_with_options_async(
+        self,
+        request: bss_open_api_20230930_models.PayOrderRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bss_open_api_20230930_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PayOrderResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.buyer_id):
+            query['BuyerId'] = request.buyer_id
+        if not UtilClient.is_unset(request.ec_id_account_ids):
+            query['EcIdAccountIds'] = request.ec_id_account_ids
+        if not UtilClient.is_unset(request.nbid):
+            query['Nbid'] = request.nbid
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.pay_submit_uid):
+            query['PaySubmitUid'] = request.pay_submit_uid
+        if not UtilClient.is_unset(request.payer_id):
+            query['PayerId'] = request.payer_id
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PayOrder',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bss_open_api_20230930_models.PayOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pay_order(
+        self,
+        request: bss_open_api_20230930_models.PayOrderRequest,
+    ) -> bss_open_api_20230930_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @return: PayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pay_order_with_options(request, runtime)
+
+    async def pay_order_async(
+        self,
+        request: bss_open_api_20230930_models.PayOrderRequest,
+    ) -> bss_open_api_20230930_models.PayOrderResponse:
+        """
+        @summary 对客订单支付接口
+        
+        @param request: PayOrderRequest
+        @return: PayOrderResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pay_order_with_options_async(request, runtime)
 
     def query_cost_center_with_options(
         self,

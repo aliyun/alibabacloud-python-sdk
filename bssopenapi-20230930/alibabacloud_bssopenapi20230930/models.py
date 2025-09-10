@@ -883,6 +883,214 @@ class CancelFundAccountLowAvailableAmountAlarmResponse(TeaModel):
         return self
 
 
+class CheckAccountExistRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        # This parameter is required.
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class CheckAccountExistRequest(TeaModel):
+    def __init__(
+        self,
+        ec_id_account_ids: List[CheckAccountExistRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        to_user_type: int = None,
+        transfer_account: str = None,
+    ):
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        self.to_user_type = to_user_type
+        self.transfer_account = transfer_account
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.to_user_type is not None:
+            result['ToUserType'] = self.to_user_type
+        if self.transfer_account is not None:
+            result['TransferAccount'] = self.transfer_account
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = CheckAccountExistRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('ToUserType') is not None:
+            self.to_user_type = m.get('ToUserType')
+        if m.get('TransferAccount') is not None:
+            self.transfer_account = m.get('TransferAccount')
+        return self
+
+
+class CheckAccountExistResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        nick_name: str = None,
+        pk: str = None,
+        result: bool = None,
+    ):
+        self.account_id = account_id
+        self.nick_name = nick_name
+        self.pk = pk
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+        if self.pk is not None:
+            result['Pk'] = self.pk
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+        if m.get('Pk') is not None:
+            self.pk = m.get('Pk')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class CheckAccountExistResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CheckAccountExistResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = CheckAccountExistResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CheckAccountExistResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckAccountExistResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckAccountExistResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateCostCenterRequestCostCenterEntityList(TeaModel):
     def __init__(
         self,
@@ -10225,6 +10433,207 @@ class ModifyCostCenterRuleResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyCostCenterRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PayOrderRequestEcIdAccountIds(TeaModel):
+    def __init__(
+        self,
+        account_ids: List[int] = None,
+        ec_id: str = None,
+    ):
+        self.account_ids = account_ids
+        self.ec_id = ec_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_ids is not None:
+            result['AccountIds'] = self.account_ids
+        if self.ec_id is not None:
+            result['EcId'] = self.ec_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountIds') is not None:
+            self.account_ids = m.get('AccountIds')
+        if m.get('EcId') is not None:
+            self.ec_id = m.get('EcId')
+        return self
+
+
+class PayOrderRequest(TeaModel):
+    def __init__(
+        self,
+        buyer_id: int = None,
+        ec_id_account_ids: List[PayOrderRequestEcIdAccountIds] = None,
+        nbid: str = None,
+        order_id: int = None,
+        pay_submit_uid: int = None,
+        payer_id: int = None,
+        token: str = None,
+    ):
+        # This parameter is required.
+        self.buyer_id = buyer_id
+        self.ec_id_account_ids = ec_id_account_ids
+        self.nbid = nbid
+        # This parameter is required.
+        self.order_id = order_id
+        # This parameter is required.
+        self.pay_submit_uid = pay_submit_uid
+        # This parameter is required.
+        self.payer_id = payer_id
+        # This parameter is required.
+        self.token = token
+
+    def validate(self):
+        if self.ec_id_account_ids:
+            for k in self.ec_id_account_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.buyer_id is not None:
+            result['BuyerId'] = self.buyer_id
+        result['EcIdAccountIds'] = []
+        if self.ec_id_account_ids is not None:
+            for k in self.ec_id_account_ids:
+                result['EcIdAccountIds'].append(k.to_map() if k else None)
+        if self.nbid is not None:
+            result['Nbid'] = self.nbid
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.pay_submit_uid is not None:
+            result['PaySubmitUid'] = self.pay_submit_uid
+        if self.payer_id is not None:
+            result['PayerId'] = self.payer_id
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuyerId') is not None:
+            self.buyer_id = m.get('BuyerId')
+        self.ec_id_account_ids = []
+        if m.get('EcIdAccountIds') is not None:
+            for k in m.get('EcIdAccountIds'):
+                temp_model = PayOrderRequestEcIdAccountIds()
+                self.ec_id_account_ids.append(temp_model.from_map(k))
+        if m.get('Nbid') is not None:
+            self.nbid = m.get('Nbid')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PaySubmitUid') is not None:
+            self.pay_submit_uid = m.get('PaySubmitUid')
+        if m.get('PayerId') is not None:
+            self.payer_id = m.get('PayerId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class PayOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        metadata: Any = None,
+        order_id: int = None,
+        pay_status: int = None,
+        payer_id: int = None,
+        request_id: str = None,
+    ):
+        self.metadata = metadata
+        self.order_id = order_id
+        self.pay_status = pay_status
+        self.payer_id = payer_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata is not None:
+            result['Metadata'] = self.metadata
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.pay_status is not None:
+            result['PayStatus'] = self.pay_status
+        if self.payer_id is not None:
+            result['PayerId'] = self.payer_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Metadata') is not None:
+            self.metadata = m.get('Metadata')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('PayStatus') is not None:
+            self.pay_status = m.get('PayStatus')
+        if m.get('PayerId') is not None:
+            self.payer_id = m.get('PayerId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PayOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PayOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PayOrderResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
