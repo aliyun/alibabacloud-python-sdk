@@ -9341,7 +9341,7 @@ class GenerateUploadConfigResponseBodyData(TeaModel):
     def __init__(
         self,
         file_key: str = None,
-        form_datas: Dict[str, Any] = None,
+        form_datas: Dict[str, str] = None,
         post_url: str = None,
     ):
         self.file_key = file_key
