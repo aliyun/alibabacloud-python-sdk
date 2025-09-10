@@ -1614,9 +1614,11 @@ class AlertRuleCondition(TeaModel):
         no_data_alert_level: str = None,
         no_data_append_value: str = None,
         no_data_policy: str = None,
+        oper: str = None,
         relation: str = None,
         simple_escalation: AlertRuleConditionSimpleEscalation = None,
         type: str = None,
+        value: float = None,
     ):
         # type=SLS_CONDITION时指定，满足条件几次后告警，默认为1
         self.alert_count = alert_count
@@ -1630,12 +1632,14 @@ class AlertRuleCondition(TeaModel):
         self.no_data_alert_level = no_data_alert_level
         self.no_data_append_value = no_data_append_value
         self.no_data_policy = no_data_policy
+        self.oper = oper
         self.relation = relation
         self.simple_escalation = simple_escalation
         # 规则条件类型，可选值：SLS_CONDITION
         # 
         # This parameter is required.
         self.type = type
+        self.value = value
 
     def validate(self):
         if self.case_list:
@@ -1681,12 +1685,16 @@ class AlertRuleCondition(TeaModel):
             result['noDataAppendValue'] = self.no_data_append_value
         if self.no_data_policy is not None:
             result['noDataPolicy'] = self.no_data_policy
+        if self.oper is not None:
+            result['oper'] = self.oper
         if self.relation is not None:
             result['relation'] = self.relation
         if self.simple_escalation is not None:
             result['simpleEscalation'] = self.simple_escalation.to_map()
         if self.type is not None:
             result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
         return result
 
     def from_map(self, m: dict = None):
@@ -1717,6 +1725,8 @@ class AlertRuleCondition(TeaModel):
             self.no_data_append_value = m.get('noDataAppendValue')
         if m.get('noDataPolicy') is not None:
             self.no_data_policy = m.get('noDataPolicy')
+        if m.get('oper') is not None:
+            self.oper = m.get('oper')
         if m.get('relation') is not None:
             self.relation = m.get('relation')
         if m.get('simpleEscalation') is not None:
@@ -1724,6 +1734,8 @@ class AlertRuleCondition(TeaModel):
             self.simple_escalation = temp_model.from_map(m['simpleEscalation'])
         if m.get('type') is not None:
             self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
         return self
 
 
@@ -2297,6 +2309,7 @@ class AlertRuleQuery(TeaModel):
         queries: List[AlertRuleQueryQueries] = None,
         relation_type: str = None,
         second_join: AlertRuleSlsQueryJoin = None,
+        service_ids: List[str] = None,
         type: str = None,
     ):
         self.check_after_data_complete = check_after_data_complete
@@ -2311,6 +2324,7 @@ class AlertRuleQuery(TeaModel):
         self.queries = queries
         self.relation_type = relation_type
         self.second_join = second_join
+        self.service_ids = service_ids
         # 查询类型
         # 
         # This parameter is required.
@@ -2358,6 +2372,8 @@ class AlertRuleQuery(TeaModel):
             result['relationType'] = self.relation_type
         if self.second_join is not None:
             result['secondJoin'] = self.second_join.to_map()
+        if self.service_ids is not None:
+            result['serviceIds'] = self.service_ids
         if self.type is not None:
             result['type'] = self.type
         return result
@@ -2393,6 +2409,8 @@ class AlertRuleQuery(TeaModel):
         if m.get('secondJoin') is not None:
             temp_model = AlertRuleSlsQueryJoin()
             self.second_join = temp_model.from_map(m['secondJoin'])
+        if m.get('serviceIds') is not None:
+            self.service_ids = m.get('serviceIds')
         if m.get('type') is not None:
             self.type = m.get('type')
         return self
@@ -5919,6 +5937,665 @@ class TransformerForView(TeaModel):
         return self
 
 
+class CreateAddonReleaseRequest(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        aliyun_lang: str = None,
+        dry_run: bool = None,
+        entity_rules: EntityDiscoverRule = None,
+        env_type: str = None,
+        parent_addon_release_id: str = None,
+        release_name: str = None,
+        values: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        # This parameter is required.
+        self.addon_name = addon_name
+        self.aliyun_lang = aliyun_lang
+        self.dry_run = dry_run
+        self.entity_rules = entity_rules
+        self.env_type = env_type
+        self.parent_addon_release_id = parent_addon_release_id
+        self.release_name = release_name
+        self.values = values
+        # This parameter is required.
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.env_type is not None:
+            result['envType'] = self.env_type
+        if self.parent_addon_release_id is not None:
+            result['parentAddonReleaseId'] = self.parent_addon_release_id
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        if self.values is not None:
+            result['values'] = self.values
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        if m.get('entityRules') is not None:
+            temp_model = EntityDiscoverRule()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('envType') is not None:
+            self.env_type = m.get('envType')
+        if m.get('parentAddonReleaseId') is not None:
+            self.parent_addon_release_id = m.get('parentAddonReleaseId')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateAddonReleaseResponseBodyReleaseConditions(TeaModel):
+    def __init__(
+        self,
+        first_transition_time: str = None,
+        last_transition_time: str = None,
+        message: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.first_transition_time = first_transition_time
+        self.last_transition_time = last_transition_time
+        self.message = message
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_transition_time is not None:
+            result['firstTransitionTime'] = self.first_transition_time
+        if self.last_transition_time is not None:
+            result['lastTransitionTime'] = self.last_transition_time
+        if self.message is not None:
+            result['message'] = self.message
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('firstTransitionTime') is not None:
+            self.first_transition_time = m.get('firstTransitionTime')
+        if m.get('lastTransitionTime') is not None:
+            self.last_transition_time = m.get('lastTransitionTime')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateAddonReleaseResponseBodyRelease(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        alert_rule_count: int = None,
+        conditions: List[CreateAddonReleaseResponseBodyReleaseConditions] = None,
+        config: str = None,
+        create_time: str = None,
+        dashboard_count: int = None,
+        entity_rules: EntityGroupBase = None,
+        env_type: str = None,
+        environment_id: str = None,
+        exporter_count: int = None,
+        have_config: bool = None,
+        install_user_id: str = None,
+        language: str = None,
+        managed: bool = None,
+        parent_addon_release_id: str = None,
+        policy_id: str = None,
+        region_id: str = None,
+        release_id: str = None,
+        release_name: str = None,
+        scene: str = None,
+        status: str = None,
+        update_time: str = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.addon_name = addon_name
+        self.alert_rule_count = alert_rule_count
+        self.conditions = conditions
+        self.config = config
+        self.create_time = create_time
+        self.dashboard_count = dashboard_count
+        self.entity_rules = entity_rules
+        self.env_type = env_type
+        self.environment_id = environment_id
+        self.exporter_count = exporter_count
+        self.have_config = have_config
+        self.install_user_id = install_user_id
+        self.language = language
+        self.managed = managed
+        self.parent_addon_release_id = parent_addon_release_id
+        self.policy_id = policy_id
+        self.region_id = region_id
+        self.release_id = release_id
+        self.release_name = release_name
+        self.scene = scene
+        self.status = status
+        self.update_time = update_time
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.alert_rule_count is not None:
+            result['alertRuleCount'] = self.alert_rule_count
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
+        if self.config is not None:
+            result['config'] = self.config
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.dashboard_count is not None:
+            result['dashboardCount'] = self.dashboard_count
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.env_type is not None:
+            result['envType'] = self.env_type
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.exporter_count is not None:
+            result['exporterCount'] = self.exporter_count
+        if self.have_config is not None:
+            result['haveConfig'] = self.have_config
+        if self.install_user_id is not None:
+            result['installUserId'] = self.install_user_id
+        if self.language is not None:
+            result['language'] = self.language
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.parent_addon_release_id is not None:
+            result['parentAddonReleaseId'] = self.parent_addon_release_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.release_id is not None:
+            result['releaseId'] = self.release_id
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('alertRuleCount') is not None:
+            self.alert_rule_count = m.get('alertRuleCount')
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = CreateAddonReleaseResponseBodyReleaseConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('dashboardCount') is not None:
+            self.dashboard_count = m.get('dashboardCount')
+        if m.get('entityRules') is not None:
+            temp_model = EntityGroupBase()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('envType') is not None:
+            self.env_type = m.get('envType')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('exporterCount') is not None:
+            self.exporter_count = m.get('exporterCount')
+        if m.get('haveConfig') is not None:
+            self.have_config = m.get('haveConfig')
+        if m.get('installUserId') is not None:
+            self.install_user_id = m.get('installUserId')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('parentAddonReleaseId') is not None:
+            self.parent_addon_release_id = m.get('parentAddonReleaseId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('releaseId') is not None:
+            self.release_id = m.get('releaseId')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateAddonReleaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        release: CreateAddonReleaseResponseBodyRelease = None,
+        request_id: str = None,
+    ):
+        self.release = release
+        self.request_id = request_id
+
+    def validate(self):
+        if self.release:
+            self.release.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release is not None:
+            result['release'] = self.release.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('release') is not None:
+            temp_model = CreateAddonReleaseResponseBodyRelease()
+            self.release = temp_model.from_map(m['release'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateAddonReleaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAddonReleaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAddonReleaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateAggTaskGroupRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateAggTaskGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config: str = None,
+        agg_task_group_config_type: str = None,
+        agg_task_group_name: str = None,
+        cron_expr: str = None,
+        delay: int = None,
+        description: str = None,
+        from_time: int = None,
+        max_retries: int = None,
+        max_run_time_in_seconds: int = None,
+        precheck_string: str = None,
+        schedule_mode: str = None,
+        schedule_time_expr: str = None,
+        status: str = None,
+        tags: List[CreateAggTaskGroupRequestTags] = None,
+        target_prometheus_id: str = None,
+        to_time: int = None,
+        override_if_exists: bool = None,
+    ):
+        # This parameter is required.
+        self.agg_task_group_config = agg_task_group_config
+        self.agg_task_group_config_type = agg_task_group_config_type
+        # This parameter is required.
+        self.agg_task_group_name = agg_task_group_name
+        self.cron_expr = cron_expr
+        self.delay = delay
+        self.description = description
+        self.from_time = from_time
+        self.max_retries = max_retries
+        self.max_run_time_in_seconds = max_run_time_in_seconds
+        self.precheck_string = precheck_string
+        self.schedule_mode = schedule_mode
+        self.schedule_time_expr = schedule_time_expr
+        self.status = status
+        self.tags = tags
+        # This parameter is required.
+        self.target_prometheus_id = target_prometheus_id
+        self.to_time = to_time
+        self.override_if_exists = override_if_exists
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config is not None:
+            result['aggTaskGroupConfig'] = self.agg_task_group_config
+        if self.agg_task_group_config_type is not None:
+            result['aggTaskGroupConfigType'] = self.agg_task_group_config_type
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.cron_expr is not None:
+            result['cronExpr'] = self.cron_expr
+        if self.delay is not None:
+            result['delay'] = self.delay
+        if self.description is not None:
+            result['description'] = self.description
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.max_retries is not None:
+            result['maxRetries'] = self.max_retries
+        if self.max_run_time_in_seconds is not None:
+            result['maxRunTimeInSeconds'] = self.max_run_time_in_seconds
+        if self.precheck_string is not None:
+            result['precheckString'] = self.precheck_string
+        if self.schedule_mode is not None:
+            result['scheduleMode'] = self.schedule_mode
+        if self.schedule_time_expr is not None:
+            result['scheduleTimeExpr'] = self.schedule_time_expr
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        if self.override_if_exists is not None:
+            result['overrideIfExists'] = self.override_if_exists
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfig') is not None:
+            self.agg_task_group_config = m.get('aggTaskGroupConfig')
+        if m.get('aggTaskGroupConfigType') is not None:
+            self.agg_task_group_config_type = m.get('aggTaskGroupConfigType')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('cronExpr') is not None:
+            self.cron_expr = m.get('cronExpr')
+        if m.get('delay') is not None:
+            self.delay = m.get('delay')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('maxRetries') is not None:
+            self.max_retries = m.get('maxRetries')
+        if m.get('maxRunTimeInSeconds') is not None:
+            self.max_run_time_in_seconds = m.get('maxRunTimeInSeconds')
+        if m.get('precheckString') is not None:
+            self.precheck_string = m.get('precheckString')
+        if m.get('scheduleMode') is not None:
+            self.schedule_mode = m.get('scheduleMode')
+        if m.get('scheduleTimeExpr') is not None:
+            self.schedule_time_expr = m.get('scheduleTimeExpr')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateAggTaskGroupRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        if m.get('overrideIfExists') is not None:
+            self.override_if_exists = m.get('overrideIfExists')
+        return self
+
+
+class CreateAggTaskGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config_hash: str = None,
+        agg_task_group_id: str = None,
+        agg_task_group_name: str = None,
+        request_id: str = None,
+        source_prometheus_id: str = None,
+        status: str = None,
+    ):
+        self.agg_task_group_config_hash = agg_task_group_config_hash
+        self.agg_task_group_id = agg_task_group_id
+        self.agg_task_group_name = agg_task_group_name
+        self.request_id = request_id
+        self.source_prometheus_id = source_prometheus_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config_hash is not None:
+            result['aggTaskGroupConfigHash'] = self.agg_task_group_config_hash
+        if self.agg_task_group_id is not None:
+            result['aggTaskGroupId'] = self.agg_task_group_id
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.source_prometheus_id is not None:
+            result['sourcePrometheusId'] = self.source_prometheus_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfigHash') is not None:
+            self.agg_task_group_config_hash = m.get('aggTaskGroupConfigHash')
+        if m.get('aggTaskGroupId') is not None:
+            self.agg_task_group_id = m.get('aggTaskGroupId')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sourcePrometheusId') is not None:
+            self.source_prometheus_id = m.get('sourcePrometheusId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class CreateAggTaskGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAggTaskGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAggTaskGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateEntityStoreResponseBody(TeaModel):
     def __init__(
         self,
@@ -5989,6 +6666,298 @@ class CreateEntityStoreResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateEntityStoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateIntegrationPolicyRequestEntityGroup(TeaModel):
+    def __init__(
+        self,
+        cluster_entity_type: str = None,
+        cluster_id: str = None,
+        entity_group_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.cluster_entity_type = cluster_entity_type
+        self.cluster_id = cluster_id
+        self.entity_group_id = entity_group_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_entity_type is not None:
+            result['clusterEntityType'] = self.cluster_entity_type
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.entity_group_id is not None:
+            result['entityGroupId'] = self.entity_group_id
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterEntityType') is not None:
+            self.cluster_entity_type = m.get('clusterEntityType')
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('entityGroupId') is not None:
+            self.entity_group_id = m.get('entityGroupId')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class CreateIntegrationPolicyRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreateIntegrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        entity_group: CreateIntegrationPolicyRequestEntityGroup = None,
+        policy_name: str = None,
+        policy_type: str = None,
+        resource_group_id: str = None,
+        tags: List[CreateIntegrationPolicyRequestTags] = None,
+        workspace: str = None,
+    ):
+        self.entity_group = entity_group
+        self.policy_name = policy_name
+        # This parameter is required.
+        self.policy_type = policy_type
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.workspace = workspace
+
+    def validate(self):
+        if self.entity_group:
+            self.entity_group.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_group is not None:
+            result['entityGroup'] = self.entity_group.to_map()
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['policyType'] = self.policy_type
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entityGroup') is not None:
+            temp_model = CreateIntegrationPolicyRequestEntityGroup()
+            self.entity_group = temp_model.from_map(m['entityGroup'])
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('policyType') is not None:
+            self.policy_type = m.get('policyType')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateIntegrationPolicyRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateIntegrationPolicyResponseBodyPolicy(TeaModel):
+    def __init__(
+        self,
+        entity_group_id: str = None,
+        policy_id: str = None,
+        policy_name: str = None,
+        policy_type: str = None,
+        region_id: str = None,
+        user_id: str = None,
+        workspace: str = None,
+    ):
+        self.entity_group_id = entity_group_id
+        self.policy_id = policy_id
+        self.policy_name = policy_name
+        self.policy_type = policy_type
+        self.region_id = region_id
+        self.user_id = user_id
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_group_id is not None:
+            result['entityGroupId'] = self.entity_group_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['policyType'] = self.policy_type
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entityGroupId') is not None:
+            self.entity_group_id = m.get('entityGroupId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('policyType') is not None:
+            self.policy_type = m.get('policyType')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreateIntegrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        created: bool = None,
+        policy: CreateIntegrationPolicyResponseBodyPolicy = None,
+        request_id: str = None,
+    ):
+        self.created = created
+        self.policy = policy
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created is not None:
+            result['created'] = self.created
+        if self.policy is not None:
+            result['policy'] = self.policy.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('policy') is not None:
+            temp_model = CreateIntegrationPolicyResponseBodyPolicy()
+            self.policy = temp_model.from_map(m['policy'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateIntegrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateIntegrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateIntegrationPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6199,6 +7168,416 @@ class CreatePrometheusInstanceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePrometheusViewRequestPrometheusInstances(TeaModel):
+    def __init__(
+        self,
+        prometheus_instance_id: str = None,
+        region_id: str = None,
+        user_id: str = None,
+    ):
+        self.prometheus_instance_id = prometheus_instance_id
+        self.region_id = region_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CreatePrometheusViewRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CreatePrometheusViewRequest(TeaModel):
+    def __init__(
+        self,
+        auth_free_read_policy: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_token: bool = None,
+        prometheus_instances: List[CreatePrometheusViewRequestPrometheusInstances] = None,
+        prometheus_view_name: str = None,
+        resource_group_id: str = None,
+        status: str = None,
+        tags: List[CreatePrometheusViewRequestTags] = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.auth_free_read_policy = auth_free_read_policy
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_token = enable_auth_token
+        # This parameter is required.
+        self.prometheus_instances = prometheus_instances
+        # This parameter is required.
+        self.prometheus_view_name = prometheus_view_name
+        self.resource_group_id = resource_group_id
+        self.status = status
+        self.tags = tags
+        # This parameter is required.
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.prometheus_instances:
+            for k in self.prometheus_instances:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_free_read_policy is not None:
+            result['authFreeReadPolicy'] = self.auth_free_read_policy
+        if self.enable_auth_free_read is not None:
+            result['enableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_token is not None:
+            result['enableAuthToken'] = self.enable_auth_token
+        result['prometheusInstances'] = []
+        if self.prometheus_instances is not None:
+            for k in self.prometheus_instances:
+                result['prometheusInstances'].append(k.to_map() if k else None)
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('authFreeReadPolicy')
+        if m.get('enableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('enableAuthFreeRead')
+        if m.get('enableAuthToken') is not None:
+            self.enable_auth_token = m.get('enableAuthToken')
+        self.prometheus_instances = []
+        if m.get('prometheusInstances') is not None:
+            for k in m.get('prometheusInstances'):
+                temp_model = CreatePrometheusViewRequestPrometheusInstances()
+                self.prometheus_instances.append(temp_model.from_map(k))
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreatePrometheusViewRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class CreatePrometheusViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_view_id: str = None,
+        request_id: str = None,
+    ):
+        self.prometheus_view_id = prometheus_view_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_view_id is not None:
+            result['prometheusViewId'] = self.prometheus_view_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusViewId') is not None:
+            self.prometheus_view_id = m.get('prometheusViewId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreatePrometheusViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrometheusViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrometheusViewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreatePrometheusVirtualInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+    ):
+        # This parameter is required.
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class CreatePrometheusVirtualInstanceResponseBodyInstance(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        http_api_url: str = None,
+        instance_id: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        user_id: str = None,
+    ):
+        self.created_at = created_at
+        self.http_api_url = http_api_url
+        self.instance_id = instance_id
+        self.namespace = namespace
+        self.region_id = region_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.http_api_url is not None:
+            result['httpApiUrl'] = self.http_api_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('httpApiUrl') is not None:
+            self.http_api_url = m.get('httpApiUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CreatePrometheusVirtualInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance: CreatePrometheusVirtualInstanceResponseBodyInstance = None,
+        request_id: str = None,
+    ):
+        self.instance = instance
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance:
+            self.instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance is not None:
+            result['instance'] = self.instance.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance') is not None:
+            temp_model = CreatePrometheusVirtualInstanceResponseBodyInstance()
+            self.instance = temp_model.from_map(m['instance'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreatePrometheusVirtualInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreatePrometheusVirtualInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreatePrometheusVirtualInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6550,6 +7929,181 @@ class CreateUmodelResponse(TeaModel):
         return self
 
 
+class DeleteAddonReleaseRequest(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        force: bool = None,
+        release_name: str = None,
+    ):
+        self.addon_name = addon_name
+        self.force = force
+        self.release_name = release_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.force is not None:
+            result['force'] = self.force
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('force') is not None:
+            self.force = m.get('force')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        return self
+
+
+class DeleteAddonReleaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteAddonReleaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAddonReleaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAddonReleaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAggTaskGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteAggTaskGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAggTaskGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAggTaskGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteEntityStoreResponseBody(TeaModel):
     def __init__(
         self,
@@ -6614,6 +8168,240 @@ class DeleteEntityStoreResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteEntityStoreResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteIntegrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        force: bool = None,
+    ):
+        self.force = force
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.force is not None:
+            result['force'] = self.force
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('force') is not None:
+            self.force = m.get('force')
+        return self
+
+
+class DeleteIntegrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteIntegrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteIntegrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteIntegrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeletePrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeletePrometheusViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeletePrometheusViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeletePrometheusViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeletePrometheusViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6929,6 +8717,592 @@ class DeleteWorkspaceResponse(TeaModel):
         return self
 
 
+class GetAddonReleaseResponseBodyReleaseConditions(TeaModel):
+    def __init__(
+        self,
+        first_transition_time: str = None,
+        last_transition_time: str = None,
+        message: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.first_transition_time = first_transition_time
+        self.last_transition_time = last_transition_time
+        self.message = message
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_transition_time is not None:
+            result['firstTransitionTime'] = self.first_transition_time
+        if self.last_transition_time is not None:
+            result['lastTransitionTime'] = self.last_transition_time
+        if self.message is not None:
+            result['message'] = self.message
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('firstTransitionTime') is not None:
+            self.first_transition_time = m.get('firstTransitionTime')
+        if m.get('lastTransitionTime') is not None:
+            self.last_transition_time = m.get('lastTransitionTime')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class GetAddonReleaseResponseBodyRelease(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        alert_rule_count: int = None,
+        conditions: List[GetAddonReleaseResponseBodyReleaseConditions] = None,
+        config: str = None,
+        create_time: str = None,
+        dashboard_count: int = None,
+        entity_rules: EntityGroupBase = None,
+        env_type: str = None,
+        environment_id: str = None,
+        exporter_count: int = None,
+        have_config: bool = None,
+        install_user_id: str = None,
+        language: str = None,
+        managed: bool = None,
+        parent_addon_release_id: str = None,
+        policy_id: str = None,
+        region_id: str = None,
+        release_id: str = None,
+        release_name: str = None,
+        scene: str = None,
+        status: str = None,
+        update_time: str = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.addon_name = addon_name
+        self.alert_rule_count = alert_rule_count
+        self.conditions = conditions
+        self.config = config
+        self.create_time = create_time
+        self.dashboard_count = dashboard_count
+        self.entity_rules = entity_rules
+        self.env_type = env_type
+        self.environment_id = environment_id
+        self.exporter_count = exporter_count
+        self.have_config = have_config
+        self.install_user_id = install_user_id
+        self.language = language
+        self.managed = managed
+        self.parent_addon_release_id = parent_addon_release_id
+        self.policy_id = policy_id
+        self.region_id = region_id
+        # Release ID。
+        self.release_id = release_id
+        self.release_name = release_name
+        self.scene = scene
+        self.status = status
+        self.update_time = update_time
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.alert_rule_count is not None:
+            result['alertRuleCount'] = self.alert_rule_count
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
+        if self.config is not None:
+            result['config'] = self.config
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.dashboard_count is not None:
+            result['dashboardCount'] = self.dashboard_count
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.env_type is not None:
+            result['envType'] = self.env_type
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.exporter_count is not None:
+            result['exporterCount'] = self.exporter_count
+        if self.have_config is not None:
+            result['haveConfig'] = self.have_config
+        if self.install_user_id is not None:
+            result['installUserId'] = self.install_user_id
+        if self.language is not None:
+            result['language'] = self.language
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.parent_addon_release_id is not None:
+            result['parentAddonReleaseId'] = self.parent_addon_release_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.release_id is not None:
+            result['releaseId'] = self.release_id
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.status is not None:
+            result['status'] = self.status
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('alertRuleCount') is not None:
+            self.alert_rule_count = m.get('alertRuleCount')
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = GetAddonReleaseResponseBodyReleaseConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('dashboardCount') is not None:
+            self.dashboard_count = m.get('dashboardCount')
+        if m.get('entityRules') is not None:
+            temp_model = EntityGroupBase()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('envType') is not None:
+            self.env_type = m.get('envType')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('exporterCount') is not None:
+            self.exporter_count = m.get('exporterCount')
+        if m.get('haveConfig') is not None:
+            self.have_config = m.get('haveConfig')
+        if m.get('installUserId') is not None:
+            self.install_user_id = m.get('installUserId')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('parentAddonReleaseId') is not None:
+            self.parent_addon_release_id = m.get('parentAddonReleaseId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('releaseId') is not None:
+            self.release_id = m.get('releaseId')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetAddonReleaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        config: str = None,
+        release: GetAddonReleaseResponseBodyRelease = None,
+        request_id: str = None,
+    ):
+        self.config = config
+        self.release = release
+        self.request_id = request_id
+
+    def validate(self):
+        if self.release:
+            self.release.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config is not None:
+            result['config'] = self.config
+        if self.release is not None:
+            result['release'] = self.release.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('release') is not None:
+            temp_model = GetAddonReleaseResponseBodyRelease()
+            self.release = temp_model.from_map(m['release'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAddonReleaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAddonReleaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAddonReleaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAggTaskGroupResponseBodyAggTaskGroupTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetAggTaskGroupResponseBodyAggTaskGroup(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config: str = None,
+        agg_task_group_config_hash: str = None,
+        agg_task_group_id: str = None,
+        agg_task_group_name: str = None,
+        cron_expr: str = None,
+        delay: int = None,
+        description: str = None,
+        from_time: int = None,
+        max_retries: int = None,
+        max_run_time_in_seconds: int = None,
+        precheck_string: str = None,
+        region_id: str = None,
+        schedule_mode: str = None,
+        schedule_time_expr: str = None,
+        source_prometheus_id: str = None,
+        status: str = None,
+        tags: List[GetAggTaskGroupResponseBodyAggTaskGroupTags] = None,
+        target_prometheus_id: str = None,
+        to_time: int = None,
+        update_time: str = None,
+        user_id: str = None,
+    ):
+        self.agg_task_group_config = agg_task_group_config
+        self.agg_task_group_config_hash = agg_task_group_config_hash
+        self.agg_task_group_id = agg_task_group_id
+        self.agg_task_group_name = agg_task_group_name
+        self.cron_expr = cron_expr
+        self.delay = delay
+        self.description = description
+        self.from_time = from_time
+        self.max_retries = max_retries
+        self.max_run_time_in_seconds = max_run_time_in_seconds
+        self.precheck_string = precheck_string
+        self.region_id = region_id
+        self.schedule_mode = schedule_mode
+        self.schedule_time_expr = schedule_time_expr
+        self.source_prometheus_id = source_prometheus_id
+        self.status = status
+        self.tags = tags
+        self.target_prometheus_id = target_prometheus_id
+        self.to_time = to_time
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config is not None:
+            result['aggTaskGroupConfig'] = self.agg_task_group_config
+        if self.agg_task_group_config_hash is not None:
+            result['aggTaskGroupConfigHash'] = self.agg_task_group_config_hash
+        if self.agg_task_group_id is not None:
+            result['aggTaskGroupId'] = self.agg_task_group_id
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.cron_expr is not None:
+            result['cronExpr'] = self.cron_expr
+        if self.delay is not None:
+            result['delay'] = self.delay
+        if self.description is not None:
+            result['description'] = self.description
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.max_retries is not None:
+            result['maxRetries'] = self.max_retries
+        if self.max_run_time_in_seconds is not None:
+            result['maxRunTimeInSeconds'] = self.max_run_time_in_seconds
+        if self.precheck_string is not None:
+            result['precheckString'] = self.precheck_string
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.schedule_mode is not None:
+            result['scheduleMode'] = self.schedule_mode
+        if self.schedule_time_expr is not None:
+            result['scheduleTimeExpr'] = self.schedule_time_expr
+        if self.source_prometheus_id is not None:
+            result['sourcePrometheusId'] = self.source_prometheus_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfig') is not None:
+            self.agg_task_group_config = m.get('aggTaskGroupConfig')
+        if m.get('aggTaskGroupConfigHash') is not None:
+            self.agg_task_group_config_hash = m.get('aggTaskGroupConfigHash')
+        if m.get('aggTaskGroupId') is not None:
+            self.agg_task_group_id = m.get('aggTaskGroupId')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('cronExpr') is not None:
+            self.cron_expr = m.get('cronExpr')
+        if m.get('delay') is not None:
+            self.delay = m.get('delay')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('maxRetries') is not None:
+            self.max_retries = m.get('maxRetries')
+        if m.get('maxRunTimeInSeconds') is not None:
+            self.max_run_time_in_seconds = m.get('maxRunTimeInSeconds')
+        if m.get('precheckString') is not None:
+            self.precheck_string = m.get('precheckString')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('scheduleMode') is not None:
+            self.schedule_mode = m.get('scheduleMode')
+        if m.get('scheduleTimeExpr') is not None:
+            self.schedule_time_expr = m.get('scheduleTimeExpr')
+        if m.get('sourcePrometheusId') is not None:
+            self.source_prometheus_id = m.get('sourcePrometheusId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetAggTaskGroupResponseBodyAggTaskGroupTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetAggTaskGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        agg_task_group: GetAggTaskGroupResponseBodyAggTaskGroup = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.agg_task_group = agg_task_group
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.agg_task_group:
+            self.agg_task_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group is not None:
+            result['aggTaskGroup'] = self.agg_task_group.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroup') is not None:
+            temp_model = GetAggTaskGroupResponseBodyAggTaskGroup()
+            self.agg_task_group = temp_model.from_map(m['aggTaskGroup'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetAggTaskGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAggTaskGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAggTaskGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetEntityStoreResponseBody(TeaModel):
     def __init__(
         self,
@@ -7084,19 +9458,126 @@ class GetEntityStoreDataRequest(TeaModel):
         return self
 
 
+class GetEntityStoreDataResponseBodyResponseStatusStatusItem(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        level: str = None,
+        message: str = None,
+        suggestion: str = None,
+    ):
+        self.code = code
+        self.level = level
+        self.message = message
+        self.suggestion = suggestion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.level is not None:
+            result['level'] = self.level
+        if self.message is not None:
+            result['message'] = self.message
+        if self.suggestion is not None:
+            result['suggestion'] = self.suggestion
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('suggestion') is not None:
+            self.suggestion = m.get('suggestion')
+        return self
+
+
+class GetEntityStoreDataResponseBodyResponseStatus(TeaModel):
+    def __init__(
+        self,
+        execution_states: str = None,
+        level: str = None,
+        result: str = None,
+        retry_policy: str = None,
+        status_item: List[GetEntityStoreDataResponseBodyResponseStatusStatusItem] = None,
+    ):
+        self.execution_states = execution_states
+        self.level = level
+        self.result = result
+        self.retry_policy = retry_policy
+        self.status_item = status_item
+
+    def validate(self):
+        if self.status_item:
+            for k in self.status_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execution_states is not None:
+            result['executionStates'] = self.execution_states
+        if self.level is not None:
+            result['level'] = self.level
+        if self.result is not None:
+            result['result'] = self.result
+        if self.retry_policy is not None:
+            result['retryPolicy'] = self.retry_policy
+        result['statusItem'] = []
+        if self.status_item is not None:
+            for k in self.status_item:
+                result['statusItem'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('executionStates') is not None:
+            self.execution_states = m.get('executionStates')
+        if m.get('level') is not None:
+            self.level = m.get('level')
+        if m.get('result') is not None:
+            self.result = m.get('result')
+        if m.get('retryPolicy') is not None:
+            self.retry_policy = m.get('retryPolicy')
+        self.status_item = []
+        if m.get('statusItem') is not None:
+            for k in m.get('statusItem'):
+                temp_model = GetEntityStoreDataResponseBodyResponseStatusStatusItem()
+                self.status_item.append(temp_model.from_map(k))
+        return self
+
+
 class GetEntityStoreDataResponseBody(TeaModel):
     def __init__(
         self,
         data: List[List[str]] = None,
         header: List[str] = None,
         request_id: str = None,
+        response_status: GetEntityStoreDataResponseBodyResponseStatus = None,
     ):
         self.data = data
         self.header = header
         self.request_id = request_id
+        self.response_status = response_status
 
     def validate(self):
-        pass
+        if self.response_status:
+            self.response_status.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7110,6 +9591,8 @@ class GetEntityStoreDataResponseBody(TeaModel):
             result['header'] = self.header
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.response_status is not None:
+            result['responseStatus'] = self.response_status.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7120,6 +9603,9 @@ class GetEntityStoreDataResponseBody(TeaModel):
             self.header = m.get('header')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('responseStatus') is not None:
+            temp_model = GetEntityStoreDataResponseBodyResponseStatus()
+            self.response_status = temp_model.from_map(m['responseStatus'])
         return self
 
 
@@ -7160,6 +9646,1448 @@ class GetEntityStoreDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEntityStoreDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyBindResource(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_type: str = None,
+        vpc_cidr: str = None,
+        vpc_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_type = cluster_type
+        self.vpc_cidr = vpc_cidr
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.cluster_type is not None:
+            result['clusterType'] = self.cluster_type
+        if self.vpc_cidr is not None:
+            result['vpcCidr'] = self.vpc_cidr
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('clusterType') is not None:
+            self.cluster_type = m.get('clusterType')
+        if m.get('vpcCidr') is not None:
+            self.vpc_cidr = m.get('vpcCidr')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules(TeaModel):
+    def __init__(
+        self,
+        field_key: str = None,
+        field_values: List[str] = None,
+        op: str = None,
+    ):
+        self.field_key = field_key
+        self.field_values = field_values
+        self.op = op
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_key is not None:
+            result['fieldKey'] = self.field_key
+        if self.field_values is not None:
+            result['fieldValues'] = self.field_values
+        if self.op is not None:
+            result['op'] = self.op
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldKey') is not None:
+            self.field_key = m.get('fieldKey')
+        if m.get('fieldValues') is not None:
+            self.field_values = m.get('fieldValues')
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule(TeaModel):
+    def __init__(
+        self,
+        ip_cidr: str = None,
+        ip_field_key: str = None,
+    ):
+        self.ip_cidr = ip_cidr
+        self.ip_field_key = ip_field_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_cidr is not None:
+            result['ipCidr'] = self.ip_cidr
+        if self.ip_field_key is not None:
+            result['ipFieldKey'] = self.ip_field_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ipCidr') is not None:
+            self.ip_cidr = m.get('ipCidr')
+        if m.get('ipFieldKey') is not None:
+            self.ip_field_key = m.get('ipFieldKey')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags(TeaModel):
+    def __init__(
+        self,
+        op: str = None,
+        tag_key: str = None,
+        tag_values: List[str] = None,
+    ):
+        self.op = op
+        self.tag_key = tag_key
+        self.tag_values = tag_values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.op is not None:
+            result['op'] = self.op
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_values is not None:
+            result['tagValues'] = self.tag_values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('op') is not None:
+            self.op = m.get('op')
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValues') is not None:
+            self.tag_values = m.get('tagValues')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules(TeaModel):
+    def __init__(
+        self,
+        annotations: List[GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations] = None,
+        entity_types: List[str] = None,
+        field_rules: List[GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules] = None,
+        instance_ids: List[str] = None,
+        ip_match_rule: GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule = None,
+        labels: List[GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels] = None,
+        region_ids: List[str] = None,
+        resource_group_id: str = None,
+        tags: List[GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags] = None,
+    ):
+        self.annotations = annotations
+        self.entity_types = entity_types
+        self.field_rules = field_rules
+        self.instance_ids = instance_ids
+        self.ip_match_rule = ip_match_rule
+        self.labels = labels
+        self.region_ids = region_ids
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.annotations:
+            for k in self.annotations:
+                if k:
+                    k.validate()
+        if self.field_rules:
+            for k in self.field_rules:
+                if k:
+                    k.validate()
+        if self.ip_match_rule:
+            self.ip_match_rule.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['annotations'] = []
+        if self.annotations is not None:
+            for k in self.annotations:
+                result['annotations'].append(k.to_map() if k else None)
+        if self.entity_types is not None:
+            result['entityTypes'] = self.entity_types
+        result['fieldRules'] = []
+        if self.field_rules is not None:
+            for k in self.field_rules:
+                result['fieldRules'].append(k.to_map() if k else None)
+        if self.instance_ids is not None:
+            result['instanceIds'] = self.instance_ids
+        if self.ip_match_rule is not None:
+            result['ipMatchRule'] = self.ip_match_rule.to_map()
+        result['labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['labels'].append(k.to_map() if k else None)
+        if self.region_ids is not None:
+            result['regionIds'] = self.region_ids
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.annotations = []
+        if m.get('annotations') is not None:
+            for k in m.get('annotations'):
+                temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesAnnotations()
+                self.annotations.append(temp_model.from_map(k))
+        if m.get('entityTypes') is not None:
+            self.entity_types = m.get('entityTypes')
+        self.field_rules = []
+        if m.get('fieldRules') is not None:
+            for k in m.get('fieldRules'):
+                temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesFieldRules()
+                self.field_rules.append(temp_model.from_map(k))
+        if m.get('instanceIds') is not None:
+            self.instance_ids = m.get('instanceIds')
+        if m.get('ipMatchRule') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesIpMatchRule()
+            self.ip_match_rule = temp_model.from_map(m['ipMatchRule'])
+        self.labels = []
+        if m.get('labels') is not None:
+            for k in m.get('labels'):
+                temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('regionIds') is not None:
+            self.region_ids = m.get('regionIds')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRulesTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyEntityGroup(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        entity_group_id: str = None,
+        entity_group_name: str = None,
+        entity_rules: GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules = None,
+        query: str = None,
+        region_id: str = None,
+        user_id: str = None,
+        workspace: str = None,
+    ):
+        self.description = description
+        self.entity_group_id = entity_group_id
+        self.entity_group_name = entity_group_name
+        self.entity_rules = entity_rules
+        self.query = query
+        self.region_id = region_id
+        self.user_id = user_id
+        self.workspace = workspace
+
+    def validate(self):
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.entity_group_id is not None:
+            result['entityGroupId'] = self.entity_group_id
+        if self.entity_group_name is not None:
+            result['entityGroupName'] = self.entity_group_name
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.query is not None:
+            result['query'] = self.query
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('entityGroupId') is not None:
+            self.entity_group_id = m.get('entityGroupId')
+        if m.get('entityGroupName') is not None:
+            self.entity_group_name = m.get('entityGroupName')
+        if m.get('entityRules') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroupEntityRules()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyManagedInfo(TeaModel):
+    def __init__(
+        self,
+        security_group_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.security_group_id = security_group_id
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.security_group_id is not None:
+            result['securityGroupId'] = self.security_group_id
+        if self.vswitch_id is not None:
+            result['vswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('securityGroupId') is not None:
+            self.security_group_id = m.get('securityGroupId')
+        if m.get('vswitchId') is not None:
+            self.vswitch_id = m.get('vswitchId')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicyTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetIntegrationPolicyResponseBodyPolicy(TeaModel):
+    def __init__(
+        self,
+        bind_resource: GetIntegrationPolicyResponseBodyPolicyBindResource = None,
+        entity_group: GetIntegrationPolicyResponseBodyPolicyEntityGroup = None,
+        managed_info: GetIntegrationPolicyResponseBodyPolicyManagedInfo = None,
+        policy_id: str = None,
+        policy_name: str = None,
+        policy_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        tags: List[GetIntegrationPolicyResponseBodyPolicyTags] = None,
+        user_id: str = None,
+        workspace: str = None,
+    ):
+        self.bind_resource = bind_resource
+        self.entity_group = entity_group
+        self.managed_info = managed_info
+        self.policy_id = policy_id
+        self.policy_name = policy_name
+        self.policy_type = policy_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+        self.user_id = user_id
+        self.workspace = workspace
+
+    def validate(self):
+        if self.bind_resource:
+            self.bind_resource.validate()
+        if self.entity_group:
+            self.entity_group.validate()
+        if self.managed_info:
+            self.managed_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bind_resource is not None:
+            result['bindResource'] = self.bind_resource.to_map()
+        if self.entity_group is not None:
+            result['entityGroup'] = self.entity_group.to_map()
+        if self.managed_info is not None:
+            result['managedInfo'] = self.managed_info.to_map()
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.policy_type is not None:
+            result['policyType'] = self.policy_type
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bindResource') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicyBindResource()
+            self.bind_resource = temp_model.from_map(m['bindResource'])
+        if m.get('entityGroup') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicyEntityGroup()
+            self.entity_group = temp_model.from_map(m['entityGroup'])
+        if m.get('managedInfo') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicyManagedInfo()
+            self.managed_info = temp_model.from_map(m['managedInfo'])
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('policyType') is not None:
+            self.policy_type = m.get('policyType')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetIntegrationPolicyResponseBodyPolicyTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetIntegrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        policy: GetIntegrationPolicyResponseBodyPolicy = None,
+        request_id: str = None,
+    ):
+        self.policy = policy
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.policy:
+            self.policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.policy is not None:
+            result['policy'] = self.policy.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('policy') is not None:
+            temp_model = GetIntegrationPolicyResponseBodyPolicy()
+            self.policy = temp_model.from_map(m['policy'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetIntegrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetIntegrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetIntegrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrometheusInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        resource_group_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        return self
+
+
+class GetPrometheusInstanceResponseBodyPrometheusInstanceTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetPrometheusInstanceResponseBodyPrometheusInstance(TeaModel):
+    def __init__(
+        self,
+        access_type: str = None,
+        archive_duration: int = None,
+        auth_free_read_policy: str = None,
+        auth_free_write_policy: str = None,
+        auth_token: str = None,
+        create_time: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_free_write: bool = None,
+        enable_auth_token: bool = None,
+        extra_info: Dict[str, str] = None,
+        folder_url: str = None,
+        grafana_instance_id: str = None,
+        grafana_instance_name: str = None,
+        http_api_inter_url: str = None,
+        http_api_intra_url: str = None,
+        instance_type: str = None,
+        payment_type: str = None,
+        payment_type_update_time: str = None,
+        product: str = None,
+        prometheus_instance_id: str = None,
+        prometheus_instance_name: str = None,
+        push_gateway_inter_url: str = None,
+        push_gateway_intra_url: str = None,
+        region_id: str = None,
+        remote_read_inter_url: str = None,
+        remote_read_intra_url: str = None,
+        remote_write_inter_url: str = None,
+        remote_write_intra_url: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        status: str = None,
+        storage_duration: int = None,
+        support_auth_types: List[str] = None,
+        tags: List[GetPrometheusInstanceResponseBodyPrometheusInstanceTags] = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.access_type = access_type
+        self.archive_duration = archive_duration
+        self.auth_free_read_policy = auth_free_read_policy
+        self.auth_free_write_policy = auth_free_write_policy
+        self.auth_token = auth_token
+        self.create_time = create_time
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_free_write = enable_auth_free_write
+        self.enable_auth_token = enable_auth_token
+        self.extra_info = extra_info
+        self.folder_url = folder_url
+        self.grafana_instance_id = grafana_instance_id
+        self.grafana_instance_name = grafana_instance_name
+        self.http_api_inter_url = http_api_inter_url
+        self.http_api_intra_url = http_api_intra_url
+        # remote-write（Prometheus for Remote Write）
+        self.instance_type = instance_type
+        self.payment_type = payment_type
+        self.payment_type_update_time = payment_type_update_time
+        self.product = product
+        self.prometheus_instance_id = prometheus_instance_id
+        self.prometheus_instance_name = prometheus_instance_name
+        self.push_gateway_inter_url = push_gateway_inter_url
+        self.push_gateway_intra_url = push_gateway_intra_url
+        self.region_id = region_id
+        self.remote_read_inter_url = remote_read_inter_url
+        self.remote_read_intra_url = remote_read_intra_url
+        self.remote_write_inter_url = remote_write_inter_url
+        self.remote_write_intra_url = remote_write_intra_url
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.status = status
+        self.storage_duration = storage_duration
+        self.support_auth_types = support_auth_types
+        self.tags = tags
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_type is not None:
+            result['accessType'] = self.access_type
+        if self.archive_duration is not None:
+            result['archiveDuration'] = self.archive_duration
+        if self.auth_free_read_policy is not None:
+            result['authFreeReadPolicy'] = self.auth_free_read_policy
+        if self.auth_free_write_policy is not None:
+            result['authFreeWritePolicy'] = self.auth_free_write_policy
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.enable_auth_free_read is not None:
+            result['enableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_free_write is not None:
+            result['enableAuthFreeWrite'] = self.enable_auth_free_write
+        if self.enable_auth_token is not None:
+            result['enableAuthToken'] = self.enable_auth_token
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+        if self.folder_url is not None:
+            result['folderUrl'] = self.folder_url
+        if self.grafana_instance_id is not None:
+            result['grafanaInstanceId'] = self.grafana_instance_id
+        if self.grafana_instance_name is not None:
+            result['grafanaInstanceName'] = self.grafana_instance_name
+        if self.http_api_inter_url is not None:
+            result['httpApiInterUrl'] = self.http_api_inter_url
+        if self.http_api_intra_url is not None:
+            result['httpApiIntraUrl'] = self.http_api_intra_url
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.payment_type_update_time is not None:
+            result['paymentTypeUpdateTime'] = self.payment_type_update_time
+        if self.product is not None:
+            result['product'] = self.product
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.prometheus_instance_name is not None:
+            result['prometheusInstanceName'] = self.prometheus_instance_name
+        if self.push_gateway_inter_url is not None:
+            result['pushGatewayInterUrl'] = self.push_gateway_inter_url
+        if self.push_gateway_intra_url is not None:
+            result['pushGatewayIntraUrl'] = self.push_gateway_intra_url
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.remote_read_inter_url is not None:
+            result['remoteReadInterUrl'] = self.remote_read_inter_url
+        if self.remote_read_intra_url is not None:
+            result['remoteReadIntraUrl'] = self.remote_read_intra_url
+        if self.remote_write_inter_url is not None:
+            result['remoteWriteInterUrl'] = self.remote_write_inter_url
+        if self.remote_write_intra_url is not None:
+            result['remoteWriteIntraUrl'] = self.remote_write_intra_url
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.status is not None:
+            result['status'] = self.status
+        if self.storage_duration is not None:
+            result['storageDuration'] = self.storage_duration
+        if self.support_auth_types is not None:
+            result['supportAuthTypes'] = self.support_auth_types
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessType') is not None:
+            self.access_type = m.get('accessType')
+        if m.get('archiveDuration') is not None:
+            self.archive_duration = m.get('archiveDuration')
+        if m.get('authFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('authFreeReadPolicy')
+        if m.get('authFreeWritePolicy') is not None:
+            self.auth_free_write_policy = m.get('authFreeWritePolicy')
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('enableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('enableAuthFreeRead')
+        if m.get('enableAuthFreeWrite') is not None:
+            self.enable_auth_free_write = m.get('enableAuthFreeWrite')
+        if m.get('enableAuthToken') is not None:
+            self.enable_auth_token = m.get('enableAuthToken')
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+        if m.get('folderUrl') is not None:
+            self.folder_url = m.get('folderUrl')
+        if m.get('grafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('grafanaInstanceId')
+        if m.get('grafanaInstanceName') is not None:
+            self.grafana_instance_name = m.get('grafanaInstanceName')
+        if m.get('httpApiInterUrl') is not None:
+            self.http_api_inter_url = m.get('httpApiInterUrl')
+        if m.get('httpApiIntraUrl') is not None:
+            self.http_api_intra_url = m.get('httpApiIntraUrl')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('paymentTypeUpdateTime') is not None:
+            self.payment_type_update_time = m.get('paymentTypeUpdateTime')
+        if m.get('product') is not None:
+            self.product = m.get('product')
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('prometheusInstanceName') is not None:
+            self.prometheus_instance_name = m.get('prometheusInstanceName')
+        if m.get('pushGatewayInterUrl') is not None:
+            self.push_gateway_inter_url = m.get('pushGatewayInterUrl')
+        if m.get('pushGatewayIntraUrl') is not None:
+            self.push_gateway_intra_url = m.get('pushGatewayIntraUrl')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('remoteReadInterUrl') is not None:
+            self.remote_read_inter_url = m.get('remoteReadInterUrl')
+        if m.get('remoteReadIntraUrl') is not None:
+            self.remote_read_intra_url = m.get('remoteReadIntraUrl')
+        if m.get('remoteWriteInterUrl') is not None:
+            self.remote_write_inter_url = m.get('remoteWriteInterUrl')
+        if m.get('remoteWriteIntraUrl') is not None:
+            self.remote_write_intra_url = m.get('remoteWriteIntraUrl')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('storageDuration') is not None:
+            self.storage_duration = m.get('storageDuration')
+        if m.get('supportAuthTypes') is not None:
+            self.support_auth_types = m.get('supportAuthTypes')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetPrometheusInstanceResponseBodyPrometheusInstanceTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetPrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_instance: GetPrometheusInstanceResponseBodyPrometheusInstance = None,
+        request_id: str = None,
+    ):
+        self.prometheus_instance = prometheus_instance
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.prometheus_instance:
+            self.prometheus_instance.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_instance is not None:
+            result['prometheusInstance'] = self.prometheus_instance.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusInstance') is not None:
+            temp_model = GetPrometheusInstanceResponseBodyPrometheusInstance()
+            self.prometheus_instance = temp_model.from_map(m['prometheusInstance'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetPrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPrometheusViewRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        resource_group_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        return self
+
+
+class GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances(TeaModel):
+    def __init__(
+        self,
+        prometheus_instance_id: str = None,
+        region_id: str = None,
+        user_id: str = None,
+    ):
+        self.prometheus_instance_id = prometheus_instance_id
+        self.region_id = region_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class GetPrometheusViewResponseBodyPrometheusViewTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class GetPrometheusViewResponseBodyPrometheusView(TeaModel):
+    def __init__(
+        self,
+        auth_free_read_policy: str = None,
+        auth_token: str = None,
+        create_time: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_token: bool = None,
+        folder_url: str = None,
+        grafana_instance_id: str = None,
+        grafana_instance_name: str = None,
+        http_api_inter_url: str = None,
+        http_api_intra_url: str = None,
+        instance_type: str = None,
+        payment_type: str = None,
+        product: str = None,
+        prometheus_instances: List[GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances] = None,
+        prometheus_view_id: str = None,
+        prometheus_view_name: str = None,
+        region_id: str = None,
+        remote_read_inter_url: str = None,
+        remote_read_intra_url: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        status: str = None,
+        support_auth_types: List[str] = None,
+        tags: List[GetPrometheusViewResponseBodyPrometheusViewTags] = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.auth_free_read_policy = auth_free_read_policy
+        self.auth_token = auth_token
+        self.create_time = create_time
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_token = enable_auth_token
+        self.folder_url = folder_url
+        self.grafana_instance_id = grafana_instance_id
+        self.grafana_instance_name = grafana_instance_name
+        self.http_api_inter_url = http_api_inter_url
+        self.http_api_intra_url = http_api_intra_url
+        self.instance_type = instance_type
+        self.payment_type = payment_type
+        self.product = product
+        self.prometheus_instances = prometheus_instances
+        self.prometheus_view_id = prometheus_view_id
+        self.prometheus_view_name = prometheus_view_name
+        self.region_id = region_id
+        self.remote_read_inter_url = remote_read_inter_url
+        self.remote_read_intra_url = remote_read_intra_url
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.status = status
+        self.support_auth_types = support_auth_types
+        self.tags = tags
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.prometheus_instances:
+            for k in self.prometheus_instances:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_free_read_policy is not None:
+            result['authFreeReadPolicy'] = self.auth_free_read_policy
+        if self.auth_token is not None:
+            result['authToken'] = self.auth_token
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.enable_auth_free_read is not None:
+            result['enableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_token is not None:
+            result['enableAuthToken'] = self.enable_auth_token
+        if self.folder_url is not None:
+            result['folderUrl'] = self.folder_url
+        if self.grafana_instance_id is not None:
+            result['grafanaInstanceId'] = self.grafana_instance_id
+        if self.grafana_instance_name is not None:
+            result['grafanaInstanceName'] = self.grafana_instance_name
+        if self.http_api_inter_url is not None:
+            result['httpApiInterUrl'] = self.http_api_inter_url
+        if self.http_api_intra_url is not None:
+            result['httpApiIntraUrl'] = self.http_api_intra_url
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.product is not None:
+            result['product'] = self.product
+        result['prometheusInstances'] = []
+        if self.prometheus_instances is not None:
+            for k in self.prometheus_instances:
+                result['prometheusInstances'].append(k.to_map() if k else None)
+        if self.prometheus_view_id is not None:
+            result['prometheusViewId'] = self.prometheus_view_id
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.remote_read_inter_url is not None:
+            result['remoteReadInterUrl'] = self.remote_read_inter_url
+        if self.remote_read_intra_url is not None:
+            result['remoteReadIntraUrl'] = self.remote_read_intra_url
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.status is not None:
+            result['status'] = self.status
+        if self.support_auth_types is not None:
+            result['supportAuthTypes'] = self.support_auth_types
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('authFreeReadPolicy')
+        if m.get('authToken') is not None:
+            self.auth_token = m.get('authToken')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('enableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('enableAuthFreeRead')
+        if m.get('enableAuthToken') is not None:
+            self.enable_auth_token = m.get('enableAuthToken')
+        if m.get('folderUrl') is not None:
+            self.folder_url = m.get('folderUrl')
+        if m.get('grafanaInstanceId') is not None:
+            self.grafana_instance_id = m.get('grafanaInstanceId')
+        if m.get('grafanaInstanceName') is not None:
+            self.grafana_instance_name = m.get('grafanaInstanceName')
+        if m.get('httpApiInterUrl') is not None:
+            self.http_api_inter_url = m.get('httpApiInterUrl')
+        if m.get('httpApiIntraUrl') is not None:
+            self.http_api_intra_url = m.get('httpApiIntraUrl')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('product') is not None:
+            self.product = m.get('product')
+        self.prometheus_instances = []
+        if m.get('prometheusInstances') is not None:
+            for k in m.get('prometheusInstances'):
+                temp_model = GetPrometheusViewResponseBodyPrometheusViewPrometheusInstances()
+                self.prometheus_instances.append(temp_model.from_map(k))
+        if m.get('prometheusViewId') is not None:
+            self.prometheus_view_id = m.get('prometheusViewId')
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('remoteReadInterUrl') is not None:
+            self.remote_read_inter_url = m.get('remoteReadInterUrl')
+        if m.get('remoteReadIntraUrl') is not None:
+            self.remote_read_intra_url = m.get('remoteReadIntraUrl')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('supportAuthTypes') is not None:
+            self.support_auth_types = m.get('supportAuthTypes')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = GetPrometheusViewResponseBodyPrometheusViewTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class GetPrometheusViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_view: GetPrometheusViewResponseBodyPrometheusView = None,
+        request_id: str = None,
+    ):
+        self.prometheus_view = prometheus_view
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.prometheus_view:
+            self.prometheus_view.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_view is not None:
+            result['prometheusView'] = self.prometheus_view.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusView') is not None:
+            temp_model = GetPrometheusViewResponseBodyPrometheusView()
+            self.prometheus_view = temp_model.from_map(m['prometheusView'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetPrometheusViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPrometheusViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPrometheusViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7915,6 +11843,870 @@ class GetWorkspaceResponse(TeaModel):
         return self
 
 
+class ListAddonReleasesRequest(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        parent_addon_release_id: str = None,
+    ):
+        self.addon_name = addon_name
+        self.parent_addon_release_id = parent_addon_release_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.parent_addon_release_id is not None:
+            result['parentAddonReleaseId'] = self.parent_addon_release_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('parentAddonReleaseId') is not None:
+            self.parent_addon_release_id = m.get('parentAddonReleaseId')
+        return self
+
+
+class ListAddonReleasesResponseBodyReleasesConditions(TeaModel):
+    def __init__(
+        self,
+        first_transition_time: str = None,
+        last_transition_time: str = None,
+        message: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.first_transition_time = first_transition_time
+        self.last_transition_time = last_transition_time
+        self.message = message
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.first_transition_time is not None:
+            result['firstTransitionTime'] = self.first_transition_time
+        if self.last_transition_time is not None:
+            result['lastTransitionTime'] = self.last_transition_time
+        if self.message is not None:
+            result['message'] = self.message
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('firstTransitionTime') is not None:
+            self.first_transition_time = m.get('firstTransitionTime')
+        if m.get('lastTransitionTime') is not None:
+            self.last_transition_time = m.get('lastTransitionTime')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListAddonReleasesResponseBodyReleasesSubAddonRelease(TeaModel):
+    def __init__(
+        self,
+        ready: int = None,
+        total: int = None,
+    ):
+        self.ready = ready
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ready is not None:
+            result['ready'] = self.ready
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ready') is not None:
+            self.ready = m.get('ready')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAddonReleasesResponseBodyReleases(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        alert_rule_count: int = None,
+        api_version: str = None,
+        conditions: List[ListAddonReleasesResponseBodyReleasesConditions] = None,
+        config: str = None,
+        create_time: str = None,
+        dashboard_count: int = None,
+        entity_rules: EntityGroupBase = None,
+        env_type: str = None,
+        environment_id: str = None,
+        exporter_count: int = None,
+        have_config: bool = None,
+        install_user_id: str = None,
+        language: str = None,
+        managed: bool = None,
+        next_version: str = None,
+        parent_addon_release_id: str = None,
+        policy_id: str = None,
+        region_id: str = None,
+        release_id: str = None,
+        release_name: str = None,
+        scene: str = None,
+        status: str = None,
+        sub_addon_release: ListAddonReleasesResponseBodyReleasesSubAddonRelease = None,
+        update_time: str = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.addon_name = addon_name
+        self.alert_rule_count = alert_rule_count
+        self.api_version = api_version
+        self.conditions = conditions
+        self.config = config
+        self.create_time = create_time
+        self.dashboard_count = dashboard_count
+        self.entity_rules = entity_rules
+        self.env_type = env_type
+        self.environment_id = environment_id
+        self.exporter_count = exporter_count
+        self.have_config = have_config
+        self.install_user_id = install_user_id
+        self.language = language
+        self.managed = managed
+        self.next_version = next_version
+        self.parent_addon_release_id = parent_addon_release_id
+        self.policy_id = policy_id
+        self.region_id = region_id
+        # Release ID。
+        self.release_id = release_id
+        self.release_name = release_name
+        self.scene = scene
+        self.status = status
+        self.sub_addon_release = sub_addon_release
+        self.update_time = update_time
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.conditions:
+            for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.entity_rules:
+            self.entity_rules.validate()
+        if self.sub_addon_release:
+            self.sub_addon_release.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.alert_rule_count is not None:
+            result['alertRuleCount'] = self.alert_rule_count
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+        result['conditions'] = []
+        if self.conditions is not None:
+            for k in self.conditions:
+                result['conditions'].append(k.to_map() if k else None)
+        if self.config is not None:
+            result['config'] = self.config
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.dashboard_count is not None:
+            result['dashboardCount'] = self.dashboard_count
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.env_type is not None:
+            result['envType'] = self.env_type
+        if self.environment_id is not None:
+            result['environmentId'] = self.environment_id
+        if self.exporter_count is not None:
+            result['exporterCount'] = self.exporter_count
+        if self.have_config is not None:
+            result['haveConfig'] = self.have_config
+        if self.install_user_id is not None:
+            result['installUserId'] = self.install_user_id
+        if self.language is not None:
+            result['language'] = self.language
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.next_version is not None:
+            result['nextVersion'] = self.next_version
+        if self.parent_addon_release_id is not None:
+            result['parentAddonReleaseId'] = self.parent_addon_release_id
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.release_id is not None:
+            result['releaseId'] = self.release_id
+        if self.release_name is not None:
+            result['releaseName'] = self.release_name
+        if self.scene is not None:
+            result['scene'] = self.scene
+        if self.status is not None:
+            result['status'] = self.status
+        if self.sub_addon_release is not None:
+            result['subAddonRelease'] = self.sub_addon_release.to_map()
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('alertRuleCount') is not None:
+            self.alert_rule_count = m.get('alertRuleCount')
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
+        self.conditions = []
+        if m.get('conditions') is not None:
+            for k in m.get('conditions'):
+                temp_model = ListAddonReleasesResponseBodyReleasesConditions()
+                self.conditions.append(temp_model.from_map(k))
+        if m.get('config') is not None:
+            self.config = m.get('config')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('dashboardCount') is not None:
+            self.dashboard_count = m.get('dashboardCount')
+        if m.get('entityRules') is not None:
+            temp_model = EntityGroupBase()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('envType') is not None:
+            self.env_type = m.get('envType')
+        if m.get('environmentId') is not None:
+            self.environment_id = m.get('environmentId')
+        if m.get('exporterCount') is not None:
+            self.exporter_count = m.get('exporterCount')
+        if m.get('haveConfig') is not None:
+            self.have_config = m.get('haveConfig')
+        if m.get('installUserId') is not None:
+            self.install_user_id = m.get('installUserId')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('nextVersion') is not None:
+            self.next_version = m.get('nextVersion')
+        if m.get('parentAddonReleaseId') is not None:
+            self.parent_addon_release_id = m.get('parentAddonReleaseId')
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('releaseId') is not None:
+            self.release_id = m.get('releaseId')
+        if m.get('releaseName') is not None:
+            self.release_name = m.get('releaseName')
+        if m.get('scene') is not None:
+            self.scene = m.get('scene')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('subAddonRelease') is not None:
+            temp_model = ListAddonReleasesResponseBodyReleasesSubAddonRelease()
+            self.sub_addon_release = temp_model.from_map(m['subAddonRelease'])
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListAddonReleasesResponseBody(TeaModel):
+    def __init__(
+        self,
+        releases: List[ListAddonReleasesResponseBodyReleases] = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.releases = releases
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.releases:
+            for k in self.releases:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['releases'] = []
+        if self.releases is not None:
+            for k in self.releases:
+                result['releases'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.releases = []
+        if m.get('releases') is not None:
+            for k in m.get('releases'):
+                temp_model = ListAddonReleasesResponseBodyReleases()
+                self.releases.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAddonReleasesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAddonReleasesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAddonReleasesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAggTaskGroupsRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListAggTaskGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        filter_agg_task_group_ids: str = None,
+        filter_agg_task_group_names: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        query: str = None,
+        status: str = None,
+        tags: List[ListAggTaskGroupsRequestTags] = None,
+        target_prometheus_id: str = None,
+    ):
+        self.filter_agg_task_group_ids = filter_agg_task_group_ids
+        self.filter_agg_task_group_names = filter_agg_task_group_names
+        self.max_results = max_results
+        self.next_token = next_token
+        self.query = query
+        self.status = status
+        self.tags = tags
+        self.target_prometheus_id = target_prometheus_id
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_agg_task_group_ids is not None:
+            result['filterAggTaskGroupIds'] = self.filter_agg_task_group_ids
+        if self.filter_agg_task_group_names is not None:
+            result['filterAggTaskGroupNames'] = self.filter_agg_task_group_names
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.query is not None:
+            result['query'] = self.query
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterAggTaskGroupIds') is not None:
+            self.filter_agg_task_group_ids = m.get('filterAggTaskGroupIds')
+        if m.get('filterAggTaskGroupNames') is not None:
+            self.filter_agg_task_group_names = m.get('filterAggTaskGroupNames')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListAggTaskGroupsRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        return self
+
+
+class ListAggTaskGroupsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_agg_task_group_ids: str = None,
+        filter_agg_task_group_names: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        query: str = None,
+        status: str = None,
+        tags_shrink: str = None,
+        target_prometheus_id: str = None,
+    ):
+        self.filter_agg_task_group_ids = filter_agg_task_group_ids
+        self.filter_agg_task_group_names = filter_agg_task_group_names
+        self.max_results = max_results
+        self.next_token = next_token
+        self.query = query
+        self.status = status
+        self.tags_shrink = tags_shrink
+        self.target_prometheus_id = target_prometheus_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_agg_task_group_ids is not None:
+            result['filterAggTaskGroupIds'] = self.filter_agg_task_group_ids
+        if self.filter_agg_task_group_names is not None:
+            result['filterAggTaskGroupNames'] = self.filter_agg_task_group_names
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.query is not None:
+            result['query'] = self.query
+        if self.status is not None:
+            result['status'] = self.status
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterAggTaskGroupIds') is not None:
+            self.filter_agg_task_group_ids = m.get('filterAggTaskGroupIds')
+        if m.get('filterAggTaskGroupNames') is not None:
+            self.filter_agg_task_group_names = m.get('filterAggTaskGroupNames')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('tags') is not None:
+            self.tags_shrink = m.get('tags')
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        return self
+
+
+class ListAggTaskGroupsResponseBodyAggTaskGroupsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListAggTaskGroupsResponseBodyAggTaskGroups(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config_hash: str = None,
+        agg_task_group_id: str = None,
+        agg_task_group_name: str = None,
+        cron_expr: str = None,
+        delay: int = None,
+        description: str = None,
+        from_time: int = None,
+        interval: str = None,
+        max_retries: int = None,
+        max_run_time_in_seconds: int = None,
+        region_id: str = None,
+        schedule_mode: str = None,
+        schedule_time_expr: str = None,
+        source_prometheus_id: str = None,
+        status: str = None,
+        tags: List[ListAggTaskGroupsResponseBodyAggTaskGroupsTags] = None,
+        target_prometheus_id: str = None,
+        to_time: int = None,
+        update_time: str = None,
+    ):
+        self.agg_task_group_config_hash = agg_task_group_config_hash
+        self.agg_task_group_id = agg_task_group_id
+        self.agg_task_group_name = agg_task_group_name
+        self.cron_expr = cron_expr
+        self.delay = delay
+        self.description = description
+        self.from_time = from_time
+        self.interval = interval
+        self.max_retries = max_retries
+        self.max_run_time_in_seconds = max_run_time_in_seconds
+        self.region_id = region_id
+        self.schedule_mode = schedule_mode
+        self.schedule_time_expr = schedule_time_expr
+        self.source_prometheus_id = source_prometheus_id
+        self.status = status
+        self.tags = tags
+        self.target_prometheus_id = target_prometheus_id
+        self.to_time = to_time
+        self.update_time = update_time
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config_hash is not None:
+            result['aggTaskGroupConfigHash'] = self.agg_task_group_config_hash
+        if self.agg_task_group_id is not None:
+            result['aggTaskGroupId'] = self.agg_task_group_id
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.cron_expr is not None:
+            result['cronExpr'] = self.cron_expr
+        if self.delay is not None:
+            result['delay'] = self.delay
+        if self.description is not None:
+            result['description'] = self.description
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.max_retries is not None:
+            result['maxRetries'] = self.max_retries
+        if self.max_run_time_in_seconds is not None:
+            result['maxRunTimeInSeconds'] = self.max_run_time_in_seconds
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.schedule_mode is not None:
+            result['scheduleMode'] = self.schedule_mode
+        if self.schedule_time_expr is not None:
+            result['scheduleTimeExpr'] = self.schedule_time_expr
+        if self.source_prometheus_id is not None:
+            result['sourcePrometheusId'] = self.source_prometheus_id
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfigHash') is not None:
+            self.agg_task_group_config_hash = m.get('aggTaskGroupConfigHash')
+        if m.get('aggTaskGroupId') is not None:
+            self.agg_task_group_id = m.get('aggTaskGroupId')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('cronExpr') is not None:
+            self.cron_expr = m.get('cronExpr')
+        if m.get('delay') is not None:
+            self.delay = m.get('delay')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('maxRetries') is not None:
+            self.max_retries = m.get('maxRetries')
+        if m.get('maxRunTimeInSeconds') is not None:
+            self.max_run_time_in_seconds = m.get('maxRunTimeInSeconds')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('scheduleMode') is not None:
+            self.schedule_mode = m.get('scheduleMode')
+        if m.get('scheduleTimeExpr') is not None:
+            self.schedule_time_expr = m.get('scheduleTimeExpr')
+        if m.get('sourcePrometheusId') is not None:
+            self.source_prometheus_id = m.get('sourcePrometheusId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListAggTaskGroupsResponseBodyAggTaskGroupsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
+class ListAggTaskGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        agg_task_groups: List[ListAggTaskGroupsResponseBodyAggTaskGroups] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.agg_task_groups = agg_task_groups
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.agg_task_groups:
+            for k in self.agg_task_groups:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['aggTaskGroups'] = []
+        if self.agg_task_groups is not None:
+            for k in self.agg_task_groups:
+                result['aggTaskGroups'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.agg_task_groups = []
+        if m.get('aggTaskGroups') is not None:
+            for k in m.get('aggTaskGroups'):
+                temp_model = ListAggTaskGroupsResponseBodyAggTaskGroups()
+                self.agg_task_groups.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListAggTaskGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAggTaskGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAggTaskGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListAlertActionsRequest(TeaModel):
     def __init__(
         self,
@@ -8545,6 +13337,2218 @@ class ListAlertActionsResponse(TeaModel):
         return self
 
 
+class ListIntegrationPolicyCustomScrapeJobRulesRequest(TeaModel):
+    def __init__(
+        self,
+        addon_release_name: str = None,
+        encrypt_yaml: bool = None,
+        namespace: str = None,
+    ):
+        self.addon_release_name = addon_release_name
+        self.encrypt_yaml = encrypt_yaml
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.encrypt_yaml is not None:
+            result['encryptYaml'] = self.encrypt_yaml
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('encryptYaml') is not None:
+            self.encrypt_yaml = m.get('encryptYaml')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs(TeaModel):
+    def __init__(
+        self,
+        job_name: str = None,
+        message: str = None,
+        metrics_path: str = None,
+        scheme: str = None,
+        scrape_interval: str = None,
+        scrape_timeout: str = None,
+        service_discovery_configs: List[str] = None,
+    ):
+        self.job_name = job_name
+        self.message = message
+        self.metrics_path = metrics_path
+        self.scheme = scheme
+        self.scrape_interval = scrape_interval
+        self.scrape_timeout = scrape_timeout
+        self.service_discovery_configs = service_discovery_configs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_name is not None:
+            result['jobName'] = self.job_name
+        if self.message is not None:
+            result['message'] = self.message
+        if self.metrics_path is not None:
+            result['metricsPath'] = self.metrics_path
+        if self.scheme is not None:
+            result['scheme'] = self.scheme
+        if self.scrape_interval is not None:
+            result['scrapeInterval'] = self.scrape_interval
+        if self.scrape_timeout is not None:
+            result['scrapeTimeout'] = self.scrape_timeout
+        if self.service_discovery_configs is not None:
+            result['serviceDiscoveryConfigs'] = self.service_discovery_configs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('jobName') is not None:
+            self.job_name = m.get('jobName')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('metricsPath') is not None:
+            self.metrics_path = m.get('metricsPath')
+        if m.get('scheme') is not None:
+            self.scheme = m.get('scheme')
+        if m.get('scrapeInterval') is not None:
+            self.scrape_interval = m.get('scrapeInterval')
+        if m.get('scrapeTimeout') is not None:
+            self.scrape_timeout = m.get('scrapeTimeout')
+        if m.get('serviceDiscoveryConfigs') is not None:
+            self.service_discovery_configs = m.get('serviceDiscoveryConfigs')
+        return self
+
+
+class ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        addon_release_name: str = None,
+        addon_version: str = None,
+        config_yaml: str = None,
+        enable_status: str = None,
+        encrypt_yaml: bool = None,
+        matched_pod_count: int = None,
+        message: str = None,
+        name: str = None,
+        namespace: str = None,
+        scrape_configs: List[ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs] = None,
+    ):
+        self.addon_name = addon_name
+        self.addon_release_name = addon_release_name
+        self.addon_version = addon_version
+        self.config_yaml = config_yaml
+        self.enable_status = enable_status
+        self.encrypt_yaml = encrypt_yaml
+        self.matched_pod_count = matched_pod_count
+        self.message = message
+        self.name = name
+        self.namespace = namespace
+        self.scrape_configs = scrape_configs
+
+    def validate(self):
+        if self.scrape_configs:
+            for k in self.scrape_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.addon_version is not None:
+            result['addonVersion'] = self.addon_version
+        if self.config_yaml is not None:
+            result['configYaml'] = self.config_yaml
+        if self.enable_status is not None:
+            result['enableStatus'] = self.enable_status
+        if self.encrypt_yaml is not None:
+            result['encryptYaml'] = self.encrypt_yaml
+        if self.matched_pod_count is not None:
+            result['matchedPodCount'] = self.matched_pod_count
+        if self.message is not None:
+            result['message'] = self.message
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        result['scrapeConfigs'] = []
+        if self.scrape_configs is not None:
+            for k in self.scrape_configs:
+                result['scrapeConfigs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('addonVersion') is not None:
+            self.addon_version = m.get('addonVersion')
+        if m.get('configYaml') is not None:
+            self.config_yaml = m.get('configYaml')
+        if m.get('enableStatus') is not None:
+            self.enable_status = m.get('enableStatus')
+        if m.get('encryptYaml') is not None:
+            self.encrypt_yaml = m.get('encryptYaml')
+        if m.get('matchedPodCount') is not None:
+            self.matched_pod_count = m.get('matchedPodCount')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        self.scrape_configs = []
+        if m.get('scrapeConfigs') is not None:
+            for k in m.get('scrapeConfigs'):
+                temp_model = ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRulesScrapeConfigs()
+                self.scrape_configs.append(temp_model.from_map(k))
+        return self
+
+
+class ListIntegrationPolicyCustomScrapeJobRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        custom_scrape_job_rules: List[ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules] = None,
+        policy_id: str = None,
+        request_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.custom_scrape_job_rules = custom_scrape_job_rules
+        self.policy_id = policy_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.custom_scrape_job_rules:
+            for k in self.custom_scrape_job_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        result['customScrapeJobRules'] = []
+        if self.custom_scrape_job_rules is not None:
+            for k in self.custom_scrape_job_rules:
+                result['customScrapeJobRules'].append(k.to_map() if k else None)
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        self.custom_scrape_job_rules = []
+        if m.get('customScrapeJobRules') is not None:
+            for k in m.get('customScrapeJobRules'):
+                temp_model = ListIntegrationPolicyCustomScrapeJobRulesResponseBodyCustomScrapeJobRules()
+                self.custom_scrape_job_rules.append(temp_model.from_map(k))
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListIntegrationPolicyCustomScrapeJobRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntegrationPolicyCustomScrapeJobRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntegrationPolicyCustomScrapeJobRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIntegrationPolicyPodMonitorsRequest(TeaModel):
+    def __init__(
+        self,
+        addon_release_name: str = None,
+        encrypt_yaml: bool = None,
+        namespace: str = None,
+    ):
+        self.addon_release_name = addon_release_name
+        self.encrypt_yaml = encrypt_yaml
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.encrypt_yaml is not None:
+            result['encryptYaml'] = self.encrypt_yaml
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('encryptYaml') is not None:
+            self.encrypt_yaml = m.get('encryptYaml')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints(TeaModel):
+    def __init__(
+        self,
+        interval: str = None,
+        matched_target_count: int = None,
+        path: str = None,
+        port: str = None,
+        target_port: str = None,
+    ):
+        self.interval = interval
+        self.matched_target_count = matched_target_count
+        self.path = path
+        self.port = port
+        self.target_port = target_port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['interval'] = self.interval
+        if self.matched_target_count is not None:
+            result['matchedTargetCount'] = self.matched_target_count
+        if self.path is not None:
+            result['path'] = self.path
+        if self.port is not None:
+            result['port'] = self.port
+        if self.target_port is not None:
+            result['targetPort'] = self.target_port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('interval') is not None:
+            self.interval = m.get('interval')
+        if m.get('matchedTargetCount') is not None:
+            self.matched_target_count = m.get('matchedTargetCount')
+        if m.get('path') is not None:
+            self.path = m.get('path')
+        if m.get('port') is not None:
+            self.port = m.get('port')
+        if m.get('targetPort') is not None:
+            self.target_port = m.get('targetPort')
+        return self
+
+
+class ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        addon_release_name: str = None,
+        addon_version: str = None,
+        config_yaml: str = None,
+        enable_status: str = None,
+        encrypt_yaml: bool = None,
+        endpoints: List[ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints] = None,
+        matched_pod_count: int = None,
+        name: str = None,
+        namespace: str = None,
+    ):
+        self.addon_name = addon_name
+        self.addon_release_name = addon_release_name
+        self.addon_version = addon_version
+        self.config_yaml = config_yaml
+        self.enable_status = enable_status
+        self.encrypt_yaml = encrypt_yaml
+        self.endpoints = endpoints
+        self.matched_pod_count = matched_pod_count
+        self.name = name
+        self.namespace = namespace
+
+    def validate(self):
+        if self.endpoints:
+            for k in self.endpoints:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.addon_version is not None:
+            result['addonVersion'] = self.addon_version
+        if self.config_yaml is not None:
+            result['configYaml'] = self.config_yaml
+        if self.enable_status is not None:
+            result['enableStatus'] = self.enable_status
+        if self.encrypt_yaml is not None:
+            result['encryptYaml'] = self.encrypt_yaml
+        result['endpoints'] = []
+        if self.endpoints is not None:
+            for k in self.endpoints:
+                result['endpoints'].append(k.to_map() if k else None)
+        if self.matched_pod_count is not None:
+            result['matchedPodCount'] = self.matched_pod_count
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('addonVersion') is not None:
+            self.addon_version = m.get('addonVersion')
+        if m.get('configYaml') is not None:
+            self.config_yaml = m.get('configYaml')
+        if m.get('enableStatus') is not None:
+            self.enable_status = m.get('enableStatus')
+        if m.get('encryptYaml') is not None:
+            self.encrypt_yaml = m.get('encryptYaml')
+        self.endpoints = []
+        if m.get('endpoints') is not None:
+            for k in m.get('endpoints'):
+                temp_model = ListIntegrationPolicyPodMonitorsResponseBodyPodMonitorsEndpoints()
+                self.endpoints.append(temp_model.from_map(k))
+        if m.get('matchedPodCount') is not None:
+            self.matched_pod_count = m.get('matchedPodCount')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class ListIntegrationPolicyPodMonitorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        pod_monitors: List[ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors] = None,
+        policy_id: str = None,
+        request_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.pod_monitors = pod_monitors
+        self.policy_id = policy_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.pod_monitors:
+            for k in self.pod_monitors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        result['podMonitors'] = []
+        if self.pod_monitors is not None:
+            for k in self.pod_monitors:
+                result['podMonitors'].append(k.to_map() if k else None)
+        if self.policy_id is not None:
+            result['policyId'] = self.policy_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        self.pod_monitors = []
+        if m.get('podMonitors') is not None:
+            for k in m.get('podMonitors'):
+                temp_model = ListIntegrationPolicyPodMonitorsResponseBodyPodMonitors()
+                self.pod_monitors.append(temp_model.from_map(k))
+        if m.get('policyId') is not None:
+            self.policy_id = m.get('policyId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListIntegrationPolicyPodMonitorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntegrationPolicyPodMonitorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntegrationPolicyPodMonitorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsRequest(TeaModel):
+    def __init__(
+        self,
+        addon_name: str = None,
+        addon_release_name: str = None,
+        storage_type: str = None,
+    ):
+        self.addon_name = addon_name
+        self.addon_release_name = addon_release_name
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_name is not None:
+            result['addonName'] = self.addon_name
+        if self.addon_release_name is not None:
+            result['addonReleaseName'] = self.addon_release_name
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonName') is not None:
+            self.addon_name = m.get('addonName')
+        if m.get('addonReleaseName') is not None:
+            self.addon_release_name = m.get('addonReleaseName')
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata(TeaModel):
+    def __init__(
+        self,
+        annotations: Dict[str, str] = None,
+        labels: Dict[str, str] = None,
+        name: str = None,
+        namespace: str = None,
+    ):
+        self.annotations = annotations
+        self.labels = labels
+        self.name = name
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.annotations is not None:
+            result['annotations'] = self.annotations
+        if self.labels is not None:
+            result['labels'] = self.labels
+        if self.name is not None:
+            result['name'] = self.name
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('annotations') is not None:
+            self.annotations = m.get('annotations')
+        if m.get('labels') is not None:
+            self.labels = m.get('labels')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec(TeaModel):
+    def __init__(
+        self,
+        entity_id: str = None,
+        instance: str = None,
+        instance_name: str = None,
+        project: str = None,
+        region: str = None,
+        share_scope: str = None,
+        storage_type: str = None,
+        system_tags: Dict[str, str] = None,
+        tags: Dict[str, str] = None,
+        user_id: str = None,
+        workspace: str = None,
+    ):
+        self.entity_id = entity_id
+        self.instance = instance
+        self.instance_name = instance_name
+        self.project = project
+        self.region = region
+        self.share_scope = share_scope
+        self.storage_type = storage_type
+        self.system_tags = system_tags
+        self.tags = tags
+        self.user_id = user_id
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.entity_id is not None:
+            result['entityId'] = self.entity_id
+        if self.instance is not None:
+            result['instance'] = self.instance
+        if self.instance_name is not None:
+            result['instanceName'] = self.instance_name
+        if self.project is not None:
+            result['project'] = self.project
+        if self.region is not None:
+            result['region'] = self.region
+        if self.share_scope is not None:
+            result['shareScope'] = self.share_scope
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+        if self.system_tags is not None:
+            result['systemTags'] = self.system_tags
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('entityId') is not None:
+            self.entity_id = m.get('entityId')
+        if m.get('instance') is not None:
+            self.instance = m.get('instance')
+        if m.get('instanceName') is not None:
+            self.instance_name = m.get('instanceName')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('shareScope') is not None:
+            self.share_scope = m.get('shareScope')
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+        if m.get('systemTags') is not None:
+            self.system_tags = m.get('systemTags')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        inter_url: str = None,
+        intra_url: str = None,
+        name: str = None,
+        project: str = None,
+        prom_metric_store: str = None,
+        region: str = None,
+        storage_type: str = None,
+        workspace: str = None,
+    ):
+        self.instance_id = instance_id
+        self.inter_url = inter_url
+        self.intra_url = intra_url
+        self.name = name
+        self.project = project
+        self.prom_metric_store = prom_metric_store
+        self.region = region
+        self.storage_type = storage_type
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.inter_url is not None:
+            result['interUrl'] = self.inter_url
+        if self.intra_url is not None:
+            result['intraUrl'] = self.intra_url
+        if self.name is not None:
+            result['name'] = self.name
+        if self.project is not None:
+            result['project'] = self.project
+        if self.prom_metric_store is not None:
+            result['promMetricStore'] = self.prom_metric_store
+        if self.region is not None:
+            result['region'] = self.region
+        if self.storage_type is not None:
+            result['storageType'] = self.storage_type
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('interUrl') is not None:
+            self.inter_url = m.get('interUrl')
+        if m.get('intraUrl') is not None:
+            self.intra_url = m.get('intraUrl')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('project') is not None:
+            self.project = m.get('project')
+        if m.get('promMetricStore') is not None:
+            self.prom_metric_store = m.get('promMetricStore')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        if m.get('storageType') is not None:
+            self.storage_type = m.get('storageType')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements(TeaModel):
+    def __init__(
+        self,
+        addon_release_names: List[str] = None,
+        api_version: str = None,
+        kind: str = None,
+        metadata: ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata = None,
+        spec: ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec = None,
+        status: ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus = None,
+    ):
+        self.addon_release_names = addon_release_names
+        self.api_version = api_version
+        self.kind = kind
+        self.metadata = metadata
+        self.spec = spec
+        self.status = status
+
+    def validate(self):
+        if self.metadata:
+            self.metadata.validate()
+        if self.spec:
+            self.spec.validate()
+        if self.status:
+            self.status.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_release_names is not None:
+            result['addonReleaseNames'] = self.addon_release_names
+        if self.api_version is not None:
+            result['apiVersion'] = self.api_version
+        if self.kind is not None:
+            result['kind'] = self.kind
+        if self.metadata is not None:
+            result['metadata'] = self.metadata.to_map()
+        if self.spec is not None:
+            result['spec'] = self.spec.to_map()
+        if self.status is not None:
+            result['status'] = self.status.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonReleaseNames') is not None:
+            self.addon_release_names = m.get('addonReleaseNames')
+        if m.get('apiVersion') is not None:
+            self.api_version = m.get('apiVersion')
+        if m.get('kind') is not None:
+            self.kind = m.get('kind')
+        if m.get('metadata') is not None:
+            temp_model = ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsMetadata()
+            self.metadata = temp_model.from_map(m['metadata'])
+        if m.get('spec') is not None:
+            temp_model = ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsSpec()
+            self.spec = temp_model.from_map(m['spec'])
+        if m.get('status') is not None:
+            temp_model = ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirementsStatus()
+            self.status = temp_model.from_map(m['status'])
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        storage_requirements: List[ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements] = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.storage_requirements = storage_requirements
+
+    def validate(self):
+        if self.storage_requirements:
+            for k in self.storage_requirements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['storageRequirements'] = []
+        if self.storage_requirements is not None:
+            for k in self.storage_requirements:
+                result['storageRequirements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.storage_requirements = []
+        if m.get('storageRequirements') is not None:
+            for k in m.get('storageRequirements'):
+                temp_model = ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements()
+                self.storage_requirements.append(temp_model.from_map(k))
+        return self
+
+
+class ListIntegrationPolicyStorageRequirementsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListIntegrationPolicyStorageRequirementsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListIntegrationPolicyStorageRequirementsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrometheusDashboardsRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_lang: str = None,
+        resource_group_id: str = None,
+    ):
+        self.aliyun_lang = aliyun_lang
+        self.resource_group_id = resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_lang is not None:
+            result['aliyunLang'] = self.aliyun_lang
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunLang') is not None:
+            self.aliyun_lang = m.get('aliyunLang')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        return self
+
+
+class ListPrometheusDashboardsResponseBodyPrometheusDashboards(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+        tags: List[str] = None,
+        title: str = None,
+        uid: str = None,
+        url: str = None,
+    ):
+        self.id = id
+        self.name = name
+        self.tags = tags
+        self.title = title
+        self.uid = uid
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.tags is not None:
+            result['tags'] = self.tags
+        if self.title is not None:
+            result['title'] = self.title
+        if self.uid is not None:
+            result['uid'] = self.uid
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListPrometheusDashboardsResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_dashboards: List[ListPrometheusDashboardsResponseBodyPrometheusDashboards] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.prometheus_dashboards = prometheus_dashboards
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.prometheus_dashboards:
+            for k in self.prometheus_dashboards:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['prometheusDashboards'] = []
+        if self.prometheus_dashboards is not None:
+            for k in self.prometheus_dashboards:
+                result['prometheusDashboards'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.prometheus_dashboards = []
+        if m.get('prometheusDashboards') is not None:
+            for k in m.get('prometheusDashboards'):
+                temp_model = ListPrometheusDashboardsResponseBodyPrometheusDashboards()
+                self.prometheus_dashboards.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPrometheusDashboardsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusDashboardsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusDashboardsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrometheusInstancesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListPrometheusInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        filter_region_ids: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_instance_ids: str = None,
+        prometheus_instance_name: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        tag: List[ListPrometheusInstancesRequestTag] = None,
+        version: str = None,
+    ):
+        self.filter_region_ids = filter_region_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_instance_ids = prometheus_instance_ids
+        self.prometheus_instance_name = prometheus_instance_name
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.tag = tag
+        self.version = version
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_region_ids is not None:
+            result['filterRegionIds'] = self.filter_region_ids
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.prometheus_instance_ids is not None:
+            result['prometheusInstanceIds'] = self.prometheus_instance_ids
+        if self.prometheus_instance_name is not None:
+            result['prometheusInstanceName'] = self.prometheus_instance_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterRegionIds') is not None:
+            self.filter_region_ids = m.get('filterRegionIds')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('prometheusInstanceIds') is not None:
+            self.prometheus_instance_ids = m.get('prometheusInstanceIds')
+        if m.get('prometheusInstanceName') is not None:
+            self.prometheus_instance_name = m.get('prometheusInstanceName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = ListPrometheusInstancesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class ListPrometheusInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_region_ids: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_instance_ids: str = None,
+        prometheus_instance_name: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        tag_shrink: str = None,
+        version: str = None,
+    ):
+        self.filter_region_ids = filter_region_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_instance_ids = prometheus_instance_ids
+        self.prometheus_instance_name = prometheus_instance_name
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.tag_shrink = tag_shrink
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_region_ids is not None:
+            result['filterRegionIds'] = self.filter_region_ids
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.prometheus_instance_ids is not None:
+            result['prometheusInstanceIds'] = self.prometheus_instance_ids
+        if self.prometheus_instance_name is not None:
+            result['prometheusInstanceName'] = self.prometheus_instance_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.tag_shrink is not None:
+            result['tag'] = self.tag_shrink
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterRegionIds') is not None:
+            self.filter_region_ids = m.get('filterRegionIds')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('prometheusInstanceIds') is not None:
+            self.prometheus_instance_ids = m.get('prometheusInstanceIds')
+        if m.get('prometheusInstanceName') is not None:
+            self.prometheus_instance_name = m.get('prometheusInstanceName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('tag') is not None:
+            self.tag_shrink = m.get('tag')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class ListPrometheusInstancesResponseBodyPrometheusInstancesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListPrometheusInstancesResponseBodyPrometheusInstances(TeaModel):
+    def __init__(
+        self,
+        access_type: str = None,
+        create_time: str = None,
+        instance_type: str = None,
+        payment_type: str = None,
+        product: str = None,
+        prometheus_instance_id: str = None,
+        prometheus_instance_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        status: str = None,
+        support_auth_types: List[str] = None,
+        tags: List[ListPrometheusInstancesResponseBodyPrometheusInstancesTags] = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.access_type = access_type
+        self.create_time = create_time
+        self.instance_type = instance_type
+        self.payment_type = payment_type
+        self.product = product
+        self.prometheus_instance_id = prometheus_instance_id
+        self.prometheus_instance_name = prometheus_instance_name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.status = status
+        self.support_auth_types = support_auth_types
+        self.tags = tags
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_type is not None:
+            result['accessType'] = self.access_type
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.product is not None:
+            result['product'] = self.product
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.prometheus_instance_name is not None:
+            result['prometheusInstanceName'] = self.prometheus_instance_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.status is not None:
+            result['status'] = self.status
+        if self.support_auth_types is not None:
+            result['supportAuthTypes'] = self.support_auth_types
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessType') is not None:
+            self.access_type = m.get('accessType')
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('product') is not None:
+            self.product = m.get('product')
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('prometheusInstanceName') is not None:
+            self.prometheus_instance_name = m.get('prometheusInstanceName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('supportAuthTypes') is not None:
+            self.support_auth_types = m.get('supportAuthTypes')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListPrometheusInstancesResponseBodyPrometheusInstancesTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListPrometheusInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_instances: List[ListPrometheusInstancesResponseBodyPrometheusInstances] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_instances = prometheus_instances
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.prometheus_instances:
+            for k in self.prometheus_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['prometheusInstances'] = []
+        if self.prometheus_instances is not None:
+            for k in self.prometheus_instances:
+                result['prometheusInstances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.prometheus_instances = []
+        if m.get('prometheusInstances') is not None:
+            for k in m.get('prometheusInstances'):
+                temp_model = ListPrometheusInstancesResponseBodyPrometheusInstances()
+                self.prometheus_instances.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPrometheusInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrometheusViewsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListPrometheusViewsRequest(TeaModel):
+    def __init__(
+        self,
+        filter_region_ids: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_view_ids: str = None,
+        prometheus_view_name: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        tag: List[ListPrometheusViewsRequestTag] = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.filter_region_ids = filter_region_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_view_ids = prometheus_view_ids
+        self.prometheus_view_name = prometheus_view_name
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.tag = tag
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_region_ids is not None:
+            result['filterRegionIds'] = self.filter_region_ids
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.prometheus_view_ids is not None:
+            result['prometheusViewIds'] = self.prometheus_view_ids
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        result['tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterRegionIds') is not None:
+            self.filter_region_ids = m.get('filterRegionIds')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('prometheusViewIds') is not None:
+            self.prometheus_view_ids = m.get('prometheusViewIds')
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        self.tag = []
+        if m.get('tag') is not None:
+            for k in m.get('tag'):
+                temp_model = ListPrometheusViewsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListPrometheusViewsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        filter_region_ids: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_view_ids: str = None,
+        prometheus_view_name: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        tag_shrink: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.filter_region_ids = filter_region_ids
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_view_ids = prometheus_view_ids
+        self.prometheus_view_name = prometheus_view_name
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.tag_shrink = tag_shrink
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.filter_region_ids is not None:
+            result['filterRegionIds'] = self.filter_region_ids
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.prometheus_view_ids is not None:
+            result['prometheusViewIds'] = self.prometheus_view_ids
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.tag_shrink is not None:
+            result['tag'] = self.tag_shrink
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('filterRegionIds') is not None:
+            self.filter_region_ids = m.get('filterRegionIds')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('prometheusViewIds') is not None:
+            self.prometheus_view_ids = m.get('prometheusViewIds')
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('tag') is not None:
+            self.tag_shrink = m.get('tag')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListPrometheusViewsResponseBodyPrometheusViewsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ListPrometheusViewsResponseBodyPrometheusViews(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        instance_type: str = None,
+        payment_type: str = None,
+        product: str = None,
+        prometheus_instance_count: int = None,
+        prometheus_view_id: str = None,
+        prometheus_view_name: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_type: str = None,
+        status: str = None,
+        tags: List[ListPrometheusViewsResponseBodyPrometheusViewsTags] = None,
+        user_id: str = None,
+        version: str = None,
+        workspace: str = None,
+    ):
+        self.create_time = create_time
+        self.instance_type = instance_type
+        self.payment_type = payment_type
+        self.product = product
+        self.prometheus_instance_count = prometheus_instance_count
+        self.prometheus_view_id = prometheus_view_id
+        self.prometheus_view_name = prometheus_view_name
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.status = status
+        self.tags = tags
+        self.user_id = user_id
+        self.version = version
+        self.workspace = workspace
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.product is not None:
+            result['product'] = self.product
+        if self.prometheus_instance_count is not None:
+            result['prometheusInstanceCount'] = self.prometheus_instance_count
+        if self.prometheus_view_id is not None:
+            result['prometheusViewId'] = self.prometheus_view_id
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        if self.version is not None:
+            result['version'] = self.version
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('product') is not None:
+            self.product = m.get('product')
+        if m.get('prometheusInstanceCount') is not None:
+            self.prometheus_instance_count = m.get('prometheusInstanceCount')
+        if m.get('prometheusViewId') is not None:
+            self.prometheus_view_id = m.get('prometheusViewId')
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = ListPrometheusViewsResponseBodyPrometheusViewsTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class ListPrometheusViewsResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        prometheus_views: List[ListPrometheusViewsResponseBodyPrometheusViews] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prometheus_views = prometheus_views
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.prometheus_views:
+            for k in self.prometheus_views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['prometheusViews'] = []
+        if self.prometheus_views is not None:
+            for k in self.prometheus_views:
+                result['prometheusViews'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.prometheus_views = []
+        if m.get('prometheusViews') is not None:
+            for k in m.get('prometheusViews'):
+                temp_model = ListPrometheusViewsResponseBodyPrometheusViews()
+                self.prometheus_views.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ListPrometheusViewsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusViewsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusViewsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPrometheusVirtualInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+    ):
+        self.namespace = namespace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        return self
+
+
+class ListPrometheusVirtualInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        http_api_url: str = None,
+        instance_id: str = None,
+        namespace: str = None,
+        region_id: str = None,
+        user_id: str = None,
+    ):
+        self.created_at = created_at
+        self.http_api_url = http_api_url
+        self.instance_id = instance_id
+        self.namespace = namespace
+        self.region_id = region_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.http_api_url is not None:
+            result['httpApiUrl'] = self.http_api_url
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('httpApiUrl') is not None:
+            self.http_api_url = m.get('httpApiUrl')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class ListPrometheusVirtualInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[ListPrometheusVirtualInstancesResponseBodyInstances] = None,
+        request_id: str = None,
+    ):
+        self.instances = instances
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['instances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('instances') is not None:
+            for k in m.get('instances'):
+                temp_model = ListPrometheusVirtualInstancesResponseBodyInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListPrometheusVirtualInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPrometheusVirtualInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPrometheusVirtualInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListServicesRequest(TeaModel):
     def __init__(
         self,
@@ -9152,6 +16156,1007 @@ class PutWorkspaceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PutWorkspaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAddonReleaseRequest(TeaModel):
+    def __init__(
+        self,
+        addon_version: str = None,
+        dry_run: bool = None,
+        entity_rules: EntityDiscoverRule = None,
+        values: str = None,
+    ):
+        self.addon_version = addon_version
+        self.dry_run = dry_run
+        self.entity_rules = entity_rules
+        self.values = values
+
+    def validate(self):
+        if self.entity_rules:
+            self.entity_rules.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addon_version is not None:
+            result['addonVersion'] = self.addon_version
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
+        if self.entity_rules is not None:
+            result['entityRules'] = self.entity_rules.to_map()
+        if self.values is not None:
+            result['values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addonVersion') is not None:
+            self.addon_version = m.get('addonVersion')
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
+        if m.get('entityRules') is not None:
+            temp_model = EntityDiscoverRule()
+            self.entity_rules = temp_model.from_map(m['entityRules'])
+        if m.get('values') is not None:
+            self.values = m.get('values')
+        return self
+
+
+class UpdateAddonReleaseResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateAddonReleaseResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAddonReleaseResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAddonReleaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAggTaskGroupRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdateAggTaskGroupRequest(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config: str = None,
+        agg_task_group_config_type: str = None,
+        agg_task_group_name: str = None,
+        cron_expr: str = None,
+        delay: int = None,
+        description: str = None,
+        from_time: int = None,
+        max_retries: int = None,
+        max_run_time_in_seconds: int = None,
+        precheck_string: str = None,
+        schedule_mode: str = None,
+        schedule_time_expr: str = None,
+        status: str = None,
+        tags: List[UpdateAggTaskGroupRequestTags] = None,
+        target_prometheus_id: str = None,
+        to_time: int = None,
+    ):
+        # This parameter is required.
+        self.agg_task_group_config = agg_task_group_config
+        self.agg_task_group_config_type = agg_task_group_config_type
+        self.agg_task_group_name = agg_task_group_name
+        self.cron_expr = cron_expr
+        self.delay = delay
+        self.description = description
+        self.from_time = from_time
+        self.max_retries = max_retries
+        self.max_run_time_in_seconds = max_run_time_in_seconds
+        self.precheck_string = precheck_string
+        self.schedule_mode = schedule_mode
+        self.schedule_time_expr = schedule_time_expr
+        self.status = status
+        self.tags = tags
+        # This parameter is required.
+        self.target_prometheus_id = target_prometheus_id
+        self.to_time = to_time
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config is not None:
+            result['aggTaskGroupConfig'] = self.agg_task_group_config
+        if self.agg_task_group_config_type is not None:
+            result['aggTaskGroupConfigType'] = self.agg_task_group_config_type
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.cron_expr is not None:
+            result['cronExpr'] = self.cron_expr
+        if self.delay is not None:
+            result['delay'] = self.delay
+        if self.description is not None:
+            result['description'] = self.description
+        if self.from_time is not None:
+            result['fromTime'] = self.from_time
+        if self.max_retries is not None:
+            result['maxRetries'] = self.max_retries
+        if self.max_run_time_in_seconds is not None:
+            result['maxRunTimeInSeconds'] = self.max_run_time_in_seconds
+        if self.precheck_string is not None:
+            result['precheckString'] = self.precheck_string
+        if self.schedule_mode is not None:
+            result['scheduleMode'] = self.schedule_mode
+        if self.schedule_time_expr is not None:
+            result['scheduleTimeExpr'] = self.schedule_time_expr
+        if self.status is not None:
+            result['status'] = self.status
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        if self.target_prometheus_id is not None:
+            result['targetPrometheusId'] = self.target_prometheus_id
+        if self.to_time is not None:
+            result['toTime'] = self.to_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfig') is not None:
+            self.agg_task_group_config = m.get('aggTaskGroupConfig')
+        if m.get('aggTaskGroupConfigType') is not None:
+            self.agg_task_group_config_type = m.get('aggTaskGroupConfigType')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('cronExpr') is not None:
+            self.cron_expr = m.get('cronExpr')
+        if m.get('delay') is not None:
+            self.delay = m.get('delay')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('fromTime') is not None:
+            self.from_time = m.get('fromTime')
+        if m.get('maxRetries') is not None:
+            self.max_retries = m.get('maxRetries')
+        if m.get('maxRunTimeInSeconds') is not None:
+            self.max_run_time_in_seconds = m.get('maxRunTimeInSeconds')
+        if m.get('precheckString') is not None:
+            self.precheck_string = m.get('precheckString')
+        if m.get('scheduleMode') is not None:
+            self.schedule_mode = m.get('scheduleMode')
+        if m.get('scheduleTimeExpr') is not None:
+            self.schedule_time_expr = m.get('scheduleTimeExpr')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = UpdateAggTaskGroupRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('targetPrometheusId') is not None:
+            self.target_prometheus_id = m.get('targetPrometheusId')
+        if m.get('toTime') is not None:
+            self.to_time = m.get('toTime')
+        return self
+
+
+class UpdateAggTaskGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config_hash: str = None,
+        agg_task_group_id: str = None,
+        agg_task_group_name: str = None,
+        request_id: str = None,
+        source_prometheus_id: str = None,
+        status: str = None,
+    ):
+        self.agg_task_group_config_hash = agg_task_group_config_hash
+        self.agg_task_group_id = agg_task_group_id
+        self.agg_task_group_name = agg_task_group_name
+        self.request_id = request_id
+        self.source_prometheus_id = source_prometheus_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config_hash is not None:
+            result['aggTaskGroupConfigHash'] = self.agg_task_group_config_hash
+        if self.agg_task_group_id is not None:
+            result['aggTaskGroupId'] = self.agg_task_group_id
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.source_prometheus_id is not None:
+            result['sourcePrometheusId'] = self.source_prometheus_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfigHash') is not None:
+            self.agg_task_group_config_hash = m.get('aggTaskGroupConfigHash')
+        if m.get('aggTaskGroupId') is not None:
+            self.agg_task_group_id = m.get('aggTaskGroupId')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sourcePrometheusId') is not None:
+            self.source_prometheus_id = m.get('sourcePrometheusId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class UpdateAggTaskGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAggTaskGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAggTaskGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAggTaskGroupStatusRequest(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class UpdateAggTaskGroupStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        agg_task_group_config_hash: str = None,
+        agg_task_group_id: str = None,
+        agg_task_group_name: str = None,
+        request_id: str = None,
+        source_prometheus_id: str = None,
+        status: str = None,
+    ):
+        self.agg_task_group_config_hash = agg_task_group_config_hash
+        self.agg_task_group_id = agg_task_group_id
+        self.agg_task_group_name = agg_task_group_name
+        self.request_id = request_id
+        self.source_prometheus_id = source_prometheus_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agg_task_group_config_hash is not None:
+            result['aggTaskGroupConfigHash'] = self.agg_task_group_config_hash
+        if self.agg_task_group_id is not None:
+            result['aggTaskGroupId'] = self.agg_task_group_id
+        if self.agg_task_group_name is not None:
+            result['aggTaskGroupName'] = self.agg_task_group_name
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.source_prometheus_id is not None:
+            result['sourcePrometheusId'] = self.source_prometheus_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aggTaskGroupConfigHash') is not None:
+            self.agg_task_group_config_hash = m.get('aggTaskGroupConfigHash')
+        if m.get('aggTaskGroupId') is not None:
+            self.agg_task_group_id = m.get('aggTaskGroupId')
+        if m.get('aggTaskGroupName') is not None:
+            self.agg_task_group_name = m.get('aggTaskGroupName')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('sourcePrometheusId') is not None:
+            self.source_prometheus_id = m.get('sourcePrometheusId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class UpdateAggTaskGroupStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAggTaskGroupStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAggTaskGroupStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateIntegrationPolicyRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['key'] = self.key
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class UpdateIntegrationPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        fee_package: str = None,
+        policy_name: str = None,
+        resource_group_id: str = None,
+        tags: List[UpdateIntegrationPolicyRequestTags] = None,
+    ):
+        self.fee_package = fee_package
+        self.policy_name = policy_name
+        self.resource_group_id = resource_group_id
+        self.tags = tags
+
+    def validate(self):
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fee_package is not None:
+            result['feePackage'] = self.fee_package
+        if self.policy_name is not None:
+            result['policyName'] = self.policy_name
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('feePackage') is not None:
+            self.fee_package = m.get('feePackage')
+        if m.get('policyName') is not None:
+            self.policy_name = m.get('policyName')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = UpdateIntegrationPolicyRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateIntegrationPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateIntegrationPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateIntegrationPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateIntegrationPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePrometheusInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        archive_duration: int = None,
+        auth_free_read_policy: str = None,
+        auth_free_write_policy: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_free_write: bool = None,
+        enable_auth_token: bool = None,
+        payment_type: str = None,
+        prometheus_instance_name: str = None,
+        status: str = None,
+        storage_duration: int = None,
+        workspace: str = None,
+    ):
+        self.archive_duration = archive_duration
+        self.auth_free_read_policy = auth_free_read_policy
+        self.auth_free_write_policy = auth_free_write_policy
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_free_write = enable_auth_free_write
+        self.enable_auth_token = enable_auth_token
+        self.payment_type = payment_type
+        self.prometheus_instance_name = prometheus_instance_name
+        self.status = status
+        self.storage_duration = storage_duration
+        self.workspace = workspace
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.archive_duration is not None:
+            result['archiveDuration'] = self.archive_duration
+        if self.auth_free_read_policy is not None:
+            result['authFreeReadPolicy'] = self.auth_free_read_policy
+        if self.auth_free_write_policy is not None:
+            result['authFreeWritePolicy'] = self.auth_free_write_policy
+        if self.enable_auth_free_read is not None:
+            result['enableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_free_write is not None:
+            result['enableAuthFreeWrite'] = self.enable_auth_free_write
+        if self.enable_auth_token is not None:
+            result['enableAuthToken'] = self.enable_auth_token
+        if self.payment_type is not None:
+            result['paymentType'] = self.payment_type
+        if self.prometheus_instance_name is not None:
+            result['prometheusInstanceName'] = self.prometheus_instance_name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.storage_duration is not None:
+            result['storageDuration'] = self.storage_duration
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('archiveDuration') is not None:
+            self.archive_duration = m.get('archiveDuration')
+        if m.get('authFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('authFreeReadPolicy')
+        if m.get('authFreeWritePolicy') is not None:
+            self.auth_free_write_policy = m.get('authFreeWritePolicy')
+        if m.get('enableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('enableAuthFreeRead')
+        if m.get('enableAuthFreeWrite') is not None:
+            self.enable_auth_free_write = m.get('enableAuthFreeWrite')
+        if m.get('enableAuthToken') is not None:
+            self.enable_auth_token = m.get('enableAuthToken')
+        if m.get('paymentType') is not None:
+            self.payment_type = m.get('paymentType')
+        if m.get('prometheusInstanceName') is not None:
+            self.prometheus_instance_name = m.get('prometheusInstanceName')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('storageDuration') is not None:
+            self.storage_duration = m.get('storageDuration')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdatePrometheusInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.prometheus_instance_id = prometheus_instance_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdatePrometheusInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusInstanceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdatePrometheusViewRequestPrometheusInstances(TeaModel):
+    def __init__(
+        self,
+        prometheus_instance_id: str = None,
+        region_id: str = None,
+        user_id: str = None,
+    ):
+        self.prometheus_instance_id = prometheus_instance_id
+        self.region_id = region_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_instance_id is not None:
+            result['prometheusInstanceId'] = self.prometheus_instance_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusInstanceId') is not None:
+            self.prometheus_instance_id = m.get('prometheusInstanceId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class UpdatePrometheusViewRequest(TeaModel):
+    def __init__(
+        self,
+        auth_free_read_policy: str = None,
+        enable_auth_free_read: bool = None,
+        enable_auth_token: bool = None,
+        prometheus_instances: List[UpdatePrometheusViewRequestPrometheusInstances] = None,
+        prometheus_view_name: str = None,
+        status: str = None,
+        workspace: str = None,
+    ):
+        self.auth_free_read_policy = auth_free_read_policy
+        self.enable_auth_free_read = enable_auth_free_read
+        self.enable_auth_token = enable_auth_token
+        self.prometheus_instances = prometheus_instances
+        self.prometheus_view_name = prometheus_view_name
+        self.status = status
+        self.workspace = workspace
+
+    def validate(self):
+        if self.prometheus_instances:
+            for k in self.prometheus_instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auth_free_read_policy is not None:
+            result['authFreeReadPolicy'] = self.auth_free_read_policy
+        if self.enable_auth_free_read is not None:
+            result['enableAuthFreeRead'] = self.enable_auth_free_read
+        if self.enable_auth_token is not None:
+            result['enableAuthToken'] = self.enable_auth_token
+        result['prometheusInstances'] = []
+        if self.prometheus_instances is not None:
+            for k in self.prometheus_instances:
+                result['prometheusInstances'].append(k.to_map() if k else None)
+        if self.prometheus_view_name is not None:
+            result['prometheusViewName'] = self.prometheus_view_name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authFreeReadPolicy') is not None:
+            self.auth_free_read_policy = m.get('authFreeReadPolicy')
+        if m.get('enableAuthFreeRead') is not None:
+            self.enable_auth_free_read = m.get('enableAuthFreeRead')
+        if m.get('enableAuthToken') is not None:
+            self.enable_auth_token = m.get('enableAuthToken')
+        self.prometheus_instances = []
+        if m.get('prometheusInstances') is not None:
+            for k in m.get('prometheusInstances'):
+                temp_model = UpdatePrometheusViewRequestPrometheusInstances()
+                self.prometheus_instances.append(temp_model.from_map(k))
+        if m.get('prometheusViewName') is not None:
+            self.prometheus_view_name = m.get('prometheusViewName')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
+        return self
+
+
+class UpdatePrometheusViewResponseBody(TeaModel):
+    def __init__(
+        self,
+        prometheus_view_id: str = None,
+        request_id: str = None,
+    ):
+        self.prometheus_view_id = prometheus_view_id
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prometheus_view_id is not None:
+            result['prometheusViewId'] = self.prometheus_view_id
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('prometheusViewId') is not None:
+            self.prometheus_view_id = m.get('prometheusViewId')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdatePrometheusViewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdatePrometheusViewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdatePrometheusViewResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
