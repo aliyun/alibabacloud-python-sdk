@@ -7659,11 +7659,13 @@ class DescribeDBInstancesResponseBodyDBInstancesNodes(TeaModel):
         self,
         class_code: str = None,
         id: str = None,
+        name: str = None,
         region_id: str = None,
         zone_id: str = None,
     ):
         self.class_code = class_code
         self.id = id
+        self.name = name
         self.region_id = region_id
         self.zone_id = zone_id
 
@@ -7680,6 +7682,8 @@ class DescribeDBInstancesResponseBodyDBInstancesNodes(TeaModel):
             result['ClassCode'] = self.class_code
         if self.id is not None:
             result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.zone_id is not None:
@@ -7692,6 +7696,8 @@ class DescribeDBInstancesResponseBodyDBInstancesNodes(TeaModel):
             self.class_code = m.get('ClassCode')
         if m.get('Id') is not None:
             self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ZoneId') is not None:
