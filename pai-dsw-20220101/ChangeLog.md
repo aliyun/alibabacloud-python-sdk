@@ -1,3 +1,14 @@
+2025-09-10 Version: 2.0.1
+- Update API CreateInstance: add request parameters body.AssignNodeSpec.
+- Update API CreateInstance: add request parameters body.SpotSpec.
+- Update API GetInstance: add request parameters Fields.
+- Update API GetInstanceEvents: add request parameters EventLevel.
+- Update API UpdateInstance: add request parameters body.AssignNodeSpec.
+- Update API UpdateInstance: add request parameters body.DisassociateAssignNode.
+- Update API UpdateInstance: add request parameters body.DisassociateSpot.
+- Update API UpdateInstance: add request parameters body.SpotSpec.
+
+
 2025-09-09 Version: 2.0.0
 - Update API ListSystemLogs: add request parameters LifecycleId.
 - Update API ListSystemLogs: add request parameters LogRepository.

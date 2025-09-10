@@ -853,6 +853,39 @@ class CreateInstanceRequestAffinity(TeaModel):
         return self
 
 
+class CreateInstanceRequestAssignNodeSpec(TeaModel):
+    def __init__(
+        self,
+        anti_affinity_node_names: str = None,
+        node_names: str = None,
+    ):
+        self.anti_affinity_node_names = anti_affinity_node_names
+        self.node_names = node_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anti_affinity_node_names is not None:
+            result['AntiAffinityNodeNames'] = self.anti_affinity_node_names
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntiAffinityNodeNames') is not None:
+            self.anti_affinity_node_names = m.get('AntiAffinityNodeNames')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        return self
+
+
 class CreateInstanceRequestCloudDisksStatus(TeaModel):
     def __init__(
         self,
@@ -1158,6 +1191,51 @@ class CreateInstanceRequestRequestedResource(TeaModel):
         return self
 
 
+class CreateInstanceRequestSpotSpec(TeaModel):
+    def __init__(
+        self,
+        spot_discount_limit: str = None,
+        spot_duration: str = None,
+        spot_price_limit: str = None,
+        spot_strategy: str = None,
+    ):
+        self.spot_discount_limit = spot_discount_limit
+        self.spot_duration = spot_duration
+        self.spot_price_limit = spot_price_limit
+        self.spot_strategy = spot_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spot_discount_limit is not None:
+            result['SpotDiscountLimit'] = self.spot_discount_limit
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpotDiscountLimit') is not None:
+            self.spot_discount_limit = m.get('SpotDiscountLimit')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        return self
+
+
 class CreateInstanceRequestTag(TeaModel):
     def __init__(
         self,
@@ -1340,6 +1418,7 @@ class CreateInstanceRequest(TeaModel):
         self,
         accessibility: str = None,
         affinity: CreateInstanceRequestAffinity = None,
+        assign_node_spec: CreateInstanceRequestAssignNodeSpec = None,
         cloud_disks: List[CreateInstanceRequestCloudDisks] = None,
         credential_config: CredentialConfig = None,
         datasets: List[CreateInstanceRequestDatasets] = None,
@@ -1356,6 +1435,7 @@ class CreateInstanceRequest(TeaModel):
         priority: int = None,
         requested_resource: CreateInstanceRequestRequestedResource = None,
         resource_id: str = None,
+        spot_spec: CreateInstanceRequestSpotSpec = None,
         tag: List[CreateInstanceRequestTag] = None,
         user_command: CreateInstanceRequestUserCommand = None,
         user_id: str = None,
@@ -1372,6 +1452,7 @@ class CreateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         # The affinity configuration.
         self.affinity = affinity
+        self.assign_node_spec = assign_node_spec
         # The cloud disks.
         self.cloud_disks = cloud_disks
         # The credential configuration.
@@ -1409,6 +1490,7 @@ class CreateInstanceRequest(TeaModel):
         self.requested_resource = requested_resource
         # The ID of the resource group. This parameter is configured during prepayment. For information about how to create a dedicated resource group, see [Create a dedicated resource group and purchase general computing resources](https://help.aliyun.com/document_detail/202827.html).
         self.resource_id = resource_id
+        self.spot_spec = spot_spec
         # The tags.
         self.tag = tag
         self.user_command = user_command
@@ -1436,6 +1518,8 @@ class CreateInstanceRequest(TeaModel):
     def validate(self):
         if self.affinity:
             self.affinity.validate()
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -1454,6 +1538,8 @@ class CreateInstanceRequest(TeaModel):
                     k.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.spot_spec:
+            self.spot_spec.validate()
         if self.tag:
             for k in self.tag:
                 if k:
@@ -1473,6 +1559,8 @@ class CreateInstanceRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.affinity is not None:
             result['Affinity'] = self.affinity.to_map()
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -1511,6 +1599,8 @@ class CreateInstanceRequest(TeaModel):
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
+        if self.spot_spec is not None:
+            result['SpotSpec'] = self.spot_spec.to_map()
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -1534,6 +1624,9 @@ class CreateInstanceRequest(TeaModel):
         if m.get('Affinity') is not None:
             temp_model = CreateInstanceRequestAffinity()
             self.affinity = temp_model.from_map(m['Affinity'])
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = CreateInstanceRequestAssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):
@@ -1578,6 +1671,9 @@ class CreateInstanceRequest(TeaModel):
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
+        if m.get('SpotSpec') is not None:
+            temp_model = CreateInstanceRequestSpotSpec()
+            self.spot_spec = temp_model.from_map(m['SpotSpec'])
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -2734,8 +2830,10 @@ class GetIdleInstanceCullerResponse(TeaModel):
 class GetInstanceRequest(TeaModel):
     def __init__(
         self,
+        fields: str = None,
         token: str = None,
     ):
+        self.fields = fields
         # The sharing token information.
         self.token = token
 
@@ -2748,12 +2846,16 @@ class GetInstanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.fields is not None:
+            result['Fields'] = self.fields
         if self.token is not None:
             result['Token'] = self.token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Fields') is not None:
+            self.fields = m.get('Fields')
         if m.get('Token') is not None:
             self.token = m.get('Token')
         return self
@@ -4026,12 +4128,14 @@ class GetInstanceEventsRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        event_level: str = None,
         max_events_num: int = None,
         start_time: str = None,
         token: str = None,
     ):
         # The end of the time range to query.
         self.end_time = end_time
+        self.event_level = event_level
         # The maximum number of events. Default value: 2000.
         self.max_events_num = max_events_num
         # The beginning of the time range to query.
@@ -4050,6 +4154,8 @@ class GetInstanceEventsRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
         if self.max_events_num is not None:
             result['MaxEventsNum'] = self.max_events_num
         if self.start_time is not None:
@@ -4062,6 +4168,8 @@ class GetInstanceEventsRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
         if m.get('MaxEventsNum') is not None:
             self.max_events_num = m.get('MaxEventsNum')
         if m.get('StartTime') is not None:
@@ -8920,6 +9028,39 @@ class UpdateInstanceRequestAffinity(TeaModel):
         return self
 
 
+class UpdateInstanceRequestAssignNodeSpec(TeaModel):
+    def __init__(
+        self,
+        anti_affinity_node_names: str = None,
+        node_names: str = None,
+    ):
+        self.anti_affinity_node_names = anti_affinity_node_names
+        self.node_names = node_names
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.anti_affinity_node_names is not None:
+            result['AntiAffinityNodeNames'] = self.anti_affinity_node_names
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AntiAffinityNodeNames') is not None:
+            self.anti_affinity_node_names = m.get('AntiAffinityNodeNames')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        return self
+
+
 class UpdateInstanceRequestCloudDisks(TeaModel):
     def __init__(
         self,
@@ -9119,6 +9260,51 @@ class UpdateInstanceRequestRequestedResource(TeaModel):
         return self
 
 
+class UpdateInstanceRequestSpotSpec(TeaModel):
+    def __init__(
+        self,
+        spot_discount_limit: str = None,
+        spot_duration: str = None,
+        spot_price_limit: str = None,
+        spot_strategy: str = None,
+    ):
+        self.spot_discount_limit = spot_discount_limit
+        self.spot_duration = spot_duration
+        self.spot_price_limit = spot_price_limit
+        self.spot_strategy = spot_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.spot_discount_limit is not None:
+            result['SpotDiscountLimit'] = self.spot_discount_limit
+        if self.spot_duration is not None:
+            result['SpotDuration'] = self.spot_duration
+        if self.spot_price_limit is not None:
+            result['SpotPriceLimit'] = self.spot_price_limit
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SpotDiscountLimit') is not None:
+            self.spot_discount_limit = m.get('SpotDiscountLimit')
+        if m.get('SpotDuration') is not None:
+            self.spot_duration = m.get('SpotDuration')
+        if m.get('SpotPriceLimit') is not None:
+            self.spot_price_limit = m.get('SpotPriceLimit')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        return self
+
+
 class UpdateInstanceRequestUserCommandOnStart(TeaModel):
     def __init__(
         self,
@@ -9266,14 +9452,17 @@ class UpdateInstanceRequest(TeaModel):
         self,
         accessibility: str = None,
         affinity: UpdateInstanceRequestAffinity = None,
+        assign_node_spec: UpdateInstanceRequestAssignNodeSpec = None,
         cloud_disks: List[UpdateInstanceRequestCloudDisks] = None,
         credential_config: CredentialConfig = None,
         datasets: List[UpdateInstanceRequestDatasets] = None,
+        disassociate_assign_node: bool = None,
         disassociate_credential: bool = None,
         disassociate_datasets: bool = None,
         disassociate_driver: bool = None,
         disassociate_environment_variables: bool = None,
         disassociate_forward_infos: bool = None,
+        disassociate_spot: bool = None,
         disassociate_user_command: bool = None,
         disassociate_vpc: bool = None,
         driver: str = None,
@@ -9287,6 +9476,7 @@ class UpdateInstanceRequest(TeaModel):
         oversold_type: str = None,
         priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
+        spot_spec: UpdateInstanceRequestSpotSpec = None,
         user_command: UpdateInstanceRequestUserCommand = None,
         user_id: str = None,
         user_vpc: UpdateInstanceRequestUserVpc = None,
@@ -9301,12 +9491,14 @@ class UpdateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         # The affinity configuration.
         self.affinity = affinity
+        self.assign_node_spec = assign_node_spec
         # The cloud disks.
         self.cloud_disks = cloud_disks
         # The credential configuration.
         self.credential_config = credential_config
         # The datasets.
         self.datasets = datasets
+        self.disassociate_assign_node = disassociate_assign_node
         # Specifies whether to delete the credential injection information.
         self.disassociate_credential = disassociate_credential
         # Specifies whether to delete the associated datasets.
@@ -9319,6 +9511,7 @@ class UpdateInstanceRequest(TeaModel):
         self.disassociate_environment_variables = disassociate_environment_variables
         # Specifies whether to delete the associated forward information.
         self.disassociate_forward_infos = disassociate_forward_infos
+        self.disassociate_spot = disassociate_spot
         self.disassociate_user_command = disassociate_user_command
         # Specifies whether to delete the associated user VPC.
         self.disassociate_vpc = disassociate_vpc
@@ -9348,6 +9541,7 @@ class UpdateInstanceRequest(TeaModel):
         self.priority = priority
         # The resource configurations.
         self.requested_resource = requested_resource
+        self.spot_spec = spot_spec
         self.user_command = user_command
         # the User ID of the instance.
         self.user_id = user_id
@@ -9371,6 +9565,8 @@ class UpdateInstanceRequest(TeaModel):
     def validate(self):
         if self.affinity:
             self.affinity.validate()
+        if self.assign_node_spec:
+            self.assign_node_spec.validate()
         if self.cloud_disks:
             for k in self.cloud_disks:
                 if k:
@@ -9385,6 +9581,8 @@ class UpdateInstanceRequest(TeaModel):
             self.dynamic_mount.validate()
         if self.requested_resource:
             self.requested_resource.validate()
+        if self.spot_spec:
+            self.spot_spec.validate()
         if self.user_command:
             self.user_command.validate()
         if self.user_vpc:
@@ -9400,6 +9598,8 @@ class UpdateInstanceRequest(TeaModel):
             result['Accessibility'] = self.accessibility
         if self.affinity is not None:
             result['Affinity'] = self.affinity.to_map()
+        if self.assign_node_spec is not None:
+            result['AssignNodeSpec'] = self.assign_node_spec.to_map()
         result['CloudDisks'] = []
         if self.cloud_disks is not None:
             for k in self.cloud_disks:
@@ -9410,6 +9610,8 @@ class UpdateInstanceRequest(TeaModel):
         if self.datasets is not None:
             for k in self.datasets:
                 result['Datasets'].append(k.to_map() if k else None)
+        if self.disassociate_assign_node is not None:
+            result['DisassociateAssignNode'] = self.disassociate_assign_node
         if self.disassociate_credential is not None:
             result['DisassociateCredential'] = self.disassociate_credential
         if self.disassociate_datasets is not None:
@@ -9420,6 +9622,8 @@ class UpdateInstanceRequest(TeaModel):
             result['DisassociateEnvironmentVariables'] = self.disassociate_environment_variables
         if self.disassociate_forward_infos is not None:
             result['DisassociateForwardInfos'] = self.disassociate_forward_infos
+        if self.disassociate_spot is not None:
+            result['DisassociateSpot'] = self.disassociate_spot
         if self.disassociate_user_command is not None:
             result['DisassociateUserCommand'] = self.disassociate_user_command
         if self.disassociate_vpc is not None:
@@ -9446,6 +9650,8 @@ class UpdateInstanceRequest(TeaModel):
             result['Priority'] = self.priority
         if self.requested_resource is not None:
             result['RequestedResource'] = self.requested_resource.to_map()
+        if self.spot_spec is not None:
+            result['SpotSpec'] = self.spot_spec.to_map()
         if self.user_command is not None:
             result['UserCommand'] = self.user_command.to_map()
         if self.user_id is not None:
@@ -9463,6 +9669,9 @@ class UpdateInstanceRequest(TeaModel):
         if m.get('Affinity') is not None:
             temp_model = UpdateInstanceRequestAffinity()
             self.affinity = temp_model.from_map(m['Affinity'])
+        if m.get('AssignNodeSpec') is not None:
+            temp_model = UpdateInstanceRequestAssignNodeSpec()
+            self.assign_node_spec = temp_model.from_map(m['AssignNodeSpec'])
         self.cloud_disks = []
         if m.get('CloudDisks') is not None:
             for k in m.get('CloudDisks'):
@@ -9476,6 +9685,8 @@ class UpdateInstanceRequest(TeaModel):
             for k in m.get('Datasets'):
                 temp_model = UpdateInstanceRequestDatasets()
                 self.datasets.append(temp_model.from_map(k))
+        if m.get('DisassociateAssignNode') is not None:
+            self.disassociate_assign_node = m.get('DisassociateAssignNode')
         if m.get('DisassociateCredential') is not None:
             self.disassociate_credential = m.get('DisassociateCredential')
         if m.get('DisassociateDatasets') is not None:
@@ -9486,6 +9697,8 @@ class UpdateInstanceRequest(TeaModel):
             self.disassociate_environment_variables = m.get('DisassociateEnvironmentVariables')
         if m.get('DisassociateForwardInfos') is not None:
             self.disassociate_forward_infos = m.get('DisassociateForwardInfos')
+        if m.get('DisassociateSpot') is not None:
+            self.disassociate_spot = m.get('DisassociateSpot')
         if m.get('DisassociateUserCommand') is not None:
             self.disassociate_user_command = m.get('DisassociateUserCommand')
         if m.get('DisassociateVpc') is not None:
@@ -9514,6 +9727,9 @@ class UpdateInstanceRequest(TeaModel):
         if m.get('RequestedResource') is not None:
             temp_model = UpdateInstanceRequestRequestedResource()
             self.requested_resource = temp_model.from_map(m['RequestedResource'])
+        if m.get('SpotSpec') is not None:
+            temp_model = UpdateInstanceRequestSpotSpec()
+            self.spot_spec = temp_model.from_map(m['SpotSpec'])
         if m.get('UserCommand') is not None:
             temp_model = UpdateInstanceRequestUserCommand()
             self.user_command = temp_model.from_map(m['UserCommand'])

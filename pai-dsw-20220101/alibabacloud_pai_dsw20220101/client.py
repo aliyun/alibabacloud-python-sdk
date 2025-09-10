@@ -177,6 +177,8 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.affinity):
             body['Affinity'] = request.affinity
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.credential_config):
@@ -209,6 +211,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.spot_spec):
+            body['SpotSpec'] = request.spot_spec
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_command):
@@ -261,6 +265,8 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.affinity):
             body['Affinity'] = request.affinity
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.credential_config):
@@ -293,6 +299,8 @@ class Client(OpenApiClient):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.resource_id):
             body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.spot_spec):
+            body['SpotSpec'] = request.spot_spec
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_command):
@@ -1172,6 +1180,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -1211,6 +1221,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
         if not UtilClient.is_unset(request.token):
             query['Token'] = request.token
         req = open_api_models.OpenApiRequest(
@@ -1282,6 +1294,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
         if not UtilClient.is_unset(request.max_events_num):
             query['MaxEventsNum'] = request.max_events_num
         if not UtilClient.is_unset(request.start_time):
@@ -1327,6 +1341,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
         if not UtilClient.is_unset(request.max_events_num):
             query['MaxEventsNum'] = request.max_events_num
         if not UtilClient.is_unset(request.start_time):
@@ -3300,12 +3316,16 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.affinity):
             body['Affinity'] = request.affinity
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.credential_config):
             body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_assign_node):
+            body['DisassociateAssignNode'] = request.disassociate_assign_node
         if not UtilClient.is_unset(request.disassociate_credential):
             body['DisassociateCredential'] = request.disassociate_credential
         if not UtilClient.is_unset(request.disassociate_datasets):
@@ -3316,6 +3336,8 @@ class Client(OpenApiClient):
             body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_spot):
+            body['DisassociateSpot'] = request.disassociate_spot
         if not UtilClient.is_unset(request.disassociate_user_command):
             body['DisassociateUserCommand'] = request.disassociate_user_command
         if not UtilClient.is_unset(request.disassociate_vpc):
@@ -3342,6 +3364,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.spot_spec):
+            body['SpotSpec'] = request.spot_spec
         if not UtilClient.is_unset(request.user_command):
             body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
@@ -3391,12 +3415,16 @@ class Client(OpenApiClient):
             body['Accessibility'] = request.accessibility
         if not UtilClient.is_unset(request.affinity):
             body['Affinity'] = request.affinity
+        if not UtilClient.is_unset(request.assign_node_spec):
+            body['AssignNodeSpec'] = request.assign_node_spec
         if not UtilClient.is_unset(request.cloud_disks):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.credential_config):
             body['CredentialConfig'] = request.credential_config
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.disassociate_assign_node):
+            body['DisassociateAssignNode'] = request.disassociate_assign_node
         if not UtilClient.is_unset(request.disassociate_credential):
             body['DisassociateCredential'] = request.disassociate_credential
         if not UtilClient.is_unset(request.disassociate_datasets):
@@ -3407,6 +3435,8 @@ class Client(OpenApiClient):
             body['DisassociateEnvironmentVariables'] = request.disassociate_environment_variables
         if not UtilClient.is_unset(request.disassociate_forward_infos):
             body['DisassociateForwardInfos'] = request.disassociate_forward_infos
+        if not UtilClient.is_unset(request.disassociate_spot):
+            body['DisassociateSpot'] = request.disassociate_spot
         if not UtilClient.is_unset(request.disassociate_user_command):
             body['DisassociateUserCommand'] = request.disassociate_user_command
         if not UtilClient.is_unset(request.disassociate_vpc):
@@ -3433,6 +3463,8 @@ class Client(OpenApiClient):
             body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
+        if not UtilClient.is_unset(request.spot_spec):
+            body['SpotSpec'] = request.spot_spec
         if not UtilClient.is_unset(request.user_command):
             body['UserCommand'] = request.user_command
         if not UtilClient.is_unset(request.user_id):
