@@ -512,6 +512,7 @@ class AddFilesFromAuthorizedOssRequest(TeaModel):
         file_details: List[AddFilesFromAuthorizedOssRequestFileDetails] = None,
         oss_bucket_name: str = None,
         oss_region_id: str = None,
+        over_write_file_by_oss_key: bool = None,
         tags: List[str] = None,
     ):
         # This parameter is required.
@@ -524,6 +525,7 @@ class AddFilesFromAuthorizedOssRequest(TeaModel):
         self.oss_bucket_name = oss_bucket_name
         # This parameter is required.
         self.oss_region_id = oss_region_id
+        self.over_write_file_by_oss_key = over_write_file_by_oss_key
         self.tags = tags
 
     def validate(self):
@@ -550,6 +552,8 @@ class AddFilesFromAuthorizedOssRequest(TeaModel):
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_region_id is not None:
             result['OssRegionId'] = self.oss_region_id
+        if self.over_write_file_by_oss_key is not None:
+            result['OverWriteFileByOssKey'] = self.over_write_file_by_oss_key
         if self.tags is not None:
             result['Tags'] = self.tags
         return result
@@ -569,6 +573,8 @@ class AddFilesFromAuthorizedOssRequest(TeaModel):
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssRegionId') is not None:
             self.oss_region_id = m.get('OssRegionId')
+        if m.get('OverWriteFileByOssKey') is not None:
+            self.over_write_file_by_oss_key = m.get('OverWriteFileByOssKey')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         return self
@@ -582,6 +588,7 @@ class AddFilesFromAuthorizedOssShrinkRequest(TeaModel):
         file_details_shrink: str = None,
         oss_bucket_name: str = None,
         oss_region_id: str = None,
+        over_write_file_by_oss_key: bool = None,
         tags_shrink: str = None,
     ):
         # This parameter is required.
@@ -594,6 +601,7 @@ class AddFilesFromAuthorizedOssShrinkRequest(TeaModel):
         self.oss_bucket_name = oss_bucket_name
         # This parameter is required.
         self.oss_region_id = oss_region_id
+        self.over_write_file_by_oss_key = over_write_file_by_oss_key
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -615,6 +623,8 @@ class AddFilesFromAuthorizedOssShrinkRequest(TeaModel):
             result['OssBucketName'] = self.oss_bucket_name
         if self.oss_region_id is not None:
             result['OssRegionId'] = self.oss_region_id
+        if self.over_write_file_by_oss_key is not None:
+            result['OverWriteFileByOssKey'] = self.over_write_file_by_oss_key
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
         return result
@@ -631,6 +641,8 @@ class AddFilesFromAuthorizedOssShrinkRequest(TeaModel):
             self.oss_bucket_name = m.get('OssBucketName')
         if m.get('OssRegionId') is not None:
             self.oss_region_id = m.get('OssRegionId')
+        if m.get('OverWriteFileByOssKey') is not None:
+            self.over_write_file_by_oss_key = m.get('OverWriteFileByOssKey')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
         return self
@@ -1160,10 +1172,12 @@ class CreateAndPulishAgentRequestApplicationConfigParameters(TeaModel):
     def __init__(
         self,
         dialog_round: int = None,
+        enable_thinking: bool = None,
         max_tokens: int = None,
         temperature: float = None,
     ):
         self.dialog_round = dialog_round
+        self.enable_thinking = enable_thinking
         self.max_tokens = max_tokens
         self.temperature = temperature
 
@@ -1178,6 +1192,8 @@ class CreateAndPulishAgentRequestApplicationConfigParameters(TeaModel):
         result = dict()
         if self.dialog_round is not None:
             result['dialogRound'] = self.dialog_round
+        if self.enable_thinking is not None:
+            result['enable_thinking'] = self.enable_thinking
         if self.max_tokens is not None:
             result['maxTokens'] = self.max_tokens
         if self.temperature is not None:
@@ -1188,6 +1204,8 @@ class CreateAndPulishAgentRequestApplicationConfigParameters(TeaModel):
         m = m or dict()
         if m.get('dialogRound') is not None:
             self.dialog_round = m.get('dialogRound')
+        if m.get('enable_thinking') is not None:
+            self.enable_thinking = m.get('enable_thinking')
         if m.get('maxTokens') is not None:
             self.max_tokens = m.get('maxTokens')
         if m.get('temperature') is not None:
@@ -9645,10 +9663,12 @@ class UpdateAndPublishAgentRequestApplicationConfigParameters(TeaModel):
     def __init__(
         self,
         dialog_round: int = None,
+        enable_thinking: bool = None,
         max_tokens: int = None,
         temperature: float = None,
     ):
         self.dialog_round = dialog_round
+        self.enable_thinking = enable_thinking
         self.max_tokens = max_tokens
         self.temperature = temperature
 
@@ -9663,6 +9683,8 @@ class UpdateAndPublishAgentRequestApplicationConfigParameters(TeaModel):
         result = dict()
         if self.dialog_round is not None:
             result['dialogRound'] = self.dialog_round
+        if self.enable_thinking is not None:
+            result['enable_thinking'] = self.enable_thinking
         if self.max_tokens is not None:
             result['maxTokens'] = self.max_tokens
         if self.temperature is not None:
@@ -9673,6 +9695,8 @@ class UpdateAndPublishAgentRequestApplicationConfigParameters(TeaModel):
         m = m or dict()
         if m.get('dialogRound') is not None:
             self.dialog_round = m.get('dialogRound')
+        if m.get('enable_thinking') is not None:
+            self.enable_thinking = m.get('enable_thinking')
         if m.get('maxTokens') is not None:
             self.max_tokens = m.get('maxTokens')
         if m.get('temperature') is not None:
@@ -10275,10 +10299,12 @@ class UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters(TeaModel)
     def __init__(
         self,
         dialog_round: int = None,
+        enable_thinking: bool = None,
         max_tokens: int = None,
         temperature: float = None,
     ):
         self.dialog_round = dialog_round
+        self.enable_thinking = enable_thinking
         self.max_tokens = max_tokens
         self.temperature = temperature
 
@@ -10293,6 +10319,8 @@ class UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters(TeaModel)
         result = dict()
         if self.dialog_round is not None:
             result['dialogRound'] = self.dialog_round
+        if self.enable_thinking is not None:
+            result['enable_thinking'] = self.enable_thinking
         if self.max_tokens is not None:
             result['maxTokens'] = self.max_tokens
         if self.temperature is not None:
@@ -10303,6 +10331,8 @@ class UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters(TeaModel)
         m = m or dict()
         if m.get('dialogRound') is not None:
             self.dialog_round = m.get('dialogRound')
+        if m.get('enable_thinking') is not None:
+            self.enable_thinking = m.get('enable_thinking')
         if m.get('maxTokens') is not None:
             self.max_tokens = m.get('maxTokens')
         if m.get('temperature') is not None:

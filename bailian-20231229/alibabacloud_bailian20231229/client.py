@@ -350,6 +350,8 @@ class Client(OpenApiClient):
             body['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_region_id):
             body['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.over_write_file_by_oss_key):
+            body['OverWriteFileByOssKey'] = request.over_write_file_by_oss_key
         if not UtilClient.is_unset(request.tags_shrink):
             body['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
@@ -405,6 +407,8 @@ class Client(OpenApiClient):
             body['OssBucketName'] = request.oss_bucket_name
         if not UtilClient.is_unset(request.oss_region_id):
             body['OssRegionId'] = request.oss_region_id
+        if not UtilClient.is_unset(request.over_write_file_by_oss_key):
+            body['OverWriteFileByOssKey'] = request.over_write_file_by_oss_key
         if not UtilClient.is_unset(request.tags_shrink):
             body['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(

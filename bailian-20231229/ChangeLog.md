@@ -1,3 +1,10 @@
+2025-09-10 Version: 2.4.1
+- Update API AddFilesFromAuthorizedOss: add request parameters OverWriteFileByOssKey.
+- Update API CreateAndPulishAgent: add request parameters applicationConfig.parameters.enable_thinking.
+- Update API UpdateAndPublishAgent: add request parameters applicationConfig.parameters.enable_thinking.
+- Update API UpdateAndPublishAgentSelective: add request parameters applicationConfig.parameters.enable_thinking.
+
+
 2025-08-12 Version: 2.4.0
 - Support API GetAlipayTransferStatus.
 - Support API GetAlipayUrl.
