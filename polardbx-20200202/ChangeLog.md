@@ -2,6 +2,10 @@
 - Update API DescribeDBInstances: add response parameters Body.DBInstances.$.Nodes.$.Name.
 
 
+2025-09-10 Version: 3.0.4
+- Update API DescribeDBInstances: add response parameters Body.DBInstances.$.Nodes.$.Name.
+
+
 2025-07-16 Version: 3.0.3
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.CpuType.
 
