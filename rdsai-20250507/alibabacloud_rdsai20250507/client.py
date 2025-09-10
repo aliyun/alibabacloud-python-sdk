@@ -43,17 +43,21 @@ class Client(OpenApiClient):
 
     def create_app_instance_with_options(
         self,
-        request: rds_ai_20250507_models.CreateAppInstanceRequest,
+        tmp_req: rds_ai_20250507_models.CreateAppInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_ai_20250507_models.CreateAppInstanceResponse:
         """
         @summary 创建应用服务实例
         
-        @param request: CreateAppInstanceRequest
+        @param tmp_req: CreateAppInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAppInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.CreateAppInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbinstance_config):
+            request.dbinstance_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_config, 'DBInstanceConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -61,6 +65,8 @@ class Client(OpenApiClient):
             query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_config_shrink):
+            query['DBInstanceConfig'] = request.dbinstance_config_shrink
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.dashboard_password):
@@ -73,6 +79,8 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.public_network_access_enabled):
             query['PublicNetworkAccessEnabled'] = request.public_network_access_enabled
+        if not UtilClient.is_unset(request.ragenabled):
+            query['RAGEnabled'] = request.ragenabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.v_switch_id):
@@ -98,17 +106,21 @@ class Client(OpenApiClient):
 
     async def create_app_instance_with_options_async(
         self,
-        request: rds_ai_20250507_models.CreateAppInstanceRequest,
+        tmp_req: rds_ai_20250507_models.CreateAppInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_ai_20250507_models.CreateAppInstanceResponse:
         """
         @summary 创建应用服务实例
         
-        @param request: CreateAppInstanceRequest
+        @param tmp_req: CreateAppInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateAppInstanceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = rds_ai_20250507_models.CreateAppInstanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dbinstance_config):
+            request.dbinstance_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dbinstance_config, 'DBInstanceConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_name):
             query['AppName'] = request.app_name
@@ -116,6 +128,8 @@ class Client(OpenApiClient):
             query['AppType'] = request.app_type
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dbinstance_config_shrink):
+            query['DBInstanceConfig'] = request.dbinstance_config_shrink
         if not UtilClient.is_unset(request.dbinstance_name):
             query['DBInstanceName'] = request.dbinstance_name
         if not UtilClient.is_unset(request.dashboard_password):
@@ -128,6 +142,8 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.public_network_access_enabled):
             query['PublicNetworkAccessEnabled'] = request.public_network_access_enabled
+        if not UtilClient.is_unset(request.ragenabled):
+            query['RAGEnabled'] = request.ragenabled
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.v_switch_id):
