@@ -834,7 +834,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateAlertResponse:
         """
-        @summary CreateAlert
+        @summary Creates an alert rule in a project.
         
         @param request: CreateAlertRequest
         @param headers: map
@@ -884,7 +884,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateAlertResponse:
         """
-        @summary CreateAlert
+        @summary Creates an alert rule in a project.
         
         @param request: CreateAlertRequest
         @param headers: map
@@ -932,7 +932,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateAlertRequest,
     ) -> sls_20201230_models.CreateAlertResponse:
         """
-        @summary CreateAlert
+        @summary Creates an alert rule in a project.
         
         @param request: CreateAlertRequest
         @return: CreateAlertResponse
@@ -947,7 +947,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.CreateAlertRequest,
     ) -> sls_20201230_models.CreateAlertResponse:
         """
-        @summary CreateAlert
+        @summary Creates an alert rule in a project.
         
         @param request: CreateAlertRequest
         @return: CreateAlertResponse
@@ -2479,6 +2479,8 @@ class Client(OpenApiClient):
             body['logSample'] = request.log_sample
         if not UtilClient.is_unset(request.processors):
             body['processors'] = request.processors
+        if not UtilClient.is_unset(request.task):
+            body['task'] = request.task
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -2535,6 +2537,8 @@ class Client(OpenApiClient):
             body['logSample'] = request.log_sample
         if not UtilClient.is_unset(request.processors):
             body['processors'] = request.processors
+        if not UtilClient.is_unset(request.task):
+            body['task'] = request.task
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -4979,6 +4983,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_config_with_options_async(project, config_name, headers, runtime)
+
+    def delete_consume_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteConsumeProcessorResponse:
+        """
+        @summary DeleteConsumeProcessor
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumeProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteConsumeProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_consume_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteConsumeProcessorResponse:
+        """
+        @summary DeleteConsumeProcessor
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumeProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteConsumeProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_consume_processor(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.DeleteConsumeProcessorResponse:
+        """
+        @summary DeleteConsumeProcessor
+        
+        @return: DeleteConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_consume_processor_with_options(project, processor_name, headers, runtime)
+
+    async def delete_consume_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.DeleteConsumeProcessorResponse:
+        """
+        @summary DeleteConsumeProcessor
+        
+        @return: DeleteConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_consume_processor_with_options_async(project, processor_name, headers, runtime)
 
     def delete_consumer_group_with_options(
         self,
@@ -8974,6 +9078,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_config_with_options_async(project, config_name, headers, runtime)
 
+    def get_consume_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetConsumeProcessorResponse:
+        """
+        @summary Query the details of a consumer processor
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumeProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetConsumeProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_consume_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetConsumeProcessorResponse:
+        """
+        @summary Query the details of a consumer processor
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConsumeProcessorResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetConsumeProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_consume_processor(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.GetConsumeProcessorResponse:
+        """
+        @summary Query the details of a consumer processor
+        
+        @return: GetConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_consume_processor_with_options(project, processor_name, headers, runtime)
+
+    async def get_consume_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+    ) -> sls_20201230_models.GetConsumeProcessorResponse:
+        """
+        @summary Query the details of a consumer processor
+        
+        @return: GetConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_consume_processor_with_options_async(project, processor_name, headers, runtime)
+
     def get_context_logs_with_options(
         self,
         project: str,
@@ -10695,9 +10899,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
         
-        @description    You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
-        You can call this operation by using Simple Log Service SDK for Go or Java.
-        For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+        @description  You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+        When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+        For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
         @param request: GetLogsV2Request
         @param headers: GetLogsV2Headers
@@ -10767,9 +10976,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
         
-        @description    You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
-        You can call this operation by using Simple Log Service SDK for Go or Java.
-        For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+        @description  You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+        When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+        For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
         @param request: GetLogsV2Request
         @param headers: GetLogsV2Headers
@@ -10837,9 +11051,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
         
-        @description    You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
-        You can call this operation by using Simple Log Service SDK for Go or Java.
-        For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+        @description  You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+        When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+        For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
         @param request: GetLogsV2Request
         @return: GetLogsV2Response
@@ -10857,9 +11076,14 @@ class Client(OpenApiClient):
         """
         @summary Queries the raw log data in a Logstore of a project. The returned result contains the raw log data within a specific time range. The returned result is compressed before transmission.
         
-        @description    You can call this operation by using Alibaba Cloud SDK for Go, Java, TypeScript, or Python.
-        You can call this operation by using Simple Log Service SDK for Go or Java.
-        For more information, see [GetLogs](https://help.aliyun.com/document_detail/29029.html).
+        @description  You can call this operation by using Simple Log Service SDK for Go, Java, or Python. You can call this operation by using Alibaba Cloud SDK for all programming languages.
+        When you call this operation, take note of the compression method that you use. The supported compression algorithms vary based on the programming language. For more information, see the description of the Accept-Encoding parameter in this topic.
+        For more information, see [GetLogs](https://help.aliyun.com/document_detail/2771313.html).
+        ### Authentication resources
+        The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a Resource Access Management (RAM) policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+        |Action|Resource|
+        |:---|:---|
+        |`log:GetLogStoreLogs`|`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`|
         
         @param request: GetLogsV2Request
         @return: GetLogsV2Response
@@ -13884,6 +14108,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_config_with_options_async(project, request, headers, runtime)
 
+    def list_consume_processors_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConsumeProcessorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListConsumeProcessorsResponse:
+        """
+        @summary Queries a list of consumption processors that meet specific conditions.
+        
+        @param request: ListConsumeProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumeProcessorsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.processor_name):
+            query['processorName'] = request.processor_name
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConsumeProcessors',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListConsumeProcessorsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_consume_processors_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConsumeProcessorsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListConsumeProcessorsResponse:
+        """
+        @summary Queries a list of consumption processors that meet specific conditions.
+        
+        @param request: ListConsumeProcessorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumeProcessorsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.display_name):
+            query['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.processor_name):
+            query['processorName'] = request.processor_name
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListConsumeProcessors',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListConsumeProcessorsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_consume_processors(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConsumeProcessorsRequest,
+    ) -> sls_20201230_models.ListConsumeProcessorsResponse:
+        """
+        @summary Queries a list of consumption processors that meet specific conditions.
+        
+        @param request: ListConsumeProcessorsRequest
+        @return: ListConsumeProcessorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_consume_processors_with_options(project, request, headers, runtime)
+
+    async def list_consume_processors_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListConsumeProcessorsRequest,
+    ) -> sls_20201230_models.ListConsumeProcessorsResponse:
+        """
+        @summary Queries a list of consumption processors that meet specific conditions.
+        
+        @param request: ListConsumeProcessorsRequest
+        @return: ListConsumeProcessorsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_consume_processors_with_options_async(project, request, headers, runtime)
+
     def list_consumer_group_with_options(
         self,
         project: str,
@@ -14891,6 +15241,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_name):
             query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.config_type):
+            query['configType'] = request.config_type
         if not UtilClient.is_unset(request.logstore_name):
             query['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.offset):
@@ -14941,6 +15293,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config_name):
             query['configName'] = request.config_name
+        if not UtilClient.is_unset(request.config_type):
+            query['configType'] = request.config_type
         if not UtilClient.is_unset(request.logstore_name):
             query['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.offset):
@@ -17166,6 +17520,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.put_annotation_data_with_options_async(dataset_id, request, headers, runtime)
 
+    def put_consume_processor_with_options(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutConsumeProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.PutConsumeProcessorResponse:
+        """
+        @summary Creates or updates a consumption processor.
+        
+        @param request: PutConsumeProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConsumeProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.PutConsumeProcessorResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def put_consume_processor_with_options_async(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutConsumeProcessorRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.PutConsumeProcessorResponse:
+        """
+        @summary Creates or updates a consumption processor.
+        
+        @param request: PutConsumeProcessorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutConsumeProcessorResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutConsumeProcessor',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/consumeprocessors/{processor_name}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.PutConsumeProcessorResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def put_consume_processor(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutConsumeProcessorRequest,
+    ) -> sls_20201230_models.PutConsumeProcessorResponse:
+        """
+        @summary Creates or updates a consumption processor.
+        
+        @param request: PutConsumeProcessorRequest
+        @return: PutConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.put_consume_processor_with_options(project, processor_name, request, headers, runtime)
+
+    async def put_consume_processor_async(
+        self,
+        project: str,
+        processor_name: str,
+        request: sls_20201230_models.PutConsumeProcessorRequest,
+    ) -> sls_20201230_models.PutConsumeProcessorResponse:
+        """
+        @summary Creates or updates a consumption processor.
+        
+        @param request: PutConsumeProcessorRequest
+        @return: PutConsumeProcessorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.put_consume_processor_with_options_async(project, processor_name, request, headers, runtime)
+
     def put_ingest_processor_with_options(
         self,
         project: str,
@@ -17598,7 +18078,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutProjectTransferAccelerationResponse:
         """
-        @summary 设置project传输加速状态
+        @summary Enables or disables transfer acceleration.
         
         @param request: PutProjectTransferAccelerationRequest
         @param headers: map
@@ -17640,7 +18120,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutProjectTransferAccelerationResponse:
         """
-        @summary 设置project传输加速状态
+        @summary Enables or disables transfer acceleration.
         
         @param request: PutProjectTransferAccelerationRequest
         @param headers: map
@@ -17680,7 +18160,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.PutProjectTransferAccelerationRequest,
     ) -> sls_20201230_models.PutProjectTransferAccelerationResponse:
         """
-        @summary 设置project传输加速状态
+        @summary Enables or disables transfer acceleration.
         
         @param request: PutProjectTransferAccelerationRequest
         @return: PutProjectTransferAccelerationResponse
@@ -17695,7 +18175,7 @@ class Client(OpenApiClient):
         request: sls_20201230_models.PutProjectTransferAccelerationRequest,
     ) -> sls_20201230_models.PutProjectTransferAccelerationResponse:
         """
-        @summary 设置project传输加速状态
+        @summary Enables or disables transfer acceleration.
         
         @param request: PutProjectTransferAccelerationRequest
         @return: PutProjectTransferAccelerationResponse
@@ -21510,6 +21990,8 @@ class Client(OpenApiClient):
             body['logSample'] = request.log_sample
         if not UtilClient.is_unset(request.processors):
             body['processors'] = request.processors
+        if not UtilClient.is_unset(request.task):
+            body['task'] = request.task
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -21567,6 +22049,8 @@ class Client(OpenApiClient):
             body['logSample'] = request.log_sample
         if not UtilClient.is_unset(request.processors):
             body['processors'] = request.processors
+        if not UtilClient.is_unset(request.task):
+            body['task'] = request.task
         req = open_api_models.OpenApiRequest(
             host_map=host_map,
             headers=headers,
@@ -23549,7 +24033,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+        @summary Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
         
         @param request: UpsertCollectionPolicyRequest
         @param headers: map
@@ -23603,7 +24089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+        @summary Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
         
         @param request: UpsertCollectionPolicyRequest
         @param headers: map
@@ -23655,7 +24143,9 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpsertCollectionPolicyRequest,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+        @summary Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
         
         @param request: UpsertCollectionPolicyRequest
         @return: UpsertCollectionPolicyResponse
@@ -23669,7 +24159,9 @@ class Client(OpenApiClient):
         request: sls_20201230_models.UpsertCollectionPolicyRequest,
     ) -> sls_20201230_models.UpsertCollectionPolicyResponse:
         """
-        @summary 调用UpsertCollectionPolicy接口创建或更新日志采集规则
+        @summary Creates a log collection policy for a cloud service. This way, logs can be automatically collected from the service.
+        
+        @description You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
         
         @param request: UpsertCollectionPolicyRequest
         @return: UpsertCollectionPolicyResponse

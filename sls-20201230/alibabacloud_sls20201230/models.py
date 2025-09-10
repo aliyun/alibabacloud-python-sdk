@@ -1182,6 +1182,69 @@ class CopilotAction(TeaModel):
         return self
 
 
+class DeleteLogStoreLogsTask(TeaModel):
+    def __init__(
+        self,
+        error_code: int = None,
+        error_message: str = None,
+        from_: int = None,
+        progress: int = None,
+        query: str = None,
+        task_id: str = None,
+        to: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.from_ = from_
+        self.progress = progress
+        self.query = query
+        self.task_id = task_id
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.from_ is not None:
+            result['from'] = self.from_
+        if self.progress is not None:
+            result['progress'] = self.progress
+        if self.query is not None:
+            result['query'] = self.query
+        if self.task_id is not None:
+            result['taskId'] = self.task_id
+        if self.to is not None:
+            result['to'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('from') is not None:
+            self.from_ = m.get('from')
+        if m.get('progress') is not None:
+            self.progress = m.get('progress')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('taskId') is not None:
+            self.task_id = m.get('taskId')
+        if m.get('to') is not None:
+            self.to = m.get('to')
+        return self
+
+
 class ETLConfigurationSink(TeaModel):
     def __init__(
         self,
@@ -2138,6 +2201,7 @@ class LogtailPipelineConfig(TeaModel):
         last_modify_time: int = None,
         log_sample: str = None,
         processors: List[Dict[str, Any]] = None,
+        task: Dict[str, Any] = None,
     ):
         self.aggregators = aggregators
         # This parameter is required.
@@ -2151,6 +2215,7 @@ class LogtailPipelineConfig(TeaModel):
         self.last_modify_time = last_modify_time
         self.log_sample = log_sample
         self.processors = processors
+        self.task = task
 
     def validate(self):
         pass
@@ -2179,6 +2244,8 @@ class LogtailPipelineConfig(TeaModel):
             result['logSample'] = self.log_sample
         if self.processors is not None:
             result['processors'] = self.processors
+        if self.task is not None:
+            result['task'] = self.task
         return result
 
     def from_map(self, m: dict = None):
@@ -2201,6 +2268,8 @@ class LogtailPipelineConfig(TeaModel):
             self.log_sample = m.get('logSample')
         if m.get('processors') is not None:
             self.processors = m.get('processors')
+        if m.get('task') is not None:
+            self.task = m.get('task')
         return self
 
 
@@ -6736,6 +6805,7 @@ class CreateLogtailPipelineConfigRequest(TeaModel):
         inputs: List[Dict[str, Any]] = None,
         log_sample: str = None,
         processors: List[Dict[str, Any]] = None,
+        task: Dict[str, Any] = None,
     ):
         # The aggregation plug-ins.
         # 
@@ -6784,6 +6854,7 @@ class CreateLogtailPipelineConfigRequest(TeaModel):
         #     *   You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
         #     *   After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
         self.processors = processors
+        self.task = task
 
     def validate(self):
         pass
@@ -6808,6 +6879,8 @@ class CreateLogtailPipelineConfigRequest(TeaModel):
             result['logSample'] = self.log_sample
         if self.processors is not None:
             result['processors'] = self.processors
+        if self.task is not None:
+            result['task'] = self.task
         return result
 
     def from_map(self, m: dict = None):
@@ -6826,6 +6899,8 @@ class CreateLogtailPipelineConfigRequest(TeaModel):
             self.log_sample = m.get('logSample')
         if m.get('processors') is not None:
             self.processors = m.get('processors')
+        if m.get('task') is not None:
+            self.task = m.get('task')
         return self
 
 
@@ -8352,6 +8427,39 @@ class DeleteCollectionPolicyResponse(TeaModel):
 
 
 class DeleteConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteConsumeProcessorResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -10396,6 +10504,47 @@ class GetConfigResponse(TeaModel):
         return self
 
 
+class GetConsumeProcessorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConsumeProcessor = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConsumeProcessor()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetContextLogsRequest(TeaModel):
     def __init__(
         self,
@@ -12110,7 +12259,7 @@ class GetLogsV2ResponseBodyMeta(TeaModel):
         self.phrase_query_info = phrase_query_info
         # The number of logs that are processed in the request.
         self.processed_bytes = processed_bytes
-        # The number of rows that are processed in the request.
+        # The number of rows that are processed in the query.
         self.processed_rows = processed_rows
         # Indicates whether the query result is complete. Valid values:
         # 
@@ -14925,6 +15074,146 @@ class ListConfigResponse(TeaModel):
         return self
 
 
+class ListConsumeProcessorsRequest(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        offset: str = None,
+        processor_name: str = None,
+        size: str = None,
+    ):
+        # The display name of the consumption processor.
+        self.display_name = display_name
+        # The offset. Default value: 0.
+        self.offset = offset
+        # The identifier of the consumption processor.
+        self.processor_name = processor_name
+        # The number of entries. Default value: 200.
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.processor_name is not None:
+            result['processorName'] = self.processor_name
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('processorName') is not None:
+            self.processor_name = m.get('processorName')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListConsumeProcessorsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        processors: List[ConsumeProcessor] = None,
+        total: int = None,
+    ):
+        # The number of consumption processors for offset.
+        self.count = count
+        # The list of consumption processor information.
+        self.processors = processors
+        # The total number of consumption processors that meet the query conditions.
+        self.total = total
+
+    def validate(self):
+        if self.processors:
+            for k in self.processors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        result['processors'] = []
+        if self.processors is not None:
+            for k in self.processors:
+                result['processors'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        self.processors = []
+        if m.get('processors') is not None:
+            for k in m.get('processors'):
+                temp_model = ConsumeProcessor()
+                self.processors.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListConsumeProcessorsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListConsumeProcessorsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListConsumeProcessorsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListConsumerGroupResponse(TeaModel):
     def __init__(
         self,
@@ -16196,12 +16485,14 @@ class ListLogtailPipelineConfigRequest(TeaModel):
     def __init__(
         self,
         config_name: str = None,
+        config_type: str = None,
         logstore_name: str = None,
         offset: int = None,
         size: int = None,
     ):
         # The name of the Logtail pipeline configuration.
         self.config_name = config_name
+        self.config_type = config_type
         # The name of the Logstore.
         self.logstore_name = logstore_name
         # The line from which the query starts.
@@ -16220,6 +16511,8 @@ class ListLogtailPipelineConfigRequest(TeaModel):
         result = dict()
         if self.config_name is not None:
             result['configName'] = self.config_name
+        if self.config_type is not None:
+            result['configType'] = self.config_type
         if self.logstore_name is not None:
             result['logstoreName'] = self.logstore_name
         if self.offset is not None:
@@ -16232,6 +16525,8 @@ class ListLogtailPipelineConfigRequest(TeaModel):
         m = m or dict()
         if m.get('configName') is not None:
             self.config_name = m.get('configName')
+        if m.get('configType') is not None:
+            self.config_type = m.get('configType')
         if m.get('logstoreName') is not None:
             self.logstore_name = m.get('logstoreName')
         if m.get('offset') is not None:
@@ -18379,6 +18674,87 @@ class PutAnnotationDataResponse(TeaModel):
         return self
 
 
+class PutConsumeProcessorRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: ConsumeProcessorConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+    ):
+        # Consumption processor configuration.
+        # 
+        # This parameter is required.
+        self.configuration = configuration
+        # The description.
+        self.description = description
+        # The display name.
+        # 
+        # This parameter is required.
+        self.display_name = display_name
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ConsumeProcessorConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        return self
+
+
+class PutConsumeProcessorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class PutIngestProcessorRequest(TeaModel):
     def __init__(
         self,
@@ -18625,6 +19001,8 @@ class PutProjectTransferAccelerationRequest(TeaModel):
         self,
         enabled: bool = None,
     ):
+        # Whether to enable transfer acceleration.
+        # 
         # This parameter is required.
         self.enabled = enabled
 
@@ -20825,6 +21203,7 @@ class UpdateLogtailPipelineConfigRequest(TeaModel):
         inputs: List[Dict[str, Any]] = None,
         log_sample: str = None,
         processors: List[Dict[str, Any]] = None,
+        task: Dict[str, Any] = None,
     ):
         # The aggregation plug-ins.
         # 
@@ -20867,6 +21246,7 @@ class UpdateLogtailPipelineConfigRequest(TeaModel):
         #     *   You must add one of the following Logtail plug-ins for data processing as the first plug-in: Data Parsing (Regex Mode), Data Parsing (Delimiter Mode), Data Parsing (JSON Mode), Data Parsing (NGINX Mode), Data Parsing (Apache Mode), and Data Parsing (IIS Mode).
         #     *   After you add the first plug-in, you can add one Time Parsing plug-in, one Data Filtering plug-in, and multiple Data Masking plug-ins.
         self.processors = processors
+        self.task = task
 
     def validate(self):
         pass
@@ -20891,6 +21271,8 @@ class UpdateLogtailPipelineConfigRequest(TeaModel):
             result['logSample'] = self.log_sample
         if self.processors is not None:
             result['processors'] = self.processors
+        if self.task is not None:
+            result['task'] = self.task
         return result
 
     def from_map(self, m: dict = None):
@@ -20909,6 +21291,8 @@ class UpdateLogtailPipelineConfigRequest(TeaModel):
             self.log_sample = m.get('logSample')
         if m.get('processors') is not None:
             self.processors = m.get('processors')
+        if m.get('task') is not None:
+            self.task = m.get('task')
         return self
 
 
