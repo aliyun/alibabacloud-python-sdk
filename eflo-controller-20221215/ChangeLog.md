@@ -1,3 +1,6 @@
+2025-09-10 Version: 2.7.1
+- Generated python 2022-12-15 for eflo-controller.
+
 2025-09-08 Version: 2.7.0
 - Support API DeleteNode.
 - Update API ListClusterNodes: add request parameters OperatingStates.
