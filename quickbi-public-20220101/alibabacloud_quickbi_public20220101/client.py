@@ -265,6 +265,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_data_level_permission_white_list_with_options_async(request, runtime)
 
+    def add_data_source_with_options(
+        self,
+        request: quickbi_public_20220101_models.AddDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.AddDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: AddDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_model):
+            query['AddModel'] = request.add_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.AddDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_data_source_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.AddDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.AddDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: AddDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.add_model):
+            query['AddModel'] = request.add_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.AddDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_data_source(
+        self,
+        request: quickbi_public_20220101_models.AddDataSourceRequest,
+    ) -> quickbi_public_20220101_models.AddDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: AddDataSourceRequest
+        @return: AddDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_data_source_with_options(request, runtime)
+
+    async def add_data_source_async(
+        self,
+        request: quickbi_public_20220101_models.AddDataSourceRequest,
+    ) -> quickbi_public_20220101_models.AddDataSourceResponse:
+        """
+        @summary 创建数据源
+        
+        @param request: AddDataSourceRequest
+        @return: AddDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_data_source_with_options_async(request, runtime)
+
     def add_share_report_with_options(
         self,
         request: quickbi_public_20220101_models.AddShareReportRequest,
@@ -1757,6 +1853,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_visibility_model_with_options_async(request, runtime)
 
+    def check_dataset_existed_with_options(
+        self,
+        request: quickbi_public_20220101_models.CheckDatasetExistedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CheckDatasetExistedResponse:
+        """
+        @summary 检查给定的cubeId是否存在
+        
+        @param request: CheckDatasetExistedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDatasetExistedResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDatasetExisted',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CheckDatasetExistedResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_dataset_existed_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CheckDatasetExistedRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CheckDatasetExistedResponse:
+        """
+        @summary 检查给定的cubeId是否存在
+        
+        @param request: CheckDatasetExistedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckDatasetExistedResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckDatasetExisted',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CheckDatasetExistedResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_dataset_existed(
+        self,
+        request: quickbi_public_20220101_models.CheckDatasetExistedRequest,
+    ) -> quickbi_public_20220101_models.CheckDatasetExistedResponse:
+        """
+        @summary 检查给定的cubeId是否存在
+        
+        @param request: CheckDatasetExistedRequest
+        @return: CheckDatasetExistedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_dataset_existed_with_options(request, runtime)
+
+    async def check_dataset_existed_async(
+        self,
+        request: quickbi_public_20220101_models.CheckDatasetExistedRequest,
+    ) -> quickbi_public_20220101_models.CheckDatasetExistedResponse:
+        """
+        @summary 检查给定的cubeId是否存在
+        
+        @param request: CheckDatasetExistedRequest
+        @return: CheckDatasetExistedResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_dataset_existed_with_options_async(request, runtime)
+
+    def check_organization_member_with_options(
+        self,
+        request: quickbi_public_20220101_models.CheckOrganizationMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CheckOrganizationMemberResponse:
+        """
+        @summary 判断用户是否属于组织
+        
+        @param request: CheckOrganizationMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckOrganizationMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckOrganizationMember',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CheckOrganizationMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_organization_member_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CheckOrganizationMemberRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CheckOrganizationMemberResponse:
+        """
+        @summary 判断用户是否属于组织
+        
+        @param request: CheckOrganizationMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckOrganizationMemberResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckOrganizationMember',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CheckOrganizationMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_organization_member(
+        self,
+        request: quickbi_public_20220101_models.CheckOrganizationMemberRequest,
+    ) -> quickbi_public_20220101_models.CheckOrganizationMemberResponse:
+        """
+        @summary 判断用户是否属于组织
+        
+        @param request: CheckOrganizationMemberRequest
+        @return: CheckOrganizationMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_organization_member_with_options(request, runtime)
+
+    async def check_organization_member_async(
+        self,
+        request: quickbi_public_20220101_models.CheckOrganizationMemberRequest,
+    ) -> quickbi_public_20220101_models.CheckOrganizationMemberResponse:
+        """
+        @summary 判断用户是否属于组织
+        
+        @param request: CheckOrganizationMemberRequest
+        @return: CheckOrganizationMemberResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_organization_member_with_options_async(request, runtime)
+
     def check_readable_with_options(
         self,
         request: quickbi_public_20220101_models.CheckReadableRequest,
@@ -1856,6 +2144,234 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.check_readable_with_options_async(request, runtime)
+
+    def create_cube_by_sql_with_options(
+        self,
+        request: quickbi_public_20220101_models.CreateCubeBySqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateCubeBySqlResponse:
+        """
+        @summary 根据自定义sql创建数据集
+        
+        @param request: CreateCubeBySqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCubeBySqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caption):
+            query['Caption'] = request.caption
+        if not UtilClient.is_unset(request.custom_sql):
+            query['CustomSql'] = request.custom_sql
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCubeBySql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateCubeBySqlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cube_by_sql_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CreateCubeBySqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateCubeBySqlResponse:
+        """
+        @summary 根据自定义sql创建数据集
+        
+        @param request: CreateCubeBySqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCubeBySqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caption):
+            query['Caption'] = request.caption
+        if not UtilClient.is_unset(request.custom_sql):
+            query['CustomSql'] = request.custom_sql
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCubeBySql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateCubeBySqlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cube_by_sql(
+        self,
+        request: quickbi_public_20220101_models.CreateCubeBySqlRequest,
+    ) -> quickbi_public_20220101_models.CreateCubeBySqlResponse:
+        """
+        @summary 根据自定义sql创建数据集
+        
+        @param request: CreateCubeBySqlRequest
+        @return: CreateCubeBySqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cube_by_sql_with_options(request, runtime)
+
+    async def create_cube_by_sql_async(
+        self,
+        request: quickbi_public_20220101_models.CreateCubeBySqlRequest,
+    ) -> quickbi_public_20220101_models.CreateCubeBySqlResponse:
+        """
+        @summary 根据自定义sql创建数据集
+        
+        @param request: CreateCubeBySqlRequest
+        @return: CreateCubeBySqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cube_by_sql_with_options_async(request, runtime)
+
+    def create_dataset_with_options(
+        self,
+        request: quickbi_public_20220101_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateDatasetResponse:
+        """
+        @summary 根据物理表名称创建数据集
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_directory_id):
+            query['TargetDirectoryId'] = request.target_directory_id
+        if not UtilClient.is_unset(request.user_define_cube_name):
+            query['UserDefineCubeName'] = request.user_define_cube_name
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CreateDatasetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateDatasetResponse:
+        """
+        @summary 根据物理表名称创建数据集
+        
+        @param request: CreateDatasetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatasetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        if not UtilClient.is_unset(request.target_directory_id):
+            query['TargetDirectoryId'] = request.target_directory_id
+        if not UtilClient.is_unset(request.user_define_cube_name):
+            query['UserDefineCubeName'] = request.user_define_cube_name
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDataset',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        request: quickbi_public_20220101_models.CreateDatasetRequest,
+    ) -> quickbi_public_20220101_models.CreateDatasetResponse:
+        """
+        @summary 根据物理表名称创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dataset_with_options(request, runtime)
+
+    async def create_dataset_async(
+        self,
+        request: quickbi_public_20220101_models.CreateDatasetRequest,
+    ) -> quickbi_public_20220101_models.CreateDatasetResponse:
+        """
+        @summary 根据物理表名称创建数据集
+        
+        @param request: CreateDatasetRequest
+        @return: CreateDatasetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dataset_with_options_async(request, runtime)
 
     def create_ticket_with_options(
         self,
@@ -5570,6 +6086,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_workspace_roles_with_options_async(request, runtime)
+
+    def list_workspace_user_roles_by_user_id_with_options(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse:
+        """
+        @summary 查询用户所有空间角色列表
+        
+        @param request: ListWorkspaceUserRolesByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceUserRolesByUserIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceUserRolesByUserId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_workspace_user_roles_by_user_id_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse:
+        """
+        @summary 查询用户所有空间角色列表
+        
+        @param request: ListWorkspaceUserRolesByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceUserRolesByUserIdResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListWorkspaceUserRolesByUserId',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_workspace_user_roles_by_user_id(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse:
+        """
+        @summary 查询用户所有空间角色列表
+        
+        @param request: ListWorkspaceUserRolesByUserIdRequest
+        @return: ListWorkspaceUserRolesByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_workspace_user_roles_by_user_id_with_options(request, runtime)
+
+    async def list_workspace_user_roles_by_user_id_async(
+        self,
+        request: quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdRequest,
+    ) -> quickbi_public_20220101_models.ListWorkspaceUserRolesByUserIdResponse:
+        """
+        @summary 查询用户所有空间角色列表
+        
+        @param request: ListWorkspaceUserRolesByUserIdRequest
+        @return: ListWorkspaceUserRolesByUserIdResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_workspace_user_roles_by_user_id_with_options_async(request, runtime)
 
     def manual_run_mail_task_with_options(
         self,
@@ -11159,6 +11771,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.smartq_query_ability_with_options_async(request, runtime)
 
+    def update_cube_by_sql_with_options(
+        self,
+        request: quickbi_public_20220101_models.UpdateCubeBySqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.UpdateCubeBySqlResponse:
+        """
+        @summary 更新自定义sql数据集
+        
+        @param request: UpdateCubeBySqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCubeBySqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.custom_sql):
+            query['CustomSql'] = request.custom_sql
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCubeBySql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.UpdateCubeBySqlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cube_by_sql_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.UpdateCubeBySqlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.UpdateCubeBySqlResponse:
+        """
+        @summary 更新自定义sql数据集
+        
+        @param request: UpdateCubeBySqlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCubeBySqlResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cube_id):
+            query['CubeId'] = request.cube_id
+        if not UtilClient.is_unset(request.custom_sql):
+            query['CustomSql'] = request.custom_sql
+        if not UtilClient.is_unset(request.ds_id):
+            query['DsId'] = request.ds_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCubeBySql',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.UpdateCubeBySqlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cube_by_sql(
+        self,
+        request: quickbi_public_20220101_models.UpdateCubeBySqlRequest,
+    ) -> quickbi_public_20220101_models.UpdateCubeBySqlResponse:
+        """
+        @summary 更新自定义sql数据集
+        
+        @param request: UpdateCubeBySqlRequest
+        @return: UpdateCubeBySqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cube_by_sql_with_options(request, runtime)
+
+    async def update_cube_by_sql_async(
+        self,
+        request: quickbi_public_20220101_models.UpdateCubeBySqlRequest,
+    ) -> quickbi_public_20220101_models.UpdateCubeBySqlResponse:
+        """
+        @summary 更新自定义sql数据集
+        
+        @param request: UpdateCubeBySqlRequest
+        @return: UpdateCubeBySqlResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cube_by_sql_with_options_async(request, runtime)
+
     def update_data_level_permission_status_with_options(
         self,
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
@@ -11286,6 +12010,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_data_level_permission_status_with_options_async(request, runtime)
+
+    def update_data_source_with_options(
+        self,
+        request: quickbi_public_20220101_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
+        """
+        @summary 修改数据源配置
+        
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.update_model):
+            query['UpdateModel'] = request.update_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.UpdateDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_source_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.UpdateDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
+        """
+        @summary 修改数据源配置
+        
+        @param request: UpdateDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.update_model):
+            query['UpdateModel'] = request.update_model
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDataSource',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.UpdateDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_source(
+        self,
+        request: quickbi_public_20220101_models.UpdateDataSourceRequest,
+    ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
+        """
+        @summary 修改数据源配置
+        
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_data_source_with_options(request, runtime)
+
+    async def update_data_source_async(
+        self,
+        request: quickbi_public_20220101_models.UpdateDataSourceRequest,
+    ) -> quickbi_public_20220101_models.UpdateDataSourceResponse:
+        """
+        @summary 修改数据源配置
+        
+        @param request: UpdateDataSourceRequest
+        @return: UpdateDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_data_source_with_options_async(request, runtime)
 
     def update_embedded_status_with_options(
         self,

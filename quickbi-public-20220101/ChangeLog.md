@@ -1,3 +1,14 @@
+2025-09-11 Version: 1.13.0
+- Support API AddDataSource.
+- Support API CheckDatasetExisted.
+- Support API CheckOrganizationMember.
+- Support API CreateCubeBySql.
+- Support API CreateDataset.
+- Support API ListWorkspaceUserRolesByUserId.
+- Support API UpdateCubeBySql.
+- Support API UpdateDataSource.
+
+
 2025-08-11 Version: 1.12.0
 - Support API QueryDashboardNl2sql.
 - Support API QueryLastAccelerationEngineJob.
