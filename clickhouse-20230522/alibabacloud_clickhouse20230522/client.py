@@ -471,6 +471,12 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.node_scale_max):
+            query['NodeScaleMax'] = request.node_scale_max
+        if not UtilClient.is_unset(request.node_scale_min):
+            query['NodeScaleMin'] = request.node_scale_min
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -481,6 +487,10 @@ class Client(OpenApiClient):
             query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.source_dbinstance_id):
             query['SourceDBInstanceId'] = request.source_dbinstance_id
+        if not UtilClient.is_unset(request.storage_quota):
+            query['StorageQuota'] = request.storage_quota
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vswitch_id):
@@ -538,6 +548,12 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.multi_zone_shrink):
             query['MultiZone'] = request.multi_zone_shrink
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.node_scale_max):
+            query['NodeScaleMax'] = request.node_scale_max
+        if not UtilClient.is_unset(request.node_scale_min):
+            query['NodeScaleMin'] = request.node_scale_min
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -548,6 +564,10 @@ class Client(OpenApiClient):
             query['ScaleMin'] = request.scale_min
         if not UtilClient.is_unset(request.source_dbinstance_id):
             query['SourceDBInstanceId'] = request.source_dbinstance_id
+        if not UtilClient.is_unset(request.storage_quota):
+            query['StorageQuota'] = request.storage_quota
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.vswitch_id):
@@ -3307,12 +3327,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.node_scale_max):
+            query['NodeScaleMax'] = request.node_scale_max
+        if not UtilClient.is_unset(request.node_scale_min):
+            query['NodeScaleMin'] = request.node_scale_min
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scale_max):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):
             query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.storage_quota):
+            query['StorageQuota'] = request.storage_quota
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3348,12 +3378,22 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.node_count):
+            query['NodeCount'] = request.node_count
+        if not UtilClient.is_unset(request.node_scale_max):
+            query['NodeScaleMax'] = request.node_scale_max
+        if not UtilClient.is_unset(request.node_scale_min):
+            query['NodeScaleMin'] = request.node_scale_min
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.scale_max):
             query['ScaleMax'] = request.scale_max
         if not UtilClient.is_unset(request.scale_min):
             query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.storage_quota):
+            query['StorageQuota'] = request.storage_quota
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

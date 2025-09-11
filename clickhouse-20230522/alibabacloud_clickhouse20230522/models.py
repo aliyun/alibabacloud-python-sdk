@@ -715,11 +715,16 @@ class CreateDBInstanceRequest(TeaModel):
         engine: str = None,
         engine_version: str = None,
         multi_zone: List[CreateDBInstanceRequestMultiZone] = None,
+        node_count: int = None,
+        node_scale_max: int = None,
+        node_scale_min: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
+        storage_quota: str = None,
+        storage_type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
@@ -738,6 +743,9 @@ class CreateDBInstanceRequest(TeaModel):
         self.engine_version = engine_version
         # The configurations of multi-zone deployment.
         self.multi_zone = multi_zone
+        self.node_count = node_count
+        self.node_scale_max = node_scale_max
+        self.node_scale_min = node_scale_min
         # The region ID
         # 
         # This parameter is required.
@@ -749,6 +757,8 @@ class CreateDBInstanceRequest(TeaModel):
         self.scale_min = scale_min
         # The cluster ID.
         self.source_dbinstance_id = source_dbinstance_id
+        self.storage_quota = storage_quota
+        self.storage_type = storage_type
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
@@ -784,6 +794,12 @@ class CreateDBInstanceRequest(TeaModel):
         if self.multi_zone is not None:
             for k in self.multi_zone:
                 result['MultiZone'].append(k.to_map() if k else None)
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_scale_max is not None:
+            result['NodeScaleMax'] = self.node_scale_max
+        if self.node_scale_min is not None:
+            result['NodeScaleMin'] = self.node_scale_min
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -794,6 +810,10 @@ class CreateDBInstanceRequest(TeaModel):
             result['ScaleMin'] = self.scale_min
         if self.source_dbinstance_id is not None:
             result['SourceDBInstanceId'] = self.source_dbinstance_id
+        if self.storage_quota is not None:
+            result['StorageQuota'] = self.storage_quota
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -821,6 +841,12 @@ class CreateDBInstanceRequest(TeaModel):
             for k in m.get('MultiZone'):
                 temp_model = CreateDBInstanceRequestMultiZone()
                 self.multi_zone.append(temp_model.from_map(k))
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeScaleMax') is not None:
+            self.node_scale_max = m.get('NodeScaleMax')
+        if m.get('NodeScaleMin') is not None:
+            self.node_scale_min = m.get('NodeScaleMin')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -831,6 +857,10 @@ class CreateDBInstanceRequest(TeaModel):
             self.scale_min = m.get('ScaleMin')
         if m.get('SourceDBInstanceId') is not None:
             self.source_dbinstance_id = m.get('SourceDBInstanceId')
+        if m.get('StorageQuota') is not None:
+            self.storage_quota = m.get('StorageQuota')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -850,11 +880,16 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         engine: str = None,
         engine_version: str = None,
         multi_zone_shrink: str = None,
+        node_count: int = None,
+        node_scale_max: int = None,
+        node_scale_min: int = None,
         region_id: str = None,
         resource_group_id: str = None,
         scale_max: str = None,
         scale_min: str = None,
         source_dbinstance_id: str = None,
+        storage_quota: str = None,
+        storage_type: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
         zone_id: str = None,
@@ -873,6 +908,9 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.engine_version = engine_version
         # The configurations of multi-zone deployment.
         self.multi_zone_shrink = multi_zone_shrink
+        self.node_count = node_count
+        self.node_scale_max = node_scale_max
+        self.node_scale_min = node_scale_min
         # The region ID
         # 
         # This parameter is required.
@@ -884,6 +922,8 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.scale_min = scale_min
         # The cluster ID.
         self.source_dbinstance_id = source_dbinstance_id
+        self.storage_quota = storage_quota
+        self.storage_type = storage_type
         # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
         # The vSwitch ID.
@@ -914,6 +954,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['EngineVersion'] = self.engine_version
         if self.multi_zone_shrink is not None:
             result['MultiZone'] = self.multi_zone_shrink
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_scale_max is not None:
+            result['NodeScaleMax'] = self.node_scale_max
+        if self.node_scale_min is not None:
+            result['NodeScaleMin'] = self.node_scale_min
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
@@ -924,6 +970,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             result['ScaleMin'] = self.scale_min
         if self.source_dbinstance_id is not None:
             result['SourceDBInstanceId'] = self.source_dbinstance_id
+        if self.storage_quota is not None:
+            result['StorageQuota'] = self.storage_quota
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vswitch_id is not None:
@@ -948,6 +998,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.engine_version = m.get('EngineVersion')
         if m.get('MultiZone') is not None:
             self.multi_zone_shrink = m.get('MultiZone')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeScaleMax') is not None:
+            self.node_scale_max = m.get('NodeScaleMax')
+        if m.get('NodeScaleMin') is not None:
+            self.node_scale_min = m.get('NodeScaleMin')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
@@ -958,6 +1014,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
             self.scale_min = m.get('ScaleMin')
         if m.get('SourceDBInstanceId') is not None:
             self.source_dbinstance_id = m.get('SourceDBInstanceId')
+        if m.get('StorageQuota') is not None:
+            self.storage_quota = m.get('StorageQuota')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VswitchId') is not None:
@@ -2906,6 +2966,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         self,
         ali_uid: int = None,
         bid: str = None,
+        category: str = None,
         charge_type: str = None,
         create_time: str = None,
         dbinstance_id: str = None,
@@ -2923,6 +2984,9 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         maintain_end_time: str = None,
         maintain_start_time: str = None,
         multi_zones: List[DescribeDBInstanceAttributeResponseBodyDataMultiZones] = None,
+        node_count: str = None,
+        node_scale_max: str = None,
+        node_scale_min: str = None,
         nodes: List[DescribeDBInstanceAttributeResponseBodyDataNodes] = None,
         object_store_size: str = None,
         region_id: str = None,
@@ -2930,6 +2994,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         scale_max: int = None,
         scale_min: int = None,
         status: str = None,
+        storage_quota: str = None,
         storage_size: int = None,
         storage_type: str = None,
         tags: List[DescribeDBInstanceAttributeResponseBodyDataTags] = None,
@@ -2941,6 +3006,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         self.ali_uid = ali_uid
         # The channel ID.
         self.bid = bid
+        self.category = category
         # The billing method. Enterprise Edition clusters use the pay-as-you-go billing method.
         self.charge_type = charge_type
         # The time when the cluster was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
@@ -2982,6 +3048,9 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         self.maintain_start_time = maintain_start_time
         # The information about the zones.
         self.multi_zones = multi_zones
+        self.node_count = node_count
+        self.node_scale_max = node_scale_max
+        self.node_scale_min = node_scale_min
         # The nodes.
         self.nodes = nodes
         # The size of the object storage space.
@@ -2996,6 +3065,7 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         self.scale_min = scale_min
         # The cluster status.
         self.status = status
+        self.storage_quota = storage_quota
         # The size of the storage space. Unit: GB.
         self.storage_size = storage_size
         # The storage type.
@@ -3033,6 +3103,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             result['AliUid'] = self.ali_uid
         if self.bid is not None:
             result['Bid'] = self.bid
+        if self.category is not None:
+            result['Category'] = self.category
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.create_time is not None:
@@ -3069,6 +3141,12 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
         if self.multi_zones is not None:
             for k in self.multi_zones:
                 result['MultiZones'].append(k.to_map() if k else None)
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_scale_max is not None:
+            result['NodeScaleMax'] = self.node_scale_max
+        if self.node_scale_min is not None:
+            result['NodeScaleMin'] = self.node_scale_min
         result['Nodes'] = []
         if self.nodes is not None:
             for k in self.nodes:
@@ -3085,6 +3163,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             result['ScaleMin'] = self.scale_min
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_quota is not None:
+            result['StorageQuota'] = self.storage_quota
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
         if self.storage_type is not None:
@@ -3107,6 +3187,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             self.ali_uid = m.get('AliUid')
         if m.get('Bid') is not None:
             self.bid = m.get('Bid')
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('CreateTime') is not None:
@@ -3144,6 +3226,12 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             for k in m.get('MultiZones'):
                 temp_model = DescribeDBInstanceAttributeResponseBodyDataMultiZones()
                 self.multi_zones.append(temp_model.from_map(k))
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeScaleMax') is not None:
+            self.node_scale_max = m.get('NodeScaleMax')
+        if m.get('NodeScaleMin') is not None:
+            self.node_scale_min = m.get('NodeScaleMin')
         self.nodes = []
         if m.get('Nodes') is not None:
             for k in m.get('Nodes'):
@@ -3161,6 +3249,8 @@ class DescribeDBInstanceAttributeResponseBodyData(TeaModel):
             self.scale_min = m.get('ScaleMin')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageQuota') is not None:
+            self.storage_quota = m.get('StorageQuota')
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
         if m.get('StorageType') is not None:
@@ -4100,6 +4190,7 @@ class DescribeDBInstancesResponseBodyDataDBInstances(TeaModel):
         scale_max: int = None,
         scale_min: int = None,
         status: str = None,
+        storage_type: str = None,
         tags: List[DescribeDBInstancesResponseBodyDataDBInstancesTags] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -4146,6 +4237,7 @@ class DescribeDBInstancesResponseBodyDataDBInstances(TeaModel):
         self.scale_min = scale_min
         # The cluster status.
         self.status = status
+        self.storage_type = storage_type
         # The tags.
         self.tags = tags
         # The vSwitch ID.
@@ -4205,6 +4297,8 @@ class DescribeDBInstancesResponseBodyDataDBInstances(TeaModel):
             result['ScaleMin'] = self.scale_min
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -4257,6 +4351,8 @@ class DescribeDBInstancesResponseBodyDataDBInstances(TeaModel):
             self.scale_min = m.get('ScaleMin')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -6652,20 +6748,30 @@ class ModifyDBInstanceClassRequest(TeaModel):
     def __init__(
         self,
         dbinstance_id: str = None,
+        node_count: int = None,
+        node_scale_max: int = None,
+        node_scale_min: int = None,
         region_id: str = None,
         scale_max: int = None,
         scale_min: int = None,
+        storage_quota: str = None,
+        storage_type: str = None,
     ):
         # The cluster ID.
         # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        self.node_count = node_count
+        self.node_scale_max = node_scale_max
+        self.node_scale_min = node_scale_min
         # The region ID.
         self.region_id = region_id
         # The maximum capacity for elastic scaling.
         self.scale_max = scale_max
         # The minimum capacity for elastic scaling.
         self.scale_min = scale_min
+        self.storage_quota = storage_quota
+        self.storage_type = storage_type
 
     def validate(self):
         pass
@@ -6678,24 +6784,44 @@ class ModifyDBInstanceClassRequest(TeaModel):
         result = dict()
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_scale_max is not None:
+            result['NodeScaleMax'] = self.node_scale_max
+        if self.node_scale_min is not None:
+            result['NodeScaleMin'] = self.node_scale_min
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.scale_max is not None:
             result['ScaleMax'] = self.scale_max
         if self.scale_min is not None:
             result['ScaleMin'] = self.scale_min
+        if self.storage_quota is not None:
+            result['StorageQuota'] = self.storage_quota
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeScaleMax') is not None:
+            self.node_scale_max = m.get('NodeScaleMax')
+        if m.get('NodeScaleMin') is not None:
+            self.node_scale_min = m.get('NodeScaleMin')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ScaleMax') is not None:
             self.scale_max = m.get('ScaleMax')
         if m.get('ScaleMin') is not None:
             self.scale_min = m.get('ScaleMin')
+        if m.get('StorageQuota') is not None:
+            self.storage_quota = m.get('StorageQuota')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         return self
 
 

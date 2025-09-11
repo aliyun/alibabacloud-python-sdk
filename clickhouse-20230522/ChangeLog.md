@@ -1,3 +1,22 @@
+2025-09-11 Version: 1.1.1
+- Update API CreateDBInstance: add request parameters NodeCount.
+- Update API CreateDBInstance: add request parameters NodeScaleMax.
+- Update API CreateDBInstance: add request parameters NodeScaleMin.
+- Update API CreateDBInstance: add request parameters StorageQuota.
+- Update API CreateDBInstance: add request parameters StorageType.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.Category.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.NodeCount.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.NodeScaleMax.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.NodeScaleMin.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.Data.StorageQuota.
+- Update API DescribeDBInstances: add response parameters Body.Data.DBInstances.$.StorageType.
+- Update API ModifyDBInstanceClass: add request parameters NodeCount.
+- Update API ModifyDBInstanceClass: add request parameters NodeScaleMax.
+- Update API ModifyDBInstanceClass: add request parameters NodeScaleMin.
+- Update API ModifyDBInstanceClass: add request parameters StorageQuota.
+- Update API ModifyDBInstanceClass: add request parameters StorageType.
+
+
 2025-06-26 Version: 1.1.0
 - Support API CreateBackupPolicy.
 - Support API DeleteBackupPolicy.
