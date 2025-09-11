@@ -1245,6 +1245,238 @@ class DeleteLogStoreLogsTask(TeaModel):
         return self
 
 
+class ESIngestionConfigurationSource(TeaModel):
+    def __init__(
+        self,
+        bootstrap_servers: str = None,
+        index: str = None,
+        min_frag_range_sec: int = None,
+        connector_mode: str = None,
+        end_time: int = None,
+        max_data_delay_sec: int = None,
+        password: str = None,
+        query: str = None,
+        start_time: int = None,
+        time_field_name: str = None,
+        time_format: str = None,
+        time_zone: str = None,
+        username: str = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.bootstrap_servers = bootstrap_servers
+        # This parameter is required.
+        self.index = index
+        # This parameter is required.
+        self.min_frag_range_sec = min_frag_range_sec
+        # This parameter is required.
+        self.connector_mode = connector_mode
+        self.end_time = end_time
+        # This parameter is required.
+        self.max_data_delay_sec = max_data_delay_sec
+        self.password = password
+        # This parameter is required.
+        self.query = query
+        self.start_time = start_time
+        self.time_field_name = time_field_name
+        self.time_format = time_format
+        self.time_zone = time_zone
+        self.username = username
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstrap_servers is not None:
+            result['BootstrapServers'] = self.bootstrap_servers
+        if self.index is not None:
+            result['Index'] = self.index
+        if self.min_frag_range_sec is not None:
+            result['MinFragRangeSec'] = self.min_frag_range_sec
+        if self.connector_mode is not None:
+            result['connectorMode'] = self.connector_mode
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_data_delay_sec is not None:
+            result['maxDataDelaySec'] = self.max_data_delay_sec
+        if self.password is not None:
+            result['password'] = self.password
+        if self.query is not None:
+            result['query'] = self.query
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        if self.time_field_name is not None:
+            result['timeFieldName'] = self.time_field_name
+        if self.time_format is not None:
+            result['timeFormat'] = self.time_format
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        if self.username is not None:
+            result['username'] = self.username
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BootstrapServers') is not None:
+            self.bootstrap_servers = m.get('BootstrapServers')
+        if m.get('Index') is not None:
+            self.index = m.get('Index')
+        if m.get('MinFragRangeSec') is not None:
+            self.min_frag_range_sec = m.get('MinFragRangeSec')
+        if m.get('connectorMode') is not None:
+            self.connector_mode = m.get('connectorMode')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxDataDelaySec') is not None:
+            self.max_data_delay_sec = m.get('maxDataDelaySec')
+        if m.get('password') is not None:
+            self.password = m.get('password')
+        if m.get('query') is not None:
+            self.query = m.get('query')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        if m.get('timeFieldName') is not None:
+            self.time_field_name = m.get('timeFieldName')
+        if m.get('timeFormat') is not None:
+            self.time_format = m.get('timeFormat')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class ESIngestionConfiguration(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        source: ESIngestionConfigurationSource = None,
+    ):
+        # This parameter is required.
+        self.logstore = logstore
+        # This parameter is required.
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('source') is not None:
+            temp_model = ESIngestionConfigurationSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class ESIngestion(TeaModel):
+    def __init__(
+        self,
+        configuration: ESIngestionConfiguration = None,
+        create_time: int = None,
+        description: str = None,
+        display_name: str = None,
+        last_modified_time: int = None,
+        name: str = None,
+        schedule: Schedule = None,
+        schedule_id: str = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.create_time = create_time
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        self.last_modified_time = last_modified_time
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.schedule = schedule
+        self.schedule_id = schedule_id
+        self.status = status
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = ESIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
 class ETLConfigurationSink(TeaModel):
     def __init__(
         self,
@@ -1851,6 +2083,250 @@ class IngestProcessor(TeaModel):
             self.processor_name = m.get('processorName')
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
+        return self
+
+
+class KafkaIngestionConfigurationSource(TeaModel):
+    def __init__(
+        self,
+        bootstrap_servers: str = None,
+        communication: str = None,
+        consumer_group: str = None,
+        default_time_source: str = None,
+        enable_sls_context: bool = None,
+        encoding: str = None,
+        from_position: str = None,
+        name_resolutions: str = None,
+        parse_array: bool = None,
+        time_field: str = None,
+        time_format: str = None,
+        time_pattern: str = None,
+        time_zone: str = None,
+        topics: str = None,
+        value_type: str = None,
+        vpc_id: str = None,
+    ):
+        # This parameter is required.
+        self.bootstrap_servers = bootstrap_servers
+        self.communication = communication
+        self.consumer_group = consumer_group
+        self.default_time_source = default_time_source
+        self.enable_sls_context = enable_sls_context
+        # This parameter is required.
+        self.encoding = encoding
+        # This parameter is required.
+        self.from_position = from_position
+        self.name_resolutions = name_resolutions
+        # This parameter is required.
+        self.parse_array = parse_array
+        self.time_field = time_field
+        self.time_format = time_format
+        self.time_pattern = time_pattern
+        self.time_zone = time_zone
+        # This parameter is required.
+        self.topics = topics
+        # This parameter is required.
+        self.value_type = value_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstrap_servers is not None:
+            result['bootstrapServers'] = self.bootstrap_servers
+        if self.communication is not None:
+            result['communication'] = self.communication
+        if self.consumer_group is not None:
+            result['consumerGroup'] = self.consumer_group
+        if self.default_time_source is not None:
+            result['defaultTimeSource'] = self.default_time_source
+        if self.enable_sls_context is not None:
+            result['enableSlsContext'] = self.enable_sls_context
+        if self.encoding is not None:
+            result['encoding'] = self.encoding
+        if self.from_position is not None:
+            result['fromPosition'] = self.from_position
+        if self.name_resolutions is not None:
+            result['nameResolutions'] = self.name_resolutions
+        if self.parse_array is not None:
+            result['parseArray'] = self.parse_array
+        if self.time_field is not None:
+            result['timeField'] = self.time_field
+        if self.time_format is not None:
+            result['timeFormat'] = self.time_format
+        if self.time_pattern is not None:
+            result['timePattern'] = self.time_pattern
+        if self.time_zone is not None:
+            result['timeZone'] = self.time_zone
+        if self.topics is not None:
+            result['topics'] = self.topics
+        if self.value_type is not None:
+            result['valueType'] = self.value_type
+        if self.vpc_id is not None:
+            result['vpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bootstrapServers') is not None:
+            self.bootstrap_servers = m.get('bootstrapServers')
+        if m.get('communication') is not None:
+            self.communication = m.get('communication')
+        if m.get('consumerGroup') is not None:
+            self.consumer_group = m.get('consumerGroup')
+        if m.get('defaultTimeSource') is not None:
+            self.default_time_source = m.get('defaultTimeSource')
+        if m.get('enableSlsContext') is not None:
+            self.enable_sls_context = m.get('enableSlsContext')
+        if m.get('encoding') is not None:
+            self.encoding = m.get('encoding')
+        if m.get('fromPosition') is not None:
+            self.from_position = m.get('fromPosition')
+        if m.get('nameResolutions') is not None:
+            self.name_resolutions = m.get('nameResolutions')
+        if m.get('parseArray') is not None:
+            self.parse_array = m.get('parseArray')
+        if m.get('timeField') is not None:
+            self.time_field = m.get('timeField')
+        if m.get('timeFormat') is not None:
+            self.time_format = m.get('timeFormat')
+        if m.get('timePattern') is not None:
+            self.time_pattern = m.get('timePattern')
+        if m.get('timeZone') is not None:
+            self.time_zone = m.get('timeZone')
+        if m.get('topics') is not None:
+            self.topics = m.get('topics')
+        if m.get('valueType') is not None:
+            self.value_type = m.get('valueType')
+        if m.get('vpcId') is not None:
+            self.vpc_id = m.get('vpcId')
+        return self
+
+
+class KafkaIngestionConfiguration(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        source: KafkaIngestionConfigurationSource = None,
+    ):
+        # This parameter is required.
+        self.logstore = logstore
+        # This parameter is required.
+        self.source = source
+
+    def validate(self):
+        if self.source:
+            self.source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.source is not None:
+            result['source'] = self.source.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('source') is not None:
+            temp_model = KafkaIngestionConfigurationSource()
+            self.source = temp_model.from_map(m['source'])
+        return self
+
+
+class KafkaIngestion(TeaModel):
+    def __init__(
+        self,
+        configuration: KafkaIngestionConfiguration = None,
+        create_time: int = None,
+        description: str = None,
+        display_name: str = None,
+        last_modified_time: int = None,
+        name: str = None,
+        schedule: Schedule = None,
+        schedule_id: str = None,
+        status: str = None,
+    ):
+        # This parameter is required.
+        self.configuration = configuration
+        self.create_time = create_time
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        self.last_modified_time = last_modified_time
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.schedule = schedule
+        self.schedule_id = schedule_id
+        self.status = status
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.create_time is not None:
+            result['createTime'] = self.create_time
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        if self.schedule_id is not None:
+            result['scheduleId'] = self.schedule_id
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = KafkaIngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('createTime') is not None:
+            self.create_time = m.get('createTime')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        if m.get('scheduleId') is not None:
+            self.schedule_id = m.get('scheduleId')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
@@ -7677,6 +8153,97 @@ class CreateProjectResponse(TeaModel):
         return self
 
 
+class CreateS3IngestionRequest(TeaModel):
+    def __init__(
+        self,
+        configuration: S3IngestionConfiguration = None,
+        description: str = None,
+        display_name: str = None,
+        name: str = None,
+        schedule: Schedule = None,
+    ):
+        self.configuration = configuration
+        self.description = description
+        # This parameter is required.
+        self.display_name = display_name
+        # This parameter is required.
+        self.name = name
+        self.schedule = schedule
+
+    def validate(self):
+        if self.configuration:
+            self.configuration.validate()
+        if self.schedule:
+            self.schedule.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.configuration is not None:
+            result['configuration'] = self.configuration.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+        if self.name is not None:
+            result['name'] = self.name
+        if self.schedule is not None:
+            result['schedule'] = self.schedule.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('configuration') is not None:
+            temp_model = S3IngestionConfiguration()
+            self.configuration = temp_model.from_map(m['configuration'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('schedule') is not None:
+            temp_model = Schedule()
+            self.schedule = temp_model.from_map(m['schedule'])
+        return self
+
+
+class CreateS3IngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class CreateSavedSearchRequest(TeaModel):
     def __init__(
         self,
@@ -9113,6 +9680,39 @@ class DeleteProjectPolicyResponse(TeaModel):
         return self
 
 
+class DeleteS3IngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
 class DeleteSavedSearchResponse(TeaModel):
     def __init__(
         self,
@@ -9249,11 +9849,13 @@ class DescribeRegionsRequest(TeaModel):
 class DescribeRegionsResponseBodyRegions(TeaModel):
     def __init__(
         self,
+        data_redundancy_type: List[str] = None,
         internet_endpoint: str = None,
         intranet_endpoint: str = None,
         local_name: str = None,
         region: str = None,
     ):
+        self.data_redundancy_type = data_redundancy_type
         # The public endpoint of Simple Log Service.
         self.internet_endpoint = internet_endpoint
         # The internal endpoint of Simple Log Service.
@@ -9272,6 +9874,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
             return _map
 
         result = dict()
+        if self.data_redundancy_type is not None:
+            result['dataRedundancyType'] = self.data_redundancy_type
         if self.internet_endpoint is not None:
             result['internetEndpoint'] = self.internet_endpoint
         if self.intranet_endpoint is not None:
@@ -9284,6 +9888,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dataRedundancyType') is not None:
+            self.data_redundancy_type = m.get('dataRedundancyType')
         if m.get('internetEndpoint') is not None:
             self.internet_endpoint = m.get('internetEndpoint')
         if m.get('intranetEndpoint') is not None:
@@ -13192,6 +13798,47 @@ class GetProjectPolicyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             self.body = m.get('body')
+        return self
+
+
+class GetS3IngestionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: S3Ingestion = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = S3Ingestion()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
@@ -17657,6 +18304,133 @@ class ListProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListS3IngestionsRequest(TeaModel):
+    def __init__(
+        self,
+        logstore: str = None,
+        offset: str = None,
+        size: str = None,
+    ):
+        self.logstore = logstore
+        self.offset = offset
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logstore is not None:
+            result['logstore'] = self.logstore
+        if self.offset is not None:
+            result['offset'] = self.offset
+        if self.size is not None:
+            result['size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logstore') is not None:
+            self.logstore = m.get('logstore')
+        if m.get('offset') is not None:
+            self.offset = m.get('offset')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        return self
+
+
+class ListS3IngestionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        results: List[S3Ingestion] = None,
+        total: int = None,
+    ):
+        self.count = count
+        self.results = results
+        self.total = total
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        result['results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['results'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        self.results = []
+        if m.get('results') is not None:
+            for k in m.get('results'):
+                temp_model = S3Ingestion()
+                self.results.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListS3IngestionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListS3IngestionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListS3IngestionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

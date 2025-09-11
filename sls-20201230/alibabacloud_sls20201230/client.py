@@ -3562,6 +3562,136 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_project_with_options_async(request, headers, runtime)
 
+    def create_s3ingestion_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateS3IngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateS3IngestionResponse:
+        """
+        @summary 创建S3文件导入任务
+        
+        @param request: CreateS3IngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateS3IngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateS3IngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_s3ingestion_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateS3IngestionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.CreateS3IngestionResponse:
+        """
+        @summary 创建S3文件导入任务
+        
+        @param request: CreateS3IngestionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateS3IngestionResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not UtilClient.is_unset(request.configuration):
+            body['configuration'] = request.configuration
+        if not UtilClient.is_unset(request.description):
+            body['description'] = request.description
+        if not UtilClient.is_unset(request.display_name):
+            body['displayName'] = request.display_name
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.schedule):
+            body['schedule'] = request.schedule
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.CreateS3IngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_s3ingestion(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateS3IngestionRequest,
+    ) -> sls_20201230_models.CreateS3IngestionResponse:
+        """
+        @summary 创建S3文件导入任务
+        
+        @param request: CreateS3IngestionRequest
+        @return: CreateS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_s3ingestion_with_options(project, request, headers, runtime)
+
+    async def create_s3ingestion_async(
+        self,
+        project: str,
+        request: sls_20201230_models.CreateS3IngestionRequest,
+    ) -> sls_20201230_models.CreateS3IngestionResponse:
+        """
+        @summary 创建S3文件导入任务
+        
+        @param request: CreateS3IngestionRequest
+        @return: CreateS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_s3ingestion_with_options_async(project, request, headers, runtime)
+
     def create_saved_search_with_options(
         self,
         project: str,
@@ -7141,6 +7271,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_policy_with_options_async(project, headers, runtime)
+
+    def delete_s3ingestion_with_options(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteS3IngestionResponse:
+        """
+        @summary 删除s3导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteS3IngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions/{s_3ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteS3IngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_s3ingestion_with_options_async(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.DeleteS3IngestionResponse:
+        """
+        @summary 删除s3导入任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteS3IngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions/{s_3ingestion_name}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.DeleteS3IngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_s3ingestion(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+    ) -> sls_20201230_models.DeleteS3IngestionResponse:
+        """
+        @summary 删除s3导入任务
+        
+        @return: DeleteS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_s3ingestion_with_options(project, s_3ingestion_name, headers, runtime)
+
+    async def delete_s3ingestion_async(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+    ) -> sls_20201230_models.DeleteS3IngestionResponse:
+        """
+        @summary 删除s3导入任务
+        
+        @return: DeleteS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_s3ingestion_with_options_async(project, s_3ingestion_name, headers, runtime)
 
     def delete_saved_search_with_options(
         self,
@@ -12552,6 +12782,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_project_policy_with_options_async(project, headers, runtime)
 
+    def get_s3ingestion_with_options(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetS3IngestionResponse:
+        """
+        @summary 获取s3导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetS3IngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions/{s_3ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetS3IngestionResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_s3ingestion_with_options_async(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetS3IngestionResponse:
+        """
+        @summary 获取s3导入任务信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetS3IngestionResponse
+        """
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetS3Ingestion',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions/{s_3ingestion_name}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetS3IngestionResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_s3ingestion(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+    ) -> sls_20201230_models.GetS3IngestionResponse:
+        """
+        @summary 获取s3导入任务信息
+        
+        @return: GetS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_s3ingestion_with_options(project, s_3ingestion_name, headers, runtime)
+
+    async def get_s3ingestion_async(
+        self,
+        project: str,
+        s_3ingestion_name: str,
+    ) -> sls_20201230_models.GetS3IngestionResponse:
+        """
+        @summary 获取s3导入任务信息
+        
+        @return: GetS3IngestionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_s3ingestion_with_options_async(project, s_3ingestion_name, headers, runtime)
+
     def get_saved_search_with_options(
         self,
         project: str,
@@ -16401,6 +16731,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_with_options_async(request, headers, runtime)
+
+    def list_s3ingestions_with_options(
+        self,
+        project: str,
+        request: sls_20201230_models.ListS3IngestionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListS3IngestionsResponse:
+        """
+        @summary 列出s3导入任务
+        
+        @param request: ListS3IngestionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListS3IngestionsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListS3Ingestions',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListS3IngestionsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_s3ingestions_with_options_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListS3IngestionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.ListS3IngestionsResponse:
+        """
+        @summary 列出s3导入任务
+        
+        @param request: ListS3IngestionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListS3IngestionsResponse
+        """
+        UtilClient.validate_model(request)
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not UtilClient.is_unset(request.logstore):
+            query['logstore'] = request.logstore
+        if not UtilClient.is_unset(request.offset):
+            query['offset'] = request.offset
+        if not UtilClient.is_unset(request.size):
+            query['size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            host_map=host_map,
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListS3Ingestions',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/s3ingestions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.ListS3IngestionsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_s3ingestions(
+        self,
+        project: str,
+        request: sls_20201230_models.ListS3IngestionsRequest,
+    ) -> sls_20201230_models.ListS3IngestionsResponse:
+        """
+        @summary 列出s3导入任务
+        
+        @param request: ListS3IngestionsRequest
+        @return: ListS3IngestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_s3ingestions_with_options(project, request, headers, runtime)
+
+    async def list_s3ingestions_async(
+        self,
+        project: str,
+        request: sls_20201230_models.ListS3IngestionsRequest,
+    ) -> sls_20201230_models.ListS3IngestionsResponse:
+        """
+        @summary 列出s3导入任务
+        
+        @param request: ListS3IngestionsRequest
+        @return: ListS3IngestionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_s3ingestions_with_options_async(project, request, headers, runtime)
 
     def list_saved_search_with_options(
         self,

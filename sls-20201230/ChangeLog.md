@@ -1,3 +1,11 @@
+2025-09-11 Version: 5.9.0
+- Support API CreateS3Ingestion.
+- Support API DeleteS3Ingestion.
+- Support API GetS3Ingestion.
+- Support API ListS3Ingestions.
+- Update API DescribeRegions: add response parameters Body.regions.$.dataRedundancyType.
+
+
 2025-09-10 Version: 5.8.0
 - Support API DeleteConsumeProcessor.
 - Support API GetConsumeProcessor.
