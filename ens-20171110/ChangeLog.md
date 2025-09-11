@@ -1,3 +1,7 @@
+2025-09-11 Version: 9.2.0
+- Support API DescribeNASAvailableResourceInfo.
+
+
 2025-08-21 Version: 9.1.1
 - Update API AttachInstanceSDG: add request parameters DiskAccessProtocol.
 - Update API AttachInstanceSDG: add request parameters DiskType.

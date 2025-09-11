@@ -16797,6 +16797,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_mount_targets_with_options_async(request, runtime)
 
+    def describe_nasavailable_resource_info_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
+        """
+        @summary 输出指定用户ID下可用资源对应的nas信息
+        
+        @param request: DescribeNASAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNASAvailableResourceInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeNASAvailableResourceInfo',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNASAvailableResourceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_nasavailable_resource_info_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
+        """
+        @summary 输出指定用户ID下可用资源对应的nas信息
+        
+        @param request: DescribeNASAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNASAvailableResourceInfoResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeNASAvailableResourceInfo',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeNASAvailableResourceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_nasavailable_resource_info(self) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
+        """
+        @summary 输出指定用户ID下可用资源对应的nas信息
+        
+        @return: DescribeNASAvailableResourceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_nasavailable_resource_info_with_options(runtime)
+
+    async def describe_nasavailable_resource_info_async(self) -> ens_20171110_models.DescribeNASAvailableResourceInfoResponse:
+        """
+        @summary 输出指定用户ID下可用资源对应的nas信息
+        
+        @return: DescribeNASAvailableResourceInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_nasavailable_resource_info_with_options_async(runtime)
+
     def describe_ncinformation_with_options(
         self,
         request: ens_20171110_models.DescribeNCInformationRequest,

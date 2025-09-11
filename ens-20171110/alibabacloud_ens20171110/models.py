@@ -35574,6 +35574,169 @@ class DescribeMountTargetsResponse(TeaModel):
         return self
 
 
+class DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo(TeaModel):
+    def __init__(
+        self,
+        ability: List[str] = None,
+        area: str = None,
+        en_name: str = None,
+        ens_region_id: str = None,
+        ens_region_name: str = None,
+        nas_available_amount: int = None,
+        nas_available_storge_type: str = None,
+        province: str = None,
+    ):
+        self.ability = ability
+        self.area = area
+        self.en_name = en_name
+        self.ens_region_id = ens_region_id
+        self.ens_region_name = ens_region_name
+        self.nas_available_amount = nas_available_amount
+        self.nas_available_storge_type = nas_available_storge_type
+        self.province = province
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ability is not None:
+            result['Ability'] = self.ability
+        if self.area is not None:
+            result['Area'] = self.area
+        if self.en_name is not None:
+            result['EnName'] = self.en_name
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.ens_region_name is not None:
+            result['EnsRegionName'] = self.ens_region_name
+        if self.nas_available_amount is not None:
+            result['NasAvailableAmount'] = self.nas_available_amount
+        if self.nas_available_storge_type is not None:
+            result['NasAvailableStorgeType'] = self.nas_available_storge_type
+        if self.province is not None:
+            result['Province'] = self.province
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ability') is not None:
+            self.ability = m.get('Ability')
+        if m.get('Area') is not None:
+            self.area = m.get('Area')
+        if m.get('EnName') is not None:
+            self.en_name = m.get('EnName')
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('EnsRegionName') is not None:
+            self.ens_region_name = m.get('EnsRegionName')
+        if m.get('NasAvailableAmount') is not None:
+            self.nas_available_amount = m.get('NasAvailableAmount')
+        if m.get('NasAvailableStorgeType') is not None:
+            self.nas_available_storge_type = m.get('NasAvailableStorgeType')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        return self
+
+
+class DescribeNASAvailableResourceInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        nas_available_resource_info: List[DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo] = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.nas_available_resource_info = nas_available_resource_info
+        self.request_id = request_id
+
+    def validate(self):
+        if self.nas_available_resource_info:
+            for k in self.nas_available_resource_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        result['NasAvailableResourceInfo'] = []
+        if self.nas_available_resource_info is not None:
+            for k in self.nas_available_resource_info:
+                result['NasAvailableResourceInfo'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        self.nas_available_resource_info = []
+        if m.get('NasAvailableResourceInfo') is not None:
+            for k in m.get('NasAvailableResourceInfo'):
+                temp_model = DescribeNASAvailableResourceInfoResponseBodyNasAvailableResourceInfo()
+                self.nas_available_resource_info.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeNASAvailableResourceInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeNASAvailableResourceInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeNASAvailableResourceInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeNCInformationRequest(TeaModel):
     def __init__(
         self,
