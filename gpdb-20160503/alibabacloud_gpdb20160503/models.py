@@ -40227,6 +40227,7 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
         self,
         id: str = None,
         metadata: Dict[str, str] = None,
+        metadata_v2: Dict[str, Any] = None,
         score: float = None,
         values: QueryCollectionDataResponseBodyMatchesMatchValues = None,
     ):
@@ -40234,6 +40235,7 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
         self.id = id
         # Metadata.
         self.metadata = metadata
+        self.metadata_v2 = metadata_v2
         # The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
         self.score = score
         # List of vector data.
@@ -40253,6 +40255,8 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
             result['Id'] = self.id
         if self.metadata is not None:
             result['Metadata'] = self.metadata
+        if self.metadata_v2 is not None:
+            result['MetadataV2'] = self.metadata_v2
         if self.score is not None:
             result['Score'] = self.score
         if self.values is not None:
@@ -40265,6 +40269,8 @@ class QueryCollectionDataResponseBodyMatchesMatch(TeaModel):
             self.id = m.get('Id')
         if m.get('Metadata') is not None:
             self.metadata = m.get('Metadata')
+        if m.get('MetadataV2') is not None:
+            self.metadata_v2 = m.get('MetadataV2')
         if m.get('Score') is not None:
             self.score = m.get('Score')
         if m.get('Values') is not None:
