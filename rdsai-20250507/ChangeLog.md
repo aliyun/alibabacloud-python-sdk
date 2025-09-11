@@ -1,3 +1,8 @@
+2025-09-11 Version: 1.1.2
+- Update API DescribeInstanceAuthInfo: add response parameters Body.ConfigList.
+- Update API DescribeInstanceAuthInfo: add response parameters Body.InstanceName.
+
+
 2025-09-10 Version: 1.1.1
 - Update API CreateAppInstance: add request parameters DBInstanceConfig.
 - Update API CreateAppInstance: add request parameters RAGEnabled.

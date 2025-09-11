@@ -915,21 +915,62 @@ class DescribeInstanceAuthInfoResponseBodyApiKeys(TeaModel):
         return self
 
 
+class DescribeInstanceAuthInfoResponseBodyConfigList(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeInstanceAuthInfoResponseBody(TeaModel):
     def __init__(
         self,
         api_keys: DescribeInstanceAuthInfoResponseBodyApiKeys = None,
+        config_list: List[DescribeInstanceAuthInfoResponseBodyConfigList] = None,
+        instance_name: str = None,
         jwt_secret: str = None,
         request_id: str = None,
     ):
         # API Keys
         self.api_keys = api_keys
+        self.config_list = config_list
+        self.instance_name = instance_name
         self.jwt_secret = jwt_secret
         self.request_id = request_id
 
     def validate(self):
         if self.api_keys:
             self.api_keys.validate()
+        if self.config_list:
+            for k in self.config_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -939,6 +980,12 @@ class DescribeInstanceAuthInfoResponseBody(TeaModel):
         result = dict()
         if self.api_keys is not None:
             result['ApiKeys'] = self.api_keys.to_map()
+        result['ConfigList'] = []
+        if self.config_list is not None:
+            for k in self.config_list:
+                result['ConfigList'].append(k.to_map() if k else None)
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.jwt_secret is not None:
             result['JwtSecret'] = self.jwt_secret
         if self.request_id is not None:
@@ -950,6 +997,13 @@ class DescribeInstanceAuthInfoResponseBody(TeaModel):
         if m.get('ApiKeys') is not None:
             temp_model = DescribeInstanceAuthInfoResponseBodyApiKeys()
             self.api_keys = temp_model.from_map(m['ApiKeys'])
+        self.config_list = []
+        if m.get('ConfigList') is not None:
+            for k in m.get('ConfigList'):
+                temp_model = DescribeInstanceAuthInfoResponseBodyConfigList()
+                self.config_list.append(temp_model.from_map(k))
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('JwtSecret') is not None:
             self.jwt_secret = m.get('JwtSecret')
         if m.get('RequestId') is not None:
