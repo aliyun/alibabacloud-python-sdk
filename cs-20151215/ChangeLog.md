@@ -1,3 +1,6 @@
+2025-09-11 Version: 4.9.8
+- Generated python 2015-12-15 for CS.
+
 2025-08-19 Version: 4.9.7
 - Update API CreateClusterNodePool: add request parameters body.management.auto_vul_fix_policy.exclude_packages.
 - Update API DescribeClusterDetail: add response parameters Body.extra_sans.

@@ -446,6 +446,7 @@ class KubeletConfig(TeaModel):
         registry_pull_qps: int = None,
         reserved_memory: List[KubeletConfigReservedMemory] = None,
         serialize_image_pulls: bool = None,
+        server_tlsbootstrap: bool = None,
         system_reserved: Dict[str, Any] = None,
         topology_manager_policy: str = None,
         tracing: KubeletConfigTracing = None,
@@ -478,6 +479,7 @@ class KubeletConfig(TeaModel):
         self.registry_pull_qps = registry_pull_qps
         self.reserved_memory = reserved_memory
         self.serialize_image_pulls = serialize_image_pulls
+        self.server_tlsbootstrap = server_tlsbootstrap
         self.system_reserved = system_reserved
         self.topology_manager_policy = topology_manager_policy
         self.tracing = tracing
@@ -554,6 +556,8 @@ class KubeletConfig(TeaModel):
                 result['reservedMemory'].append(k.to_map() if k else None)
         if self.serialize_image_pulls is not None:
             result['serializeImagePulls'] = self.serialize_image_pulls
+        if self.server_tlsbootstrap is not None:
+            result['serverTLSBootstrap'] = self.server_tlsbootstrap
         if self.system_reserved is not None:
             result['systemReserved'] = self.system_reserved
         if self.topology_manager_policy is not None:
@@ -623,6 +627,8 @@ class KubeletConfig(TeaModel):
                 self.reserved_memory.append(temp_model.from_map(k))
         if m.get('serializeImagePulls') is not None:
             self.serialize_image_pulls = m.get('serializeImagePulls')
+        if m.get('serverTLSBootstrap') is not None:
+            self.server_tlsbootstrap = m.get('serverTLSBootstrap')
         if m.get('systemReserved') is not None:
             self.system_reserved = m.get('systemReserved')
         if m.get('topologyManagerPolicy') is not None:
@@ -3906,8 +3912,6 @@ class CreateClusterRequest(TeaModel):
         # *   `Kubernetes`: ACK dedicated cluster.
         # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Basic clusters, ACK Pro clusters, ACK Serverless clusters (Basic Edition and Pro Edition), ACK Edge clusters (Basic Edition and Pro Edition), and ACK Lingjun clusters (Pro Edition).
         # *   `ExternalKubernetes`: registered cluster.
-        # 
-        # This parameter is required.
         self.cluster_type = cluster_type
         # The pod CIDR block. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the pod CIDR block. The pod CIDR block cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after you create the cluster.
         # 
@@ -4265,8 +4269,6 @@ class CreateClusterRequest(TeaModel):
         # The Service CIDR block. Valid values: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The Service CIDR block cannot overlap with the VPC CIDR block (10.1.0.0/21) or the CIDR blocks of existing clusters in the VPC. You cannot modify the Service CIDR block after the cluster is created.
         # 
         # By default, the Service CIDR block is set to 172.19.0.0/20.
-        # 
-        # This parameter is required.
         self.service_cidr = service_cidr
         # The methods for implementing service discovery in `ACK Serverless` clusters.
         # 
