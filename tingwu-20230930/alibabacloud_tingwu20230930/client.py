@@ -84,16 +84,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTaskResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTaskResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_task_with_options_async(
         self,
@@ -138,16 +132,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTaskResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTaskResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_task(
         self,
@@ -214,16 +202,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_transcription_phrases_with_options_async(
         self,
@@ -262,16 +244,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_transcription_phrases(
         self,
@@ -328,16 +304,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def delete_transcription_phrases_with_options_async(
         self,
@@ -366,16 +336,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def delete_transcription_phrases(
         self,
@@ -430,16 +394,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTaskInfoResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTaskInfoResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_task_info_with_options_async(
         self,
@@ -468,16 +426,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTaskInfoResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTaskInfoResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_task_info(
         self,
@@ -532,16 +484,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_transcription_phrases_with_options_async(
         self,
@@ -570,16 +516,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_transcription_phrases(
         self,
@@ -633,16 +573,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_transcription_phrases_with_options_async(
         self,
@@ -670,16 +604,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_transcription_phrases(self) -> tingwu_20230930_models.ListTranscriptionPhrasesResponse:
         """
@@ -739,16 +667,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_transcription_phrases_with_options_async(
         self,
@@ -788,16 +710,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_transcription_phrases(
         self,

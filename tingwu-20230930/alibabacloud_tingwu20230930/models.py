@@ -92,6 +92,33 @@ class CreateTaskRequestInput(TeaModel):
         return self
 
 
+class CreateTaskRequestParametersAutoChapters(TeaModel):
+    def __init__(
+        self,
+        chapter_granularity: str = None,
+    ):
+        self.chapter_granularity = chapter_granularity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.chapter_granularity is not None:
+            result['ChapterGranularity'] = self.chapter_granularity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChapterGranularity') is not None:
+            self.chapter_granularity = m.get('ChapterGranularity')
+        return self
+
+
 class CreateTaskRequestParametersContentExtractionExtractionContents(TeaModel):
     def __init__(
         self,
@@ -264,12 +291,14 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
     def __init__(
         self,
         domain_education_enabled: bool = None,
+        full_text_summary_format: str = None,
         max_keywords: int = None,
         nfix_enabled: bool = None,
         ocr_auxiliary_enabled: bool = None,
         translate_llm_scene_enabled: bool = None,
     ):
         self.domain_education_enabled = domain_education_enabled
+        self.full_text_summary_format = full_text_summary_format
         self.max_keywords = max_keywords
         self.nfix_enabled = nfix_enabled
         self.ocr_auxiliary_enabled = ocr_auxiliary_enabled
@@ -286,6 +315,8 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
         result = dict()
         if self.domain_education_enabled is not None:
             result['DomainEducationEnabled'] = self.domain_education_enabled
+        if self.full_text_summary_format is not None:
+            result['FullTextSummaryFormat'] = self.full_text_summary_format
         if self.max_keywords is not None:
             result['MaxKeywords'] = self.max_keywords
         if self.nfix_enabled is not None:
@@ -300,6 +331,8 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
         m = m or dict()
         if m.get('DomainEducationEnabled') is not None:
             self.domain_education_enabled = m.get('DomainEducationEnabled')
+        if m.get('FullTextSummaryFormat') is not None:
+            self.full_text_summary_format = m.get('FullTextSummaryFormat')
         if m.get('MaxKeywords') is not None:
             self.max_keywords = m.get('MaxKeywords')
         if m.get('NfixEnabled') is not None:
@@ -607,6 +640,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         model: str = None,
         output_level: int = None,
         phrase_id: str = None,
+        profanity_filter_enabled: bool = None,
         realtime_diarization_enabled: bool = None,
     ):
         self.additional_stream_output_level = additional_stream_output_level
@@ -616,6 +650,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         self.model = model
         self.output_level = output_level
         self.phrase_id = phrase_id
+        self.profanity_filter_enabled = profanity_filter_enabled
         self.realtime_diarization_enabled = realtime_diarization_enabled
 
     def validate(self):
@@ -642,6 +677,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             result['OutputLevel'] = self.output_level
         if self.phrase_id is not None:
             result['PhraseId'] = self.phrase_id
+        if self.profanity_filter_enabled is not None:
+            result['ProfanityFilterEnabled'] = self.profanity_filter_enabled
         if self.realtime_diarization_enabled is not None:
             result['RealtimeDiarizationEnabled'] = self.realtime_diarization_enabled
         return result
@@ -663,6 +700,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             self.output_level = m.get('OutputLevel')
         if m.get('PhraseId') is not None:
             self.phrase_id = m.get('PhraseId')
+        if m.get('ProfanityFilterEnabled') is not None:
+            self.profanity_filter_enabled = m.get('ProfanityFilterEnabled')
         if m.get('RealtimeDiarizationEnabled') is not None:
             self.realtime_diarization_enabled = m.get('RealtimeDiarizationEnabled')
         return self
@@ -710,6 +749,7 @@ class CreateTaskRequestParametersTranslation(TeaModel):
 class CreateTaskRequestParameters(TeaModel):
     def __init__(
         self,
+        auto_chapters: CreateTaskRequestParametersAutoChapters = None,
         auto_chapters_enabled: bool = None,
         content_extraction: CreateTaskRequestParametersContentExtraction = None,
         content_extraction_enabled: bool = None,
@@ -718,8 +758,10 @@ class CreateTaskRequestParameters(TeaModel):
         extra_params: CreateTaskRequestParametersExtraParams = None,
         identity_recognition: CreateTaskRequestParametersIdentityRecognition = None,
         identity_recognition_enabled: bool = None,
+        llm_output_language: str = None,
         meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
+        model: str = None,
         ppt_extraction_enabled: bool = None,
         service_inspection: CreateTaskRequestParametersServiceInspection = None,
         service_inspection_enabled: bool = None,
@@ -731,6 +773,7 @@ class CreateTaskRequestParameters(TeaModel):
         translation: CreateTaskRequestParametersTranslation = None,
         translation_enabled: bool = None,
     ):
+        self.auto_chapters = auto_chapters
         self.auto_chapters_enabled = auto_chapters_enabled
         self.content_extraction = content_extraction
         self.content_extraction_enabled = content_extraction_enabled
@@ -739,8 +782,10 @@ class CreateTaskRequestParameters(TeaModel):
         self.extra_params = extra_params
         self.identity_recognition = identity_recognition
         self.identity_recognition_enabled = identity_recognition_enabled
+        self.llm_output_language = llm_output_language
         self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
+        self.model = model
         self.ppt_extraction_enabled = ppt_extraction_enabled
         self.service_inspection = service_inspection
         self.service_inspection_enabled = service_inspection_enabled
@@ -753,6 +798,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.translation_enabled = translation_enabled
 
     def validate(self):
+        if self.auto_chapters:
+            self.auto_chapters.validate()
         if self.content_extraction:
             self.content_extraction.validate()
         if self.custom_prompt:
@@ -780,6 +827,8 @@ class CreateTaskRequestParameters(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_chapters is not None:
+            result['AutoChapters'] = self.auto_chapters.to_map()
         if self.auto_chapters_enabled is not None:
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
         if self.content_extraction is not None:
@@ -796,10 +845,14 @@ class CreateTaskRequestParameters(TeaModel):
             result['IdentityRecognition'] = self.identity_recognition.to_map()
         if self.identity_recognition_enabled is not None:
             result['IdentityRecognitionEnabled'] = self.identity_recognition_enabled
+        if self.llm_output_language is not None:
+            result['LlmOutputLanguage'] = self.llm_output_language
         if self.meeting_assistance is not None:
             result['MeetingAssistance'] = self.meeting_assistance.to_map()
         if self.meeting_assistance_enabled is not None:
             result['MeetingAssistanceEnabled'] = self.meeting_assistance_enabled
+        if self.model is not None:
+            result['Model'] = self.model
         if self.ppt_extraction_enabled is not None:
             result['PptExtractionEnabled'] = self.ppt_extraction_enabled
         if self.service_inspection is not None:
@@ -824,6 +877,9 @@ class CreateTaskRequestParameters(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoChapters') is not None:
+            temp_model = CreateTaskRequestParametersAutoChapters()
+            self.auto_chapters = temp_model.from_map(m['AutoChapters'])
         if m.get('AutoChaptersEnabled') is not None:
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
         if m.get('ContentExtraction') is not None:
@@ -844,11 +900,15 @@ class CreateTaskRequestParameters(TeaModel):
             self.identity_recognition = temp_model.from_map(m['IdentityRecognition'])
         if m.get('IdentityRecognitionEnabled') is not None:
             self.identity_recognition_enabled = m.get('IdentityRecognitionEnabled')
+        if m.get('LlmOutputLanguage') is not None:
+            self.llm_output_language = m.get('LlmOutputLanguage')
         if m.get('MeetingAssistance') is not None:
             temp_model = CreateTaskRequestParametersMeetingAssistance()
             self.meeting_assistance = temp_model.from_map(m['MeetingAssistance'])
         if m.get('MeetingAssistanceEnabled') is not None:
             self.meeting_assistance_enabled = m.get('MeetingAssistanceEnabled')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('PptExtractionEnabled') is not None:
             self.ppt_extraction_enabled = m.get('PptExtractionEnabled')
         if m.get('ServiceInspection') is not None:
