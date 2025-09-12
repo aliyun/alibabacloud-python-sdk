@@ -819,6 +819,7 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
     def __init__(
         self,
         auto_pay: bool = None,
+        display_config: str = None,
         down_bandwidth_limit: int = None,
         instance_type: str = None,
         node_id: str = None,
@@ -828,6 +829,7 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         up_bandwidth_limit: int = None,
     ):
         self.auto_pay = auto_pay
+        self.display_config = display_config
         self.down_bandwidth_limit = down_bandwidth_limit
         self.instance_type = instance_type
         self.node_id = node_id
@@ -847,6 +849,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         result = dict()
         if self.auto_pay is not None:
             result['AutoPay'] = self.auto_pay
+        if self.display_config is not None:
+            result['DisplayConfig'] = self.display_config
         if self.down_bandwidth_limit is not None:
             result['DownBandwidthLimit'] = self.down_bandwidth_limit
         if self.instance_type is not None:
@@ -867,6 +871,8 @@ class ChangeCloudPhoneNodeRequest(TeaModel):
         m = m or dict()
         if m.get('AutoPay') is not None:
             self.auto_pay = m.get('AutoPay')
+        if m.get('DisplayConfig') is not None:
+            self.display_config = m.get('DisplayConfig')
         if m.get('DownBandwidthLimit') is not None:
             self.down_bandwidth_limit = m.get('DownBandwidthLimit')
         if m.get('InstanceType') is not None:
@@ -6561,6 +6567,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         image_id: str = None,
         image_version: str = None,
         instance_type: str = None,
+        internet_status: str = None,
         key_pair_id: str = None,
         memory: int = None,
         network_interface_ip: str = None,
@@ -6629,6 +6636,7 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
         self.image_version = image_version
         # The type of the instance.
         self.instance_type = instance_type
+        self.internet_status = internet_status
         # The ID of the key pair.
         self.key_pair_id = key_pair_id
         # The memory size.
@@ -6753,6 +6761,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             result['ImageVersion'] = self.image_version
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.internet_status is not None:
+            result['InternetStatus'] = self.internet_status
         if self.key_pair_id is not None:
             result['KeyPairId'] = self.key_pair_id
         if self.memory is not None:
@@ -6865,6 +6875,8 @@ class DescribeAndroidInstancesResponseBodyInstanceModel(TeaModel):
             self.image_version = m.get('ImageVersion')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('InternetStatus') is not None:
+            self.internet_status = m.get('InternetStatus')
         if m.get('KeyPairId') is not None:
             self.key_pair_id = m.get('KeyPairId')
         if m.get('Memory') is not None:
@@ -7490,6 +7502,7 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         source_app_info_list: List[str] = None,
         source_file_path_list: List[str] = None,
         status: str = None,
+        system_version: str = None,
         task_id: str = None,
         upload_endpoint: str = None,
         upload_type: str = None,
@@ -7531,6 +7544,7 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
         # *   AVAILABLE
         # *   RECOVERING
         self.status = status
+        self.system_version = system_version
         # The task ID.
         self.task_id = task_id
         # The endpoint of the OSS bucket that stores the backup file.
@@ -7583,6 +7597,8 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             result['SourceFilePathList'] = self.source_file_path_list
         if self.status is not None:
             result['Status'] = self.status
+        if self.system_version is not None:
+            result['SystemVersion'] = self.system_version
         if self.task_id is not None:
             result['TaskId'] = self.task_id
         if self.upload_endpoint is not None:
@@ -7625,6 +7641,8 @@ class DescribeBackupFilesResponseBodyData(TeaModel):
             self.source_file_path_list = m.get('SourceFilePathList')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('SystemVersion') is not None:
+            self.system_version = m.get('SystemVersion')
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
         if m.get('UploadEndpoint') is not None:

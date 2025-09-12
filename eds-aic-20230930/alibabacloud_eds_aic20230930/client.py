@@ -529,6 +529,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.display_config):
+            query['DisplayConfig'] = request.display_config
         if not UtilClient.is_unset(request.down_bandwidth_limit):
             query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.instance_type):
@@ -578,6 +580,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.display_config):
+            query['DisplayConfig'] = request.display_config
         if not UtilClient.is_unset(request.down_bandwidth_limit):
             query['DownBandwidthLimit'] = request.down_bandwidth_limit
         if not UtilClient.is_unset(request.instance_type):

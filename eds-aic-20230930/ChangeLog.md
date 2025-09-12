@@ -1,3 +1,9 @@
+2025-09-12 Version: 4.12.6
+- Update API ChangeCloudPhoneNode: add request parameters DisplayConfig.
+- Update API DescribeAndroidInstances: add response parameters Body.InstanceModel.$.InternetStatus.
+- Update API DescribeBackupFiles: add response parameters Body.Data.$.SystemVersion.
+
+
 2025-09-05 Version: 4.12.5
 - Update API ChangeCloudPhoneNode: add request parameters PromotionId.
 - Update API CreateAndroidInstanceGroup: add request parameters PromotionId.
