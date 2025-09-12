@@ -1,3 +1,68 @@
+2025-09-12 Version: 5.0.1
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API CarBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.approver_email.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.approver_id.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.approver_name.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.cabin_class_code.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.foreigners_tag.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.location.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.sio.
+- Update API CooperatorFlightBillSettlementQuery: add response parameters Body.module.items.$.traveler_email.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.approver_email.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.approver_id.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.approver_name.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.foreigners_tag.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.location.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.sio.
+- Update API CooperatorHotelBillSettlementQuery: add response parameters Body.module.items.$.traveler_email.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.cabin_class_code.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API FlightBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API FlightCreateOrderV2: add request parameters travelers.$.tax_number.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API HotelBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API IeFlightBillSettlementQuery: add response parameters Body.module.data_list.$.trip_type.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API IeHotelBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.approver_email.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.approver_id.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.approver_name.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.foreigners_tag.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.location.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.sio.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.traveler_email.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.verify_failed_reason.
+- Update API TrainBillSettlementQuery: add response parameters Body.module.data_list.$.verify_status.
+
+
 2025-08-27 Version: 5.0.0
 - Support API IntlFlightReShopApply.
 - Support API IntlFlightReShopCancel.
