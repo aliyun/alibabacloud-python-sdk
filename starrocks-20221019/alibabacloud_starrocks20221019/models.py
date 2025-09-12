@@ -265,6 +265,33 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateInstanceV1RequestAgentNodeGroup(TeaModel):
+    def __init__(
+        self,
+        cu: int = None,
+    ):
+        self.cu = cu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cu is not None:
+            result['cu'] = self.cu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cu') is not None:
+            self.cu = m.get('cu')
+        return self
+
+
 class CreateInstanceV1RequestBackendNodeGroups(TeaModel):
     def __init__(
         self,
@@ -543,12 +570,15 @@ class CreateInstanceV1Request(TeaModel):
     def __init__(
         self,
         admin_password: str = None,
+        agent_node_group: CreateInstanceV1RequestAgentNodeGroup = None,
+        auto_pay: bool = None,
         auto_renew: bool = None,
         backend_node_groups: List[CreateInstanceV1RequestBackendNodeGroups] = None,
         client_token: str = None,
         duration: int = None,
         encrypted: bool = None,
         frontend_node_groups: List[CreateInstanceV1RequestFrontendNodeGroups] = None,
+        gateway_type: str = None,
         instance_name: str = None,
         kms_key_id: str = None,
         observer_node_groups: List[CreateInstanceV1RequestObserverNodeGroups] = None,
@@ -568,12 +598,15 @@ class CreateInstanceV1Request(TeaModel):
     ):
         # This parameter is required.
         self.admin_password = admin_password
+        self.agent_node_group = agent_node_group
+        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.backend_node_groups = backend_node_groups
         self.client_token = client_token
         self.duration = duration
         self.encrypted = encrypted
         self.frontend_node_groups = frontend_node_groups
+        self.gateway_type = gateway_type
         # This parameter is required.
         self.instance_name = instance_name
         self.kms_key_id = kms_key_id
@@ -602,6 +635,8 @@ class CreateInstanceV1Request(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.agent_node_group:
+            self.agent_node_group.validate()
         if self.backend_node_groups:
             for k in self.backend_node_groups:
                 if k:
@@ -631,6 +666,10 @@ class CreateInstanceV1Request(TeaModel):
         result = dict()
         if self.admin_password is not None:
             result['AdminPassword'] = self.admin_password
+        if self.agent_node_group is not None:
+            result['AgentNodeGroup'] = self.agent_node_group.to_map()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         result['BackendNodeGroups'] = []
@@ -647,6 +686,8 @@ class CreateInstanceV1Request(TeaModel):
         if self.frontend_node_groups is not None:
             for k in self.frontend_node_groups:
                 result['FrontendNodeGroups'].append(k.to_map() if k else None)
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
         if self.kms_key_id is not None:
@@ -691,6 +732,11 @@ class CreateInstanceV1Request(TeaModel):
         m = m or dict()
         if m.get('AdminPassword') is not None:
             self.admin_password = m.get('AdminPassword')
+        if m.get('AgentNodeGroup') is not None:
+            temp_model = CreateInstanceV1RequestAgentNodeGroup()
+            self.agent_node_group = temp_model.from_map(m['AgentNodeGroup'])
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         self.backend_node_groups = []
@@ -709,6 +755,8 @@ class CreateInstanceV1Request(TeaModel):
             for k in m.get('FrontendNodeGroups'):
                 temp_model = CreateInstanceV1RequestFrontendNodeGroups()
                 self.frontend_node_groups.append(temp_model.from_map(k))
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
         if m.get('KmsKeyId') is not None:
@@ -2317,11 +2365,13 @@ class ModifyDiskPerformanceLevelResponse(TeaModel):
 class ModifyDiskSizeRequest(TeaModel):
     def __init__(
         self,
+        fast_mode: bool = None,
         instance_id: str = None,
         node_group_id: str = None,
         promotion_option_no: str = None,
         target: int = None,
     ):
+        self.fast_mode = fast_mode
         # The instance ID.
         # 
         # This parameter is required.
@@ -2345,6 +2395,8 @@ class ModifyDiskSizeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.fast_mode is not None:
+            result['FastMode'] = self.fast_mode
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.node_group_id is not None:
@@ -2357,6 +2409,8 @@ class ModifyDiskSizeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FastMode') is not None:
+            self.fast_mode = m.get('FastMode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('NodeGroupId') is not None:

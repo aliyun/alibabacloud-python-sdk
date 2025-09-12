@@ -1,3 +1,10 @@
+2025-09-12 Version: 1.1.1
+- Update API CreateInstanceV1: add request parameters body.AgentNodeGroup.
+- Update API CreateInstanceV1: add request parameters body.AutoPay.
+- Update API CreateInstanceV1: add request parameters body.GatewayType.
+- Update API ModifyDiskSize: add request parameters FastMode.
+
+
 2025-07-30 Version: 1.1.0
 - Support API ChangeResourceGroup.
 - Support API CreateInstanceV1.

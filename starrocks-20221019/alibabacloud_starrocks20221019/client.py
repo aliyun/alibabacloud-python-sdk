@@ -175,6 +175,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.admin_password):
             body['AdminPassword'] = request.admin_password
+        if not UtilClient.is_unset(request.agent_node_group):
+            body['AgentNodeGroup'] = request.agent_node_group
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backend_node_groups):
@@ -187,6 +191,8 @@ class Client(OpenApiClient):
             body['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.frontend_node_groups):
             body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not UtilClient.is_unset(request.gateway_type):
+            body['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.kms_key_id):
@@ -257,6 +263,10 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.admin_password):
             body['AdminPassword'] = request.admin_password
+        if not UtilClient.is_unset(request.agent_node_group):
+            body['AgentNodeGroup'] = request.agent_node_group
+        if not UtilClient.is_unset(request.auto_pay):
+            body['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             body['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.backend_node_groups):
@@ -269,6 +279,8 @@ class Client(OpenApiClient):
             body['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.frontend_node_groups):
             body['FrontendNodeGroups'] = request.frontend_node_groups
+        if not UtilClient.is_unset(request.gateway_type):
+            body['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
         if not UtilClient.is_unset(request.kms_key_id):
@@ -1175,6 +1187,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fast_mode):
+            query['FastMode'] = request.fast_mode
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_group_id):
@@ -1227,6 +1241,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fast_mode):
+            query['FastMode'] = request.fast_mode
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_group_id):
