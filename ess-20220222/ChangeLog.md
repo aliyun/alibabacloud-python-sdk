@@ -13,6 +13,21 @@
 - Update API StartInstanceRefresh: add request parameters DesiredConfiguration.LaunchTemplateVersion.
 
 
+2025-09-12 Version: 1.10.19
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.CheckpointPauseTime.
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.Checkpoints.
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.DesiredConfiguration.Containers.
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.DesiredConfiguration.LaunchTemplateId.
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.DesiredConfiguration.LaunchTemplateOverrides.
+- Update API DescribeInstanceRefreshes: add response parameters Body.InstanceRefreshTasks.$.DesiredConfiguration.LaunchTemplateVersion.
+- Update API StartInstanceRefresh: add request parameters CheckpointPauseTime.
+- Update API StartInstanceRefresh: add request parameters Checkpoints.
+- Update API StartInstanceRefresh: add request parameters DesiredConfiguration.Containers.
+- Update API StartInstanceRefresh: add request parameters DesiredConfiguration.LaunchTemplateId.
+- Update API StartInstanceRefresh: add request parameters DesiredConfiguration.LaunchTemplateOverrides.
+- Update API StartInstanceRefresh: add request parameters DesiredConfiguration.LaunchTemplateVersion.
+
+
 2025-08-11 Version: 1.10.18
 - Update API CreateNotificationConfiguration: add request parameters MessageEncoding.
 - Update API DescribeNotificationConfigurations: add response parameters Body.NotificationConfigurationModels.$.MessageEncoding.
