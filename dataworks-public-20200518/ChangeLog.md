@@ -2,6 +2,10 @@
 - Update API GetDataServicePublishedApi: add response parameters Body.Data.SqlMode.
 
 
+2025-09-12 Version: 8.0.2
+- Update API GetDataServicePublishedApi: add response parameters Body.Data.SqlMode.
+
+
 2025-09-02 Version: 8.0.1
 - Generated python 2020-05-18 for dataworks-public.
 
