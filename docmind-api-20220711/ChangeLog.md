@@ -1,3 +1,8 @@
+2025-09-12 Version: 1.4.11
+- Update API SubmitDocParserJob: add request parameters CustomOssConfig.
+- Update API SubmitDocParserJob: add request parameters LLMParam.
+
+
 2025-08-25 Version: 1.4.10
 - Update API SubmitDocParserJob: add request parameters MultimediaParameters.
 

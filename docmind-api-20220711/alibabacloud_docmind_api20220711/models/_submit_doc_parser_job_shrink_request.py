@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class SubmitDocParserJobShrinkRequest(DaraModel):
     def __init__(
         self,
+        custom_oss_config_shrink: str = None,
         enhancement_mode: str = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url: str = None,
         formula_enhancement: bool = None,
+        llmparam_shrink: str = None,
         llm_enhancement: bool = None,
         multimedia_parameters_shrink: str = None,
         option: str = None,
@@ -20,11 +22,13 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         output_html_table: bool = None,
         page_index: str = None,
     ):
+        self.custom_oss_config_shrink = custom_oss_config_shrink
         self.enhancement_mode = enhancement_mode
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url = file_url
         self.formula_enhancement = formula_enhancement
+        self.llmparam_shrink = llmparam_shrink
         self.llm_enhancement = llm_enhancement
         self.multimedia_parameters_shrink = multimedia_parameters_shrink
         self.option = option
@@ -41,6 +45,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_oss_config_shrink is not None:
+            result['CustomOssConfig'] = self.custom_oss_config_shrink
+
         if self.enhancement_mode is not None:
             result['EnhancementMode'] = self.enhancement_mode
 
@@ -55,6 +62,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
 
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+
+        if self.llmparam_shrink is not None:
+            result['LLMParam'] = self.llmparam_shrink
 
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
@@ -81,6 +91,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomOssConfig') is not None:
+            self.custom_oss_config_shrink = m.get('CustomOssConfig')
+
         if m.get('EnhancementMode') is not None:
             self.enhancement_mode = m.get('EnhancementMode')
 
@@ -95,6 +108,9 @@ class SubmitDocParserJobShrinkRequest(DaraModel):
 
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+
+        if m.get('LLMParam') is not None:
+            self.llmparam_shrink = m.get('LLMParam')
 
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')

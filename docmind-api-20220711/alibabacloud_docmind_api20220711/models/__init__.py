@@ -94,7 +94,11 @@ from ._submit_convert_pdf_to_excel_job_response_body import SubmitConvertPdfToEx
 from ._submit_convert_pdf_to_image_job_response_body import SubmitConvertPdfToImageJobResponseBodyData
 from ._submit_convert_pdf_to_markdown_job_response_body import SubmitConvertPdfToMarkdownJobResponseBodyData
 from ._submit_convert_pdf_to_word_job_response_body import SubmitConvertPdfToWordJobResponseBodyData
+from ._submit_doc_parser_job_request import SubmitDocParserJobRequestCustomOssConfig
+from ._submit_doc_parser_job_request import SubmitDocParserJobRequestLLMParam
 from ._submit_doc_parser_job_request import SubmitDocParserJobRequestMultimediaParameters
+from ._submit_doc_parser_job_advance_request import SubmitDocParserJobAdvanceRequestCustomOssConfig
+from ._submit_doc_parser_job_advance_request import SubmitDocParserJobAdvanceRequestLLMParam
 from ._submit_doc_parser_job_advance_request import SubmitDocParserJobAdvanceRequestMultimediaParameters
 from ._submit_doc_parser_job_response_body import SubmitDocParserJobResponseBodyData
 from ._submit_doc_structure_job_response_body import SubmitDocStructureJobResponseBodyData
@@ -194,7 +198,11 @@ __all__ = [
     SubmitConvertPdfToImageJobResponseBodyData,
     SubmitConvertPdfToMarkdownJobResponseBodyData,
     SubmitConvertPdfToWordJobResponseBodyData,
+    SubmitDocParserJobRequestCustomOssConfig,
+    SubmitDocParserJobRequestLLMParam,
     SubmitDocParserJobRequestMultimediaParameters,
+    SubmitDocParserJobAdvanceRequestCustomOssConfig,
+    SubmitDocParserJobAdvanceRequestLLMParam,
     SubmitDocParserJobAdvanceRequestMultimediaParameters,
     SubmitDocParserJobResponseBodyData,
     SubmitDocStructureJobResponseBodyData,

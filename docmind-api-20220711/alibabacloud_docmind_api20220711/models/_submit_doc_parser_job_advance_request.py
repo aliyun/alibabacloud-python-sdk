@@ -10,11 +10,13 @@ from darabonba.model import DaraModel
 class SubmitDocParserJobAdvanceRequest(DaraModel):
     def __init__(
         self,
+        custom_oss_config: main_models.SubmitDocParserJobAdvanceRequestCustomOssConfig = None,
         enhancement_mode: str = None,
         file_name: str = None,
         file_name_extension: str = None,
         file_url_object: BinaryIO = None,
         formula_enhancement: bool = None,
+        llmparam: main_models.SubmitDocParserJobAdvanceRequestLLMParam = None,
         llm_enhancement: bool = None,
         multimedia_parameters: main_models.SubmitDocParserJobAdvanceRequestMultimediaParameters = None,
         option: str = None,
@@ -23,11 +25,13 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         output_html_table: bool = None,
         page_index: str = None,
     ):
+        self.custom_oss_config = custom_oss_config
         self.enhancement_mode = enhancement_mode
         self.file_name = file_name
         self.file_name_extension = file_name_extension
         self.file_url_object = file_url_object
         self.formula_enhancement = formula_enhancement
+        self.llmparam = llmparam
         self.llm_enhancement = llm_enhancement
         self.multimedia_parameters = multimedia_parameters
         self.option = option
@@ -37,6 +41,10 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         self.page_index = page_index
 
     def validate(self):
+        if self.custom_oss_config:
+            self.custom_oss_config.validate()
+        if self.llmparam:
+            self.llmparam.validate()
         if self.multimedia_parameters:
             self.multimedia_parameters.validate()
 
@@ -45,6 +53,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.custom_oss_config is not None:
+            result['CustomOssConfig'] = self.custom_oss_config.to_map()
+
         if self.enhancement_mode is not None:
             result['EnhancementMode'] = self.enhancement_mode
 
@@ -59,6 +70,9 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
 
         if self.formula_enhancement is not None:
             result['FormulaEnhancement'] = self.formula_enhancement
+
+        if self.llmparam is not None:
+            result['LLMParam'] = self.llmparam.to_map()
 
         if self.llm_enhancement is not None:
             result['LlmEnhancement'] = self.llm_enhancement
@@ -85,6 +99,10 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CustomOssConfig') is not None:
+            temp_model = main_models.SubmitDocParserJobAdvanceRequestCustomOssConfig()
+            self.custom_oss_config = temp_model.from_map(m.get('CustomOssConfig'))
+
         if m.get('EnhancementMode') is not None:
             self.enhancement_mode = m.get('EnhancementMode')
 
@@ -99,6 +117,10 @@ class SubmitDocParserJobAdvanceRequest(DaraModel):
 
         if m.get('FormulaEnhancement') is not None:
             self.formula_enhancement = m.get('FormulaEnhancement')
+
+        if m.get('LLMParam') is not None:
+            temp_model = main_models.SubmitDocParserJobAdvanceRequestLLMParam()
+            self.llmparam = temp_model.from_map(m.get('LLMParam'))
 
         if m.get('LlmEnhancement') is not None:
             self.llm_enhancement = m.get('LlmEnhancement')
@@ -156,6 +178,84 @@ class SubmitDocParserJobAdvanceRequestMultimediaParameters(DaraModel):
 
         if m.get('VlParsePrompt') is not None:
             self.vl_parse_prompt = m.get('VlParsePrompt')
+
+        return self
+
+class SubmitDocParserJobAdvanceRequestLLMParam(DaraModel):
+    def __init__(
+        self,
+        model: str = None,
+        prompt: str = None,
+    ):
+        self.model = model
+        self.prompt = prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.model is not None:
+            result['Model'] = self.model
+
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+
+        return self
+
+class SubmitDocParserJobAdvanceRequestCustomOssConfig(DaraModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        access_key_secret: str = None,
+        sts_token: str = None,
+    ):
+        self.access_id = access_id
+        self.access_key_secret = access_key_secret
+        self.sts_token = sts_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+
+        if self.access_key_secret is not None:
+            result['AccessKeySecret'] = self.access_key_secret
+
+        if self.sts_token is not None:
+            result['StsToken'] = self.sts_token
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+
+        if m.get('AccessKeySecret') is not None:
+            self.access_key_secret = m.get('AccessKeySecret')
+
+        if m.get('StsToken') is not None:
+            self.sts_token = m.get('StsToken')
 
         return self
 

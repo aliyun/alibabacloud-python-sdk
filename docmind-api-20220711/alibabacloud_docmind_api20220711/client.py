@@ -2511,9 +2511,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SubmitDocParserJobShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_oss_config):
+            request.custom_oss_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_oss_config, 'CustomOssConfig', 'json')
+        if not DaraCore.is_null(tmp_req.llmparam):
+            request.llmparam_shrink = Utils.array_to_string_with_specified_style(tmp_req.llmparam, 'LLMParam', 'json')
         if not DaraCore.is_null(tmp_req.multimedia_parameters):
             request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.custom_oss_config_shrink):
+            query['CustomOssConfig'] = request.custom_oss_config_shrink
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
         if not DaraCore.is_null(request.file_name):
@@ -2524,6 +2530,8 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not DaraCore.is_null(request.formula_enhancement):
             query['FormulaEnhancement'] = request.formula_enhancement
+        if not DaraCore.is_null(request.llmparam_shrink):
+            query['LLMParam'] = request.llmparam_shrink
         if not DaraCore.is_null(request.llm_enhancement):
             query['LlmEnhancement'] = request.llm_enhancement
         if not DaraCore.is_null(request.multimedia_parameters_shrink):
@@ -2565,9 +2573,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.SubmitDocParserJobShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.custom_oss_config):
+            request.custom_oss_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.custom_oss_config, 'CustomOssConfig', 'json')
+        if not DaraCore.is_null(tmp_req.llmparam):
+            request.llmparam_shrink = Utils.array_to_string_with_specified_style(tmp_req.llmparam, 'LLMParam', 'json')
         if not DaraCore.is_null(tmp_req.multimedia_parameters):
             request.multimedia_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.multimedia_parameters, 'MultimediaParameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.custom_oss_config_shrink):
+            query['CustomOssConfig'] = request.custom_oss_config_shrink
         if not DaraCore.is_null(request.enhancement_mode):
             query['EnhancementMode'] = request.enhancement_mode
         if not DaraCore.is_null(request.file_name):
@@ -2578,6 +2592,8 @@ class Client(OpenApiClient):
             query['FileUrl'] = request.file_url
         if not DaraCore.is_null(request.formula_enhancement):
             query['FormulaEnhancement'] = request.formula_enhancement
+        if not DaraCore.is_null(request.llmparam_shrink):
+            query['LLMParam'] = request.llmparam_shrink
         if not DaraCore.is_null(request.llm_enhancement):
             query['LlmEnhancement'] = request.llm_enhancement
         if not DaraCore.is_null(request.multimedia_parameters_shrink):
