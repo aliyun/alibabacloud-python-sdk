@@ -245,6 +245,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_create_logo_task_with_options_async(request, runtime)
 
+    def get_domain_info_for_partner_with_options(
+        self,
+        request: website_build_20250429_models.GetDomainInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetDomainInfoForPartnerResponse:
+        """
+        @summary 提供给服务商的域名查询接口
+        
+        @param request: GetDomainInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDomainInfoForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetDomainInfoForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_domain_info_for_partner_with_options_async(
+        self,
+        request: website_build_20250429_models.GetDomainInfoForPartnerRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.GetDomainInfoForPartnerResponse:
+        """
+        @summary 提供给服务商的域名查询接口
+        
+        @param request: GetDomainInfoForPartnerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDomainInfoForPartnerResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDomainInfoForPartner',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.GetDomainInfoForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_domain_info_for_partner(
+        self,
+        request: website_build_20250429_models.GetDomainInfoForPartnerRequest,
+    ) -> website_build_20250429_models.GetDomainInfoForPartnerResponse:
+        """
+        @summary 提供给服务商的域名查询接口
+        
+        @param request: GetDomainInfoForPartnerRequest
+        @return: GetDomainInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_domain_info_for_partner_with_options(request, runtime)
+
+    async def get_domain_info_for_partner_async(
+        self,
+        request: website_build_20250429_models.GetDomainInfoForPartnerRequest,
+    ) -> website_build_20250429_models.GetDomainInfoForPartnerResponse:
+        """
+        @summary 提供给服务商的域名查询接口
+        
+        @param request: GetDomainInfoForPartnerRequest
+        @return: GetDomainInfoForPartnerResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_domain_info_for_partner_with_options_async(request, runtime)
+
     def get_icp_filing_info_for_partner_with_options(
         self,
         request: website_build_20250429_models.GetIcpFilingInfoForPartnerRequest,

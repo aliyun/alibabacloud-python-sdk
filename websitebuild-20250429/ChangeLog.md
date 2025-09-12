@@ -1,3 +1,7 @@
+2025-09-12 Version: 2.4.0
+- Support API GetDomainInfoForPartner.
+
+
 2025-09-09 Version: 2.3.0
 - Support API GetIcpFilingInfoForPartner.
 - Support API GetUserTmpIdentityForPartner.
