@@ -1,3 +1,12 @@
+2025-09-12 Version: 4.0.0
+- Delete API DescribeApm.
+- Delete API ListApm.
+- Delete API RemoveApm.
+- Delete API StartApm.
+- Delete API StopApm.
+- Delete API UpdateApm.
+
+
 2025-08-21 Version: 3.1.0
 - Support API GetEmonAlarmRecordStatisticsDistribute.
 
