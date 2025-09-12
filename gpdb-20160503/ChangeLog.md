@@ -1,3 +1,8 @@
+2025-09-12 Version: 4.11.0
+- Support API EnableCollectionGraphRAG.
+- Support API GetGraphRAGJob.
+
+
 2025-09-11 Version: 4.10.5
 - Update API QueryCollectionData: add response parameters Body.Matches.$.MetadataV2.
 

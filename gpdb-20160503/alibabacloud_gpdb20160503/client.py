@@ -15033,6 +15033,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.download_sqllogs_records_with_options_async(request, runtime)
 
+    def enable_collection_graph_ragwith_options(
+        self,
+        tmp_req: gpdb_20160503_models.EnableCollectionGraphRAGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.EnableCollectionGraphRAGResponse:
+        """
+        @summary 知识库开启构建知识图谱
+        
+        @param tmp_req: EnableCollectionGraphRAGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableCollectionGraphRAGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.EnableCollectionGraphRAGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_types):
+            request.entity_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.relationship_types):
+            request.relationship_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.entity_types_shrink):
+            query['EntityTypes'] = request.entity_types_shrink
+        if not UtilClient.is_unset(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.manager_account):
+            query['ManagerAccount'] = request.manager_account
+        if not UtilClient.is_unset(request.manager_account_password):
+            query['ManagerAccountPassword'] = request.manager_account_password
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relationship_types_shrink):
+            query['RelationshipTypes'] = request.relationship_types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCollectionGraphRAG',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.EnableCollectionGraphRAGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_collection_graph_ragwith_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.EnableCollectionGraphRAGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.EnableCollectionGraphRAGResponse:
+        """
+        @summary 知识库开启构建知识图谱
+        
+        @param tmp_req: EnableCollectionGraphRAGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableCollectionGraphRAGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.EnableCollectionGraphRAGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.entity_types):
+            request.entity_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.relationship_types):
+            request.relationship_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.entity_types_shrink):
+            query['EntityTypes'] = request.entity_types_shrink
+        if not UtilClient.is_unset(request.llmmodel):
+            query['LLMModel'] = request.llmmodel
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
+        if not UtilClient.is_unset(request.manager_account):
+            query['ManagerAccount'] = request.manager_account
+        if not UtilClient.is_unset(request.manager_account_password):
+            query['ManagerAccountPassword'] = request.manager_account_password
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.relationship_types_shrink):
+            query['RelationshipTypes'] = request.relationship_types_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableCollectionGraphRAG',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.EnableCollectionGraphRAGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_collection_graph_rag(
+        self,
+        request: gpdb_20160503_models.EnableCollectionGraphRAGRequest,
+    ) -> gpdb_20160503_models.EnableCollectionGraphRAGResponse:
+        """
+        @summary 知识库开启构建知识图谱
+        
+        @param request: EnableCollectionGraphRAGRequest
+        @return: EnableCollectionGraphRAGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_collection_graph_ragwith_options(request, runtime)
+
+    async def enable_collection_graph_rag_async(
+        self,
+        request: gpdb_20160503_models.EnableCollectionGraphRAGRequest,
+    ) -> gpdb_20160503_models.EnableCollectionGraphRAGResponse:
+        """
+        @summary 知识库开启构建知识图谱
+        
+        @param request: EnableCollectionGraphRAGRequest
+        @return: EnableCollectionGraphRAGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_collection_graph_ragwith_options_async(request, runtime)
+
     def enable_dbresource_group_with_options(
         self,
         request: gpdb_20160503_models.EnableDBResourceGroupRequest,
@@ -15408,6 +15560,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
+
+    def get_graph_ragjob_with_options(
+        self,
+        request: gpdb_20160503_models.GetGraphRAGJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetGraphRAGJobResponse:
+        """
+        @summary 获取构建知识图谱任务
+        
+        @param request: GetGraphRAGJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGraphRAGJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGraphRAGJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetGraphRAGJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_graph_ragjob_with_options_async(
+        self,
+        request: gpdb_20160503_models.GetGraphRAGJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.GetGraphRAGJobResponse:
+        """
+        @summary 获取构建知识图谱任务
+        
+        @param request: GetGraphRAGJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGraphRAGJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.collection):
+            query['Collection'] = request.collection
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_password):
+            query['NamespacePassword'] = request.namespace_password
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetGraphRAGJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.GetGraphRAGJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_graph_ragjob(
+        self,
+        request: gpdb_20160503_models.GetGraphRAGJobRequest,
+    ) -> gpdb_20160503_models.GetGraphRAGJobResponse:
+        """
+        @summary 获取构建知识图谱任务
+        
+        @param request: GetGraphRAGJobRequest
+        @return: GetGraphRAGJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_graph_ragjob_with_options(request, runtime)
+
+    async def get_graph_ragjob_async(
+        self,
+        request: gpdb_20160503_models.GetGraphRAGJobRequest,
+    ) -> gpdb_20160503_models.GetGraphRAGJobResponse:
+        """
+        @summary 获取构建知识图谱任务
+        
+        @param request: GetGraphRAGJobRequest
+        @return: GetGraphRAGJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_graph_ragjob_with_options_async(request, runtime)
 
     def get_secret_value_with_options(
         self,

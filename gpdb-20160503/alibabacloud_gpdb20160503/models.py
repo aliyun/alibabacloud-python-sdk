@@ -27538,6 +27538,294 @@ class DownloadSQLLogsRecordsResponse(TeaModel):
         return self
 
 
+class EnableCollectionGraphRAGRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        entity_types: List[str] = None,
+        llmmodel: str = None,
+        language: str = None,
+        manager_account: str = None,
+        manager_account_password: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        relationship_types: List[str] = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.entity_types = entity_types
+        self.llmmodel = llmmodel
+        self.language = language
+        # This parameter is required.
+        self.manager_account = manager_account
+        # This parameter is required.
+        self.manager_account_password = manager_account_password
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.relationship_types = relationship_types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.entity_types is not None:
+            result['EntityTypes'] = self.entity_types
+        if self.llmmodel is not None:
+            result['LLMModel'] = self.llmmodel
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.manager_account is not None:
+            result['ManagerAccount'] = self.manager_account
+        if self.manager_account_password is not None:
+            result['ManagerAccountPassword'] = self.manager_account_password
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.relationship_types is not None:
+            result['RelationshipTypes'] = self.relationship_types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EntityTypes') is not None:
+            self.entity_types = m.get('EntityTypes')
+        if m.get('LLMModel') is not None:
+            self.llmmodel = m.get('LLMModel')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('ManagerAccount') is not None:
+            self.manager_account = m.get('ManagerAccount')
+        if m.get('ManagerAccountPassword') is not None:
+            self.manager_account_password = m.get('ManagerAccountPassword')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RelationshipTypes') is not None:
+            self.relationship_types = m.get('RelationshipTypes')
+        return self
+
+
+class EnableCollectionGraphRAGShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        entity_types_shrink: str = None,
+        llmmodel: str = None,
+        language: str = None,
+        manager_account: str = None,
+        manager_account_password: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        relationship_types_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.entity_types_shrink = entity_types_shrink
+        self.llmmodel = llmmodel
+        self.language = language
+        # This parameter is required.
+        self.manager_account = manager_account
+        # This parameter is required.
+        self.manager_account_password = manager_account_password
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.relationship_types_shrink = relationship_types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.entity_types_shrink is not None:
+            result['EntityTypes'] = self.entity_types_shrink
+        if self.llmmodel is not None:
+            result['LLMModel'] = self.llmmodel
+        if self.language is not None:
+            result['Language'] = self.language
+        if self.manager_account is not None:
+            result['ManagerAccount'] = self.manager_account
+        if self.manager_account_password is not None:
+            result['ManagerAccountPassword'] = self.manager_account_password
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.relationship_types_shrink is not None:
+            result['RelationshipTypes'] = self.relationship_types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EntityTypes') is not None:
+            self.entity_types_shrink = m.get('EntityTypes')
+        if m.get('LLMModel') is not None:
+            self.llmmodel = m.get('LLMModel')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
+        if m.get('ManagerAccount') is not None:
+            self.manager_account = m.get('ManagerAccount')
+        if m.get('ManagerAccountPassword') is not None:
+            self.manager_account_password = m.get('ManagerAccountPassword')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RelationshipTypes') is not None:
+            self.relationship_types_shrink = m.get('RelationshipTypes')
+        return self
+
+
+class EnableCollectionGraphRAGResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.job_id = job_id
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class EnableCollectionGraphRAGResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableCollectionGraphRAGResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableCollectionGraphRAGResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EnableDBResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -28350,6 +28638,273 @@ class GetAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetGraphRAGJobRequest(TeaModel):
+    def __init__(
+        self,
+        collection: str = None,
+        dbinstance_id: str = None,
+        job_id: str = None,
+        namespace: str = None,
+        namespace_password: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+    ):
+        # This parameter is required.
+        self.collection = collection
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # This parameter is required.
+        self.job_id = job_id
+        self.namespace = namespace
+        # This parameter is required.
+        self.namespace_password = namespace_password
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.collection is not None:
+            result['Collection'] = self.collection
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.namespace_password is not None:
+            result['NamespacePassword'] = self.namespace_password
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Collection') is not None:
+            self.collection = m.get('Collection')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NamespacePassword') is not None:
+            self.namespace_password = m.get('NamespacePassword')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class GetGraphRAGJobResponseBodyJob(TeaModel):
+    def __init__(
+        self,
+        completed: bool = None,
+        create_time: str = None,
+        error: str = None,
+        id: str = None,
+        progress: int = None,
+        status: str = None,
+        update_time: str = None,
+    ):
+        self.completed = completed
+        self.create_time = create_time
+        self.error = error
+        self.id = id
+        self.progress = progress
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed is not None:
+            result['Completed'] = self.completed
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Completed') is not None:
+            self.completed = m.get('Completed')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetGraphRAGJobResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        embedding_tokens: int = None,
+        llminput_tokens: int = None,
+        llmoutput_tokens: int = None,
+    ):
+        self.embedding_tokens = embedding_tokens
+        self.llminput_tokens = llminput_tokens
+        self.llmoutput_tokens = llmoutput_tokens
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.embedding_tokens is not None:
+            result['EmbeddingTokens'] = self.embedding_tokens
+        if self.llminput_tokens is not None:
+            result['LLMInputTokens'] = self.llminput_tokens
+        if self.llmoutput_tokens is not None:
+            result['LLMOutputTokens'] = self.llmoutput_tokens
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EmbeddingTokens') is not None:
+            self.embedding_tokens = m.get('EmbeddingTokens')
+        if m.get('LLMInputTokens') is not None:
+            self.llminput_tokens = m.get('LLMInputTokens')
+        if m.get('LLMOutputTokens') is not None:
+            self.llmoutput_tokens = m.get('LLMOutputTokens')
+        return self
+
+
+class GetGraphRAGJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        job: GetGraphRAGJobResponseBodyJob = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        usage: GetGraphRAGJobResponseBodyUsage = None,
+    ):
+        self.job = job
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.usage = usage
+
+    def validate(self):
+        if self.job:
+            self.job.validate()
+        if self.usage:
+            self.usage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job is not None:
+            result['Job'] = self.job.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.usage is not None:
+            result['Usage'] = self.usage.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Job') is not None:
+            temp_model = GetGraphRAGJobResponseBodyJob()
+            self.job = temp_model.from_map(m['Job'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Usage') is not None:
+            temp_model = GetGraphRAGJobResponseBodyUsage()
+            self.usage = temp_model.from_map(m['Usage'])
+        return self
+
+
+class GetGraphRAGJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetGraphRAGJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetGraphRAGJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
