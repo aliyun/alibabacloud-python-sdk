@@ -1641,10 +1641,16 @@ class OpenStructSaseUserSimpleDepartments(TeaModel):
     def __init__(
         self,
         department_id: str = None,
+        full_department_id_path: str = None,
+        full_dn: str = None,
         name: str = None,
+        parent_department_id: str = None,
     ):
         self.department_id = department_id
+        self.full_department_id_path = full_department_id_path
+        self.full_dn = full_dn
         self.name = name
+        self.parent_department_id = parent_department_id
 
     def validate(self):
         pass
@@ -1657,16 +1663,28 @@ class OpenStructSaseUserSimpleDepartments(TeaModel):
         result = dict()
         if self.department_id is not None:
             result['DepartmentId'] = self.department_id
+        if self.full_department_id_path is not None:
+            result['FullDepartmentIdPath'] = self.full_department_id_path
+        if self.full_dn is not None:
+            result['FullDn'] = self.full_dn
         if self.name is not None:
             result['Name'] = self.name
+        if self.parent_department_id is not None:
+            result['ParentDepartmentId'] = self.parent_department_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('DepartmentId') is not None:
             self.department_id = m.get('DepartmentId')
+        if m.get('FullDepartmentIdPath') is not None:
+            self.full_department_id_path = m.get('FullDepartmentIdPath')
+        if m.get('FullDn') is not None:
+            self.full_dn = m.get('FullDn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ParentDepartmentId') is not None:
+            self.parent_department_id = m.get('ParentDepartmentId')
         return self
 
 
@@ -13362,6 +13380,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
         self,
         app_status: str = None,
         app_version: str = None,
+        auto_login_status: str = None,
         cpu: str = None,
         create_time: str = None,
         department: str = None,
@@ -13398,6 +13417,7 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
     ):
         self.app_status = app_status
         self.app_version = app_version
+        self.auto_login_status = auto_login_status
         self.cpu = cpu
         self.create_time = create_time
         self.department = department
@@ -13452,6 +13472,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             result['AppStatus'] = self.app_status
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.auto_login_status is not None:
+            result['AutoLoginStatus'] = self.auto_login_status
         if self.cpu is not None:
             result['CPU'] = self.cpu
         if self.create_time is not None:
@@ -13530,6 +13552,8 @@ class GetUserDeviceResponseBodyDevice(TeaModel):
             self.app_status = m.get('AppStatus')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('AutoLoginStatus') is not None:
+            self.auto_login_status = m.get('AutoLoginStatus')
         if m.get('CPU') is not None:
             self.cpu = m.get('CPU')
         if m.get('CreateTime') is not None:
@@ -23831,6 +23855,7 @@ class ListUserDevicesRequest(TeaModel):
         self,
         app_statuses: List[str] = None,
         app_versions: List[str] = None,
+        auto_login_statuses: List[str] = None,
         current_page: int = None,
         department: str = None,
         device_belong: str = None,
@@ -23855,6 +23880,7 @@ class ListUserDevicesRequest(TeaModel):
     ):
         self.app_statuses = app_statuses
         self.app_versions = app_versions
+        self.auto_login_statuses = auto_login_statuses
         # This parameter is required.
         self.current_page = current_page
         self.department = department
@@ -23892,6 +23918,8 @@ class ListUserDevicesRequest(TeaModel):
             result['AppStatuses'] = self.app_statuses
         if self.app_versions is not None:
             result['AppVersions'] = self.app_versions
+        if self.auto_login_statuses is not None:
+            result['AutoLoginStatuses'] = self.auto_login_statuses
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
         if self.department is not None:
@@ -23942,6 +23970,8 @@ class ListUserDevicesRequest(TeaModel):
             self.app_statuses = m.get('AppStatuses')
         if m.get('AppVersions') is not None:
             self.app_versions = m.get('AppVersions')
+        if m.get('AutoLoginStatuses') is not None:
+            self.auto_login_statuses = m.get('AutoLoginStatuses')
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
         if m.get('Department') is not None:
@@ -24025,6 +24055,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
         self,
         app_status: str = None,
         app_version: str = None,
+        auto_login_status: str = None,
         cpu: str = None,
         create_time: str = None,
         department: str = None,
@@ -24060,6 +24091,7 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
     ):
         self.app_status = app_status
         self.app_version = app_version
+        self.auto_login_status = auto_login_status
         self.cpu = cpu
         self.create_time = create_time
         self.department = department
@@ -24109,6 +24141,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             result['AppStatus'] = self.app_status
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.auto_login_status is not None:
+            result['AutoLoginStatus'] = self.auto_login_status
         if self.cpu is not None:
             result['CPU'] = self.cpu
         if self.create_time is not None:
@@ -24183,6 +24217,8 @@ class ListUserDevicesResponseBodyDevices(TeaModel):
             self.app_status = m.get('AppStatus')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('AutoLoginStatus') is not None:
+            self.auto_login_status = m.get('AutoLoginStatus')
         if m.get('CPU') is not None:
             self.cpu = m.get('CPU')
         if m.get('CreateTime') is not None:
