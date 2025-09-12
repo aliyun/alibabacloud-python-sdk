@@ -1,3 +1,6 @@
+2025-09-12 Version: 2.1.1
+- Generated python 2023-06-30 for dataphin-public.
+
 2025-08-29 Version: 2.1.0
 - Support API GetTransferInfo.
 - Support API RetryTransferOwnership.
