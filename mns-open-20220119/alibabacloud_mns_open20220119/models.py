@@ -6117,6 +6117,7 @@ class SetSubscriptionAttributesRequest(TeaModel):
         self,
         dlq_policy: SetSubscriptionAttributesRequestDlqPolicy = None,
         notify_strategy: str = None,
+        sts_role_arn: str = None,
         subscription_name: str = None,
         tenant_rate_limit_policy: SetSubscriptionAttributesRequestTenantRateLimitPolicy = None,
         topic_name: str = None,
@@ -6128,6 +6129,7 @@ class SetSubscriptionAttributesRequest(TeaModel):
         # *   BACKOFF_RETRY
         # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        self.sts_role_arn = sts_role_arn
         # The name of the subscription.
         # 
         # This parameter is required.
@@ -6154,6 +6156,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
             result['DlqPolicy'] = self.dlq_policy.to_map()
         if self.notify_strategy is not None:
             result['NotifyStrategy'] = self.notify_strategy
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
         if self.tenant_rate_limit_policy is not None:
@@ -6169,6 +6173,8 @@ class SetSubscriptionAttributesRequest(TeaModel):
             self.dlq_policy = temp_model.from_map(m['DlqPolicy'])
         if m.get('NotifyStrategy') is not None:
             self.notify_strategy = m.get('NotifyStrategy')
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
         if m.get('TenantRateLimitPolicy') is not None:
@@ -6184,6 +6190,7 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
         self,
         dlq_policy_shrink: str = None,
         notify_strategy: str = None,
+        sts_role_arn: str = None,
         subscription_name: str = None,
         tenant_rate_limit_policy_shrink: str = None,
         topic_name: str = None,
@@ -6195,6 +6202,7 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
         # *   BACKOFF_RETRY
         # *   EXPONENTIAL_DECAY_RETRY
         self.notify_strategy = notify_strategy
+        self.sts_role_arn = sts_role_arn
         # The name of the subscription.
         # 
         # This parameter is required.
@@ -6218,6 +6226,8 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
             result['DlqPolicy'] = self.dlq_policy_shrink
         if self.notify_strategy is not None:
             result['NotifyStrategy'] = self.notify_strategy
+        if self.sts_role_arn is not None:
+            result['StsRoleArn'] = self.sts_role_arn
         if self.subscription_name is not None:
             result['SubscriptionName'] = self.subscription_name
         if self.tenant_rate_limit_policy_shrink is not None:
@@ -6232,6 +6242,8 @@ class SetSubscriptionAttributesShrinkRequest(TeaModel):
             self.dlq_policy_shrink = m.get('DlqPolicy')
         if m.get('NotifyStrategy') is not None:
             self.notify_strategy = m.get('NotifyStrategy')
+        if m.get('StsRoleArn') is not None:
+            self.sts_role_arn = m.get('StsRoleArn')
         if m.get('SubscriptionName') is not None:
             self.subscription_name = m.get('SubscriptionName')
         if m.get('TenantRateLimitPolicy') is not None:

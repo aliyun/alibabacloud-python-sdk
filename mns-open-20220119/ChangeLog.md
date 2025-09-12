@@ -1,3 +1,7 @@
+2025-09-12 Version: 1.3.2
+- Update API SetSubscriptionAttributes: add request parameters StsRoleArn.
+
+
 2025-09-08 Version: 1.3.1
 - Update API CreateQueue: add request parameters QueueType.
 - Update API CreateTopic: add request parameters TopicType.

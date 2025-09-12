@@ -2293,6 +2293,8 @@ class Client(OpenApiClient):
             query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.notify_strategy):
             query['NotifyStrategy'] = request.notify_strategy
+        if not UtilClient.is_unset(request.sts_role_arn):
+            query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
         if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
@@ -2342,6 +2344,8 @@ class Client(OpenApiClient):
             query['DlqPolicy'] = request.dlq_policy_shrink
         if not UtilClient.is_unset(request.notify_strategy):
             query['NotifyStrategy'] = request.notify_strategy
+        if not UtilClient.is_unset(request.sts_role_arn):
+            query['StsRoleArn'] = request.sts_role_arn
         if not UtilClient.is_unset(request.subscription_name):
             query['SubscriptionName'] = request.subscription_name
         if not UtilClient.is_unset(request.tenant_rate_limit_policy_shrink):
