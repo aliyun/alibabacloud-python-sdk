@@ -1,3 +1,7 @@
+2025-09-12 Version: 3.2.3
+- Update API DescribeSQLWebSocketDomain: add request parameters Module.
+
+
 2025-09-08 Version: 3.2.1
 - Update API DescribeDBClusters: add response parameters Body.Items.$.AINodeNumber.
 - Update API DescribeDBClusters: add response parameters Body.Items.$.AINodeSpec.
