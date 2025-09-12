@@ -1,3 +1,10 @@
+2025-09-12 Version: 7.1.3
+- Update API CreateEventStreaming: add request parameters Sink.SinkDataWorksTriggerParameters.
+- Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkDataWorksTriggerParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkDataWorksTriggerParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkDataWorksTriggerParameters.
+
+
 2025-09-10 Version: 7.1.2
 - Update API CreateEventSource: add request parameters SourceOSSEventParameters.
 - Update API ListUserDefinedEventSources: add response parameters Body.Data.EventSourceList.$.SourceOSSEventParameters.

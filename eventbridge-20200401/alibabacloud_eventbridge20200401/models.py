@@ -288,6 +288,33 @@ class SinkBaiLianParameters(TeaModel):
         return self
 
 
+class SinkDataWorksTriggerParameters(TeaModel):
+    def __init__(
+        self,
+        enable: str = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
 class SourceMySQLParameters(TeaModel):
     def __init__(
         self,
@@ -8653,6 +8680,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         sink_customized_kafka_parameters: CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: CreateEventStreamingRequestSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: CreateEventStreamingRequestSinkSinkDataHubParameters = None,
+        sink_data_works_trigger_parameters: SinkDataWorksTriggerParameters = None,
         sink_doris_parameters: CreateEventStreamingRequestSinkSinkDorisParameters = None,
         sink_fc_parameters: CreateEventStreamingRequestSinkSinkFcParameters = None,
         sink_fnf_parameters: CreateEventStreamingRequestSinkSinkFnfParameters = None,
@@ -8673,6 +8701,7 @@ class CreateEventStreamingRequestSink(TeaModel):
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         # The parameters that are configured if you specify DataHub as the event target.
         self.sink_data_hub_parameters = sink_data_hub_parameters
+        self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         self.sink_doris_parameters = sink_doris_parameters
         # The parameters that are configured if you specify Function Compute as the event target.
         self.sink_fc_parameters = sink_fc_parameters
@@ -8708,6 +8737,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             self.sink_dash_vector_parameters.validate()
         if self.sink_data_hub_parameters:
             self.sink_data_hub_parameters.validate()
+        if self.sink_data_works_trigger_parameters:
+            self.sink_data_works_trigger_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
         if self.sink_fc_parameters:
@@ -8751,6 +8782,8 @@ class CreateEventStreamingRequestSink(TeaModel):
             result['SinkDashVectorParameters'] = self.sink_dash_vector_parameters.to_map()
         if self.sink_data_hub_parameters is not None:
             result['SinkDataHubParameters'] = self.sink_data_hub_parameters.to_map()
+        if self.sink_data_works_trigger_parameters is not None:
+            result['SinkDataWorksTriggerParameters'] = self.sink_data_works_trigger_parameters.to_map()
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
         if self.sink_fc_parameters is not None:
@@ -8798,6 +8831,9 @@ class CreateEventStreamingRequestSink(TeaModel):
         if m.get('SinkDataHubParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkDataHubParameters()
             self.sink_data_hub_parameters = temp_model.from_map(m['SinkDataHubParameters'])
+        if m.get('SinkDataWorksTriggerParameters') is not None:
+            temp_model = SinkDataWorksTriggerParameters()
+            self.sink_data_works_trigger_parameters = temp_model.from_map(m['SinkDataWorksTriggerParameters'])
         if m.get('SinkDorisParameters') is not None:
             temp_model = CreateEventStreamingRequestSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m['SinkDorisParameters'])
@@ -20091,6 +20127,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         sink_customized_kafka_parameters: GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: GetEventStreamingResponseBodyDataSinkSinkDataHubParameters = None,
+        sink_data_works_trigger_parameters: SinkDataWorksTriggerParameters = None,
         sink_doris_parameters: GetEventStreamingResponseBodyDataSinkSinkDorisParameters = None,
         sink_fc_parameters: GetEventStreamingResponseBodyDataSinkSinkFcParameters = None,
         sink_fnf_parameters: GetEventStreamingResponseBodyDataSinkSinkFnfParameters = None,
@@ -20111,6 +20148,7 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         self.sink_data_hub_parameters = sink_data_hub_parameters
+        self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         self.sink_doris_parameters = sink_doris_parameters
         # The parameters that are returned if the event target is Function Compute.
         self.sink_fc_parameters = sink_fc_parameters
@@ -20146,6 +20184,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             self.sink_dash_vector_parameters.validate()
         if self.sink_data_hub_parameters:
             self.sink_data_hub_parameters.validate()
+        if self.sink_data_works_trigger_parameters:
+            self.sink_data_works_trigger_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
         if self.sink_fc_parameters:
@@ -20187,6 +20227,8 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
             result['SinkDashVectorParameters'] = self.sink_dash_vector_parameters.to_map()
         if self.sink_data_hub_parameters is not None:
             result['SinkDataHubParameters'] = self.sink_data_hub_parameters.to_map()
+        if self.sink_data_works_trigger_parameters is not None:
+            result['SinkDataWorksTriggerParameters'] = self.sink_data_works_trigger_parameters.to_map()
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
         if self.sink_fc_parameters is not None:
@@ -20232,6 +20274,9 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         if m.get('SinkDataHubParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkDataHubParameters()
             self.sink_data_hub_parameters = temp_model.from_map(m['SinkDataHubParameters'])
+        if m.get('SinkDataWorksTriggerParameters') is not None:
+            temp_model = SinkDataWorksTriggerParameters()
+            self.sink_data_works_trigger_parameters = temp_model.from_map(m['SinkDataWorksTriggerParameters'])
         if m.get('SinkDorisParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m['SinkDorisParameters'])
@@ -29142,6 +29187,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         sink_customized_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters = None,
+        sink_data_works_trigger_parameters: SinkDataWorksTriggerParameters = None,
         sink_doris_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters = None,
         sink_fc_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters = None,
         sink_fnf_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters = None,
@@ -29160,6 +29206,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         self.sink_customized_kafka_parameters = sink_customized_kafka_parameters
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         self.sink_data_hub_parameters = sink_data_hub_parameters
+        self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         self.sink_doris_parameters = sink_doris_parameters
         # The parameters that are returned if Function Compute is specified as the event target.
         self.sink_fc_parameters = sink_fc_parameters
@@ -29193,6 +29240,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
             self.sink_dash_vector_parameters.validate()
         if self.sink_data_hub_parameters:
             self.sink_data_hub_parameters.validate()
+        if self.sink_data_works_trigger_parameters:
+            self.sink_data_works_trigger_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
         if self.sink_fc_parameters:
@@ -29234,6 +29283,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
             result['SinkDashVectorParameters'] = self.sink_dash_vector_parameters.to_map()
         if self.sink_data_hub_parameters is not None:
             result['SinkDataHubParameters'] = self.sink_data_hub_parameters.to_map()
+        if self.sink_data_works_trigger_parameters is not None:
+            result['SinkDataWorksTriggerParameters'] = self.sink_data_works_trigger_parameters.to_map()
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
         if self.sink_fc_parameters is not None:
@@ -29279,6 +29330,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         if m.get('SinkDataHubParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters()
             self.sink_data_hub_parameters = temp_model.from_map(m['SinkDataHubParameters'])
+        if m.get('SinkDataWorksTriggerParameters') is not None:
+            temp_model = SinkDataWorksTriggerParameters()
+            self.sink_data_works_trigger_parameters = temp_model.from_map(m['SinkDataWorksTriggerParameters'])
         if m.get('SinkDorisParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m['SinkDorisParameters'])
@@ -42955,6 +43009,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         sink_customized_kafka_parameters: UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters = None,
         sink_dash_vector_parameters: UpdateEventStreamingRequestSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: UpdateEventStreamingRequestSinkSinkDataHubParameters = None,
+        sink_data_works_trigger_parameters: SinkDataWorksTriggerParameters = None,
         sink_doris_parameters: UpdateEventStreamingRequestSinkSinkDorisParameters = None,
         sink_fc_parameters: UpdateEventStreamingRequestSinkSinkFcParameters = None,
         sink_fnf_parameters: UpdateEventStreamingRequestSinkSinkFnfParameters = None,
@@ -42980,6 +43035,7 @@ class UpdateEventStreamingRequestSink(TeaModel):
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         # The parameters that are configured if you specify DataHub as the event target.
         self.sink_data_hub_parameters = sink_data_hub_parameters
+        self.sink_data_works_trigger_parameters = sink_data_works_trigger_parameters
         # The type of the event source.
         self.sink_doris_parameters = sink_doris_parameters
         # The parameters that are configured if you specify Function Compute as the event target.
@@ -43018,6 +43074,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             self.sink_dash_vector_parameters.validate()
         if self.sink_data_hub_parameters:
             self.sink_data_hub_parameters.validate()
+        if self.sink_data_works_trigger_parameters:
+            self.sink_data_works_trigger_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
         if self.sink_fc_parameters:
@@ -43061,6 +43119,8 @@ class UpdateEventStreamingRequestSink(TeaModel):
             result['SinkDashVectorParameters'] = self.sink_dash_vector_parameters.to_map()
         if self.sink_data_hub_parameters is not None:
             result['SinkDataHubParameters'] = self.sink_data_hub_parameters.to_map()
+        if self.sink_data_works_trigger_parameters is not None:
+            result['SinkDataWorksTriggerParameters'] = self.sink_data_works_trigger_parameters.to_map()
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
         if self.sink_fc_parameters is not None:
@@ -43108,6 +43168,9 @@ class UpdateEventStreamingRequestSink(TeaModel):
         if m.get('SinkDataHubParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkDataHubParameters()
             self.sink_data_hub_parameters = temp_model.from_map(m['SinkDataHubParameters'])
+        if m.get('SinkDataWorksTriggerParameters') is not None:
+            temp_model = SinkDataWorksTriggerParameters()
+            self.sink_data_works_trigger_parameters = temp_model.from_map(m['SinkDataWorksTriggerParameters'])
         if m.get('SinkDorisParameters') is not None:
             temp_model = UpdateEventStreamingRequestSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m['SinkDorisParameters'])
