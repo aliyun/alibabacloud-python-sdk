@@ -630,6 +630,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_certificate_with_options_async(request, runtime)
 
+    def create_external_cacertificate_with_options(
+        self,
+        tmp_req: cas_20200630_models.CreateExternalCACertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
+        """
+        @summary 创建外部子CA证书
+        
+        @param tmp_req: CreateExternalCACertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExternalCACertificateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cas_20200630_models.CreateExternalCACertificateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_passthrough):
+            request.api_passthrough_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_passthrough_shrink):
+            query['ApiPassthrough'] = request.api_passthrough_shrink
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.validity):
+            query['Validity'] = request.validity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExternalCACertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.CreateExternalCACertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_external_cacertificate_with_options_async(
+        self,
+        tmp_req: cas_20200630_models.CreateExternalCACertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
+        """
+        @summary 创建外部子CA证书
+        
+        @param tmp_req: CreateExternalCACertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExternalCACertificateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = cas_20200630_models.CreateExternalCACertificateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.api_passthrough):
+            request.api_passthrough_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.api_passthrough_shrink):
+            query['ApiPassthrough'] = request.api_passthrough_shrink
+        if not UtilClient.is_unset(request.csr):
+            query['Csr'] = request.csr
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.validity):
+            query['Validity'] = request.validity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExternalCACertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.CreateExternalCACertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_external_cacertificate(
+        self,
+        request: cas_20200630_models.CreateExternalCACertificateRequest,
+    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
+        """
+        @summary 创建外部子CA证书
+        
+        @param request: CreateExternalCACertificateRequest
+        @return: CreateExternalCACertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_external_cacertificate_with_options(request, runtime)
+
+    async def create_external_cacertificate_async(
+        self,
+        request: cas_20200630_models.CreateExternalCACertificateRequest,
+    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
+        """
+        @summary 创建外部子CA证书
+        
+        @param request: CreateExternalCACertificateRequest
+        @return: CreateExternalCACertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_external_cacertificate_with_options_async(request, runtime)
+
     def create_revoke_client_certificate_with_options(
         self,
         request: cas_20200630_models.CreateRevokeClientCertificateRequest,
@@ -2619,6 +2735,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_client_certificate_with_options_async(request, runtime)
+
+    def list_pca_ca_certificate_with_options(
+        self,
+        request: cas_20200630_models.ListPcaCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
+        """
+        @summary 查询私有CA机构证书
+        
+        @param request: ListPcaCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPcaCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPcaCaCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListPcaCaCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pca_ca_certificate_with_options_async(
+        self,
+        request: cas_20200630_models.ListPcaCaCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
+        """
+        @summary 查询私有CA机构证书
+        
+        @param request: ListPcaCaCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPcaCaCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListPcaCaCertificate',
+            version='2020-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cas_20200630_models.ListPcaCaCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pca_ca_certificate(
+        self,
+        request: cas_20200630_models.ListPcaCaCertificateRequest,
+    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
+        """
+        @summary 查询私有CA机构证书
+        
+        @param request: ListPcaCaCertificateRequest
+        @return: ListPcaCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_pca_ca_certificate_with_options(request, runtime)
+
+    async def list_pca_ca_certificate_async(
+        self,
+        request: cas_20200630_models.ListPcaCaCertificateRequest,
+    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
+        """
+        @summary 查询私有CA机构证书
+        
+        @param request: ListPcaCaCertificateRequest
+        @return: ListPcaCaCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_pca_ca_certificate_with_options_async(request, runtime)
 
     def list_revoke_certificate_with_options(
         self,

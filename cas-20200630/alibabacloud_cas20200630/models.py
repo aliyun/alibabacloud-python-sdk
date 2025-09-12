@@ -1114,6 +1114,318 @@ class CreateCustomCertificateResponse(TeaModel):
         return self
 
 
+class CreateExternalCACertificateRequestApiPassthroughExtensions(TeaModel):
+    def __init__(
+        self,
+        extended_key_usages: List[str] = None,
+        path_len_constraint: int = None,
+    ):
+        self.extended_key_usages = extended_key_usages
+        self.path_len_constraint = path_len_constraint
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extended_key_usages is not None:
+            result['ExtendedKeyUsages'] = self.extended_key_usages
+        if self.path_len_constraint is not None:
+            result['PathLenConstraint'] = self.path_len_constraint
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExtendedKeyUsages') is not None:
+            self.extended_key_usages = m.get('ExtendedKeyUsages')
+        if m.get('PathLenConstraint') is not None:
+            self.path_len_constraint = m.get('PathLenConstraint')
+        return self
+
+
+class CreateExternalCACertificateRequestApiPassthroughSubject(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        country: str = None,
+        locality: str = None,
+        organization: str = None,
+        organization_unit: str = None,
+        state: str = None,
+    ):
+        self.common_name = common_name
+        self.country = country
+        self.locality = locality
+        self.organization = organization
+        self.organization_unit = organization_unit
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.locality is not None:
+            result['Locality'] = self.locality
+        if self.organization is not None:
+            result['Organization'] = self.organization
+        if self.organization_unit is not None:
+            result['OrganizationUnit'] = self.organization_unit
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('Locality') is not None:
+            self.locality = m.get('Locality')
+        if m.get('Organization') is not None:
+            self.organization = m.get('Organization')
+        if m.get('OrganizationUnit') is not None:
+            self.organization_unit = m.get('OrganizationUnit')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class CreateExternalCACertificateRequestApiPassthrough(TeaModel):
+    def __init__(
+        self,
+        extensions: CreateExternalCACertificateRequestApiPassthroughExtensions = None,
+        subject: CreateExternalCACertificateRequestApiPassthroughSubject = None,
+    ):
+        self.extensions = extensions
+        self.subject = subject
+
+    def validate(self):
+        if self.extensions:
+            self.extensions.validate()
+        if self.subject:
+            self.subject.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extensions is not None:
+            result['Extensions'] = self.extensions.to_map()
+        if self.subject is not None:
+            result['Subject'] = self.subject.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extensions') is not None:
+            temp_model = CreateExternalCACertificateRequestApiPassthroughExtensions()
+            self.extensions = temp_model.from_map(m['Extensions'])
+        if m.get('Subject') is not None:
+            temp_model = CreateExternalCACertificateRequestApiPassthroughSubject()
+            self.subject = temp_model.from_map(m['Subject'])
+        return self
+
+
+class CreateExternalCACertificateRequest(TeaModel):
+    def __init__(
+        self,
+        api_passthrough: CreateExternalCACertificateRequestApiPassthrough = None,
+        csr: str = None,
+        instance_id: str = None,
+        validity: str = None,
+    ):
+        self.api_passthrough = api_passthrough
+        # This parameter is required.
+        self.csr = csr
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.validity = validity
+
+    def validate(self):
+        if self.api_passthrough:
+            self.api_passthrough.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_passthrough is not None:
+            result['ApiPassthrough'] = self.api_passthrough.to_map()
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.validity is not None:
+            result['Validity'] = self.validity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiPassthrough') is not None:
+            temp_model = CreateExternalCACertificateRequestApiPassthrough()
+            self.api_passthrough = temp_model.from_map(m['ApiPassthrough'])
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Validity') is not None:
+            self.validity = m.get('Validity')
+        return self
+
+
+class CreateExternalCACertificateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        api_passthrough_shrink: str = None,
+        csr: str = None,
+        instance_id: str = None,
+        validity: str = None,
+    ):
+        self.api_passthrough_shrink = api_passthrough_shrink
+        # This parameter is required.
+        self.csr = csr
+        # This parameter is required.
+        self.instance_id = instance_id
+        # This parameter is required.
+        self.validity = validity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_passthrough_shrink is not None:
+            result['ApiPassthrough'] = self.api_passthrough_shrink
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.validity is not None:
+            result['Validity'] = self.validity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiPassthrough') is not None:
+            self.api_passthrough_shrink = m.get('ApiPassthrough')
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Validity') is not None:
+            self.validity = m.get('Validity')
+        return self
+
+
+class CreateExternalCACertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        certificate_chain: str = None,
+        identifier: str = None,
+        request_id: str = None,
+    ):
+        self.certificate = certificate
+        self.certificate_chain = certificate_chain
+        self.identifier = identifier
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateExternalCACertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateExternalCACertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateExternalCACertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateRevokeClientCertificateRequest(TeaModel):
     def __init__(
         self,
@@ -4668,6 +4980,202 @@ class ListClientCertificateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListPcaCaCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListPcaCaCertificateResponseBodyList(TeaModel):
+    def __init__(
+        self,
+        cert_identifier: str = None,
+        common_name: str = None,
+        issuer_identifier: str = None,
+        private_ca_instance_id: str = None,
+        private_ca_region_id: str = None,
+        status: str = None,
+        user_id: str = None,
+    ):
+        self.cert_identifier = cert_identifier
+        self.common_name = common_name
+        self.issuer_identifier = issuer_identifier
+        self.private_ca_instance_id = private_ca_instance_id
+        self.private_ca_region_id = private_ca_region_id
+        self.status = status
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.issuer_identifier is not None:
+            result['IssuerIdentifier'] = self.issuer_identifier
+        if self.private_ca_instance_id is not None:
+            result['PrivateCaInstanceId'] = self.private_ca_instance_id
+        if self.private_ca_region_id is not None:
+            result['PrivateCaRegionId'] = self.private_ca_region_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('IssuerIdentifier') is not None:
+            self.issuer_identifier = m.get('IssuerIdentifier')
+        if m.get('PrivateCaInstanceId') is not None:
+            self.private_ca_instance_id = m.get('PrivateCaInstanceId')
+        if m.get('PrivateCaRegionId') is not None:
+            self.private_ca_region_id = m.get('PrivateCaRegionId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ListPcaCaCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        list: List[ListPcaCaCertificateResponseBodyList] = None,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.list = list
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = ListPcaCaCertificateResponseBodyList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListPcaCaCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListPcaCaCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListPcaCaCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
