@@ -13350,6 +13350,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.checkpoint_pause_time):
+            query['CheckpointPauseTime'] = request.checkpoint_pause_time
+        if not UtilClient.is_unset(request.checkpoints):
+            query['Checkpoints'] = request.checkpoints
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.desired_configuration):
@@ -13406,6 +13410,10 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.checkpoint_pause_time):
+            query['CheckpointPauseTime'] = request.checkpoint_pause_time
+        if not UtilClient.is_unset(request.checkpoints):
+            query['Checkpoints'] = request.checkpoints
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.desired_configuration):

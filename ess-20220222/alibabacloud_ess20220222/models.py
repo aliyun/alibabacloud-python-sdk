@@ -17477,16 +17477,12 @@ class DescribeInstanceRefreshesRequest(TeaModel):
         return self
 
 
-class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration(TeaModel):
+class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints(TeaModel):
     def __init__(
         self,
-        image_id: str = None,
-        scaling_configuration_id: str = None,
+        percentage: int = None,
     ):
-        # The ID of the image file that provides the image resource for Auto Scaling to create instances.
-        self.image_id = image_id
-        # The ID of the scaling configuration.
-        self.scaling_configuration_id = scaling_configuration_id
+        self.percentage = percentage
 
     def validate(self):
         pass
@@ -17497,16 +17493,213 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
             return _map
 
         result = dict()
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        return self
+
+
+class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars(TeaModel):
+    def __init__(
+        self,
+        field_ref_field_path: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.field_ref_field_path = field_ref_field_path
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_ref_field_path is not None:
+            result['FieldRefFieldPath'] = self.field_ref_field_path
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldRefFieldPath') is not None:
+            self.field_ref_field_path = m.get('FieldRefFieldPath')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        commands: List[str] = None,
+        environment_vars: List[DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars] = None,
+        image: str = None,
+        name: str = None,
+    ):
+        self.args = args
+        self.commands = commands
+        self.environment_vars = environment_vars
+        self.image = image
+        self.name = name
+
+    def validate(self):
+        if self.environment_vars:
+            for k in self.environment_vars:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.commands is not None:
+            result['Commands'] = self.commands
+        result['EnvironmentVars'] = []
+        if self.environment_vars is not None:
+            for k in self.environment_vars:
+                result['EnvironmentVars'].append(k.to_map() if k else None)
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Commands') is not None:
+            self.commands = m.get('Commands')
+        self.environment_vars = []
+        if m.get('EnvironmentVars') is not None:
+            for k in m.get('EnvironmentVars'):
+                temp_model = DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainersEnvironmentVars()
+                self.environment_vars.append(temp_model.from_map(k))
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+    ):
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration(TeaModel):
+    def __init__(
+        self,
+        containers: List[DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers] = None,
+        image_id: str = None,
+        launch_template_id: str = None,
+        launch_template_overrides: List[DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides] = None,
+        launch_template_version: str = None,
+        scaling_configuration_id: str = None,
+    ):
+        self.containers = containers
+        # The ID of the image file that provides the image resource for Auto Scaling to create instances.
+        self.image_id = image_id
+        self.launch_template_id = launch_template_id
+        self.launch_template_overrides = launch_template_overrides
+        self.launch_template_version = launch_template_version
+        # The ID of the scaling configuration.
+        self.scaling_configuration_id = scaling_configuration_id
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+        if self.launch_template_overrides:
+            for k in self.launch_template_overrides:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.launch_template_id is not None:
+            result['LaunchTemplateId'] = self.launch_template_id
+        result['LaunchTemplateOverrides'] = []
+        if self.launch_template_overrides is not None:
+            for k in self.launch_template_overrides:
+                result['LaunchTemplateOverrides'].append(k.to_map() if k else None)
+        if self.launch_template_version is not None:
+            result['LaunchTemplateVersion'] = self.launch_template_version
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationContainers()
+                self.containers.append(temp_model.from_map(k))
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('LaunchTemplateId') is not None:
+            self.launch_template_id = m.get('LaunchTemplateId')
+        self.launch_template_overrides = []
+        if m.get('LaunchTemplateOverrides') is not None:
+            for k in m.get('LaunchTemplateOverrides'):
+                temp_model = DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurationLaunchTemplateOverrides()
+                self.launch_template_overrides.append(temp_model.from_map(k))
+        if m.get('LaunchTemplateVersion') is not None:
+            self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         return self
@@ -17515,6 +17708,8 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfigurat
 class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
     def __init__(
         self,
+        checkpoint_pause_time: int = None,
+        checkpoints: List[DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints] = None,
         desired_configuration: DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration = None,
         detail: str = None,
         end_time: str = None,
@@ -17529,6 +17724,8 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         status: str = None,
         total_need_update_capacity: int = None,
     ):
+        self.checkpoint_pause_time = checkpoint_pause_time
+        self.checkpoints = checkpoints
         # The desired configurations of the instance refresh task.
         self.desired_configuration = desired_configuration
         # The reason why the instance refresh task failed to be executed.
@@ -17575,6 +17772,10 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
         self.total_need_update_capacity = total_need_update_capacity
 
     def validate(self):
+        if self.checkpoints:
+            for k in self.checkpoints:
+                if k:
+                    k.validate()
         if self.desired_configuration:
             self.desired_configuration.validate()
 
@@ -17584,6 +17785,12 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
             return _map
 
         result = dict()
+        if self.checkpoint_pause_time is not None:
+            result['CheckpointPauseTime'] = self.checkpoint_pause_time
+        result['Checkpoints'] = []
+        if self.checkpoints is not None:
+            for k in self.checkpoints:
+                result['Checkpoints'].append(k.to_map() if k else None)
         if self.desired_configuration is not None:
             result['DesiredConfiguration'] = self.desired_configuration.to_map()
         if self.detail is not None:
@@ -17614,6 +17821,13 @@ class DescribeInstanceRefreshesResponseBodyInstanceRefreshTasks(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckpointPauseTime') is not None:
+            self.checkpoint_pause_time = m.get('CheckpointPauseTime')
+        self.checkpoints = []
+        if m.get('Checkpoints') is not None:
+            for k in m.get('Checkpoints'):
+                temp_model = DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksCheckpoints()
+                self.checkpoints.append(temp_model.from_map(k))
         if m.get('DesiredConfiguration') is not None:
             temp_model = DescribeInstanceRefreshesResponseBodyInstanceRefreshTasksDesiredConfiguration()
             self.desired_configuration = temp_model.from_map(m['DesiredConfiguration'])
@@ -38769,24 +38983,12 @@ class SetInstancesProtectionResponse(TeaModel):
         return self
 
 
-class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
+class StartInstanceRefreshRequestCheckpoints(TeaModel):
     def __init__(
         self,
-        image_id: str = None,
-        scaling_configuration_id: str = None,
+        percentage: int = None,
     ):
-        # The image ID.
-        # 
-        # > 
-        # 
-        # *   After the instance refresh task is complete, the active scaling configuration uses the image specified by this parameter.
-        # 
-        # *   If the instance configuration source of the scaling group is a launch template, you cannot specify this parameter.
-        self.image_id = image_id
-        # The ID of the scaling configuration.
-        # 
-        # >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
-        self.scaling_configuration_id = scaling_configuration_id
+        self.percentage = percentage
 
     def validate(self):
         pass
@@ -38797,16 +38999,221 @@ class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
             return _map
 
         result = dict()
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        return self
+
+
+class StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars(TeaModel):
+    def __init__(
+        self,
+        field_ref_field_path: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.field_ref_field_path = field_ref_field_path
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_ref_field_path is not None:
+            result['FieldRefFieldPath'] = self.field_ref_field_path
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FieldRefFieldPath') is not None:
+            self.field_ref_field_path = m.get('FieldRefFieldPath')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class StartInstanceRefreshRequestDesiredConfigurationContainers(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        commands: List[str] = None,
+        environment_vars: List[StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars] = None,
+        image: str = None,
+        name: str = None,
+    ):
+        self.args = args
+        self.commands = commands
+        self.environment_vars = environment_vars
+        self.image = image
+        self.name = name
+
+    def validate(self):
+        if self.environment_vars:
+            for k in self.environment_vars:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.commands is not None:
+            result['Commands'] = self.commands
+        result['EnvironmentVars'] = []
+        if self.environment_vars is not None:
+            for k in self.environment_vars:
+                result['EnvironmentVars'].append(k.to_map() if k else None)
+        if self.image is not None:
+            result['Image'] = self.image
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Commands') is not None:
+            self.commands = m.get('Commands')
+        self.environment_vars = []
+        if m.get('EnvironmentVars') is not None:
+            for k in m.get('EnvironmentVars'):
+                temp_model = StartInstanceRefreshRequestDesiredConfigurationContainersEnvironmentVars()
+                self.environment_vars.append(temp_model.from_map(k))
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+    ):
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
+    def __init__(
+        self,
+        containers: List[StartInstanceRefreshRequestDesiredConfigurationContainers] = None,
+        image_id: str = None,
+        launch_template_id: str = None,
+        launch_template_overrides: List[StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides] = None,
+        launch_template_version: str = None,
+        scaling_configuration_id: str = None,
+    ):
+        self.containers = containers
+        # The image ID.
+        # 
+        # > 
+        # 
+        # *   After the instance refresh task is complete, the active scaling configuration uses the image specified by this parameter.
+        # 
+        # *   If the instance configuration source of the scaling group is a launch template, you cannot specify this parameter.
+        self.image_id = image_id
+        self.launch_template_id = launch_template_id
+        self.launch_template_overrides = launch_template_overrides
+        self.launch_template_version = launch_template_version
+        # The ID of the scaling configuration.
+        # 
+        # >  After the instance refresh task is complete, the scaling group uses the scaling configuration specified by this parameter.
+        self.scaling_configuration_id = scaling_configuration_id
+
+    def validate(self):
+        if self.containers:
+            for k in self.containers:
+                if k:
+                    k.validate()
+        if self.launch_template_overrides:
+            for k in self.launch_template_overrides:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Containers'] = []
+        if self.containers is not None:
+            for k in self.containers:
+                result['Containers'].append(k.to_map() if k else None)
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.launch_template_id is not None:
+            result['LaunchTemplateId'] = self.launch_template_id
+        result['LaunchTemplateOverrides'] = []
+        if self.launch_template_overrides is not None:
+            for k in self.launch_template_overrides:
+                result['LaunchTemplateOverrides'].append(k.to_map() if k else None)
+        if self.launch_template_version is not None:
+            result['LaunchTemplateVersion'] = self.launch_template_version
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.containers = []
+        if m.get('Containers') is not None:
+            for k in m.get('Containers'):
+                temp_model = StartInstanceRefreshRequestDesiredConfigurationContainers()
+                self.containers.append(temp_model.from_map(k))
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('LaunchTemplateId') is not None:
+            self.launch_template_id = m.get('LaunchTemplateId')
+        self.launch_template_overrides = []
+        if m.get('LaunchTemplateOverrides') is not None:
+            for k in m.get('LaunchTemplateOverrides'):
+                temp_model = StartInstanceRefreshRequestDesiredConfigurationLaunchTemplateOverrides()
+                self.launch_template_overrides.append(temp_model.from_map(k))
+        if m.get('LaunchTemplateVersion') is not None:
+            self.launch_template_version = m.get('LaunchTemplateVersion')
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         return self
@@ -38815,6 +39222,8 @@ class StartInstanceRefreshRequestDesiredConfiguration(TeaModel):
 class StartInstanceRefreshRequest(TeaModel):
     def __init__(
         self,
+        checkpoint_pause_time: int = None,
+        checkpoints: List[StartInstanceRefreshRequestCheckpoints] = None,
         client_token: str = None,
         desired_configuration: StartInstanceRefreshRequestDesiredConfiguration = None,
         max_healthy_percentage: int = None,
@@ -38825,6 +39234,8 @@ class StartInstanceRefreshRequest(TeaModel):
         scaling_group_id: str = None,
         skip_matching: bool = None,
     ):
+        self.checkpoint_pause_time = checkpoint_pause_time
+        self.checkpoints = checkpoints
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         # The desired configurations of the instance refresh task.
@@ -38864,6 +39275,10 @@ class StartInstanceRefreshRequest(TeaModel):
         self.skip_matching = skip_matching
 
     def validate(self):
+        if self.checkpoints:
+            for k in self.checkpoints:
+                if k:
+                    k.validate()
         if self.desired_configuration:
             self.desired_configuration.validate()
 
@@ -38873,6 +39288,12 @@ class StartInstanceRefreshRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.checkpoint_pause_time is not None:
+            result['CheckpointPauseTime'] = self.checkpoint_pause_time
+        result['Checkpoints'] = []
+        if self.checkpoints is not None:
+            for k in self.checkpoints:
+                result['Checkpoints'].append(k.to_map() if k else None)
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.desired_configuration is not None:
@@ -38895,6 +39316,13 @@ class StartInstanceRefreshRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckpointPauseTime') is not None:
+            self.checkpoint_pause_time = m.get('CheckpointPauseTime')
+        self.checkpoints = []
+        if m.get('Checkpoints') is not None:
+            for k in m.get('Checkpoints'):
+                temp_model = StartInstanceRefreshRequestCheckpoints()
+                self.checkpoints.append(temp_model.from_map(k))
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('DesiredConfiguration') is not None:
