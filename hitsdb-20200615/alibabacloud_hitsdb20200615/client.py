@@ -991,6 +991,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormV2InstanceResponse:
         """
+        @summary 创建Lindorm实例
+        
         @param request: CreateLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLindormV2InstanceResponse
@@ -1082,6 +1084,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormV2InstanceResponse:
         """
+        @summary 创建Lindorm实例
+        
         @param request: CreateLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateLindormV2InstanceResponse
@@ -1172,6 +1176,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormV2InstanceResponse:
         """
+        @summary 创建Lindorm实例
+        
         @param request: CreateLindormV2InstanceRequest
         @return: CreateLindormV2InstanceResponse
         """
@@ -1183,6 +1189,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormV2InstanceResponse:
         """
+        @summary 创建Lindorm实例
+        
         @param request: CreateLindormV2InstanceRequest
         @return: CreateLindormV2InstanceResponse
         """
@@ -3551,6 +3559,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormV2InstanceResponse:
         """
+        @summary 查询实例详情
+        
         @param request: GetLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLindormV2InstanceResponse
@@ -3594,6 +3604,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormV2InstanceResponse:
         """
+        @summary 查询实例详情
+        
         @param request: GetLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: GetLindormV2InstanceResponse
@@ -3636,6 +3648,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormV2InstanceResponse:
         """
+        @summary 查询实例详情
+        
         @param request: GetLindormV2InstanceRequest
         @return: GetLindormV2InstanceResponse
         """
@@ -3647,6 +3661,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormV2InstanceResponse:
         """
+        @summary 查询实例详情
+        
         @param request: GetLindormV2InstanceRequest
         @return: GetLindormV2InstanceResponse
         """
@@ -3764,6 +3780,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_v2instance_engine_list_with_options_async(request, runtime)
+
+    def get_lindorm_v2instance_for_terraform_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceForTerraformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse:
+        """
+        @summary 查询实例详情
+        
+        @param request: GetLindormV2InstanceForTerraformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2InstanceForTerraformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2InstanceForTerraform',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lindorm_v2instance_for_terraform_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceForTerraformRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse:
+        """
+        @summary 查询实例详情
+        
+        @param request: GetLindormV2InstanceForTerraformRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2InstanceForTerraformResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2InstanceForTerraform',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lindorm_v2instance_for_terraform(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceForTerraformRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse:
+        """
+        @summary 查询实例详情
+        
+        @param request: GetLindormV2InstanceForTerraformRequest
+        @return: GetLindormV2InstanceForTerraformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lindorm_v2instance_for_terraform_with_options(request, runtime)
+
+    async def get_lindorm_v2instance_for_terraform_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceForTerraformRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceForTerraformResponse:
+        """
+        @summary 查询实例详情
+        
+        @param request: GetLindormV2InstanceForTerraformRequest
+        @return: GetLindormV2InstanceForTerraformResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lindorm_v2instance_for_terraform_with_options_async(request, runtime)
+
+    def get_lindorm_v2instance_security_groups_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 查询新架构实例安全组信息
+        
+        @param request: GetLindormV2InstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2InstanceSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2InstanceSecurityGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_lindorm_v2instance_security_groups_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 查询新架构实例安全组信息
+        
+        @param request: GetLindormV2InstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormV2InstanceSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLindormV2InstanceSecurityGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_lindorm_v2instance_security_groups(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 查询新架构实例安全组信息
+        
+        @param request: GetLindormV2InstanceSecurityGroupsRequest
+        @return: GetLindormV2InstanceSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_lindorm_v2instance_security_groups_with_options(request, runtime)
+
+    async def get_lindorm_v2instance_security_groups_async(
+        self,
+        request: hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsRequest,
+    ) -> hitsdb_20200615_models.GetLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 查询新架构实例安全组信息
+        
+        @param request: GetLindormV2InstanceSecurityGroupsRequest
+        @return: GetLindormV2InstanceSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_lindorm_v2instance_security_groups_with_options_async(request, runtime)
 
     def get_lindorm_v2storage_usage_with_options(
         self,
@@ -4587,6 +4835,8 @@ class Client(OpenApiClient):
             query['ArbitraryVSwitchId'] = request.arbitrary_vswitch_id
         if not UtilClient.is_unset(request.arbitrary_zone_id):
             query['ArbitraryZoneId'] = request.arbitrary_zone_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -4640,6 +4890,8 @@ class Client(OpenApiClient):
             query['ArbitraryVSwitchId'] = request.arbitrary_vswitch_id
         if not UtilClient.is_unset(request.arbitrary_zone_id):
             query['ArbitraryZoneId'] = request.arbitrary_zone_id
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -5171,6 +5423,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyLindormV2InstanceResponse:
         """
+        @summary 变配实例
+        
         @param request: ModifyLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLindormV2InstanceResponse
@@ -5226,6 +5480,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyLindormV2InstanceResponse:
         """
+        @summary 变配实例
+        
         @param request: ModifyLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyLindormV2InstanceResponse
@@ -5280,6 +5536,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.ModifyLindormV2InstanceResponse:
         """
+        @summary 变配实例
+        
         @param request: ModifyLindormV2InstanceRequest
         @return: ModifyLindormV2InstanceResponse
         """
@@ -5291,11 +5549,133 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.ModifyLindormV2InstanceResponse:
         """
+        @summary 变配实例
+        
         @param request: ModifyLindormV2InstanceRequest
         @return: ModifyLindormV2InstanceResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_lindorm_v2instance_with_options_async(request, runtime)
+
+    def modify_lindorm_v2instance_security_groups_with_options(
+        self,
+        request: hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 新架构修改安全组接口
+        
+        @param request: ModifyLindormV2InstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLindormV2InstanceSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_groups):
+            query['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLindormV2InstanceSecurityGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_lindorm_v2instance_security_groups_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 新架构修改安全组接口
+        
+        @param request: ModifyLindormV2InstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLindormV2InstanceSecurityGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_groups):
+            query['SecurityGroups'] = request.security_groups
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyLindormV2InstanceSecurityGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_lindorm_v2instance_security_groups(
+        self,
+        request: hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsRequest,
+    ) -> hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 新架构修改安全组接口
+        
+        @param request: ModifyLindormV2InstanceSecurityGroupsRequest
+        @return: ModifyLindormV2InstanceSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_lindorm_v2instance_security_groups_with_options(request, runtime)
+
+    async def modify_lindorm_v2instance_security_groups_async(
+        self,
+        request: hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsRequest,
+    ) -> hitsdb_20200615_models.ModifyLindormV2InstanceSecurityGroupsResponse:
+        """
+        @summary 新架构修改安全组接口
+        
+        @param request: ModifyLindormV2InstanceSecurityGroupsRequest
+        @return: ModifyLindormV2InstanceSecurityGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_lindorm_v2instance_security_groups_with_options_async(request, runtime)
 
     def modify_lindorm_v2white_ip_list_with_options(
         self,
@@ -5427,6 +5807,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
         """
+        @summary 开通计算引擎
+        
         @param request: OpenComputeEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenComputeEngineResponse
@@ -5474,6 +5856,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
         """
+        @summary 开通计算引擎
+        
         @param request: OpenComputeEngineRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenComputeEngineResponse
@@ -5520,6 +5904,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
         """
+        @summary 开通计算引擎
+        
         @param request: OpenComputeEngineRequest
         @return: OpenComputeEngineResponse
         """
@@ -5531,6 +5917,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
         """
+        @summary 开通计算引擎
+        
         @param request: OpenComputeEngineRequest
         @return: OpenComputeEngineResponse
         """
@@ -5543,6 +5931,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
         """
+        @summary 开通计算引擎前置校验
+        
         @param request: OpenComputePreCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenComputePreCheckResponse
@@ -5590,6 +5980,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
         """
+        @summary 开通计算引擎前置校验
+        
         @param request: OpenComputePreCheckRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: OpenComputePreCheckResponse
@@ -5636,6 +6028,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
         """
+        @summary 开通计算引擎前置校验
+        
         @param request: OpenComputePreCheckRequest
         @return: OpenComputePreCheckResponse
         """
@@ -5647,6 +6041,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
         """
+        @summary 开通计算引擎前置校验
+        
         @param request: OpenComputePreCheckRequest
         @return: OpenComputePreCheckResponse
         """
@@ -5779,6 +6175,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ReleaseLindormV2InstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: ReleaseLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseLindormV2InstanceResponse
@@ -5824,6 +6222,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ReleaseLindormV2InstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: ReleaseLindormV2InstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ReleaseLindormV2InstanceResponse
@@ -5868,6 +6268,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ReleaseLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.ReleaseLindormV2InstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: ReleaseLindormV2InstanceRequest
         @return: ReleaseLindormV2InstanceResponse
         """
@@ -5879,6 +6281,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ReleaseLindormV2InstanceRequest,
     ) -> hitsdb_20200615_models.ReleaseLindormV2InstanceResponse:
         """
+        @summary 释放实例
+        
         @param request: ReleaseLindormV2InstanceRequest
         @return: ReleaseLindormV2InstanceResponse
         """
@@ -7024,6 +7428,146 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_ldps_compute_group_with_options_async(request, runtime)
+
+    def update_lindorm_v2instance_with_options(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2InstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLindormV2InstanceResponse:
+        """
+        @summary 更新LindormV2Instance
+        
+        @param request: UpdateLindormV2InstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLindormV2InstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capacity_storage_size):
+            query['CapacityStorageSize'] = request.capacity_storage_size
+        if not UtilClient.is_unset(request.cloud_storage_size):
+            query['CloudStorageSize'] = request.cloud_storage_size
+        if not UtilClient.is_unset(request.cloud_storage_type):
+            query['CloudStorageType'] = request.cloud_storage_type
+        if not UtilClient.is_unset(request.enable_capacity_storage):
+            query['EnableCapacityStorage'] = request.enable_capacity_storage
+        if not UtilClient.is_unset(request.engine_list):
+            query['EngineList'] = request.engine_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLindormV2Instance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2InstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_lindorm_v2instance_with_options_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2InstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLindormV2InstanceResponse:
+        """
+        @summary 更新LindormV2Instance
+        
+        @param request: UpdateLindormV2InstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLindormV2InstanceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.capacity_storage_size):
+            query['CapacityStorageSize'] = request.capacity_storage_size
+        if not UtilClient.is_unset(request.cloud_storage_size):
+            query['CloudStorageSize'] = request.cloud_storage_size
+        if not UtilClient.is_unset(request.cloud_storage_type):
+            query['CloudStorageType'] = request.cloud_storage_type
+        if not UtilClient.is_unset(request.enable_capacity_storage):
+            query['EnableCapacityStorage'] = request.enable_capacity_storage
+        if not UtilClient.is_unset(request.engine_list):
+            query['EngineList'] = request.engine_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLindormV2Instance',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLindormV2InstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_lindorm_v2instance(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2InstanceRequest,
+    ) -> hitsdb_20200615_models.UpdateLindormV2InstanceResponse:
+        """
+        @summary 更新LindormV2Instance
+        
+        @param request: UpdateLindormV2InstanceRequest
+        @return: UpdateLindormV2InstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_lindorm_v2instance_with_options(request, runtime)
+
+    async def update_lindorm_v2instance_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLindormV2InstanceRequest,
+    ) -> hitsdb_20200615_models.UpdateLindormV2InstanceResponse:
+        """
+        @summary 更新LindormV2Instance
+        
+        @param request: UpdateLindormV2InstanceRequest
+        @return: UpdateLindormV2InstanceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_lindorm_v2instance_with_options_async(request, runtime)
 
     def update_lindorm_v2instance_parameter_with_options(
         self,

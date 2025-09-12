@@ -1,3 +1,15 @@
+2025-09-12 Version: 4.11.0
+- Support API GetLindormV2InstanceForTerraform.
+- Support API GetLindormV2InstanceSecurityGroups.
+- Support API ModifyLindormV2InstanceSecurityGroups.
+- Support API UpdateLindormV2Instance.
+- Update API GetLindormInstanceList: add response parameters Body.InstanceList.$.CreateErrorCode.
+- Update API GetLindormV2Instance: add response parameters Body.CloudStorageSize.
+- Update API GetLindormV2Instance: add response parameters Body.EngineList.$.EnableBackup.
+- Update API GetLindormV2Instance: add response parameters Body.EngineList.$.EnableCDC.
+- Update API MigrateSingleZoneToMultiZone: add request parameters DryRun.
+
+
 2025-06-24 Version: 4.10.0
 - Support API GetLindormEngineConfig.
 - Support API MigrateSingleZoneToMultiZone.
