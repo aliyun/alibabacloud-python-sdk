@@ -7938,6 +7938,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_spot):
             query['IsSpot'] = request.is_spot
+        if not UtilClient.is_unset(request.member_type):
+            query['MemberType'] = request.member_type
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -8002,6 +8004,8 @@ class Client(OpenApiClient):
             query['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.is_spot):
             query['IsSpot'] = request.is_spot
+        if not UtilClient.is_unset(request.member_type):
+            query['MemberType'] = request.member_type
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -10276,6 +10280,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.member_to_update):
+            query['MemberToUpdate'] = request.member_to_update
         if not UtilClient.is_unset(request.update_type):
             query['UpdateType'] = request.update_type
         req = open_api_models.OpenApiRequest(
@@ -10317,6 +10323,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.member_to_update):
+            query['MemberToUpdate'] = request.member_to_update
         if not UtilClient.is_unset(request.update_type):
             query['UpdateType'] = request.update_type
         req = open_api_models.OpenApiRequest(

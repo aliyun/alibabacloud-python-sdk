@@ -12870,6 +12870,7 @@ class ListServiceInstancesRequest(TeaModel):
         instance_status: str = None,
         instance_type: str = None,
         is_spot: bool = None,
+        member_type: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -12891,6 +12892,7 @@ class ListServiceInstancesRequest(TeaModel):
         self.instance_type = instance_type
         # Specifies whether the instance is a preemptible instance.
         self.is_spot = is_spot
+        self.member_type = member_type
         # The sorting order.
         # 
         # Valid values:
@@ -13041,6 +13043,8 @@ class ListServiceInstancesRequest(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.is_spot is not None:
             result['IsSpot'] = self.is_spot
+        if self.member_type is not None:
+            result['MemberType'] = self.member_type
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -13071,6 +13075,8 @@ class ListServiceInstancesRequest(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('IsSpot') is not None:
             self.is_spot = m.get('IsSpot')
+        if m.get('MemberType') is not None:
+            self.member_type = m.get('MemberType')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -16358,9 +16364,11 @@ class UpdateResourceInstanceLabelResponse(TeaModel):
 class UpdateServiceRequest(TeaModel):
     def __init__(
         self,
+        member_to_update: str = None,
         update_type: str = None,
         body: str = None,
     ):
+        self.member_to_update = member_to_update
         # The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
         # 
         # *   merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
@@ -16378,6 +16386,8 @@ class UpdateServiceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.member_to_update is not None:
+            result['MemberToUpdate'] = self.member_to_update
         if self.update_type is not None:
             result['UpdateType'] = self.update_type
         if self.body is not None:
@@ -16386,6 +16396,8 @@ class UpdateServiceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MemberToUpdate') is not None:
+            self.member_to_update = m.get('MemberToUpdate')
         if m.get('UpdateType') is not None:
             self.update_type = m.get('UpdateType')
         if m.get('body') is not None:
