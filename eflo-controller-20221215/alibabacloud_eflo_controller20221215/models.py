@@ -975,6 +975,116 @@ class CreateClusterRequestNetworks(TeaModel):
         return self
 
 
+class CreateClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        delete_with_node: bool = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.delete_with_node = delete_with_node
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.delete_with_node is not None:
+            result['DeleteWithNode'] = self.delete_with_node
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeleteWithNode') is not None:
+            self.delete_with_node = m.get('DeleteWithNode')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class CreateClusterRequestNodeGroupsHyperNodes(TeaModel):
+    def __init__(
+        self,
+        data_disk: List[CreateClusterRequestNodeGroupsHyperNodesDataDisk] = None,
+        hostname: str = None,
+        hyper_node_id: str = None,
+        login_password: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.data_disk = data_disk
+        self.hostname = hostname
+        self.hyper_node_id = hyper_node_id
+        self.login_password = login_password
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = CreateClusterRequestNodeGroupsHyperNodesDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class CreateClusterRequestNodeGroupsNodesDataDisk(TeaModel):
     def __init__(
         self,
@@ -1145,6 +1255,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
     def __init__(
         self,
         file_system_mount_enabled: bool = None,
+        hyper_nodes: List[CreateClusterRequestNodeGroupsHyperNodes] = None,
         image_id: str = None,
         key_pair_name: str = None,
         login_password: str = None,
@@ -1159,6 +1270,7 @@ class CreateClusterRequestNodeGroups(TeaModel):
     ):
         # Whether to support file system mounting
         self.file_system_mount_enabled = file_system_mount_enabled
+        self.hyper_nodes = hyper_nodes
         # System image ID
         self.image_id = image_id
         # Key pair name.
@@ -1183,6 +1295,10 @@ class CreateClusterRequestNodeGroups(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
         if self.nodes:
             for k in self.nodes:
                 if k:
@@ -1198,6 +1314,10 @@ class CreateClusterRequestNodeGroups(TeaModel):
         result = dict()
         if self.file_system_mount_enabled is not None:
             result['FileSystemMountEnabled'] = self.file_system_mount_enabled
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.key_pair_name is not None:
@@ -1228,6 +1348,11 @@ class CreateClusterRequestNodeGroups(TeaModel):
         m = m or dict()
         if m.get('FileSystemMountEnabled') is not None:
             self.file_system_mount_enabled = m.get('FileSystemMountEnabled')
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = CreateClusterRequestNodeGroupsHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('KeyPairName') is not None:
@@ -7371,6 +7496,116 @@ class ExtendClusterRequestIpAllocationPolicy(TeaModel):
         return self
 
 
+class ExtendClusterRequestNodeGroupsHyperNodesDataDisk(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        delete_with_node: bool = None,
+        performance_level: str = None,
+        size: int = None,
+    ):
+        self.category = category
+        self.delete_with_node = delete_with_node
+        self.performance_level = performance_level
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
+        if self.delete_with_node is not None:
+            result['DeleteWithNode'] = self.delete_with_node
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
+        if m.get('DeleteWithNode') is not None:
+            self.delete_with_node = m.get('DeleteWithNode')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ExtendClusterRequestNodeGroupsHyperNodes(TeaModel):
+    def __init__(
+        self,
+        data_disk: List[ExtendClusterRequestNodeGroupsHyperNodesDataDisk] = None,
+        hostname: str = None,
+        hyper_node_id: str = None,
+        login_password: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+    ):
+        self.data_disk = data_disk
+        self.hostname = hostname
+        self.hyper_node_id = hyper_node_id
+        self.login_password = login_password
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.data_disk:
+            for k in self.data_disk:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataDisk'] = []
+        if self.data_disk is not None:
+            for k in self.data_disk:
+                result['DataDisk'].append(k.to_map() if k else None)
+        if self.hostname is not None:
+            result['Hostname'] = self.hostname
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        if self.login_password is not None:
+            result['LoginPassword'] = self.login_password
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_disk = []
+        if m.get('DataDisk') is not None:
+            for k in m.get('DataDisk'):
+                temp_model = ExtendClusterRequestNodeGroupsHyperNodesDataDisk()
+                self.data_disk.append(temp_model.from_map(k))
+        if m.get('Hostname') is not None:
+            self.hostname = m.get('Hostname')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        if m.get('LoginPassword') is not None:
+            self.login_password = m.get('LoginPassword')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class ExtendClusterRequestNodeGroupsNodeTag(TeaModel):
     def __init__(
         self,
@@ -7533,6 +7768,7 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         auto_renew: bool = None,
         charge_type: str = None,
         hostnames: List[str] = None,
+        hyper_nodes: List[ExtendClusterRequestNodeGroupsHyperNodes] = None,
         login_password: str = None,
         node_group_id: str = None,
         node_tag: List[ExtendClusterRequestNodeGroupsNodeTag] = None,
@@ -7551,6 +7787,7 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         self.charge_type = charge_type
         # Set the hostnames for the purchased nodes. This parameter does not take effect when the Amount parameter is set to 0.
         self.hostnames = hostnames
+        self.hyper_nodes = hyper_nodes
         # Set the login password for the purchased nodes. This parameter is not effective when the Amount parameter is set to 0.
         self.login_password = login_password
         # Node Group ID
@@ -7571,6 +7808,10 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
         if self.node_tag:
             for k in self.node_tag:
                 if k:
@@ -7594,6 +7835,10 @@ class ExtendClusterRequestNodeGroups(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.hostnames is not None:
             result['Hostnames'] = self.hostnames
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
         if self.login_password is not None:
             result['LoginPassword'] = self.login_password
         if self.node_group_id is not None:
@@ -7628,6 +7873,11 @@ class ExtendClusterRequestNodeGroups(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('Hostnames') is not None:
             self.hostnames = m.get('Hostnames')
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = ExtendClusterRequestNodeGroupsHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
         if m.get('LoginPassword') is not None:
             self.login_password = m.get('LoginPassword')
         if m.get('NodeGroupId') is not None:
@@ -12947,6 +13197,33 @@ class SendFileResponse(TeaModel):
         return self
 
 
+class ShrinkClusterRequestNodeGroupsHyperNodes(TeaModel):
+    def __init__(
+        self,
+        hyper_node_id: str = None,
+    ):
+        self.hyper_node_id = hyper_node_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
+        return self
+
+
 class ShrinkClusterRequestNodeGroupsNodes(TeaModel):
     def __init__(
         self,
@@ -12978,15 +13255,21 @@ class ShrinkClusterRequestNodeGroupsNodes(TeaModel):
 class ShrinkClusterRequestNodeGroups(TeaModel):
     def __init__(
         self,
+        hyper_nodes: List[ShrinkClusterRequestNodeGroupsHyperNodes] = None,
         node_group_id: str = None,
         nodes: List[ShrinkClusterRequestNodeGroupsNodes] = None,
     ):
+        self.hyper_nodes = hyper_nodes
         # The node group ID.
         self.node_group_id = node_group_id
         # The nodes.
         self.nodes = nodes
 
     def validate(self):
+        if self.hyper_nodes:
+            for k in self.hyper_nodes:
+                if k:
+                    k.validate()
         if self.nodes:
             for k in self.nodes:
                 if k:
@@ -12998,6 +13281,10 @@ class ShrinkClusterRequestNodeGroups(TeaModel):
             return _map
 
         result = dict()
+        result['HyperNodes'] = []
+        if self.hyper_nodes is not None:
+            for k in self.hyper_nodes:
+                result['HyperNodes'].append(k.to_map() if k else None)
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
         result['Nodes'] = []
@@ -13008,6 +13295,11 @@ class ShrinkClusterRequestNodeGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.hyper_nodes = []
+        if m.get('HyperNodes') is not None:
+            for k in m.get('HyperNodes'):
+                temp_model = ShrinkClusterRequestNodeGroupsHyperNodes()
+                self.hyper_nodes.append(temp_model.from_map(k))
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
         self.nodes = []
