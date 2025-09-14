@@ -1,3 +1,7 @@
+2025-09-14 Version: 2.7.4
+- Update API ListClusterNodes: add response parameters Body.Nodes.$.HyperNodeId.
+
+
 2025-09-13 Version: 2.7.3
 - Update API CreateCluster: add request parameters NodeGroups.$.HyperNodes.
 - Update API ExtendCluster: add request parameters NodeGroups.$.HyperNodes.

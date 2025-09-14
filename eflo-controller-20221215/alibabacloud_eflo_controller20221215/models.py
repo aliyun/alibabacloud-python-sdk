@@ -8331,6 +8331,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         file_system_mount_enabled: bool = None,
         hostname: str = None,
         hpn_zone: str = None,
+        hyper_node_id: str = None,
         image_id: str = None,
         image_name: str = None,
         machine_type: str = None,
@@ -8358,6 +8359,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.hostname = hostname
         # The cluster number.
         self.hpn_zone = hpn_zone
+        self.hyper_node_id = hyper_node_id
         # The system image ID.
         self.image_id = image_id
         # The image name.
@@ -8431,6 +8433,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['Hostname'] = self.hostname
         if self.hpn_zone is not None:
             result['HpnZone'] = self.hpn_zone
+        if self.hyper_node_id is not None:
+            result['HyperNodeId'] = self.hyper_node_id
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -8479,6 +8483,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.hostname = m.get('Hostname')
         if m.get('HpnZone') is not None:
             self.hpn_zone = m.get('HpnZone')
+        if m.get('HyperNodeId') is not None:
+            self.hyper_node_id = m.get('HyperNodeId')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
