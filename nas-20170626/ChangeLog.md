@@ -1,3 +1,6 @@
+2025-09-15 Version: 3.0.2
+- Generated python 2017-06-26 for NAS.
+
 2025-07-01 Version: 3.0.0
 - Delete API AddTags.
 - Delete API RemoveTags.

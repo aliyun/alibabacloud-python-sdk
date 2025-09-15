@@ -449,6 +449,159 @@ class ApplyDataFlowAutoRefreshResponse(TeaModel):
         return self
 
 
+class AttachVscToFilesystemsRequestResourceIds(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        vsc_id: str = None,
+    ):
+        # The ID of the file system.
+        self.file_system_id = file_system_id
+        # The ID of the virtual storage channel.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class AttachVscToFilesystemsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        resource_ids: List[AttachVscToFilesystemsRequestResourceIds] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        self.client_token = client_token
+        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # 
+        # This parameter is required.
+        self.resource_ids = resource_ids
+
+    def validate(self):
+        if self.resource_ids:
+            for k in self.resource_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['ResourceIds'] = []
+        if self.resource_ids is not None:
+            for k in self.resource_ids:
+                result['ResourceIds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.resource_ids = []
+        if m.get('ResourceIds') is not None:
+            for k in m.get('ResourceIds'):
+                temp_model = AttachVscToFilesystemsRequestResourceIds()
+                self.resource_ids.append(temp_model.from_map(k))
+        return self
+
+
+class AttachVscToFilesystemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AttachVscToFilesystemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AttachVscToFilesystemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AttachVscToFilesystemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelAutoSnapshotPolicyRequest(TeaModel):
     def __init__(
         self,
@@ -2924,7 +3077,7 @@ class CreateDataFlowTaskRequest(TeaModel):
         # > - This parameter is required if the TaskAction parameter is set to Import.
         # > - Only CPFS for LINGJUN V2.6.0 and later support this parameter.
         self.create_dir_if_not_exist = create_dir_if_not_exist
-        # The dataflow ID.
+        # The ID of the dataflow.
         # 
         # This parameter is required.
         self.data_flow_id = data_flow_id
@@ -2993,8 +3146,15 @@ class CreateDataFlowTaskRequest(TeaModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # Filters subdirectories and transfers their contents.
+        # 
+        # > *   This parameter takes effect only when the Directory parameter is specified.
+        # > *   The path length of a single folder must be 1 to 1023 characters, start and end with a forward slash (/), and the total length must not exceed 3000 characters.
+        # >*   Only CPFS for Lingjun supports this parameter.
         self.includes = includes
-        # If you specify SrcTaskId, the configurations of the TaskAction, DataType, and EntryList parameters are copied from the desired dataflow task. You do not need to specify them.
+        # If you specify SrcTaskId, you must enter the ID of the dataflow task. The system copies the TaskAction, DataType, and EntryList parameters from the destination dataflow task. You do not need to specify them.
+        # 
+        # >  Streaming dataflow tasks are not supported.
         self.src_task_id = src_task_id
         # The type of the data flow task.
         # 
@@ -9809,6 +9969,7 @@ class DescribeDataFlowTasksRequest(TeaModel):
         filters: List[DescribeDataFlowTasksRequestFilters] = None,
         max_results: int = None,
         next_token: str = None,
+        with_reports: bool = None,
     ):
         # The ID of the file system.
         # 
@@ -9829,6 +9990,7 @@ class DescribeDataFlowTasksRequest(TeaModel):
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.with_reports = with_reports
 
     def validate(self):
         if self.filters:
@@ -9852,6 +10014,8 @@ class DescribeDataFlowTasksRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.with_reports is not None:
+            result['WithReports'] = self.with_reports
         return result
 
     def from_map(self, m: dict = None):
@@ -9867,6 +10031,8 @@ class DescribeDataFlowTasksRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('WithReports') is not None:
+            self.with_reports = m.get('WithReports')
         return self
 
 
@@ -10096,6 +10262,7 @@ class DescribeDataFlowTasksResponseBodyTaskInfoTask(TeaModel):
         self.filesystem_id = filesystem_id
         # The path of the smart directory.
         self.fs_path = fs_path
+        # Filter the directories under directory and transfer the folder contents contained in the filtered directory.
         self.includes = includes
         # The initiator of the data flow task. Valid values:
         # 
@@ -11748,21 +11915,23 @@ class DescribeFileSystemsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N to add to the resource.
+        # The tag key.
         # 
         # Limits:
-        # - Valid values of N: 1 to 20.
-        # - The tag key must be 1 to 128 characters in length.
-        # - The tag key cannot start with aliyun or acs:.
-        # - The tag key cannot contain http:// or https://.
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   The tag key can be up to 128 characters in length.
+        # *   The tag key cannot start with `aliyun` or `acs:`.
+        # *   The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N to add to the resource.
+        # The tag value.
         # 
         # Limits:
-        # - Valid values of N: 1 to 20.
-        # - The tag value must be 1 to 128 characters in length.
-        # - The tag value cannot start with aliyun or acs:.
-        # - The tag value cannot contain http:// or https://.
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   The tag value can be up to 128 characters in length.
+        # *   The tag value cannot start with `aliyun` or `acs:`.
+        # *   The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -11810,11 +11979,14 @@ class DescribeFileSystemsRequest(TeaModel):
         # The type of the file system.
         # 
         # Valid values:
-        # - all (default): all types
-        # - standard: General-purpose NAS file system
-        # - extreme: Extreme NAS file system
-        # - cpfs: CPFS file system
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # *   all (default): All types.
+        # *   standard: General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: Cloud Parallel File Storage (CPFS) file system.
+        # 
+        # > *   CPFS file systems are available only on the China site (aliyun.com).
+        # > *   Separate multiple file types with commas (,).
         self.file_system_type = file_system_type
         # The page number.
         # 
@@ -12108,12 +12280,12 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTarge
         # 
         # Valid values:
         # 
-        # *   Active: The mount target is available.
-        # *   Inactive: The mount target is unavailable.
-        # *   Pending: The mount target is being processed.
-        # *   Deleting: The mount target is being deleted.
-        # *   Hibernating: The mount target is being hibernated.
-        # *   Hibernated: The mount target is hibernated.
+        # *   Active
+        # *   Inactive
+        # *   Pending
+        # *   Deleting
+        # *   Hibernating
+        # *   Hibernated
         self.status = status
         # The tags that are attached to the mount target.
         self.tags = tags
@@ -12263,8 +12435,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystemPackagesPackage(TeaMod
         # The type of the storage plan.
         # 
         # Valid values:
-        # - ssd: the storage plan for Performance NAS file systems.
-        # - hybrid: the storage plan for Capacity NAS file systems.
+        # 
+        # *   ssd: The storage plan for Performance NAS file systems.
+        # *   hybrid: The storage plan for Capacity NAS file systems.
         self.package_type = package_type
         # The capacity of the storage plan. Unit: bytes.
         self.size = size
@@ -12517,15 +12690,16 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # The billing method.
         # 
         # Valid values:
-        # - Subscription: The subscription billing method is used.
-        # - PayAsYouGo: The pay-as-you-go billing method is used.
-        # - Package: A storage plan is attached to the file system.
+        # 
+        # *   Subscription
+        # *   PayAsYouGo
+        # *   Package: storage plan
         self.charge_type = charge_type
         # The time when the file system was created.
         self.create_time = create_time
         # The description of the file system.
         self.description = description
-        # The encryption type.
+        # Indicates whether the data in the file system is encrypted.
         # 
         # Valid values:
         # 
@@ -12537,13 +12711,15 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.expired_time = expired_time
         # The ID of the file system.
         self.file_system_id = file_system_id
-        # The type of the file system.
+        # The file system type.
         # 
         # Valid values:
-        # - standard: General-purpose NAS file system
-        # - extreme: Extreme NAS file system
-        # - cpfs: CPFS file system
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # 
+        # *   standard: General-purpose NAS file system.
+        # *   extreme: Extreme NAS file system.
+        # *   cpfs: CPFS file system.
+        # 
+        # >  CPFS file systems are available only on the China site (aliyun.com).
         self.file_system_type = file_system_type
         # The ID of the key that is managed by Key Management Service (KMS).
         self.kmskey_id = kmskey_id
@@ -12563,7 +12739,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # The value of this parameter is the maximum storage usage of the file system over the last hour. Unit: bytes.
         self.metered_size = metered_size
-        # The information about mount targets.
+        # The queried mount targets.
         self.mount_targets = mount_targets
         # The options.
         self.options = options
@@ -12573,19 +12749,17 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         # 
         # Valid values:
         # 
-        # *   NFS: Network File System (NFS)
-        # *   SMB: Server Message Block (SMB)
-        # *   cpfs: the protocol type supported by the CPFS file system
+        # *   NFS: Network File System.
+        # *   SMB: Server Message Block.
+        # *   cpfs: The protocol type supported by the CPFS file system.
         # 
-        # > CPFS file systems are available only on the China site (aliyun.com).
+        # >  CPFS file systems are available only on the China site (aliyun.com).
         self.protocol_type = protocol_type
-        # The ID of the vSwitch.
+        # The vSwitch ID.
         self.quorum_vsw_id = quorum_vsw_id
         # The region ID.
         self.region_id = region_id
         # The resource group ID.
-        # 
-        # You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups?) to view resource group IDs.
         self.resource_group_id = resource_group_id
         # The status of the file system. Valid values:
         # - Pending: The file system is being created or modified.
@@ -12613,8 +12787,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(TeaModel):
         self.version = version
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # >  This parameter is not publicly available.
         self.vsc_target = vsc_target
-        # A collection of vSwitch IDs.
+        # The information about vSwitch.
         self.vsw_ids = vsw_ids
         # The ID of the zone where the file system resides.
         self.zone_id = zone_id
@@ -12827,7 +13002,7 @@ class DescribeFileSystemsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The queried file systems.
+        # The file system list.
         self.file_systems = file_systems
         # The page number.
         self.page_number = page_number
@@ -13348,6 +13523,281 @@ class DescribeFilesetsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeFilesetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoRequestResourceIds(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        vsc_id: str = None,
+    ):
+        # The ID of the file system.
+        self.file_system_id = file_system_id
+        # The ID of the virtual storage channel.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        resource_ids: List[DescribeFilesystemsVscAttachInfoRequestResourceIds] = None,
+    ):
+        # The number of results for each query.
+        # 
+        # Valid values: 10 to 100. Default value: 10.
+        self.max_results = max_results
+        # Query token, which is the NextToken value returned from the previous API call.
+        self.next_token = next_token
+        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # 
+        # This parameter is required.
+        self.resource_ids = resource_ids
+
+    def validate(self):
+        if self.resource_ids:
+            for k in self.resource_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        result['ResourceIds'] = []
+        if self.resource_ids is not None:
+            for k in self.resource_ids:
+                result['ResourceIds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        self.resource_ids = []
+        if m.get('ResourceIds') is not None:
+            for k in m.get('ResourceIds'):
+                temp_model = DescribeFilesystemsVscAttachInfoRequestResourceIds()
+                self.resource_ids.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        status: str = None,
+        vsc_id: str = None,
+    ):
+        # The ID of the file system.
+        self.file_system_id = file_system_id
+        # The association status of the file system and virtual channel. Valid values:
+        # 
+        # *   Attaching: The association is being made.
+        # *   Attached: The association is complete.
+        # *   Detaching: The association is being canceled.
+        # *   Detached: The association is canceled.
+        # *   Failed: The association failed.
+        self.status = status
+        # The ID of the virtual storage channel.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo(TeaModel):
+    def __init__(
+        self,
+        vsc_attach_info: List[DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo] = None,
+    ):
+        self.vsc_attach_info = vsc_attach_info
+
+    def validate(self):
+        if self.vsc_attach_info:
+            for k in self.vsc_attach_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['VscAttachInfo'] = []
+        if self.vsc_attach_info is not None:
+            for k in self.vsc_attach_info:
+                result['VscAttachInfo'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.vsc_attach_info = []
+        if m.get('VscAttachInfo') is not None:
+            for k in m.get('VscAttachInfo'):
+                temp_model = DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfoVscAttachInfo()
+                self.vsc_attach_info.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        request_id: str = None,
+        total_count: int = None,
+        vsc_attach_info: DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo = None,
+    ):
+        # The number of directories to return for each query.
+        # 
+        # Valid values: 10 to 1000.
+        # 
+        # Default value: 10.
+        self.max_results = max_results
+        # Query token, which is the NextToken value returned from the previous API call.
+        self.next_token = next_token
+        # The request ID.
+        self.request_id = request_id
+        # The total number of associated information.
+        self.total_count = total_count
+        # A collection of file system and virtual channel association data.
+        self.vsc_attach_info = vsc_attach_info
+
+    def validate(self):
+        if self.vsc_attach_info:
+            self.vsc_attach_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.vsc_attach_info is not None:
+            result['VscAttachInfo'] = self.vsc_attach_info.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('VscAttachInfo') is not None:
+            temp_model = DescribeFilesystemsVscAttachInfoResponseBodyVscAttachInfo()
+            self.vsc_attach_info = temp_model.from_map(m['VscAttachInfo'])
+        return self
+
+
+class DescribeFilesystemsVscAttachInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFilesystemsVscAttachInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFilesystemsVscAttachInfoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16825,6 +17275,159 @@ class DescribeZonesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeZonesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DetachVscFromFilesystemsRequestResourceIds(TeaModel):
+    def __init__(
+        self,
+        file_system_id: str = None,
+        vsc_id: str = None,
+    ):
+        # The ID of the file system.
+        self.file_system_id = file_system_id
+        # The ID of the virtual storage channel.
+        self.vsc_id = vsc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_system_id is not None:
+            result['FileSystemId'] = self.file_system_id
+        if self.vsc_id is not None:
+            result['VscId'] = self.vsc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileSystemId') is not None:
+            self.file_system_id = m.get('FileSystemId')
+        if m.get('VscId') is not None:
+            self.vsc_id = m.get('VscId')
+        return self
+
+
+class DetachVscFromFilesystemsRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        resource_ids: List[DetachVscFromFilesystemsRequestResourceIds] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
+        # 
+        # The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence?](https://help.aliyun.com/document_detail/25693.html)
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+        self.client_token = client_token
+        # The ID information of the file system and virtual storage channel. Each batch can contain up to 10 IDs.
+        # 
+        # This parameter is required.
+        self.resource_ids = resource_ids
+
+    def validate(self):
+        if self.resource_ids:
+            for k in self.resource_ids:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        result['ResourceIds'] = []
+        if self.resource_ids is not None:
+            for k in self.resource_ids:
+                result['ResourceIds'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        self.resource_ids = []
+        if m.get('ResourceIds') is not None:
+            for k in m.get('ResourceIds'):
+                temp_model = DetachVscFromFilesystemsRequestResourceIds()
+                self.resource_ids.append(temp_model.from_map(k))
+        return self
+
+
+class DetachVscFromFilesystemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DetachVscFromFilesystemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DetachVscFromFilesystemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DetachVscFromFilesystemsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22291,10 +22894,12 @@ class SetFilesetQuotaRequest(TeaModel):
         # *   true: performs only a dry run. The system checks the required parameters, request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the HTTP status code 200 is returned.
         # *   false (default): performs a dry run and sends the request. If the request passes the dry run, the quota is deleted.
         self.dry_run = dry_run
-        # The limit of the file quantity of the quota. Valid values:
+        # The number of files of the quota. Valid values:
         # 
-        # *   Minimum value: 10000.
-        # *   Maximum value: 10000000000.
+        # *   Minimum value: 10,000.
+        # *   Maximum value: 10,000,000,000.
+        # 
+        # >  If you do not specify this parameter, the number of files is unlimited.
         self.file_count_limit = file_count_limit
         # The ID of the CPFS for LINGJUN file system. The IDs of CPFS for LINGJUN file systems must start with `bmcpfs-`. Example: bmcpfs-290w65p03ok64ya\\*\\*\\*\\*.
         # 
@@ -22308,8 +22913,10 @@ class SetFilesetQuotaRequest(TeaModel):
         # 
         # Valid values:
         # 
-        # *   Minimum value: 10737418240 (10 GiB).
-        # *   Step size: 1073741824 (1 GiB).
+        # *   Minimum value: 10,737,418,240 (10 GiB).
+        # *   Step size: 1,073,741,824 (1 GiB).
+        # 
+        # >  If you do not specify this parameter, the capacity is unlimited.
         self.size_limit = size_limit
 
     def validate(self):

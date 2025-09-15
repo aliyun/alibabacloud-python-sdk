@@ -462,6 +462,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.apply_data_flow_auto_refresh_with_options_async(request, runtime)
 
+    def attach_vsc_to_filesystems_with_options(
+        self,
+        request: nas20170626_models.AttachVscToFilesystemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.AttachVscToFilesystemsResponse:
+        """
+        @summary Associates the VSC device with the file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: AttachVscToFilesystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscToFilesystemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscToFilesystems',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.AttachVscToFilesystemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_vsc_to_filesystems_with_options_async(
+        self,
+        request: nas20170626_models.AttachVscToFilesystemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.AttachVscToFilesystemsResponse:
+        """
+        @summary Associates the VSC device with the file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: AttachVscToFilesystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachVscToFilesystemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachVscToFilesystems',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.AttachVscToFilesystemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_vsc_to_filesystems(
+        self,
+        request: nas20170626_models.AttachVscToFilesystemsRequest,
+    ) -> nas20170626_models.AttachVscToFilesystemsResponse:
+        """
+        @summary Associates the VSC device with the file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: AttachVscToFilesystemsRequest
+        @return: AttachVscToFilesystemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.attach_vsc_to_filesystems_with_options(request, runtime)
+
+    async def attach_vsc_to_filesystems_async(
+        self,
+        request: nas20170626_models.AttachVscToFilesystemsRequest,
+    ) -> nas20170626_models.AttachVscToFilesystemsResponse:
+        """
+        @summary Associates the VSC device with the file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: AttachVscToFilesystemsRequest
+        @return: AttachVscToFilesystemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_vsc_to_filesystems_with_options_async(request, runtime)
+
     def cancel_auto_snapshot_policy_with_options(
         self,
         request: nas20170626_models.CancelAutoSnapshotPolicyRequest,
@@ -2482,12 +2594,12 @@ class Client(OpenApiClient):
         """
         @summary Creates a dataflow task.
         
-        @description    Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
-        You can create a data flow task only for a data flow that is in the Running state.
-        Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
-        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
-        CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+        @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+        CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
         
         @param request: CreateDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2548,12 +2660,12 @@ class Client(OpenApiClient):
         """
         @summary Creates a dataflow task.
         
-        @description    Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
-        You can create a data flow task only for a data flow that is in the Running state.
-        Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
-        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
-        CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+        @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+        CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
         
         @param request: CreateDataFlowTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2613,12 +2725,12 @@ class Client(OpenApiClient):
         """
         @summary Creates a dataflow task.
         
-        @description    Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
-        You can create a data flow task only for a data flow that is in the Running state.
-        Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
-        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
-        CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+        @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+        CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
         
         @param request: CreateDataFlowTaskRequest
         @return: CreateDataFlowTaskResponse
@@ -2633,12 +2745,12 @@ class Client(OpenApiClient):
         """
         @summary Creates a dataflow task.
         
-        @description    Only Cloud Parallel File Storage CPFS for LINGJUN V2.4.0 and later support data flows. You can view the version information on the file system details page in the console.
-        You can create a data flow task only for a data flow that is in the Running state.
-        Data flow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
-        When you manually run a data flow task, the automatic data update task for the data flow is interrupted and enters the pending state.
-        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS or CPFS for LINGJUN file system does not exceed 1,023 characters.
-        CPFS for LINGJUN supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
+        @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.4.0 and later support dataflow. You can view the version information on the file system details page in the console.
+        Dataflow tasks are executed asynchronously. You can call the [DescribeDataFlowTasks](https://help.aliyun.com/document_detail/2838089.html) operation to query the task execution status. The task duration depends on the amount of data to be imported and exported. If a large amount of data exists, we recommend that you create multiple tasks.
+        You can create a dataflow task only for a dataflow that is in the Running state.
+        When you manually run a dataflow task, the automatic data update task for the dataflow is interrupted and enters the pending state.
+        When you create an export task, make sure that the total length of the absolute path of the files to be exported from a CPFS for Lingjun file system does not exceed 1,023 characters.
+        CPFS for Lingjun supports two types of tasks: batch tasks and streaming tasks. For more information, see [Task types](https://help.aliyun.com/document_detail/2845429.html).
         
         @param request: CreateDataFlowTaskRequest
         @return: CreateDataFlowTaskResponse
@@ -7090,6 +7202,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.with_reports):
+            query['WithReports'] = request.with_reports
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7133,6 +7247,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.with_reports):
+            query['WithReports'] = request.with_reports
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7785,6 +7901,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_filesets_with_options_async(request, runtime)
+
+    def describe_filesystems_vsc_attach_info_with_options(
+        self,
+        request: nas20170626_models.DescribeFilesystemsVscAttachInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeFilesystemsVscAttachInfoResponse:
+        """
+        @summary Queries information about virtual storage channels associated with a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DescribeFilesystemsVscAttachInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFilesystemsVscAttachInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFilesystemsVscAttachInfo',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeFilesystemsVscAttachInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_filesystems_vsc_attach_info_with_options_async(
+        self,
+        request: nas20170626_models.DescribeFilesystemsVscAttachInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DescribeFilesystemsVscAttachInfoResponse:
+        """
+        @summary Queries information about virtual storage channels associated with a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DescribeFilesystemsVscAttachInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFilesystemsVscAttachInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFilesystemsVscAttachInfo',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DescribeFilesystemsVscAttachInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_filesystems_vsc_attach_info(
+        self,
+        request: nas20170626_models.DescribeFilesystemsVscAttachInfoRequest,
+    ) -> nas20170626_models.DescribeFilesystemsVscAttachInfoResponse:
+        """
+        @summary Queries information about virtual storage channels associated with a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DescribeFilesystemsVscAttachInfoRequest
+        @return: DescribeFilesystemsVscAttachInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_filesystems_vsc_attach_info_with_options(request, runtime)
+
+    async def describe_filesystems_vsc_attach_info_async(
+        self,
+        request: nas20170626_models.DescribeFilesystemsVscAttachInfoRequest,
+    ) -> nas20170626_models.DescribeFilesystemsVscAttachInfoResponse:
+        """
+        @summary Queries information about virtual storage channels associated with a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DescribeFilesystemsVscAttachInfoRequest
+        @return: DescribeFilesystemsVscAttachInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_filesystems_vsc_attach_info_with_options_async(request, runtime)
 
     def describe_lifecycle_policies_with_options(
         self,
@@ -9121,6 +9353,118 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
+
+    def detach_vsc_from_filesystems_with_options(
+        self,
+        request: nas20170626_models.DetachVscFromFilesystemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DetachVscFromFilesystemsResponse:
+        """
+        @summary Unassociates a VSC device from a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DetachVscFromFilesystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachVscFromFilesystemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachVscFromFilesystems',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DetachVscFromFilesystemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_vsc_from_filesystems_with_options_async(
+        self,
+        request: nas20170626_models.DetachVscFromFilesystemsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> nas20170626_models.DetachVscFromFilesystemsResponse:
+        """
+        @summary Unassociates a VSC device from a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DetachVscFromFilesystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachVscFromFilesystemsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachVscFromFilesystems',
+            version='2017-06-26',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            nas20170626_models.DetachVscFromFilesystemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_vsc_from_filesystems(
+        self,
+        request: nas20170626_models.DetachVscFromFilesystemsRequest,
+    ) -> nas20170626_models.DetachVscFromFilesystemsResponse:
+        """
+        @summary Unassociates a VSC device from a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DetachVscFromFilesystemsRequest
+        @return: DetachVscFromFilesystemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.detach_vsc_from_filesystems_with_options(request, runtime)
+
+    async def detach_vsc_from_filesystems_async(
+        self,
+        request: nas20170626_models.DetachVscFromFilesystemsRequest,
+    ) -> nas20170626_models.DetachVscFromFilesystemsResponse:
+        """
+        @summary Unassociates a VSC device from a file system.
+        
+        @description    Only CPFS for Lingjun supports this operation.
+        Batch execution is supported. In batch execution, only one VscId can be associated with multiple FileSystemIDs, meaning the VscId in the ResourceIds must be the same.
+        
+        @param request: DetachVscFromFilesystemsRequest
+        @return: DetachVscFromFilesystemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_vsc_from_filesystems_with_options_async(request, runtime)
 
     def disable_and_clean_recycle_bin_with_options(
         self,
@@ -12879,7 +13223,8 @@ class Client(OpenApiClient):
         @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation.
         The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
         A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
-        When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+        When modifying a directory quota, you must set the new capacity or file quantity higher than what is currently used.
+        You must configure at least one of the Capacity Limit (GiB) and File Limit parameters.
         The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
         
         @param request: SetFilesetQuotaRequest
@@ -12930,7 +13275,8 @@ class Client(OpenApiClient):
         @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation.
         The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
         A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
-        When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+        When modifying a directory quota, you must set the new capacity or file quantity higher than what is currently used.
+        You must configure at least one of the Capacity Limit (GiB) and File Limit parameters.
         The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
         
         @param request: SetFilesetQuotaRequest
@@ -12980,7 +13326,8 @@ class Client(OpenApiClient):
         @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation.
         The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
         A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
-        When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+        When modifying a directory quota, you must set the new capacity or file quantity higher than what is currently used.
+        You must configure at least one of the Capacity Limit (GiB) and File Limit parameters.
         The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
         
         @param request: SetFilesetQuotaRequest
@@ -12999,7 +13346,8 @@ class Client(OpenApiClient):
         @description    Only Cloud Parallel File Storage (CPFS) for Lingjun V2.7.0 and later support this operation.
         The minimum capacity quota of a fileset is 10 GiB. The scaling step size is 1 GiB.
         A fileset supports a minimum of 10,000 files or directories and a maximum of 10 billion files or directories. The scaling step size is 1.
-        When you modify a directory quota, you must set the quota capacity or the file quantity to be greater than the capacity or file quantity that has been used.
+        When modifying a directory quota, you must set the new capacity or file quantity higher than what is currently used.
+        You must configure at least one of the Capacity Limit (GiB) and File Limit parameters.
         The quota statistics have a 15-minute latency. The actual usage takes effect after 15 minutes.
         
         @param request: SetFilesetQuotaRequest
