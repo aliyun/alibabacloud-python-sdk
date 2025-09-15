@@ -1,3 +1,36 @@
+2025-09-15 Version: 4.12.9
+- Update API CreateCenterPolicy: add request parameters AutoReconnect.
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.
+- Update API CreateCenterPolicy: add request parameters ClipboardScope.
+- Update API CreateCenterPolicy: add request parameters MobileSafeMenu.
+- Update API CreateCenterPolicy: add request parameters MobileWuyingKeeper.
+- Update API CreateCenterPolicy: add request parameters MobileWyAssistant.
+- Update API CreateCenterPolicy: add request parameters RecordEventFileExts.
+- Update API CreateCenterPolicy: add request parameters RecordEventLevels.
+- Update API DescribeDesktopGroupSessions: add request parameters DesktopGroupIds.
+- Update API DescribeDesktopGroupSessions: add request parameters DesktopGroupName.
+- Update API DescribeDesktopGroupSessions: add request parameters FillTerminalInfo.
+- Update API DescribeDesktopGroupSessions: add request parameters Language.
+- Update API DescribeDesktopGroupSessions: add response parameters Body.Sessions.$.TerminalInfo.
+- Update API DescribeDesktopSessions: add request parameters FillHardwareInfo.
+- Update API DescribeDesktopSessions: add request parameters Language.
+- Update API DescribeDesktopSessions: add response parameters Body.Sessions.$.TerminalInfo.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.AutoReconnect.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.MobileSafeMenu.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.MobileWuyingKeeper.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.MobileWyAssistant.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.RecordEventFileExts.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.RecordEventLevels.
+- Update API ModifyCenterPolicy: add request parameters AutoReconnect.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.
+- Update API ModifyCenterPolicy: add request parameters ClipboardScope.
+- Update API ModifyCenterPolicy: add request parameters MobileSafeMenu.
+- Update API ModifyCenterPolicy: add request parameters MobileWuyingKeeper.
+- Update API ModifyCenterPolicy: add request parameters MobileWyAssistant.
+- Update API ModifyCenterPolicy: add request parameters RecordEventFileExts.
+- Update API ModifyCenterPolicy: add request parameters RecordEventLevels.
+
+
 2025-09-09 Version: 4.12.8
 - Update API DescribeModificationPrice: add request parameters RootDiskPerformanceLevel.
 - Update API DescribeModificationPrice: add request parameters UserDiskPerformanceLevel.

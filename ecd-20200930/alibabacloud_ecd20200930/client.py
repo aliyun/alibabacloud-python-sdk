@@ -4347,6 +4347,8 @@ class Client(OpenApiClient):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not UtilClient.is_unset(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.auto_reconnect):
+            query['AutoReconnect'] = request.auto_reconnect
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -4357,6 +4359,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.clipboard_graineds):
+            query['ClipboardGraineds'] = request.clipboard_graineds
+        if not UtilClient.is_unset(request.clipboard_scope):
+            query['ClipboardScope'] = request.clipboard_scope
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
         if not UtilClient.is_unset(request.cpd_drive_clipboard):
@@ -4429,8 +4435,14 @@ class Client(OpenApiClient):
             query['MemorySingleRateLimit'] = request.memory_single_rate_limit
         if not UtilClient.is_unset(request.mobile_restart):
             query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_safe_menu):
+            query['MobileSafeMenu'] = request.mobile_safe_menu
         if not UtilClient.is_unset(request.mobile_shutdown):
             query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.mobile_wuying_keeper):
+            query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
+        if not UtilClient.is_unset(request.mobile_wy_assistant):
+            query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4447,8 +4459,12 @@ class Client(OpenApiClient):
             query['QualityEnhancement'] = request.quality_enhancement
         if not UtilClient.is_unset(request.record_event_duration):
             query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_exts):
+            query['RecordEventFileExts'] = request.record_event_file_exts
         if not UtilClient.is_unset(request.record_event_file_paths):
             query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_levels):
+            query['RecordEventLevels'] = request.record_event_levels
         if not UtilClient.is_unset(request.record_event_registers):
             query['RecordEventRegisters'] = request.record_event_registers
         if not UtilClient.is_unset(request.record_events):
@@ -4596,6 +4612,8 @@ class Client(OpenApiClient):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not UtilClient.is_unset(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.auto_reconnect):
+            query['AutoReconnect'] = request.auto_reconnect
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -4606,6 +4624,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.clipboard_graineds):
+            query['ClipboardGraineds'] = request.clipboard_graineds
+        if not UtilClient.is_unset(request.clipboard_scope):
+            query['ClipboardScope'] = request.clipboard_scope
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
         if not UtilClient.is_unset(request.cpd_drive_clipboard):
@@ -4678,8 +4700,14 @@ class Client(OpenApiClient):
             query['MemorySingleRateLimit'] = request.memory_single_rate_limit
         if not UtilClient.is_unset(request.mobile_restart):
             query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_safe_menu):
+            query['MobileSafeMenu'] = request.mobile_safe_menu
         if not UtilClient.is_unset(request.mobile_shutdown):
             query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.mobile_wuying_keeper):
+            query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
+        if not UtilClient.is_unset(request.mobile_wy_assistant):
+            query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -4696,8 +4724,12 @@ class Client(OpenApiClient):
             query['QualityEnhancement'] = request.quality_enhancement
         if not UtilClient.is_unset(request.record_event_duration):
             query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_exts):
+            query['RecordEventFileExts'] = request.record_event_file_exts
         if not UtilClient.is_unset(request.record_event_file_paths):
             query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_levels):
+            query['RecordEventLevels'] = request.record_event_levels
         if not UtilClient.is_unset(request.record_event_registers):
             query['RecordEventRegisters'] = request.record_event_registers
         if not UtilClient.is_unset(request.record_events):
@@ -12901,10 +12933,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.desktop_group_ids):
+            query['DesktopGroupIds'] = request.desktop_group_ids
+        if not UtilClient.is_unset(request.desktop_group_name):
+            query['DesktopGroupName'] = request.desktop_group_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.fill_terminal_info):
+            query['FillTerminalInfo'] = request.fill_terminal_info
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -12950,10 +12990,18 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.desktop_group_ids):
+            query['DesktopGroupIds'] = request.desktop_group_ids
+        if not UtilClient.is_unset(request.desktop_group_name):
+            query['DesktopGroupName'] = request.desktop_group_name
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not UtilClient.is_unset(request.fill_terminal_info):
+            query['FillTerminalInfo'] = request.fill_terminal_info
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -13647,6 +13695,10 @@ class Client(OpenApiClient):
             query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.end_user_id_filter):
             query['EndUserIdFilter'] = request.end_user_id_filter
+        if not UtilClient.is_unset(request.fill_hardware_info):
+            query['FillHardwareInfo'] = request.fill_hardware_info
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
@@ -13710,6 +13762,10 @@ class Client(OpenApiClient):
             query['EndUserId'] = request.end_user_id
         if not UtilClient.is_unset(request.end_user_id_filter):
             query['EndUserIdFilter'] = request.end_user_id_filter
+        if not UtilClient.is_unset(request.fill_hardware_info):
+            query['FillHardwareInfo'] = request.fill_hardware_info
+        if not UtilClient.is_unset(request.language):
+            query['Language'] = request.language
         if not UtilClient.is_unset(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not UtilClient.is_unset(request.page_number):
@@ -24085,6 +24141,8 @@ class Client(OpenApiClient):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not UtilClient.is_unset(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.auto_reconnect):
+            query['AutoReconnect'] = request.auto_reconnect
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -24095,6 +24153,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.clipboard_graineds):
+            query['ClipboardGraineds'] = request.clipboard_graineds
+        if not UtilClient.is_unset(request.clipboard_scope):
+            query['ClipboardScope'] = request.clipboard_scope
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
         if not UtilClient.is_unset(request.cpd_drive_clipboard):
@@ -24167,8 +24229,14 @@ class Client(OpenApiClient):
             query['MemorySingleRateLimit'] = request.memory_single_rate_limit
         if not UtilClient.is_unset(request.mobile_restart):
             query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_safe_menu):
+            query['MobileSafeMenu'] = request.mobile_safe_menu
         if not UtilClient.is_unset(request.mobile_shutdown):
             query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.mobile_wuying_keeper):
+            query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
+        if not UtilClient.is_unset(request.mobile_wy_assistant):
+            query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -24187,8 +24255,12 @@ class Client(OpenApiClient):
             query['QualityEnhancement'] = request.quality_enhancement
         if not UtilClient.is_unset(request.record_event_duration):
             query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_exts):
+            query['RecordEventFileExts'] = request.record_event_file_exts
         if not UtilClient.is_unset(request.record_event_file_paths):
             query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_levels):
+            query['RecordEventLevels'] = request.record_event_levels
         if not UtilClient.is_unset(request.record_event_registers):
             query['RecordEventRegisters'] = request.record_event_registers
         if not UtilClient.is_unset(request.record_events):
@@ -24340,6 +24412,8 @@ class Client(OpenApiClient):
             query['AuthorizeAccessPolicyRule'] = request.authorize_access_policy_rule
         if not UtilClient.is_unset(request.authorize_security_policy_rule):
             query['AuthorizeSecurityPolicyRule'] = request.authorize_security_policy_rule
+        if not UtilClient.is_unset(request.auto_reconnect):
+            query['AutoReconnect'] = request.auto_reconnect
         if not UtilClient.is_unset(request.business_type):
             query['BusinessType'] = request.business_type
         if not UtilClient.is_unset(request.camera_redirect):
@@ -24350,6 +24424,10 @@ class Client(OpenApiClient):
             query['ClientType'] = request.client_type
         if not UtilClient.is_unset(request.clipboard):
             query['Clipboard'] = request.clipboard
+        if not UtilClient.is_unset(request.clipboard_graineds):
+            query['ClipboardGraineds'] = request.clipboard_graineds
+        if not UtilClient.is_unset(request.clipboard_scope):
+            query['ClipboardScope'] = request.clipboard_scope
         if not UtilClient.is_unset(request.color_enhancement):
             query['ColorEnhancement'] = request.color_enhancement
         if not UtilClient.is_unset(request.cpd_drive_clipboard):
@@ -24422,8 +24500,14 @@ class Client(OpenApiClient):
             query['MemorySingleRateLimit'] = request.memory_single_rate_limit
         if not UtilClient.is_unset(request.mobile_restart):
             query['MobileRestart'] = request.mobile_restart
+        if not UtilClient.is_unset(request.mobile_safe_menu):
+            query['MobileSafeMenu'] = request.mobile_safe_menu
         if not UtilClient.is_unset(request.mobile_shutdown):
             query['MobileShutdown'] = request.mobile_shutdown
+        if not UtilClient.is_unset(request.mobile_wuying_keeper):
+            query['MobileWuyingKeeper'] = request.mobile_wuying_keeper
+        if not UtilClient.is_unset(request.mobile_wy_assistant):
+            query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.net_redirect):
@@ -24442,8 +24526,12 @@ class Client(OpenApiClient):
             query['QualityEnhancement'] = request.quality_enhancement
         if not UtilClient.is_unset(request.record_event_duration):
             query['RecordEventDuration'] = request.record_event_duration
+        if not UtilClient.is_unset(request.record_event_file_exts):
+            query['RecordEventFileExts'] = request.record_event_file_exts
         if not UtilClient.is_unset(request.record_event_file_paths):
             query['RecordEventFilePaths'] = request.record_event_file_paths
+        if not UtilClient.is_unset(request.record_event_levels):
+            query['RecordEventLevels'] = request.record_event_levels
         if not UtilClient.is_unset(request.record_event_registers):
             query['RecordEventRegisters'] = request.record_event_registers
         if not UtilClient.is_unset(request.record_events):

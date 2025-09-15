@@ -6809,6 +6809,45 @@ class CreateCenterPolicyRequestClientType(TeaModel):
         return self
 
 
+class CreateCenterPolicyRequestClipboardGraineds(TeaModel):
+    def __init__(
+        self,
+        clipboard_size: int = None,
+        clipboard_type: str = None,
+        grained_type: str = None,
+    ):
+        self.clipboard_size = clipboard_size
+        self.clipboard_type = clipboard_type
+        self.grained_type = grained_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clipboard_size is not None:
+            result['ClipboardSize'] = self.clipboard_size
+        if self.clipboard_type is not None:
+            result['ClipboardType'] = self.clipboard_type
+        if self.grained_type is not None:
+            result['GrainedType'] = self.grained_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClipboardSize') is not None:
+            self.clipboard_size = m.get('ClipboardSize')
+        if m.get('ClipboardType') is not None:
+            self.clipboard_type = m.get('ClipboardType')
+        if m.get('GrainedType') is not None:
+            self.grained_type = m.get('GrainedType')
+        return self
+
+
 class CreateCenterPolicyRequestDeviceRedirects(TeaModel):
     def __init__(
         self,
@@ -7039,6 +7078,39 @@ class CreateCenterPolicyRequestNetRedirectRule(TeaModel):
         return self
 
 
+class CreateCenterPolicyRequestRecordEventLevels(TeaModel):
+    def __init__(
+        self,
+        event_level: str = None,
+        event_type: str = None,
+    ):
+        self.event_level = event_level
+        self.event_type = event_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        return self
+
+
 class CreateCenterPolicyRequestUsbSupplyRedirectRule(TeaModel):
     def __init__(
         self,
@@ -7111,11 +7183,14 @@ class CreateCenterPolicyRequest(TeaModel):
         app_content_protection: str = None,
         authorize_access_policy_rule: List[CreateCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[CreateCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
+        auto_reconnect: str = None,
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
         client_type: List[CreateCenterPolicyRequestClientType] = None,
         clipboard: str = None,
+        clipboard_graineds: List[CreateCenterPolicyRequestClipboardGraineds] = None,
+        clipboard_scope: str = None,
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
@@ -7152,7 +7227,10 @@ class CreateCenterPolicyRequest(TeaModel):
         memory_sample_duration: int = None,
         memory_single_rate_limit: int = None,
         mobile_restart: str = None,
+        mobile_safe_menu: str = None,
         mobile_shutdown: str = None,
+        mobile_wuying_keeper: str = None,
+        mobile_wy_assistant: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[CreateCenterPolicyRequestNetRedirectRule] = None,
@@ -7161,7 +7239,9 @@ class CreateCenterPolicyRequest(TeaModel):
         printer_redirect: str = None,
         quality_enhancement: str = None,
         record_event_duration: int = None,
+        record_event_file_exts: List[str] = None,
         record_event_file_paths: List[str] = None,
+        record_event_levels: List[CreateCenterPolicyRequestRecordEventLevels] = None,
         record_event_registers: List[str] = None,
         record_events: List[str] = None,
         recording: str = None,
@@ -7237,6 +7317,7 @@ class CreateCenterPolicyRequest(TeaModel):
         self.authorize_access_policy_rule = authorize_access_policy_rule
         # The security group rule.
         self.authorize_security_policy_rule = authorize_security_policy_rule
+        self.auto_reconnect = auto_reconnect
         # The business type.
         # 
         # Valid values:
@@ -7265,6 +7346,8 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   write: specifies one-way transfer. You can only copy files from cloud computers to on-premises devices.
         # *   off (default): disables all transfers, both one-way and two-way. Files cannot be copied directly between on-premises devices and cloud computers.
         self.clipboard = clipboard
+        self.clipboard_graineds = clipboard_graineds
+        self.clipboard_scope = clipboard_scope
         # Specifies whether to enable color enhancement for design and 3D applications.
         # 
         # Valid values:
@@ -7415,6 +7498,7 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu.
         # *   on: displays the Restart button in the DesktopAssistant menu.
         self.mobile_restart = mobile_restart
+        self.mobile_safe_menu = mobile_safe_menu
         # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
@@ -7424,6 +7508,8 @@ class CreateCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t display the Stop button in the DesktopAssistant menu.
         # *   on: displays the Stop button in the DesktopAssistant menu.
         self.mobile_shutdown = mobile_shutdown
+        self.mobile_wuying_keeper = mobile_wuying_keeper
+        self.mobile_wy_assistant = mobile_wy_assistant
         # The policy name.
         # 
         # This parameter is required.
@@ -7472,8 +7558,10 @@ class CreateCenterPolicyRequest(TeaModel):
         self.quality_enhancement = quality_enhancement
         # The duration of screen recording after the specified event is detected. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
+        self.record_event_file_exts = record_event_file_exts
         # The absolute paths to screen recording files.
         self.record_event_file_paths = record_event_file_paths
+        self.record_event_levels = record_event_levels
         # The absolute paths to screen recording registries.
         self.record_event_registers = record_event_registers
         # The events that trigger screen recording.
@@ -7722,6 +7810,10 @@ class CreateCenterPolicyRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.clipboard_graineds:
+            for k in self.clipboard_graineds:
+                if k:
+                    k.validate()
         if self.device_redirects:
             for k in self.device_redirects:
                 if k:
@@ -7736,6 +7828,10 @@ class CreateCenterPolicyRequest(TeaModel):
                     k.validate()
         if self.net_redirect_rule:
             for k in self.net_redirect_rule:
+                if k:
+                    k.validate()
+        if self.record_event_levels:
+            for k in self.record_event_levels:
                 if k:
                     k.validate()
         if self.usb_supply_redirect_rule:
@@ -7761,6 +7857,8 @@ class CreateCenterPolicyRequest(TeaModel):
         if self.authorize_security_policy_rule is not None:
             for k in self.authorize_security_policy_rule:
                 result['AuthorizeSecurityPolicyRule'].append(k.to_map() if k else None)
+        if self.auto_reconnect is not None:
+            result['AutoReconnect'] = self.auto_reconnect
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
@@ -7773,6 +7871,12 @@ class CreateCenterPolicyRequest(TeaModel):
                 result['ClientType'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        result['ClipboardGraineds'] = []
+        if self.clipboard_graineds is not None:
+            for k in self.clipboard_graineds:
+                result['ClipboardGraineds'].append(k.to_map() if k else None)
+        if self.clipboard_scope is not None:
+            result['ClipboardScope'] = self.clipboard_scope
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
         if self.cpd_drive_clipboard is not None:
@@ -7851,8 +7955,14 @@ class CreateCenterPolicyRequest(TeaModel):
             result['MemorySingleRateLimit'] = self.memory_single_rate_limit
         if self.mobile_restart is not None:
             result['MobileRestart'] = self.mobile_restart
+        if self.mobile_safe_menu is not None:
+            result['MobileSafeMenu'] = self.mobile_safe_menu
         if self.mobile_shutdown is not None:
             result['MobileShutdown'] = self.mobile_shutdown
+        if self.mobile_wuying_keeper is not None:
+            result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
+        if self.mobile_wy_assistant is not None:
+            result['MobileWyAssistant'] = self.mobile_wy_assistant
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -7871,8 +7981,14 @@ class CreateCenterPolicyRequest(TeaModel):
             result['QualityEnhancement'] = self.quality_enhancement
         if self.record_event_duration is not None:
             result['RecordEventDuration'] = self.record_event_duration
+        if self.record_event_file_exts is not None:
+            result['RecordEventFileExts'] = self.record_event_file_exts
         if self.record_event_file_paths is not None:
             result['RecordEventFilePaths'] = self.record_event_file_paths
+        result['RecordEventLevels'] = []
+        if self.record_event_levels is not None:
+            for k in self.record_event_levels:
+                result['RecordEventLevels'].append(k.to_map() if k else None)
         if self.record_event_registers is not None:
             result['RecordEventRegisters'] = self.record_event_registers
         if self.record_events is not None:
@@ -7999,6 +8115,8 @@ class CreateCenterPolicyRequest(TeaModel):
             for k in m.get('AuthorizeSecurityPolicyRule'):
                 temp_model = CreateCenterPolicyRequestAuthorizeSecurityPolicyRule()
                 self.authorize_security_policy_rule.append(temp_model.from_map(k))
+        if m.get('AutoReconnect') is not None:
+            self.auto_reconnect = m.get('AutoReconnect')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
@@ -8012,6 +8130,13 @@ class CreateCenterPolicyRequest(TeaModel):
                 self.client_type.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        self.clipboard_graineds = []
+        if m.get('ClipboardGraineds') is not None:
+            for k in m.get('ClipboardGraineds'):
+                temp_model = CreateCenterPolicyRequestClipboardGraineds()
+                self.clipboard_graineds.append(temp_model.from_map(k))
+        if m.get('ClipboardScope') is not None:
+            self.clipboard_scope = m.get('ClipboardScope')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
         if m.get('CpdDriveClipboard') is not None:
@@ -8093,8 +8218,14 @@ class CreateCenterPolicyRequest(TeaModel):
             self.memory_single_rate_limit = m.get('MemorySingleRateLimit')
         if m.get('MobileRestart') is not None:
             self.mobile_restart = m.get('MobileRestart')
+        if m.get('MobileSafeMenu') is not None:
+            self.mobile_safe_menu = m.get('MobileSafeMenu')
         if m.get('MobileShutdown') is not None:
             self.mobile_shutdown = m.get('MobileShutdown')
+        if m.get('MobileWuyingKeeper') is not None:
+            self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
+        if m.get('MobileWyAssistant') is not None:
+            self.mobile_wy_assistant = m.get('MobileWyAssistant')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -8114,8 +8245,15 @@ class CreateCenterPolicyRequest(TeaModel):
             self.quality_enhancement = m.get('QualityEnhancement')
         if m.get('RecordEventDuration') is not None:
             self.record_event_duration = m.get('RecordEventDuration')
+        if m.get('RecordEventFileExts') is not None:
+            self.record_event_file_exts = m.get('RecordEventFileExts')
         if m.get('RecordEventFilePaths') is not None:
             self.record_event_file_paths = m.get('RecordEventFilePaths')
+        self.record_event_levels = []
+        if m.get('RecordEventLevels') is not None:
+            for k in m.get('RecordEventLevels'):
+                temp_model = CreateCenterPolicyRequestRecordEventLevels()
+                self.record_event_levels.append(temp_model.from_map(k))
         if m.get('RecordEventRegisters') is not None:
             self.record_event_registers = m.get('RecordEventRegisters')
         if m.get('RecordEvents') is not None:
@@ -24778,8 +24916,12 @@ class DescribeCustomizedListHeadersResponse(TeaModel):
 class DescribeDesktopGroupSessionsRequest(TeaModel):
     def __init__(
         self,
+        desktop_group_ids: List[str] = None,
+        desktop_group_name: str = None,
         end_time: str = None,
         end_user_id: str = None,
+        fill_terminal_info: bool = None,
+        language: str = None,
         max_results: int = None,
         next_token: str = None,
         own_type: int = None,
@@ -24787,10 +24929,14 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
         session_status: str = None,
         start_time: str = None,
     ):
+        self.desktop_group_ids = desktop_group_ids
+        self.desktop_group_name = desktop_group_name
         # The end of the time range to query.
         self.end_time = end_time
         # The ID of the end user.
         self.end_user_id = end_user_id
+        self.fill_terminal_info = fill_terminal_info
+        self.language = language
         # The number of entries per page.
         self.max_results = max_results
         # The pagination token that is used in the next request to retrieve a new page of results.
@@ -24836,10 +24982,18 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.desktop_group_ids is not None:
+            result['DesktopGroupIds'] = self.desktop_group_ids
+        if self.desktop_group_name is not None:
+            result['DesktopGroupName'] = self.desktop_group_name
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+        if self.fill_terminal_info is not None:
+            result['FillTerminalInfo'] = self.fill_terminal_info
+        if self.language is not None:
+            result['Language'] = self.language
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -24856,10 +25010,18 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DesktopGroupIds') is not None:
+            self.desktop_group_ids = m.get('DesktopGroupIds')
+        if m.get('DesktopGroupName') is not None:
+            self.desktop_group_name = m.get('DesktopGroupName')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+        if m.get('FillTerminalInfo') is not None:
+            self.fill_terminal_info = m.get('FillTerminalInfo')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -24872,6 +25034,51 @@ class DescribeDesktopGroupSessionsRequest(TeaModel):
             self.session_status = m.get('SessionStatus')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo(TeaModel):
+    def __init__(
+        self,
+        model: str = None,
+        product_name: str = None,
+        serial_number: str = None,
+        uuid: str = None,
+    ):
+        self.model = model
+        self.product_name = product_name
+        self.serial_number = serial_number
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
         return self
 
 
@@ -24896,6 +25103,7 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         protocol_type: str = None,
         session_idle_time: int = None,
         session_status: str = None,
+        terminal_info: DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_duration: int = None,
     ):
         # The IP address of the client.
@@ -24960,11 +25168,13 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
         # 
         #     <!-- -->
         self.session_status = session_status
+        self.terminal_info = terminal_info
         # The total duration of the sessions.
         self.total_connection_duration = total_connection_duration
 
     def validate(self):
-        pass
+        if self.terminal_info:
+            self.terminal_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25008,6 +25218,8 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
             result['SessionIdleTime'] = self.session_idle_time
         if self.session_status is not None:
             result['SessionStatus'] = self.session_status
+        if self.terminal_info is not None:
+            result['TerminalInfo'] = self.terminal_info.to_map()
         if self.total_connection_duration is not None:
             result['TotalConnectionDuration'] = self.total_connection_duration
         return result
@@ -25050,6 +25262,9 @@ class DescribeDesktopGroupSessionsResponseBodySessions(TeaModel):
             self.session_idle_time = m.get('SessionIdleTime')
         if m.get('SessionStatus') is not None:
             self.session_status = m.get('SessionStatus')
+        if m.get('TerminalInfo') is not None:
+            temp_model = DescribeDesktopGroupSessionsResponseBodySessionsTerminalInfo()
+            self.terminal_info = temp_model.from_map(m['TerminalInfo'])
         if m.get('TotalConnectionDuration') is not None:
             self.total_connection_duration = m.get('TotalConnectionDuration')
         return self
@@ -27047,6 +27262,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
         end_time: str = None,
         end_user_id: str = None,
         end_user_id_filter: str = None,
+        fill_hardware_info: bool = None,
+        language: str = None,
         office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -27068,6 +27285,8 @@ class DescribeDesktopSessionsRequest(TeaModel):
         self.end_user_id = end_user_id
         # The user ID. This parameter functions the same as the `EndUserId` parameter. You only need to include one of them in your request.
         self.end_user_id_filter = end_user_id_filter
+        self.fill_hardware_info = fill_hardware_info
+        self.language = language
         # The office network ID.
         self.office_site_id = office_site_id
         # The page number.
@@ -27119,6 +27338,10 @@ class DescribeDesktopSessionsRequest(TeaModel):
             result['EndUserId'] = self.end_user_id
         if self.end_user_id_filter is not None:
             result['EndUserIdFilter'] = self.end_user_id_filter
+        if self.fill_hardware_info is not None:
+            result['FillHardwareInfo'] = self.fill_hardware_info
+        if self.language is not None:
+            result['Language'] = self.language
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
         if self.page_number is not None:
@@ -27151,6 +27374,10 @@ class DescribeDesktopSessionsRequest(TeaModel):
             self.end_user_id = m.get('EndUserId')
         if m.get('EndUserIdFilter') is not None:
             self.end_user_id_filter = m.get('EndUserIdFilter')
+        if m.get('FillHardwareInfo') is not None:
+            self.fill_hardware_info = m.get('FillHardwareInfo')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')
         if m.get('PageNumber') is not None:
@@ -27203,6 +27430,51 @@ class DescribeDesktopSessionsResponseBodySessionsResourceGroups(TeaModel):
         return self
 
 
+class DescribeDesktopSessionsResponseBodySessionsTerminalInfo(TeaModel):
+    def __init__(
+        self,
+        model: str = None,
+        product_name: str = None,
+        serial_number: str = None,
+        uuid: str = None,
+    ):
+        self.model = model
+        self.product_name = product_name
+        self.serial_number = serial_number
+        self.uuid = uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.product_name is not None:
+            result['ProductName'] = self.product_name
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.uuid is not None:
+            result['Uuid'] = self.uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('ProductName') is not None:
+            self.product_name = m.get('ProductName')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Uuid') is not None:
+            self.uuid = m.get('Uuid')
+        return self
+
+
 class DescribeDesktopSessionsResponseBodySessions(TeaModel):
     def __init__(
         self,
@@ -27225,6 +27497,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         session_start_time: str = None,
         session_status: str = None,
         sub_pay_type: str = None,
+        terminal_info: DescribeDesktopSessionsResponseBodySessionsTerminalInfo = None,
         total_connection_time: int = None,
     ):
         # The IP address of the client.
@@ -27286,6 +27559,7 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
         # *   monthPackage: monthly subscription (120-hour computing plan and 250-hour computing plan)
         # *   prePaid: monthly subscription (Unlimited computing plan)
         self.sub_pay_type = sub_pay_type
+        self.terminal_info = terminal_info
         # The total connection duration. Unit: seconds.
         self.total_connection_time = total_connection_time
 
@@ -27294,6 +27568,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             for k in self.resource_groups:
                 if k:
                     k.validate()
+        if self.terminal_info:
+            self.terminal_info.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -27341,6 +27617,8 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             result['SessionStatus'] = self.session_status
         if self.sub_pay_type is not None:
             result['SubPayType'] = self.sub_pay_type
+        if self.terminal_info is not None:
+            result['TerminalInfo'] = self.terminal_info.to_map()
         if self.total_connection_time is not None:
             result['TotalConnectionTime'] = self.total_connection_time
         return result
@@ -27388,6 +27666,9 @@ class DescribeDesktopSessionsResponseBodySessions(TeaModel):
             self.session_status = m.get('SessionStatus')
         if m.get('SubPayType') is not None:
             self.sub_pay_type = m.get('SubPayType')
+        if m.get('TerminalInfo') is not None:
+            temp_model = DescribeDesktopSessionsResponseBodySessionsTerminalInfo()
+            self.terminal_info = temp_model.from_map(m['TerminalInfo'])
         if m.get('TotalConnectionTime') is not None:
             self.total_connection_time = m.get('TotalConnectionTime')
         return self
@@ -38278,6 +38559,39 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule(TeaMod
         return self
 
 
+class DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels(TeaModel):
+    def __init__(
+        self,
+        event_level: str = None,
+        event_type: str = None,
+    ):
+        self.event_level = event_level
+        self.event_type = event_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        return self
+
+
 class DescribePolicyGroupsResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule(TeaModel):
     def __init__(
         self,
@@ -38365,6 +38679,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         app_content_protection: str = None,
         authorize_access_policy_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
+        auto_reconnect: str = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
         client_types: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
@@ -38408,7 +38723,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         memory_sample_duration: int = None,
         memory_single_rate_limit: int = None,
         mobile_restart: str = None,
+        mobile_safe_menu: str = None,
         mobile_shutdown: str = None,
+        mobile_wuying_keeper: str = None,
+        mobile_wy_assistant: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
@@ -38422,7 +38740,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         record_content: str = None,
         record_content_expires: int = None,
         record_event_duration: int = None,
+        record_event_file_exts: List[str] = None,
         record_event_file_paths: List[str] = None,
+        record_event_levels: List[DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels] = None,
         record_event_registers: List[str] = None,
         recording: str = None,
         recording_audio: str = None,
@@ -38489,6 +38809,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.authorize_access_policy_rules = authorize_access_policy_rules
         # The security group rules.
         self.authorize_security_policy_rules = authorize_security_policy_rules
+        self.auto_reconnect = auto_reconnect
         # Indicates whether the webcam redirection feature is enabled.
         # 
         # Valid values:
@@ -38656,6 +38977,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # - off: not provided.
         # - on: provided.
         self.mobile_restart = mobile_restart
+        self.mobile_safe_menu = mobile_safe_menu
         # Specifies whether to display the shut down button in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace mobile clients (including the Android client and the iOS client).
         # 
         # > Mobile clients of V7.4 and higher versions required.
@@ -38665,6 +38987,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         # - off: not provided.
         # - on: provided.
         self.mobile_shutdown = mobile_shutdown
+        self.mobile_wuying_keeper = mobile_wuying_keeper
+        self.mobile_wy_assistant = mobile_wy_assistant
         # The name of the cloud computer policy.
         self.name = name
         # Indicates whether the network redirection feature is enabled.
@@ -38731,8 +39055,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         self.record_content_expires = record_content_expires
         # The recording duration since a target event is detected by the screen recording audit policy. Unit: Minute. Valid values: 10-60.
         self.record_event_duration = record_event_duration
+        self.record_event_file_exts = record_event_file_exts
         # The array of absolute paths of the monitored files in the screen recording audit policy.
         self.record_event_file_paths = record_event_file_paths
+        self.record_event_levels = record_event_levels
         # The array of absolute paths of the monitored registry entries in the screen recording audit policy.
         self.record_event_registers = record_event_registers
         # Indicates whether the screen recording feature is enabled.
@@ -38988,6 +39314,10 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in self.net_redirect_rule:
                 if k:
                     k.validate()
+        if self.record_event_levels:
+            for k in self.record_event_levels:
+                if k:
+                    k.validate()
         if self.usb_supply_redirect_rule:
             for k in self.usb_supply_redirect_rule:
                 if k:
@@ -39011,6 +39341,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
         if self.authorize_security_policy_rules is not None:
             for k in self.authorize_security_policy_rules:
                 result['AuthorizeSecurityPolicyRules'].append(k.to_map() if k else None)
+        if self.auto_reconnect is not None:
+            result['AutoReconnect'] = self.auto_reconnect
         if self.camera_redirect is not None:
             result['CameraRedirect'] = self.camera_redirect
         if self.client_control_menu is not None:
@@ -39105,8 +39437,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['MemorySingleRateLimit'] = self.memory_single_rate_limit
         if self.mobile_restart is not None:
             result['MobileRestart'] = self.mobile_restart
+        if self.mobile_safe_menu is not None:
+            result['MobileSafeMenu'] = self.mobile_safe_menu
         if self.mobile_shutdown is not None:
             result['MobileShutdown'] = self.mobile_shutdown
+        if self.mobile_wuying_keeper is not None:
+            result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
+        if self.mobile_wy_assistant is not None:
+            result['MobileWyAssistant'] = self.mobile_wy_assistant
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -39135,8 +39473,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             result['RecordContentExpires'] = self.record_content_expires
         if self.record_event_duration is not None:
             result['RecordEventDuration'] = self.record_event_duration
+        if self.record_event_file_exts is not None:
+            result['RecordEventFileExts'] = self.record_event_file_exts
         if self.record_event_file_paths is not None:
             result['RecordEventFilePaths'] = self.record_event_file_paths
+        result['RecordEventLevels'] = []
+        if self.record_event_levels is not None:
+            for k in self.record_event_levels:
+                result['RecordEventLevels'].append(k.to_map() if k else None)
         if self.record_event_registers is not None:
             result['RecordEventRegisters'] = self.record_event_registers
         if self.recording is not None:
@@ -39257,6 +39601,8 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             for k in m.get('AuthorizeSecurityPolicyRules'):
                 temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules()
                 self.authorize_security_policy_rules.append(temp_model.from_map(k))
+        if m.get('AutoReconnect') is not None:
+            self.auto_reconnect = m.get('AutoReconnect')
         if m.get('CameraRedirect') is not None:
             self.camera_redirect = m.get('CameraRedirect')
         if m.get('ClientControlMenu') is not None:
@@ -39355,8 +39701,14 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.memory_single_rate_limit = m.get('MemorySingleRateLimit')
         if m.get('MobileRestart') is not None:
             self.mobile_restart = m.get('MobileRestart')
+        if m.get('MobileSafeMenu') is not None:
+            self.mobile_safe_menu = m.get('MobileSafeMenu')
         if m.get('MobileShutdown') is not None:
             self.mobile_shutdown = m.get('MobileShutdown')
+        if m.get('MobileWuyingKeeper') is not None:
+            self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
+        if m.get('MobileWyAssistant') is not None:
+            self.mobile_wy_assistant = m.get('MobileWyAssistant')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -39386,8 +39738,15 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(TeaModel):
             self.record_content_expires = m.get('RecordContentExpires')
         if m.get('RecordEventDuration') is not None:
             self.record_event_duration = m.get('RecordEventDuration')
+        if m.get('RecordEventFileExts') is not None:
+            self.record_event_file_exts = m.get('RecordEventFileExts')
         if m.get('RecordEventFilePaths') is not None:
             self.record_event_file_paths = m.get('RecordEventFilePaths')
+        self.record_event_levels = []
+        if m.get('RecordEventLevels') is not None:
+            for k in m.get('RecordEventLevels'):
+                temp_model = DescribePolicyGroupsResponseBodyDescribePolicyGroupsRecordEventLevels()
+                self.record_event_levels.append(temp_model.from_map(k))
         if m.get('RecordEventRegisters') is not None:
             self.record_event_registers = m.get('RecordEventRegisters')
         if m.get('Recording') is not None:
@@ -54515,6 +54874,45 @@ class ModifyCenterPolicyRequestClientType(TeaModel):
         return self
 
 
+class ModifyCenterPolicyRequestClipboardGraineds(TeaModel):
+    def __init__(
+        self,
+        clipboard_size: int = None,
+        clipboard_type: str = None,
+        grained_type: str = None,
+    ):
+        self.clipboard_size = clipboard_size
+        self.clipboard_type = clipboard_type
+        self.grained_type = grained_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clipboard_size is not None:
+            result['ClipboardSize'] = self.clipboard_size
+        if self.clipboard_type is not None:
+            result['ClipboardType'] = self.clipboard_type
+        if self.grained_type is not None:
+            result['GrainedType'] = self.grained_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClipboardSize') is not None:
+            self.clipboard_size = m.get('ClipboardSize')
+        if m.get('ClipboardType') is not None:
+            self.clipboard_type = m.get('ClipboardType')
+        if m.get('GrainedType') is not None:
+            self.grained_type = m.get('GrainedType')
+        return self
+
+
 class ModifyCenterPolicyRequestDeviceRedirects(TeaModel):
     def __init__(
         self,
@@ -54745,6 +55143,39 @@ class ModifyCenterPolicyRequestNetRedirectRule(TeaModel):
         return self
 
 
+class ModifyCenterPolicyRequestRecordEventLevels(TeaModel):
+    def __init__(
+        self,
+        event_level: str = None,
+        event_type: str = None,
+    ):
+        self.event_level = event_level
+        self.event_type = event_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.event_level is not None:
+            result['EventLevel'] = self.event_level
+        if self.event_type is not None:
+            result['EventType'] = self.event_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EventLevel') is not None:
+            self.event_level = m.get('EventLevel')
+        if m.get('EventType') is not None:
+            self.event_type = m.get('EventType')
+        return self
+
+
 class ModifyCenterPolicyRequestRevokeAccessPolicyRule(TeaModel):
     def __init__(
         self,
@@ -54947,11 +55378,14 @@ class ModifyCenterPolicyRequest(TeaModel):
         app_content_protection: str = None,
         authorize_access_policy_rule: List[ModifyCenterPolicyRequestAuthorizeAccessPolicyRule] = None,
         authorize_security_policy_rule: List[ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule] = None,
+        auto_reconnect: str = None,
         business_type: int = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
         client_type: List[ModifyCenterPolicyRequestClientType] = None,
         clipboard: str = None,
+        clipboard_graineds: List[ModifyCenterPolicyRequestClipboardGraineds] = None,
+        clipboard_scope: str = None,
         color_enhancement: str = None,
         cpd_drive_clipboard: str = None,
         cpu_down_grade_duration: int = None,
@@ -54988,7 +55422,10 @@ class ModifyCenterPolicyRequest(TeaModel):
         memory_sample_duration: int = None,
         memory_single_rate_limit: int = None,
         mobile_restart: str = None,
+        mobile_safe_menu: str = None,
         mobile_shutdown: str = None,
+        mobile_wuying_keeper: str = None,
+        mobile_wy_assistant: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[ModifyCenterPolicyRequestNetRedirectRule] = None,
@@ -54998,7 +55435,9 @@ class ModifyCenterPolicyRequest(TeaModel):
         printer_redirect: str = None,
         quality_enhancement: str = None,
         record_event_duration: int = None,
+        record_event_file_exts: List[str] = None,
         record_event_file_paths: List[str] = None,
+        record_event_levels: List[ModifyCenterPolicyRequestRecordEventLevels] = None,
         record_event_registers: List[str] = None,
         record_events: List[str] = None,
         recording: str = None,
@@ -55076,6 +55515,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.authorize_access_policy_rule = authorize_access_policy_rule
         # The security group rules.
         self.authorize_security_policy_rule = authorize_security_policy_rule
+        self.auto_reconnect = auto_reconnect
         # The business type.
         # 
         # Valid values:
@@ -55104,6 +55544,8 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   write: specifies one-way transfer. You can only copy files from cloud computers to on-premises devices.
         # *   off (default): disables all transfers, both one-way and two-way. Files cannot be copied directly between on-premises devices and cloud computers.
         self.clipboard = clipboard
+        self.clipboard_graineds = clipboard_graineds
+        self.clipboard_scope = clipboard_scope
         # Specifies whether to enable color enhancement for design and 3D applications.
         # 
         # Valid values:
@@ -55264,6 +55706,7 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # *   on: displays the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         self.mobile_restart = mobile_restart
+        self.mobile_safe_menu = mobile_safe_menu
         # Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
@@ -55273,6 +55716,8 @@ class ModifyCenterPolicyRequest(TeaModel):
         # *   off: doesn\\"t display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # *   on: displays the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         self.mobile_shutdown = mobile_shutdown
+        self.mobile_wuying_keeper = mobile_wuying_keeper
+        self.mobile_wy_assistant = mobile_wy_assistant
         # The policy name.
         self.name = name
         # The network redirection policy.
@@ -55323,8 +55768,10 @@ class ModifyCenterPolicyRequest(TeaModel):
         self.quality_enhancement = quality_enhancement
         # The duration of screen recording after the specified event is detected. Unit: minutes. Valid values: 10 to 60.
         self.record_event_duration = record_event_duration
+        self.record_event_file_exts = record_event_file_exts
         # The absolute paths to screen recording files.
         self.record_event_file_paths = record_event_file_paths
+        self.record_event_levels = record_event_levels
         # The absolute paths to screen recording registries.
         self.record_event_registers = record_event_registers
         # The events that trigger screen recording.
@@ -55587,6 +56034,10 @@ class ModifyCenterPolicyRequest(TeaModel):
             for k in self.client_type:
                 if k:
                     k.validate()
+        if self.clipboard_graineds:
+            for k in self.clipboard_graineds:
+                if k:
+                    k.validate()
         if self.device_redirects:
             for k in self.device_redirects:
                 if k:
@@ -55601,6 +56052,10 @@ class ModifyCenterPolicyRequest(TeaModel):
                     k.validate()
         if self.net_redirect_rule:
             for k in self.net_redirect_rule:
+                if k:
+                    k.validate()
+        if self.record_event_levels:
+            for k in self.record_event_levels:
                 if k:
                     k.validate()
         if self.revoke_access_policy_rule:
@@ -55634,6 +56089,8 @@ class ModifyCenterPolicyRequest(TeaModel):
         if self.authorize_security_policy_rule is not None:
             for k in self.authorize_security_policy_rule:
                 result['AuthorizeSecurityPolicyRule'].append(k.to_map() if k else None)
+        if self.auto_reconnect is not None:
+            result['AutoReconnect'] = self.auto_reconnect
         if self.business_type is not None:
             result['BusinessType'] = self.business_type
         if self.camera_redirect is not None:
@@ -55646,6 +56103,12 @@ class ModifyCenterPolicyRequest(TeaModel):
                 result['ClientType'].append(k.to_map() if k else None)
         if self.clipboard is not None:
             result['Clipboard'] = self.clipboard
+        result['ClipboardGraineds'] = []
+        if self.clipboard_graineds is not None:
+            for k in self.clipboard_graineds:
+                result['ClipboardGraineds'].append(k.to_map() if k else None)
+        if self.clipboard_scope is not None:
+            result['ClipboardScope'] = self.clipboard_scope
         if self.color_enhancement is not None:
             result['ColorEnhancement'] = self.color_enhancement
         if self.cpd_drive_clipboard is not None:
@@ -55724,8 +56187,14 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['MemorySingleRateLimit'] = self.memory_single_rate_limit
         if self.mobile_restart is not None:
             result['MobileRestart'] = self.mobile_restart
+        if self.mobile_safe_menu is not None:
+            result['MobileSafeMenu'] = self.mobile_safe_menu
         if self.mobile_shutdown is not None:
             result['MobileShutdown'] = self.mobile_shutdown
+        if self.mobile_wuying_keeper is not None:
+            result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
+        if self.mobile_wy_assistant is not None:
+            result['MobileWyAssistant'] = self.mobile_wy_assistant
         if self.name is not None:
             result['Name'] = self.name
         if self.net_redirect is not None:
@@ -55746,8 +56215,14 @@ class ModifyCenterPolicyRequest(TeaModel):
             result['QualityEnhancement'] = self.quality_enhancement
         if self.record_event_duration is not None:
             result['RecordEventDuration'] = self.record_event_duration
+        if self.record_event_file_exts is not None:
+            result['RecordEventFileExts'] = self.record_event_file_exts
         if self.record_event_file_paths is not None:
             result['RecordEventFilePaths'] = self.record_event_file_paths
+        result['RecordEventLevels'] = []
+        if self.record_event_levels is not None:
+            for k in self.record_event_levels:
+                result['RecordEventLevels'].append(k.to_map() if k else None)
         if self.record_event_registers is not None:
             result['RecordEventRegisters'] = self.record_event_registers
         if self.record_events is not None:
@@ -55882,6 +56357,8 @@ class ModifyCenterPolicyRequest(TeaModel):
             for k in m.get('AuthorizeSecurityPolicyRule'):
                 temp_model = ModifyCenterPolicyRequestAuthorizeSecurityPolicyRule()
                 self.authorize_security_policy_rule.append(temp_model.from_map(k))
+        if m.get('AutoReconnect') is not None:
+            self.auto_reconnect = m.get('AutoReconnect')
         if m.get('BusinessType') is not None:
             self.business_type = m.get('BusinessType')
         if m.get('CameraRedirect') is not None:
@@ -55895,6 +56372,13 @@ class ModifyCenterPolicyRequest(TeaModel):
                 self.client_type.append(temp_model.from_map(k))
         if m.get('Clipboard') is not None:
             self.clipboard = m.get('Clipboard')
+        self.clipboard_graineds = []
+        if m.get('ClipboardGraineds') is not None:
+            for k in m.get('ClipboardGraineds'):
+                temp_model = ModifyCenterPolicyRequestClipboardGraineds()
+                self.clipboard_graineds.append(temp_model.from_map(k))
+        if m.get('ClipboardScope') is not None:
+            self.clipboard_scope = m.get('ClipboardScope')
         if m.get('ColorEnhancement') is not None:
             self.color_enhancement = m.get('ColorEnhancement')
         if m.get('CpdDriveClipboard') is not None:
@@ -55976,8 +56460,14 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.memory_single_rate_limit = m.get('MemorySingleRateLimit')
         if m.get('MobileRestart') is not None:
             self.mobile_restart = m.get('MobileRestart')
+        if m.get('MobileSafeMenu') is not None:
+            self.mobile_safe_menu = m.get('MobileSafeMenu')
         if m.get('MobileShutdown') is not None:
             self.mobile_shutdown = m.get('MobileShutdown')
+        if m.get('MobileWuyingKeeper') is not None:
+            self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
+        if m.get('MobileWyAssistant') is not None:
+            self.mobile_wy_assistant = m.get('MobileWyAssistant')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('NetRedirect') is not None:
@@ -55999,8 +56489,15 @@ class ModifyCenterPolicyRequest(TeaModel):
             self.quality_enhancement = m.get('QualityEnhancement')
         if m.get('RecordEventDuration') is not None:
             self.record_event_duration = m.get('RecordEventDuration')
+        if m.get('RecordEventFileExts') is not None:
+            self.record_event_file_exts = m.get('RecordEventFileExts')
         if m.get('RecordEventFilePaths') is not None:
             self.record_event_file_paths = m.get('RecordEventFilePaths')
+        self.record_event_levels = []
+        if m.get('RecordEventLevels') is not None:
+            for k in m.get('RecordEventLevels'):
+                temp_model = ModifyCenterPolicyRequestRecordEventLevels()
+                self.record_event_levels.append(temp_model.from_map(k))
         if m.get('RecordEventRegisters') is not None:
             self.record_event_registers = m.get('RecordEventRegisters')
         if m.get('RecordEvents') is not None:
