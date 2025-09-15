@@ -1,3 +1,8 @@
+2025-09-15 Version: 2.7.5
+- Update API DescribeNode: add response parameters Body.HyperNodeId.
+- Update API ListFreeNodes: add response parameters Body.Nodes.$.HyperNodeId.
+
+
 2025-09-14 Version: 2.7.4
 - Update API ListClusterNodes: add response parameters Body.Nodes.$.HyperNodeId.
 
