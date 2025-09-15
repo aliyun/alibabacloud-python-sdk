@@ -1443,6 +1443,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_domain_with_options_async(request, runtime)
 
+    def create_hybrid_cloud_cluster_with_options(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridCloudClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridCloudClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_region):
+            query['AccessRegion'] = request.access_region
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not UtilClient.is_unset(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_fields_not_returned):
+            query['LogFieldsNotReturned'] = request.log_fields_not_returned
+        if not UtilClient.is_unset(request.protection_server_count):
+            query['ProtectionServerCount'] = request.protection_server_count
+        if not UtilClient.is_unset(request.proxy_status):
+            query['ProxyStatus'] = request.proxy_status
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridCloudCluster',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hybrid_cloud_cluster_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridCloudClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHybridCloudClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_region):
+            query['AccessRegion'] = request.access_region
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not UtilClient.is_unset(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_fields_not_returned):
+            query['LogFieldsNotReturned'] = request.log_fields_not_returned
+        if not UtilClient.is_unset(request.protection_server_count):
+            query['ProtectionServerCount'] = request.protection_server_count
+        if not UtilClient.is_unset(request.proxy_status):
+            query['ProxyStatus'] = request.proxy_status
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHybridCloudCluster',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.CreateHybridCloudClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hybrid_cloud_cluster(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRequest,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridCloudClusterRequest
+        @return: CreateHybridCloudClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_hybrid_cloud_cluster_with_options(request, runtime)
+
+    async def create_hybrid_cloud_cluster_async(
+        self,
+        request: waf_openapi_20211001_models.CreateHybridCloudClusterRequest,
+    ) -> waf_openapi_20211001_models.CreateHybridCloudClusterResponse:
+        """
+        @summary Creates a hybrid cloud cluster.
+        
+        @param request: CreateHybridCloudClusterRequest
+        @return: CreateHybridCloudClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hybrid_cloud_cluster_with_options_async(request, runtime)
+
     def create_hybrid_cloud_cluster_rule_with_options(
         self,
         request: waf_openapi_20211001_models.CreateHybridCloudClusterRuleRequest,
@@ -6895,6 +7051,130 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cname_count_with_options_async(request, runtime)
 
+    def describe_common_log_fields_with_options(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeCommonLogFieldsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCommonLogFieldsResponse:
+        """
+        @summary 查询日志服务支持的所有字段
+        
+        @param tmp_req: DescribeCommonLogFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCommonLogFieldsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeCommonLogFieldsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.log_key_list):
+            request.log_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.log_key_list, 'LogKeyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.is_required):
+            query['IsRequired'] = request.is_required
+        if not UtilClient.is_unset(request.log_key_list_shrink):
+            query['LogKeyList'] = request.log_key_list_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCommonLogFields',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCommonLogFieldsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_common_log_fields_with_options_async(
+        self,
+        tmp_req: waf_openapi_20211001_models.DescribeCommonLogFieldsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeCommonLogFieldsResponse:
+        """
+        @summary 查询日志服务支持的所有字段
+        
+        @param tmp_req: DescribeCommonLogFieldsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCommonLogFieldsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = waf_openapi_20211001_models.DescribeCommonLogFieldsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.log_key_list):
+            request.log_key_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.log_key_list, 'LogKeyList', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_default):
+            query['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.is_required):
+            query['IsRequired'] = request.is_required
+        if not UtilClient.is_unset(request.log_key_list_shrink):
+            query['LogKeyList'] = request.log_key_list_shrink
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCommonLogFields',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeCommonLogFieldsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_common_log_fields(
+        self,
+        request: waf_openapi_20211001_models.DescribeCommonLogFieldsRequest,
+    ) -> waf_openapi_20211001_models.DescribeCommonLogFieldsResponse:
+        """
+        @summary 查询日志服务支持的所有字段
+        
+        @param request: DescribeCommonLogFieldsRequest
+        @return: DescribeCommonLogFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_common_log_fields_with_options(request, runtime)
+
+    async def describe_common_log_fields_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeCommonLogFieldsRequest,
+    ) -> waf_openapi_20211001_models.DescribeCommonLogFieldsResponse:
+        """
+        @summary 查询日志服务支持的所有字段
+        
+        @param request: DescribeCommonLogFieldsRequest
+        @return: DescribeCommonLogFieldsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_common_log_fields_with_options_async(request, runtime)
+
     def describe_custom_base_rule_compile_result_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeCustomBaseRuleCompileResultRequest,
@@ -7206,6 +7486,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_default_https_with_options_async(request, runtime)
+
+    def describe_defense_group_valid_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse:
+        """
+        @summary 分页查询可以被防护组绑定的防护对象列表
+        
+        @param request: DescribeDefenseGroupValidResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseGroupValidResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseGroupValidResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_defense_group_valid_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse:
+        """
+        @summary 分页查询可以被防护组绑定的防护对象列表
+        
+        @param request: DescribeDefenseGroupValidResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseGroupValidResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseGroupValidResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_defense_group_valid_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse:
+        """
+        @summary 分页查询可以被防护组绑定的防护对象列表
+        
+        @param request: DescribeDefenseGroupValidResourcesRequest
+        @return: DescribeDefenseGroupValidResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_defense_group_valid_resources_with_options(request, runtime)
+
+    async def describe_defense_group_valid_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseGroupValidResourcesResponse:
+        """
+        @summary 分页查询可以被防护组绑定的防护对象列表
+        
+        @param request: DescribeDefenseGroupValidResourcesRequest
+        @return: DescribeDefenseGroupValidResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_defense_group_valid_resources_with_options_async(request, runtime)
 
     def describe_defense_resource_with_options(
         self,
@@ -8842,6 +9242,130 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_defense_template_valid_groups_with_options_async(request, runtime)
+
+    def describe_defense_template_valid_resources_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse:
+        """
+        @summary 分页查询可以被自定义模板绑定的防护对象列表
+        
+        @param request: DescribeDefenseTemplateValidResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseTemplateValidResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseTemplateValidResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_defense_template_valid_resources_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse:
+        """
+        @summary 分页查询可以被自定义模板绑定的防护对象列表
+        
+        @param request: DescribeDefenseTemplateValidResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDefenseTemplateValidResourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.defense_scene):
+            query['DefenseScene'] = request.defense_scene
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource):
+            query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDefenseTemplateValidResources',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_defense_template_valid_resources(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse:
+        """
+        @summary 分页查询可以被自定义模板绑定的防护对象列表
+        
+        @param request: DescribeDefenseTemplateValidResourcesRequest
+        @return: DescribeDefenseTemplateValidResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_defense_template_valid_resources_with_options(request, runtime)
+
+    async def describe_defense_template_valid_resources_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesRequest,
+    ) -> waf_openapi_20211001_models.DescribeDefenseTemplateValidResourcesResponse:
+        """
+        @summary 分页查询可以被自定义模板绑定的防护对象列表
+        
+        @param request: DescribeDefenseTemplateValidResourcesRequest
+        @return: DescribeDefenseTemplateValidResourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_defense_template_valid_resources_with_options_async(request, runtime)
 
     def describe_defense_templates_with_options(
         self,
@@ -16499,6 +17023,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_event_type_with_options_async(request, runtime)
 
+    def describe_user_log_field_config_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserLogFieldConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse:
+        """
+        @summary 查询用户日志配置
+        
+        @param request: DescribeUserLogFieldConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserLogFieldConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_type):
+            query['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserLogFieldConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_log_field_config_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserLogFieldConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse:
+        """
+        @summary 查询用户日志配置
+        
+        @param request: DescribeUserLogFieldConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserLogFieldConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_type):
+            query['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserLogFieldConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_log_field_config(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserLogFieldConfigRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse:
+        """
+        @summary 查询用户日志配置
+        
+        @param request: DescribeUserLogFieldConfigRequest
+        @return: DescribeUserLogFieldConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_log_field_config_with_options(request, runtime)
+
+    async def describe_user_log_field_config_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeUserLogFieldConfigRequest,
+    ) -> waf_openapi_20211001_models.DescribeUserLogFieldConfigResponse:
+        """
+        @summary 查询用户日志配置
+        
+        @param request: DescribeUserLogFieldConfigRequest
+        @return: DescribeUserLogFieldConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_log_field_config_with_options_async(request, runtime)
+
     def describe_user_sls_log_regions_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeUserSlsLogRegionsRequest,
@@ -21050,6 +21682,238 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_template_resources_with_options_async(request, runtime)
+
+    def modify_user_log_field_config_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserLogFieldConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse:
+        """
+        @summary  修改用户日志服务的默认字段配置
+        
+        @param request: ModifyUserLogFieldConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserLogFieldConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_type):
+            query['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.extend_config):
+            query['ExtendConfig'] = request.extend_config
+        if not UtilClient.is_unset(request.field_list):
+            query['FieldList'] = request.field_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_delivery_strategy):
+            query['LogDeliveryStrategy'] = request.log_delivery_strategy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserLogFieldConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_log_field_config_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserLogFieldConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse:
+        """
+        @summary  修改用户日志服务的默认字段配置
+        
+        @param request: ModifyUserLogFieldConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserLogFieldConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.delivery_type):
+            query['DeliveryType'] = request.delivery_type
+        if not UtilClient.is_unset(request.extend_config):
+            query['ExtendConfig'] = request.extend_config
+        if not UtilClient.is_unset(request.field_list):
+            query['FieldList'] = request.field_list
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_delivery_strategy):
+            query['LogDeliveryStrategy'] = request.log_delivery_strategy
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserLogFieldConfig',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_log_field_config(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserLogFieldConfigRequest,
+    ) -> waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse:
+        """
+        @summary  修改用户日志服务的默认字段配置
+        
+        @param request: ModifyUserLogFieldConfigRequest
+        @return: ModifyUserLogFieldConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_log_field_config_with_options(request, runtime)
+
+    async def modify_user_log_field_config_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserLogFieldConfigRequest,
+    ) -> waf_openapi_20211001_models.ModifyUserLogFieldConfigResponse:
+        """
+        @summary  修改用户日志服务的默认字段配置
+        
+        @param request: ModifyUserLogFieldConfigRequest
+        @return: ModifyUserLogFieldConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_log_field_config_with_options_async(request, runtime)
+
+    def modify_user_waf_log_status_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserWafLogStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyUserWafLogStatusResponse:
+        """
+        @summary 开通或关闭WAF日志服务
+        
+        @param request: ModifyUserWafLogStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserWafLogStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.log_status):
+            query['LogStatus'] = request.log_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserWafLogStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyUserWafLogStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_user_waf_log_status_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserWafLogStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyUserWafLogStatusResponse:
+        """
+        @summary 开通或关闭WAF日志服务
+        
+        @param request: ModifyUserWafLogStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyUserWafLogStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_region_id):
+            query['LogRegionId'] = request.log_region_id
+        if not UtilClient.is_unset(request.log_status):
+            query['LogStatus'] = request.log_status
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyUserWafLogStatus',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyUserWafLogStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_user_waf_log_status(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserWafLogStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyUserWafLogStatusResponse:
+        """
+        @summary 开通或关闭WAF日志服务
+        
+        @param request: ModifyUserWafLogStatusRequest
+        @return: ModifyUserWafLogStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_user_waf_log_status_with_options(request, runtime)
+
+    async def modify_user_waf_log_status_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyUserWafLogStatusRequest,
+    ) -> waf_openapi_20211001_models.ModifyUserWafLogStatusResponse:
+        """
+        @summary 开通或关闭WAF日志服务
+        
+        @param request: ModifyUserWafLogStatusRequest
+        @return: ModifyUserWafLogStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_user_waf_log_status_with_options_async(request, runtime)
 
     def re_create_cloud_resource_with_options(
         self,

@@ -1,3 +1,13 @@
+2025-09-15 Version: 6.4.0
+- Support API CreateHybridCloudCluster.
+- Support API DescribeCommonLogFields.
+- Support API DescribeDefenseGroupValidResources.
+- Support API DescribeDefenseTemplateValidResources.
+- Support API DescribeUserLogFieldConfig.
+- Support API ModifyUserLogFieldConfig.
+- Support API ModifyUserWafLogStatus.
+
+
 2025-09-08 Version: 6.3.0
 - Support API DescribeBaseSystemRules.
 - Support API DescribeCustomBaseRuleCompileResult.
