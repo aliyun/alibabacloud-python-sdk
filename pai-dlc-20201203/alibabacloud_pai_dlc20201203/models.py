@@ -5606,6 +5606,164 @@ class GetJobResponseBodyPods(TeaModel):
         return self
 
 
+class GetJobResponseBodyRestartRecordDetailErrorInfoList(TeaModel):
+    def __init__(
+        self,
+        add_job_level_blacklist: bool = None,
+        add_node_to_blacklist: bool = None,
+        detail_error_msg: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+        error_source: str = None,
+        node: str = None,
+        pod: str = None,
+        trigger_restart: bool = None,
+    ):
+        self.add_job_level_blacklist = add_job_level_blacklist
+        self.add_node_to_blacklist = add_node_to_blacklist
+        self.detail_error_msg = detail_error_msg
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.error_source = error_source
+        self.node = node
+        self.pod = pod
+        self.trigger_restart = trigger_restart
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_job_level_blacklist is not None:
+            result['AddJobLevelBlacklist'] = self.add_job_level_blacklist
+        if self.add_node_to_blacklist is not None:
+            result['AddNodeToBlacklist'] = self.add_node_to_blacklist
+        if self.detail_error_msg is not None:
+            result['DetailErrorMsg'] = self.detail_error_msg
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.error_source is not None:
+            result['ErrorSource'] = self.error_source
+        if self.node is not None:
+            result['Node'] = self.node
+        if self.pod is not None:
+            result['Pod'] = self.pod
+        if self.trigger_restart is not None:
+            result['TriggerRestart'] = self.trigger_restart
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddJobLevelBlacklist') is not None:
+            self.add_job_level_blacklist = m.get('AddJobLevelBlacklist')
+        if m.get('AddNodeToBlacklist') is not None:
+            self.add_node_to_blacklist = m.get('AddNodeToBlacklist')
+        if m.get('DetailErrorMsg') is not None:
+            self.detail_error_msg = m.get('DetailErrorMsg')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('ErrorSource') is not None:
+            self.error_source = m.get('ErrorSource')
+        if m.get('Node') is not None:
+            self.node = m.get('Node')
+        if m.get('Pod') is not None:
+            self.pod = m.get('Pod')
+        if m.get('TriggerRestart') is not None:
+            self.trigger_restart = m.get('TriggerRestart')
+        return self
+
+
+class GetJobResponseBodyRestartRecord(TeaModel):
+    def __init__(
+        self,
+        detail_error_info_list: List[GetJobResponseBodyRestartRecordDetailErrorInfoList] = None,
+        job_restart_count: int = None,
+        occur_phase: str = None,
+        occur_time: str = None,
+        reason: str = None,
+        restart_duration_in_sec: int = None,
+        restart_fail_reason: str = None,
+        restart_status: str = None,
+        trigger_id: str = None,
+    ):
+        self.detail_error_info_list = detail_error_info_list
+        self.job_restart_count = job_restart_count
+        self.occur_phase = occur_phase
+        self.occur_time = occur_time
+        self.reason = reason
+        self.restart_duration_in_sec = restart_duration_in_sec
+        self.restart_fail_reason = restart_fail_reason
+        self.restart_status = restart_status
+        self.trigger_id = trigger_id
+
+    def validate(self):
+        if self.detail_error_info_list:
+            for k in self.detail_error_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DetailErrorInfoList'] = []
+        if self.detail_error_info_list is not None:
+            for k in self.detail_error_info_list:
+                result['DetailErrorInfoList'].append(k.to_map() if k else None)
+        if self.job_restart_count is not None:
+            result['JobRestartCount'] = self.job_restart_count
+        if self.occur_phase is not None:
+            result['OccurPhase'] = self.occur_phase
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.restart_duration_in_sec is not None:
+            result['RestartDurationInSec'] = self.restart_duration_in_sec
+        if self.restart_fail_reason is not None:
+            result['RestartFailReason'] = self.restart_fail_reason
+        if self.restart_status is not None:
+            result['RestartStatus'] = self.restart_status
+        if self.trigger_id is not None:
+            result['TriggerID'] = self.trigger_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.detail_error_info_list = []
+        if m.get('DetailErrorInfoList') is not None:
+            for k in m.get('DetailErrorInfoList'):
+                temp_model = GetJobResponseBodyRestartRecordDetailErrorInfoList()
+                self.detail_error_info_list.append(temp_model.from_map(k))
+        if m.get('JobRestartCount') is not None:
+            self.job_restart_count = m.get('JobRestartCount')
+        if m.get('OccurPhase') is not None:
+            self.occur_phase = m.get('OccurPhase')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('RestartDurationInSec') is not None:
+            self.restart_duration_in_sec = m.get('RestartDurationInSec')
+        if m.get('RestartFailReason') is not None:
+            self.restart_fail_reason = m.get('RestartFailReason')
+        if m.get('RestartStatus') is not None:
+            self.restart_status = m.get('RestartStatus')
+        if m.get('TriggerID') is not None:
+            self.trigger_id = m.get('TriggerID')
+        return self
+
+
 class GetJobResponseBodyUserVpc(TeaModel):
     def __init__(
         self,
@@ -5695,6 +5853,7 @@ class GetJobResponseBody(TeaModel):
         resource_id: str = None,
         resource_level: str = None,
         resource_type: str = None,
+        restart_record: List[GetJobResponseBodyRestartRecord] = None,
         restart_times: str = None,
         settings: JobSettings = None,
         status: str = None,
@@ -5768,6 +5927,7 @@ class GetJobResponseBody(TeaModel):
         self.resource_level = resource_level
         # The resource type. Valid values: ECS, Lingjun, and ACS.
         self.resource_type = resource_type
+        self.restart_record = restart_record
         # The number of retries and the maximum number of retries used by the job.
         self.restart_times = restart_times
         # The additional parameter configurations of the job.
@@ -5826,6 +5986,10 @@ class GetJobResponseBody(TeaModel):
                     k.validate()
         if self.pods:
             for k in self.pods:
+                if k:
+                    k.validate()
+        if self.restart_record:
+            for k in self.restart_record:
                 if k:
                     k.validate()
         if self.settings:
@@ -5905,6 +6069,10 @@ class GetJobResponseBody(TeaModel):
             result['ResourceLevel'] = self.resource_level
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        result['RestartRecord'] = []
+        if self.restart_record is not None:
+            for k in self.restart_record:
+                result['RestartRecord'].append(k.to_map() if k else None)
         if self.restart_times is not None:
             result['RestartTimes'] = self.restart_times
         if self.settings is not None:
@@ -6005,6 +6173,11 @@ class GetJobResponseBody(TeaModel):
             self.resource_level = m.get('ResourceLevel')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        self.restart_record = []
+        if m.get('RestartRecord') is not None:
+            for k in m.get('RestartRecord'):
+                temp_model = GetJobResponseBodyRestartRecord()
+                self.restart_record.append(temp_model.from_map(k))
         if m.get('RestartTimes') is not None:
             self.restart_times = m.get('RestartTimes')
         if m.get('Settings') is not None:
