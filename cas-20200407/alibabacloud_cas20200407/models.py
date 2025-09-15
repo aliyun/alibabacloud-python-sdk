@@ -3516,6 +3516,39 @@ class GetUserCertificateDetailResponseBodyCertChain(TeaModel):
         return self
 
 
+class GetUserCertificateDetailResponseBodyTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class GetUserCertificateDetailResponseBody(TeaModel):
     def __init__(
         self,
@@ -3550,6 +3583,7 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         sign_cert: str = None,
         sign_private_key: str = None,
         start_date: str = None,
+        tags: List[GetUserCertificateDetailResponseBodyTags] = None,
     ):
         # The algorithm.
         self.algorithm = algorithm
@@ -3619,10 +3653,15 @@ class GetUserCertificateDetailResponseBody(TeaModel):
         self.sign_private_key = sign_private_key
         # The issuance date of the certificate.
         self.start_date = start_date
+        self.tags = tags
 
     def validate(self):
         if self.cert_chain:
             for k in self.cert_chain:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
 
@@ -3696,6 +3735,10 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             result['SignPrivateKey'] = self.sign_private_key
         if self.start_date is not None:
             result['StartDate'] = self.start_date
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -3765,6 +3808,11 @@ class GetUserCertificateDetailResponseBody(TeaModel):
             self.sign_private_key = m.get('SignPrivateKey')
         if m.get('StartDate') is not None:
             self.start_date = m.get('StartDate')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetUserCertificateDetailResponseBodyTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 

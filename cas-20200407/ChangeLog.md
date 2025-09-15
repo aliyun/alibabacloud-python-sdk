@@ -1,3 +1,7 @@
+2025-09-15 Version: 3.0.2
+- Update API GetUserCertificateDetail: add response parameters Body.Tags.
+
+
 2025-07-23 Version: 3.0.1
 - Update API DescribeCertificateState: add response parameters Body.CertId.
 
