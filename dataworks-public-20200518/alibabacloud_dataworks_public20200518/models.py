@@ -54491,6 +54491,7 @@ class ListDataServicePublishedApisResponseBodyDataApis(TeaModel):
         request_method: int = None,
         response_content_type: int = None,
         script_details: ListDataServicePublishedApisResponseBodyDataApisScriptDetails = None,
+        sql_mode: int = None,
         status: int = None,
         tenant_id: int = None,
         timeout: int = None,
@@ -54529,6 +54530,7 @@ class ListDataServicePublishedApisResponseBodyDataApis(TeaModel):
         self.response_content_type = response_content_type
         # The details of the API generated in script mode. This parameter is returned only if the API is generated in script mode.
         self.script_details = script_details
+        self.sql_mode = sql_mode
         # The status of the API. Valid values: 0 and 1. The value 0 indicates that the API is not published. The value 1 indicates that the API is published.
         self.status = status
         # The tenant ID.
@@ -54586,6 +54588,8 @@ class ListDataServicePublishedApisResponseBodyDataApis(TeaModel):
             result['ResponseContentType'] = self.response_content_type
         if self.script_details is not None:
             result['ScriptDetails'] = self.script_details.to_map()
+        if self.sql_mode is not None:
+            result['SqlMode'] = self.sql_mode
         if self.status is not None:
             result['Status'] = self.status
         if self.tenant_id is not None:
@@ -54634,6 +54638,8 @@ class ListDataServicePublishedApisResponseBodyDataApis(TeaModel):
         if m.get('ScriptDetails') is not None:
             temp_model = ListDataServicePublishedApisResponseBodyDataApisScriptDetails()
             self.script_details = temp_model.from_map(m['ScriptDetails'])
+        if m.get('SqlMode') is not None:
+            self.sql_mode = m.get('SqlMode')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('TenantId') is not None:

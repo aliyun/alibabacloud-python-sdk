@@ -1,3 +1,7 @@
+2025-09-15 Version: 8.0.3
+- Update API ListDataServicePublishedApis: add response parameters Body.Data.Apis.$.SqlMode.
+
+
 2025-09-12 Version: 8.0.2
 - Update API GetDataServicePublishedApi: add response parameters Body.Data.SqlMode.
 
