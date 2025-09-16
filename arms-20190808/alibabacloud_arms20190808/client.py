@@ -27910,6 +27910,8 @@ class Client(OpenApiClient):
             query['ServiceDomainOperationJson'] = request.service_domain_operation_json
         if not UtilClient.is_unset(request.stop):
             query['Stop'] = request.stop
+        if not UtilClient.is_unset(request.web_sdkconfig_json):
+            query['WebSDKConfigJson'] = request.web_sdkconfig_json
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -27971,6 +27973,8 @@ class Client(OpenApiClient):
             query['ServiceDomainOperationJson'] = request.service_domain_operation_json
         if not UtilClient.is_unset(request.stop):
             query['Stop'] = request.stop
+        if not UtilClient.is_unset(request.web_sdkconfig_json):
+            query['WebSDKConfigJson'] = request.web_sdkconfig_json
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

@@ -32795,6 +32795,7 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         status: str = None,
         tags: List[GetRumAppInfoResponseBodyDataTags] = None,
         type: str = None,
+        web_sdkconfig_json: str = None,
     ):
         # The application configurations in the JSON format. This parameter is deprecated.
         self.app_config = app_config
@@ -32840,6 +32841,7 @@ class GetRumAppInfoResponseBodyData(TeaModel):
         self.tags = tags
         # The type of the application. Valid value: RUM.
         self.type = type
+        self.web_sdkconfig_json = web_sdkconfig_json
 
     def validate(self):
         if self.bonree_sdkconfig:
@@ -32907,6 +32909,8 @@ class GetRumAppInfoResponseBodyData(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
+        if self.web_sdkconfig_json is not None:
+            result['WebSDKConfigJson'] = self.web_sdkconfig_json
         return result
 
     def from_map(self, m: dict = None):
@@ -32962,6 +32966,8 @@ class GetRumAppInfoResponseBodyData(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('WebSDKConfigJson') is not None:
+            self.web_sdkconfig_json = m.get('WebSDKConfigJson')
         return self
 
 
@@ -68091,6 +68097,7 @@ class UpdateRumAppRequest(TeaModel):
         restart: bool = None,
         service_domain_operation_json: str = None,
         stop: bool = None,
+        web_sdkconfig_json: str = None,
     ):
         # The application configurations in the JSON format. This parameter is deprecated.
         self.app_config = app_config
@@ -68122,6 +68129,7 @@ class UpdateRumAppRequest(TeaModel):
         self.service_domain_operation_json = service_domain_operation_json
         # Specifies whether to stop the application. Valid values: true and false.
         self.stop = stop
+        self.web_sdkconfig_json = web_sdkconfig_json
 
     def validate(self):
         pass
@@ -68158,6 +68166,8 @@ class UpdateRumAppRequest(TeaModel):
             result['ServiceDomainOperationJson'] = self.service_domain_operation_json
         if self.stop is not None:
             result['Stop'] = self.stop
+        if self.web_sdkconfig_json is not None:
+            result['WebSDKConfigJson'] = self.web_sdkconfig_json
         return result
 
     def from_map(self, m: dict = None):
@@ -68188,6 +68198,8 @@ class UpdateRumAppRequest(TeaModel):
             self.service_domain_operation_json = m.get('ServiceDomainOperationJson')
         if m.get('Stop') is not None:
             self.stop = m.get('Stop')
+        if m.get('WebSDKConfigJson') is not None:
+            self.web_sdkconfig_json = m.get('WebSDKConfigJson')
         return self
 
 

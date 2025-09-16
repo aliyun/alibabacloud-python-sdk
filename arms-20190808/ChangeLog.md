@@ -1,3 +1,8 @@
+2025-09-16 Version: 10.0.2
+- Update API GetRumAppInfo: add response parameters Body.Data.WebSDKConfigJson.
+- Update API UpdateRumApp: add request parameters WebSDKConfigJson.
+
+
 2025-08-22 Version: 10.0.1
 - Update API CreateRumUploadFileUrl: add request parameters ServiceId.
 - Update API CreateRumUploadFileUrl: add request parameters Workspace.
