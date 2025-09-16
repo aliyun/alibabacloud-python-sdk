@@ -1,3 +1,12 @@
+2025-09-16 Version: 5.2.2
+- Update API BuildIndex: add request parameters body.path.
+- Update API CreateIndex: add request parameters body.dataSourceInfo.config.tableFormat.
+- Update API CreateTable: add request parameters body.dataSource.config.tableFormat.
+- Update API ModifyDataSourceDeploy: add request parameters body.storage.tableFormat.
+- Update API ModifyIndex: add request parameters body.dataSourceInfo.config.tableFormat.
+- Update API ModifyTable: add request parameters body.dataSource.config.tableFormat.
+
+
 2025-07-04 Version: 5.2.1
 - Update API CreateIndex: add request parameters body.dataSourceInfo.scene.
 - Update API CreateTable: add request parameters body.scene.

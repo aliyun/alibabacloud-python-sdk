@@ -77,6 +77,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
         if not UtilClient.is_unset(request.tag):
             body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -135,6 +137,8 @@ class Client(OpenApiClient):
             body['generation'] = request.generation
         if not UtilClient.is_unset(request.partition):
             body['partition'] = request.partition
+        if not UtilClient.is_unset(request.path):
+            body['path'] = request.path
         if not UtilClient.is_unset(request.tag):
             body['tag'] = request.tag
         req = open_api_models.OpenApiRequest(
@@ -10250,6 +10254,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexResponse:
         """
+        @summary 编辑索引表
+        
         @param request: ModifyIndexRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10316,6 +10322,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyIndexResponse:
         """
+        @summary 编辑索引表
+        
         @param request: ModifyIndexRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -10380,6 +10388,8 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexRequest,
     ) -> searchengine_20211025_models.ModifyIndexResponse:
         """
+        @summary 编辑索引表
+        
         @param request: ModifyIndexRequest
         @return: ModifyIndexResponse
         """
@@ -10394,6 +10404,8 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyIndexRequest,
     ) -> searchengine_20211025_models.ModifyIndexResponse:
         """
+        @summary 编辑索引表
+        
         @param request: ModifyIndexRequest
         @return: ModifyIndexResponse
         """

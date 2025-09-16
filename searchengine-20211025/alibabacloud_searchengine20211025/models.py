@@ -599,6 +599,7 @@ class BuildIndexRequest(TeaModel):
         domain: str = None,
         generation: int = None,
         partition: str = None,
+        path: str = None,
         tag: str = None,
     ):
         # The reindexing method. Valid values: api: API data source. indexRecover: data recovery by using indexing.
@@ -615,6 +616,7 @@ class BuildIndexRequest(TeaModel):
         self.generation = generation
         # The partition in the MaxCompute table. This parameter is required if type is set to odps.
         self.partition = partition
+        self.path = path
         self.tag = tag
 
     def validate(self):
@@ -640,6 +642,8 @@ class BuildIndexRequest(TeaModel):
             result['generation'] = self.generation
         if self.partition is not None:
             result['partition'] = self.partition
+        if self.path is not None:
+            result['path'] = self.path
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -660,6 +664,8 @@ class BuildIndexRequest(TeaModel):
             self.generation = m.get('generation')
         if m.get('partition') is not None:
             self.partition = m.get('partition')
+        if m.get('path') is not None:
+            self.path = m.get('path')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
@@ -2090,6 +2096,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        table_format: str = None,
         tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
@@ -2115,6 +2122,7 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
         self.project = project
         # The table name.
         self.table = table
+        self.table_format = table_format
         self.tag = tag
 
     def validate(self):
@@ -2152,6 +2160,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -2184,6 +2194,8 @@ class CreateIndexRequestDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
@@ -3612,6 +3624,7 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         partition: str = None,
         project: str = None,
         table: str = None,
+        table_format: str = None,
         tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
@@ -3632,6 +3645,7 @@ class CreateTableRequestDataSourceConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.table_format = table_format
         self.tag = tag
 
     def validate(self):
@@ -3663,6 +3677,8 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -3689,6 +3705,8 @@ class CreateTableRequestDataSourceConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
@@ -18901,6 +18919,7 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        table_format: str = None,
         tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
@@ -18925,6 +18944,7 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.table_format = table_format
         self.tag = tag
 
     def validate(self):
@@ -18960,6 +18980,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -18990,6 +19012,8 @@ class ModifyDataSourceDeployRequestStorage(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
@@ -19323,6 +19347,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         path: str = None,
         project: str = None,
         table: str = None,
+        table_format: str = None,
         tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
@@ -19348,6 +19373,7 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.table_format = table_format
         self.tag = tag
 
     def validate(self):
@@ -19385,6 +19411,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -19417,6 +19445,8 @@ class ModifyIndexRequestDataSourceInfoConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
@@ -21490,6 +21520,7 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         partition: str = None,
         project: str = None,
         table: str = None,
+        table_format: str = None,
         tag: str = None,
     ):
         # The AccessKey ID of the MaxCompute data source.
@@ -21510,6 +21541,7 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
         self.project = project
         # The name of the MaxCompute table that is used as the data source.
         self.table = table
+        self.table_format = table_format
         self.tag = tag
 
     def validate(self):
@@ -21541,6 +21573,8 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             result['project'] = self.project
         if self.table is not None:
             result['table'] = self.table
+        if self.table_format is not None:
+            result['tableFormat'] = self.table_format
         if self.tag is not None:
             result['tag'] = self.tag
         return result
@@ -21567,6 +21601,8 @@ class ModifyTableRequestDataSourceConfig(TeaModel):
             self.project = m.get('project')
         if m.get('table') is not None:
             self.table = m.get('table')
+        if m.get('tableFormat') is not None:
+            self.table_format = m.get('tableFormat')
         if m.get('tag') is not None:
             self.tag = m.get('tag')
         return self
