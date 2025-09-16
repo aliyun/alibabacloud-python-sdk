@@ -32380,8 +32380,6 @@ class DescribeSQLWebSocketDomainRequest(TeaModel):
         # The cluster ID.
         # 
         # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
-        # 
-        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.module = module
         # The region ID
