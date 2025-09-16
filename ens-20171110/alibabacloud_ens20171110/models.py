@@ -9100,6 +9100,7 @@ class CreateSDGRequest(TeaModel):
         disk_type: str = None,
         from_sdgid: str = None,
         instance_id: str = None,
+        performance_level: int = None,
         size: str = None,
     ):
         self.billing_cycle = billing_cycle
@@ -9122,6 +9123,7 @@ class CreateSDGRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.performance_level = performance_level
         # The maximum capacity of the SDG. Unit: GB.
         # 
         # > 
@@ -9152,6 +9154,8 @@ class CreateSDGRequest(TeaModel):
             result['FromSDGId'] = self.from_sdgid
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.size is not None:
             result['Size'] = self.size
         return result
@@ -9168,6 +9172,8 @@ class CreateSDGRequest(TeaModel):
             self.from_sdgid = m.get('FromSDGId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('Size') is not None:
             self.size = m.get('Size')
         return self
@@ -9256,6 +9262,8 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
         dest_cidr_ip: str = None,
         direction: str = None,
         ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
         policy: str = None,
         port_range: str = None,
         priority: int = None,
@@ -9282,6 +9290,8 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
         # 
         # This parameter is required.
         self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
         # The action of the security group rule. Valid values:
         # 
         # *   Accept
@@ -9327,6 +9337,10 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
             result['Direction'] = self.direction
         if self.ip_protocol is not None:
             result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -9349,6 +9363,10 @@ class CreateSecurityGroupRequestPermissions(TeaModel):
             self.direction = m.get('Direction')
         if m.get('IpProtocol') is not None:
             self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:
@@ -15039,6 +15057,39 @@ class DescribeAICImagesResponse(TeaModel):
         return self
 
 
+class DescribeARMServerInstancesRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeARMServerInstancesRequest(TeaModel):
     def __init__(
         self,
@@ -15055,6 +15106,7 @@ class DescribeARMServerInstancesRequest(TeaModel):
         server_ids: List[str] = None,
         server_specs: List[str] = None,
         states: List[str] = None,
+        tags: List[DescribeARMServerInstancesRequestTags] = None,
     ):
         # The container specifications.
         self.aicspecs = aicspecs
@@ -15091,9 +15143,13 @@ class DescribeARMServerInstancesRequest(TeaModel):
         self.server_specs = server_specs
         # The operation statuses.
         self.states = states
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15127,6 +15183,10 @@ class DescribeARMServerInstancesRequest(TeaModel):
             result['ServerSpecs'] = self.server_specs
         if self.states is not None:
             result['States'] = self.states
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -15157,6 +15217,11 @@ class DescribeARMServerInstancesRequest(TeaModel):
             self.server_specs = m.get('ServerSpecs')
         if m.get('States') is not None:
             self.states = m.get('States')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeARMServerInstancesRequestTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -15176,6 +15241,7 @@ class DescribeARMServerInstancesShrinkRequest(TeaModel):
         server_ids_shrink: str = None,
         server_specs_shrink: str = None,
         states_shrink: str = None,
+        tags_shrink: str = None,
     ):
         # The container specifications.
         self.aicspecs_shrink = aicspecs_shrink
@@ -15212,6 +15278,7 @@ class DescribeARMServerInstancesShrinkRequest(TeaModel):
         self.server_specs_shrink = server_specs_shrink
         # The operation statuses.
         self.states_shrink = states_shrink
+        self.tags_shrink = tags_shrink
 
     def validate(self):
         pass
@@ -15248,6 +15315,8 @@ class DescribeARMServerInstancesShrinkRequest(TeaModel):
             result['ServerSpecs'] = self.server_specs_shrink
         if self.states_shrink is not None:
             result['States'] = self.states_shrink
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -15278,6 +15347,8 @@ class DescribeARMServerInstancesShrinkRequest(TeaModel):
             self.server_specs_shrink = m.get('ServerSpecs')
         if m.get('States') is not None:
             self.states_shrink = m.get('States')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
         return self
 
 
@@ -37807,6 +37878,33 @@ class DescribeNetworkAttributeResponseBodyRouteTableIds(TeaModel):
         return self
 
 
+class DescribeNetworkAttributeResponseBodySecondaryCidrBlocks(TeaModel):
+    def __init__(
+        self,
+        secondary_cidr_block: List[str] = None,
+    ):
+        self.secondary_cidr_block = secondary_cidr_block
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secondary_cidr_block is not None:
+            result['SecondaryCidrBlock'] = self.secondary_cidr_block
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecondaryCidrBlock') is not None:
+            self.secondary_cidr_block = m.get('SecondaryCidrBlock')
+        return self
+
+
 class DescribeNetworkAttributeResponseBodyVSwitchIds(TeaModel):
     def __init__(
         self,
@@ -37855,6 +37953,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         route_table_id: str = None,
         route_table_ids: DescribeNetworkAttributeResponseBodyRouteTableIds = None,
         router_table_id: str = None,
+        secondary_cidr_blocks: DescribeNetworkAttributeResponseBodySecondaryCidrBlocks = None,
         status: str = None,
         v_switch_ids: DescribeNetworkAttributeResponseBodyVSwitchIds = None,
     ):
@@ -37894,6 +37993,7 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
         self.route_table_ids = route_table_ids
         # The ID of the route table.
         self.router_table_id = router_table_id
+        self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the network. Valid values:
         # 
         # *   Pending
@@ -37917,6 +38017,8 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             self.network_interface_ids.validate()
         if self.route_table_ids:
             self.route_table_ids.validate()
+        if self.secondary_cidr_blocks:
+            self.secondary_cidr_blocks.validate()
         if self.v_switch_ids:
             self.v_switch_ids.validate()
 
@@ -37962,6 +38064,8 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             result['RouteTableIds'] = self.route_table_ids.to_map()
         if self.router_table_id is not None:
             result['RouterTableId'] = self.router_table_id
+        if self.secondary_cidr_blocks is not None:
+            result['SecondaryCidrBlocks'] = self.secondary_cidr_blocks.to_map()
         if self.status is not None:
             result['Status'] = self.status
         if self.v_switch_ids is not None:
@@ -38013,6 +38117,9 @@ class DescribeNetworkAttributeResponseBody(TeaModel):
             self.route_table_ids = temp_model.from_map(m['RouteTableIds'])
         if m.get('RouterTableId') is not None:
             self.router_table_id = m.get('RouterTableId')
+        if m.get('SecondaryCidrBlocks') is not None:
+            temp_model = DescribeNetworkAttributeResponseBodySecondaryCidrBlocks()
+            self.secondary_cidr_blocks = temp_model.from_map(m['SecondaryCidrBlocks'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VSwitchIds') is not None:
@@ -38748,6 +38855,33 @@ class DescribeNetworksResponseBodyNetworksNetworkRouteTableIds(TeaModel):
         return self
 
 
+class DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks(TeaModel):
+    def __init__(
+        self,
+        secondary_cidr_block: List[str] = None,
+    ):
+        self.secondary_cidr_block = secondary_cidr_block
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.secondary_cidr_block is not None:
+            result['SecondaryCidrBlock'] = self.secondary_cidr_block
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecondaryCidrBlock') is not None:
+            self.secondary_cidr_block = m.get('SecondaryCidrBlock')
+        return self
+
+
 class DescribeNetworksResponseBodyNetworksNetworkTagsTag(TeaModel):
     def __init__(
         self,
@@ -38871,6 +39005,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         route_table_id: str = None,
         route_table_ids: DescribeNetworksResponseBodyNetworksNetworkRouteTableIds = None,
         router_table_id: str = None,
+        secondary_cidr_blocks: DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks = None,
         status: str = None,
         tags: DescribeNetworksResponseBodyNetworksNetworkTags = None,
         v_switch_ids: DescribeNetworksResponseBodyNetworksNetworkVSwitchIds = None,
@@ -38897,6 +39032,7 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
         self.route_table_ids = route_table_ids
         # The route table ID.
         self.router_table_id = router_table_id
+        self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the network. Valid values:
         # 
         # *   Pending
@@ -38909,6 +39045,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
     def validate(self):
         if self.route_table_ids:
             self.route_table_ids.validate()
+        if self.secondary_cidr_blocks:
+            self.secondary_cidr_blocks.validate()
         if self.tags:
             self.tags.validate()
         if self.v_switch_ids:
@@ -38942,6 +39080,8 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             result['RouteTableIds'] = self.route_table_ids.to_map()
         if self.router_table_id is not None:
             result['RouterTableId'] = self.router_table_id
+        if self.secondary_cidr_blocks is not None:
+            result['SecondaryCidrBlocks'] = self.secondary_cidr_blocks.to_map()
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -38975,6 +39115,9 @@ class DescribeNetworksResponseBodyNetworksNetwork(TeaModel):
             self.route_table_ids = temp_model.from_map(m['RouteTableIds'])
         if m.get('RouterTableId') is not None:
             self.router_table_id = m.get('RouterTableId')
+        if m.get('SecondaryCidrBlocks') is not None:
+            temp_model = DescribeNetworksResponseBodyNetworksNetworkSecondaryCidrBlocks()
+            self.secondary_cidr_blocks = temp_model.from_map(m['SecondaryCidrBlocks'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -42643,6 +42786,7 @@ class DescribeSDGResponseBodySDGs(TeaModel):
         creation_time: str = None,
         description: str = None,
         parent_sdgid: str = None,
+        performance_level: str = None,
         preload_infos: List[DescribeSDGResponseBodySDGsPreloadInfos] = None,
         sdgid: str = None,
         size: int = None,
@@ -42663,6 +42807,7 @@ class DescribeSDGResponseBodySDGs(TeaModel):
         self.description = description
         # The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId** parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
         self.parent_sdgid = parent_sdgid
+        self.performance_level = performance_level
         # The preload information.
         self.preload_infos = preload_infos
         # The ID of the SDG.
@@ -42713,6 +42858,8 @@ class DescribeSDGResponseBodySDGs(TeaModel):
             result['Description'] = self.description
         if self.parent_sdgid is not None:
             result['ParentSDGId'] = self.parent_sdgid
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         result['PreloadInfos'] = []
         if self.preload_infos is not None:
             for k in self.preload_infos:
@@ -42748,6 +42895,8 @@ class DescribeSDGResponseBodySDGs(TeaModel):
             self.description = m.get('Description')
         if m.get('ParentSDGId') is not None:
             self.parent_sdgid = m.get('ParentSDGId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         self.preload_infos = []
         if m.get('PreloadInfos') is not None:
             for k in m.get('PreloadInfos'):
@@ -43409,6 +43558,7 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
         deployed_instance_ids: List[DescribeSDGsResponseBodySDGsDeployedInstanceIds] = None,
         description: str = None,
         parent_sdgid: str = None,
+        performance_level: int = None,
         sdgid: str = None,
         size: int = None,
         status: str = None,
@@ -43430,6 +43580,7 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
         self.description = description
         # The ID of the source SDG from which you want to create an SDG. The value of this parameter is the value of the **FromSDGId** parameter that you need to specify when you call the [CreateSDG](https://help.aliyun.com/document_detail/608128.html) operation.
         self.parent_sdgid = parent_sdgid
+        self.performance_level = performance_level
         # The ID of the SDG.
         self.sdgid = sdgid
         # The size of the SDG. Unit: GB.
@@ -43482,6 +43633,8 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
             result['Description'] = self.description
         if self.parent_sdgid is not None:
             result['ParentSDGId'] = self.parent_sdgid
+        if self.performance_level is not None:
+            result['PerformanceLevel'] = self.performance_level
         if self.sdgid is not None:
             result['SDGId'] = self.sdgid
         if self.size is not None:
@@ -43518,6 +43671,8 @@ class DescribeSDGsResponseBodySDGs(TeaModel):
             self.description = m.get('Description')
         if m.get('ParentSDGId') is not None:
             self.parent_sdgid = m.get('ParentSDGId')
+        if m.get('PerformanceLevel') is not None:
+            self.performance_level = m.get('PerformanceLevel')
         if m.get('SDGId') is not None:
             self.sdgid = m.get('SDGId')
         if m.get('Size') is not None:
@@ -43913,6 +44068,8 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(TeaModel):
         dest_cidr_ip: str = None,
         direction: str = None,
         ip_protocol: str = None,
+        ipv_6dest_cidr_ip: str = None,
+        ipv_6source_cidr_ip: str = None,
         policy: str = None,
         port_range: str = None,
         priority: int = None,
@@ -43929,6 +44086,8 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(TeaModel):
         self.direction = direction
         # The transport layer protocol.
         self.ip_protocol = ip_protocol
+        self.ipv_6dest_cidr_ip = ipv_6dest_cidr_ip
+        self.ipv_6source_cidr_ip = ipv_6source_cidr_ip
         # The policy.
         self.policy = policy
         # The source port range.
@@ -43959,6 +44118,10 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(TeaModel):
             result['Direction'] = self.direction
         if self.ip_protocol is not None:
             result['IpProtocol'] = self.ip_protocol
+        if self.ipv_6dest_cidr_ip is not None:
+            result['Ipv6DestCidrIp'] = self.ipv_6dest_cidr_ip
+        if self.ipv_6source_cidr_ip is not None:
+            result['Ipv6SourceCidrIp'] = self.ipv_6source_cidr_ip
         if self.policy is not None:
             result['Policy'] = self.policy
         if self.port_range is not None:
@@ -43983,6 +44146,10 @@ class DescribeSecurityGroupAttributeResponseBodyPermissionsPermission(TeaModel):
             self.direction = m.get('Direction')
         if m.get('IpProtocol') is not None:
             self.ip_protocol = m.get('IpProtocol')
+        if m.get('Ipv6DestCidrIp') is not None:
+            self.ipv_6dest_cidr_ip = m.get('Ipv6DestCidrIp')
+        if m.get('Ipv6SourceCidrIp') is not None:
+            self.ipv_6source_cidr_ip = m.get('Ipv6SourceCidrIp')
         if m.get('Policy') is not None:
             self.policy = m.get('Policy')
         if m.get('PortRange') is not None:

@@ -9782,6 +9782,8 @@ class Client(OpenApiClient):
             request.server_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_specs, 'ServerSpecs', 'json')
         if not UtilClient.is_unset(tmp_req.states):
             request.states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -9827,6 +9829,8 @@ class Client(OpenApiClient):
             request.server_specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_specs, 'ServerSpecs', 'json')
         if not UtilClient.is_unset(tmp_req.states):
             request.states_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.states, 'States', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)

@@ -1,3 +1,12 @@
+2025-09-16 Version: 9.2.2
+- Update API CreateSecurityGroup: add request parameters Permissions.$.Ipv6DestCidrIp.
+- Update API CreateSecurityGroup: add request parameters Permissions.$.Ipv6SourceCidrIp.
+- Update API DescribeNetworkAttribute: add response parameters Body.SecondaryCidrBlocks.
+- Update API DescribeNetworks: add response parameters Body.Networks.$.SecondaryCidrBlocks.
+- Update API DescribeSecurityGroupAttribute: add response parameters Body.Permissions.$.Ipv6DestCidrIp.
+- Update API DescribeSecurityGroupAttribute: add response parameters Body.Permissions.$.Ipv6SourceCidrIp.
+
+
 2025-09-11 Version: 9.2.0
 - Support API DescribeNASAvailableResourceInfo.
 
