@@ -6326,6 +6326,68 @@ class CreateWmBaseImageResponse(TeaModel):
         return self
 
 
+class CreateWmEmbedTaskRequestAudioControlMetadataControl(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        xmp_kv_base_64: str = None,
+    ):
+        self.enable = enable
+        self.xmp_kv_base_64 = xmp_kv_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.xmp_kv_base_64 is not None:
+            result['XmpKvBase64'] = self.xmp_kv_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('XmpKvBase64') is not None:
+            self.xmp_kv_base_64 = m.get('XmpKvBase64')
+        return self
+
+
+class CreateWmEmbedTaskRequestAudioControl(TeaModel):
+    def __init__(
+        self,
+        metadata_control: CreateWmEmbedTaskRequestAudioControlMetadataControl = None,
+    ):
+        self.metadata_control = metadata_control
+
+    def validate(self):
+        if self.metadata_control:
+            self.metadata_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata_control is not None:
+            result['MetadataControl'] = self.metadata_control.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetadataControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestAudioControlMetadataControl()
+            self.metadata_control = temp_model.from_map(m['MetadataControl'])
+        return self
+
+
 class CreateWmEmbedTaskRequestCsvControl(TeaModel):
     def __init__(
         self,
@@ -6637,6 +6699,7 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(TeaModel):
     def __init__(
         self,
         angle: int = None,
+        enhance: bool = None,
         logo_base_64: str = None,
         margin: CreateWmEmbedTaskRequestImageControlLogoVisibleControlMargin = None,
         mode: str = None,
@@ -6650,6 +6713,7 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(TeaModel):
         visible: bool = None,
     ):
         self.angle = angle
+        self.enhance = enhance
         self.logo_base_64 = logo_base_64
         self.margin = margin
         self.mode = mode
@@ -6674,6 +6738,8 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(TeaModel):
         result = dict()
         if self.angle is not None:
             result['Angle'] = self.angle
+        if self.enhance is not None:
+            result['Enhance'] = self.enhance
         if self.logo_base_64 is not None:
             result['LogoBase64'] = self.logo_base_64
         if self.margin is not None:
@@ -6702,6 +6768,8 @@ class CreateWmEmbedTaskRequestImageControlLogoVisibleControl(TeaModel):
         m = m or dict()
         if m.get('Angle') is not None:
             self.angle = m.get('Angle')
+        if m.get('Enhance') is not None:
+            self.enhance = m.get('Enhance')
         if m.get('LogoBase64') is not None:
             self.logo_base_64 = m.get('LogoBase64')
         if m.get('Margin') is not None:
@@ -6960,9 +7028,191 @@ class CreateWmEmbedTaskRequestImageControl(TeaModel):
         return self
 
 
+class CreateWmEmbedTaskRequestVideoControlMetadataControl(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+        xmp_kv_base_64: str = None,
+    ):
+        self.enable = enable
+        self.xmp_kv_base_64 = xmp_kv_base_64
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.xmp_kv_base_64 is not None:
+            result['XmpKvBase64'] = self.xmp_kv_base_64
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('XmpKvBase64') is not None:
+            self.xmp_kv_base_64 = m.get('XmpKvBase64')
+        return self
+
+
+class CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin(TeaModel):
+    def __init__(
+        self,
+        bottom: int = None,
+        right: int = None,
+    ):
+        self.bottom = bottom
+        self.right = right
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bottom is not None:
+            result['Bottom'] = self.bottom
+        if self.right is not None:
+            result['Right'] = self.right
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bottom') is not None:
+            self.bottom = m.get('Bottom')
+        if m.get('Right') is not None:
+            self.right = m.get('Right')
+        return self
+
+
+class CreateWmEmbedTaskRequestVideoControlTextVisibleControl(TeaModel):
+    def __init__(
+        self,
+        font_color: str = None,
+        font_size: int = None,
+        margin: CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin = None,
+        mode: str = None,
+        opacity: int = None,
+        pos_x: int = None,
+        pos_y: int = None,
+        visible: bool = None,
+        visible_text: str = None,
+    ):
+        self.font_color = font_color
+        self.font_size = font_size
+        self.margin = margin
+        self.mode = mode
+        self.opacity = opacity
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.visible = visible
+        self.visible_text = visible_text
+
+    def validate(self):
+        if self.margin:
+            self.margin.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.font_color is not None:
+            result['FontColor'] = self.font_color
+        if self.font_size is not None:
+            result['FontSize'] = self.font_size
+        if self.margin is not None:
+            result['Margin'] = self.margin.to_map()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.opacity is not None:
+            result['Opacity'] = self.opacity
+        if self.pos_x is not None:
+            result['PosX'] = self.pos_x
+        if self.pos_y is not None:
+            result['PosY'] = self.pos_y
+        if self.visible is not None:
+            result['Visible'] = self.visible
+        if self.visible_text is not None:
+            result['VisibleText'] = self.visible_text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FontColor') is not None:
+            self.font_color = m.get('FontColor')
+        if m.get('FontSize') is not None:
+            self.font_size = m.get('FontSize')
+        if m.get('Margin') is not None:
+            temp_model = CreateWmEmbedTaskRequestVideoControlTextVisibleControlMargin()
+            self.margin = temp_model.from_map(m['Margin'])
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Opacity') is not None:
+            self.opacity = m.get('Opacity')
+        if m.get('PosX') is not None:
+            self.pos_x = m.get('PosX')
+        if m.get('PosY') is not None:
+            self.pos_y = m.get('PosY')
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
+        if m.get('VisibleText') is not None:
+            self.visible_text = m.get('VisibleText')
+        return self
+
+
+class CreateWmEmbedTaskRequestVideoControl(TeaModel):
+    def __init__(
+        self,
+        metadata_control: CreateWmEmbedTaskRequestVideoControlMetadataControl = None,
+        text_visible_control: CreateWmEmbedTaskRequestVideoControlTextVisibleControl = None,
+    ):
+        self.metadata_control = metadata_control
+        self.text_visible_control = text_visible_control
+
+    def validate(self):
+        if self.metadata_control:
+            self.metadata_control.validate()
+        if self.text_visible_control:
+            self.text_visible_control.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.metadata_control is not None:
+            result['MetadataControl'] = self.metadata_control.to_map()
+        if self.text_visible_control is not None:
+            result['TextVisibleControl'] = self.text_visible_control.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetadataControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestVideoControlMetadataControl()
+            self.metadata_control = temp_model.from_map(m['MetadataControl'])
+        if m.get('TextVisibleControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestVideoControlTextVisibleControl()
+            self.text_visible_control = temp_model.from_map(m['TextVisibleControl'])
+        return self
+
+
 class CreateWmEmbedTaskRequest(TeaModel):
     def __init__(
         self,
+        audio_control: CreateWmEmbedTaskRequestAudioControl = None,
         csv_control: CreateWmEmbedTaskRequestCsvControl = None,
         document_control: CreateWmEmbedTaskRequestDocumentControl = None,
         file_url: str = None,
@@ -6970,13 +7220,16 @@ class CreateWmEmbedTaskRequest(TeaModel):
         image_control: CreateWmEmbedTaskRequestImageControl = None,
         image_embed_jpeg_quality: int = None,
         image_embed_level: int = None,
+        invisible_enable: bool = None,
         video_bitrate: str = None,
+        video_control: CreateWmEmbedTaskRequestVideoControl = None,
         video_is_long: bool = None,
         wm_info_bytes_b64: str = None,
         wm_info_size: int = None,
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
+        self.audio_control = audio_control
         self.csv_control = csv_control
         self.document_control = document_control
         # This parameter is required.
@@ -6986,7 +7239,9 @@ class CreateWmEmbedTaskRequest(TeaModel):
         self.image_control = image_control
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
         self.image_embed_level = image_embed_level
+        self.invisible_enable = invisible_enable
         self.video_bitrate = video_bitrate
+        self.video_control = video_control
         self.video_is_long = video_is_long
         self.wm_info_bytes_b64 = wm_info_bytes_b64
         self.wm_info_size = wm_info_size
@@ -6995,12 +7250,16 @@ class CreateWmEmbedTaskRequest(TeaModel):
         self.wm_type = wm_type
 
     def validate(self):
+        if self.audio_control:
+            self.audio_control.validate()
         if self.csv_control:
             self.csv_control.validate()
         if self.document_control:
             self.document_control.validate()
         if self.image_control:
             self.image_control.validate()
+        if self.video_control:
+            self.video_control.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7008,6 +7267,8 @@ class CreateWmEmbedTaskRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_control is not None:
+            result['AudioControl'] = self.audio_control.to_map()
         if self.csv_control is not None:
             result['CsvControl'] = self.csv_control.to_map()
         if self.document_control is not None:
@@ -7022,8 +7283,12 @@ class CreateWmEmbedTaskRequest(TeaModel):
             result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
         if self.image_embed_level is not None:
             result['ImageEmbedLevel'] = self.image_embed_level
+        if self.invisible_enable is not None:
+            result['InvisibleEnable'] = self.invisible_enable
         if self.video_bitrate is not None:
             result['VideoBitrate'] = self.video_bitrate
+        if self.video_control is not None:
+            result['VideoControl'] = self.video_control.to_map()
         if self.video_is_long is not None:
             result['VideoIsLong'] = self.video_is_long
         if self.wm_info_bytes_b64 is not None:
@@ -7038,6 +7303,9 @@ class CreateWmEmbedTaskRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestAudioControl()
+            self.audio_control = temp_model.from_map(m['AudioControl'])
         if m.get('CsvControl') is not None:
             temp_model = CreateWmEmbedTaskRequestCsvControl()
             self.csv_control = temp_model.from_map(m['CsvControl'])
@@ -7055,8 +7323,13 @@ class CreateWmEmbedTaskRequest(TeaModel):
             self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
         if m.get('ImageEmbedLevel') is not None:
             self.image_embed_level = m.get('ImageEmbedLevel')
+        if m.get('InvisibleEnable') is not None:
+            self.invisible_enable = m.get('InvisibleEnable')
         if m.get('VideoBitrate') is not None:
             self.video_bitrate = m.get('VideoBitrate')
+        if m.get('VideoControl') is not None:
+            temp_model = CreateWmEmbedTaskRequestVideoControl()
+            self.video_control = temp_model.from_map(m['VideoControl'])
         if m.get('VideoIsLong') is not None:
             self.video_is_long = m.get('VideoIsLong')
         if m.get('WmInfoBytesB64') is not None:
@@ -7073,6 +7346,7 @@ class CreateWmEmbedTaskRequest(TeaModel):
 class CreateWmEmbedTaskShrinkRequest(TeaModel):
     def __init__(
         self,
+        audio_control_shrink: str = None,
         csv_control_shrink: str = None,
         document_control_shrink: str = None,
         file_url: str = None,
@@ -7080,13 +7354,16 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
         image_control_shrink: str = None,
         image_embed_jpeg_quality: int = None,
         image_embed_level: int = None,
+        invisible_enable: bool = None,
         video_bitrate: str = None,
+        video_control_shrink: str = None,
         video_is_long: bool = None,
         wm_info_bytes_b64: str = None,
         wm_info_size: int = None,
         wm_info_uint: str = None,
         wm_type: str = None,
     ):
+        self.audio_control_shrink = audio_control_shrink
         self.csv_control_shrink = csv_control_shrink
         self.document_control_shrink = document_control_shrink
         # This parameter is required.
@@ -7096,7 +7373,9 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
         self.image_control_shrink = image_control_shrink
         self.image_embed_jpeg_quality = image_embed_jpeg_quality
         self.image_embed_level = image_embed_level
+        self.invisible_enable = invisible_enable
         self.video_bitrate = video_bitrate
+        self.video_control_shrink = video_control_shrink
         self.video_is_long = video_is_long
         self.wm_info_bytes_b64 = wm_info_bytes_b64
         self.wm_info_size = wm_info_size
@@ -7113,6 +7392,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.audio_control_shrink is not None:
+            result['AudioControl'] = self.audio_control_shrink
         if self.csv_control_shrink is not None:
             result['CsvControl'] = self.csv_control_shrink
         if self.document_control_shrink is not None:
@@ -7127,8 +7408,12 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             result['ImageEmbedJpegQuality'] = self.image_embed_jpeg_quality
         if self.image_embed_level is not None:
             result['ImageEmbedLevel'] = self.image_embed_level
+        if self.invisible_enable is not None:
+            result['InvisibleEnable'] = self.invisible_enable
         if self.video_bitrate is not None:
             result['VideoBitrate'] = self.video_bitrate
+        if self.video_control_shrink is not None:
+            result['VideoControl'] = self.video_control_shrink
         if self.video_is_long is not None:
             result['VideoIsLong'] = self.video_is_long
         if self.wm_info_bytes_b64 is not None:
@@ -7143,6 +7428,8 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AudioControl') is not None:
+            self.audio_control_shrink = m.get('AudioControl')
         if m.get('CsvControl') is not None:
             self.csv_control_shrink = m.get('CsvControl')
         if m.get('DocumentControl') is not None:
@@ -7157,8 +7444,12 @@ class CreateWmEmbedTaskShrinkRequest(TeaModel):
             self.image_embed_jpeg_quality = m.get('ImageEmbedJpegQuality')
         if m.get('ImageEmbedLevel') is not None:
             self.image_embed_level = m.get('ImageEmbedLevel')
+        if m.get('InvisibleEnable') is not None:
+            self.invisible_enable = m.get('InvisibleEnable')
         if m.get('VideoBitrate') is not None:
             self.video_bitrate = m.get('VideoBitrate')
+        if m.get('VideoControl') is not None:
+            self.video_control_shrink = m.get('VideoControl')
         if m.get('VideoIsLong') is not None:
             self.video_is_long = m.get('VideoIsLong')
         if m.get('WmInfoBytesB64') is not None:
@@ -16914,13 +17205,25 @@ class ListConnectorsRequest(TeaModel):
         status: str = None,
         switch_status: str = None,
     ):
+        # Collection of Connector IDs. Up to 100 Connector IDs can be entered.
         self.connector_ids = connector_ids
+        # The page number of the current page in a paginated query. Range: 1~10000.
+        # 
         # This parameter is required.
         self.current_page = current_page
+        # Connector name. Length: 1~128 characters, supporting Chinese and both uppercase and lowercase English letters, and can include numbers, periods (.), underscores (_), and hyphens (-).
         self.name = name
+        # The number of items per page in a paginated query. Range: 1~1000.
+        # 
         # This parameter is required.
         self.page_size = page_size
+        # Connector connection status. Values:
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.status = status
+        # Connector instance status. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.switch_status = switch_status
 
     def validate(self):
@@ -16969,7 +17272,9 @@ class ListConnectorsResponseBodyConnectorsApplications(TeaModel):
         application_id: str = None,
         application_name: str = None,
     ):
+        # Internal network access application ID.
         self.application_id = application_id
+        # Internal network access application name.
         self.application_name = application_name
 
     def validate(self):
@@ -17004,9 +17309,13 @@ class ListConnectorsResponseBodyConnectorsConnectorClients(TeaModel):
         hostname: str = None,
         public_ip: str = None,
     ):
+        # Connection status between ConnectorClient and ConnectorServer.
         self.connection_status = connection_status
+        # Unique device identifier for the ConnectorClient.
         self.dev_tag = dev_tag
+        # Hostname of the ConnectorClient.
         self.hostname = hostname
+        # Public IP of the ConnectorClient.
         self.public_ip = public_ip
 
     def validate(self):
@@ -17047,7 +17356,9 @@ class ListConnectorsResponseBodyConnectorsUpgradeTime(TeaModel):
         end: str = None,
         start: str = None,
     ):
+        # End time.
         self.end = end
+        # Start time.
         self.start = start
 
     def validate(self):
@@ -17089,17 +17400,31 @@ class ListConnectorsResponseBodyConnectors(TeaModel):
         switch_status: str = None,
         upgrade_time: ListConnectorsResponseBodyConnectorsUpgradeTime = None,
     ):
+        # Collection of associated internal network access applications.
         self.applications = applications
+        # Cluster IP.
         self.cluster_ip = cluster_ip
+        # Cluster port.
         self.cluster_port = cluster_port
+        # Collection of deployed ConnectorClients.
         self.connector_clients = connector_clients
-        # ConnectorID。
+        # Connector ID.
         self.connector_id = connector_id
+        # Creation time of the Connector.
         self.create_time = create_time
+        # Connector name.
         self.name = name
+        # Region ID.
         self.region_id = region_id
+        # Connector connection status. Values:
+        # - **Online**: Online.
+        # - **Offline**: Offline.
         self.status = status
+        # Connector instance status. Values:
+        # - **Enabled**: Enabled.
+        # - **Disabled**: Disabled.
         self.switch_status = switch_status
+        # Connector upgrade time.
         self.upgrade_time = upgrade_time
 
     def validate(self):
@@ -17189,8 +17514,11 @@ class ListConnectorsResponseBody(TeaModel):
         request_id: str = None,
         total_num: int = None,
     ):
+        # List of Connectors.
         self.connectors = connectors
+        # ID of the current request.
         self.request_id = request_id
+        # Total number of Connectors.
         self.total_num = total_num
 
     def validate(self):

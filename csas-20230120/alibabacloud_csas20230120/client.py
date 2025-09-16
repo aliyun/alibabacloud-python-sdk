@@ -1822,16 +1822,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_control):
+            request.audio_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_control, 'AudioControl', 'json')
         if not UtilClient.is_unset(tmp_req.csv_control):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
         if not UtilClient.is_unset(tmp_req.image_control):
             request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.csv_control_shrink):
-            query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(tmp_req.video_control):
+            request.video_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_control, 'VideoControl', 'json')
         body = {}
+        if not UtilClient.is_unset(request.audio_control_shrink):
+            body['AudioControl'] = request.audio_control_shrink
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            body['CsvControl'] = request.csv_control_shrink
         if not UtilClient.is_unset(request.document_control_shrink):
             body['DocumentControl'] = request.document_control_shrink
         if not UtilClient.is_unset(request.file_url):
@@ -1844,8 +1849,12 @@ class Client(OpenApiClient):
             body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
         if not UtilClient.is_unset(request.image_embed_level):
             body['ImageEmbedLevel'] = request.image_embed_level
+        if not UtilClient.is_unset(request.invisible_enable):
+            body['InvisibleEnable'] = request.invisible_enable
         if not UtilClient.is_unset(request.video_bitrate):
             body['VideoBitrate'] = request.video_bitrate
+        if not UtilClient.is_unset(request.video_control_shrink):
+            body['VideoControl'] = request.video_control_shrink
         if not UtilClient.is_unset(request.video_is_long):
             body['VideoIsLong'] = request.video_is_long
         if not UtilClient.is_unset(request.wm_info_bytes_b64):
@@ -1857,7 +1866,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1891,16 +1899,21 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateWmEmbedTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.audio_control):
+            request.audio_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.audio_control, 'AudioControl', 'json')
         if not UtilClient.is_unset(tmp_req.csv_control):
             request.csv_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.csv_control, 'CsvControl', 'json')
         if not UtilClient.is_unset(tmp_req.document_control):
             request.document_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.document_control, 'DocumentControl', 'json')
         if not UtilClient.is_unset(tmp_req.image_control):
             request.image_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.image_control, 'ImageControl', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.csv_control_shrink):
-            query['CsvControl'] = request.csv_control_shrink
+        if not UtilClient.is_unset(tmp_req.video_control):
+            request.video_control_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.video_control, 'VideoControl', 'json')
         body = {}
+        if not UtilClient.is_unset(request.audio_control_shrink):
+            body['AudioControl'] = request.audio_control_shrink
+        if not UtilClient.is_unset(request.csv_control_shrink):
+            body['CsvControl'] = request.csv_control_shrink
         if not UtilClient.is_unset(request.document_control_shrink):
             body['DocumentControl'] = request.document_control_shrink
         if not UtilClient.is_unset(request.file_url):
@@ -1913,8 +1926,12 @@ class Client(OpenApiClient):
             body['ImageEmbedJpegQuality'] = request.image_embed_jpeg_quality
         if not UtilClient.is_unset(request.image_embed_level):
             body['ImageEmbedLevel'] = request.image_embed_level
+        if not UtilClient.is_unset(request.invisible_enable):
+            body['InvisibleEnable'] = request.invisible_enable
         if not UtilClient.is_unset(request.video_bitrate):
             body['VideoBitrate'] = request.video_bitrate
+        if not UtilClient.is_unset(request.video_control_shrink):
+            body['VideoControl'] = request.video_control_shrink
         if not UtilClient.is_unset(request.video_is_long):
             body['VideoIsLong'] = request.video_is_long
         if not UtilClient.is_unset(request.wm_info_bytes_b64):
@@ -1926,7 +1943,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.wm_type):
             body['WmType'] = request.wm_type
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -6251,7 +6267,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
         """
-        @summary 批量查询connector
+        @summary Batch query connectors
         
         @param request: ListConnectorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6284,7 +6300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
         """
-        @summary 批量查询connector
+        @summary Batch query connectors
         
         @param request: ListConnectorsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6316,7 +6332,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListConnectorsRequest,
     ) -> csas_20230120_models.ListConnectorsResponse:
         """
-        @summary 批量查询connector
+        @summary Batch query connectors
         
         @param request: ListConnectorsRequest
         @return: ListConnectorsResponse
@@ -6329,7 +6345,7 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListConnectorsRequest,
     ) -> csas_20230120_models.ListConnectorsResponse:
         """
-        @summary 批量查询connector
+        @summary Batch query connectors
         
         @param request: ListConnectorsRequest
         @return: ListConnectorsResponse

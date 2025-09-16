@@ -1,3 +1,10 @@
+2025-09-16 Version: 1.10.9
+- Update API CreateWmEmbedTask: add request parameters AudioControl.
+- Update API CreateWmEmbedTask: add request parameters InvisibleEnable.
+- Update API CreateWmEmbedTask: add request parameters VideoControl.
+- Update API CreateWmEmbedTask: add request parameters ImageControl.LogoVisibleControl.Enhance.
+
+
 2025-09-12 Version: 1.10.8
 - Update API GetUserDevice: add response parameters Body.Device.AutoLoginStatus.
 - Update API ListUserDevices: add request parameters AutoLoginStatuses.
