@@ -1,3 +1,14 @@
+2025-09-16 Version: 2.1.2
+- Update API ConvertInstance: add request parameters PromotionCode.
+- Update API ConvertInstance: add request parameters UsePromotionCode.
+- Update API QueryConvertInstancePrice: add request parameters PromotionCode.
+- Update API QueryConvertInstancePrice: add request parameters UsePromotionCode.
+- Update API QueryRenewInstancePrice: add request parameters PromotionCode.
+- Update API QueryRenewInstancePrice: add request parameters UsePromotionCode.
+- Update API RenewInstance: add request parameters PromotionCode.
+- Update API RenewInstance: add request parameters UsePromotionCode.
+
+
 2025-05-06 Version: 2.1.1
 - Update API DescribeInstances: add response parameters Body.Instances.$.Storage.SupportCreateFullyManagedStorage.
 - Update API DescribeInstances: add response parameters Body.Instances.$.Storage.SupportMigrationProgressDetection.

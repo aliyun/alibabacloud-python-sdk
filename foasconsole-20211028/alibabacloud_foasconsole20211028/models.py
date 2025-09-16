@@ -1,7 +1,301 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import List, Dict
+
+
+class StageWithWeight(TeaModel):
+    def __init__(
+        self,
+        step_index: int = None,
+        step_name: str = None,
+        weight: int = None,
+    ):
+        self.step_index = step_index
+        self.step_name = step_name
+        self.weight = weight
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.step_index is not None:
+            result['StepIndex'] = self.step_index
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('StepIndex') is not None:
+            self.step_index = m.get('StepIndex')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        return self
+
+
+class ClusterStage(TeaModel):
+    def __init__(
+        self,
+        current_stage: int = None,
+        message: str = None,
+        status: str = None,
+        total_stage_with_weight: List[StageWithWeight] = None,
+    ):
+        self.current_stage = current_stage
+        self.message = message
+        self.status = status
+        self.total_stage_with_weight = total_stage_with_weight
+
+    def validate(self):
+        if self.total_stage_with_weight:
+            for k in self.total_stage_with_weight:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_stage is not None:
+            result['CurrentStage'] = self.current_stage
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        result['TotalStageWithWeight'] = []
+        if self.total_stage_with_weight is not None:
+            for k in self.total_stage_with_weight:
+                result['TotalStageWithWeight'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentStage') is not None:
+            self.current_stage = m.get('CurrentStage')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.total_stage_with_weight = []
+        if m.get('TotalStageWithWeight') is not None:
+            for k in m.get('TotalStageWithWeight'):
+                temp_model = StageWithWeight()
+                self.total_stage_with_weight.append(temp_model.from_map(k))
+        return self
+
+
+class ClusterState(TeaModel):
+    def __init__(
+        self,
+        cluster_stage: ClusterStage = None,
+        status: str = None,
+        sub_status: str = None,
+    ):
+        self.cluster_stage = cluster_stage
+        self.status = status
+        self.sub_status = sub_status
+
+    def validate(self):
+        if self.cluster_stage:
+            self.cluster_stage.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_stage is not None:
+            result['ClusterStage'] = self.cluster_stage.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_status is not None:
+            result['SubStatus'] = self.sub_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterStage') is not None:
+            temp_model = ClusterStage()
+            self.cluster_stage = temp_model.from_map(m['ClusterStage'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubStatus') is not None:
+            self.sub_status = m.get('SubStatus')
+        return self
+
+
+class FlussVswitch(TeaModel):
+    def __init__(
+        self,
+        v_switch_ids: List[str] = None,
+        zone_id: str = None,
+    ):
+        self.v_switch_ids = v_switch_ids
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+        return self
+
+
+class FlussInstance(TeaModel):
+    def __init__(
+        self,
+        cluster_state: ClusterState = None,
+        cluster_status: str = None,
+        console_url: str = None,
+        disk_size: int = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        order_state: str = None,
+        region_id: str = None,
+        resource_create_time: int = None,
+        resource_expired_time: int = None,
+        tablet_server_model: str = None,
+        tablet_server_num: int = None,
+        tablet_server_type: str = None,
+        uid: str = None,
+        v_switches: List[FlussVswitch] = None,
+        vpc_id: str = None,
+    ):
+        self.cluster_state = cluster_state
+        self.cluster_status = cluster_status
+        self.console_url = console_url
+        self.disk_size = disk_size
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.order_state = order_state
+        self.region_id = region_id
+        self.resource_create_time = resource_create_time
+        self.resource_expired_time = resource_expired_time
+        self.tablet_server_model = tablet_server_model
+        self.tablet_server_num = tablet_server_num
+        self.tablet_server_type = tablet_server_type
+        self.uid = uid
+        self.v_switches = v_switches
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        if self.cluster_state:
+            self.cluster_state.validate()
+        if self.v_switches:
+            for k in self.v_switches:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_state is not None:
+            result['ClusterState'] = self.cluster_state.to_map()
+        if self.cluster_status is not None:
+            result['ClusterStatus'] = self.cluster_status
+        if self.console_url is not None:
+            result['ConsoleUrl'] = self.console_url
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.order_state is not None:
+            result['OrderState'] = self.order_state
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_create_time is not None:
+            result['ResourceCreateTime'] = self.resource_create_time
+        if self.resource_expired_time is not None:
+            result['ResourceExpiredTime'] = self.resource_expired_time
+        if self.tablet_server_model is not None:
+            result['TabletServerModel'] = self.tablet_server_model
+        if self.tablet_server_num is not None:
+            result['TabletServerNum'] = self.tablet_server_num
+        if self.tablet_server_type is not None:
+            result['TabletServerType'] = self.tablet_server_type
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        result['VSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['VSwitches'].append(k.to_map() if k else None)
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterState') is not None:
+            temp_model = ClusterState()
+            self.cluster_state = temp_model.from_map(m['ClusterState'])
+        if m.get('ClusterStatus') is not None:
+            self.cluster_status = m.get('ClusterStatus')
+        if m.get('ConsoleUrl') is not None:
+            self.console_url = m.get('ConsoleUrl')
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OrderState') is not None:
+            self.order_state = m.get('OrderState')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceCreateTime') is not None:
+            self.resource_create_time = m.get('ResourceCreateTime')
+        if m.get('ResourceExpiredTime') is not None:
+            self.resource_expired_time = m.get('ResourceExpiredTime')
+        if m.get('TabletServerModel') is not None:
+            self.tablet_server_model = m.get('TabletServerModel')
+        if m.get('TabletServerNum') is not None:
+            self.tablet_server_num = m.get('TabletServerNum')
+        if m.get('TabletServerType') is not None:
+            self.tablet_server_type = m.get('TabletServerType')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        self.v_switches = []
+        if m.get('VSwitches') is not None:
+            for k in m.get('VSwitches'):
+                temp_model = FlussVswitch()
+                self.v_switches.append(temp_model.from_map(k))
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
 
 
 class ConvertHybridInstanceRequestResourceSpec(TeaModel):
@@ -332,7 +626,9 @@ class ConvertInstanceRequest(TeaModel):
         is_auto_renew: bool = None,
         namespace_resource_specs: List[ConvertInstanceRequestNamespaceResourceSpecs] = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -344,8 +640,10 @@ class ConvertInstanceRequest(TeaModel):
         self.namespace_resource_specs = namespace_resource_specs
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         if self.namespace_resource_specs:
@@ -371,8 +669,12 @@ class ConvertInstanceRequest(TeaModel):
                 result['NamespaceResourceSpecs'].append(k.to_map() if k else None)
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -390,8 +692,12 @@ class ConvertInstanceRequest(TeaModel):
                 self.namespace_resource_specs.append(temp_model.from_map(k))
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 
@@ -403,7 +709,9 @@ class ConvertInstanceShrinkRequest(TeaModel):
         is_auto_renew: bool = None,
         namespace_resource_specs_shrink: str = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -415,8 +723,10 @@ class ConvertInstanceShrinkRequest(TeaModel):
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         pass
@@ -437,8 +747,12 @@ class ConvertInstanceShrinkRequest(TeaModel):
             result['NamespaceResourceSpecs'] = self.namespace_resource_specs_shrink
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -453,8 +767,12 @@ class ConvertInstanceShrinkRequest(TeaModel):
             self.namespace_resource_specs_shrink = m.get('NamespaceResourceSpecs')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 
@@ -5476,7 +5794,9 @@ class QueryConvertInstancePriceRequest(TeaModel):
         is_auto_renew: bool = None,
         namespace_resource_specs: List[QueryConvertInstancePriceRequestNamespaceResourceSpecs] = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -5488,8 +5808,10 @@ class QueryConvertInstancePriceRequest(TeaModel):
         self.namespace_resource_specs = namespace_resource_specs
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         if self.namespace_resource_specs:
@@ -5515,8 +5837,12 @@ class QueryConvertInstancePriceRequest(TeaModel):
                 result['NamespaceResourceSpecs'].append(k.to_map() if k else None)
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -5534,8 +5860,12 @@ class QueryConvertInstancePriceRequest(TeaModel):
                 self.namespace_resource_specs.append(temp_model.from_map(k))
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 
@@ -5547,7 +5877,9 @@ class QueryConvertInstancePriceShrinkRequest(TeaModel):
         is_auto_renew: bool = None,
         namespace_resource_specs_shrink: str = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -5559,8 +5891,10 @@ class QueryConvertInstancePriceShrinkRequest(TeaModel):
         self.namespace_resource_specs_shrink = namespace_resource_specs_shrink
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         pass
@@ -5581,8 +5915,12 @@ class QueryConvertInstancePriceShrinkRequest(TeaModel):
             result['NamespaceResourceSpecs'] = self.namespace_resource_specs_shrink
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -5597,8 +5935,12 @@ class QueryConvertInstancePriceShrinkRequest(TeaModel):
             self.namespace_resource_specs_shrink = m.get('NamespaceResourceSpecs')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 
@@ -7548,7 +7890,9 @@ class QueryRenewInstancePriceRequest(TeaModel):
         duration: int = None,
         instance_id: str = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -7556,8 +7900,10 @@ class QueryRenewInstancePriceRequest(TeaModel):
         self.instance_id = instance_id
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         pass
@@ -7574,8 +7920,12 @@ class QueryRenewInstancePriceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -7586,8 +7936,12 @@ class QueryRenewInstancePriceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 
@@ -7927,7 +8281,9 @@ class RenewInstanceRequest(TeaModel):
         duration: int = None,
         instance_id: str = None,
         pricing_cycle: str = None,
+        promotion_code: str = None,
         region: str = None,
+        use_promotion_code: bool = None,
     ):
         # This parameter is required.
         self.duration = duration
@@ -7935,8 +8291,10 @@ class RenewInstanceRequest(TeaModel):
         self.instance_id = instance_id
         # This parameter is required.
         self.pricing_cycle = pricing_cycle
+        self.promotion_code = promotion_code
         # This parameter is required.
         self.region = region
+        self.use_promotion_code = use_promotion_code
 
     def validate(self):
         pass
@@ -7953,8 +8311,12 @@ class RenewInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.pricing_cycle is not None:
             result['PricingCycle'] = self.pricing_cycle
+        if self.promotion_code is not None:
+            result['PromotionCode'] = self.promotion_code
         if self.region is not None:
             result['Region'] = self.region
+        if self.use_promotion_code is not None:
+            result['UsePromotionCode'] = self.use_promotion_code
         return result
 
     def from_map(self, m: dict = None):
@@ -7965,8 +8327,12 @@ class RenewInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PricingCycle') is not None:
             self.pricing_cycle = m.get('PricingCycle')
+        if m.get('PromotionCode') is not None:
+            self.promotion_code = m.get('PromotionCode')
         if m.get('Region') is not None:
             self.region = m.get('Region')
+        if m.get('UsePromotionCode') is not None:
+            self.use_promotion_code = m.get('UsePromotionCode')
         return self
 
 

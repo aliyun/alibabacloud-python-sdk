@@ -181,8 +181,12 @@ class Client(OpenApiClient):
             body['NamespaceResourceSpecs'] = request.namespace_resource_specs_shrink
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -230,8 +234,12 @@ class Client(OpenApiClient):
             body['NamespaceResourceSpecs'] = request.namespace_resource_specs_shrink
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1497,11 +1505,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
         """
+        @deprecated OpenAPI ModifyInstanceVswitch is deprecated
+        
         @summary 修改集群交换机
         
         @param tmp_req: ModifyInstanceVswitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyInstanceVswitchResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.ModifyInstanceVswitchShrinkRequest()
@@ -1542,11 +1553,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
         """
+        @deprecated OpenAPI ModifyInstanceVswitch is deprecated
+        
         @summary 修改集群交换机
         
         @param tmp_req: ModifyInstanceVswitchRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ModifyInstanceVswitchResponse
+        Deprecated
         """
         UtilClient.validate_model(tmp_req)
         request = foasconsole_20211028_models.ModifyInstanceVswitchShrinkRequest()
@@ -1586,10 +1600,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
     ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
         """
+        @deprecated OpenAPI ModifyInstanceVswitch is deprecated
+        
         @summary 修改集群交换机
         
         @param request: ModifyInstanceVswitchRequest
         @return: ModifyInstanceVswitchResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_vswitch_with_options(request, runtime)
@@ -1599,10 +1616,13 @@ class Client(OpenApiClient):
         request: foasconsole_20211028_models.ModifyInstanceVswitchRequest,
     ) -> foasconsole_20211028_models.ModifyInstanceVswitchResponse:
         """
+        @deprecated OpenAPI ModifyInstanceVswitch is deprecated
+        
         @summary 修改集群交换机
         
         @param request: ModifyInstanceVswitchRequest
         @return: ModifyInstanceVswitchResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_vswitch_with_options_async(request, runtime)
@@ -2043,8 +2063,12 @@ class Client(OpenApiClient):
             body['NamespaceResourceSpecs'] = request.namespace_resource_specs_shrink
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2092,8 +2116,12 @@ class Client(OpenApiClient):
             body['NamespaceResourceSpecs'] = request.namespace_resource_specs_shrink
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2575,8 +2603,12 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2616,8 +2648,12 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2683,8 +2719,12 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2724,8 +2764,12 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.pricing_cycle):
             body['PricingCycle'] = request.pricing_cycle
+        if not UtilClient.is_unset(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
         if not UtilClient.is_unset(request.region):
             body['Region'] = request.region
+        if not UtilClient.is_unset(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
