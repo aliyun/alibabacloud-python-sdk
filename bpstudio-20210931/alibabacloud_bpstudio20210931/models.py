@@ -433,6 +433,7 @@ class CreateApplicationRequest(TeaModel):
         area_id: str = None,
         client_token: str = None,
         configuration: Dict[str, str] = None,
+        create_async: bool = None,
         instances: List[CreateApplicationRequestInstances] = None,
         name: str = None,
         process_variables: Dict[str, Any] = None,
@@ -446,6 +447,7 @@ class CreateApplicationRequest(TeaModel):
         self.client_token = client_token
         # The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
         self.configuration = configuration
+        self.create_async = create_async
         # The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
         self.instances = instances
         # The name of the application.
@@ -483,6 +485,8 @@ class CreateApplicationRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.configuration is not None:
             result['Configuration'] = self.configuration
+        if self.create_async is not None:
+            result['CreateAsync'] = self.create_async
         result['Instances'] = []
         if self.instances is not None:
             for k in self.instances:
@@ -507,6 +511,8 @@ class CreateApplicationRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Configuration') is not None:
             self.configuration = m.get('Configuration')
+        if m.get('CreateAsync') is not None:
+            self.create_async = m.get('CreateAsync')
         self.instances = []
         if m.get('Instances') is not None:
             for k in m.get('Instances'):
@@ -531,6 +537,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         area_id: str = None,
         client_token: str = None,
         configuration_shrink: str = None,
+        create_async: bool = None,
         instances_shrink: str = None,
         name: str = None,
         process_variables_shrink: str = None,
@@ -544,6 +551,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.client_token = client_token
         # The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
         self.configuration_shrink = configuration_shrink
+        self.create_async = create_async
         # The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
         self.instances_shrink = instances_shrink
         # The name of the application.
@@ -578,6 +586,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.configuration_shrink is not None:
             result['Configuration'] = self.configuration_shrink
+        if self.create_async is not None:
+            result['CreateAsync'] = self.create_async
         if self.instances_shrink is not None:
             result['Instances'] = self.instances_shrink
         if self.name is not None:
@@ -600,6 +610,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Configuration') is not None:
             self.configuration_shrink = m.get('Configuration')
+        if m.get('CreateAsync') is not None:
+            self.create_async = m.get('CreateAsync')
         if m.get('Instances') is not None:
             self.instances_shrink = m.get('Instances')
         if m.get('Name') is not None:
@@ -701,6 +713,189 @@ class CreateApplicationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateApplicationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTaskRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        process_id: str = None,
+        task_name: str = None,
+        variables: Dict[str, Any] = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.process_id = process_id
+        # This parameter is required.
+        self.task_name = task_name
+        self.variables = variables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.variables is not None:
+            result['Variables'] = self.variables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('Variables') is not None:
+            self.variables = m.get('Variables')
+        return self
+
+
+class CreateTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        process_id: str = None,
+        task_name: str = None,
+        variables_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.process_id = process_id
+        # This parameter is required.
+        self.task_name = task_name
+        self.variables_shrink = variables_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+        if self.variables_shrink is not None:
+            result['Variables'] = self.variables_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+        if m.get('Variables') is not None:
+            self.variables_shrink = m.get('Variables')
+        return self
+
+
+class CreateTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1486,6 +1681,167 @@ class ExecuteOperationSyncResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecuteOperationSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: int = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ExecuteTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        id: int = None,
+        name: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.id = id
+        self.name = name
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ExecuteTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: ExecuteTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ExecuteTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3686,6 +4042,191 @@ class GetResult4QueryInstancePrice4ModifyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetResult4QueryInstancePrice4ModifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTaskRequest(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        error_message: str = None,
+        gmt_create: str = None,
+        id: int = None,
+        instance_ids: str = None,
+        name: str = None,
+        process_id: str = None,
+        status: str = None,
+    ):
+        self.app_id = app_id
+        self.error_message = error_message
+        self.gmt_create = gmt_create
+        self.id = id
+        self.instance_ids = instance_ids
+        self.name = name
+        self.process_id = process_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.process_id is not None:
+            result['ProcessId'] = self.process_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProcessId') is not None:
+            self.process_id = m.get('ProcessId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

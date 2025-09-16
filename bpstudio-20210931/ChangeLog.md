@@ -1,3 +1,10 @@
+2025-09-16 Version: 7.2.0
+- Support API CreateTask.
+- Support API ExecuteTask.
+- Support API GetTask.
+- Update API CreateApplication: add request parameters CreateAsync.
+
+
 2025-08-11 Version: 7.1.1
 - Generated python 2021-09-31 for BPStudio.
 

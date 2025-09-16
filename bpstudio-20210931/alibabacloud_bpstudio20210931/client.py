@@ -387,6 +387,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.configuration_shrink):
             body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.create_async):
+            body['CreateAsync'] = request.create_async
         if not UtilClient.is_unset(request.instances_shrink):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
@@ -448,6 +450,8 @@ class Client(OpenApiClient):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.configuration_shrink):
             body['Configuration'] = request.configuration_shrink
+        if not UtilClient.is_unset(request.create_async):
+            body['CreateAsync'] = request.create_async
         if not UtilClient.is_unset(request.instances_shrink):
             body['Instances'] = request.instances_shrink
         if not UtilClient.is_unset(request.name):
@@ -504,6 +508,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
+
+    def create_task_with_options(
+        self,
+        tmp_req: bpstudio_20210931_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.CreateTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param tmp_req: CreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.CreateTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.CreateTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_task_with_options_async(
+        self,
+        tmp_req: bpstudio_20210931_models.CreateTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.CreateTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param tmp_req: CreateTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTaskResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bpstudio_20210931_models.CreateTaskShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.variables):
+            request.variables_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.process_id):
+            body['ProcessId'] = request.process_id
+        if not UtilClient.is_unset(request.task_name):
+            body['TaskName'] = request.task_name
+        if not UtilClient.is_unset(request.variables_shrink):
+            body['Variables'] = request.variables_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.CreateTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_task(
+        self,
+        request: bpstudio_20210931_models.CreateTaskRequest,
+    ) -> bpstudio_20210931_models.CreateTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_task_with_options(request, runtime)
+
+    async def create_task_async(
+        self,
+        request: bpstudio_20210931_models.CreateTaskRequest,
+    ) -> bpstudio_20210931_models.CreateTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: CreateTaskRequest
+        @return: CreateTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_task_with_options_async(request, runtime)
 
     def delete_application_with_options(
         self,
@@ -968,6 +1088,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.execute_operation_sync_with_options_async(request, runtime)
+
+    def execute_task_with_options(
+        self,
+        request: bpstudio_20210931_models.ExecuteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ExecuteTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: ExecuteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ExecuteTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_task_with_options_async(
+        self,
+        request: bpstudio_20210931_models.ExecuteTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ExecuteTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: ExecuteTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ExecuteTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_task(
+        self,
+        request: bpstudio_20210931_models.ExecuteTaskRequest,
+    ) -> bpstudio_20210931_models.ExecuteTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: ExecuteTaskRequest
+        @return: ExecuteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.execute_task_with_options(request, runtime)
+
+    async def execute_task_async(
+        self,
+        request: bpstudio_20210931_models.ExecuteTaskRequest,
+    ) -> bpstudio_20210931_models.ExecuteTaskResponse:
+        """
+        @summary 创建任务
+        
+        @param request: ExecuteTaskRequest
+        @return: ExecuteTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.execute_task_with_options_async(request, runtime)
 
     def get_application_with_options(
         self,
@@ -1908,6 +2124,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_result_4query_instance_price_4modify_with_options_async(request, runtime)
+
+    def get_task_with_options(
+        self,
+        request: bpstudio_20210931_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetTaskResponse:
+        """
+        @summary 获取Task信息
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_with_options_async(
+        self,
+        request: bpstudio_20210931_models.GetTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.GetTaskResponse:
+        """
+        @summary 获取Task信息
+        
+        @param request: GetTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetTask',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.GetTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task(
+        self,
+        request: bpstudio_20210931_models.GetTaskRequest,
+    ) -> bpstudio_20210931_models.GetTaskResponse:
+        """
+        @summary 获取Task信息
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_task_with_options(request, runtime)
+
+    async def get_task_async(
+        self,
+        request: bpstudio_20210931_models.GetTaskRequest,
+    ) -> bpstudio_20210931_models.GetTaskResponse:
+        """
+        @summary 获取Task信息
+        
+        @param request: GetTaskRequest
+        @return: GetTaskResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_task_with_options_async(request, runtime)
 
     def get_template_with_options(
         self,
