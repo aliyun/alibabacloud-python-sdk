@@ -1598,6 +1598,8 @@ class Client(OpenApiClient):
             query['TemplateRule'] = request.template_rule
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.traffic_driving):
+            query['TrafficDriving'] = request.traffic_driving
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1666,6 +1668,8 @@ class Client(OpenApiClient):
             query['TemplateRule'] = request.template_rule
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.traffic_driving):
+            query['TrafficDriving'] = request.traffic_driving
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6211,6 +6215,138 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.send_card_sms_with_options_async(request, runtime)
 
+    def send_logistics_sms_with_options(
+        self,
+        request: dysmsapi_20170525_models.SendLogisticsSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendLogisticsSmsResponse:
+        """
+        @summary 发送物流短信
+        
+        @param request: SendLogisticsSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLogisticsSmsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.express_company_code):
+            query['ExpressCompanyCode'] = request.express_company_code
+        if not UtilClient.is_unset(request.mail_no):
+            query['MailNo'] = request.mail_no
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform_company_code):
+            query['PlatformCompanyCode'] = request.platform_company_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendLogisticsSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendLogisticsSmsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def send_logistics_sms_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.SendLogisticsSmsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.SendLogisticsSmsResponse:
+        """
+        @summary 发送物流短信
+        
+        @param request: SendLogisticsSmsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLogisticsSmsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.express_company_code):
+            query['ExpressCompanyCode'] = request.express_company_code
+        if not UtilClient.is_unset(request.mail_no):
+            query['MailNo'] = request.mail_no
+        if not UtilClient.is_unset(request.out_id):
+            query['OutId'] = request.out_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform_company_code):
+            query['PlatformCompanyCode'] = request.platform_company_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not UtilClient.is_unset(request.template_code):
+            query['TemplateCode'] = request.template_code
+        if not UtilClient.is_unset(request.template_param):
+            query['TemplateParam'] = request.template_param
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SendLogisticsSms',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.SendLogisticsSmsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def send_logistics_sms(
+        self,
+        request: dysmsapi_20170525_models.SendLogisticsSmsRequest,
+    ) -> dysmsapi_20170525_models.SendLogisticsSmsResponse:
+        """
+        @summary 发送物流短信
+        
+        @param request: SendLogisticsSmsRequest
+        @return: SendLogisticsSmsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.send_logistics_sms_with_options(request, runtime)
+
+    async def send_logistics_sms_async(
+        self,
+        request: dysmsapi_20170525_models.SendLogisticsSmsRequest,
+    ) -> dysmsapi_20170525_models.SendLogisticsSmsResponse:
+        """
+        @summary 发送物流短信
+        
+        @param request: SendLogisticsSmsRequest
+        @return: SendLogisticsSmsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.send_logistics_sms_with_options_async(request, runtime)
+
     def send_sms_with_options(
         self,
         request: dysmsapi_20170525_models.SendSmsRequest,
@@ -7513,6 +7649,8 @@ class Client(OpenApiClient):
             query['TemplateRule'] = request.template_rule
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.traffic_driving):
+            query['TrafficDriving'] = request.traffic_driving
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7582,6 +7720,8 @@ class Client(OpenApiClient):
             query['TemplateRule'] = request.template_rule
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
+        if not UtilClient.is_unset(request.traffic_driving):
+            query['TrafficDriving'] = request.traffic_driving
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7750,3 +7890,119 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.valid_phone_code_with_options_async(request, runtime)
+
+    def verify_logistics_sms_mail_no_with_options(
+        self,
+        request: dysmsapi_20170525_models.VerifyLogisticsSmsMailNoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse:
+        """
+        @summary 物流短信运单号校验
+        
+        @param request: VerifyLogisticsSmsMailNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyLogisticsSmsMailNoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.express_company_code):
+            query['ExpressCompanyCode'] = request.express_company_code
+        if not UtilClient.is_unset(request.mail_no):
+            query['MailNo'] = request.mail_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform_company_code):
+            query['PlatformCompanyCode'] = request.platform_company_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyLogisticsSmsMailNo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_logistics_sms_mail_no_with_options_async(
+        self,
+        request: dysmsapi_20170525_models.VerifyLogisticsSmsMailNoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse:
+        """
+        @summary 物流短信运单号校验
+        
+        @param request: VerifyLogisticsSmsMailNoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyLogisticsSmsMailNoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.express_company_code):
+            query['ExpressCompanyCode'] = request.express_company_code
+        if not UtilClient.is_unset(request.mail_no):
+            query['MailNo'] = request.mail_no
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.platform_company_code):
+            query['PlatformCompanyCode'] = request.platform_company_code
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='VerifyLogisticsSmsMailNo',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_logistics_sms_mail_no(
+        self,
+        request: dysmsapi_20170525_models.VerifyLogisticsSmsMailNoRequest,
+    ) -> dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse:
+        """
+        @summary 物流短信运单号校验
+        
+        @param request: VerifyLogisticsSmsMailNoRequest
+        @return: VerifyLogisticsSmsMailNoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.verify_logistics_sms_mail_no_with_options(request, runtime)
+
+    async def verify_logistics_sms_mail_no_async(
+        self,
+        request: dysmsapi_20170525_models.VerifyLogisticsSmsMailNoRequest,
+    ) -> dysmsapi_20170525_models.VerifyLogisticsSmsMailNoResponse:
+        """
+        @summary 物流短信运单号校验
+        
+        @param request: VerifyLogisticsSmsMailNoRequest
+        @return: VerifyLogisticsSmsMailNoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.verify_logistics_sms_mail_no_with_options_async(request, runtime)

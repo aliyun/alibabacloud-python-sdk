@@ -1,3 +1,8 @@
+2025-09-17 Version: 4.2.0
+- Support API SendLogisticsSms.
+- Support API VerifyLogisticsSmsMailNo.
+
+
 2025-06-30 Version: 4.1.2
 - Update API GetSmsSign: add response parameters Body.SignIspRegisterDetailList.
 

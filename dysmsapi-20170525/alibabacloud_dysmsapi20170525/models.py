@@ -2524,6 +2524,7 @@ class CreateSmsTemplateRequest(TeaModel):
         template_name: str = None,
         template_rule: str = None,
         template_type: int = None,
+        traffic_driving: str = None,
     ):
         # If there is an applicable scenario, you can fill it in.
         self.apply_scene_content = apply_scene_content
@@ -2572,6 +2573,7 @@ class CreateSmsTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_type = template_type
+        self.traffic_driving = traffic_driving
 
     def validate(self):
         pass
@@ -2606,6 +2608,8 @@ class CreateSmsTemplateRequest(TeaModel):
             result['TemplateRule'] = self.template_rule
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.traffic_driving is not None:
+            result['TrafficDriving'] = self.traffic_driving
         return result
 
     def from_map(self, m: dict = None):
@@ -2634,6 +2638,8 @@ class CreateSmsTemplateRequest(TeaModel):
             self.template_rule = m.get('TemplateRule')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('TrafficDriving') is not None:
+            self.traffic_driving = m.get('TrafficDriving')
         return self
 
 
@@ -2652,6 +2658,7 @@ class CreateSmsTemplateShrinkRequest(TeaModel):
         template_name: str = None,
         template_rule: str = None,
         template_type: int = None,
+        traffic_driving: str = None,
     ):
         # If there is an applicable scenario, you can fill it in.
         self.apply_scene_content = apply_scene_content
@@ -2700,6 +2707,7 @@ class CreateSmsTemplateShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_type = template_type
+        self.traffic_driving = traffic_driving
 
     def validate(self):
         pass
@@ -2734,6 +2742,8 @@ class CreateSmsTemplateShrinkRequest(TeaModel):
             result['TemplateRule'] = self.template_rule
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.traffic_driving is not None:
+            result['TrafficDriving'] = self.traffic_driving
         return result
 
     def from_map(self, m: dict = None):
@@ -2762,6 +2772,8 @@ class CreateSmsTemplateShrinkRequest(TeaModel):
             self.template_rule = m.get('TemplateRule')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('TrafficDriving') is not None:
+            self.traffic_driving = m.get('TrafficDriving')
         return self
 
 
@@ -10458,6 +10470,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         order_id: str = None,
         outer_template_type: int = None,
         reason: QuerySmsTemplateListResponseBodySmsTemplateListReason = None,
+        signature_name: str = None,
         template_code: str = None,
         template_content: str = None,
         template_name: str = None,
@@ -10489,6 +10502,7 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         # *   If the value of AuditStatus is **AUDIT_STATE_PASS** or **AUDIT_STATE_INIT**, the value of Reason is No Approval Remarks.
         # *   If the value of AuditStatus is **AUDIT_STATE_NOT_PASS**, the reason why the message template is rejected is returned.
         self.reason = reason
+        self.signature_name = signature_name
         # The code of the message template.
         # 
         # You can log on to the [Short Message Service (SMS) console](https://dysms.console.aliyun.com/dysms.htm), click **Go China** or **Go Globe** in the left-side navigation pane, and then view the template code on the **Templates** tab. You can also call the [AddSmsTemplate](https://help.aliyun.com/document_detail/121208.html) operation to obtain the template code.
@@ -10526,6 +10540,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
             result['OuterTemplateType'] = self.outer_template_type
         if self.reason is not None:
             result['Reason'] = self.reason.to_map()
+        if self.signature_name is not None:
+            result['SignatureName'] = self.signature_name
         if self.template_code is not None:
             result['TemplateCode'] = self.template_code
         if self.template_content is not None:
@@ -10549,6 +10565,8 @@ class QuerySmsTemplateListResponseBodySmsTemplateList(TeaModel):
         if m.get('Reason') is not None:
             temp_model = QuerySmsTemplateListResponseBodySmsTemplateListReason()
             self.reason = temp_model.from_map(m['Reason'])
+        if m.get('SignatureName') is not None:
+            self.signature_name = m.get('SignatureName')
         if m.get('TemplateCode') is not None:
             self.template_code = m.get('TemplateCode')
         if m.get('TemplateContent') is not None:
@@ -11683,6 +11701,218 @@ class SendCardSmsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SendCardSmsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SendLogisticsSmsRequest(TeaModel):
+    def __init__(
+        self,
+        express_company_code: str = None,
+        mail_no: str = None,
+        out_id: str = None,
+        owner_id: int = None,
+        platform_company_code: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sign_name: str = None,
+        template_code: str = None,
+        template_param: str = None,
+    ):
+        # This parameter is required.
+        self.express_company_code = express_company_code
+        # This parameter is required.
+        self.mail_no = mail_no
+        self.out_id = out_id
+        self.owner_id = owner_id
+        self.platform_company_code = platform_company_code
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # This parameter is required.
+        self.sign_name = sign_name
+        # This parameter is required.
+        self.template_code = template_code
+        self.template_param = template_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.express_company_code is not None:
+            result['ExpressCompanyCode'] = self.express_company_code
+        if self.mail_no is not None:
+            result['MailNo'] = self.mail_no
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.platform_company_code is not None:
+            result['PlatformCompanyCode'] = self.platform_company_code
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sign_name is not None:
+            result['SignName'] = self.sign_name
+        if self.template_code is not None:
+            result['TemplateCode'] = self.template_code
+        if self.template_param is not None:
+            result['TemplateParam'] = self.template_param
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpressCompanyCode') is not None:
+            self.express_company_code = m.get('ExpressCompanyCode')
+        if m.get('MailNo') is not None:
+            self.mail_no = m.get('MailNo')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlatformCompanyCode') is not None:
+            self.platform_company_code = m.get('PlatformCompanyCode')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SignName') is not None:
+            self.sign_name = m.get('SignName')
+        if m.get('TemplateCode') is not None:
+            self.template_code = m.get('TemplateCode')
+        if m.get('TemplateParam') is not None:
+            self.template_param = m.get('TemplateParam')
+        return self
+
+
+class SendLogisticsSmsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_id: str = None,
+    ):
+        self.biz_id = biz_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        return self
+
+
+class SendLogisticsSmsResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: SendLogisticsSmsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SendLogisticsSmsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SendLogisticsSmsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SendLogisticsSmsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SendLogisticsSmsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -14193,6 +14423,7 @@ class UpdateSmsTemplateRequest(TeaModel):
         template_name: str = None,
         template_rule: str = None,
         template_type: int = None,
+        traffic_driving: str = None,
     ):
         # Application scenarios, instructions as follows:
         # - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
@@ -14243,6 +14474,7 @@ class UpdateSmsTemplateRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_type = template_type
+        self.traffic_driving = traffic_driving
 
     def validate(self):
         pass
@@ -14279,6 +14511,8 @@ class UpdateSmsTemplateRequest(TeaModel):
             result['TemplateRule'] = self.template_rule
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.traffic_driving is not None:
+            result['TrafficDriving'] = self.traffic_driving
         return result
 
     def from_map(self, m: dict = None):
@@ -14309,6 +14543,8 @@ class UpdateSmsTemplateRequest(TeaModel):
             self.template_rule = m.get('TemplateRule')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('TrafficDriving') is not None:
+            self.traffic_driving = m.get('TrafficDriving')
         return self
 
 
@@ -14328,6 +14564,7 @@ class UpdateSmsTemplateShrinkRequest(TeaModel):
         template_name: str = None,
         template_rule: str = None,
         template_type: int = None,
+        traffic_driving: str = None,
     ):
         # Application scenarios, instructions as follows:
         # - For registered websites, please enter the MIIT-registered domain with HTTP or HTTPS.
@@ -14378,6 +14615,7 @@ class UpdateSmsTemplateShrinkRequest(TeaModel):
         # 
         # This parameter is required.
         self.template_type = template_type
+        self.traffic_driving = traffic_driving
 
     def validate(self):
         pass
@@ -14414,6 +14652,8 @@ class UpdateSmsTemplateShrinkRequest(TeaModel):
             result['TemplateRule'] = self.template_rule
         if self.template_type is not None:
             result['TemplateType'] = self.template_type
+        if self.traffic_driving is not None:
+            result['TrafficDriving'] = self.traffic_driving
         return result
 
     def from_map(self, m: dict = None):
@@ -14444,6 +14684,8 @@ class UpdateSmsTemplateShrinkRequest(TeaModel):
             self.template_rule = m.get('TemplateRule')
         if m.get('TemplateType') is not None:
             self.template_type = m.get('TemplateType')
+        if m.get('TrafficDriving') is not None:
+            self.traffic_driving = m.get('TrafficDriving')
         return self
 
 
@@ -14707,6 +14949,204 @@ class ValidPhoneCodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ValidPhoneCodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class VerifyLogisticsSmsMailNoRequest(TeaModel):
+    def __init__(
+        self,
+        express_company_code: str = None,
+        mail_no: str = None,
+        owner_id: int = None,
+        platform_company_code: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.express_company_code = express_company_code
+        # This parameter is required.
+        self.mail_no = mail_no
+        self.owner_id = owner_id
+        self.platform_company_code = platform_company_code
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.express_company_code is not None:
+            result['ExpressCompanyCode'] = self.express_company_code
+        if self.mail_no is not None:
+            result['MailNo'] = self.mail_no
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.platform_company_code is not None:
+            result['PlatformCompanyCode'] = self.platform_company_code
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpressCompanyCode') is not None:
+            self.express_company_code = m.get('ExpressCompanyCode')
+        if m.get('MailNo') is not None:
+            self.mail_no = m.get('MailNo')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PlatformCompanyCode') is not None:
+            self.platform_company_code = m.get('PlatformCompanyCode')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class VerifyLogisticsSmsMailNoResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        express_company_code: str = None,
+        mobile_suffix: str = None,
+        verify_result: bool = None,
+    ):
+        self.express_company_code = express_company_code
+        self.mobile_suffix = mobile_suffix
+        self.verify_result = verify_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.express_company_code is not None:
+            result['ExpressCompanyCode'] = self.express_company_code
+        if self.mobile_suffix is not None:
+            result['MobileSuffix'] = self.mobile_suffix
+        if self.verify_result is not None:
+            result['VerifyResult'] = self.verify_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpressCompanyCode') is not None:
+            self.express_company_code = m.get('ExpressCompanyCode')
+        if m.get('MobileSuffix') is not None:
+            self.mobile_suffix = m.get('MobileSuffix')
+        if m.get('VerifyResult') is not None:
+            self.verify_result = m.get('VerifyResult')
+        return self
+
+
+class VerifyLogisticsSmsMailNoResponseBody(TeaModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: VerifyLogisticsSmsMailNoResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = VerifyLogisticsSmsMailNoResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class VerifyLogisticsSmsMailNoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: VerifyLogisticsSmsMailNoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = VerifyLogisticsSmsMailNoResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
