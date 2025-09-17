@@ -83,13 +83,13 @@ class CreateImageCacheRequestImageRegistryCredentials(TeaModel):
         server: str = None,
         skip_cert_verification: bool = None,
         use_plain_http: bool = None,
-        user_name: str = None,
+        username: str = None,
     ):
         self.password = password
         self.server = server
         self.skip_cert_verification = skip_cert_verification
         self.use_plain_http = use_plain_http
-        self.user_name = user_name
+        self.username = username
 
     def validate(self):
         pass
@@ -108,8 +108,8 @@ class CreateImageCacheRequestImageRegistryCredentials(TeaModel):
             result['SkipCertVerification'] = self.skip_cert_verification
         if self.use_plain_http is not None:
             result['UsePlainHttp'] = self.use_plain_http
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
+        if self.username is not None:
+            result['Username'] = self.username
         return result
 
     def from_map(self, m: dict = None):
@@ -122,8 +122,8 @@ class CreateImageCacheRequestImageRegistryCredentials(TeaModel):
             self.skip_cert_verification = m.get('SkipCertVerification')
         if m.get('UsePlainHttp') is not None:
             self.use_plain_http = m.get('UsePlainHttp')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         return self
 
 
@@ -390,13 +390,13 @@ class CreateImageCacheShrinkRequestImageRegistryCredentials(TeaModel):
         server: str = None,
         skip_cert_verification: bool = None,
         use_plain_http: bool = None,
-        user_name: str = None,
+        username: str = None,
     ):
         self.password = password
         self.server = server
         self.skip_cert_verification = skip_cert_verification
         self.use_plain_http = use_plain_http
-        self.user_name = user_name
+        self.username = username
 
     def validate(self):
         pass
@@ -415,8 +415,8 @@ class CreateImageCacheShrinkRequestImageRegistryCredentials(TeaModel):
             result['SkipCertVerification'] = self.skip_cert_verification
         if self.use_plain_http is not None:
             result['UsePlainHttp'] = self.use_plain_http
-        if self.user_name is not None:
-            result['UserName'] = self.user_name
+        if self.username is not None:
+            result['Username'] = self.username
         return result
 
     def from_map(self, m: dict = None):
@@ -429,8 +429,8 @@ class CreateImageCacheShrinkRequestImageRegistryCredentials(TeaModel):
             self.skip_cert_verification = m.get('SkipCertVerification')
         if m.get('UsePlainHttp') is not None:
             self.use_plain_http = m.get('UsePlainHttp')
-        if m.get('UserName') is not None:
-            self.user_name = m.get('UserName')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
         return self
 
 
