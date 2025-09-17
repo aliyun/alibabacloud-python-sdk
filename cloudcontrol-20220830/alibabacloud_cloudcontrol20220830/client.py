@@ -48,7 +48,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
         """
-        @summary 取消任务
+        @summary Calls this operation to cancel a specified asynchronous task.
+        
+        @description Only tasks that are in the Pending or Running state can be canceled.
+        You can call the CancelTask operation to cancel a Cloud Control API task, but the tasks that have been started in the downstream Alibaba Cloud services cannot be canceled.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -80,7 +83,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
         """
-        @summary 取消任务
+        @summary Calls this operation to cancel a specified asynchronous task.
+        
+        @description Only tasks that are in the Pending or Running state can be canceled.
+        You can call the CancelTask operation to cancel a Cloud Control API task, but the tasks that have been started in the downstream Alibaba Cloud services cannot be canceled.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -110,7 +116,10 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
         """
-        @summary 取消任务
+        @summary Calls this operation to cancel a specified asynchronous task.
+        
+        @description Only tasks that are in the Pending or Running state can be canceled.
+        You can call the CancelTask operation to cancel a Cloud Control API task, but the tasks that have been started in the downstream Alibaba Cloud services cannot be canceled.
         
         @return: CancelTaskResponse
         """
@@ -123,7 +132,10 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.CancelTaskResponse:
         """
-        @summary 取消任务
+        @summary Calls this operation to cancel a specified asynchronous task.
+        
+        @description Only tasks that are in the Pending or Running state can be canceled.
+        You can call the CancelTask operation to cancel a Cloud Control API task, but the tasks that have been started in the downstream Alibaba Cloud services cannot be canceled.
         
         @return: CancelTaskResponse
         """
@@ -139,7 +151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
-        @summary 创建资源
+        @summary Calls this operation to create resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
@@ -182,7 +196,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
-        @summary 创建资源
+        @summary Calls this operation to create resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
@@ -223,7 +239,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
-        @summary 创建资源
+        @summary Calls this operation to create resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
@@ -239,7 +257,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.CreateResourceRequest,
     ) -> cloudcontrol_20220830_models.CreateResourceResponse:
         """
-        @summary 创建资源
+        @summary Calls this operation to create resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: CreateResourceRequest
@@ -252,23 +272,31 @@ class Client(OpenApiClient):
     def delete_resource_with_options(
         self,
         request_path: str,
-        request: cloudcontrol_20220830_models.DeleteResourceRequest,
+        tmp_req: cloudcontrol_20220830_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
-        @summary 删除资源
+        @summary Calls this operation to delete resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
+        @param tmp_req: DeleteResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteResourceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudcontrol_20220830_models.DeleteResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -294,23 +322,31 @@ class Client(OpenApiClient):
     async def delete_resource_with_options_async(
         self,
         request_path: str,
-        request: cloudcontrol_20220830_models.DeleteResourceRequest,
+        tmp_req: cloudcontrol_20220830_models.DeleteResourceRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
-        @summary 删除资源
+        @summary Calls this operation to delete resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
-        @param request: DeleteResourceRequest
+        @param tmp_req: DeleteResourceRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: DeleteResourceResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cloudcontrol_20220830_models.DeleteResourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.filter):
+            request.filter_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.filter, 'filter', 'json')
         query = {}
         if not UtilClient.is_unset(request.client_token):
             query['clientToken'] = request.client_token
+        if not UtilClient.is_unset(request.filter_shrink):
+            query['filter'] = request.filter_shrink
         if not UtilClient.is_unset(request.region_id):
             query['regionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
@@ -339,7 +375,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
-        @summary 删除资源
+        @summary Calls this operation to delete resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
@@ -355,7 +393,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.DeleteResourceRequest,
     ) -> cloudcontrol_20220830_models.DeleteResourceResponse:
         """
-        @summary 删除资源
+        @summary Calls this operation to delete resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
         
         @param request_path: the whole path of resource string
         @param request: DeleteResourceRequest
@@ -373,7 +413,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
         """
-        @summary 查询价格
+        @summary An RFQ interface through which users can query resource prices.
         
         @param request_path: the whole path of resource string
         @param tmp_req: GetPriceRequest
@@ -419,7 +459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
         """
-        @summary 查询价格
+        @summary An RFQ interface through which users can query resource prices.
         
         @param request_path: the whole path of resource string
         @param tmp_req: GetPriceRequest
@@ -463,7 +503,7 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.GetPriceRequest,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
         """
-        @summary 查询价格
+        @summary An RFQ interface through which users can query resource prices.
         
         @param request_path: the whole path of resource string
         @param request: GetPriceRequest
@@ -479,7 +519,7 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.GetPriceRequest,
     ) -> cloudcontrol_20220830_models.GetPriceResponse:
         """
-        @summary 查询价格
+        @summary An RFQ interface through which users can query resource prices.
         
         @param request_path: the whole path of resource string
         @param request: GetPriceRequest
@@ -496,7 +536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         """
-        @summary 获取资源元数据
+        @summary You can call the operation to obtain resource metadata.
         
         @param request_path: the whole path of resource string
         @param headers: GetResourceTypeHeaders
@@ -534,7 +574,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         """
-        @summary 获取资源元数据
+        @summary You can call the operation to obtain resource metadata.
         
         @param request_path: the whole path of resource string
         @param headers: GetResourceTypeHeaders
@@ -570,7 +610,7 @@ class Client(OpenApiClient):
         request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         """
-        @summary 获取资源元数据
+        @summary You can call the operation to obtain resource metadata.
         
         @param request_path: the whole path of resource string
         @return: GetResourceTypeResponse
@@ -584,7 +624,7 @@ class Client(OpenApiClient):
         request_path: str,
     ) -> cloudcontrol_20220830_models.GetResourceTypeResponse:
         """
-        @summary 获取资源元数据
+        @summary You can call the operation to obtain resource metadata.
         
         @param request_path: the whole path of resource string
         @return: GetResourceTypeResponse
@@ -601,7 +641,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         """
-        @summary 查询资源
+        @summary You can call the operation to query resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+        You can call this operation to query resources List and Get based on different request paths.
         
         @param request_path: the whole path of resource string
         @param tmp_req: GetResourcesRequest
@@ -651,7 +694,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         """
-        @summary 查询资源
+        @summary You can call the operation to query resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+        You can call this operation to query resources List and Get based on different request paths.
         
         @param request_path: the whole path of resource string
         @param tmp_req: GetResourcesRequest
@@ -699,7 +745,10 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         """
-        @summary 查询资源
+        @summary You can call the operation to query resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+        You can call this operation to query resources List and Get based on different request paths.
         
         @param request_path: the whole path of resource string
         @param request: GetResourcesRequest
@@ -715,7 +764,10 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.GetResourcesRequest,
     ) -> cloudcontrol_20220830_models.GetResourcesResponse:
         """
-        @summary 查询资源
+        @summary You can call the operation to query resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out CloudControl API.
+        You can call this operation to query resources List and Get based on different request paths.
         
         @param request_path: the whole path of resource string
         @param request: GetResourcesRequest
@@ -732,9 +784,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        @summary 查询任务
+        @summary Calls this operation to query a specified asynchronous task.
         
-        @description GET /api/v1/tasks/{taskId}。
+        @description GET /api/v1/tasks/{taskId}.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -766,9 +818,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        @summary 查询任务
+        @summary Calls this operation to query a specified asynchronous task.
         
-        @description GET /api/v1/tasks/{taskId}。
+        @description GET /api/v1/tasks/{taskId}.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -798,9 +850,9 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        @summary 查询任务
+        @summary Calls this operation to query a specified asynchronous task.
         
-        @description GET /api/v1/tasks/{taskId}。
+        @description GET /api/v1/tasks/{taskId}.
         
         @return: GetTaskResponse
         """
@@ -813,9 +865,9 @@ class Client(OpenApiClient):
         task_id: str,
     ) -> cloudcontrol_20220830_models.GetTaskResponse:
         """
-        @summary 查询任务
+        @summary Calls this operation to query a specified asynchronous task.
         
-        @description GET /api/v1/tasks/{taskId}。
+        @description GET /api/v1/tasks/{taskId}.
         
         @return: GetTaskResponse
         """
@@ -831,7 +883,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
-        @summary 列举资源属性可选值
+        @summary You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
         
         @param request_path: the whole path of resource string
         @param tmp_req: ListDataSourcesRequest
@@ -877,7 +929,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
-        @summary 列举资源属性可选值
+        @summary You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
         
         @param request_path: the whole path of resource string
         @param tmp_req: ListDataSourcesRequest
@@ -921,7 +973,7 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
-        @summary 列举资源属性可选值
+        @summary You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
         
         @param request_path: the whole path of resource string
         @param request: ListDataSourcesRequest
@@ -937,7 +989,7 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListDataSourcesRequest,
     ) -> cloudcontrol_20220830_models.ListDataSourcesResponse:
         """
-        @summary 列举资源属性可选值
+        @summary You can call the operation to query the valid values of resource attributes, such as RegionID and ZoneId.
         
         @param request_path: the whole path of resource string
         @param request: ListDataSourcesRequest
@@ -955,9 +1007,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the supported services.
         
-        @description GET /api/v1/providers/{provider}/products。
+        @description GET /api/v1/providers/{provider}/products.
         
         @param request: ListProductsRequest
         @param headers: ListProductsHeaders
@@ -1003,9 +1055,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the supported services.
         
-        @description GET /api/v1/providers/{provider}/products。
+        @description GET /api/v1/providers/{provider}/products.
         
         @param request: ListProductsRequest
         @param headers: ListProductsHeaders
@@ -1049,9 +1101,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListProductsRequest,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the supported services.
         
-        @description GET /api/v1/providers/{provider}/products。
+        @description GET /api/v1/providers/{provider}/products.
         
         @param request: ListProductsRequest
         @return: ListProductsResponse
@@ -1066,9 +1118,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListProductsRequest,
     ) -> cloudcontrol_20220830_models.ListProductsResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the supported services.
         
-        @description GET /api/v1/providers/{provider}/products。
+        @description GET /api/v1/providers/{provider}/products.
         
         @param request: ListProductsRequest
         @return: ListProductsResponse
@@ -1086,9 +1138,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the resource types of a service.
         
-        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes.
         
         @param tmp_req: ListResourceTypesRequest
         @param headers: ListResourceTypesHeaders
@@ -1141,9 +1193,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the resource types of a service.
         
-        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes.
         
         @param tmp_req: ListResourceTypesRequest
         @param headers: ListResourceTypesHeaders
@@ -1194,9 +1246,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListResourceTypesRequest,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the resource types of a service.
         
-        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes.
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
@@ -1212,9 +1264,9 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.ListResourceTypesRequest,
     ) -> cloudcontrol_20220830_models.ListResourceTypesResponse:
         """
-        @summary 列举资源类型
+        @summary Calls this operation to list the resource types of a service.
         
-        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes。
+        @description GET /api/v1/providers/{provider}/products/{product}/resourceTypes.
         
         @param request: ListResourceTypesRequest
         @return: ListResourceTypesResponse
@@ -1231,7 +1283,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         """
-        @summary 更新资源
+        @summary Calls this operation to update resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+        If resources fail to be updated at any time, the Cloud Control API does not roll the resource back to the original status.
+        The resource APIs cannot be rolled back. If the API operation is partially failed to be called, you can call the GetResource operation to view the latest status of the resource. If necessary, you can call the UpdateResource or DeleteResource operation to manually compensate for the failure.
         
         @param request_path: the whole path of resource string
         @param request: UpdateResourceRequest
@@ -1274,7 +1330,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         """
-        @summary 更新资源
+        @summary Calls this operation to update resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+        If resources fail to be updated at any time, the Cloud Control API does not roll the resource back to the original status.
+        The resource APIs cannot be rolled back. If the API operation is partially failed to be called, you can call the GetResource operation to view the latest status of the resource. If necessary, you can call the UpdateResource or DeleteResource operation to manually compensate for the failure.
         
         @param request_path: the whole path of resource string
         @param request: UpdateResourceRequest
@@ -1315,7 +1375,11 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         """
-        @summary 更新资源
+        @summary Calls this operation to update resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+        If resources fail to be updated at any time, the Cloud Control API does not roll the resource back to the original status.
+        The resource APIs cannot be rolled back. If the API operation is partially failed to be called, you can call the GetResource operation to view the latest status of the resource. If necessary, you can call the UpdateResource or DeleteResource operation to manually compensate for the failure.
         
         @param request_path: the whole path of resource string
         @param request: UpdateResourceRequest
@@ -1331,7 +1395,11 @@ class Client(OpenApiClient):
         request: cloudcontrol_20220830_models.UpdateResourceRequest,
     ) -> cloudcontrol_20220830_models.UpdateResourceResponse:
         """
-        @summary 更新资源
+        @summary Calls this operation to update resources.
+        
+        @description You can go to [OpenAPI Explorer](https://next.api.aliyun.com/cloudcontrol) to view the documentation and try out Cloud Control API.
+        If resources fail to be updated at any time, the Cloud Control API does not roll the resource back to the original status.
+        The resource APIs cannot be rolled back. If the API operation is partially failed to be called, you can call the GetResource operation to view the latest status of the resource. If necessary, you can call the UpdateResource or DeleteResource operation to manually compensate for the failure.
         
         @param request_path: the whole path of resource string
         @param request: UpdateResourceRequest

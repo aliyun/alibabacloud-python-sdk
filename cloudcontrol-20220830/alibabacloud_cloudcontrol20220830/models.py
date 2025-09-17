@@ -9,6 +9,7 @@ class CancelTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of a request.
         self.request_id = request_id
 
     def validate(self):
@@ -79,8 +80,11 @@ class CreateResourceRequest(TeaModel):
         client_token: str = None,
         region_id: str = None,
     ):
+        # The request body. The property of the resource, which is specified in JSON format.
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. If a cloud service supports idempotence, the parameter takes effect.
         self.client_token = client_token
+        # The region ID. This parameter is required if a cloud service is a regionalized.
         self.region_id = region_id
 
     def validate(self):
@@ -119,9 +123,13 @@ class CreateResourceResponseBody(TeaModel):
         resource_path: str = None,
         task_id: str = None,
     ):
+        # The ID of a request.
         self.request_id = request_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The path of the resources. The relative resource ID. The resource path contains the complete resource location (parent resource/child resource).
         self.resource_path = resource_path
+        # The ID of the asynchronous task. If the operation is asynchronous, this field is returned. In this case, the HTTP status code 202 is returned.
         self.task_id = task_id
 
     def validate(self):
@@ -201,9 +209,13 @@ class DeleteResourceRequest(TeaModel):
     def __init__(
         self,
         client_token: str = None,
+        filter: Dict[str, Any] = None,
         region_id: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. If a cloud service supports idempotence, the parameter takes effect.
         self.client_token = client_token
+        self.filter = filter
+        # The region. This parameter is required if a cloud service is a regionalized.
         self.region_id = region_id
 
     def validate(self):
@@ -217,6 +229,8 @@ class DeleteResourceRequest(TeaModel):
         result = dict()
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.filter is not None:
+            result['filter'] = self.filter
         if self.region_id is not None:
             result['regionId'] = self.region_id
         return result
@@ -225,6 +239,49 @@ class DeleteResourceRequest(TeaModel):
         m = m or dict()
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('filter') is not None:
+            self.filter = m.get('filter')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class DeleteResourceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        filter_shrink: str = None,
+        region_id: str = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request. If a cloud service supports idempotence, the parameter takes effect.
+        self.client_token = client_token
+        self.filter_shrink = filter_shrink
+        # The region. This parameter is required if a cloud service is a regionalized.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+        if self.filter_shrink is not None:
+            result['filter'] = self.filter_shrink
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+        if m.get('filter') is not None:
+            self.filter_shrink = m.get('filter')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         return self
@@ -236,7 +293,9 @@ class DeleteResourceResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the asynchronous task. If the operation is asynchronous, this field is returned. In this case, the HTTP status code 202 is returned.
         self.task_id = task_id
 
     def validate(self):
@@ -310,7 +369,9 @@ class GetPriceRequest(TeaModel):
         region_id: str = None,
         resource_attributes: Dict[str, Any] = None,
     ):
+        # The region ID. This parameter is required if the cloud product is deployed in a region.
         self.region_id = region_id
+        # The attributes based on which the price is queried (in JSON format).
         self.resource_attributes = resource_attributes
 
     def validate(self):
@@ -343,7 +404,9 @@ class GetPriceShrinkRequest(TeaModel):
         region_id: str = None,
         resource_attributes_shrink: str = None,
     ):
+        # The region ID. This parameter is required if the cloud product is deployed in a region.
         self.region_id = region_id
+        # The attributes based on which the price is queried (in JSON format).
         self.resource_attributes_shrink = resource_attributes_shrink
 
     def validate(self):
@@ -380,11 +443,17 @@ class GetPriceResponseBodyPriceModuleDetails(TeaModel):
         original_cost: float = None,
         price_type: str = None,
     ):
+        # The discount price.
         self.cost_after_discount = cost_after_discount
+        # The discount.
         self.invoice_discount = invoice_discount
+        # The code of the pricing module.
         self.module_code = module_code
+        # The name of the pricing module.
         self.module_name = module_name
+        # The original price.
         self.original_cost = original_cost
+        # The price type.
         self.price_type = price_type
 
     def validate(self):
@@ -434,8 +503,11 @@ class GetPriceResponseBodyPricePromotionDetails(TeaModel):
         promotion_id: int = None,
         promotion_name: str = None,
     ):
+        # The description of the promotion.
         self.promotion_desc = promotion_desc
+        # The ID of the promotion.
         self.promotion_id = promotion_id
+        # The name of the promotion.
         self.promotion_name = promotion_name
 
     def validate(self):
@@ -476,11 +548,17 @@ class GetPriceResponseBodyPrice(TeaModel):
         promotion_details: List[GetPriceResponseBodyPricePromotionDetails] = None,
         trade_price: float = None,
     ):
+        # The currency type. Valid values: CNY: Chinese Yuan. USD: US dollar. JPY: Japanese Yen.
         self.currency = currency
+        # The discount.
         self.discount_price = discount_price
+        # The order details of the pricing module.
         self.module_details = module_details
+        # The original price.
         self.original_price = original_price
+        # The details of the promotion.
         self.promotion_details = promotion_details
+        # The discount price.
         self.trade_price = trade_price
 
     def validate(self):
@@ -546,7 +624,9 @@ class GetPriceResponseBody(TeaModel):
         price: GetPriceResponseBodyPrice = None,
         request_id: str = None,
     ):
+        # The price.
         self.price = price
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -623,6 +703,11 @@ class GetResourceTypeHeaders(TeaModel):
         x_acs_accept_language: str = None,
     ):
         self.common_headers = common_headers
+        # The language selected for the returned product.
+        # 
+        # zh_CH: Chinese (default)
+        # 
+        # en_US: English
         self.x_acs_accept_language = x_acs_accept_language
 
     def validate(self):
@@ -654,6 +739,7 @@ class GetResourceTypeResponseBodyResourceTypeHandlersCreate(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The information about the required RAM permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -681,6 +767,7 @@ class GetResourceTypeResponseBodyResourceTypeHandlersDelete(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The information about the required RAM permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -708,6 +795,7 @@ class GetResourceTypeResponseBodyResourceTypeHandlersGet(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The information about the required RAM permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -735,6 +823,7 @@ class GetResourceTypeResponseBodyResourceTypeHandlersList(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The information about the required RAM permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -762,6 +851,7 @@ class GetResourceTypeResponseBodyResourceTypeHandlersUpdate(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The information about the required RAM permissions.
         self.permissions = permissions
 
     def validate(self):
@@ -793,10 +883,15 @@ class GetResourceTypeResponseBodyResourceTypeHandlers(TeaModel):
         list: GetResourceTypeResponseBodyResourceTypeHandlersList = None,
         update: GetResourceTypeResponseBodyResourceTypeHandlersUpdate = None,
     ):
+        # The information about the create operation.
         self.create = create
+        # The information about the delete operation.
         self.delete = delete
+        # The information about the query operation.
         self.get = get
+        # The information about the list operation.
         self.list = list
+        # The information about the update operation.
         self.update = update
 
     def validate(self):
@@ -857,9 +952,21 @@ class GetResourceTypeResponseBodyResourceTypeInfo(TeaModel):
         description: str = None,
         title: str = None,
     ):
+        # The payment form. Valid values:
+        # 
+        # paid free
         self.charge_type = charge_type
+        # The delivery level. Valid values:
+        # 
+        # center
+        # 
+        # region
+        # 
+        # zone
         self.delivery_scope = delivery_scope
+        # The description of the resource type.
         self.description = description
+        # The name of the resource type.
         self.title = title
 
     def validate(self):
@@ -917,24 +1024,43 @@ class GetResourceTypeResponseBodyResourceType(TeaModel):
         update_only_properties: List[str] = None,
         update_type_properties: List[str] = None,
     ):
+        # The properties that are specific to the create operation. You need to specify these properties when you create the resource. These properties are not returned when you query the resource.
         self.create_only_properties = create_only_properties
+        # The properties that are specific to the delete operation. You need to specify these properties when you delete the resource. These properties are not returned when you query the resource.
         self.delete_only_properties = delete_only_properties
+        # The properties that can be used to filter the resource when you list the resource.
         self.filter_properties = filter_properties
+        # The properties that are specific to the query operation. You need to specify these properties when you query the resource. These properties are not returned in the query result.
         self.get_only_properties = get_only_properties
+        # The properties that are returned when you query the resource.
         self.get_response_properties = get_response_properties
+        # The information about the operation, including the required Resource Access Management (RAM) permissions.
         self.handlers = handlers
+        # The basic information about the resource type.
         self.info = info
+        # The properties that are specific to the list operation. You need to specify these properties when you list the resource. These properties are not returned when you query the resource.
         self.list_only_properties = list_only_properties
+        # The properties that are returned when you list the resource.
         self.list_response_properties = list_response_properties
+        # The ID of the resource.
         self.primary_identifier = primary_identifier
+        # The code of the service.
         self.product = product
+        # The resource properties. The key specifies the property name and the value specifies the details of the property.
         self.properties = properties
+        # The common properties of the resource. The common properties are not operation-specific.
         self.public_properties = public_properties
+        # The read-only properties. These properties are returned only when you perform the List or Get operation. You do not need to specify these properties when you create or update the resource.
         self.read_only_properties = read_only_properties
+        # The properties that must be specified when you create the resource.
         self.required = required
+        # The type of the resource. If the resource belongs to a parent resource, the return format is {parent resource type code /resource type code}.
         self.resource_type = resource_type
+        # The sensitive properties, such as the password.
         self.sensitive_info_properties = sensitive_info_properties
+        # The properties that are specific to the update operation. You need to specify these properties when you update the resource. These properties are not returned when you query the resource.
         self.update_only_properties = update_only_properties
+        # The properties that can be modified.
         self.update_type_properties = update_type_properties
 
     def validate(self):
@@ -1040,7 +1166,9 @@ class GetResourceTypeResponseBody(TeaModel):
         request_id: str = None,
         resource_type: GetResourceTypeResponseBodyResourceType = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The resource type. Valid values:
         self.resource_type = resource_type
 
     def validate(self):
@@ -1118,9 +1246,13 @@ class GetResourcesRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The filter condition. The JSON format. You can use some resource properties as filter conditions.
         self.filter = filter
+        # The number of entries per page. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The ID of the region. This parameter is required if the cloud product is deployed in a region.
         self.region_id = region_id
 
     def validate(self):
@@ -1163,9 +1295,13 @@ class GetResourcesShrinkRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
+        # The filter condition. The JSON format. You can use some resource properties as filter conditions.
         self.filter_shrink = filter_shrink
+        # The number of entries per page. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The ID of the region. This parameter is required if the cloud product is deployed in a region.
         self.region_id = region_id
 
     def validate(self):
@@ -1206,7 +1342,9 @@ class GetResourcesResponseBodyResource(TeaModel):
         resource_attributes: Dict[str, Any] = None,
         resource_id: str = None,
     ):
+        # The resource properties in the JSON format.
         self.resource_attributes = resource_attributes
+        # The ID of the resource.
         self.resource_id = resource_id
 
     def validate(self):
@@ -1239,7 +1377,9 @@ class GetResourcesResponseBodyResources(TeaModel):
         resource_attributes: Dict[str, Any] = None,
         resource_id: str = None,
     ):
+        # The resource properties in the JSON format.
         self.resource_attributes = resource_attributes
+        # The ID of the resource.
         self.resource_id = resource_id
 
     def validate(self):
@@ -1276,11 +1416,17 @@ class GetResourcesResponseBody(TeaModel):
         resources: List[GetResourcesResponseBodyResources] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned. Return result of the List operation.
         self.max_results = max_results
+        # The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists. Return result of the List operation.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The specified resource. Return result of the Get operation.
         self.resource = resource
+        # The resource list. Return result of the List operation.
         self.resources = resources
+        # The total number of entries returned. Return result of the List operation.
         self.total_count = total_count
 
     def validate(self):
@@ -1381,7 +1527,9 @@ class GetTaskResponseBodyTaskError(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -1422,15 +1570,37 @@ class GetTaskResponseBodyTask(TeaModel):
         task_action: str = None,
         task_id: str = None,
     ):
+        # The time when the task was created.
         self.create_time = create_time
+        # The error returned for the task.
         self.error = error
+        # The code of the service.
         self.product = product
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource.
         self.resource_id = resource_id
+        # The path of the resources. The relative resource ID. The resource path contains the complete resource location (parent resource/child resource).
         self.resource_path = resource_path
+        # The resource type.
         self.resource_type = resource_type
+        # The task state.
+        # 
+        # Pending
+        # 
+        # Running
+        # 
+        # Succeeded
+        # 
+        # Failed
+        # 
+        # Cancelling
+        # 
+        # Cancelled.
         self.status = status
+        # The type of the task operation. Valid values: Create, Update, and Delete.
         self.task_action = task_action
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -1497,7 +1667,9 @@ class GetTaskResponseBody(TeaModel):
         request_id: str = None,
         task: GetTaskResponseBodyTask = None,
     ):
+        # The ID of a request.
         self.request_id = request_id
+        # The information about the task.
         self.task = task
 
     def validate(self):
@@ -1573,8 +1745,11 @@ class ListDataSourcesRequest(TeaModel):
         attribute_name: str = None,
         filter: Dict[str, Any] = None,
     ):
+        # The name of the property. RegionId is supported.
+        # 
         # This parameter is required.
         self.attribute_name = attribute_name
+        # The filter conditions. JSON format:{"key1":"value1"}.
         self.filter = filter
 
     def validate(self):
@@ -1607,8 +1782,11 @@ class ListDataSourcesShrinkRequest(TeaModel):
         attribute_name: str = None,
         filter_shrink: str = None,
     ):
+        # The name of the property. RegionId is supported.
+        # 
         # This parameter is required.
         self.attribute_name = attribute_name
+        # The filter conditions. JSON format:{"key1":"value1"}.
         self.filter_shrink = filter_shrink
 
     def validate(self):
@@ -1640,6 +1818,7 @@ class ListDataSourcesResponseBodyDataSources(TeaModel):
         self,
         id: str = None,
     ):
+        # The ID of the data.
         self.id = id
 
     def validate(self):
@@ -1668,7 +1847,9 @@ class ListDataSourcesResponseBody(TeaModel):
         data_sources: List[ListDataSourcesResponseBodyDataSources] = None,
         request_id: str = None,
     ):
+        # The queried data.
         self.data_sources = data_sources
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1751,6 +1932,11 @@ class ListProductsHeaders(TeaModel):
         x_acs_accept_language: str = None,
     ):
         self.common_headers = common_headers
+        # Select the language in which the response is returned.
+        # 
+        # zh_CH: Chinese (default).
+        # 
+        # en_US: English.
         self.x_acs_accept_language = x_acs_accept_language
 
     def validate(self):
@@ -1783,7 +1969,9 @@ class ListProductsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The number of entries per page. Maximum value: 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
 
     def validate(self):
@@ -1816,7 +2004,9 @@ class ListProductsResponseBodyProducts(TeaModel):
         product_code: str = None,
         product_name: str = None,
     ):
+        # The code of the service.
         self.product_code = product_code
+        # The service name.
         self.product_name = product_name
 
     def validate(self):
@@ -1852,10 +2042,15 @@ class ListProductsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The cloud services.
         self.products = products
+        # The ID of a request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -1950,6 +2145,11 @@ class ListResourceTypesHeaders(TeaModel):
         x_acs_accept_language: str = None,
     ):
         self.common_headers = common_headers
+        # Select the language in which the response is returned.
+        # 
+        # zh_CH: Chinese (default).
+        # 
+        # en_US: English.
         self.x_acs_accept_language = x_acs_accept_language
 
     def validate(self):
@@ -1983,8 +2183,11 @@ class ListResourceTypesRequest(TeaModel):
         next_token: str = None,
         resource_types: List[str] = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The information about the resource types.
         self.resource_types = resource_types
 
     def validate(self):
@@ -2022,8 +2225,11 @@ class ListResourceTypesShrinkRequest(TeaModel):
         next_token: str = None,
         resource_types_shrink: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The information about the resource types.
         self.resource_types_shrink = resource_types_shrink
 
     def validate(self):
@@ -2059,6 +2265,7 @@ class ListResourceTypesResponseBodyResourceTypesHandlersCreate(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The RAM permissions required.
         self.permissions = permissions
 
     def validate(self):
@@ -2086,6 +2293,7 @@ class ListResourceTypesResponseBodyResourceTypesHandlersDelete(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The RAM permissions required.
         self.permissions = permissions
 
     def validate(self):
@@ -2113,6 +2321,7 @@ class ListResourceTypesResponseBodyResourceTypesHandlersGet(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The RAM permissions required.
         self.permissions = permissions
 
     def validate(self):
@@ -2140,6 +2349,7 @@ class ListResourceTypesResponseBodyResourceTypesHandlersList(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The RAM permissions required.
         self.permissions = permissions
 
     def validate(self):
@@ -2167,6 +2377,7 @@ class ListResourceTypesResponseBodyResourceTypesHandlersUpdate(TeaModel):
         self,
         permissions: List[str] = None,
     ):
+        # The RAM permissions required.
         self.permissions = permissions
 
     def validate(self):
@@ -2198,10 +2409,15 @@ class ListResourceTypesResponseBodyResourceTypesHandlers(TeaModel):
         list: ListResourceTypesResponseBodyResourceTypesHandlersList = None,
         update: ListResourceTypesResponseBodyResourceTypesHandlersUpdate = None,
     ):
+        # The information about the create operation.
         self.create = create
+        # The information about the delete operation.
         self.delete = delete
+        # The information about the query operation.
         self.get = get
+        # The information about the list operation.
         self.list = list
+        # The information about the update operation.
         self.update = update
 
     def validate(self):
@@ -2262,9 +2478,20 @@ class ListResourceTypesResponseBodyResourceTypesInfo(TeaModel):
         description: str = None,
         title: str = None,
     ):
+        # Billing method\\
+        # paid free
         self.charge_type = charge_type
+        # The deployment level of the resource.
+        # 
+        # center
+        # 
+        # region
+        # 
+        # zone
         self.delivery_scope = delivery_scope
+        # The description of the resource type.
         self.description = description
+        # The name of the resource type.
         self.title = title
 
     def validate(self):
@@ -2322,24 +2549,43 @@ class ListResourceTypesResponseBodyResourceTypes(TeaModel):
         update_only_properties: List[str] = None,
         update_type_properties: List[str] = None,
     ):
+        # The properties that are specific to the create operation. You need to specify these properties when you create the resource. These properties are not returned when you query the resource.
         self.create_only_properties = create_only_properties
+        # The properties that are specific to the delete operation. You need to specify these properties when you delete the resource. These properties are not returned when you query the resource.
         self.delete_only_properties = delete_only_properties
+        # The properties that can be used to filter the resource when you list the resource.
         self.filter_properties = filter_properties
+        # The properties that are specific to the query operation. You need to specify these properties when you query the resource. These properties are not returned in the query result.
         self.get_only_properties = get_only_properties
+        # The properties that are returned when you query the resource.
         self.get_response_properties = get_response_properties
+        # The information about the operation, including the required Resource Access Management (RAM) permissions.
         self.handlers = handlers
+        # The information about the resource type.
         self.info = info
+        # The properties that are specific to the list operation. You need to specify these properties when you list the resource. These properties are not returned when you query the resource.
         self.list_only_properties = list_only_properties
+        # The properties that are returned when you list the resource.
         self.list_response_properties = list_response_properties
+        # The ID of the resource.
         self.primary_identifier = primary_identifier
+        # The code of the service.
         self.product = product
+        # The resource properties. The key specifies the property name and the value specifies the details of the property.
         self.properties = properties
+        # The common properties of the resource. The common properties are not operation-specific.
         self.public_properties = public_properties
+        # The read-only properties. These properties are returned only when you list or query the resource. You do not need to specify these properties when you create or update the resource.
         self.read_only_properties = read_only_properties
+        # The properties that must be specified when you create the resource.
         self.required = required
+        # The resource type.
         self.resource_type = resource_type
+        # The sensitive properties, such as the password.
         self.sensitive_info_properties = sensitive_info_properties
+        # The properties that are specific to the update operation. You need to specify these properties when you update the resource. These properties are not returned when you query the resource.
         self.update_only_properties = update_only_properties
+        # The properties that can be modified.
         self.update_type_properties = update_type_properties
 
     def validate(self):
@@ -2448,10 +2694,15 @@ class ListResourceTypesResponseBody(TeaModel):
         resource_types: List[ListResourceTypesResponseBodyResourceTypes] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
+        # The ID of a request.
         self.request_id = request_id
+        # The information about the resource types.
         self.resource_types = resource_types
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -2546,8 +2797,11 @@ class UpdateResourceRequest(TeaModel):
         client_token: str = None,
         region_id: str = None,
     ):
+        # The request body. The property of the resource to be updated is specified in JSON format.
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. If a cloud service supports idempotence, the parameter takes effect.
         self.client_token = client_token
+        # The region ID. This parameter is required if a cloud service is a regionalized.
         self.region_id = region_id
 
     def validate(self):
@@ -2584,7 +2838,9 @@ class UpdateResourceResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the asynchronous task. If the operation is asynchronous, this field is returned. In this case, the HTTP status code 202 is returned.
         self.task_id = task_id
 
     def validate(self):

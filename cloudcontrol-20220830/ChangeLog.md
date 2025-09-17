@@ -1,3 +1,7 @@
+2025-09-17 Version: 1.1.2
+- Update API DeleteResource: add request parameters filter.
+
+
 2024-08-22 Version: 1.1.1
 - Update API GetPrice: update response param.
 
