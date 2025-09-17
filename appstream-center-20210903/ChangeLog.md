@@ -1,3 +1,6 @@
+2025-09-17 Version: 2.0.3
+- Generated python 2021-09-03 for appstream-center.
+
 2025-06-23 Version: 2.0.2
 - Update API GetConnectionTicket: add request parameters AppPolicyId.
 

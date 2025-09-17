@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -122,7 +121,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.GetConnectionTicketResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_connection_ticket_with_options_async(
@@ -205,7 +204,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.GetConnectionTicketResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_connection_ticket(
@@ -294,7 +293,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def list_published_app_info_with_options_async(
@@ -357,7 +356,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ListPublishedAppInfoResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def list_published_app_info(
@@ -440,7 +439,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ListRunningAppsResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def list_running_apps_with_options_async(
@@ -497,7 +496,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ListRunningAppsResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def list_running_apps(
@@ -582,7 +581,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ResetAppResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def reset_app_resources_with_options_async(
@@ -641,7 +640,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.ResetAppResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def reset_app_resources(
@@ -726,7 +725,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.RestartAppResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def restart_app_resources_with_options_async(
@@ -785,7 +784,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.RestartAppResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def restart_app_resources(
@@ -870,7 +869,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StartAppResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def start_app_resources_with_options_async(
@@ -929,7 +928,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StartAppResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def start_app_resources(
@@ -1030,7 +1029,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StopAppResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def stop_app_with_options_async(
@@ -1105,7 +1104,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StopAppResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def stop_app(
@@ -1190,7 +1189,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StopAppResourcesResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def stop_app_resources_with_options_async(
@@ -1249,7 +1248,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.StopAppResourcesResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def stop_app_resources(
@@ -1334,7 +1333,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.UnbindResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def unbind_with_options_async(
@@ -1393,7 +1392,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210903_models.UnbindResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def unbind(
