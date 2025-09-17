@@ -41,6 +41,102 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def describe_push_metering_data_with_options(
+        self,
+        request: marketplace_intl_20221230_models.DescribePushMeteringDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.DescribePushMeteringDataResponse:
+        """
+        @summary 获取推送计量数据结果
+        
+        @param request: DescribePushMeteringDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePushMeteringDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.push_order_biz_id):
+            query['PushOrderBizId'] = request.push_order_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePushMeteringData',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.DescribePushMeteringDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_push_metering_data_with_options_async(
+        self,
+        request: marketplace_intl_20221230_models.DescribePushMeteringDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> marketplace_intl_20221230_models.DescribePushMeteringDataResponse:
+        """
+        @summary 获取推送计量数据结果
+        
+        @param request: DescribePushMeteringDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePushMeteringDataResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.push_order_biz_id):
+            query['PushOrderBizId'] = request.push_order_biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePushMeteringData',
+            version='2022-12-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.DescribePushMeteringDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_push_metering_data(
+        self,
+        request: marketplace_intl_20221230_models.DescribePushMeteringDataRequest,
+    ) -> marketplace_intl_20221230_models.DescribePushMeteringDataResponse:
+        """
+        @summary 获取推送计量数据结果
+        
+        @param request: DescribePushMeteringDataRequest
+        @return: DescribePushMeteringDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_push_metering_data_with_options(request, runtime)
+
+    async def describe_push_metering_data_async(
+        self,
+        request: marketplace_intl_20221230_models.DescribePushMeteringDataRequest,
+    ) -> marketplace_intl_20221230_models.DescribePushMeteringDataResponse:
+        """
+        @summary 获取推送计量数据结果
+        
+        @param request: DescribePushMeteringDataRequest
+        @return: DescribePushMeteringDataResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_push_metering_data_with_options_async(request, runtime)
+
     def describe_seller_instances_with_options(
         self,
         request: marketplace_intl_20221230_models.DescribeSellerInstancesRequest,
@@ -79,16 +175,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_seller_instances_with_options_async(
         self,
@@ -128,16 +218,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.DescribeSellerInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_seller_instances(
         self,
@@ -199,16 +283,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def notice_instance_user_with_options_async(
         self,
@@ -244,16 +322,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.NoticeInstanceUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def notice_instance_user(
         self,
@@ -313,16 +385,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.PushMeteringDataResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.PushMeteringDataResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.PushMeteringDataResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def push_metering_data_with_options_async(
         self,
@@ -356,16 +422,10 @@ class Client(OpenApiClient):
             req_body_type='formData',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.PushMeteringDataResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                marketplace_intl_20221230_models.PushMeteringDataResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            marketplace_intl_20221230_models.PushMeteringDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def push_metering_data(
         self,

@@ -1,3 +1,8 @@
+2025-09-17 Version: 1.3.0
+- Support API DescribePushMeteringData.
+- Update API PushMeteringData: add request parameters MeteringData.$.PushOrderBizId.
+
+
 2025-03-14 Version: 1.2.2
 - Update API DescribeSellerInstances: update param PageIndex.
 - Update API DescribeSellerInstances: update param PageSize.
