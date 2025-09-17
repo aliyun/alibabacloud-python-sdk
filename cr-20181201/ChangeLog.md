@@ -1,3 +1,7 @@
+2025-09-17 Version: 2.0.5
+- Update API GetInstanceVpcEndpoint: add response parameters Body.LinkedVpcs.$.Issue.
+
+
 2025-08-20 Version: 2.0.4
 - Update API GetArtifactLifecycleRule: add response parameters Body.Policies.
 - Update API ListArtifactLifecycleRule: add response parameters Body.Rules.$.Policies.

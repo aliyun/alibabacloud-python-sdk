@@ -9620,6 +9620,7 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
         self,
         default_access: bool = None,
         ip: str = None,
+        issue: str = None,
         status: str = None,
         vpc_id: str = None,
         vswitch_id: str = None,
@@ -9628,6 +9629,7 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
         self.default_access = default_access
         # IP address.
         self.ip = ip
+        self.issue = issue
         # The status of the VPC. Valid values:
         # 
         # *   `CREATING`
@@ -9651,6 +9653,8 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
             result['DefaultAccess'] = self.default_access
         if self.ip is not None:
             result['Ip'] = self.ip
+        if self.issue is not None:
+            result['Issue'] = self.issue
         if self.status is not None:
             result['Status'] = self.status
         if self.vpc_id is not None:
@@ -9665,6 +9669,8 @@ class GetInstanceVpcEndpointResponseBodyLinkedVpcs(TeaModel):
             self.default_access = m.get('DefaultAccess')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
+        if m.get('Issue') is not None:
+            self.issue = m.get('Issue')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('VpcId') is not None:
