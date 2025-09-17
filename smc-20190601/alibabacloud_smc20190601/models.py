@@ -14,7 +14,7 @@ class AssociateSourceServersRequest(TeaModel):
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
-        # The IDs of migration sources. You can specify up to 50 IDs.
+        # The ID of the migration source. A workgroup can be associated with a maximum of 50 migration sources.
         # 
         # This parameter is required.
         self.source_id = source_id
@@ -1411,13 +1411,9 @@ class CreateWorkgroupRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of a specified workgroup.
-        # 
-        # You can specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://.
+        # The tag key of the workgroup. You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of a specified workgroup.
-        # 
-        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        # The tag value of the workgroup. The tag value can be up to 128 characters in length, cannot be an empty string, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -1456,18 +1452,16 @@ class CreateWorkgroupRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
-        # The description of the workgroup.
-        # 
-        # The description must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The description of the workgroup. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The name of the workgroup. The name must meet the following requirements:
         # 
         # *   The name must be unique.
-        # *   The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # *   The name must be 2 to 64 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
-        # The tag information of the workgroup.
+        # The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.
         self.tag = tag
 
     def validate(self):
@@ -1526,7 +1520,7 @@ class CreateWorkgroupResponseBody(TeaModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The workgroup ID.
+        # The ID of the workgroup.
         self.workgroup_id = workgroup_id
 
     def validate(self):
@@ -2069,7 +2063,7 @@ class DeleteWorkgroupRequest(TeaModel):
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
-        # The workgroup ID.
+        # The ID of the workgroup.
         # 
         # This parameter is required.
         self.workgroup_id = workgroup_id
@@ -3151,6 +3145,7 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         v_switch_id: str = None,
         valid_time: str = None,
         vpc_id: str = None,
+        workgroup_id: str = None,
     ):
         # The business status of the migration job. Valid values:
         # 
@@ -3276,6 +3271,7 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
         self.valid_time = valid_time
         # The ID of a virtual private cloud (VPC) for which you have configured an Express Connect circuit or a VPN gateway.
         self.vpc_id = vpc_id
+        self.workgroup_id = workgroup_id
 
     def validate(self):
         if self.data_disks:
@@ -3381,6 +3377,8 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
             result['ValidTime'] = self.valid_time
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
+        if self.workgroup_id is not None:
+            result['WorkgroupId'] = self.workgroup_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3476,6 +3474,8 @@ class DescribeReplicationJobsResponseBodyReplicationJobsReplicationJob(TeaModel)
             self.valid_time = m.get('ValidTime')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        if m.get('WorkgroupId') is not None:
+            self.workgroup_id = m.get('WorkgroupId')
         return self
 
 
@@ -4803,13 +4803,9 @@ class DescribeWorkgroupsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the workgroup. Valid values of N: 1 to 20.
-        # 
-        # You cannot specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+        # The tag key of the workgroup. You cannot specify an empty string as a tag key. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value of the workgroup. Valid values of N: 1 to 20.
-        # 
-        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        # The tag value of the workgroup. The tag value can be up to 128 characters in length, cannot be an empty string, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -4863,7 +4859,7 @@ class DescribeWorkgroupsRequest(TeaModel):
         # *   Cutover
         # *   Completed
         self.status = status
-        # The list of tag information of workgroups.
+        # The tags of the reserved instance. You can specify up to 20 tags. If you specify multiple tags, the tag keys cannot be duplicated.
         self.tag = tag
         # The workgroup IDs. You can specify up to 50 workgroup IDs.
         self.workgroup_id = workgroup_id
@@ -4931,12 +4927,8 @@ class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroupTagsTag(TeaModel):
         value: str = None,
     ):
         # The tag key of the workgroup.
-        # 
-        # You can specify an empty string as a tag key. The tag key can be up to 64 characters in length and cannot contain http:// or https://.
         self.key = key
-        # The tag value of the workgroup. Valid values of N: 1 to 20.
-        # 
-        # You can specify an empty string as a tag value. The tag value can be up to 64 characters in length and cannot contain http:// or https://.
+        # The tag value of the workgroup.
         self.value = value
 
     def validate(self):
@@ -5126,7 +5118,7 @@ class DescribeWorkgroupsResponseBodyWorkgroupsWorkgroup(TeaModel):
         self.tags = tags
         # The alert information of the workgroup, which can contain multiple types of alerts.
         self.warnings = warnings
-        # The workgroup ID.
+        # The ID of the workgroup.
         self.workgroup_id = workgroup_id
 
     def validate(self):
@@ -5226,7 +5218,7 @@ class DescribeWorkgroupsResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of workgroups.
         self.total_count = total_count
-        # The queried workgroups.
+        # The details of the workgroup.
         self.workgroups = workgroups
 
     def validate(self):
@@ -6739,15 +6731,16 @@ class ModifyWorkgroupAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         workgroup_id: str = None,
     ):
-        # The new description of the workgroup.
-        # 
-        # The description must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The new description of the workgroup. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # The new name of the workgroup. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        # The name of the workgroup. The name must meet the following requirements:
+        # 
+        # *   The name must be unique.
+        # *   The name must be 2 to 64 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), periods (.), underscores (_), and hyphens (-).
         self.name = name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
-        # The workgroup ID.
+        # The ID of the workgroup.
         # 
         # This parameter is required.
         self.workgroup_id = workgroup_id
