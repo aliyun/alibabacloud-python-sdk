@@ -7764,7 +7764,7 @@ class CreatePermissionApplyOrderRequestApplyObjectColumnMetaList(TeaModel):
         name: str = None,
     ):
         self.actions = actions
-        # The field on which you want to request permissions. If you want to request permissions on an entire table, enter all fields in the table. You can request permissions on specific fields of a table in a MaxCompute project only after LabelSecurity is enabled for this project. If LabelSecurity is disabled, you can request permissions only on an entire table.
+        # Permissions for the target columns. Enter the column names here. If applying for permissions on the entire table, enter all column names of the table. Permissions for specific columns can only be requested if labelSecurity is enabled for the MaxCompute project. Otherwise, you can only apply for permissions on the entire table.
         self.name = name
 
     def validate(self):
@@ -7798,11 +7798,11 @@ class CreatePermissionApplyOrderRequestApplyObject(TeaModel):
         column_meta_list: List[CreatePermissionApplyOrderRequestApplyObjectColumnMetaList] = None,
         name: str = None,
     ):
-        # The permission that you want to request. If you want to request multiple permissions at the same time, separate them with commas (,). You can request only the following permissions: Select, Describe, Drop, Alter, Update, and Download.
+        # The type of permissions requested. Use commas (,) to separate multiple permission types in a single request. Currently only supports Select, Describe, Drop, Alter, Update, and Download permission types.
         self.actions = actions
-        # The fields on which you want to request permissions.
+        # The list of column objects.
         self.column_meta_list = column_meta_list
-        # The name of the object on which you want to request permissions. You can request permissions only on MaxCompute tables. Set this parameter to the name of the table on which you want to request permissions.
+        # The object you request access to. Currently, only permission requests for MaxCompute tables are supported. The name of the target table needs to be entered here.
         self.name = name
 
     def validate(self):
@@ -7855,7 +7855,7 @@ class CreatePermissionApplyOrderRequest(TeaModel):
         order_type: int = None,
         workspace_id: int = None,
     ):
-        # The objects on which you want to request permissions.
+        # The list of requested objects.
         # 
         # This parameter is required.
         self.apply_object = apply_object
@@ -7871,13 +7871,13 @@ class CreatePermissionApplyOrderRequest(TeaModel):
         self.catalog_name = catalog_name
         # The expiration time of the permissions that you request. This value is a UNIX timestamp. The default value is January 1, 2065. If LabelSecurity is disabled for the MaxCompute project in which you want to request permissions on the fields of a table, or the security level of the fields is 0 or is lower than or equal to the security level of the Alibaba Cloud account for which you want to request permissions, you can request only permanent permissions. You can go to the Workspace Management page in the DataWorks console, click MaxCompute Management in the left-side navigation pane, and then check whether column-level access control is enabled. You can go to your DataWorks workspace, view the security level of the fields in Data Map, and then view the security level of the Alibaba Cloud account on the User Management page.
         self.deadline = deadline
-        # The type of the compute engine in which you want to request permissions on the fields of a table. The parameter value is odps and cannot be changed. This value indicates that you can request permissions only on fields of tables in the MaxCompute compute engine.
+        # The type of compute engine for permission requests. Currently only supports ODPS, which means only MaxCompute compute engine permissions are supported.
         self.engine_type = engine_type
-        # The name of the MaxCompute project in which you request permissions on the fields of a table.
+        # The name of the MaxCompute project you request access to.
         self.max_compute_project_name = max_compute_project_name
-        # The type of the permission request order. The parameter value is 1 and cannot be changed. This value indicates ACL-based authorization.
+        # The request type. The only supported value is 1, which represents an object ACL permission request.
         self.order_type = order_type
-        # The ID of the DataWorks workspace that is associated with the MaxCompute project in which you want to request permissions on the fields of a table. You can go to the SettingCenter page in the DataWorks console to view the workspace ID.
+        # The DataWorks workspace ID to which the MaxCompute project belongs for permission requests. You can check the workspace ID on the DataWorks workspace configuration page.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -41893,6 +41893,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(TeaModel):
         apply_timestamp: int = None,
         approve_account_list: List[GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveAccountList] = None,
         approve_content: GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent = None,
+        finish_aapproval_timestamp: int = None,
+        finish_approval_comment: str = None,
         flow_id: str = None,
         flow_status: int = None,
         grantee_object_list: List[GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailGranteeObjectList] = None,
@@ -41905,6 +41907,8 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(TeaModel):
         self.approve_account_list = approve_account_list
         # The content of the permission request.
         self.approve_content = approve_content
+        self.finish_aapproval_timestamp = finish_aapproval_timestamp
+        self.finish_approval_comment = finish_approval_comment
         # The ID of the permission request order.
         self.flow_id = flow_id
         # The status of the permission request order. Valid values:
@@ -41945,6 +41949,10 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(TeaModel):
                 result['ApproveAccountList'].append(k.to_map() if k else None)
         if self.approve_content is not None:
             result['ApproveContent'] = self.approve_content.to_map()
+        if self.finish_aapproval_timestamp is not None:
+            result['FinishAapprovalTimestamp'] = self.finish_aapproval_timestamp
+        if self.finish_approval_comment is not None:
+            result['FinishApprovalComment'] = self.finish_approval_comment
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
         if self.flow_status is not None:
@@ -41969,6 +41977,10 @@ class GetPermissionApplyOrderDetailResponseBodyApplyOrderDetail(TeaModel):
         if m.get('ApproveContent') is not None:
             temp_model = GetPermissionApplyOrderDetailResponseBodyApplyOrderDetailApproveContent()
             self.approve_content = temp_model.from_map(m['ApproveContent'])
+        if m.get('FinishAapprovalTimestamp') is not None:
+            self.finish_aapproval_timestamp = m.get('FinishAapprovalTimestamp')
+        if m.get('FinishApprovalComment') is not None:
+            self.finish_approval_comment = m.get('FinishApprovalComment')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
         if m.get('FlowStatus') is not None:
@@ -62589,7 +62601,17 @@ class ListPermissionApplyOrdersRequest(TeaModel):
         table_name: str = None,
         workspace_id: int = None,
     ):
+        # 设置申请单类型，枚举值为：
+        # 
+        # - [ MaxComputeTable]  MaxCompute表权限申请单
+        # - [ MaxComputeFunction] MaxCompute函数申请单
+        # - [ MaxComputeResource] MaxCompute资源申请单
+        # - [ DLFSchema] DLF1.0版本Schema权限申请单
+        # - [ DLFTable] DLF1.0版本表权限申请单
+        # - [ DLFColumn] DLF1.0版本列权限申请单
+        # - [ DsApiDeploy] 发布数据服务权限申请单
         self.apply_type = apply_type
+        # 查询的数据目录名称。
         self.catalog_name = catalog_name
         # The end of the time range to query. You can query all the permissions request orders that have been submitted before the time. The parameter value is a UNIX timestamp. If you do not specify the parameter, all permission request orders that are submitted before the current time are queried.
         self.end_time = end_time
@@ -62819,6 +62841,8 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder(TeaModel):
         apply_base_id: str = None,
         apply_timestamp: int = None,
         approve_content: ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent = None,
+        finish_approval_comment: str = None,
+        finish_approval_timestamp: int = None,
         flow_id: str = None,
         flow_status: int = None,
     ):
@@ -62828,6 +62852,8 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder(TeaModel):
         self.apply_timestamp = apply_timestamp
         # The content of the permission request order.
         self.approve_content = approve_content
+        self.finish_approval_comment = finish_approval_comment
+        self.finish_approval_timestamp = finish_approval_timestamp
         # The ID of the permission request order.
         self.flow_id = flow_id
         # The status of the permission request order. Valid values:
@@ -62854,6 +62880,10 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder(TeaModel):
             result['ApplyTimestamp'] = self.apply_timestamp
         if self.approve_content is not None:
             result['ApproveContent'] = self.approve_content.to_map()
+        if self.finish_approval_comment is not None:
+            result['FinishApprovalComment'] = self.finish_approval_comment
+        if self.finish_approval_timestamp is not None:
+            result['FinishApprovalTimestamp'] = self.finish_approval_timestamp
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
         if self.flow_status is not None:
@@ -62869,6 +62899,10 @@ class ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrder(TeaModel):
         if m.get('ApproveContent') is not None:
             temp_model = ListPermissionApplyOrdersResponseBodyApplyOrdersApplyOrderApproveContent()
             self.approve_content = temp_model.from_map(m['ApproveContent'])
+        if m.get('FinishApprovalComment') is not None:
+            self.finish_approval_comment = m.get('FinishApprovalComment')
+        if m.get('FinishApprovalTimestamp') is not None:
+            self.finish_approval_timestamp = m.get('FinishApprovalTimestamp')
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')
         if m.get('FlowStatus') is not None:

@@ -24932,7 +24932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
-        @summary Queries a list of permission request orders.
+        @summary Views permission requests.
         
         @param request: ListPermissionApplyOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24991,7 +24991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
-        @summary Queries a list of permission request orders.
+        @summary Views permission requests.
         
         @param request: ListPermissionApplyOrdersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25049,7 +25049,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
-        @summary Queries a list of permission request orders.
+        @summary Views permission requests.
         
         @param request: ListPermissionApplyOrdersRequest
         @return: ListPermissionApplyOrdersResponse
@@ -25062,7 +25062,7 @@ class Client(OpenApiClient):
         request: dataworks_public_20200518_models.ListPermissionApplyOrdersRequest,
     ) -> dataworks_public_20200518_models.ListPermissionApplyOrdersResponse:
         """
-        @summary Queries a list of permission request orders.
+        @summary Views permission requests.
         
         @param request: ListPermissionApplyOrdersRequest
         @return: ListPermissionApplyOrdersResponse

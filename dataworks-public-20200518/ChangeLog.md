@@ -1,3 +1,10 @@
+2025-09-17 Version: 8.0.4
+- Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.FinishAapprovalTimestamp.
+- Update API GetPermissionApplyOrderDetail: add response parameters Body.ApplyOrderDetail.FinishApprovalComment.
+- Update API ListPermissionApplyOrders: add response parameters Body.ApplyOrders.ApplyOrder.$.FinishApprovalComment.
+- Update API ListPermissionApplyOrders: add response parameters Body.ApplyOrders.ApplyOrder.$.FinishApprovalTimestamp.
+
+
 2025-09-15 Version: 8.0.3
 - Update API ListDataServicePublishedApis: add response parameters Body.Data.Apis.$.SqlMode.
 
