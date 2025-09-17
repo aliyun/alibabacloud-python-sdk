@@ -1,3 +1,26 @@
+2025-09-17 Version: 6.5.0
+- Support API DescribeHybridCloudBasicMonitor.
+- Support API DescribeHybridCloudClusterServers.
+- Support API DescribeHybridCloudProcessMonitor.
+- Support API DescribeHybridCloudResourceDetail.
+- Support API DescribeHybridCloudSdkServers.
+- Support API DescribeHybridCloudSupportRegions.
+- Support API DescribeHybridCloudUnsupportPorts.
+- Support API ModifyHybridCloudCluster.
+- Update API CreateDomain: add request parameters Redirect.WLProxyClientIp.
+- Update API CreateDomain: add request parameters Redirect.WebServerType.
+- Update API CreateDomain: add request parameters Redirect.XClientIp.
+- Update API CreateDomain: add request parameters Redirect.XTrueIp.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.WLProxyClientIp.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.WebServerType.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.XClientIp.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.XTrueIp.
+- Update API ModifyDomain: add request parameters Redirect.WLProxyClientIp.
+- Update API ModifyDomain: add request parameters Redirect.WebServerType.
+- Update API ModifyDomain: add request parameters Redirect.XClientIp.
+- Update API ModifyDomain: add request parameters Redirect.XTrueIp.
+
+
 2025-09-15 Version: 6.4.0
 - Support API CreateHybridCloudCluster.
 - Support API DescribeCommonLogFields.

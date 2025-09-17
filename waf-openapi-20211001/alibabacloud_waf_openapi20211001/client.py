@@ -10715,6 +10715,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_free_user_events_with_options_async(request, runtime)
 
+    def describe_hybrid_cloud_basic_monitor_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse:
+        """
+        @summary Queries the system status of a node in a hybrid cloud cluster.
+        
+        @param request: DescribeHybridCloudBasicMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudBasicMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mid):
+            query['Mid'] = request.mid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudBasicMonitor',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_basic_monitor_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse:
+        """
+        @summary Queries the system status of a node in a hybrid cloud cluster.
+        
+        @param request: DescribeHybridCloudBasicMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudBasicMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mid):
+            query['Mid'] = request.mid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudBasicMonitor',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_basic_monitor(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse:
+        """
+        @summary Queries the system status of a node in a hybrid cloud cluster.
+        
+        @param request: DescribeHybridCloudBasicMonitorRequest
+        @return: DescribeHybridCloudBasicMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_basic_monitor_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_basic_monitor_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudBasicMonitorResponse:
+        """
+        @summary Queries the system status of a node in a hybrid cloud cluster.
+        
+        @param request: DescribeHybridCloudBasicMonitorRequest
+        @return: DescribeHybridCloudBasicMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_basic_monitor_with_options_async(request, runtime)
+
     def describe_hybrid_cloud_cluster_rule_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeHybridCloudClusterRuleRequest,
@@ -10934,6 +11042,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_cluster_rules_with_options_async(request, runtime)
+
+    def describe_hybrid_cloud_cluster_servers_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse:
+        """
+        @summary 集群机器列表
+        
+        @param request: DescribeHybridCloudClusterServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudClusterServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudClusterServers',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_cluster_servers_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse:
+        """
+        @summary 集群机器列表
+        
+        @param request: DescribeHybridCloudClusterServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudClusterServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_type):
+            query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.host_name):
+            query['HostName'] = request.host_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            query['Ip'] = request.ip
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudClusterServers',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_cluster_servers(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterServersRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse:
+        """
+        @summary 集群机器列表
+        
+        @param request: DescribeHybridCloudClusterServersRequest
+        @return: DescribeHybridCloudClusterServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_cluster_servers_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_cluster_servers_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudClusterServersRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudClusterServersResponse:
+        """
+        @summary 集群机器列表
+        
+        @param request: DescribeHybridCloudClusterServersRequest
+        @return: DescribeHybridCloudClusterServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_cluster_servers_with_options_async(request, runtime)
 
     def describe_hybrid_cloud_clusters_with_options(
         self,
@@ -11167,6 +11407,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_groups_with_options_async(request, runtime)
 
+    def describe_hybrid_cloud_process_monitor_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse:
+        """
+        @summary Queries the status of applications running on a hybrid cloud cluster node.
+        
+        @param request: DescribeHybridCloudProcessMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudProcessMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mid):
+            query['Mid'] = request.mid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudProcessMonitor',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_process_monitor_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse:
+        """
+        @summary Queries the status of applications running on a hybrid cloud cluster node.
+        
+        @param request: DescribeHybridCloudProcessMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudProcessMonitorResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.mid):
+            query['Mid'] = request.mid
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudProcessMonitor',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_process_monitor(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse:
+        """
+        @summary Queries the status of applications running on a hybrid cloud cluster node.
+        
+        @param request: DescribeHybridCloudProcessMonitorRequest
+        @return: DescribeHybridCloudProcessMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_process_monitor_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_process_monitor_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudProcessMonitorResponse:
+        """
+        @summary Queries the status of applications running on a hybrid cloud cluster node.
+        
+        @param request: DescribeHybridCloudProcessMonitorRequest
+        @return: DescribeHybridCloudProcessMonitorResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_process_monitor_with_options_async(request, runtime)
+
+    def describe_hybrid_cloud_resource_detail_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudResourceDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse:
+        """
+        @summary 查询混合云域名详情
+        
+        @param request: DescribeHybridCloudResourceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudResourceDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend):
+            query['Backend'] = request.backend
+        if not UtilClient.is_unset(request.cname_enabled):
+            query['CnameEnabled'] = request.cname_enabled
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudResourceDetail',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_resource_detail_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudResourceDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse:
+        """
+        @summary 查询混合云域名详情
+        
+        @param request: DescribeHybridCloudResourceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudResourceDetailResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backend):
+            query['Backend'] = request.backend
+        if not UtilClient.is_unset(request.cname_enabled):
+            query['CnameEnabled'] = request.cname_enabled
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudResourceDetail',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_resource_detail(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudResourceDetailRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse:
+        """
+        @summary 查询混合云域名详情
+        
+        @param request: DescribeHybridCloudResourceDetailRequest
+        @return: DescribeHybridCloudResourceDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_resource_detail_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_resource_detail_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudResourceDetailRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudResourceDetailResponse:
+        """
+        @summary 查询混合云域名详情
+        
+        @param request: DescribeHybridCloudResourceDetailRequest
+        @return: DescribeHybridCloudResourceDetailResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_resource_detail_with_options_async(request, runtime)
+
     def describe_hybrid_cloud_resources_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeHybridCloudResourcesRequest,
@@ -11291,6 +11763,98 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_resources_with_options_async(request, runtime)
 
+    def describe_hybrid_cloud_sdk_servers_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSdkServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse:
+        """
+        @summary 获取SDK信息
+        
+        @param request: DescribeHybridCloudSdkServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudSdkServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudSdkServers',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_sdk_servers_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSdkServersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse:
+        """
+        @summary 获取SDK信息
+        
+        @param request: DescribeHybridCloudSdkServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudSdkServersResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudSdkServers',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_sdk_servers(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSdkServersRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse:
+        """
+        @summary 获取SDK信息
+        
+        @param request: DescribeHybridCloudSdkServersRequest
+        @return: DescribeHybridCloudSdkServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_sdk_servers_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_sdk_servers_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSdkServersRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSdkServersResponse:
+        """
+        @summary 获取SDK信息
+        
+        @param request: DescribeHybridCloudSdkServersRequest
+        @return: DescribeHybridCloudSdkServersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_sdk_servers_with_options_async(request, runtime)
+
     def describe_hybrid_cloud_server_regions_with_options(
         self,
         request: waf_openapi_20211001_models.DescribeHybridCloudServerRegionsRequest,
@@ -11402,6 +11966,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_server_regions_with_options_async(request, runtime)
+
+    def describe_hybrid_cloud_support_regions_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse:
+        """
+        @summary 查询接入区域
+        
+        @param request: DescribeHybridCloudSupportRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudSupportRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudSupportRegions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_support_regions_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse:
+        """
+        @summary 查询接入区域
+        
+        @param request: DescribeHybridCloudSupportRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudSupportRegionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudSupportRegions',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_support_regions(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse:
+        """
+        @summary 查询接入区域
+        
+        @param request: DescribeHybridCloudSupportRegionsRequest
+        @return: DescribeHybridCloudSupportRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_support_regions_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_support_regions_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudSupportRegionsResponse:
+        """
+        @summary 查询接入区域
+        
+        @param request: DescribeHybridCloudSupportRegionsRequest
+        @return: DescribeHybridCloudSupportRegionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_support_regions_with_options_async(request, runtime)
 
     def describe_hybrid_cloud_unassigned_machines_with_options(
         self,
@@ -11526,6 +12194,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_hybrid_cloud_unassigned_machines_with_options_async(request, runtime)
+
+    def describe_hybrid_cloud_unsupport_ports_with_options(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse:
+        """
+        @summary Queries the ports that are not supported by the hybrid cloud mode.
+        
+        @param request: DescribeHybridCloudUnsupportPortsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudUnsupportPortsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudUnsupportPorts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hybrid_cloud_unsupport_ports_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse:
+        """
+        @summary Queries the ports that are not supported by the hybrid cloud mode.
+        
+        @param request: DescribeHybridCloudUnsupportPortsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHybridCloudUnsupportPortsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHybridCloudUnsupportPorts',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hybrid_cloud_unsupport_ports(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse:
+        """
+        @summary Queries the ports that are not supported by the hybrid cloud mode.
+        
+        @param request: DescribeHybridCloudUnsupportPortsRequest
+        @return: DescribeHybridCloudUnsupportPortsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hybrid_cloud_unsupport_ports_with_options(request, runtime)
+
+    async def describe_hybrid_cloud_unsupport_ports_async(
+        self,
+        request: waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsRequest,
+    ) -> waf_openapi_20211001_models.DescribeHybridCloudUnsupportPortsResponse:
+        """
+        @summary Queries the ports that are not supported by the hybrid cloud mode.
+        
+        @param request: DescribeHybridCloudUnsupportPortsRequest
+        @return: DescribeHybridCloudUnsupportPortsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hybrid_cloud_unsupport_ports_with_options_async(request, runtime)
 
     def describe_hybrid_cloud_user_with_options(
         self,
@@ -20282,6 +21054,166 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_domain_punish_status_with_options_async(request, runtime)
+
+    def modify_hybrid_cloud_cluster_with_options(
+        self,
+        request: waf_openapi_20211001_models.ModifyHybridCloudClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterResponse:
+        """
+        @summary Modifies information about a hybrid cloud cluster.
+        
+        @param request: ModifyHybridCloudClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridCloudClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_region):
+            query['AccessRegion'] = request.access_region
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not UtilClient.is_unset(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_fields_not_returned):
+            query['LogFieldsNotReturned'] = request.log_fields_not_returned
+        if not UtilClient.is_unset(request.protection_server_count):
+            query['ProtectionServerCount'] = request.protection_server_count
+        if not UtilClient.is_unset(request.proxy_status):
+            query['ProxyStatus'] = request.proxy_status
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridCloudCluster',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hybrid_cloud_cluster_with_options_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyHybridCloudClusterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterResponse:
+        """
+        @summary Modifies information about a hybrid cloud cluster.
+        
+        @param request: ModifyHybridCloudClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHybridCloudClusterResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.access_mode):
+            query['AccessMode'] = request.access_mode
+        if not UtilClient.is_unset(request.access_region):
+            query['AccessRegion'] = request.access_region
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.http_ports):
+            query['HttpPorts'] = request.http_ports
+        if not UtilClient.is_unset(request.https_ports):
+            query['HttpsPorts'] = request.https_ports
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_fields_not_returned):
+            query['LogFieldsNotReturned'] = request.log_fields_not_returned
+        if not UtilClient.is_unset(request.protection_server_count):
+            query['ProtectionServerCount'] = request.protection_server_count
+        if not UtilClient.is_unset(request.proxy_status):
+            query['ProxyStatus'] = request.proxy_status
+        if not UtilClient.is_unset(request.proxy_type):
+            query['ProxyType'] = request.proxy_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not UtilClient.is_unset(request.rule_config):
+            query['RuleConfig'] = request.rule_config
+        if not UtilClient.is_unset(request.rule_status):
+            query['RuleStatus'] = request.rule_status
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHybridCloudCluster',
+            version='2021-10-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            waf_openapi_20211001_models.ModifyHybridCloudClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hybrid_cloud_cluster(
+        self,
+        request: waf_openapi_20211001_models.ModifyHybridCloudClusterRequest,
+    ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterResponse:
+        """
+        @summary Modifies information about a hybrid cloud cluster.
+        
+        @param request: ModifyHybridCloudClusterRequest
+        @return: ModifyHybridCloudClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hybrid_cloud_cluster_with_options(request, runtime)
+
+    async def modify_hybrid_cloud_cluster_async(
+        self,
+        request: waf_openapi_20211001_models.ModifyHybridCloudClusterRequest,
+    ) -> waf_openapi_20211001_models.ModifyHybridCloudClusterResponse:
+        """
+        @summary Modifies information about a hybrid cloud cluster.
+        
+        @param request: ModifyHybridCloudClusterRequest
+        @return: ModifyHybridCloudClusterResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hybrid_cloud_cluster_with_options_async(request, runtime)
 
     def modify_hybrid_cloud_cluster_bypass_status_with_options(
         self,

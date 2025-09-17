@@ -2510,7 +2510,11 @@ class CreateDomainRequestRedirect(TeaModel):
         routing_rules: str = None,
         sni_enabled: bool = None,
         sni_host: str = None,
+        wlproxy_client_ip: bool = None,
+        web_server_type: bool = None,
         write_timeout: int = None,
+        xclient_ip: bool = None,
+        xtrue_ip: bool = None,
         xff_proto: bool = None,
     ):
         self.backend_ports = backend_ports
@@ -2577,8 +2581,12 @@ class CreateDomainRequestRedirect(TeaModel):
         # 
         # >  This parameter is required only if you set **SniEnabled** to **true**.
         self.sni_host = sni_host
+        self.wlproxy_client_ip = wlproxy_client_ip
+        self.web_server_type = web_server_type
         # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
+        self.xclient_ip = xclient_ip
+        self.xtrue_ip = xtrue_ip
         # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
@@ -2637,8 +2645,16 @@ class CreateDomainRequestRedirect(TeaModel):
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
+        if self.wlproxy_client_ip is not None:
+            result['WLProxyClientIp'] = self.wlproxy_client_ip
+        if self.web_server_type is not None:
+            result['WebServerType'] = self.web_server_type
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xclient_ip is not None:
+            result['XClientIp'] = self.xclient_ip
+        if self.xtrue_ip is not None:
+            result['XTrueIp'] = self.xtrue_ip
         if self.xff_proto is not None:
             result['XffProto'] = self.xff_proto
         return result
@@ -2683,8 +2699,16 @@ class CreateDomainRequestRedirect(TeaModel):
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
+        if m.get('WLProxyClientIp') is not None:
+            self.wlproxy_client_ip = m.get('WLProxyClientIp')
+        if m.get('WebServerType') is not None:
+            self.web_server_type = m.get('WebServerType')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XClientIp') is not None:
+            self.xclient_ip = m.get('XClientIp')
+        if m.get('XTrueIp') is not None:
+            self.xtrue_ip = m.get('XTrueIp')
         if m.get('XffProto') is not None:
             self.xff_proto = m.get('XffProto')
         return self
@@ -18286,7 +18310,11 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         retry: bool = None,
         sni_enabled: bool = None,
         sni_host: str = None,
+        wlproxy_client_ip: bool = None,
+        web_server_type: bool = None,
         write_timeout: int = None,
+        xclient_ip: bool = None,
+        xtrue_ip: bool = None,
         xff_proto: bool = None,
     ):
         self.back_up_backend_list = back_up_backend_list
@@ -18338,8 +18366,12 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self.sni_enabled = sni_enabled
         # The value of the custom SNI field.
         self.sni_host = sni_host
+        self.wlproxy_client_ip = wlproxy_client_ip
+        self.web_server_type = web_server_type
         # The write timeout period. Unit: seconds. Valid values: 5 to 1800.
         self.write_timeout = write_timeout
+        self.xclient_ip = xclient_ip
+        self.xtrue_ip = xtrue_ip
         # Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
@@ -18410,8 +18442,16 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
+        if self.wlproxy_client_ip is not None:
+            result['WLProxyClientIp'] = self.wlproxy_client_ip
+        if self.web_server_type is not None:
+            result['WebServerType'] = self.web_server_type
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xclient_ip is not None:
+            result['XClientIp'] = self.xclient_ip
+        if self.xtrue_ip is not None:
+            result['XTrueIp'] = self.xtrue_ip
         if self.xff_proto is not None:
             result['XffProto'] = self.xff_proto
         return result
@@ -18462,8 +18502,16 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
+        if m.get('WLProxyClientIp') is not None:
+            self.wlproxy_client_ip = m.get('WLProxyClientIp')
+        if m.get('WebServerType') is not None:
+            self.web_server_type = m.get('WebServerType')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XClientIp') is not None:
+            self.xclient_ip = m.get('XClientIp')
+        if m.get('XTrueIp') is not None:
+            self.xtrue_ip = m.get('XTrueIp')
         if m.get('XffProto') is not None:
             self.xff_proto = m.get('XffProto')
         return self
@@ -20671,6 +20719,199 @@ class DescribeFreeUserEventsResponse(TeaModel):
         return self
 
 
+class DescribeHybridCloudBasicMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mid: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The ID of the node.
+        # 
+        # This parameter is required.
+        self.mid = mid
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mid is not None:
+            result['Mid'] = self.mid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors(TeaModel):
+    def __init__(
+        self,
+        levle: str = None,
+        monitor_name: str = None,
+        use_ratio: int = None,
+    ):
+        self.levle = levle
+        # The metric. Valid values:
+        # 
+        # *   **basic_monitor_cpu_usage**: the CPU.
+        # *   **basic_monitor_memory_usage**: the memory.
+        # *   **basic_monitor_disk_usage**: the disk.
+        self.monitor_name = monitor_name
+        # The resource usage.
+        self.use_ratio = use_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.levle is not None:
+            result['Levle'] = self.levle
+        if self.monitor_name is not None:
+            result['MonitorName'] = self.monitor_name
+        if self.use_ratio is not None:
+            result['UseRatio'] = self.use_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Levle') is not None:
+            self.levle = m.get('Levle')
+        if m.get('MonitorName') is not None:
+            self.monitor_name = m.get('MonitorName')
+        if m.get('UseRatio') is not None:
+            self.use_ratio = m.get('UseRatio')
+        return self
+
+
+class DescribeHybridCloudBasicMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        basic_monitors: List[DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The basic metrics.
+        self.basic_monitors = basic_monitors
+        # The ID of the request.
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.basic_monitors:
+            for k in self.basic_monitors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BasicMonitors'] = []
+        if self.basic_monitors is not None:
+            for k in self.basic_monitors:
+                result['BasicMonitors'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.basic_monitors = []
+        if m.get('BasicMonitors') is not None:
+            for k in m.get('BasicMonitors'):
+                temp_model = DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors()
+                self.basic_monitors.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHybridCloudBasicMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudBasicMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudBasicMonitorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHybridCloudClusterRuleRequest(TeaModel):
     def __init__(
         self,
@@ -21092,6 +21333,318 @@ class DescribeHybridCloudClusterRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHybridCloudClusterRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudClusterServersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: int = None,
+        group_name: str = None,
+        group_type: str = None,
+        host_name: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        self.group_name = group_name
+        self.group_type = group_type
+        self.host_name = host_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ip = ip
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudClusterServersResponseBodyClusterServers(TeaModel):
+    def __init__(
+        self,
+        continents: str = None,
+        continents_value: int = None,
+        cpu: int = None,
+        create_timestamp: int = None,
+        custom_name: str = None,
+        group_id: int = None,
+        group_name: str = None,
+        group_type: str = None,
+        host_name: str = None,
+        ip: str = None,
+        job_status: str = None,
+        mac: str = None,
+        memory: int = None,
+        mid: str = None,
+        operator: str = None,
+        operator_value: int = None,
+        region_code: str = None,
+        region_code_value: int = None,
+        status: str = None,
+        update_timestamp: int = None,
+    ):
+        self.continents = continents
+        self.continents_value = continents_value
+        self.cpu = cpu
+        self.create_timestamp = create_timestamp
+        self.custom_name = custom_name
+        self.group_id = group_id
+        self.group_name = group_name
+        self.group_type = group_type
+        self.host_name = host_name
+        self.ip = ip
+        self.job_status = job_status
+        self.mac = mac
+        self.memory = memory
+        self.mid = mid
+        self.operator = operator
+        self.operator_value = operator_value
+        self.region_code = region_code
+        self.region_code_value = region_code_value
+        self.status = status
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.continents is not None:
+            result['Continents'] = self.continents
+        if self.continents_value is not None:
+            result['ContinentsValue'] = self.continents_value
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.custom_name is not None:
+            result['CustomName'] = self.custom_name
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.job_status is not None:
+            result['JobStatus'] = self.job_status
+        if self.mac is not None:
+            result['Mac'] = self.mac
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.mid is not None:
+            result['Mid'] = self.mid
+        if self.operator is not None:
+            result['Operator'] = self.operator
+        if self.operator_value is not None:
+            result['OperatorValue'] = self.operator_value
+        if self.region_code is not None:
+            result['RegionCode'] = self.region_code
+        if self.region_code_value is not None:
+            result['RegionCodeValue'] = self.region_code_value
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Continents') is not None:
+            self.continents = m.get('Continents')
+        if m.get('ContinentsValue') is not None:
+            self.continents_value = m.get('ContinentsValue')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('CustomName') is not None:
+            self.custom_name = m.get('CustomName')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('JobStatus') is not None:
+            self.job_status = m.get('JobStatus')
+        if m.get('Mac') is not None:
+            self.mac = m.get('Mac')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
+        if m.get('Operator') is not None:
+            self.operator = m.get('Operator')
+        if m.get('OperatorValue') is not None:
+            self.operator_value = m.get('OperatorValue')
+        if m.get('RegionCode') is not None:
+            self.region_code = m.get('RegionCode')
+        if m.get('RegionCodeValue') is not None:
+            self.region_code_value = m.get('RegionCodeValue')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class DescribeHybridCloudClusterServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_servers: List[DescribeHybridCloudClusterServersResponseBodyClusterServers] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.cluster_servers = cluster_servers
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.cluster_servers:
+            for k in self.cluster_servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClusterServers'] = []
+        if self.cluster_servers is not None:
+            for k in self.cluster_servers:
+                result['ClusterServers'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.cluster_servers = []
+        if m.get('ClusterServers') is not None:
+            for k in m.get('ClusterServers'):
+                temp_model = DescribeHybridCloudClusterServersResponseBodyClusterServers()
+                self.cluster_servers.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHybridCloudClusterServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudClusterServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudClusterServersResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -21663,6 +22216,689 @@ class DescribeHybridCloudGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHybridCloudGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudProcessMonitorRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        mid: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The ID of the Web Application Firewall (WAF) instance that you want to query.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The ID of the SDK.
+        # 
+        # This parameter is required.
+        self.mid = mid
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.mid is not None:
+            result['Mid'] = self.mid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors(TeaModel):
+    def __init__(
+        self,
+        levle: str = None,
+        process_name: str = None,
+        process_status: int = None,
+    ):
+        self.levle = levle
+        # The service that the application provides. Valid values:
+        # 
+        # *   **tianqingproxy**: centralized management service.
+        # *   **redis**: storage service.
+        # *   **scc**: traffic calculation service.
+        # *   **keeper**: threat intelligence service.
+        # *   **node_exporter**: application log upload service.
+        # *   **xagent**: traffic detection service.
+        # *   **noproxy**: traffic forwarding service.
+        # *   **xloge**: attack log upload service.
+        # *   **ilogtail**: log collection service.
+        # *   **xlogd**: log analysis service.
+        self.process_name = process_name
+        # The status of the application. Valid values:
+        # 
+        # *   **0**: abnormal.
+        # *   **1**: normal.
+        self.process_status = process_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.levle is not None:
+            result['Levle'] = self.levle
+        if self.process_name is not None:
+            result['ProcessName'] = self.process_name
+        if self.process_status is not None:
+            result['ProcessStatus'] = self.process_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Levle') is not None:
+            self.levle = m.get('Levle')
+        if m.get('ProcessName') is not None:
+            self.process_name = m.get('ProcessName')
+        if m.get('ProcessStatus') is not None:
+            self.process_status = m.get('ProcessStatus')
+        return self
+
+
+class DescribeHybridCloudProcessMonitorResponseBody(TeaModel):
+    def __init__(
+        self,
+        process_monitors: List[DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The status of the applications.
+        self.process_monitors = process_monitors
+        # The ID of the request.
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.process_monitors:
+            for k in self.process_monitors:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ProcessMonitors'] = []
+        if self.process_monitors is not None:
+            for k in self.process_monitors:
+                result['ProcessMonitors'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.process_monitors = []
+        if m.get('ProcessMonitors') is not None:
+            for k in m.get('ProcessMonitors'):
+                temp_model = DescribeHybridCloudProcessMonitorResponseBodyProcessMonitors()
+                self.process_monitors.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHybridCloudProcessMonitorResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudProcessMonitorResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudProcessMonitorResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudResourceDetailRequest(TeaModel):
+    def __init__(
+        self,
+        backend: str = None,
+        cname_enabled: bool = None,
+        domain: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.backend = backend
+        self.cname_enabled = cname_enabled
+        # This parameter is required.
+        self.domain = domain
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backend is not None:
+            result['Backend'] = self.backend
+        if self.cname_enabled is not None:
+            result['CnameEnabled'] = self.cname_enabled
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Backend') is not None:
+            self.backend = m.get('Backend')
+        if m.get('CnameEnabled') is not None:
+            self.cname_enabled = m.get('CnameEnabled')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponseBodyDomainListen(TeaModel):
+    def __init__(
+        self,
+        cert_id: str = None,
+        cipher_suite: int = None,
+        custom_ciphers: List[str] = None,
+        enable_tlsv_3: bool = None,
+        exclusive_ip: bool = None,
+        focus_https: bool = None,
+        http_2enabled: bool = None,
+        http_ports: List[int] = None,
+        https_ports: List[int] = None,
+        ipv_6enabled: bool = None,
+        protection_resource: str = None,
+        tlsversion: str = None,
+        xff_header_mode: int = None,
+        xff_headers: List[str] = None,
+    ):
+        self.cert_id = cert_id
+        self.cipher_suite = cipher_suite
+        self.custom_ciphers = custom_ciphers
+        self.enable_tlsv_3 = enable_tlsv_3
+        self.exclusive_ip = exclusive_ip
+        self.focus_https = focus_https
+        self.http_2enabled = http_2enabled
+        self.http_ports = http_ports
+        self.https_ports = https_ports
+        self.ipv_6enabled = ipv_6enabled
+        self.protection_resource = protection_resource
+        self.tlsversion = tlsversion
+        self.xff_header_mode = xff_header_mode
+        self.xff_headers = xff_headers
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_id is not None:
+            result['CertId'] = self.cert_id
+        if self.cipher_suite is not None:
+            result['CipherSuite'] = self.cipher_suite
+        if self.custom_ciphers is not None:
+            result['CustomCiphers'] = self.custom_ciphers
+        if self.enable_tlsv_3 is not None:
+            result['EnableTLSv3'] = self.enable_tlsv_3
+        if self.exclusive_ip is not None:
+            result['ExclusiveIp'] = self.exclusive_ip
+        if self.focus_https is not None:
+            result['FocusHttps'] = self.focus_https
+        if self.http_2enabled is not None:
+            result['Http2Enabled'] = self.http_2enabled
+        if self.http_ports is not None:
+            result['HttpPorts'] = self.http_ports
+        if self.https_ports is not None:
+            result['HttpsPorts'] = self.https_ports
+        if self.ipv_6enabled is not None:
+            result['IPv6Enabled'] = self.ipv_6enabled
+        if self.protection_resource is not None:
+            result['ProtectionResource'] = self.protection_resource
+        if self.tlsversion is not None:
+            result['TLSVersion'] = self.tlsversion
+        if self.xff_header_mode is not None:
+            result['XffHeaderMode'] = self.xff_header_mode
+        if self.xff_headers is not None:
+            result['XffHeaders'] = self.xff_headers
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CertId') is not None:
+            self.cert_id = m.get('CertId')
+        if m.get('CipherSuite') is not None:
+            self.cipher_suite = m.get('CipherSuite')
+        if m.get('CustomCiphers') is not None:
+            self.custom_ciphers = m.get('CustomCiphers')
+        if m.get('EnableTLSv3') is not None:
+            self.enable_tlsv_3 = m.get('EnableTLSv3')
+        if m.get('ExclusiveIp') is not None:
+            self.exclusive_ip = m.get('ExclusiveIp')
+        if m.get('FocusHttps') is not None:
+            self.focus_https = m.get('FocusHttps')
+        if m.get('Http2Enabled') is not None:
+            self.http_2enabled = m.get('Http2Enabled')
+        if m.get('HttpPorts') is not None:
+            self.http_ports = m.get('HttpPorts')
+        if m.get('HttpsPorts') is not None:
+            self.https_ports = m.get('HttpsPorts')
+        if m.get('IPv6Enabled') is not None:
+            self.ipv_6enabled = m.get('IPv6Enabled')
+        if m.get('ProtectionResource') is not None:
+            self.protection_resource = m.get('ProtectionResource')
+        if m.get('TLSVersion') is not None:
+            self.tlsversion = m.get('TLSVersion')
+        if m.get('XffHeaderMode') is not None:
+            self.xff_header_mode = m.get('XffHeaderMode')
+        if m.get('XffHeaders') is not None:
+            self.xff_headers = m.get('XffHeaders')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponseBodyDomainRedirect(TeaModel):
+    def __init__(
+        self,
+        backends: List[str] = None,
+        cname_enabled: bool = None,
+        connect_timeout: int = None,
+        focus_http_backend: bool = None,
+        keepalive: bool = None,
+        keepalive_requests: int = None,
+        keepalive_timeout: int = None,
+        loadbalance: str = None,
+        read_timeout: int = None,
+        request_headers: List[DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders] = None,
+        retry: bool = None,
+        routing_rules: str = None,
+        sni_enabled: bool = None,
+        sni_host: str = None,
+        write_timeout: int = None,
+    ):
+        self.backends = backends
+        self.cname_enabled = cname_enabled
+        self.connect_timeout = connect_timeout
+        self.focus_http_backend = focus_http_backend
+        self.keepalive = keepalive
+        self.keepalive_requests = keepalive_requests
+        self.keepalive_timeout = keepalive_timeout
+        self.loadbalance = loadbalance
+        self.read_timeout = read_timeout
+        self.request_headers = request_headers
+        self.retry = retry
+        self.routing_rules = routing_rules
+        self.sni_enabled = sni_enabled
+        self.sni_host = sni_host
+        self.write_timeout = write_timeout
+
+    def validate(self):
+        if self.request_headers:
+            for k in self.request_headers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backends is not None:
+            result['Backends'] = self.backends
+        if self.cname_enabled is not None:
+            result['CnameEnabled'] = self.cname_enabled
+        if self.connect_timeout is not None:
+            result['ConnectTimeout'] = self.connect_timeout
+        if self.focus_http_backend is not None:
+            result['FocusHttpBackend'] = self.focus_http_backend
+        if self.keepalive is not None:
+            result['Keepalive'] = self.keepalive
+        if self.keepalive_requests is not None:
+            result['KeepaliveRequests'] = self.keepalive_requests
+        if self.keepalive_timeout is not None:
+            result['KeepaliveTimeout'] = self.keepalive_timeout
+        if self.loadbalance is not None:
+            result['Loadbalance'] = self.loadbalance
+        if self.read_timeout is not None:
+            result['ReadTimeout'] = self.read_timeout
+        result['RequestHeaders'] = []
+        if self.request_headers is not None:
+            for k in self.request_headers:
+                result['RequestHeaders'].append(k.to_map() if k else None)
+        if self.retry is not None:
+            result['Retry'] = self.retry
+        if self.routing_rules is not None:
+            result['RoutingRules'] = self.routing_rules
+        if self.sni_enabled is not None:
+            result['SniEnabled'] = self.sni_enabled
+        if self.sni_host is not None:
+            result['SniHost'] = self.sni_host
+        if self.write_timeout is not None:
+            result['WriteTimeout'] = self.write_timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Backends') is not None:
+            self.backends = m.get('Backends')
+        if m.get('CnameEnabled') is not None:
+            self.cname_enabled = m.get('CnameEnabled')
+        if m.get('ConnectTimeout') is not None:
+            self.connect_timeout = m.get('ConnectTimeout')
+        if m.get('FocusHttpBackend') is not None:
+            self.focus_http_backend = m.get('FocusHttpBackend')
+        if m.get('Keepalive') is not None:
+            self.keepalive = m.get('Keepalive')
+        if m.get('KeepaliveRequests') is not None:
+            self.keepalive_requests = m.get('KeepaliveRequests')
+        if m.get('KeepaliveTimeout') is not None:
+            self.keepalive_timeout = m.get('KeepaliveTimeout')
+        if m.get('Loadbalance') is not None:
+            self.loadbalance = m.get('Loadbalance')
+        if m.get('ReadTimeout') is not None:
+            self.read_timeout = m.get('ReadTimeout')
+        self.request_headers = []
+        if m.get('RequestHeaders') is not None:
+            for k in m.get('RequestHeaders'):
+                temp_model = DescribeHybridCloudResourceDetailResponseBodyDomainRedirectRequestHeaders()
+                self.request_headers.append(temp_model.from_map(k))
+        if m.get('Retry') is not None:
+            self.retry = m.get('Retry')
+        if m.get('RoutingRules') is not None:
+            self.routing_rules = m.get('RoutingRules')
+        if m.get('SniEnabled') is not None:
+            self.sni_enabled = m.get('SniEnabled')
+        if m.get('SniHost') is not None:
+            self.sni_host = m.get('SniHost')
+        if m.get('WriteTimeout') is not None:
+            self.write_timeout = m.get('WriteTimeout')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponseBodyDomain(TeaModel):
+    def __init__(
+        self,
+        cname: str = None,
+        domain: str = None,
+        id: int = None,
+        listen: DescribeHybridCloudResourceDetailResponseBodyDomainListen = None,
+        redirect: DescribeHybridCloudResourceDetailResponseBodyDomainRedirect = None,
+        resource_manager_resource_group_id: str = None,
+        status: int = None,
+        uid: str = None,
+    ):
+        # CNAME
+        self.cname = cname
+        self.domain = domain
+        # id
+        self.id = id
+        self.listen = listen
+        self.redirect = redirect
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.status = status
+        self.uid = uid
+
+    def validate(self):
+        if self.listen:
+            self.listen.validate()
+        if self.redirect:
+            self.redirect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cname is not None:
+            result['Cname'] = self.cname
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.listen is not None:
+            result['Listen'] = self.listen.to_map()
+        if self.redirect is not None:
+            result['Redirect'] = self.redirect.to_map()
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cname') is not None:
+            self.cname = m.get('Cname')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Listen') is not None:
+            temp_model = DescribeHybridCloudResourceDetailResponseBodyDomainListen()
+            self.listen = temp_model.from_map(m['Listen'])
+        if m.get('Redirect') is not None:
+            temp_model = DescribeHybridCloudResourceDetailResponseBodyDomainRedirect()
+            self.redirect = temp_model.from_map(m['Redirect'])
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain: DescribeHybridCloudResourceDetailResponseBodyDomain = None,
+        request_id: str = None,
+    ):
+        self.domain = domain
+        self.request_id = request_id
+
+    def validate(self):
+        if self.domain:
+            self.domain.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            temp_model = DescribeHybridCloudResourceDetailResponseBodyDomain()
+            self.domain = temp_model.from_map(m['Domain'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHybridCloudResourceDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudResourceDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudResourceDetailResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22286,6 +23522,246 @@ class DescribeHybridCloudResourcesResponse(TeaModel):
         return self
 
 
+class DescribeHybridCloudSdkServersRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        host_name: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.cluster_name = cluster_name
+        self.host_name = host_name
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.ip = ip
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudSdkServersResponseBodySdkServers(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        create_time: int = None,
+        host_name: str = None,
+        ip: str = None,
+        mid: str = None,
+        protection_group_address: str = None,
+        pullin_status: str = None,
+        resource_id: str = None,
+        status: str = None,
+        update_time: int = None,
+    ):
+        self.cluster_name = cluster_name
+        self.create_time = create_time
+        self.host_name = host_name
+        self.ip = ip
+        # SDKID。
+        self.mid = mid
+        self.protection_group_address = protection_group_address
+        self.pullin_status = pullin_status
+        self.resource_id = resource_id
+        self.status = status
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.mid is not None:
+            result['Mid'] = self.mid
+        if self.protection_group_address is not None:
+            result['ProtectionGroupAddress'] = self.protection_group_address
+        if self.pullin_status is not None:
+            result['PullinStatus'] = self.pullin_status
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Mid') is not None:
+            self.mid = m.get('Mid')
+        if m.get('ProtectionGroupAddress') is not None:
+            self.protection_group_address = m.get('ProtectionGroupAddress')
+        if m.get('PullinStatus') is not None:
+            self.pullin_status = m.get('PullinStatus')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class DescribeHybridCloudSdkServersResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sdk_servers: List[DescribeHybridCloudSdkServersResponseBodySdkServers] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sdk_servers = sdk_servers
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sdk_servers:
+            for k in self.sdk_servers:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SdkServers'] = []
+        if self.sdk_servers is not None:
+            for k in self.sdk_servers:
+                result['SdkServers'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.sdk_servers = []
+        if m.get('SdkServers') is not None:
+            for k in m.get('SdkServers'):
+                temp_model = DescribeHybridCloudSdkServersResponseBodySdkServers()
+                self.sdk_servers.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHybridCloudSdkServersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudSdkServersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudSdkServersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeHybridCloudServerRegionsRequest(TeaModel):
     def __init__(
         self,
@@ -22472,6 +23948,120 @@ class DescribeHybridCloudServerRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHybridCloudServerRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudSupportRegionsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudSupportRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        support_regions: List[str] = None,
+    ):
+        self.request_id = request_id
+        self.support_regions = support_regions
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.support_regions is not None:
+            result['SupportRegions'] = self.support_regions
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SupportRegions') is not None:
+            self.support_regions = m.get('SupportRegions')
+        return self
+
+
+class DescribeHybridCloudSupportRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudSupportRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudSupportRegionsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -22719,6 +24309,138 @@ class DescribeHybridCloudUnassignedMachinesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeHybridCloudUnassignedMachinesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHybridCloudUnsupportPortsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        # The ID of the WAF instance.
+        # 
+        # >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The region ID of the Web Application Firewall (WAF) instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The ID of the Alibaba Cloud resource group.
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DescribeHybridCloudUnsupportPortsResponseBody(TeaModel):
+    def __init__(
+        self,
+        http_ports: str = None,
+        https_ports: str = None,
+        request_id: str = None,
+    ):
+        # The HTTP ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+        self.http_ports = http_ports
+        # The HTTPS ports. The value is a string. If multiple ports are returned, the value is in the **port1,port2,port3** format.
+        self.https_ports = https_ports
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.http_ports is not None:
+            result['HttpPorts'] = self.http_ports
+        if self.https_ports is not None:
+            result['HttpsPorts'] = self.https_ports
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HttpPorts') is not None:
+            self.http_ports = m.get('HttpPorts')
+        if m.get('HttpsPorts') is not None:
+            self.https_ports = m.get('HttpsPorts')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHybridCloudUnsupportPortsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHybridCloudUnsupportPortsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHybridCloudUnsupportPortsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -39322,7 +41044,11 @@ class ModifyDomainRequestRedirect(TeaModel):
         routing_rules: str = None,
         sni_enabled: bool = None,
         sni_host: str = None,
+        wlproxy_client_ip: bool = None,
+        web_server_type: bool = None,
         write_timeout: int = None,
+        xclient_ip: bool = None,
+        xtrue_ip: bool = None,
         xff_proto: bool = None,
     ):
         self.backend_ports = backend_ports
@@ -39392,8 +41118,12 @@ class ModifyDomainRequestRedirect(TeaModel):
         # 
         # >  This parameter is required only if you set **SniEnabled** to true.
         self.sni_host = sni_host
+        self.wlproxy_client_ip = wlproxy_client_ip
+        self.web_server_type = web_server_type
         # The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
+        self.xclient_ip = xclient_ip
+        self.xtrue_ip = xtrue_ip
         # Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
@@ -39452,8 +41182,16 @@ class ModifyDomainRequestRedirect(TeaModel):
             result['SniEnabled'] = self.sni_enabled
         if self.sni_host is not None:
             result['SniHost'] = self.sni_host
+        if self.wlproxy_client_ip is not None:
+            result['WLProxyClientIp'] = self.wlproxy_client_ip
+        if self.web_server_type is not None:
+            result['WebServerType'] = self.web_server_type
         if self.write_timeout is not None:
             result['WriteTimeout'] = self.write_timeout
+        if self.xclient_ip is not None:
+            result['XClientIp'] = self.xclient_ip
+        if self.xtrue_ip is not None:
+            result['XTrueIp'] = self.xtrue_ip
         if self.xff_proto is not None:
             result['XffProto'] = self.xff_proto
         return result
@@ -39498,8 +41236,16 @@ class ModifyDomainRequestRedirect(TeaModel):
             self.sni_enabled = m.get('SniEnabled')
         if m.get('SniHost') is not None:
             self.sni_host = m.get('SniHost')
+        if m.get('WLProxyClientIp') is not None:
+            self.wlproxy_client_ip = m.get('WLProxyClientIp')
+        if m.get('WebServerType') is not None:
+            self.web_server_type = m.get('WebServerType')
         if m.get('WriteTimeout') is not None:
             self.write_timeout = m.get('WriteTimeout')
+        if m.get('XClientIp') is not None:
+            self.xclient_ip = m.get('XClientIp')
+        if m.get('XTrueIp') is not None:
+            self.xtrue_ip = m.get('XTrueIp')
         if m.get('XffProto') is not None:
             self.xff_proto = m.get('XffProto')
         return self
@@ -39921,6 +41667,224 @@ class ModifyDomainPunishStatusResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyDomainPunishStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyHybridCloudClusterRequest(TeaModel):
+    def __init__(
+        self,
+        access_mode: str = None,
+        access_region: str = None,
+        cluster_name: str = None,
+        http_ports: str = None,
+        https_ports: str = None,
+        id: int = None,
+        instance_id: str = None,
+        log_fields_not_returned: str = None,
+        protection_server_count: int = None,
+        proxy_status: str = None,
+        proxy_type: str = None,
+        region_id: str = None,
+        remark: str = None,
+        resource_manager_resource_group_id: str = None,
+        rule_config: str = None,
+        rule_status: str = None,
+        rule_type: str = None,
+    ):
+        # This parameter is required.
+        self.access_mode = access_mode
+        self.access_region = access_region
+        # The name of the cluster.
+        # 
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # The HTTP ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
+        # 
+        # This parameter is required.
+        self.http_ports = http_ports
+        # The HTTPS ports that are supported. Set this parameter to a string. Specify multiple ports in the **port1,port2,port3** format.
+        # 
+        # This parameter is required.
+        self.https_ports = https_ports
+        # The ID of the cluster.
+        # 
+        # This parameter is required.
+        self.id = id
+        # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.log_fields_not_returned = log_fields_not_returned
+        # The number of protection nodes that can be added to the cluster.
+        # 
+        # This parameter is required.
+        self.protection_server_count = protection_server_count
+        self.proxy_status = proxy_status
+        self.proxy_type = proxy_type
+        # The region ID of the WAF instance. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
+        self.region_id = region_id
+        # The remarks about the cluster.
+        self.remark = remark
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.rule_config = rule_config
+        self.rule_status = rule_status
+        self.rule_type = rule_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_mode is not None:
+            result['AccessMode'] = self.access_mode
+        if self.access_region is not None:
+            result['AccessRegion'] = self.access_region
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.http_ports is not None:
+            result['HttpPorts'] = self.http_ports
+        if self.https_ports is not None:
+            result['HttpsPorts'] = self.https_ports
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.log_fields_not_returned is not None:
+            result['LogFieldsNotReturned'] = self.log_fields_not_returned
+        if self.protection_server_count is not None:
+            result['ProtectionServerCount'] = self.protection_server_count
+        if self.proxy_status is not None:
+            result['ProxyStatus'] = self.proxy_status
+        if self.proxy_type is not None:
+            result['ProxyType'] = self.proxy_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.rule_config is not None:
+            result['RuleConfig'] = self.rule_config
+        if self.rule_status is not None:
+            result['RuleStatus'] = self.rule_status
+        if self.rule_type is not None:
+            result['RuleType'] = self.rule_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessMode') is not None:
+            self.access_mode = m.get('AccessMode')
+        if m.get('AccessRegion') is not None:
+            self.access_region = m.get('AccessRegion')
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('HttpPorts') is not None:
+            self.http_ports = m.get('HttpPorts')
+        if m.get('HttpsPorts') is not None:
+            self.https_ports = m.get('HttpsPorts')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LogFieldsNotReturned') is not None:
+            self.log_fields_not_returned = m.get('LogFieldsNotReturned')
+        if m.get('ProtectionServerCount') is not None:
+            self.protection_server_count = m.get('ProtectionServerCount')
+        if m.get('ProxyStatus') is not None:
+            self.proxy_status = m.get('ProxyStatus')
+        if m.get('ProxyType') is not None:
+            self.proxy_type = m.get('ProxyType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('RuleConfig') is not None:
+            self.rule_config = m.get('RuleConfig')
+        if m.get('RuleStatus') is not None:
+            self.rule_status = m.get('RuleStatus')
+        if m.get('RuleType') is not None:
+            self.rule_type = m.get('RuleType')
+        return self
+
+
+class ModifyHybridCloudClusterResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyHybridCloudClusterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyHybridCloudClusterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyHybridCloudClusterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
