@@ -1,3 +1,6 @@
+2025-09-17 Version: 1.10.10
+- Generated python 2023-01-20 for csas.
+
 2025-09-16 Version: 1.10.9
 - Update API CreateWmEmbedTask: add request parameters AudioControl.
 - Update API CreateWmEmbedTask: add request parameters InvisibleEnable.

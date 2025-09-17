@@ -1515,6 +1515,7 @@ class OpenStructSaseUser(TeaModel):
         create_time_unix: int = None,
         custom_fields: List[IdpCustomField] = None,
         departments: List[OpenStructSaseDepartment] = None,
+        description: str = None,
         email: str = None,
         idp_config_id: str = None,
         leave_time_unix: int = None,
@@ -1531,6 +1532,7 @@ class OpenStructSaseUser(TeaModel):
         self.create_time_unix = create_time_unix
         self.custom_fields = custom_fields
         self.departments = departments
+        self.description = description
         self.email = email
         self.idp_config_id = idp_config_id
         self.leave_time_unix = leave_time_unix
@@ -1570,6 +1572,8 @@ class OpenStructSaseUser(TeaModel):
         if self.departments is not None:
             for k in self.departments:
                 result['Departments'].append(k.to_map() if k else None)
+        if self.description is not None:
+            result['Description'] = self.description
         if self.email is not None:
             result['Email'] = self.email
         if self.idp_config_id is not None:
@@ -1610,6 +1614,8 @@ class OpenStructSaseUser(TeaModel):
             for k in m.get('Departments'):
                 temp_model = OpenStructSaseDepartment()
                 self.departments.append(temp_model.from_map(k))
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('Email') is not None:
             self.email = m.get('Email')
         if m.get('IdpConfigId') is not None:
