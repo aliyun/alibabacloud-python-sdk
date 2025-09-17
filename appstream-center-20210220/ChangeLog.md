@@ -1,3 +1,7 @@
+2025-09-17 Version: 1.2.3
+- Update API GetLoginToken: add request parameters Channel.
+
+
 2025-04-27 Version: 1.2.2
 - Update API GetLoginToken: add request parameters ClientName.
 - Update API GetLoginToken: add request parameters ProfileRegion.

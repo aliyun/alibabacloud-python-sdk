@@ -21,7 +21,6 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._signature_algorithm = 'v2'
         self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('appstream-center', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -96,7 +95,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.FindIdpListByLoginIdentifierResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def find_idp_list_by_login_identifier_with_options_async(
@@ -153,7 +152,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.FindIdpListByLoginIdentifierResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def find_idp_list_by_login_identifier(
@@ -204,6 +203,8 @@ class Client(OpenApiClient):
             query['AuthenticationCode'] = request.authentication_code
         if not UtilClient.is_unset(request.available_features_shrink):
             query['AvailableFeatures'] = request.available_features_shrink
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_name):
@@ -288,7 +289,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.GetLoginTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_login_token_with_options_async(
@@ -313,6 +314,8 @@ class Client(OpenApiClient):
             query['AuthenticationCode'] = request.authentication_code
         if not UtilClient.is_unset(request.available_features_shrink):
             query['AvailableFeatures'] = request.available_features_shrink
+        if not UtilClient.is_unset(request.channel):
+            query['Channel'] = request.channel
         if not UtilClient.is_unset(request.client_id):
             query['ClientId'] = request.client_id
         if not UtilClient.is_unset(request.client_name):
@@ -397,7 +400,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.GetLoginTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_login_token(
@@ -468,7 +471,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.GetStsTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def get_sts_token_with_options_async(
@@ -513,7 +516,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.GetStsTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def get_sts_token(
@@ -588,7 +591,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.RefreshLoginTokenResponse(),
-            self.call_api(params, req, runtime)
+            self.do_rpcrequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     async def refresh_login_token_with_options_async(
@@ -637,7 +640,7 @@ class Client(OpenApiClient):
         )
         return TeaCore.from_map(
             appstream_center_20210220_models.RefreshLoginTokenResponse(),
-            await self.call_api_async(params, req, runtime)
+            await self.do_rpcrequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.body_type, req, runtime)
         )
 
     def refresh_login_token(

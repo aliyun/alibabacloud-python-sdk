@@ -432,6 +432,7 @@ class GetLoginTokenRequest(TeaModel):
         self,
         authentication_code: str = None,
         available_features: Dict[str, str] = None,
+        channel: str = None,
         client_id: str = None,
         client_name: str = None,
         client_os: str = None,
@@ -469,6 +470,7 @@ class GetLoginTokenRequest(TeaModel):
     ):
         self.authentication_code = authentication_code
         self.available_features = available_features
+        self.channel = channel
         # This parameter is required.
         self.client_id = client_id
         self.client_name = client_name
@@ -518,6 +520,8 @@ class GetLoginTokenRequest(TeaModel):
             result['AuthenticationCode'] = self.authentication_code
         if self.available_features is not None:
             result['AvailableFeatures'] = self.available_features
+        if self.channel is not None:
+            result['Channel'] = self.channel
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_name is not None:
@@ -594,6 +598,8 @@ class GetLoginTokenRequest(TeaModel):
             self.authentication_code = m.get('AuthenticationCode')
         if m.get('AvailableFeatures') is not None:
             self.available_features = m.get('AvailableFeatures')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientName') is not None:
@@ -670,6 +676,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
         self,
         authentication_code: str = None,
         available_features_shrink: str = None,
+        channel: str = None,
         client_id: str = None,
         client_name: str = None,
         client_os: str = None,
@@ -707,6 +714,7 @@ class GetLoginTokenShrinkRequest(TeaModel):
     ):
         self.authentication_code = authentication_code
         self.available_features_shrink = available_features_shrink
+        self.channel = channel
         # This parameter is required.
         self.client_id = client_id
         self.client_name = client_name
@@ -756,6 +764,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             result['AuthenticationCode'] = self.authentication_code
         if self.available_features_shrink is not None:
             result['AvailableFeatures'] = self.available_features_shrink
+        if self.channel is not None:
+            result['Channel'] = self.channel
         if self.client_id is not None:
             result['ClientId'] = self.client_id
         if self.client_name is not None:
@@ -832,6 +842,8 @@ class GetLoginTokenShrinkRequest(TeaModel):
             self.authentication_code = m.get('AuthenticationCode')
         if m.get('AvailableFeatures') is not None:
             self.available_features_shrink = m.get('AvailableFeatures')
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
         if m.get('ClientId') is not None:
             self.client_id = m.get('ClientId')
         if m.get('ClientName') is not None:
