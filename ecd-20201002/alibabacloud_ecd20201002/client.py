@@ -1133,6 +1133,10 @@ class Client(OpenApiClient):
             query['ProductTypes'] = request.product_types
         if not UtilClient.is_unset(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.query_desktop_duration_list):
+            query['QueryDesktopDurationList'] = request.query_desktop_duration_list
+        if not UtilClient.is_unset(request.query_desktop_timers):
+            query['QueryDesktopTimers'] = request.query_desktop_timers
         if not UtilClient.is_unset(request.query_fota_update):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.refresh_fota_update):
@@ -1218,6 +1222,10 @@ class Client(OpenApiClient):
             query['ProductTypes'] = request.product_types
         if not UtilClient.is_unset(request.protocol_type):
             query['ProtocolType'] = request.protocol_type
+        if not UtilClient.is_unset(request.query_desktop_duration_list):
+            query['QueryDesktopDurationList'] = request.query_desktop_duration_list
+        if not UtilClient.is_unset(request.query_desktop_timers):
+            query['QueryDesktopTimers'] = request.query_desktop_timers
         if not UtilClient.is_unset(request.query_fota_update):
             query['QueryFotaUpdate'] = request.query_fota_update
         if not UtilClient.is_unset(request.refresh_fota_update):

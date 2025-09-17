@@ -1,3 +1,10 @@
+2025-09-17 Version: 1.2.8
+- Update API DescribeUserResources: add request parameters QueryDesktopDurationList.
+- Update API DescribeUserResources: add request parameters QueryDesktopTimers.
+- Update API DescribeUserResources: add response parameters Body.MaxResults.
+- Update API DescribeUserResources: add response parameters Body.TotalCount.
+
+
 2025-08-22 Version: 1.2.7
 - Update API GetLoginToken: add request parameters ClientName.
 

@@ -2316,6 +2316,8 @@ class DescribeUserResourcesRequest(TeaModel):
         order_by: str = None,
         product_types: List[str] = None,
         protocol_type: str = None,
+        query_desktop_duration_list: bool = None,
+        query_desktop_timers: bool = None,
         query_fota_update: bool = None,
         refresh_fota_update: bool = None,
         resource_ids: List[str] = None,
@@ -2345,6 +2347,8 @@ class DescribeUserResourcesRequest(TeaModel):
         self.order_by = order_by
         self.product_types = product_types
         self.protocol_type = protocol_type
+        self.query_desktop_duration_list = query_desktop_duration_list
+        self.query_desktop_timers = query_desktop_timers
         self.query_fota_update = query_fota_update
         self.refresh_fota_update = refresh_fota_update
         self.resource_ids = resource_ids
@@ -2398,6 +2402,10 @@ class DescribeUserResourcesRequest(TeaModel):
             result['ProductTypes'] = self.product_types
         if self.protocol_type is not None:
             result['ProtocolType'] = self.protocol_type
+        if self.query_desktop_duration_list is not None:
+            result['QueryDesktopDurationList'] = self.query_desktop_duration_list
+        if self.query_desktop_timers is not None:
+            result['QueryDesktopTimers'] = self.query_desktop_timers
         if self.query_fota_update is not None:
             result['QueryFotaUpdate'] = self.query_fota_update
         if self.refresh_fota_update is not None:
@@ -2454,6 +2462,10 @@ class DescribeUserResourcesRequest(TeaModel):
             self.product_types = m.get('ProductTypes')
         if m.get('ProtocolType') is not None:
             self.protocol_type = m.get('ProtocolType')
+        if m.get('QueryDesktopDurationList') is not None:
+            self.query_desktop_duration_list = m.get('QueryDesktopDurationList')
+        if m.get('QueryDesktopTimers') is not None:
+            self.query_desktop_timers = m.get('QueryDesktopTimers')
         if m.get('QueryFotaUpdate') is not None:
             self.query_fota_update = m.get('QueryFotaUpdate')
         if m.get('RefreshFotaUpdate') is not None:
@@ -3265,17 +3277,21 @@ class DescribeUserResourcesResponseBodyResources(TeaModel):
 class DescribeUserResourcesResponseBody(TeaModel):
     def __init__(
         self,
+        max_results: int = None,
         next_token: str = None,
         query_failed_resource_types: List[str] = None,
         rank_version: int = None,
         request_id: str = None,
         resources: List[DescribeUserResourcesResponseBodyResources] = None,
+        total_count: int = None,
     ):
+        self.max_results = max_results
         self.next_token = next_token
         self.query_failed_resource_types = query_failed_resource_types
         self.rank_version = rank_version
         self.request_id = request_id
         self.resources = resources
+        self.total_count = total_count
 
     def validate(self):
         if self.resources:
@@ -3289,6 +3305,8 @@ class DescribeUserResourcesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.query_failed_resource_types is not None:
@@ -3301,10 +3319,14 @@ class DescribeUserResourcesResponseBody(TeaModel):
         if self.resources is not None:
             for k in self.resources:
                 result['Resources'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('QueryFailedResourceTypes') is not None:
@@ -3318,6 +3340,8 @@ class DescribeUserResourcesResponseBody(TeaModel):
             for k in m.get('Resources'):
                 temp_model = DescribeUserResourcesResponseBodyResources()
                 self.resources.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
