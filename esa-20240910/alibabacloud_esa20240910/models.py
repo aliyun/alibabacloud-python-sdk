@@ -7431,6 +7431,524 @@ class CreateEdgeContainerAppVersionResponse(TeaModel):
         return self
 
 
+class CreateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateHttpIncomingRequestHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        request_header_modification: List[CreateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # This parameter is required.
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = CreateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateHttpIncomingRequestHeaderModificationRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        request_header_modification_shrink: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # This parameter is required.
+        self.request_header_modification_shrink = request_header_modification_shrink
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_header_modification_shrink is not None:
+            result['RequestHeaderModification'] = self.request_header_modification_shrink
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestHeaderModification') is not None:
+            self.request_header_modification_shrink = m.get('RequestHeaderModification')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateHttpIncomingRequestHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_id: str = None,
+    ):
+        self.config_id = config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHttpIncomingRequestHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHttpIncomingRequestHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHttpIncomingRequestHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateHttpIncomingResponseHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        response_header_modification: List[CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # This parameter is required.
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = CreateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateHttpIncomingResponseHeaderModificationRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        response_header_modification_shrink: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        # This parameter is required.
+        self.response_header_modification_shrink = response_header_modification_shrink
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.response_header_modification_shrink is not None:
+            result['ResponseHeaderModification'] = self.response_header_modification_shrink
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResponseHeaderModification') is not None:
+            self.response_header_modification_shrink = m.get('ResponseHeaderModification')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class CreateHttpIncomingResponseHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_id: str = None,
+    ):
+        self.config_id = config_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHttpIncomingResponseHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHttpIncomingResponseHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHttpIncomingResponseHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification(TeaModel):
     def __init__(
         self,
@@ -10932,6 +11450,8 @@ class CreateRecordRequest(TeaModel):
         # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
         # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+        # 
+        # This parameter is required.
         self.ttl = ttl
         # The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
         # 
@@ -11061,6 +11581,8 @@ class CreateRecordShrinkRequest(TeaModel):
         # If you do not pass this parameter or if you leave its value empty, Domain is used by default.
         self.source_type = source_type
         # The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
+        # 
+        # This parameter is required.
         self.ttl = ttl
         # The type of the DNS record. For example, A/AAAA, TXT, MX, or CNAME.
         # 
@@ -11577,10 +12099,12 @@ class CreateRoutineRequest(TeaModel):
     def __init__(
         self,
         description: str = None,
+        has_assets: bool = None,
         name: str = None,
     ):
         # The routine description.
         self.description = description
+        self.has_assets = has_assets
         # The routine name, which must be unique in the same account.
         # 
         # This parameter is required.
@@ -11597,6 +12121,8 @@ class CreateRoutineRequest(TeaModel):
         result = dict()
         if self.description is not None:
             result['Description'] = self.description
+        if self.has_assets is not None:
+            result['HasAssets'] = self.has_assets
         if self.name is not None:
             result['Name'] = self.name
         return result
@@ -11605,6 +12131,8 @@ class CreateRoutineRequest(TeaModel):
         m = m or dict()
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HasAssets') is not None:
+            self.has_assets = m.get('HasAssets')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         return self
@@ -11682,6 +12210,274 @@ class CreateRoutineResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRoutineResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRoutineCodeDeploymentRequestCodeVersions(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        percentage: int = None,
+    ):
+        # This parameter is required.
+        self.code_version = code_version
+        # This parameter is required.
+        self.percentage = percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        return self
+
+
+class CreateRoutineCodeDeploymentRequest(TeaModel):
+    def __init__(
+        self,
+        code_versions: List[CreateRoutineCodeDeploymentRequestCodeVersions] = None,
+        env: str = None,
+        name: str = None,
+        strategy: str = None,
+    ):
+        # This parameter is required.
+        self.code_versions = code_versions
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.strategy = strategy
+
+    def validate(self):
+        if self.code_versions:
+            for k in self.code_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CodeVersions'] = []
+        if self.code_versions is not None:
+            for k in self.code_versions:
+                result['CodeVersions'].append(k.to_map() if k else None)
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.code_versions = []
+        if m.get('CodeVersions') is not None:
+            for k in m.get('CodeVersions'):
+                temp_model = CreateRoutineCodeDeploymentRequestCodeVersions()
+                self.code_versions.append(temp_model.from_map(k))
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class CreateRoutineCodeDeploymentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        code_versions_shrink: str = None,
+        env: str = None,
+        name: str = None,
+        strategy: str = None,
+    ):
+        # This parameter is required.
+        self.code_versions_shrink = code_versions_shrink
+        # This parameter is required.
+        self.env = env
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.strategy = strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_versions_shrink is not None:
+            result['CodeVersions'] = self.code_versions_shrink
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersions') is not None:
+            self.code_versions_shrink = m.get('CodeVersions')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class CreateRoutineCodeDeploymentResponseBodyCodeVersions(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        percentage: int = None,
+    ):
+        self.code_version = code_version
+        self.percentage = percentage
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        return self
+
+
+class CreateRoutineCodeDeploymentResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_versions: List[CreateRoutineCodeDeploymentResponseBodyCodeVersions] = None,
+        deployment_id: str = None,
+        request_id: str = None,
+        strategy: str = None,
+    ):
+        self.code_versions = code_versions
+        self.deployment_id = deployment_id
+        self.request_id = request_id
+        self.strategy = strategy
+
+    def validate(self):
+        if self.code_versions:
+            for k in self.code_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CodeVersions'] = []
+        if self.code_versions is not None:
+            for k in self.code_versions:
+                result['CodeVersions'].append(k.to_map() if k else None)
+        if self.deployment_id is not None:
+            result['DeploymentId'] = self.deployment_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.code_versions = []
+        if m.get('CodeVersions') is not None:
+            for k in m.get('CodeVersions'):
+                temp_model = CreateRoutineCodeDeploymentResponseBodyCodeVersions()
+                self.code_versions.append(temp_model.from_map(k))
+        if m.get('DeploymentId') is not None:
+            self.deployment_id = m.get('DeploymentId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class CreateRoutineCodeDeploymentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineCodeDeploymentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineCodeDeploymentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -11957,6 +12753,284 @@ class CreateRoutineRouteResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateRoutineRouteResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionRequestConfOptions(TeaModel):
+    def __init__(
+        self,
+        not_found_strategy: str = None,
+    ):
+        self.not_found_strategy = not_found_strategy
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.not_found_strategy is not None:
+            result['NotFoundStrategy'] = self.not_found_strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NotFoundStrategy') is not None:
+            self.not_found_strategy = m.get('NotFoundStrategy')
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionRequest(TeaModel):
+    def __init__(
+        self,
+        build_id: int = None,
+        code_description: str = None,
+        conf_options: CreateRoutineWithAssetsCodeVersionRequestConfOptions = None,
+        extra_info: str = None,
+        name: str = None,
+    ):
+        self.build_id = build_id
+        self.code_description = code_description
+        self.conf_options = conf_options
+        self.extra_info = extra_info
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.conf_options:
+            self.conf_options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.conf_options is not None:
+            result['ConfOptions'] = self.conf_options.to_map()
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('ConfOptions') is not None:
+            temp_model = CreateRoutineWithAssetsCodeVersionRequestConfOptions()
+            self.conf_options = temp_model.from_map(m['ConfOptions'])
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        build_id: int = None,
+        code_description: str = None,
+        conf_options_shrink: str = None,
+        extra_info: str = None,
+        name: str = None,
+    ):
+        self.build_id = build_id
+        self.code_description = code_description
+        self.conf_options_shrink = conf_options_shrink
+        self.extra_info = extra_info
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.conf_options_shrink is not None:
+            result['ConfOptions'] = self.conf_options_shrink
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
+        if m.get('CodeDescription') is not None:
+            self.code_description = m.get('CodeDescription')
+        if m.get('ConfOptions') is not None:
+            self.conf_options_shrink = m.get('ConfOptions')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionResponseBodyOssPostConfig(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        ossaccess_key_id: str = None,
+        policy: str = None,
+        signature: str = None,
+        url: str = None,
+        xoss_security_token: str = None,
+    ):
+        self.key = key
+        self.ossaccess_key_id = ossaccess_key_id
+        self.policy = policy
+        self.signature = signature
+        self.url = url
+        self.xoss_security_token = xoss_security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.ossaccess_key_id is not None:
+            result['OSSAccessKeyId'] = self.ossaccess_key_id
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.xoss_security_token is not None:
+            result['XOssSecurityToken'] = self.xoss_security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OSSAccessKeyId') is not None:
+            self.ossaccess_key_id = m.get('OSSAccessKeyId')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('XOssSecurityToken') is not None:
+            self.xoss_security_token = m.get('XOssSecurityToken')
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        code_version: str = None,
+        oss_post_config: CreateRoutineWithAssetsCodeVersionResponseBodyOssPostConfig = None,
+        request_id: str = None,
+        status: str = None,
+    ):
+        self.code_version = code_version
+        self.oss_post_config = oss_post_config
+        self.request_id = request_id
+        self.status = status
+
+    def validate(self):
+        if self.oss_post_config:
+            self.oss_post_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.oss_post_config is not None:
+            result['OssPostConfig'] = self.oss_post_config.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('OssPostConfig') is not None:
+            temp_model = CreateRoutineWithAssetsCodeVersionResponseBodyOssPostConfig()
+            self.oss_post_config = temp_model.from_map(m['OssPostConfig'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class CreateRoutineWithAssetsCodeVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateRoutineWithAssetsCodeVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateRoutineWithAssetsCodeVersionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13831,6 +14905,352 @@ class CreateSlrRoleForRealtimeLogResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSlrRoleForRealtimeLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTransportLayerApplicationRequestRules(TeaModel):
+    def __init__(
+        self,
+        client_ippass_through_mode: str = None,
+        comment: str = None,
+        edge_port: str = None,
+        protocol: str = None,
+        source: str = None,
+        source_port: str = None,
+        source_type: str = None,
+    ):
+        # Client IP pass-through protocol, supporting:
+        # - **off**: No pass-through.
+        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+        # 
+        # This parameter is required.
+        self.client_ippass_through_mode = client_ippass_through_mode
+        # Comment information for the rule (optional).
+        self.comment = comment
+        # Edge port. Supports:
+        # 
+        # - A single port, such as 80.
+        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, and 85.
+        # - Combination of ports and port ranges, separated by commas, such as 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, and 90.
+        # 
+        # Edge ports within a single rule and between multiple rules must not overlap.
+        # 
+        # This parameter is required.
+        self.edge_port = edge_port
+        # Forwarding rule protocol, with values:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
+        # 
+        # This parameter is required.
+        self.protocol = protocol
+        # Specific value of the origin, which needs to match the origin type.
+        # 
+        # This parameter is required.
+        self.source = source
+        # Origin port. Supports:
+        # 
+        # - A single port, when the origin port is a single port, any valid combination of edge ports is supported.
+        # - Port range, only when the edge port is a port range, the origin port can be set to a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which do not match.
+        # 
+        # This parameter is required.
+        self.source_port = source_port
+        # Origin type, supporting:
+        # - **ip**: IP address.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
+        # 
+        # This parameter is required.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ippass_through_mode is not None:
+            result['ClientIPPassThroughMode'] = self.client_ippass_through_mode
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.edge_port is not None:
+            result['EdgePort'] = self.edge_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_port is not None:
+            result['SourcePort'] = self.source_port
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIPPassThroughMode') is not None:
+            self.client_ippass_through_mode = m.get('ClientIPPassThroughMode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('EdgePort') is not None:
+            self.edge_port = m.get('EdgePort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourcePort') is not None:
+            self.source_port = m.get('SourcePort')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class CreateTransportLayerApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        record_name: str = None,
+        rules: List[CreateTransportLayerApplicationRequestRules] = None,
+        site_id: int = None,
+        static_ip: str = None,
+    ):
+        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # Domain name of the transport layer application.
+        # 
+        # This parameter is required.
+        self.record_name = record_name
+        # List of forwarding rules.
+        # 
+        # This parameter is required.
+        self.rules = rules
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        self.static_ip = static_ip
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = CreateTransportLayerApplicationRequestRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        return self
+
+
+class CreateTransportLayerApplicationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        record_name: str = None,
+        rules_shrink: str = None,
+        site_id: int = None,
+        static_ip: str = None,
+    ):
+        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the WAF\\"s IP access rules apply to the transport layer application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # Domain name of the transport layer application.
+        # 
+        # This parameter is required.
+        self.record_name = record_name
+        # List of forwarding rules.
+        # 
+        # This parameter is required.
+        self.rules_shrink = rules_shrink
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        self.static_ip = static_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.rules_shrink is not None:
+            result['Rules'] = self.rules_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('Rules') is not None:
+            self.rules_shrink = m.get('Rules')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        return self
+
+
+class CreateTransportLayerApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        request_id: str = None,
+    ):
+        # Layer 4 application ID
+        self.application_id = application_id
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTransportLayerApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTransportLayerApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTransportLayerApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17346,6 +18766,212 @@ class DeleteEdgeContainerAppVersionResponse(TeaModel):
         return self
 
 
+class DeleteHttpIncomingRequestHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteHttpIncomingRequestHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHttpIncomingRequestHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHttpIncomingRequestHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHttpIncomingRequestHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteHttpIncomingResponseHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteHttpIncomingResponseHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteHttpIncomingResponseHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteHttpIncomingResponseHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteHttpIncomingResponseHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteHttpRequestHeaderModificationRuleRequest(TeaModel):
     def __init__(
         self,
@@ -19091,11 +20717,13 @@ class DeleteRecordRequest(TeaModel):
     def __init__(
         self,
         record_id: int = None,
+        security_token: str = None,
     ):
         # The record ID, which can be obtained by calling [ListRecords](https://help.aliyun.com/document_detail/2850265.html).
         # 
         # This parameter is required.
         self.record_id = record_id
+        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19108,12 +20736,16 @@ class DeleteRecordRequest(TeaModel):
         result = dict()
         if self.record_id is not None:
             result['RecordId'] = self.record_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RecordId') is not None:
             self.record_id = m.get('RecordId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20402,6 +22034,114 @@ class DeleteSiteOriginClientCertificateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSiteOriginClientCertificateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTransportLayerApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        site_id: int = None,
+    ):
+        # Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class DeleteTransportLayerApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTransportLayerApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTransportLayerApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTransportLayerApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -29819,6 +31559,414 @@ class GetErServiceResponse(TeaModel):
         return self
 
 
+class GetHttpIncomingRequestHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetHttpIncomingRequestHeaderModificationRuleResponseBodyRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetHttpIncomingRequestHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        request_header_modification: List[GetHttpIncomingRequestHeaderModificationRuleResponseBodyRequestHeaderModification] = None,
+        request_id: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.request_header_modification = request_header_modification
+        self.request_id = request_id
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = GetHttpIncomingRequestHeaderModificationRuleResponseBodyRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class GetHttpIncomingRequestHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHttpIncomingRequestHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHttpIncomingRequestHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetHttpIncomingResponseHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetHttpIncomingResponseHeaderModificationRuleResponseBodyResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetHttpIncomingResponseHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        request_id: str = None,
+        response_header_modification: List[GetHttpIncomingResponseHeaderModificationRuleResponseBodyResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.request_id = request_id
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = GetHttpIncomingResponseHeaderModificationRuleResponseBodyResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class GetHttpIncomingResponseHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetHttpIncomingResponseHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetHttpIncomingResponseHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetHttpRequestHeaderModificationRuleRequest(TeaModel):
     def __init__(
         self,
@@ -35769,22 +37917,18 @@ class GetRoutineRequest(TeaModel):
         return self
 
 
-class GetRoutineResponseBodyEnvs(TeaModel):
+class GetRoutineResponseBodyEnvsCodeDeployCodeVersions(TeaModel):
     def __init__(
         self,
-        canary_area_list: List[str] = None,
-        canary_code_version: str = None,
         code_version: str = None,
-        env: str = None,
+        create_time: str = None,
+        description: str = None,
+        percentage: int = None,
     ):
-        # The regions for canary release.
-        self.canary_area_list = canary_area_list
-        # The version number for canary release.
-        self.canary_code_version = canary_code_version
-        # The version number of the code in the environment.
         self.code_version = code_version
-        # The environment type.
-        self.env = env
+        self.create_time = create_time
+        self.description = description
+        self.percentage = percentage
 
     def validate(self):
         pass
@@ -35795,24 +37939,113 @@ class GetRoutineResponseBodyEnvs(TeaModel):
             return _map
 
         result = dict()
-        if self.canary_area_list is not None:
-            result['CanaryAreaList'] = self.canary_area_list
-        if self.canary_code_version is not None:
-            result['CanaryCodeVersion'] = self.canary_code_version
         if self.code_version is not None:
             result['CodeVersion'] = self.code_version
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodeVersion') is not None:
+            self.code_version = m.get('CodeVersion')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        return self
+
+
+class GetRoutineResponseBodyEnvsCodeDeploy(TeaModel):
+    def __init__(
+        self,
+        code_versions: List[GetRoutineResponseBodyEnvsCodeDeployCodeVersions] = None,
+        creation_time: str = None,
+        deploy_id: str = None,
+        strategy: str = None,
+    ):
+        self.code_versions = code_versions
+        self.creation_time = creation_time
+        self.deploy_id = deploy_id
+        self.strategy = strategy
+
+    def validate(self):
+        if self.code_versions:
+            for k in self.code_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['CodeVersions'] = []
+        if self.code_versions is not None:
+            for k in self.code_versions:
+                result['CodeVersions'].append(k.to_map() if k else None)
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+        if self.deploy_id is not None:
+            result['DeployId'] = self.deploy_id
+        if self.strategy is not None:
+            result['Strategy'] = self.strategy
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.code_versions = []
+        if m.get('CodeVersions') is not None:
+            for k in m.get('CodeVersions'):
+                temp_model = GetRoutineResponseBodyEnvsCodeDeployCodeVersions()
+                self.code_versions.append(temp_model.from_map(k))
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+        if m.get('DeployId') is not None:
+            self.deploy_id = m.get('DeployId')
+        if m.get('Strategy') is not None:
+            self.strategy = m.get('Strategy')
+        return self
+
+
+class GetRoutineResponseBodyEnvs(TeaModel):
+    def __init__(
+        self,
+        code_deploy: GetRoutineResponseBodyEnvsCodeDeploy = None,
+        env: str = None,
+    ):
+        self.code_deploy = code_deploy
+        # The environment type.
+        self.env = env
+
+    def validate(self):
+        if self.code_deploy:
+            self.code_deploy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_deploy is not None:
+            result['CodeDeploy'] = self.code_deploy.to_map()
         if self.env is not None:
             result['Env'] = self.env
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('CanaryAreaList') is not None:
-            self.canary_area_list = m.get('CanaryAreaList')
-        if m.get('CanaryCodeVersion') is not None:
-            self.canary_code_version = m.get('CanaryCodeVersion')
-        if m.get('CodeVersion') is not None:
-            self.code_version = m.get('CodeVersion')
+        if m.get('CodeDeploy') is not None:
+            temp_model = GetRoutineResponseBodyEnvsCodeDeploy()
+            self.code_deploy = temp_model.from_map(m['CodeDeploy'])
         if m.get('Env') is not None:
             self.env = m.get('Env')
         return self
@@ -35825,6 +38058,7 @@ class GetRoutineResponseBody(TeaModel):
         default_related_record: str = None,
         description: str = None,
         envs: List[GetRoutineResponseBodyEnvs] = None,
+        has_assets: bool = None,
         request_id: str = None,
     ):
         # The time when the routine was created.
@@ -35835,6 +38069,7 @@ class GetRoutineResponseBody(TeaModel):
         self.description = description
         # The information about the environments.
         self.envs = envs
+        self.has_assets = has_assets
         # The request ID.
         self.request_id = request_id
 
@@ -35860,6 +38095,8 @@ class GetRoutineResponseBody(TeaModel):
         if self.envs is not None:
             for k in self.envs:
                 result['Envs'].append(k.to_map() if k else None)
+        if self.has_assets is not None:
+            result['HasAssets'] = self.has_assets
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -35877,6 +38114,8 @@ class GetRoutineResponseBody(TeaModel):
             for k in m.get('Envs'):
                 temp_model = GetRoutineResponseBodyEnvs()
                 self.envs.append(temp_model.from_map(k))
+        if m.get('HasAssets') is not None:
+            self.has_assets = m.get('HasAssets')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -38337,6 +40576,349 @@ class GetTieredCacheResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetTieredCacheResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetTransportLayerApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        site_id: int = None,
+    ):
+        # Application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class GetTransportLayerApplicationResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        client_ippass_through_mode: str = None,
+        comment: str = None,
+        edge_port: str = None,
+        protocol: str = None,
+        rule_id: int = None,
+        source: str = None,
+        source_port: str = None,
+        source_type: str = None,
+    ):
+        # Client IP pass-through protocol, supporting:
+        # - **off**: No pass-through.
+        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+        self.client_ippass_through_mode = client_ippass_through_mode
+        # Comment information of the rule.
+        self.comment = comment
+        # Edge port. Supports:
+        # 
+        # - A single port, such as 80.
+        # - Port range, such as 81-85, representing ports 81, 82, 83, 84, 85.
+        # - Combination of ports and port ranges, separated by commas, for example 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+        self.edge_port = edge_port
+        # Forwarding rule protocol, with values:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
+        self.protocol = protocol
+        # Rule ID.
+        self.rule_id = rule_id
+        # Specific value of the origin, which needs to match the type of the origin.
+        self.source = source
+        # Origin port. Supports:
+        # 
+        # - A single port, when the origin port is a single port, any valid edge port combination is supported.
+        # - Port range, only when the edge port is a port range, the origin port can be set as a port range and the size of the range must be consistent with the edge port. For example, if the edge port is 90-93, the origin port cannot be set to 81-85 because the origin port range is 5 and the edge port range is 3, which are inconsistent.
+        self.source_port = source_port
+        # Origin type, supporting:
+        # - **ip**: IP.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ippass_through_mode is not None:
+            result['ClientIPPassThroughMode'] = self.client_ippass_through_mode
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.edge_port is not None:
+            result['EdgePort'] = self.edge_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_port is not None:
+            result['SourcePort'] = self.source_port
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIPPassThroughMode') is not None:
+            self.client_ippass_through_mode = m.get('ClientIPPassThroughMode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('EdgePort') is not None:
+            self.edge_port = m.get('EdgePort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourcePort') is not None:
+            self.source_port = m.get('SourcePort')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class GetTransportLayerApplicationResponseBodyStaticIpV4List(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        status: str = None,
+    ):
+        self.address = address
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetTransportLayerApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        cname: str = None,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        record_name: str = None,
+        request_id: str = None,
+        rules: List[GetTransportLayerApplicationResponseBodyRules] = None,
+        rules_count: int = None,
+        site_id: int = None,
+        static_ip: str = None,
+        static_ip_v4list: List[GetTransportLayerApplicationResponseBodyStaticIpV4List] = None,
+        status: str = None,
+    ):
+        # Transport layer application ID.
+        self.application_id = application_id
+        # The CNAME domain corresponding to the transport layer acceleration application. This field is not empty only when the site is accessed via CNAME.
+        self.cname = cname
+        # Whether to enable China mainland network access optimization, default is off. Value range:
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # Switch for IP access rules. When turned on, the IP access rules in WAF take effect on the transport layer application.
+        # 
+        # - on: Turned on.
+        # - off: Turned off.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # The domain name of the transport layer application.
+        self.record_name = record_name
+        # Id of the request
+        self.request_id = request_id
+        # List of forwarding rules.
+        self.rules = rules
+        # Number of forwarding rules contained in the transport layer acceleration application.
+        self.rules_count = rules_count
+        # Site ID.
+        self.site_id = site_id
+        self.static_ip = static_ip
+        self.static_ip_v4list = static_ip_v4list
+        # Status of the transport layer application
+        # 
+        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+        # - **active**: Active.
+        self.status = status
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.static_ip_v4list:
+            for k in self.static_ip_v4list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.cname is not None:
+            result['Cname'] = self.cname
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.rules_count is not None:
+            result['RulesCount'] = self.rules_count
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        result['StaticIpV4List'] = []
+        if self.static_ip_v4list is not None:
+            for k in self.static_ip_v4list:
+                result['StaticIpV4List'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Cname') is not None:
+            self.cname = m.get('Cname')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = GetTransportLayerApplicationResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('RulesCount') is not None:
+            self.rules_count = m.get('RulesCount')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        self.static_ip_v4list = []
+        if m.get('StaticIpV4List') is not None:
+            for k in m.get('StaticIpV4List'):
+                temp_model = GetTransportLayerApplicationResponseBodyStaticIpV4List()
+                self.static_ip_v4list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class GetTransportLayerApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetTransportLayerApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetTransportLayerApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -44622,6 +47204,590 @@ class ListEdgeRoutineRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEdgeRoutineRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHttpIncomingRequestHeaderModificationRulesRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rule_name: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        request_header_modification: List[ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListHttpIncomingRequestHeaderModificationRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListHttpIncomingRequestHeaderModificationRulesResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListHttpIncomingRequestHeaderModificationRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHttpIncomingRequestHeaderModificationRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHttpIncomingRequestHeaderModificationRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListHttpIncomingResponseHeaderModificationRulesRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        rule_name: str = None,
+        site_id: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.site_id = site_id
+        self.site_version = site_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        config_type: str = None,
+        response_header_modification: List[ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_version: int = None,
+    ):
+        self.config_id = config_id
+        self.config_type = config_type
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        self.site_version = site_version
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.config_type is not None:
+            result['ConfigType'] = self.config_type
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_version is not None:
+            result['SiteVersion'] = self.site_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ConfigType') is not None:
+            self.config_type = m.get('ConfigType')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteVersion') is not None:
+            self.site_version = m.get('SiteVersion')
+        return self
+
+
+class ListHttpIncomingResponseHeaderModificationRulesResponseBody(TeaModel):
+    def __init__(
+        self,
+        configs: List[ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.configs = configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.configs:
+            for k in self.configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Configs'] = []
+        if self.configs is not None:
+            for k in self.configs:
+                result['Configs'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.configs = []
+        if m.get('Configs') is not None:
+            for k in m.get('Configs'):
+                temp_model = ListHttpIncomingResponseHeaderModificationRulesResponseBodyConfigs()
+                self.configs.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class ListHttpIncomingResponseHeaderModificationRulesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListHttpIncomingResponseHeaderModificationRulesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListHttpIncomingResponseHeaderModificationRulesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -52045,16 +55211,12 @@ class ListRoutineCodeVersionsRequest(TeaModel):
         return self
 
 
-class ListRoutineCodeVersionsResponseBodyCodeVersions(TeaModel):
+class ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions(TeaModel):
     def __init__(
         self,
-        code_description: str = None,
-        code_version: str = None,
-        create_time: str = None,
+        not_found_strategy: str = None,
     ):
-        self.code_description = code_description
-        self.code_version = code_version
-        self.create_time = create_time
+        self.not_found_strategy = not_found_strategy
 
     def validate(self):
         pass
@@ -52065,22 +55227,79 @@ class ListRoutineCodeVersionsResponseBodyCodeVersions(TeaModel):
             return _map
 
         result = dict()
-        if self.code_description is not None:
-            result['CodeDescription'] = self.code_description
-        if self.code_version is not None:
-            result['CodeVersion'] = self.code_version
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
+        if self.not_found_strategy is not None:
+            result['NotFoundStrategy'] = self.not_found_strategy
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NotFoundStrategy') is not None:
+            self.not_found_strategy = m.get('NotFoundStrategy')
+        return self
+
+
+class ListRoutineCodeVersionsResponseBodyCodeVersions(TeaModel):
+    def __init__(
+        self,
+        build_id: int = None,
+        code_description: str = None,
+        code_version: str = None,
+        conf_options: ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions = None,
+        create_time: str = None,
+        extra_info: str = None,
+        status: str = None,
+    ):
+        self.build_id = build_id
+        self.code_description = code_description
+        self.code_version = code_version
+        self.conf_options = conf_options
+        self.create_time = create_time
+        self.extra_info = extra_info
+        self.status = status
+
+    def validate(self):
+        if self.conf_options:
+            self.conf_options.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_id is not None:
+            result['BuildId'] = self.build_id
+        if self.code_description is not None:
+            result['CodeDescription'] = self.code_description
+        if self.code_version is not None:
+            result['CodeVersion'] = self.code_version
+        if self.conf_options is not None:
+            result['ConfOptions'] = self.conf_options.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildId') is not None:
+            self.build_id = m.get('BuildId')
         if m.get('CodeDescription') is not None:
             self.code_description = m.get('CodeDescription')
         if m.get('CodeVersion') is not None:
             self.code_version = m.get('CodeVersion')
+        if m.get('ConfOptions') is not None:
+            temp_model = ListRoutineCodeVersionsResponseBodyCodeVersionsConfOptions()
+            self.conf_options = temp_model.from_map(m['ConfOptions'])
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExtraInfo') is not None:
+            self.extra_info = m.get('ExtraInfo')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -54403,6 +57622,432 @@ class ListTagResourcesResponse(TeaModel):
         return self
 
 
+class ListTransportLayerApplicationsRequest(TeaModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        record_name: str = None,
+        site_id: int = None,
+    ):
+        # Query type for the transport layer application host record, supporting the following 4 types, with exact query as the default.
+        # 
+        # - fuzzy: Fuzzy query.
+        # - exact: Exact query.
+        # - prefix: Prefix match query.
+        # - suffix: Suffix match query.
+        self.match_type = match_type
+        # Page number set for pagination. Starting value: 1. Default value: 1.
+        self.page_number = page_number
+        # Page size. The maximum value is 500.
+        self.page_size = page_size
+        # Host record of the transport layer application.
+        self.record_name = record_name
+        # Site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) API.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_type is not None:
+            result['MatchType'] = self.match_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchType') is not None:
+            self.match_type = m.get('MatchType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class ListTransportLayerApplicationsResponseBodyApplicationsRules(TeaModel):
+    def __init__(
+        self,
+        client_ippass_through_mode: str = None,
+        comment: str = None,
+        edge_port: str = None,
+        protocol: str = None,
+        rule_id: int = None,
+        source: str = None,
+        source_port: str = None,
+        source_type: str = None,
+    ):
+        # Client IP pass-through protocol, supports:
+        # - **off**: No pass-through.
+        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+        self.client_ippass_through_mode = client_ippass_through_mode
+        # Comment information for the rule.
+        self.comment = comment
+        # Edge port. Supports:
+        # 
+        # - A single port, e.g., 80.
+        # - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+        # - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+        self.edge_port = edge_port
+        # Forwarding rule protocol, with values:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
+        self.protocol = protocol
+        # Layer 4 acceleration rule ID.
+        self.rule_id = rule_id
+        # Specific value of the source, which needs to match the source type.
+        self.source = source
+        # Source port. Supports:
+        # 
+        # - A single port, when the source port is a single port, any valid combination of edge ports is supported.
+        # - Port range, only when the edge port is a port range, the source port can be set to a port range, and the range size must be consistent with the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which are inconsistent.
+        self.source_port = source_port
+        # Source type, supports:
+        # - **ip**: IP.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ippass_through_mode is not None:
+            result['ClientIPPassThroughMode'] = self.client_ippass_through_mode
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.edge_port is not None:
+            result['EdgePort'] = self.edge_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_port is not None:
+            result['SourcePort'] = self.source_port
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIPPassThroughMode') is not None:
+            self.client_ippass_through_mode = m.get('ClientIPPassThroughMode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('EdgePort') is not None:
+            self.edge_port = m.get('EdgePort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourcePort') is not None:
+            self.source_port = m.get('SourcePort')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        status: str = None,
+    ):
+        self.address = address
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListTransportLayerApplicationsResponseBodyApplications(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        cname: str = None,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        record_name: str = None,
+        rules: List[ListTransportLayerApplicationsResponseBodyApplicationsRules] = None,
+        rules_count: int = None,
+        site_id: int = None,
+        static_ip: str = None,
+        static_ip_v4list: List[ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List] = None,
+        status: str = None,
+    ):
+        # Layer 4 application ID.
+        self.application_id = application_id
+        # CNAME domain name corresponding to the Layer 4 acceleration application. This field is not empty only when the site is accessed via CNAME.
+        self.cname = cname
+        # Whether to enable China mainland network access optimization. It is disabled by default. The value range is:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the IP access rules in WAF take effect on the Layer 4 application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # Domain name of the Layer 4 application.
+        self.record_name = record_name
+        # List of forwarding rules.
+        self.rules = rules
+        # Number of forwarding rules contained in the Layer 4 acceleration application.
+        self.rules_count = rules_count
+        # Site ID.
+        self.site_id = site_id
+        self.static_ip = static_ip
+        # This parameter is required.
+        self.static_ip_v4list = static_ip_v4list
+        # Status of the Layer 4 application
+        # 
+        # - **deploying**: Deploying. In this state, modification and deletion are not allowed.
+        # - **active**: Active.
+        self.status = status
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+        if self.static_ip_v4list:
+            for k in self.static_ip_v4list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.cname is not None:
+            result['Cname'] = self.cname
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.record_name is not None:
+            result['RecordName'] = self.record_name
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.rules_count is not None:
+            result['RulesCount'] = self.rules_count
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        result['StaticIpV4List'] = []
+        if self.static_ip_v4list is not None:
+            for k in self.static_ip_v4list:
+                result['StaticIpV4List'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('Cname') is not None:
+            self.cname = m.get('Cname')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('RecordName') is not None:
+            self.record_name = m.get('RecordName')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ListTransportLayerApplicationsResponseBodyApplicationsRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('RulesCount') is not None:
+            self.rules_count = m.get('RulesCount')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        self.static_ip_v4list = []
+        if m.get('StaticIpV4List') is not None:
+            for k in m.get('StaticIpV4List'):
+                temp_model = ListTransportLayerApplicationsResponseBodyApplicationsStaticIpV4List()
+                self.static_ip_v4list.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListTransportLayerApplicationsResponseBody(TeaModel):
+    def __init__(
+        self,
+        applications: List[ListTransportLayerApplicationsResponseBodyApplications] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # List of transport layer applications.
+        self.applications = applications
+        # Current page number.
+        self.page_number = page_number
+        # Page size.
+        self.page_size = page_size
+        # Request ID.
+        self.request_id = request_id
+        # Total number of transport layer applications.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = ListTransportLayerApplicationsResponseBodyApplications()
+                self.applications.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListTransportLayerApplicationsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListTransportLayerApplicationsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListTransportLayerApplicationsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListUploadTasksRequest(TeaModel):
     def __init__(
         self,
@@ -55530,11 +59175,15 @@ class ListUserRoutinesResponseBodyRoutines(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        default_related_record: str = None,
         description: str = None,
+        has_assets: bool = None,
         routine_name: str = None,
     ):
         self.create_time = create_time
+        self.default_related_record = default_related_record
         self.description = description
+        self.has_assets = has_assets
         self.routine_name = routine_name
 
     def validate(self):
@@ -55548,8 +59197,12 @@ class ListUserRoutinesResponseBodyRoutines(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.default_related_record is not None:
+            result['DefaultRelatedRecord'] = self.default_related_record
         if self.description is not None:
             result['Description'] = self.description
+        if self.has_assets is not None:
+            result['HasAssets'] = self.has_assets
         if self.routine_name is not None:
             result['RoutineName'] = self.routine_name
         return result
@@ -55558,8 +59211,12 @@ class ListUserRoutinesResponseBodyRoutines(TeaModel):
         m = m or dict()
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DefaultRelatedRecord') is not None:
+            self.default_related_record = m.get('DefaultRelatedRecord')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('HasAssets') is not None:
+            self.has_assets = m.get('HasAssets')
         if m.get('RoutineName') is not None:
             self.routine_name = m.get('RoutineName')
         return self
@@ -63234,8 +66891,15 @@ class UpdateCrossBorderOptimizationRequest(TeaModel):
         enable: str = None,
         site_id: int = None,
     ):
+        # Whether to enable Chinese mainland network access optimization. By default, it is disabled. Valid values:
+        # 
+        # *   on
+        # *   off
+        # 
         # This parameter is required.
         self.enable = enable
+        # The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
+        # 
         # This parameter is required.
         self.site_id = site_id
 
@@ -63268,6 +66932,7 @@ class UpdateCrossBorderOptimizationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -64059,6 +67724,512 @@ class UpdateEdgeContainerAppResourceReserveResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateEdgeContainerAppResourceReserveResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateHttpIncomingRequestHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_header_modification: List[UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.request_header_modification = request_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        if self.request_header_modification:
+            for k in self.request_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['RequestHeaderModification'] = []
+        if self.request_header_modification is not None:
+            for k in self.request_header_modification:
+                result['RequestHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.request_header_modification = []
+        if m.get('RequestHeaderModification') is not None:
+            for k in m.get('RequestHeaderModification'):
+                temp_model = UpdateHttpIncomingRequestHeaderModificationRuleRequestRequestHeaderModification()
+                self.request_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateHttpIncomingRequestHeaderModificationRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        request_header_modification_shrink: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.request_header_modification_shrink = request_header_modification_shrink
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_header_modification_shrink is not None:
+            result['RequestHeaderModification'] = self.request_header_modification_shrink
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestHeaderModification') is not None:
+            self.request_header_modification_shrink = m.get('RequestHeaderModification')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateHttpIncomingRequestHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateHttpIncomingRequestHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHttpIncomingRequestHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHttpIncomingRequestHeaderModificationRuleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        operation: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.operation = operation
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class UpdateHttpIncomingResponseHeaderModificationRuleRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        response_header_modification: List[UpdateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification] = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.response_header_modification = response_header_modification
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        if self.response_header_modification:
+            for k in self.response_header_modification:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        result['ResponseHeaderModification'] = []
+        if self.response_header_modification is not None:
+            for k in self.response_header_modification:
+                result['ResponseHeaderModification'].append(k.to_map() if k else None)
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        self.response_header_modification = []
+        if m.get('ResponseHeaderModification') is not None:
+            for k in m.get('ResponseHeaderModification'):
+                temp_model = UpdateHttpIncomingResponseHeaderModificationRuleRequestResponseHeaderModification()
+                self.response_header_modification.append(temp_model.from_map(k))
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateHttpIncomingResponseHeaderModificationRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        config_id: int = None,
+        response_header_modification_shrink: str = None,
+        rule: str = None,
+        rule_enable: str = None,
+        rule_name: str = None,
+        sequence: int = None,
+        site_id: int = None,
+    ):
+        # This parameter is required.
+        self.config_id = config_id
+        self.response_header_modification_shrink = response_header_modification_shrink
+        self.rule = rule
+        self.rule_enable = rule_enable
+        self.rule_name = rule_name
+        self.sequence = sequence
+        # This parameter is required.
+        self.site_id = site_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.response_header_modification_shrink is not None:
+            result['ResponseHeaderModification'] = self.response_header_modification_shrink
+        if self.rule is not None:
+            result['Rule'] = self.rule
+        if self.rule_enable is not None:
+            result['RuleEnable'] = self.rule_enable
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.sequence is not None:
+            result['Sequence'] = self.sequence
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('ResponseHeaderModification') is not None:
+            self.response_header_modification_shrink = m.get('ResponseHeaderModification')
+        if m.get('Rule') is not None:
+            self.rule = m.get('Rule')
+        if m.get('RuleEnable') is not None:
+            self.rule_enable = m.get('RuleEnable')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('Sequence') is not None:
+            self.sequence = m.get('Sequence')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        return self
+
+
+class UpdateHttpIncomingResponseHeaderModificationRuleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateHttpIncomingResponseHeaderModificationRuleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateHttpIncomingResponseHeaderModificationRuleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateHttpIncomingResponseHeaderModificationRuleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -69987,6 +74158,330 @@ class UpdateTieredCacheResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateTieredCacheResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateTransportLayerApplicationRequestRules(TeaModel):
+    def __init__(
+        self,
+        client_ippass_through_mode: str = None,
+        comment: str = None,
+        edge_port: str = None,
+        protocol: str = None,
+        source: str = None,
+        source_port: str = None,
+        source_type: str = None,
+    ):
+        # Client IP pass-through protocol, supports:
+        # - **off**: No pass-through.
+        # - **PPv1**: PROXY Protocol v1, supports client IP pass-through for TCP protocol.
+        # - **PPv2**: PROXY Protocol v2, supports client IP pass-through for TCP and UDP protocols.
+        # - **SPP**: Simple Proxy Protocol, supports client IP pass-through for UDP protocol.
+        self.client_ippass_through_mode = client_ippass_through_mode
+        # Comment information for the rule.
+        self.comment = comment
+        # Edge port. Supports:
+        # 
+        # - A single port, e.g., 80.
+        # - Port range, e.g., 81-85, representing ports 81, 82, 83, 84, 85.
+        # - Combination of ports and port ranges, separated by commas, e.g., 80,81-85,90, representing ports 80, 81, 82, 83, 84, 85, 90.
+        # - Edge ports within a single rule and between multiple rules must not overlap.
+        self.edge_port = edge_port
+        # Forwarding rule protocol, supports:
+        # 
+        # - TCP: TCP protocol.
+        # - UDP: UDP protocol.
+        self.protocol = protocol
+        # Specific value of the source.
+        self.source = source
+        # Source port. Supports:
+        # 
+        # - A single port, when the source port is a single port, any valid edge port combination is supported.
+        # - Port range, only when the edge port is a port range, the source port can be set as a port range, and the size of the range must match that of the edge port. For example, if the edge port is 90-93, the source port cannot be set to 81-85 because the source port range is 5 and the edge port range is 3, which do not match.
+        self.source_port = source_port
+        # Source type, supports:
+        # - **ip**: IP address.
+        # - **domain**: Domain name.
+        # - **OP**: Origin pool.
+        # - **LB**: Load balancer.
+        self.source_type = source_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_ippass_through_mode is not None:
+            result['ClientIPPassThroughMode'] = self.client_ippass_through_mode
+        if self.comment is not None:
+            result['Comment'] = self.comment
+        if self.edge_port is not None:
+            result['EdgePort'] = self.edge_port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.source_port is not None:
+            result['SourcePort'] = self.source_port
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIPPassThroughMode') is not None:
+            self.client_ippass_through_mode = m.get('ClientIPPassThroughMode')
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+        if m.get('EdgePort') is not None:
+            self.edge_port = m.get('EdgePort')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SourcePort') is not None:
+            self.source_port = m.get('SourcePort')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        return self
+
+
+class UpdateTransportLayerApplicationRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        rules: List[UpdateTransportLayerApplicationRequestRules] = None,
+        site_id: int = None,
+        static_ip: str = None,
+    ):
+        # Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+        self.rules = rules
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        self.static_ip = static_ip
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = UpdateTransportLayerApplicationRequestRules()
+                self.rules.append(temp_model.from_map(k))
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        return self
+
+
+class UpdateTransportLayerApplicationShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        application_id: int = None,
+        cross_border_optimization: str = None,
+        ip_access_rule: str = None,
+        ipv_6: str = None,
+        rules_shrink: str = None,
+        site_id: int = None,
+        static_ip: str = None,
+    ):
+        # Transport layer application ID, which can be obtained by calling the [ListTransportLayerApplications](~~ListTransportLayerApplications~~) interface.
+        # 
+        # This parameter is required.
+        self.application_id = application_id
+        # Whether to enable China mainland network access optimization, default is disabled. Value range:
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.cross_border_optimization = cross_border_optimization
+        # IP access rule switch. When enabled, the IP access rules in WAF will take effect on the transport layer application.
+        # 
+        # - on: Enabled.
+        # - off: Disabled.
+        self.ip_access_rule = ip_access_rule
+        # IPv6 switch.
+        self.ipv_6 = ipv_6
+        # Forwarding rule list. Details of each rule. Except for the comment, all other parameters are required.
+        self.rules_shrink = rules_shrink
+        # Site ID, which can be obtained by calling the [ListSites](~~ListSites~~) interface.
+        # 
+        # This parameter is required.
+        self.site_id = site_id
+        self.static_ip = static_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_id is not None:
+            result['ApplicationId'] = self.application_id
+        if self.cross_border_optimization is not None:
+            result['CrossBorderOptimization'] = self.cross_border_optimization
+        if self.ip_access_rule is not None:
+            result['IpAccessRule'] = self.ip_access_rule
+        if self.ipv_6 is not None:
+            result['Ipv6'] = self.ipv_6
+        if self.rules_shrink is not None:
+            result['Rules'] = self.rules_shrink
+        if self.site_id is not None:
+            result['SiteId'] = self.site_id
+        if self.static_ip is not None:
+            result['StaticIp'] = self.static_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationId') is not None:
+            self.application_id = m.get('ApplicationId')
+        if m.get('CrossBorderOptimization') is not None:
+            self.cross_border_optimization = m.get('CrossBorderOptimization')
+        if m.get('IpAccessRule') is not None:
+            self.ip_access_rule = m.get('IpAccessRule')
+        if m.get('Ipv6') is not None:
+            self.ipv_6 = m.get('Ipv6')
+        if m.get('Rules') is not None:
+            self.rules_shrink = m.get('Rules')
+        if m.get('SiteId') is not None:
+            self.site_id = m.get('SiteId')
+        if m.get('StaticIp') is not None:
+            self.static_ip = m.get('StaticIp')
+        return self
+
+
+class UpdateTransportLayerApplicationResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # Request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateTransportLayerApplicationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateTransportLayerApplicationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateTransportLayerApplicationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

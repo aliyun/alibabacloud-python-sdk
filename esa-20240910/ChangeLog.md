@@ -1,3 +1,12 @@
+2025-09-18 Version: 2.28.4
+- Update API CreateTransportLayerApplication: add request parameters StaticIp.
+- Update API GetTransportLayerApplication: add response parameters Body.StaticIp.
+- Update API GetTransportLayerApplication: add response parameters Body.StaticIpV4List.
+- Update API ListTransportLayerApplications: add response parameters Body.Applications.$.StaticIp.
+- Update API ListTransportLayerApplications: add response parameters Body.Applications.$.StaticIpV4List.
+- Update API UpdateTransportLayerApplication: add request parameters StaticIp.
+
+
 2025-08-21 Version: 2.28.2
 - Update API GetRecord: add response parameters Body.RecordModel.Data.Tags.
 - Update API ListRecords: add response parameters Body.Records.$.Data.Tags.
