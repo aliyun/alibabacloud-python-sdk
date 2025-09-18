@@ -5584,7 +5584,6 @@ class CreateApsKafkaHudiJobRequest(TeaModel):
         self.hudi_advanced_config = hudi_advanced_config
         # This parameter is required.
         self.incremental_compute_unit = incremental_compute_unit
-        # This parameter is required.
         self.json_parse_level = json_parse_level
         self.kafka_cluster_id = kafka_cluster_id
         self.kafka_topic = kafka_topic
@@ -5791,7 +5790,6 @@ class CreateApsKafkaHudiJobShrinkRequest(TeaModel):
         self.hudi_advanced_config = hudi_advanced_config
         # This parameter is required.
         self.incremental_compute_unit = incremental_compute_unit
-        # This parameter is required.
         self.json_parse_level = json_parse_level
         self.kafka_cluster_id = kafka_cluster_id
         self.kafka_topic = kafka_topic
