@@ -1,3 +1,44 @@
+2025-09-18 Version: 4.1.1
+- Update API ActivateFlowLog: add request parameters Version.
+- Update API AttachExpressConnectRouterChildInstance: add request parameters Version.
+- Update API CheckAddRegionToExpressConnectRouter: add request parameters Version.
+- Update API CreateExpressConnectRouter: add request parameters Version.
+- Update API CreateExpressConnectRouterAssociation: add request parameters Version.
+- Update API CreateFlowLog: add request parameters Version.
+- Update API DeactivateFlowLog: add request parameters Version.
+- Update API DeleteExpressConnectRouter: add request parameters Version.
+- Update API DeleteExpressConnectRouterAssociation: add request parameters Version.
+- Update API DeleteFlowlog: add request parameters Version.
+- Update API DescribeDisabledExpressConnectRouterRouteEntries: add request parameters Version.
+- Update API DescribeExpressConnectRouter: add request parameters Version.
+- Update API DescribeExpressConnectRouterAllowedPrefixHistory: add request parameters Version.
+- Update API DescribeExpressConnectRouterAssociation: add request parameters Version.
+- Update API DescribeExpressConnectRouterChildInstance: add request parameters Version.
+- Update API DescribeExpressConnectRouterInterRegionTransitMode: add request parameters Version.
+- Update API DescribeExpressConnectRouterRegion: add request parameters Version.
+- Update API DescribeExpressConnectRouterRouteEntries: add request parameters Version.
+- Update API DescribeFlowLogs: add request parameters Version.
+- Update API DescribeInstanceGrantedToExpressConnectRouter: add request parameters Version.
+- Update API DetachExpressConnectRouterChildInstance: add request parameters Version.
+- Update API DisableExpressConnectRouterRouteEntries: add request parameters Version.
+- Update API EnableExpressConnectRouterRouteEntries: add request parameters Version.
+- Update API ForceDeleteExpressConnectRouter: add request parameters Version.
+- Update API GrantInstanceToExpressConnectRouter: add request parameters Version.
+- Update API ListExpressConnectRouterSupportedRegion: add request parameters Version.
+- Update API ListTagResources: add request parameters Version.
+- Update API ModifyExpressConnectRouter: add request parameters Version.
+- Update API ModifyExpressConnectRouterAssociation: add request parameters Version.
+- Update API ModifyExpressConnectRouterAssociationAllowedPrefix: add request parameters Version.
+- Update API ModifyExpressConnectRouterChildInstance: add request parameters Version.
+- Update API ModifyExpressConnectRouterInterRegionTransitMode: add request parameters Version.
+- Update API ModifyFlowLogAttribute: add request parameters Version.
+- Update API MoveResourceGroup: add request parameters Version.
+- Update API RevokeInstanceFromExpressConnectRouter: add request parameters Version.
+- Update API SynchronizeExpressConnectRouterInterRegionBandwidth: add request parameters Version.
+- Update API TagResources: add request parameters Version.
+- Update API UntagResources: add request parameters Version.
+
+
 2025-08-14 Version: 4.1.0
 - Support API ModifyExpressConnectRouterAssociation.
 - Support API ModifyExpressConnectRouterChildInstance.

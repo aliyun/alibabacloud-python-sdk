@@ -11,6 +11,7 @@ class ActivateFlowLogRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         flow_log_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -31,6 +32,7 @@ class ActivateFlowLogRequest(TeaModel):
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
+        self.version = version
 
     def validate(self):
         pass
@@ -49,6 +51,8 @@ class ActivateFlowLogRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.flow_log_id is not None:
             result['FlowLogId'] = self.flow_log_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -61,6 +65,8 @@ class ActivateFlowLogRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('FlowLogId') is not None:
             self.flow_log_id = m.get('FlowLogId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -198,6 +204,7 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
         description: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The VBR ID.
         # 
@@ -232,6 +239,7 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -258,6 +266,8 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -278,6 +288,8 @@ class AttachExpressConnectRouterChildInstanceRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -411,6 +423,7 @@ class CheckAddRegionToExpressConnectRouterRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         fresh_region_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -431,6 +444,7 @@ class CheckAddRegionToExpressConnectRouterRequest(TeaModel):
         # 
         # This parameter is required.
         self.fresh_region_id = fresh_region_id
+        self.version = version
 
     def validate(self):
         pass
@@ -449,6 +463,8 @@ class CheckAddRegionToExpressConnectRouterRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.fresh_region_id is not None:
             result['FreshRegionId'] = self.fresh_region_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -461,6 +477,8 @@ class CheckAddRegionToExpressConnectRouterRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('FreshRegionId') is not None:
             self.fresh_region_id = m.get('FreshRegionId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -686,6 +704,7 @@ class CreateExpressConnectRouterRequest(TeaModel):
         name: str = None,
         resource_group_id: str = None,
         tag: List[CreateExpressConnectRouterRequestTag] = None,
+        version: str = None,
     ):
         # The autonomous system number (ASN) of the ECR. Valid values: 45104, 64512 to 65534, and 4200000000 to 4294967294. Default value: 45104. The value 65025 is reserved by Alibaba Cloud.
         # 
@@ -716,6 +735,7 @@ class CreateExpressConnectRouterRequest(TeaModel):
         # 
         # You can specify at most 20 tags in each call.
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -745,6 +765,8 @@ class CreateExpressConnectRouterRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -766,6 +788,8 @@ class CreateExpressConnectRouterRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateExpressConnectRouterRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -913,6 +937,7 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
         ecr_id: str = None,
         transit_router_id: str = None,
         transit_router_owner_id: int = None,
+        version: str = None,
         vpc_id: str = None,
         vpc_owner_id: int = None,
     ):
@@ -958,6 +983,7 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
         # 
         # >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
         self.transit_router_owner_id = transit_router_owner_id
+        self.version = version
         # The VPC ID.
         self.vpc_id = vpc_id
         # The ID of the Alibaba Cloud account that owns the VPC. Default value: ID of the Alibaba Cloud account that logs in.
@@ -996,6 +1022,8 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
             result['TransitRouterId'] = self.transit_router_id
         if self.transit_router_owner_id is not None:
             result['TransitRouterOwnerId'] = self.transit_router_owner_id
+        if self.version is not None:
+            result['Version'] = self.version
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         if self.vpc_owner_id is not None:
@@ -1026,6 +1054,8 @@ class CreateExpressConnectRouterAssociationRequest(TeaModel):
             self.transit_router_id = m.get('TransitRouterId')
         if m.get('TransitRouterOwnerId') is not None:
             self.transit_router_owner_id = m.get('TransitRouterOwnerId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         if m.get('VpcOwnerId') is not None:
@@ -1212,6 +1242,7 @@ class CreateFlowLogRequest(TeaModel):
         resource_group_id: str = None,
         sampling_rate: str = None,
         tag: List[CreateFlowLogRequestTag] = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1289,6 +1320,7 @@ class CreateFlowLogRequest(TeaModel):
         # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -1330,6 +1362,8 @@ class CreateFlowLogRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1363,6 +1397,8 @@ class CreateFlowLogRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = CreateFlowLogRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -1503,6 +1539,7 @@ class DeactivateFlowLogRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         flow_log_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1523,6 +1560,7 @@ class DeactivateFlowLogRequest(TeaModel):
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
+        self.version = version
 
     def validate(self):
         pass
@@ -1541,6 +1579,8 @@ class DeactivateFlowLogRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.flow_log_id is not None:
             result['FlowLogId'] = self.flow_log_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1553,6 +1593,8 @@ class DeactivateFlowLogRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('FlowLogId') is not None:
             self.flow_log_id = m.get('FlowLogId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -1685,6 +1727,7 @@ class DeleteExpressConnectRouterRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -1701,6 +1744,7 @@ class DeleteExpressConnectRouterRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -1717,6 +1761,8 @@ class DeleteExpressConnectRouterRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1727,6 +1773,8 @@ class DeleteExpressConnectRouterRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -1861,6 +1909,7 @@ class DeleteExpressConnectRouterAssociationRequest(TeaModel):
         delete_attachment: bool = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The ID of the association between the ECR and the VPC or TR.
         # 
@@ -1886,6 +1935,7 @@ class DeleteExpressConnectRouterAssociationRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -1906,6 +1956,8 @@ class DeleteExpressConnectRouterAssociationRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -1920,6 +1972,8 @@ class DeleteExpressConnectRouterAssociationRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -2053,6 +2107,7 @@ class DeleteFlowlogRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         flow_log_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -2073,6 +2128,7 @@ class DeleteFlowlogRequest(TeaModel):
         # 
         # This parameter is required.
         self.flow_log_id = flow_log_id
+        self.version = version
 
     def validate(self):
         pass
@@ -2091,6 +2147,8 @@ class DeleteFlowlogRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.flow_log_id is not None:
             result['FlowLogId'] = self.flow_log_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -2103,6 +2161,8 @@ class DeleteFlowlogRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('FlowLogId') is not None:
             self.flow_log_id = m.get('FlowLogId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -2237,6 +2297,7 @@ class DescribeDisabledExpressConnectRouterRouteEntriesRequest(TeaModel):
         ecr_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -2260,6 +2321,7 @@ class DescribeDisabledExpressConnectRouterRouteEntriesRequest(TeaModel):
         # *   You do not need to specify this parameter for the first request.
         # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        self.version = version
 
     def validate(self):
         pass
@@ -2280,6 +2342,8 @@ class DescribeDisabledExpressConnectRouterRouteEntriesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -2294,6 +2358,8 @@ class DescribeDisabledExpressConnectRouterRouteEntriesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -2567,6 +2633,7 @@ class DescribeExpressConnectRouterRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
         tag: List[DescribeExpressConnectRouterRequestTag] = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -2594,6 +2661,7 @@ class DescribeExpressConnectRouterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The resource tags. You can specify up to 20 tags.
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -2625,6 +2693,8 @@ class DescribeExpressConnectRouterRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -2648,6 +2718,8 @@ class DescribeExpressConnectRouterRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = DescribeExpressConnectRouterRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -2975,6 +3047,7 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
         ecr_id: str = None,
         instance_id: str = None,
         instance_type: str = None,
+        version: str = None,
     ):
         # The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
         # 
@@ -3004,6 +3077,7 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
         # *   **VPC**\
         # *   **TR**\
         self.instance_type = instance_type
+        self.version = version
 
     def validate(self):
         pass
@@ -3026,6 +3100,8 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -3042,6 +3118,8 @@ class DescribeExpressConnectRouterAllowedPrefixHistoryRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -3231,6 +3309,7 @@ class DescribeExpressConnectRouterAssociationRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         transit_router_id: str = None,
+        version: str = None,
         vpc_id: str = None,
     ):
         # The ID of the association between the ECR and the VPC or TR.
@@ -3268,6 +3347,7 @@ class DescribeExpressConnectRouterAssociationRequest(TeaModel):
         self.next_token = next_token
         # The TR ID.
         self.transit_router_id = transit_router_id
+        self.version = version
         # The VPC ID.
         self.vpc_id = vpc_id
 
@@ -3300,6 +3380,8 @@ class DescribeExpressConnectRouterAssociationRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.transit_router_id is not None:
             result['TransitRouterId'] = self.transit_router_id
+        if self.version is not None:
+            result['Version'] = self.version
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -3326,6 +3408,8 @@ class DescribeExpressConnectRouterAssociationRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('TransitRouterId') is not None:
             self.transit_router_id = m.get('TransitRouterId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -3652,6 +3736,7 @@ class DescribeExpressConnectRouterChildInstanceRequest(TeaModel):
         ecr_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        version: str = None,
     ):
         # The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
         self.association_id = association_id
@@ -3683,6 +3768,7 @@ class DescribeExpressConnectRouterChildInstanceRequest(TeaModel):
         # *   If NextToken is empty, no next page exists.
         # *   If a value of NextToken is returned, the value indicates the token that is used for the next query.
         self.next_token = next_token
+        self.version = version
 
     def validate(self):
         pass
@@ -3711,6 +3797,8 @@ class DescribeExpressConnectRouterChildInstanceRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -3733,6 +3821,8 @@ class DescribeExpressConnectRouterChildInstanceRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -4016,6 +4106,7 @@ class DescribeExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -4032,6 +4123,7 @@ class DescribeExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -4048,6 +4140,8 @@ class DescribeExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4058,6 +4152,8 @@ class DescribeExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -4243,6 +4339,7 @@ class DescribeExpressConnectRouterRegionRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -4259,6 +4356,7 @@ class DescribeExpressConnectRouterRegionRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -4275,6 +4373,8 @@ class DescribeExpressConnectRouterRegionRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4285,6 +4385,8 @@ class DescribeExpressConnectRouterRegionRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -4431,6 +4533,7 @@ class DescribeExpressConnectRouterRouteEntriesRequest(TeaModel):
         next_token: str = None,
         nexthop_instance_id: str = None,
         query_region_id: str = None,
+        version: str = None,
     ):
         # The Autonomous System (AS) path of the route.
         self.as_path = as_path
@@ -4464,6 +4567,7 @@ class DescribeExpressConnectRouterRouteEntriesRequest(TeaModel):
         self.nexthop_instance_id = nexthop_instance_id
         # The region ID of the ECR.
         self.query_region_id = query_region_id
+        self.version = version
 
     def validate(self):
         pass
@@ -4494,6 +4598,8 @@ class DescribeExpressConnectRouterRouteEntriesRequest(TeaModel):
             result['NexthopInstanceId'] = self.nexthop_instance_id
         if self.query_region_id is not None:
             result['QueryRegionId'] = self.query_region_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4518,6 +4624,8 @@ class DescribeExpressConnectRouterRouteEntriesRequest(TeaModel):
             self.nexthop_instance_id = m.get('NexthopInstanceId')
         if m.get('QueryRegionId') is not None:
             self.query_region_id = m.get('QueryRegionId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -4805,6 +4913,7 @@ class DescribeFlowLogsRequest(TeaModel):
         project_name: str = None,
         resource_group_id: str = None,
         tag: List[DescribeFlowLogsRequestTag] = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -4858,6 +4967,7 @@ class DescribeFlowLogsRequest(TeaModel):
         self.project_name = project_name
         self.resource_group_id = resource_group_id
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -4897,6 +5007,8 @@ class DescribeFlowLogsRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -4928,6 +5040,8 @@ class DescribeFlowLogsRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = DescribeFlowLogsRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -5344,6 +5458,7 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
         next_token: str = None,
         resource_group_id: str = None,
         tag_models: List[DescribeInstanceGrantedToExpressConnectRouterRequestTagModels] = None,
+        version: str = None,
     ):
         # The type of the user account. Valid values:
         # 
@@ -5387,6 +5502,7 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The tags.
         self.tag_models = tag_models
+        self.version = version
 
     def validate(self):
         if self.tag_models:
@@ -5426,6 +5542,8 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
         if self.tag_models is not None:
             for k in self.tag_models:
                 result['TagModels'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -5457,6 +5575,8 @@ class DescribeInstanceGrantedToExpressConnectRouterRequest(TeaModel):
             for k in m.get('TagModels'):
                 temp_model = DescribeInstanceGrantedToExpressConnectRouterRequestTagModels()
                 self.tag_models.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -5731,6 +5851,7 @@ class DetachExpressConnectRouterChildInstanceRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The VBR ID.
         # 
@@ -5755,6 +5876,7 @@ class DetachExpressConnectRouterChildInstanceRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -5775,6 +5897,8 @@ class DetachExpressConnectRouterChildInstanceRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -5789,6 +5913,8 @@ class DetachExpressConnectRouterChildInstanceRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -5923,6 +6049,7 @@ class DisableExpressConnectRouterRouteEntriesRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         nexthop_instance_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -5947,6 +6074,7 @@ class DisableExpressConnectRouterRouteEntriesRequest(TeaModel):
         # 
         # This parameter is required.
         self.nexthop_instance_id = nexthop_instance_id
+        self.version = version
 
     def validate(self):
         pass
@@ -5967,6 +6095,8 @@ class DisableExpressConnectRouterRouteEntriesRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.nexthop_instance_id is not None:
             result['NexthopInstanceId'] = self.nexthop_instance_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -5981,6 +6111,8 @@ class DisableExpressConnectRouterRouteEntriesRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('NexthopInstanceId') is not None:
             self.nexthop_instance_id = m.get('NexthopInstanceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -6115,6 +6247,7 @@ class EnableExpressConnectRouterRouteEntriesRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         nexthop_instance_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -6139,6 +6272,7 @@ class EnableExpressConnectRouterRouteEntriesRequest(TeaModel):
         # 
         # This parameter is required.
         self.nexthop_instance_id = nexthop_instance_id
+        self.version = version
 
     def validate(self):
         pass
@@ -6159,6 +6293,8 @@ class EnableExpressConnectRouterRouteEntriesRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.nexthop_instance_id is not None:
             result['NexthopInstanceId'] = self.nexthop_instance_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6173,6 +6309,8 @@ class EnableExpressConnectRouterRouteEntriesRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('NexthopInstanceId') is not None:
             self.nexthop_instance_id = m.get('NexthopInstanceId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -6305,6 +6443,7 @@ class ForceDeleteExpressConnectRouterRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -6321,6 +6460,7 @@ class ForceDeleteExpressConnectRouterRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -6337,6 +6477,8 @@ class ForceDeleteExpressConnectRouterRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6347,6 +6489,8 @@ class ForceDeleteExpressConnectRouterRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -6483,6 +6627,7 @@ class GrantInstanceToExpressConnectRouterRequest(TeaModel):
         instance_id: str = None,
         instance_region_id: str = None,
         instance_type: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -6518,6 +6663,7 @@ class GrantInstanceToExpressConnectRouterRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_type = instance_type
+        self.version = version
 
     def validate(self):
         pass
@@ -6542,6 +6688,8 @@ class GrantInstanceToExpressConnectRouterRequest(TeaModel):
             result['InstanceRegionId'] = self.instance_region_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6560,6 +6708,8 @@ class GrantInstanceToExpressConnectRouterRequest(TeaModel):
             self.instance_region_id = m.get('InstanceRegionId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -6691,6 +6841,7 @@ class ListExpressConnectRouterSupportedRegionRequest(TeaModel):
         self,
         client_token: str = None,
         node_type: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -6706,6 +6857,7 @@ class ListExpressConnectRouterSupportedRegionRequest(TeaModel):
         # 
         # This parameter is required.
         self.node_type = node_type
+        self.version = version
 
     def validate(self):
         pass
@@ -6720,6 +6872,8 @@ class ListExpressConnectRouterSupportedRegionRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.node_type is not None:
             result['NodeType'] = self.node_type
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6728,6 +6882,8 @@ class ListExpressConnectRouterSupportedRegionRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -6887,6 +7043,7 @@ class ListTagResourcesRequest(TeaModel):
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
+        version: str = None,
     ):
         # The maximum number of entries to return for a single request. Default value: 20.
         self.max_results = max_results
@@ -6905,6 +7062,7 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # You can specify at most 20 tags.
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -6930,6 +7088,8 @@ class ListTagResourcesRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -6947,6 +7107,8 @@ class ListTagResourcesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = ListTagResourcesRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7139,6 +7301,7 @@ class ModifyExpressConnectRouterRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         name: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7163,6 +7326,7 @@ class ModifyExpressConnectRouterRequest(TeaModel):
         # 
         # >  The name must be 0 to 128 characters in length, and cannot start with http:// or https://.
         self.name = name
+        self.version = version
 
     def validate(self):
         pass
@@ -7183,6 +7347,8 @@ class ModifyExpressConnectRouterRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.name is not None:
             result['Name'] = self.name
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7197,6 +7363,8 @@ class ModifyExpressConnectRouterRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7331,6 +7499,7 @@ class ModifyExpressConnectRouterAssociationRequest(TeaModel):
         description: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # This parameter is required.
         self.association_id = association_id
@@ -7339,6 +7508,7 @@ class ModifyExpressConnectRouterAssociationRequest(TeaModel):
         self.dry_run = dry_run
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -7359,6 +7529,8 @@ class ModifyExpressConnectRouterAssociationRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7373,6 +7545,8 @@ class ModifyExpressConnectRouterAssociationRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7496,6 +7670,7 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         owner_account: str = None,
+        version: str = None,
     ):
         # The allowed route prefixes.
         self.allowed_prefixes = allowed_prefixes
@@ -7524,6 +7699,7 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
         # This parameter is required.
         self.ecr_id = ecr_id
         self.owner_account = owner_account
+        self.version = version
 
     def validate(self):
         pass
@@ -7548,6 +7724,8 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
             result['EcrId'] = self.ecr_id
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7566,6 +7744,8 @@ class ModifyExpressConnectRouterAssociationAllowedPrefixRequest(TeaModel):
             self.ecr_id = m.get('EcrId')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7701,6 +7881,7 @@ class ModifyExpressConnectRouterChildInstanceRequest(TeaModel):
         description: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # This parameter is required.
         self.child_instance_id = child_instance_id
@@ -7711,6 +7892,7 @@ class ModifyExpressConnectRouterChildInstanceRequest(TeaModel):
         self.dry_run = dry_run
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -7733,6 +7915,8 @@ class ModifyExpressConnectRouterChildInstanceRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7749,6 +7933,8 @@ class ModifyExpressConnectRouterChildInstanceRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7907,6 +8093,7 @@ class ModifyExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
         dry_run: bool = None,
         ecr_id: str = None,
         transit_mode_list: List[ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList] = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -7925,6 +8112,7 @@ class ModifyExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
         self.ecr_id = ecr_id
         # The cross-region forwarding modes.
         self.transit_mode_list = transit_mode_list
+        self.version = version
 
     def validate(self):
         if self.transit_mode_list:
@@ -7948,6 +8136,8 @@ class ModifyExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
         if self.transit_mode_list is not None:
             for k in self.transit_mode_list:
                 result['TransitModeList'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7963,6 +8153,8 @@ class ModifyExpressConnectRouterInterRegionTransitModeRequest(TeaModel):
             for k in m.get('TransitModeList'):
                 temp_model = ModifyExpressConnectRouterInterRegionTransitModeRequestTransitModeList()
                 self.transit_mode_list.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8100,6 +8292,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         flow_log_name: str = None,
         interval: int = None,
         sampling_rate: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -8140,6 +8333,7 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         # 
         # Default value: **1:4096**.
         self.sampling_rate = sampling_rate
+        self.version = version
 
     def validate(self):
         pass
@@ -8166,6 +8360,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             result['Interval'] = self.interval
         if self.sampling_rate is not None:
             result['SamplingRate'] = self.sampling_rate
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -8186,6 +8382,8 @@ class ModifyFlowLogAttributeRequest(TeaModel):
             self.interval = m.get('Interval')
         if m.get('SamplingRate') is not None:
             self.sampling_rate = m.get('SamplingRate')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8320,6 +8518,7 @@ class MoveResourceGroupRequest(TeaModel):
         new_resource_group_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -8340,6 +8539,7 @@ class MoveResourceGroupRequest(TeaModel):
         # 
         # This parameter is required.
         self.resource_type = resource_type
+        self.version = version
 
     def validate(self):
         pass
@@ -8360,6 +8560,8 @@ class MoveResourceGroupRequest(TeaModel):
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -8374,6 +8576,8 @@ class MoveResourceGroupRequest(TeaModel):
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8480,6 +8684,7 @@ class RevokeInstanceFromExpressConnectRouterRequest(TeaModel):
         instance_id: str = None,
         instance_region_id: str = None,
         instance_type: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -8515,6 +8720,7 @@ class RevokeInstanceFromExpressConnectRouterRequest(TeaModel):
         # 
         # This parameter is required.
         self.instance_type = instance_type
+        self.version = version
 
     def validate(self):
         pass
@@ -8539,6 +8745,8 @@ class RevokeInstanceFromExpressConnectRouterRequest(TeaModel):
             result['InstanceRegionId'] = self.instance_region_id
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -8557,6 +8765,8 @@ class RevokeInstanceFromExpressConnectRouterRequest(TeaModel):
             self.instance_region_id = m.get('InstanceRegionId')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8689,6 +8899,7 @@ class SynchronizeExpressConnectRouterInterRegionBandwidthRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         ecr_id: str = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -8705,6 +8916,7 @@ class SynchronizeExpressConnectRouterInterRegionBandwidthRequest(TeaModel):
         # 
         # This parameter is required.
         self.ecr_id = ecr_id
+        self.version = version
 
     def validate(self):
         pass
@@ -8721,6 +8933,8 @@ class SynchronizeExpressConnectRouterInterRegionBandwidthRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.ecr_id is not None:
             result['EcrId'] = self.ecr_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -8731,6 +8945,8 @@ class SynchronizeExpressConnectRouterInterRegionBandwidthRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('EcrId') is not None:
             self.ecr_id = m.get('EcrId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -8906,6 +9122,7 @@ class TagResourcesRequest(TeaModel):
         resource_id: List[str] = None,
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
+        version: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -8930,6 +9147,7 @@ class TagResourcesRequest(TeaModel):
         # 
         # This parameter is required.
         self.tag = tag
+        self.version = version
 
     def validate(self):
         if self.tag:
@@ -8955,6 +9173,8 @@ class TagResourcesRequest(TeaModel):
         if self.tag is not None:
             for k in self.tag:
                 result['Tag'].append(k.to_map() if k else None)
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -8972,6 +9192,8 @@ class TagResourcesRequest(TeaModel):
             for k in m.get('Tag'):
                 temp_model = TagResourcesRequestTag()
                 self.tag.append(temp_model.from_map(k))
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -9077,6 +9299,7 @@ class UntagResourcesRequest(TeaModel):
         resource_id: List[str] = None,
         resource_type: str = None,
         tag_key: List[str] = None,
+        version: str = None,
     ):
         # Specifies whether to remove all tags. This parameter is valid only when the **TagKey** parameter is not specified. Valid values:
         # 
@@ -9106,6 +9329,7 @@ class UntagResourcesRequest(TeaModel):
         self.resource_type = resource_type
         # The keys of the tags that you want to remove from the ECRs.
         self.tag_key = tag_key
+        self.version = version
 
     def validate(self):
         pass
@@ -9128,6 +9352,8 @@ class UntagResourcesRequest(TeaModel):
             result['ResourceType'] = self.resource_type
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -9144,6 +9370,8 @@ class UntagResourcesRequest(TeaModel):
             self.resource_type = m.get('ResourceType')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 

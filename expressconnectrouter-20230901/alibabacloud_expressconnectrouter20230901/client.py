@@ -54,6 +54,9 @@ class Client(OpenApiClient):
         @return: ActivateFlowLogResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -64,6 +67,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.flow_log_id):
             body['FlowLogId'] = request.flow_log_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -95,6 +99,9 @@ class Client(OpenApiClient):
         @return: ActivateFlowLogResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -105,6 +112,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.flow_log_id):
             body['FlowLogId'] = request.flow_log_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -164,6 +172,9 @@ class Client(OpenApiClient):
         @return: AttachExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -182,6 +193,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -215,6 +227,9 @@ class Client(OpenApiClient):
         @return: AttachExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -233,6 +248,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -294,6 +310,9 @@ class Client(OpenApiClient):
         @return: CheckAddRegionToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -304,6 +323,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.fresh_region_id):
             body['FreshRegionId'] = request.fresh_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -335,6 +355,9 @@ class Client(OpenApiClient):
         @return: CheckAddRegionToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -345,6 +368,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.fresh_region_id):
             body['FreshRegionId'] = request.fresh_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -404,6 +428,9 @@ class Client(OpenApiClient):
         @return: CreateExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.alibaba_side_asn):
             body['AlibabaSideAsn'] = request.alibaba_side_asn
@@ -420,6 +447,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -453,6 +481,9 @@ class Client(OpenApiClient):
         @return: CreateExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.alibaba_side_asn):
             body['AlibabaSideAsn'] = request.alibaba_side_asn
@@ -469,6 +500,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -530,6 +562,9 @@ class Client(OpenApiClient):
         @return: CreateExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
@@ -558,6 +593,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_owner_id):
             body['VpcOwnerId'] = request.vpc_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -589,6 +625,9 @@ class Client(OpenApiClient):
         @return: CreateExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
@@ -617,6 +656,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_owner_id):
             body['VpcOwnerId'] = request.vpc_owner_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -691,6 +731,8 @@ class Client(OpenApiClient):
             query['SamplingRate'] = request.sampling_rate
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -752,6 +794,8 @@ class Client(OpenApiClient):
             query['SamplingRate'] = request.sampling_rate
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -822,6 +866,9 @@ class Client(OpenApiClient):
         @return: DeactivateFlowLogResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -832,6 +879,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.flow_log_id):
             body['FlowLogId'] = request.flow_log_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -863,6 +911,9 @@ class Client(OpenApiClient):
         @return: DeactivateFlowLogResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -873,6 +924,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.flow_log_id):
             body['FlowLogId'] = request.flow_log_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -934,6 +986,9 @@ class Client(OpenApiClient):
         @return: DeleteExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -942,6 +997,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -977,6 +1033,9 @@ class Client(OpenApiClient):
         @return: DeleteExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -985,6 +1044,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1050,6 +1110,9 @@ class Client(OpenApiClient):
         @return: DeleteExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1062,6 +1125,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1093,6 +1157,9 @@ class Client(OpenApiClient):
         @return: DeleteExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1105,6 +1172,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1165,6 +1233,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1208,6 +1278,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.flow_log_id):
             query['FlowLogId'] = request.flow_log_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1274,6 +1346,9 @@ class Client(OpenApiClient):
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1286,6 +1361,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1317,6 +1393,9 @@ class Client(OpenApiClient):
         @return: DescribeDisabledExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1329,6 +1408,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1386,6 +1466,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1404,6 +1487,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1435,6 +1519,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1453,6 +1540,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1510,6 +1598,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1524,6 +1615,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1555,6 +1647,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterAllowedPrefixHistoryResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1569,6 +1664,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1626,6 +1722,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1650,6 +1749,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1681,6 +1781,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1705,6 +1808,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1762,6 +1866,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1782,6 +1889,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1813,6 +1921,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -1833,6 +1944,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1890,6 +2002,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1898,6 +2013,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1929,6 +2045,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterInterRegionTransitModeResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -1937,6 +2056,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1994,6 +2114,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterRegionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2002,6 +2125,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2033,6 +2157,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterRegionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2041,6 +2168,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2098,6 +2226,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.as_path):
             body['AsPath'] = request.as_path
@@ -2120,6 +2251,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.query_region_id):
             body['QueryRegionId'] = request.query_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2151,6 +2283,9 @@ class Client(OpenApiClient):
         @return: DescribeExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.as_path):
             body['AsPath'] = request.as_path
@@ -2173,6 +2308,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.query_region_id):
             body['QueryRegionId'] = request.query_region_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2249,6 +2385,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2308,6 +2446,8 @@ class Client(OpenApiClient):
             query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2374,6 +2514,9 @@ class Client(OpenApiClient):
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.caller_type):
             body['CallerType'] = request.caller_type
@@ -2400,6 +2543,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag_models):
             body['TagModels'] = request.tag_models
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2431,6 +2575,9 @@ class Client(OpenApiClient):
         @return: DescribeInstanceGrantedToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.caller_type):
             body['CallerType'] = request.caller_type
@@ -2457,6 +2604,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag_models):
             body['TagModels'] = request.tag_models
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2516,6 +2664,9 @@ class Client(OpenApiClient):
         @return: DetachExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -2528,6 +2679,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2561,6 +2713,9 @@ class Client(OpenApiClient):
         @return: DetachExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -2573,6 +2728,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2634,6 +2790,9 @@ class Client(OpenApiClient):
         @return: DisableExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2646,6 +2805,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.nexthop_instance_id):
             body['NexthopInstanceId'] = request.nexthop_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2677,6 +2837,9 @@ class Client(OpenApiClient):
         @return: DisableExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2689,6 +2852,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.nexthop_instance_id):
             body['NexthopInstanceId'] = request.nexthop_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2746,6 +2910,9 @@ class Client(OpenApiClient):
         @return: EnableExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2758,6 +2925,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.nexthop_instance_id):
             body['NexthopInstanceId'] = request.nexthop_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2789,6 +2957,9 @@ class Client(OpenApiClient):
         @return: EnableExpressConnectRouterRouteEntriesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2801,6 +2972,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.nexthop_instance_id):
             body['NexthopInstanceId'] = request.nexthop_instance_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2861,6 +3033,9 @@ class Client(OpenApiClient):
         @return: ForceDeleteExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2869,6 +3044,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2903,6 +3079,9 @@ class Client(OpenApiClient):
         @return: ForceDeleteExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2911,6 +3090,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2976,6 +3156,9 @@ class Client(OpenApiClient):
         @return: GrantInstanceToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -2992,6 +3175,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3025,6 +3209,9 @@ class Client(OpenApiClient):
         @return: GrantInstanceToExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3041,6 +3228,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3102,12 +3290,16 @@ class Client(OpenApiClient):
         @return: ListExpressConnectRouterSupportedRegionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.node_type):
             body['NodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3139,12 +3331,16 @@ class Client(OpenApiClient):
         @return: ListExpressConnectRouterSupportedRegionResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.node_type):
             body['NodeType'] = request.node_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3202,6 +3398,9 @@ class Client(OpenApiClient):
         @return: ListTagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -3214,6 +3413,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3245,6 +3445,9 @@ class Client(OpenApiClient):
         @return: ListTagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.max_results):
             body['MaxResults'] = request.max_results
@@ -3257,6 +3460,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3316,6 +3520,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3328,6 +3535,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3361,6 +3569,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3373,6 +3584,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3434,6 +3646,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -3446,6 +3661,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3477,6 +3693,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterAssociationResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.association_id):
             body['AssociationId'] = request.association_id
@@ -3489,6 +3708,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3546,6 +3766,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
@@ -3562,6 +3785,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.owner_account):
             body['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3593,6 +3817,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterAssociationAllowedPrefixResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.allowed_prefixes):
             body['AllowedPrefixes'] = request.allowed_prefixes
@@ -3609,6 +3836,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.owner_account):
             body['OwnerAccount'] = request.owner_account
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3666,6 +3894,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -3680,6 +3911,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3711,6 +3943,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterChildInstanceResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.child_instance_id):
             body['ChildInstanceId'] = request.child_instance_id
@@ -3725,6 +3960,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3782,6 +4018,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3792,6 +4031,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.transit_mode_list):
             body['TransitModeList'] = request.transit_mode_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3823,6 +4063,9 @@ class Client(OpenApiClient):
         @return: ModifyExpressConnectRouterInterRegionTransitModeResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3833,6 +4076,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.transit_mode_list):
             body['TransitModeList'] = request.transit_mode_list
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3899,6 +4143,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.sampling_rate):
             query['SamplingRate'] = request.sampling_rate
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -3950,6 +4196,8 @@ class Client(OpenApiClient):
             query['Interval'] = request.interval
         if not UtilClient.is_unset(request.sampling_rate):
             query['SamplingRate'] = request.sampling_rate
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4018,6 +4266,9 @@ class Client(OpenApiClient):
         @return: MoveResourceGroupResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4030,6 +4281,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4061,6 +4313,9 @@ class Client(OpenApiClient):
         @return: MoveResourceGroupResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4073,6 +4328,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4130,6 +4386,9 @@ class Client(OpenApiClient):
         @return: RevokeInstanceFromExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4146,6 +4405,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4177,6 +4437,9 @@ class Client(OpenApiClient):
         @return: RevokeInstanceFromExpressConnectRouterResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4193,6 +4456,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4252,6 +4516,9 @@ class Client(OpenApiClient):
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4260,6 +4527,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4293,6 +4561,9 @@ class Client(OpenApiClient):
         @return: SynchronizeExpressConnectRouterInterRegionBandwidthResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4301,6 +4572,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.ecr_id):
             body['EcrId'] = request.ecr_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4362,6 +4634,9 @@ class Client(OpenApiClient):
         @return: TagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4374,6 +4649,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4405,6 +4681,9 @@ class Client(OpenApiClient):
         @return: TagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
@@ -4417,6 +4696,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag):
             body['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4474,6 +4754,9 @@ class Client(OpenApiClient):
         @return: UntagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.all):
             body['All'] = request.all
@@ -4488,6 +4771,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag_key):
             body['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -4519,6 +4803,9 @@ class Client(OpenApiClient):
         @return: UntagResourcesResponse
         """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         body = {}
         if not UtilClient.is_unset(request.all):
             body['All'] = request.all
@@ -4533,6 +4820,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.tag_key):
             body['TagKey'] = request.tag_key
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
