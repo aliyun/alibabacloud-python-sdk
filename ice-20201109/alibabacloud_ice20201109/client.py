@@ -991,6 +991,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_media_marks_with_options_async(request, runtime)
 
+    def add_stream_tag_to_search_lib_with_options(
+        self,
+        request: ice20201109_models.AddStreamTagToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
+        """
+        @summary 打标流媒资
+        
+        @param request: AddStreamTagToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStreamTagToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.msg_body):
+            query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddStreamTagToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddStreamTagToSearchLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_stream_tag_to_search_lib_with_options_async(
+        self,
+        request: ice20201109_models.AddStreamTagToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
+        """
+        @summary 打标流媒资
+        
+        @param request: AddStreamTagToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddStreamTagToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.msg_body):
+            query['MsgBody'] = request.msg_body
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddStreamTagToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.AddStreamTagToSearchLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_stream_tag_to_search_lib(
+        self,
+        request: ice20201109_models.AddStreamTagToSearchLibRequest,
+    ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
+        """
+        @summary 打标流媒资
+        
+        @param request: AddStreamTagToSearchLibRequest
+        @return: AddStreamTagToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.add_stream_tag_to_search_lib_with_options(request, runtime)
+
+    async def add_stream_tag_to_search_lib_async(
+        self,
+        request: ice20201109_models.AddStreamTagToSearchLibRequest,
+    ) -> ice20201109_models.AddStreamTagToSearchLibResponse:
+        """
+        @summary 打标流媒资
+        
+        @param request: AddStreamTagToSearchLibRequest
+        @return: AddStreamTagToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.add_stream_tag_to_search_lib_with_options_async(request, runtime)
+
     def add_template_with_options(
         self,
         request: ice20201109_models.AddTemplateRequest,
@@ -1966,6 +2074,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.close_media_connect_flow_failover_with_options_async(request, runtime)
+
+    def close_stream_to_search_lib_with_options(
+        self,
+        request: ice20201109_models.CloseStreamToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CloseStreamToSearchLibResponse:
+        """
+        @summary 关闭流媒资
+        
+        @param request: CloseStreamToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseStreamToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseStreamToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CloseStreamToSearchLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_stream_to_search_lib_with_options_async(
+        self,
+        request: ice20201109_models.CloseStreamToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CloseStreamToSearchLibResponse:
+        """
+        @summary 关闭流媒资
+        
+        @param request: CloseStreamToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseStreamToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseStreamToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CloseStreamToSearchLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_stream_to_search_lib(
+        self,
+        request: ice20201109_models.CloseStreamToSearchLibRequest,
+    ) -> ice20201109_models.CloseStreamToSearchLibResponse:
+        """
+        @summary 关闭流媒资
+        
+        @param request: CloseStreamToSearchLibRequest
+        @return: CloseStreamToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.close_stream_to_search_lib_with_options(request, runtime)
+
+    async def close_stream_to_search_lib_async(
+        self,
+        request: ice20201109_models.CloseStreamToSearchLibRequest,
+    ) -> ice20201109_models.CloseStreamToSearchLibResponse:
+        """
+        @summary 关闭流媒资
+        
+        @param request: CloseStreamToSearchLibRequest
+        @return: CloseStreamToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.close_stream_to_search_lib_with_options_async(request, runtime)
 
     def create_audit_with_options(
         self,
@@ -5218,6 +5430,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_source_location_with_options_async(request, runtime)
+
+    def create_stream_to_search_lib_with_options(
+        self,
+        request: ice20201109_models.CreateStreamToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateStreamToSearchLibResponse:
+        """
+        @summary 创建流媒资
+        
+        @param request: CreateStreamToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateStreamToSearchLibResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_stream_to_search_lib_with_options_async(
+        self,
+        request: ice20201109_models.CreateStreamToSearchLibRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.CreateStreamToSearchLibResponse:
+        """
+        @summary 创建流媒资
+        
+        @param request: CreateStreamToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamToSearchLibResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.input):
+            query['Input'] = request.input
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamToSearchLib',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.CreateStreamToSearchLibResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_stream_to_search_lib(
+        self,
+        request: ice20201109_models.CreateStreamToSearchLibRequest,
+    ) -> ice20201109_models.CreateStreamToSearchLibResponse:
+        """
+        @summary 创建流媒资
+        
+        @param request: CreateStreamToSearchLibRequest
+        @return: CreateStreamToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_stream_to_search_lib_with_options(request, runtime)
+
+    async def create_stream_to_search_lib_async(
+        self,
+        request: ice20201109_models.CreateStreamToSearchLibRequest,
+    ) -> ice20201109_models.CreateStreamToSearchLibResponse:
+        """
+        @summary 创建流媒资
+        
+        @param request: CreateStreamToSearchLibRequest
+        @return: CreateStreamToSearchLibResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_stream_to_search_lib_with_options_async(request, runtime)
 
     def create_upload_media_with_options(
         self,
@@ -17576,6 +17892,134 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_storage_list_with_options_async(request, runtime)
+
+    def get_stream_tag_list_with_options(
+        self,
+        request: ice20201109_models.GetStreamTagListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetStreamTagListResponse:
+        """
+        @summary 查询流媒资打标
+        
+        @param request: GetStreamTagListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStreamTagListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStreamTagList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetStreamTagListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stream_tag_list_with_options_async(
+        self,
+        request: ice20201109_models.GetStreamTagListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.GetStreamTagListResponse:
+        """
+        @summary 查询流媒资打标
+        
+        @param request: GetStreamTagListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStreamTagListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStreamTagList',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.GetStreamTagListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stream_tag_list(
+        self,
+        request: ice20201109_models.GetStreamTagListRequest,
+    ) -> ice20201109_models.GetStreamTagListResponse:
+        """
+        @summary 查询流媒资打标
+        
+        @param request: GetStreamTagListRequest
+        @return: GetStreamTagListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_stream_tag_list_with_options(request, runtime)
+
+    async def get_stream_tag_list_async(
+        self,
+        request: ice20201109_models.GetStreamTagListRequest,
+    ) -> ice20201109_models.GetStreamTagListResponse:
+        """
+        @summary 查询流媒资打标
+        
+        @param request: GetStreamTagListRequest
+        @return: GetStreamTagListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_stream_tag_list_with_options_async(request, runtime)
 
     def get_system_template_with_options(
         self,

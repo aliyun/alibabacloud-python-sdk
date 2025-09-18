@@ -1,3 +1,13 @@
+2025-09-18 Version: 6.6.0
+- Support API AddStreamTagToSearchLib.
+- Support API CloseStreamToSearchLib.
+- Support API CreateStreamToSearchLib.
+- Support API GetStreamTagList.
+- Update API GetBatchMediaProducingJob: add response parameters Body.EditingBatchJob.ExtendInput.
+- Update API GetBatchMediaProducingJob: add response parameters Body.EditingBatchJob.ExtendOutput.
+- Update API SearchMedia: add response parameters Body.MediaInfoList.$.MediaBasicInfo.StreamStatus.
+
+
 2025-09-08 Version: 6.5.2
 - Update API SendAIAgentSpeech: add request parameters Type.
 

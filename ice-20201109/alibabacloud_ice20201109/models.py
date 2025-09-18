@@ -7862,6 +7862,138 @@ class AddMediaMarksResponse(TeaModel):
         return self
 
 
+class AddStreamTagToSearchLibRequest(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        msg_body: str = None,
+        namespace: str = None,
+        search_lib_name: str = None,
+    ):
+        self.media_id = media_id
+        self.msg_body = msg_body
+        self.namespace = namespace
+        self.search_lib_name = search_lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.msg_body is not None:
+            result['MsgBody'] = self.msg_body
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('MsgBody') is not None:
+            self.msg_body = m.get('MsgBody')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        return self
+
+
+class AddStreamTagToSearchLibResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_id: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.media_id = media_id
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddStreamTagToSearchLibResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddStreamTagToSearchLibResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddStreamTagToSearchLibResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -9678,6 +9810,132 @@ class CloseMediaConnectFlowFailoverResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CloseMediaConnectFlowFailoverResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CloseStreamToSearchLibRequest(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        namespace: str = None,
+        search_lib_name: str = None,
+    ):
+        self.media_id = media_id
+        self.namespace = namespace
+        self.search_lib_name = search_lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        return self
+
+
+class CloseStreamToSearchLibResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_id: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.media_id = media_id
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CloseStreamToSearchLibResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CloseStreamToSearchLibResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CloseStreamToSearchLibResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15999,6 +16257,132 @@ class CreateSourceLocationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSourceLocationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateStreamToSearchLibRequest(TeaModel):
+    def __init__(
+        self,
+        input: str = None,
+        namespace: str = None,
+        search_lib_name: str = None,
+    ):
+        self.input = input
+        self.namespace = namespace
+        self.search_lib_name = search_lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        return self
+
+
+class CreateStreamToSearchLibResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_id: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.media_id = media_id
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateStreamToSearchLibResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStreamToSearchLibResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStreamToSearchLibResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26071,6 +26455,8 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(TeaModel):
         create_time: str = None,
         editing_config: str = None,
         extend: str = None,
+        extend_input: str = None,
+        extend_output: str = None,
         input_config: str = None,
         job_id: str = None,
         job_type: str = None,
@@ -26094,6 +26480,8 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(TeaModel):
         # 
         # ErrorMessage: the error message of the main job.
         self.extend = extend
+        self.extend_input = extend_input
+        self.extend_output = extend_output
         # The input configurations. For more information, see [InputConfig](~~2692547#2faed1559549n~~).
         self.input_config = input_config
         # The job ID.
@@ -26138,6 +26526,10 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(TeaModel):
             result['EditingConfig'] = self.editing_config
         if self.extend is not None:
             result['Extend'] = self.extend
+        if self.extend_input is not None:
+            result['ExtendInput'] = self.extend_input
+        if self.extend_output is not None:
+            result['ExtendOutput'] = self.extend_output
         if self.input_config is not None:
             result['InputConfig'] = self.input_config
         if self.job_id is not None:
@@ -26168,6 +26560,10 @@ class GetBatchMediaProducingJobResponseBodyEditingBatchJob(TeaModel):
             self.editing_config = m.get('EditingConfig')
         if m.get('Extend') is not None:
             self.extend = m.get('Extend')
+        if m.get('ExtendInput') is not None:
+            self.extend_input = m.get('ExtendInput')
+        if m.get('ExtendOutput') is not None:
+            self.extend_output = m.get('ExtendOutput')
         if m.get('InputConfig') is not None:
             self.input_config = m.get('InputConfig')
         if m.get('JobId') is not None:
@@ -40965,6 +41361,227 @@ class GetStorageListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetStorageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStreamTagListRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        media_id: str = None,
+        namespace: str = None,
+        next_token: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        search_lib_name: str = None,
+        sort_by: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.media_id = media_id
+        self.namespace = namespace
+        self.next_token = next_token
+        self.page_no = page_no
+        self.page_size = page_size
+        self.search_lib_name = search_lib_name
+        self.sort_by = sort_by
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetStreamTagListResponseBodyStreamTagList(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+        user_data: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+        self.user_data = user_data
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        return self
+
+
+class GetStreamTagListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        stream_tag_list: List[GetStreamTagListResponseBodyStreamTagList] = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.stream_tag_list = stream_tag_list
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.stream_tag_list:
+            for k in self.stream_tag_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['StreamTagList'] = []
+        if self.stream_tag_list is not None:
+            for k in self.stream_tag_list:
+                result['StreamTagList'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.stream_tag_list = []
+        if m.get('StreamTagList') is not None:
+            for k in m.get('StreamTagList'):
+                temp_model = GetStreamTagListResponseBodyStreamTagList()
+                self.stream_tag_list.append(temp_model.from_map(k))
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetStreamTagListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStreamTagListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStreamTagListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -74110,6 +74727,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         source: str = None,
         sprite_images: str = None,
         status: str = None,
+        stream_status: str = None,
         title: str = None,
         transcode_status: str = None,
         upload_source: str = None,
@@ -74155,6 +74773,7 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
         self.sprite_images = sprite_images
         # The state of the media asset.
         self.status = status
+        self.stream_status = stream_status
         # The title of the media asset.
         self.title = title
         # The transcoding status of the media asset.
@@ -74214,6 +74833,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             result['SpriteImages'] = self.sprite_images
         if self.status is not None:
             result['Status'] = self.status
+        if self.stream_status is not None:
+            result['StreamStatus'] = self.stream_status
         if self.title is not None:
             result['Title'] = self.title
         if self.transcode_status is not None:
@@ -74268,6 +74889,8 @@ class SearchMediaResponseBodyMediaInfoListMediaBasicInfo(TeaModel):
             self.sprite_images = m.get('SpriteImages')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StreamStatus') is not None:
+            self.stream_status = m.get('StreamStatus')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('TranscodeStatus') is not None:
