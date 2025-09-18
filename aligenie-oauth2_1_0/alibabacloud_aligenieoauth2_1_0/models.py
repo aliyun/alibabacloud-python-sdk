@@ -245,12 +245,8 @@ class CreatePlayingListShrinkRequest(TeaModel):
 class CreatePlayingListResponseBody(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        message: str = None,
         request_id: str = None,
     ):
-        self.code = code
-        self.message = message
         self.request_id = request_id
 
     def validate(self):
@@ -262,20 +258,12 @@ class CreatePlayingListResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -417,6 +405,109 @@ class ExecuteSceneResponse(TeaModel):
         return self
 
 
+class ExecuteSmartHomeSceneRequest(TeaModel):
+    def __init__(
+        self,
+        family_id: str = None,
+        scene_id: str = None,
+    ):
+        # This parameter is required.
+        self.family_id = family_id
+        # This parameter is required.
+        self.scene_id = scene_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.family_id is not None:
+            result['FamilyId'] = self.family_id
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FamilyId') is not None:
+            self.family_id = m.get('FamilyId')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        return self
+
+
+class ExecuteSmartHomeSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExecuteSmartHomeSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSmartHomeSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSmartHomeSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetSceneListResponseBodySceneList(TeaModel):
     def __init__(
         self,
@@ -528,6 +619,168 @@ class GetSceneListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSceneListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSmartHomeSceneListResponseBodyFamilySceneListSceneList(TeaModel):
+    def __init__(
+        self,
+        scene_id: str = None,
+        scene_name: str = None,
+    ):
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        return self
+
+
+class GetSmartHomeSceneListResponseBodyFamilySceneList(TeaModel):
+    def __init__(
+        self,
+        family_id: str = None,
+        family_name: str = None,
+        scene_list: List[GetSmartHomeSceneListResponseBodyFamilySceneListSceneList] = None,
+    ):
+        self.family_id = family_id
+        self.family_name = family_name
+        self.scene_list = scene_list
+
+    def validate(self):
+        if self.scene_list:
+            for k in self.scene_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.family_id is not None:
+            result['familyId'] = self.family_id
+        if self.family_name is not None:
+            result['familyName'] = self.family_name
+        result['sceneList'] = []
+        if self.scene_list is not None:
+            for k in self.scene_list:
+                result['sceneList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('familyId') is not None:
+            self.family_id = m.get('familyId')
+        if m.get('familyName') is not None:
+            self.family_name = m.get('familyName')
+        self.scene_list = []
+        if m.get('sceneList') is not None:
+            for k in m.get('sceneList'):
+                temp_model = GetSmartHomeSceneListResponseBodyFamilySceneListSceneList()
+                self.scene_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetSmartHomeSceneListResponseBody(TeaModel):
+    def __init__(
+        self,
+        family_scene_list: List[GetSmartHomeSceneListResponseBodyFamilySceneList] = None,
+        request_id: str = None,
+    ):
+        self.family_scene_list = family_scene_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.family_scene_list:
+            for k in self.family_scene_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FamilySceneList'] = []
+        if self.family_scene_list is not None:
+            for k in self.family_scene_list:
+                result['FamilySceneList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.family_scene_list = []
+        if m.get('FamilySceneList') is not None:
+            for k in m.get('FamilySceneList'):
+                temp_model = GetSmartHomeSceneListResponseBodyFamilySceneList()
+                self.family_scene_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetSmartHomeSceneListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSmartHomeSceneListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSmartHomeSceneListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

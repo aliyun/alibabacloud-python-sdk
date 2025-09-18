@@ -269,6 +269,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.execute_scene_with_options_async(request, headers, runtime)
 
+    def execute_smart_home_scene_with_options(
+        self,
+        request: ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse:
+        """
+        @summary 执行场景（全屋）
+        
+        @param request: ExecuteSmartHomeSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSmartHomeSceneResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.family_id):
+            body['FamilyId'] = request.family_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSmartHomeScene',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/iot/smart_home/scene/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def execute_smart_home_scene_with_options_async(
+        self,
+        request: ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse:
+        """
+        @summary 执行场景（全屋）
+        
+        @param request: ExecuteSmartHomeSceneRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteSmartHomeSceneResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.family_id):
+            body['FamilyId'] = request.family_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExecuteSmartHomeScene',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/iot/smart_home/scene/execute',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def execute_smart_home_scene(
+        self,
+        request: ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneRequest,
+    ) -> ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse:
+        """
+        @summary 执行场景（全屋）
+        
+        @param request: ExecuteSmartHomeSceneRequest
+        @return: ExecuteSmartHomeSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.execute_smart_home_scene_with_options(request, headers, runtime)
+
+    async def execute_smart_home_scene_async(
+        self,
+        request: ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneRequest,
+    ) -> ali_genieoauth_2__1__0_models.ExecuteSmartHomeSceneResponse:
+        """
+        @summary 执行场景（全屋）
+        
+        @param request: ExecuteSmartHomeSceneRequest
+        @return: ExecuteSmartHomeSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.execute_smart_home_scene_with_options_async(request, headers, runtime)
+
     def get_scene_list_with_options(
         self,
         headers: Dict[str, str],
@@ -350,6 +458,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_scene_list_with_options_async(headers, runtime)
+
+    def get_smart_home_scene_list_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse:
+        """
+        @summary 获取场景列表（全屋）
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartHomeSceneListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSmartHomeSceneList',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/iot/smart_home/scene/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_smart_home_scene_list_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse:
+        """
+        @summary 获取场景列表（全屋）
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartHomeSceneListResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetSmartHomeSceneList',
+            version='oauth2_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/oauth2/iot/smart_home/scene/list',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_smart_home_scene_list(self) -> ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse:
+        """
+        @summary 获取场景列表（全屋）
+        
+        @return: GetSmartHomeSceneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_smart_home_scene_list_with_options(headers, runtime)
+
+    async def get_smart_home_scene_list_async(self) -> ali_genieoauth_2__1__0_models.GetSmartHomeSceneListResponse:
+        """
+        @summary 获取场景列表（全屋）
+        
+        @return: GetSmartHomeSceneListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_smart_home_scene_list_with_options_async(headers, runtime)
 
     def get_user_basic_info_with_options(
         self,
