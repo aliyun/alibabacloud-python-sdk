@@ -879,8 +879,6 @@ class ApplicationConfigFile(TeaModel):
         # This parameter is required.
         self.application_name = application_name
         # 配置文件名称。
-        # 
-        # This parameter is required.
         self.config_file_name = config_file_name
 
     def validate(self):
@@ -3573,6 +3571,312 @@ class CostOptimizedConfig(TeaModel):
         return self
 
 
+class CreateNodeGroupConfigSpotBidPrices(TeaModel):
+    def __init__(
+        self,
+        bid_price: float = None,
+        instance_type: str = None,
+    ):
+        # 实例的每小时最高出价。支持最大3位小数，参数SpotStrategy=SpotWithPriceLimit时，该参数生效。
+        self.bid_price = bid_price
+        # 实例类型。
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bid_price is not None:
+            result['BidPrice'] = self.bid_price
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BidPrice') is not None:
+            self.bid_price = m.get('BidPrice')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class PrivatePoolOptions(TeaModel):
+    def __init__(
+        self,
+        match_criteria: str = None,
+        private_pool_ids: List[str] = None,
+    ):
+        self.match_criteria = match_criteria
+        self.private_pool_ids = private_pool_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.match_criteria is not None:
+            result['MatchCriteria'] = self.match_criteria
+        if self.private_pool_ids is not None:
+            result['PrivatePoolIds'] = self.private_pool_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MatchCriteria') is not None:
+            self.match_criteria = m.get('MatchCriteria')
+        if m.get('PrivatePoolIds') is not None:
+            self.private_pool_ids = m.get('PrivatePoolIds')
+        return self
+
+
+class CreateNodeGroupConfig(TeaModel):
+    def __init__(
+        self,
+        additional_security_group_ids: List[str] = None,
+        auto_scaling_policy: AutoScalingPolicy = None,
+        compensate_with_on_demand: bool = None,
+        component_tags: List[str] = None,
+        cost_optimized_config: CostOptimizedConfig = None,
+        data_disks: List[DataDisk] = None,
+        deployment_set_strategy: str = None,
+        graceful_shutdown: bool = None,
+        instance_types: List[str] = None,
+        node_count: int = None,
+        node_group_name: str = None,
+        node_group_type: str = None,
+        node_resize_strategy: str = None,
+        payment_type: str = None,
+        private_pool_options: PrivatePoolOptions = None,
+        spot_bid_prices: List[CreateNodeGroupConfigSpotBidPrices] = None,
+        spot_instance_remedy: bool = None,
+        spot_strategy: str = None,
+        subscription_config: SubscriptionConfig = None,
+        system_disk: SystemDisk = None,
+        v_switch_ids: List[str] = None,
+        with_public_ip: bool = None,
+    ):
+        # 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
+        self.additional_security_group_ids = additional_security_group_ids
+        self.auto_scaling_policy = auto_scaling_policy
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.component_tags = component_tags
+        # 成本优化模式配置。
+        self.cost_optimized_config = cost_optimized_config
+        # 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
+        self.data_disks = data_disks
+        # 部署集策略。取值范围：
+        # - NONE：不适用部署集。
+        # - CLUSTER：使用集群级别部署集。
+        # - NODE_GROUP：使用节点组级别部署集。
+        # 
+        # 默认值：NONE。
+        self.deployment_set_strategy = deployment_set_strategy
+        # 节点组上部署的组件是否开启优雅下线。取值范围：
+        # - true：开启优雅下线。
+        # - false：不开启优雅下线。
+        # 
+        # 默认值：false。
+        self.graceful_shutdown = graceful_shutdown
+        # 节点实例类型列表。数组元数个数N的取值范围：1~100。
+        self.instance_types = instance_types
+        # 节点数量。取值范围：1~1000。
+        self.node_count = node_count
+        # 节点组名称。最大长度128个字符。集群内要求节点组名称唯一。
+        self.node_group_name = node_group_name
+        # 节点组类型。取值范围：
+        # - MASTER：管理类型节点组。
+        # - CORE：存储类型节点组。
+        # - TASK：计算类型节点组。
+        # 
+        # This parameter is required.
+        self.node_group_type = node_group_type
+        # 节点扩容策略。取值范围：
+        # - COST_OPTIMIZED：成本优化策略。
+        # - PRIORITY：优先级策略。
+        # 
+        # 默认值：PRIORITY。
+        self.node_resize_strategy = node_resize_strategy
+        # 节点组付费类型。不传入时默认和集群付费类型一致。取值范围：
+        # - PayAsYouGo：后付费，按量付费。
+        # - Subscription：预付费，包年包月。
+        # 
+        # 默认值：PayAsYouGo。
+        self.payment_type = payment_type
+        self.private_pool_options = private_pool_options
+        # 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
+        self.spot_bid_prices = spot_bid_prices
+        # 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
+        # - true：开启补齐抢占式实例。
+        # - false：不开启补齐抢占式实例。
+        # 
+        # 默认值：false。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 抢占式Spot实例策略。取值范围：
+        # - NoSpot：正常按量付费实例。
+        # - SpotWithPriceLimit：设置最高出价的抢占式实例。
+        # - SpotAsPriceGo：系统自动出价，最高按量付费价格的抢占式实例。
+        # 
+        # 默认值：NoSpot。
+        self.spot_strategy = spot_strategy
+        # 节点组预付费配置。不传入时默认和集群预付费配置一致。
+        self.subscription_config = subscription_config
+        # 系统盘。
+        self.system_disk = system_disk
+        # 虚拟机交换机ID列表。数组元数个数N的取值范围：1~20。
+        self.v_switch_ids = v_switch_ids
+        # 是否开公网IP。取值范围：
+        # - true：开公网。
+        # - false：不开公网。
+        # 
+        # 默认值：false。
+        self.with_public_ip = with_public_ip
+
+    def validate(self):
+        if self.auto_scaling_policy:
+            self.auto_scaling_policy.validate()
+        if self.cost_optimized_config:
+            self.cost_optimized_config.validate()
+        if self.data_disks:
+            for k in self.data_disks:
+                if k:
+                    k.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+        if self.spot_bid_prices:
+            for k in self.spot_bid_prices:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.system_disk:
+            self.system_disk.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_security_group_ids is not None:
+            result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
+        if self.auto_scaling_policy is not None:
+            result['AutoScalingPolicy'] = self.auto_scaling_policy.to_map()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.component_tags is not None:
+            result['ComponentTags'] = self.component_tags
+        if self.cost_optimized_config is not None:
+            result['CostOptimizedConfig'] = self.cost_optimized_config.to_map()
+        result['DataDisks'] = []
+        if self.data_disks is not None:
+            for k in self.data_disks:
+                result['DataDisks'].append(k.to_map() if k else None)
+        if self.deployment_set_strategy is not None:
+            result['DeploymentSetStrategy'] = self.deployment_set_strategy
+        if self.graceful_shutdown is not None:
+            result['GracefulShutdown'] = self.graceful_shutdown
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.node_group_type is not None:
+            result['NodeGroupType'] = self.node_group_type
+        if self.node_resize_strategy is not None:
+            result['NodeResizeStrategy'] = self.node_resize_strategy
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        result['SpotBidPrices'] = []
+        if self.spot_bid_prices is not None:
+            for k in self.spot_bid_prices:
+                result['SpotBidPrices'].append(k.to_map() if k else None)
+        if self.spot_instance_remedy is not None:
+            result['SpotInstanceRemedy'] = self.spot_instance_remedy
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.with_public_ip is not None:
+            result['WithPublicIp'] = self.with_public_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalSecurityGroupIds') is not None:
+            self.additional_security_group_ids = m.get('AdditionalSecurityGroupIds')
+        if m.get('AutoScalingPolicy') is not None:
+            temp_model = AutoScalingPolicy()
+            self.auto_scaling_policy = temp_model.from_map(m['AutoScalingPolicy'])
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('ComponentTags') is not None:
+            self.component_tags = m.get('ComponentTags')
+        if m.get('CostOptimizedConfig') is not None:
+            temp_model = CostOptimizedConfig()
+            self.cost_optimized_config = temp_model.from_map(m['CostOptimizedConfig'])
+        self.data_disks = []
+        if m.get('DataDisks') is not None:
+            for k in m.get('DataDisks'):
+                temp_model = DataDisk()
+                self.data_disks.append(temp_model.from_map(k))
+        if m.get('DeploymentSetStrategy') is not None:
+            self.deployment_set_strategy = m.get('DeploymentSetStrategy')
+        if m.get('GracefulShutdown') is not None:
+            self.graceful_shutdown = m.get('GracefulShutdown')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('NodeGroupType') is not None:
+            self.node_group_type = m.get('NodeGroupType')
+        if m.get('NodeResizeStrategy') is not None:
+            self.node_resize_strategy = m.get('NodeResizeStrategy')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('PrivatePoolOptions') is not None:
+            temp_model = PrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
+        self.spot_bid_prices = []
+        if m.get('SpotBidPrices') is not None:
+            for k in m.get('SpotBidPrices'):
+                temp_model = CreateNodeGroupConfigSpotBidPrices()
+                self.spot_bid_prices.append(temp_model.from_map(k))
+        if m.get('SpotInstanceRemedy') is not None:
+            self.spot_instance_remedy = m.get('SpotInstanceRemedy')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        if m.get('SystemDisk') is not None:
+            temp_model = SystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('WithPublicIp') is not None:
+            self.with_public_ip = m.get('WithPublicIp')
+        return self
+
+
 class DiskInfo(TeaModel):
     def __init__(
         self,
@@ -3806,6 +4110,989 @@ class CreateNodeGroupParam(TeaModel):
             self.with_public_ip = m.get('WithPublicIp')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        return self
+
+
+class ManagedScalingConstraints(TeaModel):
+    def __init__(
+        self,
+        max_capacity: int = None,
+        max_on_demand_capacity: int = None,
+        min_capacity: int = None,
+    ):
+        # 最大值。
+        self.max_capacity = max_capacity
+        # 最大按量节点数量
+        self.max_on_demand_capacity = max_on_demand_capacity
+        # 最小值。
+        self.min_capacity = min_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity is not None:
+            result['MaxCapacity'] = self.max_capacity
+        if self.max_on_demand_capacity is not None:
+            result['MaxOnDemandCapacity'] = self.max_on_demand_capacity
+        if self.min_capacity is not None:
+            result['MinCapacity'] = self.min_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacity') is not None:
+            self.max_capacity = m.get('MaxCapacity')
+        if m.get('MaxOnDemandCapacity') is not None:
+            self.max_on_demand_capacity = m.get('MaxOnDemandCapacity')
+        if m.get('MinCapacity') is not None:
+            self.min_capacity = m.get('MinCapacity')
+        return self
+
+
+class DRPlanConfigurationManagedScalingPolicy(TeaModel):
+    def __init__(
+        self,
+        constraints: ManagedScalingConstraints = None,
+    ):
+        self.constraints = constraints
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Constraints') is not None:
+            temp_model = ManagedScalingConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        return self
+
+
+class DRPlanConfigurationTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # 标签键。必填参数，不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或https://。
+        # 
+        # This parameter is required.
+        self.key = key
+        # 标签值。非必填，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class Script(TeaModel):
+    def __init__(
+        self,
+        execution_fail_strategy: str = None,
+        execution_moment: str = None,
+        node_selector: NodeSelector = None,
+        priority: int = None,
+        script_args: str = None,
+        script_name: str = None,
+        script_path: str = None,
+    ):
+        # 执行失败策略。
+        self.execution_fail_strategy = execution_fail_strategy
+        # 脚本的执行时机。
+        self.execution_moment = execution_moment
+        # 节点选择器。
+        # 
+        # This parameter is required.
+        self.node_selector = node_selector
+        # 脚本执行优先级。取值范围：1~100。
+        self.priority = priority
+        # 脚本执行参数。
+        self.script_args = script_args
+        # 脚本名称。长度为1~64个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、下划线（_）、或者短划线（-）
+        # 
+        # This parameter is required.
+        self.script_name = script_name
+        # 脚本所在OSS路径。
+        # 
+        # This parameter is required.
+        self.script_path = script_path
+
+    def validate(self):
+        if self.node_selector:
+            self.node_selector.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execution_fail_strategy is not None:
+            result['ExecutionFailStrategy'] = self.execution_fail_strategy
+        if self.execution_moment is not None:
+            result['ExecutionMoment'] = self.execution_moment
+        if self.node_selector is not None:
+            result['NodeSelector'] = self.node_selector.to_map()
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.script_args is not None:
+            result['ScriptArgs'] = self.script_args
+        if self.script_name is not None:
+            result['ScriptName'] = self.script_name
+        if self.script_path is not None:
+            result['ScriptPath'] = self.script_path
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecutionFailStrategy') is not None:
+            self.execution_fail_strategy = m.get('ExecutionFailStrategy')
+        if m.get('ExecutionMoment') is not None:
+            self.execution_moment = m.get('ExecutionMoment')
+        if m.get('NodeSelector') is not None:
+            temp_model = NodeSelector()
+            self.node_selector = temp_model.from_map(m['NodeSelector'])
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('ScriptArgs') is not None:
+            self.script_args = m.get('ScriptArgs')
+        if m.get('ScriptName') is not None:
+            self.script_name = m.get('ScriptName')
+        if m.get('ScriptPath') is not None:
+            self.script_path = m.get('ScriptPath')
+        return self
+
+
+class SpotBidPrice(TeaModel):
+    def __init__(
+        self,
+        bid_price: float = None,
+        instance_type: str = None,
+    ):
+        # 实例的每小时最高出价。支持最大3位小数，参数SpotStrategy=SpotWithPriceLimit时，该参数生效。
+        self.bid_price = bid_price
+        # 实例类型。
+        self.instance_type = instance_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bid_price is not None:
+            result['BidPrice'] = self.bid_price
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BidPrice') is not None:
+            self.bid_price = m.get('BidPrice')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        return self
+
+
+class NodeGroupConfig(TeaModel):
+    def __init__(
+        self,
+        additional_security_group_ids: List[str] = None,
+        auto_scaling_policy: AutoScalingPolicy = None,
+        compensate_with_on_demand: bool = None,
+        component_tags: List[str] = None,
+        cost_optimized_config: CostOptimizedConfig = None,
+        data_disks: List[DataDisk] = None,
+        deployment_set_strategy: str = None,
+        graceful_shutdown: bool = None,
+        instance_types: List[str] = None,
+        node_count: int = None,
+        node_group_name: str = None,
+        node_group_type: str = None,
+        node_resize_strategy: str = None,
+        payment_type: str = None,
+        private_pool_options: PrivatePoolOptions = None,
+        spot_bid_prices: List[SpotBidPrice] = None,
+        spot_instance_remedy: bool = None,
+        spot_strategy: str = None,
+        subscription_config: SubscriptionConfig = None,
+        system_disk: SystemDisk = None,
+        v_switch_ids: List[str] = None,
+        with_public_ip: bool = None,
+    ):
+        # 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
+        self.additional_security_group_ids = additional_security_group_ids
+        self.auto_scaling_policy = auto_scaling_policy
+        self.compensate_with_on_demand = compensate_with_on_demand
+        self.component_tags = component_tags
+        # 成本优化模式配置。
+        self.cost_optimized_config = cost_optimized_config
+        # 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
+        self.data_disks = data_disks
+        # 部署集策略。取值范围：
+        # - NONE：不适用部署集。
+        # - CLUSTER：使用集群级别部署集。
+        # - NODE_GROUP：使用节点组级别部署集。
+        # 
+        # 默认值：NONE。
+        self.deployment_set_strategy = deployment_set_strategy
+        # 节点组上部署的组件是否开启优雅下线。取值范围：
+        # - true：开启优雅下线。
+        # - false：不开启优雅下线。
+        # 
+        # 默认值：false。
+        self.graceful_shutdown = graceful_shutdown
+        # 节点实例类型列表。数组元数个数N的取值范围：1~100。
+        self.instance_types = instance_types
+        # 节点数量。取值范围：1~1000。
+        self.node_count = node_count
+        # 节点组名称。最大长度128个字符。集群内要求节点组名称唯一。
+        self.node_group_name = node_group_name
+        # 节点组类型。取值范围：
+        # - MASTER：管理类型节点组。
+        # - CORE：存储类型节点组。
+        # - TASK：计算类型节点组。
+        # 
+        # This parameter is required.
+        self.node_group_type = node_group_type
+        # 节点扩容策略。取值范围：
+        # - COST_OPTIMIZED：成本优化策略。
+        # - PRIORITY：优先级策略。
+        # 
+        # 默认值：PRIORITY。
+        self.node_resize_strategy = node_resize_strategy
+        # 节点组付费类型。不传入时默认和集群付费类型一致。取值范围：
+        # - PayAsYouGo：后付费，按量付费。
+        # - Subscription：预付费，包年包月。
+        # 
+        # 默认值：PayAsYouGo。
+        self.payment_type = payment_type
+        self.private_pool_options = private_pool_options
+        # 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
+        self.spot_bid_prices = spot_bid_prices
+        # 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
+        # - true：开启补齐抢占式实例。
+        # - false：不开启补齐抢占式实例。
+        # 
+        # 默认值：false。
+        self.spot_instance_remedy = spot_instance_remedy
+        # 抢占式Spot实例策略。取值范围：
+        # - NoSpot：正常按量付费实例。
+        # - SpotWithPriceLimit：设置最高出价的抢占式实例。
+        # - SpotAsPriceGo：系统自动出价，最高按量付费价格的抢占式实例。
+        # 
+        # 默认值：NoSpot。
+        self.spot_strategy = spot_strategy
+        # 节点组预付费配置。不传入时默认和集群预付费配置一致。
+        self.subscription_config = subscription_config
+        # 系统盘。
+        self.system_disk = system_disk
+        # 虚拟机交换机ID列表。数组元数个数N的取值范围：1~20。
+        self.v_switch_ids = v_switch_ids
+        # 是否开公网IP。取值范围：
+        # - true：开公网。
+        # - false：不开公网。
+        # 
+        # 默认值：false。
+        self.with_public_ip = with_public_ip
+
+    def validate(self):
+        if self.auto_scaling_policy:
+            self.auto_scaling_policy.validate()
+        if self.cost_optimized_config:
+            self.cost_optimized_config.validate()
+        if self.data_disks:
+            for k in self.data_disks:
+                if k:
+                    k.validate()
+        if self.private_pool_options:
+            self.private_pool_options.validate()
+        if self.spot_bid_prices:
+            for k in self.spot_bid_prices:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.system_disk:
+            self.system_disk.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_security_group_ids is not None:
+            result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
+        if self.auto_scaling_policy is not None:
+            result['AutoScalingPolicy'] = self.auto_scaling_policy.to_map()
+        if self.compensate_with_on_demand is not None:
+            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
+        if self.component_tags is not None:
+            result['ComponentTags'] = self.component_tags
+        if self.cost_optimized_config is not None:
+            result['CostOptimizedConfig'] = self.cost_optimized_config.to_map()
+        result['DataDisks'] = []
+        if self.data_disks is not None:
+            for k in self.data_disks:
+                result['DataDisks'].append(k.to_map() if k else None)
+        if self.deployment_set_strategy is not None:
+            result['DeploymentSetStrategy'] = self.deployment_set_strategy
+        if self.graceful_shutdown is not None:
+            result['GracefulShutdown'] = self.graceful_shutdown
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
+        if self.node_count is not None:
+            result['NodeCount'] = self.node_count
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.node_group_type is not None:
+            result['NodeGroupType'] = self.node_group_type
+        if self.node_resize_strategy is not None:
+            result['NodeResizeStrategy'] = self.node_resize_strategy
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.private_pool_options is not None:
+            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
+        result['SpotBidPrices'] = []
+        if self.spot_bid_prices is not None:
+            for k in self.spot_bid_prices:
+                result['SpotBidPrices'].append(k.to_map() if k else None)
+        if self.spot_instance_remedy is not None:
+            result['SpotInstanceRemedy'] = self.spot_instance_remedy
+        if self.spot_strategy is not None:
+            result['SpotStrategy'] = self.spot_strategy
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        if self.system_disk is not None:
+            result['SystemDisk'] = self.system_disk.to_map()
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.with_public_ip is not None:
+            result['WithPublicIp'] = self.with_public_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalSecurityGroupIds') is not None:
+            self.additional_security_group_ids = m.get('AdditionalSecurityGroupIds')
+        if m.get('AutoScalingPolicy') is not None:
+            temp_model = AutoScalingPolicy()
+            self.auto_scaling_policy = temp_model.from_map(m['AutoScalingPolicy'])
+        if m.get('CompensateWithOnDemand') is not None:
+            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
+        if m.get('ComponentTags') is not None:
+            self.component_tags = m.get('ComponentTags')
+        if m.get('CostOptimizedConfig') is not None:
+            temp_model = CostOptimizedConfig()
+            self.cost_optimized_config = temp_model.from_map(m['CostOptimizedConfig'])
+        self.data_disks = []
+        if m.get('DataDisks') is not None:
+            for k in m.get('DataDisks'):
+                temp_model = DataDisk()
+                self.data_disks.append(temp_model.from_map(k))
+        if m.get('DeploymentSetStrategy') is not None:
+            self.deployment_set_strategy = m.get('DeploymentSetStrategy')
+        if m.get('GracefulShutdown') is not None:
+            self.graceful_shutdown = m.get('GracefulShutdown')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
+        if m.get('NodeCount') is not None:
+            self.node_count = m.get('NodeCount')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('NodeGroupType') is not None:
+            self.node_group_type = m.get('NodeGroupType')
+        if m.get('NodeResizeStrategy') is not None:
+            self.node_resize_strategy = m.get('NodeResizeStrategy')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('PrivatePoolOptions') is not None:
+            temp_model = PrivatePoolOptions()
+            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
+        self.spot_bid_prices = []
+        if m.get('SpotBidPrices') is not None:
+            for k in m.get('SpotBidPrices'):
+                temp_model = SpotBidPrice()
+                self.spot_bid_prices.append(temp_model.from_map(k))
+        if m.get('SpotInstanceRemedy') is not None:
+            self.spot_instance_remedy = m.get('SpotInstanceRemedy')
+        if m.get('SpotStrategy') is not None:
+            self.spot_strategy = m.get('SpotStrategy')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        if m.get('SystemDisk') is not None:
+            temp_model = SystemDisk()
+            self.system_disk = temp_model.from_map(m['SystemDisk'])
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('WithPublicIp') is not None:
+            self.with_public_ip = m.get('WithPublicIp')
+        return self
+
+
+class DRPlanConfiguration(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[ApplicationConfig] = None,
+        applications: List[Application] = None,
+        bootstrap_scripts: List[Script] = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        deletion_protection: bool = None,
+        deploy_mode: str = None,
+        description: str = None,
+        log_collect_strategy: str = None,
+        managed_scaling_policy: DRPlanConfigurationManagedScalingPolicy = None,
+        node_attributes: NodeAttributes = None,
+        node_groups: List[NodeGroupConfig] = None,
+        payment_type: str = None,
+        region_id: str = None,
+        release_version: str = None,
+        resource_group_id: str = None,
+        security_mode: str = None,
+        subscription_config: SubscriptionConfig = None,
+        tags: List[DRPlanConfigurationTags] = None,
+    ):
+        self.application_configs = application_configs
+        # This parameter is required.
+        self.applications = applications
+        self.bootstrap_scripts = bootstrap_scripts
+        # This parameter is required.
+        self.cluster_name = cluster_name
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
+        self.deploy_mode = deploy_mode
+        self.description = description
+        self.log_collect_strategy = log_collect_strategy
+        self.managed_scaling_policy = managed_scaling_policy
+        # This parameter is required.
+        self.node_attributes = node_attributes
+        # This parameter is required.
+        self.node_groups = node_groups
+        # This parameter is required.
+        self.payment_type = payment_type
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.release_version = release_version
+        self.resource_group_id = resource_group_id
+        # This parameter is required.
+        self.security_mode = security_mode
+        self.subscription_config = subscription_config
+        self.tags = tags
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+        if self.bootstrap_scripts:
+            for k in self.bootstrap_scripts:
+                if k:
+                    k.validate()
+        if self.managed_scaling_policy:
+            self.managed_scaling_policy.validate()
+        if self.node_attributes:
+            self.node_attributes.validate()
+        if self.node_groups:
+            for k in self.node_groups:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['ApplicationConfigs'].append(k.to_map() if k else None)
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        result['BootstrapScripts'] = []
+        if self.bootstrap_scripts is not None:
+            for k in self.bootstrap_scripts:
+                result['BootstrapScripts'].append(k.to_map() if k else None)
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.log_collect_strategy is not None:
+            result['LogCollectStrategy'] = self.log_collect_strategy
+        if self.managed_scaling_policy is not None:
+            result['ManagedScalingPolicy'] = self.managed_scaling_policy.to_map()
+        if self.node_attributes is not None:
+            result['NodeAttributes'] = self.node_attributes.to_map()
+        result['NodeGroups'] = []
+        if self.node_groups is not None:
+            for k in self.node_groups:
+                result['NodeGroups'].append(k.to_map() if k else None)
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.security_mode is not None:
+            result['SecurityMode'] = self.security_mode
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('ApplicationConfigs') is not None:
+            for k in m.get('ApplicationConfigs'):
+                temp_model = ApplicationConfig()
+                self.application_configs.append(temp_model.from_map(k))
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = Application()
+                self.applications.append(temp_model.from_map(k))
+        self.bootstrap_scripts = []
+        if m.get('BootstrapScripts') is not None:
+            for k in m.get('BootstrapScripts'):
+                temp_model = Script()
+                self.bootstrap_scripts.append(temp_model.from_map(k))
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LogCollectStrategy') is not None:
+            self.log_collect_strategy = m.get('LogCollectStrategy')
+        if m.get('ManagedScalingPolicy') is not None:
+            temp_model = DRPlanConfigurationManagedScalingPolicy()
+            self.managed_scaling_policy = temp_model.from_map(m['ManagedScalingPolicy'])
+        if m.get('NodeAttributes') is not None:
+            temp_model = NodeAttributes()
+            self.node_attributes = temp_model.from_map(m['NodeAttributes'])
+        self.node_groups = []
+        if m.get('NodeGroups') is not None:
+            for k in m.get('NodeGroups'):
+                temp_model = NodeGroupConfig()
+                self.node_groups.append(temp_model.from_map(k))
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('SecurityMode') is not None:
+            self.security_mode = m.get('SecurityMode')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DRPlanConfigurationTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class DRPlanConfigurationDetailManagedScalingPolicy(TeaModel):
+    def __init__(
+        self,
+        constraints: ManagedScalingConstraints = None,
+    ):
+        self.constraints = constraints
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Constraints') is not None:
+            temp_model = ManagedScalingConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        return self
+
+
+class ScalingPolicy(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        constraints: ManagedScalingConstraints = None,
+        disabled: bool = None,
+        node_group_id: str = None,
+        node_group_name: str = None,
+        scaling_policy_id: str = None,
+        scaling_policy_type: str = None,
+        scaling_rules: List[ScalingRule] = None,
+    ):
+        self.cluster_id = cluster_id
+        self.constraints = constraints
+        self.disabled = disabled
+        self.node_group_id = node_group_id
+        self.node_group_name = node_group_name
+        self.scaling_policy_id = scaling_policy_id
+        self.scaling_policy_type = scaling_policy_type
+        self.scaling_rules = scaling_rules
+
+    def validate(self):
+        if self.constraints:
+            self.constraints.validate()
+        if self.scaling_rules:
+            for k in self.scaling_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.constraints is not None:
+            result['Constraints'] = self.constraints.to_map()
+        if self.disabled is not None:
+            result['Disabled'] = self.disabled
+        if self.node_group_id is not None:
+            result['NodeGroupId'] = self.node_group_id
+        if self.node_group_name is not None:
+            result['NodeGroupName'] = self.node_group_name
+        if self.scaling_policy_id is not None:
+            result['ScalingPolicyId'] = self.scaling_policy_id
+        if self.scaling_policy_type is not None:
+            result['ScalingPolicyType'] = self.scaling_policy_type
+        result['ScalingRules'] = []
+        if self.scaling_rules is not None:
+            for k in self.scaling_rules:
+                result['ScalingRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('Constraints') is not None:
+            temp_model = ManagedScalingConstraints()
+            self.constraints = temp_model.from_map(m['Constraints'])
+        if m.get('Disabled') is not None:
+            self.disabled = m.get('Disabled')
+        if m.get('NodeGroupId') is not None:
+            self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupName') is not None:
+            self.node_group_name = m.get('NodeGroupName')
+        if m.get('ScalingPolicyId') is not None:
+            self.scaling_policy_id = m.get('ScalingPolicyId')
+        if m.get('ScalingPolicyType') is not None:
+            self.scaling_policy_type = m.get('ScalingPolicyType')
+        self.scaling_rules = []
+        if m.get('ScalingRules') is not None:
+            for k in m.get('ScalingRules'):
+                temp_model = ScalingRule()
+                self.scaling_rules.append(temp_model.from_map(k))
+        return self
+
+
+class DRPlanConfigurationDetail(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[ApplicationConfig] = None,
+        applications: List[Application] = None,
+        bootstrap_scripts: List[Script] = None,
+        cluster_name: str = None,
+        cluster_type: str = None,
+        deletion_protection: bool = None,
+        deploy_mode: str = None,
+        description: str = None,
+        log_collect_strategy: str = None,
+        managed_scaling_policy: DRPlanConfigurationDetailManagedScalingPolicy = None,
+        meta_store_type: str = None,
+        node_attributes: NodeAttributes = None,
+        node_groups: List[NodeGroupConfig] = None,
+        payment_type: str = None,
+        region_id: str = None,
+        release_version: str = None,
+        resource_group_id: str = None,
+        scaling_policies: List[ScalingPolicy] = None,
+        security_mode: str = None,
+        subscription_config: SubscriptionConfig = None,
+        tags: List[Tag] = None,
+    ):
+        self.application_configs = application_configs
+        self.applications = applications
+        self.bootstrap_scripts = bootstrap_scripts
+        self.cluster_name = cluster_name
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        self.deletion_protection = deletion_protection
+        # This parameter is required.
+        self.deploy_mode = deploy_mode
+        self.description = description
+        # This parameter is required.
+        self.log_collect_strategy = log_collect_strategy
+        self.managed_scaling_policy = managed_scaling_policy
+        # This parameter is required.
+        self.meta_store_type = meta_store_type
+        # This parameter is required.
+        self.node_attributes = node_attributes
+        self.node_groups = node_groups
+        # This parameter is required.
+        self.payment_type = payment_type
+        # This parameter is required.
+        self.region_id = region_id
+        # This parameter is required.
+        self.release_version = release_version
+        self.resource_group_id = resource_group_id
+        self.scaling_policies = scaling_policies
+        # This parameter is required.
+        self.security_mode = security_mode
+        self.subscription_config = subscription_config
+        self.tags = tags
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+        if self.applications:
+            for k in self.applications:
+                if k:
+                    k.validate()
+        if self.bootstrap_scripts:
+            for k in self.bootstrap_scripts:
+                if k:
+                    k.validate()
+        if self.managed_scaling_policy:
+            self.managed_scaling_policy.validate()
+        if self.node_attributes:
+            self.node_attributes.validate()
+        if self.node_groups:
+            for k in self.node_groups:
+                if k:
+                    k.validate()
+        if self.scaling_policies:
+            for k in self.scaling_policies:
+                if k:
+                    k.validate()
+        if self.subscription_config:
+            self.subscription_config.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['ApplicationConfigs'].append(k.to_map() if k else None)
+        result['Applications'] = []
+        if self.applications is not None:
+            for k in self.applications:
+                result['Applications'].append(k.to_map() if k else None)
+        result['BootstrapScripts'] = []
+        if self.bootstrap_scripts is not None:
+            for k in self.bootstrap_scripts:
+                result['BootstrapScripts'].append(k.to_map() if k else None)
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.cluster_type is not None:
+            result['ClusterType'] = self.cluster_type
+        if self.deletion_protection is not None:
+            result['DeletionProtection'] = self.deletion_protection
+        if self.deploy_mode is not None:
+            result['DeployMode'] = self.deploy_mode
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.log_collect_strategy is not None:
+            result['LogCollectStrategy'] = self.log_collect_strategy
+        if self.managed_scaling_policy is not None:
+            result['ManagedScalingPolicy'] = self.managed_scaling_policy.to_map()
+        if self.meta_store_type is not None:
+            result['MetaStoreType'] = self.meta_store_type
+        if self.node_attributes is not None:
+            result['NodeAttributes'] = self.node_attributes.to_map()
+        result['NodeGroups'] = []
+        if self.node_groups is not None:
+            for k in self.node_groups:
+                result['NodeGroups'].append(k.to_map() if k else None)
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        result['ScalingPolicies'] = []
+        if self.scaling_policies is not None:
+            for k in self.scaling_policies:
+                result['ScalingPolicies'].append(k.to_map() if k else None)
+        if self.security_mode is not None:
+            result['SecurityMode'] = self.security_mode
+        if self.subscription_config is not None:
+            result['SubscriptionConfig'] = self.subscription_config.to_map()
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('ApplicationConfigs') is not None:
+            for k in m.get('ApplicationConfigs'):
+                temp_model = ApplicationConfig()
+                self.application_configs.append(temp_model.from_map(k))
+        self.applications = []
+        if m.get('Applications') is not None:
+            for k in m.get('Applications'):
+                temp_model = Application()
+                self.applications.append(temp_model.from_map(k))
+        self.bootstrap_scripts = []
+        if m.get('BootstrapScripts') is not None:
+            for k in m.get('BootstrapScripts'):
+                temp_model = Script()
+                self.bootstrap_scripts.append(temp_model.from_map(k))
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('ClusterType') is not None:
+            self.cluster_type = m.get('ClusterType')
+        if m.get('DeletionProtection') is not None:
+            self.deletion_protection = m.get('DeletionProtection')
+        if m.get('DeployMode') is not None:
+            self.deploy_mode = m.get('DeployMode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LogCollectStrategy') is not None:
+            self.log_collect_strategy = m.get('LogCollectStrategy')
+        if m.get('ManagedScalingPolicy') is not None:
+            temp_model = DRPlanConfigurationDetailManagedScalingPolicy()
+            self.managed_scaling_policy = temp_model.from_map(m['ManagedScalingPolicy'])
+        if m.get('MetaStoreType') is not None:
+            self.meta_store_type = m.get('MetaStoreType')
+        if m.get('NodeAttributes') is not None:
+            temp_model = NodeAttributes()
+            self.node_attributes = temp_model.from_map(m['NodeAttributes'])
+        self.node_groups = []
+        if m.get('NodeGroups') is not None:
+            for k in m.get('NodeGroups'):
+                temp_model = NodeGroupConfig()
+                self.node_groups.append(temp_model.from_map(k))
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        self.scaling_policies = []
+        if m.get('ScalingPolicies') is not None:
+            for k in m.get('ScalingPolicies'):
+                temp_model = ScalingPolicy()
+                self.scaling_policies.append(temp_model.from_map(k))
+        if m.get('SecurityMode') is not None:
+            self.security_mode = m.get('SecurityMode')
+        if m.get('SubscriptionConfig') is not None:
+            temp_model = SubscriptionConfig()
+            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = Tag()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
@@ -4439,6 +5726,7 @@ class InstanceType(TeaModel):
         instance_type_family: str = None,
         local_storage_amount: int = None,
         local_storage_capacity: int = None,
+        modify_type: str = None,
         optimized: bool = None,
     ):
         # cpu架构。
@@ -4470,6 +5758,7 @@ class InstanceType(TeaModel):
         self.local_storage_amount = local_storage_amount
         # 实例挂载的本地盘的单盘容量。单位：GiB
         self.local_storage_capacity = local_storage_capacity
+        self.modify_type = modify_type
         # 是否IO优化类型。
         self.optimized = optimized
 
@@ -4496,6 +5785,8 @@ class InstanceType(TeaModel):
             result['LocalStorageAmount'] = self.local_storage_amount
         if self.local_storage_capacity is not None:
             result['LocalStorageCapacity'] = self.local_storage_capacity
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
         if self.optimized is not None:
             result['Optimized'] = self.optimized
         return result
@@ -4516,6 +5807,8 @@ class InstanceType(TeaModel):
             self.local_storage_amount = m.get('LocalStorageAmount')
         if m.get('LocalStorageCapacity') is not None:
             self.local_storage_capacity = m.get('LocalStorageCapacity')
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
         if m.get('Optimized') is not None:
             self.optimized = m.get('Optimized')
         return self
@@ -4679,48 +5972,6 @@ class ListApiTemplatesDTO(TeaModel):
             self.template_name = m.get('TemplateName')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
-        return self
-
-
-class ManagedScalingConstraints(TeaModel):
-    def __init__(
-        self,
-        max_capacity: int = None,
-        max_on_demand_capacity: int = None,
-        min_capacity: int = None,
-    ):
-        # 最大值。
-        self.max_capacity = max_capacity
-        # 最大按量节点数量
-        self.max_on_demand_capacity = max_on_demand_capacity
-        # 最小值。
-        self.min_capacity = min_capacity
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.max_capacity is not None:
-            result['MaxCapacity'] = self.max_capacity
-        if self.max_on_demand_capacity is not None:
-            result['MaxOnDemandCapacity'] = self.max_on_demand_capacity
-        if self.min_capacity is not None:
-            result['MinCapacity'] = self.min_capacity
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MaxCapacity') is not None:
-            self.max_capacity = m.get('MaxCapacity')
-        if m.get('MaxOnDemandCapacity') is not None:
-            self.max_on_demand_capacity = m.get('MaxOnDemandCapacity')
-        if m.get('MinCapacity') is not None:
-            self.min_capacity = m.get('MinCapacity')
         return self
 
 
@@ -4941,74 +6192,6 @@ class NodeCountConstraint(TeaModel):
             self.type = m.get('Type')
         if m.get('Values') is not None:
             self.values = m.get('Values')
-        return self
-
-
-class PrivatePoolOptions(TeaModel):
-    def __init__(
-        self,
-        match_criteria: str = None,
-        private_pool_ids: List[str] = None,
-    ):
-        self.match_criteria = match_criteria
-        self.private_pool_ids = private_pool_ids
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.match_criteria is not None:
-            result['MatchCriteria'] = self.match_criteria
-        if self.private_pool_ids is not None:
-            result['PrivatePoolIds'] = self.private_pool_ids
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('MatchCriteria') is not None:
-            self.match_criteria = m.get('MatchCriteria')
-        if m.get('PrivatePoolIds') is not None:
-            self.private_pool_ids = m.get('PrivatePoolIds')
-        return self
-
-
-class SpotBidPrice(TeaModel):
-    def __init__(
-        self,
-        bid_price: float = None,
-        instance_type: str = None,
-    ):
-        # 实例的每小时最高出价。支持最大3位小数，参数SpotStrategy=SpotWithPriceLimit时，该参数生效。
-        self.bid_price = bid_price
-        # 实例类型。
-        self.instance_type = instance_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.bid_price is not None:
-            result['BidPrice'] = self.bid_price
-        if self.instance_type is not None:
-            result['InstanceType'] = self.instance_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BidPrice') is not None:
-            self.bid_price = m.get('BidPrice')
-        if m.get('InstanceType') is not None:
-            self.instance_type = m.get('InstanceType')
         return self
 
 
@@ -5277,244 +6460,6 @@ class NodeGroup(TeaModel):
             self.with_public_ip = m.get('WithPublicIp')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
-        return self
-
-
-class NodeGroupConfig(TeaModel):
-    def __init__(
-        self,
-        additional_security_group_ids: List[str] = None,
-        auto_scaling_policy: AutoScalingPolicy = None,
-        compensate_with_on_demand: bool = None,
-        component_tags: List[str] = None,
-        cost_optimized_config: CostOptimizedConfig = None,
-        data_disks: List[DataDisk] = None,
-        deployment_set_strategy: str = None,
-        graceful_shutdown: bool = None,
-        instance_types: List[str] = None,
-        node_count: int = None,
-        node_group_name: str = None,
-        node_group_type: str = None,
-        node_resize_strategy: str = None,
-        payment_type: str = None,
-        private_pool_options: PrivatePoolOptions = None,
-        spot_bid_prices: List[SpotBidPrice] = None,
-        spot_instance_remedy: bool = None,
-        spot_strategy: str = None,
-        subscription_config: SubscriptionConfig = None,
-        system_disk: SystemDisk = None,
-        v_switch_ids: List[str] = None,
-        with_public_ip: bool = None,
-    ):
-        # 附加安全组。除集群设置的安全组外，为节点组单独设置的附加安全组。数组元数个数N的取值范围：0~2。
-        self.additional_security_group_ids = additional_security_group_ids
-        self.auto_scaling_policy = auto_scaling_policy
-        self.compensate_with_on_demand = compensate_with_on_demand
-        self.component_tags = component_tags
-        # 成本优化模式配置。
-        self.cost_optimized_config = cost_optimized_config
-        # 数据盘。当前数据盘只支持一种磁盘类型，即数组元数个数N的取值范围：1~1。
-        self.data_disks = data_disks
-        # 部署集策略。取值范围：
-        # - NONE：不适用部署集。
-        # - CLUSTER：使用集群级别部署集。
-        # - NODE_GROUP：使用节点组级别部署集。
-        # 
-        # 默认值：NONE。
-        self.deployment_set_strategy = deployment_set_strategy
-        # 节点组上部署的组件是否开启优雅下线。取值范围：
-        # - true：开启优雅下线。
-        # - false：不开启优雅下线。
-        # 
-        # 默认值：false。
-        self.graceful_shutdown = graceful_shutdown
-        # 节点实例类型列表。数组元数个数N的取值范围：1~100。
-        self.instance_types = instance_types
-        # 节点数量。取值范围：1~1000。
-        self.node_count = node_count
-        # 节点组名称。最大长度128个字符。集群内要求节点组名称唯一。
-        self.node_group_name = node_group_name
-        # 节点组类型。取值范围：
-        # - MASTER：管理类型节点组。
-        # - CORE：存储类型节点组。
-        # - TASK：计算类型节点组。
-        # 
-        # This parameter is required.
-        self.node_group_type = node_group_type
-        # 节点扩容策略。取值范围：
-        # - COST_OPTIMIZED：成本优化策略。
-        # - PRIORITY：优先级策略。
-        # 
-        # 默认值：PRIORITY。
-        self.node_resize_strategy = node_resize_strategy
-        # 节点组付费类型。不传入时默认和集群付费类型一致。取值范围：
-        # - PayAsYouGo：后付费，按量付费。
-        # - Subscription：预付费，包年包月。
-        # 
-        # 默认值：PayAsYouGo。
-        self.payment_type = payment_type
-        self.private_pool_options = private_pool_options
-        # 抢占式Spot实例出价价格。参数SpotStrategy取值为SpotWithPriceLimit时生效。数组元数个数N的取值范围：0~100。
-        self.spot_bid_prices = spot_bid_prices
-        # 开启后，当收到抢占式实例将被回收的系统消息时，伸缩组将尝试创建新的实例，替换掉将被回收的抢占式实例。取值范围：
-        # - true：开启补齐抢占式实例。
-        # - false：不开启补齐抢占式实例。
-        # 
-        # 默认值：false。
-        self.spot_instance_remedy = spot_instance_remedy
-        # 抢占式Spot实例策略。取值范围：
-        # - NoSpot：正常按量付费实例。
-        # - SpotWithPriceLimit：设置最高出价的抢占式实例。
-        # - SpotAsPriceGo：系统自动出价，最高按量付费价格的抢占式实例。
-        # 
-        # 默认值：NoSpot。
-        self.spot_strategy = spot_strategy
-        # 节点组预付费配置。不传入时默认和集群预付费配置一致。
-        self.subscription_config = subscription_config
-        # 系统盘。
-        self.system_disk = system_disk
-        # 虚拟机交换机ID列表。数组元数个数N的取值范围：1~20。
-        self.v_switch_ids = v_switch_ids
-        # 是否开公网IP。取值范围：
-        # - true：开公网。
-        # - false：不开公网。
-        # 
-        # 默认值：false。
-        self.with_public_ip = with_public_ip
-
-    def validate(self):
-        if self.auto_scaling_policy:
-            self.auto_scaling_policy.validate()
-        if self.cost_optimized_config:
-            self.cost_optimized_config.validate()
-        if self.data_disks:
-            for k in self.data_disks:
-                if k:
-                    k.validate()
-        if self.private_pool_options:
-            self.private_pool_options.validate()
-        if self.spot_bid_prices:
-            for k in self.spot_bid_prices:
-                if k:
-                    k.validate()
-        if self.subscription_config:
-            self.subscription_config.validate()
-        if self.system_disk:
-            self.system_disk.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.additional_security_group_ids is not None:
-            result['AdditionalSecurityGroupIds'] = self.additional_security_group_ids
-        if self.auto_scaling_policy is not None:
-            result['AutoScalingPolicy'] = self.auto_scaling_policy.to_map()
-        if self.compensate_with_on_demand is not None:
-            result['CompensateWithOnDemand'] = self.compensate_with_on_demand
-        if self.component_tags is not None:
-            result['ComponentTags'] = self.component_tags
-        if self.cost_optimized_config is not None:
-            result['CostOptimizedConfig'] = self.cost_optimized_config.to_map()
-        result['DataDisks'] = []
-        if self.data_disks is not None:
-            for k in self.data_disks:
-                result['DataDisks'].append(k.to_map() if k else None)
-        if self.deployment_set_strategy is not None:
-            result['DeploymentSetStrategy'] = self.deployment_set_strategy
-        if self.graceful_shutdown is not None:
-            result['GracefulShutdown'] = self.graceful_shutdown
-        if self.instance_types is not None:
-            result['InstanceTypes'] = self.instance_types
-        if self.node_count is not None:
-            result['NodeCount'] = self.node_count
-        if self.node_group_name is not None:
-            result['NodeGroupName'] = self.node_group_name
-        if self.node_group_type is not None:
-            result['NodeGroupType'] = self.node_group_type
-        if self.node_resize_strategy is not None:
-            result['NodeResizeStrategy'] = self.node_resize_strategy
-        if self.payment_type is not None:
-            result['PaymentType'] = self.payment_type
-        if self.private_pool_options is not None:
-            result['PrivatePoolOptions'] = self.private_pool_options.to_map()
-        result['SpotBidPrices'] = []
-        if self.spot_bid_prices is not None:
-            for k in self.spot_bid_prices:
-                result['SpotBidPrices'].append(k.to_map() if k else None)
-        if self.spot_instance_remedy is not None:
-            result['SpotInstanceRemedy'] = self.spot_instance_remedy
-        if self.spot_strategy is not None:
-            result['SpotStrategy'] = self.spot_strategy
-        if self.subscription_config is not None:
-            result['SubscriptionConfig'] = self.subscription_config.to_map()
-        if self.system_disk is not None:
-            result['SystemDisk'] = self.system_disk.to_map()
-        if self.v_switch_ids is not None:
-            result['VSwitchIds'] = self.v_switch_ids
-        if self.with_public_ip is not None:
-            result['WithPublicIp'] = self.with_public_ip
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('AdditionalSecurityGroupIds') is not None:
-            self.additional_security_group_ids = m.get('AdditionalSecurityGroupIds')
-        if m.get('AutoScalingPolicy') is not None:
-            temp_model = AutoScalingPolicy()
-            self.auto_scaling_policy = temp_model.from_map(m['AutoScalingPolicy'])
-        if m.get('CompensateWithOnDemand') is not None:
-            self.compensate_with_on_demand = m.get('CompensateWithOnDemand')
-        if m.get('ComponentTags') is not None:
-            self.component_tags = m.get('ComponentTags')
-        if m.get('CostOptimizedConfig') is not None:
-            temp_model = CostOptimizedConfig()
-            self.cost_optimized_config = temp_model.from_map(m['CostOptimizedConfig'])
-        self.data_disks = []
-        if m.get('DataDisks') is not None:
-            for k in m.get('DataDisks'):
-                temp_model = DataDisk()
-                self.data_disks.append(temp_model.from_map(k))
-        if m.get('DeploymentSetStrategy') is not None:
-            self.deployment_set_strategy = m.get('DeploymentSetStrategy')
-        if m.get('GracefulShutdown') is not None:
-            self.graceful_shutdown = m.get('GracefulShutdown')
-        if m.get('InstanceTypes') is not None:
-            self.instance_types = m.get('InstanceTypes')
-        if m.get('NodeCount') is not None:
-            self.node_count = m.get('NodeCount')
-        if m.get('NodeGroupName') is not None:
-            self.node_group_name = m.get('NodeGroupName')
-        if m.get('NodeGroupType') is not None:
-            self.node_group_type = m.get('NodeGroupType')
-        if m.get('NodeResizeStrategy') is not None:
-            self.node_resize_strategy = m.get('NodeResizeStrategy')
-        if m.get('PaymentType') is not None:
-            self.payment_type = m.get('PaymentType')
-        if m.get('PrivatePoolOptions') is not None:
-            temp_model = PrivatePoolOptions()
-            self.private_pool_options = temp_model.from_map(m['PrivatePoolOptions'])
-        self.spot_bid_prices = []
-        if m.get('SpotBidPrices') is not None:
-            for k in m.get('SpotBidPrices'):
-                temp_model = SpotBidPrice()
-                self.spot_bid_prices.append(temp_model.from_map(k))
-        if m.get('SpotInstanceRemedy') is not None:
-            self.spot_instance_remedy = m.get('SpotInstanceRemedy')
-        if m.get('SpotStrategy') is not None:
-            self.spot_strategy = m.get('SpotStrategy')
-        if m.get('SubscriptionConfig') is not None:
-            temp_model = SubscriptionConfig()
-            self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
-        if m.get('SystemDisk') is not None:
-            temp_model = SystemDisk()
-            self.system_disk = temp_model.from_map(m['SystemDisk'])
-        if m.get('VSwitchIds') is not None:
-            self.v_switch_ids = m.get('VSwitchIds')
-        if m.get('WithPublicIp') is not None:
-            self.with_public_ip = m.get('WithPublicIp')
         return self
 
 
@@ -7194,86 +8139,6 @@ class ScalingGroupConfig(TeaModel):
         return self
 
 
-class ScalingPolicy(TeaModel):
-    def __init__(
-        self,
-        cluster_id: str = None,
-        constraints: ManagedScalingConstraints = None,
-        disabled: bool = None,
-        node_group_id: str = None,
-        node_group_name: str = None,
-        scaling_policy_id: str = None,
-        scaling_policy_type: str = None,
-        scaling_rules: List[ScalingRule] = None,
-    ):
-        self.cluster_id = cluster_id
-        self.constraints = constraints
-        self.disabled = disabled
-        self.node_group_id = node_group_id
-        self.node_group_name = node_group_name
-        self.scaling_policy_id = scaling_policy_id
-        self.scaling_policy_type = scaling_policy_type
-        self.scaling_rules = scaling_rules
-
-    def validate(self):
-        if self.constraints:
-            self.constraints.validate()
-        if self.scaling_rules:
-            for k in self.scaling_rules:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cluster_id is not None:
-            result['ClusterId'] = self.cluster_id
-        if self.constraints is not None:
-            result['Constraints'] = self.constraints.to_map()
-        if self.disabled is not None:
-            result['Disabled'] = self.disabled
-        if self.node_group_id is not None:
-            result['NodeGroupId'] = self.node_group_id
-        if self.node_group_name is not None:
-            result['NodeGroupName'] = self.node_group_name
-        if self.scaling_policy_id is not None:
-            result['ScalingPolicyId'] = self.scaling_policy_id
-        if self.scaling_policy_type is not None:
-            result['ScalingPolicyType'] = self.scaling_policy_type
-        result['ScalingRules'] = []
-        if self.scaling_rules is not None:
-            for k in self.scaling_rules:
-                result['ScalingRules'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClusterId') is not None:
-            self.cluster_id = m.get('ClusterId')
-        if m.get('Constraints') is not None:
-            temp_model = ManagedScalingConstraints()
-            self.constraints = temp_model.from_map(m['Constraints'])
-        if m.get('Disabled') is not None:
-            self.disabled = m.get('Disabled')
-        if m.get('NodeGroupId') is not None:
-            self.node_group_id = m.get('NodeGroupId')
-        if m.get('NodeGroupName') is not None:
-            self.node_group_name = m.get('NodeGroupName')
-        if m.get('ScalingPolicyId') is not None:
-            self.scaling_policy_id = m.get('ScalingPolicyId')
-        if m.get('ScalingPolicyType') is not None:
-            self.scaling_policy_type = m.get('ScalingPolicyType')
-        self.scaling_rules = []
-        if m.get('ScalingRules') is not None:
-            for k in m.get('ScalingRules'):
-                temp_model = ScalingRule()
-                self.scaling_rules.append(temp_model.from_map(k))
-        return self
-
-
 class ScalingRuleSpecByLoadScalingRuleSpec(TeaModel):
     def __init__(
         self,
@@ -7655,84 +8520,6 @@ class ScalingRuleV1(TeaModel):
         return self
 
 
-class Script(TeaModel):
-    def __init__(
-        self,
-        execution_fail_strategy: str = None,
-        execution_moment: str = None,
-        node_selector: NodeSelector = None,
-        priority: int = None,
-        script_args: str = None,
-        script_name: str = None,
-        script_path: str = None,
-    ):
-        # 执行失败策略。
-        self.execution_fail_strategy = execution_fail_strategy
-        # 脚本的执行时机。
-        self.execution_moment = execution_moment
-        # 节点选择器。
-        # 
-        # This parameter is required.
-        self.node_selector = node_selector
-        # 脚本执行优先级。取值范围：1~100。
-        self.priority = priority
-        # 脚本执行参数。
-        self.script_args = script_args
-        # 脚本名称。长度为1~64个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、下划线（_）、或者短划线（-）
-        # 
-        # This parameter is required.
-        self.script_name = script_name
-        # 脚本所在OSS路径。
-        # 
-        # This parameter is required.
-        self.script_path = script_path
-
-    def validate(self):
-        if self.node_selector:
-            self.node_selector.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.execution_fail_strategy is not None:
-            result['ExecutionFailStrategy'] = self.execution_fail_strategy
-        if self.execution_moment is not None:
-            result['ExecutionMoment'] = self.execution_moment
-        if self.node_selector is not None:
-            result['NodeSelector'] = self.node_selector.to_map()
-        if self.priority is not None:
-            result['Priority'] = self.priority
-        if self.script_args is not None:
-            result['ScriptArgs'] = self.script_args
-        if self.script_name is not None:
-            result['ScriptName'] = self.script_name
-        if self.script_path is not None:
-            result['ScriptPath'] = self.script_path
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ExecutionFailStrategy') is not None:
-            self.execution_fail_strategy = m.get('ExecutionFailStrategy')
-        if m.get('ExecutionMoment') is not None:
-            self.execution_moment = m.get('ExecutionMoment')
-        if m.get('NodeSelector') is not None:
-            temp_model = NodeSelector()
-            self.node_selector = temp_model.from_map(m['NodeSelector'])
-        if m.get('Priority') is not None:
-            self.priority = m.get('Priority')
-        if m.get('ScriptArgs') is not None:
-            self.script_args = m.get('ScriptArgs')
-        if m.get('ScriptName') is not None:
-            self.script_name = m.get('ScriptName')
-        if m.get('ScriptPath') is not None:
-            self.script_path = m.get('ScriptPath')
-        return self
-
-
 class SpotPriceLimit(TeaModel):
     def __init__(
         self,
@@ -7933,9 +8720,11 @@ class UpdateApplicationConfig(TeaModel):
 class UpdateSpecNodeGroup(TeaModel):
     def __init__(
         self,
+        modify_type: str = None,
         new_instance_type: str = None,
         node_group_id: str = None,
     ):
+        self.modify_type = modify_type
         # 新实例类型。
         # 
         # This parameter is required.
@@ -7954,6 +8743,8 @@ class UpdateSpecNodeGroup(TeaModel):
             return _map
 
         result = dict()
+        if self.modify_type is not None:
+            result['ModifyType'] = self.modify_type
         if self.new_instance_type is not None:
             result['NewInstanceType'] = self.new_instance_type
         if self.node_group_id is not None:
@@ -7962,6 +8753,8 @@ class UpdateSpecNodeGroup(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ModifyType') is not None:
+            self.modify_type = m.get('ModifyType')
         if m.get('NewInstanceType') is not None:
             self.new_instance_type = m.get('NewInstanceType')
         if m.get('NodeGroupId') is not None:
@@ -8581,8 +9374,6 @@ class CreateNodeGroupRequest(TeaModel):
         # This parameter is required.
         self.cluster_id = cluster_id
         # The information about the node group.
-        # 
-        # This parameter is required.
         self.node_group = node_group
         # The region ID.
         # 
@@ -9710,6 +10501,198 @@ class DeleteUsersResponse(TeaModel):
         return self
 
 
+class ExportApplicationConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        application_config_files: List[ApplicationConfigFile] = None,
+        cluster_id: str = None,
+        export_mode: str = None,
+        file_format: str = None,
+        region_id: str = None,
+    ):
+        # 导出应用配置。
+        self.application_config_files = application_config_files
+        # 集群ID。
+        # 
+        # This parameter is required.
+        self.cluster_id = cluster_id
+        self.export_mode = export_mode
+        # 导出应用配置的文件格式。
+        self.file_format = file_format
+        # 区域ID。
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        if self.application_config_files:
+            for k in self.application_config_files:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigFiles'] = []
+        if self.application_config_files is not None:
+            for k in self.application_config_files:
+                result['ApplicationConfigFiles'].append(k.to_map() if k else None)
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.export_mode is not None:
+            result['ExportMode'] = self.export_mode
+        if self.file_format is not None:
+            result['FileFormat'] = self.file_format
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_config_files = []
+        if m.get('ApplicationConfigFiles') is not None:
+            for k in m.get('ApplicationConfigFiles'):
+                temp_model = ApplicationConfigFile()
+                self.application_config_files.append(temp_model.from_map(k))
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ExportMode') is not None:
+            self.export_mode = m.get('ExportMode')
+        if m.get('FileFormat') is not None:
+            self.file_format = m.get('FileFormat')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ExportApplicationConfigsResponseBodyApplicationConfigs(TeaModel):
+    def __init__(
+        self,
+        application_name: str = None,
+        config_file_name: str = None,
+        content: str = None,
+    ):
+        # 应用名称。
+        self.application_name = application_name
+        # 文件名称。
+        self.config_file_name = config_file_name
+        # 文件内容，base64加密。
+        self.content = content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+        if self.config_file_name is not None:
+            result['ConfigFileName'] = self.config_file_name
+        if self.content is not None:
+            result['Content'] = self.content
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+        if m.get('ConfigFileName') is not None:
+            self.config_file_name = m.get('ConfigFileName')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        return self
+
+
+class ExportApplicationConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        application_configs: List[ExportApplicationConfigsResponseBodyApplicationConfigs] = None,
+        request_id: str = None,
+    ):
+        self.application_configs = application_configs
+        # 请求ID。
+        self.request_id = request_id
+
+    def validate(self):
+        if self.application_configs:
+            for k in self.application_configs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApplicationConfigs'] = []
+        if self.application_configs is not None:
+            for k in self.application_configs:
+                result['ApplicationConfigs'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_configs = []
+        if m.get('ApplicationConfigs') is not None:
+            for k in m.get('ApplicationConfigs'):
+                temp_model = ExportApplicationConfigsResponseBodyApplicationConfigs()
+                self.application_configs.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ExportApplicationConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportApplicationConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportApplicationConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetApiTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -9834,15 +10817,15 @@ class GetApplicationRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # 应用名称。
+        # The application name.
         # 
         # This parameter is required.
         self.application_name = application_name
-        # 集群ID。
+        # The request ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 地域ID。
+        # The region ID.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -9885,17 +10868,17 @@ class GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute(Tea
         value_type: str = None,
         value_unit: str = None,
     ):
-        # 值表述。
+        # Value description.
         self.description = description
-        # 值步长。
+        # The size of the value increment.
         self.value_increment_step = value_increment_step
-        # 最大值。
+        # The maximum range of values.
         self.value_maximum = value_maximum
-        # 最小值。
+        # The minimum range of values.
         self.value_minimum = value_minimum
-        # 属性值类型。
+        # The value type of the column.
         self.value_type = value_type
-        # 值单位。
+        # The unit of the value.
         self.value_unit = value_unit
 
     def validate(self):
@@ -9945,11 +10928,11 @@ class GetApplicationResponseBodyApplicationActionsActionParams(TeaModel):
         key: str = None,
         value_attribute: GetApplicationResponseBodyApplicationActionsActionParamsValueAttribute = None,
     ):
-        # 动作参数描述。
+        # Description
         self.description = description
-        # 动作参数KEY。
+        # The parameter name.
         self.key = key
-        # 动作参数属性。
+        # The parameter value attribute.
         self.value_attribute = value_attribute
 
     def validate(self):
@@ -9992,17 +10975,21 @@ class GetApplicationResponseBodyApplicationActions(TeaModel):
         description: str = None,
         run_action_scope: str = None,
     ):
-        # 操作名称。
+        # The action name.
         self.action_name = action_name
-        # 操作参数。
+        # The list of action parameters.
         self.action_params = action_params
-        # 命令。
+        # The action command.
         self.command = command
-        # 组件名称。
+        # The component name.
         self.component_name = component_name
-        # 操作描述。
+        # The description of the action.
         self.description = description
-        # 执行范围。
+        # The execution scope. Valid values:
+        # 
+        # *   APPLICATION: the application scope.
+        # *   COMPONENT: the component scope.
+        # *   COMPONENT_INSTANCE: the component instance scope.
         self.run_action_scope = run_action_scope
 
     def validate(self):
@@ -10062,15 +11049,15 @@ class GetApplicationResponseBodyApplication(TeaModel):
         application_version: str = None,
         community_version: str = None,
     ):
-        # 操作列表。
+        # The list of actions supported by the application.
         self.actions = actions
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # 应用操作状态。
+        # The status of the application.
         self.application_state = application_state
-        # 应用版本。
+        # The application version.
         self.application_version = application_version
-        # 社区版本。
+        # The community version.
         self.community_version = community_version
 
     def validate(self):
@@ -10123,8 +11110,9 @@ class GetApplicationResponseBody(TeaModel):
         application: GetApplicationResponseBodyApplication = None,
         request_id: str = None,
     ):
+        # The application.
         self.application = application
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -32418,6 +33406,7 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         self,
         cluster_id: str = None,
         end_time: int = None,
+        instance_charge_types: List[str] = None,
         max_results: int = None,
         next_token: str = None,
         node_group_id: str = None,
@@ -32434,6 +33423,12 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         self.cluster_id = cluster_id
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # 实例付费类型枚举值：
+        # - ONDEMAND: 按量付费实例
+        # - SPOT: 竞价实例
+        # 默认为null代表全选
+        # 举例: ["ONDEMAND", "SPOT"]
+        self.instance_charge_types = instance_charge_types
         # The number of entries to return on each page.
         self.max_results = max_results
         # The pagination token that is used in the request to retrieve a new page of results.
@@ -32470,6 +33465,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
             result['ClusterId'] = self.cluster_id
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.instance_charge_types is not None:
+            result['InstanceChargeTypes'] = self.instance_charge_types
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
@@ -32496,6 +33493,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
             self.cluster_id = m.get('ClusterId')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('InstanceChargeTypes') is not None:
+            self.instance_charge_types = m.get('InstanceChargeTypes')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
@@ -32517,6 +33516,45 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         return self
 
 
+class ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails(TeaModel):
+    def __init__(
+        self,
+        instance_type: str = None,
+        on_demand_instance_ids: List[str] = None,
+        spot_instance_ids: List[str] = None,
+    ):
+        self.instance_type = instance_type
+        self.on_demand_instance_ids = on_demand_instance_ids
+        self.spot_instance_ids = spot_instance_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.on_demand_instance_ids is not None:
+            result['OnDemandInstanceIds'] = self.on_demand_instance_ids
+        if self.spot_instance_ids is not None:
+            result['SpotInstanceIds'] = self.spot_instance_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('OnDemandInstanceIds') is not None:
+            self.on_demand_instance_ids = m.get('OnDemandInstanceIds')
+        if m.get('SpotInstanceIds') is not None:
+            self.spot_instance_ids = m.get('SpotInstanceIds')
+        return self
+
+
 class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
     def __init__(
         self,
@@ -32527,6 +33565,7 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         description: str = None,
         end_time: int = None,
         expect_num: int = None,
+        instance_type_details: List[ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails] = None,
         instance_type_to_num: Dict[str, int] = None,
         node_group_id: str = None,
         node_group_name: str = None,
@@ -32557,6 +33596,7 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.end_time = end_time
         # The number of added or removed instances.
         self.expect_num = expect_num
+        self.instance_type_details = instance_type_details
         self.instance_type_to_num = instance_type_to_num
         # The ID of the node group.
         self.node_group_id = node_group_id
@@ -32571,7 +33611,10 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         self.start_time = start_time
 
     def validate(self):
-        pass
+        if self.instance_type_details:
+            for k in self.instance_type_details:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -32593,6 +33636,10 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
             result['EndTime'] = self.end_time
         if self.expect_num is not None:
             result['ExpectNum'] = self.expect_num
+        result['InstanceTypeDetails'] = []
+        if self.instance_type_details is not None:
+            for k in self.instance_type_details:
+                result['InstanceTypeDetails'].append(k.to_map() if k else None)
         if self.instance_type_to_num is not None:
             result['InstanceTypeToNum'] = self.instance_type_to_num
         if self.node_group_id is not None:
@@ -32625,6 +33672,11 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('ExpectNum') is not None:
             self.expect_num = m.get('ExpectNum')
+        self.instance_type_details = []
+        if m.get('InstanceTypeDetails') is not None:
+            for k in m.get('InstanceTypeDetails'):
+                temp_model = ListAutoScalingActivitiesResponseBodyScalingActivitiesInstanceTypeDetails()
+                self.instance_type_details.append(temp_model.from_map(k))
         if m.get('InstanceTypeToNum') is not None:
             self.instance_type_to_num = m.get('InstanceTypeToNum')
         if m.get('NodeGroupId') is not None:
@@ -32967,27 +34019,29 @@ class ListComponentInstancesRequest(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
-        # 应用名称列表。
+        # The list of component names.
         self.application_names = application_names
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 组件名称列表。
+        # The list of component names.
         self.component_names = component_names
+        # The list of component status.
         self.component_states = component_states
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # 节点ID列表。
+        # The list of instance IDs.
         self.node_ids = node_ids
-        # 节点名称列表。
+        # The instance IDs.
         self.node_names = node_names
-        # 地域ID。
+        # The region ID. You can call the [ListRegions](url) view.
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -33060,54 +34114,58 @@ class ListComponentInstancesResponseBodyComponentInstances(TeaModel):
         node_name: str = None,
         zone_id: str = None,
     ):
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # 组件服务状态，取值如下：
-        # - active：主服务
-        # - standby：备用服务。
+        # The status of the component service. Valid values:
+        # 
+        # *   active: the primary service.
+        # *   standby: the standby service.
         self.biz_state = biz_state
-        # Commission状态，取值如下：
-        # - COMMISSIONED：已上线
-        # - COMMISSIONING：上线中
-        # - DECOMMISSIONED：已下线
-        # - DECOMMISSIONINPROGRESS：下线进程中
-        # - DECOMMISSIONFAILED：下线失败
-        # - INSERVICE：服务中
-        # - UNKNOWN：未知状态。
-        # <p>
+        # The status of the Commission. Valid values:
+        # 
+        # *   COMMISSIONED
+        # *   COMMISSIONING
+        # *   DECOMMISSIONED
+        # *   DECOMMISSIONINPROGRESS
+        # *   DECOMMISSIONFAILED
+        # *   INSERVICE
+        # *   UNKNOWN
         self.commission_state = commission_state
-        # 组件实例操作状态，取值如下：
-        # - WAITING：等待中
-        # - INSTALLING：安装中
-        # - INSTALLED：已安装
-        # - INSTALL_FAILED：安装失败
-        # - STARTING：启动中
-        # - STARTED：已启动
-        # - START_FAILED：启动失败
-        # - STOPPING：停止中
-        # - STOPPED：已停止
-        # - STOP_FAILED：停止失败
+        # The status of the component. Valid values:
+        # 
+        # *   WAITING
+        # *   INSTALLING
+        # *   INSTALLED
+        # *   INSTALL_FAILED
+        # *   STARTING
+        # *   STARTED
+        # *   START_FAILED
+        # *   STOPPING
+        # *   STOPPED
+        # *   STOP_FAILED
         self.component_instance_state = component_instance_state
-        # 组件名称。
+        # The component name.
         self.component_name = component_name
-        # 安装时间戳。
+        # The timestamp of the installation.
         self.create_time = create_time
-        # 期望状态，取值如下：
-        # - WAITING：等待中
-        # - INSTALLING：安装中
-        # - INSTALLED：已安装
-        # - INSTALL_FAILED：安装失败
-        # - STARTING：启动中
-        # - STARTED：已启动
-        # - START_FAILED：启动失败
-        # - STOPPING：停止中
-        # - STOPPED：已停止
-        # - STOP_FAILED：停止失败。
+        # Valid values:
+        # 
+        # *   WAITING
+        # *   INSTALLING
+        # *   INSTALLED
+        # *   INSTALL_FAILED
+        # *   STARTING
+        # *   STARTED
+        # *   START_FAILED
+        # *   STOPPING
+        # *   STOPPED
+        # *   STOP_FAILED
         self.desired_state = desired_state
-        # 节点ID。
+        # The instance ID.
         self.node_id = node_id
-        # 节点名称。
+        # The instance name.
         self.node_name = node_name
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -33175,14 +34233,15 @@ class ListComponentInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of instance component installation information.
         self.component_instances = component_instances
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33281,20 +34340,21 @@ class ListComponentsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 应用名称列表。
+        # The application name.
         self.application_names = application_names
-        # 集群ID。
+        # The cluster ID.
         # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        # 组件名称列表。
+        # The list of component names.
         self.component_names = component_names
+        # The list of component status.
         self.component_states = component_states
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the next request to retrieve a new page of results. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
-        # 地域ID。
+        # The region ID. You can call the [ListRegions](url) view.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -33352,15 +34412,15 @@ class ListComponentsResponseBodyComponents(TeaModel):
         namespace: str = None,
         replica: int = None,
     ):
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # 属性列表。
+        # The list of attributes.
         self.attributes = attributes
-        # 组件名称。
+        # The component name.
         self.component_name = component_name
-        # 命名空间。
+        # The reserved field.
         self.namespace = namespace
-        # 安装该组件的机器总数。
+        # The total number of instances on which the component is installed.
         self.replica = replica
 
     def validate(self):
@@ -33416,14 +34476,15 @@ class ListComponentsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of component information.
         self.components = components
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

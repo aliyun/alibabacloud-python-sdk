@@ -1249,6 +1249,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_users_with_options_async(request, runtime)
 
+    def export_application_configs_with_options(
+        self,
+        request: emr_20210320_models.ExportApplicationConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ExportApplicationConfigsResponse:
+        """
+        @param request: ExportApplicationConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportApplicationConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_config_files):
+            query['ApplicationConfigFiles'] = request.application_config_files
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.export_mode):
+            query['ExportMode'] = request.export_mode
+        if not UtilClient.is_unset(request.file_format):
+            query['FileFormat'] = request.file_format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportApplicationConfigs',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ExportApplicationConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_application_configs_with_options_async(
+        self,
+        request: emr_20210320_models.ExportApplicationConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_20210320_models.ExportApplicationConfigsResponse:
+        """
+        @param request: ExportApplicationConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportApplicationConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_config_files):
+            query['ApplicationConfigFiles'] = request.application_config_files
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.export_mode):
+            query['ExportMode'] = request.export_mode
+        if not UtilClient.is_unset(request.file_format):
+            query['FileFormat'] = request.file_format
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ExportApplicationConfigs',
+            version='2021-03-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_20210320_models.ExportApplicationConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_application_configs(
+        self,
+        request: emr_20210320_models.ExportApplicationConfigsRequest,
+    ) -> emr_20210320_models.ExportApplicationConfigsResponse:
+        """
+        @param request: ExportApplicationConfigsRequest
+        @return: ExportApplicationConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.export_application_configs_with_options(request, runtime)
+
+    async def export_application_configs_async(
+        self,
+        request: emr_20210320_models.ExportApplicationConfigsRequest,
+    ) -> emr_20210320_models.ExportApplicationConfigsResponse:
+        """
+        @param request: ExportApplicationConfigsRequest
+        @return: ExportApplicationConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.export_application_configs_with_options_async(request, runtime)
+
     def get_api_template_with_options(
         self,
         request: emr_20210320_models.GetApiTemplateRequest,
@@ -1355,6 +1459,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
+        @summary Retrieves the details of an application.
+        
         @description 查询应用详情。
         
         @param request: GetApplicationRequest
@@ -1394,6 +1500,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
+        @summary Retrieves the details of an application.
+        
         @description 查询应用详情。
         
         @param request: GetApplicationRequest
@@ -1432,6 +1540,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApplicationRequest,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
+        @summary Retrieves the details of an application.
+        
         @description 查询应用详情。
         
         @param request: GetApplicationRequest
@@ -1445,6 +1555,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApplicationRequest,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
+        @summary Retrieves the details of an application.
+        
         @description 查询应用详情。
         
         @param request: GetApplicationRequest
@@ -4299,6 +4411,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_charge_types):
+            query['InstanceChargeTypes'] = request.instance_charge_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -4354,6 +4468,8 @@ class Client(OpenApiClient):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_charge_types):
+            query['InstanceChargeTypes'] = request.instance_charge_types
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -4555,6 +4671,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
+        @summary Retrieves the list of component instances.
+        
         @param request: ListComponentInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentInstancesResponse
@@ -4606,6 +4724,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
+        @summary Retrieves the list of component instances.
+        
         @param request: ListComponentInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentInstancesResponse
@@ -4656,6 +4776,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentInstancesRequest,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
+        @summary Retrieves the list of component instances.
+        
         @param request: ListComponentInstancesRequest
         @return: ListComponentInstancesResponse
         """
@@ -4667,6 +4789,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentInstancesRequest,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
+        @summary Retrieves the list of component instances.
+        
         @param request: ListComponentInstancesRequest
         @return: ListComponentInstancesResponse
         """
@@ -4679,6 +4803,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
+        @summary Retrieves a list of components.
+        
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentsResponse
@@ -4724,6 +4850,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
+        @summary Retrieves a list of components.
+        
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListComponentsResponse
@@ -4768,6 +4896,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
+        @summary Retrieves a list of components.
+        
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
         """
@@ -4779,6 +4909,8 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
+        @summary Retrieves a list of components.
+        
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
         """

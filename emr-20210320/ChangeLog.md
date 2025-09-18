@@ -1,3 +1,9 @@
+2025-09-18 Version: 3.2.0
+- Support API ExportApplicationConfigs.
+- Update API ListAutoScalingActivities: add request parameters InstanceChargeTypes.
+- Update API ListAutoScalingActivities: add response parameters Body.ScalingActivities.$.InstanceTypeDetails.
+
+
 2025-07-24 Version: 3.1.0
 - Support API GetManagedScalingPolicy.
 
