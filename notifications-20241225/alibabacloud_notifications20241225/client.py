@@ -201,6 +201,8 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         if not UtilClient.is_unset(request.src_url):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
@@ -254,6 +256,8 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         if not UtilClient.is_unset(request.src_url):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
@@ -333,6 +337,8 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         if not UtilClient.is_unset(request.src_url):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
@@ -386,6 +392,8 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
         if not UtilClient.is_unset(request.src_url):
             body['SrcUrl'] = request.src_url
         if not UtilClient.is_unset(request.tenant_code):
@@ -725,6 +733,10 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.history):
+            body['History'] = request.history
         if not UtilClient.is_unset(request.msg_id):
             body['MsgId'] = request.msg_id
         if not UtilClient.is_unset(request.src_url):
@@ -782,6 +794,10 @@ class Client(OpenApiClient):
             body['ClientSource'] = request.client_source
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.history):
+            body['History'] = request.history
         if not UtilClient.is_unset(request.msg_id):
             body['MsgId'] = request.msg_id
         if not UtilClient.is_unset(request.src_url):
@@ -867,6 +883,10 @@ class Client(OpenApiClient):
             body['Content'] = request.content
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.history):
+            body['History'] = request.history
         if not UtilClient.is_unset(request.loc):
             body['Loc'] = request.loc
         if not UtilClient.is_unset(request.max_results):
@@ -936,6 +956,10 @@ class Client(OpenApiClient):
             body['Content'] = request.content
         if not UtilClient.is_unset(request.cookies):
             body['Cookies'] = request.cookies
+        if not UtilClient.is_unset(request.group_code):
+            body['GroupCode'] = request.group_code
+        if not UtilClient.is_unset(request.history):
+            body['History'] = request.history
         if not UtilClient.is_unset(request.loc):
             body['Loc'] = request.loc
         if not UtilClient.is_unset(request.max_results):

@@ -187,6 +187,7 @@ class DeleteAllMessageRequest(TeaModel):
         class_id: int = None,
         client_source: str = None,
         cookies: str = None,
+        group_code: str = None,
         src_url: str = None,
         tenant_code: str = None,
         uid_type: str = None,
@@ -198,6 +199,7 @@ class DeleteAllMessageRequest(TeaModel):
         self.class_id = class_id
         self.client_source = client_source
         self.cookies = cookies
+        self.group_code = group_code
         self.src_url = src_url
         self.tenant_code = tenant_code
         self.uid_type = uid_type
@@ -225,6 +227,8 @@ class DeleteAllMessageRequest(TeaModel):
             result['ClientSource'] = self.client_source
         if self.cookies is not None:
             result['Cookies'] = self.cookies
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
         if self.src_url is not None:
             result['SrcUrl'] = self.src_url
         if self.tenant_code is not None:
@@ -249,6 +253,8 @@ class DeleteAllMessageRequest(TeaModel):
             self.client_source = m.get('ClientSource')
         if m.get('Cookies') is not None:
             self.cookies = m.get('Cookies')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
         if m.get('SrcUrl') is not None:
             self.src_url = m.get('SrcUrl')
         if m.get('TenantCode') is not None:
@@ -360,6 +366,7 @@ class ReadAllMessageRequest(TeaModel):
         class_id: int = None,
         client_source: str = None,
         cookies: str = None,
+        group_code: str = None,
         src_url: str = None,
         tenant_code: str = None,
         uid_type: str = None,
@@ -371,6 +378,7 @@ class ReadAllMessageRequest(TeaModel):
         self.class_id = class_id
         self.client_source = client_source
         self.cookies = cookies
+        self.group_code = group_code
         self.src_url = src_url
         self.tenant_code = tenant_code
         self.uid_type = uid_type
@@ -398,6 +406,8 @@ class ReadAllMessageRequest(TeaModel):
             result['ClientSource'] = self.client_source
         if self.cookies is not None:
             result['Cookies'] = self.cookies
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
         if self.src_url is not None:
             result['SrcUrl'] = self.src_url
         if self.tenant_code is not None:
@@ -422,6 +432,8 @@ class ReadAllMessageRequest(TeaModel):
             self.client_source = m.get('ClientSource')
         if m.get('Cookies') is not None:
             self.cookies = m.get('Cookies')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
         if m.get('SrcUrl') is not None:
             self.src_url = m.get('SrcUrl')
         if m.get('TenantCode') is not None:
@@ -914,6 +926,8 @@ class ReadMessageContentRequest(TeaModel):
         class_id: int = None,
         client_source: str = None,
         cookies: str = None,
+        group_code: str = None,
+        history: bool = None,
         msg_id: str = None,
         src_url: str = None,
         status: int = None,
@@ -927,6 +941,8 @@ class ReadMessageContentRequest(TeaModel):
         self.class_id = class_id
         self.client_source = client_source
         self.cookies = cookies
+        self.group_code = group_code
+        self.history = history
         self.msg_id = msg_id
         self.src_url = src_url
         self.status = status
@@ -956,6 +972,10 @@ class ReadMessageContentRequest(TeaModel):
             result['ClientSource'] = self.client_source
         if self.cookies is not None:
             result['Cookies'] = self.cookies
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.history is not None:
+            result['History'] = self.history
         if self.msg_id is not None:
             result['MsgId'] = self.msg_id
         if self.src_url is not None:
@@ -984,6 +1004,10 @@ class ReadMessageContentRequest(TeaModel):
             self.client_source = m.get('ClientSource')
         if m.get('Cookies') is not None:
             self.cookies = m.get('Cookies')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('History') is not None:
+            self.history = m.get('History')
         if m.get('MsgId') is not None:
             self.msg_id = m.get('MsgId')
         if m.get('SrcUrl') is not None:
@@ -1457,6 +1481,8 @@ class ReadMessageListRequest(TeaModel):
         client_source: str = None,
         content: str = None,
         cookies: str = None,
+        group_code: str = None,
+        history: str = None,
         loc: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -1484,6 +1510,8 @@ class ReadMessageListRequest(TeaModel):
         self.content = content
         # 系统参数，无需填写
         self.cookies = cookies
+        self.group_code = group_code
+        self.history = history
         # 栏位 nav代表控制台topbar
         self.loc = loc
         # 系统参数，无需填写
@@ -1530,6 +1558,10 @@ class ReadMessageListRequest(TeaModel):
             result['Content'] = self.content
         if self.cookies is not None:
             result['Cookies'] = self.cookies
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
+        if self.history is not None:
+            result['History'] = self.history
         if self.loc is not None:
             result['Loc'] = self.loc
         if self.max_results is not None:
@@ -1570,6 +1602,10 @@ class ReadMessageListRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('Cookies') is not None:
             self.cookies = m.get('Cookies')
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
+        if m.get('History') is not None:
+            self.history = m.get('History')
         if m.get('Loc') is not None:
             self.loc = m.get('Loc')
         if m.get('MaxResults') is not None:
@@ -1596,6 +1632,7 @@ class ReadMessageListRequest(TeaModel):
 class ReadMessageListResponseBodyDataRows(TeaModel):
     def __init__(
         self,
+        category_code: str = None,
         category_name: str = None,
         class_: str = None,
         class_id: int = None,
@@ -1610,6 +1647,7 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
         title: str = None,
         titleh: str = None,
     ):
+        self.category_code = category_code
         # CategoryName
         self.category_name = category_name
         # Class
@@ -1644,6 +1682,8 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
             return _map
 
         result = dict()
+        if self.category_code is not None:
+            result['CategoryCode'] = self.category_code
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
         if self.class_ is not None:
@@ -1674,6 +1714,8 @@ class ReadMessageListResponseBodyDataRows(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryCode') is not None:
+            self.category_code = m.get('CategoryCode')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
         if m.get('Class') is not None:
@@ -2335,11 +2377,13 @@ class ReadNumGroupTotalRequest(TeaModel):
 class ReadNumGroupTotalResponseBodyData(TeaModel):
     def __init__(
         self,
+        group_code: str = None,
         id: int = None,
         read_count: int = None,
         total_count: int = None,
         un_read_count: int = None,
     ):
+        self.group_code = group_code
         self.id = id
         self.read_count = read_count
         self.total_count = total_count
@@ -2354,6 +2398,8 @@ class ReadNumGroupTotalResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.group_code is not None:
+            result['GroupCode'] = self.group_code
         if self.id is not None:
             result['Id'] = self.id
         if self.read_count is not None:
@@ -2366,6 +2412,8 @@ class ReadNumGroupTotalResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupCode') is not None:
+            self.group_code = m.get('GroupCode')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('ReadCount') is not None:
