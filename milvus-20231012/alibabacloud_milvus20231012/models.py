@@ -15,12 +15,19 @@ class CreateDefaultRoleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The details about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code
         self.err_code = err_code
+        # The error message returned.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -113,6 +120,7 @@ class DescribeAccessControlListRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -141,7 +149,9 @@ class DescribeAccessControlListResponseBodyData(TeaModel):
         acl_id: str = None,
         cidr: List[str] = None,
     ):
+        # AclId for public network access control.
         self.acl_id = acl_id
+        # The CIDR blocks.
         self.cidr = cidr
 
     def validate(self):
@@ -179,12 +189,19 @@ class DescribeAccessControlListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error message.
         self.err_message = err_message
+        # The error code returned.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -279,6 +296,8 @@ class DescribeInstanceConfigsRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -313,12 +332,19 @@ class DescribeInstanceConfigsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -411,6 +437,7 @@ class GetInstanceDetailRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -443,11 +470,23 @@ class GetInstanceDetailResponseBodyDataClusterInfoMilvusResourceInfoList(TeaMode
         disk_type: str = None,
         replica: int = None,
     ):
+        # The component type. Valid values:
+        # 
+        # *   standalone
+        # *   proxy
+        # *   mix_coordinator
+        # *   query
+        # *   index
+        # *   data
         self.component_type = component_type
+        # The number of CUs.
         self.cu_num = cu_num
         self.cu_ratio = cu_ratio
+        # The disk size.
         self.disk_size = disk_size
+        # The disk type.
         self.disk_type = disk_type
+        # The number of replicas.
         self.replica = replica
 
     def validate(self):
@@ -503,14 +542,23 @@ class GetInstanceDetailResponseBodyDataClusterInfo(TeaModel):
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
+        # The port of the Attu component.
         self.attu_port = attu_port
+        # The public IP address.
         self.internet_url = internet_url
+        # The internal IP address.
         self.intranet_url = intranet_url
+        # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
+        # The size of the data stored in OSS.
         self.oss_storage_size = oss_storage_size
+        # The timestamp when the OSS metric is stored.
         self.oss_storage_timestamp = oss_storage_timestamp
+        # The proxy port.
         self.proxy_port = proxy_port
+        # The total number of CUs.
         self.total_cu_num = total_cu_num
+        # The total number of disks.
         self.total_disk_size = total_disk_size
 
     def validate(self):
@@ -718,32 +766,68 @@ class GetInstanceDetailResponseBodyData(TeaModel):
         vsw_id: str = None,
         zone_id: str = None,
     ):
+        # AclId for Public Network Access Control.
         self.acl_id = acl_id
+        # The start time.
         self.begin_time = begin_time
+        # The name of the bucket.
         self.bucket_name = bucket_name
+        # The address of the bucket.
         self.bucket_path = bucket_path
+        # The instance details.
         self.cluster_info = cluster_info
+        # The instance name.
         self.cluster_name = cluster_name
         self.enable_ha = enable_ha
+        # The expiration time.
         self.expire_time = expire_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The instance status. Valid values:
+        # 
+        # *   creating.
+        # *   running.
+        # *   updating. Cluster scaling (up/down), configuration changes, and enabling/disabling public network access.
+        # *   disable. The cluster has expired and needs to be renewed for activation.
+        # *   deleting.
+        # *   deleted.
         self.instance_status = instance_status
         self.measure_config = measure_config
         self.node_type = node_type
+        # Indicates whether Internet access is enabled.
         self.open_public_net = open_public_net
+        # The specification details. Valid values:
+        # 
+        # *   trial.
+        # *   standard.
         self.package_type = package_type
+        # The billing method of the instance. Valid values:
+        # 
+        # *   0: pay-as-you-go
+        # *   1: subscription
         self.pay_type = pay_type
+        # The commodity code.
         self.product_code = product_code
+        # The region code.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The runtime.
         self.running_time = running_time
+        # The security group ID.
         self.sg_id = sg_id
         self.tags = tags
+        # The version of the software stack.
         self.template_version = template_version
+        # User-defined configuration.
         self.user_config = user_config
+        # The kernel version.
         self.version = version
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vsw_id = vsw_id
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -895,12 +979,19 @@ class GetInstanceDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1034,11 +1125,17 @@ class ListInstancesRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[ListInstancesRequestTag] = None,
     ):
+        # The instance ID.
         self.cluster_id = cluster_id
+        # The instance name.
         self.cluster_name = cluster_name
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region code.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.tag = tag
 
@@ -1105,11 +1202,17 @@ class ListInstancesShrinkRequest(TeaModel):
         resource_group_id: str = None,
         tag_shrink: str = None,
     ):
+        # The instance ID.
         self.cluster_id = cluster_id
+        # The instance name.
         self.cluster_name = cluster_name
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page.
         self.page_size = page_size
+        # The region code.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.tag_shrink = tag_shrink
 
@@ -1166,10 +1269,22 @@ class ListInstancesResponseBodyDataClusterInfoMilvusResourceInfoList(TeaModel):
         disk_type: str = None,
         replica: int = None,
     ):
+        # The type of the component. Valid values:
+        # 
+        # *   standalone
+        # *   proxy
+        # *   mix_coordinator
+        # *   query
+        # *   index
+        # *   data
         self.component_type = component_type
+        # The number of CUs.
         self.cu_num = cu_num
+        # The disk size.
         self.disk_size = disk_size
+        # The disk type.
         self.disk_type = disk_type
+        # The number of replicas.
         self.replica = replica
 
     def validate(self):
@@ -1219,12 +1334,19 @@ class ListInstancesResponseBodyDataClusterInfo(TeaModel):
         total_cu_num: int = None,
         total_disk_size: int = None,
     ):
+        # The port of the Attu component.
         self.attu_port = attu_port
+        # The public IP address.
         self.internet_url = internet_url
+        # The internal endpoint.
         self.intranet_url = intranet_url
+        # The resource details.
         self.milvus_resource_info_list = milvus_resource_info_list
+        # The proxy port.
         self.proxy_port = proxy_port
+        # The number of CUs.
         self.total_cu_num = total_cu_num
+        # The total capacity of the disk.
         self.total_disk_size = total_disk_size
 
     def validate(self):
@@ -1337,24 +1459,54 @@ class ListInstancesResponseBodyData(TeaModel):
         zone_id: str = None,
     ):
         self.auto_backup = auto_backup
+        # The start time.
         self.begin_time = begin_time
+        # The instance details.
         self.cluster_info = cluster_info
+        # The instance name.
         self.cluster_name = cluster_name
+        # The expiration time.
         self.expire_time = expire_time
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The status of the bastion host. Valid values:
+        # 
+        # *   creating.
+        # *   running.
+        # *   updating. Cluster scaling (up/down), configuration changes, and enabling/disabling public network access.
+        # *   disable. The cluster has expired and needs to be renewed for activation.
+        # *   deleting.
+        # *   deleted.
         self.instance_status = instance_status
         self.node_type = node_type
+        # Indicates whether Internet access is enabled.
         self.open_public_net = open_public_net
+        # The specification details. Valid values:
+        # 
+        # *   trial.
+        # *   standard.
         self.package_type = package_type
+        # The billing method of the instance. Valid values:
+        # 
+        # *   0: pay-as-you-go
+        # *   1: subscription
         self.pay_type = pay_type
+        # The commodity code.
         self.product_code = product_code
+        # The region code.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The runtime.
         self.running_time = running_time
+        # The security group ID.
         self.sg_id = sg_id
         self.tags = tags
+        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
+        # The ID of the vSwitch.
         self.vsw_id = vsw_id
+        # The zone.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1476,13 +1628,21 @@ class ListInstancesResponseBody(TeaModel):
         success: bool = None,
         total: int = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
+        # The total number.
         self.total = total
 
     def validate(self):
@@ -1589,10 +1749,15 @@ class ModifyInstanceConfigRequest(TeaModel):
         reason: str = None,
         user_config: str = None,
     ):
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The reason for the update.
+        # 
         # This parameter is required.
         self.reason = reason
+        # User-defined configuration.
         self.user_config = user_config
 
     def validate(self):
@@ -1634,12 +1799,19 @@ class ModifyInstanceConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -1734,8 +1906,11 @@ class UpdateAccessControlListRequest(TeaModel):
         cidr: str = None,
         instance_id: str = None,
     ):
+        # The ID of public network access control
         self.acl_id = acl_id
+        # The CIDR blocks.
         self.cidr = cidr
+        # The ID of the instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1777,12 +1952,19 @@ class UpdateAccessControlListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error message.
         self.err_message = err_message
+        # The error code returned.
         self.error_code = error_code
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -1876,8 +2058,12 @@ class UpdateInstanceNameRequest(TeaModel):
         cluster_name: str = None,
         instance_id: str = None,
     ):
+        # The instance ID.
+        # 
         # This parameter is required.
         self.cluster_name = cluster_name
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
 
@@ -1916,12 +2102,19 @@ class UpdateInstanceNameResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2017,11 +2210,20 @@ class UpdatePublicNetworkStatusRequest(TeaModel):
         instance_id: str = None,
         public_network_enabled: bool = None,
     ):
+        # The CIDR blocks.
         self.cidr = cidr
+        # The component type. Valid values:
+        # 
+        # *   Proxy
+        # 
         # This parameter is required.
         self.component_type = component_type
+        # The ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Enable /disable the Internet.
+        # 
         # This parameter is required.
         self.public_network_enabled = public_network_enabled
 
@@ -2068,12 +2270,19 @@ class UpdatePublicNetworkStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The detailed information about the failed permission verification.
         self.access_denied_detail = access_denied_detail
+        # The returned result.
         self.data = data
+        # The error code returned.
         self.err_code = err_code
+        # The error message.
         self.err_message = err_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful.
         self.success = success
 
     def validate(self):

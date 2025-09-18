@@ -1,3 +1,6 @@
+2025-09-18 Version: 1.1.1
+- Generated python 2023-10-12 for milvus.
+
 2025-03-19 Version: 1.1.0
 - Support API CreateDefaultRole.
 - Update API GetInstanceDetail: update response param.

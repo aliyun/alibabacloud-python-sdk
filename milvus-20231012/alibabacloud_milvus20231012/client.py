@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.CreateDefaultRoleResponse:
         """
-        @summary 为用户创建AliyunServiceRoleForMilvus
+        @summary Create a service role for Milvus to access other cloud products
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -67,16 +67,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.CreateDefaultRoleResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.CreateDefaultRoleResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.CreateDefaultRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def create_default_role_with_options_async(
         self,
@@ -84,7 +78,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.CreateDefaultRoleResponse:
         """
-        @summary 为用户创建AliyunServiceRoleForMilvus
+        @summary Create a service role for Milvus to access other cloud products
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -104,20 +98,14 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.CreateDefaultRoleResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.CreateDefaultRoleResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.CreateDefaultRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def create_default_role(self) -> milvus_20231012_models.CreateDefaultRoleResponse:
         """
-        @summary 为用户创建AliyunServiceRoleForMilvus
+        @summary Create a service role for Milvus to access other cloud products
         
         @return: CreateDefaultRoleResponse
         """
@@ -127,7 +115,7 @@ class Client(OpenApiClient):
 
     async def create_default_role_async(self) -> milvus_20231012_models.CreateDefaultRoleResponse:
         """
-        @summary 为用户创建AliyunServiceRoleForMilvus
+        @summary Create a service role for Milvus to access other cloud products
         
         @return: CreateDefaultRoleResponse
         """
@@ -142,7 +130,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.DescribeAccessControlListResponse:
         """
-        @summary 获取Milvus公网访问ACL信息
+        @summary Get the public IP address whitelist of a Milvus instance.
         
         @param request: DescribeAccessControlListRequest
         @param headers: map
@@ -168,16 +156,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeAccessControlListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeAccessControlListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.DescribeAccessControlListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_access_control_list_with_options_async(
         self,
@@ -186,7 +168,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.DescribeAccessControlListResponse:
         """
-        @summary 获取Milvus公网访问ACL信息
+        @summary Get the public IP address whitelist of a Milvus instance.
         
         @param request: DescribeAccessControlListRequest
         @param headers: map
@@ -212,23 +194,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeAccessControlListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeAccessControlListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.DescribeAccessControlListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_access_control_list(
         self,
         request: milvus_20231012_models.DescribeAccessControlListRequest,
     ) -> milvus_20231012_models.DescribeAccessControlListResponse:
         """
-        @summary 获取Milvus公网访问ACL信息
+        @summary Get the public IP address whitelist of a Milvus instance.
         
         @param request: DescribeAccessControlListRequest
         @return: DescribeAccessControlListResponse
@@ -242,7 +218,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.DescribeAccessControlListRequest,
     ) -> milvus_20231012_models.DescribeAccessControlListResponse:
         """
-        @summary 获取Milvus公网访问ACL信息
+        @summary Get the public IP address whitelist of a Milvus instance.
         
         @param request: DescribeAccessControlListRequest
         @return: DescribeAccessControlListResponse
@@ -258,7 +234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.DescribeInstanceConfigsResponse:
         """
-        @summary 查询实例用户配置
+        @summary Get information about the custom configuration of each component of Milvus.
         
         @param request: DescribeInstanceConfigsRequest
         @param headers: map
@@ -284,16 +260,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeInstanceConfigsResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeInstanceConfigsResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.DescribeInstanceConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def describe_instance_configs_with_options_async(
         self,
@@ -302,7 +272,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.DescribeInstanceConfigsResponse:
         """
-        @summary 查询实例用户配置
+        @summary Get information about the custom configuration of each component of Milvus.
         
         @param request: DescribeInstanceConfigsRequest
         @param headers: map
@@ -328,23 +298,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeInstanceConfigsResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.DescribeInstanceConfigsResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.DescribeInstanceConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def describe_instance_configs(
         self,
         request: milvus_20231012_models.DescribeInstanceConfigsRequest,
     ) -> milvus_20231012_models.DescribeInstanceConfigsResponse:
         """
-        @summary 查询实例用户配置
+        @summary Get information about the custom configuration of each component of Milvus.
         
         @param request: DescribeInstanceConfigsRequest
         @return: DescribeInstanceConfigsResponse
@@ -358,7 +322,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.DescribeInstanceConfigsRequest,
     ) -> milvus_20231012_models.DescribeInstanceConfigsResponse:
         """
-        @summary 查询实例用户配置
+        @summary Get information about the custom configuration of each component of Milvus.
         
         @param request: DescribeInstanceConfigsRequest
         @return: DescribeInstanceConfigsResponse
@@ -374,7 +338,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.GetInstanceDetailResponse:
         """
-        @summary 根据集群ID获取集群的详细信息
+        @summary Get the details of an instance.
         
         @param request: GetInstanceDetailRequest
         @param headers: map
@@ -400,16 +364,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.GetInstanceDetailResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.GetInstanceDetailResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.GetInstanceDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def get_instance_detail_with_options_async(
         self,
@@ -418,7 +376,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.GetInstanceDetailResponse:
         """
-        @summary 根据集群ID获取集群的详细信息
+        @summary Get the details of an instance.
         
         @param request: GetInstanceDetailRequest
         @param headers: map
@@ -444,23 +402,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.GetInstanceDetailResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.GetInstanceDetailResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.GetInstanceDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def get_instance_detail(
         self,
         request: milvus_20231012_models.GetInstanceDetailRequest,
     ) -> milvus_20231012_models.GetInstanceDetailResponse:
         """
-        @summary 根据集群ID获取集群的详细信息
+        @summary Get the details of an instance.
         
         @param request: GetInstanceDetailRequest
         @return: GetInstanceDetailResponse
@@ -474,7 +426,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.GetInstanceDetailRequest,
     ) -> milvus_20231012_models.GetInstanceDetailResponse:
         """
-        @summary 根据集群ID获取集群的详细信息
+        @summary Get the details of an instance.
         
         @param request: GetInstanceDetailRequest
         @return: GetInstanceDetailResponse
@@ -490,7 +442,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.ListInstancesResponse:
         """
-        @summary 根据集群ID或者名称搜索集群
+        @summary Get the list of Milvus instances under the current account.
         
         @param tmp_req: ListInstancesRequest
         @param headers: map
@@ -532,16 +484,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.ListInstancesResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.ListInstancesResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def list_instances_with_options_async(
         self,
@@ -550,7 +496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.ListInstancesResponse:
         """
-        @summary 根据集群ID或者名称搜索集群
+        @summary Get the list of Milvus instances under the current account.
         
         @param tmp_req: ListInstancesRequest
         @param headers: map
@@ -592,23 +538,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.ListInstancesResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.ListInstancesResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def list_instances(
         self,
         request: milvus_20231012_models.ListInstancesRequest,
     ) -> milvus_20231012_models.ListInstancesResponse:
         """
-        @summary 根据集群ID或者名称搜索集群
+        @summary Get the list of Milvus instances under the current account.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -622,7 +562,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.ListInstancesRequest,
     ) -> milvus_20231012_models.ListInstancesResponse:
         """
-        @summary 根据集群ID或者名称搜索集群
+        @summary Get the list of Milvus instances under the current account.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -638,7 +578,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.ModifyInstanceConfigResponse:
         """
-        @summary 修改实例配置
+        @summary Update the configuration parameters of each component of Milvus.
         
         @param request: ModifyInstanceConfigRequest
         @param headers: map
@@ -668,16 +608,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.ModifyInstanceConfigResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.ModifyInstanceConfigResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.ModifyInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def modify_instance_config_with_options_async(
         self,
@@ -686,7 +620,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.ModifyInstanceConfigResponse:
         """
-        @summary 修改实例配置
+        @summary Update the configuration parameters of each component of Milvus.
         
         @param request: ModifyInstanceConfigRequest
         @param headers: map
@@ -716,23 +650,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.ModifyInstanceConfigResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.ModifyInstanceConfigResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.ModifyInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def modify_instance_config(
         self,
         request: milvus_20231012_models.ModifyInstanceConfigRequest,
     ) -> milvus_20231012_models.ModifyInstanceConfigResponse:
         """
-        @summary 修改实例配置
+        @summary Update the configuration parameters of each component of Milvus.
         
         @param request: ModifyInstanceConfigRequest
         @return: ModifyInstanceConfigResponse
@@ -746,7 +674,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.ModifyInstanceConfigRequest,
     ) -> milvus_20231012_models.ModifyInstanceConfigResponse:
         """
-        @summary 修改实例配置
+        @summary Update the configuration parameters of each component of Milvus.
         
         @param request: ModifyInstanceConfigRequest
         @return: ModifyInstanceConfigResponse
@@ -762,7 +690,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdateAccessControlListResponse:
         """
-        @summary 更新Milvus公网访问ACL信息
+        @summary Configure Public IP Address Whitelist
         
         @param request: UpdateAccessControlListRequest
         @param headers: map
@@ -792,16 +720,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateAccessControlListResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateAccessControlListResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdateAccessControlListResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_access_control_list_with_options_async(
         self,
@@ -810,7 +732,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdateAccessControlListResponse:
         """
-        @summary 更新Milvus公网访问ACL信息
+        @summary Configure Public IP Address Whitelist
         
         @param request: UpdateAccessControlListRequest
         @param headers: map
@@ -840,23 +762,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateAccessControlListResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateAccessControlListResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdateAccessControlListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_access_control_list(
         self,
         request: milvus_20231012_models.UpdateAccessControlListRequest,
     ) -> milvus_20231012_models.UpdateAccessControlListResponse:
         """
-        @summary 更新Milvus公网访问ACL信息
+        @summary Configure Public IP Address Whitelist
         
         @param request: UpdateAccessControlListRequest
         @return: UpdateAccessControlListResponse
@@ -870,7 +786,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.UpdateAccessControlListRequest,
     ) -> milvus_20231012_models.UpdateAccessControlListResponse:
         """
-        @summary 更新Milvus公网访问ACL信息
+        @summary Configure Public IP Address Whitelist
         
         @param request: UpdateAccessControlListRequest
         @return: UpdateAccessControlListResponse
@@ -886,7 +802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdateInstanceNameResponse:
         """
-        @summary 修改集群名称
+        @summary Modifies the name of an instance.
         
         @param request: UpdateInstanceNameRequest
         @param headers: map
@@ -914,16 +830,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateInstanceNameResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateInstanceNameResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdateInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_instance_name_with_options_async(
         self,
@@ -932,7 +842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdateInstanceNameResponse:
         """
-        @summary 修改集群名称
+        @summary Modifies the name of an instance.
         
         @param request: UpdateInstanceNameRequest
         @param headers: map
@@ -960,23 +870,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateInstanceNameResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdateInstanceNameResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdateInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_instance_name(
         self,
         request: milvus_20231012_models.UpdateInstanceNameRequest,
     ) -> milvus_20231012_models.UpdateInstanceNameResponse:
         """
-        @summary 修改集群名称
+        @summary Modifies the name of an instance.
         
         @param request: UpdateInstanceNameRequest
         @return: UpdateInstanceNameResponse
@@ -990,7 +894,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.UpdateInstanceNameRequest,
     ) -> milvus_20231012_models.UpdateInstanceNameResponse:
         """
-        @summary 修改集群名称
+        @summary Modifies the name of an instance.
         
         @param request: UpdateInstanceNameRequest
         @return: UpdateInstanceNameResponse
@@ -1006,7 +910,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdatePublicNetworkStatusResponse:
         """
-        @summary 该接口用于开通/关闭 Proxy的公网SLB。
+        @summary Enable or disable Internet access for Milvus.
         
         @param request: UpdatePublicNetworkStatusRequest
         @param headers: map
@@ -1038,16 +942,10 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
-                self.call_api(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
-                self.execute(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
 
     async def update_public_network_status_with_options_async(
         self,
@@ -1056,7 +954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> milvus_20231012_models.UpdatePublicNetworkStatusResponse:
         """
-        @summary 该接口用于开通/关闭 Proxy的公网SLB。
+        @summary Enable or disable Internet access for Milvus.
         
         @param request: UpdatePublicNetworkStatusRequest
         @param headers: map
@@ -1088,23 +986,17 @@ class Client(OpenApiClient):
             req_body_type='json',
             body_type='json'
         )
-        if UtilClient.is_unset(self._signature_version) or not UtilClient.equal_string(self._signature_version, 'v4'):
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
-                await self.call_api_async(params, req, runtime)
-            )
-        else:
-            return TeaCore.from_map(
-                milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
-                await self.execute_async(params, req, runtime)
-            )
+        return TeaCore.from_map(
+            milvus_20231012_models.UpdatePublicNetworkStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
 
     def update_public_network_status(
         self,
         request: milvus_20231012_models.UpdatePublicNetworkStatusRequest,
     ) -> milvus_20231012_models.UpdatePublicNetworkStatusResponse:
         """
-        @summary 该接口用于开通/关闭 Proxy的公网SLB。
+        @summary Enable or disable Internet access for Milvus.
         
         @param request: UpdatePublicNetworkStatusRequest
         @return: UpdatePublicNetworkStatusResponse
@@ -1118,7 +1010,7 @@ class Client(OpenApiClient):
         request: milvus_20231012_models.UpdatePublicNetworkStatusRequest,
     ) -> milvus_20231012_models.UpdatePublicNetworkStatusResponse:
         """
-        @summary 该接口用于开通/关闭 Proxy的公网SLB。
+        @summary Enable or disable Internet access for Milvus.
         
         @param request: UpdatePublicNetworkStatusRequest
         @return: UpdatePublicNetworkStatusResponse
