@@ -4021,6 +4021,45 @@ class GetServiceResponseBodyServiceInfos(TeaModel):
         return self
 
 
+class GetServiceResponseBodyServiceLocaleConfigs(TeaModel):
+    def __init__(
+        self,
+        en_value: str = None,
+        original_value: str = None,
+        zh_value: str = None,
+    ):
+        self.en_value = en_value
+        self.original_value = original_value
+        self.zh_value = zh_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.en_value is not None:
+            result['EnValue'] = self.en_value
+        if self.original_value is not None:
+            result['OriginalValue'] = self.original_value
+        if self.zh_value is not None:
+            result['ZhValue'] = self.zh_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnValue') is not None:
+            self.en_value = m.get('EnValue')
+        if m.get('OriginalValue') is not None:
+            self.original_value = m.get('OriginalValue')
+        if m.get('ZhValue') is not None:
+            self.zh_value = m.get('ZhValue')
+        return self
+
+
 class GetServiceResponseBodySupportContacts(TeaModel):
     def __init__(
         self,
@@ -4114,6 +4153,7 @@ class GetServiceResponseBody(TeaModel):
         service_document_infos: List[GetServiceResponseBodyServiceDocumentInfos] = None,
         service_id: str = None,
         service_infos: List[GetServiceResponseBodyServiceInfos] = None,
+        service_locale_configs: List[GetServiceResponseBodyServiceLocaleConfigs] = None,
         service_product_url: str = None,
         service_type: str = None,
         share_type: str = None,
@@ -4188,6 +4228,7 @@ class GetServiceResponseBody(TeaModel):
         self.service_id = service_id
         # The information about the service.
         self.service_infos = service_infos
+        self.service_locale_configs = service_locale_configs
         # The URL of the service page.
         self.service_product_url = service_product_url
         # The type of the service. Valid values:
@@ -4262,6 +4303,10 @@ class GetServiceResponseBody(TeaModel):
             for k in self.service_infos:
                 if k:
                     k.validate()
+        if self.service_locale_configs:
+            for k in self.service_locale_configs:
+                if k:
+                    k.validate()
         if self.support_contacts:
             for k in self.support_contacts:
                 if k:
@@ -4323,6 +4368,10 @@ class GetServiceResponseBody(TeaModel):
         if self.service_infos is not None:
             for k in self.service_infos:
                 result['ServiceInfos'].append(k.to_map() if k else None)
+        result['ServiceLocaleConfigs'] = []
+        if self.service_locale_configs is not None:
+            for k in self.service_locale_configs:
+                result['ServiceLocaleConfigs'].append(k.to_map() if k else None)
         if self.service_product_url is not None:
             result['ServiceProductUrl'] = self.service_product_url
         if self.service_type is not None:
@@ -4414,6 +4463,11 @@ class GetServiceResponseBody(TeaModel):
             for k in m.get('ServiceInfos'):
                 temp_model = GetServiceResponseBodyServiceInfos()
                 self.service_infos.append(temp_model.from_map(k))
+        self.service_locale_configs = []
+        if m.get('ServiceLocaleConfigs') is not None:
+            for k in m.get('ServiceLocaleConfigs'):
+                temp_model = GetServiceResponseBodyServiceLocaleConfigs()
+                self.service_locale_configs.append(temp_model.from_map(k))
         if m.get('ServiceProductUrl') is not None:
             self.service_product_url = m.get('ServiceProductUrl')
         if m.get('ServiceType') is not None:
@@ -10847,6 +10901,45 @@ class ListServicesResponseBodyServicesServiceInfos(TeaModel):
         return self
 
 
+class ListServicesResponseBodyServicesServiceLocaleConfigs(TeaModel):
+    def __init__(
+        self,
+        en_value: str = None,
+        original_value: str = None,
+        zh_value: str = None,
+    ):
+        self.en_value = en_value
+        self.original_value = original_value
+        self.zh_value = zh_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.en_value is not None:
+            result['EnValue'] = self.en_value
+        if self.original_value is not None:
+            result['OriginalValue'] = self.original_value
+        if self.zh_value is not None:
+            result['ZhValue'] = self.zh_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnValue') is not None:
+            self.en_value = m.get('EnValue')
+        if m.get('OriginalValue') is not None:
+            self.original_value = m.get('OriginalValue')
+        if m.get('ZhValue') is not None:
+            self.zh_value = m.get('ZhValue')
+        return self
+
+
 class ListServicesResponseBodyServicesTags(TeaModel):
     def __init__(
         self,
@@ -10896,6 +10989,7 @@ class ListServicesResponseBodyServices(TeaModel):
         score: int = None,
         service_id: str = None,
         service_infos: List[ListServicesResponseBodyServicesServiceInfos] = None,
+        service_locale_configs: List[ListServicesResponseBodyServicesServiceLocaleConfigs] = None,
         service_product_url: str = None,
         service_type: str = None,
         status: str = None,
@@ -10937,6 +11031,7 @@ class ListServicesResponseBodyServices(TeaModel):
         self.service_id = service_id
         # The service information.
         self.service_infos = service_infos
+        self.service_locale_configs = service_locale_configs
         # The URL of the service page.
         self.service_product_url = service_product_url
         # The type of the service. Valid values:
@@ -10993,6 +11088,10 @@ class ListServicesResponseBodyServices(TeaModel):
             for k in self.service_infos:
                 if k:
                     k.validate()
+        if self.service_locale_configs:
+            for k in self.service_locale_configs:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -11024,6 +11123,10 @@ class ListServicesResponseBodyServices(TeaModel):
         if self.service_infos is not None:
             for k in self.service_infos:
                 result['ServiceInfos'].append(k.to_map() if k else None)
+        result['ServiceLocaleConfigs'] = []
+        if self.service_locale_configs is not None:
+            for k in self.service_locale_configs:
+                result['ServiceLocaleConfigs'].append(k.to_map() if k else None)
         if self.service_product_url is not None:
             result['ServiceProductUrl'] = self.service_product_url
         if self.service_type is not None:
@@ -11080,6 +11183,11 @@ class ListServicesResponseBodyServices(TeaModel):
             for k in m.get('ServiceInfos'):
                 temp_model = ListServicesResponseBodyServicesServiceInfos()
                 self.service_infos.append(temp_model.from_map(k))
+        self.service_locale_configs = []
+        if m.get('ServiceLocaleConfigs') is not None:
+            for k in m.get('ServiceLocaleConfigs'):
+                temp_model = ListServicesResponseBodyServicesServiceLocaleConfigs()
+                self.service_locale_configs.append(temp_model.from_map(k))
         if m.get('ServiceProductUrl') is not None:
             self.service_product_url = m.get('ServiceProductUrl')
         if m.get('ServiceType') is not None:

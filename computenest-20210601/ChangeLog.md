@@ -1,3 +1,8 @@
+2025-09-18 Version: 4.3.1
+- Update API GetService: add response parameters Body.ServiceLocaleConfigs.
+- Update API ListServices: add response parameters Body.Services.$.ServiceLocaleConfigs.
+
+
 2025-09-09 Version: 4.3.0
 - Support API GetNetworkAvailableZones.
 - Support API ValidateServiceInstanceName.
