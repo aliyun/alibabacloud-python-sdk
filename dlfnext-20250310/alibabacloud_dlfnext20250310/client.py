@@ -2955,6 +2955,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_table_summary_with_options_async(catalog_id, database, table, request, headers, runtime)
 
+    def get_table_token_with_options(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.GetTableTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_internal):
+            query['isInternal'] = request.is_internal
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableToken',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/token',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_token_with_options_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.GetTableTokenRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTableTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.is_internal):
+            query['isInternal'] = request.is_internal
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTableToken',
+            version = '2025-03-10',
+            protocol = 'HTTPS',
+            pathname = f'/dlf/v1/{DaraURL.percent_encode(catalog_id)}/databases/{DaraURL.percent_encode(database)}/tables/{DaraURL.percent_encode(table)}/token',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTableTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_token(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.GetTableTokenRequest,
+    ) -> main_models.GetTableTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_table_token_with_options(catalog_id, database, table, request, headers, runtime)
+
+    async def get_table_token_async(
+        self,
+        catalog_id: str,
+        database: str,
+        table: str,
+        request: main_models.GetTableTokenRequest,
+    ) -> main_models.GetTableTokenResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_table_token_with_options_async(catalog_id, database, table, request, headers, runtime)
+
     def get_user_with_options(
         self,
         request: main_models.GetUserRequest,
@@ -4535,6 +4623,8 @@ class Client(OpenApiClient):
             query['pageToken'] = request.page_token
         if not DaraCore.is_null(request.table_name_pattern):
             query['tableNamePattern'] = request.table_name_pattern
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -4571,6 +4661,8 @@ class Client(OpenApiClient):
             query['pageToken'] = request.page_token
         if not DaraCore.is_null(request.table_name_pattern):
             query['tableNamePattern'] = request.table_name_pattern
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

@@ -12,11 +12,13 @@ class IcebergTableMetadata(DaraModel):
         self,
         current_snapshot: main_models.IcebergSnapshot = None,
         fields: List[main_models.IcebergNestedField] = None,
+        identifier_field_ids: List[int] = None,
         partition_fields: List[main_models.IcebergPartitionField] = None,
         properties: Dict[str, str] = None,
     ):
         self.current_snapshot = current_snapshot
         self.fields = fields
+        self.identifier_field_ids = identifier_field_ids
         self.partition_fields = partition_fields
         self.properties = properties
 
@@ -45,6 +47,9 @@ class IcebergTableMetadata(DaraModel):
             for k1 in self.fields:
                 result['fields'].append(k1.to_map() if k1 else None)
 
+        if self.identifier_field_ids is not None:
+            result['identifierFieldIds'] = self.identifier_field_ids
+
         result['partitionFields'] = []
         if self.partition_fields is not None:
             for k1 in self.partition_fields:
@@ -66,6 +71,9 @@ class IcebergTableMetadata(DaraModel):
             for k1 in m.get('fields'):
                 temp_model = main_models.IcebergNestedField()
                 self.fields.append(temp_model.from_map(k1))
+
+        if m.get('identifierFieldIds') is not None:
+            self.identifier_field_ids = m.get('identifierFieldIds')
 
         self.partition_fields = []
         if m.get('partitionFields') is not None:

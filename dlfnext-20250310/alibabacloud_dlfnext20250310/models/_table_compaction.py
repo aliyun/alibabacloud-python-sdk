@@ -10,12 +10,14 @@ class TableCompaction(DaraModel):
         catalog_id: str = None,
         cu_usage: float = None,
         last_compacted_file_time: int = None,
+        latency_file_earliest_time: int = None,
         max_level_0file_count: str = None,
         table_id: str = None,
     ):
         self.catalog_id = catalog_id
         self.cu_usage = cu_usage
         self.last_compacted_file_time = last_compacted_file_time
+        self.latency_file_earliest_time = latency_file_earliest_time
         self.max_level_0file_count = max_level_0file_count
         self.table_id = table_id
 
@@ -36,6 +38,9 @@ class TableCompaction(DaraModel):
         if self.last_compacted_file_time is not None:
             result['lastCompactedFileTime'] = self.last_compacted_file_time
 
+        if self.latency_file_earliest_time is not None:
+            result['latencyFileEarliestTime'] = self.latency_file_earliest_time
+
         if self.max_level_0file_count is not None:
             result['maxLevel0FileCount'] = self.max_level_0file_count
 
@@ -54,6 +59,9 @@ class TableCompaction(DaraModel):
 
         if m.get('lastCompactedFileTime') is not None:
             self.last_compacted_file_time = m.get('lastCompactedFileTime')
+
+        if m.get('latencyFileEarliestTime') is not None:
+            self.latency_file_earliest_time = m.get('latencyFileEarliestTime')
 
         if m.get('maxLevel0FileCount') is not None:
             self.max_level_0file_count = m.get('maxLevel0FileCount')

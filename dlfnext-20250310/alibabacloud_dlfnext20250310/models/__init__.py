@@ -37,6 +37,7 @@ from ._share_resource import ShareResource
 from ._snapshot import Snapshot
 from ._table import Table
 from ._table_compaction import TableCompaction
+from ._table_compaction_history import TableCompactionHistory
 from ._table_snapshot import TableSnapshot
 from ._table_summary import TableSummary
 from ._user import User
@@ -106,6 +107,9 @@ from ._get_table_response import GetTableResponse
 from ._get_table_snapshot_response import GetTableSnapshotResponse
 from ._get_table_summary_request import GetTableSummaryRequest
 from ._get_table_summary_response import GetTableSummaryResponse
+from ._get_table_token_request import GetTableTokenRequest
+from ._get_table_token_response_body import GetTableTokenResponseBody
+from ._get_table_token_response import GetTableTokenResponse
 from ._get_user_request import GetUserRequest
 from ._get_user_response import GetUserResponse
 from ._grant_role_to_users_request import GrantRoleToUsersRequest
@@ -218,6 +222,7 @@ __all__ = [
     Snapshot,
     Table,
     TableCompaction,
+    TableCompactionHistory,
     TableSnapshot,
     TableSummary,
     User,
@@ -287,6 +292,9 @@ __all__ = [
     GetTableSnapshotResponse,
     GetTableSummaryRequest,
     GetTableSummaryResponse,
+    GetTableTokenRequest,
+    GetTableTokenResponseBody,
+    GetTableTokenResponse,
     GetUserRequest,
     GetUserResponse,
     GrantRoleToUsersRequest,

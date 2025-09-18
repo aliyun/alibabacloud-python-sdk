@@ -10,10 +10,12 @@ class ListTableDetailsRequest(DaraModel):
         max_results: int = None,
         page_token: str = None,
         table_name_pattern: str = None,
+        type: str = None,
     ):
         self.max_results = max_results
         self.page_token = page_token
         self.table_name_pattern = table_name_pattern
+        self.type = type
 
     def validate(self):
         pass
@@ -32,6 +34,9 @@ class ListTableDetailsRequest(DaraModel):
         if self.table_name_pattern is not None:
             result['tableNamePattern'] = self.table_name_pattern
 
+        if self.type is not None:
+            result['type'] = self.type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -44,6 +49,9 @@ class ListTableDetailsRequest(DaraModel):
 
         if m.get('tableNamePattern') is not None:
             self.table_name_pattern = m.get('tableNamePattern')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

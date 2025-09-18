@@ -19,6 +19,7 @@ class DatabaseSummary(DaraModel):
         table_count: int = None,
         total_file_count: int = None,
         total_file_size_in_bytes: int = None,
+        total_meta_size_in_bytes: int = None,
     ):
         # Creation timestamp in milliseconds
         self.created_at = created_at
@@ -38,6 +39,7 @@ class DatabaseSummary(DaraModel):
         self.total_file_count = total_file_count
         # Total file count
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        self.total_meta_size_in_bytes = total_meta_size_in_bytes
 
     def validate(self):
         pass
@@ -83,6 +85,9 @@ class DatabaseSummary(DaraModel):
         if self.total_file_size_in_bytes is not None:
             result['totalFileSizeInBytes'] = self.total_file_size_in_bytes
 
+        if self.total_meta_size_in_bytes is not None:
+            result['totalMetaSizeInBytes'] = self.total_meta_size_in_bytes
+
         return result
 
     def from_map(self, m: dict = None):
@@ -122,6 +127,9 @@ class DatabaseSummary(DaraModel):
 
         if m.get('totalFileSizeInBytes') is not None:
             self.total_file_size_in_bytes = m.get('totalFileSizeInBytes')
+
+        if m.get('totalMetaSizeInBytes') is not None:
+            self.total_meta_size_in_bytes = m.get('totalMetaSizeInBytes')
 
         return self
 
