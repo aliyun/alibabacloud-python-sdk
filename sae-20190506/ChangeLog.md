@@ -1,3 +1,11 @@
+2025-09-18 Version: 2.7.0
+- Support API QueryArmsEnable.
+- Update API CreateApplication: add request parameters EmptyDirDesc.
+- Update API DeployApplication: add request parameters EmptyDirDesc.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.EmptyDirDesc.
+- Update API DescribeApplicationConfig: add response parameters Body.Data.InitContainersConfig.$.EmptyDirDesc.
+
+
 2025-09-08 Version: 2.6.0
 - Support API DescribeApplicationMseService.
 - Update API CreateJob: add request parameters BestEffortType.

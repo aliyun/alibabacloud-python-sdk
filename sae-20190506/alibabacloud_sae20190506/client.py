@@ -988,6 +988,8 @@ class Client(OpenApiClient):
             body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.empty_dir_desc):
+            body['EmptyDirDesc'] = request.empty_dir_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.init_containers_config_shrink):
@@ -1192,6 +1194,8 @@ class Client(OpenApiClient):
             body['BaseAppId'] = request.base_app_id
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.empty_dir_desc):
+            body['EmptyDirDesc'] = request.empty_dir_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.init_containers_config_shrink):
@@ -4622,6 +4626,8 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.empty_dir_desc):
+            body['EmptyDirDesc'] = request.empty_dir_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.init_containers_config_shrink):
@@ -4818,6 +4824,8 @@ class Client(OpenApiClient):
             body['AssociateEip'] = request.associate_eip
         if not UtilClient.is_unset(request.config_map_mount_desc):
             body['ConfigMapMountDesc'] = request.config_map_mount_desc
+        if not UtilClient.is_unset(request.empty_dir_desc):
+            body['EmptyDirDesc'] = request.empty_dir_desc
         if not UtilClient.is_unset(request.enable_sidecar_resource_isolated):
             body['EnableSidecarResourceIsolated'] = request.enable_sidecar_resource_isolated
         if not UtilClient.is_unset(request.init_containers_config_shrink):
@@ -13486,6 +13494,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.publish_web_application_revision_with_options_async(application_id, request, headers, runtime)
+
+    def query_arms_enable_with_options(
+        self,
+        request: sae_20190506_models.QueryArmsEnableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.QueryArmsEnableResponse:
+        """
+        @param request: QueryArmsEnableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryArmsEnableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryArmsEnable',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/arms/queryArms',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.QueryArmsEnableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_arms_enable_with_options_async(
+        self,
+        request: sae_20190506_models.QueryArmsEnableRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sae_20190506_models.QueryArmsEnableResponse:
+        """
+        @param request: QueryArmsEnableRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryArmsEnableResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryArmsEnable',
+            version='2019-05-06',
+            protocol='HTTPS',
+            pathname=f'/pop/v1/arms/queryArms',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sae_20190506_models.QueryArmsEnableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_arms_enable(
+        self,
+        request: sae_20190506_models.QueryArmsEnableRequest,
+    ) -> sae_20190506_models.QueryArmsEnableResponse:
+        """
+        @param request: QueryArmsEnableRequest
+        @return: QueryArmsEnableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_arms_enable_with_options(request, headers, runtime)
+
+    async def query_arms_enable_async(
+        self,
+        request: sae_20190506_models.QueryArmsEnableRequest,
+    ) -> sae_20190506_models.QueryArmsEnableResponse:
+        """
+        @param request: QueryArmsEnableRequest
+        @return: QueryArmsEnableResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_arms_enable_with_options_async(request, headers, runtime)
 
     def query_resource_statics_with_options(
         self,

@@ -6817,6 +6817,7 @@ class InitContainerConfig(TeaModel):
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: str = None,
+        empty_dir_desc: str = None,
         envs: str = None,
         image_url: str = None,
         name: str = None,
@@ -6824,6 +6825,7 @@ class InitContainerConfig(TeaModel):
         self.command = command
         self.command_args = command_args
         self.config_map_mount_desc = config_map_mount_desc
+        self.empty_dir_desc = empty_dir_desc
         self.envs = envs
         self.image_url = image_url
         self.name = name
@@ -6843,6 +6845,8 @@ class InitContainerConfig(TeaModel):
             result['CommandArgs'] = self.command_args
         if self.config_map_mount_desc is not None:
             result['ConfigMapMountDesc'] = self.config_map_mount_desc
+        if self.empty_dir_desc is not None:
+            result['EmptyDirDesc'] = self.empty_dir_desc
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_url is not None:
@@ -6859,6 +6863,8 @@ class InitContainerConfig(TeaModel):
             self.command_args = m.get('CommandArgs')
         if m.get('ConfigMapMountDesc') is not None:
             self.config_map_mount_desc = m.get('ConfigMapMountDesc')
+        if m.get('EmptyDirDesc') is not None:
+            self.empty_dir_desc = m.get('EmptyDirDesc')
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImageUrl') is not None:
@@ -12399,6 +12405,7 @@ class CreateApplicationRequest(TeaModel):
         disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        empty_dir_desc: str = None,
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
@@ -12552,6 +12559,7 @@ class CreateApplicationRequest(TeaModel):
         self.dotnet = dotnet
         # The version of the container in HSF.
         self.edas_container_version = edas_container_version
+        self.empty_dir_desc = empty_dir_desc
         # Enable CPU Burst.
         # - true: enable
         # - false: disable
@@ -12908,6 +12916,8 @@ class CreateApplicationRequest(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.empty_dir_desc is not None:
+            result['EmptyDirDesc'] = self.empty_dir_desc
         if self.enable_cpu_burst is not None:
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_ebpf is not None:
@@ -13076,6 +13086,8 @@ class CreateApplicationRequest(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EmptyDirDesc') is not None:
+            self.empty_dir_desc = m.get('EmptyDirDesc')
         if m.get('EnableCpuBurst') is not None:
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableEbpf') is not None:
@@ -13230,6 +13242,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        empty_dir_desc: str = None,
         enable_cpu_burst: bool = None,
         enable_ebpf: str = None,
         enable_new_arms: bool = None,
@@ -13383,6 +13396,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.dotnet = dotnet
         # The version of the container in HSF.
         self.edas_container_version = edas_container_version
+        self.empty_dir_desc = empty_dir_desc
         # Enable CPU Burst.
         # - true: enable
         # - false: disable
@@ -13732,6 +13746,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.empty_dir_desc is not None:
+            result['EmptyDirDesc'] = self.empty_dir_desc
         if self.enable_cpu_burst is not None:
             result['EnableCpuBurst'] = self.enable_cpu_burst
         if self.enable_ebpf is not None:
@@ -13896,6 +13912,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EmptyDirDesc') is not None:
+            self.empty_dir_desc = m.get('EmptyDirDesc')
         if m.get('EnableCpuBurst') is not None:
             self.enable_cpu_burst = m.get('EnableCpuBurst')
         if m.get('EnableEbpf') is not None:
@@ -19671,6 +19689,7 @@ class DeployApplicationRequest(TeaModel):
         deploy: str = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        empty_dir_desc: str = None,
         enable_ahas: str = None,
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
@@ -19816,6 +19835,7 @@ class DeployApplicationRequest(TeaModel):
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
+        self.empty_dir_desc = empty_dir_desc
         # Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
         # 
         # *   **true**: Access to AHAS is enabled.
@@ -20224,6 +20244,8 @@ class DeployApplicationRequest(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.empty_dir_desc is not None:
+            result['EmptyDirDesc'] = self.empty_dir_desc
         if self.enable_ahas is not None:
             result['EnableAhas'] = self.enable_ahas
         if self.enable_cpu_burst is not None:
@@ -20384,6 +20406,8 @@ class DeployApplicationRequest(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EmptyDirDesc') is not None:
+            self.empty_dir_desc = m.get('EmptyDirDesc')
         if m.get('EnableAhas') is not None:
             self.enable_ahas = m.get('EnableAhas')
         if m.get('EnableCpuBurst') is not None:
@@ -20532,6 +20556,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         deploy: str = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        empty_dir_desc: str = None,
         enable_ahas: str = None,
         enable_cpu_burst: bool = None,
         enable_grey_tag_route: bool = None,
@@ -20677,6 +20702,7 @@ class DeployApplicationShrinkRequest(TeaModel):
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
+        self.empty_dir_desc = empty_dir_desc
         # Indicates whether access to Application High Availability Service (AHAS) is enabled. Take note of the following rules:
         # 
         # *   **true**: Access to AHAS is enabled.
@@ -21078,6 +21104,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        if self.empty_dir_desc is not None:
+            result['EmptyDirDesc'] = self.empty_dir_desc
         if self.enable_ahas is not None:
             result['EnableAhas'] = self.enable_ahas
         if self.enable_cpu_burst is not None:
@@ -21234,6 +21262,8 @@ class DeployApplicationShrinkRequest(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        if m.get('EmptyDirDesc') is not None:
+            self.empty_dir_desc = m.get('EmptyDirDesc')
         if m.get('EnableAhas') is not None:
             self.enable_ahas = m.get('EnableAhas')
         if m.get('EnableCpuBurst') is not None:
@@ -22073,6 +22103,39 @@ class DescribeApplicationConfigResponseBodyDataConfigMapMountDesc(TeaModel):
         return self
 
 
+class DescribeApplicationConfigResponseBodyDataEmptyDirDesc(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        name: str = None,
+    ):
+        self.mount_path = mount_path
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc(TeaModel):
     def __init__(
         self,
@@ -22122,12 +22185,46 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMoun
         return self
 
 
+class DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc(TeaModel):
+    def __init__(
+        self,
+        mount_path: str = None,
+        name: str = None,
+    ):
+        self.mount_path = mount_path
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
 class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
     def __init__(
         self,
         command: str = None,
         command_args: str = None,
         config_map_mount_desc: List[DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc] = None,
+        empty_dir_desc: List[DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc] = None,
         envs: str = None,
         image_url: str = None,
         name: str = None,
@@ -22150,6 +22247,7 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
         self.command_args = command_args
         # The information of ConfigMap.
         self.config_map_mount_desc = config_map_mount_desc
+        self.empty_dir_desc = empty_dir_desc
         # The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
         # 
         # *   Customize
@@ -22174,6 +22272,10 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
             for k in self.config_map_mount_desc:
                 if k:
                     k.validate()
+        if self.empty_dir_desc:
+            for k in self.empty_dir_desc:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -22189,6 +22291,10 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
         if self.config_map_mount_desc is not None:
             for k in self.config_map_mount_desc:
                 result['ConfigMapMountDesc'].append(k.to_map() if k else None)
+        result['EmptyDirDesc'] = []
+        if self.empty_dir_desc is not None:
+            for k in self.empty_dir_desc:
+                result['EmptyDirDesc'].append(k.to_map() if k else None)
         if self.envs is not None:
             result['Envs'] = self.envs
         if self.image_url is not None:
@@ -22208,6 +22314,11 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(TeaModel):
             for k in m.get('ConfigMapMountDesc'):
                 temp_model = DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc()
                 self.config_map_mount_desc.append(temp_model.from_map(k))
+        self.empty_dir_desc = []
+        if m.get('EmptyDirDesc') is not None:
+            for k in m.get('EmptyDirDesc'):
+                temp_model = DescribeApplicationConfigResponseBodyDataInitContainersConfigEmptyDirDesc()
+                self.empty_dir_desc.append(temp_model.from_map(k))
         if m.get('Envs') is not None:
             self.envs = m.get('Envs')
         if m.get('ImageUrl') is not None:
@@ -22634,6 +22745,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         disk_size: int = None,
         dotnet: str = None,
         edas_container_version: str = None,
+        empty_dir_desc: List[DescribeApplicationConfigResponseBodyDataEmptyDirDesc] = None,
         enable_ahas: str = None,
         enable_cpu_burst: str = None,
         enable_grey_tag_route: bool = None,
@@ -22788,6 +22900,7 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
         self.dotnet = dotnet
         # The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
         self.edas_container_version = edas_container_version
+        self.empty_dir_desc = empty_dir_desc
         # Indicates whether access to Application High Availability Service (AHAS) is enabled. Valid values:
         # 
         # *   **true**: Access to AHAS is enabled.
@@ -23108,6 +23221,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             for k in self.config_map_mount_desc:
                 if k:
                     k.validate()
+        if self.empty_dir_desc:
+            for k in self.empty_dir_desc:
+                if k:
+                    k.validate()
         if self.init_containers_config:
             for k in self.init_containers_config:
                 if k:
@@ -23181,6 +23298,10 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             result['Dotnet'] = self.dotnet
         if self.edas_container_version is not None:
             result['EdasContainerVersion'] = self.edas_container_version
+        result['EmptyDirDesc'] = []
+        if self.empty_dir_desc is not None:
+            for k in self.empty_dir_desc:
+                result['EmptyDirDesc'].append(k.to_map() if k else None)
         if self.enable_ahas is not None:
             result['EnableAhas'] = self.enable_ahas
         if self.enable_cpu_burst is not None:
@@ -23382,6 +23503,11 @@ class DescribeApplicationConfigResponseBodyData(TeaModel):
             self.dotnet = m.get('Dotnet')
         if m.get('EdasContainerVersion') is not None:
             self.edas_container_version = m.get('EdasContainerVersion')
+        self.empty_dir_desc = []
+        if m.get('EmptyDirDesc') is not None:
+            for k in m.get('EmptyDirDesc'):
+                temp_model = DescribeApplicationConfigResponseBodyDataEmptyDirDesc()
+                self.empty_dir_desc.append(temp_model.from_map(k))
         if m.get('EnableAhas') is not None:
             self.enable_ahas = m.get('EnableAhas')
         if m.get('EnableCpuBurst') is not None:
@@ -46956,6 +47082,167 @@ class PublishWebApplicationRevisionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = WebApplicationRevisionBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryArmsEnableRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class QueryArmsEnableResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        enable: bool = None,
+    ):
+        self.enable = enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        return self
+
+
+class QueryArmsEnableResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryArmsEnableResponseBodyData = None,
+        error_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.error_code = error_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.trace_id is not None:
+            result['TraceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryArmsEnableResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TraceId') is not None:
+            self.trace_id = m.get('TraceId')
+        return self
+
+
+class QueryArmsEnableResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryArmsEnableResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryArmsEnableResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
