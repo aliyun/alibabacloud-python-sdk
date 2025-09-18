@@ -1,3 +1,12 @@
+2025-09-18 Version: 7.3.0
+- Support API CreateOpsNotice.
+- Support API GetOpsNotice.
+- Support API ListOpsNotices.
+- Update API GetService: add response parameters Body.ServiceLocaleConfigs.
+- Update API ListServices: add response parameters Body.Services.$.ServiceLocaleConfigs.
+- Update API UpdateService: add request parameters ServiceLocaleConfigs.
+
+
 2025-09-09 Version: 7.2.0
 - Support API DeleteAcrImageRepositories.
 - Support API DeleteAcrImageTags.

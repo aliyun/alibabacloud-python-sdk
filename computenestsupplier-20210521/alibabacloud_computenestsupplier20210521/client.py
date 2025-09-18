@@ -645,6 +645,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_artifact_with_options_async(request, runtime)
 
+    def create_ops_notice_with_options(
+        self,
+        tmp_req: compute_nest_supplier_20210521_models.CreateOpsNoticeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.CreateOpsNoticeResponse:
+        """
+        @summary 创建运维公告
+        
+        @param tmp_req: CreateOpsNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpsNoticeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.CreateOpsNoticeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['Attributes'] = request.attributes_shrink
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpsNotice',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.CreateOpsNoticeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ops_notice_with_options_async(
+        self,
+        tmp_req: compute_nest_supplier_20210521_models.CreateOpsNoticeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.CreateOpsNoticeResponse:
+        """
+        @summary 创建运维公告
+        
+        @param tmp_req: CreateOpsNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpsNoticeResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = compute_nest_supplier_20210521_models.CreateOpsNoticeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.attributes):
+            request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.attributes_shrink):
+            query['Attributes'] = request.attributes_shrink
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_version):
+            query['ServiceVersion'] = request.service_version
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        if not UtilClient.is_unset(request.solutions):
+            query['Solutions'] = request.solutions
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpsNotice',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.CreateOpsNoticeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ops_notice(
+        self,
+        request: compute_nest_supplier_20210521_models.CreateOpsNoticeRequest,
+    ) -> compute_nest_supplier_20210521_models.CreateOpsNoticeResponse:
+        """
+        @summary 创建运维公告
+        
+        @param request: CreateOpsNoticeRequest
+        @return: CreateOpsNoticeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ops_notice_with_options(request, runtime)
+
+    async def create_ops_notice_async(
+        self,
+        request: compute_nest_supplier_20210521_models.CreateOpsNoticeRequest,
+    ) -> compute_nest_supplier_20210521_models.CreateOpsNoticeResponse:
+        """
+        @summary 创建运维公告
+        
+        @param request: CreateOpsNoticeRequest
+        @return: CreateOpsNoticeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ops_notice_with_options_async(request, runtime)
+
     def create_service_with_options(
         self,
         tmp_req: compute_nest_supplier_20210521_models.CreateServiceRequest,
@@ -2789,6 +2929,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_network_available_zones_with_options_async(request, runtime)
 
+    def get_ops_notice_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.GetOpsNoticeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetOpsNoticeResponse:
+        """
+        @summary 查看运维公告详情
+        
+        @param request: GetOpsNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpsNoticeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.notice_id):
+            query['NoticeId'] = request.notice_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpsNotice',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetOpsNoticeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ops_notice_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetOpsNoticeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.GetOpsNoticeResponse:
+        """
+        @summary 查看运维公告详情
+        
+        @param request: GetOpsNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpsNoticeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.notice_id):
+            query['NoticeId'] = request.notice_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpsNotice',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.GetOpsNoticeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ops_notice(
+        self,
+        request: compute_nest_supplier_20210521_models.GetOpsNoticeRequest,
+    ) -> compute_nest_supplier_20210521_models.GetOpsNoticeResponse:
+        """
+        @summary 查看运维公告详情
+        
+        @param request: GetOpsNoticeRequest
+        @return: GetOpsNoticeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_ops_notice_with_options(request, runtime)
+
+    async def get_ops_notice_async(
+        self,
+        request: compute_nest_supplier_20210521_models.GetOpsNoticeRequest,
+    ) -> compute_nest_supplier_20210521_models.GetOpsNoticeResponse:
+        """
+        @summary 查看运维公告详情
+        
+        @param request: GetOpsNoticeRequest
+        @return: GetOpsNoticeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ops_notice_with_options_async(request, runtime)
+
     def get_service_with_options(
         self,
         request: compute_nest_supplier_20210521_models.GetServiceRequest,
@@ -4688,6 +4928,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_artifacts_with_options_async(request, runtime)
+
+    def list_ops_notices_with_options(
+        self,
+        request: compute_nest_supplier_20210521_models.ListOpsNoticesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListOpsNoticesResponse:
+        """
+        @summary 查询运维公告
+        
+        @param request: ListOpsNoticesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOpsNoticesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOpsNotices',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListOpsNoticesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ops_notices_with_options_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListOpsNoticesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> compute_nest_supplier_20210521_models.ListOpsNoticesResponse:
+        """
+        @summary 查询运维公告
+        
+        @param request: ListOpsNoticesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOpsNoticesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOpsNotices',
+            version='2021-05-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            compute_nest_supplier_20210521_models.ListOpsNoticesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ops_notices(
+        self,
+        request: compute_nest_supplier_20210521_models.ListOpsNoticesRequest,
+    ) -> compute_nest_supplier_20210521_models.ListOpsNoticesResponse:
+        """
+        @summary 查询运维公告
+        
+        @param request: ListOpsNoticesRequest
+        @return: ListOpsNoticesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_ops_notices_with_options(request, runtime)
+
+    async def list_ops_notices_async(
+        self,
+        request: compute_nest_supplier_20210521_models.ListOpsNoticesRequest,
+    ) -> compute_nest_supplier_20210521_models.ListOpsNoticesResponse:
+        """
+        @summary 查询运维公告
+        
+        @param request: ListOpsNoticesRequest
+        @return: ListOpsNoticesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ops_notices_with_options_async(request, runtime)
 
     def list_resellers_with_options(
         self,
@@ -8413,6 +8761,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_info):
             query['ServiceInfo'] = request.service_info
+        if not UtilClient.is_unset(request.service_locale_configs):
+            query['ServiceLocaleConfigs'] = request.service_locale_configs
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.service_version):
@@ -8508,6 +8858,8 @@ class Client(OpenApiClient):
             query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.service_info):
             query['ServiceInfo'] = request.service_info
+        if not UtilClient.is_unset(request.service_locale_configs):
+            query['ServiceLocaleConfigs'] = request.service_locale_configs
         if not UtilClient.is_unset(request.service_type):
             query['ServiceType'] = request.service_type
         if not UtilClient.is_unset(request.service_version):
