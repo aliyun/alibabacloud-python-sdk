@@ -1,3 +1,13 @@
+2025-09-18 Version: 7.2.2
+- Update API CreateLaunchTemplate: add request parameters SecurityOptions.
+- Update API CreateLaunchTemplateVersion: add request parameters SecurityOptions.
+- Update API DescribeImages: add response parameters Body.Images.$.LicenseType.
+- Update API DescribeInstanceHistoryEvents: add response parameters Body.InstanceSystemEventSet.$.ExtendedAttribute.MetricName.
+- Update API DescribeInstanceHistoryEvents: add response parameters Body.InstanceSystemEventSet.$.ExtendedAttribute.MetricValue.
+- Update API DescribeLaunchTemplateVersions: add response parameters Body.LaunchTemplateVersionSets.$.LaunchTemplateData.SecurityOptions.
+- Update API StartTerminalSession: add request parameters EncryptionOptions.
+
+
 2025-08-25 Version: 7.2.1
 - Generated python 2014-05-26 for Ecs.
 

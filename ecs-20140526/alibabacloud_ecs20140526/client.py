@@ -8545,6 +8545,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_price_limit):
@@ -8695,6 +8697,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_price_limit):
@@ -8883,6 +8887,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_price_limit):
@@ -9027,6 +9033,8 @@ class Client(OpenApiClient):
             query['SecurityGroupId'] = request.security_group_id
         if not UtilClient.is_unset(request.security_group_ids):
             query['SecurityGroupIds'] = request.security_group_ids
+        if not UtilClient.is_unset(request.security_options):
+            query['SecurityOptions'] = request.security_options
         if not UtilClient.is_unset(request.spot_duration):
             query['SpotDuration'] = request.spot_duration
         if not UtilClient.is_unset(request.spot_price_limit):
@@ -56252,7 +56260,7 @@ class Client(OpenApiClient):
 
     def start_terminal_session_with_options(
         self,
-        request: ecs_20140526_models.StartTerminalSessionRequest,
+        tmp_req: ecs_20140526_models.StartTerminalSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
@@ -56272,16 +56280,22 @@ class Client(OpenApiClient):
         The port forwarding feature supports only TCP port forwarding. UDP port forwarding is not supported.
         If you want to permanently close a session and invalidate the WebSocket URL, call the EndTerminalSession operation.
         
-        @param request: StartTerminalSessionRequest
+        @param tmp_req: StartTerminalSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartTerminalSessionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.StartTerminalSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.encryption_options):
+            request.encryption_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_options, 'EncryptionOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.command_line):
             query['CommandLine'] = request.command_line
         if not UtilClient.is_unset(request.connection_type):
             query['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.encryption_options_shrink):
+            query['EncryptionOptions'] = request.encryption_options_shrink
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -56325,7 +56339,7 @@ class Client(OpenApiClient):
 
     async def start_terminal_session_with_options_async(
         self,
-        request: ecs_20140526_models.StartTerminalSessionRequest,
+        tmp_req: ecs_20140526_models.StartTerminalSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.StartTerminalSessionResponse:
         """
@@ -56345,16 +56359,22 @@ class Client(OpenApiClient):
         The port forwarding feature supports only TCP port forwarding. UDP port forwarding is not supported.
         If you want to permanently close a session and invalidate the WebSocket URL, call the EndTerminalSession operation.
         
-        @param request: StartTerminalSessionRequest
+        @param tmp_req: StartTerminalSessionRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: StartTerminalSessionResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ecs_20140526_models.StartTerminalSessionShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.encryption_options):
+            request.encryption_options_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.encryption_options, 'EncryptionOptions', 'json')
         query = {}
         if not UtilClient.is_unset(request.command_line):
             query['CommandLine'] = request.command_line
         if not UtilClient.is_unset(request.connection_type):
             query['ConnectionType'] = request.connection_type
+        if not UtilClient.is_unset(request.encryption_options_shrink):
+            query['EncryptionOptions'] = request.encryption_options_shrink
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
