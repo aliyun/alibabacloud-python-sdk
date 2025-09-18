@@ -5593,16 +5593,51 @@ class CreateFileSystemShrinkRequest(TeaModel):
         return self
 
 
+class CreateFileSystemResponseBodyAllocationIds(TeaModel):
+    def __init__(
+        self,
+        ens_region_id: str = None,
+        instance_id: str = None,
+    ):
+        self.ens_region_id = ens_region_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ens_region_id is not None:
+            result['EnsRegionId'] = self.ens_region_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnsRegionId') is not None:
+            self.ens_region_id = m.get('EnsRegionId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
 class CreateFileSystemResponseBody(TeaModel):
     def __init__(
         self,
         allocation_id: List[str] = None,
+        allocation_ids: List[CreateFileSystemResponseBodyAllocationIds] = None,
         biz_status_code: str = None,
         request_id: str = None,
         un_allocation_id: List[str] = None,
     ):
         # The information about the file system that was created.
         self.allocation_id = allocation_id
+        self.allocation_ids = allocation_ids
         # The status code for successful operations. Valid values:
         # 
         # *   PartSuccess: The operation is partially successful.
@@ -5614,7 +5649,10 @@ class CreateFileSystemResponseBody(TeaModel):
         self.un_allocation_id = un_allocation_id
 
     def validate(self):
-        pass
+        if self.allocation_ids:
+            for k in self.allocation_ids:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5624,6 +5662,10 @@ class CreateFileSystemResponseBody(TeaModel):
         result = dict()
         if self.allocation_id is not None:
             result['AllocationId'] = self.allocation_id
+        result['AllocationIds'] = []
+        if self.allocation_ids is not None:
+            for k in self.allocation_ids:
+                result['AllocationIds'].append(k.to_map() if k else None)
         if self.biz_status_code is not None:
             result['BizStatusCode'] = self.biz_status_code
         if self.request_id is not None:
@@ -5636,6 +5678,11 @@ class CreateFileSystemResponseBody(TeaModel):
         m = m or dict()
         if m.get('AllocationId') is not None:
             self.allocation_id = m.get('AllocationId')
+        self.allocation_ids = []
+        if m.get('AllocationIds') is not None:
+            for k in m.get('AllocationIds'):
+                temp_model = CreateFileSystemResponseBodyAllocationIds()
+                self.allocation_ids.append(temp_model.from_map(k))
         if m.get('BizStatusCode') is not None:
             self.biz_status_code = m.get('BizStatusCode')
         if m.get('RequestId') is not None:
