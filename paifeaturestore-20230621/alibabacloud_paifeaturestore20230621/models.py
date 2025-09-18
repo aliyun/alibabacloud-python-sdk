@@ -5327,8 +5327,10 @@ class ListDatasourceFeatureViewsResponse(TeaModel):
 class ListDatasourceTablesRequest(TeaModel):
     def __init__(
         self,
+        schema_name: str = None,
         table_name: str = None,
     ):
+        self.schema_name = schema_name
         self.table_name = table_name
 
     def validate(self):
@@ -5340,12 +5342,16 @@ class ListDatasourceTablesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
         if self.table_name is not None:
             result['TableName'] = self.table_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')
         return self

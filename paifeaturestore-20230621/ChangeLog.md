@@ -1,3 +1,7 @@
+2025-09-18 Version: 6.0.4
+- Update API ListDatasourceTables: add request parameters SchemaName.
+
+
 2025-07-24 Version: 6.0.3
 - Generated python 2023-06-21 for PaiFeatureStore.
 

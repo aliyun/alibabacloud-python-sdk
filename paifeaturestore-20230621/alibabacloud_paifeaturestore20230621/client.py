@@ -3651,6 +3651,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
@@ -3691,6 +3693,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
         if not UtilClient.is_unset(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_models.OpenApiRequest(
