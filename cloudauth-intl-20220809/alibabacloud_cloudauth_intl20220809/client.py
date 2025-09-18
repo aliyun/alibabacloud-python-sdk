@@ -2062,6 +2062,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.face_picture_quality_check):
+            query['FacePictureQualityCheck'] = request.face_picture_quality_check
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.source_face_picture_url):
@@ -2107,6 +2109,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.face_picture_quality_check):
+            query['FacePictureQualityCheck'] = request.face_picture_quality_check
         if not UtilClient.is_unset(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
         if not UtilClient.is_unset(request.source_face_picture_url):

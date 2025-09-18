@@ -3200,12 +3200,14 @@ class EkycVerifyResponse(TeaModel):
 class FaceCompareRequest(TeaModel):
     def __init__(
         self,
+        face_picture_quality_check: str = None,
         merchant_biz_id: str = None,
         source_face_picture: str = None,
         source_face_picture_url: str = None,
         target_face_picture: str = None,
         target_face_picture_url: str = None,
     ):
+        self.face_picture_quality_check = face_picture_quality_check
         self.merchant_biz_id = merchant_biz_id
         self.source_face_picture = source_face_picture
         self.source_face_picture_url = source_face_picture_url
@@ -3221,6 +3223,8 @@ class FaceCompareRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.face_picture_quality_check is not None:
+            result['FacePictureQualityCheck'] = self.face_picture_quality_check
         if self.merchant_biz_id is not None:
             result['MerchantBizId'] = self.merchant_biz_id
         if self.source_face_picture is not None:
@@ -3235,6 +3239,8 @@ class FaceCompareRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FacePictureQualityCheck') is not None:
+            self.face_picture_quality_check = m.get('FacePictureQualityCheck')
         if m.get('MerchantBizId') is not None:
             self.merchant_biz_id = m.get('MerchantBizId')
         if m.get('SourceFacePicture') is not None:
