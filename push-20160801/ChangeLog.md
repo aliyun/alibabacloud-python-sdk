@@ -1,3 +1,10 @@
+2025-09-19 Version: 2.0.1
+- Update API MassPush: add request parameters PushTask.$.AndroidHuaweiLiveNotificationPayload.
+- Update API MassPush: add request parameters PushTask.$.HarmonyLiveViewPayload.
+- Update API Push: add request parameters AndroidHuaweiLiveNotificationPayload.
+- Update API Push: add request parameters HarmonyLiveViewPayload.
+
+
 2025-09-19 Version: 2.0.0
 - Update API MassPush: add request parameters PushTask.$.AndroidOppoPrivateContentParameters.
 - Update API MassPush: add request parameters PushTask.$.AndroidOppoPrivateMsgTemplateId.

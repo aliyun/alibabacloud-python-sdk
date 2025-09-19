@@ -1349,6 +1349,8 @@ class Client(OpenApiClient):
             query['AndroidExtParameters'] = request.android_ext_parameters
         if not UtilClient.is_unset(request.android_honor_target_user_type):
             query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
+        if not UtilClient.is_unset(request.android_huawei_live_notification_payload):
+            query['AndroidHuaweiLiveNotificationPayload'] = request.android_huawei_live_notification_payload
         if not UtilClient.is_unset(request.android_huawei_receipt_id):
             query['AndroidHuaweiReceiptId'] = request.android_huawei_receipt_id
         if not UtilClient.is_unset(request.android_huawei_target_user_type):
@@ -1457,6 +1459,8 @@ class Client(OpenApiClient):
             query['HarmonyImageUrl'] = request.harmony_image_url
         if not UtilClient.is_unset(request.harmony_inbox_content):
             query['HarmonyInboxContent'] = request.harmony_inbox_content
+        if not UtilClient.is_unset(request.harmony_live_view_payload):
+            query['HarmonyLiveViewPayload'] = request.harmony_live_view_payload
         if not UtilClient.is_unset(request.harmony_notification_slot_type):
             query['HarmonyNotificationSlotType'] = request.harmony_notification_slot_type
         if not UtilClient.is_unset(request.harmony_notify_id):
@@ -1608,6 +1612,8 @@ class Client(OpenApiClient):
             query['AndroidExtParameters'] = request.android_ext_parameters
         if not UtilClient.is_unset(request.android_honor_target_user_type):
             query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
+        if not UtilClient.is_unset(request.android_huawei_live_notification_payload):
+            query['AndroidHuaweiLiveNotificationPayload'] = request.android_huawei_live_notification_payload
         if not UtilClient.is_unset(request.android_huawei_receipt_id):
             query['AndroidHuaweiReceiptId'] = request.android_huawei_receipt_id
         if not UtilClient.is_unset(request.android_huawei_target_user_type):
@@ -1716,6 +1722,8 @@ class Client(OpenApiClient):
             query['HarmonyImageUrl'] = request.harmony_image_url
         if not UtilClient.is_unset(request.harmony_inbox_content):
             query['HarmonyInboxContent'] = request.harmony_inbox_content
+        if not UtilClient.is_unset(request.harmony_live_view_payload):
+            query['HarmonyLiveViewPayload'] = request.harmony_live_view_payload
         if not UtilClient.is_unset(request.harmony_notification_slot_type):
             query['HarmonyNotificationSlotType'] = request.harmony_notification_slot_type
         if not UtilClient.is_unset(request.harmony_notify_id):

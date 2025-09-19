@@ -2488,6 +2488,7 @@ class MassPushRequestPushTask(TeaModel):
         android_big_title: str = None,
         android_ext_parameters: str = None,
         android_honor_target_user_type: int = None,
+        android_huawei_live_notification_payload: str = None,
         android_huawei_receipt_id: str = None,
         android_huawei_target_user_type: int = None,
         android_image_url: str = None,
@@ -2541,6 +2542,7 @@ class MassPushRequestPushTask(TeaModel):
         harmony_extension_push: bool = None,
         harmony_image_url: str = None,
         harmony_inbox_content: str = None,
+        harmony_live_view_payload: str = None,
         harmony_notification_slot_type: str = None,
         harmony_notify_id: int = None,
         harmony_receipt_id: str = None,
@@ -2592,6 +2594,7 @@ class MassPushRequestPushTask(TeaModel):
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
         self.android_honor_target_user_type = android_honor_target_user_type
+        self.android_huawei_live_notification_payload = android_huawei_live_notification_payload
         self.android_huawei_receipt_id = android_huawei_receipt_id
         self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
@@ -2646,6 +2649,7 @@ class MassPushRequestPushTask(TeaModel):
         self.harmony_extension_push = harmony_extension_push
         self.harmony_image_url = harmony_image_url
         self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_live_view_payload = harmony_live_view_payload
         self.harmony_notification_slot_type = harmony_notification_slot_type
         self.harmony_notify_id = harmony_notify_id
         self.harmony_receipt_id = harmony_receipt_id
@@ -2718,6 +2722,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidExtParameters'] = self.android_ext_parameters
         if self.android_honor_target_user_type is not None:
             result['AndroidHonorTargetUserType'] = self.android_honor_target_user_type
+        if self.android_huawei_live_notification_payload is not None:
+            result['AndroidHuaweiLiveNotificationPayload'] = self.android_huawei_live_notification_payload
         if self.android_huawei_receipt_id is not None:
             result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
         if self.android_huawei_target_user_type is not None:
@@ -2824,6 +2830,8 @@ class MassPushRequestPushTask(TeaModel):
             result['HarmonyImageUrl'] = self.harmony_image_url
         if self.harmony_inbox_content is not None:
             result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_live_view_payload is not None:
+            result['HarmonyLiveViewPayload'] = self.harmony_live_view_payload
         if self.harmony_notification_slot_type is not None:
             result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
         if self.harmony_notify_id is not None:
@@ -2928,6 +2936,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_ext_parameters = m.get('AndroidExtParameters')
         if m.get('AndroidHonorTargetUserType') is not None:
             self.android_honor_target_user_type = m.get('AndroidHonorTargetUserType')
+        if m.get('AndroidHuaweiLiveNotificationPayload') is not None:
+            self.android_huawei_live_notification_payload = m.get('AndroidHuaweiLiveNotificationPayload')
         if m.get('AndroidHuaweiReceiptId') is not None:
             self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
         if m.get('AndroidHuaweiTargetUserType') is not None:
@@ -3034,6 +3044,8 @@ class MassPushRequestPushTask(TeaModel):
             self.harmony_image_url = m.get('HarmonyImageUrl')
         if m.get('HarmonyInboxContent') is not None:
             self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyLiveViewPayload') is not None:
+            self.harmony_live_view_payload = m.get('HarmonyLiveViewPayload')
         if m.get('HarmonyNotificationSlotType') is not None:
             self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
         if m.get('HarmonyNotifyId') is not None:
@@ -3283,6 +3295,7 @@ class PushRequest(TeaModel):
         android_big_title: str = None,
         android_ext_parameters: str = None,
         android_honor_target_user_type: int = None,
+        android_huawei_live_notification_payload: str = None,
         android_huawei_receipt_id: str = None,
         android_huawei_target_user_type: int = None,
         android_image_url: str = None,
@@ -3337,6 +3350,7 @@ class PushRequest(TeaModel):
         harmony_extension_push: bool = None,
         harmony_image_url: str = None,
         harmony_inbox_content: str = None,
+        harmony_live_view_payload: str = None,
         harmony_notification_slot_type: str = None,
         harmony_notify_id: int = None,
         harmony_receipt_id: str = None,
@@ -3394,6 +3408,7 @@ class PushRequest(TeaModel):
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
         self.android_honor_target_user_type = android_honor_target_user_type
+        self.android_huawei_live_notification_payload = android_huawei_live_notification_payload
         self.android_huawei_receipt_id = android_huawei_receipt_id
         self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
@@ -3450,6 +3465,7 @@ class PushRequest(TeaModel):
         self.harmony_extension_push = harmony_extension_push
         self.harmony_image_url = harmony_image_url
         self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_live_view_payload = harmony_live_view_payload
         self.harmony_notification_slot_type = harmony_notification_slot_type
         self.harmony_notify_id = harmony_notify_id
         self.harmony_receipt_id = harmony_receipt_id
@@ -3528,6 +3544,8 @@ class PushRequest(TeaModel):
             result['AndroidExtParameters'] = self.android_ext_parameters
         if self.android_honor_target_user_type is not None:
             result['AndroidHonorTargetUserType'] = self.android_honor_target_user_type
+        if self.android_huawei_live_notification_payload is not None:
+            result['AndroidHuaweiLiveNotificationPayload'] = self.android_huawei_live_notification_payload
         if self.android_huawei_receipt_id is not None:
             result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
         if self.android_huawei_target_user_type is not None:
@@ -3636,6 +3654,8 @@ class PushRequest(TeaModel):
             result['HarmonyImageUrl'] = self.harmony_image_url
         if self.harmony_inbox_content is not None:
             result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_live_view_payload is not None:
+            result['HarmonyLiveViewPayload'] = self.harmony_live_view_payload
         if self.harmony_notification_slot_type is not None:
             result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
         if self.harmony_notify_id is not None:
@@ -3752,6 +3772,8 @@ class PushRequest(TeaModel):
             self.android_ext_parameters = m.get('AndroidExtParameters')
         if m.get('AndroidHonorTargetUserType') is not None:
             self.android_honor_target_user_type = m.get('AndroidHonorTargetUserType')
+        if m.get('AndroidHuaweiLiveNotificationPayload') is not None:
+            self.android_huawei_live_notification_payload = m.get('AndroidHuaweiLiveNotificationPayload')
         if m.get('AndroidHuaweiReceiptId') is not None:
             self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
         if m.get('AndroidHuaweiTargetUserType') is not None:
@@ -3860,6 +3882,8 @@ class PushRequest(TeaModel):
             self.harmony_image_url = m.get('HarmonyImageUrl')
         if m.get('HarmonyInboxContent') is not None:
             self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyLiveViewPayload') is not None:
+            self.harmony_live_view_payload = m.get('HarmonyLiveViewPayload')
         if m.get('HarmonyNotificationSlotType') is not None:
             self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
         if m.get('HarmonyNotifyId') is not None:
@@ -3969,6 +3993,7 @@ class PushShrinkRequest(TeaModel):
         android_big_title: str = None,
         android_ext_parameters: str = None,
         android_honor_target_user_type: int = None,
+        android_huawei_live_notification_payload: str = None,
         android_huawei_receipt_id: str = None,
         android_huawei_target_user_type: int = None,
         android_image_url: str = None,
@@ -4023,6 +4048,7 @@ class PushShrinkRequest(TeaModel):
         harmony_extension_push: bool = None,
         harmony_image_url: str = None,
         harmony_inbox_content: str = None,
+        harmony_live_view_payload: str = None,
         harmony_notification_slot_type: str = None,
         harmony_notify_id: int = None,
         harmony_receipt_id: str = None,
@@ -4080,6 +4106,7 @@ class PushShrinkRequest(TeaModel):
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
         self.android_honor_target_user_type = android_honor_target_user_type
+        self.android_huawei_live_notification_payload = android_huawei_live_notification_payload
         self.android_huawei_receipt_id = android_huawei_receipt_id
         self.android_huawei_target_user_type = android_huawei_target_user_type
         self.android_image_url = android_image_url
@@ -4136,6 +4163,7 @@ class PushShrinkRequest(TeaModel):
         self.harmony_extension_push = harmony_extension_push
         self.harmony_image_url = harmony_image_url
         self.harmony_inbox_content = harmony_inbox_content
+        self.harmony_live_view_payload = harmony_live_view_payload
         self.harmony_notification_slot_type = harmony_notification_slot_type
         self.harmony_notify_id = harmony_notify_id
         self.harmony_receipt_id = harmony_receipt_id
@@ -4214,6 +4242,8 @@ class PushShrinkRequest(TeaModel):
             result['AndroidExtParameters'] = self.android_ext_parameters
         if self.android_honor_target_user_type is not None:
             result['AndroidHonorTargetUserType'] = self.android_honor_target_user_type
+        if self.android_huawei_live_notification_payload is not None:
+            result['AndroidHuaweiLiveNotificationPayload'] = self.android_huawei_live_notification_payload
         if self.android_huawei_receipt_id is not None:
             result['AndroidHuaweiReceiptId'] = self.android_huawei_receipt_id
         if self.android_huawei_target_user_type is not None:
@@ -4322,6 +4352,8 @@ class PushShrinkRequest(TeaModel):
             result['HarmonyImageUrl'] = self.harmony_image_url
         if self.harmony_inbox_content is not None:
             result['HarmonyInboxContent'] = self.harmony_inbox_content
+        if self.harmony_live_view_payload is not None:
+            result['HarmonyLiveViewPayload'] = self.harmony_live_view_payload
         if self.harmony_notification_slot_type is not None:
             result['HarmonyNotificationSlotType'] = self.harmony_notification_slot_type
         if self.harmony_notify_id is not None:
@@ -4438,6 +4470,8 @@ class PushShrinkRequest(TeaModel):
             self.android_ext_parameters = m.get('AndroidExtParameters')
         if m.get('AndroidHonorTargetUserType') is not None:
             self.android_honor_target_user_type = m.get('AndroidHonorTargetUserType')
+        if m.get('AndroidHuaweiLiveNotificationPayload') is not None:
+            self.android_huawei_live_notification_payload = m.get('AndroidHuaweiLiveNotificationPayload')
         if m.get('AndroidHuaweiReceiptId') is not None:
             self.android_huawei_receipt_id = m.get('AndroidHuaweiReceiptId')
         if m.get('AndroidHuaweiTargetUserType') is not None:
@@ -4546,6 +4580,8 @@ class PushShrinkRequest(TeaModel):
             self.harmony_image_url = m.get('HarmonyImageUrl')
         if m.get('HarmonyInboxContent') is not None:
             self.harmony_inbox_content = m.get('HarmonyInboxContent')
+        if m.get('HarmonyLiveViewPayload') is not None:
+            self.harmony_live_view_payload = m.get('HarmonyLiveViewPayload')
         if m.get('HarmonyNotificationSlotType') is not None:
             self.harmony_notification_slot_type = m.get('HarmonyNotificationSlotType')
         if m.get('HarmonyNotifyId') is not None:
