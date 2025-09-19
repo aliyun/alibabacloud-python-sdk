@@ -2844,6 +2844,7 @@ class ElasticConfigStatus(TeaModel):
         resident_pool_id: str = None,
         scaling_policies: List[ScalingPolicy] = None,
         scheduled_policies: List[ScheduledPolicy] = None,
+        target_instances: int = None,
     ):
         self.current_error = current_error
         self.current_instances = current_instances
@@ -2852,6 +2853,7 @@ class ElasticConfigStatus(TeaModel):
         self.resident_pool_id = resident_pool_id
         self.scaling_policies = scaling_policies
         self.scheduled_policies = scheduled_policies
+        self.target_instances = target_instances
 
     def validate(self):
         if self.scaling_policies:
@@ -2887,6 +2889,8 @@ class ElasticConfigStatus(TeaModel):
         if self.scheduled_policies is not None:
             for k in self.scheduled_policies:
                 result['scheduledPolicies'].append(k.to_map() if k else None)
+        if self.target_instances is not None:
+            result['targetInstances'] = self.target_instances
         return result
 
     def from_map(self, m: dict = None):
@@ -2911,6 +2915,8 @@ class ElasticConfigStatus(TeaModel):
             for k in m.get('scheduledPolicies'):
                 temp_model = ScheduledPolicy()
                 self.scheduled_policies.append(temp_model.from_map(k))
+        if m.get('targetInstances') is not None:
+            self.target_instances = m.get('targetInstances')
         return self
 
 
@@ -4234,138 +4240,12 @@ class GetResourceTagsOutput(TeaModel):
         return self
 
 
-class ResidentConfig(TeaModel):
-    def __init__(
-        self,
-        count: int = None,
-        pool_id: str = None,
-    ):
-        self.count = count
-        self.pool_id = pool_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.count is not None:
-            result['count'] = self.count
-        if self.pool_id is not None:
-            result['poolId'] = self.pool_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('count') is not None:
-            self.count = m.get('count')
-        if m.get('poolId') is not None:
-            self.pool_id = m.get('poolId')
-        return self
-
-
-class ScalingStatus(TeaModel):
-    def __init__(
-        self,
-        current_error: str = None,
-        resource_count: int = None,
-    ):
-        self.current_error = current_error
-        self.resource_count = resource_count
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.current_error is not None:
-            result['currentError'] = self.current_error
-        if self.resource_count is not None:
-            result['resourceCount'] = self.resource_count
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('currentError') is not None:
-            self.current_error = m.get('currentError')
-        if m.get('resourceCount') is not None:
-            self.resource_count = m.get('resourceCount')
-        return self
-
-
-class ScalingConfigStatus(TeaModel):
-    def __init__(
-        self,
-        function_name: str = None,
-        qualifier: str = None,
-        resident_config: ResidentConfig = None,
-        resource_type: str = None,
-        scaling_status: ScalingStatus = None,
-    ):
-        self.function_name = function_name
-        self.qualifier = qualifier
-        self.resident_config = resident_config
-        self.resource_type = resource_type
-        self.scaling_status = scaling_status
-
-    def validate(self):
-        if self.resident_config:
-            self.resident_config.validate()
-        if self.scaling_status:
-            self.scaling_status.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
-        if self.qualifier is not None:
-            result['qualifier'] = self.qualifier
-        if self.resident_config is not None:
-            result['residentConfig'] = self.resident_config.to_map()
-        if self.resource_type is not None:
-            result['resourceType'] = self.resource_type
-        if self.scaling_status is not None:
-            result['scalingStatus'] = self.scaling_status.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
-        if m.get('qualifier') is not None:
-            self.qualifier = m.get('qualifier')
-        if m.get('residentConfig') is not None:
-            temp_model = ResidentConfig()
-            self.resident_config = temp_model.from_map(m['residentConfig'])
-        if m.get('resourceType') is not None:
-            self.resource_type = m.get('resourceType')
-        if m.get('scalingStatus') is not None:
-            temp_model = ScalingStatus()
-            self.scaling_status = temp_model.from_map(m['scalingStatus'])
-        return self
-
-
 class GetScalingConfigStatusOutput(TeaModel):
-    def __init__(
-        self,
-        scaling_config_status: ScalingConfigStatus = None,
-    ):
-        self.scaling_config_status = scaling_config_status
+    def __init__(self):
+        pass
 
     def validate(self):
-        if self.scaling_config_status:
-            self.scaling_config_status.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -4373,15 +4253,10 @@ class GetScalingConfigStatusOutput(TeaModel):
             return _map
 
         result = dict()
-        if self.scaling_config_status is not None:
-            result['scalingConfigStatus'] = self.scaling_config_status.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('scalingConfigStatus') is not None:
-            temp_model = ScalingConfigStatus()
-            self.scaling_config_status = temp_model.from_map(m['scalingConfigStatus'])
         return self
 
 
@@ -5472,14 +5347,16 @@ class ResidentResourceAllocationStatus(TeaModel):
     def __init__(
         self,
         last_allocated_time: str = None,
-        last_allocation: ResidentResourceAllocation = None,
+        last_allocation: List[ResidentResourceAllocation] = None,
     ):
         self.last_allocated_time = last_allocated_time
         self.last_allocation = last_allocation
 
     def validate(self):
         if self.last_allocation:
-            self.last_allocation.validate()
+            for k in self.last_allocation:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5489,17 +5366,21 @@ class ResidentResourceAllocationStatus(TeaModel):
         result = dict()
         if self.last_allocated_time is not None:
             result['lastAllocatedTime'] = self.last_allocated_time
+        result['lastAllocation'] = []
         if self.last_allocation is not None:
-            result['lastAllocation'] = self.last_allocation.to_map()
+            for k in self.last_allocation:
+                result['lastAllocation'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('lastAllocatedTime') is not None:
             self.last_allocated_time = m.get('lastAllocatedTime')
+        self.last_allocation = []
         if m.get('lastAllocation') is not None:
-            temp_model = ResidentResourceAllocation()
-            self.last_allocation = temp_model.from_map(m['lastAllocation'])
+            for k in m.get('lastAllocation'):
+                temp_model = ResidentResourceAllocation()
+                self.last_allocation.append(temp_model.from_map(k))
         return self
 
 
@@ -5693,17 +5574,123 @@ class ListResidentResourcePoolsOutput(TeaModel):
 
 
 class ListScalingConfigStatusOutput(TeaModel):
+    def __init__(self):
+        pass
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        return self
+
+
+class ScalingConfigStatus(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        current_instances: int = None,
+        function_arn: str = None,
+        horizontal_scaling_policies: List[ScalingPolicy] = None,
+        min_instances: int = None,
+        resident_pool_id: str = None,
+        scheduled_policies: List[ScheduledPolicy] = None,
+        target_instances: int = None,
+    ):
+        self.current_error = current_error
+        self.current_instances = current_instances
+        self.function_arn = function_arn
+        self.horizontal_scaling_policies = horizontal_scaling_policies
+        self.min_instances = min_instances
+        self.resident_pool_id = resident_pool_id
+        self.scheduled_policies = scheduled_policies
+        self.target_instances = target_instances
+
+    def validate(self):
+        if self.horizontal_scaling_policies:
+            for k in self.horizontal_scaling_policies:
+                if k:
+                    k.validate()
+        if self.scheduled_policies:
+            for k in self.scheduled_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['currentError'] = self.current_error
+        if self.current_instances is not None:
+            result['currentInstances'] = self.current_instances
+        if self.function_arn is not None:
+            result['functionArn'] = self.function_arn
+        result['horizontalScalingPolicies'] = []
+        if self.horizontal_scaling_policies is not None:
+            for k in self.horizontal_scaling_policies:
+                result['horizontalScalingPolicies'].append(k.to_map() if k else None)
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+        if self.resident_pool_id is not None:
+            result['residentPoolId'] = self.resident_pool_id
+        result['scheduledPolicies'] = []
+        if self.scheduled_policies is not None:
+            for k in self.scheduled_policies:
+                result['scheduledPolicies'].append(k.to_map() if k else None)
+        if self.target_instances is not None:
+            result['targetInstances'] = self.target_instances
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentError') is not None:
+            self.current_error = m.get('currentError')
+        if m.get('currentInstances') is not None:
+            self.current_instances = m.get('currentInstances')
+        if m.get('functionArn') is not None:
+            self.function_arn = m.get('functionArn')
+        self.horizontal_scaling_policies = []
+        if m.get('horizontalScalingPolicies') is not None:
+            for k in m.get('horizontalScalingPolicies'):
+                temp_model = ScalingPolicy()
+                self.horizontal_scaling_policies.append(temp_model.from_map(k))
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+        if m.get('residentPoolId') is not None:
+            self.resident_pool_id = m.get('residentPoolId')
+        self.scheduled_policies = []
+        if m.get('scheduledPolicies') is not None:
+            for k in m.get('scheduledPolicies'):
+                temp_model = ScheduledPolicy()
+                self.scheduled_policies.append(temp_model.from_map(k))
+        if m.get('targetInstances') is not None:
+            self.target_instances = m.get('targetInstances')
+        return self
+
+
+class ListScalingConfigsOutput(TeaModel):
     def __init__(
         self,
         next_token: str = None,
-        result: List[ScalingConfigStatus] = None,
+        scaling_configs: List[ScalingConfigStatus] = None,
     ):
         self.next_token = next_token
-        self.result = result
+        self.scaling_configs = scaling_configs
 
     def validate(self):
-        if self.result:
-            for k in self.result:
+        if self.scaling_configs:
+            for k in self.scaling_configs:
                 if k:
                     k.validate()
 
@@ -5715,21 +5702,21 @@ class ListScalingConfigStatusOutput(TeaModel):
         result = dict()
         if self.next_token is not None:
             result['nextToken'] = self.next_token
-        result['result'] = []
-        if self.result is not None:
-            for k in self.result:
-                result['result'].append(k.to_map() if k else None)
+        result['scalingConfigs'] = []
+        if self.scaling_configs is not None:
+            for k in self.scaling_configs:
+                result['scalingConfigs'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
-        self.result = []
-        if m.get('result') is not None:
-            for k in m.get('result'):
+        self.scaling_configs = []
+        if m.get('scalingConfigs') is not None:
+            for k in m.get('scalingConfigs'):
                 temp_model = ScalingConfigStatus()
-                self.result.append(temp_model.from_map(k))
+                self.scaling_configs.append(temp_model.from_map(k))
         return self
 
 
@@ -6587,15 +6574,25 @@ class PutProvisionConfigInput(TeaModel):
 class PutScalingConfigInput(TeaModel):
     def __init__(
         self,
-        resident_config: ResidentConfig = None,
-        resource_type: str = None,
+        horizontal_scaling_policies: List[ScalingPolicy] = None,
+        min_instances: int = None,
+        resident_pool_id: str = None,
+        scheduled_policies: List[ScheduledPolicy] = None,
     ):
-        self.resident_config = resident_config
-        self.resource_type = resource_type
+        self.horizontal_scaling_policies = horizontal_scaling_policies
+        self.min_instances = min_instances
+        self.resident_pool_id = resident_pool_id
+        self.scheduled_policies = scheduled_policies
 
     def validate(self):
-        if self.resident_config:
-            self.resident_config.validate()
+        if self.horizontal_scaling_policies:
+            for k in self.horizontal_scaling_policies:
+                if k:
+                    k.validate()
+        if self.scheduled_policies:
+            for k in self.scheduled_policies:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6603,38 +6600,45 @@ class PutScalingConfigInput(TeaModel):
             return _map
 
         result = dict()
-        if self.resident_config is not None:
-            result['residentConfig'] = self.resident_config.to_map()
-        if self.resource_type is not None:
-            result['resourceType'] = self.resource_type
+        result['horizontalScalingPolicies'] = []
+        if self.horizontal_scaling_policies is not None:
+            for k in self.horizontal_scaling_policies:
+                result['horizontalScalingPolicies'].append(k.to_map() if k else None)
+        if self.min_instances is not None:
+            result['minInstances'] = self.min_instances
+        if self.resident_pool_id is not None:
+            result['residentPoolId'] = self.resident_pool_id
+        result['scheduledPolicies'] = []
+        if self.scheduled_policies is not None:
+            for k in self.scheduled_policies:
+                result['scheduledPolicies'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('residentConfig') is not None:
-            temp_model = ResidentConfig()
-            self.resident_config = temp_model.from_map(m['residentConfig'])
-        if m.get('resourceType') is not None:
-            self.resource_type = m.get('resourceType')
+        self.horizontal_scaling_policies = []
+        if m.get('horizontalScalingPolicies') is not None:
+            for k in m.get('horizontalScalingPolicies'):
+                temp_model = ScalingPolicy()
+                self.horizontal_scaling_policies.append(temp_model.from_map(k))
+        if m.get('minInstances') is not None:
+            self.min_instances = m.get('minInstances')
+        if m.get('residentPoolId') is not None:
+            self.resident_pool_id = m.get('residentPoolId')
+        self.scheduled_policies = []
+        if m.get('scheduledPolicies') is not None:
+            for k in m.get('scheduledPolicies'):
+                temp_model = ScheduledPolicy()
+                self.scheduled_policies.append(temp_model.from_map(k))
         return self
 
 
 class PutScalingConfigOutput(TeaModel):
-    def __init__(
-        self,
-        function_name: str = None,
-        qualifier: str = None,
-        resident_config: ResidentConfig = None,
-        resource_type: str = None,
-    ):
-        self.function_name = function_name
-        self.qualifier = qualifier
-        self.resident_config = resident_config
-        self.resource_type = resource_type
+    def __init__(self):
+        pass
 
     def validate(self):
-        if self.resident_config:
-            self.resident_config.validate()
+        pass
 
     def to_map(self):
         _map = super().to_map()
@@ -6642,27 +6646,43 @@ class PutScalingConfigOutput(TeaModel):
             return _map
 
         result = dict()
-        if self.function_name is not None:
-            result['functionName'] = self.function_name
-        if self.qualifier is not None:
-            result['qualifier'] = self.qualifier
-        if self.resident_config is not None:
-            result['residentConfig'] = self.resident_config.to_map()
-        if self.resource_type is not None:
-            result['resourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('functionName') is not None:
-            self.function_name = m.get('functionName')
-        if m.get('qualifier') is not None:
-            self.qualifier = m.get('qualifier')
-        if m.get('residentConfig') is not None:
-            temp_model = ResidentConfig()
-            self.resident_config = temp_model.from_map(m['residentConfig'])
-        if m.get('resourceType') is not None:
-            self.resource_type = m.get('resourceType')
+        return self
+
+
+class ResidentConfig(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        pool_id: str = None,
+    ):
+        self.count = count
+        self.pool_id = pool_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['count'] = self.count
+        if self.pool_id is not None:
+            result['poolId'] = self.pool_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('count') is not None:
+            self.count = m.get('count')
+        if m.get('poolId') is not None:
+            self.pool_id = m.get('poolId')
         return self
 
 
@@ -6788,6 +6808,39 @@ class SLSTriggerConfig(TeaModel):
         if m.get('sourceConfig') is not None:
             temp_model = SourceConfig()
             self.source_config = temp_model.from_map(m['sourceConfig'])
+        return self
+
+
+class ScalingStatus(TeaModel):
+    def __init__(
+        self,
+        current_error: str = None,
+        resource_count: int = None,
+    ):
+        self.current_error = current_error
+        self.resource_count = resource_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_error is not None:
+            result['currentError'] = self.current_error
+        if self.resource_count is not None:
+            result['resourceCount'] = self.resource_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentError') is not None:
+            self.current_error = m.get('currentError')
+        if m.get('resourceCount') is not None:
+            self.resource_count = m.get('resourceCount')
         return self
 
 
@@ -7249,8 +7302,10 @@ class UpdateResidentResourcePoolInput(TeaModel):
     def __init__(
         self,
         name: str = None,
+        use_scaling: bool = None,
     ):
         self.name = name
+        self.use_scaling = use_scaling
 
     def validate(self):
         pass
@@ -7263,12 +7318,16 @@ class UpdateResidentResourcePoolInput(TeaModel):
         result = dict()
         if self.name is not None:
             result['name'] = self.name
+        if self.use_scaling is not None:
+            result['useScaling'] = self.use_scaling
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('useScaling') is not None:
+            self.use_scaling = m.get('useScaling')
         return self
 
 
@@ -8105,6 +8164,66 @@ class DeleteProvisionConfigRequest(TeaModel):
 
 
 class DeleteProvisionConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        qualifier: str = None,
+    ):
+        self.qualifier = qualifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class DeleteScalingConfigResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -8989,6 +9108,74 @@ class GetProvisionConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ProvisionConfig()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        qualifier: str = None,
+    ):
+        self.qualifier = qualifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class GetScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScalingConfigStatus = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScalingConfigStatus()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10393,6 +10580,86 @@ class ListProvisionConfigsResponse(TeaModel):
         return self
 
 
+class ListScalingConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        function_name: str = None,
+        limit: int = None,
+        next_token: str = None,
+    ):
+        self.function_name = function_name
+        self.limit = limit
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        return self
+
+
+class ListScalingConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListScalingConfigsOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListScalingConfigsOutput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -11095,6 +11362,82 @@ class PutProvisionConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ProvisionConfig()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PutScalingConfigRequest(TeaModel):
+    def __init__(
+        self,
+        body: PutScalingConfigInput = None,
+        qualifier: str = None,
+    ):
+        self.body = body
+        self.qualifier = qualifier
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = PutScalingConfigInput()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class PutScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScalingConfigStatus = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScalingConfigStatus()
             self.body = temp_model.from_map(m['body'])
         return self
 

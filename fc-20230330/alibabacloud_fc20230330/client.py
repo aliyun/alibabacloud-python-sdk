@@ -1527,6 +1527,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_provision_config_with_options_async(function_name, request, headers, runtime)
 
+    def delete_scaling_config_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.DeleteScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DeleteScalingConfigResponse:
+        """
+        @summary 删除弹性配置
+        
+        @param request: DeleteScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.DeleteScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scaling_config_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.DeleteScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DeleteScalingConfigResponse:
+        """
+        @summary 删除弹性配置
+        
+        @param request: DeleteScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.DeleteScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scaling_config(
+        self,
+        function_name: str,
+        request: fc20230330_models.DeleteScalingConfigRequest,
+    ) -> fc20230330_models.DeleteScalingConfigResponse:
+        """
+        @summary 删除弹性配置
+        
+        @param request: DeleteScalingConfigRequest
+        @return: DeleteScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_scaling_config_with_options(function_name, request, headers, runtime)
+
+    async def delete_scaling_config_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.DeleteScalingConfigRequest,
+    ) -> fc20230330_models.DeleteScalingConfigResponse:
+        """
+        @summary 删除弹性配置
+        
+        @param request: DeleteScalingConfigRequest
+        @return: DeleteScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_scaling_config_with_options_async(function_name, request, headers, runtime)
+
     def delete_trigger_with_options(
         self,
         function_name: str,
@@ -3030,6 +3138,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_provision_config_with_options_async(function_name, request, headers, runtime)
+
+    def get_scaling_config_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.GetScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.GetScalingConfigResponse:
+        """
+        @summary 获取弹性配置
+        
+        @param request: GetScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.GetScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scaling_config_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.GetScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.GetScalingConfigResponse:
+        """
+        @summary 获取弹性配置
+        
+        @param request: GetScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.GetScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scaling_config(
+        self,
+        function_name: str,
+        request: fc20230330_models.GetScalingConfigRequest,
+    ) -> fc20230330_models.GetScalingConfigResponse:
+        """
+        @summary 获取弹性配置
+        
+        @param request: GetScalingConfigRequest
+        @return: GetScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_scaling_config_with_options(function_name, request, headers, runtime)
+
+    async def get_scaling_config_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.GetScalingConfigRequest,
+    ) -> fc20230330_models.GetScalingConfigResponse:
+        """
+        @summary 获取弹性配置
+        
+        @param request: GetScalingConfigRequest
+        @return: GetScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_scaling_config_with_options_async(function_name, request, headers, runtime)
 
     def get_trigger_with_options(
         self,
@@ -4627,6 +4843,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_provision_configs_with_options_async(request, headers, runtime)
 
+    def list_scaling_configs_with_options(
+        self,
+        request: fc20230330_models.ListScalingConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListScalingConfigsResponse:
+        """
+        @summary 获取弹性配置列表
+        
+        @param request: ListScalingConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScalingConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_name):
+            query['functionName'] = request.function_name
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScalingConfigs',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/scaling-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListScalingConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scaling_configs_with_options_async(
+        self,
+        request: fc20230330_models.ListScalingConfigsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListScalingConfigsResponse:
+        """
+        @summary 获取弹性配置列表
+        
+        @param request: ListScalingConfigsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListScalingConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.function_name):
+            query['functionName'] = request.function_name
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListScalingConfigs',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/scaling-configs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListScalingConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scaling_configs(
+        self,
+        request: fc20230330_models.ListScalingConfigsRequest,
+    ) -> fc20230330_models.ListScalingConfigsResponse:
+        """
+        @summary 获取弹性配置列表
+        
+        @param request: ListScalingConfigsRequest
+        @return: ListScalingConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_scaling_configs_with_options(request, headers, runtime)
+
+    async def list_scaling_configs_async(
+        self,
+        request: fc20230330_models.ListScalingConfigsRequest,
+    ) -> fc20230330_models.ListScalingConfigsResponse:
+        """
+        @summary 获取弹性配置列表
+        
+        @param request: ListScalingConfigsRequest
+        @return: ListScalingConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_scaling_configs_with_options_async(request, headers, runtime)
+
     def list_tag_resources_with_options(
         self,
         tmp_req: fc20230330_models.ListTagResourcesRequest,
@@ -5500,6 +5828,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_provision_config_with_options_async(function_name, request, headers, runtime)
+
+    def put_scaling_config_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.PutScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.PutScalingConfigResponse:
+        """
+        @summary 设置弹性配置
+        
+        @param request: PutScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PutScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.PutScalingConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_scaling_config_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.PutScalingConfigRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.PutScalingConfigResponse:
+        """
+        @summary 设置弹性配置
+        
+        @param request: PutScalingConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutScalingConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='PutScalingConfig',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/scaling-config',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.PutScalingConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_scaling_config(
+        self,
+        function_name: str,
+        request: fc20230330_models.PutScalingConfigRequest,
+    ) -> fc20230330_models.PutScalingConfigResponse:
+        """
+        @summary 设置弹性配置
+        
+        @param request: PutScalingConfigRequest
+        @return: PutScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.put_scaling_config_with_options(function_name, request, headers, runtime)
+
+    async def put_scaling_config_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.PutScalingConfigRequest,
+    ) -> fc20230330_models.PutScalingConfigResponse:
+        """
+        @summary 设置弹性配置
+        
+        @param request: PutScalingConfigRequest
+        @return: PutScalingConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.put_scaling_config_with_options_async(function_name, request, headers, runtime)
 
     def stop_async_task_with_options(
         self,

@@ -1,3 +1,10 @@
+2025-09-19 Version: 4.5.0
+- Support API DeleteScalingConfig.
+- Support API GetScalingConfig.
+- Support API ListScalingConfigs.
+- Support API PutScalingConfig.
+
+
 2025-08-27 Version: 4.4.0
 - Support API ChangeResourceGroup.
 
