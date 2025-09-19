@@ -261,6 +261,222 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_instance_support_with_options_async(request, headers, runtime)
 
+    def create_alert_strategy_with_options(
+        self,
+        request: sys_om20231230_models.CreateAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
+        """
+        @summary 新增推送告警的策略
+        
+        @param request: CreateAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/createStrategy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.CreateAlertStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_strategy_with_options_async(
+        self,
+        request: sys_om20231230_models.CreateAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
+        """
+        @summary 新增推送告警的策略
+        
+        @param request: CreateAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/createStrategy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.CreateAlertStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_strategy(
+        self,
+        request: sys_om20231230_models.CreateAlertStrategyRequest,
+    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
+        """
+        @summary 新增推送告警的策略
+        
+        @param request: CreateAlertStrategyRequest
+        @return: CreateAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_alert_strategy_with_options(request, headers, runtime)
+
+    async def create_alert_strategy_async(
+        self,
+        request: sys_om20231230_models.CreateAlertStrategyRequest,
+    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
+        """
+        @summary 新增推送告警的策略
+        
+        @param request: CreateAlertStrategyRequest
+        @return: CreateAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_alert_strategy_with_options_async(request, headers, runtime)
+
+    def delete_alert_strategy_with_options(
+        self,
+        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
+        """
+        @summary 用户删除推送告警的策略
+        
+        @param request: DeleteAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/deleteStrategy',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.DeleteAlertStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_strategy_with_options_async(
+        self,
+        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
+        """
+        @summary 用户删除推送告警的策略
+        
+        @param request: DeleteAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/deleteStrategy',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.DeleteAlertStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_strategy(
+        self,
+        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
+        """
+        @summary 用户删除推送告警的策略
+        
+        @param request: DeleteAlertStrategyRequest
+        @return: DeleteAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_alert_strategy_with_options(request, headers, runtime)
+
+    async def delete_alert_strategy_async(
+        self,
+        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
+        """
+        @summary 用户删除推送告警的策略
+        
+        @param request: DeleteAlertStrategyRequest
+        @return: DeleteAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_strategy_with_options_async(request, headers, runtime)
+
     def generate_copilot_response_with_options(
         self,
         request: sys_om20231230_models.GenerateCopilotResponseRequest,
@@ -912,6 +1128,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_agent_task_with_options_async(request, headers, runtime)
+
+    def get_alert_strategy_with_options(
+        self,
+        request: sys_om20231230_models.GetAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetAlertStrategyResponse:
+        """
+        @summary 根据策略id，获取用户的一条告警
+        
+        @param request: GetAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/getStrategy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.GetAlertStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_alert_strategy_with_options_async(
+        self,
+        request: sys_om20231230_models.GetAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.GetAlertStrategyResponse:
+        """
+        @summary 根据策略id，获取用户的一条告警
+        
+        @param request: GetAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/getStrategy',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.GetAlertStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_alert_strategy(
+        self,
+        request: sys_om20231230_models.GetAlertStrategyRequest,
+    ) -> sys_om20231230_models.GetAlertStrategyResponse:
+        """
+        @summary 根据策略id，获取用户的一条告警
+        
+        @param request: GetAlertStrategyRequest
+        @return: GetAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_alert_strategy_with_options(request, headers, runtime)
+
+    async def get_alert_strategy_async(
+        self,
+        request: sys_om20231230_models.GetAlertStrategyRequest,
+    ) -> sys_om20231230_models.GetAlertStrategyResponse:
+        """
+        @summary 根据策略id，获取用户的一条告警
+        
+        @param request: GetAlertStrategyRequest
+        @return: GetAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_alert_strategy_with_options_async(request, headers, runtime)
 
     def get_copilot_history_with_options(
         self,
@@ -3725,6 +4045,344 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
 
+    def list_alert_items_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAlertItemsResponse:
+        """
+        @summary 获取所有告警项
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertItemsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAlertItems',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/listItems',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAlertItemsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_items_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAlertItemsResponse:
+        """
+        @summary 获取所有告警项
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertItemsResponse
+        """
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListAlertItems',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/listItems',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAlertItemsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_items(self) -> sys_om20231230_models.ListAlertItemsResponse:
+        """
+        @summary 获取所有告警项
+        
+        @return: ListAlertItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_alert_items_with_options(headers, runtime)
+
+    async def list_alert_items_async(self) -> sys_om20231230_models.ListAlertItemsResponse:
+        """
+        @summary 获取所有告警项
+        
+        @return: ListAlertItemsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_alert_items_with_options_async(headers, runtime)
+
+    def list_alert_strategies_with_options(
+        self,
+        request: sys_om20231230_models.ListAlertStrategiesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
+        """
+        @summary 用于获取用户所有推送告警的策略
+        
+        @param request: ListAlertStrategiesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertStrategiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertStrategies',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/listStrategies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAlertStrategiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_strategies_with_options_async(
+        self,
+        request: sys_om20231230_models.ListAlertStrategiesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
+        """
+        @summary 用于获取用户所有推送告警的策略
+        
+        @param request: ListAlertStrategiesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlertStrategiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAlertStrategies',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/listStrategies',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAlertStrategiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_strategies(
+        self,
+        request: sys_om20231230_models.ListAlertStrategiesRequest,
+    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
+        """
+        @summary 用于获取用户所有推送告警的策略
+        
+        @param request: ListAlertStrategiesRequest
+        @return: ListAlertStrategiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_alert_strategies_with_options(request, headers, runtime)
+
+    async def list_alert_strategies_async(
+        self,
+        request: sys_om20231230_models.ListAlertStrategiesRequest,
+    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
+        """
+        @summary 用于获取用户所有推送告警的策略
+        
+        @param request: ListAlertStrategiesRequest
+        @return: ListAlertStrategiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_alert_strategies_with_options_async(request, headers, runtime)
+
+    def list_all_instances_with_options(
+        self,
+        request: sys_om20231230_models.ListAllInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAllInstancesResponse:
+        """
+        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
+        
+        @param request: ListAllInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.filters):
+            query['filters'] = request.filters
+        if not UtilClient.is_unset(request.instance_type):
+            query['instanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.managed_type):
+            query['managedType'] = request.managed_type
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listAllInstances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAllInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_instances_with_options_async(
+        self,
+        request: sys_om20231230_models.ListAllInstancesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.ListAllInstancesResponse:
+        """
+        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
+        
+        @param request: ListAllInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current):
+            query['current'] = request.current
+        if not UtilClient.is_unset(request.filters):
+            query['filters'] = request.filters
+        if not UtilClient.is_unset(request.instance_type):
+            query['instanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.managed_type):
+            query['managedType'] = request.managed_type
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.plugin_id):
+            query['pluginId'] = request.plugin_id
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAllInstances',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/am/instance/listAllInstances',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.ListAllInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_instances(
+        self,
+        request: sys_om20231230_models.ListAllInstancesRequest,
+    ) -> sys_om20231230_models.ListAllInstancesResponse:
+        """
+        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
+        
+        @param request: ListAllInstancesRequest
+        @return: ListAllInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_all_instances_with_options(request, headers, runtime)
+
+    async def list_all_instances_async(
+        self,
+        request: sys_om20231230_models.ListAllInstancesRequest,
+    ) -> sys_om20231230_models.ListAllInstancesResponse:
+        """
+        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
+        
+        @param request: ListAllInstancesRequest
+        @return: ListAllInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_all_instances_with_options_async(request, headers, runtime)
+
     def list_cluster_agent_install_records_with_options(
         self,
         request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
@@ -5566,6 +6224,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.uninstall_agent_for_cluster_with_options_async(request, headers, runtime)
+
+    def update_alert_enabled_with_options(
+        self,
+        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
+        """
+        @summary 用户更新推送告警策略的状态
+        
+        @param request: UpdateAlertEnabledRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertEnabledResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertEnabled',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/updateEnabled',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.UpdateAlertEnabledResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_enabled_with_options_async(
+        self,
+        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
+        """
+        @summary 用户更新推送告警策略的状态
+        
+        @param request: UpdateAlertEnabledRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertEnabledResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertEnabled',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/updateEnabled',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.UpdateAlertEnabledResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_enabled(
+        self,
+        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
+        """
+        @summary 用户更新推送告警策略的状态
+        
+        @param request: UpdateAlertEnabledRequest
+        @return: UpdateAlertEnabledResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_alert_enabled_with_options(request, headers, runtime)
+
+    async def update_alert_enabled_async(
+        self,
+        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
+        """
+        @summary 用户更新推送告警策略的状态
+        
+        @param request: UpdateAlertEnabledRequest
+        @return: UpdateAlertEnabledResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_alert_enabled_with_options_async(request, headers, runtime)
+
+    def update_alert_strategy_with_options(
+        self,
+        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
+        """
+        @summary 更新推送告警策略
+        
+        @param request: UpdateAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/updateStrategy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.UpdateAlertStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_strategy_with_options_async(
+        self,
+        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
+        """
+        @summary 更新推送告警策略
+        
+        @param request: UpdateAlertStrategyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.enabled):
+            body['enabled'] = request.enabled
+        if not UtilClient.is_unset(request.id):
+            body['id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateAlertStrategy',
+            version='2023-12-30',
+            protocol='HTTPS',
+            pathname=f'/api/v1/alertPusher/alert/updateStrategy',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sys_om20231230_models.UpdateAlertStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_strategy(
+        self,
+        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
+        """
+        @summary 更新推送告警策略
+        
+        @param request: UpdateAlertStrategyRequest
+        @return: UpdateAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_alert_strategy_with_options(request, headers, runtime)
+
+    async def update_alert_strategy_async(
+        self,
+        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
+        """
+        @summary 更新推送告警策略
+        
+        @param request: UpdateAlertStrategyRequest
+        @return: UpdateAlertStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_alert_strategy_with_options_async(request, headers, runtime)
 
     def update_events_attention_with_options(
         self,

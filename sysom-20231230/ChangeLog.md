@@ -1,3 +1,15 @@
+2025-09-19 Version: 1.12.0
+- Support API CreateAlertStrategy.
+- Support API DeleteAlertStrategy.
+- Support API GetAlertStrategy.
+- Support API ListAlertItems.
+- Support API ListAlertStrategies.
+- Support API ListAllInstances.
+- Support API UpdateAlertEnabled.
+- Support API UpdateAlertStrategy.
+- Update API ListAbnormalyEvents: add response parameters Body.data.$.raw_metrics.
+
+
 2025-09-01 Version: 1.11.3
 - Update API GetListRecord: add request parameters region.
 

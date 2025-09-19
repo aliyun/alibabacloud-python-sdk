@@ -337,6 +337,285 @@ class CheckInstanceSupportResponse(TeaModel):
         return self
 
 
+class CreateAlertStrategyRequestStrategy(TeaModel):
+    def __init__(
+        self,
+        clusters: List[str] = None,
+        items: List[str] = None,
+    ):
+        self.clusters = clusters
+        self.items = items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clusters is not None:
+            result['clusters'] = self.clusters
+        if self.items is not None:
+            result['items'] = self.items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusters') is not None:
+            self.clusters = m.get('clusters')
+        if m.get('items') is not None:
+            self.items = m.get('items')
+        return self
+
+
+class CreateAlertStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        name: str = None,
+        strategy: CreateAlertStrategyRequestStrategy = None,
+    ):
+        # This parameter is required.
+        self.enabled = enabled
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.strategy = strategy
+
+    def validate(self):
+        if self.strategy:
+            self.strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.name is not None:
+            result['name'] = self.name
+        if self.strategy is not None:
+            result['strategy'] = self.strategy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('strategy') is not None:
+            temp_model = CreateAlertStrategyRequestStrategy()
+            self.strategy = temp_model.from_map(m['strategy'])
+        return self
+
+
+class CreateAlertStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateAlertStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAlertStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAlertStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteAlertStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        # This parameter is required.
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class DeleteAlertStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class DeleteAlertStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAlertStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAlertStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateCopilotResponseRequest(TeaModel):
     def __init__(
         self,
@@ -1333,6 +1612,220 @@ class GetAgentTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetAgentTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetAlertStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        id: int = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class GetAlertStrategyResponseBodyDataStrategy(TeaModel):
+    def __init__(
+        self,
+        clusters: List[str] = None,
+        items: Any = None,
+    ):
+        self.clusters = clusters
+        self.items = items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clusters is not None:
+            result['clusters'] = self.clusters
+        if self.items is not None:
+            result['items'] = self.items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusters') is not None:
+            self.clusters = m.get('clusters')
+        if m.get('items') is not None:
+            self.items = m.get('items')
+        return self
+
+
+class GetAlertStrategyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        enabled: bool = None,
+        id: int = None,
+        name: str = None,
+        strategy: GetAlertStrategyResponseBodyDataStrategy = None,
+        uid: str = None,
+        updated_at: int = None,
+    ):
+        self.created_at = created_at
+        self.enabled = enabled
+        self.id = id
+        self.name = name
+        self.strategy = strategy
+        self.uid = uid
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.strategy:
+            self.strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.strategy is not None:
+            result['strategy'] = self.strategy.to_map()
+        if self.uid is not None:
+            result['uid'] = self.uid
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('strategy') is not None:
+            temp_model = GetAlertStrategyResponseBodyDataStrategy()
+            self.strategy = temp_model.from_map(m['strategy'])
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        return self
+
+
+class GetAlertStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAlertStrategyResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            temp_model = GetAlertStrategyResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetAlertStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAlertStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAlertStrategyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5460,6 +5953,45 @@ class ListAbnormalyEventsResponseBodyDataOpts(TeaModel):
         return self
 
 
+class ListAbnormalyEventsResponseBodyDataRawMetrics(TeaModel):
+    def __init__(
+        self,
+        end_time: float = None,
+        metrics: List[str] = None,
+        start_time: float = None,
+    ):
+        self.end_time = end_time
+        self.metrics = metrics
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['end_time'] = self.end_time
+        if self.metrics is not None:
+            result['metrics'] = self.metrics
+        if self.start_time is not None:
+            result['start_time'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('end_time') is not None:
+            self.end_time = m.get('end_time')
+        if m.get('metrics') is not None:
+            self.metrics = m.get('metrics')
+        if m.get('start_time') is not None:
+            self.start_time = m.get('start_time')
+        return self
+
+
 class ListAbnormalyEventsResponseBodyData(TeaModel):
     def __init__(
         self,
@@ -5473,6 +6005,7 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
         namespace: str = None,
         opts: List[ListAbnormalyEventsResponseBodyDataOpts] = None,
         pod: str = None,
+        raw_metrics: ListAbnormalyEventsResponseBodyDataRawMetrics = None,
         region_id: str = None,
         type: str = None,
         uuid: str = None,
@@ -5487,6 +6020,7 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
         self.namespace = namespace
         self.opts = opts
         self.pod = pod
+        self.raw_metrics = raw_metrics
         self.region_id = region_id
         self.type = type
         self.uuid = uuid
@@ -5496,6 +6030,8 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
             for k in self.opts:
                 if k:
                     k.validate()
+        if self.raw_metrics:
+            self.raw_metrics.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5525,6 +6061,8 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
                 result['opts'].append(k.to_map() if k else None)
         if self.pod is not None:
             result['pod'] = self.pod
+        if self.raw_metrics is not None:
+            result['raw_metrics'] = self.raw_metrics.to_map()
         if self.region_id is not None:
             result['region_id'] = self.region_id
         if self.type is not None:
@@ -5558,6 +6096,9 @@ class ListAbnormalyEventsResponseBodyData(TeaModel):
                 self.opts.append(temp_model.from_map(k))
         if m.get('pod') is not None:
             self.pod = m.get('pod')
+        if m.get('raw_metrics') is not None:
+            temp_model = ListAbnormalyEventsResponseBodyDataRawMetrics()
+            self.raw_metrics = temp_model.from_map(m['raw_metrics'])
         if m.get('region_id') is not None:
             self.region_id = m.get('region_id')
         if m.get('type') is not None:
@@ -6156,6 +6697,743 @@ class ListAgentsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListAgentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAlertItemsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class ListAlertItemsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAlertItemsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAlertItemsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAlertStrategiesRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        max_results: int = None,
+        name: str = None,
+        next_token: str = None,
+        page_size: int = None,
+    ):
+        self.current = current
+        self.max_results = max_results
+        self.name = name
+        self.next_token = next_token
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.name is not None:
+            result['name'] = self.name
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        return self
+
+
+class ListAlertStrategiesResponseBodyDataStrategy(TeaModel):
+    def __init__(
+        self,
+        clusters: List[str] = None,
+        items: List[str] = None,
+    ):
+        self.clusters = clusters
+        self.items = items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clusters is not None:
+            result['clusters'] = self.clusters
+        if self.items is not None:
+            result['items'] = self.items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusters') is not None:
+            self.clusters = m.get('clusters')
+        if m.get('items') is not None:
+            self.items = m.get('items')
+        return self
+
+
+class ListAlertStrategiesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        enabled: bool = None,
+        id: int = None,
+        name: str = None,
+        strategy: ListAlertStrategiesResponseBodyDataStrategy = None,
+        uid: str = None,
+        updated_at: int = None,
+    ):
+        self.created_at = created_at
+        self.enabled = enabled
+        self.id = id
+        self.name = name
+        self.strategy = strategy
+        self.uid = uid
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.strategy:
+            self.strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.strategy is not None:
+            result['strategy'] = self.strategy.to_map()
+        if self.uid is not None:
+            result['uid'] = self.uid
+        if self.updated_at is not None:
+            result['updatedAt'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('strategy') is not None:
+            temp_model = ListAlertStrategiesResponseBodyDataStrategy()
+            self.strategy = temp_model.from_map(m['strategy'])
+        if m.get('uid') is not None:
+            self.uid = m.get('uid')
+        if m.get('updatedAt') is not None:
+            self.updated_at = m.get('updatedAt')
+        return self
+
+
+class ListAlertStrategiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAlertStrategiesResponseBodyData] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.message is not None:
+            result['message'] = self.message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListAlertStrategiesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAlertStrategiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAlertStrategiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAlertStrategiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAllInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        current: str = None,
+        filters: str = None,
+        instance_type: str = None,
+        managed_type: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        page_size: str = None,
+        plugin_id: str = None,
+        region: str = None,
+    ):
+        self.current = current
+        self.filters = filters
+        self.instance_type = instance_type
+        self.managed_type = managed_type
+        self.max_results = max_results
+        self.next_token = next_token
+        self.page_size = page_size
+        self.plugin_id = plugin_id
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['current'] = self.current
+        if self.filters is not None:
+            result['filters'] = self.filters
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.managed_type is not None:
+            result['managedType'] = self.managed_type
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.plugin_id is not None:
+            result['pluginId'] = self.plugin_id
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('current') is not None:
+            self.current = m.get('current')
+        if m.get('filters') is not None:
+            self.filters = m.get('filters')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('managedType') is not None:
+            self.managed_type = m.get('managedType')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('pluginId') is not None:
+            self.plugin_id = m.get('pluginId')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class ListAllInstancesResponseBodyDataAttributes(TeaModel):
+    def __init__(
+        self,
+        info_key: str = None,
+        info_type: str = None,
+        info_value: str = None,
+    ):
+        self.info_key = info_key
+        self.info_type = info_type
+        self.info_value = info_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.info_key is not None:
+            result['infoKey'] = self.info_key
+        if self.info_type is not None:
+            result['infoType'] = self.info_type
+        if self.info_value is not None:
+            result['infoValue'] = self.info_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('infoKey') is not None:
+            self.info_key = m.get('infoKey')
+        if m.get('infoType') is not None:
+            self.info_type = m.get('infoType')
+        if m.get('infoValue') is not None:
+            self.info_value = m.get('infoValue')
+        return self
+
+
+class ListAllInstancesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        agent_config_id: str = None,
+        agent_config_name: str = None,
+        attributes: List[ListAllInstancesResponseBodyDataAttributes] = None,
+        cluster_id: str = None,
+        cluster_name: str = None,
+        image_id: str = None,
+        install_level: str = None,
+        install_type: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        kernel_version: str = None,
+        manage_level: str = None,
+        manage_type: str = None,
+        os_arch: str = None,
+        os_health_score: int = None,
+        os_name: str = None,
+        private_ip: str = None,
+        public_ip: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+        status: str = None,
+    ):
+        self.agent_config_id = agent_config_id
+        self.agent_config_name = agent_config_name
+        self.attributes = attributes
+        self.cluster_id = cluster_id
+        self.cluster_name = cluster_name
+        self.image_id = image_id
+        self.install_level = install_level
+        self.install_type = install_type
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.kernel_version = kernel_version
+        self.manage_level = manage_level
+        self.manage_type = manage_type
+        self.os_arch = os_arch
+        self.os_health_score = os_health_score
+        self.os_name = os_name
+        self.private_ip = private_ip
+        self.public_ip = public_ip
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+        self.status = status
+
+    def validate(self):
+        if self.attributes:
+            for k in self.attributes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_config_id is not None:
+            result['agentConfigId'] = self.agent_config_id
+        if self.agent_config_name is not None:
+            result['agentConfigName'] = self.agent_config_name
+        result['attributes'] = []
+        if self.attributes is not None:
+            for k in self.attributes:
+                result['attributes'].append(k.to_map() if k else None)
+        if self.cluster_id is not None:
+            result['clusterId'] = self.cluster_id
+        if self.cluster_name is not None:
+            result['clusterName'] = self.cluster_name
+        if self.image_id is not None:
+            result['imageId'] = self.image_id
+        if self.install_level is not None:
+            result['installLevel'] = self.install_level
+        if self.install_type is not None:
+            result['installType'] = self.install_type
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['instanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['instanceType'] = self.instance_type
+        if self.kernel_version is not None:
+            result['kernelVersion'] = self.kernel_version
+        if self.manage_level is not None:
+            result['manageLevel'] = self.manage_level
+        if self.manage_type is not None:
+            result['manageType'] = self.manage_type
+        if self.os_arch is not None:
+            result['osArch'] = self.os_arch
+        if self.os_health_score is not None:
+            result['osHealthScore'] = self.os_health_score
+        if self.os_name is not None:
+            result['osName'] = self.os_name
+        if self.private_ip is not None:
+            result['privateIp'] = self.private_ip
+        if self.public_ip is not None:
+            result['publicIp'] = self.public_ip
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['resourceGroupName'] = self.resource_group_name
+        if self.status is not None:
+            result['status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentConfigId') is not None:
+            self.agent_config_id = m.get('agentConfigId')
+        if m.get('agentConfigName') is not None:
+            self.agent_config_name = m.get('agentConfigName')
+        self.attributes = []
+        if m.get('attributes') is not None:
+            for k in m.get('attributes'):
+                temp_model = ListAllInstancesResponseBodyDataAttributes()
+                self.attributes.append(temp_model.from_map(k))
+        if m.get('clusterId') is not None:
+            self.cluster_id = m.get('clusterId')
+        if m.get('clusterName') is not None:
+            self.cluster_name = m.get('clusterName')
+        if m.get('imageId') is not None:
+            self.image_id = m.get('imageId')
+        if m.get('installLevel') is not None:
+            self.install_level = m.get('installLevel')
+        if m.get('installType') is not None:
+            self.install_type = m.get('installType')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('instanceName') is not None:
+            self.instance_name = m.get('instanceName')
+        if m.get('instanceType') is not None:
+            self.instance_type = m.get('instanceType')
+        if m.get('kernelVersion') is not None:
+            self.kernel_version = m.get('kernelVersion')
+        if m.get('manageLevel') is not None:
+            self.manage_level = m.get('manageLevel')
+        if m.get('manageType') is not None:
+            self.manage_type = m.get('manageType')
+        if m.get('osArch') is not None:
+            self.os_arch = m.get('osArch')
+        if m.get('osHealthScore') is not None:
+            self.os_health_score = m.get('osHealthScore')
+        if m.get('osName') is not None:
+            self.os_name = m.get('osName')
+        if m.get('privateIp') is not None:
+            self.private_ip = m.get('privateIp')
+        if m.get('publicIp') is not None:
+            self.public_ip = m.get('publicIp')
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+        if m.get('resourceGroupName') is not None:
+            self.resource_group_name = m.get('resourceGroupName')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        return self
+
+
+class ListAllInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListAllInstancesResponseBodyData] = None,
+        max_results: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.data = data
+        self.max_results = max_results
+        self.message = message
+        self.next_token = next_token
+        # Id of the request
+        self.request_id = request_id
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        result['data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['data'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.message is not None:
+            result['message'] = self.message
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        self.data = []
+        if m.get('data') is not None:
+            for k in m.get('data'):
+                temp_model = ListAllInstancesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListAllInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAllInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAllInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9544,6 +10822,297 @@ class UninstallAgentForClusterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UninstallAgentForClusterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAlertEnabledRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+    ):
+        self.enabled = enabled
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.id is not None:
+            result['id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        return self
+
+
+class UpdateAlertEnabledResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateAlertEnabledResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAlertEnabledResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAlertEnabledResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAlertStrategyRequestStrategy(TeaModel):
+    def __init__(
+        self,
+        clusters: List[str] = None,
+        items: List[str] = None,
+    ):
+        self.clusters = clusters
+        self.items = items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.clusters is not None:
+            result['clusters'] = self.clusters
+        if self.items is not None:
+            result['items'] = self.items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('clusters') is not None:
+            self.clusters = m.get('clusters')
+        if m.get('items') is not None:
+            self.items = m.get('items')
+        return self
+
+
+class UpdateAlertStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        id: int = None,
+        name: str = None,
+        strategy: UpdateAlertStrategyRequestStrategy = None,
+    ):
+        # This parameter is required.
+        self.enabled = enabled
+        # This parameter is required.
+        self.id = id
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.strategy = strategy
+
+    def validate(self):
+        if self.strategy:
+            self.strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+        if self.id is not None:
+            result['id'] = self.id
+        if self.name is not None:
+            result['name'] = self.name
+        if self.strategy is not None:
+            result['strategy'] = self.strategy.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('strategy') is not None:
+            temp_model = UpdateAlertStrategyRequestStrategy()
+            self.strategy = temp_model.from_map(m['strategy'])
+        return self
+
+
+class UpdateAlertStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.data is not None:
+            result['data'] = self.data
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class UpdateAlertStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAlertStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAlertStrategyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
