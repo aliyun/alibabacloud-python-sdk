@@ -2208,6 +2208,7 @@ class CreateGatewayRequest(TeaModel):
         charge_type: str = None,
         enable_internet: bool = None,
         enable_intranet: bool = None,
+        gateway_type: str = None,
         instance_type: str = None,
         name: str = None,
         replicas: int = None,
@@ -2238,14 +2239,13 @@ class CreateGatewayRequest(TeaModel):
         # *   true
         # *   false
         self.enable_intranet = enable_intranet
+        self.gateway_type = gateway_type
         # The instance type used by the private gateway. Valid values:
         # 
         # *   2c4g
         # *   4c8g
         # *   8c16g
         # *   16c32g
-        # 
-        # This parameter is required.
         self.instance_type = instance_type
         # The alias of the private gateway.
         self.name = name
@@ -2271,6 +2271,8 @@ class CreateGatewayRequest(TeaModel):
             result['EnableInternet'] = self.enable_internet
         if self.enable_intranet is not None:
             result['EnableIntranet'] = self.enable_intranet
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.name is not None:
@@ -2291,6 +2293,8 @@ class CreateGatewayRequest(TeaModel):
             self.enable_internet = m.get('EnableInternet')
         if m.get('EnableIntranet') is not None:
             self.enable_intranet = m.get('EnableIntranet')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('Name') is not None:
@@ -6561,6 +6565,7 @@ class DescribeGatewayResponseBody(TeaModel):
         internet_enabled: bool = None,
         internet_status: str = None,
         intranet_domain: str = None,
+        intranet_enabled: bool = None,
         is_default: bool = None,
         replicas: int = None,
         request_id: str = None,
@@ -6602,6 +6607,7 @@ class DescribeGatewayResponseBody(TeaModel):
         self.internet_status = internet_status
         # The internal endpoint.
         self.intranet_domain = intranet_domain
+        self.intranet_enabled = intranet_enabled
         # Indicates whether it is the default private gateway.
         self.is_default = is_default
         # The number of nodes in the private gateway.
@@ -6654,6 +6660,8 @@ class DescribeGatewayResponseBody(TeaModel):
             result['InternetStatus'] = self.internet_status
         if self.intranet_domain is not None:
             result['IntranetDomain'] = self.intranet_domain
+        if self.intranet_enabled is not None:
+            result['IntranetEnabled'] = self.intranet_enabled
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.replicas is not None:
@@ -6690,6 +6698,8 @@ class DescribeGatewayResponseBody(TeaModel):
             self.internet_status = m.get('InternetStatus')
         if m.get('IntranetDomain') is not None:
             self.intranet_domain = m.get('IntranetDomain')
+        if m.get('IntranetEnabled') is not None:
+            self.intranet_enabled = m.get('IntranetEnabled')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Replicas') is not None:
@@ -10518,22 +10528,34 @@ class ListBenchmarkTaskResponse(TeaModel):
 class ListGatewayRequest(TeaModel):
     def __init__(
         self,
+        charge_type: str = None,
         gateway_id: str = None,
         gateway_name: str = None,
+        gateway_type: str = None,
+        internet_enabled: bool = None,
+        order: str = None,
         page_number: int = None,
         page_size: int = None,
         resource_name: str = None,
+        sort: str = None,
+        status: str = None,
     ):
+        self.charge_type = charge_type
         # The private gateway ID. To obtain the private gateway ID, see the private_gateway_id parameter in the response parameters of the ListResources operation.
         self.gateway_id = gateway_id
         # The private gateway alias.
         self.gateway_name = gateway_name
+        self.gateway_type = gateway_type
+        self.internet_enabled = internet_enabled
+        self.order = order
         # The page number. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
         # The ID of the resource group. To obtain a resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
         self.resource_name = resource_name
+        self.sort = sort
+        self.status = status
 
     def validate(self):
         pass
@@ -10544,30 +10566,54 @@ class ListGatewayRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.charge_type is not None:
+            result['ChargeType'] = self.charge_type
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
         if self.gateway_name is not None:
             result['GatewayName'] = self.gateway_name
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+        if self.internet_enabled is not None:
+            result['InternetEnabled'] = self.internet_enabled
+        if self.order is not None:
+            result['Order'] = self.order
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.status is not None:
+            result['Status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChargeType') is not None:
+            self.charge_type = m.get('ChargeType')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
         if m.get('GatewayName') is not None:
             self.gateway_name = m.get('GatewayName')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
+        if m.get('InternetEnabled') is not None:
+            self.internet_enabled = m.get('InternetEnabled')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -10582,6 +10628,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         internet_domain: str = None,
         internet_enabled: bool = None,
         intranet_domain: str = None,
+        intranet_enabled: bool = None,
         is_default: bool = None,
         replicas: int = None,
         sslredirection_enabled: bool = None,
@@ -10607,6 +10654,7 @@ class ListGatewayResponseBodyGateways(TeaModel):
         self.internet_enabled = internet_enabled
         # The internal endpoint.
         self.intranet_domain = intranet_domain
+        self.intranet_enabled = intranet_enabled
         # Indicates whether it is the default private gateway.
         self.is_default = is_default
         # The number of nodes in the private gateway.
@@ -10653,6 +10701,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
             result['InternetEnabled'] = self.internet_enabled
         if self.intranet_domain is not None:
             result['IntranetDomain'] = self.intranet_domain
+        if self.intranet_enabled is not None:
+            result['IntranetEnabled'] = self.intranet_enabled
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
         if self.replicas is not None:
@@ -10683,6 +10733,8 @@ class ListGatewayResponseBodyGateways(TeaModel):
             self.internet_enabled = m.get('InternetEnabled')
         if m.get('IntranetDomain') is not None:
             self.intranet_domain = m.get('IntranetDomain')
+        if m.get('IntranetEnabled') is not None:
+            self.intranet_enabled = m.get('IntranetEnabled')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
         if m.get('Replicas') is not None:
@@ -15481,6 +15533,8 @@ class UpdateGatewayRequest(TeaModel):
         is_default: bool = None,
         name: str = None,
         replicas: int = None,
+        v_switch_ids: List[str] = None,
+        vpc_id: str = None,
     ):
         # Specifies whether to enable Internet access. Default value: false.
         # 
@@ -15511,6 +15565,8 @@ class UpdateGatewayRequest(TeaModel):
         self.name = name
         # The number of nodes in the private gateway.
         self.replicas = replicas
+        self.v_switch_ids = v_switch_ids
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -15535,6 +15591,10 @@ class UpdateGatewayRequest(TeaModel):
             result['Name'] = self.name
         if self.replicas is not None:
             result['Replicas'] = self.replicas
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -15553,6 +15613,10 @@ class UpdateGatewayRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 

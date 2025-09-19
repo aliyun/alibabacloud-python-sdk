@@ -1,3 +1,17 @@
+2025-09-19 Version: 6.8.7
+- Update API CreateGateway: add request parameters body.GatewayType.
+- Update API DescribeGateway: add response parameters Body.IntranetEnabled.
+- Update API ListGateway: add request parameters ChargeType.
+- Update API ListGateway: add request parameters GatewayType.
+- Update API ListGateway: add request parameters InternetEnabled.
+- Update API ListGateway: add request parameters Order.
+- Update API ListGateway: add request parameters Sort.
+- Update API ListGateway: add request parameters Status.
+- Update API ListGateway: add response parameters Body.Gateways.$.IntranetEnabled.
+- Update API UpdateGateway: add request parameters body.VSwitchIds.
+- Update API UpdateGateway: add request parameters body.VpcId.
+
+
 2025-09-12 Version: 6.8.6
 - Update API ListServiceInstances: add request parameters MemberType.
 - Update API UpdateService: add request parameters MemberToUpdate.

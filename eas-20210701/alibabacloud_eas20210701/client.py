@@ -779,6 +779,8 @@ class Client(OpenApiClient):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
             body['EnableIntranet'] = request.enable_intranet
+        if not UtilClient.is_unset(request.gateway_type):
+            body['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):
@@ -833,6 +835,8 @@ class Client(OpenApiClient):
             body['EnableInternet'] = request.enable_internet
         if not UtilClient.is_unset(request.enable_intranet):
             body['EnableIntranet'] = request.enable_intranet
+        if not UtilClient.is_unset(request.gateway_type):
+            body['GatewayType'] = request.gateway_type
         if not UtilClient.is_unset(request.instance_type):
             body['InstanceType'] = request.instance_type
         if not UtilClient.is_unset(request.name):
@@ -6630,16 +6634,28 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_name):
             query['GatewayName'] = request.gateway_name
+        if not UtilClient.is_unset(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.internet_enabled):
+            query['InternetEnabled'] = request.internet_enabled
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -6676,16 +6692,28 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.charge_type):
+            query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.gateway_id):
             query['GatewayId'] = request.gateway_id
         if not UtilClient.is_unset(request.gateway_name):
             query['GatewayName'] = request.gateway_name
+        if not UtilClient.is_unset(request.gateway_type):
+            query['GatewayType'] = request.gateway_type
+        if not UtilClient.is_unset(request.internet_enabled):
+            query['InternetEnabled'] = request.internet_enabled
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
+        if not UtilClient.is_unset(request.sort):
+            query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -9558,6 +9586,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.replicas):
             body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.v_switch_ids):
+            body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -9610,6 +9642,10 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.replicas):
             body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.v_switch_ids):
+            body['VSwitchIds'] = request.v_switch_ids
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
