@@ -1,3 +1,14 @@
+2025-09-19 Version: 2.5.0
+- Support API BindAppDomain.
+- Support API DeleteAppDomainCertificate.
+- Support API DeleteAppDomainRedirect.
+- Support API DescribeAppDomainDnsRecord.
+- Support API ListAppDomainRedirectRecords.
+- Support API ListAppInstanceDomains.
+- Support API SetAppDomainCertificate.
+- Support API UnbindAppDomain.
+
+
 2025-09-12 Version: 2.4.0
 - Support API GetDomainInfoForPartner.
 

@@ -41,6 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def bind_app_domain_with_options(
+        self,
+        request: website_build_20250429_models.BindAppDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.BindAppDomainResponse:
+        """
+        @summary 绑定应用域名
+        
+        @param request: BindAppDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAppDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAppDomain',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.BindAppDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_app_domain_with_options_async(
+        self,
+        request: website_build_20250429_models.BindAppDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.BindAppDomainResponse:
+        """
+        @summary 绑定应用域名
+        
+        @param request: BindAppDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindAppDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.extend):
+            query['Extend'] = request.extend
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindAppDomain',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.BindAppDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_app_domain(
+        self,
+        request: website_build_20250429_models.BindAppDomainRequest,
+    ) -> website_build_20250429_models.BindAppDomainResponse:
+        """
+        @summary 绑定应用域名
+        
+        @param request: BindAppDomainRequest
+        @return: BindAppDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_app_domain_with_options(request, runtime)
+
+    async def bind_app_domain_async(
+        self,
+        request: website_build_20250429_models.BindAppDomainRequest,
+    ) -> website_build_20250429_models.BindAppDomainResponse:
+        """
+        @summary 绑定应用域名
+        
+        @param request: BindAppDomainRequest
+        @return: BindAppDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_app_domain_with_options_async(request, runtime)
+
     def create_logo_task_with_options(
         self,
         request: website_build_20250429_models.CreateLogoTaskRequest,
@@ -148,6 +256,310 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_logo_task_with_options_async(request, runtime)
+
+    def delete_app_domain_certificate_with_options(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DeleteAppDomainCertificateResponse:
+        """
+        @summary 删除域名的SSL证书
+        
+        @param request: DeleteAppDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppDomainCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppDomainCertificate',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DeleteAppDomainCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_domain_certificate_with_options_async(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DeleteAppDomainCertificateResponse:
+        """
+        @summary 删除域名的SSL证书
+        
+        @param request: DeleteAppDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppDomainCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppDomainCertificate',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DeleteAppDomainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_domain_certificate(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainCertificateRequest,
+    ) -> website_build_20250429_models.DeleteAppDomainCertificateResponse:
+        """
+        @summary 删除域名的SSL证书
+        
+        @param request: DeleteAppDomainCertificateRequest
+        @return: DeleteAppDomainCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_domain_certificate_with_options(request, runtime)
+
+    async def delete_app_domain_certificate_async(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainCertificateRequest,
+    ) -> website_build_20250429_models.DeleteAppDomainCertificateResponse:
+        """
+        @summary 删除域名的SSL证书
+        
+        @param request: DeleteAppDomainCertificateRequest
+        @return: DeleteAppDomainCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_domain_certificate_with_options_async(request, runtime)
+
+    def delete_app_domain_redirect_with_options(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainRedirectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DeleteAppDomainRedirectResponse:
+        """
+        @summary 删除域名的跳转规则
+        
+        @param request: DeleteAppDomainRedirectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppDomainRedirectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppDomainRedirect',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DeleteAppDomainRedirectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_app_domain_redirect_with_options_async(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainRedirectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DeleteAppDomainRedirectResponse:
+        """
+        @summary 删除域名的跳转规则
+        
+        @param request: DeleteAppDomainRedirectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppDomainRedirectResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.record_id):
+            query['RecordId'] = request.record_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAppDomainRedirect',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DeleteAppDomainRedirectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_app_domain_redirect(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainRedirectRequest,
+    ) -> website_build_20250429_models.DeleteAppDomainRedirectResponse:
+        """
+        @summary 删除域名的跳转规则
+        
+        @param request: DeleteAppDomainRedirectRequest
+        @return: DeleteAppDomainRedirectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_app_domain_redirect_with_options(request, runtime)
+
+    async def delete_app_domain_redirect_async(
+        self,
+        request: website_build_20250429_models.DeleteAppDomainRedirectRequest,
+    ) -> website_build_20250429_models.DeleteAppDomainRedirectResponse:
+        """
+        @summary 删除域名的跳转规则
+        
+        @param request: DeleteAppDomainRedirectRequest
+        @return: DeleteAppDomainRedirectResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_app_domain_redirect_with_options_async(request, runtime)
+
+    def describe_app_domain_dns_record_with_options(
+        self,
+        request: website_build_20250429_models.DescribeAppDomainDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DescribeAppDomainDnsRecordResponse:
+        """
+        @summary 查询域名的DNS解析记录
+        
+        @param request: DescribeAppDomainDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppDomainDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppDomainDnsRecord',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DescribeAppDomainDnsRecordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_domain_dns_record_with_options_async(
+        self,
+        request: website_build_20250429_models.DescribeAppDomainDnsRecordRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.DescribeAppDomainDnsRecordResponse:
+        """
+        @summary 查询域名的DNS解析记录
+        
+        @param request: DescribeAppDomainDnsRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppDomainDnsRecordResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.purpose):
+            query['Purpose'] = request.purpose
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppDomainDnsRecord',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.DescribeAppDomainDnsRecordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_domain_dns_record(
+        self,
+        request: website_build_20250429_models.DescribeAppDomainDnsRecordRequest,
+    ) -> website_build_20250429_models.DescribeAppDomainDnsRecordResponse:
+        """
+        @summary 查询域名的DNS解析记录
+        
+        @param request: DescribeAppDomainDnsRecordRequest
+        @return: DescribeAppDomainDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_domain_dns_record_with_options(request, runtime)
+
+    async def describe_app_domain_dns_record_async(
+        self,
+        request: website_build_20250429_models.DescribeAppDomainDnsRecordRequest,
+    ) -> website_build_20250429_models.DescribeAppDomainDnsRecordResponse:
+        """
+        @summary 查询域名的DNS解析记录
+        
+        @param request: DescribeAppDomainDnsRecordRequest
+        @return: DescribeAppDomainDnsRecordResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_domain_dns_record_with_options_async(request, runtime)
 
     def get_create_logo_task_with_options(
         self,
@@ -561,6 +973,230 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_user_tmp_identity_for_partner_with_options_async(request, runtime)
 
+    def list_app_domain_redirect_records_with_options(
+        self,
+        request: website_build_20250429_models.ListAppDomainRedirectRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppDomainRedirectRecordsResponse:
+        """
+        @summary 查询域名的跳转规则列表
+        
+        @param request: ListAppDomainRedirectRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppDomainRedirectRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppDomainRedirectRecords',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppDomainRedirectRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_domain_redirect_records_with_options_async(
+        self,
+        request: website_build_20250429_models.ListAppDomainRedirectRecordsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppDomainRedirectRecordsResponse:
+        """
+        @summary 查询域名的跳转规则列表
+        
+        @param request: ListAppDomainRedirectRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppDomainRedirectRecordsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppDomainRedirectRecords',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppDomainRedirectRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_domain_redirect_records(
+        self,
+        request: website_build_20250429_models.ListAppDomainRedirectRecordsRequest,
+    ) -> website_build_20250429_models.ListAppDomainRedirectRecordsResponse:
+        """
+        @summary 查询域名的跳转规则列表
+        
+        @param request: ListAppDomainRedirectRecordsRequest
+        @return: ListAppDomainRedirectRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_domain_redirect_records_with_options(request, runtime)
+
+    async def list_app_domain_redirect_records_async(
+        self,
+        request: website_build_20250429_models.ListAppDomainRedirectRecordsRequest,
+    ) -> website_build_20250429_models.ListAppDomainRedirectRecordsResponse:
+        """
+        @summary 查询域名的跳转规则列表
+        
+        @param request: ListAppDomainRedirectRecordsRequest
+        @return: ListAppDomainRedirectRecordsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_domain_redirect_records_with_options_async(request, runtime)
+
+    def list_app_instance_domains_with_options(
+        self,
+        request: website_build_20250429_models.ListAppInstanceDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppInstanceDomainsResponse:
+        """
+        @summary 查询应用实例下的所有域名列表
+        
+        @param request: ListAppInstanceDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstanceDomainsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstanceDomains',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppInstanceDomainsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_instance_domains_with_options_async(
+        self,
+        request: website_build_20250429_models.ListAppInstanceDomainsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.ListAppInstanceDomainsResponse:
+        """
+        @summary 查询应用实例下的所有域名列表
+        
+        @param request: ListAppInstanceDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppInstanceDomainsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.order_type):
+            query['OrderType'] = request.order_type
+        if not UtilClient.is_unset(request.page_num):
+            query['PageNum'] = request.page_num
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAppInstanceDomains',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.ListAppInstanceDomainsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_instance_domains(
+        self,
+        request: website_build_20250429_models.ListAppInstanceDomainsRequest,
+    ) -> website_build_20250429_models.ListAppInstanceDomainsResponse:
+        """
+        @summary 查询应用实例下的所有域名列表
+        
+        @param request: ListAppInstanceDomainsRequest
+        @return: ListAppInstanceDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_app_instance_domains_with_options(request, runtime)
+
+    async def list_app_instance_domains_async(
+        self,
+        request: website_build_20250429_models.ListAppInstanceDomainsRequest,
+    ) -> website_build_20250429_models.ListAppInstanceDomainsResponse:
+        """
+        @summary 查询应用实例下的所有域名列表
+        
+        @param request: ListAppInstanceDomainsRequest
+        @return: ListAppInstanceDomainsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_app_instance_domains_with_options_async(request, runtime)
+
     def operate_app_instance_for_partner_with_options(
         self,
         request: website_build_20250429_models.OperateAppInstanceForPartnerRequest,
@@ -929,6 +1565,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.search_image_with_options_async(request, runtime)
 
+    def set_app_domain_certificate_with_options(
+        self,
+        request: website_build_20250429_models.SetAppDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SetAppDomainCertificateResponse:
+        """
+        @summary 设置域名的SSL证书
+        
+        @param request: SetAppDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAppDomainCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.public_key):
+            query['PublicKey'] = request.public_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAppDomainCertificate',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SetAppDomainCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_app_domain_certificate_with_options_async(
+        self,
+        request: website_build_20250429_models.SetAppDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.SetAppDomainCertificateResponse:
+        """
+        @summary 设置域名的SSL证书
+        
+        @param request: SetAppDomainCertificateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAppDomainCertificateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not UtilClient.is_unset(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not UtilClient.is_unset(request.public_key):
+            query['PublicKey'] = request.public_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetAppDomainCertificate',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.SetAppDomainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_app_domain_certificate(
+        self,
+        request: website_build_20250429_models.SetAppDomainCertificateRequest,
+    ) -> website_build_20250429_models.SetAppDomainCertificateResponse:
+        """
+        @summary 设置域名的SSL证书
+        
+        @param request: SetAppDomainCertificateRequest
+        @return: SetAppDomainCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.set_app_domain_certificate_with_options(request, runtime)
+
+    async def set_app_domain_certificate_async(
+        self,
+        request: website_build_20250429_models.SetAppDomainCertificateRequest,
+    ) -> website_build_20250429_models.SetAppDomainCertificateResponse:
+        """
+        @summary 设置域名的SSL证书
+        
+        @param request: SetAppDomainCertificateRequest
+        @return: SetAppDomainCertificateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.set_app_domain_certificate_with_options_async(request, runtime)
+
     def sync_app_instance_for_partner_with_options(
         self,
         tmp_req: website_build_20250429_models.SyncAppInstanceForPartnerRequest,
@@ -1048,3 +1800,103 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.sync_app_instance_for_partner_with_options_async(request, runtime)
+
+    def unbind_app_domain_with_options(
+        self,
+        request: website_build_20250429_models.UnbindAppDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.UnbindAppDomainResponse:
+        """
+        @summary 解绑应用域名
+        
+        @param request: UnbindAppDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAppDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindAppDomain',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.UnbindAppDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_app_domain_with_options_async(
+        self,
+        request: website_build_20250429_models.UnbindAppDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> website_build_20250429_models.UnbindAppDomainResponse:
+        """
+        @summary 解绑应用域名
+        
+        @param request: UnbindAppDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindAppDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindAppDomain',
+            version='2025-04-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            website_build_20250429_models.UnbindAppDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_app_domain(
+        self,
+        request: website_build_20250429_models.UnbindAppDomainRequest,
+    ) -> website_build_20250429_models.UnbindAppDomainResponse:
+        """
+        @summary 解绑应用域名
+        
+        @param request: UnbindAppDomainRequest
+        @return: UnbindAppDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_app_domain_with_options(request, runtime)
+
+    async def unbind_app_domain_async(
+        self,
+        request: website_build_20250429_models.UnbindAppDomainRequest,
+    ) -> website_build_20250429_models.UnbindAppDomainResponse:
+        """
+        @summary 解绑应用域名
+        
+        @param request: UnbindAppDomainRequest
+        @return: UnbindAppDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_app_domain_with_options_async(request, runtime)
