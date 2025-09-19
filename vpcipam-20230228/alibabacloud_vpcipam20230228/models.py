@@ -14,9 +14,8 @@ class AddIpamPoolCidrRequest(TeaModel):
         netmask_length: int = None,
         region_id: str = None,
     ):
-        # The CIDR block that you want to provision.
-        # 
-        # >  Only IPv4 CIDR blocks are supported.
+        # The CIDR block to be provisioned. 
+        # > For private top-level pools, provisioning can only be done by entering a CIDR block.
         self.cidr = cidr
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
@@ -31,6 +30,8 @@ class AddIpamPoolCidrRequest(TeaModel):
         # 
         # This parameter is required.
         self.ipam_pool_id = ipam_pool_id
+        # Provision CIDR address segments through a mask method.  
+        # > The public IPv6 top-level pool only supports provisioning via a mask.
         self.netmask_length = netmask_length
         # The ID of the region where the IPAM instance is hosted.
         # 
@@ -85,6 +86,7 @@ class AddIpamPoolCidrResponseBody(TeaModel):
         cidr: str = None,
         request_id: str = None,
     ):
+        # The successfully provisioned CIDR block.
         self.cidr = cidr
         # The request ID.
         self.request_id = request_id
@@ -807,17 +809,15 @@ class CreateIpamPoolRequest(TeaModel):
         source_ipam_pool_id: str = None,
         tag: List[CreateIpamPoolRequestTag] = None,
     ):
-        # The default network mask assigned to the IPAM pool.
+        # The default network mask assigned by the IPAM address pool.  
         # 
-        # An IPv4 mask must be **0 to 32** bits in length.
+        # > The IPv4 network mask value range is 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
         self.allocation_default_cidr_mask = allocation_default_cidr_mask
-        # The maximum network mask assigned to the IPAM pool.
-        # 
-        # An IPv4 mask must be **0 to 32** bits in length.
+        # The maximum network mask assigned by the IPAM address pool.  
+        # > The IPv4 network mask value range is **0 to 32** bits, and the IPv6 network mask value range is **0 to 128** bits.
         self.allocation_max_cidr_mask = allocation_max_cidr_mask
-        # The minimum network mask assigned to the IPAM pool.
-        # 
-        # An IPv4 mask must be **0 to 32** bits in length.
+        # The minimum network mask assigned by the IPAM address pool.  
+        # > The IPv4 network mask value range is **0 to 32** bits, and the IPv6 network mask value range is **0 to 128** bits.
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
         # Whether the pool has the auto-import feature enabled.
         self.auto_import = auto_import
@@ -830,11 +830,12 @@ class CreateIpamPoolRequest(TeaModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The IP version. Only **IPv4** is supported.
+        # IP address protocol version. Values:
+        # - **IPv4**: IPv4 protocol.
+        # - **IPv6**: IPv6 protocol.
         self.ip_version = ip_version
-        # The description of the IPAM pool.
-        # 
-        # It must be 2 to 256 characters in length. It must start with a letter, but cannot start with a `http://` or `https://`. This parameter is empty by default.
+        # Description of the IPAM address pool. 
+        # The length should be between 1 to 256 characters, and it must start with an uppercase or lowercase English letter or a Chinese character, but cannot begin with `http://` or `https://`. If left blank, the default value is empty.
         self.ipam_pool_description = ipam_pool_description
         # The name of the IPAM pool.
         # 
@@ -844,6 +845,14 @@ class CreateIpamPoolRequest(TeaModel):
         # 
         # This parameter is required.
         self.ipam_scope_id = ipam_scope_id
+        # The type of the IPv6 CIDR block of the VPC. Valid values:
+        # 
+        # *   **BGP** (default)
+        # *   **ChinaMobile**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaTelecom**\
+        # 
+        # >  If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4363,6 +4372,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         allocation_max_cidr_mask: int = None,
         allocation_min_cidr_mask: int = None,
         auto_import: bool = None,
+        cidrs: List[str] = None,
         create_time: str = None,
         has_sub_pool: bool = None,
         ip_version: str = None,
@@ -4398,6 +4408,7 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
         self.allocation_min_cidr_mask = allocation_min_cidr_mask
         # Whether the pool has the auto-import feature enabled.
         self.auto_import = auto_import
+        self.cidrs = cidrs
         # The time when the IPAM pool was created.
         self.create_time = create_time
         # Indicates whether the pool is a subpool. Valid values:
@@ -4470,6 +4481,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             result['AllocationMinCidrMask'] = self.allocation_min_cidr_mask
         if self.auto_import is not None:
             result['AutoImport'] = self.auto_import
+        if self.cidrs is not None:
+            result['Cidrs'] = self.cidrs
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.has_sub_pool is not None:
@@ -4524,6 +4537,8 @@ class ListIpamPoolsResponseBodyIpamPools(TeaModel):
             self.allocation_min_cidr_mask = m.get('AllocationMinCidrMask')
         if m.get('AutoImport') is not None:
             self.auto_import = m.get('AutoImport')
+        if m.get('Cidrs') is not None:
+            self.cidrs = m.get('Cidrs')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('HasSubPool') is not None:
