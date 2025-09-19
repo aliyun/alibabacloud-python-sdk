@@ -891,12 +891,14 @@ class ConfigL7UsKeepaliveRequest(TeaModel):
     def __init__(
         self,
         domain: str = None,
+        downstream_keepalive: str = None,
         upstream_keepalive: str = None,
     ):
         # The domain name of the website.
         # 
         # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
+        self.downstream_keepalive = downstream_keepalive
         # The settings for back-to-origin persistent connections. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
         # *   **enabled**: the switch for back-to-origin persistent connections. This field is required, and the value is of the Boolean type.
@@ -917,6 +919,8 @@ class ConfigL7UsKeepaliveRequest(TeaModel):
         result = dict()
         if self.domain is not None:
             result['Domain'] = self.domain
+        if self.downstream_keepalive is not None:
+            result['DownstreamKeepalive'] = self.downstream_keepalive
         if self.upstream_keepalive is not None:
             result['UpstreamKeepalive'] = self.upstream_keepalive
         return result
@@ -925,6 +929,8 @@ class ConfigL7UsKeepaliveRequest(TeaModel):
         m = m or dict()
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+        if m.get('DownstreamKeepalive') is not None:
+            self.downstream_keepalive = m.get('DownstreamKeepalive')
         if m.get('UpstreamKeepalive') is not None:
             self.upstream_keepalive = m.get('UpstreamKeepalive')
         return self
@@ -16386,10 +16392,12 @@ class DescribeL7UsKeepaliveRequest(TeaModel):
 class DescribeL7UsKeepaliveResponseBodyRsKeepalive(TeaModel):
     def __init__(
         self,
+        ds_keepalive_timeout: int = None,
         enabled: bool = None,
         keepalive_requests: int = None,
         keepalive_timeout: int = None,
     ):
+        self.ds_keepalive_timeout = ds_keepalive_timeout
         # Indicates whether Back-to-origin Persistent Connections is turned on. Valid values:
         # 
         # *   **true**\
@@ -16409,6 +16417,8 @@ class DescribeL7UsKeepaliveResponseBodyRsKeepalive(TeaModel):
             return _map
 
         result = dict()
+        if self.ds_keepalive_timeout is not None:
+            result['DsKeepaliveTimeout'] = self.ds_keepalive_timeout
         if self.enabled is not None:
             result['Enabled'] = self.enabled
         if self.keepalive_requests is not None:
@@ -16419,6 +16429,8 @@ class DescribeL7UsKeepaliveResponseBodyRsKeepalive(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DsKeepaliveTimeout') is not None:
+            self.ds_keepalive_timeout = m.get('DsKeepaliveTimeout')
         if m.get('Enabled') is not None:
             self.enabled = m.get('Enabled')
         if m.get('KeepaliveRequests') is not None:
@@ -26233,6 +26245,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         cc_enabled: bool = None,
         cc_rule_enabled: bool = None,
         cc_template: str = None,
+        cert_expire_time: int = None,
         cert_name: str = None,
         cert_region: str = None,
         cname: str = None,
@@ -26252,6 +26265,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         ssl_13enabled: bool = None,
         ssl_ciphers: str = None,
         ssl_protocols: str = None,
+        tls_13custom_ciphers: List[str] = None,
         user_cert_name: str = None,
         white_list: List[str] = None,
     ):
@@ -26274,6 +26288,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         # *   **gf_sos_verify**: the Strict mode
         # *   **gf_sos_verify**: the Super Strict mode
         self.cc_template = cc_template
+        self.cert_expire_time = cert_expire_time
         # The name of the SSL certificate.
         self.cert_name = cert_name
         # The region where the certificate is used. Valid values:
@@ -26353,6 +26368,7 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
         # *   **tls1.1**: TLS 1.1 or later
         # *   **tls1.2**: TLS 1.2 or later
         self.ssl_protocols = ssl_protocols
+        self.tls_13custom_ciphers = tls_13custom_ciphers
         # The name of the certificate uploaded by the user to the certificate center.
         self.user_cert_name = user_cert_name
         # The IP addresses in the whitelist for the domain name.
@@ -26384,6 +26400,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             result['CcRuleEnabled'] = self.cc_rule_enabled
         if self.cc_template is not None:
             result['CcTemplate'] = self.cc_template
+        if self.cert_expire_time is not None:
+            result['CertExpireTime'] = self.cert_expire_time
         if self.cert_name is not None:
             result['CertName'] = self.cert_name
         if self.cert_region is not None:
@@ -26426,6 +26444,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             result['SslCiphers'] = self.ssl_ciphers
         if self.ssl_protocols is not None:
             result['SslProtocols'] = self.ssl_protocols
+        if self.tls_13custom_ciphers is not None:
+            result['Tls13CustomCiphers'] = self.tls_13custom_ciphers
         if self.user_cert_name is not None:
             result['UserCertName'] = self.user_cert_name
         if self.white_list is not None:
@@ -26442,6 +26462,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             self.cc_rule_enabled = m.get('CcRuleEnabled')
         if m.get('CcTemplate') is not None:
             self.cc_template = m.get('CcTemplate')
+        if m.get('CertExpireTime') is not None:
+            self.cert_expire_time = m.get('CertExpireTime')
         if m.get('CertName') is not None:
             self.cert_name = m.get('CertName')
         if m.get('CertRegion') is not None:
@@ -26487,6 +26509,8 @@ class DescribeWebRulesResponseBodyWebRules(TeaModel):
             self.ssl_ciphers = m.get('SslCiphers')
         if m.get('SslProtocols') is not None:
             self.ssl_protocols = m.get('SslProtocols')
+        if m.get('Tls13CustomCiphers') is not None:
+            self.tls_13custom_ciphers = m.get('Tls13CustomCiphers')
         if m.get('UserCertName') is not None:
             self.user_cert_name = m.get('UserCertName')
         if m.get('WhiteList') is not None:

@@ -821,6 +821,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.downstream_keepalive):
+            query['DownstreamKeepalive'] = request.downstream_keepalive
         if not UtilClient.is_unset(request.upstream_keepalive):
             query['UpstreamKeepalive'] = request.upstream_keepalive
         req = open_api_models.OpenApiRequest(
@@ -858,6 +860,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.domain):
             query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.downstream_keepalive):
+            query['DownstreamKeepalive'] = request.downstream_keepalive
         if not UtilClient.is_unset(request.upstream_keepalive):
             query['UpstreamKeepalive'] = request.upstream_keepalive
         req = open_api_models.OpenApiRequest(
