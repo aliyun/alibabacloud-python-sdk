@@ -2512,6 +2512,9 @@ class MassPushRequestPushTask(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_private_content_parameters: Dict[str, str] = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters: Dict[str, str] = None,
         android_popup_activity: str = None,
         android_popup_body: str = None,
         android_popup_title: str = None,
@@ -2557,9 +2560,6 @@ class MassPushRequestPushTask(TeaModel):
         target_value: str = None,
         title: str = None,
         trim: bool = None,
-        android_oppo_private_content_parameters: Dict[str, str] = None,
-        android_oppo_private_msg_template_id: str = None,
-        android_oppo_private_title_parameters: Dict[str, str] = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
@@ -2616,6 +2616,9 @@ class MassPushRequestPushTask(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.android_popup_activity = android_popup_activity
         self.android_popup_body = android_popup_body
         self.android_popup_title = android_popup_title
@@ -2665,9 +2668,6 @@ class MassPushRequestPushTask(TeaModel):
         self.target_value = target_value
         self.title = title
         self.trim = trim
-        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
-        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
-        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
@@ -2766,6 +2766,12 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_private_content_parameters is not None:
+            result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
+        if self.android_oppo_private_msg_template_id is not None:
+            result['AndroidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters is not None:
+            result['AndroidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.android_popup_activity is not None:
             result['AndroidPopupActivity'] = self.android_popup_activity
         if self.android_popup_body is not None:
@@ -2856,12 +2862,6 @@ class MassPushRequestPushTask(TeaModel):
             result['Title'] = self.title
         if self.trim is not None:
             result['Trim'] = self.trim
-        if self.android_oppo_private_content_parameters is not None:
-            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
-        if self.android_oppo_private_msg_template_id is not None:
-            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
-        if self.android_oppo_private_title_parameters is not None:
-            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -2976,6 +2976,12 @@ class MassPushRequestPushTask(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters = m.get('AndroidOppoPrivateContentParameters')
+        if m.get('AndroidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('AndroidOppoPrivateMsgTemplateId')
+        if m.get('AndroidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters = m.get('AndroidOppoPrivateTitleParameters')
         if m.get('AndroidPopupActivity') is not None:
             self.android_popup_activity = m.get('AndroidPopupActivity')
         if m.get('AndroidPopupBody') is not None:
@@ -3066,12 +3072,6 @@ class MassPushRequestPushTask(TeaModel):
             self.title = m.get('Title')
         if m.get('Trim') is not None:
             self.trim = m.get('Trim')
-        if m.get('androidOppoPrivateContentParameters') is not None:
-            self.android_oppo_private_content_parameters = m.get('androidOppoPrivateContentParameters')
-        if m.get('androidOppoPrivateMsgTemplateId') is not None:
-            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
-        if m.get('androidOppoPrivateTitleParameters') is not None:
-            self.android_oppo_private_title_parameters = m.get('androidOppoPrivateTitleParameters')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:
@@ -3307,6 +3307,9 @@ class PushRequest(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_private_content_parameters: Dict[str, str] = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters: Dict[str, str] = None,
         android_popup_activity: str = None,
         android_popup_body: str = None,
         android_popup_title: str = None,
@@ -3359,9 +3362,6 @@ class PushRequest(TeaModel):
         target_value: str = None,
         title: str = None,
         trim: bool = None,
-        android_oppo_private_content_parameters: Dict[str, str] = None,
-        android_oppo_private_msg_template_id: str = None,
-        android_oppo_private_title_parameters: Dict[str, str] = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
@@ -3418,6 +3418,9 @@ class PushRequest(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.android_popup_activity = android_popup_activity
         self.android_popup_body = android_popup_body
         self.android_popup_title = android_popup_title
@@ -3475,9 +3478,6 @@ class PushRequest(TeaModel):
         self.target_value = target_value
         self.title = title
         self.trim = trim
-        self.android_oppo_private_content_parameters = android_oppo_private_content_parameters
-        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
-        self.android_oppo_private_title_parameters = android_oppo_private_title_parameters
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
@@ -3576,6 +3576,12 @@ class PushRequest(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_private_content_parameters is not None:
+            result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
+        if self.android_oppo_private_msg_template_id is not None:
+            result['AndroidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters is not None:
+            result['AndroidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.android_popup_activity is not None:
             result['AndroidPopupActivity'] = self.android_popup_activity
         if self.android_popup_body is not None:
@@ -3680,12 +3686,6 @@ class PushRequest(TeaModel):
             result['Title'] = self.title
         if self.trim is not None:
             result['Trim'] = self.trim
-        if self.android_oppo_private_content_parameters is not None:
-            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters
-        if self.android_oppo_private_msg_template_id is not None:
-            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
-        if self.android_oppo_private_title_parameters is not None:
-            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -3800,6 +3800,12 @@ class PushRequest(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters = m.get('AndroidOppoPrivateContentParameters')
+        if m.get('AndroidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('AndroidOppoPrivateMsgTemplateId')
+        if m.get('AndroidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters = m.get('AndroidOppoPrivateTitleParameters')
         if m.get('AndroidPopupActivity') is not None:
             self.android_popup_activity = m.get('AndroidPopupActivity')
         if m.get('AndroidPopupBody') is not None:
@@ -3904,12 +3910,6 @@ class PushRequest(TeaModel):
             self.title = m.get('Title')
         if m.get('Trim') is not None:
             self.trim = m.get('Trim')
-        if m.get('androidOppoPrivateContentParameters') is not None:
-            self.android_oppo_private_content_parameters = m.get('androidOppoPrivateContentParameters')
-        if m.get('androidOppoPrivateMsgTemplateId') is not None:
-            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
-        if m.get('androidOppoPrivateTitleParameters') is not None:
-            self.android_oppo_private_title_parameters = m.get('androidOppoPrivateTitleParameters')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:
@@ -3993,6 +3993,9 @@ class PushShrinkRequest(TeaModel):
         android_notify_type: str = None,
         android_open_type: str = None,
         android_open_url: str = None,
+        android_oppo_private_content_parameters_shrink: str = None,
+        android_oppo_private_msg_template_id: str = None,
+        android_oppo_private_title_parameters_shrink: str = None,
         android_popup_activity: str = None,
         android_popup_body: str = None,
         android_popup_title: str = None,
@@ -4045,9 +4048,6 @@ class PushShrinkRequest(TeaModel):
         target_value: str = None,
         title: str = None,
         trim: bool = None,
-        android_oppo_private_content_parameters_shrink: str = None,
-        android_oppo_private_msg_template_id: str = None,
-        android_oppo_private_title_parameters_shrink: str = None,
         i_osapns_env: str = None,
         i_osbadge: int = None,
         i_osbadge_auto_increment: bool = None,
@@ -4104,6 +4104,9 @@ class PushShrinkRequest(TeaModel):
         self.android_notify_type = android_notify_type
         self.android_open_type = android_open_type
         self.android_open_url = android_open_url
+        self.android_oppo_private_content_parameters_shrink = android_oppo_private_content_parameters_shrink
+        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
+        self.android_oppo_private_title_parameters_shrink = android_oppo_private_title_parameters_shrink
         self.android_popup_activity = android_popup_activity
         self.android_popup_body = android_popup_body
         self.android_popup_title = android_popup_title
@@ -4161,9 +4164,6 @@ class PushShrinkRequest(TeaModel):
         self.target_value = target_value
         self.title = title
         self.trim = trim
-        self.android_oppo_private_content_parameters_shrink = android_oppo_private_content_parameters_shrink
-        self.android_oppo_private_msg_template_id = android_oppo_private_msg_template_id
-        self.android_oppo_private_title_parameters_shrink = android_oppo_private_title_parameters_shrink
         self.i_osapns_env = i_osapns_env
         self.i_osbadge = i_osbadge
         self.i_osbadge_auto_increment = i_osbadge_auto_increment
@@ -4262,6 +4262,12 @@ class PushShrinkRequest(TeaModel):
             result['AndroidOpenType'] = self.android_open_type
         if self.android_open_url is not None:
             result['AndroidOpenUrl'] = self.android_open_url
+        if self.android_oppo_private_content_parameters_shrink is not None:
+            result['AndroidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters_shrink
+        if self.android_oppo_private_msg_template_id is not None:
+            result['AndroidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
+        if self.android_oppo_private_title_parameters_shrink is not None:
+            result['AndroidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters_shrink
         if self.android_popup_activity is not None:
             result['AndroidPopupActivity'] = self.android_popup_activity
         if self.android_popup_body is not None:
@@ -4366,12 +4372,6 @@ class PushShrinkRequest(TeaModel):
             result['Title'] = self.title
         if self.trim is not None:
             result['Trim'] = self.trim
-        if self.android_oppo_private_content_parameters_shrink is not None:
-            result['androidOppoPrivateContentParameters'] = self.android_oppo_private_content_parameters_shrink
-        if self.android_oppo_private_msg_template_id is not None:
-            result['androidOppoPrivateMsgTemplateId'] = self.android_oppo_private_msg_template_id
-        if self.android_oppo_private_title_parameters_shrink is not None:
-            result['androidOppoPrivateTitleParameters'] = self.android_oppo_private_title_parameters_shrink
         if self.i_osapns_env is not None:
             result['iOSApnsEnv'] = self.i_osapns_env
         if self.i_osbadge is not None:
@@ -4486,6 +4486,12 @@ class PushShrinkRequest(TeaModel):
             self.android_open_type = m.get('AndroidOpenType')
         if m.get('AndroidOpenUrl') is not None:
             self.android_open_url = m.get('AndroidOpenUrl')
+        if m.get('AndroidOppoPrivateContentParameters') is not None:
+            self.android_oppo_private_content_parameters_shrink = m.get('AndroidOppoPrivateContentParameters')
+        if m.get('AndroidOppoPrivateMsgTemplateId') is not None:
+            self.android_oppo_private_msg_template_id = m.get('AndroidOppoPrivateMsgTemplateId')
+        if m.get('AndroidOppoPrivateTitleParameters') is not None:
+            self.android_oppo_private_title_parameters_shrink = m.get('AndroidOppoPrivateTitleParameters')
         if m.get('AndroidPopupActivity') is not None:
             self.android_popup_activity = m.get('AndroidPopupActivity')
         if m.get('AndroidPopupBody') is not None:
@@ -4590,12 +4596,6 @@ class PushShrinkRequest(TeaModel):
             self.title = m.get('Title')
         if m.get('Trim') is not None:
             self.trim = m.get('Trim')
-        if m.get('androidOppoPrivateContentParameters') is not None:
-            self.android_oppo_private_content_parameters_shrink = m.get('androidOppoPrivateContentParameters')
-        if m.get('androidOppoPrivateMsgTemplateId') is not None:
-            self.android_oppo_private_msg_template_id = m.get('androidOppoPrivateMsgTemplateId')
-        if m.get('androidOppoPrivateTitleParameters') is not None:
-            self.android_oppo_private_title_parameters_shrink = m.get('androidOppoPrivateTitleParameters')
         if m.get('iOSApnsEnv') is not None:
             self.i_osapns_env = m.get('iOSApnsEnv')
         if m.get('iOSBadge') is not None:

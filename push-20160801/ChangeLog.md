@@ -1,3 +1,18 @@
+2025-09-19 Version: 2.0.0
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoPrivateContentParameters.
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoPrivateMsgTemplateId.
+- Update API MassPush: add request parameters PushTask.$.AndroidOppoPrivateTitleParameters.
+- Update API MassPush: delete request parameters PushTask.$.androidOppoPrivateContentParameters.
+- Update API MassPush: delete request parameters PushTask.$.androidOppoPrivateMsgTemplateId.
+- Update API MassPush: delete request parameters PushTask.$.androidOppoPrivateTitleParameters.
+- Update API Push: add request parameters AndroidOppoPrivateContentParameters.
+- Update API Push: add request parameters AndroidOppoPrivateMsgTemplateId.
+- Update API Push: add request parameters AndroidOppoPrivateTitleParameters.
+- Update API Push: delete request parameters androidOppoPrivateContentParameters.
+- Update API Push: delete request parameters androidOppoPrivateMsgTemplateId.
+- Update API Push: delete request parameters androidOppoPrivateTitleParameters.
+
+
 2025-09-09 Version: 1.0.20
 - Update API MassPush: add request parameters PushTask.$.androidOppoPrivateContentParameters.
 - Update API MassPush: add request parameters PushTask.$.androidOppoPrivateMsgTemplateId.
