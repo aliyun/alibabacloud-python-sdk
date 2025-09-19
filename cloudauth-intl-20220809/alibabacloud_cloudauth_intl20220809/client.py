@@ -128,7 +128,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
         """
-        @summary 地址相似比对
+        @summary Address Similarity Comparison
+        
+        @description API for comparing two addresses, standardizing and checking address consistency.
         
         @param request: AddressCompareIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -169,7 +171,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
         """
-        @summary 地址相似比对
+        @summary Address Similarity Comparison
+        
+        @description API for comparing two addresses, standardizing and checking address consistency.
         
         @param request: AddressCompareIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -209,7 +213,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
         """
-        @summary 地址相似比对
+        @summary Address Similarity Comparison
+        
+        @description API for comparing two addresses, standardizing and checking address consistency.
         
         @param request: AddressCompareIntlRequest
         @return: AddressCompareIntlResponse
@@ -222,7 +228,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressCompareIntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressCompareIntlResponse:
         """
-        @summary 地址相似比对
+        @summary Address Similarity Comparison
+        
+        @description API for comparing two addresses, standardizing and checking address consistency.
         
         @param request: AddressCompareIntlRequest
         @return: AddressCompareIntlResponse
@@ -380,7 +388,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
         """
-        @summary 地址核验
+        @summary This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
         
         @param request: AddressVerifyV2IntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -425,7 +433,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
         """
-        @summary 地址核验
+        @summary This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
         
         @param request: AddressVerifyV2IntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -469,7 +477,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
         """
-        @summary 地址核验
+        @summary This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
         
         @param request: AddressVerifyV2IntlRequest
         @return: AddressVerifyV2IntlResponse
@@ -482,7 +490,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.AddressVerifyV2IntlRequest,
     ) -> cloudauth_intl_20220809_models.AddressVerifyV2IntlResponse:
         """
-        @summary 地址核验
+        @summary This topic describes the address verification API operation, which verifies the region and address of a device using device data and carrier big data capabilities.
         
         @param request: AddressVerifyV2IntlRequest
         @return: AddressVerifyV2IntlResponse
@@ -1398,7 +1406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
         """
-        @summary 人脸凭证核验
+        @summary Face Credential Verification
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
         
         @param request: DeepfakeDetectIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1445,7 +1455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
         """
-        @summary 人脸凭证核验
+        @summary Face Credential Verification
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
         
         @param request: DeepfakeDetectIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1491,7 +1503,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
         """
-        @summary 人脸凭证核验
+        @summary Face Credential Verification
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
         
         @param request: DeepfakeDetectIntlRequest
         @return: DeepfakeDetectIntlResponse
@@ -1504,7 +1518,9 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DeepfakeDetectIntlRequest,
     ) -> cloudauth_intl_20220809_models.DeepfakeDetectIntlResponse:
         """
-        @summary 人脸凭证核验
+        @summary Face Credential Verification
+        
+        @description Input a face image and use the algorithm to detect if there is a risk of deep forgery. This includes risk scenarios such as AIGC-generated faces, deepfake face swapping, template faces, and rephotographed faces, and outputs risk labels and confidence levels.
         
         @param request: DeepfakeDetectIntlRequest
         @return: DeepfakeDetectIntlResponse
@@ -1762,7 +1778,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
         """
-        @summary 全球证件ocr识别接口
+        @summary Global Document OCR Recognition Interface
         
         @param request: DocOcrMaxRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1821,7 +1837,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
         """
-        @summary 全球证件ocr识别接口
+        @summary Global Document OCR Recognition Interface
         
         @param request: DocOcrMaxRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1879,7 +1895,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
         """
-        @summary 全球证件ocr识别接口
+        @summary Global Document OCR Recognition Interface
         
         @param request: DocOcrMaxRequest
         @return: DocOcrMaxResponse
@@ -1892,7 +1908,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.DocOcrMaxRequest,
     ) -> cloudauth_intl_20220809_models.DocOcrMaxResponse:
         """
-        @summary 全球证件ocr识别接口
+        @summary Global Document OCR Recognition Interface
         
         @param request: DocOcrMaxRequest
         @return: DocOcrMaxResponse
@@ -1906,7 +1922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
         """
-        @summary ekyc纯服务端接口
+        @summary This topic describes how to integrate with ID Verification using only the server-side API.
         
         @param request: EkycVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1967,7 +1983,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
         """
-        @summary ekyc纯服务端接口
+        @summary This topic describes how to integrate with ID Verification using only the server-side API.
         
         @param request: EkycVerifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2027,7 +2043,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
         """
-        @summary ekyc纯服务端接口
+        @summary This topic describes how to integrate with ID Verification using only the server-side API.
         
         @param request: EkycVerifyRequest
         @return: EkycVerifyResponse
@@ -2040,7 +2056,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.EkycVerifyRequest,
     ) -> cloudauth_intl_20220809_models.EkycVerifyResponse:
         """
-        @summary ekyc纯服务端接口
+        @summary This topic describes how to integrate with ID Verification using only the server-side API.
         
         @param request: EkycVerifyRequest
         @return: EkycVerifyResponse
@@ -2054,7 +2070,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
         """
-        @summary 人脸比对
+        @summary This topic describes how to integrate FaceCompare using only the server-side API.
         
         @param request: FaceCompareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2101,7 +2117,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
         """
-        @summary 人脸比对
+        @summary This topic describes how to integrate FaceCompare using only the server-side API.
         
         @param request: FaceCompareRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2147,7 +2163,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
         """
-        @summary 人脸比对
+        @summary This topic describes how to integrate FaceCompare using only the server-side API.
         
         @param request: FaceCompareRequest
         @return: FaceCompareResponse
@@ -2160,7 +2176,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceCompareRequest,
     ) -> cloudauth_intl_20220809_models.FaceCompareResponse:
         """
-        @summary 人脸比对
+        @summary This topic describes how to integrate FaceCompare using only the server-side API.
         
         @param request: FaceCompareRequest
         @return: FaceCompareResponse
@@ -2174,7 +2190,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
         """
-        @summary 国际人脸保镖纯服务端接口
+        @summary This topic describes how to set up the server for FACE_GUARD.
         
         @param request: FaceGuardRiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2215,7 +2231,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
         """
-        @summary 国际人脸保镖纯服务端接口
+        @summary This topic describes how to set up the server for FACE_GUARD.
         
         @param request: FaceGuardRiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2255,7 +2271,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
     ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
         """
-        @summary 国际人脸保镖纯服务端接口
+        @summary This topic describes how to set up the server for FACE_GUARD.
         
         @param request: FaceGuardRiskRequest
         @return: FaceGuardRiskResponse
@@ -2268,7 +2284,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceGuardRiskRequest,
     ) -> cloudauth_intl_20220809_models.FaceGuardRiskResponse:
         """
-        @summary 国际人脸保镖纯服务端接口
+        @summary This topic describes how to set up the server for FACE_GUARD.
         
         @param request: FaceGuardRiskRequest
         @return: FaceGuardRiskResponse
@@ -2282,7 +2298,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
         """
-        @summary 静默活体API 纯服务端
+        @summary Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
         
         @param request: FaceLivenessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2333,7 +2349,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
         """
-        @summary 静默活体API 纯服务端
+        @summary Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
         
         @param request: FaceLivenessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2383,7 +2399,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
         """
-        @summary 静默活体API 纯服务端
+        @summary Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
         
         @param request: FaceLivenessRequest
         @return: FaceLivenessResponse
@@ -2396,7 +2412,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.FaceLivenessRequest,
     ) -> cloudauth_intl_20220809_models.FaceLivenessResponse:
         """
-        @summary 静默活体API 纯服务端
+        @summary Passive liveness detection (FaceLiveness) is a service that detects whether a pre-captured facial image, submitted to an API operation, is a real face. The algorithm primarily detects presentation attacks, such as screen replays and printed photos. This service is suitable for low-risk business scen
         
         @param request: FaceLivenessRequest
         @return: FaceLivenessResponse
@@ -2518,7 +2534,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
         """
-        @summary 身份二要素有效期核验
+        @summary This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
         
         @param request: Id2MetaPeriodVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2569,7 +2585,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
         """
-        @summary 身份二要素有效期核验
+        @summary This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
         
         @param request: Id2MetaPeriodVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2619,7 +2635,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
         """
-        @summary 身份二要素有效期核验
+        @summary This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
         
         @param request: Id2MetaPeriodVerifyIntlRequest
         @return: Id2MetaPeriodVerifyIntlResponse
@@ -2632,7 +2648,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaPeriodVerifyIntlResponse:
         """
-        @summary 身份二要素有效期核验
+        @summary This operation verifies the authenticity and consistency of a name, ID card number, and the start and end dates of the ID card\\"s validity period against an authoritative source.
         
         @param request: Id2MetaPeriodVerifyIntlRequest
         @return: Id2MetaPeriodVerifyIntlResponse
@@ -2646,7 +2662,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
         """
-        @summary 身份二要素国际版接口
+        @summary Verifies that a name and an ID card number are consistent.
         
         @param request: Id2MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2687,7 +2703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
         """
-        @summary 身份二要素国际版接口
+        @summary Verifies that a name and an ID card number are consistent.
         
         @param request: Id2MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2727,7 +2743,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
         """
-        @summary 身份二要素国际版接口
+        @summary Verifies that a name and an ID card number are consistent.
         
         @param request: Id2MetaVerifyIntlRequest
         @return: Id2MetaVerifyIntlResponse
@@ -2740,7 +2756,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
         """
-        @summary 身份二要素国际版接口
+        @summary Verifies that a name and an ID card number are consistent.
         
         @param request: Id2MetaVerifyIntlRequest
         @return: Id2MetaVerifyIntlResponse
@@ -2770,6 +2786,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.auto_registration):
+            query['AutoRegistration'] = request.auto_registration
         if not UtilClient.is_unset(request.callback_token):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
@@ -2800,8 +2818,14 @@ class Client(OpenApiClient):
             query['EditOcrResult'] = request.edit_ocr_result
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not UtilClient.is_unset(request.face_group_codes):
+            query['FaceGroupCodes'] = request.face_group_codes
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not UtilClient.is_unset(request.face_register_group_code):
+            query['FaceRegisterGroupCode'] = request.face_register_group_code
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            query['FaceVerifyThreshold'] = request.face_verify_threshold
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
         if not UtilClient.is_unset(request.id_spoof):
@@ -2830,8 +2854,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_flow):
             query['ProductFlow'] = request.product_flow
+        if not UtilClient.is_unset(request.return_faces):
+            query['ReturnFaces'] = request.return_faces
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
+        if not UtilClient.is_unset(request.save_face_picture):
+            query['SaveFacePicture'] = request.save_face_picture
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.security_level):
@@ -2844,8 +2872,14 @@ class Client(OpenApiClient):
             query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
+        if not UtilClient.is_unset(request.target_face_picture):
+            query['TargetFacePicture'] = request.target_face_picture
+        if not UtilClient.is_unset(request.target_face_picture_url):
+            query['TargetFacePictureUrl'] = request.target_face_picture_url
         if not UtilClient.is_unset(request.use_nfc):
             query['UseNFC'] = request.use_nfc
+        if not UtilClient.is_unset(request.verify_model):
+            query['VerifyModel'] = request.verify_model
         body = {}
         if not UtilClient.is_unset(request.face_picture_base_64):
             body['FacePictureBase64'] = request.face_picture_base_64
@@ -2891,6 +2925,8 @@ class Client(OpenApiClient):
             query['AppQualityCheck'] = request.app_quality_check
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.auto_registration):
+            query['AutoRegistration'] = request.auto_registration
         if not UtilClient.is_unset(request.callback_token):
             query['CallbackToken'] = request.callback_token
         if not UtilClient.is_unset(request.callback_url):
@@ -2921,8 +2957,14 @@ class Client(OpenApiClient):
             query['EditOcrResult'] = request.edit_ocr_result
         if not UtilClient.is_unset(request.experience_code):
             query['ExperienceCode'] = request.experience_code
+        if not UtilClient.is_unset(request.face_group_codes):
+            query['FaceGroupCodes'] = request.face_group_codes
         if not UtilClient.is_unset(request.face_picture_url):
             query['FacePictureUrl'] = request.face_picture_url
+        if not UtilClient.is_unset(request.face_register_group_code):
+            query['FaceRegisterGroupCode'] = request.face_register_group_code
+        if not UtilClient.is_unset(request.face_verify_threshold):
+            query['FaceVerifyThreshold'] = request.face_verify_threshold
         if not UtilClient.is_unset(request.id_face_quality):
             query['IdFaceQuality'] = request.id_face_quality
         if not UtilClient.is_unset(request.id_spoof):
@@ -2951,8 +2993,12 @@ class Client(OpenApiClient):
             query['ProductCode'] = request.product_code
         if not UtilClient.is_unset(request.product_flow):
             query['ProductFlow'] = request.product_flow
+        if not UtilClient.is_unset(request.return_faces):
+            query['ReturnFaces'] = request.return_faces
         if not UtilClient.is_unset(request.return_url):
             query['ReturnUrl'] = request.return_url
+        if not UtilClient.is_unset(request.save_face_picture):
+            query['SaveFacePicture'] = request.save_face_picture
         if not UtilClient.is_unset(request.scene_code):
             query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.security_level):
@@ -2965,8 +3011,14 @@ class Client(OpenApiClient):
             query['ShowOcrResult'] = request.show_ocr_result
         if not UtilClient.is_unset(request.style_config):
             query['StyleConfig'] = request.style_config
+        if not UtilClient.is_unset(request.target_face_picture):
+            query['TargetFacePicture'] = request.target_face_picture
+        if not UtilClient.is_unset(request.target_face_picture_url):
+            query['TargetFacePictureUrl'] = request.target_face_picture_url
         if not UtilClient.is_unset(request.use_nfc):
             query['UseNFC'] = request.use_nfc
+        if not UtilClient.is_unset(request.verify_model):
+            query['VerifyModel'] = request.verify_model
         body = {}
         if not UtilClient.is_unset(request.face_picture_base_64):
             body['FacePictureBase64'] = request.face_picture_base_64
@@ -3021,7 +3073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
         """
-        @summary 客户端连接保持
+        @summary If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
         
         @param request: KeepaliveIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3049,7 +3101,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
         """
-        @summary 客户端连接保持
+        @summary If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
         
         @param request: KeepaliveIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3074,7 +3126,7 @@ class Client(OpenApiClient):
 
     def keepalive_intl(self) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
         """
-        @summary 客户端连接保持
+        @summary If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
         
         @return: KeepaliveIntlResponse
         """
@@ -3083,7 +3135,7 @@ class Client(OpenApiClient):
 
     async def keepalive_intl_async(self) -> cloudauth_intl_20220809_models.KeepaliveIntlResponse:
         """
-        @summary 客户端连接保持
+        @summary If your server makes infrequent calls to the ID Verification API, you can call the KeepaliveIntl operation to maintain the client connection.
         
         @return: KeepaliveIntlResponse
         """
@@ -3096,7 +3148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
         """
-        @summary 手机号二要素核验API
+        @summary Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
         
         @param request: Mobile2MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3137,7 +3189,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
         """
-        @summary 手机号二要素核验API
+        @summary Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
         
         @param request: Mobile2MetaVerifyIntlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3177,7 +3229,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
         """
-        @summary 手机号二要素核验API
+        @summary Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
         
         @param request: Mobile2MetaVerifyIntlRequest
         @return: Mobile2MetaVerifyIntlResponse
@@ -3190,7 +3242,7 @@ class Client(OpenApiClient):
         request: cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlRequest,
     ) -> cloudauth_intl_20220809_models.Mobile2MetaVerifyIntlResponse:
         """
-        @summary 手机号二要素核验API
+        @summary Verifies the authenticity and consistency of a mobile number and name against an authoritative data source.
         
         @param request: Mobile2MetaVerifyIntlRequest
         @return: Mobile2MetaVerifyIntlResponse

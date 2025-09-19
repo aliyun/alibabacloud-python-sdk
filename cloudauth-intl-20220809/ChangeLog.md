@@ -1,3 +1,15 @@
+2025-09-19 Version: 3.12.2
+- Update API Initialize: add request parameters AutoRegistration.
+- Update API Initialize: add request parameters FaceGroupCodes.
+- Update API Initialize: add request parameters FaceRegisterGroupCode.
+- Update API Initialize: add request parameters FaceVerifyThreshold.
+- Update API Initialize: add request parameters ReturnFaces.
+- Update API Initialize: add request parameters SaveFacePicture.
+- Update API Initialize: add request parameters TargetFacePicture.
+- Update API Initialize: add request parameters TargetFacePictureUrl.
+- Update API Initialize: add request parameters VerifyModel.
+
+
 2025-09-18 Version: 3.12.1
 - Update API FaceCompare: add request parameters FacePictureQualityCheck.
 

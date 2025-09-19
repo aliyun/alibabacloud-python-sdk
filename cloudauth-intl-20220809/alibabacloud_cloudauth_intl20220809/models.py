@@ -12,14 +12,21 @@ class AddressCompareIntlRequest(TeaModel):
         text_1: str = None,
         text_2: str = None,
     ):
+        # Country name
+        # - China
+        # 
         # This parameter is required.
         self.default_country = default_country
         # ADD_VERIFY
         # 
         # This parameter is required.
         self.product_code = product_code
+        # Address 1
+        # 
         # This parameter is required.
         self.text_1 = text_1
+        # Address 2
+        # 
         # This parameter is required.
         self.text_2 = text_2
 
@@ -60,6 +67,16 @@ class AddressCompareIntlResponseBodyResult(TeaModel):
         self,
         data: str = None,
     ):
+        # The values of sameLevel include:
+        # - all: Exactly the same
+        # - prov: Provincial level
+        # - city: City level
+        # - district: District level
+        # - town: Town level
+        # - road: Road level
+        # - roadno: Road number
+        # - poi: Point of interest (e.g., residential area)
+        # - roomno: Room number
         self.data = data
 
     def validate(self):
@@ -90,9 +107,13 @@ class AddressCompareIntlResponseBody(TeaModel):
         request_id: str = None,
         result: AddressCompareIntlResponseBodyResult = None,
     ):
+        # Return code.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result = result
 
     def validate(self):
@@ -445,14 +466,27 @@ class AddressVerifyV2IntlRequest(TeaModel):
         text: str = None,
         verify_type: str = None,
     ):
+        # DeviceToken obtained via the client SDK
+        # 
         # This parameter is required.
         self.device_token = device_token
+        # Supported: Chinese mobile phone numbers
         self.mobile = mobile
+        # Fixed value: ADD_VERIFY_PRO
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # List of prohibited countries or regions
+        # 
         # This parameter is required.
         self.reg_country = reg_country
+        # Detailed address text content
         self.text = text
+        # Address verification method:
+        # 
+        # - **HOME**: Home address verification
+        # 
+        # - **WORK**: Work address verification
         self.verify_type = verify_type
 
     def validate(self):
@@ -502,8 +536,30 @@ class AddressVerifyV2IntlResponseBodyResult(TeaModel):
         detail: str = None,
         transaction_id: str = None,
     ):
+        # The verification result. Valid values:
+        # 
+        # - **1**: Passed (billed)
+        # - **2**: Failed (The device is in a prohibited region) (billed)
+        # - **3**: Unknown (billed)
         self.biz_code = biz_code
+        # Verification details, including：
+        # 
+        # - **DistanceRange**：Position rang：[DistanceRange description](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i27#ee274c08976er)。
+        # > If the input phone number or address is empty, or if no carrier information is found, this field will not be returned.
+        # 
+        # - **IspName**: The carrier name:
+        #    - **CMCC**: China Mobile
+        #    - **CTCC**: China Telecom
+        #    - **CUCC**: China Unicom
+        # > This parameter is not returned if the mobile phone number or address is empty in the request, or if carrier information is not found.
+        # 
+        # - **PhoneStatus**: The status of the mobile phone:
+        #   - **0**: Abnormal
+        #   - **1**: Normal
+        # 
+        # > This parameter is not returned if the mobile phone number is empty in the request.
         self.detail = detail
+        # The transaction ID
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -542,10 +598,13 @@ class AddressVerifyV2IntlResponseBody(TeaModel):
         request_id: str = None,
         result: AddressVerifyV2IntlResponseBodyResult = None,
     ):
+        # [Return Code](https://www.alibabacloud.com/help/zh/ekyc/latest/add-verify-pro-api?spm=a2c63.p38356.0.i4#ae60001a3804w)
         self.code = code
+        # Detailed description of the return code
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Result object
         self.result = result
 
     def validate(self):
@@ -1443,9 +1502,27 @@ class CheckVerifyLogResponseBodyResult(TeaModel):
         # - Liveness detection retry
         # - Liveness detection loading
         self.interrupt_page = interrupt_page
+        # The page where the authentication process stops. Possible English values:
+        # 
+        # The following are the values in an unordered list:
+        # 
+        # - LOADING
+        # 
+        # - GUIDE
+        # 
+        # - FACE
+        # 
+        # - OCR_SCAN
+        # 
+        # - OCR_RESULT
+        # 
+        # - NFC_INPUT
+        # 
+        # - NFC_READ
         self.interrupt_page_en = interrupt_page_en
         # SDK operation log details
         self.log_info = log_info
+        # SDK Operation Log Details (English Version)
         self.log_info_en = log_info_en
         # SDK operation log statistics details
         self.log_statistics_info = log_statistics_info
@@ -2132,13 +2209,23 @@ class DeepfakeDetectIntlRequest(TeaModel):
         product_code: str = None,
         scene_code: str = None,
     ):
+        # Input the Base64 encoded format of the face image.
+        # > Choose one of FaceUrl or FaceBase64 to input.
         self.face_base_64 = face_base_64
+        # Input **IMAGE**, indicating a face image.
         self.face_input_type = face_input_type
+        # Input the URL address of the face image.
+        # > Choose one of FaceUrl or FaceBase64 to input.
         self.face_url = face_url
+        # A unique identifier for the merchant\\"s request, consisting of a 32-character alphanumeric combination. The first few characters are composed of a custom abbreviation defined by the merchant, the middle part can include a period of time, and the latter part can use a random or incremental sequence.
+        # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
+        # The product solution to be integrated. Value: **FACE_DEEPFAKE**.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # Your custom authentication scenario ID, used for querying related records by entering this scenario ID in the console later. Supports a combination of 10 characters, including letters, numbers, or underscores.
         self.scene_code = scene_code
 
     def validate(self):
@@ -2188,8 +2275,22 @@ class DeepfakeDetectIntlResponseBodyResultObject(TeaModel):
         risk_score: Dict[str, str] = None,
         risk_tag: str = None,
     ):
+        # Risk result:
+        # 
+        # - **0**: Low risk
+        # - **1**: High risk
+        # - **2**: Suspicious
         self.result = result
+        # Risk score map.
         self.risk_score = risk_score
+        # Risk tags. Multiple tags are separated by commas (,). Includes:
+        # 
+        # - **SuspectDeepForgery** Suspected deep forgery  
+        # - **SuspectPSFace** Suspected synthetic attack  
+        # - **SuspectWarterMark** Suspected watermark presence  
+        # - **SuspectTemple** Suspected template attack  
+        # - **SuspectAIGCFace**  Suspected generated face  
+        # - **SuspectRemake**  Suspected rephotographed face
         self.risk_tag = risk_tag
 
     def validate(self):
@@ -2228,9 +2329,13 @@ class DeepfakeDetectIntlResponseBody(TeaModel):
         request_id: str = None,
         result_object: DeepfakeDetectIntlResponseBodyResultObject = None,
     ):
+        # Return code: 200 indicates a successful request, any other value indicates failure.
         self.code = code
+        # Return message.
         self.message = message
+        # Request ID.
         self.request_id = request_id
+        # Returned result information.
         self.result_object = result_object
 
     def validate(self):
@@ -2742,18 +2847,53 @@ class DocOcrMaxRequest(TeaModel):
         scene_code: str = None,
         spoof: str = None,
     ):
+        # Page expected to be recognized
+        # 
+        # - 01 (default): ID portrait.
+        # 
+        # - 02: Back of the certificate
         self.doc_page = doc_page
+        # Document type.
+        # Format: Country (region) code + document type abbreviation + page (optional)
+        # Note: If provided, it will automatically check if it matches the model recognition result; if empty, the document type will be returned after model recognition.
         self.doc_type = doc_type
+        # Document image, base64 encoded binary stream
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # Document image URL
         self.id_ocr_picture_url = id_ocr_picture_url
+        # Whether to turn on the certificate anti-counterfeiting function:
+        # 
+        # - T: open
+        # 
+        # - F (default): not turned on.
         self.id_spoof = id_spoof
+        # Custom OCR quality detection threshold mode:
+        # 
+        # - 0: System default
+        # - 1: Strict mode
+        # - 2: Lenient mode
+        # - 3 (default): Disable quality detection
         self.id_threshold = id_threshold
+        # A unique business identifier defined by the merchant, used for subsequent problem localization and troubleshooting. It supports a combination of letters and numbers, with a maximum length of 32 characters. Please ensure its uniqueness.
         self.merchant_biz_id = merchant_biz_id
+        # Your custom user ID or other identifiers that can uniquely identify a specific user, such as a phone number or email address. It is strongly recommended to pre-desensitize the value of this field, for example, by hashing it.
         self.merchant_user_id = merchant_user_id
+        # OCR recognition mode.
+        # 0: General document mode.
+        # 1: Custom mode.
         self.ocr_model = ocr_model
+        # The product solution to be integrated.
+        # 
+        # Value: ID_OCR_MAX
         self.product_code = product_code
+        # Prompt (for custom mode)
         self.prompt = prompt
+        # Custom scene code, used to distinguish business scenarios, a 10-digit number.
         self.scene_code = scene_code
+        # Whether to enable document anti-counterfeiting function, default is not enabled.
+        # 
+        # - T: Enable document anti-counterfeiting function.
+        # - F: Do not enable.
         self.spoof = spoof
 
     def validate(self):
@@ -2832,9 +2972,16 @@ class DocOcrMaxResponseBodyResult(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # Card and document recognition result	Only returned when the interface response is successful
         self.ext_id_info = ext_id_info
+        # Whether the authentication passed.
+        # 
+        # - Y: Passed.
+        # - N: Not passed.
         self.passed = passed
+        # Sub-result code.
         self.sub_code = sub_code
+        # Authentication ID
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -2877,10 +3024,13 @@ class DocOcrMaxResponseBody(TeaModel):
         request_id: str = None,
         result: DocOcrMaxResponseBodyResult = None,
     ):
+        # Return code
         self.code = code
+        # Return message
         self.message = message
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -2975,18 +3125,56 @@ class EkycVerifyRequest(TeaModel):
         merchant_user_id: str = None,
         product_code: str = None,
     ):
+        # Specifies whether to enable identity verification against the official database:
+        # 
+        # - **T**: Enable.
+        # 
+        # - **F**: Disable. (Default)
+        # 
+        # > This feature is currently available only for second-generation resident ID cards of the Chinese mainland.
         self.authorize = authorize
+        # Specifies whether to crop the face image:
+        # 
+        # - **T**: Allows cropping.
+        # 
+        # - **F**: Disallows cropping. (Default)
         self.crop = crop
+        # The user\\"s real name.
+        # 
+        # > If Authorize is set to T and the certificate type is Chinese mainland resident ID card, you must enter at least one of the following groups of information:
+        # > - DocName and DocNo.
+        # > - IdOcrPictureBase64 or IdOcrPictureUrl.
         self.doc_name = doc_name
+        # The user\\"s certificate number.
+        # 
+        # 
+        # > If Authorize is set to **T** and the certificate type is Chinese mainland resident ID card, you must enter at least one of the following groups of information:
+        # > - DocName and DocNo.
+        # > - IdOcrPictureBase64 or IdOcrPictureUrl.
         self.doc_no = doc_no
+        # The certificate type, which is uniquely identified by an 8-digit number. For more information, see [Certificate types](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#Hu5TG).
         self.doc_type = doc_type
         self.face_picture_base_64 = face_picture_base_64
+        # The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.face_picture_url = face_picture_url
         self.id_ocr_picture_base_64 = id_ocr_picture_base_64
+        # The URL of the certificate image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.id_ocr_picture_url = id_ocr_picture_url
+        # The custom OCR quality detection threshold mode:
+        # 
+        # - **0**: Standard mode
+        # 
+        # - **1**: Strict mode
+        # 
+        # - **2**: Loose mode
+        # 
+        # - **3** (default): Disables quality detection
         self.id_threshold = id_threshold
+        # A unique business identifier that you customize. It is used to locate and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure that the identifier is unique.
         self.merchant_biz_id = merchant_biz_id
+        # A custom user ID or another identifier that can identify a specific user, such as a mobile number or an email address. Desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
+        # The product solution to integrate. Set the value to **eKYC_MIN**.
         self.product_code = product_code
 
     def validate(self):
@@ -3066,10 +3254,21 @@ class EkycVerifyResponseBodyResult(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # Information about the face liveness verification result. For the JSON format, see the example on the right. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#JJ40j).
         self.ext_face_info = ext_face_info
+        # Information about the certificate detection result.
+        # 
+        # For the JSON format, see the example on the right. For more information, see [ExtIdInfo](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#iWOBY).
         self.ext_id_info = ext_id_info
+        # The final authentication result. Valid values:
+        # 
+        # - **Y**: The authentication is passed.
+        # 
+        # - **N**: The authentication fails.
         self.passed = passed
+        # A description of the authentication result. For more information, see [Error codes for ResultObject.SubCode](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#HCGLb).
         self.sub_code = sub_code
+        # The transaction ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -3116,10 +3315,13 @@ class EkycVerifyResponseBody(TeaModel):
         request_id: str = None,
         result: EkycVerifyResponseBodyResult = None,
     ):
+        # The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i18#GiGmf).
         self.code = code
+        # A detailed description of the response code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Result object
         self.result = result
 
     def validate(self):
@@ -3207,11 +3409,21 @@ class FaceCompareRequest(TeaModel):
         target_face_picture: str = None,
         target_face_picture_url: str = None,
     ):
+        # 是否开启传入人脸图片质量检测
         self.face_picture_quality_check = face_picture_quality_check
+        # A custom unique business ID used for troubleshooting. It can be a combination of up to 32 letters and digits. Make sure that the ID is unique.
         self.merchant_biz_id = merchant_biz_id
         self.source_face_picture = source_face_picture
+        # The URL of the portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
+        # 
+        # > You must specify either SourceFacePicture or SourceFacePictureUrl.
         self.source_face_picture_url = source_face_picture_url
         self.target_face_picture = target_face_picture
+        # The URL of the base portrait photo. The URL must be an HTTP or HTTPS link accessible over the Internet.
+        # 
+        # 
+        # 
+        # > You must specify either TargetFacePicture or TargetFacePictureUrl.
         self.target_face_picture_url = target_face_picture_url
 
     def validate(self):
@@ -3261,8 +3473,15 @@ class FaceCompareResponseBodyResult(TeaModel):
         passed: str = None,
         transaction_id: str = None,
     ):
+        # The face comparison score. The value ranges from 0 to 100.
         self.face_comparison_score = face_comparison_score
+        # The final authentication result. Valid values:
+        # 
+        # - **Y**: The authentication is passed.
+        # 
+        # - **N**: The authentication failed.
         self.passed = passed
+        # The transaction ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -3301,10 +3520,13 @@ class FaceCompareResponseBody(TeaModel):
         request_id: str = None,
         result: FaceCompareResponseBodyResult = None,
     ):
+        # The [response code](https://www.alibabacloud.com/help/en/ekyc/latest/facecompare?spm=a3c0i.23458820.2359477120.28.21167d3fzUmXQC#c43fd16d07mae).
         self.code = code
+        # The detailed description of the response code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Result object
         self.result = result
 
     def validate(self):
@@ -3390,9 +3612,13 @@ class FaceGuardRiskRequest(TeaModel):
         merchant_biz_id: str = None,
         product_code: str = None,
     ):
+        # The unique ID of the current business authentication. It is used with FACE_GUARD for verification during queries.
         self.biz_id = biz_id
+        # The deviceToken obtained from the client SDK.
         self.device_token = device_token
+        # A custom unique business identifier. It is used to locate and troubleshoot issues. The identifier can be a combination of letters and digits up to 32 characters long. Ensure that it is unique.
         self.merchant_biz_id = merchant_biz_id
+        # The product code. Set this to the static field **FACE_GUARD**.
         self.product_code = product_code
 
     def validate(self):
@@ -3435,9 +3661,15 @@ class FaceGuardRiskResponseBodyResult(TeaModel):
         risk_tags: str = None,
         transaction_id: str = None,
     ):
+        # The device risk probability predicted by the Device Guard algorithm. A higher score indicates a higher device risk.
+        # 
+        # Valid values: 0 to 100.
         self.guard_risk_score = guard_risk_score
+        # Extended information. This is empty by default.
         self.risk_extends = risk_extends
+        # The device risk tags. Multiple risk tags are separated by commas (**,**). For more information about the risk tags and their meanings, expand the **Risk tags (RiskTags)** section below.
         self.risk_tags = risk_tags
+        # The transaction ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -3480,10 +3712,13 @@ class FaceGuardRiskResponseBody(TeaModel):
         request_id: str = None,
         result: FaceGuardRiskResponseBodyResult = None,
     ):
+        # The return code. A value of Success indicates that the API operation responded successfully. For more information about how to determine the authentication result, expand the **Return codes** section below.
         self.code = code
+        # A detailed description of the return code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Result object
         self.result = result
 
     def validate(self):
@@ -3573,13 +3808,34 @@ class FaceLivenessRequest(TeaModel):
         occlusion: str = None,
         product_code: str = None,
     ):
+        # Specifies whether to crop the facial image. The default value is F.
+        # 
+        # - **T**: allows cropping.
+        # 
+        # - **F**: Forbidden
         self.crop = crop
         self.face_picture_base_64 = face_picture_base_64
+        # The URL of the portrait image. The URL must be an HTTP or HTTPS link accessible over the Internet.
         self.face_picture_url = face_picture_url
+        # Specifies whether to return the facial image quality score. The default value is F.
+        # 
+        # - **T**: returns the score.
+        # 
+        # - **F**: does not return the score.
         self.face_quality = face_quality
+        # A custom unique business identifier. You can use this identifier to track and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure the identifier is unique.
+        # 
+        # > Alibaba Cloud servers do not check the uniqueness of this value. For better tracking, ensure this value is unique.
         self.merchant_biz_id = merchant_biz_id
+        # A  custom user ID or another identifier for a specific user, such as a mobile number or email address. For security, desensitize this value in advance, for example, by hashing it.
         self.merchant_user_id = merchant_user_id
+        # Specifies whether to enable occlusion detection. The default value is F.
+        # 
+        # - **T**: enables the feature.
+        # 
+        # - **F**: disables the feature.
         self.occlusion = occlusion
+        # The product solution to use. Set the value to **FACE_LIVENESS_MIN** to use the passive liveness detection API.
         self.product_code = product_code
 
     def validate(self):
@@ -3639,10 +3895,19 @@ class FaceLivenessResponseBodyResultExtFaceInfo(TeaModel):
         face_quality_score: float = None,
         occlusion_result: str = None,
     ):
+        # The predicted age of the person in the image. The prediction may fail, resulting in an empty value.
         self.face_age = face_age
+        # Indicates whether a presentation attack was detected on the captured face. Y means an attack was detected. N means no attack was detected.
         self.face_attack = face_attack
+        # The predicted gender of the person in the image. The prediction may fail, resulting in an empty value.
+        # 
+        # - **M**: Male
+        # 
+        # - **F**: Female
         self.face_gender = face_gender
+        # Optional. The quality score of the live face. The value ranges from 0 to 100.
         self.face_quality_score = face_quality_score
+        # Optional. Indicates whether the face is occluded. Y means the face is occluded. N means the face is not occluded.
         self.occlusion_result = occlusion_result
 
     def validate(self):
@@ -3689,9 +3954,17 @@ class FaceLivenessResponseBodyResult(TeaModel):
         sub_code: str = None,
         transaction_id: str = None,
     ):
+        # The results of the passive liveness detection. The value is in the JSON format. For more information, see [ExtFaceInfo](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff42f7274agz).
         self.ext_face_info = ext_face_info
+        # The authentication result. Valid values:
+        # 
+        # - Y: The authentication is passed.
+        # 
+        # - N: The authentication is not passed.
         self.passed = passed
+        # The code that corresponds to the verification result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#5ff3e16174tl2).
         self.sub_code = sub_code
+        # The transaction ID.
         self.transaction_id = transaction_id
 
     def validate(self):
@@ -3736,9 +4009,13 @@ class FaceLivenessResponseBody(TeaModel):
         request_id: str = None,
         result: FaceLivenessResponseBodyResult = None,
     ):
+        # [The response code.](https://www.alibabacloud.com/help/en/ekyc/latest/cadqvlft48igbpdc?spm=a2c63.p38356.0.i54#3d0ed52f967g6)
         self.code = code
+        # A detailed description of the response code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Result object
         self.result = result
 
     def validate(self):
@@ -3960,20 +4237,42 @@ class Id2MetaPeriodVerifyIntlRequest(TeaModel):
         validity_end_date: str = None,
         validity_start_date: str = None,
     ):
+        # The user\\"s name.
+        # 
         # This parameter is required.
         self.doc_name = doc_name
+        # The user\\"s certificate number.
+        # 
         # This parameter is required.
         self.doc_no = doc_no
+        # The certificate type, which is uniquely identified by an 8-digit number.
+        # 
+        # Currently, only second-generation resident ID cards from the Chinese mainland are supported. Set the value to the static field: **00000001**.
+        # 
+        # For more information, see [Certificate types](https://www.alibabacloud.com/help/en/ekyc/latest/im1u641gyesiqmbg?spm=a2c63.p38356.0.i13#Hu5TG).
+        # 
         # This parameter is required.
         self.doc_type = doc_type
+        # A unique business identifier that you can customize. Use this identifier to locate and troubleshoot issues. The identifier can be up to 32 characters in length and can contain letters and digits. Make sure that the identifier is unique.
+        # 
         # This parameter is required.
         self.merchant_biz_id = merchant_biz_id
+        # A custom user ID or another identifier for a specific user, such as a mobile number or email address. Desensitize the value of this field in advance, for example, by hashing the value.
         self.merchant_user_id = merchant_user_id
+        # The product solution to integrate. Set the value to **eKYC_Date_MIN**.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # A custom authentication scenario ID. You can use this ID to query related records in the console. The ID can be up to 10 characters in length and can contain letters, digits, and underscores (_).
         self.scene_code = scene_code
+        # The expiration date of the ID card\\"s validity period. The format is YYYYMMDD.
+        # 
+        # > If the ID card is valid for a long term, enter **long-term** for this parameter.
+        # 
         # This parameter is required.
         self.validity_end_date = validity_end_date
+        # The start date of the validity period. The format is YYYYMMDD.
+        # 
         # This parameter is required.
         self.validity_start_date = validity_start_date
 
@@ -4035,7 +4334,13 @@ class Id2MetaPeriodVerifyIntlResponseBodyResult(TeaModel):
         passed: str = None,
         sub_code: str = None,
     ):
+        # The final authentication result. Valid values:
+        # 
+        # - **Y**, via
+        # 
+        # - **N**: The authentication is not passed.
         self.passed = passed
+        # A description of the authentication result. For more information, see [ResultObject.SubCode error codes](https://www.alibabacloud.com/help/en/ekyc/latest/dateverify?spm=a2c63.p38356.0.i32#d1f36d445az8i).
         self.sub_code = sub_code
 
     def validate(self):
@@ -4070,9 +4375,13 @@ class Id2MetaPeriodVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result: Id2MetaPeriodVerifyIntlResponseBodyResult = None,
     ):
+        # [Return to Code](https://www.alibabacloud.com/help/en/ekyc/latest/dateverify?spm=a2c63.p38356.0.i32#22facb6ab6ui1).
         self.code = code
+        # A detailed description of the response code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -4158,9 +4467,19 @@ class Id2MetaVerifyIntlRequest(TeaModel):
         product_code: str = None,
         user_name: str = None,
     ):
+        # The ID card number.
+        # 
+        # > Only ID cards of residents in the Chinese mainland are supported.
         self.identify_num = identify_num
+        # The parameter type.
+        # 
+        # **normal**: The original value in plaintext.
+        # 
+        # > Due to limitations of the authoritative data source, two-factor ID verification does not support MD5 encryption.
         self.param_type = param_type
+        # The product plan. This is a static field. Set the value to **ID_2META**.
         self.product_code = product_code
+        # The name.
         self.user_name = user_name
 
     def validate(self):
@@ -4200,6 +4519,13 @@ class Id2MetaVerifyIntlResponseBodyResult(TeaModel):
         self,
         biz_code: str = None,
     ):
+        # The verification result:
+        # 
+        # - 1: The information is consistent. This result is billable.
+        # 
+        # - 2: The information is inconsistent. This result is billable.
+        # 
+        # - 3: No record is found. This result is not billable.
         self.biz_code = biz_code
 
     def validate(self):
@@ -4230,9 +4556,13 @@ class Id2MetaVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result: Id2MetaVerifyIntlResponseBodyResult = None,
     ):
+        # [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/ok4bwxwmu1n94o76?spm=a2c63.p38356.0.i54#942707fca218x).
         self.code = code
+        # The detailed description of the response code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -4315,6 +4645,7 @@ class InitializeRequest(TeaModel):
         self,
         app_quality_check: str = None,
         authorize: str = None,
+        auto_registration: str = None,
         callback_token: str = None,
         callback_url: str = None,
         chameleon_frame_enable: str = None,
@@ -4330,8 +4661,11 @@ class InitializeRequest(TeaModel):
         document_number: str = None,
         edit_ocr_result: str = None,
         experience_code: str = None,
+        face_group_codes: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
+        face_register_group_code: str = None,
+        face_verify_threshold: str = None,
         id_face_quality: str = None,
         id_spoof: str = None,
         id_threshold: str = None,
@@ -4346,17 +4680,23 @@ class InitializeRequest(TeaModel):
         procedure_priority: str = None,
         product_code: str = None,
         product_flow: str = None,
+        return_faces: str = None,
         return_url: str = None,
+        save_face_picture: str = None,
         scene_code: str = None,
         security_level: str = None,
         show_album_icon: str = None,
         show_guide_page: str = None,
         show_ocr_result: str = None,
         style_config: str = None,
+        target_face_picture: str = None,
+        target_face_picture_url: str = None,
         use_nfc: str = None,
+        verify_model: str = None,
     ):
         self.app_quality_check = app_quality_check
         self.authorize = authorize
+        self.auto_registration = auto_registration
         self.callback_token = callback_token
         self.callback_url = callback_url
         self.chameleon_frame_enable = chameleon_frame_enable
@@ -4372,8 +4712,11 @@ class InitializeRequest(TeaModel):
         self.document_number = document_number
         self.edit_ocr_result = edit_ocr_result
         self.experience_code = experience_code
+        self.face_group_codes = face_group_codes
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
+        self.face_register_group_code = face_register_group_code
+        self.face_verify_threshold = face_verify_threshold
         self.id_face_quality = id_face_quality
         self.id_spoof = id_spoof
         self.id_threshold = id_threshold
@@ -4389,14 +4732,19 @@ class InitializeRequest(TeaModel):
         self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.product_flow = product_flow
+        self.return_faces = return_faces
         self.return_url = return_url
+        self.save_face_picture = save_face_picture
         self.scene_code = scene_code
         self.security_level = security_level
         self.show_album_icon = show_album_icon
         self.show_guide_page = show_guide_page
         self.show_ocr_result = show_ocr_result
         self.style_config = style_config
+        self.target_face_picture = target_face_picture
+        self.target_face_picture_url = target_face_picture_url
         self.use_nfc = use_nfc
+        self.verify_model = verify_model
 
     def validate(self):
         pass
@@ -4411,6 +4759,8 @@ class InitializeRequest(TeaModel):
             result['AppQualityCheck'] = self.app_quality_check
         if self.authorize is not None:
             result['Authorize'] = self.authorize
+        if self.auto_registration is not None:
+            result['AutoRegistration'] = self.auto_registration
         if self.callback_token is not None:
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
@@ -4441,10 +4791,16 @@ class InitializeRequest(TeaModel):
             result['EditOcrResult'] = self.edit_ocr_result
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
+        if self.face_group_codes is not None:
+            result['FaceGroupCodes'] = self.face_group_codes
         if self.face_picture_base_64 is not None:
             result['FacePictureBase64'] = self.face_picture_base_64
         if self.face_picture_url is not None:
             result['FacePictureUrl'] = self.face_picture_url
+        if self.face_register_group_code is not None:
+            result['FaceRegisterGroupCode'] = self.face_register_group_code
+        if self.face_verify_threshold is not None:
+            result['FaceVerifyThreshold'] = self.face_verify_threshold
         if self.id_face_quality is not None:
             result['IdFaceQuality'] = self.id_face_quality
         if self.id_spoof is not None:
@@ -4473,8 +4829,12 @@ class InitializeRequest(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_flow is not None:
             result['ProductFlow'] = self.product_flow
+        if self.return_faces is not None:
+            result['ReturnFaces'] = self.return_faces
         if self.return_url is not None:
             result['ReturnUrl'] = self.return_url
+        if self.save_face_picture is not None:
+            result['SaveFacePicture'] = self.save_face_picture
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
         if self.security_level is not None:
@@ -4487,8 +4847,14 @@ class InitializeRequest(TeaModel):
             result['ShowOcrResult'] = self.show_ocr_result
         if self.style_config is not None:
             result['StyleConfig'] = self.style_config
+        if self.target_face_picture is not None:
+            result['TargetFacePicture'] = self.target_face_picture
+        if self.target_face_picture_url is not None:
+            result['TargetFacePictureUrl'] = self.target_face_picture_url
         if self.use_nfc is not None:
             result['UseNFC'] = self.use_nfc
+        if self.verify_model is not None:
+            result['VerifyModel'] = self.verify_model
         return result
 
     def from_map(self, m: dict = None):
@@ -4497,6 +4863,8 @@ class InitializeRequest(TeaModel):
             self.app_quality_check = m.get('AppQualityCheck')
         if m.get('Authorize') is not None:
             self.authorize = m.get('Authorize')
+        if m.get('AutoRegistration') is not None:
+            self.auto_registration = m.get('AutoRegistration')
         if m.get('CallbackToken') is not None:
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
@@ -4527,10 +4895,16 @@ class InitializeRequest(TeaModel):
             self.edit_ocr_result = m.get('EditOcrResult')
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
+        if m.get('FaceGroupCodes') is not None:
+            self.face_group_codes = m.get('FaceGroupCodes')
         if m.get('FacePictureBase64') is not None:
             self.face_picture_base_64 = m.get('FacePictureBase64')
         if m.get('FacePictureUrl') is not None:
             self.face_picture_url = m.get('FacePictureUrl')
+        if m.get('FaceRegisterGroupCode') is not None:
+            self.face_register_group_code = m.get('FaceRegisterGroupCode')
+        if m.get('FaceVerifyThreshold') is not None:
+            self.face_verify_threshold = m.get('FaceVerifyThreshold')
         if m.get('IdFaceQuality') is not None:
             self.id_face_quality = m.get('IdFaceQuality')
         if m.get('IdSpoof') is not None:
@@ -4559,8 +4933,12 @@ class InitializeRequest(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductFlow') is not None:
             self.product_flow = m.get('ProductFlow')
+        if m.get('ReturnFaces') is not None:
+            self.return_faces = m.get('ReturnFaces')
         if m.get('ReturnUrl') is not None:
             self.return_url = m.get('ReturnUrl')
+        if m.get('SaveFacePicture') is not None:
+            self.save_face_picture = m.get('SaveFacePicture')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
         if m.get('SecurityLevel') is not None:
@@ -4573,8 +4951,14 @@ class InitializeRequest(TeaModel):
             self.show_ocr_result = m.get('ShowOcrResult')
         if m.get('StyleConfig') is not None:
             self.style_config = m.get('StyleConfig')
+        if m.get('TargetFacePicture') is not None:
+            self.target_face_picture = m.get('TargetFacePicture')
+        if m.get('TargetFacePictureUrl') is not None:
+            self.target_face_picture_url = m.get('TargetFacePictureUrl')
         if m.get('UseNFC') is not None:
             self.use_nfc = m.get('UseNFC')
+        if m.get('VerifyModel') is not None:
+            self.verify_model = m.get('VerifyModel')
         return self
 
 
@@ -4583,6 +4967,7 @@ class InitializeShrinkRequest(TeaModel):
         self,
         app_quality_check: str = None,
         authorize: str = None,
+        auto_registration: str = None,
         callback_token: str = None,
         callback_url: str = None,
         chameleon_frame_enable: str = None,
@@ -4598,8 +4983,11 @@ class InitializeShrinkRequest(TeaModel):
         document_number: str = None,
         edit_ocr_result: str = None,
         experience_code: str = None,
+        face_group_codes: str = None,
         face_picture_base_64: str = None,
         face_picture_url: str = None,
+        face_register_group_code: str = None,
+        face_verify_threshold: str = None,
         id_face_quality: str = None,
         id_spoof: str = None,
         id_threshold: str = None,
@@ -4614,17 +5002,23 @@ class InitializeShrinkRequest(TeaModel):
         procedure_priority: str = None,
         product_code: str = None,
         product_flow: str = None,
+        return_faces: str = None,
         return_url: str = None,
+        save_face_picture: str = None,
         scene_code: str = None,
         security_level: str = None,
         show_album_icon: str = None,
         show_guide_page: str = None,
         show_ocr_result: str = None,
         style_config: str = None,
+        target_face_picture: str = None,
+        target_face_picture_url: str = None,
         use_nfc: str = None,
+        verify_model: str = None,
     ):
         self.app_quality_check = app_quality_check
         self.authorize = authorize
+        self.auto_registration = auto_registration
         self.callback_token = callback_token
         self.callback_url = callback_url
         self.chameleon_frame_enable = chameleon_frame_enable
@@ -4640,8 +5034,11 @@ class InitializeShrinkRequest(TeaModel):
         self.document_number = document_number
         self.edit_ocr_result = edit_ocr_result
         self.experience_code = experience_code
+        self.face_group_codes = face_group_codes
         self.face_picture_base_64 = face_picture_base_64
         self.face_picture_url = face_picture_url
+        self.face_register_group_code = face_register_group_code
+        self.face_verify_threshold = face_verify_threshold
         self.id_face_quality = id_face_quality
         self.id_spoof = id_spoof
         self.id_threshold = id_threshold
@@ -4657,14 +5054,19 @@ class InitializeShrinkRequest(TeaModel):
         self.procedure_priority = procedure_priority
         self.product_code = product_code
         self.product_flow = product_flow
+        self.return_faces = return_faces
         self.return_url = return_url
+        self.save_face_picture = save_face_picture
         self.scene_code = scene_code
         self.security_level = security_level
         self.show_album_icon = show_album_icon
         self.show_guide_page = show_guide_page
         self.show_ocr_result = show_ocr_result
         self.style_config = style_config
+        self.target_face_picture = target_face_picture
+        self.target_face_picture_url = target_face_picture_url
         self.use_nfc = use_nfc
+        self.verify_model = verify_model
 
     def validate(self):
         pass
@@ -4679,6 +5081,8 @@ class InitializeShrinkRequest(TeaModel):
             result['AppQualityCheck'] = self.app_quality_check
         if self.authorize is not None:
             result['Authorize'] = self.authorize
+        if self.auto_registration is not None:
+            result['AutoRegistration'] = self.auto_registration
         if self.callback_token is not None:
             result['CallbackToken'] = self.callback_token
         if self.callback_url is not None:
@@ -4709,10 +5113,16 @@ class InitializeShrinkRequest(TeaModel):
             result['EditOcrResult'] = self.edit_ocr_result
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
+        if self.face_group_codes is not None:
+            result['FaceGroupCodes'] = self.face_group_codes
         if self.face_picture_base_64 is not None:
             result['FacePictureBase64'] = self.face_picture_base_64
         if self.face_picture_url is not None:
             result['FacePictureUrl'] = self.face_picture_url
+        if self.face_register_group_code is not None:
+            result['FaceRegisterGroupCode'] = self.face_register_group_code
+        if self.face_verify_threshold is not None:
+            result['FaceVerifyThreshold'] = self.face_verify_threshold
         if self.id_face_quality is not None:
             result['IdFaceQuality'] = self.id_face_quality
         if self.id_spoof is not None:
@@ -4741,8 +5151,12 @@ class InitializeShrinkRequest(TeaModel):
             result['ProductCode'] = self.product_code
         if self.product_flow is not None:
             result['ProductFlow'] = self.product_flow
+        if self.return_faces is not None:
+            result['ReturnFaces'] = self.return_faces
         if self.return_url is not None:
             result['ReturnUrl'] = self.return_url
+        if self.save_face_picture is not None:
+            result['SaveFacePicture'] = self.save_face_picture
         if self.scene_code is not None:
             result['SceneCode'] = self.scene_code
         if self.security_level is not None:
@@ -4755,8 +5169,14 @@ class InitializeShrinkRequest(TeaModel):
             result['ShowOcrResult'] = self.show_ocr_result
         if self.style_config is not None:
             result['StyleConfig'] = self.style_config
+        if self.target_face_picture is not None:
+            result['TargetFacePicture'] = self.target_face_picture
+        if self.target_face_picture_url is not None:
+            result['TargetFacePictureUrl'] = self.target_face_picture_url
         if self.use_nfc is not None:
             result['UseNFC'] = self.use_nfc
+        if self.verify_model is not None:
+            result['VerifyModel'] = self.verify_model
         return result
 
     def from_map(self, m: dict = None):
@@ -4765,6 +5185,8 @@ class InitializeShrinkRequest(TeaModel):
             self.app_quality_check = m.get('AppQualityCheck')
         if m.get('Authorize') is not None:
             self.authorize = m.get('Authorize')
+        if m.get('AutoRegistration') is not None:
+            self.auto_registration = m.get('AutoRegistration')
         if m.get('CallbackToken') is not None:
             self.callback_token = m.get('CallbackToken')
         if m.get('CallbackUrl') is not None:
@@ -4795,10 +5217,16 @@ class InitializeShrinkRequest(TeaModel):
             self.edit_ocr_result = m.get('EditOcrResult')
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
+        if m.get('FaceGroupCodes') is not None:
+            self.face_group_codes = m.get('FaceGroupCodes')
         if m.get('FacePictureBase64') is not None:
             self.face_picture_base_64 = m.get('FacePictureBase64')
         if m.get('FacePictureUrl') is not None:
             self.face_picture_url = m.get('FacePictureUrl')
+        if m.get('FaceRegisterGroupCode') is not None:
+            self.face_register_group_code = m.get('FaceRegisterGroupCode')
+        if m.get('FaceVerifyThreshold') is not None:
+            self.face_verify_threshold = m.get('FaceVerifyThreshold')
         if m.get('IdFaceQuality') is not None:
             self.id_face_quality = m.get('IdFaceQuality')
         if m.get('IdSpoof') is not None:
@@ -4827,8 +5255,12 @@ class InitializeShrinkRequest(TeaModel):
             self.product_code = m.get('ProductCode')
         if m.get('ProductFlow') is not None:
             self.product_flow = m.get('ProductFlow')
+        if m.get('ReturnFaces') is not None:
+            self.return_faces = m.get('ReturnFaces')
         if m.get('ReturnUrl') is not None:
             self.return_url = m.get('ReturnUrl')
+        if m.get('SaveFacePicture') is not None:
+            self.save_face_picture = m.get('SaveFacePicture')
         if m.get('SceneCode') is not None:
             self.scene_code = m.get('SceneCode')
         if m.get('SecurityLevel') is not None:
@@ -4841,8 +5273,14 @@ class InitializeShrinkRequest(TeaModel):
             self.show_ocr_result = m.get('ShowOcrResult')
         if m.get('StyleConfig') is not None:
             self.style_config = m.get('StyleConfig')
+        if m.get('TargetFacePicture') is not None:
+            self.target_face_picture = m.get('TargetFacePicture')
+        if m.get('TargetFacePictureUrl') is not None:
+            self.target_face_picture_url = m.get('TargetFacePictureUrl')
         if m.get('UseNFC') is not None:
             self.use_nfc = m.get('UseNFC')
+        if m.get('VerifyModel') is not None:
+            self.verify_model = m.get('VerifyModel')
         return self
 
 
@@ -4985,6 +5423,7 @@ class KeepaliveIntlResponseBodyResult(TeaModel):
         self,
         result: str = None,
     ):
+        # The result of the call.
         self.result = result
 
     def validate(self):
@@ -5015,9 +5454,13 @@ class KeepaliveIntlResponseBody(TeaModel):
         request_id: str = None,
         result: KeepaliveIntlResponseBodyResult = None,
     ):
+        # The [return code.](https://www.alibabacloud.com/help/en/ekyc/latest/client-connection-hold?spm=a3c0i.23458820.2359477120.1.48207d3ftEYld2#74d291dfaaxci)
         self.code = code
+        # A detailed description of the Code.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
@@ -5103,12 +5546,32 @@ class Mobile2MetaVerifyIntlRequest(TeaModel):
         product_code: str = None,
         user_name: str = None,
     ):
+        # The mobile number.
+        # 
+        # >
+        # > - If **paramType** is set to **normal**, enter the plaintext value.
+        # > - If **paramType** is set to **md5**, enter the 32-bit lowercase MD5 string.
+        # 
         # This parameter is required.
         self.mobile = mobile
+        # The parameter type:
+        # 
+        # - **normal**: plaintext
+        # 
+        # - **md5**: MD5-encrypted
+        # 
         # This parameter is required.
         self.param_type = param_type
+        # The product to use. Set this parameter to the static value **MOBILE_2META**.
+        # 
         # This parameter is required.
         self.product_code = product_code
+        # The name.
+        # 
+        # > 
+        # > - If **paramType** is set to **normal**, enter the plaintext value.
+        # > - If **paramType** is set to **md5**, enter the 32-bit lowercase MD5 string.
+        # 
         # This parameter is required.
         self.user_name = user_name
 
@@ -5150,7 +5613,21 @@ class Mobile2MetaVerifyIntlResponseBodyResult(TeaModel):
         biz_code: str = None,
         isp_name: str = None,
     ):
+        # The verification result:
+        # 
+        # - 1: The information is consistent. (Billed)
+        # 
+        # - 2: The information is inconsistent. (Billed)
+        # 
+        # - 3: No record is found. (Not billed)
         self.biz_code = biz_code
+        # The carrier name:
+        # 
+        # - CMCC: China Mobile
+        # 
+        # - CUCC: China Unicom
+        # 
+        # - CTCC: China Telecom
         self.isp_name = isp_name
 
     def validate(self):
@@ -5185,10 +5662,13 @@ class Mobile2MetaVerifyIntlResponseBody(TeaModel):
         request_id: str = None,
         result: Mobile2MetaVerifyIntlResponseBodyResult = None,
     ):
+        # [Status codes](https://www.alibabacloud.com/help/en/ekyc/latest/mobile-2meta?spm=a2c63.p38356.0.i13#cbf2539971xzr).
         self.code = code
+        # A detailed description of the response code.
         self.message = message
         # Id of the request
         self.request_id = request_id
+        # Return result
         self.result = result
 
     def validate(self):
