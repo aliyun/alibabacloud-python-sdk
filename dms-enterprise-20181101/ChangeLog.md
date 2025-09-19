@@ -1,3 +1,13 @@
+2025-09-19 Version: 1.76.0
+- Support API AnswerSqlSyntaxByMetaAgent.
+- Support API FixSqlByMetaAgent.
+- Support API OptimizeSqlByMetaAgent.
+- Update API CreateDifyInstance: add response parameters Body.Data.AppUuid.
+- Update API CreateDifyInstance: add response parameters Body.Data.InstanceName.
+- Update API DescribeDifyEditions: add response parameters Body.Data.OpenCommunity.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.InstanceName.
+
+
 2025-08-08 Version: 1.75.0
 - Support API CreateWorkspace.
 - Support API DeleteWorkspace.

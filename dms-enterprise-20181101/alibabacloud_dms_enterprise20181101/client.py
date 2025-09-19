@@ -1095,6 +1095,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.analyze_sqllineage_with_options_async(request, runtime)
 
+    def answer_sql_syntax_by_meta_agent_with_options(
+        self,
+        request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
+        """
+        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @param request: AnswerSqlSyntaxByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnswerSqlSyntaxByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnswerSqlSyntaxByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def answer_sql_syntax_by_meta_agent_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
+        """
+        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @param request: AnswerSqlSyntaxByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnswerSqlSyntaxByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AnswerSqlSyntaxByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def answer_sql_syntax_by_meta_agent(
+        self,
+        request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
+        """
+        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @param request: AnswerSqlSyntaxByMetaAgentRequest
+        @return: AnswerSqlSyntaxByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.answer_sql_syntax_by_meta_agent_with_options(request, runtime)
+
+    async def answer_sql_syntax_by_meta_agent_async(
+        self,
+        request: dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.AnswerSqlSyntaxByMetaAgentResponse:
+        """
+        @summary 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @description 根据用户提供的数据库ID，回答对应引擎的语法问题
+        
+        @param request: AnswerSqlSyntaxByMetaAgentRequest
+        @return: AnswerSqlSyntaxByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.answer_sql_syntax_by_meta_agent_with_options_async(request, runtime)
+
     def approve_order_with_options(
         self,
         request: dms_enterprise_20181101_models.ApproveOrderRequest,
@@ -10666,6 +10778,126 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.execute_struct_sync_with_options_async(request, runtime)
+
+    def fix_sql_by_meta_agent_with_options(
+        self,
+        request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @param request: FixSqlByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FixSqlByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.error):
+            query['Error'] = request.error
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FixSqlByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.FixSqlByMetaAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def fix_sql_by_meta_agent_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @param request: FixSqlByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FixSqlByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.error):
+            query['Error'] = request.error
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='FixSqlByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.FixSqlByMetaAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def fix_sql_by_meta_agent(
+        self,
+        request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @param request: FixSqlByMetaAgentRequest
+        @return: FixSqlByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.fix_sql_by_meta_agent_with_options(request, runtime)
+
+    async def fix_sql_by_meta_agent_async(
+        self,
+        request: dms_enterprise_20181101_models.FixSqlByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.FixSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @description 根据用户提供的SQL，报错信息和数据库ID，分析SQL报错原因并修复
+        
+        @param request: FixSqlByMetaAgentRequest
+        @return: FixSqlByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.fix_sql_by_meta_agent_with_options_async(request, runtime)
 
     def gen_meta_knowledge_asset_with_options(
         self,
@@ -27446,6 +27678,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.offline_task_flow_with_options_async(request, runtime)
+
+    def optimize_sql_by_meta_agent_with_options(
+        self,
+        request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @param request: OptimizeSqlByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OptimizeSqlByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OptimizeSqlByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def optimize_sql_by_meta_agent_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @param request: OptimizeSqlByMetaAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OptimizeSqlByMetaAgentResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_id):
+            query['DbId'] = request.db_id
+        if not UtilClient.is_unset(request.model):
+            query['Model'] = request.model
+        if not UtilClient.is_unset(request.query):
+            query['Query'] = request.query
+        if not UtilClient.is_unset(request.sql):
+            query['Sql'] = request.sql
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OptimizeSqlByMetaAgent',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def optimize_sql_by_meta_agent(
+        self,
+        request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @param request: OptimizeSqlByMetaAgentRequest
+        @return: OptimizeSqlByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.optimize_sql_by_meta_agent_with_options(request, runtime)
+
+    async def optimize_sql_by_meta_agent_async(
+        self,
+        request: dms_enterprise_20181101_models.OptimizeSqlByMetaAgentRequest,
+    ) -> dms_enterprise_20181101_models.OptimizeSqlByMetaAgentResponse:
+        """
+        @summary 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @description 根据用户提供的SQL数据库ID，分析SQL性能并优化
+        
+        @param request: OptimizeSqlByMetaAgentRequest
+        @return: OptimizeSqlByMetaAgentResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.optimize_sql_by_meta_agent_with_options_async(request, runtime)
 
     def pause_data_correct_sqljob_with_options(
         self,

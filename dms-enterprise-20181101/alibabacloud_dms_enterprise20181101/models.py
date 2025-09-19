@@ -4018,6 +4018,174 @@ class AnalyzeSQLLineageResponse(TeaModel):
         return self
 
 
+class AnswerSqlSyntaxByMetaAgentRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        model: str = None,
+        query: str = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.model = model
+        self.query = query
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.query is not None:
+            result['Query'] = self.query
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        return self
+
+
+class AnswerSqlSyntaxByMetaAgentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        session_id: str = None,
+    ):
+        self.content = content
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class AnswerSqlSyntaxByMetaAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AnswerSqlSyntaxByMetaAgentResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = AnswerSqlSyntaxByMetaAgentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AnswerSqlSyntaxByMetaAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AnswerSqlSyntaxByMetaAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AnswerSqlSyntaxByMetaAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ApproveOrderRequest(TeaModel):
     def __init__(
         self,
@@ -10717,7 +10885,9 @@ class CreateDifyInstanceRequest(TeaModel):
 class CreateDifyInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
+        app_uuid: str = None,
         instance_id: str = None,
+        instance_name: str = None,
         replicas: int = None,
         resource_quota: str = None,
         security_group_id: str = None,
@@ -10727,7 +10897,9 @@ class CreateDifyInstanceResponseBodyData(TeaModel):
         workspace_id: str = None,
         zone_id: str = None,
     ):
+        self.app_uuid = app_uuid
         self.instance_id = instance_id
+        self.instance_name = instance_name
         self.replicas = replicas
         self.resource_quota = resource_quota
         self.security_group_id = security_group_id
@@ -10746,8 +10918,12 @@ class CreateDifyInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.app_uuid is not None:
+            result['AppUuid'] = self.app_uuid
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.replicas is not None:
             result['Replicas'] = self.replicas
         if self.resource_quota is not None:
@@ -10768,8 +10944,12 @@ class CreateDifyInstanceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppUuid') is not None:
+            self.app_uuid = m.get('AppUuid')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('Replicas') is not None:
             self.replicas = m.get('Replicas')
         if m.get('ResourceQuota') is not None:
@@ -18390,9 +18570,11 @@ class DescribeDifyEditionsResponseBodyData(TeaModel):
         self,
         community: List[str] = None,
         enterprise: List[str] = None,
+        open_community: List[str] = None,
     ):
         self.community = community
         self.enterprise = enterprise
+        self.open_community = open_community
 
     def validate(self):
         pass
@@ -18407,6 +18589,8 @@ class DescribeDifyEditionsResponseBodyData(TeaModel):
             result['Community'] = self.community
         if self.enterprise is not None:
             result['Enterprise'] = self.enterprise
+        if self.open_community is not None:
+            result['OpenCommunity'] = self.open_community
         return result
 
     def from_map(self, m: dict = None):
@@ -18415,6 +18599,8 @@ class DescribeDifyEditionsResponseBodyData(TeaModel):
             self.community = m.get('Community')
         if m.get('Enterprise') is not None:
             self.enterprise = m.get('Enterprise')
+        if m.get('OpenCommunity') is not None:
+            self.open_community = m.get('OpenCommunity')
         return self
 
 
@@ -20454,6 +20640,187 @@ class ExecuteStructSyncResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ExecuteStructSyncResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FixSqlByMetaAgentRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        error: str = None,
+        model: str = None,
+        query: str = None,
+        sql: str = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.error = error
+        self.model = model
+        self.query = query
+        # This parameter is required.
+        self.sql = sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.error is not None:
+            result['Error'] = self.error
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Error') is not None:
+            self.error = m.get('Error')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        return self
+
+
+class FixSqlByMetaAgentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        session_id: str = None,
+    ):
+        self.content = content
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class FixSqlByMetaAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: FixSqlByMetaAgentResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = FixSqlByMetaAgentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class FixSqlByMetaAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FixSqlByMetaAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FixSqlByMetaAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -48167,6 +48534,7 @@ class ListDifyInstancesResponseBodyRootData(TeaModel):
         enterprise_internet_url: str = None,
         enterprise_intranet_url: str = None,
         instance_id: str = None,
+        instance_name: str = None,
         internet_url: str = None,
         intranet_url: str = None,
         major_version: str = None,
@@ -48182,6 +48550,7 @@ class ListDifyInstancesResponseBodyRootData(TeaModel):
         self.enterprise_internet_url = enterprise_internet_url
         self.enterprise_intranet_url = enterprise_intranet_url
         self.instance_id = instance_id
+        self.instance_name = instance_name
         self.internet_url = internet_url
         self.intranet_url = intranet_url
         self.major_version = major_version
@@ -48212,6 +48581,8 @@ class ListDifyInstancesResponseBodyRootData(TeaModel):
             result['EnterpriseIntranetUrl'] = self.enterprise_intranet_url
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
         if self.internet_url is not None:
             result['InternetUrl'] = self.internet_url
         if self.intranet_url is not None:
@@ -48244,6 +48615,8 @@ class ListDifyInstancesResponseBodyRootData(TeaModel):
             self.enterprise_intranet_url = m.get('EnterpriseIntranetUrl')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
         if m.get('InternetUrl') is not None:
             self.internet_url = m.get('InternetUrl')
         if m.get('IntranetUrl') is not None:
@@ -62465,6 +62838,181 @@ class OfflineTaskFlowResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = OfflineTaskFlowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class OptimizeSqlByMetaAgentRequest(TeaModel):
+    def __init__(
+        self,
+        db_id: str = None,
+        model: str = None,
+        query: str = None,
+        sql: str = None,
+    ):
+        # This parameter is required.
+        self.db_id = db_id
+        self.model = model
+        self.query = query
+        # This parameter is required.
+        self.sql = sql
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_id is not None:
+            result['DbId'] = self.db_id
+        if self.model is not None:
+            result['Model'] = self.model
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.sql is not None:
+            result['Sql'] = self.sql
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbId') is not None:
+            self.db_id = m.get('DbId')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Sql') is not None:
+            self.sql = m.get('Sql')
+        return self
+
+
+class OptimizeSqlByMetaAgentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        session_id: str = None,
+    ):
+        self.content = content
+        self.session_id = session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        return self
+
+
+class OptimizeSqlByMetaAgentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: OptimizeSqlByMetaAgentResponseBodyData = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = OptimizeSqlByMetaAgentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class OptimizeSqlByMetaAgentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: OptimizeSqlByMetaAgentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = OptimizeSqlByMetaAgentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
