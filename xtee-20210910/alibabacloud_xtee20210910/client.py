@@ -8583,6 +8583,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8632,6 +8634,8 @@ class Client(OpenApiClient):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.status):
+            query['status'] = request.status
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9883,7 +9887,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventLogPageResponse:
         """
-        @summary 查询事件历史列表
+        @summary Query Event History List
         
         @param request: DescribeEventLogPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9976,7 +9980,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventLogPageResponse:
         """
-        @summary 查询事件历史列表
+        @summary Query Event History List
         
         @param request: DescribeEventLogPageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10068,7 +10072,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventLogPageRequest,
     ) -> xtee_20210910_models.DescribeEventLogPageResponse:
         """
-        @summary 查询事件历史列表
+        @summary Query Event History List
         
         @param request: DescribeEventLogPageRequest
         @return: DescribeEventLogPageResponse
@@ -10081,7 +10085,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventLogPageRequest,
     ) -> xtee_20210910_models.DescribeEventLogPageResponse:
         """
-        @summary 查询事件历史列表
+        @summary Query Event History List
         
         @param request: DescribeEventLogPageRequest
         @return: DescribeEventLogPageResponse
@@ -10747,7 +10751,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query event variables
+        
+        @description Cumulative Variable List Query
         
         @param request: DescribeEventVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10794,7 +10800,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeEventVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query event variables
+        
+        @description Cumulative Variable List Query
         
         @param request: DescribeEventVariableListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10840,7 +10848,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableListRequest,
     ) -> xtee_20210910_models.DescribeEventVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query event variables
+        
+        @description Cumulative Variable List Query
         
         @param request: DescribeEventVariableListRequest
         @return: DescribeEventVariableListResponse
@@ -10853,7 +10863,9 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeEventVariableListRequest,
     ) -> xtee_20210910_models.DescribeEventVariableListResponse:
         """
-        @summary 查询事件变量
+        @summary Query event variables
+        
+        @description Cumulative Variable List Query
         
         @param request: DescribeEventVariableListRequest
         @return: DescribeEventVariableListResponse
@@ -11207,6 +11219,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExcuteNumResponse:
         """
+        @summary Self-service call list.
+        
         @param request: DescribeExcuteNumRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExcuteNumResponse
@@ -11250,6 +11264,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExcuteNumResponse:
         """
+        @summary Self-service call list.
+        
         @param request: DescribeExcuteNumRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeExcuteNumResponse
@@ -11292,6 +11308,8 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExcuteNumRequest,
     ) -> xtee_20210910_models.DescribeExcuteNumResponse:
         """
+        @summary Self-service call list.
+        
         @param request: DescribeExcuteNumRequest
         @return: DescribeExcuteNumResponse
         """
@@ -11303,6 +11321,8 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExcuteNumRequest,
     ) -> xtee_20210910_models.DescribeExcuteNumResponse:
         """
+        @summary Self-service call list.
+        
         @param request: DescribeExcuteNumRequest
         @return: DescribeExcuteNumResponse
         """
@@ -11727,7 +11747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary Paged Query for Custom Variables
+        @summary Paged Query for Custom Variables.
         
         @param request: DescribeExpressionVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11776,7 +11796,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary Paged Query for Custom Variables
+        @summary Paged Query for Custom Variables.
         
         @param request: DescribeExpressionVariablePageRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11824,7 +11844,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariablePageRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary Paged Query for Custom Variables
+        @summary Paged Query for Custom Variables.
         
         @param request: DescribeExpressionVariablePageRequest
         @return: DescribeExpressionVariablePageResponse
@@ -11837,7 +11857,7 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeExpressionVariablePageRequest,
     ) -> xtee_20210910_models.DescribeExpressionVariablePageResponse:
         """
-        @summary Paged Query for Custom Variables
+        @summary Paged Query for Custom Variables.
         
         @param request: DescribeExpressionVariablePageRequest
         @return: DescribeExpressionVariablePageResponse
@@ -15193,6 +15213,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_name_list_variable_page_list_with_options_async(request, runtime)
 
+    def describe_operation_log_monitoring_with_options(
+        self,
+        request: xtee_20210910_models.DescribeOperationLogMonitoringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeOperationLogMonitoringResponse:
+        """
+        @summary Query Operation Log Monitoring Statistics
+        
+        @param request: DescribeOperationLogMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperationLogMonitoringResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_name_search):
+            query['userNameSearch'] = request.user_name_search
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOperationLogMonitoring',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeOperationLogMonitoringResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_operation_log_monitoring_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeOperationLogMonitoringRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeOperationLogMonitoringResponse:
+        """
+        @summary Query Operation Log Monitoring Statistics
+        
+        @param request: DescribeOperationLogMonitoringRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOperationLogMonitoringResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.end_date):
+            query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.start_date):
+            query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_name_search):
+            query['userNameSearch'] = request.user_name_search
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeOperationLogMonitoring',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeOperationLogMonitoringResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_operation_log_monitoring(
+        self,
+        request: xtee_20210910_models.DescribeOperationLogMonitoringRequest,
+    ) -> xtee_20210910_models.DescribeOperationLogMonitoringResponse:
+        """
+        @summary Query Operation Log Monitoring Statistics
+        
+        @param request: DescribeOperationLogMonitoringRequest
+        @return: DescribeOperationLogMonitoringResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_operation_log_monitoring_with_options(request, runtime)
+
+    async def describe_operation_log_monitoring_async(
+        self,
+        request: xtee_20210910_models.DescribeOperationLogMonitoringRequest,
+    ) -> xtee_20210910_models.DescribeOperationLogMonitoringResponse:
+        """
+        @summary Query Operation Log Monitoring Statistics
+        
+        @param request: DescribeOperationLogMonitoringRequest
+        @return: DescribeOperationLogMonitoringResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_operation_log_monitoring_with_options_async(request, runtime)
+
     def describe_operation_log_page_list_with_options(
         self,
         request: xtee_20210910_models.DescribeOperationLogPageListRequest,
@@ -15213,12 +15345,16 @@ class Client(OpenApiClient):
             query['currentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_date):
             query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.operation_summary):
+            query['operationSummary'] = request.operation_summary
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.start_date):
             query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_name_search):
+            query['userNameSearch'] = request.user_name_search
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15258,12 +15394,16 @@ class Client(OpenApiClient):
             query['currentPage'] = request.current_page
         if not UtilClient.is_unset(request.end_date):
             query['endDate'] = request.end_date
+        if not UtilClient.is_unset(request.operation_summary):
+            query['operationSummary'] = request.operation_summary
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.reg_id):
             query['regId'] = request.reg_id
         if not UtilClient.is_unset(request.start_date):
             query['startDate'] = request.start_date
+        if not UtilClient.is_unset(request.user_name_search):
+            query['userNameSearch'] = request.user_name_search
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -18755,6 +18895,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafConsoleResponse:
         """
+        @summary Query SAF permissions.
+        
         @param request: DescribeSafConsoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSafConsoleResponse
@@ -18792,6 +18934,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xtee_20210910_models.DescribeSafConsoleResponse:
         """
+        @summary Query SAF permissions.
+        
         @param request: DescribeSafConsoleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeSafConsoleResponse
@@ -18828,6 +18972,8 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafConsoleRequest,
     ) -> xtee_20210910_models.DescribeSafConsoleResponse:
         """
+        @summary Query SAF permissions.
+        
         @param request: DescribeSafConsoleRequest
         @return: DescribeSafConsoleResponse
         """
@@ -18839,6 +18985,8 @@ class Client(OpenApiClient):
         request: xtee_20210910_models.DescribeSafConsoleRequest,
     ) -> xtee_20210910_models.DescribeSafConsoleResponse:
         """
+        @summary Query SAF permissions.
+        
         @param request: DescribeSafConsoleRequest
         @return: DescribeSafConsoleResponse
         """
@@ -24744,6 +24892,138 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_variable_scene_list_with_options_async(request, runtime)
+
+    def describe_version_page_list_with_options(
+        self,
+        request: xtee_20210910_models.DescribeVersionPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeVersionPageListResponse:
+        """
+        @summary Variable Version List Query
+        
+        @param request: DescribeVersionPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVersionPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.paging):
+            query['paging'] = request.paging
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVersionPageList',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeVersionPageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_version_page_list_with_options_async(
+        self,
+        request: xtee_20210910_models.DescribeVersionPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtee_20210910_models.DescribeVersionPageListResponse:
+        """
+        @summary Variable Version List Query
+        
+        @param request: DescribeVersionPageListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVersionPageListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.current_page):
+            query['currentPage'] = request.current_page
+        if not UtilClient.is_unset(request.object_code):
+            query['objectCode'] = request.object_code
+        if not UtilClient.is_unset(request.object_id):
+            query['objectId'] = request.object_id
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.paging):
+            query['paging'] = request.paging
+        if not UtilClient.is_unset(request.reg_id):
+            query['regId'] = request.reg_id
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVersionPageList',
+            version='2021-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtee_20210910_models.DescribeVersionPageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_version_page_list(
+        self,
+        request: xtee_20210910_models.DescribeVersionPageListRequest,
+    ) -> xtee_20210910_models.DescribeVersionPageListResponse:
+        """
+        @summary Variable Version List Query
+        
+        @param request: DescribeVersionPageListRequest
+        @return: DescribeVersionPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_version_page_list_with_options(request, runtime)
+
+    async def describe_version_page_list_async(
+        self,
+        request: xtee_20210910_models.DescribeVersionPageListRequest,
+    ) -> xtee_20210910_models.DescribeVersionPageListResponse:
+        """
+        @summary Variable Version List Query
+        
+        @param request: DescribeVersionPageListRequest
+        @return: DescribeVersionPageListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_version_page_list_with_options_async(request, runtime)
 
     def download_smaple_batch_with_options(
         self,

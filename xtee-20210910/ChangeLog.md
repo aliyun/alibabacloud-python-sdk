@@ -1,3 +1,17 @@
+2025-09-19 Version: 2.1.0
+- Support API DescribeOperationLogMonitoring.
+- Support API DescribeVersionPageList.
+- Update API DescribeCustVariablePage: add request parameters status.
+- Update API DescribeCustVariablePage: add response parameters Body.resultObject.$.eventName.
+- Update API DescribeCustVariablePage: add response parameters Body.resultObject.$.ruleList.
+- Update API DescribeExpressionVariablePage: add response parameters Body.resultObject.$.name.
+- Update API DescribeExpressionVariablePage: add response parameters Body.resultObject.$.ruleList.
+- Update API DescribeOperationLogPageList: add request parameters operationSummary.
+- Update API DescribeOperationLogPageList: add request parameters userNameSearch.
+- Update API DescribeRuleSnapshot: add response parameters Body.resultObject.ruleBody.
+- Update API DescribeRuleSnapshot: add response parameters Body.resultObject.ruleType.
+
+
 2025-08-13 Version: 2.0.0
 - Support API AddSampleDataByCsv.
 - Support API AddSampleDataByText.
