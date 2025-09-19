@@ -555,6 +555,116 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_layer_version_with_options_async(layer_name, request, headers, runtime)
 
+    def create_session_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.CreateSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.CreateSessionResponse:
+        """
+        @summary 创建会话资源
+        
+        @param request: CreateSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.CreateSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_session_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.CreateSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.CreateSessionResponse:
+        """
+        @summary 创建会话资源
+        
+        @param request: CreateSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.CreateSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_session(
+        self,
+        function_name: str,
+        request: fc20230330_models.CreateSessionRequest,
+    ) -> fc20230330_models.CreateSessionResponse:
+        """
+        @summary 创建会话资源
+        
+        @param request: CreateSessionRequest
+        @return: CreateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_session_with_options(function_name, request, headers, runtime)
+
+    async def create_session_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.CreateSessionRequest,
+    ) -> fc20230330_models.CreateSessionResponse:
+        """
+        @summary 创建会话资源
+        
+        @param request: CreateSessionRequest
+        @return: CreateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_session_with_options_async(function_name, request, headers, runtime)
+
     def create_trigger_with_options(
         self,
         function_name: str,
@@ -1634,6 +1744,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_scaling_config_with_options_async(function_name, request, headers, runtime)
+
+    def delete_session_with_options(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.DeleteSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DeleteSessionResponse:
+        """
+        @summary 删除会话资源
+        
+        @param request: DeleteSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.DeleteSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_session_with_options_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.DeleteSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.DeleteSessionResponse:
+        """
+        @summary 删除会话资源
+        
+        @param request: DeleteSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='none'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.DeleteSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_session(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.DeleteSessionRequest,
+    ) -> fc20230330_models.DeleteSessionResponse:
+        """
+        @summary 删除会话资源
+        
+        @param request: DeleteSessionRequest
+        @return: DeleteSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_session_with_options(function_name, session_id, request, headers, runtime)
+
+    async def delete_session_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.DeleteSessionRequest,
+    ) -> fc20230330_models.DeleteSessionResponse:
+        """
+        @summary 删除会话资源
+        
+        @param request: DeleteSessionRequest
+        @return: DeleteSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_session_with_options_async(function_name, session_id, request, headers, runtime)
 
     def delete_trigger_with_options(
         self,
@@ -3246,6 +3468,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_scaling_config_with_options_async(function_name, request, headers, runtime)
+
+    def get_session_with_options(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.GetSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.GetSessionResponse:
+        """
+        @summary 获取函数会话信息。
+        
+        @param request: GetSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.GetSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_session_with_options_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.GetSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.GetSessionResponse:
+        """
+        @summary 获取函数会话信息。
+        
+        @param request: GetSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.GetSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_session(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.GetSessionRequest,
+    ) -> fc20230330_models.GetSessionResponse:
+        """
+        @summary 获取函数会话信息。
+        
+        @param request: GetSessionRequest
+        @return: GetSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_session_with_options(function_name, session_id, request, headers, runtime)
+
+    async def get_session_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.GetSessionRequest,
+    ) -> fc20230330_models.GetSessionResponse:
+        """
+        @summary 获取函数会话信息。
+        
+        @param request: GetSessionRequest
+        @return: GetSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_session_with_options_async(function_name, session_id, request, headers, runtime)
 
     def get_trigger_with_options(
         self,
@@ -4955,6 +5289,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_scaling_configs_with_options_async(request, headers, runtime)
 
+    def list_sessions_with_options(
+        self,
+        function_name: str,
+        request: fc20230330_models.ListSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListSessionsResponse:
+        """
+        @summary 列出函数会话信息
+        
+        @param request: ListSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.session_status):
+            query['sessionStatus'] = request.session_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSessions',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_sessions_with_options_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.ListSessionsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.ListSessionsResponse:
+        """
+        @summary 列出函数会话信息
+        
+        @param request: ListSessionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.limit):
+            query['limit'] = request.limit
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        if not UtilClient.is_unset(request.session_id):
+            query['sessionId'] = request.session_id
+        if not UtilClient.is_unset(request.session_status):
+            query['sessionStatus'] = request.session_status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSessions',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.ListSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_sessions(
+        self,
+        function_name: str,
+        request: fc20230330_models.ListSessionsRequest,
+    ) -> fc20230330_models.ListSessionsResponse:
+        """
+        @summary 列出函数会话信息
+        
+        @param request: ListSessionsRequest
+        @return: ListSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_sessions_with_options(function_name, request, headers, runtime)
+
+    async def list_sessions_async(
+        self,
+        function_name: str,
+        request: fc20230330_models.ListSessionsRequest,
+    ) -> fc20230330_models.ListSessionsResponse:
+        """
+        @summary 列出函数会话信息
+        
+        @param request: ListSessionsRequest
+        @return: ListSessionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_sessions_with_options_async(function_name, request, headers, runtime)
+
     def list_tag_resources_with_options(
         self,
         tmp_req: fc20230330_models.ListTagResourcesRequest,
@@ -6594,6 +7052,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_function_with_options_async(function_name, request, headers, runtime)
+
+    def update_session_with_options(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.UpdateSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.UpdateSessionResponse:
+        """
+        @summary 更新会话配置
+        
+        @param request: UpdateSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.UpdateSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_session_with_options_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.UpdateSessionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> fc20230330_models.UpdateSessionResponse:
+        """
+        @summary 更新会话配置
+        
+        @param request: UpdateSessionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSessionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.qualifier):
+            query['qualifier'] = request.qualifier
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSession',
+            version='2023-03-30',
+            protocol='HTTPS',
+            pathname=f'/2023-03-30/functions/{OpenApiUtilClient.get_encode_param(function_name)}/sessions/{OpenApiUtilClient.get_encode_param(session_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fc20230330_models.UpdateSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_session(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.UpdateSessionRequest,
+    ) -> fc20230330_models.UpdateSessionResponse:
+        """
+        @summary 更新会话配置
+        
+        @param request: UpdateSessionRequest
+        @return: UpdateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_session_with_options(function_name, session_id, request, headers, runtime)
+
+    async def update_session_async(
+        self,
+        function_name: str,
+        session_id: str,
+        request: fc20230330_models.UpdateSessionRequest,
+    ) -> fc20230330_models.UpdateSessionResponse:
+        """
+        @summary 更新会话配置
+        
+        @param request: UpdateSessionRequest
+        @return: UpdateSessionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_session_with_options_async(function_name, session_id, request, headers, runtime)
 
     def update_trigger_with_options(
         self,

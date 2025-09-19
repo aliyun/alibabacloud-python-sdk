@@ -1,3 +1,11 @@
+2025-09-19 Version: 4.6.0
+- Support API CreateSession.
+- Support API DeleteSession.
+- Support API GetSession.
+- Support API ListSessions.
+- Support API UpdateSession.
+
+
 2025-09-19 Version: 4.5.0
 - Support API DeleteScalingConfig.
 - Support API GetScalingConfig.

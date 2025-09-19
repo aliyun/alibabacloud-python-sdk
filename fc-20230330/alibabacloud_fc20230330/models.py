@@ -2350,6 +2350,39 @@ class CreateLayerVersionInput(TeaModel):
         return self
 
 
+class CreateSessionInput(TeaModel):
+    def __init__(
+        self,
+        session_idle_timeout_in_seconds: int = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+        return self
+
+
 class CreateTriggerInput(TeaModel):
     def __init__(
         self,
@@ -5720,6 +5753,128 @@ class ListScalingConfigsOutput(TeaModel):
         return self
 
 
+class Session(TeaModel):
+    def __init__(
+        self,
+        container_id: str = None,
+        created_time: str = None,
+        function_name: str = None,
+        last_modified_time: str = None,
+        qualifier: str = None,
+        session_affinity_type: str = None,
+        session_id: str = None,
+        session_idle_timeout_in_seconds: int = None,
+        session_status: str = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.container_id = container_id
+        self.created_time = created_time
+        self.function_name = function_name
+        self.last_modified_time = last_modified_time
+        self.qualifier = qualifier
+        self.session_affinity_type = session_affinity_type
+        self.session_id = session_id
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_status = session_status
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.container_id is not None:
+            result['containerId'] = self.container_id
+        if self.created_time is not None:
+            result['createdTime'] = self.created_time
+        if self.function_name is not None:
+            result['functionName'] = self.function_name
+        if self.last_modified_time is not None:
+            result['lastModifiedTime'] = self.last_modified_time
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.session_affinity_type is not None:
+            result['sessionAffinityType'] = self.session_affinity_type
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_status is not None:
+            result['sessionStatus'] = self.session_status
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('containerId') is not None:
+            self.container_id = m.get('containerId')
+        if m.get('createdTime') is not None:
+            self.created_time = m.get('createdTime')
+        if m.get('functionName') is not None:
+            self.function_name = m.get('functionName')
+        if m.get('lastModifiedTime') is not None:
+            self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('sessionAffinityType') is not None:
+            self.session_affinity_type = m.get('sessionAffinityType')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionStatus') is not None:
+            self.session_status = m.get('sessionStatus')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+        return self
+
+
+class ListSessionsOutput(TeaModel):
+    def __init__(
+        self,
+        next_token: str = None,
+        sessions: List[Session] = None,
+    ):
+        self.next_token = next_token
+        self.sessions = sessions
+
+    def validate(self):
+        if self.sessions:
+            for k in self.sessions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['sessions'] = []
+        if self.sessions is not None:
+            for k in self.sessions:
+                result['sessions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.sessions = []
+        if m.get('sessions') is not None:
+            for k in m.get('sessions'):
+                temp_model = Session()
+                self.sessions.append(temp_model.from_map(k))
+        return self
+
+
 class TagResource(TeaModel):
     def __init__(
         self,
@@ -7331,6 +7486,39 @@ class UpdateResidentResourcePoolInput(TeaModel):
         return self
 
 
+class UpdateSessionInput(TeaModel):
+    def __init__(
+        self,
+        session_idle_timeout_in_seconds: int = None,
+        session_ttlin_seconds: int = None,
+    ):
+        self.session_idle_timeout_in_seconds = session_idle_timeout_in_seconds
+        self.session_ttlin_seconds = session_ttlin_seconds
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.session_idle_timeout_in_seconds is not None:
+            result['sessionIdleTimeoutInSeconds'] = self.session_idle_timeout_in_seconds
+        if self.session_ttlin_seconds is not None:
+            result['sessionTTLInSeconds'] = self.session_ttlin_seconds
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('sessionIdleTimeoutInSeconds') is not None:
+            self.session_idle_timeout_in_seconds = m.get('sessionIdleTimeoutInSeconds')
+        if m.get('sessionTTLInSeconds') is not None:
+            self.session_ttlin_seconds = m.get('sessionTTLInSeconds')
+        return self
+
+
 class UpdateTriggerInput(TeaModel):
     def __init__(
         self,
@@ -7734,6 +7922,82 @@ class CreateLayerVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Layer()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateSessionRequest(TeaModel):
+    def __init__(
+        self,
+        body: CreateSessionInput = None,
+        qualifier: str = None,
+    ):
+        self.body = body
+        self.qualifier = qualifier
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = CreateSessionInput()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class CreateSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Session = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Session()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -8224,6 +8488,66 @@ class DeleteScalingConfigRequest(TeaModel):
 
 
 class DeleteScalingConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        return self
+
+
+class DeleteSessionRequest(TeaModel):
+    def __init__(
+        self,
+        qualifier: str = None,
+    ):
+        self.qualifier = qualifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class DeleteSessionResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
@@ -9176,6 +9500,74 @@ class GetScalingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ScalingConfigStatus()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetSessionRequest(TeaModel):
+    def __init__(
+        self,
+        qualifier: str = None,
+    ):
+        self.qualifier = qualifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class GetSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Session = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Session()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10660,6 +11052,98 @@ class ListScalingConfigsResponse(TeaModel):
         return self
 
 
+class ListSessionsRequest(TeaModel):
+    def __init__(
+        self,
+        limit: int = None,
+        next_token: str = None,
+        qualifier: str = None,
+        session_id: str = None,
+        session_status: str = None,
+    ):
+        self.limit = limit
+        self.next_token = next_token
+        self.qualifier = qualifier
+        self.session_id = session_id
+        self.session_status = session_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        if self.session_id is not None:
+            result['sessionId'] = self.session_id
+        if self.session_status is not None:
+            result['sessionStatus'] = self.session_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        if m.get('sessionId') is not None:
+            self.session_id = m.get('sessionId')
+        if m.get('sessionStatus') is not None:
+            self.session_status = m.get('sessionStatus')
+        return self
+
+
+class ListSessionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSessionsOutput = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSessionsOutput()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -11922,6 +12406,82 @@ class UpdateFunctionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = Function()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSessionRequest(TeaModel):
+    def __init__(
+        self,
+        body: UpdateSessionInput = None,
+        qualifier: str = None,
+    ):
+        self.body = body
+        self.qualifier = qualifier
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        if self.qualifier is not None:
+            result['qualifier'] = self.qualifier
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('body') is not None:
+            temp_model = UpdateSessionInput()
+            self.body = temp_model.from_map(m['body'])
+        if m.get('qualifier') is not None:
+            self.qualifier = m.get('qualifier')
+        return self
+
+
+class UpdateSessionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: Session = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = Session()
             self.body = temp_model.from_map(m['body'])
         return self
 
