@@ -617,6 +617,45 @@ class ListTerminalCommandsResponse(TeaModel):
         return self
 
 
+class LoginInstanceRequestInstanceLoginInfoEncryptionOptions(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        kmskey_id: str = None,
+        mode: str = None,
+    ):
+        self.enabled = enabled
+        self.kmskey_id = kmskey_id
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.kmskey_id is not None:
+            result['KMSKeyId'] = self.kmskey_id
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('KMSKeyId') is not None:
+            self.kmskey_id = m.get('KMSKeyId')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
 class LoginInstanceRequestInstanceLoginInfoOptionsContainerInfo(TeaModel):
     def __init__(
         self,
@@ -784,6 +823,7 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         docker_container_name: str = None,
         docker_exec: str = None,
         duration_seconds: int = None,
+        encryption_options: LoginInstanceRequestInstanceLoginInfoEncryptionOptions = None,
         expire_time: str = None,
         host: str = None,
         instance_id: str = None,
@@ -808,6 +848,7 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         self.docker_container_name = docker_container_name
         self.docker_exec = docker_exec
         self.duration_seconds = duration_seconds
+        self.encryption_options = encryption_options
         self.expire_time = expire_time
         self.host = host
         self.instance_id = instance_id
@@ -827,6 +868,8 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.encryption_options:
+            self.encryption_options.validate()
         if self.options:
             self.options.validate()
 
@@ -848,6 +891,8 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             result['DockerExec'] = self.docker_exec
         if self.duration_seconds is not None:
             result['DurationSeconds'] = self.duration_seconds
+        if self.encryption_options is not None:
+            result['EncryptionOptions'] = self.encryption_options.to_map()
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
         if self.host is not None:
@@ -898,6 +943,9 @@ class LoginInstanceRequestInstanceLoginInfo(TeaModel):
             self.docker_exec = m.get('DockerExec')
         if m.get('DurationSeconds') is not None:
             self.duration_seconds = m.get('DurationSeconds')
+        if m.get('EncryptionOptions') is not None:
+            temp_model = LoginInstanceRequestInstanceLoginInfoEncryptionOptions()
+            self.encryption_options = temp_model.from_map(m['EncryptionOptions'])
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
         if m.get('Host') is not None:

@@ -1,3 +1,7 @@
+2025-09-19 Version: 1.2.1
+- Update API LoginInstance: add request parameters InstanceLoginInfo.EncryptionOptions.
+
+
 2024-09-27 Version: 1.2.0
 - Support API ListTerminalCommands.
 
