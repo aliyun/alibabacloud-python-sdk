@@ -1,3 +1,169 @@
+2025-09-19 Version: 5.0.0
+- Support API CreateAttackPathSensitiveAssetConfig.
+- Support API CreateAttackPathWhitelist.
+- Support API DeleteAttackPathSensitiveAssetConfig.
+- Support API DeleteAttackPathWhitelist.
+- Support API DeleteCheckPolicy.
+- Support API DescribeAIAssetSummary.
+- Support API DescribePluginSummary.
+- Support API GetAttackPathEventDetail.
+- Support API GetAttackPathEventStatistics.
+- Support API GetAttackPathSensitiveAssetConfig.
+- Support API GetAttackPathWhitelist.
+- Support API InstallAegisForLingjun.
+- Support API ListAegisForLingjunStatus.
+- Support API ListAttackPathEvent.
+- Support API ListAttackPathWhitelist.
+- Support API ListAvailableAttackPath.
+- Support API ListSupportAttackPathAsset.
+- Support API UpdateAttackPathSensitiveAssetConfig.
+- Support API UpdateAttackPathWhitelist.
+- Delete API CheckQuaraFileId.
+- Delete API DescribePropertyUsageNewest.
+- Delete API ListQueryRaspAppInfo.
+- Delete API QueryAssetDetailByUUID.
+- Delete API QueryIncidentIconList.
+- Delete API QueryIncidentSubNodesCount.
+- Delete API QueryIncidentTracingDetail.
+- Delete API QueryIncidentTracingJudge.
+- Delete API QueryIncidentVertexExtendInfo.
+- Delete API QueryIncidentVertexNodes.
+- Update API AddCloudVendorAccountAK: add request parameters CtdrCloudUserId.
+- Update API AddCloudVendorAccountAK: add request parameters ExtendInfo.
+- Update API AddCloudVendorAccountAK: add response parameters Body.Data.CtdrCloudUserId.
+- Update API ChangeSecurityScoreRule: add request parameters CalType.
+- Update API ChangeSecurityScoreRule: add request parameters SecurityScoreCategoryList.
+- Update API CreateCustomizedDict: add request parameters Override.
+- Update API CreateOssScanConfig: add request parameters RealTimeIncr.
+- Update API CreateVirusScanOnceTask: add request parameters Param.
+- Update API DescribeClientProblemType: add request parameters Lang.
+- Update API DescribeClientProblemType: add request The number of query or body parameters has changed from zero to many.
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.HasContainer.
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.ServiceId.
+- Update API DescribeCloudVendorAccountAKList: add response parameters Body.CloudVendorAccountAKs.$.CtdrCloudUserId.
+- Update API DescribeCloudVendorAccountAKList: add response parameters Body.CloudVendorAccountAKs.$.ExtendInfo.
+- Update API DescribeCustomizeReportConfigDetail: add response parameters Body.MemberAccountSyncFlag.
+- Update API DescribeEmgVulItem: add response parameters Body.GroupedVulItems.$.Description.
+- Update API DescribeExposedInstanceList: add request parameters ExposureComponentBizType.
+- Update API DescribeExposedInstanceList: add response parameters Body.ExposedInstances.$.ExposureComponentList.
+- Update API DescribeFieldStatistics: add response parameters Body.GroupedFields.GoogleInstanceCount.
+- Update API DescribeFieldStatistics: add response parameters Body.GroupedFields.VolcengineInstanceCount.
+- Update API DescribeGroupedVul: add request parameters ClusterId.
+- Update API DescribeGroupedVul: add request parameters ContainerFieldValue.
+- Update API DescribeGroupedVul: add request parameters CveId.
+- Update API DescribeGroupedVul: add request parameters RaspDefend.
+- Update API DescribeImageGroupedVulList: add request parameters RuleTag.
+- Update API DescribeImageGroupedVulList: add response parameters Body.GroupedVulItems.$.RuleTag.
+- Update API DescribeImageInfoList: add response parameters Body.ImageInfos.$.SourceBizTag.
+- Update API DescribeImageInstances: add response parameters Body.ImageInstanceList.$.SourceBizTag.
+- Update API DescribeImageRepoDetailList: add response parameters Body.ImageRepoResponses.$.SourceBizTag.
+- Update API DescribeImageVulList: add request parameters RuleTag.
+- Update API DescribeImageVulList: add response parameters Body.VulRecords.$.RuleTag.
+- Update API DescribeInstanceStatistics: add response parameters Body.Data.$.CspmHighRiskNum.
+- Update API DescribeInstanceStatistics: add response parameters Body.Data.$.RemindSuspiciousNum.
+- Update API DescribeInstanceStatistics: add response parameters Body.Data.$.SeriousSuspiciousNum.
+- Update API DescribeInstanceStatistics: add response parameters Body.Data.$.SuspectSuspiciousNum.
+- Update API DescribeInstanceStatistics: add response parameters Body.Data.$.SysAsapVulCount.
+- Update API DescribePropertyCount: add response parameters Body.AgentlessLlmService.
+- Update API DescribePropertyCount: add response parameters Body.AgentlessScaAiComponent.
+- Update API DescribePropertyProcDetail: add response parameters Body.Propertys.$.FileHash.
+- Update API DescribePropertyScaProcessDetail: add response parameters Body.Propertys.$.Version.
+- Update API DescribeScreenScoreThread: add request parameters Source.
+- Update API DescribeSecureSuggestion: add request parameters CalType.
+- Update API DescribeSecureSuggestion: add request parameters Source.
+- Update API DescribeSecureSuggestion: add response parameters Body.CalTime.
+- Update API DescribeStrategy: add response parameters Body.Strategies.$.ExecutionType.
+- Update API DescribeVersionConfig: add response parameters Body.AntiRansomwareCapacity.
+- Update API DescribeVersionConfig: add response parameters Body.InstanceBuyType.
+- Update API DescribeVersionConfig: add response parameters Body.MultiVersion.
+- Update API DescribeVulList: add request parameters ClusterId.
+- Update API DescribeVulList: add request parameters RaspDefend.
+- Update API DescribeVulList: add request parameters TargetType.
+- Update API DescribeVulList: add response parameters Body.VulRecords.$.Image.
+- Update API DescribeVulList: add response parameters Body.VulRecords.$.Namespace.
+- Update API DescribeVulList: add response parameters Body.VulRecords.$.RuleTag.
+- Update API DescribeWarningMachines: add response parameters Body.WarningMachines.$.AssetType.
+- Update API DescribeWarningMachines: add response parameters Body.WarningMachines.$.Online.
+- Update API ExecStrategy: add request parameters ExecAction.
+- Update API ExportVul: add request parameters RaspDefend.
+- Update API GenerateK8sAccessInfo: add request parameters CpuArch.
+- Update API GenerateK8sAccessInfo: add response parameters Body.Data.CpuArch.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.EndPoint.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.File.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.InstallationPath.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.MiddlewareName.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.MiddlewareVersion.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.ModelName.
+- Update API GetAssetsPropertyItem: add response parameters Body.PropertyItems.$.MiddlewareName.
+- Update API GetAssetsPropertyItem: add response parameters Body.PropertyItems.$.ModelName.
+- Update API GetAuthSummary: add response parameters Body.InvalidBindStatus.
+- Update API GetCheckCountStatistic: add request parameters TaskSources.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.Cores.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.InternetIp.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.IntranetIp.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.Os.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.Uuid.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.VpcInstanceId.
+- Update API GetCheckStructure: add request parameters TaskSources.
+- Update API GetCheckSummary: add request parameters TaskSources.
+- Update API GetCloudAssetSummary: add request parameters CloudAssetTypes.
+- Update API GetContainerDefenseRuleDetail: add request parameters Lang.
+- Update API GetDefenceCount: add response parameters Body.SuspiciousDealtCount.
+- Update API GetFileDetectApiInvokeInfo: add response parameters Body.Data.AuthCountInSaleVersion.
+- Update API GetFileDetectApiInvokeInfo: add response parameters Body.Data.InvokeCount.
+- Update API GetFileDetectApiInvokeInfo: add response parameters Body.Data.InvokeCountInSaleVersion.
+- Update API GetFileProtectEvent: add response parameters Body.Data.UserId.
+- Update API GetFileProtectEvent: add response parameters Body.Data.UserName.
+- Update API GetOssScanConfig: add response parameters Body.Data.RealTimeIncr.
+- Update API GetSecurityScoreRule: add request parameters CalType.
+- Update API GetSecurityScoreRule: add response parameters Body.SecurityScoreCategoryList.
+- Update API GetSwitchRegionDetail: add response parameters Body.Data.NeedSwitch.
+- Update API GetVirusScanConfig: add response parameters Body.Data.AdditionType.
+- Update API GrantSwitchAgreement: add request parameters IsImmediate.
+- Update API IgnoreCheckItems: add request parameters ContainerItems.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.BuySas.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.BuySasNew.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.ChargeType.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.InstanceBuyType.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.PostPayModuleSwitch.
+- Update API ListAccountsInResourceDirectory: add response parameters Body.Accounts.$.SaleInstance.
+- Update API ListBaselineCheckWhiteRecord: add response parameters Body.List.$.ContainerItems.
+- Update API ListCheckItem: add request parameters TaskSources.
+- Update API ListCheckItem: add response parameters Body.CheckItems.$.CheckType.
+- Update API ListCheckResult: add request parameters CheckTypes.
+- Update API ListCheckResult: add request parameters TaskSources.
+- Update API ListCheckResult: add response parameters Body.Checks.$.CheckType.
+- Update API ListCheckRule: add request parameters TaskSources.
+- Update API ListCheckStandard: add request parameters TaskSources.
+- Update API ListCloudAssetInstances: add response parameters Body.Instances.$.Tags.
+- Update API ListImageRegistryRegion: add request parameters Lang.
+- Update API ListImageRegistryRegion: add request The number of query or body parameters has changed from zero to many.
+- Update API ListInstanceCatalog: add request parameters OnlyCustom.
+- Update API ListInstanceCatalog: add request parameters TaskSources.
+- Update API ListInstanceCatalog: add response parameters Body.Vendors.$.Value.
+- Update API ListInstanceCatalog: add response parameters Body.Vendors.$.InstanceTypes.$.Value.
+- Update API ListInstanceCatalog: add response parameters Body.Vendors.$.InstanceTypes.$.InstanceSubTypes.$.Value.
+- Update API ListK8sAccessInfo: add response parameters Body.K8sAccessInfos.$.CpuArch.
+- Update API ListOperationProcess: add request parameters TaskSources.
+- Update API ListOperationProcess: add response parameters Body.Processes.$.DetailTaskReadyCount.
+- Update API ListOperationProcess: add response parameters Body.Processes.$.DetailTaskTotalCount.
+- Update API ListOperationProcess: add response parameters Body.Processes.$.TaskSource.
+- Update API ListOssScanConfig: add response parameters Body.Data.$.RealTimeIncr.
+- Update API ModifyCloudVendorAccountAK: add request parameters CtdrCloudUserId.
+- Update API ModifyCloudVendorAccountAK: add request parameters ExtendInfo.
+- Update API ModifyCloudVendorAccountAK: add response parameters Body.Data.CtdrCloudUserId.
+- Update API SaveCustomizeReportConfig: add request parameters MemberAccountSyncFlag.
+- Update API SubmitCheck: add request parameters TaskSource.
+- Update API UpdateBaselineCheckWhiteRecord: add request parameters RemoveContainerUuids.
+- Update API UpdateOssScanConfig: add request parameters RealTimeIncr.
+- Update API UpdatePostPaidBindRel: add request parameters UpdateIfNecessary.
+- Update API VerifyCheckCustomConfig: add request parameters CustomCheckConfig.
+- Update API VerifyCheckCustomConfig: add request parameters Type.
+- Update API VerifyCheckCustomConfig: add response parameters Body.ErrorCheckCustomConfig.
+- Update API VerifyCheckInstanceResult: add request parameters TaskSource.
+- Update API VerifyCheckResult: add request parameters TaskSource.
+
+
 2025-03-21 Version: 4.5.3
 - Update API CreateCycleTask: update response param.
 - Update API DescribeCycleTaskList: add param ConfigId.
