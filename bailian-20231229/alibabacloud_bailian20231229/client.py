@@ -609,6 +609,134 @@ class Client(OpenApiClient):
         headers = {}
         return await self.apply_file_upload_lease_with_options_async(category_id, workspace_id, request, headers, runtime)
 
+    def change_parse_setting_with_options(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.ChangeParseSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ChangeParseSettingResponse:
+        """
+        @summary 修改类目解析配置
+        
+        @param tmp_req: ChangeParseSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeParseSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.ChangeParseSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parser_config):
+            request.parser_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parser_config, 'ParserConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.parser):
+            body['Parser'] = request.parser
+        if not UtilClient.is_unset(request.parser_config_shrink):
+            body['ParserConfig'] = request.parser_config_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeParseSetting',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/settings',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ChangeParseSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_parse_setting_with_options_async(
+        self,
+        workspace_id: str,
+        tmp_req: bailian_20231229_models.ChangeParseSettingRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.ChangeParseSettingResponse:
+        """
+        @summary 修改类目解析配置
+        
+        @param tmp_req: ChangeParseSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeParseSettingResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20231229_models.ChangeParseSettingShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parser_config):
+            request.parser_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parser_config, 'ParserConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.category_id):
+            body['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.file_type):
+            body['FileType'] = request.file_type
+        if not UtilClient.is_unset(request.parser):
+            body['Parser'] = request.parser
+        if not UtilClient.is_unset(request.parser_config_shrink):
+            body['ParserConfig'] = request.parser_config_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ChangeParseSetting',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/settings',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.ChangeParseSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_parse_setting(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ChangeParseSettingRequest,
+    ) -> bailian_20231229_models.ChangeParseSettingResponse:
+        """
+        @summary 修改类目解析配置
+        
+        @param request: ChangeParseSettingRequest
+        @return: ChangeParseSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.change_parse_setting_with_options(workspace_id, request, headers, runtime)
+
+    async def change_parse_setting_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.ChangeParseSettingRequest,
+    ) -> bailian_20231229_models.ChangeParseSettingResponse:
+        """
+        @summary 修改类目解析配置
+        
+        @param request: ChangeParseSettingRequest
+        @return: ChangeParseSettingResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.change_parse_setting_with_options_async(workspace_id, request, headers, runtime)
+
     def create_and_pulish_agent_with_options(
         self,
         workspace_id: str,
@@ -2611,6 +2739,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_alipay_url_with_options_async(request, headers, runtime)
 
+    def get_available_parser_types_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetAvailableParserTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
+        """
+        @summary 获取文件支持的解析器类型
+        
+        @param request: GetAvailableParserTypesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailableParserTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvailableParserTypes',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/parsertype',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAvailableParserTypesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_available_parser_types_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetAvailableParserTypesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
+        """
+        @summary 获取文件支持的解析器类型
+        
+        @param request: GetAvailableParserTypesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvailableParserTypesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.file_type):
+            query['FileType'] = request.file_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAvailableParserTypes',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/parsertype',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetAvailableParserTypesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_available_parser_types(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetAvailableParserTypesRequest,
+    ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
+        """
+        @summary 获取文件支持的解析器类型
+        
+        @param request: GetAvailableParserTypesRequest
+        @return: GetAvailableParserTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_available_parser_types_with_options(workspace_id, request, headers, runtime)
+
+    async def get_available_parser_types_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetAvailableParserTypesRequest,
+    ) -> bailian_20231229_models.GetAvailableParserTypesResponse:
+        """
+        @summary 获取文件支持的解析器类型
+        
+        @param request: GetAvailableParserTypesRequest
+        @return: GetAvailableParserTypesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_available_parser_types_with_options_async(workspace_id, request, headers, runtime)
+
     def get_index_job_status_with_options(
         self,
         workspace_id: str,
@@ -2939,6 +3175,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_memory_node_with_options_async(workspace_id, memory_id, memory_node_id, headers, runtime)
 
+    def get_parse_settings_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetParseSettingsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetParseSettingsResponse:
+        """
+        @summary 获取类目解析配置
+        
+        @param request: GetParseSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParseSettingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetParseSettings',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetParseSettingsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_parse_settings_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetParseSettingsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.GetParseSettingsResponse:
+        """
+        @summary 获取类目解析配置
+        
+        @param request: GetParseSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetParseSettingsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetParseSettings',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/{OpenApiUtilClient.get_encode_param(workspace_id)}/datacenter/parser/settings',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.GetParseSettingsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_parse_settings(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetParseSettingsRequest,
+    ) -> bailian_20231229_models.GetParseSettingsResponse:
+        """
+        @summary 获取类目解析配置
+        
+        @param request: GetParseSettingsRequest
+        @return: GetParseSettingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_parse_settings_with_options(workspace_id, request, headers, runtime)
+
+    async def get_parse_settings_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.GetParseSettingsRequest,
+    ) -> bailian_20231229_models.GetParseSettingsResponse:
+        """
+        @summary 获取类目解析配置
+        
+        @param request: GetParseSettingsRequest
+        @return: GetParseSettingsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_parse_settings_with_options_async(workspace_id, request, headers, runtime)
+
     def get_prompt_template_with_options(
         self,
         workspace_id: str,
@@ -3126,6 +3470,134 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_published_agent_with_options_async(workspace_id, app_code, headers, runtime)
+
+    def high_code_deploy_with_options(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.HighCodeDeployRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.HighCodeDeployResponse:
+        """
+        @summary 高代码部署服务
+        
+        @param request: HighCodeDeployRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HighCodeDeployResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_desc):
+            body['agentDesc'] = request.agent_desc
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.source_code_name):
+            body['sourceCodeName'] = request.source_code_name
+        if not UtilClient.is_unset(request.source_code_oss_url):
+            body['sourceCodeOssUrl'] = request.source_code_oss_url
+        if not UtilClient.is_unset(request.telemetry_enabled):
+            body['telemetryEnabled'] = request.telemetry_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HighCodeDeploy',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/{OpenApiUtilClient.get_encode_param(workspace_id)}/highCode/publish',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.HighCodeDeployResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def high_code_deploy_with_options_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.HighCodeDeployRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20231229_models.HighCodeDeployResponse:
+        """
+        @summary 高代码部署服务
+        
+        @param request: HighCodeDeployRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: HighCodeDeployResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.agent_desc):
+            body['agentDesc'] = request.agent_desc
+        if not UtilClient.is_unset(request.agent_id):
+            body['agentId'] = request.agent_id
+        if not UtilClient.is_unset(request.agent_name):
+            body['agentName'] = request.agent_name
+        if not UtilClient.is_unset(request.source_code_name):
+            body['sourceCodeName'] = request.source_code_name
+        if not UtilClient.is_unset(request.source_code_oss_url):
+            body['sourceCodeOssUrl'] = request.source_code_oss_url
+        if not UtilClient.is_unset(request.telemetry_enabled):
+            body['telemetryEnabled'] = request.telemetry_enabled
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='HighCodeDeploy',
+            version='2023-12-29',
+            protocol='HTTPS',
+            pathname=f'/openapi/{OpenApiUtilClient.get_encode_param(workspace_id)}/highCode/publish',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20231229_models.HighCodeDeployResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def high_code_deploy(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.HighCodeDeployRequest,
+    ) -> bailian_20231229_models.HighCodeDeployResponse:
+        """
+        @summary 高代码部署服务
+        
+        @param request: HighCodeDeployRequest
+        @return: HighCodeDeployResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.high_code_deploy_with_options(workspace_id, request, headers, runtime)
+
+    async def high_code_deploy_async(
+        self,
+        workspace_id: str,
+        request: bailian_20231229_models.HighCodeDeployRequest,
+    ) -> bailian_20231229_models.HighCodeDeployResponse:
+        """
+        @summary 高代码部署服务
+        
+        @param request: HighCodeDeployRequest
+        @return: HighCodeDeployResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.high_code_deploy_with_options_async(workspace_id, request, headers, runtime)
 
     def list_category_with_options(
         self,

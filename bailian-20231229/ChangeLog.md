@@ -1,3 +1,10 @@
+2025-09-20 Version: 2.5.0
+- Support API ChangeParseSetting.
+- Support API GetAvailableParserTypes.
+- Support API GetParseSettings.
+- Support API HighCodeDeploy.
+
+
 2025-09-10 Version: 2.4.1
 - Update API AddFilesFromAuthorizedOss: add request parameters OverWriteFileByOssKey.
 - Update API CreateAndPulishAgent: add request parameters applicationConfig.parameters.enable_thinking.

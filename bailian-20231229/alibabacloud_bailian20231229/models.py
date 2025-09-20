@@ -1090,6 +1090,264 @@ class ApplyFileUploadLeaseResponse(TeaModel):
         return self
 
 
+class ChangeParseSettingRequestParserConfig(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        model_prompt: str = None,
+    ):
+        self.model_name = model_name
+        self.model_prompt = model_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['modelName'] = self.model_name
+        if self.model_prompt is not None:
+            result['modelPrompt'] = self.model_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('modelName') is not None:
+            self.model_name = m.get('modelName')
+        if m.get('modelPrompt') is not None:
+            self.model_prompt = m.get('modelPrompt')
+        return self
+
+
+class ChangeParseSettingRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        file_type: str = None,
+        parser: str = None,
+        parser_config: ChangeParseSettingRequestParserConfig = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.parser = parser
+        self.parser_config = parser_config
+
+    def validate(self):
+        if self.parser_config:
+            self.parser_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.parser_config is not None:
+            result['ParserConfig'] = self.parser_config.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('ParserConfig') is not None:
+            temp_model = ChangeParseSettingRequestParserConfig()
+            self.parser_config = temp_model.from_map(m['ParserConfig'])
+        return self
+
+
+class ChangeParseSettingShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+        file_type: str = None,
+        parser: str = None,
+        parser_config_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.category_id = category_id
+        # This parameter is required.
+        self.file_type = file_type
+        # This parameter is required.
+        self.parser = parser
+        self.parser_config_shrink = parser_config_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.parser_config_shrink is not None:
+            result['ParserConfig'] = self.parser_config_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('ParserConfig') is not None:
+            self.parser_config_shrink = m.get('ParserConfig')
+        return self
+
+
+class ChangeParseSettingResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        change_result: bool = None,
+    ):
+        self.change_result = change_result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.change_result is not None:
+            result['ChangeResult'] = self.change_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChangeResult') is not None:
+            self.change_result = m.get('ChangeResult')
+        return self
+
+
+class ChangeParseSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ChangeParseSettingResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ChangeParseSettingResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ChangeParseSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeParseSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeParseSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAndPulishAgentRequestApplicationConfigHistoryConfig(TeaModel):
     def __init__(
         self,
@@ -4480,6 +4738,208 @@ class GetAlipayUrlResponse(TeaModel):
         return self
 
 
+class GetAvailableParserTypesRequest(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+    ):
+        # This parameter is required.
+        self.file_type = file_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        return self
+
+
+class GetAvailableParserTypesResponseBodyDataParserList(TeaModel):
+    def __init__(
+        self,
+        display_name: str = None,
+        parser: str = None,
+    ):
+        self.display_name = display_name
+        self.parser = parser
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        return self
+
+
+class GetAvailableParserTypesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+        parser_list: List[GetAvailableParserTypesResponseBodyDataParserList] = None,
+    ):
+        self.file_type = file_type
+        self.parser_list = parser_list
+
+    def validate(self):
+        if self.parser_list:
+            for k in self.parser_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        result['ParserList'] = []
+        if self.parser_list is not None:
+            for k in self.parser_list:
+                result['ParserList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        self.parser_list = []
+        if m.get('ParserList') is not None:
+            for k in m.get('ParserList'):
+                temp_model = GetAvailableParserTypesResponseBodyDataParserList()
+                self.parser_list.append(temp_model.from_map(k))
+        return self
+
+
+class GetAvailableParserTypesResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetAvailableParserTypesResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAvailableParserTypesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAvailableParserTypesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAvailableParserTypesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAvailableParserTypesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetIndexJobStatusRequest(TeaModel):
     def __init__(
         self,
@@ -4938,6 +5398,219 @@ class GetMemoryNodeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetMemoryNodeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetParseSettingsRequest(TeaModel):
+    def __init__(
+        self,
+        category_id: str = None,
+    ):
+        self.category_id = category_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category_id is not None:
+            result['CategoryId'] = self.category_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CategoryId') is not None:
+            self.category_id = m.get('CategoryId')
+        return self
+
+
+class GetParseSettingsResponseBodyDataParserConfig(TeaModel):
+    def __init__(
+        self,
+        model_name: str = None,
+        model_prompt: str = None,
+    ):
+        self.model_name = model_name
+        self.model_prompt = model_prompt
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.model_name is not None:
+            result['ModelName'] = self.model_name
+        if self.model_prompt is not None:
+            result['ModelPrompt'] = self.model_prompt
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ModelName') is not None:
+            self.model_name = m.get('ModelName')
+        if m.get('ModelPrompt') is not None:
+            self.model_prompt = m.get('ModelPrompt')
+        return self
+
+
+class GetParseSettingsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        file_type: str = None,
+        parser: str = None,
+        parser_config: GetParseSettingsResponseBodyDataParserConfig = None,
+        parser_display_name: str = None,
+    ):
+        self.file_type = file_type
+        self.parser = parser
+        self.parser_config = parser_config
+        self.parser_display_name = parser_display_name
+
+    def validate(self):
+        if self.parser_config:
+            self.parser_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.file_type is not None:
+            result['FileType'] = self.file_type
+        if self.parser is not None:
+            result['Parser'] = self.parser
+        if self.parser_config is not None:
+            result['ParserConfig'] = self.parser_config.to_map()
+        if self.parser_display_name is not None:
+            result['ParserDisplayName'] = self.parser_display_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FileType') is not None:
+            self.file_type = m.get('FileType')
+        if m.get('Parser') is not None:
+            self.parser = m.get('Parser')
+        if m.get('ParserConfig') is not None:
+            temp_model = GetParseSettingsResponseBodyDataParserConfig()
+            self.parser_config = temp_model.from_map(m['ParserConfig'])
+        if m.get('ParserDisplayName') is not None:
+            self.parser_display_name = m.get('ParserDisplayName')
+        return self
+
+
+class GetParseSettingsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[GetParseSettingsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = GetParseSettingsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetParseSettingsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetParseSettingsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetParseSettingsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5533,6 +6206,149 @@ class GetPublishedAgentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetPublishedAgentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class HighCodeDeployRequest(TeaModel):
+    def __init__(
+        self,
+        agent_desc: str = None,
+        agent_id: str = None,
+        agent_name: str = None,
+        source_code_name: str = None,
+        source_code_oss_url: str = None,
+        telemetry_enabled: bool = None,
+    ):
+        self.agent_desc = agent_desc
+        self.agent_id = agent_id
+        self.agent_name = agent_name
+        self.source_code_name = source_code_name
+        self.source_code_oss_url = source_code_oss_url
+        self.telemetry_enabled = telemetry_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_desc is not None:
+            result['agentDesc'] = self.agent_desc
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.agent_name is not None:
+            result['agentName'] = self.agent_name
+        if self.source_code_name is not None:
+            result['sourceCodeName'] = self.source_code_name
+        if self.source_code_oss_url is not None:
+            result['sourceCodeOssUrl'] = self.source_code_oss_url
+        if self.telemetry_enabled is not None:
+            result['telemetryEnabled'] = self.telemetry_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentDesc') is not None:
+            self.agent_desc = m.get('agentDesc')
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('agentName') is not None:
+            self.agent_name = m.get('agentName')
+        if m.get('sourceCodeName') is not None:
+            self.source_code_name = m.get('sourceCodeName')
+        if m.get('sourceCodeOssUrl') is not None:
+            self.source_code_oss_url = m.get('sourceCodeOssUrl')
+        if m.get('telemetryEnabled') is not None:
+            self.telemetry_enabled = m.get('telemetryEnabled')
+        return self
+
+
+class HighCodeDeployResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        error_code: str = None,
+        error_msg: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            self.data = m.get('data')
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class HighCodeDeployResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: HighCodeDeployResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = HighCodeDeployResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
