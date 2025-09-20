@@ -2032,6 +2032,33 @@ class CroppingSuggestion(TeaModel):
         return self
 
 
+class CustomPrompt(TeaModel):
+    def __init__(
+        self,
+        role_definition: str = None,
+    ):
+        self.role_definition = role_definition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_definition is not None:
+            result['RoleDefinition'] = self.role_definition
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RoleDefinition') is not None:
+            self.role_definition = m.get('RoleDefinition')
+        return self
+
+
 class FastFailPolicy(TeaModel):
     def __init__(
         self,
@@ -2434,6 +2461,39 @@ class DataIngestion(TeaModel):
         return self
 
 
+class WorkflowParameter(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class Dataset(TeaModel):
     def __init__(
         self,
@@ -2451,6 +2511,7 @@ class Dataset(TeaModel):
         template_id: str = None,
         total_file_size: int = None,
         update_time: str = None,
+        workflow_parameters: List[WorkflowParameter] = None,
     ):
         self.bind_count = bind_count
         self.create_time = create_time
@@ -2466,9 +2527,13 @@ class Dataset(TeaModel):
         self.template_id = template_id
         self.total_file_size = total_file_size
         self.update_time = update_time
+        self.workflow_parameters = workflow_parameters
 
     def validate(self):
-        pass
+        if self.workflow_parameters:
+            for k in self.workflow_parameters:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2504,6 +2569,10 @@ class Dataset(TeaModel):
             result['TotalFileSize'] = self.total_file_size
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+        result['WorkflowParameters'] = []
+        if self.workflow_parameters is not None:
+            for k in self.workflow_parameters:
+                result['WorkflowParameters'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2536,6 +2605,11 @@ class Dataset(TeaModel):
             self.total_file_size = m.get('TotalFileSize')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+        self.workflow_parameters = []
+        if m.get('WorkflowParameters') is not None:
+            for k in m.get('WorkflowParameters'):
+                temp_model = WorkflowParameter()
+                self.workflow_parameters.append(temp_model.from_map(k))
         return self
 
 
@@ -4380,6 +4454,39 @@ class FunctionCall(TeaModel):
         return self
 
 
+class ImageURL(TeaModel):
+    def __init__(
+        self,
+        thumbnail: str = None,
+        url: str = None,
+    ):
+        self.thumbnail = thumbnail
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.thumbnail is not None:
+            result['Thumbnail'] = self.thumbnail
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Thumbnail') is not None:
+            self.thumbnail = m.get('Thumbnail')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
 class InputFileFigures(TeaModel):
     def __init__(
         self,
@@ -5581,8 +5688,10 @@ class StreamOptions(TeaModel):
     def __init__(
         self,
         incremental_output: bool = None,
+        need_return_final_result: bool = None,
     ):
         self.incremental_output = incremental_output
+        self.need_return_final_result = need_return_final_result
 
     def validate(self):
         pass
@@ -5595,12 +5704,16 @@ class StreamOptions(TeaModel):
         result = dict()
         if self.incremental_output is not None:
             result['IncrementalOutput'] = self.incremental_output
+        if self.need_return_final_result is not None:
+            result['NeedReturnFinalResult'] = self.need_return_final_result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('IncrementalOutput') is not None:
             self.incremental_output = m.get('IncrementalOutput')
+        if m.get('NeedReturnFinalResult') is not None:
+            self.need_return_final_result = m.get('NeedReturnFinalResult')
         return self
 
 
@@ -7034,39 +7147,6 @@ class WebofficeWatermark(TeaModel):
             self.value = m.get('Value')
         if m.get('Vertical') is not None:
             self.vertical = m.get('Vertical')
-        return self
-
-
-class WorkflowParameter(TeaModel):
-    def __init__(
-        self,
-        name: str = None,
-        value: str = None,
-    ):
-        self.name = name
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.name is not None:
-            result['Name'] = self.name
-        if self.value is not None:
-            result['Value'] = self.value
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Name') is not None:
-            self.name = m.get('Name')
-        if m.get('Value') is not None:
-            self.value = m.get('Value')
         return self
 
 
@@ -28401,8 +28481,6 @@ class SemanticQueryRequest(TeaModel):
         # This parameter is required.
         self.project_name = project_name
         # The content of the query that you input.
-        # 
-        # This parameter is required.
         self.query = query
         # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
         # 
@@ -28481,8 +28559,6 @@ class SemanticQueryShrinkRequest(TeaModel):
         # This parameter is required.
         self.project_name = project_name
         # The content of the query that you input.
-        # 
-        # This parameter is required.
         self.query = query
         # The fields that you want to include in the response. Including only necessary metadata fields can help reduce the size of the response.
         # 
