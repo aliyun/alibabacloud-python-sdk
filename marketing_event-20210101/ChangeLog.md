@@ -1,3 +1,13 @@
+2025-09-22 Version: 1.1.1
+- Update API FindGuestTicketRecord: add response parameters Body.Data.$.TicketReceiveDates.
+- Update API QueryAllActivityInfo: add response parameters Body.AccessDeniedDetail.
+- Update API QueryAllActivityInfo: add response parameters Body.HttpStatusCode.
+- Update API QuerySingleActivityInfo: add response parameters Body.AccessDeniedDetail.
+- Update API QuerySingleActivityInfo: add response parameters Body.HttpStatusCode.
+- Update API SyncSignInInfo: add response parameters Body.AccessDeniedDetail.
+- Update API SyncSignInInfo: add response parameters Body.HttpStatusCode.
+
+
 2024-10-09 Version: 1.1.0
 - Support API AddSumRecordFlowPop.
 - Support API BindExhibitorRfidPop.

@@ -1421,6 +1421,7 @@ class FindGuestTicketRecordResponseBodyData(TeaModel):
         status: int = None,
         ticket_code: str = None,
         ticket_name: str = None,
+        ticket_receive_dates: str = None,
         ticket_type: str = None,
     ):
         self.channel_level_info = channel_level_info
@@ -1433,6 +1434,7 @@ class FindGuestTicketRecordResponseBodyData(TeaModel):
         self.status = status
         self.ticket_code = ticket_code
         self.ticket_name = ticket_name
+        self.ticket_receive_dates = ticket_receive_dates
         self.ticket_type = ticket_type
 
     def validate(self):
@@ -1465,6 +1467,8 @@ class FindGuestTicketRecordResponseBodyData(TeaModel):
             result['TicketCode'] = self.ticket_code
         if self.ticket_name is not None:
             result['TicketName'] = self.ticket_name
+        if self.ticket_receive_dates is not None:
+            result['TicketReceiveDates'] = self.ticket_receive_dates
         if self.ticket_type is not None:
             result['TicketType'] = self.ticket_type
         return result
@@ -1492,6 +1496,8 @@ class FindGuestTicketRecordResponseBodyData(TeaModel):
             self.ticket_code = m.get('TicketCode')
         if m.get('TicketName') is not None:
             self.ticket_name = m.get('TicketName')
+        if m.get('TicketReceiveDates') is not None:
+            self.ticket_receive_dates = m.get('TicketReceiveDates')
         if m.get('TicketType') is not None:
             self.ticket_type = m.get('TicketType')
         return self
@@ -1709,14 +1715,18 @@ class QueryAllActivityInfoResponseBodyData(TeaModel):
 class QueryAllActivityInfoResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: List[QueryAllActivityInfoResponseBodyData] = None,
+        http_status_code: int = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.data = data
+        self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -1733,12 +1743,16 @@ class QueryAllActivityInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -1749,6 +1763,8 @@ class QueryAllActivityInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         self.data = []
@@ -1756,6 +1772,8 @@ class QueryAllActivityInfoResponseBody(TeaModel):
             for k in m.get('Data'):
                 temp_model = QueryAllActivityInfoResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -2750,14 +2768,18 @@ class QuerySingleActivityInfoResponseBodyData(TeaModel):
 class QuerySingleActivityInfoResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: List[QuerySingleActivityInfoResponseBodyData] = None,
+        http_status_code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.data = data
+        self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -2774,12 +2796,16 @@ class QuerySingleActivityInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         result['Data'] = []
         if self.data is not None:
             for k in self.data:
                 result['Data'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -2790,6 +2816,8 @@ class QuerySingleActivityInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         self.data = []
@@ -2797,6 +2825,8 @@ class QuerySingleActivityInfoResponseBody(TeaModel):
             for k in m.get('Data'):
                 temp_model = QuerySingleActivityInfoResponseBodyData()
                 self.data.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -2885,14 +2915,18 @@ class SyncSignInInfoRequest(TeaModel):
 class SyncSignInInfoResponseBody(TeaModel):
     def __init__(
         self,
+        access_denied_detail: str = None,
         code: str = None,
         data: int = None,
+        http_status_code: str = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.access_denied_detail = access_denied_detail
         self.code = code
         self.data = data
+        self.http_status_code = http_status_code
         self.message = message
         self.request_id = request_id
         self.success = success
@@ -2906,10 +2940,14 @@ class SyncSignInInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
         if self.code is not None:
             result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -2920,10 +2958,14 @@ class SyncSignInInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
         if m.get('Code') is not None:
             self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
