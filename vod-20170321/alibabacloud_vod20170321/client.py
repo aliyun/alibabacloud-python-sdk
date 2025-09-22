@@ -10603,6 +10603,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_vod_user_domains_with_options_async(request, runtime)
 
+    def describe_vod_user_vips_by_domain_with_options(
+        self,
+        request: vod_20170321_models.DescribeVodUserVipsByDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodUserVipsByDomainResponse:
+        """
+        @summary 获取域名Vip
+        
+        @param request: DescribeVodUserVipsByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodUserVipsByDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.available):
+            query['Available'] = request.available
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserVipsByDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodUserVipsByDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vod_user_vips_by_domain_with_options_async(
+        self,
+        request: vod_20170321_models.DescribeVodUserVipsByDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.DescribeVodUserVipsByDomainResponse:
+        """
+        @summary 获取域名Vip
+        
+        @param request: DescribeVodUserVipsByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVodUserVipsByDomainResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.available):
+            query['Available'] = request.available
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeVodUserVipsByDomain',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.DescribeVodUserVipsByDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vod_user_vips_by_domain(
+        self,
+        request: vod_20170321_models.DescribeVodUserVipsByDomainRequest,
+    ) -> vod_20170321_models.DescribeVodUserVipsByDomainResponse:
+        """
+        @summary 获取域名Vip
+        
+        @param request: DescribeVodUserVipsByDomainRequest
+        @return: DescribeVodUserVipsByDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_vod_user_vips_by_domain_with_options(request, runtime)
+
+    async def describe_vod_user_vips_by_domain_async(
+        self,
+        request: vod_20170321_models.DescribeVodUserVipsByDomainRequest,
+    ) -> vod_20170321_models.DescribeVodUserVipsByDomainResponse:
+        """
+        @summary 获取域名Vip
+        
+        @param request: DescribeVodUserVipsByDomainRequest
+        @return: DescribeVodUserVipsByDomainResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_vod_user_vips_by_domain_with_options_async(request, runtime)
+
     def describe_vod_verify_content_with_options(
         self,
         request: vod_20170321_models.DescribeVodVerifyContentRequest,

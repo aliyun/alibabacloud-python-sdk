@@ -1,3 +1,7 @@
+2025-09-22 Version: 3.9.0
+- Support API DescribeVodUserVipsByDomain.
+
+
 2025-08-20 Version: 3.8.2
 - Generated python 2017-03-21 for vod.
 
